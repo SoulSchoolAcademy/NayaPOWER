@@ -76,18 +76,6 @@ body.naya-drawer-open{overflow:hidden}
 .naya-drawer-btn:focus-visible,.naya-corner-btn:focus-visible,.naya-brand:focus-visible{outline:2px solid #fff;outline-offset:2px}
 @media (prefers-reduced-motion:reduce){.naya-drawer,.naya-drawer-backdrop{transition:none}}
 
-/* --- Bottom ecosystem bar: fixed quick access to all 12 destinations (mirrors Hub eco-bottombar) --- */
-.eco-bottombar{position:fixed;bottom:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px calc(14px + env(safe-area-inset-bottom, 0px));background:linear-gradient(180deg,transparent,rgba(5,5,8,.92) 30%);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(255,255,255,.08);flex-wrap:wrap}
-.eco-bb-btn{width:46px;height:46px;flex:0 0 46px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:radial-gradient(circle at 35% 30%,#2a2a32,#0a0a0e 70%);color:#fff;cursor:pointer;display:grid;place-items:center;text-decoration:none;transition:all .22s cubic-bezier(.16,.84,.22,1);box-shadow:inset 0 1px rgba(255,255,255,.15),0 0 14px rgba(255,255,255,.1),0 4px 10px rgba(0,0,0,.4);position:relative;-webkit-tap-highlight-color:transparent}
-.eco-bb-btn svg{width:20px;height:20px;transition:transform .22s;filter:drop-shadow(0 0 3px rgba(255,255,255,.4))}
-.eco-bb-btn:hover{transform:translateY(-3px) scale(1.08);border-color:var(--eco);box-shadow:inset 0 1px rgba(255,255,255,.2),0 0 24px var(--eco),0 6px 16px rgba(0,0,0,.5)}
-.eco-bb-btn:hover svg{color:var(--eco);filter:drop-shadow(0 0 6px var(--eco))}
-.eco-bb-btn:active{transform:translateY(-3px) scale(1.08);border-color:var(--eco);box-shadow:inset 0 1px rgba(255,255,255,.2),0 0 24px var(--eco),0 6px 16px rgba(0,0,0,.5)}
-.eco-bb-btn:active svg{color:var(--eco);filter:drop-shadow(0 0 6px var(--eco))}
-.eco-bb-btn::after{content:attr(data-label);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(4px);white-space:nowrap;font-size:10px;font-weight:800;letter-spacing:.1em;color:#fff;background:rgba(10,10,14,.95);border:1px solid var(--eco);padding:6px 10px;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
-.eco-bb-btn:hover::after{opacity:1;transform:translateX(-50%) translateY(0)}
-.eco-bb-btn:active::after{opacity:1;transform:translateX(-50%) translateY(0)}
-@media (max-width:640px){.eco-bottombar{gap:8px;padding:12px 12px calc(12px + env(safe-area-inset-bottom, 0px))}.eco-bb-btn{width:44px;height:44px;flex:0 0 44px}.eco-bb-btn svg{width:18px;height:18px}}
 
 html,body{margin:0;padding:0;background:#060608;color:#f4f6fb;
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,"Segoe UI",sans-serif;}
@@ -269,12 +257,6 @@ textarea.gr-input{resize:vertical;min-height:110px;line-height:1.55;}
   box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 8px 20px rgba(0,0,0,.5),0 0 26px -4px var(--tc,#a06bff);
   text-shadow:0 0 12px var(--tc,#a06bff);}
 .gr-ttab.on{border-color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 0 18px rgba(255,255,255,.25);}
-/* ═══ SMART BAR BOTTOM — the ecosystem · drifts LEFT · editable by law (§5.3) ═══ */
-.gr-bottombar{position:fixed;left:0;right:0;bottom:0;z-index:800;padding:8px 10px 12px;
-  background:linear-gradient(0deg,rgba(8,8,12,.96),rgba(8,8,12,.82));
-  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
-  border-top:1px solid rgba(255,255,255,.14);
-  box-shadow:0 -10px 30px rgba(0,0,0,.5);}
 
 /* ═══ CONNECTED — the connection law, in the page grammar ═══ */
 .gr-conn-list{display:flex;flex-direction:column;gap:10px;margin-top:6px}
@@ -319,29 +301,6 @@ textarea.gr-input{resize:vertical;min-height:110px;line-height:1.55;}
 .gr-stage .gr-foot{margin-bottom:10px}
 @media (max-width:899px){.gr-stage .gr-foot{margin-bottom:46px}}
 @media (max-width:640px){.gr-stage .gr-foot{margin-bottom:100px}}
-/* 5 — the trio leads the bottom bar: Mail, Activity, Dashboard. They sit in
-   bInner, outside the drifting row, so they never drift away. */
-.nsb-trio{display:flex;gap:8px;flex:0 0 auto;align-items:center;
-  padding-right:10px;margin-right:2px;border-right:1px solid rgba(255,255,255,.14)}
-@media (max-width:640px){
-  .nsb-trio-tab span:not(.nsb-jewel){display:none}
-  .nsb-trio-tab{padding:11px 12px;min-height:42px}
-}
-/* 6 — the bar-position choice: four obsidian buttons, the live one lit */
-.nsb-barpos{display:flex;gap:6px}
-.nsb-barpos .nsb-btn{flex:1 1 0;padding:9px 4px;font-size:12.5px;min-height:40px}
-.nsb-barpos .nsb-btn[aria-pressed="true"]{border-color:#fff;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 0 16px rgba(255,255,255,.18)}
-/* 6 — the bars, off: hidden entirely. The !important matters — the dock's
-   own display:flex is !important, so a plain display:none would lose. */
-html.nsb-notop .naya-topbar, html.nsb-notop #nsbTopstack{display:none !important}
-html.nsb-nobottom #nsbBottom, html.nsb-nobottom .eco-bottombar{display:none !important}
-/* 6 — the escape hatch: the dock gear hides with the bottom bar, so when
-   the bottom is off a floating gear keeps Settings reachable — a choice
-   you cannot undo is not a choice. The doubled class matters: the base
-   .nsb-gear{display:inline-flex} lives in a body <style> after this block. */
-.nsb-gear.nsb-gear-float{position:fixed;right:14px;bottom:14px;z-index:901;display:none}
-html.nsb-nobottom .nsb-gear-float{display:inline-flex}
 </style>
 <style id="gr-inviter-round3-css">
 /* ===== SMART INVITER ROUND 3 (2026-11-10, Shawn's eye 20:56Z) — additive layer only ===== */
@@ -880,11 +839,6 @@ html.nsb-nobottom .nsb-gear-float{display:inline-flex}
 .nsb-topstack{position:static !important;}
 #nsbSearchLevel{display:none !important;}
 body{padding-top:0 !important;}
-/* ---- the bottom dock: pills flush at the bottom edge, status above them ---- */
-#nsbBottom{display:flex !important;flex-direction:column !important;}
-#nsbBottom .nsb-status{order:0;margin:6px 16px 0 !important;min-height:0;}
-#nsbBottom .nsb-bottom-inner{order:1;padding:6px 16px calc(8px + env(safe-area-inset-bottom,0px)) !important;}
-#nsbBottom .nsb-row{padding:6px 12px 8px !important;}
 /* ---- lit at rest: buttons, boards, share buttons, wordings, stats, rows ---- */
 .gr-stage .gr-btn:not(.ghost){border-color:var(--sc,#3fb8ff);
   box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45), inset 0 -4px 8px rgba(0,0,0,.55), 0 0 24px -6px var(--sc,#3fb8ff), 0 10px 22px rgba(0,0,0,.55);}
@@ -3386,7 +3340,6 @@ NF.register(UNIT, {
 
 
 <!-- SMART-BAR-SYSTEM v1.0: bottom+system -->
-<div class="nsb nsb-bottom" id="nsbBottom" aria-label="Network"></div>
 <style>
 
 /* ============ TOKENS (Law 9, verbatim N5) ============ */
@@ -3395,7 +3348,7 @@ NF.register(UNIT, {
   --purple:#a06bff; --magenta:#e84fff; --blue:#3fb8ff; --green:#2fe89e;
   --gold:#ffbf3d; --red:#ff5e6c; --teal:#40d3bb; --indigo:#6675ff;
   --lime:#b8ee57; --orange:#ff9a5a;
-  --sb-top-speed:16; --sb-bottom-speed:24; /* px/s, decided */
+  --sb-top-speed:16; /* px/s, decided */
 }
 /* ============ TOP STACK: bar at the very highest, search the next level down ============
    (Shawn's final charge: search is NOT in the bar — it lives directly below it.) */
@@ -3546,75 +3499,6 @@ NF.register(UNIT, {
     0 1px 0 rgba(255,255,255,.08);
   text-shadow:0 0 8px color-mix(in srgb, var(--tc) 75%, #fff), 0 1px 2px rgba(0,0,0,.7);}
 
-/* ============ BOTTOM BAR: fixed very-bottom, outermost ============ */
-.nsb-bottom{position:fixed;left:0;right:0;bottom:0;z-index:900;
-  padding-bottom:env(safe-area-inset-bottom);
-  background:rgba(3,3,5,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border-top:1px solid rgba(255,255,255,.08);
-  box-shadow:inset 0 2px 10px rgba(0,0,0,.85), inset 0 1px 0 rgba(0,0,0,.9),
-    0 -16px 44px rgba(0,0,0,.68);}
-.nsb-bottom.nsb-kb-hidden{transform:translateY(110%);transition:transform .3s;}
-.nsb-bottom{transition:transform .3s;}
-.nsb-bottom-inner{display:flex;align-items:center;gap:10px;padding:10px 16px 12px;}
-/* network anchor: the persistent connection, one touch away */
-.nsb-net{display:flex;align-items:center;gap:7px;flex:0 0 auto;padding-right:4px;
-  color:#fff;font-size:12px;font-weight:800;white-space:nowrap;opacity:.85;}
-.nsb-net .nsb-net-glyph{width:24px;height:24px;border-radius:8px;flex:0 0 auto;
-  display:inline-flex;align-items:center;justify-content:center;font-size:13px;
-  background:linear-gradient(180deg,rgba(255,255,255,.15),rgba(255,255,255,.03) 45%,rgba(0,0,0,.3));
-  border:1px solid rgba(255,255,255,.2);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.4), inset 0 -1px 0 rgba(0,0,0,.5),
-    0 2px 5px rgba(0,0,0,.6), 0 0 14px -4px var(--blue);}
-.nsb-net small{font-weight:600;opacity:.7;}
-/* settings gear */
-.nsb-gear{flex:0 0 auto;border:1px solid rgba(255,255,255,.22);color:#fff;
-  background:linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.03) 45%, rgba(0,0,0,.34));
-  border-radius:50%;width:40px;height:40px;font-size:17px;cursor:pointer;
-  display:inline-flex;align-items:center;justify-content:center;font-family:inherit;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.42), inset 0 -1px 0 rgba(0,0,0,.5),
-    0 2px 5px rgba(0,0,0,.65), 0 10px 22px rgba(0,0,0,.55);
-  transition:transform .2s cubic-bezier(.2,1.25,.35,1), box-shadow .2s ease-out, border-color .2s;}
-.nsb-gear:hover{border-color:var(--blue);transform:rotate(30deg) translateY(-2px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.5), inset 0 -1px 0 rgba(0,0,0,.45),
-    0 0 20px -2px var(--blue), 0 4px 8px rgba(0,0,0,.6), 0 14px 28px rgba(0,0,0,.6);}
-.nsb-gear:active{transform:rotate(30deg) translateY(1px);
-  box-shadow:inset 0 3px 10px rgba(0,0,0,.55), 0 1px 3px rgba(0,0,0,.6);}
-/* settings popover */
-.nsb-settings{position:fixed;z-index:1000;display:none;
-  background:linear-gradient(180deg,#171e33,#0b0f1d 60%,#070a14);
-  border:1px solid rgba(255,255,255,.24);border-radius:16px;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.18), inset 0 -10px 28px rgba(0,0,0,.4),
-    0 0 0 1px rgba(0,0,0,.55),
-    0 34px 80px rgba(0,0,0,.78), 0 10px 28px rgba(0,0,0,.55);
-  min-width:270px;max-width:88vw;padding:18px;}
-.nsb-settings.open{display:block;}
-.nsb-settings h4{margin:0 0 4px;font-size:15px;color:#fff;letter-spacing:.02em;
-  text-shadow:0 2px 8px rgba(0,0,0,.7);}
-.nsb-settings p{margin:0 0 12px;font-size:12.5px;color:#E8E8EC;line-height:1.5;}
-.nsb-settings .nsb-speed-labels{display:flex;justify-content:space-between;
-  font-size:11px;color:#E8E8EC;margin:6px 2px 0;opacity:.8;}
-.nsb-settings input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:30px;
-  background:transparent;margin:8px 0 2px;cursor:pointer;}
-.nsb-settings input[type=range]::-webkit-slider-runnable-track{height:10px;border-radius:999px;
-  background:linear-gradient(180deg,#040407,#0c0c12);
-  box-shadow:inset 0 2px 6px rgba(0,0,0,.75), inset 0 -1px 0 rgba(255,255,255,.08),
-    0 1px 0 rgba(255,255,255,.07);}
-.nsb-settings input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;
-  width:26px;height:26px;border-radius:50%;margin-top:-8px;
-  background:radial-gradient(circle at 35% 30%, #a8d9ff, var(--blue) 55%, #1663a8);
-  border:2px solid rgba(255,255,255,.55);
-  box-shadow:inset 0 1px 1px rgba(255,255,255,.7), inset 0 -3px 6px rgba(0,0,0,.35),
-    0 4px 0 rgba(0,0,0,.3), 0 8px 18px rgba(0,0,0,.55), 0 0 16px -2px var(--blue);}
-.nsb-settings input[type=range]::-moz-range-track{height:10px;border-radius:999px;
-  background:linear-gradient(180deg,#040407,#0c0c12);
-  box-shadow:inset 0 2px 6px rgba(0,0,0,.75), inset 0 -1px 0 rgba(255,255,255,.08);}
-.nsb-settings input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;
-  background:radial-gradient(circle at 35% 30%, #a8d9ff, var(--blue) 55%, #1663a8);
-  border:2px solid rgba(255,255,255,.55);
-  box-shadow:inset 0 1px 1px rgba(255,255,255,.7), inset 0 -3px 6px rgba(0,0,0,.35),
-    0 4px 0 rgba(0,0,0,.3), 0 8px 18px rgba(0,0,0,.55), 0 0 16px -2px var(--blue);}
-.nsb-settings .nsb-speed-val{font-size:13px;font-weight:800;color:#fff;text-align:center;margin-top:6px;}
-.nsb-settings .nsb-speed-val span{color:var(--blue);}
 /* signature: the active tab breathes, gently — alive, never a flood */
 @keyframes nsbBreathe{0%,100%{filter:brightness(1);}50%{filter:brightness(1.14);}}
 .nsb-tab.active{animation:nsbBreathe 4s ease-in-out infinite;}
@@ -3625,13 +3509,6 @@ NF.register(UNIT, {
 @media (prefers-reduced-motion: reduce){ .nsb-tab.active{animation:none;} .nsb-tab.nsb-ripple{animation:none;} }
 html.nsb-calm .nsb-tab.active{animation:none;}
 html.nsb-calm .nsb-tab.nsb-ripple{animation:none;}
-.nsb-bottom .nsb-row{padding:10px 24px 18px;
-/* action buttons: distinct from nav tabs */
-.nsb-tab.nsb-action-btn{border-width:2px;font-weight:700;letter-spacing:.02em;position:relative;}
-.nsb-badge{position:absolute;top:-6px;right:-6px;min-width:20px;height:20px;padding:0 5px;border-radius:999px;background:#ff3b5c;color:#fff;font-size:11px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(255,59,92,.5);border:2px solid #050507;}
-
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent);
-  mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent);}
 /* ============ SEARCH RESULTS (dropdown from the search level) ============ */
 .nsb-search-results{position:fixed;z-index:950;display:none;
   background:linear-gradient(180deg,#171e33,#0b0f1d 60%,#070a14);
@@ -3651,88 +3528,6 @@ html.nsb-calm .nsb-tab.nsb-ripple{animation:none;}
   transform:translateY(-1px);}
 .nsb-sr-item small{display:block;font-weight:400;color:#E8E8EC;font-size:12px;margin-top:2px;}
 .nsb-sr-none{padding:14px;color:#E8E8EC;font-size:13px;}
-/* ============ ⋯ MENU (bottom bar tabs) ============ */
-.nsb-menu{position:fixed;z-index:1000;display:none;
-  background:linear-gradient(180deg,#171e33,#0b0f1d 60%,#070a14);
-  border:1px solid rgba(255,255,255,.24);border-radius:14px;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.18), inset 0 -8px 22px rgba(0,0,0,.4),
-    0 0 0 1px rgba(0,0,0,.55),
-    0 28px 64px rgba(0,0,0,.75), 0 8px 22px rgba(0,0,0,.5);
-  min-width:220px;padding:6px;}
-.nsb-menu .mi{padding:11px 14px;border-radius:10px;cursor:pointer;color:#fff;
-  font-weight:800;font-size:13px;font-family:inherit;border:1px solid transparent;background:none;
-  width:100%;text-align:left;display:block;transition:all .15s;}
-.nsb-menu .mi:hover{background:linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.04));
-  border-color:rgba(255,255,255,.14);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), 0 4px 12px rgba(0,0,0,.4);
-  transform:translateY(-1px);}
-.nsb-menu .mi:active{transform:translateY(1px);
-  box-shadow:inset 0 2px 8px rgba(0,0,0,.5);}
-/* v1.6 COLOR LANGUAGE: rest = beautiful black; hover ignites EACH in its own color. Never all the same. */
-.nsb-menu .mi-ico{font-style:normal;}
-.nsb-menu .mi-heart .mi-ico{color:var(--purple);text-shadow:0 0 10px rgba(160,107,255,.85);}
-.nsb-menu .mi-star .mi-ico{color:var(--gold);text-shadow:0 0 10px rgba(255,191,61,.85);}
-.nsb-menu .mi-edit:hover{border-color:var(--green);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), 0 4px 12px rgba(0,0,0,.4), 0 0 16px -4px var(--green);}
-.nsb-menu .mi-heart:hover{border-color:var(--purple);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), 0 4px 12px rgba(0,0,0,.4), 0 0 16px -4px var(--purple);}
-.nsb-menu .mi-star:hover{border-color:var(--gold);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), 0 4px 12px rgba(0,0,0,.4), 0 0 16px -4px var(--gold);}
-.nsb-menu .mi-remove:hover{border-color:var(--red);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), 0 4px 12px rgba(0,0,0,.4), 0 0 16px -4px var(--red);}
-/* suggestion highlight (keyboard) + suggestion URL line — new elements, v1.4 values untouched */
-.nsb-menu .mi.sel{background:linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.04));border-color:rgba(255,255,255,.14);}
-.nsb-sug-url{display:block;font-size:11px;opacity:.6;font-weight:400;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-/* ============ EDITOR ============ */
-.nsb-ed{display:none;margin:0 16px 12px;border:1px solid rgba(255,255,255,.22);
-  border-radius:14px;padding:16px;background:linear-gradient(180deg,#141a2e,#0b0e18 65%,#070a12);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), inset 0 -8px 22px rgba(0,0,0,.35),
-    0 18px 44px rgba(0,0,0,.6);
-  transition:border-color .25s ease-out, box-shadow .25s ease-out;}
-.nsb-ed.open{display:block;}
-/* v1.6: nothing static — the panel's outer edge ignites purple on hover (Aliveness law). */
-.nsb-ed:hover{border-color:rgba(160,107,255,.65);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), inset 0 -8px 22px rgba(0,0,0,.35),
-    0 18px 44px rgba(0,0,0,.6), 0 0 26px -4px rgba(160,107,255,.5);}
-.nsb-ed p{margin:0 0 4px;font-size:16px;font-weight:700;color:#fff;}
-.nsb-ed label{display:block;font-size:13px;color:#fff;margin:10px 0 4px;opacity:.85;}
-.nsb-ed input,.nsb-ed select{width:100%;box-sizing:border-box;color:#fff;
-  background:linear-gradient(180deg,#060609,#0f0f16);
-  border:1px solid rgba(255,255,255,.25);border-radius:10px;padding:11px 12px;
-  font-size:14px;font-family:inherit;
-  box-shadow:inset 0 3px 10px rgba(0,0,0,.68), inset 0 1px 3px rgba(0,0,0,.5),
-    0 1px 0 rgba(255,255,255,.06);}
-.nsb-ed input:focus,.nsb-ed select:focus{outline:none;border-color:var(--purple);
-  box-shadow:inset 0 3px 10px rgba(0,0,0,.68), 0 0 18px -4px var(--purple);}
-.nsb-ed-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
-.nsb-btn{color:#fff;border:1.5px solid rgba(255,255,255,.4);
-  background:linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.03) 45%, rgba(0,0,0,.3)), #141419;
-  border-radius:10px;padding:10px 16px;font-size:14px;font-weight:700;min-height:44px;
-  cursor:pointer;font-family:inherit;transition:all .2s;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.3), inset 0 -3px 8px rgba(0,0,0,.4),
-    0 5px 0 rgba(0,0,0,.3), 0 10px 22px rgba(0,0,0,.5);}
-/* v1.6 COLOR LANGUAGE: rest = beautiful black for ALL; hover ignites each in its OWN color. Never all the same. */
-.nsb-btn.save:hover,.nsb-btn.primary:hover{border-color:var(--blue);transform:translateY(-2px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.35),
-    0 7px 0 rgba(0,0,0,.28), 0 14px 28px rgba(0,0,0,.55), 0 0 18px -4px var(--blue);}
-.nsb-btn.move-left:hover{border-color:var(--green);transform:translateY(-2px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.35),
-    0 7px 0 rgba(0,0,0,.28), 0 14px 28px rgba(0,0,0,.55), 0 0 18px -4px var(--green);}
-.nsb-btn.move-right:hover{border-color:var(--purple);transform:translateY(-2px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.35),
-    0 7px 0 rgba(0,0,0,.28), 0 14px 28px rgba(0,0,0,.55), 0 0 18px -4px var(--purple);}
-.nsb-btn.close:hover{border-color:rgba(255,255,255,.9);transform:translateY(-2px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.35),
-    0 7px 0 rgba(0,0,0,.28), 0 14px 28px rgba(0,0,0,.55), 0 0 18px -4px rgba(255,255,255,.5);}
-.nsb-btn:active{transform:translateY(2px);
-  box-shadow:inset 0 3px 10px rgba(0,0,0,.55), 0 2px 6px rgba(0,0,0,.5);}
-.nsb-btn.primary{border-color:rgba(255,255,255,.4);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.3), inset 0 -3px 8px rgba(0,0,0,.4),
-    0 5px 0 rgba(0,0,0,.3), 0 10px 22px rgba(0,0,0,.5);}
-.nsb-btn.danger:hover{border-color:var(--red);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.35),
-    0 7px 0 rgba(0,0,0,.28), 0 14px 28px rgba(0,0,0,.55), 0 0 18px -4px var(--red);}
-.nsb-status{font-size:13px;color:#fff;opacity:.7;margin:8px 16px 10px;min-height:18px;}
 /* ============ MOTION ============ */
 @media (prefers-reduced-motion: reduce){
   .nsb-tab,.nsb-search-btn{transition:none;}
@@ -3740,7 +3535,7 @@ html.nsb-calm .nsb-tab.nsb-ripple{animation:none;}
 html.nsb-calm .nsb-tab{transition:none;}
 /* phone tuning */
 @media (max-width:480px){
-  .nsb-top-inner,.nsb-bottom-inner{padding-left:10px;padding-right:10px;}
+  .nsb-top-inner{padding-left:10px;padding-right:10px;}
   .nsb-tab{padding:11px 16px;font-size:12.5px;min-height:42px;}
   .nsb-app-name{font-size:13.5px;}
   .nsb-search-box{min-width:0;flex:1;}
@@ -3754,28 +3549,22 @@ html.nsb-calm .nsb-tab{transition:none;}
 (function(){
 'use strict';
 var SPECTRUM = ['#a06bff','#3fb8ff','#2fe89e','#ffbf3d','#ff9a5a','#ff5e6c','#e84fff']; /* harvested v1.1.4 */
-var TOP_SPEED = 16, BOTTOM_SPEED = 24; /* px/s at 1x, decided */
-var STORE_KEY = 'naya.smarttabs.v1';
+var TOP_SPEED = 16; /* px/s at 1x, decided */
 var SETTINGS_KEY = 'naya.smartbar.settings.v1';
 var USAGE_KEY = 'naya.smartbar.usage.v1';
 /* speed: 0 = still, 0.5 = slow, 1 = cruise, 2 = swift. Theirs to tune.
-   bottomBar: true = the network bar shows; false = their choice, it stays off. */
-/* ROUND 2 — where the bars sit: top, bottom, both, or off. One setting, one
-   mechanism (html classes + !important), so it works even where the old
-   inline display toggle could not (the dock's display:flex is !important). */
-var BAR_POSITIONS = ['top', 'bottom', 'both', 'off'];
+   GHOST-BAR FIX 2026-11-21: the bottom dock is gone, so the bar-position
+   choice (top/bottom/both/off) and the bottomBar switch are gone with it.
+   Settings now carry speed only; the top bar always shows. */
 function getSettings(){
   var s = storeGet(SETTINGS_KEY, null);
-  if (!s || typeof s.speed !== 'number') s = {speed: 1, bottomBar: true, barPos: 'both'};
+  if (!s || typeof s.speed !== 'number') s = {speed: 1};
   s.speed = Math.max(0, Math.min(2, s.speed));
-  if (typeof s.bottomBar !== 'boolean') s.bottomBar = true;
-  if (BAR_POSITIONS.indexOf(s.barPos) === -1) s.barPos = 'both';
   return s;
 }
 function saveSettings(s){
-  if (BAR_POSITIONS.indexOf(s.barPos) === -1) s.barPos = 'both';
-  storeSet(SETTINGS_KEY, {speed: s.speed, bottomBar: s.bottomBar, barPos: s.barPos});
-  try { document.dispatchEvent(new CustomEvent('smartbar-settings', {detail:{speed:s.speed, bottomBar:s.bottomBar, barPos:s.barPos}})); } catch(e){}
+  storeSet(SETTINGS_KEY, {speed: s.speed});
+  try { document.dispatchEvent(new CustomEvent('smartbar-settings', {detail:{speed:s.speed}})); } catch(e){}
 }
 function setSpeed(v){
   var s = getSettings();
@@ -3784,30 +3573,6 @@ function setSpeed(v){
   try { document.dispatchEvent(new CustomEvent('smartbar-speed', {detail:{speed:s.speed}})); } catch(e){}
   return s.speed;
 }
-function setBarPos(pos){
-  if (BAR_POSITIONS.indexOf(pos) === -1) pos = 'both';
-  var s = getSettings(); s.barPos = pos;
-  s.bottomBar = (pos === 'bottom' || pos === 'both');
-  saveSettings(s); applyBarPos(); return s.barPos;
-}
-function setBottomBar(on){
-  /* the old on/off switch, kept working: it now moves the four-way choice */
-  var s = getSettings(); var pos = s.barPos;
-  if (on){ if (pos === 'top') pos = 'both'; else if (pos === 'off') pos = 'bottom'; }
-  else { if (pos === 'both') pos = 'top'; else if (pos === 'bottom') pos = 'off'; }
-  return setBarPos(pos);
-}
-function applyBarPos(){
-  var pos = getSettings().barPos;
-  var showTop = (pos === 'top' || pos === 'both');
-  var showBottom = (pos === 'bottom' || pos === 'both');
-  document.documentElement.classList.toggle('nsb-notop', !showTop);
-  document.documentElement.classList.toggle('nsb-nobottom', !showBottom);
-  /* FINISH ROUND 2026-11-15 — the dock lives in flow now (no-overlay law),
-     like the top chrome: no bottom pad is needed either. */
-  document.body.style.paddingBottom = '0px';
-}
-function applyBottomBar(){ applyBarPos(); }
 function slug(s){ return String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'') || 'tab'; }
 /* usage: {seedId: {taps, last}} — the bar learns their logic, then they shape it */
 function getUsage(){ return storeGet(USAGE_KEY, {}) || {}; }
@@ -3921,27 +3686,6 @@ function drift(row, dir, basePxPerSec){
   return function(){ if (timer) clearInterval(timer); document.removeEventListener('smartbar-speed', onSpeed); };
 }
 
-/* ---------- ⋯ menu ---------- */
-var openMenu = null;
-function closeMenu(){ if (openMenu && openMenu.parentNode) openMenu.parentNode.removeChild(openMenu); openMenu = null; }
-function placeNear(anchor, pop){
-  pop.style.visibility='hidden'; pop.style.display='block';
-  var r = anchor.getBoundingClientRect();
-  var pw = pop.offsetWidth||220, ph = pop.offsetHeight||190, pad = 8;
-  var x = Math.min(Math.max(r.left, pad), window.innerWidth - pw - pad);
-  var y = r.bottom + 8;
-  if (y + ph > window.innerHeight - pad) y = r.top - ph - 8;
-  if (y < pad) y = pad;
-  pop.style.left = x+'px'; pop.style.top = y+'px'; pop.style.visibility='';
-}
-document.addEventListener('click', function(e){
-  if (!openMenu) return;
-  var n = e.target; while (n){ if (n===openMenu) return; n = n.parentNode; }
-  closeMenu();
-});
-document.addEventListener('keydown', function(e){
-  if ((e.key==='Escape'||e.keyCode===27) && openMenu) closeMenu();
-});
 
 /* ================= PUBLIC API ================= */
 window.NayaSmartBar = {
@@ -4048,404 +3792,13 @@ window.NayaSmartBar = {
     }, {passive:true});
     drift(tRow, +1, TOP_SPEED);
 
-    /* ----- BOTTOM BAR ----- */
-    var bottom = document.getElementById('nsbBottom');
-    bottom.innerHTML = '';
-    var bInner = document.createElement('div'); bInner.className = 'nsb-bottom-inner';
-    var bRow = document.createElement('div'); bRow.className = 'nsb-row';
-    bRow.setAttribute('role','tablist'); bRow.setAttribute('aria-label','Network');
-    var tabsNet = storeGet(STORE_KEY, null);
-    var seeded = false;
-    if (!Array.isArray(tabsNet)){
-      seeded = true;
-      tabsNet = network.map(function(n,i){ return {id: 'seed-'+slug(n.label), label:n.label, url:n.url, icon:n.icon, state:null, color:n.color||SPECTRUM[i%SPECTRUM.length]}; });
-      storeSet(STORE_KEY, tabsNet); /* seed is real state from the first paint */
-    }
-    /* Personalized by default: until the citizen shapes it (heart/star/add/remove),
-       the bar auto-organizes by their own logic — frequency × recency. Manual wins. */
-    function customized(){
-      if (storeGet('naya.smarttabs.manual.v1', false)) return true; /* explicit arrangement: manual order wins */
-      return tabsNet.some(function(t){ return t.state || t.id.indexOf('seed-') !== 0; });
-    }
-    function sortedNet(){
-      var list = tabsNet.slice();
-      if (!customized()){
-        list.sort(function(a,b){ return usageScore(b.id) - usageScore(a.id); });
-      }
-      /* hearts first, then stars — the citizen's explicit curation always wins */
-      var hw = function(t){ return (t.state==='heart'?2:0)+(t.state==='star'?1:0); };
-      list.sort(function(a,b){ return hw(b) - hw(a); });
-      return list;
-    }
-    function persistNet(){
-      storeSet(STORE_KEY, tabsNet);
-      try{ bottom.dispatchEvent(new CustomEvent('smarttabs-change',{detail:tabsNet.slice(),bubbles:true})); }catch(e){}
-    }
-    var ed = document.createElement('div'); ed.className = 'nsb-ed';
-    function renderNet(){
-      bRow.innerHTML = ''; closeMenu();
-      /* one set only — the duplicate set read as a rendering bug (Growth round 2026-11-10). The row scrolls; it does not loop. */
-      sortedNet().forEach(function(t){
-        t.trackId = t.id;
-        bRow.appendChild(pill(t, {menu: openNetMenu}));
-      });
-      var add = document.createElement('button'); add.type='button';
-      add.className = 'nsb-tab add'; add.style.setProperty('--tc', SPECTRUM[1]);
-      add.textContent = '＋ Add';
-      add.addEventListener('click', function(){ openNetEditor(null); });
-      bRow.appendChild(add);
-    }
-    /* ---------- explicit reorder: move buttons (not drag — the bar drifts) ---------- */
-    function moveTab(id, dir){
-      var i = -1, k;
-      for (k = 0; k < tabsNet.length; k++){ if (tabsNet[k].id === id){ i = k; break; } }
-      if (i < 0) return;
-      var j = i + dir;
-      if (j < 0 || j >= tabsNet.length){ say('bottom','"'+tabsNet[i].label+'" is already at the '+(dir<0?'front':'end')+'.'); return; }
-      var tmp = tabsNet[i]; tabsNet[i] = tabsNet[j]; tabsNet[j] = tmp;
-      storeSet('naya.smarttabs.manual.v1', true); /* explicit arrangement: manual order wins */
-      persistNet(); renderNet();
-      say('bottom','Moved "'+tabsNet[j].label+'" '+(dir<0?'left':'right')+'.');
-    }
-    /* ---------- keyword→URL autocomplete: the label promises "word" — make it real ----------
-       Registry = the citizen's own live tab set (labels+urls they carry) + the canonical
-       network sections (from the bar's deployed seed config). No match → the raw word
-       stays allowed; click-time behavior unchanged. */
-    var SECTION_FALLBACK = [
-      ['Home','https://nayanet.app/'],
-      ['Dashboard','https://nayanet.app/dashboard'],
-      ['Personal','https://nayanet.app/personal'],
-      ['Business','https://nayanet.app/business'],
-      ['Space','https://nayanet.app/space'],
-      ['Intel Today','https://nayanet.app/rooms/today'],
-      ['Smart Mail','https://nayanet.app/rooms/mail'],
-      ['Smart Lists','https://nayanet.app/lists'],
-      ['Library','https://nayanet.app/rooms/library'],
-      ['Project Intel','https://nayanet.app/pi'],
-      ['Pricing','https://nayanet.app/pricing'],
-      ['Smart Inviter','https://nayanet.app/rooms/growth'],
-      ['Connections','https://nayanet.app/rooms/connections']
-    ];
-    function sectionRegistry(){
-      var seen = {}, out = [];
-      function add(label, url){
-        if (!label || !url) return;
-        var k = String(label).toLowerCase();
-        if (seen[k]) return; seen[k] = 1;
-        out.push({label:String(label), url:String(url)});
-      }
-      tabsNet.forEach(function(t){ add(t.label, t.url); });
-      SECTION_FALLBACK.forEach(function(p){ add(p[0], p[1]); });
-      return out;
-    }
-    function attachAutocomplete(input){
-      var box = null, items = [], hi = -1;
-      function close(){
-        if (box && box.parentNode) box.parentNode.removeChild(box);
-        box = null; items = []; hi = -1;
-        input.setAttribute('aria-expanded','false');
-      }
-      function paintHi(){
-        if (!box) return;
-        var mis = box.querySelectorAll('.mi'), k;
-        for (k = 0; k < mis.length; k++){
-          if (k === hi) mis[k].classList.add('sel'); else mis[k].classList.remove('sel');
-        }
-      }
-      function pick(i){
-        var s = items[i];
-        if (!s) return;
-        input.value = s.url;
-        close();
-        input.focus();
-      }
-      function render(){
-        close();
-        var q = input.value.trim();
-        if (!q || /^https?:\/\//i.test(q) || q.charAt(0) === '#') return;
-        var ql = q.toLowerCase(), ms = [];
-        sectionRegistry().forEach(function(s){
-          if (s.label.toLowerCase().indexOf(ql) !== -1 || s.url.toLowerCase().indexOf(ql) !== -1) ms.push(s);
-        });
-        ms = ms.slice(0, 6);
-        if (!ms.length) return;
-        box = document.createElement('div');
-        box.className = 'nsb-menu'; box.setAttribute('role','listbox');
-        ms.forEach(function(s, i){
-          var mi = document.createElement('button');
-          mi.type = 'button'; mi.className = 'mi'; mi.setAttribute('role','option');
-          mi.innerHTML = '<b>'+esc(s.label)+'</b><span class="nsb-sug-url">'+esc(s.url)+'</span>';
-          mi.addEventListener('mousedown', function(e){ e.preventDefault(); pick(i); });
-          box.appendChild(mi);
-        });
-        document.body.appendChild(box);
-        placeNear(input, box);
-        items = ms; hi = 0; paintHi();
-        input.setAttribute('aria-expanded','true');
-      }
-      input.setAttribute('autocomplete','off');
-      input.setAttribute('role','combobox');
-      input.setAttribute('aria-expanded','false');
-      input.addEventListener('input', render);
-      input.addEventListener('keydown', function(e){
-        if (!box) return;
-        if (e.key === 'ArrowDown'){ e.preventDefault(); hi = (hi+1)%items.length; paintHi(); }
-        else if (e.key === 'ArrowUp'){ e.preventDefault(); hi = (hi-1+items.length)%items.length; paintHi(); }
-        else if (e.key === 'Enter'){ e.preventDefault(); pick(hi<0?0:hi); }
-        else if (e.key === 'Escape'){ close(); }
-      });
-      input.addEventListener('blur', function(){ setTimeout(close, 180); });
-      return close;
-    }
-    function openNetMenu(t, anchorEl){
-      closeMenu();
-      var m = document.createElement('div'); m.className = 'nsb-menu'; m.setAttribute('role','menu');
-      [['edit','✎ Edit'],['heart','♥ Set Purple Heart'],['star','★ Set Gold Star'],['remove','✕ Remove']]
-      .forEach(function(pair){
-        var mi = document.createElement('button'); mi.type='button'; mi.className='mi mi-'+pair[0];
-        mi.setAttribute('aria-label', pair[1]);
-        mi.innerHTML = '<span class="mi-ico" aria-hidden="true">'+pair[1].charAt(0)+'</span>'+pair[1].slice(1);
-        mi.addEventListener('click', function(){
-          closeMenu();
-          if (pair[0]==='edit') openNetEditor(t.id);
-          else if (pair[0]==='heart'||pair[0]==='star'){
-            t.state = (t.state===pair[0]) ? null : pair[0];
-            persistNet(); renderNet();
-            if (t.state==='heart'){
-              /* keep the promise visibly: the heart just rose to the front — show the front.
-                 pause drift via its own poke so the rise is seen, not scrolled past. */
-              bRow.scrollLeft = 0;
-              try { bRow.dispatchEvent(new Event('pointerdown')); } catch(e){}
-            }
-            say('bottom', '"'+t.label+'" '+(t.state==='heart'?'has the ♥ purple heart — it rises to the front.'
-              : t.state==='star'?'has the ★ gold star.' : 'is a plain tab again.'));
-          } else if (pair[0]==='remove'){
-            tabsNet = tabsNet.filter(function(x){return x.id!==t.id;});
-            persistNet(); renderNet();
-            say('bottom', 'Removed "'+t.label+'".');
-          }
-        });
-        m.appendChild(mi);
-      });
-      document.body.appendChild(m); openMenu = m;
-      placeNear(anchorEl, m);
-    }
-    function openNetEditor(id){
-      var t = null;
-      if (id) tabsNet.forEach(function(x){ if (x.id===id) t = x; });
-      ed.classList.add('open'); ed.innerHTML = '';
-      var ttl = document.createElement('p'); ttl.textContent = t ? 'Edit tab' : 'Add a tab';
-      ed.appendChild(ttl);
-      function field(lbl, val, ph){
-        var l = document.createElement('label'); l.textContent = lbl; ed.appendChild(l);
-        var i = document.createElement('input'); i.value = val||''; i.placeholder = ph||'';
-        ed.appendChild(i); return i;
-      }
-      var nameIn = field('Name', t?t.label:'', 'e.g. Smart Mail');
-      var urlIn = field('Destination — URL or word', t?(t.url||''):'', 'https://… or just a word');
-      var closeSug = attachAutocomplete(urlIn);
-      if (!t){
-        /* quick-add chips: "add it again" is literally one tap — main apps not already on the bar */
-        var have = {};
-        tabsNet.forEach(function(x){ if (x.url) have[String(x.url).toLowerCase()] = 1; });
-        var missing = sectionRegistry().filter(function(s){ return !have[String(s.url).toLowerCase()]; });
-        if (missing.length){
-          var ql = document.createElement('label'); ql.textContent = 'Quick add'; ed.appendChild(ql);
-          var qw = document.createElement('div');
-          qw.style.cssText = 'display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;';
-          missing.forEach(function(s){
-            var c = document.createElement('button');
-            c.type = 'button'; c.textContent = s.label;
-            c.setAttribute('aria-label','Add '+s.label+' tab');
-            c.style.cssText = 'background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.25);border-radius:20px;color:#fff;padding:6px 14px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;';
-            c.addEventListener('click', function(){
-              closeSug();
-              tabsNet.push({id:uid('tab'), label:s.label, url:s.url, state:null});
-              persistNet(); renderNet(); ed.classList.remove('open');
-              say('bottom','Added "'+s.label+'" — it now rides this bar everywhere.');
-            });
-            qw.appendChild(c);
-          });
-          ed.appendChild(qw);
-        }
-      }
-      var rowB = document.createElement('div'); rowB.className = 'nsb-ed-row';
-      function btn(txt, cls, fn){
-        var b = document.createElement('button'); b.type='button';
-        b.className = 'nsb-btn '+(cls||''); b.textContent = txt;
-        b.addEventListener('click', fn); rowB.appendChild(b);
-      }
-      btn(t?'Save':'Add tab','primary save', function(){
-        closeSug();
-        var nm = nameIn.value.trim(), ur = urlIn.value.trim();
-        if (!nm){ say('bottom','Give the tab a name first.'); nameIn.focus(); return; }
-        if (t){ t.label = nm; t.url = ur; say('bottom','Saved "'+nm+'".'); }
-        else { tabsNet.push({id:uid('tab'), label:nm, url:ur, state:null}); say('bottom','Added "'+nm+'" — it now rides this bar everywhere.'); }
-        persistNet(); renderNet(); ed.classList.remove('open');
-      });
-      if (t){
-        btn('← Move left','move-left', function(){ moveTab(t.id, -1); });
-        btn('Move right →','move-right', function(){ moveTab(t.id, 1); });
-        btn('Remove','danger', function(){
-          closeSug();
-          tabsNet = tabsNet.filter(function(x){return x.id!==t.id;});
-          persistNet(); renderNet(); ed.classList.remove('open');
-          say('bottom','Removed "'+t.label+'".');
-        });
-      }
-      btn('Close','close', function(){ closeSug(); ed.classList.remove('open'); });
-      ed.appendChild(rowB);
-      setTimeout(function(){ nameIn.focus(); }, 60);
-    }
-    bInner.appendChild(bRow);
-    /* ROUND 2 — the trio leads the bottom bar: Mail, Activity, Dashboard.
-       They sit in bInner, outside the drifting row, so they never drift away. */
-    var trio = document.createElement('div'); trio.className = 'nsb-trio';
-    trio.setAttribute('role','group'); trio.setAttribute('aria-label','Mail, activity, dashboard');
-    [
-      {label:'Mail', url:'https://nayanet.app/rooms/mail', icon:'\u2709', color:'#ffbf3d'},
-      {label:'Activity', url:'https://nayanet.app/#/hub/feed', icon:'\u25c8', color:'#a06bff'},
-      {label:'Dashboard', url:'https://nayanet.app/dashboard', icon:'\u25c9', color:'#2fe89e'}
-    ].forEach(function(t){
-      var b = pill({label:t.label, url:t.url, icon:t.icon, color:t.color}, {noGo:false});
-      b.classList.add('nsb-trio-tab');
-      trio.appendChild(b);
-    });
-    bInner.insertBefore(trio, bRow);
-    /* network anchor: the persistent connection — the whole network, one touch away */
-    var net = document.createElement('div'); net.className = 'nsb-net';
-    net.title = 'The whole network — one touch away, from any app';
-    var ng = document.createElement('span'); ng.className = 'nsb-net-glyph'; ng.textContent = '◈';
-    ng.style.setProperty('--tc', '#3fb8ff');
-    net.appendChild(ng);
-    var nc = document.createElement('span');
-    nc.innerHTML = '<small>' + tabsNet.length + ' apps</small>';
-    net.appendChild(nc);
-    /* settings gear: bar motion is theirs to tune */
-    var gear = document.createElement('button'); gear.type = 'button'; gear.className = 'nsb-gear';
-    gear.textContent = '⚙'; gear.setAttribute('aria-label','Bar settings — motion and where the bars sit');
-    gear.title = 'Bar settings — motion and where the bars sit';
-    /* ROUND 2 — the floating gear: the dock gear hides with the bottom bar,
-       so when the bottom is off this one keeps Settings reachable — a choice
-       you cannot undo is not a choice. It lives on the body, outside the dock. */
-    var gearFloat = document.createElement('button'); gearFloat.type = 'button';
-    gearFloat.className = 'nsb-gear nsb-gear-float';
-    gearFloat.textContent = '⚙'; gearFloat.setAttribute('aria-label','Bar settings — motion and where the bars sit');
-    gearFloat.title = 'Bar settings — motion and where the bars sit';
-    document.body.appendChild(gearFloat);
-    bInner.insertBefore(net, bRow);
-    bInner.appendChild(gear);
-    bottom.appendChild(bInner);
-    bottom.appendChild(ed);
-    var st = document.createElement('p'); st.className = 'nsb-status';
-    bottom.appendChild(st); statusEls.bottom = st;
-    renderNet();
-    /* FINISH ROUND 2026-11-15 — no drift on the bottom row: drift wrapped
-       scrollLeft to half the row on load (~987px), resting a pill half-sliced
-       at the right edge. The row rests at 0 now; a hand scroll snaps to whole pills. */
-    /* keyboard-open: hide bottom bar when the keyboard takes the screen */
-    if (window.visualViewport){
-      var baseH = window.visualViewport.height;
-      window.visualViewport.addEventListener('resize', function(){
-        var shrunk = window.visualViewport.height < baseH * 0.7;
-        bottom.classList.toggle('nsb-kb-hidden', shrunk);
-      });
-    }
-    /* settings popover: speed control, real and working */
-    var setPop = document.createElement('div'); setPop.className = 'nsb-settings';
-    setPop.setAttribute('role','dialog'); setPop.setAttribute('aria-label','Bar settings');
-    var SPEED_NAMES = [[0,'Still'],[0.5,'Slow'],[1,'Cruise'],[1.5,'Brisk'],[2,'Swift']];
-    function speedName(v){
-      var best = SPEED_NAMES[0];
-      SPEED_NAMES.forEach(function(p){ if (Math.abs(p[0]-v) < Math.abs(best[0]-v)) best = p; });
-      return best[1];
-    }
-    function renderSettings(){
-      var s = getSettings();
-      setPop.innerHTML = '';
-      var h = document.createElement('h4'); h.textContent = 'Bar settings'; setPop.appendChild(h);
-      var p = document.createElement('p');
-      p.textContent = 'The bars are yours. Tune the motion, or choose where the bars sit — top, bottom, both, or off. Most keep both on.';
-      setPop.appendChild(p);
-      /* motion speed */
-      var sh = document.createElement('h4'); sh.textContent = 'Motion speed'; sh.style.fontSize = '13px';
-      sh.style.margin = '12px 0 4px'; setPop.appendChild(sh);
-      var rng = document.createElement('input');
-      rng.type = 'range'; rng.min = '0'; rng.max = '2'; rng.step = '0.5'; rng.value = String(s.speed);
-      rng.setAttribute('aria-label','Bar motion speed');
-      var val = document.createElement('div'); val.className = 'nsb-speed-val';
-      function showVal(){ val.innerHTML = 'Speed: <span>' + speedName(+rng.value) + '</span>'; }
-      showVal();
-      rng.addEventListener('input', function(){
-        var v = setSpeed(+rng.value); showVal();
-        say('bottom', 'Bar motion: ' + speedName(v) + '.');
-      });
-      setPop.appendChild(rng);
-      var labs = document.createElement('div'); labs.className = 'nsb-speed-labels';
-      labs.innerHTML = '<span>Still</span><span>Cruise</span><span>Swift</span>';
-      setPop.appendChild(labs);
-      setPop.appendChild(val);
-      /* ROUND 2 — where the bars sit: top, bottom, both, or off */
-      var bh = document.createElement('h4'); bh.textContent = 'Where the bars sit'; bh.style.fontSize = '13px';
-      bh.style.margin = '14px 0 4px'; setPop.appendChild(bh);
-      var barpos = document.createElement('div'); barpos.className = 'nsb-barpos';
-      barpos.setAttribute('role','group'); barpos.setAttribute('aria-label','Where the bars sit');
-      [['top','Top'],['bottom','Bottom'],['both','Both'],['off','Off']].forEach(function(pair){
-        var b = document.createElement('button'); b.type = 'button'; b.className = 'nsb-btn';
-        b.textContent = pair[1]; b.setAttribute('data-barpos', pair[0]);
-        b.setAttribute('aria-pressed', String(getSettings().barPos === pair[0]));
-        b.addEventListener('click', function(){
-          setBarPos(pair[0]);
-          barpos.querySelectorAll('.nsb-btn').forEach(function(x){
-            x.setAttribute('aria-pressed', String(x === b));
-          });
-          say('bottom', 'Bars: ' + pair[1] + '.');
-        });
-        barpos.appendChild(b);
-      });
-      setPop.appendChild(barpos);
-    }
-    document.body.appendChild(setPop);
-    function closeSettings(){
-      /* every close path must FULLY hide the panel: class off AND all inline
-         styles cleared — a stale inline display keeps it painted after close */
-      setPop.classList.remove('open');
-      setPop.removeAttribute('style');
-    }
-    function toggleSettings(anchor){
-      if (setPop.classList.contains('open')){ closeSettings(); return; }
-      renderSettings();
-      setPop.classList.add('open');
-      placeNear(anchor, setPop);
-      /* placeNear leaves inline display:block for measurement; .open drives
-         visibility from here — clear it so a later close can't stick */
-      setPop.style.display = '';
-    }
-    gear.addEventListener('click', function(e){ e.stopPropagation(); toggleSettings(gear); });
-    gearFloat.addEventListener('click', function(e){ e.stopPropagation(); toggleSettings(gearFloat); });
-    document.addEventListener('click', function(e){
-      if (!setPop.classList.contains('open')) return;
-      var n = e.target, inside = false;
-      while (n){ if (n===setPop || n===gear || n===gearFloat){ inside = true; break; } n = n.parentNode; }
-      if (!inside) closeSettings();
-    });
-    document.addEventListener('keydown', function(e){
-      if ((e.key==='Escape'||e.keyCode===27) && setPop.classList.contains('open')) closeSettings();
-    });
-    /* public: apps surface this in their Settings page too */
-    NayaSmartBar.openSettings = function(){
-      renderSettings(); setPop.classList.add('open');
-      setPop.style.left = '50%'; setPop.style.top = '40%';
-      setPop.style.transform = 'translate(-50%,-50%)'; setPop.style.position = 'fixed';
-    };
+    /* GHOST-BAR FIX 2026-11-21: the bottom dock is removed; the top bar is
+       the Smart Bar that remains. Speed stays tunable (top drift). */
     NayaSmartBar.setSpeed = setSpeed;
     NayaSmartBar.getSpeed = function(){ return getSettings().speed; };
-    NayaSmartBar.setBottomBar = setBottomBar;
-    NayaSmartBar.bottomBarOn = function(){ return getSettings().bottomBar; };
-    applyBottomBar(); /* their choice, honored from the first paint */
     return {
-      top: top, bottom: bottom,
-      destroy: function(){ top.innerHTML=''; bottom.innerHTML=''; }
+      top: top,
+      destroy: function(){ top.innerHTML=''; }
     };
   }
 };
@@ -4492,36 +3845,15 @@ NayaSmartBar.mount({
 })();
 </script>
 <style id="gr-inviter-finish-css">
-/* SMART INVITER FINISH ROUND 2026-11-15 — no-overlay law: the bars live in flow,
-   never over content. A: top bar static (R1); the top stack was already static
-   (page override L872). B: icon bar static (R2); wraps whole at phone widths.
-   C: dock static, icon-only pills with no per-pill menu (the 33px ⋯ is what kept
-   the row 139px too wide at 1440 — the menu is the one function that leaves this
-   page's dock; Add + gear stay), snap-to-whole, edge-fade mask off, gear whole
-   at 390. */
-.nsb-bottom{position:static !important;}
+/* SMART INVITER FINISH ROUND 2026-11-15 — no-overlay law (history; the dock
+   rules below are GONE — see ghost-bar fix).
+   GHOST-BAR FIX 2026-11-21: the Smart Bar bottom dock (#nsbBottom) is REMOVED
+   in full — markup + CSS + JS — so the Hub six-tile bar is the ONE bottom bar.
+   What stays in this block: the toast rule, and the dead .obb-row rule (kept
+   by design, minimal diff — it matches nothing now, no visual effect). */
 .gr-toast:not(.show){display:none;}
-/* dock: icon-only pills (the labels live in the icon bar above the dock), slimmed
-   so all eleven fit at 1440; snap so a hand scroll always rests on whole pills;
-   no edge fade dimming whole pills; end pad so the last pill is whole at max scroll. */
-#nsbBottom .nsb-tab .nsb-label{display:none;}
-#nsbBottom .nsb-more{display:none;}
-#nsbBottom .nsb-tab{padding:10px 12px;gap:7px;}
-#nsbBottom .nsb-row{scroll-snap-type:x mandatory;scroll-padding:0 28px;
-  -webkit-mask-image:none !important;mask-image:none !important;}
-#nsbBottom .nsb-tab{scroll-snap-align:start;}
-#nsbBottom .nsb-row::after{content:'';flex:0 0 28px;}
-/* phone: the icon bar wraps whole (no sliced labels); the dock line fits its gear —
-   the trio and the net anchor leave the dock line at phone widths (Mail/Activity/
-   Dashboard ride the icon bar directly above, labeled; the row IS the apps). */
 @media (max-width:640px){
   .obb-row{flex-wrap:wrap;overflow-x:visible;justify-content:center;}
-  .nsb-bottom-inner{padding:10px 10px 12px;gap:6px;}
-  #nsbBottom .nsb-trio{display:none;}
-  #nsbBottom .nsb-net{display:none;}
-  #nsbBottom .nsb-tab{padding:10px 10px;gap:6px;}
-  #nsbBottom .nsb-row{padding:8px 12px 12px;gap:8px;}
-  .nsb-net small{display:none;}
 }
 </style>
 <!-- /SMART-BAR-SYSTEM v1.0 -->
