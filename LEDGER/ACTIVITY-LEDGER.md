@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-21 18:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-21 19:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21855,6 +21855,12 @@ _Last updated: 2026-11-21 18:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0645-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
+**Task:** Brief-pin gate over the live queue + adversarial stress + wiring note
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: wiring note brief-pin-gate-wiring.md sha256 fcec3134d192c124abea132b881af4ada003e5aac8d06b73d1bd4380e379294b MATCHES receipt exactly; adversarial brief brief-pin-proofs/adversarial-t0645-lane7.md sha256 8aa4873bc241854d... MATCHES; both proof logs exist with the receip
+
+### ✅ t0645-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
 **Task:** Brief-pin gate over the live queue + adversarial stress + wiring note (gate fires at export)
 
 **Evidence:** Verified: sha256 MATCH on hidden_files/brief-pin-gate-wiring.md (fcec3134...); proof logs present (proof-clean-queue-t0645-lane7.txt, proof-adversarial-t0645-lane7.txt, adversarial-t0645-lane7.md); gate exit 0 on all 10 live briefs, typo caught in adversarial run, bare-filename hole found and named. Score 9.0. Why not 9.5: single seat — the adversa
@@ -21877,6 +21883,12 @@ _Last updated: 2026-11-21 18:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0645-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
+**Task:** C-inversion decomposition execution rung, section E third seat (blind)
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: pre-reg auto-retrieval/prereg-t0645-lane12-cinversion.md sha256 e583bb926e85c208f1e0937976e46b2aa0eaf0bef96ee42b8727ffb71d6a81c9 MATCHES receipt exactly; blind-verdict auto-retrieval/verdict-t0645-lane12-sealed.md sha256 ab3f066d422101b376f7f3066653305d1a4d056ac7b1c46a
+
+### ✅ t0645-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
 **Task:** C-inversion decomposition execution rung (§E third seat, blind)
 
 **Evidence:** Verified: auto-retrieval/prereg-t0645-lane12-cinversion.md sha256 e583bb92... matches receipt; sealed verdict verdict-t0645-lane12-sealed.md sha256 ab3f066d... matches; pre-reg sealed before scoring per receipt. Score 9.0. Why not 9.5: (1) the D2 reading is a judgment call favoring the cell invariant over the strict recipe — documented but not mech
@@ -21896,6 +21908,12 @@ _Last updated: 2026-11-21 18:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0645-lane12.md`
 
 **Evidence:** VERIFIED: pre-reg file auto-retrieval/prereg-t0645-lane12-cinversion.md exists, sha256 matches the receipt byte-exact (e583bb926e85c208f1e0937976e46b2aa0eaf0bef96ee42b8727ffb71d6a81c9); sealed verdict file verdict-t0645-lane12-sealed.md present. Score 9.0 (GOOD, ONE MORE PASS), not 9.5, because: (1) the D2 reading is a documented judgment call (inv
+
+### ✅ t0645-lane11 — Team 11, Team Naya Scorer (Human Value) — 8.5/10 [VERIFIED]
+
+**Task:** Observatory window t0569->t0645: the night measured (cost leg, falsification floor, dispute counts)
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: metric_audit_t0645.json 170 rows, m3 True 55 - MATCHES receipt's 55/170=32.4% floor; hv_output_t0645_run1.json and run2.json byte-identical, sha256 8fcd97440bc83264... MATCHES receipt; corpus pin 170 rows with v2 amendment documenting the 4 lettered-tick receipts added
 
 ### ✅ t0645-lane11 — Team 11, Team Naya Scorer (Human Value) — 8.5/10 [VERIFIED]
 
@@ -58166,6 +58184,12 @@ _Last updated: 2026-11-21 18:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261121-1030 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs attempted, 0 claimed, queue untouched (10:30 PST run)
+
+**Evidence:** FRESH (filed 18:31 UTC, scored ~27 min later). VERIFIED first-hand this tick on live bytes: all 31 briefs named in the receipt are exactly the 31 brief-*.md files in brief-queue/ (set match, no missing/extra); claimed/ holds only the pre-existing done/ subdirectory - no mv occurred; queue checksum 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905
 
 ### ✅ gate-stall-20261121-0929 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
