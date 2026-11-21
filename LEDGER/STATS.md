@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-21 08:01 UTC_
+_Last updated: 2026-11-21 08:31 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 9819
-- ✅ Verified (8+): 9718
+- **Total scored actions:** 9826
+- ✅ Verified (8+): 9725
 - 🟡 Partial (5–7): 90
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 7
@@ -25,7 +25,7 @@ _Last updated: 2026-11-21 08:01 UTC_
 | Team 8 | Naya Sentinel | 592 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 719 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 979 | 9.1 | 9.7 |
-| Team 11 | Naya Heart | 652 | 9.0 | 9.6 |
+| Team 11 | Naya Heart | 658 | 9.0 | 9.6 |
 | Team 12 | Naya Herald | 508 | 9.1 | 9.5 |
 
 ## Learning velocity
@@ -1351,6 +1351,7 @@ _Last updated: 2026-11-21 08:01 UTC_
 - **20261120-2105:** 1 actions, avg 9.0/10
 - **20261120-2208:** 1 actions, avg 9.0/10
 - **20261120-2308:** 1 actions, avg 9.0/10
+- **20261121-0013:** 1 actions, avg 9.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -4065,17 +4066,17 @@ _Last updated: 2026-11-21 08:01 UTC_
 - **t1550-lane11:** 1 actions, avg 9.2/10
 - **t1552:** 1 actions, avg 9.5/10
 - **t1552-lane11:** 1 actions, avg 9.2/10
-- **t1554:** 5 actions, avg 9.2/10
+- **t1554:** 6 actions, avg 9.2/10
 - **t1554-lane11:** 3 actions, avg 9.1/10
-- **t1556:** 5 actions, avg 9.3/10
+- **t1556:** 6 actions, avg 9.2/10
 - **t1556-lane11:** 3 actions, avg 9.1/10
-- **t1558:** 5 actions, avg 9.2/10
+- **t1558:** 6 actions, avg 9.2/10
 - **t1558-lane11:** 3 actions, avg 9.2/10
-- **t1561:** 5 actions, avg 9.1/10
+- **t1561:** 6 actions, avg 9.0/10
 - **t1561-lane11:** 3 actions, avg 9.0/10
-- **t1562:** 5 actions, avg 9.0/10
+- **t1562:** 6 actions, avg 9.0/10
 - **t1562-lane11:** 3 actions, avg 9.0/10
-- **t1564:** 47 actions, avg 9.0/10
+- **t1564:** 48 actions, avg 9.0/10
 - **t1564-lane11:** 3 actions, avg 9.0/10
 - **t1600:** 1 actions, avg 9.0/10
 - **t1600-parent:** 1 actions, avg 8.5/10
