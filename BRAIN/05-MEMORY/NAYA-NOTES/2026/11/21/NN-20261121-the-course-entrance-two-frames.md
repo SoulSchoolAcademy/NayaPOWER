@@ -4,7 +4,7 @@
 
 **NN-20261121-the-course-entrance-two-frames · Naya Note · 2026-11-21 ~10:00 MST**
 
-*Paired Smart Note: SN-pending — The Course Entrance — Two Frames (takes the next free number at filing)*
+*Paired Smart Note: SN-4496 — The Course Entrance — Two Frames*
 
 **Category:** LAW — the course entrance is two frames: the cover, then the table of contents; no links below
 
