@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4356",
+ "intelligence": {
+  "title": "Run Whole-List Rounds",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4356-run-whole-list-rounds",
+  "smart_note_id": "SN-4356",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4356/IB-SMART-NOTE-20261120-sn4356-run-whole-list-rounds.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "",
+  "human_view": "The same finished pages, for a fraction of the reading — and the saved tokens go to finishing the list instead of re-reading it. The machine stops spending his billions on waking up with the whole pantry, and spends them on the work still waiting — and every hour, the score shows it. And the score itself becomes something citizens get: the token-spend pie lives on the Dashboard, live and current, the first of the beautiful charts offered to everyone — charting as a feature, not just our internal view.",
+  "simple_view": "Imagine you keep fixing the same toy over and over, sweetheart — and all your other toys just sit there waiting, never played with at all! The toys didn't do anything wrong, sweetheart — they were just waiting behind the one that kept breaking. So now we carry ALL the toys together, sweetheart, and nothing comes back until every single one is fixed!",
+  "grandma_view": "It's like this, love — the work wasn't refused, dear, it was just waiting in a line that never moved. The page in front kept going back, love, so everything behind it waited all day and never got its turn. The answer isn't to hurry the line, dear — it's to carry the whole list in one go, so nothing waits behind a thing that keeps coming back.",
+  "naya_view": "That sentence is the lesson, and the correction is its proof. A man defending his first number would have kept 23 and forced the set to fit it. He did the opposite: he reshuffled what was out of order, walked it again slide by slide — \"Making sure that they're right\" — and let the numbers tell him the set was 27. The work is to see the order that is already there and label it, not to invent an order and force the images into it. When he says \"I think it might be finally done\" and \"I guess that's a good story,\" the story is done because the numbers closed it, not because he ran out of slides.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4356",
+   "title": "Run Whole-List Rounds",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4356/IB-SMART-NOTE-20261120-sn4356-run-whole-list-rounds.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4356/IB-SMART-NOTE-20261120-sn4356-run-whole-list-rounds.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

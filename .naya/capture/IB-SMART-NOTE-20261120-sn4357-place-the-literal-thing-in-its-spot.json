@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4357",
+ "intelligence": {
+  "title": "Place the Literal Thing in Its Spot",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4357-place-the-literal-thing-in-its-spot",
+  "smart_note_id": "SN-4357",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DECISION/SN-4357/IB-SMART-NOTE-20261120-sn4357-place-the-literal-thing-in-its-spot.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "",
+  "human_view": "The frame is the unit, and the board is its inside. Everything he has corrected about this presentation has been one discipline in different clothes: take the frame from the calendar (SN-4283), pull the buttons real (SN-4286), put the literal player in (SN-4285) — and now, put a living board inside the frame. A showcase area with a picture pasted on it is a poster; a showcase area holding an intelligent board is a Naya object. The board does not need to go anywhere to earn its place — \"even if it goes nowhere, it must still feel like a living board\" — because aliveness is the feel of the thing, not its destination. And the double use is the same discipline at system scale: a post in NayaNET is a framed thing with sharing underneath, and a presentation slide is a framed thing without it — so the module built for the presentation IS the module that becomes the post. Build once, use twice, and the system gets simpler while the presentation gets richer. Two builds for the same frame would be the old mistake in a new shape.",
+  "simple_view": "Never describe the image. Every slide, over and over: this is what it is · this is why it matters · this is what's in it for you. Clear, direct, warm and inviting, not long. By the end, a child should understand it.",
+  "grandma_view": "The presentation is the agreement's front door, and a front door blocked by its own furniture does not open. The person should meet the image, the video, or the text — full, clear, world class — and nothing else should compete with it.",
+  "naya_view": "The presentation IS the story. All morning he has been building toward this: the 10-board distillation, the live walk to 27, and now the way it is shown — because a story no one can sit through is a story no one receives. His spec answers the only question that matters about a presentation: what does the person see, in what order, and what do they do next. They see the image first, big. They read a little. They click. The next slide tells them all about it. The sides switch, so the pattern never goes numb. The first slide is the door and the last slide is the deed — \"View Agreement\" at the start, AGREE and your name at the end — so the whole thing is one walk from the outside to the inside, and nothing in the middle asks them to guess what to do.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4357",
+   "title": "Place the Literal Thing in Its Spot",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DECISION/SN-4357/IB-SMART-NOTE-20261120-sn4357-place-the-literal-thing-in-its-spot.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DECISION/SN-4357/IB-SMART-NOTE-20261120-sn4357-place-the-literal-thing-in-its-spot.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

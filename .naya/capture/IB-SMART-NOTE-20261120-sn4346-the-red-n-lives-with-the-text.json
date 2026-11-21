@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4346",
+ "intelligence": {
+  "title": "SN-4346 — The Red N Lives With the Text",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4346-the-red-n-lives-with-the-text",
+  "smart_note_id": "SN-4346",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4346/IB-SMART-NOTE-20261120-sn4346-the-red-n-lives-with-the-text.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "The beautiful red N goes at the bottom under \"Naya — create, learn, grow together\" — and only where the text is, in the text box, not in the other areas. Centered under the saying, centered at the bottom of each slide board, with breathing room between the bottom of the text and the bottom edge — sitting in the middle of that gap, not jammed against the edge. The crystal N stays in the corner, exactly as it was; the red N is added, never instead of it.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4346",
+   "title": "SN-4346 — The Red N Lives With the Text",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4346/IB-SMART-NOTE-20261120-sn4346-the-red-n-lives-with-the-text.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/DESIGN/SN-4346/IB-SMART-NOTE-20261120-sn4346-the-red-n-lives-with-the-text.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
