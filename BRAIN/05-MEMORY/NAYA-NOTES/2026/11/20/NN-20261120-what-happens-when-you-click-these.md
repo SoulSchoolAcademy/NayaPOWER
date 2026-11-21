@@ -4,7 +4,7 @@
 
 **NN-20261120-what-happens-when-you-click-these · Naya Note · 2026-11-20 ~20:54–21:00 MST**
 
-*Paired Smart Note: SN-pending — What Happens When You Click These? (takes the next free number at filing)*
+*Paired Smart Note: SN-4439 — What Happens When You Click These?*
 
 **Category:** Law — never guess a button's destination; click it
 
