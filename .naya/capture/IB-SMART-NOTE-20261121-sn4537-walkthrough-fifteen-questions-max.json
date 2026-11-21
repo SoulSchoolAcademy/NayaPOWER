@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4537",
+ "intelligence": {
+  "title": "SN-4537 — The Walkthrough Is Fifteen Questions Max",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4537-walkthrough-fifteen-questions-max",
+  "smart_note_id": "SN-4537",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4537/IB-SMART-NOTE-20261121-sn4537-walkthrough-fifteen-questions-max.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "15 max covers ALL About questions (ten frames) plus the FIVE core Skills — that fills out their Personal. Then the OPTION to do the same 15 for Business or World; same 15 per world creates all their worlds. Nothing forced — skip any question, do just Personal, or all three. An uncreated Business or World door takes them straight into its walkthrough. Plus button means another walkthrough for another world — what is it, motto, vision — and that creates the page. About is roughly ten frames (\"10 questions for the about so roughly 10 pages. Templates. Fair enough. Let's go with that.\" ~12:02 MST); Skills gets fewer frames than About, structured the same way.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4537",
+   "title": "SN-4537 — The Walkthrough Is Fifteen Questions Max",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4537/IB-SMART-NOTE-20261121-sn4537-walkthrough-fifteen-questions-max.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4537/IB-SMART-NOTE-20261121-sn4537-walkthrough-fifteen-questions-max.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

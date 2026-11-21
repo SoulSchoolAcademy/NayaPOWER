@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4546",
+ "intelligence": {
+  "title": "SN-4546 — Smart Worlds = Table of Contents for All Smart Lists",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4546-smart-worlds-table-of-contents-all-smart-lists",
+  "smart_note_id": "SN-4546",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4546/IB-SMART-NOTE-20261121-sn4546-smart-worlds-table-of-contents-all-smart-lists.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "Smart Worlds is the table of contents for all Smart Lists. Worlds — two separate lists (joined vs created by you), plus your world and worlds you are connected to · Connections — lists in any grouping (family, business, project, any) · Smart Notes — collections (all Smart Notes related to one thing together) · Your Notes — lists of your own regular notes · Posts You Shared — lists of posts you shared. One table of contents, everything list-shaped under it.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4546",
+   "title": "SN-4546 — Smart Worlds = Table of Contents for All Smart Lists",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4546/IB-SMART-NOTE-20261121-sn4546-smart-worlds-table-of-contents-all-smart-lists.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4546/IB-SMART-NOTE-20261121-sn4546-smart-worlds-table-of-contents-all-smart-lists.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

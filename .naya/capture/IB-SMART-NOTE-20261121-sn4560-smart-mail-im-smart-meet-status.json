@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4560",
+ "intelligence": {
+  "title": "SN-4560 — Smart Mail / IM / Smart Meet — Status",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4560-smart-mail-im-smart-meet-status",
+  "smart_note_id": "SN-4560",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4560/IB-SMART-NOTE-20261121-sn4560-smart-mail-im-smart-meet-status.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "TEXT MESSAGING: interface being built in the Personal round now (mail + IM as ONE page with a toggle; DM bar message button opens the framed IM) — but it cannot actually SEND yet; the messenger leg is blocked on the 42501 RLS / schema packet (his tap). AUDIO/VIDEO CALLS: NOT built — Smart Meet is missing, no live-call code exists anywhere. Spec is written (`~/workspace/team-nitro/smart-meet/SPEC-BUILD-20261107.md`): video/audio 1:1, video groups 4 or 6, audio groups up to 10, paid members only, mesh P2P WebRTC, members-with-members NEVER with Naya; rides with the booking round (book → meet → talk), both never built. INTERFACE FOR EACH: mail and IM share one interface with a toggle; audio/video buttons sit top-right in the messenger feed next to the chat; the DM bar carries the same four functions (i/message/audio/video) on every surface.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4560",
+   "title": "SN-4560 — Smart Mail / IM / Smart Meet — Status",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4560/IB-SMART-NOTE-20261121-sn4560-smart-mail-im-smart-meet-status.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4560/IB-SMART-NOTE-20261121-sn4560-smart-mail-im-smart-meet-status.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

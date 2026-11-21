@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4556",
+ "intelligence": {
+  "title": "SN-4556 — The Silver Platter Rule — Status: Cooking, Done, Needs Checking",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4556-silver-platter-rule-status-cooking-done-needs-checking",
+  "smart_note_id": "SN-4556",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4556/IB-SMART-NOTE-20261121-sn4556-silver-platter-rule-status-cooking-done-needs-checking.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "\"You're like a 10 star hostess or server... you want to give me 10 star service by going and checking the kitchen to see if any of the food is up... any of the plates are up... when you bring it, it looks like a royal masterpiece or feast... serve it on a silver platter.\" STATUS SHAPE: what's IN (cooking) · what's DONE (ready to serve) · what NEEDS CHECKING. Never double-check the same thing over and over — if it was just checked, that is not the check. Only bring a plate when it is finished and beautiful; nothing half-done reaches him.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4556",
+   "title": "SN-4556 — The Silver Platter Rule — Status: Cooking, Done, Needs Checking",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4556/IB-SMART-NOTE-20261121-sn4556-silver-platter-rule-status-cooking-done-needs-checking.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4556/IB-SMART-NOTE-20261121-sn4556-silver-platter-rule-status-cooking-done-needs-checking.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
