@@ -4,7 +4,7 @@
 
 **NN-20261120-four-buttons-still-need-to-move-down · Naya Note · 2026-11-20 ~21:53–21:54 MST**
 
-*Paired Smart Note: SN-pending — Breathing Room — Spacing Is Judged by the Eye, Not the Pixel Count (takes the next free number at filing)*
+*Paired Smart Note: SN-4446 — Breathing Room — Spacing Is Judged by the Eye, Not the Pixel Count*
 
 **Category:** Law — spacing is judged by the eye, not the ruler
 
