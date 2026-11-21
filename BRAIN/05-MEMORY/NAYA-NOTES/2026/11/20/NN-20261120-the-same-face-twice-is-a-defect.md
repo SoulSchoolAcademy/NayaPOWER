@@ -4,7 +4,7 @@
 
 **NN-20261120-the-same-face-twice-is-a-defect · Naya Note · 2026-11-20 ~16:47 MST**
 
-*Paired Smart Note: SN-pending — The Same Face Twice Is a Defect (takes the next free number at filing)*
+*Paired Smart Note: SN-4358 — The Same Face Twice Is a Defect*
 
 **Category:** Design — every portrait distinct; rotation, never repetition
 
