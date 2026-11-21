@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4570",
+ "intelligence": {
+  "title": "SN-4570 — Schema Packet — Dispatch Not Made: the Authorization's Premise Broke",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4570-schema-packet-dispatch-not-made",
+  "smart_note_id": "SN-4570",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4570/IB-SMART-NOTE-20261121-sn4570-schema-packet-dispatch-not-made.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "Shawn authorized a dispatch with Preview as the gate (SN-4569). The dispatch coordinator checked first-hand and stopped: the pipeline has NO Preview step — it applies migrations to production directly — and §2 grants + §3 table/function have NO migration files, so a dispatch could not deliver the very pieces that unblock posting, likes, comments, shares and messenger. Nothing was dispatched. The decision is owed to him again, on the true shape: Path A (file §2+§3 first, build a real preview path) or Path B (production-direct, eyes open). The correction is now carried in the Daily Project Intelligence Report 2026-11-21 (v3/v4, commit `56a90421`) in public.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4570",
+   "title": "SN-4570 — Schema Packet — Dispatch Not Made: the Authorization's Premise Broke",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4570/IB-SMART-NOTE-20261121-sn4570-schema-packet-dispatch-not-made.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4570/IB-SMART-NOTE-20261121-sn4570-schema-packet-dispatch-not-made.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4572",
+ "intelligence": {
+  "title": "SN-4572 — Affiliate Army — Max-Level Perk, the Gap, and the 100% Split",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4572-affiliate-army-max-level-perk",
+  "smart_note_id": "SN-4572",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4572/IB-SMART-NOTE-20261121-sn4572-affiliate-army-max-level-perk.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "Max level gets their own affiliate army, tracked inside their membership. The army is NOT built — a citizen offering memberships or paywalls cannot yet create affiliates under their own membership. The split is settled: on a citizen's OWN memberships/paywalls the owner keeps 100% of whatever they charge — NayaNET takes no cut, charges nothing — and the owner offers their affiliates whatever percentage they choose, paid by them out of their 100%. Distinct from the NayaNET ambassador share: citizens earn 50% of NayaNET's revenue when they bring people to NayaNET. Two splits, never confused.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4572",
+   "title": "SN-4572 — Affiliate Army — Max-Level Perk, the Gap, and the 100% Split",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4572/IB-SMART-NOTE-20261121-sn4572-affiliate-army-max-level-perk.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4572/IB-SMART-NOTE-20261121-sn4572-affiliate-army-max-level-perk.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

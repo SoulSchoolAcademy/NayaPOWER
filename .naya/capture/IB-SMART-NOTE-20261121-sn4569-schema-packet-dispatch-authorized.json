@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4569",
+ "intelligence": {
+  "title": "SN-4569 — Schema Packet — Dispatch Authorized by Shawn",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4569-schema-packet-dispatch-authorized",
+  "smart_note_id": "SN-4569",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4569/IB-SMART-NOTE-20261121-sn4569-schema-packet-dispatch-authorized.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "He tapped \"Dispatch it — Preview is the gate\" and confirmed \"So I'm dispatching the packet.\" Dispatch coordinator spawned ~13:18 (agent `1ae16a40`): verify current main tip + packet files on it, time the dispatch to a quiet tip, dispatch `governed-supabase-production-deploy.yml` with `confirm=DEPLOY` and `source_sha` = exact main tip at dispatch; Preview is the gate (preview failure = STOP, production untouched); if preview passes, production step + re-proof per action + error-count re-check. Supersedes the Gate-1 STOP (coordinator `20cf668f`).",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4569",
+   "title": "SN-4569 — Schema Packet — Dispatch Authorized by Shawn",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4569/IB-SMART-NOTE-20261121-sn4569-schema-packet-dispatch-authorized.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4569/IB-SMART-NOTE-20261121-sn4569-schema-packet-dispatch-authorized.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

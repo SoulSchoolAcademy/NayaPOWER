@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4588",
+ "intelligence": {
+  "title": "SN-4588 — SN-4467 Is Filed and Live — the Picture Test, Half-Proven",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4588-sn4467-filed-live-on-feed",
+  "smart_note_id": "SN-4588",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4588/IB-SMART-NOTE-20261121-sn4588-sn4467-filed-live-on-feed.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "SN-4467 (\"What Is a Wise Naya?\", the first complete intelligent block) is finally filed and live on the Hub feed — filed + verified on GitHub main (blob `97b203e7`, commit `a0c4a885`, 6,161 B, sha-verified), live on the feed, current: 3,463 cards, 7 layers, Naya Note 2,881 chars (full deal). The picture test is half-proven: Naya's portrait renders IN the filed block (hosted beside the note, `naya-portrait.webp`, blob `f0301213`, 437,564 B) but NOT on the feed card yet — the feed builder sets no image field, the Hub renderer has no image slot. The baked Hub card is still stale (old title, 5 layers, Naya Note 214 chars): the deploy retry loop ran all 12 attempts (18:59–20:51Z) and every one died on the EPERM flake at local staging; no loop running now.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4588",
+   "title": "SN-4588 — SN-4467 Is Filed and Live — the Picture Test, Half-Proven",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4588/IB-SMART-NOTE-20261121-sn4588-sn4467-filed-live-on-feed.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4588/IB-SMART-NOTE-20261121-sn4588-sn4467-filed-live-on-feed.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

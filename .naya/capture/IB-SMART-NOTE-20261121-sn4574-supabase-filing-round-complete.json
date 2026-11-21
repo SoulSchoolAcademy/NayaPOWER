@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4574",
+ "intelligence": {
+  "title": "SN-4574 — Supabase Filing Round — Complete, Checker Pass, Merged",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4574-supabase-filing-round-complete",
+  "smart_note_id": "SN-4574",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4574/IB-SMART-NOTE-20261121-sn4574-supabase-filing-round-complete.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "The biggest break from the Supabase inventory — the repo could not rebuild the live database — is now filed and merged: **143 filing units** (66 tables/views, 59 RPCs + 2 trigger fns + 2 drift corrections, +8 trigger helpers, +6 edge functions), checker PASS after three FAILs (11/11 triggers, 72/72 bodies byte-exact vs live, walk 1→11/11). The brief's \"128\" was wrong. `members` EXISTS live as a base table (settles M-15). Honest limit: no test-DB fresh apply was ever run — the one proof still owed before the rebuild is claimed proven end-to-end, now dispatched (coordinator `8cf19724`). DROP candidates (129 pieces) untouched — need Shawn's word.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4574",
+   "title": "SN-4574 — Supabase Filing Round — Complete, Checker Pass, Merged",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4574/IB-SMART-NOTE-20261121-sn4574-supabase-filing-round-complete.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4574/IB-SMART-NOTE-20261121-sn4574-supabase-filing-round-complete.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

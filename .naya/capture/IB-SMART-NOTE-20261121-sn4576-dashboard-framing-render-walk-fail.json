@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4576",
+ "intelligence": {
+  "title": "SN-4576 — Dashboard Framing Render Walk — Overall Fail",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4576-dashboard-framing-render-walk-fail",
+  "smart_note_id": "SN-4576",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4576/IB-SMART-NOTE-20261121-sn4576-dashboard-framing-render-walk-fail.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "The framing round was complete on bytes and the render walk still failed overall: the staged page renders its JavaScript templates as visible page text — ~400,600 characters of source as page content, 66,890px tall — the score gauge sticks on \"Reading…\", tabs dead, drill orbs showing literal `'+o.label+'`. The root cause is in the mechanics base, not the framing CSS (framing added CSS only, +375/−0) — the templates were already not rendering. Fix round dispatched ~13:29: diagnose the leak from the filed bytes first, fix at the source, fold in bar-alignment (MAIL/ACTIVITY) + \"Earnings Per Click\" relabel, checker verifies, render walk re-runs.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4576",
+   "title": "SN-4576 — Dashboard Framing Render Walk — Overall Fail",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4576/IB-SMART-NOTE-20261121-sn4576-dashboard-framing-render-walk-fail.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4576/IB-SMART-NOTE-20261121-sn4576-dashboard-framing-render-walk-fail.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

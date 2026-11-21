@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4578",
+ "intelligence": {
+  "title": "SN-4578 — Supabase Fresh-Apply Proof — Gate 1 Stop, Sequences Resolved, Scope Corrected, Captain's Go",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4578-supabase-fresh-apply-proof-gate-1-stop",
+  "smart_note_id": "SN-4578",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4578/IB-SMART-NOTE-20261121-sn4578-supabase-fresh-apply-proof-gate-1-stop.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "The fresh-apply proof stopped at Gate 1 — no scratch project exists, and creation needed a scope call. Two corrections before it resumed: both \"unfiled\" sequences are already sourced by existing main migrations (filing them again would duplicate the source), and the 19-file from-empty apply is NOT the rebuild proof — it fails first on a main-chain file, proving nothing about the filing. The real proof is the FULL chain (195 files on main) from empty. Captain's go: a free throwaway scratch project (`supabase-fresh-apply-proof`, ca-central-1, $0, deleted when done); paid tier dead without Shawn's word. Resumed ~13:34 (coordinator `7d65ddc5`): create → full-chain apply from empty → pgcrypto + `auth` prerequisites → parity proof vs live → delete the project.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4578",
+   "title": "SN-4578 — Supabase Fresh-Apply Proof — Gate 1 Stop, Sequences Resolved, Scope Corrected, Captain's Go",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4578/IB-SMART-NOTE-20261121-sn4578-supabase-fresh-apply-proof-gate-1-stop.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4578/IB-SMART-NOTE-20261121-sn4578-supabase-fresh-apply-proof-gate-1-stop.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

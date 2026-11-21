@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4577",
+ "intelligence": {
+  "title": "SN-4577 — Personal R5 — Render Proof Landed: Mostly Pass, Three Real Fails",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4577-personal-r5-render-proof-landed",
+  "smart_note_id": "SN-4577",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4577/IB-SMART-NOTE-20261121-sn4577-personal-r5-render-proof-landed.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "The checker PASS was a milestone, never the verdict — the render proof is the verdict's first half: mostly pass, three real fails. (1) The stub STILL did not land — the proof post hit the \"one-time permission from Shawn\" gate and NO card landed, not even a stub; the R5 resolver is in the bytes but did not fire at runtime (diagnostic owed). (2) The right sidebar cannot be reopened by click — × closes it, Menu cycles without reopening it, only reload restores it. (3) No single labelled Mail↔Messenger toggle found — Personal Mail and Personal DMs both land on the same rooms/mail, and that page's rooms menu has no Messenger room. PASS: loads clean, rail renders 13 people, About/Skills scroll, Invite → joinus, Calendar button reads \"Calendar\" and nav works, WORLDS → /space, ADD menu + composer, bottom bar = locked six.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4577",
+   "title": "SN-4577 — Personal R5 — Render Proof Landed: Mostly Pass, Three Real Fails",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4577/IB-SMART-NOTE-20261121-sn4577-personal-r5-render-proof-landed.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4577/IB-SMART-NOTE-20261121-sn4577-personal-r5-render-proof-landed.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

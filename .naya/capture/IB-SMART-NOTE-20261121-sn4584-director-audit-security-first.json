@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4584",
+ "intelligence": {
+  "title": "SN-4584 — The Director Audit — Security First, Then the Entrance, Then One Journey",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4584-director-audit-security-first",
+  "smart_note_id": "SN-4584",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4584/IB-SMART-NOTE-20261121-sn4584-director-audit-security-first.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "Shawn pasted in a director-level Daily Project Intelligence Report (Nov 21), filed as DRAFT PR #3509 — not merged, and it made no production database, deploy, or live-site changes. Its findings: nayanet.live serves a domain-auction landing page instead of the Hub, and nayanet.app could not be inspected through the public web route either; Supabase Security Advisor carries 8 ERROR findings on authorization policies referencing user-editable metadata plus 2 ERROR findings on security-definer views; execution is active but proof and communication are fragmented across five worker lanes and eight open PRs. Its order: security first, then restore and prove the entrance, then prove one complete citizen journey end-to-end, then scale the proven pattern. The assistant told Shawn the audit lines up with the running plan and will be folded into the one execution list so the team works from a single list, not two.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4584",
+   "title": "SN-4584 — The Director Audit — Security First, Then the Entrance, Then One Journey",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4584/IB-SMART-NOTE-20261121-sn4584-director-audit-security-first.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4584/IB-SMART-NOTE-20261121-sn4584-director-audit-security-first.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

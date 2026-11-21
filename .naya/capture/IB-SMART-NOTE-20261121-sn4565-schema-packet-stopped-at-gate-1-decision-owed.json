@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4565",
+ "intelligence": {
+  "title": "SN-4565 — Schema Packet — Stopped at Gate 1, Decision Owed to Shawn",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4565-schema-packet-stopped-at-gate-1-decision-owed",
+  "smart_note_id": "SN-4565",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4565/IB-SMART-NOTE-20261121-sn4565-schema-packet-stopped-at-gate-1-decision-owed.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "Apply coordinator `20cf668f` STOPPED — chain is RED on production: `naya_notes.owner_id` missing, `object_links` 5 columns missing, alias-binding trigger blocked. Nothing applied, nothing written, production untouched. Baseline verified (ledger_entries 30 rows, LE-20261022-030, ed5fe433…). THE DEADLOCK: the repairs that close the red chain ARE filed on main, byte-identical (tip `dc7cbcba…`), but they only reach production through the deploy itself — under a literal \"never dispatch while red,\" the check can never go green. The Preview step is the real chain test (preview failure = production untouched). DECISION OWED: (a) hold the stop — apply waits indefinitely; or (b) authorize the dispatch with Preview as the gate (`governed-supabase-production-deploy.yml`, confirm=DEPLOY, source_sha = main tip at dispatch; must time to a quiet tip — main moves every few minutes and the workflow fails closed on a HEAD race). TWO NEW FINDINGS: (1) Divergence 3 closed out-of-band — 4 columns appeared on production Nov 13–21 with NO migration recording them; live schema and recorded chain have drifted, route/actor unknown. (2) The governed pipeline runs on PUSH too, not just dispatch — latest run (44944437696) failed at step 3 on a HEAD race, never reached Supabase, production untouched.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4565",
+   "title": "SN-4565 — Schema Packet — Stopped at Gate 1, Decision Owed to Shawn",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4565/IB-SMART-NOTE-20261121-sn4565-schema-packet-stopped-at-gate-1-decision-owed.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4565/IB-SMART-NOTE-20261121-sn4565-schema-packet-stopped-at-gate-1-decision-owed.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

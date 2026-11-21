@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4586",
+ "intelligence": {
+  "title": "SN-4586 — The Walk Builds the Pages — Naming, Then the Eight-URL Reveal",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4586-walk-builds-the-pages",
+  "smart_note_id": "SN-4586",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4586/IB-SMART-NOTE-20261121-sn4586-walk-builds-the-pages.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "The new walkthrough OFFICIALLY BUILDS their pages — About + Skills filled from the answers, whole page created. Next page = NAMING: the alias page already IS their personal page; inputs for business name + thing/world name, each with live URL preview `nayanet.app/<typed>`; then the REVEAL — **EIGHT URLs, not six (Shawn decided ~14:03 MST — About + Skills get their own doors because they were just created for them):** Personal + Business + World + Hub + Dashboard + Calendar + About + Skills — each with a button to open it, all in the frame. **THE GATE (Shawn, ~14:02 MST — the button below, decided):** clicking ANY door pulls up the PRICING page, FULL page (not the sidebar): stay on FREE or upgrade to Naya Power / Naya Pro / Naya Max, seeing what each gets them. Once inside, pricing also lives in the sidebar as an option. Open flag: his \"slash calendar / slash dashboard / slash hub\" wording touches the locked URL scheme (feature apps as subdomains); the coordinator builds the reveal with placeholder destinations per the locked scheme and names the question — the captain settles it with Shawn.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4586",
+   "title": "SN-4586 — The Walk Builds the Pages — Naming, Then the Eight-URL Reveal",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4586/IB-SMART-NOTE-20261121-sn4586-walk-builds-the-pages.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4586/IB-SMART-NOTE-20261121-sn4586-walk-builds-the-pages.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

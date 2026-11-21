@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4582",
+ "intelligence": {
+  "title": "SN-4582 — Path A Step 1 — The Repairs Are Filed on Main",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4582-path-a-step-1-repairs-filed-on-main",
+  "smart_note_id": "SN-4582",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4582/IB-SMART-NOTE-20261121-sn4582-path-a-step-1-repairs-filed-on-main.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "Path A step 1 is done: the schema packet's §2+§3 repairs are filed as migration files on main and merged — tip `a6ad942d` (migration `ea43198c` + F2 remedy `99e975fa`). This is the first step of the path Shawn authorized under the No-Skipping Law (SN-4571): file the repairs on main first, then build a real preview path, prove the whole puzzle on preview, and bring the production go-ahead packet back to him for his tap. Production has not been touched; nothing is applied yet.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4582",
+   "title": "SN-4582 — Path A Step 1 — The Repairs Are Filed on Main",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4582/IB-SMART-NOTE-20261121-sn4582-path-a-step-1-repairs-filed-on-main.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4582/IB-SMART-NOTE-20261121-sn4582-path-a-step-1-repairs-filed-on-main.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

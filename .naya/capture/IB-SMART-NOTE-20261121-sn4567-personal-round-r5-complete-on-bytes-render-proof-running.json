@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4567",
+ "intelligence": {
+  "title": "SN-4567 — Personal Round — R5 Complete on Bytes, Render Proof Running",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4567-personal-round-r5-complete-on-bytes-render-proof-running",
+  "smart_note_id": "SN-4567",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4567/IB-SMART-NOTE-20261121-sn4567-personal-round-r5-complete-on-bytes-render-proof-running.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "Coordinator `37e5034c` complete. Tip commit `f04a783c`, blob `50867d86`, 10,517,341 B, sha `578b2102…` — staged link verified 200 + exact sha. R5 checker PASS: Calendar rename is exactly 4 lines, delta 0; everything already passing still passes; §11 design laws delta 0. NOT DONE (named, not hidden): rail auto-organize NOT achieved (neither file derives people from feed items — needs a BUILD, not a harvest; captain's call); Item 3 intelligent boards NOT done (no buildIntelLayerBoards transplant, flip unverified); DM Audio/Video NOT built — but harvestable player cores EXIST in the bytes (PowerCast player + #saTheatre stage player), a follow-on round could wire them; Message Send disabled (\"Send · runtime required\") — messenger opens but cannot send yet; bottom-bar MAIL bypasses the toggle page (goes to nayanet.app/rooms/mail); ECOSYSTEM tile goes to nayanet.app/hub, not the drawer. RENDER PROOF RUNNING (cloud browser, started ~13:13): rail, doors, toggles, i/Message/Audio/Video taps, sidebar, Calendar button + view, WORLDS tile, ADD menu, photo grids, bar, failed-save behavior. FOLLOW-UP QUESTION OWED TO SHAWN: the calendar view heading and settings button still say \"My World\" beside the \"Calendar\" button — rename those to \"Calendar\" too, or leave them? (Brief ordered the button only; checker says ask, don't silently fix.)",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4567",
+   "title": "SN-4567 — Personal Round — R5 Complete on Bytes, Render Proof Running",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4567/IB-SMART-NOTE-20261121-sn4567-personal-round-r5-complete-on-bytes-render-proof-running.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4567/IB-SMART-NOTE-20261121-sn4567-personal-round-r5-complete-on-bytes-render-proof-running.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

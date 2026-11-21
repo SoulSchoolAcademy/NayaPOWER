@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4579",
+ "intelligence": {
+  "title": "SN-4579 — The Walkthrough Goes Inside the Stage Frame",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4579-walkthrough-inside-the-stage-frame",
+  "smart_note_id": "SN-4579",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4579/IB-SMART-NOTE-20261121-sn4579-walkthrough-inside-the-stage-frame.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "The walkthrough goes inside the stage frame, like the Hub intelligent boards — keep-as-is is CLOSED. The header carries her picture + the question above (picture moved down just a little bit inside the frame); audio uses the harvested PowerCast player so when she speaks you see it moving — a moving talking box; audio player on one side, input box on the other; buttons below. He sent his version's elements — slides 2–10 + the end slide — and they are harvested verbatim: the count and question list update to the 15 while the format, elements, and look stay exactly as sent.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4579",
+   "title": "SN-4579 — The Walkthrough Goes Inside the Stage Frame",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4579/IB-SMART-NOTE-20261121-sn4579-walkthrough-inside-the-stage-frame.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4579/IB-SMART-NOTE-20261121-sn4579-walkthrough-inside-the-stage-frame.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
