@@ -4,7 +4,7 @@
 
 **NN-20261120-play-just-plays-the-video · Naya Note · 2026-11-20 ~16:38 MST**
 
-*Paired Smart Note: SN-4357 — Play Just Plays the Video*
+*Paired Smart Note: SN-4360 — Play Just Plays the Video*
 
 **Category:** Law — one control, one action; play means play
 
