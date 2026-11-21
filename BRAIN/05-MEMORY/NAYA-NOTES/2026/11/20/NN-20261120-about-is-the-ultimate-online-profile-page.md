@@ -4,7 +4,7 @@
 
 **NN-20261120-about-is-the-ultimate-online-profile-page · Naya Note · 2026-11-20 ~19:42 MST**
 
-*Paired Smart Note: SN-pending — About Is the Ultimate Online Profile Page (takes the next free number at filing)*
+*Paired Smart Note: SN-4421 — About Is the Ultimate Online Profile Page*
 
 **Category:** Law — About is one thing, not two
 
