@@ -4,7 +4,7 @@
 
 **NN-20261120-havent-you-learned-this-lesson-already · Naya Note · 2026-11-20 ~22:55–23:00 MST**
 
-*Paired Smart Note: SN-pending — Haven't You Learned This Lesson Already? (takes the next free number at filing)*
+*Paired Smart Note: SN-4454 — Haven't You Learned This Lesson Already?*
 
 **Category:** Law — the harvest-don't-rebuild law, told repeatedly and still not lived
 
