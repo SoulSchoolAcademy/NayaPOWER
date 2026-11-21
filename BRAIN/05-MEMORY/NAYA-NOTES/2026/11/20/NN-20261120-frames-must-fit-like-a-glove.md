@@ -4,7 +4,7 @@
 
 **NN-20261120-frames-must-fit-like-a-glove · Naya Note · 2026-11-20 ~22:55–23:00 MST**
 
-*Paired Smart Note: SN-pending — Frames Must Fit Like a Glove (takes the next free number at filing)*
+*Paired Smart Note: SN-4451 — Frames Must Fit Like a Glove*
 
 **Category:** Design — every frame fitted whole, no overflow, no inner scroll
 
