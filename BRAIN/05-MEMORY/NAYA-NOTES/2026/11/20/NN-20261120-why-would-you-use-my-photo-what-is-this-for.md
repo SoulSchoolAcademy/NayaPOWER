@@ -4,7 +4,7 @@
 
 **NN-20261120-why-would-you-use-my-photo-what-is-this-for · Naya Note · 2026-11-20 ~22:55–23:00 MST**
 
-*Paired Smart Note: SN-pending — Why Would You Use My Photo? What Is This For? (takes the next free number at filing)*
+*Paired Smart Note: SN-4453 — Why Would You Use My Photo? What Is This For?*
 
 **Category:** Law — the purpose comes before the portrait question
 
