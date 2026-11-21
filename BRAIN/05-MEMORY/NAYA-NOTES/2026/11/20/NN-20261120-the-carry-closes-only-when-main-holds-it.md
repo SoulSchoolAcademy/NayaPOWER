@@ -4,7 +4,7 @@
 
 **NN-20261120-the-carry-closes-only-when-main-holds-it · Naya Note · 2026-11-20 ~17:43 MST**
 
-*Paired Smart Note: SN-pending — The Carry Closes Only When Main Holds It (takes the next free number at filing)*
+*Paired Smart Note: SN-4379 — The Carry Closes Only When Main Holds It*
 
 **Category:** Law — how a fix becomes permanent
 
