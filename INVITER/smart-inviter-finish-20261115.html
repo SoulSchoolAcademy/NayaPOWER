@@ -434,7 +434,7 @@ html.nsb-nobottom .nsb-gear-float{display:inline-flex}
 .gr-inv-sl-status{margin:10px 0 0}
 </style>
 </head>
-<body>
+<body class="os-bottom-hidden">
 <!-- SMART-BAR-SYSTEM v1.0: top mount -->
 <div class="nsb-topstack" id="nsbTopstack">
   <div class="nsb nsb-top" id="nsbTop" aria-label="App sections"></div>
@@ -2042,118 +2042,277 @@ if(location.hash==='#invite'){
 
 
 </script>
-<!-- ONE-BOTTOM-BAR v2 (2026-11-11) — ONE ICON SET, ONE BOTTOM BAR (Shawn 2026-11-11 01:18Z).
-  Harvest: Inviter Smart Bar pill() builder + trio + network seed + SPECTRUM,
-  growth-round-20261110/growth-new.html (pill() L3601+, trio L4067+, seed L4226+, SPECTRUM L2629).
-  Order = trio order, then network-seed order. Labels per brief; glyphs, colors, hrefs harvested.
-  NO-OVERLAY law (Shawn 2026-11-11 01:25Z): this bar sits in its own lane ABOVE the Smart Bar
-  (#nsbBottom), the notif bar and the jewel bar — its bottom offset is measured at runtime
-  from the visible bars below it, never a fixed guess. Identical block on Inviter, Hub,
-  Dashboard — never edit per page.
-  v2 changes (fix seat, 2026-11-11): (1) FIX 1 — the pill row is a SCROLL STRIP with
-  snap-to-whole-pills at narrow widths (scroll-snap-type:x mandatory on the row,
-  scroll-snap-align:start + scroll-snap-stop:always on each pill): after any scroll
-  settles, the leftmost pill is whole — no pill ever rests half-sliced — and all 10
-  are reachable by scroll. The row itself scrolls (was: the bar); the trailing pill
-  peeking in at the right edge is the scroll affordance, same pattern as the
-  Personal My World rails (scroll-snap-type:x mandatory). Pills are NOT shrunk
-  and the bar is NOT split into two rows — it stays one component.
-  (2) FIX 2 — the lane measurement no longer rides the flap: re-measurement is
-  debounced to settle (one trailing 150 ms timer, coalesced — never a layout
-  read per mutation) and the offset is written only when it changes. On a page
-  with no below-bars (Dashboard) the fast path reads zero rects. -->
-<nav class="obb-bar" id="obb-bar" aria-label="Apps">
-<div class="obb-row">
-  <a class="obb-pill" data-obb="mail" data-b3="mail" href="https://nayanet.app/rooms/mail" style="--obb:#ffbf3d" aria-label="Mail" title="Mail"><span class="obb-jewel" aria-hidden="true">✉</span><span class="obb-lbl">Mail</span></a>
-  <a class="obb-pill" data-obb="activity" data-b3="activity" href="https://nayanet.app/#/hub/feed" style="--obb:#a06bff" aria-label="Activity" title="Activity"><span class="obb-jewel" aria-hidden="true">◈</span><span class="obb-lbl">Activity</span><span class="obb-badge os-b3-badge" id="os-b3-badge" hidden></span></a>
-  <a class="obb-pill" data-obb="dashboard" data-b3="dashboard" href="https://nayanet.app/dashboard" style="--obb:#2fe89e" aria-label="Dashboard" title="Dashboard"><span class="obb-jewel" aria-hidden="true">◉</span><span class="obb-lbl">Dashboard</span></a>
-  <a class="obb-pill" data-obb="business" href="https://nayanet.app/business" style="--obb:#ffbf3d" aria-label="Business" title="Business"><span class="obb-jewel" aria-hidden="true">■</span><span class="obb-lbl">Business</span></a>
-  <a class="obb-pill" data-obb="space" href="https://nayanet.app/space" style="--obb:#ff9a5a" aria-label="Space" title="Space"><span class="obb-jewel" aria-hidden="true">▲</span><span class="obb-lbl">Space</span></a>
-  <a class="obb-pill" data-obb="growth" href="https://nayanet.app/rooms/growth" style="--obb:#ff5e6c" aria-label="Growth" title="Growth"><span class="obb-jewel" aria-hidden="true">✦</span><span class="obb-lbl">Growth</span></a>
-  <a class="obb-pill" data-obb="connections" href="https://nayanet.app/rooms/connections" style="--obb:#e84fff" aria-label="Connections" title="Connections"><span class="obb-jewel" aria-hidden="true">◇</span><span class="obb-lbl">Connections</span></a>
-  <a class="obb-pill" data-obb="lists" href="https://nayanet.app/rooms/lists" style="--obb:#a06bff" aria-label="Smart Lists" title="Smart Lists"><span class="obb-jewel" aria-hidden="true">☰</span><span class="obb-lbl">Smart Lists</span></a>
-  <a class="obb-pill" data-obb="reports" href="https://nayanet.app/rooms/reports" style="--obb:#3fb8ff" aria-label="Reports" title="Reports"><span class="obb-jewel" aria-hidden="true">◆</span><span class="obb-lbl">Reports</span></a>
-  <a class="obb-pill obb-more" data-obb="more" href="https://nayanet.app/#/hub" style="--obb:#3fb8ff" aria-label="10 apps" title="10 apps"><span class="obb-jewel" aria-hidden="true">＋</span><span class="obb-lbl">10 apps</span></a>
-</div>
-</nav>
+<!-- THE SIX BOTTOM BAR (2026-11-20, Smart Inviter cleanup) — the settled bottom bar,
+  harvested VERBATIM from the Hub file (repo SoulSchoolAcademy/NayaPOWER,
+  branch hub/smart-note-board-fix1h-20261120, HUB/app/index.html,
+  blob 24c1b03cd701238bdc71032d4ab690628c66a640):
+  - CSS: the .notif-bar block (Hub L304-408), the fold rules (L13773-13789),
+    the follow-on rules (L14858-14866), the phone rules (L15042-15059),
+    keyframes orb-spin (L3434), naya-breathe (L1995), naya-orbit-dot-ccw (L13918).
+  - NAV: the static fallback bar (Hub L3528) — the six tiles, same order, same
+    colours, same labels, same SVGs.
+  - CORNER CONTROL: #os-b3-hide (Hub L3529).
+  - DRIVER: the bottom-bar driver IIFE (Hub L14736-14824).
+  NAMED ADAPTATIONS (only these — everything else is byte-identical):
+  A1 hrefs: the fallback's hash routes are absolutised to nayanet.app, and the
+     three brief-defined actions use the Hub file's own destinations —
+     ADD = compose -> the Hub create menu's "Make a post"
+     (https://nayanet.app/personal#home/post, Hub L14835);
+     MAIL -> https://nayanet.app/rooms/mail (Hub L14840);
+     ACTIVITY -> https://nayanet.app/#/hub/feed-activity (fallback verbatim);
+     WORLDS -> https://nayanet.app/rooms/spaces (Hub L14842);
+     ECOSYSTEM = the Hub -> https://nayanet.app/hub (brief);
+     CONNECT = connections -> https://nayanet.app/rooms/connections (brief).
+  A2 data-notif="plusR" (fallback, stale) -> "plus-connect" (the live SEGS key,
+     Hub L7233).
+  A3 syncSmartbarH DROPPED (Hub L14740-14750 + L14823): on the Hub the Smart Bar
+     is removed so it measures 0; on the Inviter #nsbBottom is a live in-flow
+     dock, so measuring it would float this bar ~100px off the bottom.
+     --smartbar-h stays 0 (the CSS default), so the bar sits at the very bottom.
+  A4 the .rail.left auto-scroll DROPPED (Hub L14783-14787): the Hub's left rail
+     does not exist on the Inviter; the try/catch made it a no-op here.
+  A5 <body> carries class="os-bottom-hidden" at load (Hub L3517, verbatim):
+     the bar starts folded and pops at the bottom/top/corner tap, like the Hub.
+  A6 text-decoration:none added to the harvested .notif-seg rule: the Hub's seen
+     bar is built from <button>s (no underline possible); this transplant keeps
+     the fallback's <a> segs, and without it the labels would underline.
+  The old ONE-BOTTOM-BAR v2 block (10 pills, bright palette) is gone in full —
+  nav + CSS + lane script. One dead rule remains elsewhere in the file by
+  design (minimal diff): `.obb-row{...}` at old line 4359, inside the
+  SMART-BAR-SYSTEM media query — it matches nothing now and has no visual effect.
+  Nothing else in this file was touched; the email invite flow is byte-identical. -->
 <style>
-/* ONE-BOTTOM-BAR v2 — placement + pills. Jewel treatment harvested from .nsb-jewel (Inviter L3300+); pill treatment from .nsb-tab (L3244+). */
-.obb-bar,.obb-bar *{box-sizing:border-box}
-.obb-bar{position:static;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:flex-start;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(3,3,5,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 -16px 44px rgba(0,0,0,.68);transition:transform .35s ease,opacity .35s ease}
-body.os-bottom-hidden .obb-bar{transform:translateY(110%);opacity:0}
-/* FIX 1 (v2): the row is the scroll strip — snap-to-whole-pills. The bar stays
-   one component; the row scrolls inside it and snaps so no pill rests half-sliced. */
-.obb-row{display:flex;align-items:center;gap:8px;margin:0 auto;flex:0 1 auto;min-width:0;max-width:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;scroll-snap-type:x mandatory;scroll-padding:0 12px;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
-.obb-row::-webkit-scrollbar{display:none}
-.obb-pill{flex:0 0 auto;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-width:58px;min-height:52px;padding:6px 8px 5px;border-radius:14px;text-decoration:none;color:#fff;cursor:pointer;background:linear-gradient(180deg,#1d1d26 0%,#0b0b10 55%,#020203 100%);border:1.5px solid var(--obb);box-shadow:inset 0 2px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.55),0 0 14px -2px var(--obb),0 8px 20px rgba(0,0,0,.75);position:relative}
-.obb-pill:hover,.obb-pill:focus-visible{box-shadow:inset 0 2px 0 rgba(255,255,255,.45),inset 0 -4px 10px rgba(0,0,0,.55),0 0 22px 0 var(--obb),0 8px 20px rgba(0,0,0,.75);transform:translateY(-1px);outline:none}
-.obb-pill:active{box-shadow:inset 0 2px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.55),0 0 26px 5px var(--obb),0 8px 20px rgba(0,0,0,.75)}
-.obb-jewel{width:29px;height:29px;border-radius:9px;flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;font-size:15px;color:#fff;background:linear-gradient(180deg,color-mix(in srgb,var(--obb) 30%,rgba(255,255,255,.1)),color-mix(in srgb,var(--obb) 12%,rgba(0,0,0,.42)));border:1px solid color-mix(in srgb,var(--obb) 55%,rgba(0,0,0,.3));box-shadow:inset 0 2px 5px rgba(0,0,0,.55),inset 0 1px 2px rgba(255,255,255,.12),inset 0 -1px 0 rgba(255,255,255,.08),0 0 10px -2px var(--obb)}
-.obb-lbl{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;white-space:nowrap;line-height:1}
-.obb-badge{position:absolute;top:-7px;right:-7px;min-width:22px;height:22px;padding:0 6px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;background:#04120a;color:#fff;font-size:12px;font-weight:900;line-height:1;border:2px solid #2fe89e;box-shadow:0 0 12px rgba(47,232,158,.8)}
-@media (max-width:640px){.obb-bar{gap:6px;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px))}.obb-row{gap:6px;scroll-padding:0 10px}.obb-pill{min-width:52px;min-height:50px;padding:5px 6px 4px}.obb-jewel{width:26px;height:26px;font-size:14px}.obb-lbl{font-size:9px}}
+/* ——— THE SIX — harvested from the Hub (see header) ——— */
+   /* Harvested VERBATIM from the Hub nav file's .notif-bar
+   (~/workspace/team-nitro/hub-navigation-20261112/hub-navigation-fixed.html,
+   "Notifications bar (Shawn 2026-10-20)"): Mail blue · Activity green ·
+   Spaces gold, count bubbles with a 9+ cap, hidden at 0. The trio rides
+   at the very bottom (bottom: var(--smartbar-h, 0px) — 0 now that the
+   Smart Bar is OUT, Shawn 15:43Z). Two adaptations, named: (1) the fade
+   — .nsb-trio-faded, which no listener in this file drives (the fold is
+   driven by os-bottom-hidden in the stack script below, Amendment #3:
+   down hides the bar, only the very bottom brings it back); the base rule
+   carries the opacity transition for it.
+   (2) The Hub-only rules are NOT carried over: the eco-bottombar rider
+   (no such element here), the .toast-stack/.main padding, and the
+   .corner-plus block. */
+/* SWEEP-3 F9: the row centres on the viewport by design — recorded, not moved. */
+.notif-bar {
+  position: fixed; left: 0; right: 0; bottom: var(--smartbar-h, 0px); z-index: 45;
+  display: flex; justify-content: center;
+  background: rgba(5,5,9,.96);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  /* F3 (Shawn 16:06Z) — NO divider line above the trio: the border-top and
+     the inset 1px highlight are gone; the icons sit clean on the page. */
+  box-shadow: 0 -10px 34px rgba(0,0,0,.6);
+  padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px)); /* FOLLOW-ON 2026-11-19 (item 3): real clearance — the tiles sit fully inside the viewport, harvested from the Dashboard follow-on. */
+  animation: notifUp .55s cubic-bezier(.16,.84,.22,1) backwards;
+  transition: opacity .45s ease;
+}
+.notif-bar.nsb-trio-faded{opacity:0;pointer-events:none;}
+@keyframes notifUp { from { transform: translateY(100%); opacity: 0; } to { transform: none; opacity: 1; } }
+.notif-row { display: flex; gap: 40px /* A9 (2026-11-17): depth + separation — 6×54px + 5×40px = 524px, inside 640px. */; width: 100%; max-width: 640px; padding: 12px 14px 10px; justify-content: center; }
+.notif-seg {
+  position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 2px 6px 0; cursor: pointer; background: none; border: none;
+  color: #ffffff; text-decoration: none; font-family: inherit; transition: transform .12s;
+  -webkit-tap-highlight-color: transparent;
+}
+.notif-seg:active { transform: scale(.94); }
+/* SWEEP-3 F8: no gloss layer in the bytes — flat board black plus rim plus glow. Whether the rim-light IS the gloss is Shawn's eye call; do not invent a swoosh. */
+.notif-tile {
+  position: relative; z-index: 0; width: 54px; height: 54px; border-radius: 16px; /* MODEL TILE (blob 9a006c47, 22:48Z + 23:00Z): harvested verbatim — 16px, not the Hub's 26px squircle */
+  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(130% 140% at 30% 18%, color-mix(in srgb, var(--nc) 36%, #12121a), #07070b 78%); /* MODEL: the ball face — own-color top-left light, obsidian body */
+  border: 1.5px solid color-mix(in srgb, var(--nc) 62%, rgba(255,255,255,.12)); /* MODEL: the 62% rim */
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.38),
+    inset 0 -9px 15px rgba(0,0,0,.6),
+    inset 1px 0 0 rgba(255,255,255,.07),
+    0 7px 16px rgba(0,0,0,.6),
+    0 12px 28px rgba(0,0,0,.55),
+    0 0 17px color-mix(in srgb, var(--nc) 42%, transparent); /* MODEL: the around-glow, restrained */
+  color: #ffffff;
+  transition: box-shadow .3s, border-color .3s, transform .22s cubic-bezier(.16,.84,.22,1);
+}
+.notif-tile::before { display: none; } /* MODEL (Personal L32407): no clone layer — the later rule wins, exactly as in the model file. */
+}
+.notif-tile::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none; border: 1.5px solid color-mix(in srgb, var(--nc) 45%, transparent); transform: translate(1px, 1px); box-shadow: 0 4px 10px rgba(0,0,0,.5); /* EYE-NOTES-FIX §3.3(a)(b): radius follows the squircle; the clone shadow brought in tight */
+  background: #050607; /* BLACK DIAMOND: the wash is out — ::before is now the clone layer */
+
+}
+/* EYE-NOTES-FIX 2026-11-17 §3.3 + Amendment #1 (the ultimate bar) + #2 (the
+   right amount of elegance): the slow turning flow around every tile — the
+   orbit from this morning, taken from the hamburger and the brand mark
+   (the same travelling-dot object, never a rotating element, so the glyph
+   stays upright). AMENDMENT #3 (2026-11-17 20:29Z): the filed flow was
+   VERIFIED against the morning orbit and differed in exactly one
+   declaration — it missed background-repeat:no-repeat, so the 9px dot
+   tiled into a dotted band instead of one dot travelling the ring. The
+   no-repeat is restored from the canonical object (hamburger .rail-toggle,
+   brand mark), verbatim. Odd tiles turn clockwise in 120s, even tiles counter in
+   150s, the same pair as the hamburger (120s CW) and the brand mark
+   (150s CCW) — one treatment, congruent on all six. Amendment #2: the
+   flow goes here and NOWHERE else new in this round — the sidebar icons,
+   the sub-tabs, the tab jewels, the top controls and the brand mark
+   already carry it where it belongs; piling it onto more places in this
+   round would be too much in one place. */
+.notif-tile::after{content:""; position:absolute; inset:-6px; z-index:-1; pointer-events:none; border-radius:inherit; border:1px solid color-mix(in srgb, var(--nc) 35%, transparent); background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,var(--nc) 300deg,rgba(255,255,255,.95) 330deg,transparent 360deg); -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); mask-composite:exclude; padding:2px; animation:orb-spin 60s linear infinite, naya-breathe 6s ease-in-out infinite alternate;} /* MODEL (blob 9a006c47): the conic comet — a light that follows the line perfectly, 22:48Z. */
+.notif-seg:nth-child(even) .notif-tile::after{animation:naya-orbit-dot-ccw 150s linear infinite;}
+.notif-tile svg { width: 25px; height: 25px; color: #fff; filter: drop-shadow(0 2px 2px rgba(0,0,0,.7)); position: relative; transition: transform .22s, filter .22s; } /* MODEL: dark-only — the white glows in the middle are gone (22:48Z). */
+.notif-lbl { display: block; font-size: 17px; font-weight: 700; letter-spacing: .08em; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.9); white-space: nowrap; line-height: 1.2; } /* FOLLOW-ON 2026-11-19 (item 3): labels read — 17px bold white, harvested from the Dashboard follow-on (os-followup2-20261119). The 10.5px label was unreadable at 1920 and is gone. */
+.notif-count { position: absolute; top: 4px; right: 4px; min-width: 20px; height: 20px; padding: 0 2px; /* FOLLOW-ON 2026-11-19 (item 3): the ball is 20px with 11px numerals, inset top-right INSIDE the tile, rim-lit in the tile's colour — the Dashboard standard, sized down (ROUND 6) so it clears the glyph: the 26px ball covered the pulse line's rising edge, and its 1.7x landing flare left the tile. */
+  display: none; align-items: center; justify-content: center; border-radius: 999px; z-index: 2;
+  font-size: 11px; font-weight: 900; color: #fff; background: radial-gradient(130% 140% at 30% 18%, rgba(255,255,255,.22), #07070b 78%);
+  border: 1.5px solid var(--nc);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.4), inset 0 -3px 6px rgba(0,0,0,.6), 0 0 12px color-mix(in srgb, var(--nc) 55%, transparent), 0 3px 8px rgba(0,0,0,.5); } /* 23:11Z notification ball: black obsidian ball, white number, inside the tile, lit around in the tile's own color. */
+@keyframes notifLand { 0% { border-color:#fff; box-shadow: inset 0 -9px 15px rgba(0,0,0,.6), 0 7px 16px rgba(0,0,0,.6), 0 8px 18px rgba(0,0,0,.6), 0 0 0 1px #fff, 0 0 34px #fff, 0 0 50px color-mix(in srgb, var(--nc) 90%, transparent); } 100% { border-color: color-mix(in srgb, var(--nc) 88%, #ffffff); box-shadow: inset 0 -9px 15px rgba(0,0,0,.6), 0 7px 16px rgba(0,0,0,.6), 0 0 0 1px color-mix(in srgb, var(--nc) 30%, transparent), 0 0 26px color-mix(in srgb, var(--nc) 68%, transparent); } }
+@keyframes notifCountLand { 0% { transform: scale(1.15); } 100% { transform: scale(1); } } /* ROUND 6 2026-11-19 (defect 5): the 1.7x flare put the 26px ball half outside the tile's top edge — the straddle the eye saw. A 1.15x pop stays inside the tile and still reads as a landing. */
+.notif-seg.just-landed .notif-tile { animation: notifLand 1.4s ease-out 1; }
+.notif-seg.just-landed .notif-count { animation: notifCountLand .9s ease-out 1; } /* EYE-NOTES-FIX §3.3(d): the light-up is a once-off — bright and obvious when a notification lands, then it settles to the steady has-news glow. It never blinks forever. */
+.notif-seg.has-news .notif-tile {
+  border-color: color-mix(in srgb, var(--nc) 88%, #ffffff);
+  box-shadow: 0 7px 16px rgba(0,0,0,.6), 0 0 26px color-mix(in srgb, var(--nc) 68%, transparent); /* MODEL: the lit state, verbatim. */
+}
+/* HUB SIDEBARS+PLUS 2026-11-16 — the sixth tile (RIGHT + / CONNECT, Shawn
+   18:58Z): the six 54px tiles + 34px gaps measure 594px at desktop (fits
+   every desktop width) but overflow below 640px. Tiles drop to 46px below
+   640px (Personal's own 400px tile size), so the row measures 378px at
+   401-640px and 312px at <=400px — six tiles on ONE line at 390 (312 <= 390)
+   and at 320 (312 <= 320), nothing cut off, nothing wrapped. SWEEP-3 F4:
+   gap 8px -> 4px and row side padding 14px -> 8px below 400px. Measured,
+   not guessed. */
+@media (max-width:640px){ .notif-row{gap:10px;} .notif-tile{width:46px;height:46px;} .notif-seg{padding:2px 2px 0;} }
+@media (max-width:400px){ .notif-row{gap:4px;padding:12px 8px 10px;} .notif-tile{width:46px;height:46px;} .notif-seg{padding:2px 0 0;} }
+/* THE LINE (Personal correction, harvested): the page-wide button shadow's
+   inset top line is restated away on the seg itself. */
+.notif-seg{box-shadow: inset 0 -2px 8px rgba(0,0,0,.25), 0 6px 20px rgba(0,0,0,.4)!important;}
+@keyframes naya-breathe { from { opacity: .55; } to { opacity: 1; } }
+@keyframes orb-spin { to { transform: rotate(360deg); } }
+@keyframes naya-orbit-dot-ccw{0%{background-position:50% 0}12.5%{background-position:0 0}25%{background-position:0 50%}37.5%{background-position:0 100%}50%{background-position:50% 100%}62.5%{background-position:100% 100%}75%{background-position:100% 50%}87.5%{background-position:100% 0}100%{background-position:50% 0}}
+/* Fold on scroll (Amendment #3, 2026-11-17 20:29Z — tightens the 19:24Z rule):
+   scrolling down hides the bottom bar; it folds back ONLY at the very bottom.
+   The driver is the stack script below. */
+body.os-bottom-hidden .notif-bar{transform:translateY(110%);opacity:0}
+/* ROUND 11 (item 6 — the cloud eye's narrow-width defect): the <=640px
+   force-visible override is GONE. It kept the bar expanded by default at
+   narrow widths, covering ~1/3 of a 305px viewport and feed headings
+   while scrolling. The bar driver below (show-once: starts folded, pops
+   up once after 1s stopped at the very bottom, returns at once at the
+   very top, corner control summons it) now governs <=640px exactly as it
+   governs desktop: folded while reading, never covering content. MAIL
+   stays reachable — tap the corner control or scroll to the top or the
+   bottom. Desktop bytes untouched: this rule lived only inside the
+   <=640px media query. */
+.notif-bar{transition:transform .3s cubic-bezier(.16,.84,.22,1),opacity .3s}
+/* Bottom bar off (Settings): the six are gone. */
+html.nsb-nonav #naya-notif-bar{display:none}
+/* (item 3) THE OFFICIAL BAR — six labelled segs fit the 640px row: the gap tightens 40px -> 24px at desktop; at phone widths the 17px labels cannot fit six-across, so they hide and the bar falls back to glyph-only (the current phone behaviour). Harvested from the Dashboard follow-on (os-followup2-20261119). */
+@media (min-width:641px){ .notif-row { gap: 24px; } }
+@media (max-width:640px){ .notif-lbl { display: none; } }
+/* (item 3) THE CORNER CONTROL rides above the taller bar — the bar grows by the label row, so the hide control moves up to match; folded it stays at the bottom corner. Harvested from the Dashboard (#os-b3-hide, pass9 + follow-on). */
+#os-b3-hide{position:fixed;right:12px;bottom:146px;z-index:1005;width:38px;height:38px;border-radius:50%;cursor:pointer;background:#050607;border:1.5px solid rgba(255,255,255,.3);color:#fff;font-size:17px;line-height:1;display:grid;place-items:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -4px 10px rgba(0,0,0,.6),0 6px 14px rgba(0,0,0,.55),0 0 12px rgba(255,255,255,.12);transition:transform .18s,border-color .18s,box-shadow .18s;}
+#os-b3-hide:hover{transform:translateY(-2px);border-color:#8e24aa;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -4px 10px rgba(0,0,0,.6),0 12px 26px rgba(0,0,0,.65),0 0 18px rgba(142,36,170,.55);}
+#os-b3-hide:active{transform:translateY(1px);}
+body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
+@media(max-width:768px){body:not(.os-bottom-hidden):not(.os-bottom-off) #os-b3-hide{bottom:120px;}}
+/* (2) 390 FIRST LOAD: the hide-bar circle clears the CONNECT tile. At first
+   load the body carries the bar-hidden class, so the circle sat at
+   bottom:12px — on the bottom bar's top-right tile. Bar-hidden or not, at
+   phone width the circle now parks at bottom:140px: above the bar, above
+   the restore pill, in the clear lane. The drawer-open hide still wins
+   (its selector carries a class more). */
+@media (max-width:640px){
+  body.os-bottom-hidden #os-b3-hide, body.os-bottom-off #os-b3-hide{bottom:140px;}
+}
+/* (3) 390 NOTIFICATION BALL CLEARANCE. The eye measured -2.0px on the 46px
+   phone tiles: the 20px ball at top:4px right:4px sat on the glyph ink. At
+   phone width the ball moves to the tile's own corner (top:0 right:0) and
+   shrinks to 18px — its centre moves ~4px further from the glyph and its
+   radius gives back 1px, so the clearance turns positive. Still inside
+   the tile, rim-lit in the tile's own colour. */
+@media (max-width:640px){
+  .notif-count{top:0;right:0;min-width:18px;height:18px;}
+}
 </style>
+<nav id="naya-notif-bar" class="notif-bar" data-static="1" aria-label="Notifications"><div class="notif-row"><a class="notif-seg" data-notif="plus" style="--nc:#8e24aa" href="https://nayanet.app/personal#home/post" aria-label="ADD — open" title="ADD"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ADD</span></a><a class="notif-seg" data-notif="mail" style="--nc:#0f52ba" href="https://nayanet.app/rooms/mail" aria-label="MAIL — open" title="MAIL"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">MAIL</span></a><a class="notif-seg" data-notif="activity" style="--nc:#07925f" href="https://nayanet.app/#/hub/feed-activity" aria-label="ACTIVITY — open" title="ACTIVITY"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ACTIVITY</span></a><a class="notif-seg" data-notif="spaces" style="--nc:#d4a017" href="https://nayanet.app/rooms/spaces" aria-label="WORLDS — open" title="WORLDS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">WORLDS</span></a><a class="notif-seg" data-notif="eco" style="--nc:#c2410c" href="https://nayanet.app/hub" aria-label="ECOSYSTEM — open" title="ECOSYSTEM"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ECOSYSTEM</span></a><a class="notif-seg" data-notif="plus-connect" style="--nc:#c62828" href="https://nayanet.app/rooms/connections" aria-label="CONNECT — open" title="CONNECT"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19.5c.7-3.4 2.9-5.2 5.5-5.2s4.8 1.8 5.5 5.2"/><circle cx="17" cy="9" r="2.7"/><path d="M16.2 14.6c2.5-.2 4.1 1.4 4.6 3.9"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">CONNECT</span></a></div></nav>
+<button type="button" id="os-b3-hide" aria-label="Show the bottom bar" title="Show the bottom bar">▴</button> <!-- FOLLOW-ON 2026-11-19 (item 3): the corner control — the reader's own tap recalls the bar when folded. Chrome harvested from the Dashboard (#os-b3-hide). -->
 <script>
-/* ONE-BOTTOM-BAR v2 — lane stacking (NO-OVERLAY law). Measures the visible bottom-stack bars
-   below this bar (Smart Bar, notif bar, jewel bar) and lifts this bar above the tallest of
-   them, so no bar ever covers another. Re-measures on load, resize, and whenever the bars
-   change (Smart Bar built/toggled, notif shown/hidden, keyboard shown/hidden).
-   v2 — FIX 2: measure on SETTLE, not on flap. Mutation bursts (e.g. the Dashboard's
-   scroll-settle loop toggling body classes ~10x/s) coalesce into ONE trailing 150 ms
-   re-measure; the offset is written only when it changes; when the page has no
-   below-bars at all the fast path reads zero rects. v1 scheduled a 60 ms layout
-   read per mutation — on the Dashboard that path was already a no-op (no below-bars
-   exist there, so no rect was ever read and --obb-below never touched transform),
-   but v2 removes even the scheduling. The html/body class observers stay: the
-   Inviter hides its Smart Bar via `html.nsb-nobottom #nsbBottom` (line 337), so a
-   class change on <html> is the only signal that lane closed. */
+/* ——— The bottom bar driver (2026-11-12, Hub navigation; SIDEBARS+PLUS 2026-11-16: one bar now) ——— */
 (function(){
-  var bar=document.getElementById('obb-bar'); if(!bar) return;
-  var lastBelow=null, soonT=null;
-  function obbLayout(){
-    soonT=null;
-    var vh=window.innerHeight||0, below=0, found=0;
-    var sels=['#nsbBottom','.notif-bar','.jewelbar'];
-    for(var s=0;s<sels.length;s++){
-      var els=document.querySelectorAll(sels[s]);
-      for(var k=0;k<els.length;k++){
-        var el=els[k], cs;
-        try{ cs=getComputedStyle(el); }catch(e){ continue; }
-        if(!cs||cs.display==='none'||cs.visibility==='hidden') continue;
-        if(cs.position!=='fixed') continue;
-        var r; try{ r=el.getBoundingClientRect(); }catch(e){ continue; }
-        if(!r||r.height<=0) continue;
-        if(r.top>=vh) continue;
-        if(r.bottom<vh-260) continue;
-        found++;
-        var need=vh-r.top; if(need>below) below=need;
-      }
-    }
-    below=Math.ceil(below);
-    if(below===lastBelow) return; /* write only on change — never restyle on a flap */
-    lastBelow=below;
-    bar.style.setProperty('--obb-below', below+'px');
+  /* The six honour the citizen's Settings choice on every load. */
+  try { if (localStorage.getItem('nayanet.pref.bottom_nav') === 'off') { document.documentElement.classList.add('nsb-nonav'); } } catch (e) {}
+  /* Fold on scroll — AMENDMENT #3 (Shawn 2026-11-17 20:29Z, tightens the
+     19:24Z rule, which folded the bar back ~1s after scrolling stopped):
+     the bar folds away as soon as you scroll down, and it ONLY folds back
+     up when you are at the very bottom. No return on scroll-stop, no return
+     on scroll-up mid-page — the bottom, and only the bottom. Same on every
+     page: the Hub leads — Personal and Business mirroring is a follow-on,
+     named, not built in this Hub-only round. The bar still shows on arrival
+     (scrollY 0, no scroll event yet) and on a short page that has no scroll
+     (the bottom is already the top). */
+  /* FOLLOW-ON 2026-11-19 (item 3): the bar is never sticky — the Dashboard
+     show-once, harvested from the Dashboard follow-on round 2 (blob e91ad3ca,
+     _osB3ArmTimer / onScroll). It starts folded (body.os-bottom-hidden) and
+     pops up once, calmly, after the reader has stopped at the very bottom for
+     a full second — then holds. When the reader leaves the bottom, an
+     automatically shown bar folds again and re-arms for the next bottom visit,
+     so it never covers content while reading. A bar the reader summoned
+     themselves (corner control below) holds: that was their tap. The old rule
+     showed the bar the instant the bottom was touched and hid it the moment
+     the reader scrolled — the eye saw it vanish while reading and never come
+     back on the way up. When the reader scrolls back to the very top (scrollY ≤ 8) after the bar folded on the way down, it returns at once — the top is the bar's other home. The return is armed only by a scroll-down fold, so the bar still starts folded at load, and a bar the reader hid with the corner control stays hidden on the way back to the top until they tap again (the bottom pop still recalls it on the next bottom visit, as before). */
+  var _hubBarShownOnce = false, _hubBarAutoShown = false, _hubBarUserShown = false, _hubBarTimer = null, _hubBarTopArmed = false, _hubBarUserHidden = false;
+  function _hubAtBottom(){ try { return (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 2); } catch (e) { return false; } }
+  function _hubBarOff(){ try { return document.documentElement.classList.contains('nsb-nonav'); } catch (e) { return false; } }
+  function _hubArmBar(){
+    if (_hubBarShownOnce) return;
+    if (_hubBarTimer) clearTimeout(_hubBarTimer);
+    if (!_hubAtBottom() || _hubBarOff()) return;
+    _hubBarTimer = setTimeout(function(){
+      if (_hubBarShownOnce) return;
+      if (!_hubAtBottom() || _hubBarOff()) return;
+      document.body.classList.remove('os-bottom-hidden');
+      _hubBarShownOnce = true; _hubBarAutoShown = true; _hubBarUserHidden = false;
+      if (typeof _hubSyncB3Hide === 'function') { try { _hubSyncB3Hide(); } catch (e) {} }
+    }, 1000);
   }
-  function obbSoon(){ if(soonT) return; soonT=setTimeout(obbLayout, 150); }
-  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', obbLayout); }
-  else { obbLayout(); }
-  window.addEventListener('load', obbLayout);
-  window.addEventListener('resize', obbLayout);
-  setTimeout(obbLayout, 500); setTimeout(obbLayout, 1500);
-  try{
-    var mo=new MutationObserver(obbSoon);
-    mo.observe(document.documentElement,{attributes:true,attributeFilter:['class']});
-    mo.observe(document.body,{attributes:true,attributeFilter:['class']});
-    var sels2=['#nsbBottom','.notif-bar','.jewelbar'];
-    for(var i=0;i<sels2.length;i++){
-      var bars=document.querySelectorAll(sels2[i]);
-      for(var j=0;j<bars.length;j++) mo.observe(bars[j],{childList:true,attributes:true,attributeFilter:['class','style']});
+  function onScroll(){
+    if ((window.scrollY || 0) <= 8 && !_hubAtBottom() && _hubBarTopArmed) {
+      _hubBarTopArmed = false;
+      if (_hubBarTimer) clearTimeout(_hubBarTimer);
+      document.body.classList.remove('os-bottom-hidden');
+      _hubBarShownOnce = true; _hubBarAutoShown = false;
+      if (typeof _hubSyncB3Hide === 'function') { try { _hubSyncB3Hide(); } catch (e) {} }
+      return;
     }
-  }catch(e){}
-  window.__obbLayout=obbLayout;
+    if (!_hubAtBottom() && (window.scrollY || 0) > 8 && !_hubBarUserShown) {
+      document.body.classList.add('os-bottom-hidden');
+      _hubBarShownOnce = false; _hubBarAutoShown = false; _hubBarTopArmed = !_hubBarUserHidden;
+      if (_hubBarTimer) clearTimeout(_hubBarTimer);
+      if (typeof _hubSyncB3Hide === 'function') { try { _hubSyncB3Hide(); } catch (e) {} }
+      return;
+    }
+    _hubArmBar();
+  }
+  /* FOLLOW-ON 2026-11-19 (item 3): the corner control — the reader's own tap
+     recalls the bar when it is folded, or hides it when it is showing. A
+     summoned bar holds on scroll (that was their tap); hiding through the
+     control re-arms the bottom pop. */
+  var _b3hide = document.getElementById('os-b3-hide');
+  function _hubSyncB3Hide(){ if (!_b3hide) return; var hidden = document.body.classList.contains('os-bottom-hidden'); _b3hide.textContent = hidden ? '\u25b4' : '\u25be'; _b3hide.setAttribute('aria-label', hidden ? 'Show the bottom bar' : 'Hide the bottom bar'); _b3hide.title = hidden ? 'Show the bottom bar' : 'Hide the bottom bar'; }
+  if (_b3hide) _b3hide.addEventListener('click', function(){
+    if (document.body.classList.contains('os-bottom-hidden')) { document.body.classList.remove('os-bottom-hidden'); _hubBarShownOnce = true; _hubBarAutoShown = false; _hubBarUserShown = true; _hubBarTopArmed = false; _hubBarUserHidden = false; }
+    else { document.body.classList.add('os-bottom-hidden'); _hubBarShownOnce = false; _hubBarAutoShown = false; _hubBarUserShown = false; _hubBarTopArmed = false; _hubBarUserHidden = true; }
+    _hubSyncB3Hide();
+  });
+  _hubSyncB3Hide();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 })();
 </script>
-<!-- /ONE-BOTTOM-BAR -->
+<!-- /THE SIX BOTTOM BAR -->
 <script>
 /* Smart Inviter service worker — scoped to /rooms/growth/ (mirrors Spaces). */
 if('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost')){
