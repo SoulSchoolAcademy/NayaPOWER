@@ -4,7 +4,7 @@
 
 **NN-20261121-the-sequence-personal-first-then-live-then-one-system · Naya Note · 2026-11-21 ~10:45 MST**
 
-*Paired Smart Note: SN-pending — The Sequence — Personal First, Then Live, Then One System (takes the next free number at filing)*
+*Paired Smart Note: SN-4509 — The Sequence — Personal First, Then Live, Then One System*
 
 **Category:** LAW — the order: Personal done FIRST, then the official Hub + the official main universal page made LIVE, then prove all working together as one in Supabase
 
