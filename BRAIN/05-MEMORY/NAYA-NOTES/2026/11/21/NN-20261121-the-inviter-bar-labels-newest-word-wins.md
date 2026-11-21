@@ -4,7 +4,7 @@
 
 **NN-20261121-the-inviter-bar-labels-newest-word-wins · Naya Note · 2026-11-21 ~10:05 MST**
 
-*Paired Smart Note: SN-pending — The Inviter Bar Labels — Newest Word Wins (takes the next free number at filing)*
+*Paired Smart Note: SN-4497 — The Inviter Bar Labels — Newest Word Wins*
 
 **Category:** LAW — when two sources disagree, his newest word wins; rename the label AND the destination, harvested byte-for-byte
 
