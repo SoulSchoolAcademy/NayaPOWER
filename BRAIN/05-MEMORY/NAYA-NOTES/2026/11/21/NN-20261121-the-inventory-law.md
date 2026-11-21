@@ -4,7 +4,7 @@
 
 **NN-20261121-the-inventory-law · Naya Note · 2026-11-21 ~09:21 MST**
 
-*Paired Smart Note: SN-pending — The Inventory Law — Know Every Part, Check It's All There (takes the next free number at filing)*
+*Paired Smart Note: SN-4475 — The Inventory Law — Know Every Part, Check It's All There*
 
 **Category:** LAW — keep inventory of every element of each thing; know the anatomy of all of it; always check it's all there
 
