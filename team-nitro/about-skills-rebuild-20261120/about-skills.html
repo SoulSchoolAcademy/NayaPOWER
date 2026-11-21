@@ -621,7 +621,8 @@ main.fp-frame8 .play-wrap,main.fp-frame8 .play-note{display:none!important}
 .skill-proof{display:inline-block;font-size:17px;font-weight:700;color:#fff;background:#050607;border:1.5px solid var(--tone,#8e24aa);border-radius:999px;padding:10px 18px;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.6)}
 .skill-proof:hover{box-shadow:0 0 24px -2px var(--tone,#8e24aa),0 10px 24px rgba(0,0,0,.6)}
 .skill-proof-owed{border-style:dashed;opacity:1}
-.about-jump{margin:8px auto 0!important;padding-top:6px!important;padding-bottom:6px!important}
+/* FIX ROUND 2 2026-11-21 (checker GOES BACK) — the beat-14 Enter pill is an anchor, which computes box-sizing:content-box, so width:100% + 30px side padding + border = 374px in a 310px frame (overX 64 on phone). border-box makes it 310, like the beat-9 button. */
+.about-jump{box-sizing:border-box!important;margin:8px auto 0!important;padding-top:6px!important;padding-bottom:6px!important}
 #deckUnfold[hidden],#skillsSlideshow[hidden],.af-prog[hidden]{display:none!important}
 #skillsSlideshow .letter-beat.lb{display:block!important}
 /* FIX ROUND — the nutshell slims so the words get the room: its harvested
