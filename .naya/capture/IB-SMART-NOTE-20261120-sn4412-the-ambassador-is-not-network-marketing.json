@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4412",
+ "intelligence": {
+  "title": "SN-4412 — The Ambassador Is Not Network Marketing",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4412-the-ambassador-is-not-network-marketing",
+  "smart_note_id": "SN-4412",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4412/IB-SMART-NOTE-20261120-sn4412-the-ambassador-is-not-network-marketing.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "This is not network marketing. You are an ambassador — commission sales, like a sales job with a high-tech company. People join through your link, you get paid. If they don't, you don't. And you still get to enjoy NayaNET — it's your brain forever.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4412",
+   "title": "SN-4412 — The Ambassador Is Not Network Marketing",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4412/IB-SMART-NOTE-20261120-sn4412-the-ambassador-is-not-network-marketing.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4412/IB-SMART-NOTE-20261120-sn4412-the-ambassador-is-not-network-marketing.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
