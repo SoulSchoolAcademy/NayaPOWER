@@ -4,7 +4,7 @@
 
 **NN-20261121-the-ghost-bar-one-bar-only · Naya Note · 2026-11-21 ~09:51 MST**
 
-*Paired Smart Note: SN-pending — The Ghost Bar — One Bar Only (takes the next free number at filing)*
+*Paired Smart Note: SN-4489 — The Ghost Bar — One Bar Only*
 
 **Category:** LAW — the old bar goes entirely; ONE bar only; the ghost is proven gone by render, never by bytes
 
