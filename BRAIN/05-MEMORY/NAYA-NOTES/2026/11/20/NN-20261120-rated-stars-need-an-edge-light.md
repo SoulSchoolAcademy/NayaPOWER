@@ -4,7 +4,7 @@
 
 **NN-20261120-rated-stars-need-an-edge-light · Naya Note · 2026-11-20 ~21:53–21:54 MST**
 
-*Paired Smart Note: SN-pending — Rated Stars Must Light Up Around the Edge (takes the next free number at filing)*
+*Paired Smart Note: SN-4444 — Rated Stars Must Light Up Around the Edge*
 
 **Category:** Design — a rated star must read as lit at a glance
 
