@@ -4,7 +4,7 @@
 
 **NN-20261120-copy-the-sibling-verbatim · Naya Note · 2026-11-20 ~17:05 MST**
 
-*Paired Smart Note: SN-pending — Copy the Sibling Verbatim (takes the next free number at filing)*
+*Paired Smart Note: SN-4369 — Copy the Sibling Verbatim*
 
 **Category:** Law — fix the odd one out by copying what already works
 
