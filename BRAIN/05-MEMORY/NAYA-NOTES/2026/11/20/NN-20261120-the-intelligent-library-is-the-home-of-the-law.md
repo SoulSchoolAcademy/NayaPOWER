@@ -4,7 +4,7 @@
 
 **NN-20261120-the-intelligent-library-is-the-home-of-the-law · Naya Note · 2026-11-20 ~18:25–18:26 MST**
 
-*Paired Smart Note: SN-pending — The Intelligent Library Is the Home of the Law (takes the next free number at filing)*
+*Paired Smart Note: SN-4393 — The Intelligent Library Is the Home of the Law*
 
 **Category:** Design — where the law lives
 
