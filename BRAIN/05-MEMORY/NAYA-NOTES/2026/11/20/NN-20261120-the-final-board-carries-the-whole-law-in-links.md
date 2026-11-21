@@ -4,7 +4,7 @@
 
 **NN-20261120-the-final-board-carries-the-whole-law-in-links · Naya Note · 2026-11-20 ~17:48–17:50 MST**
 
-*Paired Smart Note: SN-pending — The Final Board Carries the Whole Law in Links (takes the next free number at filing)*
+*Paired Smart Note: SN-4382 — The Final Board Carries the Whole Law in Links*
 
 **Category:** Design — how the last board works
 
