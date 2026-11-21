@@ -4,7 +4,7 @@
 
 **NN-20261120-one-frame-answers-them-all · Naya Note · 2026-11-20 17:54–17:55 MST**
 
-*Paired Smart Note: SN-pending — One Frame Answers Them All (takes the next free number at filing)*
+*Paired Smart Note: SN-4383 — One Frame Answers Them All*
 
 **Category:** Design — how the law pages are built
 
