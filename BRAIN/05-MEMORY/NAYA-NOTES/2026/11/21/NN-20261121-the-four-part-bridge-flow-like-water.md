@@ -4,7 +4,7 @@
 
 **NN-20261121-the-four-part-bridge-flow-like-water · Naya Note · 2026-11-21 ~10:32 MST**
 
-*Paired Smart Note: SN-pending — The Four-Part Bridge — Flow Like Water (takes the next free number at filing)*
+*Paired Smart Note: SN-4505 — The Four-Part Bridge — Flow Like Water*
 
 **Category:** LAW — the four-part bridge (GitHub, Supabase, Cloudflare, NayaNET) must flow flawlessly, like water; Supabase is the engine; never rebuild what already exists; use what we didn't realize we had
 
