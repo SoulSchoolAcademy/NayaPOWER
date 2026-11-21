@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4481",
+ "intelligence": {
+  "title": "SN-4481 — The Test Plan — He Tests It Himself, On Personal and on the Hub",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4481-the-test-plan-he-tests-it-himself",
+  "smart_note_id": "SN-4481",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4481/IB-SMART-NOTE-20261121-sn4481-the-test-plan-he-tests-it-himself.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "The test plan, in his words: (1) get the icons on the Hub; (2) end/finish on the Personal; (3) TEST 1 — he tests it himself on Personal AND on the Hub: he makes a post himself, with an image, coming out in the proper formatting — if it works, that's good; (4) TEST 2 — he gives ME images and I auto-format them on the Hub itself. Both tests are his hands, his eye. Sent to both coordinators as the acceptance for their rounds.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4481",
+   "title": "SN-4481 — The Test Plan — He Tests It Himself, On Personal and on the Hub",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4481/IB-SMART-NOTE-20261121-sn4481-the-test-plan-he-tests-it-himself.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4481/IB-SMART-NOTE-20261121-sn4481-the-test-plan-he-tests-it-himself.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

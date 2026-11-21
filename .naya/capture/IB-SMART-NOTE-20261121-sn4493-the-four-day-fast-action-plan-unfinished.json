@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4493",
+ "intelligence": {
+  "title": "SN-4493 — The 4-Day Fast Action Plan — Unfinished, Owed After the Link List",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4493-the-four-day-fast-action-plan-unfinished",
+  "smart_note_id": "SN-4493",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4493/IB-SMART-NOTE-20261121-sn4493-the-four-day-fast-action-plan-unfinished.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "\"We were creating the four day fast action plan and I had a video that I was working on. But we never did finish that.\" The 4-day Fast Action Club plan (part of Video 2's 4+5=9-day flow) and its video were never finished. Owed after the link list review. The video edit is HIS HANDS: he edits the Fast Action video himself — some of it is really good; upload one of them to YouTube, take part of one and put it into another.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4493",
+   "title": "SN-4493 — The 4-Day Fast Action Plan — Unfinished, Owed After the Link List",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4493/IB-SMART-NOTE-20261121-sn4493-the-four-day-fast-action-plan-unfinished.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4493/IB-SMART-NOTE-20261121-sn4493-the-four-day-fast-action-plan-unfinished.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

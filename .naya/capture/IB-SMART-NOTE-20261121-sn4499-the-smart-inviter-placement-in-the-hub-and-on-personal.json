@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4499",
+ "intelligence": {
+  "title": "SN-4499 — The Smart Inviter Placement — In the Hub and on Personal, Live, No Extra Work Now",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4499-the-smart-inviter-placement-in-the-hub-and-on-personal",
+  "smart_note_id": "SN-4499",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4499/IB-SMART-NOTE-20261121-sn4499-the-smart-inviter-placement-in-the-hub-and-on-personal.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "The Smart Inviter lives IN the Hub AND on the Personal page (the real one) — a door/button on each that opens the Inviter as it exists. The Inviter's URL goes in the Hub and on Personal so we know where it is — it's good there. He'll get back to it later; NO extra work on it right now — it's the marketing part, for when we're more complete. But it must be THERE, not lost, and LIVE.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4499",
+   "title": "SN-4499 — The Smart Inviter Placement — In the Hub and on Personal, Live, No Extra Work Now",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4499/IB-SMART-NOTE-20261121-sn4499-the-smart-inviter-placement-in-the-hub-and-on-personal.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4499/IB-SMART-NOTE-20261121-sn4499-the-smart-inviter-placement-in-the-hub-and-on-personal.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

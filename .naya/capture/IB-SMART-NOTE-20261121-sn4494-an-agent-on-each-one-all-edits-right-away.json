@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4494",
+ "intelligence": {
+  "title": "SN-4494 — An Agent on Each One — All Edits, Right Away",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4494-an-agent-on-each-one-all-edits-right-away",
+  "smart_note_id": "SN-4494",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4494/IB-SMART-NOTE-20261121-sn4494-an-agent-on-each-one-all-edits-right-away.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "\"Get all those edits done, all those links I gave you feedback on them all... each one of them you should have an agent on each one fixing them right away.\" Every edit he gives gets an agent on it right away; nothing sits. Dispatched in the same pass: About look-match · Personal freeze (top priority) · Calendar Your Notes + Smart Lists · Inviter ghost bar · Hub re-base + frame + bar + composer + ADD align + table of contents · SN-4467 picture test.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4494",
+   "title": "SN-4494 — An Agent on Each One — All Edits, Right Away",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4494/IB-SMART-NOTE-20261121-sn4494-an-agent-on-each-one-all-edits-right-away.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4494/IB-SMART-NOTE-20261121-sn4494-an-agent-on-each-one-all-edits-right-away.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

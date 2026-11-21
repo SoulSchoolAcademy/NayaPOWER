@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4480",
+ "intelligence": {
+  "title": "SN-4480 — A18 — Naya Framed or Naya Unframed — Framed Is the Default",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4480-a18-naya-framed-or-naya-unframed",
+  "smart_note_id": "SN-4480",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4480/IB-SMART-NOTE-20261121-sn4480-a18-naya-framed-or-naya-unframed.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "The block comes Naya framed, standard. A setting in the system lets the citizen choose framed or unframed. DEFAULT IS NAYA FRAMED. This is separate from the unformat toggle — the unformat toggle is about the boards inside; this setting is about the outer frame.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4480",
+   "title": "SN-4480 — A18 — Naya Framed or Naya Unframed — Framed Is the Default",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4480/IB-SMART-NOTE-20261121-sn4480-a18-naya-framed-or-naya-unframed.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4480/IB-SMART-NOTE-20261121-sn4480-a18-naya-framed-or-naya-unframed.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

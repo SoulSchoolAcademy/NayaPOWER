@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4502",
+ "intelligence": {
+  "title": "SN-4502 — Max Value from the Workers — Get Really Good at This",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4502-max-value-from-the-workers-get-really-good-at-this",
+  "smart_note_id": "SN-4502",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4502/IB-SMART-NOTE-20261121-sn4502-max-value-from-the-workers-get-really-good-at-this.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "\"You got to be always consistently... getting more intelligent and getting more in tune and being quicker and more effective and learning from having pieces already ready for you. So you should just get really good at this, right?\" The redo cycle is the failure: \"they're just redoing and redoing and redoing. The less times we have to redo the better.\" The assurance: diagnose before building, brief the exact base + laws + acceptance list, harvest ready pieces byte-for-byte, one lane one round, maker ×3 + seven questions → independent checker → captain double-checks the link first-hand → his eye; score = verified completions/hour, redo minutes bank zero.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4502",
+   "title": "SN-4502 — Max Value from the Workers — Get Really Good at This",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4502/IB-SMART-NOTE-20261121-sn4502-max-value-from-the-workers-get-really-good-at-this.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4502/IB-SMART-NOTE-20261121-sn4502-max-value-from-the-workers-get-really-good-at-this.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

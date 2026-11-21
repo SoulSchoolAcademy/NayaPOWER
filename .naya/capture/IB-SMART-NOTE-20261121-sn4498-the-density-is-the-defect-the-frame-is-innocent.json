@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4498",
+ "intelligence": {
+  "title": "SN-4498 — The Density Is the Defect — the Frame Is Innocent",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4498-the-density-is-the-defect-the-frame-is-innocent",
+  "smart_note_id": "SN-4498",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4498/IB-SMART-NOTE-20261121-sn4498-the-density-is-the-defect-the-frame-is-innocent.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "The frame is innocent — byte-identical, type identical. The density is the defect: agreement beats are 27–43 words, About beats 62–95, skill halves 86–144. Labels invisible (`.ib-rows` has zero CSS rules), first field row glued, no short frames anywhere. Fix: split to agreement density (deck ~84–98, his own alternative) and give the labels the frame's own `.ib-kind` treatment (harvest, not invention).",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4498",
+   "title": "SN-4498 — The Density Is the Defect — the Frame Is Innocent",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4498/IB-SMART-NOTE-20261121-sn4498-the-density-is-the-defect-the-frame-is-innocent.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4498/IB-SMART-NOTE-20261121-sn4498-the-density-is-the-defect-the-frame-is-innocent.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
