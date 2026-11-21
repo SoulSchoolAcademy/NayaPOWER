@@ -4,7 +4,7 @@
 
 **NN-20261120-every-page-gets-its-own-smart-list · Naya Note · 2026-11-20 ~17:41–19:00 MST**
 
-*Paired Smart Note: SN-pending — Every Page Gets Its Own Smart List (takes the next free number at filing)*
+*Paired Smart Note: SN-4406 — Every Page Gets Its Own Smart List*
 
 **Category:** Law — the lists are the organization of the vault
 
