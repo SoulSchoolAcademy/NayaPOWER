@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-21T15:48:57Z",
-  "tip": "d022b805811991cf9c16f3e1fe3af887be7bf181",
+  "generated_at": "2026-11-21T21:49:44Z",
+  "tip": "eb69fa7fd4e258ba06960665f0a55e5ab6da3e35",
   "prs": [
     {
       "number": 3499,
@@ -74,6 +74,24 @@
       "cure": "Author cures the PR-caused red check(s): claim-evidence-gate; then re-derive at the new head.",
       "owner": "author lane",
       "head": "02fb61f596742728b7d0a3d8a045a7ac976114c2"
+    },
+    {
+      "number": 3509,
+      "title": "docs(pi): 2026-11-21 director audit, live security findings and 14Q execution plan",
+      "tier": "A",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "24dbdca1977b821409f51223d25b5826826486b0"
+    },
+    {
+      "number": 3512,
+      "title": "Audit: retired twins are supersession chains, not duplicate-hash drift",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): safety-grant-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "9b9c4dd12f21b87d6b98f46104a80155df40e99f"
     }
   ]
 }
