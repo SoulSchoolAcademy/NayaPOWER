@@ -4,7 +4,7 @@
 
 **NN-20261120-the-red-n-may-rest-under-the-video · Naya Note · 2026-11-20 ~16:24–16:52 MST**
 
-*Paired Smart Note: SN-pending — The Red N May Rest Under the Video (takes the next free number at filing)*
+*Paired Smart Note: SN-4363 — The Red N May Rest Under the Video*
 
 **Category:** Design — the red N's fallback home, with breathing room
 
