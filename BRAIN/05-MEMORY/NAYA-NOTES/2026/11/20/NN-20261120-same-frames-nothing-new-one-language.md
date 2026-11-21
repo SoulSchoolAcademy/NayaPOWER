@@ -4,7 +4,7 @@
 
 **NN-20261120-same-frames-nothing-new-one-language · Naya Note · 2026-11-20 ~22:55–23:00 MST**
 
-*Paired Smart Note: SN-pending — Same Frames, Nothing New — One Language, Same Family (takes the next free number at filing)*
+*Paired Smart Note: SN-4452 — Same Frames, Nothing New — One Language, Same Family*
 
 **Category:** Law — use only what already works; no new design
 
