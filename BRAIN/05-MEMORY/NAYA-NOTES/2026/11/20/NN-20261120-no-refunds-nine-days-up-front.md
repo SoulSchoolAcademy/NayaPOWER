@@ -4,7 +4,7 @@
 
 **NN-20261120-no-refunds-nine-days-up-front · Naya Note · 2026-11-20 ~19:19 MST**
 
-*Paired Smart Note: SN-pending — No Refunds — Nine Days Up Front (takes the next free number at filing)*
+*Paired Smart Note: SN-4414 — No Refunds — Nine Days Up Front*
 
 **Category:** Law — try before you buy
 
