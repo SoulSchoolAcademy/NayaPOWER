@@ -75134,6 +75134,26 @@
         "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-20 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "c3a550d3d47dcebc2a725061870a04f22534a72820dee2d366b8e6447a30224c"
+    },
+    {
+      "smart_note_id": "SN-4449",
+      "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4449-about-skills-overnight-membership-tomorrow",
+      "title": "SN-4449 — Overnight Work Runs When Done Right — His Eye Comes in the Morning",
+      "content_hash": "7202661683f5cc6a2e768f5dfee58b24f6123d4f5241db7365bf492fa82fc3bb",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4449/IB-SMART-NOTE-20261120-sn4449-about-skills-overnight-membership-tomorrow.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-20",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-20 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "9746af9c660d5ecd6636b89c01e284ac78ae3a1b2959be2b94343a06e8e3be04"
     }
   ],
   "sequence_policy": {
@@ -75144,5 +75164,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "d503cf8ca6d80c84e603b67f63f3335cb436eb32babf01ef235b1d97f50de5cd"
+  "corpus_manifest_hash": "acf29dc66ee22c048826728cd65827d1e875f6f5a11bad7ec2d480aac5805b01"
 }
