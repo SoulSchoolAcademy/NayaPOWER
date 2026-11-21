@@ -4,7 +4,7 @@
 
 **NN-20261120-save-lands-straight-in · Naya Note · 2026-11-20 ~18:17 MST**
 
-*Paired Smart Note: SN-pending — Save Lands Straight In (takes the next free number at filing)*
+*Paired Smart Note: SN-4388 — Save Lands Straight In*
 
 **Category:** Law — how saving works
 
