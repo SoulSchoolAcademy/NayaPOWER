@@ -4,7 +4,7 @@
 
 **NN-20261120-rate-this-intel · Naya Note · 2026-11-20 ~18:09–18:15 MST**
 
-*Paired Smart Note: SN-pending — Rate This Intel (takes the next free number at filing)*
+*Paired Smart Note: SN-4385 — Rate This Intel*
 
 **Category:** Design — how a rating control is named and built
 
