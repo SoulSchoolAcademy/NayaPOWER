@@ -4,7 +4,7 @@
 
 **NN-20261120-what-is-it-name-it-categorize-it · Naya Note · 2026-11-20 ~17:57–17:58 MST**
 
-*Paired Smart Note: SN-pending — What Is It, Name It, Categorize It (takes the next free number at filing)*
+*Paired Smart Note: SN-4392 — What Is It, Name It, Categorize It*
 
 **Category:** Design — how the linked boards are built
 
