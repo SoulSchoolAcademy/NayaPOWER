@@ -4,7 +4,7 @@
 
 **NN-20261120-video-5-what-is-nayanet-ultimately · Naya Note · 2026-11-20 ~19:55 MST**
 
-*Paired Smart Note: SN-pending — Video 5: What Is NayaNET, Ultimately? (takes the next free number at filing)*
+*Paired Smart Note: SN-4423 — Video 5: What Is NayaNET, Ultimately?*
 
 **Category:** Design — the fifth video, the thesis spoken aloud
 
