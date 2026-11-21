@@ -4,9 +4,10 @@
 // verified first-hand via the git blob API 2026-11-21; local copy
 // about-skills-rebuild-20261120/src-agreement-unfold-fixed.html, byte-identical).
 // Takes the frame system (CSS + JS + article markup) VERBATIM and swaps ONLY the
-// ordered content: header labels, the 37 agreement beats -> 28 frames (14 About
-// beats in the settled order + the 14 skill slides in the SAME deck, same frame,
-// between About 9 and About 10), the play script (6 paragraphs, About story),
+// ordered content: header labels, the 37 agreement beats -> 42 frames (14 About
+// beats in the settled order + the 14 skill slides, EACH SPLIT ACROSS TWO FRAMES
+// in the SAME deck, same frame, between About 9 and About 10), the play script
+// (6 paragraphs, About story),
 // three media-frame label strings, the two wireFrame7 fallback labels, the
 // playing-state play-note string (same visible label as the static tip), and one
 // comment word removed so the machine checker passes (the source file FAILs its
@@ -70,7 +71,7 @@ function rows(rs) {
   return '<div class="ib-rows">' + rs.map(r =>
     '<p><span class="ib-row-k">' + esc(r[0]) + '</span> \u2014 ' + esc(r[1]) + '</p>').join('') + '</div>';
 }
-// pos = deck position 1..28. kind/title/nutHtml/foot per frame. keepLabel overrides
+// pos = deck position 1..42. kind/title/nutHtml/foot per frame. keepLabel overrides
 // the Keep reading label (About 9 -> "See all my skills"). extraHtml appended
 // before </article> (About 14 -> the Enter NayaNET link).
 function beat(pos, kind, title, foot, nutshellHtml, keepLabel, extraHtml) {
@@ -94,10 +95,10 @@ function beat(pos, kind, title, foot, nutshellHtml, keepLabel, extraHtml) {
   // the pinned foot (wireFrame8 F7), beside Back, so the climax action is never
   // below the fold. Drop the template's Keep reading here; About 14's Enter
   // anchor (id="dealAgreeBtn", below) takes its place in the foot.
-  if (pos === 28) {
+  if (pos === 42) {
     const before = a;
     a = a.replace(/<button class="p3-enter letter-next deck-next" type="button" data-beat="1">Keep reading &#9670;<\/button>/, '');
-    if (a === before) throw new Error('beat 28: Keep reading button not found');
+    if (a === before) throw new Error('beat 42: Keep reading button not found');
   } else {
     a = a.replace('data-beat="1">Keep reading', 'data-beat="' + pos + '">' + keepLabel);
   }
@@ -105,7 +106,7 @@ function beat(pos, kind, title, foot, nutshellHtml, keepLabel, extraHtml) {
   return a;
 }
 
-// --- the 28-frame deck: About 1-9, Skills 1-14, About 10-14 ---
+// --- the 42-frame deck: About 1-9, Skills 1-14, About 10-14 ---
 let frames = [];
 ABOUT.forEach((b, i) => {
   const n = i + 1;
@@ -128,23 +129,36 @@ ABOUT.forEach((b, i) => {
     ? '<a class="p3-enter deal-agree-btn" id="dealAgreeBtn" href="https://nayanet.app/">Enter NayaNET &#9670;</a>' : null;
   frames.push({ pos: null, kind: b.kind, title: b.title, foot: 'About Shawn Vibert', nut, keep, extra });
 });
+// THE SPLIT (fix round 2026-11-21, captain's decision): each skill slide is
+// split across TWO frames at a field boundary — the uniform split point for
+// all 14 skills, chosen by measured heights (render probe, phone 390x844):
+// frame A carries head + sub + WHAT IT MEANS + WHY IT MATTERS; frame B
+// carries WHAT MAKES US DIFFERENT + ONE REAL EXAMPLE + WHAT'S IN IT FOR YOU
+// + PROOF. Every field's words appear verbatim across the two frames: nothing
+// dropped, nothing repeated, nothing added, nothing reworded. Both halves keep
+// kind 'SKILL N' and the same title (the frame's own title element — no new
+// kind, no "continued" label, no added words). No field is split between
+// sentences: each field sits whole in exactly one frame.
 SKILLS.forEach((sk, i) => {
   const h = HARV[i];
   const proofRow = sk.proof
     ? 'PROOF</span> \u2014 ' + esc(sk.status) + ' \u00B7 <a class="letter-all" href="' + sk.proof[1] + '">' + esc(sk.proof[0]) + ' &#9670;</a>'
     : 'PROOF</span> \u2014 ' + esc(sk.status) + ' \u00B7 Proof owed: the live demonstration is still to come \u2014 no link, no pretence.';
-  const nut = '<p>' + esc(sk.head) + '</p><p>' + esc(sk.sub) + '</p>' + rows([
+  const nutA = '<p>' + esc(sk.head) + '</p><p>' + esc(sk.sub) + '</p>' + rows([
     ['WHAT IT MEANS', sk.means],
     ['WHY IT MATTERS', h.why],
+  ]);
+  const nutB = rows([
     ['WHAT MAKES US DIFFERENT', sk.diff],
     ['ONE REAL EXAMPLE', sk.ex],
     ['WHAT\u2019S IN IT FOR YOU', h.foryou],
   ]) + '<div class="ib-rows"><p><span class="ib-row-k">' + proofRow + '</p></div>';
-  frames.push({ pos: null, kind: 'SKILL ' + (i + 1), title: sk.name, foot: 'My skills', nut, keep: 'Keep reading', extra: null });
+  frames.push({ pos: null, kind: 'SKILL ' + (i + 1), title: sk.name, foot: 'My skills', nut: nutA, keep: 'Keep reading', extra: null });
+  frames.push({ pos: null, kind: 'SKILL ' + (i + 1), title: sk.name, foot: 'My skills', nut: nutB, keep: 'Keep reading', extra: null });
 });
-// Order: About 1-9, Skills 1-14, About 10-14.
-const ordered = frames.slice(0, 9).concat(frames.slice(14, 28), frames.slice(9, 14));
-if (ordered.length !== 28) throw new Error('deck is not 28: ' + ordered.length);
+// Order: About 1-9, Skills 1a/1b .. 14a/14b, About 10-14. Deck is 42 frames.
+const ordered = frames.slice(0, 9).concat(frames.slice(14, 42), frames.slice(9, 14));
+if (ordered.length !== 42) throw new Error('deck is not 42: ' + ordered.length);
 const deckHtml = ordered.map((f, i) =>
   beat(i + 1, f.kind, f.title, f.foot, f.nut, f.keep, f.extra)).join('\n');
 
@@ -166,9 +180,12 @@ out = out.replace(hc[0], `<!-- ABOUT SHAWN VIBERT + SKILLS \u2014 FRAME REBUILD 
      142,532 B, blob 1f0b04747e3315be6f1b619c1411e5e14fbdc1bb \u2014 verified by git blob
      sha + size, 2026-11-21; local copy src-agreement-unfold-fixed.html in the
      20261120 records dir). Only the CONTENT changed: header labels, 37 agreement
-     beats -> 28 frames (14 About beats, in the settled order, with the 14 skill
-     slides in the same deck, same frame, between About 9 and About 10), the play
-     script (6 paragraphs, About story), three media-frame label strings, the two
+     beats -> 42 frames (14 About beats, in the settled order, with the 14 skill
+     slides in the same deck, same frame, between About 9 and About 10 \u2014 each
+     skill split across TWO frames at a field boundary: head + sub + WHAT IT
+     MEANS + WHY IT MATTERS, then WHAT MAKES US DIFFERENT + ONE REAL EXAMPLE +
+     WHAT\u2019S IN IT FOR YOU + PROOF; words unchanged, both halves kind SKILL N),
+     the play script (6 paragraphs, About story), three media-frame label strings, the two
      wireFrame7 fallback labels, the playing-state play-note string (the same
      visible label as the static tip), and one comment word removed so the machine
      checker passes (the source file FAILs its own checker on that word).
@@ -202,7 +219,7 @@ out = once(out, '<p class="foot-links">nayanet.app &mdash; enter.<br>The Collect
 out = once(out, 'is one quiet line, white, nothing gray. Beats stack',
   'is one quiet line, white. Beats stack', 'gray word');
 
-// 4. The 37 agreement beats -> the 28-frame deck.
+// 4. The 37 agreement beats -> the 42-frame deck.
 const deckRe = /<div id="deckBody" data-smart-block="deck">[\s\S]*?\n<\/div>\n<!-- AGREEMENT INTRO/;
 const dm = out.match(deckRe);
 if (!dm) throw new Error('deckBody block not found');
