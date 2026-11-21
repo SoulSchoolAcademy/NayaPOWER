@@ -3282,6 +3282,11 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
   .tl-slot{padding:4px 10px!important}
   .smart-block[aria-label="Timeline"] .cat-essence{margin-top:4px!important;margin-bottom:4px!important}
 }
+/* ============ FIX9F4 — calendar fix round 4, structural (2026-11-21) ============ */
+/* TIMELINE — the tile heading is one line now (see timelineTileHTML), and the tile's own air trims at phone so six slots + the pager clear the frame. */
+@media(max-width:560px){
+  .tile-timeline{padding-top:8px!important;padding-bottom:8px!important}
+}
 </style>
   </head>
   <body>
@@ -4422,7 +4427,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           openScopeId = null; openRowId = null;
           unfolded = { appointments: false, record: false };
           __tlPage = 0; /* FIX9F item 1 — a fresh day opens on the morning half of the timeline. */
-          __bookOpen = false; __journalPage = 0; __slPage = 0; /* FIX9F2 item 1 — a fresh day opens with the booking flow closed and the pagers on page one (the open list itself survives the day step — same list, new day). */
+          __bookOpen = false; __journalPage = 0; __slPage = 0; __sumPage = 0; /* FIX9F2 item 1 — a fresh day opens with the booking flow closed and the pagers on page one (the open list itself survives the day step — same list, new day; FIX9F4: the Summary pager resets too). */
           /* The month on screen follows the day on screen — back
              returns to the month holding this day */
           viewY = d.getFullYear(); viewM = d.getMonth();
@@ -4778,11 +4783,46 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           for (var i = 0; i < pages; i++) h += '<button type="button" class="pill" data-slpage="' + i + '" aria-pressed="' + ((__slPage || 0) === i) + '">Page ' + (i + 1) + "</button>";
           return h + "</div>";
         }
+        /* FIX9F4 item 3 — a 2-line item needs a shorter page: any item whose text runs past one phone line (~40 characters at 17 px in a 310 px row) pages its list three to a frame instead of four (nine / smart / yours) or five (citizen lists / Contacts). One long item sets the page for the whole list, so the pager never mixes page sizes. */
+        function __slHasLong(texts) {
+          for (var i = 0; i < texts.length; i++) { if ((texts[i] || "").length > 40) return true; }
+          return false;
+        }
+        function sumPagerHTML(pages) {
+          /* FIX9F4 item 4 — the Summary pages wear the same pager as the timeline and the lists: one lit pill, never two. */
+          if (pages <= 1) return "";
+          var h = '<div class="tl-pager" role="group" aria-label="Summary pages">';
+          for (var i = 0; i < pages; i++) h += '<button type="button" class="pill" data-sumpage="' + i + '" aria-pressed="' + ((__sumPage || 0) === i) + '">Page ' + (i + 1) + "</button>";
+          return h + "</div>";
+        }
+        function sumPageHTML() {
+          /* FIX9F4 item 4 — the Summary pages, one frame each: the intel lines split counts (first page) / quotes (second), then the doors (Journal with the last quote, Reports + Intel Today together). A page with nothing on it never exists — an empty day has three pages, a full day four. intelHTML() itself is untouched (the stats board reads it too); this only slices its lines. */
+          var intel = intelHTML();
+          var none = intel.match(/<p class="none-line">[\s\S]*?<\/p>/);
+          var lines = intel.match(/<p class="intel-line">[\s\S]*?<\/p>/g) || [];
+          var k = keyOf(sel);
+          var dayJournal = journal[k] || [];
+          var rowJ = sumRow("journal", "#07925f", "book", "Your Journal", dayJournal.length ? dayJournal.length + (dayJournal.length === 1 ? " entry written for this day." : " entries written for this day.") : "Nothing written for this day yet.", dayJournal.length, null);
+          var rowR = sumRow("reports", "#0e7490", "landmark", "Daily Reports", "The day's report — appointments, notes, journal and lists, counted.", 0, null);
+          var rowI = sumRow("daily", "#3f51b5", "spark", "Intel Today", "The day itself — every appointment, note, journal entry and list, in full.", 0, null);
+          var pages = [];
+          if (none) pages.push('<div class="panel summary-panel">' + none[0] + "</div>");
+          else {
+            if (lines[0] || lines[1]) pages.push('<div class="panel summary-panel">' + (lines[0] || "") + (lines[1] || "") + "</div>");
+            if (lines[2]) pages.push('<div class="panel summary-panel">' + lines[2] + "</div>");
+          }
+          if (lines[3]) pages.push('<div class="panel summary-panel">' + lines[3] + '</div><div class="sum-list">' + rowJ + "</div>");
+          else pages.push('<div class="sum-list">' + rowJ + "</div>");
+          pages.push('<div class="sum-list">' + rowR + rowI + "</div>");
+          var pg = Math.min(__sumPage || 0, pages.length - 1);
+          if (pg < 0) pg = 0;
+          return pages[pg] + sumPagerHTML(pages.length);
+        }
         function slItemsHTML(listId) {
           var k = keyOf(sel);
           if (listId === "nine") {
             /* FIX9F2 item 1 — nine items on one frame would push past it: the detail slide pages 5 to a frame. */
-            var __per9 = 4; /* FIX9F3 item 2 — four to a frame: five 2-line items pushed the detail slide past it. */ var __pg9 = Math.min(__slPage || 0, Math.ceil(NINE_NOTES.length / __per9) - 1);
+            var __per9 = __slHasLong(NINE_NOTES.map(function (n) { return n.t + " — " + n.d; })) ? 3 : 4; /* FIX9F4 item 3 — three to a frame when any item runs two lines: four 2-line items pushed the detail slide ~29 px past the phone frame. */ var __pg9 = Math.min(__slPage || 0, Math.ceil(NINE_NOTES.length / __per9) - 1);
             return NINE_NOTES.slice(__pg9 * __per9, __pg9 * __per9 + __per9).map(function (n) {
               return '<div class="noteitem"><p><strong>' + n.t + '</strong> — ' + n.d + '</p></div>';
             }).join("") + slPagerHTML(NINE_NOTES.length, __per9);
@@ -4790,7 +4830,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           if (listId === "smart") {
             var sns = mergedNotesFor(k).filter(function (n) { return (n.text || "").indexOf("Smart note — ") === 0; });
             if (!sns.length) return '<p class="none-line">No Smart notes saved for this day yet.</p>';
-            var __perS = 4; /* FIX9F3 item 2 — four to a frame, like nine. */ var __pgS = Math.min(__slPage || 0, Math.ceil(sns.length / __perS) - 1);
+            var __perS = __slHasLong(sns.map(function (n) { return n.text || ""; })) ? 3 : 4; /* FIX9F4 item 3 — three to a frame when any item runs two lines, like nine. */ var __pgS = Math.min(__slPage || 0, Math.ceil(sns.length / __perS) - 1);
             return sns.slice(__pgS * __perS, __pgS * __perS + __perS).map(function (n) { return '<div class="noteitem"><p>' + escapeHTML(n.text || "") + '</p></div>'; }).join("") + slPagerHTML(sns.length, __perS);
           }
           if (listId === "yours") {
@@ -4799,7 +4839,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
                day was the walk's failure. */
             var todays = mergedNotesFor(k).filter(function (n) { return (n.text || "").indexOf("Smart note — ") !== 0; }).slice().reverse();
             if (!todays.length) return '<p class="none-line">Nothing written for this day yet — write it on the Your Notes slide.</p>';
-            var __perY = 4; /* FIX9F3 item 2 — four to a frame, like nine. */ var __pgY = Math.min(__slPage || 0, Math.ceil(todays.length / __perY) - 1);
+            var __perY = __slHasLong(todays.map(function (n) { return n.text || ""; })) ? 3 : 4; /* FIX9F4 item 3 — three to a frame when any item runs two lines, like nine. */ var __pgY = Math.min(__slPage || 0, Math.ceil(todays.length / __perY) - 1);
             return '<p class="formtitle">' + dayLabelFor(k) + "</p>" + todays.slice(__pgY * __perY, __pgY * __perY + __perY).map(function (n) { return journalItemHTML(n); }).join("") + slPagerHTML(todays.length, __perY);
           }
           if (listId.indexOf("mine:") === 0) {
@@ -4811,7 +4851,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             L.items.forEach(function (n) { var dk = n.day || ""; (byDay[dk] = byDay[dk] || []).push(n); });
             var __flatM = [];
             Object.keys(byDay).sort().reverse().forEach(function (dk) { byDay[dk].forEach(function (n) { __flatM.push({ dk: dk, n: n }); }); });
-            var __perM = 5; var __pgM = Math.min(__slPage || 0, Math.max(0, Math.ceil(__flatM.length / __perM) - 1));
+            var __perM = __slHasLong(__flatM.map(function (it) { return it.n.text || ""; })) ? 3 : 5; /* FIX9F4 item 3 — three to a frame when any item runs two lines (the day-group headers travel with their items, as before). */ var __pgM = Math.min(__slPage || 0, Math.max(0, Math.ceil(__flatM.length / __perM) - 1));
             var __pageM = __flatM.slice(__pgM * __perM, __pgM * __perM + __perM);
             var __hM = ""; var __lastM = null;
             __pageM.forEach(function (it) { if (it.dk !== __lastM) { __lastM = it.dk; __hM += '<p class="formtitle">' + (it.dk ? dayLabelFor(it.dk) : "No day") + "</p>"; } __hM += listItemHTML(it.n); });
@@ -4820,7 +4860,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           if (listId === "contacts") {
             /* FIX9F3 item 4 — Contacts pages 5 to a frame like the rest; the add-a-contact tools stay below the pager. */
             var cs = contacts[k] || [];
-            var __perC = 5; var __pgC = Math.min(__slPage || 0, Math.max(0, Math.ceil(cs.length / __perC) - 1));
+            var __perC = __slHasLong(cs.map(function (n) { return n.text || ""; })) ? 3 : 5; /* FIX9F4 item 3 — three to a frame when any item runs two lines, like the citizen lists. */ var __pgC = Math.min(__slPage || 0, Math.max(0, Math.ceil(cs.length / __perC) - 1));
             var citems = cs.length ? cs.slice(__pgC * __perC, __pgC * __perC + __perC).map(function (n) { return '<div class="noteitem"><p>' + escapeHTML(n.text || "") + "</p></div>"; }).join("") + slPagerHTML(cs.length, __perC) : '<p class="none-line">No contacts here yet — add one below. Connections is not connected yet; when it connects, people like you appear here, matched by what you share.</p>';
             return citems + listToolsHTML("contact") +
               '<form id="contactForm"><p class="formtitle">Add a contact</p>' +
@@ -4859,9 +4899,10 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
            the day-scroll never scrolls — scrollTop stays 0. */
         var dayBlock = 0;
         var __tlPage = 0; /* FIX9F item 1 — the timeline pages 6+5+5 slots a frame (FIX9F3: 6+6+4 left the group buttons half-clipped at 1920x999 — Morning keeps its six, Midday and Evening take five). */
-        var __bookOpen = false; /* FIX9F2 item 1 — the booking flow (calendar + form) is open on its own two slides. */
+        var __bookOpen = false; /* FIX9F2 item 1 — the booking flow (calendar + time + form) is open on its own three slides (FIX9F4: Step 3 is its own slide now). */
         var __journalPage = 0; /* FIX9F2 item 1 — journal entries page 4 to a frame on their own slide. */
-        var __slPage = 0; /* FIX9F2 item 1 — an open list pages to a frame on its own slide (FIX9F3: nine / smart / yours take 4, citizen lists and Contacts take 5). */
+        var __slPage = 0; /* FIX9F2 item 1 — an open list pages to a frame on its own slide (FIX9F4: nine / smart / yours take 4, citizen lists and Contacts take 5 — three when any item runs two lines). */
+        var __sumPage = 0; /* FIX9F4 item 4 — the Summary pages (see sumPageHTML): the intel panel grows with the day, so the slide pages instead of scrolling. */
         /* FIX12 item 2 — ONE navigation state, carried across days: the
            slide the citizen is on survives a day step, so day-to-day
            travel lands on the SAME slide, never slide 1. */
@@ -5258,11 +5299,8 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              journal/reports/Intel Today). FIX11 item 8 — the journal
              BOARD lives only on its own slide; the summary carries
              only the icon that opens it. */
-          var summaryInner = '<div class="panel summary-panel">' + intelHTML() + "</div>" + '<div class="sum-list">' +
-            sumRow("journal", "#07925f", "book", "Your Journal", dayJournal.length ? dayJournal.length + (dayJournal.length === 1 ? " entry written for this day." : " entries written for this day.") : "Nothing written for this day yet.", dayJournal.length, null) +
-            sumRow("reports", "#0e7490", "landmark", "Daily Reports", "The day's report — appointments, notes, journal and lists, counted.", 0, null) +
-            sumRow("daily", "#3f51b5", "spark", "Intel Today", "The day itself — every appointment, note, journal entry and list, in full.", 0, null) +
-            "</div>";
+          /* FIX9F4 item 4 — the Summary pages (see sumPageHTML): the intel panel grows with the day, so the slide pages instead of scrolling. */
+          var summaryInner = sumPageHTML();
           /* SMART LISTS FRAME (2026-11-20; fifth list 2026-11-21):
              the lists area, in the same framed format as the rest of
              the page — five lists, then the citizen's own lists,
@@ -5317,7 +5355,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              directly after Summary; Your Notes closes the deck (the
              Smart Notes slide is gone — smart notes no longer display
              on the calendar day, 2026-11-20). */
-          /* FIX9F2 item 1 — the frame-law slides: Journal entries follows Journal; Timeline follows Appointments; Book a time + What is it? follow Timeline (only while the booking flow is open); the open list's detail follows Smart Lists (only while a list is open). Each is its own frame — overflow moves to the next frame, never scroll inside one. */
+          /* FIX9F2 item 1 — the frame-law slides: Journal entries follows Journal; Timeline follows Appointments; Book a time + Pick a time + What is it? follow Timeline (only while the booking flow is open; FIX9F4: Step 3 is its own slide now); the open list's detail follows Smart Lists (only while a list is open). Each is its own frame — overflow moves to the next frame, never scroll inside one. */
           wrap.innerHTML =
             catSection(CATS[0], notifCards + dayNav(dc, false), null, "Tap a world — see its notifications.", "", dc, "diamond", null, "notif-slide allow-scroll") +
             catSection(CATS[2], journalInner + dayNav("#07925f", false), "record", "Your day, in your words — kept for this day.", "Journal", "#07925f", "orb") +
@@ -5325,8 +5363,9 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             catSection(CATS[0], notifRowsA + dayNav(dc, false), null, "Six worlds, one day — tap one to see its day.", "Your Worlds", dc, "orb", "worlds", "worlds-slide") +
             catSection(CATS[0], notifRowsB + dayNav(dc, false), null, "Local, Province and Global — your news hub, each scope its own door.", "News Hub", dc, "hex", null, "news-slide") +
             catSection(CATS[1], eliteApptsHTML(dc, apptRows) + dayNav("#8e24aa", false), "appointments", "The day, booked — what is on, and a time to book.", "Appointments", "#8e24aa", null, null, "allow-scroll") +
-            catSection(CATS[1], timelineTileHTML(dc, tl) + dayNav("#3f51b5", false), "appointments", "Every hour, 6 AM to 9 PM — tap an open hour to book it.", "Timeline", "#3f51b5", null, null, "allow-scroll") +
+            catSection(CATS[1], timelineTileHTML(dc, tl) + dayNav("#3f51b5", false), "appointments", "Tap an open hour, 6 AM–9 PM.", "Timeline", "#3f51b5", null, null, "allow-scroll") +
             (__bookOpen ? catSection(CATS[1], '<div class="elite-cal" id="eliteCal"></div>' + dayNav("#8e24aa", false), "appointments", "Pick how you meet, pick the day, pick the time.", "Book a time", "#8e24aa", null, null, "allow-scroll") : "") +
+            (__bookOpen ? catSection(CATS[1], '<div class="elite-cal" id="eliteTime"></div>' + dayNav("#8e24aa", false), "appointments", "Tap an open hour to book it.", "Pick a time", "#8e24aa", null, null, "allow-scroll") : "") +
             (__bookOpen ? catSection(CATS[1], '<div class="elite-form" id="eliteForm"></div>' + dayNav("#8e24aa", false), "appointments", "Name it, and it is booked.", "What is it?", "#8e24aa", null, null, "allow-scroll") : "") +
             catSection(CATS[2], summaryInner + dayNav("#3f51b5", false), "record", "The day, written down — counted.", "Summary of the day", "#3f51b5", "diamond", null, "allow-scroll") +
             catSection(CATS[2], smartListsInner + dayNav("#c62828", false), "record", "Everything saved, kept in order.", "Smart Lists", "#c62828", "diamond", null, "allow-scroll") +
@@ -5483,7 +5522,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             });
           });
           /* FIX9F2 item 1 — the booking slides are re-created by every render: if the flow is open, fill the fresh calendar + form now, or the slides would stand empty after any re-render (a save, a page turn, a duration change). */
-          if (__bookOpen) { mcRenderCal(); mcRenderForm(); }
+          if (__bookOpen) { mcRenderCal(); mcRenderTime(); mcRenderForm(); }
           armScrollLight();
         }
 
@@ -5840,7 +5879,8 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           if (first) {
             __mc.time = first;
             __mc.timePage = Math.floor(times.indexOf(first) / 6);
-            mcRenderCal(); mcRenderForm();
+            mcRenderCal(); mcRenderTime(); mcRenderForm();
+            gotoSlideByLabel("What is it?");
           } else {
             /* FIX9F item 5 — never call a past hour "full": it has
                passed (the minimum-notice rule), it is not booked out. */
@@ -5851,7 +5891,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
               ? "That hour has passed — here are the next open times."
               : "That hour is full — here are the next open times.";
             __mc.timePage = 0;
-            mcRenderCal(); mcRenderForm();
+            mcRenderCal(); mcRenderTime(); mcRenderForm();
             gotoSlideByLabel("What is it?");
           }
         }
@@ -5865,6 +5905,8 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             if (jp) { __journalPage = parseInt(jp.getAttribute("data-jpage"), 10) || 0; renderCategories(lastApptRows, lastTl); renderNotifBar(); renderNotifDetail(); dayShow(dayBlock); return; }
             var sp = ev.target.closest("[data-slpage]");
             if (sp) { __slPage = parseInt(sp.getAttribute("data-slpage"), 10) || 0; renderCategories(lastApptRows, lastTl); renderNotifBar(); renderNotifDetail(); dayShow(dayBlock); return; }
+            var smp = ev.target.closest("[data-sumpage]");
+            if (smp) { __sumPage = parseInt(smp.getAttribute("data-sumpage"), 10) || 0; renderCategories(lastApptRows, lastTl); renderNotifBar(); renderNotifDetail(); dayShow(dayBlock); return; }
             var s = ev.target.closest(".tl-slot");
             if (s && s.getAttribute("data-slot")) openBookFor(s.getAttribute("data-slot"));
           });
@@ -5934,7 +5976,6 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         }
         function mcRenderCal() {
           var cal = $("eliteCal"); if (!cal) return;
-          var dc = sel ? DAY_COLORS[sel.getDay()] : "#8e24aa";
           var today = new Date(); today.setHours(0, 0, 0, 0);
           /* ROUND2 item 2 — Step 1: the kind of time, from the page's own vocabulary (Smart Meet /
              in person / call — the meet-room text already says "meet in person"; "call" rides the
@@ -5953,6 +5994,14 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             days += '<button type="button" class="mc-day' + (free ? "" : " mc-dim") + '" style="--mc:' + DAY_COLORS[d.getDay()] + '" data-mc-day="' + keyOf(d) + '" aria-pressed="' + !!isSel + '"' + (free ? "" : ' aria-disabled="true"') + '>' +
               '<span class="mc-wd">' + WEEKDAYS[d.getDay()].slice(0, 3) + "</span>" + dayDigitsHTML(d.getDate(), DAY_COLORS[d.getDay()]) + "</button>";
           }
+          cal.innerHTML = kindRow +
+            '<p class="r2-step">Step 2 — Pick the day</p><div class="mc-days">' + days + "</div>";
+        }
+        /* FIX9F4 item 1 — Step 3 lives on its own "Pick a time" slide now: the booking flow split (kind → day → time → form) so each slide fits its frame with no internal scroll. The Step 3 body below is verbatim from mcRenderCal — duration, time pills, More times, the no-times note — only the step label carries the day now, so the time slide shows what it is booking; the kind rides in __mc.kind and shows on the form slide, as before. The harvested digit tiles keep their size — no booking-only scale. */
+        function mcRenderTime() {
+          var tm = $("eliteTime"); if (!tm) return;
+          var dc = sel ? DAY_COLORS[sel.getDay()] : "#8e24aa";
+          var dayBit = __mc.day ? " · " + WEEKDAYS[__mc.day.getDay()].slice(0, 3) + ", " + MONTHS[__mc.day.getMonth()].slice(0, 3) + " " + __mc.day.getDate() : "";
           var body = "";
           if (__mc.day) {
             var times = mcFreeTimes(__mc.day, __mc.dur);
@@ -5973,9 +6022,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           } else {
             body += '<p class="mc-note">Pick a day to see its open times.</p>';
           }
-          cal.innerHTML = kindRow +
-            '<p class="r2-step">Step 2 — Pick the day</p><div class="mc-days">' + days + "</div>" +
-            '<p class="r2-step">Step 3 — Pick a time</p>' + body;
+          tm.innerHTML = '<p class="r2-step">Step 3' + dayBit + "</p>" + body;
         }
         function mcRenderForm() {
           var form = $("eliteForm"); if (!form) return;
@@ -5994,19 +6041,19 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             '<input type="text" id="mcWho" placeholder="Who is it with?" aria-label="Who is it with?" maxlength="80" value="' + escapeHTML(__mc.edit ? (__mc.edit.who || "") : "").replace(/"/g, "&quot;") + '" />' +
             '<button type="button" class="elite-bookpill" id="mcBook">' + (__mc.edit ? "Save the change" : "Book") + "</button>";
         }
-        /* FIX9F2 item 1 — the booking flow is the NEXT TWO frames now: the calendar (Book a time) and the form (What is it?) are their own slides, so the Appointments slide never carries them. Opening the flow re-renders the deck with those slides in it, then walks to the calendar slide. */
+        /* FIX9F2 item 1 — the booking flow is the NEXT THREE frames now: the calendar (Book a time), the time (Pick a time) and the form (What is it?) are their own slides (FIX9F4: Step 3 split off), so the Appointments slide never carries them. Opening the flow re-renders the deck with those slides in it, then walks to the calendar slide. */
         function mcOpen(day, meet) {
           __mc.day = day || sel; __mc.time = null; __mc.meet = !!meet; __mc.edit = null;
           __mc.kind = meet ? "meet" : null; __mc.timePage = 0; __mc.confirmed = null; __mc.refused = null;
           __bookOpen = true;
           renderCategories(lastApptRows, lastTl); renderNotifBar(); renderNotifDetail();
           if (!gotoSlideByLabel("Book a time")) dayShow(dayBlock);
-          mcRenderCal(); mcRenderForm();
+          mcRenderCal(); mcRenderTime(); mcRenderForm();
           var b = $("tileBookBtn"); if (b) b.setAttribute("aria-expanded", "true");
         }
         function mcBook() {
           if (!__mc.day || !__mc.time) return;
-          if (!__mc.kind) { __mc.refused = "Pick how you meet first — Step 1."; mcRenderCal(); mcRenderForm(); return; }
+          if (!__mc.kind) { __mc.refused = "Pick how you meet first — Step 1."; mcRenderCal(); mcRenderTime(); mcRenderForm(); return; }
           /* ROUND2 item 2 — the guard: the time pills only ever show free times, so the normal path
              cannot double-book; but the slot is re-checked here, so a second booking of the same time
              is refused and the next open times are offered instead. */
@@ -6014,7 +6061,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           if (free.indexOf(__mc.time) === -1 && !(__mc.edit && __mc.edit.time === __mc.time)) {
             __mc.refused = "That time is taken now — here are the next open times.";
             __mc.time = null; __mc.timePage = 0;
-            mcRenderCal(); mcRenderForm(); return;
+            mcRenderCal(); mcRenderTime(); mcRenderForm(); return;
           }
           var title = ($("mcTitle") ? $("mcTitle").value.trim() : "") || "Appointment";
           var who = ($("mcWho") ? $("mcWho").value.trim() : "");
@@ -6043,7 +6090,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           __mc.confirmed = { day: __mc.day, time: __mc.time, dur: __mc.dur, title: title, who: who, kind: __mc.kind };
           __mc.refused = null;
           r2RefreshTiles();
-          mcRenderCal(); mcRenderForm();
+          mcRenderCal(); mcRenderTime(); mcRenderForm();
         }
         /* ROUND2 item 2 — refresh the slide's own tiles + timeline in place after a booking, so the
            confirmation can stay on screen while the day already shows the booking. Row template is
@@ -6094,7 +6141,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           if (ch) ch.addEventListener("click", function () {
             __mc.edit = { time: c.time, title: c.title, who: c.who || "" };
             __mc.day = c.day; __mc.time = c.time; __mc.kind = c.kind; __mc.dur = c.dur || 30; __mc.confirmed = null; __mc.refused = null;
-            mcRenderCal(); mcRenderForm();
+            mcRenderCal(); mcRenderTime(); mcRenderForm();
             gotoSlideByLabel("Book a time");
           });
           var dn = $("r2Done");
@@ -6115,12 +6162,13 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         }
         /* FIX9F2 item 1 — the timeline tile, harvested whole from eliteApptsHTML: it is the Timeline slide's content now, so the Appointments slide holds only the booked tiles + the Book a time pill. */
         function timelineTileHTML(dc, tl) {
-          var label = sel ? WEEKDAYS[sel.getDay()] + ", " + MONTHS[sel.getMonth()] + " " + sel.getDate() : "";
-          return tl ? '<div class="tile tile-timeline" style="--dc:' + dc + ';--tc:#3f51b5"><h3><span class="dotc" style="--tc:#3f51b5"></span>Timeline · ' + label + '</h3><div class="r2-tlbody">' + tl + "</div></div>" : "";
+          /* FIX9F4 item 2 — the tile heading is one line now: the full date ("Timeline · Friday, November 21", ~590 px of text in a 322 px tile) wrapped two to three lines and pushed Morning past the frame. The slide head already says Timeline, so the tile carries the short date — the same 3-letter weekday + short month the day strip uses. */
+          var label = sel ? WEEKDAYS[sel.getDay()].slice(0, 3) + ", " + MONTHS[sel.getMonth()].slice(0, 3) + " " + sel.getDate() : "";
+          return tl ? '<div class="tile tile-timeline" style="--dc:' + dc + ';--tc:#3f51b5"><h3><span class="dotc" style="--tc:#3f51b5"></span>' + label + '</h3><div class="r2-tlbody">' + tl + "</div></div>" : "";
         }
         function eliteApptsHTML(dc, apptRows) {
-          /* ROUND2 item 2 (FIX9F2 item 1 — the timeline moved out): the slide at rest presents booking as a real thing: the day's booked tiles and ONE doorway pill. The full 6 AM–9 PM timeline is its own slide now (timelineTileHTML, same .tile-timeline pattern, harvested from this tile); the booking calendar + form are their own two slides. The second bare button (Smart Meet) is gone — Smart Meet is a kind inside Step 1 now. */
-          /* FIX9F2 item 1 — this slide holds only the booked tiles + the Book a time pill now: the timeline is its own slide, and the booking calendar + form are their own two slides. */
+          /* ROUND2 item 2 (FIX9F2 item 1 — the timeline moved out): the slide at rest presents booking as a real thing: the day's booked tiles and ONE doorway pill. The full 6 AM–9 PM timeline is its own slide now (timelineTileHTML, same .tile-timeline pattern, harvested from this tile); the booking calendar + time + form are their own three slides (FIX9F4). The second bare button (Smart Meet) is gone — Smart Meet is a kind inside Step 1 now. */
+          /* FIX9F2 item 1 — this slide holds only the booked tiles + the Book a time pill now: the timeline is its own slide, and the booking calendar + time + form are their own three slides (FIX9F4). */
           return '<div class="elite-appts">' +
             '<div class="elite-tiles" role="list" aria-label="Appointments for this day">' + apptRows + "</div>" +
             '<div class="elite-book"><button type="button" class="elite-bookpill" id="tileBookBtn" aria-expanded="false">Book a time</button></div>' +
@@ -6137,19 +6185,20 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
               var parts = day.getAttribute("data-mc-day").split("-");
               __mc.day = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
               __mc.time = null; __mc.edit = null; __mc.timePage = 0; __mc.refused = null;
-              mcRenderCal(); mcRenderForm();
+              mcRenderCal(); mcRenderTime(); mcRenderForm();
+              gotoSlideByLabel("Pick a time");
               return;
             }
             var kd = t.closest(".r2-kind");
-            if (kd) { __mc.kind = kd.getAttribute("data-kind"); __mc.meet = __mc.kind === "meet"; __mc.refused = null; mcRenderCal(); mcRenderForm(); return; }
+            if (kd) { __mc.kind = kd.getAttribute("data-kind"); __mc.meet = __mc.kind === "meet"; __mc.refused = null; mcRenderCal(); mcRenderTime(); mcRenderForm(); return; }
             var mr = t.closest(".r2-more");
             if (mr) {
               if (mr.getAttribute("data-mc-more") === "next") __mc.timePage = (__mc.timePage || 0) + 1;
               else __mc.timePage = 0;
-              mcRenderCal(); return;
+              mcRenderCal(); mcRenderTime(); return;
             }
             var tp = t.closest(".mc-time");
-            if (tp) { __mc.time = tp.getAttribute("data-mc-time"); __mc.refused = null; mcRenderCal(); mcRenderForm(); gotoSlideByLabel("What is it?"); return; }
+            if (tp) { __mc.time = tp.getAttribute("data-mc-time"); __mc.refused = null; mcRenderCal(); mcRenderTime(); mcRenderForm(); gotoSlideByLabel("What is it?"); return; }
             if (t.closest("#mcBook")) { ev.preventDefault(); mcBook(); return; }
             var cx = t.closest(".mc-cancel");
             if (cx) { ev.preventDefault(); mcCancelIdx(parseInt(cx.getAttribute("data-mc-i"), 10)); return; }
@@ -6165,7 +6214,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
               __bookOpen = true;
               renderCategories(lastApptRows, lastTl); renderNotifBar(); renderNotifDetail();
               if (!gotoSlideByLabel("What is it?")) dayShow(dayBlock);
-              mcRenderCal(); mcRenderForm();
+              mcRenderCal(); mcRenderTime(); mcRenderForm();
               return;
             }
           });
