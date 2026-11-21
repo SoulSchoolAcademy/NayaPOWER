@@ -4,7 +4,7 @@
 
 **NN-20261120-you-get-paid-when-we-get-paid · Naya Note · 2026-11-20 ~19:19 MST**
 
-*Paired Smart Note: SN-pending — You Get Paid When We Get Paid — Day Ten (takes the next free number at filing)*
+*Paired Smart Note: SN-4413 — You Get Paid When We Get Paid — Day Ten*
 
 **Category:** Law — pay timing, settled
 
