@@ -4,7 +4,7 @@
 
 **NN-20261121-the-image-layout-is-settled · Naya Note · 2026-11-21 ~09:21 MST**
 
-*Paired Smart Note: SN-pending — The Image Layout Is Settled — On Top, Full Width, Its Own Frame (takes the next free number at filing)*
+*Paired Smart Note: SN-4474 — The Image Layout Is Settled — On Top, Full Width, Its Own Frame*
 
 **Category:** LAW — where the image goes in a note: on top, full width, in its own frame like a stage; headline below; text under; all wrapped in the NayaNET frame
 
