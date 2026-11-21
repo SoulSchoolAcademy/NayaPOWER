@@ -1,25 +1,24 @@
 {
   "schema": "naya.operating-state/1",
-  "generated_at": "2026-11-21T09:48:43Z",
-  "tip": "94b6ace61d7733ca74d0988462433bbc7296ac2a",
-  "open_pr_count": 5,
+  "generated_at": "2026-11-21T15:48:57Z",
+  "tip": "d022b805811991cf9c16f3e1fe3af887be7bf181",
+  "open_pr_count": 8,
   "queue_by_tier_action": {
     "B": {
-      "CURE": 3
+      "CURE": 5
     },
     "C": {
       "CURE": 1
     },
     "A": {
-      "CURE": 1
+      "CURE": 2
     }
   },
   "tip_failing_checks": [
-    "completeness",
     "door-obligation",
-    "fresh-lesson",
     "preflight",
     "promote-and-prove",
+    "resolve-current-truth",
     "test"
   ],
   "gauge": {
