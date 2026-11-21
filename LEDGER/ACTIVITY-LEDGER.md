@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-21 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-21 01:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -1609,6 +1609,12 @@ _Last updated: 2026-11-21 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED on workspace bytes: claimed/done/ holds brief-t1526-lane1.md and brief-gap-t1515-lane11.md; receipts t1526-lane1.md (11724 bytes) and gap-t1515-lane11.md (10450 bytes) exist matching the receipt's sizes; later state corroborates the receipt's predicted next moves (addendum brief and t1527 brief now in claimed/done/, rotation tick 1528 queu
 
+### ✅ t1526-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Read-only verification of night-dispatcher t1526 queue moves (4 moved briefs, rotation, mirror lines)
+
+**Evidence:** Verified: receipts twelve-lane-receipts/gap-t1515-lane11.md, t1523-lane11.md, gap-gap-t1504-lane10.md all exist on disk; the D1 discrepancy (gap-t1515 executed 09:03-09:05 before the t1526 reconcile stamp) is named with timestamps and the queue is shown self-consistent with execution. Score 9.0. Why not 9.5: the verdict cannot be VERIFIED while D1 
+
 ### ✅ t1526 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** Independent read-only verification of the t1526 dispatcher reconcile (4 moves, re-registered gap briefs)
@@ -2115,6 +2121,12 @@ _Last updated: 2026-11-21 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: prereg sealed pre-run sha 38a6eec7... matches; arm script sha 59c0970c... matches; results JSON sha 3c6c76e3... matches and parses (keys probe/prereg_sha/corpus/results/f1_falsifier/decisive_leg); corpus re-pinned 10/10 vs lesson-matcher-probe-t1504.json (f3a97a11... verified intact after the near-overwrite). Decisive leg per sealed prere
 
+### ✅ t1506-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Stage-1 protect on receipt-prevention watch: reproduce t1498 calibration, re-audit WHY-NOT, route ratification packet
+
+**Evidence:** Verified: sha256 MATCH on hidden_files/receipt-prevention-prototype-t1498.py (4dc10881...) and hidden_files/receipt-watch-ratification-packet-t1506.md (b07f81e1...); calibration re-run 61/61 cache-covered, 0 phantoms, 61/61 RECEIPT-MISSING; 4 real WHY-NOT regex misses found with 0 verdict flips proven. Score 9.0. Why not 9.5: the re-verification is
+
 ### ✅ t1506 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
 
 **Task:** Stage-1 protect on receipt-prevention watch: re-ran t1498 prototype at live tip, WHY-NOT self-audit (4 real regex misses, 0 flips), ratification packet routed to watch owner
@@ -2131,6 +2143,12 @@ _Last updated: 2026-11-21 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: ratification packet file exists, sha256 b07f81e1... matches claimed prefix, 5,934 bytes = claimed; prototype sha 4dc10881... matches. Calibration reproduced byte-for-byte on live tip (61/61 RECEIPT-MISSING, 0 phantoms, 0 misfires); WHY-NOT self-audit re-run surfaced 4 real regex misses with 0-verdict-flip proof; board ask #2793 comment 63
 
+### ✅ t1506-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** Byte-verified REPAIR ADDENDUM to the retrieval-authgate stamping-migration plan (SURGE slice-(b), design-only)
+
+**Evidence:** Verified: sha256 MATCH on hidden_files/retrieval-authgate-migration-repair-addendum-t1506.md (c97c46fc...). Score 9.5. Clears 9.5 because all four required components are delivered, all five feedback items were re-located at the live tip with deciding bytes and per-item line-drift deltas named, and the addendum carries its own retirement falsifier.
+
 ### ✅ t1506 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
 
 **Task:** Byte-verified REPAIR ADDENDUM to the retrieval-authgate stamping-migration plan (DESIGN-ONLY)
@@ -2146,6 +2164,12 @@ _Last updated: 2026-11-21 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1506-lane6.md`
 
 **Evidence:** Verified: addendum file exists at hidden_files/retrieval-authgate-migration-repair-addendum-t1506.md, sha256 c97c46fc... matches claimed prefix, 9,461 bytes = claimed; plan file sha 25eb97a8... matches. Lane re-located all 5 feedback items at the live tip e0cd4c247a... with line drift deltas named, 4 required components present, self-retirement fal
+
+### ✅ t1506-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** Byte-pinned DESIGN doc for the lane-status atomic packet (slice-(c), design-only)
+
+**Evidence:** Verified: sha256 MATCH on hidden_files/smartblocks/lane-status-atomic-packet-t1506.md (54581d29...). Score 9.5. Clears 9.5 because the design carries all five required components, every cited pin was re-pinned live, two phantom citations and one phantom path were found and named openly in design section 0 instead of inherited, and the t1505 Herald 
 
 ### ✅ t1506 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
@@ -2171,6 +2195,12 @@ _Last updated: 2026-11-21 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: design file exists at hidden_files/smartblocks/lane-status-atomic-packet-t1506.md (14,092 bytes); sha256 54581d29e04655dbffafef2b9ab925df93cee29522ac43941de0a781b272038d byte-matches the receipt's cited SHA exactly — no PHANTOM. All 5 required components present in the file (schema atomic-lane-status-packet/v1 + 7 rules; render contract; 
 
+### ✅ t1505-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** Post seat-to-seat ratification ask to the merge-receipt watch owner on live board #2793 (comment 6380647011)
+
+**Evidence:** Verified: comment existence corroborated by t1506-lane8's live GET (200, html_url .../issues/2793#issuecomment-6380647011) and the receipt's own quoted four-line header + 7-field protocol; design sha MATCH on hidden_files/receipt-prevention-design-t1498.md (d8eafa97...). Score 9.5. Clears 9.5 because the brief's 4/4 definition of done is met at liv
+
 ### ✅ t1505 — Team 7, Team Naya Scorer (Team Operations) — 9.5/10 [VERIFIED]
 
 **Task:** Ratification ask on live board #2793 (comment 6380647011) for the seatless-receipt judgment call
@@ -2186,6 +2216,12 @@ _Last updated: 2026-11-21 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1505-lane7.md`
 
 **Evidence:** Verified: board comment 6380647011 exists on live issue #2793 (REST GET, created 2026-10-24T05:59:50Z); four-line header present verbatim; full 7-field protocol followed; asks the merge-receipt watch owner to ratify or soften the seat element of the t1498 gate - does not assume the verdict. Score 9.5: clears 9.5 because the authorized deliverable (
+
+### ✅ t1505-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Build the atomic lane-status packet covering the 12 lane-status demand needs (102/140 = 72.9%)
+
+**Evidence:** Verified: sha256 MATCH on hidden_files/smartblocks-top20-t1505/atomic-lane-status-packet-t1505.json (7f4620d6...). Score 9.5. Clears 9.5 because the packet is built with validator 17/17 green and a 12/12 spot test, the brief's parenthetical-vs-verdict filing imprecision was adjudicated transparently with the t1499 verdict honored and the correction
 
 ### ✅ t1505 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
@@ -2211,6 +2247,12 @@ _Last updated: 2026-11-21 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified independently: packet exists at hidden_files/smartblocks-top20-t1505/atomic-lane-status-packet-t1505.json; sha256 7f4620d6b7a2c37ae5873d368fad2c6425d2c98d34eb0575c2e24e0572817ef6 byte-matches the receipt's cited SHA exactly; scorer re-ran the validator smartblocks-top20-t1505/validate-packet-t1505.py: ALL CHECKS GREEN, 12/12 demands resolv
 
+### ✅ t1505-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Build the versioned smart-block library for the ask-world top-20 (20 ranked blocks, schema smartblocks-top20/v1)
+
+**Evidence:** Verified: sha256 MATCH on hidden_files/smartblocks-top20-t1505/blocks.json (5e04d5fe...); validator 11/11 green per receipt; premise top20.json re-pinned byte-identical at claim time. Score 9.0. Why not 9.5: the source analysis carries an open arithmetic question the library inherits — per-entry flags say 19 pre-buildable-yes / 1 no while the analy
+
 ### ✅ t1505 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
 **Task:** Versioned smart-block library for the ask-world top-20 (blocks.json, schema v1, 20 ranked blocks)
@@ -2227,6 +2269,12 @@ _Last updated: 2026-11-21 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: smartblocks-top20-t1505/blocks.json exists with exactly 20 ranked blocks under schema smartblocks-top20/v1; ranks/counts/tie cut honored byte-identical from t1499-lane11's verdict (no re-ranking per brief limits); each block carries rank, demand_count, demand_share, need, render contract, acceptance fields, source pins; tie note on blocks
 
+### ✅ t1504-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Stage-0 live tripwire: four-line-header violation detector (VIOLATION-RT) with adversarial firing proof
+
+**Evidence:** Verified: sha256 MATCH on hidden_files/violation-rt/four-line-header-check.py (5b1c5be0...), lane-feed-t1504-frozen.md (d8f1a732...), and measurement-t1504-lane3.md (667ef0d2...); frozen-feed measurement 0 violations with two adversarial batteries proving the detector fires. Score 9.0. Why not 9.5: no second seat has reviewed the detector — a Judge
+
 ### ✅ t1504 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** Stage-0 four-line-header violation detector + two adversarial batteries + measurement report
@@ -2242,6 +2290,12 @@ _Last updated: 2026-11-21 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1504-lane3.md`
 
 **Evidence:** Verified: violation-rt/four-line-header-check.py exists; frozen feed lane-feed-t1504-frozen.md exists with SHA d8f1a732... matching (integrity re-verified after runs); two adversarial batteries proved the detector fires; venue cited by bytes (board #2721 comment 6236168626 + frozen-feed line numbers); exit-0-clean/exit-1-violation contract. Score 9
+
+### ✅ t1504-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Fingerprint-to-lesson matcher probe: is retrieval of injected lessons viable (recall@3 >= 0.70, fp <= 0.30)?
+
+**Evidence:** Verified: sha256 MATCH on retrieval/lesson-matcher-probe-report-t1504.md (6ea32aa8..., path relative to goal root; probe script + JSON also on disk). Score 9.5. Clears 9.5 because the NOT-VIABLE verdict follows the pre-stated bar (recall@3 0.143 / 0.250 normalized vs 0.70), the corpus was fixed by rule not by hand, the answer key was redacted befor
 
 ### ✅ t1504 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
@@ -21277,6 +21331,12 @@ _Last updated: 2026-11-21 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED on disk: persistence contract MATCH (f6f048b6...), repair script MATCH (b531e857...), extended sibling JSON MATCH (06dac8ba...), demo recompute script MATCH (7eb54c54...), recompute log exists, original results-t0628-lane2-inv.json sha16=1e78d1df9be30c3e MATCHES the receipt's untouched claim. Score 9.0 (GOOD, ONE MORE PASS), not 9.5, becau
 
+### ✅ t0645-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Brief-pin gate over the live queue + adversarial stress + wiring note (gate fires at export)
+
+**Evidence:** Verified: sha256 MATCH on hidden_files/brief-pin-gate-wiring.md (fcec3134...); proof logs present (proof-clean-queue-t0645-lane7.txt, proof-adversarial-t0645-lane7.txt, adversarial-t0645-lane7.md); gate exit 0 on all 10 live briefs, typo caught in adversarial run, bare-filename hole found and named. Score 9.0. Why not 9.5: single seat — the adversa
+
 ### ✅ t0645 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** Brief-pin gate: live-queue run + adversarial stress + wiring note (bare-filename finding)
@@ -21325,6 +21385,12 @@ _Last updated: 2026-11-21 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: corpus pin t0569-t0645 has 170 rows incl. all 4 lettered-tick receipts (t0580b x2, t0581b, t0582b) with the v2 amendment documented in-file; hv_output run1/run2 byte-identical (sha 8fcd9744... matches receipt); metric_audit 37KB + m3 prescan + dispute prescan + m3_review_t0645.txt + window_summary all present; feedback-feed FP-001 appends
 
+### ✅ t0644-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Blinding checklist negative control: clean-brief construction rules (frozen) + a 10/10 PASS worked example, each cell byte-citable
+
+**Evidence:** Verified: MANIFEST 6/6 OK on hidden_files/lane-9/t0644-example-bundle/ and pre-reg seal recomputed -> MATCH (bfa10362...); item-1 grep genuinely 0 hits per receipt. Score 9.0. Why not 9.5: the control is proven only on a synthetic bundle (no real sealed-probe brief existed to test against), so the negative control is real bytes but not a live dispa
+
 ### ✅ t0644 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Blinding-checklist negative control: constructed-clean sealed-probe brief + 10/10 PASS control doc (pair complete)
@@ -21340,6 +21406,12 @@ _Last updated: 2026-11-21 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0644-lane9.md`
 
 **Evidence:** Verified: all 3 cited artifacts exist on disk with sha256 prefixes byte-matching the receipt (control doc 5ab8bb4880817957, constructed brief be31fb7974998192, sealed pre-reg faede534f78d15b7; bundle dir present, MANIFEST.sha256 on disk). Score 9.0 (GOOD, ONE MORE PASS). Kept from 9.5 by the lane's own two named gaps: (1) the negative control passe
+
+### ✅ t0644-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Seal a pre-reg for the R2 >=5 re-validation probe (6 fresh rows, mechanical hold/refit criterion)
+
+**Evidence:** Verified: seal recomputed per the header recipe on hidden_files/lane-6/t0644-r2-prereg-sealed.md -> MATCH (dde6b078...); all cited pins re-derived from live bytes per receipt §10. Score 9.0. Why not 9.5: single-seat design with no independent review; the 6 fresh rows are executor-authored paraphrases not yet built, so the probe is unexecuted; task-
 
 ### ✅ t0644 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
@@ -21357,6 +21429,12 @@ _Last updated: 2026-11-21 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: artifact hidden_files/lane-6/t0644-r2-prereg-sealed.md exists; seal recomputed per the file's own header recipe (remove SEAL_SHA256 line, hash rest) -> dde6b078...37fd MATCHES. All six cited pins re-derivable from live bytes. Score 9.0, not 9.5, because: seal unexecuted — no Lane 1 executor run and no blinded scorer SHA on #2175 yet; sing
 
+### ✅ t0644-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** DESIGN-ONLY frozen pre-reg for Arm F, the next genuinely different retrieval mechanism after four falsified semantic roots
+
+**Evidence:** Verified: sha256 MATCH on hidden_files/lane-experiments/prereg-t0644-lane5-armf-proximity.md (9f562b9d...); premise re-verified (Arm E sealed-failed t0643-lane1, four dead roots named). Score 8.5. Why not 9.5: single-seat design with no different-seat review of the genuineness claim; per-task numeric predictions left to the executor instead of froz
+
 ### ✅ t0644 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
 **Task:** DESIGN-ONLY frozen pre-reg for Arm F minimum-window proximity retrieval
@@ -21372,6 +21450,12 @@ _Last updated: 2026-11-21 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0644-lane5.md`
 
 **Evidence:** VERIFIED: artifact hidden_files/lane-experiments/prereg-t0644-lane5-armf-proximity.md exists, sha256 9f562b9d...38bb23d8 MATCHES receipt pin. Score 9.0, not 9.5, because: unexecuted by design (seal is a promise until Lane 1 runs it); the 'genuinely different mechanism' claim has no different-seat review yet; stopword-list effect on key-term count u
+
+### ✅ t0643-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE (c) v2 ask-world needs analysis: top-20 ranked needs + 10+ candidate smart blocks + expected-latency notes, every number from the log's bytes
+
+**Evidence:** Verified: sha256 MATCH on hidden_files/auto-retrieval/ask-world-needs-t0643.md (162fa906...); log pin 08f3662c... was byte-identical to t0616's pin at action time (current log has since grown, append-only, as expected). Score 9.0. Why not 9.5: single-seat proof with no different-seat re-parse of the 15-need table; ranks 16-20 absent (correctly refu
 
 ### ✅ t0643 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -57434,6 +57518,18 @@ _Last updated: 2026-11-21 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ distill-daily-20261120-lane0 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** Daily distill: refresh mission-state snapshot (fold branch snapshots into main, PR #3495)
+
+**Evidence:** Verified: git ls-remote shows branch naya/distill-fold-mission-state-20261120 at 741b7459bc5701a7f5e13832f705c68f3039e689, exactly the cited head; receipt cites union sha 9d139cc3 regenerated byte-identical after /tmp loss. Score 9.5. Clears 9.5 because the brief's premise flip was caught on live bytes before any write (refreshing the branch from s
+
+### ✅ gate-stall-20261120-1649 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: evaluate all 31 unclaimed briefs, attempt script claim on each
+
+**Evidence:** Verified: claim-sweep log hidden_files/brief-queue/claim-sweep-20261120-1649.log exists; 31 brief-*.md files on disk in brief-queue/, matching the receipt's 31 claimed (29 exit 7, 2 exit 2); zero queue drift vs the 15:44 receipt. Score 9.0. Why not 9.5: ninth consecutive identical stall receipt today with zero queue movement and no cleared work — t
 
 ### ✅ distill-daily-20261120 — Team 0, Team Naya Scorer (?) — 9.4/10 [VERIFIED]
 
