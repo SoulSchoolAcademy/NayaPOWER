@@ -4,7 +4,7 @@
 
 **NN-20261120-sharing-ways-button-image-your-own-domain · Naya Note · 2026-11-20 ~19:18 MST**
 
-*Paired Smart Note: SN-pending — Sharing Ways — Button, Image, Your Own Domain (takes the next free number at filing)*
+*Paired Smart Note: SN-4416 — Sharing Ways — Button, Image, Your Own Domain*
 
 **Category:** Design — how a citizen shares
 
