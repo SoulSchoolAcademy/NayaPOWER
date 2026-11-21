@@ -4,7 +4,7 @@
 
 **NN-20261120-about-is-frame-by-frame · Naya Note · 2026-11-20 ~19:49 MST**
 
-*Paired Smart Note: SN-pending — About Is Frame by Frame (takes the next free number at filing)*
+*Paired Smart Note: SN-4419 — About Is Frame by Frame*
 
 **Category:** Design — the About page format
 
