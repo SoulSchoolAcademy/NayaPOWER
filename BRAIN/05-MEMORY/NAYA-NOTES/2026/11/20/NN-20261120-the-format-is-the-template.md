@@ -4,7 +4,7 @@
 
 **NN-20261120-the-format-is-the-template · Naya Note · 2026-11-20 ~17:02–17:10 MST**
 
-*Paired Smart Note: SN-pending — The Format Is the Template (takes the next free number at filing)*
+*Paired Smart Note: SN-4372 — The Format Is the Template*
 
 **Category:** Law — one format, carried everywhere
 
