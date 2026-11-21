@@ -4,7 +4,7 @@
 
 **NN-20261120-love-red-like-purple-comment-blue-share-green · Naya Note · 2026-11-20 ~17:41–19:00 MST**
 
-*Paired Smart Note: SN-pending — Love Red, Like Purple, Comment Blue, Share Green (takes the next free number at filing)*
+*Paired Smart Note: SN-4404 — Love Red, Like Purple, Comment Blue, Share Green*
 
 **Category:** Design — the four actions light up in their own colours
 
