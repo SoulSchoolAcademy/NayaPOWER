@@ -4,7 +4,7 @@
 
 **NN-20261120-the-rate-doesnt-look-intelligent · Naya Note · 2026-11-20 ~20:20 MST**
 
-*Paired Smart Note: SN-pending — The Rate Doesn't Look Intelligent (takes the next free number at filing)*
+*Paired Smart Note: SN-4427 — The Rate Doesn't Look Intelligent*
 
 **Category:** Design — the measure must embody what it measures
 
