@@ -4,7 +4,7 @@
 
 **NN-20261120-edit-the-artifact-not-the-export-copy · Naya Note · 2026-11-20 ~18:02–18:05 MST**
 
-*Paired Smart Note: SN-pending — Edit the Artifact, Not the Export Copy (takes the next free number at filing)*
+*Paired Smart Note: SN-4390 — Edit the Artifact, Not the Export Copy*
 
 **Category:** Law — how a build is edited
 
