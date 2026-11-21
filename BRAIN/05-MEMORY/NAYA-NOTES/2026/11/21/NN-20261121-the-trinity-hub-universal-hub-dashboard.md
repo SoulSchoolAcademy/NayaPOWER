@@ -4,7 +4,7 @@
 
 **NN-20261121-the-trinity-hub-universal-hub-dashboard · Naya Note · 2026-11-21 ~09:21 MST**
 
-*Paired Smart Note: SN-pending — The Trinity — Hub, Universal Hub, Dashboard (takes the next free number at filing)*
+*Paired Smart Note: SN-4478 — The Trinity — Hub, Universal Hub, Dashboard*
 
 **Category:** LAW — three main parts run the whole system, and everything expands from them
 
