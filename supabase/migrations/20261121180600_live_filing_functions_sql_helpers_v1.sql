@@ -16,8 +16,8 @@
 --   is_membership_owner <- 190001 L41–L58
 -- Order inside this file is dependency order: _mship_hash first (member_alias_for
 --   and owner_alias_for call it), owner_alias_for before is_membership_owner
---   (is_membership_owner calls it). No forward reference remains inside 170002,
---   and 170002 sorts before 190000, so every sql caller below resolves.
+--   (is_membership_owner calls it). No forward reference remains inside 180600,
+--   and 180600 sorts before 190000, so every sql caller below resolves.
 -- 190000–190003 stay untouched: they re-define these four functions identically
 --   (idempotent CREATE OR REPLACE). The eight plpgsql callers of the same later
 --   functions are NOT breaks (plpgsql resolves at execution) and are untouched.
