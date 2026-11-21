@@ -1190,7 +1190,7 @@ svg.jewel { display: block; }
   margin: 4px auto 20px; max-width: min(680px, 94vw);
 }
 /* The living clock: breathing dot + glowing ticking time (Shawn 2026-10-20) */
-.hero-date { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; position: relative; width: fit-content; margin: 0 auto 10px; padding: 10px 20px; background: #050607; border: 1.5px solid rgba(255,255,255,.35); border-radius: 999px; box-shadow: 0 8px 24px rgba(0,0,0,.6), 0 0 24px rgba(255,255,255,.12); } /* SNB-FIX1E item 4: the date/time is a live instrument on its obsidian plaque (Laws §2.1 treatment #10: chrome-thin trim + underglow). The 1s tick + 120s orbit (SNB-FIX1E block) make it read alive. */
+.hero-date { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; position: relative; width: fit-content; margin: 0 auto 10px; padding: 10px 20px; background: #050607; border: 2px solid rgba(255,255,255,.9); border-radius: 999px; box-shadow: 0 8px 24px rgba(0,0,0,.6), 0 0 24px rgba(255,255,255,.45), 0 0 48px rgba(255,255,255,.18); } /* SNB-STAR-EDGE-LIGHT 2026-11-20 item 4: the date is showcased by its OWN steady white light — white rim (2px, .9) + soft white outer glow (24px .45 + 48px .18), at rest, no animation. SUPERSEDES the SNB-FIX1E 120s orbit: the spinning ::after ring is removed whole (see below). Date text (emerald) and gold time untouched; the 1s tick still advances. */
 .live-dot {
   width: 9px; height: 9px; border-radius: 50%; flex: 0 0 9px;
   /* Resting: unlit — an empty ring. The dot lights ONLY when the feed is proven live (body.feed-live, N-13). */
@@ -2284,15 +2284,23 @@ body.msg-open{overflow:hidden;}
    .hero-time with seconds) but reads dead: flat text on the open page. The date
    line now sits on its own obsidian plaque (Laws §2.1 treatment #10: white text
    on an obsidian plaque with chrome-thin trim and its own underglow — date green
-   #07925f + time gold #d4a017 per item 2), and a slow arc of light travels around
-   the plaque: border-top white + border-right gold on the ::after, rotating on
-   the file's own orb-spin at 120s (Laws §1 ambient band 60–180s, never faster
-   than 12s). Wrapped in no-preference so the file's reduced-motion kill stands.
-   The seconds themselves still advance on the 1s interval — the plaque + orbit
-   is what makes the ticking READ as a live instrument. */
-@media (prefers-reduced-motion: no-preference) {
-  .hero-date::after { content: ""; position: absolute; inset: -5px; border-radius: 999px; border: 1.5px solid transparent; border-top-color: rgba(255,255,255,.9); border-right-color: rgba(212,160,23,.55); pointer-events: none; animation: orb-spin 120s linear infinite; }
-}
+   #07925f + time gold #d4a017 per item 2). SUPERSEDED 2026-11-20 item 4
+   (SNB-STAR-EDGE-LIGHT, Shawn's eye): the slow arc is OUT — no spinning
+   around the date ("you shouldn't have that spinning thing"). The date
+   is showcased by its own steady white light instead: the plaque's own
+   white rim + soft white outer glow, at rest, no animation (see the
+   .hero-date rule). The ::after ring is removed whole, with the spin.
+   The seconds themselves still advance on the 1s interval — the plaque's
+   steady white light is what makes the ticking READ as a live instrument. */
+/* SNB-STAR-EDGE-LIGHT 2026-11-20 item 4 — REMOVED: the .hero-date::after
+   spinning ring (inset -5px, white top arc + gold right arc, orb-spin 120s).
+   The white top arc was the big white line in the main area — a bright white
+   line arcing over the date pill, travelling as it spun. It goes with the
+   spin. The date is showcased now by the plaque's own steady white rim +
+   soft white outer glow on .hero-date (above) — a clean closed ring, no
+   animation, no stray line. The shared @keyframes orb-spin is untouched:
+   the orb flows, star flows, rate-pearl flow and notif-tile rings still
+   run on it. No .hero-date::after rule remains anywhere in this file. */
 /* Item 5 — RATE DEAD CENTER. Root cause, measured: the rank rows were already
    centred (.rank-row justify-content: center, L2397) but the RATE HEAD was not
    — .rate-head is a plain left-aligned flex row (L2015/L2157, no justify), so
