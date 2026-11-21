@@ -4,7 +4,7 @@
 
 **NN-20261120-plain-words-not-a-card-to-decode · Naya Note · 2026-11-20 ~20:51–21:00 MST**
 
-*Paired Smart Note: SN-pending — Plain Words, Not a Card to Decode (takes the next free number at filing)*
+*Paired Smart Note: SN-4443 — Plain Words, Not a Card to Decode*
 
 **Category:** Design — a share step he has to decode is a share step that fails
 
