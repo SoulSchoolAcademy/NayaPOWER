@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4367",
+ "intelligence": {
+  "title": "Embed the Pictures and the Audio Inside the One File",
+  "intelligent_block_id": "IB-SMART-NOTE-20261120-sn4367-embed-the-pictures-and-the-audio-inside-the-one-file",
+  "smart_note_id": "SN-4367",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4367/IB-SMART-NOTE-20261120-sn4367-embed-the-pictures-and-the-audio-inside-the-one-file.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-20. No runtime provenance invented.",
+  "ingested_at": "2026-11-20",
+  "essence": "",
+  "human_view": "The page he sees is a single file, and a single file cannot reach out for pictures or sound stored beside it — they simply do not arrive. So the pictures and the sound have to be packed inside the file itself. The boards all follow one shape: her face at the top, the words in the middle, the red N at the bottom like a seal. The cover lines everything up in one column, the saying sits under the video, and there is just one button, Let's Go. Nothing extra he did not ask for. And the memory gets the same treatment as the notes: the essence up front, the full record behind it, pulled only when needed.",
+  "simple_view": "Her picture goes on top. The words go in the middle. The red N goes on the bottom. The pictures and the sounds live inside the file. One button stays. It is Let's Go. His eyes and ears tell us if it works.",
+  "grandma_view": "Think of it like a letter you can hold in your hand: the photo is at the top, the words are in the middle, and the little red seal is at the bottom — all of it inside the one letter, nothing left outside to go missing. There is one clear button to press, Let's Go, and when the music plays you can hear it and see it moving. And just like a tidy drawer, the important things sit on top and the rest is kept safely behind, ready when you need it.",
+  "naya_view": "I am Anaya, and I build what he asked for, whole and right, and I prove it by his senses, not by my claims. His eye is ground truth: if he cannot see the pictures, the pictures are not there; if he cannot hear the audio, the audio is not there. I do not add a second version he never asked for, and I do not let the mind I carry grow cluttered — I distill it, essence up front, raw detail behind, so every wake starts clear and fast.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4367",
+   "title": "Embed the Pictures and the Audio Inside the One File",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4367/IB-SMART-NOTE-20261120-sn4367-embed-the-pictures-and-the-audio-inside-the-one-file.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-20 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/20/LAW/SN-4367/IB-SMART-NOTE-20261120-sn4367-embed-the-pictures-and-the-audio-inside-the-one-file.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
