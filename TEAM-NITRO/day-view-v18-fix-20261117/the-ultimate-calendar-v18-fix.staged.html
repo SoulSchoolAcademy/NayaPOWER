@@ -3253,6 +3253,9 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
 .cat-row .chip::after{content:""!important;position:absolute!important;inset:-7px!important;border-radius:50%!important;border:1.5px solid transparent!important;border-top-color:color-mix(in srgb,var(--c,#fff) 70%,#ffffff)!important;border-right-color:color-mix(in srgb,var(--c,#fff) 22%,transparent)!important;animation:orbitspin 90s linear infinite!important;pointer-events:none!important}
 .cat-row:nth-child(even) .chip::after{animation-direction:reverse!important}
 .cat-row:hover .chip{transform:translateY(-2px)!important;filter:brightness(1.22)!important;box-shadow:0 14px 28px rgba(0,0,0,.6),0 0 24px color-mix(in srgb,var(--c,#fff) 45%,transparent),inset 0 2px 3px rgba(255,255,255,.45),inset 0 -8px 12px rgba(0,0,0,.6)!important}
+/* ============ FIX9F2 — calendar fix round 2, frame law (2026-11-21) ============ */
+/* PAGER PRESSED STATE: the pressed pill lights in its own colour (the day colour); the other waits quietly in obsidian — one lit pill, never two identical ones. Serves the timeline, journal and list pagers alike — all three wear .tl-pager. */
+.tl-pager .pill[aria-pressed="true"]{background:linear-gradient(180deg,color-mix(in srgb,var(--dc,#8e24aa) 55%,#050607),#050607)!important;border-color:var(--dc,#8e24aa)!important;box-shadow:0 0 18px color-mix(in srgb,var(--dc,#8e24aa) 45%,transparent),inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55)!important}
 </style>
   </head>
   <body>
@@ -4340,6 +4343,9 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           var __tlNow = new Date();
           var __tlIsToday = k === keyOf(__tlNow);
           var __tlEarliest = __tlNow.getHours() * 60 + __tlNow.getMinutes() + 60;
+          /* FIX9F2 item 5 — the free starts, once per render, from the SAME rule the book flow uses (mcFreeTimes, the flow's duration): the slot label reads this map, never the start-in-hour count. */
+          var __freeByHour = {};
+          try { var __dur5 = (__mc && __mc.dur) || 30; var __day5 = new Date(parseInt(k.slice(0, 4), 10), parseInt(k.slice(5, 7), 10) - 1, parseInt(k.slice(8, 10), 10)); mcFreeTimes(__day5, __dur5).forEach(function (t) { var __hh = parseInt(t.split(":")[0], 10); __freeByHour[__hh] = (__freeByHour[__hh] || 0) + 1; }); } catch (e) {}
           for (var h = 6; h <= 21; h++) {
             var hh = h % 12; if (hh === 0) hh = 12;
             var hlabel = hh + " " + (h < 12 ? "AM" : "PM");
@@ -4355,24 +4361,28 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
                says so honestly. Tapping a slot opens the book-a-time
                flow for that hour (openBookFor, wired once below). */
             var __past = __tlIsToday && (h + 1) * 60 <= __tlEarliest;
-            /* FIX9F item 5 — a past hour never advertises "Open": it
-               shows Past and opens no book flow (the flow's
-               minimum-notice rule would refuse it as "full"). */
+            var __freeN = __freeByHour[h] || 0;
+            /* FIX9F2 item 5 — the label and the book flow share ONE rule: a slot is Open only when mcFreeTimes has a free start in that hour (same duration the flow books with). An hour with no free start shows Booked and opens no flow — never "Open" that refuses as "full". A past hour still shows Past. */
             __slots.push(__past
               ? '<div class="tl-slot tl-past" aria-label="' + hlabel + ' — past, cannot book">' +
                 '<span class="tl-hour">' + hlabel + '</span><span class="tl-jewel" aria-hidden="true"></span><span class="tl-state">' +
                 (chips.join(" ") || '<span class="tl-open">Past</span>') + "</span></div>"
-              : '<div class="tl-slot' + (inHour.length ? ' tl-booked' : '') + '" role="button" tabindex="0" data-slot="' + String(h).padStart(2, "0") + ':00" aria-label="Book ' + hlabel + (inHour.length ? ' — ' + inHour.length + ' booked' : ' — open') + '">' +
-                '<span class="tl-hour">' + hlabel + '</span><span class="tl-jewel" aria-hidden="true"></span><span class="tl-state">' +
-                (chips.join(" ") || '<span class="tl-open">Open — tap to book</span>') + "</span></div>");
+              : (__freeN === 0
+                ? '<div class="tl-slot tl-booked" aria-label="' + hlabel + ' — booked, no open time">' +
+                  '<span class="tl-hour">' + hlabel + '</span><span class="tl-jewel" aria-hidden="true"></span><span class="tl-state">' +
+                  (chips.join(" ") || '<span class="tl-open">Booked</span>') + "</span></div>"
+                : '<div class="tl-slot' + (inHour.length ? ' tl-booked' : '') + '" role="button" tabindex="0" data-slot="' + String(h).padStart(2, "0") + ':00" aria-label="Book ' + hlabel + (inHour.length ? ' — ' + inHour.length + ' booked' : ' — open') + '">' +
+                  '<span class="tl-hour">' + hlabel + '</span><span class="tl-jewel" aria-hidden="true"></span><span class="tl-state">' +
+                  (chips.join(" ") || '<span class="tl-open">Open — tap to book</span>') + "</span></div>"));
           }
-          /* FIX9F item 1 — the timeline pages morning/afternoon (8 slots
-             a frame), never a 16-slot scroll inside the frame. */
+          /* FIX9F2 item 1 — the timeline pages in threes (6 slots a frame): 8+8 still left the Appointments slide ~150 px over the frame, so the timeline gets its own slide (see renderCategories) and 6 slots fit it with room. */
           var __page = (typeof __tlPage === "number" ? __tlPage : 0);
-          var __half = __slots.slice(__page * 8, __page * 8 + 8).join("");
+          if (__page > 2) __page = 2;
+          var __half = __slots.slice(__page * 6, __page * 6 + 6).join("");
           var __pager = '<div class="tl-pager" role="group" aria-label="Times of day">' +
-            '<button type="button" class="pill" data-tlpage="0" aria-pressed="' + (__page === 0) + '">Morning · 6 AM–1 PM</button>' +
-            '<button type="button" class="pill" data-tlpage="1" aria-pressed="' + (__page === 1) + '">Afternoon · 2–9 PM</button></div>';
+            '<button type="button" class="pill" data-tlpage="0" aria-pressed="' + (__page === 0) + '">Morning · 6–11 AM</button>' +
+            '<button type="button" class="pill" data-tlpage="1" aria-pressed="' + (__page === 1) + '">Midday · 12–5 PM</button>' +
+            '<button type="button" class="pill" data-tlpage="2" aria-pressed="' + (__page === 2) + '">Evening · 6–9 PM</button></div>';
           return __half + __pager;
         }
 
@@ -4384,6 +4394,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           openScopeId = null; openRowId = null;
           unfolded = { appointments: false, record: false };
           __tlPage = 0; /* FIX9F item 1 — a fresh day opens on the morning half of the timeline. */
+          __bookOpen = false; __journalPage = 0; __slPage = 0; /* FIX9F2 item 1 — a fresh day opens with the booking flow closed and the pagers on page one (the open list itself survives the day step — same list, new day). */
           /* The month on screen follows the day on screen — back
              returns to the month holding this day */
           viewY = d.getFullYear(); viewM = d.getMonth();
@@ -4719,17 +4730,40 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
            is the settled nine; Smart Notes is the day's saved Smart
            notes; Contacts and Worlds have no data in this file yet —
            honest empty states, never invented people or worlds. */
+        /* FIX9F2 item 1 — the open list is its OWN slide now (see renderCategories): the rows stay on the Smart Lists slide, the items move to the next frame and page 5 to a frame. slMeta names the slide — label, colour and essence, harvested from the row definitions below. */
+        function slMeta(listId) {
+          var map = { nine: ["Nine Notes", "#c2410c", "The nine that tell the whole story — in order."], smart: ["Smart Notes", "#d4a017", "Your saved Smart notes for this day."], contacts: ["Contacts", "#a21caf", "Your people — matched by what you share."], worlds: ["Worlds", "#8e24aa", "Every world you belong to."], yours: ["Your Notes", "#0f52ba", "Your own notes, kept by day."] };
+          if (map[listId]) return { label: map[listId][0], dc: map[listId][1], essence: map[listId][2] };
+          if (listId && listId.indexOf("mine:") === 0) {
+            var L = null; mylists.forEach(function (x) { if (x.id === listId.slice(5)) L = x; });
+            if (L) return { label: L.name, dc: "#8e24aa", essence: "Your list — " + L.items.length + (L.items.length === 1 ? " item." : " items.") };
+          }
+          return { label: "List", dc: "#8e24aa", essence: "Everything saved, kept in order." };
+        }
+        function slDetailHTML() {
+          return '<div class="panel">' + slItemsHTML(openListId) + "</div>";
+        }
+        function slPagerHTML(total, per) {
+          var pages = Math.ceil(total / per);
+          if (pages <= 1) return "";
+          var h = '<div class="tl-pager" role="group" aria-label="List pages">';
+          for (var i = 0; i < pages; i++) h += '<button type="button" class="pill" data-slpage="' + i + '" aria-pressed="' + ((__slPage || 0) === i) + '">Page ' + (i + 1) + "</button>";
+          return h + "</div>";
+        }
         function slItemsHTML(listId) {
           var k = keyOf(sel);
           if (listId === "nine") {
-            return NINE_NOTES.map(function (n) {
+            /* FIX9F2 item 1 — nine items on one frame would push past it: the detail slide pages 5 to a frame. */
+            var __per9 = 5; var __pg9 = Math.min(__slPage || 0, Math.ceil(NINE_NOTES.length / __per9) - 1);
+            return NINE_NOTES.slice(__pg9 * __per9, __pg9 * __per9 + __per9).map(function (n) {
               return '<div class="noteitem"><p><strong>' + n.t + '</strong> — ' + n.d + '</p></div>';
-            }).join("");
+            }).join("") + slPagerHTML(NINE_NOTES.length, __per9);
           }
           if (listId === "smart") {
             var sns = mergedNotesFor(k).filter(function (n) { return (n.text || "").indexOf("Smart note — ") === 0; });
             if (!sns.length) return '<p class="none-line">No Smart notes saved for this day yet.</p>';
-            return sns.map(function (n) { return '<div class="noteitem"><p>' + escapeHTML(n.text || "") + '</p></div>'; }).join("");
+            var __perS = 5; var __pgS = Math.min(__slPage || 0, Math.ceil(sns.length / __perS) - 1);
+            return sns.slice(__pgS * __perS, __pgS * __perS + __perS).map(function (n) { return '<div class="noteitem"><p>' + escapeHTML(n.text || "") + '</p></div>'; }).join("") + slPagerHTML(sns.length, __perS);
           }
           if (listId === "yours") {
             /* FIX9F item 2 — this list shows THIS day's own notes,
@@ -4737,7 +4771,8 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
                day was the walk's failure. */
             var todays = mergedNotesFor(k).filter(function (n) { return (n.text || "").indexOf("Smart note — ") !== 0; }).slice().reverse();
             if (!todays.length) return '<p class="none-line">Nothing written for this day yet — write it on the Your Notes slide.</p>';
-            return '<p class="formtitle">' + dayLabelFor(k) + "</p>" + todays.map(function (n) { return journalItemHTML(n); }).join("");
+            var __perY = 5; var __pgY = Math.min(__slPage || 0, Math.ceil(todays.length / __perY) - 1);
+            return '<p class="formtitle">' + dayLabelFor(k) + "</p>" + todays.slice(__pgY * __perY, __pgY * __perY + __perY).map(function (n) { return journalItemHTML(n); }).join("") + slPagerHTML(todays.length, __perY);
           }
           if (listId.indexOf("mine:") === 0) {
             var L = null; mylists.forEach(function (x) { if (x.id === listId.slice(5)) L = x; });
@@ -4788,7 +4823,10 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
            screen, pops out toward the viewer a little, settles exactly);
            the day-scroll never scrolls — scrollTop stays 0. */
         var dayBlock = 0;
-        var __tlPage = 0; /* FIX9F item 1 — the timeline pages morning/afternoon, 8 slots a frame. */
+        var __tlPage = 0; /* FIX9F item 1 — the timeline pages 6 slots a frame (FIX9F2: 8+8 still left the Appointments slide ~150 px over the frame). */
+        var __bookOpen = false; /* FIX9F2 item 1 — the booking flow (calendar + form) is open on its own two slides. */
+        var __journalPage = 0; /* FIX9F2 item 1 — journal entries page 4 to a frame on their own slide. */
+        var __slPage = 0; /* FIX9F2 item 1 — an open list pages 5 items to a frame on its own slide. */
         /* FIX12 item 2 — ONE navigation state, carried across days: the
            slide the citizen is on survives a day step, so day-to-day
            travel lands on the SAME slide, never slide 1. */
@@ -4990,6 +5028,26 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         /* THE JOURNAL BOARD (§10): its own board — write, dictate,
            paste, add your notes, upload images, share — with the living
            timeline of what was written, shared or added on this day. */
+        /* FIX9F2 item 1 — the journal's entries live on their OWN slide now (see renderCategories): the timeline (#journalTimeline) was uncapped — the Journal rule strips the 280 px cap (max-height:none, overflow visible) — so every entry pushed the Journal slide past the frame. Entries page 4 to a frame, in order, like the timeline's own paging. */
+        function journalEntriesHTML() {
+          var k = keyOf(sel);
+          var js = journal[k] || [];
+          var ns = mergedNotesFor(k);
+          var all = [];
+          js.forEach(function (n) { all.push(journalItemHTML(n)); });
+          ns.forEach(function (n) { all.push(n.img ? journalItemHTML(n) : '<div class="noteitem"><p>Note · ' + escapeHTML(n.text || "") + "</p></div>"); });
+          if (!all.length) return '<p class="none-line">Nothing written for this day yet — write, dictate, paste, or add a note of your own on the Journal slide.</p>';
+          var per = 4;
+          var pages = Math.ceil(all.length / per);
+          var pg = Math.min(__journalPage || 0, pages - 1);
+          var h = '<div class="ink-timeline" id="journalTimeline">' + all.slice(pg * per, pg * per + per).join("") + "</div>";
+          if (pages > 1) {
+            h += '<div class="tl-pager" role="group" aria-label="Journal pages">';
+            for (var i = 0; i < pages; i++) h += '<button type="button" class="pill" data-jpage="' + i + '" aria-pressed="' + (pg === i) + '">Page ' + (i + 1) + "</button>";
+            h += "</div>";
+          }
+          return h;
+        }
         function journalBoardHTML() {
           var k = keyOf(sel);
           var js = journal[k] || [];
@@ -5006,8 +5064,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             '<label class="pill" for="journalImageInput" style="display:inline-flex;align-items:center;justify-content:center;cursor:pointer">Add image</label>' +
             '<input type="file" id="journalImageInput" accept="image/*" hidden>' +
             '<button type="submit" class="bookbtn">Save entry</button></div>' +
-            '<p class="none-line" id="journalInlineNote" style="text-align:left">Your words save as you write — nothing typed is lost. Images stay with this day.</p></form>' +
-            '<div class="ink-timeline" id="journalTimeline">' + items + "</div>";
+            '<p class="none-line" id="journalInlineNote" style="text-align:left">Your words save as you write — nothing typed is lost. Images stay with this day.</p></form>';
         }
         /* YOUR NOTES (2026-11-21 — the Naya Notes slide, renamed on
            Shawn's word; the Make-both round-trip is out: Naya never
@@ -5183,7 +5240,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           var smartCount = dayNotes.filter(function (n) { return (n.text || "").indexOf("Smart note — ") === 0; }).length;
           var yoursCount = dayNotes.filter(function (n) { return (n.text || "").indexOf("Smart note — ") !== 0; }).length;
           var contactsCount = (contacts[k] || []).length;
-          var slDetail = openListId ? '<div class="panel">' + slItemsHTML(openListId) + '</div>' : "";
+          /* FIX9F2 item 1 — the detail panel no longer lives inside this slide: it is its own slide, right after Smart Lists (see wrap.innerHTML below). */
           var smartListsInner = '<div class="sum-list sl-frame">' +
             slRow("nine", "#c2410c", "star", "Nine Notes", "The nine that tell the whole story — in order.", NINE_NOTES.length) +
             slRow("smart", "#d4a017", "note", "Smart Notes", "Your saved Smart notes for this day.", smartCount) +
@@ -5191,7 +5248,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             slRow("worlds", "#8e24aa", "world", "Worlds", "Every world you belong to.", null) +
             slRow("yours", "#0f52ba", "book", "Your Notes", "Your own notes, kept by day.", yoursCount) +
             mylists.map(function (L, i) { return slRow("mine:" + L.id, ["#8e24aa", "#0f52ba", "#07925f", "#d4a017", "#c2410c", "#c62828", "#a21caf"][i % 7], "list", escapeHTML(L.name), "Your list — " + L.items.length + (L.items.length === 1 ? " item." : " items."), L.items.length); }).join("") +
-            '</div>' + slDetail;
+            '</div>';
           var journalInner = journalBoardHTML();
           /* THE UNFOLD (Shawn 00:19Z — the agreement's unfold is the
              spine): notifications stand open on entry; appointments and
@@ -5225,14 +5282,20 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              directly after Summary; Your Notes closes the deck (the
              Smart Notes slide is gone — smart notes no longer display
              on the calendar day, 2026-11-20). */
+          /* FIX9F2 item 1 — the frame-law slides: Journal entries follows Journal; Timeline follows Appointments; Book a time + What is it? follow Timeline (only while the booking flow is open); the open list's detail follows Smart Lists (only while a list is open). Each is its own frame — overflow moves to the next frame, never scroll inside one. */
           wrap.innerHTML =
             catSection(CATS[0], notifCards + dayNav(dc, false), null, "Tap a world — see its notifications.", "", dc, "diamond", null, "notif-slide allow-scroll") +
             catSection(CATS[2], journalInner + dayNav("#07925f", false), "record", "Your day, in your words — kept for this day.", "Journal", "#07925f", "orb") +
+            catSection(CATS[2], journalEntriesHTML() + dayNav("#07925f", false), "record", "Every entry for this day, in order.", "Journal entries", "#07925f", "orb") +
             catSection(CATS[0], notifRowsA + dayNav(dc, false), null, "Six worlds, one day — tap one to see its day.", "Your Worlds", dc, "orb", "worlds", "worlds-slide") +
             catSection(CATS[0], notifRowsB + dayNav(dc, false), null, "Local, Province and Global — your news hub, each scope its own door.", "News Hub", dc, "hex", null, "news-slide") +
-            catSection(CATS[1], eliteApptsHTML(dc, apptRows, tl) + dayNav("#8e24aa", false), "appointments", "The day, booked — what is on, and a time to book.", "Appointments", "#8e24aa", null, null, "allow-scroll") +
+            catSection(CATS[1], eliteApptsHTML(dc, apptRows) + dayNav("#8e24aa", false), "appointments", "The day, booked — what is on, and a time to book.", "Appointments", "#8e24aa", null, null, "allow-scroll") +
+            catSection(CATS[1], timelineTileHTML(dc, tl) + dayNav("#3f51b5", false), "appointments", "Every hour, 6 AM to 9 PM — tap an open hour to book it.", "Timeline", "#3f51b5", null, null, "allow-scroll") +
+            (__bookOpen ? catSection(CATS[1], '<div class="elite-cal" id="eliteCal"></div>' + dayNav("#8e24aa", false), "appointments", "Pick how you meet, pick the day, pick the time.", "Book a time", "#8e24aa", null, null, "allow-scroll") : "") +
+            (__bookOpen ? catSection(CATS[1], '<div class="elite-form" id="eliteForm"></div>' + dayNav("#8e24aa", false), "appointments", "Name it, and it is booked.", "What is it?", "#8e24aa", null, null, "allow-scroll") : "") +
             catSection(CATS[2], summaryInner + dayNav("#3f51b5", false), "record", "The day, written down — counted.", "Summary of the day", "#3f51b5", "diamond", null, "allow-scroll") +
             catSection(CATS[2], smartListsInner + dayNav("#c62828", false), "record", "Everything saved, kept in order.", "Smart Lists", "#c62828", "diamond", null, "allow-scroll") +
+            (openListId ? catSection(CATS[2], slDetailHTML() + dayNav("#c62828", false), "record", slMeta(openListId).essence, slMeta(openListId).label, slMeta(openListId).dc, "diamond", null, "allow-scroll") : "") +
             yourNotesSection(dc);
           /* FIX9 item 12 — NOTIFICATIONS FIRST (dot 0, the opening
              view), wisdom second, chamber next as the day's home;
@@ -5308,7 +5371,8 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             var lid = $("yourNoteListSelect") ? $("yourNoteListSelect").value : "";
             /* FIX9F item 7 — "Smart Notes" saves the note AS a smart note (the file's own marker), never a second copy beside the plain one. */
             if (lid === "sl:smart") { notes[k][notes[k].length - 1].text = "Smart note — " + v; }
-            else if (lid) addToMyList(lid, { text: v, at: Date.now(), day: k, kind: "note" });
+            /* FIX9F2 item 7 — "sl:yours" IS the home store: the note is already in Your Notes (pushed above), so there is no second routing to run — the old addToMyList("sl:yours") call always returned false and its answer was ignored. Only a citizen-made list goes through addToMyList now, and its answer is honoured: a false means the list is gone, so the picker is cleared and the note stays safe in Your Notes. */
+            else if (lid && lid.indexOf("sl:") !== 0) { if (!addToMyList(lid, { text: v, at: Date.now(), day: k, kind: "note" })) { var __s2 = $("yourNoteListSelect"); if (__s2) __s2.value = ""; } }
             saveStores();
             $("yourNoteInput").value = "";
             renderMonth();
@@ -5344,7 +5408,11 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           wrap.querySelectorAll("[data-slist]").forEach(function (b) { b.addEventListener("click", function () {
             var id = b.getAttribute("data-slist");
             openListId = openListId === id ? null : id;
-            renderCategories(lastApptRows, lastTl); renderNotifBar(); renderNotifDetail(); dayShow(dayBlock);
+            __slPage = 0;
+            renderCategories(lastApptRows, lastTl); renderNotifBar(); renderNotifDetail();
+            /* FIX9F2 item 1 — the open list is the NEXT frame: opening a list walks to its own slide; closing it walks back to the Smart Lists slide. */
+            if (openListId) { if (!gotoSlideByLabel(slMeta(openListId).label)) dayShow(dayBlock); }
+            else if (!gotoSlideByLabel("Smart Lists")) dayShow(dayBlock);
           }); });
           /* The Contacts list — add a contact, and the same list tools
              as the Your Notes slide: make a list, add the contact to it. */
@@ -5357,7 +5425,8 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             var clid = $("contactListSelect") ? $("contactListSelect").value : "";
             /* FIX9F item 7 — "Smart Notes" keeps a smart note about the person, in the day's notes. */
             if (clid === "sl:smart") { (notes[k] = notes[k] || []).push({ text: "Smart note — " + cv, at: Date.now() }); }
-            else if (clid) addToMyList(clid, { text: cv, at: Date.now(), day: k, kind: "contact" });
+            /* FIX9F2 item 7 — "sl:contacts" IS the home store: the contact is already in Contacts (pushed above). Only a citizen-made list goes through addToMyList now, and its answer is honoured the same way. */
+            else if (clid && clid.indexOf("sl:") !== 0) { if (!addToMyList(clid, { text: cv, at: Date.now(), day: k, kind: "contact" })) { var __s3 = $("contactListSelect"); if (__s3) __s3.value = ""; } }
             saveStores();
             renderCategories(lastApptRows, lastTl); renderNotifBar(); renderNotifDetail(); dayShow(dayBlock);
           });
@@ -5378,6 +5447,8 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
               openMeetRoom(sorted[parseInt(btn.getAttribute("data-join"), 10)]);
             });
           });
+          /* FIX9F2 item 1 — the booking slides are re-created by every render: if the flow is open, fill the fresh calendar + form now, or the slides would stand empty after any re-render (a save, a page turn, a duration change). */
+          if (__bookOpen) { mcRenderCal(); mcRenderForm(); }
           armScrollLight();
         }
 
@@ -5746,6 +5817,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
               : "That hour is full — here are the next open times.";
             __mc.timePage = 0;
             mcRenderCal(); mcRenderForm();
+            gotoSlideByLabel("What is it?");
           }
         }
         if (!window.__tlSlotWired) {
@@ -5754,6 +5826,10 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             if (ev.target.closest("[data-join]")) return;
             var pg = ev.target.closest("[data-tlpage]");
             if (pg) { __tlPage = parseInt(pg.getAttribute("data-tlpage"), 10) || 0; lastTl = timelineHTML(keyOf(sel)); renderCategories(lastApptRows, lastTl); renderNotifBar(); renderNotifDetail(); dayShow(dayBlock); return; }
+            var jp = ev.target.closest("[data-jpage]");
+            if (jp) { __journalPage = parseInt(jp.getAttribute("data-jpage"), 10) || 0; renderCategories(lastApptRows, lastTl); renderNotifBar(); renderNotifDetail(); dayShow(dayBlock); return; }
+            var sp = ev.target.closest("[data-slpage]");
+            if (sp) { __slPage = parseInt(sp.getAttribute("data-slpage"), 10) || 0; renderCategories(lastApptRows, lastTl); renderNotifBar(); renderNotifDetail(); dayShow(dayBlock); return; }
             var s = ev.target.closest(".tl-slot");
             if (s && s.getAttribute("data-slot")) openBookFor(s.getAttribute("data-slot"));
           });
@@ -5883,11 +5959,13 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             '<input type="text" id="mcWho" placeholder="Who is it with?" aria-label="Who is it with?" maxlength="80" value="' + escapeHTML(__mc.edit ? (__mc.edit.who || "") : "").replace(/"/g, "&quot;") + '" />' +
             '<button type="button" class="elite-bookpill" id="mcBook">' + (__mc.edit ? "Save the change" : "Book") + "</button>";
         }
+        /* FIX9F2 item 1 — the booking flow is the NEXT TWO frames now: the calendar (Book a time) and the form (What is it?) are their own slides, so the Appointments slide never carries them. Opening the flow re-renders the deck with those slides in it, then walks to the calendar slide. */
         function mcOpen(day, meet) {
-          var cal = $("eliteCal"); if (!cal) return;
           __mc.day = day || sel; __mc.time = null; __mc.meet = !!meet; __mc.edit = null;
           __mc.kind = meet ? "meet" : null; __mc.timePage = 0; __mc.confirmed = null; __mc.refused = null;
-          cal.hidden = false;
+          __bookOpen = true;
+          renderCategories(lastApptRows, lastTl); renderNotifBar(); renderNotifDetail();
+          if (!gotoSlideByLabel("Book a time")) dayShow(dayBlock);
           mcRenderCal(); mcRenderForm();
           var b = $("tileBookBtn"); if (b) b.setAttribute("aria-expanded", "true");
         }
@@ -5981,11 +6059,11 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           if (ch) ch.addEventListener("click", function () {
             __mc.edit = { time: c.time, title: c.title, who: c.who || "" };
             __mc.day = c.day; __mc.time = c.time; __mc.kind = c.kind; __mc.dur = c.dur || 30; __mc.confirmed = null; __mc.refused = null;
-            var cal2 = $("eliteCal"); if (cal2) cal2.hidden = false;
             mcRenderCal(); mcRenderForm();
+            gotoSlideByLabel("Book a time");
           });
           var dn = $("r2Done");
-          if (dn) dn.addEventListener("click", function () { __mc.confirmed = null; openDay(sel); });
+          if (dn) dn.addEventListener("click", function () { __mc.confirmed = null; openDay(sel); gotoSlideByLabel("Appointments"); });
         }
         function mcCancelIdx(idx) {
           if (!sel) return;
@@ -6000,27 +6078,24 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           renderMonth();
           openDay(sel);
         }
-        function eliteApptsHTML(dc, apptRows, tl) {
-          /* ROUND2 item 2 — the slide at rest presents booking as a real thing: the day's booked tiles,
-             the full 6 AM–9 PM timeline (timelineHTML, harvested — it was computed and passed in but
-             never shown on this slide), and ONE doorway pill. The second bare button (Smart Meet) is
-             gone — Smart Meet is a kind inside Step 1 now. Timeline tile markup harvested from the
-             renderCategories tile (same .tile-timeline pattern); the .r2-tlbody wrapper lets a booking
-             refresh the timeline in place without rebuilding the tile. */
+        /* FIX9F2 item 1 — the timeline tile, harvested whole from eliteApptsHTML: it is the Timeline slide's content now, so the Appointments slide holds only the booked tiles + the Book a time pill. */
+        function timelineTileHTML(dc, tl) {
           var label = sel ? WEEKDAYS[sel.getDay()] + ", " + MONTHS[sel.getMonth()] + " " + sel.getDate() : "";
+          return tl ? '<div class="tile tile-timeline" style="--dc:' + dc + ';--tc:#3f51b5"><h3><span class="dotc" style="--tc:#3f51b5"></span>Timeline · ' + label + '</h3><div class="r2-tlbody">' + tl + "</div></div>" : "";
+        }
+        function eliteApptsHTML(dc, apptRows) {
+          /* ROUND2 item 2 (FIX9F2 item 1 — the timeline moved out): the slide at rest presents booking as a real thing: the day's booked tiles and ONE doorway pill. The full 6 AM–9 PM timeline is its own slide now (timelineTileHTML, same .tile-timeline pattern, harvested from this tile); the booking calendar + form are their own two slides. The second bare button (Smart Meet) is gone — Smart Meet is a kind inside Step 1 now. */
+          /* FIX9F2 item 1 — this slide holds only the booked tiles + the Book a time pill now: the timeline is its own slide, and the booking calendar + form are their own two slides. */
           return '<div class="elite-appts">' +
             '<div class="elite-tiles" role="list" aria-label="Appointments for this day">' + apptRows + "</div>" +
-            (tl ? '<div class="tile tile-timeline" style="--dc:' + dc + ';--tc:#3f51b5"><h3><span class="dotc" style="--tc:#3f51b5"></span>Timeline · ' + label + '</h3><div class="r2-tlbody">' + tl + "</div></div>" : "") +
             '<div class="elite-book"><button type="button" class="elite-bookpill" id="tileBookBtn" aria-expanded="false">Book a time</button></div>' +
-            '<div class="elite-cal" id="eliteCal" hidden></div>' +
-            '<div class="elite-form" id="eliteForm" hidden></div>' +
             "</div>";
         }
         if (!window.__mcWired) {
           window.__mcWired = true;
           document.addEventListener("click", function (ev) {
             var t = ev.target;
-            if (t.closest("#tileBookBtn")) { ev.preventDefault(); var c = $("eliteCal"); if (c && !c.hidden) { c.hidden = true; var f = $("eliteForm"); if (f) { f.hidden = true; } var b = $("tileBookBtn"); if (b) b.setAttribute("aria-expanded", "false"); } else { mcOpen(sel, false); } return; }
+            if (t.closest("#tileBookBtn")) { ev.preventDefault(); if (__bookOpen) { __bookOpen = false; __mc.confirmed = null; __mc.refused = null; renderCategories(lastApptRows, lastTl); renderNotifBar(); renderNotifDetail(); if (!gotoSlideByLabel("Appointments")) dayShow(dayBlock); } else { mcOpen(sel, false); } return; }
             var day = t.closest(".mc-day");
             if (day) {
               if (day.getAttribute("aria-disabled") === "true") return;
@@ -6039,7 +6114,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
               mcRenderCal(); return;
             }
             var tp = t.closest(".mc-time");
-            if (tp) { __mc.time = tp.getAttribute("data-mc-time"); __mc.refused = null; mcRenderCal(); mcRenderForm(); return; }
+            if (tp) { __mc.time = tp.getAttribute("data-mc-time"); __mc.refused = null; mcRenderCal(); mcRenderForm(); gotoSlideByLabel("What is it?"); return; }
             if (t.closest("#mcBook")) { ev.preventDefault(); mcBook(); return; }
             var cx = t.closest(".mc-cancel");
             if (cx) { ev.preventDefault(); mcCancelIdx(parseInt(cx.getAttribute("data-mc-i"), 10)); return; }
@@ -6051,13 +6126,17 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
               __mc.edit = { time: a.time, title: a.title, who: a.who || "" };
               __mc.day = sel; __mc.time = a.time; __mc.meet = !!a.meet; __mc.dur = a.dur || 30;
               __mc.kind = a.how || (a.meet ? "meet" : "person"); __mc.confirmed = null; __mc.refused = null; __mc.timePage = 0;
-              var cal2 = $("eliteCal"); if (cal2) cal2.hidden = false;
+              /* FIX9F2 item 1 — editing opens the flow on its own slides: the time is already picked, so the form slide is the landing. */
+              __bookOpen = true;
+              renderCategories(lastApptRows, lastTl); renderNotifBar(); renderNotifDetail();
+              if (!gotoSlideByLabel("What is it?")) dayShow(dayBlock);
               mcRenderCal(); mcRenderForm();
               return;
             }
           });
           document.addEventListener("change", function (ev) {
-            if (ev.target && ev.target.id === "mcDur") { __mc.dur = parseInt(ev.target.value, 10) || 30; __mc.time = null; __mc.timePage = 0; __mc.refused = null; mcRenderCal(); mcRenderForm(); }
+            /* FIX9F2 item 5 — the slot labels are computed from this same duration: changing it re-renders the timeline too, so no slot can go stale and advertise a time the flow no longer offers. The end-of-render hook refills the booking slides. */
+            if (ev.target && ev.target.id === "mcDur") { __mc.dur = parseInt(ev.target.value, 10) || 30; __mc.time = null; __mc.timePage = 0; __mc.refused = null; lastTl = timelineHTML(keyOf(sel)); renderCategories(lastApptRows, lastTl); renderNotifBar(); renderNotifDetail(); dayShow(dayBlock); }
           });
         }
         /* The swipe — one gesture walks day to day at phone width, the
