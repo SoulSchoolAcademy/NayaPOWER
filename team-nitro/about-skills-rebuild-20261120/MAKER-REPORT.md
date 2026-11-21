@@ -228,4 +228,6 @@ their own variant first. Their report is preserved verbatim as
   (commit below).
 - **Staged proof link (HTTP 200, 201,793 B, sha256 identical):**
   `https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/about-skills-rebuild-20261120/about-skills.html&ref=about-skills-rebuild-20261120&cb=facf387c684d48da615e4185a506d46e9f069503`
-- **Report-update commit:** (filled below)
+- **Report-update commit:** the follow-up commit on this branch that filed
+  this updated report with the filing details above (see the branch log
+  for the tip commit).
