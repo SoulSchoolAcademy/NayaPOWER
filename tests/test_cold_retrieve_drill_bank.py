@@ -68,7 +68,7 @@ def test_drill_bank_retrieval_never_returns_dead_note(item):
     )
 
 
-def test_relevance_dominates_authority_compounding_proof():
+def test_relevance_dominates_authority_compounding():
     """Boundary (falsified 2026-10-06): an additive authority bonus once
     promoted SN-016 (Judgment Rule, RATIFIED) over the relevant note for the
     query "compounding proof". Relevance must win; authority only breaks ties.
@@ -82,8 +82,22 @@ def test_relevance_dominates_authority_compounding_proof():
     winner must carry the query's relevance signal in a scored field. If an
     authority bonus ever returns and promotes SN-016 (whose text has no
     "compounding proof" signal), this test fires.
+
+    Re-point (2026-11-21, tip 5512f1b5, Naya 5 cold-retrieve run): SN-0531
+    was RETIRED 2026-11-06 by essence SN-2134, and no ACTIVE note carries
+    the exact phrase "compounding proof" in title or nutshell — verified
+    first-hand (top score 18.37 < floor 40.0, so retrieve() correctly fails
+    closed). Same shape as the W46 drill-bank retirements (SN-015/SN-0344):
+    the query died with its note, not with the mechanism. The boundary is
+    re-pinned on the live query "compounding": winner SN-0030 (CANDIDATE)
+    wins on relevance (score 58.37, phrase in nutshell); the RATIFIED decoy
+    SN-016 has zero signal and is unranked. Honesty note: the phrase bonus
+    (40.0) dwarfs any plausible authority bonus — a +50 RATIFIED mutation
+    does not flip this winner — so this test pins end-to-end relevant-winner
+    behavior; the structural guard (zero-score notes never rank) is pinned
+    by test_zero_relevance_query_fails_closed.
     """
-    result = retrieve("compounding proof")
+    result = retrieve("compounding")
     got = result["retrieved"].get("smart_note_id")
     assert got != "SN-016", (
         "authority regression: SN-016 (RATIFIED) promoted over the relevant note"
@@ -92,7 +106,7 @@ def test_relevance_dominates_authority_compounding_proof():
         str(result["retrieved"].get("title") or ""),
         str(result.get("explanation") or ""),
     ]).lower()
-    assert "compounding proof" in evidence, (
+    assert "compounding" in evidence, (
         f"winner {got} carries no relevance signal for the query"
     )
 
