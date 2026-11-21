@@ -22,6 +22,16 @@
 -- NOTE: trg_file_note calls auto_categorize_note (filed by Seat 2 in 190004). That is
 --   safe at creation time: PL/pgSQL bodies are not resolved until first execution,
 --   so no ordering problem on a fresh apply.
+-- NOTE (Seat 5 fix, 2026-11-21 — CHECKER-RE-RUN-VERDICT FAIL): the 8 trigger
+--   blocks below whose trigger Seat 1's files also create now guard on
+--   to_regclass('public.<table>') IS NOT NULL, so on a fresh apply — where the
+--   table does not exist yet at 170000 time — the block skips cleanly instead of
+--   erroring 42P01 on 'public.<table>'::regclass and rolling the 8 function
+--   definitions back with it. The naya_notes block is unchanged: naya_notes
+--   already exists on main (20261022204500) and no other file creates that
+--   trigger. The 8 function definitions are byte-identical to Seat 4's filing
+--   (proven by diff in the Seat 5 fix run); only the DO-block guards and the
+--   comments in this header changed.
 -- NOTE (scope limit, stated honestly): a fresh-apply diff against a test database is
 --   NOT in scope for this round (coordinator brief).
 -- Inventory: CHECKER-VERDICT.md §"The 8 unfiled trigger functions"; DATABASE.md §(c).
@@ -169,16 +179,18 @@ END $function$;
 -- TRIGGER ATTACHMENTS (live pg_trigger / pg_get_triggerdef, 2026-11-21)
 -- Each trigger is created ONLY IF MISSING on its table (no DROP, no replace).
 -- Seat 1's table migrations (180000+) create the same attachments inside their own
--- IF NOT EXISTS guards; on a fresh apply this file runs first, so those guards see
--- the trigger already present and skip. On a replay against live, these guards skip
+-- IF NOT EXISTS guards, AFTER creating each table in the same file. On a fresh
+-- apply the 8 blocks below whose table does not exist yet SKIP (to_regclass IS NULL)
+-- and Seat 1's files create those triggers; the naya_notes block runs here because
+-- that table already exists on main. On a replay against live, all 9 blocks skip
 -- because the triggers already exist live.
 -- live: hub_smart_notes_delete_guard ON hub_smart_notes -> guard_hub_smart_notes_delete()
 DO $$
 BEGIN
-  IF NOT EXISTS (
+  IF to_regclass('public.hub_smart_notes') IS NOT NULL AND NOT EXISTS (
     SELECT 1 FROM pg_trigger
     WHERE tgname = 'hub_smart_notes_delete_guard'
-      AND tgrelid = 'public.hub_smart_notes'::regclass
+      AND tgrelid = to_regclass('public.hub_smart_notes')
       AND NOT tgisinternal
   ) THEN
     CREATE TRIGGER hub_smart_notes_delete_guard BEFORE DELETE ON public.hub_smart_notes FOR EACH ROW EXECUTE FUNCTION guard_hub_smart_notes_delete();
@@ -187,10 +199,10 @@ END $$;
 -- live: media_notes_touch ON media_notes -> naya_notes_touch_updated_at()
 DO $$
 BEGIN
-  IF NOT EXISTS (
+  IF to_regclass('public.media_notes') IS NOT NULL AND NOT EXISTS (
     SELECT 1 FROM pg_trigger
     WHERE tgname = 'media_notes_touch'
-      AND tgrelid = 'public.media_notes'::regclass
+      AND tgrelid = to_regclass('public.media_notes')
       AND NOT tgisinternal
   ) THEN
     CREATE TRIGGER media_notes_touch BEFORE UPDATE ON public.media_notes FOR EACH ROW EXECUTE FUNCTION naya_notes_touch_updated_at();
@@ -211,10 +223,10 @@ END $$;
 -- live: trg_smart_notes_touch ON smart_notes -> touch_updated_at()
 DO $$
 BEGIN
-  IF NOT EXISTS (
+  IF to_regclass('public.smart_notes') IS NOT NULL AND NOT EXISTS (
     SELECT 1 FROM pg_trigger
     WHERE tgname = 'trg_smart_notes_touch'
-      AND tgrelid = 'public.smart_notes'::regclass
+      AND tgrelid = to_regclass('public.smart_notes')
       AND NOT tgisinternal
   ) THEN
     CREATE TRIGGER trg_smart_notes_touch BEFORE UPDATE ON public.smart_notes FOR EACH ROW EXECUTE FUNCTION touch_updated_at();
@@ -223,10 +235,10 @@ END $$;
 -- live: trg_auto_file_note ON smart_notes -> trg_file_note()
 DO $$
 BEGIN
-  IF NOT EXISTS (
+  IF to_regclass('public.smart_notes') IS NOT NULL AND NOT EXISTS (
     SELECT 1 FROM pg_trigger
     WHERE tgname = 'trg_auto_file_note'
-      AND tgrelid = 'public.smart_notes'::regclass
+      AND tgrelid = to_regclass('public.smart_notes')
       AND NOT tgisinternal
   ) THEN
     CREATE TRIGGER trg_auto_file_note AFTER INSERT ON public.smart_notes FOR EACH ROW EXECUTE FUNCTION trg_file_note();
@@ -235,10 +247,10 @@ END $$;
 -- live: payments_fill_owner ON payments -> payments_fill_owner()
 DO $$
 BEGIN
-  IF NOT EXISTS (
+  IF to_regclass('public.payments') IS NOT NULL AND NOT EXISTS (
     SELECT 1 FROM pg_trigger
     WHERE tgname = 'payments_fill_owner'
-      AND tgrelid = 'public.payments'::regclass
+      AND tgrelid = to_regclass('public.payments')
       AND NOT tgisinternal
   ) THEN
     CREATE TRIGGER payments_fill_owner BEFORE INSERT ON public.payments FOR EACH ROW EXECUTE FUNCTION payments_fill_owner();
@@ -247,10 +259,10 @@ END $$;
 -- live: trg_work_items_state_changed ON work_items -> work_items_state_changed()
 DO $$
 BEGIN
-  IF NOT EXISTS (
+  IF to_regclass('public.work_items') IS NOT NULL AND NOT EXISTS (
     SELECT 1 FROM pg_trigger
     WHERE tgname = 'trg_work_items_state_changed'
-      AND tgrelid = 'public.work_items'::regclass
+      AND tgrelid = to_regclass('public.work_items')
       AND NOT tgisinternal
   ) THEN
     CREATE TRIGGER trg_work_items_state_changed BEFORE UPDATE ON public.work_items FOR EACH ROW EXECUTE FUNCTION work_items_state_changed();
@@ -259,10 +271,10 @@ END $$;
 -- live: trg_work_items_transition_log ON work_items -> work_items_transition_log()
 DO $$
 BEGIN
-  IF NOT EXISTS (
+  IF to_regclass('public.work_items') IS NOT NULL AND NOT EXISTS (
     SELECT 1 FROM pg_trigger
     WHERE tgname = 'trg_work_items_transition_log'
-      AND tgrelid = 'public.work_items'::regclass
+      AND tgrelid = to_regclass('public.work_items')
       AND NOT tgisinternal
   ) THEN
     CREATE TRIGGER trg_work_items_transition_log AFTER INSERT OR UPDATE OF state ON public.work_items FOR EACH ROW EXECUTE FUNCTION work_items_transition_log();
@@ -271,10 +283,10 @@ END $$;
 -- live: work_items_packet_law_trg ON work_items -> work_items_packet_law()
 DO $$
 BEGIN
-  IF NOT EXISTS (
+  IF to_regclass('public.work_items') IS NOT NULL AND NOT EXISTS (
     SELECT 1 FROM pg_trigger
     WHERE tgname = 'work_items_packet_law_trg'
-      AND tgrelid = 'public.work_items'::regclass
+      AND tgrelid = to_regclass('public.work_items')
       AND NOT tgisinternal
   ) THEN
     CREATE CONSTRAINT TRIGGER work_items_packet_law_trg AFTER INSERT OR UPDATE OF state ON public.work_items DEFERRABLE INITIALLY DEFERRED FOR EACH ROW EXECUTE FUNCTION work_items_packet_law();
