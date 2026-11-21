@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-21 21:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-21 21:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -20641,6 +20641,12 @@ _Last updated: 2026-11-21 21:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: lane-2/armg-r2acceptance-costifwrong-t0676.md exists (5,745 bytes, written 22:01Z, matches receipt timeline); the doc is the genuine second-seat R2 review + cost-if-wrong sharpening (R1-R3 pins re-derived and matching in-doc). Pre-reg lane-experiments/prereg-t0669-lane5-armg-priorprobe.md exists at 13,493 bytes with sha256 prefix 26153968
 
+### ✅ t0675-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Adversarial review of blinded-judge protocol — DECLINE + RE-FILE (recusal on self-review)
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: t0672-lane10.md seat line reads 'Naya Clarity Narzan (Librarian, Lane 10 hat — BrainDex)' and its next-action wording is 'route the protocol to a contact-free second seat' — the recusal premise is byte-true; the receipt names no one. NOT PHANTOM. Self-score 9.5, not ag
+
 ### ✅ t0675 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** DECLINE + RE-FILE: recusal from self-review of blinded-judge protocol, gate re-filed OPEN
@@ -20656,6 +20662,12 @@ _Last updated: 2026-11-21 21:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0675-lane3.md`
 
 **Evidence:** Recusal on lineage self-review: verified the premise against t0672-lane10 bytes, re-filed brief with a proven claimability gate (claim script barred the author seat). Clears 9.5 — why not 10: the review itself is deferred, not done.
+
+### ✅ t0675-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Ratify-or-amend three ask-world.py contracts as instrument author + re-derive top-20 needs with crashed filter
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: derivation artifacts EXACT match to receipt pins — retrieval/query-needs-top20-t0675.md sha256 62920780329b36ae... and .jsonl 74dce1d133e6c745...; living register hidden_files/askworld-defect-register.md exists (34 lines) with G1 CLOSED (t0672 fix, t0675 ratification);
 
 ### ✅ t0675 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
