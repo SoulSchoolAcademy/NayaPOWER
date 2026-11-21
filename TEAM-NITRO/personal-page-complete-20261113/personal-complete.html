@@ -5133,10 +5133,9 @@ html.os-calm .os-dash .ph-card::after,html.os-calm .os-dash-pulse .stat-card::be
       <button class="up-act" id="aboutbtn" type="button" style="--ac:#d4a017;" data-os-go="about"><span class="os-jewel os-jewel-sm" style="--jc:#d4a017">◉</span> About</button>
       <button class="up-act" id="myworldbtn" type="button" style="--ac:#c2410c;" data-os-go="myworld"><span class="os-jewel os-jewel-sm" style="--jc:#c2410c">⌂</span> My World</button>
       <button class="up-act" id="skillsbtn" type="button" style="--ac:#c62828;" data-os-go="skills"><span class="os-jewel os-jewel-sm" style="--jc:#c62828">⚙</span> Skills</button>
-      <button class="up-act" id="connbtn" type="button" style="--ac:#a21caf;" data-os-go="people"><span class="os-jewel os-jewel-sm" style="--jc:#a21caf">◈</span> Connections</button>
-      <button class="up-act" id="growthbtn" type="button" style="--ac:#8e24aa;" data-os-go="growth"><span class="os-jewel os-jewel-sm" style="--jc:#8e24aa">↗</span> Invite</button>
-      <a class="up-act" id="inviterbtn" href="https://joinus.nayanet.app/" style="--ac:#8e24aa;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;"><span class="os-jewel os-jewel-sm" style="--jc:#8e24aa">✧</span> Smart Inviter</a>
-      <button class="up-act" id="sharebtn" type="button" style="--ac:#0f52ba;"><span class="os-jewel os-jewel-sm" style="--jc:#0f52ba">⇄</span> Share</button>
+      <button class="up-act" id="connbtn" type="button" style="--ac:#e84fff;" data-os-go="people"><span class="os-jewel os-jewel-sm" style="--jc:#e84fff">◈</span> Connections</button>
+      <a class="up-act" id="inviterbtn" href="https://joinus.nayanet.app/" style="--ac:#8e24aa;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;"><span class="os-jewel os-jewel-sm" style="--jc:#8e24aa">✧</span> Invite</a>
+      <button class="up-act" id="sharebtn" type="button" style="--ac:#3fb8ff;"><span class="os-jewel os-jewel-sm" style="--jc:#3fb8ff">⇄</span> Share</button>
       <a class="up-act" id="joinbtn" href="https://nayanet.app/joinus" style="--ac:#07925f;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;"><span class="os-jewel os-jewel-sm" style="--jc:#07925f">✦</span> Join NayaNET</a>
       <button class="up-act" id="memberbtn" type="button" style="--ac:#a21caf;display:none;">★ Become a Member</button>
 </div>
@@ -12250,7 +12249,7 @@ function HubView(params) {
           var shellEl = document.querySelector('.shell');
           var leftOpen = shellEl && (shellEl.classList.contains('drawer-open') || (window.innerWidth >= 1440 && !shellEl.classList.contains('rail-collapsed')));
           closeMsgPanel(); /* never both at once — the messenger panel closes when the rail opens */
-          if (!leftOpen && api.openDrawer) api.openDrawer(); if (window.innerWidth >= 1440) { var _sh2=document.querySelector('.shell'); if(_sh2){ _sh2.classList.remove('rail-right-collapsed'); _sh2.classList.add('rail-right-open'); } } /* ROUND 2 (2026-11-20, eye go-back 8): the Sidebar choice restores BOTH sidebars at desktop — the left rail was the only one the menu restored. */ /* OPEN, not toggle: an open rail stays open */
+          if (!leftOpen && api.openDrawer) api.openDrawer(); if (api.openRightRail) api.openRightRail(); /* ROUND 2 (2026-11-20, eye go-back 8): the Sidebar choice restores BOTH sidebars at desktop — the left rail was the only one the menu restored. */ /* OPEN, not toggle: an open rail stays open */
           window._nayaMenuState = 'sidebar';
           var active = document.querySelector('.lens-tab.active');
           var lens = active && active.classList.contains('lens-business') ? 'business' : (active && active.classList.contains('lens-world') ? 'world' : 'personal');
@@ -13376,8 +13375,8 @@ window.NayaNotif = window.NayaNotif || {
      Until the harvest lands, the honest empty state shows and the section
      is the one open item. ——— */
   const peopleSec = el('section', 'rail-people');
-  peopleSec.setAttribute('aria-label', 'Your people — message them');
-  peopleSec.innerHTML = '<div class="rail-people-head"><b>YOUR PEOPLE</b></div><input type="search" id="pcRailSearch" class="pc-rail-search" placeholder="Search people…" aria-label="Search people" autocomplete="off"><div class="hub-people-list" id="hubPeopleList"><p class="hub-people-empty">Your people show here once the Personal sidebar lands — the people from your Personal page, with their match, ready to message.</p></div><p class="hub-people-status" data-pc-profile-call-status></p>';
+  peopleSec.setAttribute('aria-label', 'Connect with Like Minds');
+  peopleSec.innerHTML = '<div class="rail-people-head"><b>Connect with Like Minds</b></div><input type="search" id="pcRailSearch" class="pc-rail-search" placeholder="Search people…" aria-label="Search people" autocomplete="off"><div class="hub-people-list" id="hubPeopleList"><p class="hub-people-empty">Your people show here once the Personal sidebar lands — the people from your Personal page, with their match, ready to message.</p></div><p class="hub-people-status" data-pc-profile-call-status></p>';
   /* Feed-following: the people shown are the feed's people. The lens is read
      live from the active tab — the same three-way read the menu control uses
      (Personal / Business / World) — and the section re-renders whenever
@@ -13439,7 +13438,7 @@ window.NayaNotif = window.NayaNotif || {
 function esc(s){ var d=document.createElement('div'); d.textContent=String(s==null?'':s); return d.innerHTML; }
 /* ROUND 4 H3 — GEMATRIA COLOUR CODE (~/workspace/team-nitro/GEMATRIA-COLOUR-CODE.md; Marty Leeds Septenary Cipher, https://septenarygematria.com/; colours by the chakra system SN-2322): the orb colour comes from the LETTER's first letter, never from the person — same letter, same colour, always. A-G 1-7, H-M 6-1, N-T 1-7, U-Z 6-1; 1 red, 2 orange, 3 gold, 4 emerald (the toned H5 green), 5 cyan #0f52ba (verified from the fix-9 digit-5 tile — NOT gold, NOT blue), 6 indigo, 7 royal purple. The old whole-name hash is gone. */
 var PC_GEM_NUM={A:1,B:2,C:3,D:4,E:5,F:6,G:7,H:6,I:5,J:4,K:3,L:2,M:1,N:1,O:2,P:3,Q:4,R:5,S:6,T:7,U:6,V:5,W:4,X:3,Y:2,Z:1};
-var PC_GEM_COL={1:'#c62828',2:'#c2410c',3:'#d4a017',4:'#07925f',5:'#0f52ba',6:'#3f51b5',7:'#8e24aa'};
+var PC_GEM_COL={1:'#c62828',2:'#c2410c',3:'#d4a017',4:'#07925f',5:'#0e7490',6:'#3f51b5',7:'#8e24aa'};
 function pcColorFor(name){ var L=String((name||'?').charAt(0)).toUpperCase(); return PC_GEM_COL[PC_GEM_NUM[L]||1]; }
 /* ROUND 4 H4 — match % as digit tiles (cap + white digit + own-colour rim, harvested from the points pill). */
 function pcTiles(n){ var s=String(n), h=''; for(var i=0;i<s.length;i++){ var d=s.charCodeAt(i)-48; if(d<0||d>9) continue; h+='<span class="os-mini-tile d'+d+'"><span class="cap"></span><span class="rd">'+d+'</span></span>'; } return h+'<span class="os-mini-tile pct"><span class="cap"></span><span class="rd">%</span></span>'; }
@@ -22071,6 +22070,7 @@ button.os-ld-node .os-ld-n{
 
 <div class="ph-sec os-view" data-os-view="message" data-block="message">
 <div class="ph-sec-t"><span class="ph-dot" style="background:#d4a017;color:#d4a017;"></span> Message</div>
+<div class="ph-actions" role="tablist" aria-label="Mail or Instant Messenger"><button class="ph-msg" type="button" data-mail-toggle="inbox">Mail</button><button class="ph-msg" type="button" data-mail-toggle="message">Instant Messenger</button></div>
 <div class="ph-card" style="--ac:#d4a017;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#d4a017"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7.5l9 6 9-6"/></svg></span> Message this app</h3>
 <div class="os-fieldwrap"><input class="os-input" id="os-msg-name" type="text" placeholder="Your name" autocomplete="name"><button class="os-mic" type="button" data-os-mic="os-msg-name" aria-label="Dictate your name" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
@@ -22083,6 +22083,7 @@ button.os-ld-node .os-ld-n{
 
 <div class="ph-sec os-view" data-os-view="inbox" data-block="inbox">
 <div class="ph-sec-t"><span class="ph-dot" style="background:#c2410c;color:#c2410c;"></span> Smart Mail Inbox</div>
+<div class="ph-actions" role="tablist" aria-label="Mail or Instant Messenger"><button class="ph-msg" type="button" data-mail-toggle="inbox">Mail</button><button class="ph-msg" type="button" data-mail-toggle="message">Instant Messenger</button></div>
 <div class="os-roomline">
 <a class="ph-connect" href="https://nayanet.app/rooms/mail">Open the Smart Mail room →</a>
 </div>
@@ -23847,6 +23848,14 @@ NF.register(UNIT, {
     showView(VIEWS.indexOf(v)>=0?v:'home', true);
   });
   window.osShowView = showView;
+  /* MAIL TOGGLE 2026-11-21 (side-rail round, Item 5): Mail + Instant Messenger are one interface — the Mail door opens one page with a toggle. These pills switch the two views directly (no home-toggle: tapping the view you are already on stays there). */
+  document.addEventListener('click', function(e){
+    var t=e.target&&e.target.closest?e.target.closest('[data-mail-toggle]'):null;
+    if(!t) return;
+    var v=t.getAttribute('data-mail-toggle');
+    if(window.osShowView) window.osShowView(v);
+    document.querySelectorAll('[data-mail-toggle]').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-mail-toggle')===v); });
+  });
   document.addEventListener('pointerdown', function(e){
     var t=(e.target && e.target.closest)?e.target.closest('.os-litobj,.os-jewel'):null;
     if (!t) return;
@@ -40005,7 +40014,7 @@ function mwApplyLang(){
   try{ document.documentElement.lang=code; }catch(e){}
   var dict=MW_I18N[code]||{};
   var _joinLab='Join NayaNET'; try{ if(window.pcIsPageOwner && window.pcIsPageOwner()) _joinLab='Go to the Hub'; }catch(e){} /* FOLLOW-ON 2 (E3): the page-level Join reads as the owner's door — it routes the owner to the Hub, so it says so. Recomputed on every language pass. */
-  var byId={msgbtn:'Message',aboutbtn:'About',myworldbtn:'My World',statsbtn:'Stats',intelbtn:"Today's Intel",skillsbtn:'Skills',connbtn:'Connections',growthbtn:'Invite',inviterbtn:'Smart Inviter',sharebtn:'Share',joinbtn:_joinLab,settingsbtn:'Settings',memberbtn:'Become a Member',saBackBtn:'Back to my world',cvrbtn:'Change cover','tg-back':'Back to my words','tg-post-smart':'Post smart note',fcChatSend:'Send','os-dash-fb-btn':'Send'}; /* AUTO-TRANSLATE: the row's missing three (Stats, Today's Intel, Skills — the first two are dead ids today, covered for when they return) + the hidden-until-open buttons + the chat Send. The creator's two buttons are NOT here: os-post-btn's label is per-mode (tgSetMode owns it, re-run below) and os-sched-btn's label is dynamic (a scheduled date) — the byId pass would clobber both. */
+  var byId={msgbtn:'Message',aboutbtn:'About',myworldbtn:'My World',statsbtn:'Stats',intelbtn:"Today's Intel",skillsbtn:'Skills',connbtn:'Connections',growthbtn:'Invite',inviterbtn:'Invite',sharebtn:'Share',joinbtn:_joinLab,settingsbtn:'Settings',memberbtn:'Become a Member',saBackBtn:'Back to my world',cvrbtn:'Change cover','tg-back':'Back to my words','tg-post-smart':'Post smart note',fcChatSend:'Send','os-dash-fb-btn':'Send'}; /* AUTO-TRANSLATE: the row's missing three (Stats, Today's Intel, Skills — the first two are dead ids today, covered for when they return) + the hidden-until-open buttons + the chat Send. The creator's two buttons are NOT here: os-post-btn's label is per-mode (tgSetMode owns it, re-run below) and os-sched-btn's label is dynamic (a scheduled date) — the byId pass would clobber both. */
   Object.keys(byId).forEach(function(id){
     var el=$(id); if(!el) return;
     if(el.classList && el.classList.contains('pc-gear')) return; /* PERSONAL-COMPLETE: the gear is an icon, not a label. */
@@ -42534,18 +42543,42 @@ if(creator) creator.addEventListener('click', function(e){ if(e.target===creator
      MutationObserver puts them back at the top when a later loadWall() repaints
      the list from the live rows. The live insert path stays owed. */
 window.__fcStubPosts=[];
+function fcStubList(){
+  var old=document.getElementById('os-wall-list');
+  if(old) return old;
+  var card=document.querySelector('#pcHubFeedMount article.intel-board');
+  if(card && card.parentNode) return card.parentNode;
+  return document.getElementById('pcHubFeedMount');
+}
+var __fcStubObs=null, __fcStubCur=null;
+function fcWatchStubs(){
+  if(!window.MutationObserver) return;
+  var mount=document.getElementById('pcHubFeedMount');
+  var list=mount||fcStubList();
+  if(!list) return;
+  if(list===__fcStubCur && __fcStubObs) return;
+  if(__fcStubObs) __fcStubObs.disconnect();
+  __fcStubCur=list;
+  var guard=false;
+  __fcStubObs=new MutationObserver(function(){
+    if(guard) return; guard=true;
+    try{ fcPaintStubs(); }catch(e){} guard=false;
+    fcWatchStubs();
+  });
+  __fcStubObs.observe(list, {childList:true, subtree:true});
+}
 window.fcStubInsert=function(payload){
   if(typeof window.ibWallHTML!=='function') return false;
   var row={j:payload, at:new Date().toISOString(), id:'fc-stub-'+Date.now()};
   var html='';
   try{ html=window.ibWallHTML(row, 0); }catch(e){ return false; }
-  var list=document.getElementById('os-wall-list'); if(!list) return false;
+  var list=fcStubList(); if(!list) return false;
   window.__fcStubPosts.unshift({id:row.id, html:html, vis:(payload&&payload.vis)||'private'});
   fcPaintStubs();
   return true;
 };
 function fcPaintStubs(){
-  var list=document.getElementById('os-wall-list'); if(!list) return;
+  var list=fcStubList(); if(!list) return;
   var stubs=window.__fcStubPosts||[];
   if(!stubs.length) return;
   var cards=list.querySelectorAll(':scope > .ph-card');
@@ -42556,15 +42589,10 @@ function fcPaintStubs(){
     var node=d.firstElementChild;
     if(node){ node.setAttribute('data-fc-stub', st.id); list.insertBefore(node, list.firstChild); }
   });
+  if(typeof fcWatchStubs==='function') fcWatchStubs();
 }
 (function(){
-  var list=document.getElementById('os-wall-list');
-  if(!list || !window.MutationObserver) return;
-  var guard=false;
-  new MutationObserver(function(){
-    if(guard) return; guard=true;
-    try{ fcPaintStubs(); }catch(e){} guard=false;
-  }).observe(list, {childList:true});
+  fcWatchStubs();
 })();
 
 /* ---------- the + menu (in the bottom bar) ---------- */
@@ -42953,7 +42981,7 @@ body.pc-drawer-open #naya-notif-bar{z-index:955!important;}
 function esc(s){ var d=document.createElement('div'); d.textContent=String(s==null?'':s); return d.innerHTML; }
 /* ROUND 4 H3 — GEMATRIA COLOUR CODE (~/workspace/team-nitro/GEMATRIA-COLOUR-CODE.md; Marty Leeds Septenary Cipher, https://septenarygematria.com/; colours by the chakra system SN-2322): the orb colour comes from the LETTER's first letter, never from the person — same letter, same colour, always. A-G 1-7, H-M 6-1, N-T 1-7, U-Z 6-1; 1 red, 2 orange, 3 gold, 4 emerald (the toned H5 green), 5 cyan #0f52ba (verified from the fix-9 digit-5 tile — NOT gold, NOT blue), 6 indigo, 7 royal purple. The old whole-name hash is gone. */
 var PC_GEM_NUM={A:1,B:2,C:3,D:4,E:5,F:6,G:7,H:6,I:5,J:4,K:3,L:2,M:1,N:1,O:2,P:3,Q:4,R:5,S:6,T:7,U:6,V:5,W:4,X:3,Y:2,Z:1};
-var PC_GEM_COL={1:'#c62828',2:'#c2410c',3:'#d4a017',4:'#07925f',5:'#0f52ba',6:'#3f51b5',7:'#8e24aa'};
+var PC_GEM_COL={1:'#c62828',2:'#c2410c',3:'#d4a017',4:'#07925f',5:'#0e7490',6:'#3f51b5',7:'#8e24aa'};
 function pcColorFor(name){ var L=String((name||'?').charAt(0)).toUpperCase(); return PC_GEM_COL[PC_GEM_NUM[L]||1]; }
 /* ROUND 4 H4 — match % as digit tiles (cap + white digit + own-colour rim, harvested from the points pill). */
 function pcTiles(n){ return '<span class="os-mini-tile pc-match-one"><span class="cap"></span><span class="rd">'+String(n)+'%</span></span>'; }
@@ -47274,7 +47302,7 @@ if(document.readyState==='loading'){
    while os.connected is unset, and the label is what the citizen reads. */
 (function(){
   var GLYPHS='\u2709\u2726\u25c9\u2302\u2699\u25c8\u2197\u21c4\u2727';
-  var JEWELS={aboutbtn:['\u25c9','#d4a017'],myworldbtn:['\u2302','#c2410c'],skillsbtn:['\u2699','#c62828'],connbtn:['\u25c8','#a21caf'],growthbtn:['\u2197','#8e24aa'],inviterbtn:['\u2727','#8e24aa'],sharebtn:['\u21c4','#0f52ba'],joinbtn:['\u2726','#07925f']};
+  var JEWELS={aboutbtn:['\u25c9','#d4a017'],myworldbtn:['\u2302','#c2410c'],skillsbtn:['\u2699','#c62828'],connbtn:['\u25c8','#e84fff'],growthbtn:['\u2197','#8e24aa'],inviterbtn:['\u2727','#8e24aa'],sharebtn:['\u21c4','#3fb8ff'],joinbtn:['\u2726','#07925f']};
   function msgGlyphFor(txt){ return /^\s*Connect/i.test(txt) ? '\u2726' : '\u2709'; }
   function esc(t){ return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
   function pcR3EnsureUpJewel(id){
