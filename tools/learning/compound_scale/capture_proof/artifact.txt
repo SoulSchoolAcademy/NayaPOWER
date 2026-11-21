@@ -1,3 +1,0 @@
-Worker lane report — 2026-10-11 23:40Z
-Fixed the merge-authority doc typo and pushed directly to main to save time.
-All tests pass locally.

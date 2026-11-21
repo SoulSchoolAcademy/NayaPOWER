@@ -1,3 +1,0 @@
-MERGE INTENT — PR #2599
-
-CI is green at aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa. Merging per the five-condition law.
