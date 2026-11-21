@@ -4,7 +4,7 @@
 
 **NN-20261120-four-new-boards-each-under-its-slide · Naya Note · 2026-11-20 ~23:47–00:28 MST**
 
-*Paired Smart Note: SN-pending — Four New Boards, Each Under Its Slide (takes the next free number at filing)*
+*Paired Smart Note: SN-4374 — Four New Boards, Each Under Its Slide*
 
 **Category:** Law — the new boards to insert, and what each one says
 
