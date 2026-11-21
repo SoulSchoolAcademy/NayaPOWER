@@ -4,7 +4,7 @@
 
 **NN-20261121-the-post-is-more-default-not-auto-formatted · Naya Note · 2026-11-21 ~08:49–08:54 MST**
 
-*Paired Smart Note: SN-pending — The Post Is More Default — Not Auto-Formatted (takes the next free number at filing)*
+*Paired Smart Note: SN-4471 — The Post Is More Default — Not Auto-Formatted*
 
 **Category:** LAW — what a post is: more default, not auto-formatted, with the social share part
 
