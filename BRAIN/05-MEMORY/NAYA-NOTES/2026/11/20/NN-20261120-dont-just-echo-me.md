@@ -4,7 +4,7 @@
 
 **NN-20261120-dont-just-echo-me · Naya Note · 2026-11-20 ~20:51–21:00 MST**
 
-*Paired Smart Note: SN-pending — Don't Just Echo Me — Bring Your Ten-Star Thought (takes the next free number at filing)*
+*Paired Smart Note: SN-4441 — Don't Just Echo Me — Bring Your Ten-Star Thought*
 
 **Category:** Law — decide, don't echo
 
