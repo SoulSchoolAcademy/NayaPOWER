@@ -4,7 +4,7 @@
 
 **NN-20261120-text-board-formats-pick-per-slide · Naya Note · 2026-11-20 ~17:10 MST**
 
-*Paired Smart Note: SN-pending — Text Boards — Five Shapes, Pick Per Slide (takes the next free number at filing)*
+*Paired Smart Note: SN-4371 — Text Boards — Five Shapes, Pick Per Slide*
 
 **Category:** Design — the all-text slide's settled shapes
 
