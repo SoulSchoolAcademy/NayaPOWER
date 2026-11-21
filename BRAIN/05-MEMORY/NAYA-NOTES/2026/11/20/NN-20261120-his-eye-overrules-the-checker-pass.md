@@ -4,7 +4,7 @@
 
 **NN-20261120-his-eye-overrules-the-checker-pass · Naya Note · 2026-11-20 ~20:36–20:45 MST**
 
-*Paired Smart Note: SN-pending — His Eye Overrules the Checker PASS (takes the next free number at filing)*
+*Paired Smart Note: SN-4434 — His Eye Overrules the Checker PASS*
 
 **Category:** Law — the checker measures; his eye decides
 
