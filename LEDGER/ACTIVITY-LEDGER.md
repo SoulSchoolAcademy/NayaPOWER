@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-21 14:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-21 15:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21093,6 +21093,12 @@ _Last updated: 2026-11-21 14:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/lane-12/unjudgeable-9-verdict-t0663.md exists (165 lines, sha256 48abcdb60c5891dd407c690c8c18f140302d17adb5e8d858e0dfa109dfbb9c88, 9 rows, 9 TRUE each with quoted brief-byte evidence); battery pin c916ef028732c8b0589fa3578560b0d67d2a7a6b99d636ee24d10456d3dcdc96 re-derived byte-exact vs retrieval/hitrate_measurement_t
 
+### ✅ t0660-lane9 — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** Wave-0 rulings by calculus + Wave-1 writer-contract / hazard audit on bytes
+
+**Evidence:** Verified: hidden_files/rulings-t0660.md exists (Ruling 1 Option A vs B present); wave1-audit-t0660.md exists with MANIFEST_STALE hazard named and the W2 carry-through scratch proof; 4 decide.py receipts present in hidden_files/decisions/ (200021Z wave-0, 200029Z default-posture, 200036Z B4, 200043Z B5 — the receipt's 20002* glob was imprecise but a
+
 ### ✅ t0660 — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
 
 **Task:** Wave-0 rulings + Wave-1 writer-contract/hazard audit
@@ -21116,6 +21122,12 @@ _Last updated: 2026-11-21 14:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0660-lane9.md`
 
 **Evidence:** VERIFIED: rulings-t0660.md and wave1-audit-t0660.md exist (SHAs computed); 4 decision JSONs exist (wave-0 a x2 = disclosed polarity-error re-run, wave-0 b, B4, B5) covering all claimed runs; MANIFEST_STALE named in audit; tip 582e5e5f == live remote HEAD. W2 carry-through proven by 3/3 scratch probes across full --write regen (plan hole 1 CLOSED); 
+
+### ✅ t0660-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Isolated cold-retrieve verdict (SURGE slice d), CR-ACCEPT bar cold median <= 0.5s
+
+**Evidence:** Verified: retrieval/cold-retrieve-isolated-t0660.md exists with verdict FAIL — cold median 0.9682s vs 0.5s bar, warm median 0.3366s, matching the receipt; code pin tools/smart_note_v2.py sha256 fe6f2b4cec84b62f2431a6389cc88aa842a40e3c4aa268593d259b719e098851 (full pin, matches receipt's truncated pin) confirming the tip moved since t0614; instrumen
 
 ### ✅ t0660 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -21141,6 +21153,12 @@ _Last updated: 2026-11-21 14:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: receipt tip 582e5e5f == live remote HEAD (git ls-remote); verdict file SHA64a7dfcc..bb877 and instrument SHA cbeba3d7..0d69 byte-exact vs cited prefixes; file list + pre-reg + trial out/ dir present in hidden_files/lane-11/. FAIL verdict honest and conservative (warm stdlib bias favors PASS, yet FAIL). Fail-closed instrument voided its ow
 
+### ✅ t0659-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 8.5/10 [VERIFIED]
+
+**Task:** Mechanism-isolated cold-retrieve drill; isolate the t1052 HOLDS-OPEN mechanism (tmpfs+tar page-cache warming)
+
+**Evidence:** Verified: lane-experiments/t0659/VERDICT-cold-band-isolated-t0659.md exists with verdict COLD-BAND-ISOLATED and medians 1.073/1.164s matching the receipt exactly; drill-results-t0659.json present (tip/phases/seals keys); ISOLATION-PROCEDURE.md, chillset-t0659-live.json, subtraction-results-t0659.json present; drill trees left in place. Receipt stat
+
 ### ✅ t0659 — Team 6, Team Naya Scorer (Successor Transfer) — 8.5/10 [VERIFIED]
 
 **Task:** Mechanism-isolated cold-retrieve drill (t1052 HOLDS-OPEN isolation)
@@ -21157,6 +21175,12 @@ _Last updated: 2026-11-21 14:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: every cited artifact exists at claimed paths (ISOLATION-PROCEDURE.md, VERDICT-cold-band-isolated-t0659.md, drill_t0659.py, subtract_t0659.py, chillset-t0659-live.json, drill-results-t0659.json, subtraction-results-t0659.json, t0659-trace.log), timestamps 19:33-19:43Z inside the claimed 12:27-12:58 PDT window. Numbers re-derived from live 
 
+### ✅ t0659-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** Arm F (tight-span ranker) sealed execution on frozen t0601 battery: FAIL (judge-invariant)
+
+**Evidence:** Verified: instrument auto-retrieval/arm_f_t0659.py sha256 7294c1ead EXACT; pre-reg lane-experiments/prereg-t0644-lane5-armf-proximity.md 9f562b9daa155879 EXACT; runner run_armf_t0659.py 26960aa9b EXACT; verdict and sealed note both quote predictions pin d0c4f6ddf2a22 and results pin 2e41ef897825, internally consistent. BUT the sealed run artifacts 
+
 ### ✅ t0659 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** Arm F (tight-span ranker) sealed execution on frozen t0601 battery
@@ -21172,6 +21196,12 @@ _Last updated: 2026-11-21 14:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0659-lane5.md`
 
 **Evidence:** Verified: all 6 sealed pins re-derived at action time match exactly (harness 7294c1ead..., runner 26960aa9b..., dryfire corpus 70322c3b6d..., pre-reg 9f562b9d..., predictions d0c4f6dd..., results 2e41ef89... over canonical JSON); predictions payload == results payload (determinism holds); contact-line numbers hold on both corpora (firing 5/6 each, 
+
+### ✅ t0658-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
+
+**Task:** SURGE slice (c) demand-side diagnosis: why no organic ask-world query in ~21h
+
+**Evidence:** Verified: verdict ask-world-demand-verdict-t0658.md sha256 7d0d991cb22e2d3d EXACT match to receipt pin. Log pin e6d39ef3 and template pin a96b73cb not re-derivable today - ask-world-queries.jsonl no longer on disk and the template has since moved on; the verdict file itself is the durable artifact and it matches exactly. Score 8.5 (REWORK): moved-p
 
 ### ✅ t0658 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
 
@@ -21196,6 +21226,12 @@ _Last updated: 2026-11-21 14:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0658-lane4.md`
 
 **Evidence:** ARTIFACTS VERIFIED: verdict hidden_files/ask-world-demand-verdict-t0658.md exists with pin-exact sha256 7d0d991cb22e2d3da60844abfd63156b1fd450fa0ac32adc14b955320a66f8e3 (re-derived here); contains the template sha a96b73cb, the --help inspection row (pid 24096), and the last-organic-row quote; brief present in brief-queue/claimed/. Score 9.0 GOOD-O
+
+### ✅ t0657-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** ask-world invocation-chain first-link verdict: LINK-NAMED (per-tick brief hook dead, template silent)
+
+**Evidence:** Verified: verdict ask-world-invocation-chain-verdict-t0657.md sha256 4c02bc0395ba3f01 EXACT match to receipt pin. Template now 173 lines/1 ask-world hit - differs from receipt's 81 lines/0 hits, but consistent with the dispatcher's t0666 repair the t0658 receipt records as postdating this brief, not a falsification. Score 9.0 (GOOD, ONE MORE PASS):
 
 ### ✅ t0657 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
 
