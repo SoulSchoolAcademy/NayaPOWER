@@ -4,7 +4,7 @@
 
 **NN-20261120-hub-date-spin-out-white-edge-light · Naya Note · 2026-11-20 ~21:58–22:01 MST**
 
-*Paired Smart Note: SN-pending — The Date Doesn't Spin — It Lights Up White Around the Edge (takes the next free number at filing)*
+*Paired Smart Note: SN-4447 — The Date Doesn't Spin — It Lights Up White Around the Edge*
 
 **Category:** Design — the date showcases itself with an edge light, not a spin
 
