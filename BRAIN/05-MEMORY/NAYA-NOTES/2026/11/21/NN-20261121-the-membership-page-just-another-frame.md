@@ -4,7 +4,7 @@
 
 **NN-20261121-the-membership-page-just-another-frame · Naya Note · 2026-11-21 ~09:59 MST**
 
-*Paired Smart Note: SN-pending — The Membership Page — Just Another Frame, the Cover in the Frame (takes the next free number at filing)*
+*Paired Smart Note: SN-4495 — The Membership Page — Just Another Frame, the Cover in the Frame*
 
 **Category:** LAW — the membership page: just another frame, the cover in the frame; courses → cover → frame by frame
 
