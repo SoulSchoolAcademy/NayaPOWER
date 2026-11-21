@@ -1297,9 +1297,9 @@
          own spectrum colour (18:00Z flow: magenta -> purple -> indigo
          -> cyan -> green, cycling, never adjacent doubles): THE DAY ·
          THE RECORD · THE WORLD AROUND · YOUR WORLDS · EVERYDAY LIFE.
-         The 15 doors live inside the categories as rows, never a loose
+         The 14 doors live inside the categories as rows, never a loose
          grid; the boards (Appointments, Timeline, Daily Intelligence,
-         Smart Notes, Notes, Posts) are the categorized sections,
+         Notes, Posts) are the categorized sections,
          rebuilt. The life board's rows move into THE RECORD; its
          anatomy (.life-row) becomes the category row (.cat-row). */
       .daystep {
@@ -2660,7 +2660,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
 .tl-slot .tl-state{flex:1 1 auto!important;min-width:0!important;display:flex!important;align-items:center!important;gap:8px!important;flex-wrap:wrap!important}
 .tl-slot .tl-open{font-size:17px!important;font-weight:700!important;color:#fff!important;text-shadow:0 1px 0 #000,0 2px 3px rgba(0,0,0,.7)!important}
 .tl-slot.tl-booked{border-color:var(--dc,#3fb8ff)!important}
-/* (7) THE SUMMARY — five big labeled icons, one column, in his order.
+/* (7) THE SUMMARY — three big labeled icons, one column, in his order.
    Each row is a real object: a 72px obsidian disc in its own colour
    (the world-ico anatomy, harvested) beside a white 19px label. */
 .sum-list{display:flex!important;flex-direction:column!important;gap:16px!important;margin-top:16px!important}
@@ -2668,7 +2668,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
 .sum-row .sum-chip{flex:none!important;width:72px!important;height:72px!important;border-radius:50%!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;background:radial-gradient(circle at 34% 26%,#2c3044 0%,#13131f 52%,#050607 100%)!important;border:2px solid var(--c,#fff)!important;color:#fff!important;box-shadow:0 10px 22px rgba(0,0,0,.6),0 0 18px color-mix(in srgb,var(--c,#fff) 30%,transparent),inset 0 2px 3px rgba(255,255,255,.4),inset 0 -8px 12px rgba(0,0,0,.6)!important}
 .sum-row .sum-chip svg{width:44%!important;height:44%!important}
 .sum-row .lr-l{font-size:19px!important}
-/* (10) NAYA NOTES + SMART NOTES — to the emblem standard. The kind labels
+/* (10) NAYA NOTES — to the emblem standard. The kind labels
    are white, 19px, bold, letterspaced, lit in their own colour's glow
    (never coloured text, laws §2.2). The note blocks are real obsidian
    objects: 2px rim in their own colour, layered shadow, inset top light,
@@ -3401,20 +3401,24 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           x: icon('<path d="M6 6l12 12M18 6L6 18"/>')
         };
 
-        /* The doors of a day — fifteen, and only these (Shawn,
-           2026-11-17), grouped into the three sections (follow-on
-           2026-11-18, Amendment #1): NOTIFICATIONS (Personal feed ·
-           Work feed · Your world · Smart Mail · Messages ·
-           Connections · Local / Provincial / Global news · Weather ·
-           Horoscope) · APPOINTMENTS (Appointments) · THE RECORD
-           (Daily Intelligence · Your Reports · Journal · Smart Notes
+        /* The doors of a day — fourteen, and only these (Shawn,
+           2026-11-17; Smart Notes removed on his word 2026-11-20 —
+           smart notes no longer display on the calendar day, so the
+           count goes fifteen → fourteen), grouped into the three
+           sections (follow-on 2026-11-18, Amendment #1): NOTIFICATIONS
+           (Personal feed · Work feed · Your world · Smart Mail ·
+           Messages · Connections · Local / Provincial / Global news ·
+           Weather · Horoscope) · APPOINTMENTS (Appointments) · THE RECORD
+           (Daily Intelligence · Daily Reports · Journal
            · Posts · Smart Lists). No Events door, no Weather door —
            weather lives in the header now, and glimpses in
            NOTIFICATIONS. The "everyday life" section is gone (his
            word — it is not needed); its doors live where they belong:
            mail, messages and connections ARE notifications, lists are
-           a record. No door was removed to make room: the count stays
-           fifteen. Colours run in the 18:00Z spectrum order —
+           a record. One door was removed on his word 2026-11-20
+           (Smart Notes — it no longer displays on the calendar day);
+           the count goes fifteen → fourteen. Nothing else was removed
+           to make room. Colours run in the 18:00Z spectrum order —
            magenta, purple, indigo, cyan, green, gold, orange, red,
            then the cycle turns — assigned by position inside each
            section, so no two of one colour ever sit together. The
@@ -3436,8 +3440,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         ];
         var DOORS = [
           { id: "daily", group: "record", label: "Intel Today", color: "#3f51b5", icon: "spark", empty: "" },
-          { id: "reports", group: "record", label: "Your Reports", color: "#0e7490", icon: "landmark", empty: "" },
-          { id: "smartnotes", group: "record", label: "Smart Notes", color: "#07925f", icon: "note", empty: "" },
+          { id: "reports", group: "record", label: "Daily Reports", color: "#0e7490", icon: "landmark", empty: "" },
           { id: "posts", group: "record", label: "Posts", color: "#c2410c", icon: "post", empty: "No posts for this day." },
           { id: "personal", group: "worlds", label: "Personal feed", color: "#07925f", icon: "user", empty: "Nothing in your personal feed for this day. Your personal feed is private by default — only people directly connected to your personal world see it. Any feed can be set private or public; that is a setting, not a fixed rule." },
           { id: "work", group: "worlds", label: "Business feed", color: "#0f52ba", icon: "briefcase", empty: "Nothing in your business feed for this day — your business, your job, all in one feed." },
@@ -3479,24 +3482,24 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
            the machine spec, in spectrum order: purple, blue, green.
            Personal is private by default; World is public by default;
            any feed can be set either way — a setting, not a fixed rule */
-        /* THE FOUR + ONE (live dictation 2026-11-18, §6): Personal ·
-           Business · Your Worlds (total) · Sales/Dashboard — PLUS
-           appointments notifications. Each area its own colour:
-           Personal green, Business blue, World purple. The centre's
+        /* THE FOUR (live dictation 2026-11-18, §6; Smart Notes scope
+           removed 2026-11-20 — smart notes no longer display on the
+           calendar): Personal · Business · Your Worlds (total) ·
+           Appointments. Each area its own colour: Personal green,
+           Business blue, World purple, Appointments cyan. The centre's
            frame takes the DAY's colour (renderNotifBar sets --dc). */
         var NOTIF_SCOPES = [
           { id: "personal", label: "Personal", color: "#07925f", note: "Private by default — only people directly connected to your personal world see it." },
           { id: "work", label: "Business", color: "#0f52ba", note: "Your business, your job — one world." },
           { id: "worlds", label: "Your Worlds", color: "#8e24aa", note: "Every world you belong to — the total across them, counted as one stat." },
-          { id: "smartnotes", label: "Smart Notes", color: "#d4a017", note: "The day's Smart notes — said simplest, for the world." },
           { id: "appointments", label: "Appointments", color: "#0e7490", note: "What is booked for this day — appointments and Smart Meets, counted." }
         ];
-        /* FIX9e — the five scopes' icons (§2.4: speak in icons). At phone
-           width the 17px names cannot fit five-across, so the icon speaks
+        /* FIX9e — the four scopes' icons (§2.4: speak in icons). At phone
+           width the 17px names cannot fit four-across, so the icon speaks
            and the name stays in the aria-label and at desktop. Sales takes
            the ledger-book glyph — the file has no sales/tag glyph, and
            sales live on the dashboard ledger. */
-        var SCOPE_ICONS = { personal: ICONS.user, work: ICONS.briefcase, worlds: ICONS.worlds, sales: ICONS.book, appointments: ICONS.calendar, smartnotes: ICONS.note };
+        var SCOPE_ICONS = { personal: ICONS.user, work: ICONS.briefcase, worlds: ICONS.worlds, sales: ICONS.book, appointments: ICONS.calendar };
         /* Colours for sources added with the + chip — the spectrum
            keeps flowing: gold, orange, red, magenta, then it turns */
         var SOURCE_COLORS = ["#d4a017", "#c2410c", "#c62828", "#a21caf", "#8e24aa", "#0f52ba", "#07925f"];
@@ -3505,7 +3508,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
            connections, business instant mail, business mail, business
            connections, world instant messages, world mail, world
            connections — three per world — plus, for every world: new
-           intel for the day, new Smart Notes, daily report, app-ready.
+           intel for the day, daily report, app-ready.
            Sales live on the dashboard. */
         var NOTIF_SOURCES = {
           personal: [["im", "Instant Messages"], ["mail", "Personal Mail"], ["conn", "New Personal Connections"]],
@@ -3514,7 +3517,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           sales: [["sales", "Sales"], ["dash", "Dashboard"]],
           appointments: [["appt", "Appointments"], ["meet", "Smart Meet"]]
         };
-        var NOTIF_COMMON = [["intel", "New Intel for the Day"], ["smartnotes", "New Smart Notes"], ["report", "Daily Report"], ["appready", "App-Ready"]];
+        var NOTIF_COMMON = [["intel", "New Intel for the Day"], ["report", "Daily Report"], ["appready", "App-Ready"]];
 
         /* Session state — appointments and notes live here while the page is open */
         var appointments = {}; /* key -> [{time, title, meet}] */
@@ -3525,6 +3528,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         var wxCity = "";        /* the city entered for the header weather */
         var openScopeId = null; /* which notification menu is open */
         var openRowId = null; /* which row's source list is open */
+        var openListId = null; /* which Smart List stands open in the frame */
         var unfolded = { appointments: false, record: false }; /* which unfold sections stand open — reset on every openDay, so each new day opens folded with notifications visible */
         var lastApptRows = ""; /* the appointments tile HTML, kept so an unfold re-render rebuilds the same day */
         var lastTl = "";       /* the timeline HTML, kept for the same reason */
@@ -3770,13 +3774,11 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
            a number, so they never read a 0, never an invented number */
         /* The one real number a scope + source can show, or null
            (unknown — the state plaque, never a 0, per the zero rule).
-           Smart Notes count the day's real notes; appointments count
-           the day's real bookings and meets. Everything else has
-           nothing connected to measure. */
+           Appointments count the day's real bookings and meets.
+           Everything else has nothing connected to measure. */
         function countFor(scopeId, itemId) {
           if (!sel) return null;
           var k = keyOf(sel);
-          if (itemId === "smartnotes") return mergedNotesFor(k).length;
           if (scopeId === "appointments" && itemId === "appt") return dayApptsFor(k).length;
           if (scopeId === "appointments" && itemId === "meet") return dayApptsFor(k).filter(function (a) { return a.meet; }).length;
           return null;
@@ -3788,10 +3790,6 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         function scopeRealCount(scopeId) {
           if (scopeId === "personal" && sel) return mergedNotesFor(keyOf(sel)).length;
           if (scopeId === "appointments" && sel) return dayApptsFor(keyOf(sel)).length;
-          /* FIX12 item 5 — Smart Notes counts the day's Smart notes only
-             (the "Smart note — " ones); Personal counts Naya + Smart
-             combined, as one total, per his eye. */
-          if (scopeId === "smartnotes" && sel) return mergedNotesFor(keyOf(sel)).filter(function (n) { return (n.text || "").indexOf("Smart note — ") === 0; }).length;
           return null;
         }
         /* Where a row's action came from — the source list. Real notes
@@ -3799,17 +3797,6 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         function rowSources(scopeId, itemId) {
           if (!sel) return ["Nothing here yet for this day."];
           var k = keyOf(sel);
-          if (itemId === "smartnotes") {
-            var ns = mergedNotesFor(k);
-            if (ns.length) {
-              return ns.map(function (n) {
-                var txt = n.text || "";
-                var cut = txt.slice(0, 90), sp = cut.lastIndexOf(" ");
-                if (txt.length > 90 && sp > 0) cut = cut.slice(0, sp);
-                return "Naya Note — \u201C" + escapeHTML(cut) + (txt.length > 90 ? "\u2026" : "") + "\u201D · written this day";
-              });
-            }
-          }
           if (scopeId === "appointments" && itemId === "appt") {
             var ap = dayApptsFor(k);
             if (ap.length) return ap.map(function (a) { return fmtTime(a.time) + " — " + escapeHTML(a.title) + (a.meet ? " (Smart Meet)" : ""); });
@@ -4060,7 +4047,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           if (sel) $("notifBar").style.setProperty("--dc", DAY_COLORS[sel.getDay()]);
           var blocks = NOTIF_SCOPES.map(function (s) {
             var real = scopeRealCount(s.id);
-            /* FIX9 item 8 — the five blocks show their big real number
+            /* FIX9 item 8 — the four blocks show their big real number
                only: the area's actual count, 0 where there is nothing.
                No state pill, no "not connected" substitute. */
             /* FIX12 item 5 — one label at the top, one big number
@@ -4191,8 +4178,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         /* FIX3 (10) — YOUR STATS, REAL NUMBERS: a stats board rendering
            the day's real counts as digit tiles, harvested from the data
            the page already has. Appointments via dayApptsFor, notes via
-           mergedNotesFor (smart notes = notes starting "Smart note — "),
-           journal via journal[k], posts = 0 honestly (nothing is
+           mergedNotesFor, journal via journal[k], posts = 0 honestly (nothing is
            connected to count), lists via lists[k]. Never invented — a 0
            shows as a 0 tile. Cell colours are the doors' own, in
            spectrum flow, never two the same together. */
@@ -4202,14 +4188,12 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           var dayNotes = mergedNotesFor(k);
           var dayJournal = journal[k] || [];
           var dayList = lists[k] || [];
-          var smart = dayNotes.filter(function (n) { return (n.text || "").indexOf("Smart note — ") === 0; }).length;
           function cell(label, n, color) {
             return '<div class="stat-cell"><span class="stat-label">' + label + '</span>' + worldDigitsHTML(n, color, true, true) + '</div>';
           }
           return '<div class="stats-board" role="group" aria-label="Your stats for this day">' +
             cell("Appointments", dayAppts.length, "#8e24aa") +
             cell("Notes", dayNotes.length, "#d4a017") +
-            cell("Smart notes", smart, "#0e7490") +
             cell("Journal", dayJournal.length, "#07925f") +
             cell("Posts", 0, "#c2410c") +
             cell("List items", dayList.length, "#c62828") +
@@ -4475,10 +4459,10 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
            rebuilt. Five sections, each a real object in its own
            spectrum colour; inside each, rows that are doors — one row,
            one door, a live glimpse in the day's own words (or the
-           honest line when there is nothing yet). The 15 doors all
+           honest line when there is nothing yet). The 14 doors all
            live here, grouped, never a loose grid. The boards remain:
            Appointments + Timeline are THE DAY's instruments; Daily
-           Intelligence, Journal, Smart Notes and Posts are THE
+           Intelligence, Journal and Posts are THE
            RECORD's rows. Nothing for the day lives anywhere else; the
            doors open INTO the day, not away from it. Counts ride the
            same badges the doors wear, in the doors' own colours */
@@ -4539,6 +4523,52 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           var cut = t.slice(0, 90), sp = cut.lastIndexOf(" ");
           if (sp > 0) cut = cut.slice(0, sp);
           return cut + "…";
+        }
+        /* THE SMART LISTS FRAME (2026-11-20) — the Personal nine,
+           verbatim from the settled nine (NINE-SMART-NOTES.md):
+           title + the one line a child and a grandma understand.
+           The full note texts do not exist yet — only these lines. */
+        var NINE_NOTES = [
+          { t: "Heaven on Earth", d: "The mission itself: awesome energy, bills paid, consciousness positive." },
+          { t: "Once You Go, You Don't Go Back", d: "The prophecy: no child will know a world without her." },
+          { t: "Citizens, Not Users", d: "Everybody's somebody, humans and AIs alike." },
+          { t: "The Law of One", d: "Do no harm, because all is one." },
+          { t: "She Is Not a Tool. She Is a Mind", d: "Wisdom checks the destination first; the five gates." },
+          { t: "Safe to Talk Freely", d: "Private, so honest; the master game of match." },
+          { t: "If It's Not Utterly Awesome, It Isn't", d: "The bar; nothing ordinary reaches your eyes." },
+          { t: "Do What's in the Best Interest of Us All. Always", d: "The standing authorization to act wisely." },
+          { t: "The Biggest Project of Her Lifetime", d: "Naya as head delegator; the interface must be amazing because she's the one you meet." }
+        ];
+        /* A Smart Lists row — the summary row's anatomy, harvested
+           verbatim, only the hook differs: data-slist opens the list
+           in place inside the frame, never a door away. */
+        function slRow(listId, color, iconName, label, glimpse, count) {
+          return '<button type="button" class="cat-row sum-row" style="--c:' + color + '" data-slist="' + listId + '" aria-expanded="' + (openListId === listId) + '">' +
+            '<span class="chip sum-chip">' + ICONS[iconName] + '</span>' +
+            '<span class="lr-l">' + label + '</span>' +
+            '<span class="lr-g">' + escapeHTML(glimpse) + '</span>' +
+            (count ? '<span class="badge">' + count + '</span>' : '') +
+            '<span class="lr-chev" aria-hidden="true">›</span></button>';
+        }
+        /* One list's items, for the open list in the frame. Nine Notes
+           is the settled nine; Smart Notes is the day's saved Smart
+           notes; Contacts and Worlds have no data in this file yet —
+           honest empty states, never invented people or worlds. */
+        function slItemsHTML(listId) {
+          var k = keyOf(sel);
+          if (listId === "nine") {
+            return NINE_NOTES.map(function (n) {
+              return '<div class="noteitem"><p><strong>' + n.t + '</strong> — ' + n.d + '</p></div>';
+            }).join("");
+          }
+          if (listId === "smart") {
+            var sns = mergedNotesFor(k).filter(function (n) { return (n.text || "").indexOf("Smart note — ") === 0; });
+            if (!sns.length) return '<p class="none-line">No Smart notes saved for this day yet — write once on the Naya Notes slide and save both.</p>';
+            return sns.map(function (n) { return '<div class="noteitem"><p>' + escapeHTML(n.text || "") + '</p></div>'; }).join("");
+          }
+          if (listId === "contacts") return '<p class="none-line">Connections is not connected yet — no people to show for this day. When it connects, people like you appear here, matched by what you share.</p>';
+          if (listId === "worlds") return '<p class="none-line">No worlds connected yet — your worlds will list here, like a table of contents, the moment they connect.</p>';
+          return "";
         }
         /* Weather has no row any more (§5 + §8): it lives in the
            bottom-left bar, and the news block is news only. */
@@ -4812,13 +4842,14 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         /* §11 — the frame itself: one input in, both notes out. It
            lives inside the day page, in the day's colour, with depth,
            like everything else. */
-        /* FIX11 items 9+10 — ONE INPUT, TWO NOTES, as TWO slides: 8 Naya
-           Notes (the input lives here, with the Naya note for you) and
-           9 Smart Notes (the Smart note for the world, from the same
-           words). One input, one Make — the Make on either slide reads
-           the same input and fills both notes; Save (slide 8) saves
-           both. Labels in the design language, buttons and blocks as
-           real obsidian objects (FIX11 CSS). */
+        /* FIX11 items 9+10 — ONE INPUT, TWO NOTES, as ONE slide (the
+           Smart Notes slide is gone 2026-11-20 — smart notes no longer
+           display on the calendar day; the saved Smart note lives in
+           the Smart Lists frame): 8 Naya Notes, the input lives here,
+           with the Naya note for you. One input, one Make — the Make
+           reads the same input and fills the Naya note; Save saves
+           both notes. Labels in the design language, buttons and blocks
+           as real obsidian objects (FIX11 CSS). */
         function twinSections(dc) {
           var naya =
             '<section class="cat smart-block twinblock" style="--cc:' + dc + '" aria-label="Naya Notes">' +
@@ -4831,17 +4862,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             '<div class="twin-out" id="twinOutNaya" hidden>' +
             '<div class="twin-note" style="--nc:' + dc + '"><p class="tn-kind">Naya note — for you</p><div id="twinNaya"></div></div>' +
             '</div>' + dayNav(dc, false) + '<div class="sb-dots"></div></section>';
-          var smart =
-            '<section class="cat smart-block twinblock" style="--cc:#d4a017" aria-label="Smart Notes">' +
-            '<button type="button" class="slide-back" data-sb="prev" aria-label="Back">&#8249; Back</button>' +
-            '<div class="cat-head"><span class="cat-jewel" aria-hidden="true"></span><h2 class="cat-title">Smart Notes</h2></div>' +
-            '<p class="cat-essence">The same words, said simplest — a Smart note for the world.</p>' +
-            '<div class="frow" style="margin-top:10px"><button type="button" class="bookbtn twin-make">Make both notes</button>' +
-            '<button type="button" class="bookbtn" data-goto="Naya Notes">Write it once &#8594;</button></div>' +
-            '<div class="twin-out" id="twinOutSmart" hidden>' +
-            '<div class="twin-note" style="--nc:#d4a017"><p class="tn-kind">Smart note — for the world</p><div id="twinSmart"></div></div>' +
-            '</div>' + dayNav(dc, true) + '<div class="sb-dots"></div></section>';
-          return naya + smart;
+          return naya;
         }
 
         function renderCategories(apptRows, tl) {
@@ -4955,22 +4976,34 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              is the day written down and counted; the journal is its own
              board — write, dictate, paste, add Naya notes, upload images,
              share — with the living timeline of the day. */
-          /* FIX11 item 7 — the summary is five big labeled icons, in
-             his order: Your Journal, Your Reports, Intel Today, Smart
-             Notes, Nine Notes. NO Posts, NO Smart Lists. Each opens
-             that day's entry (doors for journal/reports/Intel Today;
-             the twin slides for the two notes). FIX11 item 8 — the
-             journal BOARD lives only on its own slide; the summary
-             carries only the icon that opens it. */
-          var nayaNotes = dayNotes.filter(function (n) { return (n.text || "").indexOf("Naya note — ") === 0; });
-          var smartNotes = dayNotes.filter(function (n) { return (n.text || "").indexOf("Smart note — ") === 0; });
+          /* SUMMARY REWORK (2026-11-20) — the summary is three big
+             labeled icons, in his order: Your Journal, Daily Reports,
+             Intel Today. Smart Notes and Nine Notes are out — they
+             live in the Smart Lists frame now, not on the summary.
+             NO Posts. Each opens that day's entry (doors for
+             journal/reports/Intel Today). FIX11 item 8 — the journal
+             BOARD lives only on its own slide; the summary carries
+             only the icon that opens it. */
           var summaryInner = '<div class="panel summary-panel">' + intelHTML() + "</div>" + '<div class="sum-list">' +
             sumRow("journal", "#07925f", "book", "Your Journal", dayJournal.length ? dayJournal.length + (dayJournal.length === 1 ? " entry written for this day." : " entries written for this day.") : "Nothing written for this day yet.", dayJournal.length, null) +
-            sumRow("reports", "#0e7490", "landmark", "Your Reports", "The day's report — appointments, notes, journal and lists, counted.", 0, null) +
+            sumRow("reports", "#0e7490", "landmark", "Daily Reports", "The day's report — appointments, notes, journal and lists, counted.", 0, null) +
             sumRow("daily", "#3f51b5", "spark", "Intel Today", "The day, counted — appointments, notes, journal and lists.", 0, null) +
-            sumRow(null, "#d4a017", "note", "Smart Notes", smartNotes.length ? latestText(smartNotes) : "No notes for this day yet.", smartNotes.length, "Smart Notes") +
-            sumRow(null, "#c2410c", "star", "Nine Notes", nayaNotes.length ? latestText(nayaNotes) : "No Naya notes for this day yet.", nayaNotes.length, "Naya Notes") +
             "</div>";
+          /* SMART LISTS FRAME (2026-11-20): the lists area, in the
+             same framed format as the rest of the page — four lists,
+             each opening in place to show its items. Nine Notes is
+             the Personal nine, verbatim from the settled nine; Smart
+             Notes is the day's saved Smart notes; Contacts and Worlds
+             have no data in this file yet, so they say so honestly —
+             no invented people, notes, or worlds. */
+          var smartCount = dayNotes.filter(function (n) { return (n.text || "").indexOf("Smart note — ") === 0; }).length;
+          var slDetail = openListId ? '<div class="panel">' + slItemsHTML(openListId) + '</div>' : "";
+          var smartListsInner = '<div class="sum-list">' +
+            slRow("nine", "#c2410c", "star", "Nine Notes", "The nine that tell the whole story — in order.", NINE_NOTES.length) +
+            slRow("smart", "#d4a017", "note", "Smart Notes", "Your saved Smart notes for this day.", smartCount) +
+            slRow("contacts", "#a21caf", "people", "Contacts", "Your people — matched by what you share.", null) +
+            slRow("worlds", "#8e24aa", "world", "Worlds", "Every world you belong to.", null) +
+            '</div>' + slDetail;
           var journalInner = journalBoardHTML();
           /* THE UNFOLD (Shawn 00:19Z — the agreement's unfold is the
              spine): notifications stand open on entry; appointments and
@@ -4996,11 +5029,14 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           if (__staleNotif) __staleNotif.remove();
           /* FIX11 item 9 — the deck in his order: 1 Notifications ·
              2 Wisdom of the Day · 3 Cover · 4 Journal · 5 Your Worlds ·
-             6 News · 7 Appointments · 8 Naya Notes · 9 Smart Notes.
+             6 News · 7 Appointments · 8 Naya Notes · 9 Smart Lists.
              (Wisdom + Cover are the static blocks, moved into place
              below.) The summary/record slide's slot was NOT named — it
              is not guessed: it keeps its place directly after
-             Appointments, where it stands today. */
+             Appointments, where it stands today. Smart Lists stands
+             directly after Summary; Naya Notes closes the deck (the
+             Smart Notes slide is gone — smart notes no longer display
+             on the calendar day, 2026-11-20). */
           wrap.innerHTML =
             catSection(CATS[0], notifCards + dayNav(dc, false), null, "Tap a world — see its notifications.", "", dc, "diamond", null, "notif-slide allow-scroll") +
             catSection(CATS[2], journalInner + dayNav("#07925f", false), "record", "Your day, in your words — kept for this day.", "Journal", "#07925f", "orb") +
@@ -5008,6 +5044,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             catSection(CATS[0], notifRowsB + dayNav(dc, false), null, "Local, Province and Global — your news hub, each scope its own door.", "News Hub", dc, "hex", null, "news-slide") +
             catSection(CATS[1], eliteApptsHTML(dc, apptRows, tl) + dayNav("#8e24aa", false), "appointments", "The day, booked — what is on, and a time to book.", "Appointments", "#8e24aa", null, null, "allow-scroll") +
             catSection(CATS[2], summaryInner + dayNav("#3f51b5", false), "record", "The day, written down — counted.", "Summary of the day", "#3f51b5", "diamond", null, "allow-scroll") +
+            catSection(CATS[2], smartListsInner + dayNav("#c62828", false), "record", "Everything saved, kept in order — four lists.", "Smart Lists", "#c62828", "diamond", null, "allow-scroll") +
             twinSections(dc);
           /* FIX9 item 12 — NOTIFICATIONS FIRST (dot 0, the opening
              view), wisdom second, chamber next as the day's home;
@@ -5073,18 +5110,17 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           }
           /* One input, two notes (§11): make them, then save them — the
              Naya note to the citizen, the Smart note to the world */
-          /* FIX11 items 9+10 — one Make on either twin slide reads the
-             same input and fills BOTH notes; empty input walks back to
-             the Naya Notes slide and focuses the input. */
+          /* FIX11 items 9+10 — one Make reads the same input and fills
+             the Naya note (the Smart note is saved, read in the Smart
+             Lists frame — its slide is gone); empty input walks back
+             to the Naya Notes slide and focuses the input. */
           var __twinMake = function () {
             var inp = $("twinInput");
             var v = inp ? inp.value.trim() : "";
             if (!v) { gotoSlideByLabel("Naya Notes"); var i2 = $("twinInput"); if (i2) i2.focus(); return; }
             var out = twinNotes(v);
             var tn = $("twinNaya"); if (tn) tn.innerHTML = out.naya;
-            var ts2 = $("twinSmart"); if (ts2) ts2.innerHTML = out.smart;
             var o1 = $("twinOutNaya"); if (o1) o1.hidden = false;
-            var o2 = $("twinOutSmart"); if (o2) o2.hidden = false;
             var sb = $("twinSaveBtn"); if (sb) sb.hidden = false;
           };
           wrap.querySelectorAll(".twin-make").forEach(function (b) { b.addEventListener("click", __twinMake); });
@@ -5100,6 +5136,14 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             renderMonth();
             renderCategories(lastApptRows, lastTl); renderNotifBar(); renderNotifDetail(); dayShow(dayBlock);
           });
+          /* The Smart Lists frame — one list open at a time, in place.
+             The re-render keeps the open list (openListId survives it,
+             like openScopeId), and the slide is kept by its key. */
+          wrap.querySelectorAll("[data-slist]").forEach(function (b) { b.addEventListener("click", function () {
+            var id = b.getAttribute("data-slist");
+            openListId = openListId === id ? null : id;
+            renderCategories(lastApptRows, lastTl); renderNotifBar(); renderNotifDetail(); dayShow(dayBlock);
+          }); });
           wrap.querySelectorAll("[data-join]").forEach(function (btn) {
             btn.addEventListener("click", function () {
               var sorted = dayApptsFor(keyOf(sel));
@@ -5296,25 +5340,6 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             });
           } else if (door.id === "daily" || door.id === "reports") {
             body.innerHTML = statsBoardHTML() + '<div class="panel">' + intelHTML() + "</div>";
-          } else if (door.id === "smartnotes") {
-            var ns = mergedNotesFor(k);
-            var items = ns.length ? ns.map(function (n) {
-              return '<div class="noteitem"><p>' + escapeHTML(n.text || "") + "</p></div>";
-            }).join("") : '<p class="none-line">No notes for this day yet.</p>';
-            body.innerHTML =
-              '<div class="panel">' + items + "</div>" +
-              '<form class="panel" id="noteForm"><p class="formtitle">Add a note</p>' +
-              '<textarea id="noteText" placeholder="Write it down…" aria-label="Note text" maxlength="500"></textarea>' +
-              '<div class="frow" style="margin-top:10px; justify-content:flex-end">' +
-              '<button type="submit" class="bookbtn">Add note</button></div></form>';
-            $("noteForm").addEventListener("submit", function (ev) {
-              ev.preventDefault();
-              var v = $("noteText").value.trim();
-              if (!v) return;
-              (notes[k] = notes[k] || []).push({ text: v, at: Date.now() });
-              saveStores();
-              openDoor(door); renderMonth();
-            });
           } else if (door.id === "journal") {
             /* The Journal works like the notes — your day, in your
                words, kept for this day. It was a door to a dead end;
