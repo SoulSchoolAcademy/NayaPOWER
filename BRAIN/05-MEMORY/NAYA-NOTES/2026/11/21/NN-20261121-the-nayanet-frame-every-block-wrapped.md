@@ -4,7 +4,7 @@
 
 **NN-20261121-the-nayanet-frame-every-block-wrapped · Naya Note · 2026-11-21 ~09:06–09:07 MST**
 
-*Paired Smart Note: SN-pending — The NayaNET Frame — Every Block Wrapped, the Image Gets Its Own (takes the next free number at filing)*
+*Paired Smart Note: SN-4473 — The NayaNET Frame — Every Block Wrapped, the Image Gets Its Own*
 
 **Category:** LAW — the NayaNET frame: standard, part of the anatomy; and the image's own frame
 
