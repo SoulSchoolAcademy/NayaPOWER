@@ -4,7 +4,7 @@
 
 **NN-20261120-put-everything-in-the-smart-vault · Naya Note · 2026-11-20 ~18:32 MST**
 
-*Paired Smart Note: SN-pending — Put Everything in the Smart Vault So You Don't Lose Stuff (takes the next free number at filing)*
+*Paired Smart Note: SN-4394 — Put Everything in the Smart Vault So You Don't Lose Stuff*
 
 **Category:** Law — how finished work is kept
 
