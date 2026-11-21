@@ -4,7 +4,7 @@
 
 **NN-20261121-the-ai-activation-one-document · Naya Note · 2026-11-21 ~08:42–08:48 MST**
 
-*Paired Smart Note: SN-pending — The AI Activation — One Document (takes the next free number at filing)*
+*Paired Smart Note: SN-4469 — The AI Activation — One Document*
 
 **Category:** LAW — the Smart Notes / Naya Notes Activation: one document, and what a new customer gets when they order NayaNET
 
