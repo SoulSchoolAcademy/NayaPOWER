@@ -4,7 +4,7 @@
 
 **NN-20261120-paywalls-not-just-memberships · Naya Note · 2026-11-20 ~17:41–19:00 MST**
 
-*Paired Smart Note: SN-pending — Paywalls, Not Just Memberships (takes the next free number at filing)*
+*Paired Smart Note: SN-4408 — Paywalls, Not Just Memberships*
 
 **Category:** Law — charge for your information, presented beautifully
 
