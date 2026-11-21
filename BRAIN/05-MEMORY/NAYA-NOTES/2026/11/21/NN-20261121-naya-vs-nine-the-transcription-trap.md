@@ -4,7 +4,7 @@
 
 **NN-20261121-naya-vs-nine-the-transcription-trap · Naya Note · 2026-11-21 ~09:34 MST**
 
-*Paired Smart Note: SN-pending — Naya vs Nine — the Transcription Trap (takes the next free number at filing)*
+*Paired Smart Note: SN-4483 — Naya vs Nine — the Transcription Trap*
 
 **Category:** LAW — the voice system hears "Naya" as "nine": Naya notes and Nine Notes are two different things, never to be confused
 
