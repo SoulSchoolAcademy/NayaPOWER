@@ -4,7 +4,7 @@
 
 **NN-20261120-she-opens-one-place-the-2028-vision · Naya Note · 2026-11-20 ~22:36–22:37 MST**
 
-*Paired Smart Note: SN-pending — She Opens One Place — The 2028 Vision (takes the next free number at filing)*
+*Paired Smart Note: SN-4450 — She Opens One Place — The 2028 Vision*
 
 **Category:** Vision — the 2028 vision text: a world where everybody could win
 
