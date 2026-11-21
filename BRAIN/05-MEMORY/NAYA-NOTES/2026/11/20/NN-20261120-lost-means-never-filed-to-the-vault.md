@@ -4,7 +4,7 @@
 
 **NN-20261120-lost-means-never-filed-to-the-vault · Naya Note · 2026-11-20 ~18:32 MST**
 
-*Paired Smart Note: SN-pending — Lost Means Never Filed to the Vault (takes the next free number at filing)*
+*Paired Smart Note: SN-4401 — Lost Means Never Filed to the Vault*
 
 **Category:** Law — the Vault is what makes "lost" impossible
 
