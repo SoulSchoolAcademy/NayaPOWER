@@ -90,8 +90,23 @@ def has_code_reference(note_id: str) -> bool:
     return _code_ref_cache[note_id]
 
 
-def check_law_triple(gov_dir: Path):
-    """Every law .md should have .ai.md + .human.md + .machine.json siblings."""
+def law_base_of(filename: str):
+    """Base name of a governance law file, or None if not a law form."""
+    nl = filename.lower()
+    for suffix in (".ai.md", ".human.md", ".machine.json", ".md"):
+        if nl.endswith(suffix):
+            return filename[: -len(suffix)]
+    return None
+
+
+def check_law_triple(gov_dir: Path, only_bases=None):
+    """Every law .md should have .ai.md + .human.md + .machine.json siblings.
+
+    Returns (failures, warnings, checked): `checked` is the number of law
+    bases evaluated. `only_bases` is an optional set of lowercased base
+    names to restrict the check to (changed-only mode: pre-existing debt
+    is tracked, not blocking — the workflow contract).
+    """
     failures, warnings = [], []
     # Build a case-insensitive index of all files
     all_files = {f.name.lower(): f.name for f in gov_dir.iterdir() if f.is_file()}
@@ -104,9 +119,13 @@ def check_law_triple(gov_dir: Path):
             if nl.endswith(suffix):
                 bases.add(n[: -len(suffix)])
                 break
+    checked = 0
     for base in sorted(bases, key=str.lower):
         if base.lower() in ("readme",):
             continue
+        if only_bases is not None and base.lower() not in only_bases:
+            continue
+        checked += 1
         bl = base.lower()
         ai = bl + ".ai.md" in all_files
         human = bl + ".human.md" in all_files
@@ -130,7 +149,7 @@ def check_law_triple(gov_dir: Path):
         elif plain and base[0].isdigit():
             # Numbered law with only a single .md — incomplete by the 4-form standard
             warnings.append(f"{base}: single-form law (no .ai/.human/.machine triple)")
-    return failures, warnings
+    return failures, warnings, checked
 
 
 def changed_files():
@@ -149,19 +168,24 @@ def main():
     if changed_only:
         files = changed_files()
         notes = [f for f in files if f.suffix == ".json" and ".naya/capture" in str(f)]
+        # Scope the governance-triple check to laws whose files changed:
+        # pre-existing debt is tracked, not blocking (workflow contract).
+        gov_changed = {law_base_of(f.name) for f in files if "BRAIN/01-GOVERNANCE" in str(f)}
+        gov_changed = {b.lower() for b in gov_changed if b}
     else:
         notes = sorted(CAPTURE_DIR.glob("SMART-NOTE-*.json"))
+        gov_changed = None
 
     for n in notes:
         f, w = check_smart_note(n)
         failures.extend(f)
         warnings.extend(w)
 
-    lf, lw = check_law_triple(GOV_DIR)
+    lf, lw, triples_checked = check_law_triple(GOV_DIR, only_bases=gov_changed)
     failures.extend(lf)
     warnings.extend(lw)
 
-    print(f"Checked {len(notes)} Smart Notes + governance triples.")
+    print(f"Checked {len(notes)} Smart Notes + {triples_checked} governance triples.")
     print(f"Failures: {len(failures)}, Warnings: {len(warnings)}")
     for x in failures:
         print(f"  FAIL: {x}")
