@@ -4,7 +4,7 @@
 
 **NN-20261120-the-ultimate-four-part-series · Naya Note · 2026-11-20 ~19:19 MST**
 
-*Paired Smart Note: SN-pending — The Ultimate Four-Part Series (takes the next free number at filing)*
+*Paired Smart Note: SN-4417 — The Ultimate Four-Part Series*
 
 **Category:** Law — the videos, done ultimate
 
