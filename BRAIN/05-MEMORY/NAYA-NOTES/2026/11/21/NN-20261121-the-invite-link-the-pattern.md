@@ -4,7 +4,7 @@
 
 **NN-20261121-the-invite-link-the-pattern · Naya Note · 2026-11-21 ~10:13 MST**
 
-*Paired Smart Note: SN-pending — The Invite Link — The Pattern (takes the next free number at filing)*
+*Paired Smart Note: SN-4500 — The Invite Link — The Pattern*
 
 **Category:** LAW — every citizen's invite link is always joinus.nayanet.app/<username>; the pattern is set, the subdomain goes live next
 
