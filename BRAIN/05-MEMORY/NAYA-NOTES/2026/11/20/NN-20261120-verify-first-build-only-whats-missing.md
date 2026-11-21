@@ -4,7 +4,7 @@
 
 **NN-20261120-verify-first-build-only-whats-missing · Naya Note · 2026-11-20 ~19:45 MST**
 
-*Paired Smart Note: SN-pending — Verify First, Build Only What's Missing (takes the next free number at filing)*
+*Paired Smart Note: SN-4424 — Verify First, Build Only What's Missing*
 
 **Category:** Law — check what's there before building
 
