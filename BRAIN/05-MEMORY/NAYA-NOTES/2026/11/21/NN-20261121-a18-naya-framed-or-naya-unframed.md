@@ -4,7 +4,7 @@
 
 **NN-20261121-a18-naya-framed-or-naya-unframed · Naya Note · 2026-11-21 ~09:25 MST**
 
-*Paired Smart Note: SN-pending — A18 — Naya Framed or Naya Unframed — Framed Is the Default (takes the next free number at filing)*
+*Paired Smart Note: SN-4480 — A18 — Naya Framed or Naya Unframed — Framed Is the Default*
 
 **Category:** LAW — the block comes Naya framed, standard; a setting lets the citizen choose framed or unframed; default is Naya framed
 
