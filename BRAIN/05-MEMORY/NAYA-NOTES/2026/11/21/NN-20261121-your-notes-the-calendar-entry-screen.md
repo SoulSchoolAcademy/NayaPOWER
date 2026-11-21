@@ -4,7 +4,7 @@
 
 **NN-20261121-your-notes-the-calendar-entry-screen · Naya Note · 2026-11-21 ~09:36 MST**
 
-*Paired Smart Note: SN-pending — Your Notes — the Calendar Entry Screen Says YOUR NOTES, Not Naya Notes (takes the next free number at filing)*
+*Paired Smart Note: SN-4484 — Your Notes — the Calendar Entry Screen Says YOUR NOTES, Not Naya Notes*
 
 **Category:** LAW — the calendar entry screen that says "NAYA NOTES" must say "YOUR NOTES": the citizen writes their own notes here; "Make Both Notes" is ruled out, do not build it
 
