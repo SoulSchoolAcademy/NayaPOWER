@@ -4,7 +4,7 @@
 
 **NN-20261120-almost-three-small-moves · Naya Note · 2026-11-20 ~18:10–18:14 MST**
 
-*Paired Smart Note: SN-pending — Almost Means Three Small Moves (takes the next free number at filing)*
+*Paired Smart Note: SN-4386 — Almost Means Three Small Moves*
 
 **Category:** Design — how a near-fit board is finished
 
