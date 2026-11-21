@@ -4,7 +4,7 @@
 
 **NN-20261121-the-lesson-player-a-cover-then-frame-by-frame · Naya Note · 2026-11-21 ~09:57 MST**
 
-*Paired Smart Note: SN-pending — The Lesson Player — A Cover, Then Frame by Frame, Your Choice How You View It (takes the next free number at filing)*
+*Paired Smart Note: SN-4492 — The Lesson Player — A Cover, Then Frame by Frame, Your Choice How You View It*
 
 **Category:** LAW — the lesson player, settled design: a cover like a Personal page, then frame by frame, with a toggle for how the citizen views it
 
