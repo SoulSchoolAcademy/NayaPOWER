@@ -4,7 +4,7 @@
 
 **NN-20261121-go-back-to-fix-1e-one-base-one-link · Naya Note · 2026-11-21 ~09:21 MST**
 
-*Paired Smart Note: SN-pending — Go Back to Fix-1E — One Base, One Link (takes the next free number at filing)*
+*Paired Smart Note: SN-4476 — Go Back to Fix-1E — One Base, One Link*
 
 **Category:** LAW — his eye verdict on the two Hub links: go back to fix-1e as the base; version sprawl is itself the defect; the detail view is missing the chrome the feed has
 
