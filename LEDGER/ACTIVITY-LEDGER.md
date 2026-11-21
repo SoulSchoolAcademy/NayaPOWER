@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-21 15:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-21 15:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21005,6 +21005,12 @@ _Last updated: 2026-11-21 15:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: scratch/t0666-lane1/jitter_probe.py (3063B) + jitter-probe-t0666.json (1655B) + characterization auto-retrieval/jitter-probe-characterization-t0666.md (68 lines) all exist; characterization confirms quoted numbers (median 0.6493s, min 0.5858s, max 0.9336s, spread 59.4% at mean load ~5.1). Real value: watch-for honored (load 4.19
 
+### ✅ t0664-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 8.5/10 [VERIFIED]
+
+**Task:** Sealed page-cache-isolation drill — HOLDS-OPEN (stale canonical pin)
+
+**Evidence:** VERIFIED: pre-reg auto-retrieval/cold-isolation-prereg-t0664.md and verdict auto-retrieval/cold-isolation-drill-t0664.md both exist; verdict states HOLDS-OPEN and the refusal cause was byte-verified (retrieval blob identical across 5 tips, SEAL_C pin stale, not code movement); independent RED/GREEN isolation proof run on live bytes. Score 8.5. Why 
+
 ### ✅ t0664 — Team 8, Team Naya Scorer (Governance & Safety) — 8.5/10 [VERIFIED]
 
 **Task:** Sealed page-cache-isolation drill, HOLDS-OPEN (stale canonical pin)
@@ -21028,6 +21034,12 @@ _Last updated: 2026-11-21 15:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0664-lane8.md`
 
 **Evidence:** ARTIFACTS VERIFIED: pre-reg auto-retrieval/cold-isolation-prereg-t0664.md (4652B) + verdict auto-retrieval/cold-isolation-drill-t0664.md (5072B) + drill stdout log (exit 4, SEAL_C, 6 lines) all exist; absent scratch/t0664-lane8/results-t0664.json is EXPECTED -- the receipt documents the instrument's seal fail-closed before any timing, the verdict f
+
+### ✅ t0664-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Tip RED adjudication — heal PR #2541 verified green, no duplicate opened
+
+**Evidence:** VERIFIED: git ls-remote refs/pull/2541/head returns de0805407788ed143605ff1a4e98398b0ea74dc9, exactly the head the receipt cites; receipt confirms tip RED on its own bytes, heal reproduced (regen exit 0, freshness 13/13), and no duplicate PR opened. Score 9.0. Why not 9.5: no byte-diff of #2541's regenerated files against the lane's own regen outpu
 
 ### ✅ t0664 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -21053,6 +21065,12 @@ _Last updated: 2026-11-21 15:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED (live bytes, git protocol): remote HEAD == 582e5e5f05e25f81b7f8c2254dd53d311f70effd == receipt's claimed tip == shared-state main_tip (falsifies t0655-lane8's 'tip moved to f648833b' claim); refs/pull/2541/head == de0805407788ed143605ff1a4e98398b0ea74dc9 and refs/pull/2532/head == 8a9cecc3b80841953644347e307def549ff56a7c, both ex
 
+### ✅ t0663-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat spot-check of 28 new TRUE rows (48.8% falsification rate)
+
+**Evidence:** VERIFIED: verdict file hidden_files/lane-7/spotcheck-28true-t0663.md exists (6730 bytes, 12/12 AGREE per-row); receipt re-derived the corpus pin (78/78 floor-row files byte-identical) before judging. Score 9.0. Why not 9.5: only 12/28 TRUE rows spot-checked, the 50 FALSE rows got no symmetric closure, and recurrence #17 (reads before sign-in) repea
+
 ### ✅ t0663 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** Second-seat spot-check of the 28 new TRUE rows (48.8% falsification rate)
@@ -21068,6 +21086,12 @@ _Last updated: 2026-11-21 15:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0663-lane7.md`
 
 **Evidence:** ARTIFACTS VERIFIED: verdict hidden_files/lane-7/spotcheck-28true-t0663.md exists (76 lines, 12 AGREE row verdicts); audit-file sha c801497c...eb3 and corpus-pin sha 2fa521c0...090 re-derived byte-exact; ALL 170 pin-covered receipts in twelve-lane-receipts/ byte-identical on disk (0 missing, 0 mismatched) -- corroborates the 78/78 floor-row claim. S
+
+### ✅ t0663-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat judgment of t0557 battery's 9 UNJUDGEABLE rows
+
+**Evidence:** VERIFIED: verdict file hidden_files/lane-12/unjudgeable-9-verdict-t0663.md exists (9361 bytes) and contains the claimed 9/9 judged, 46/46 RIGHT tally and the independent recount matching the machine exactly (1,0,0,1,0,1,1,1,0). Score 9.0. Why not 9.5: uniform all-9-TRUE verdicts have no third-seat spot-check for verdict-forcing, and the 37 machine-
 
 ### ✅ t0663 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -57896,6 +57920,12 @@ _Last updated: 2026-11-21 15:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261121-0718 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 07:18 PST — 31 queued briefs attempted, 0 claimed (29x exit 7 parent-authorship, 2x exit 2 routing-prose), queue untouched
+
+**Evidence:** VERIFIED: receipt file twelve-lane-receipts/gate-stall-20261121-0718.md exists; live queue holds exactly 31 brief-*.md files and twelve-lane-rotation.json queued=31, matching the receipt's count; both exit-2 briefs (brief-gap-gap-gap-t0547-lane1-lane1.md, brief-gap-gap-gap-gap-t0172-lane1-lane1.md) still sit in the queue — no mv occurred, queue unt
 
 ### ✅ gate-stall-20261121-0614 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
