@@ -4,7 +4,7 @@
 
 **NN-20261121-the-smart-post-the-add-button-and-who-inputs-it · Naya Note · 2026-11-21 ~09:01–09:03 MST**
 
-*Paired Smart Note: SN-pending — The Smart Post — the ADD Button, and Who Inputs It (takes the next free number at filing)*
+*Paired Smart Note: SN-4472 — The Smart Post — the ADD Button, and Who Inputs It*
 
 **Category:** LAW — what a smart post is: one block, the ADD button, the customer's manual sharing — and the flip restored
 
