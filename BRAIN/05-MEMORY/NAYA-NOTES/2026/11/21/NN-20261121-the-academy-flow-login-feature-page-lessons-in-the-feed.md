@@ -4,7 +4,7 @@
 
 **NN-20261121-the-academy-flow-login-feature-page-lessons-in-the-feed · Naya Note · 2026-11-21 ~09:55 MST**
 
-*Paired Smart Note: SN-pending — The Academy Flow — Login, Feature Page, Lessons in the Feed (takes the next free number at filing)*
+*Paired Smart Note: SN-4491 — The Academy Flow — Login, Feature Page, Lessons in the Feed*
 
 **Category:** LAW — the Academy flow, settled: login page, feature page, lessons below in the feed, each lesson with a thumbnail
 
