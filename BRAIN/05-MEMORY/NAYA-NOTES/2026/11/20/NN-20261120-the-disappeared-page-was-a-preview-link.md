@@ -4,7 +4,7 @@
 
 **NN-20261120-the-disappeared-page-was-a-preview-link · Naya Note · 2026-11-20 ~16:52 MST**
 
-*Paired Smart Note: SN-pending — The Disappeared Page Was a Preview Link (takes the next free number at filing)*
+*Paired Smart Note: SN-4362 — The Disappeared Page Was a Preview Link*
 
 **Category:** Law — assurance first; a preview link is not a live page
 
