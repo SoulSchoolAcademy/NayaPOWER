@@ -4,7 +4,7 @@
 
 **NN-20261120-messenger-and-people-are-one-rail · Naya Note · 2026-11-20 ~17:41–19:00 MST**
 
-*Paired Smart Note: SN-pending — Messenger and People Are One Rail (takes the next free number at filing)*
+*Paired Smart Note: SN-4405 — Messenger and People Are One Rail*
 
 **Category:** Design — one rail, not two; the sidebar must open on tap
 
