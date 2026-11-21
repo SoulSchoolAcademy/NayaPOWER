@@ -4,7 +4,7 @@
 
 **NN-20261120-add-means-make-a-post · Naya Note · 2026-11-20 ~20:36–20:45 MST**
 
-*Paired Smart Note: SN-pending — ADD Means Make a Post (takes the next free number at filing)*
+*Paired Smart Note: SN-4436 — ADD Means Make a Post*
 
 **Category:** Law — the plus button makes a post, nothing else
 
