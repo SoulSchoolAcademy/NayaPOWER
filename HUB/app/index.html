@@ -5540,6 +5540,7 @@ window.BoardActions = (() => {
         }
         toast('INTELLIGENCE RATED', i + ' of 10 stars — ' + pts + ' points (1 per star) recorded on this device. Rating is feedback, not truth.', '#d4a017');
       });
+    }
       center.appendChild(saveEnd);
       /* One row of ten star balls for one track. */
       function rankRow(track) {
@@ -6061,8 +6062,9 @@ function HubView(params) {
       today: '/rooms/today', reports: '/rooms/reports', library: '/rooms/library',
       ledger: '/rooms/ledger', connections: '/rooms/connections',
       mail: '/rooms/mail', spaces: '/rooms/spaces',
-      growth: '/rooms/growth'
-    }; /* AMENDMENT #3: the factory line leaves with its row — the right rail navigates by href now */
+      growth: '/rooms/growth',
+      factory: '/smartfactory'
+    }; /* AMENDMENT #3: the factory ROW stays in the right rail — the map entry returns so this map mirrors EXTERNAL_ROOMS (kernel gate). */
     b.addEventListener('click', () => {
       closeDrawer();
       if (EXTERNAL[r.id]) { location.href = EXTERNAL[r.id] + location.search; return; }
