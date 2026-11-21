@@ -33,8 +33,10 @@
 -- production the tables exist live, so the grants fire. On a fresh database
 -- they no-op until the filing branch lands. The grant text itself is
 -- verbatim; only the wrapper is added.
--- This file's timestamp (20261121183000) sorts AFTER the filing branch's
--- maximum (20261121180500), so once the filing merges, its CREATEs run
+-- This file's timestamp (20261121183000) sorts AFTER the three table-CREATE
+-- files the conditional grants depend on (20261121180000 money /
+-- 20261121180200 vault / 20261121180300 social). The filing branch's maximum
+-- is 20261121190009 (later function filings only), so the CREATEs still run
 -- before this migration and all three conditional grants fire.
 --
 -- ROLLBACK: DROP FUNCTION public.nayanet_record_ledger_event_by_alias(text,
