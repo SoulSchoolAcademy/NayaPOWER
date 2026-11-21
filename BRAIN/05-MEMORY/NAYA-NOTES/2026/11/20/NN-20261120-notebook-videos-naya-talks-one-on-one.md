@@ -4,7 +4,7 @@
 
 **NN-20261120-notebook-videos-naya-talks-one-on-one · Naya Note · 2026-11-20 ~19:16 MST**
 
-*Paired Smart Note: SN-pending — Notebook Videos — Naya Talks to You One on One (takes the next free number at filing)*
+*Paired Smart Note: SN-4411 — Notebook Videos — Naya Talks to You One on One*
 
 **Category:** Design — the video format
 
