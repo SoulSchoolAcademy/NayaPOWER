@@ -61,8 +61,11 @@ as the real thing.
    — **0 commits ever touched that path**.
 4. Pre-reset tree (parent of reset `b31f37fd`, commit `96a7ffaa`): no directory
    of this exact name (only the `nayanet-pi-successor-handoff` relative above).
-5. All-branch sweep: `supabase/functions/` directory listing on all 227 repo
-   branches — no branch carries a directory of this exact name. (Sweep log:
+5. All-branch sweep: `supabase/functions/` directory listing on 203 of 227 repo
+   branches checked by filing time — no branch checked carries a directory of
+   this exact name; the remaining 24 (walk-end/*, walkthrough/*,
+   smart-messenger-icons/ultimate) are page/flow branches and were still being
+   checked when this record was filed. (Sweep script:
    `~/workspace/team-nitro/supabase/filing-20261121/sweep_branches.py`.)
 6. `supabase/config.toml` on `main`: not declared (none of the six is).
 
