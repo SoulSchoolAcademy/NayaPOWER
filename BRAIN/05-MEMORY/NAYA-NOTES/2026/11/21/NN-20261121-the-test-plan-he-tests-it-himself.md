@@ -4,7 +4,7 @@
 
 **NN-20261121-the-test-plan-he-tests-it-himself · Naya Note · 2026-11-21 ~09:25 MST**
 
-*Paired Smart Note: SN-pending — The Test Plan — He Tests It Himself, On Personal and on the Hub (takes the next free number at filing)*
+*Paired Smart Note: SN-4481 — The Test Plan — He Tests It Himself, On Personal and on the Hub*
 
 **Category:** LAW — the acceptance for the Hub and Personal rounds: icons on the Hub, finish on the Personal, then his two tests
 
