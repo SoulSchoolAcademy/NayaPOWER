@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4604",
+ "intelligence": {
+  "title": "Locked Is Not Live",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4604-locked-is-not-live",
+  "smart_note_id": "SN-4604",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4604/IB-SMART-NOTE-20261121-sn4604-locked-is-not-live.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "",
+  "human_view": "Think of it like a new neighbourhood. First you draw the street map: your house and your shop sit on the main street, nice and simple; the library, the hall and the office get their own side streets with your name on the door; a park gets its own name as its street. That is the scheme — settled, written down, the same for everyone. But a street on a map is not a house you can walk into: the calendar's street exists in the directory and nobody answers the door yet. Then you walk the calendar house room by room and find nine things wrong — drawers that do not open all the way, a clock that traps you, a day labelled Tuesday on a Friday, notes that never show up for the day they belong to. You do not move in. You fix the house first, then you connect the street. The front door button gets its proper name — \"Calendar\" — because that is what it opens. The phone is the first way anyone sees the house, so you build for the phone first and the big screen second. The letters cannot be posted yet because the postbox needs his tap, and the phone calls are not built at all — the plans are drawn, the building has not started. He tapped yes on the postbox, and the machine stopped at its own first gate because the ground underneath is not sound — so it asks him, and waits. And then he tells the whole system to look in the mirror and say honestly whether it is the best system ever seen, and why not.",
+  "simple_view": "A locked address is not a live address yet! The calendar has nine little problems to fix first. The button that says My World will say Calendar. Build the phone picture first, then the big screen. Texting can not send yet, and calls are not built. Shawn tapped yes, but the machine stopped and asked him. We ask fourteen big questions and tell the truth.",
+  "grandma_view": "It's like this, love — the addresses are all settled now, dear, your house and your shop on the main street, the calendar and the hub on their own little streets with your name after the slash, and a space gets its own name as its street, love! But settled is not the same as open, dear — the calendar's street is drawn on the map and nobody answers the door yet! The walk found nine little things wrong, love — drawers that won't open all the way, a day called Tuesday on a Friday, notes that never show for their own day — so we fix the house before we move in, dear! The button that says My World will say Calendar, love, just the name changed, nothing else! Build for the phone first, dear, then the big screen! The letters can't be posted yet, love, and the calls aren't built at all — and when the machine stopped at its own gate, dear, it did the right thing and asked Shawn!",
+  "naya_view": "Build every address to the corrected scheme: Personal and Business at nayanet.app/<alias>; feature apps on their subdomains with the citizen's name after the slash; Spaces and Worlds with their own name as the subdomain. Membership's address stays open — do not guess it. Claim an address live only when it answers; the calendar is staged only (branch calendar/your-notes-20261121, blob 41ff7e6d) until the wire lands and a real page name curls back. Fix the nine calendar failures in the dispatched round before any live claim: frame-law overflow in Smart Lists, Appointments, Summary and Journal; notes listed for the day; the Nov 20 weekday; the world clock trap; the full \"Open\" slot; Daily Reports versus Intel Today; \"Add to a list…\" with no options; Notifications covering tiles; the slow cover — plus the flat-icons order from Nov 17. Relabel \"My World\" to \"Calendar\" in the Personal Bar, right after About — label only, same button, same destination; leave Your Worlds alone. Build every frame mobile-first, then laptop: 9:16 pairing roughly a third/two-thirds beside the text board on laptop, stacked blocks on mobile, toggleable, great on both — a design that does not convert both ways does not ship. Carry mail + IM as one toggled interface; send waits on the schema packet; build Smart Meet to the written spec with the booking round. Apply the Dashboard packet only through the governed path, and do not dispatch while the Gate 1 decision is owed — bring him (a) hold or (b) authorize dispatch with Preview as the gate, timed to a quiet tip. Investigate the out-of-band drift and the push-triggered pipeline before the next apply. Run the fourteen-question exercise area by area, nonstop, until each is 10/10 or the gap to 10 is named — and carry the schema-packet decision open in the Daily PI Report, never resolved by the team.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4604",
+   "title": "Locked Is Not Live",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4604/IB-SMART-NOTE-20261121-sn4604-locked-is-not-live.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4604/IB-SMART-NOTE-20261121-sn4604-locked-is-not-live.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

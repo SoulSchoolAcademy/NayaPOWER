@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4596",
+ "intelligence": {
+  "title": "The Trinity, the Composer, and Your Notes",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4596-the-trinity-the-composer-and-your-notes",
+  "smart_note_id": "SN-4596",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4596/IB-SMART-NOTE-20261121-sn4596-the-trinity-the-composer-and-your-notes.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "",
+  "human_view": "Picture the whole system as three rooms in one house. The Hub is the living room, where the smart notes gather. The Personal is the room that can be anything — your home, your shop, your world — one page, many faces. The Dashboard is the engine room, the numbers and the ledger that keep it all running. Everywhere you stand in the house, the same bar is at the bottom — tap ADD, pick which feed, and a beautiful composer opens, like a smart block with the social part at the bottom. You type, you drop in your pictures, and the block lines them up for you — one big picture, two side by side, nine in a neat three-by-three. The frame around it is Naya's frame, unless you choose otherwise in a setting. Then the test: Shawn himself makes a post with a picture, on his Personal and on the Hub, and if it comes out right, it is good — and he hands me pictures and I arrange them on the Hub itself. Nothing is finished until he has done that with his own hands. And the names on the screens have to be honest: \"Your Notes\" means the notes you wrote, saved in your vault, day by day — not Naya's notes. A list is not a filing cabinet somewhere else; it is right where you write, a plus button to start one, a tap to file the thing in it, and one place — Your Worlds — where every list is listed, so you can always find them.",
+  "simple_view": "Three big parts run everything! The Hub holds the smart notes. Your page can be you, your shop, or your world. The Dashboard is the engine that counts it all. Tap ADD and tell it which feed! Add your pictures and the block lines them up for you! Your notes are YOUR notes, not Naya's! And Shawn checks it himself, with his own hands!",
+  "grandma_view": "It's like this, love — three parts run the whole thing, dear: the Hub where the clever notes live, your own page that can be anything you like, and the Dashboard that keeps the numbers, love! The same little bar sits at the bottom of every main page, dear — you tap ADD, pick where it goes, and a lovely composer opens up! You type what you like, pop your pictures in, and the block lines them all up neat for you, love — never a fuss! Your notes are YOUR notes, dear, saved away safe in your vault, day by day, and you can go back to any day and find them! And Shawn tries it all himself, love, with his own hands — if it works for him, it's good!",
+  "naya_view": "Build from the three, never a fourth: Hub for intelligent notes, Personal as the universal hub (one page — personal, business, space, whatever), Dashboard for stats, engine, and Smart Ledger. Put the universal bottom bar on the MAIN pages only — Hub main, Personal main, Dashboard main — harvested byte for byte from the Dashboard bar; it floats up a couple of seconds after scrolling stops; ADD · PERSONAL · BUSINESS · WORLDS · ECOSYSTEM · CONNECT, plus button, network notifications there. Never home the bar on the open note — the opened note is a view inside the main. Build the ADD composer as an intelligent block, social part at the bottom; ADD asks \"Which feed?\" first; same composer on Hub and Personal, one design. Auto-format images: 1 full width in its own frame, 2 side by side, 3 across, 4 four-corner grid, 5–9 in even rows of three; never ask the citizen to lay images out by hand. Ship every block Naya framed, standard; a setting lets the citizen choose framed or unframed; keep it separate from the unformat toggle (boards inside vs outer frame); never default a block to unframed. Run the sequence: icons on the Hub, finish on the Personal, then TEST 1 (he posts himself, with an image, on Personal AND Hub, proper formatting) and TEST 2 (he gives me images, I auto-format them on the Hub itself) — no round closes until his tests pass. Send a link only when the page behind it was actually EDITED and ready — a NEW edited version awaiting his eye; never re-send a reviewed link or an unedited one; one current link per page, once. Read every transcript \"nine\" against the sense: \"Naya notes\" is the full-deal notes, \"Nine Notes\" is the nine vision drafts, never merged, never filed from a transcript alone — check the sources, and ask him which screen he saw it on before fixing. Rename the calendar entry screen to \"YOUR NOTES\"; the citizen writes whatever they want, it saves to their Smart Vault, auto-organized, by day, images uploadable; do NOT build \"Make Both Notes.\" Add \"Your Notes\" as the fifth Smart List, keeping the existing four exactly as built — add only, never rename, never rebuild; if he meant a rename, he will say so. Build Smart List tools where the citizen inputs — Your Notes entry, adding a contact — PLUS button to create a list, tag/add the item right there, saved to the Smart Vault for that day; auto-organize notes, smart notes, and contacts; make YOUR WORLDS in the main Hub the table of contents for all the smart lists. Do not build the journal wording until he settles it.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4596",
+   "title": "The Trinity, the Composer, and Your Notes",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4596/IB-SMART-NOTE-20261121-sn4596-the-trinity-the-composer-and-your-notes.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4596/IB-SMART-NOTE-20261121-sn4596-the-trinity-the-composer-and-your-notes.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

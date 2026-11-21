@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4600",
+ "intelligence": {
+  "title": "Frames Only — One Template, Every World",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4600-frames-only-one-template-every-world",
+  "smart_note_id": "SN-4600",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4600/IB-SMART-NOTE-20261121-sn4600-frames-only-one-template-every-world.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "",
+  "human_view": "Think of the old decks like a pile of paper slides nobody will ever sit through — he said so plainly, and the pile stays in the bin. What lives instead is a factory: you put the picture of a beautiful frame in one end, and the Factory knows the code for it, so any page can be made from those ready-made pieces. One template holds them all, and it works for anybody about anything — your personal world, your business, your space — copied as many times as there are people who want one. Short boards sit on the stage; long boards get the whole wrap around them. Words get their own boards too, in three neat shapes. Every frame fits its content like a glove — nothing spills out, nothing scrolls inside — and if there's too much, it just flows into the next frame. Nobody counts how many frames there are, because the count was never the point. The bar at the bottom only appears while you're scrolling down; the rest of the time it's gone until you call it with a little corner button. And the buttons say plain things: tap ADD, post a note, pick where it goes. That's the whole system — one factory, one template, one bar, plain words.",
+  "simple_view": "One template makes every page. Short boards get the stage. Long boards get the whole wrap. Everything fits inside its frame. If it is too big, it moves to the next frame. We never count the frames. The bar shows only while you scroll down. Your About page tells your story in ten little frames. You tap ADD and post a note.",
+  "grandma_view": "It's like this, love — no more big piles of slides nobody sits through, dear, those stay in the bin for good! Instead there's one clever factory, love, that keeps the pretty frames and their codes, and makes every page from them — your personal page, your business page, your space, all from the same one, dear! Short boards sit on the stage, long boards get the whole wrap around them, love! Everything fits inside its frame, dear, like a glove — nothing spills out, nothing scrolls inside — and if there's too much, it just moves along to the next frame! The little bar at the bottom only shows while you're scrolling down, love, and a small corner button brings it back when you want it! And when you want to write something, dear, you just tap ADD and post a note — nice and plain, private unless you choose otherwise!",
+  "naya_view": "Registry (image matched to code) INTO the Smart Factory; all pages from intelligent blocks within the universal template — the Smart App, called the Personal App — personal, business, space, any topic; clonable to infinity. Primary pattern: stage with the flow behind it, moving back and forth; short boards on the stage, longer boards in the whole wrap. Text boards within the frame, below the headline: one full board, three equal thirds in the centre, or two rectangles. Inviter: bottom-bar icon popup STAYS; Step 1–4 buttons stay and jump to their section; more than four sections allowed, multiple parts per step. Frame Fit Law: everything fits inside the frame, no scrolling inside a frame, aligned, same spacing and same look and feel as the screenshots; overflow moves to the next frame. No Counting Law: never count frames, never \"X of 98\"; report frames whole. Bar rule: bottom icon bar shows only while scrolling down; on most pages not there at all; small corner button pulls it up, or it sits at the end of a page; the fade/float-back wording is retired. One bar locked: ADD (+) royal purple · MAIL sapphire · ACTIVITY emerald (badge 10) · WORLDS deep gold · ECOSYSTEM burnt orange · CONNECT red — six jewel tiles with flow/light, same plus button all the way through; MAIL/ACTIVITY overturn the PERSONAL/BUSINESS ruling; align the Hub fix bar, Inviter bar, and Personal bar to this set. About contents, ten in his order: Motto, Vision, Goal, Mission, What I love, What I don't, Your Thing (dynamic interests, multiple-choice or enter-your-own), Values, Laws you follow, Your Declaration — one headline-led frame per item, from the registry, fitted whole, never counted; his About is the example for every citizen's About; Naya's About the same way; portrait decision his call, does not block. Composer: the action is \"Post a note\", never \"Smart Note\" as a button or label; ADD → Post a note → feed picker (Space via plus button/dropdown when more than one Space) → private by default, public only by your choice. Dead work stays dead: the 98-page About, the old membership deck checks, membership fix round #2 — stopped, no fix, no render, no checker.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4600",
+   "title": "Frames Only — One Template, Every World",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4600/IB-SMART-NOTE-20261121-sn4600-frames-only-one-template-every-world.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4600/IB-SMART-NOTE-20261121-sn4600-frames-only-one-template-every-world.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

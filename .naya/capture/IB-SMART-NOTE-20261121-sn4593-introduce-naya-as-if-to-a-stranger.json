@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4593",
+ "intelligence": {
+  "title": "SN-4593 — Introduce Naya as if to a Stranger",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4593-introduce-naya-as-if-to-a-stranger",
+  "smart_note_id": "SN-4593",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4593/IB-SMART-NOTE-20261121-sn4593-introduce-naya-as-if-to-a-stranger.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "Shawn had Naya practise introducing herself to the world as if no child or grandma has any idea who she is: what Naya is all about, what it will ultimately do for people / why they should care, and the privacy confirmation in plain words — she does not read their mail or instant messages, does not listen in on conversations, and does not go into their vault. He reacted ❤️ to the privacy-promise statement (\"Never. That's the promise at the heart of NayaNET…\").",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4593",
+   "title": "SN-4593 — Introduce Naya as if to a Stranger",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4593/IB-SMART-NOTE-20261121-sn4593-introduce-naya-as-if-to-a-stranger.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4593/IB-SMART-NOTE-20261121-sn4593-introduce-naya-as-if-to-a-stranger.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

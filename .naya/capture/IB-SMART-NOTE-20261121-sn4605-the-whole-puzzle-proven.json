@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4605",
+ "intelligence": {
+  "title": "The Whole Puzzle, Proven",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4605-the-whole-puzzle-proven",
+  "smart_note_id": "SN-4605",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4605/IB-SMART-NOTE-20261121-sn4605-the-whole-puzzle-proven.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "",
+  "human_view": "Think of it like a house he is building: the paint looks perfect, the doors are hung, and the inspector signs off on the measurements — but the lights do not turn on, the taps run dry, and the front door opens onto a wall. That house is not done, and no signature on paper makes it done. The same morning taught the machine twice: a dispatch he authorized could not exist as authorized, because the Preview gate he trusted was never built — the pipeline goes straight to production — and the pieces that unblock the whole feed were never filed as migrations at all. So he laid down the law that now governs all production work: no skipping steps, no half a system, the whole puzzle in place or the engine does not operate. The fix is always the same shape — file what is missing, build the real gate, prove the whole thing on preview, then bring it back to his hand. And the scorecard changed with it: the system scores 5 out of 10 on performance, because looking beautiful is only half the job. A slot that says \"Open\" when nothing is free, a send button that cannot send, a dashboard that shows its own code instead of its numbers — those are the things a citizen feels first. The Max promise rides the same honesty: the affiliate army is decided and the split is settled — 100% theirs, affiliates paid by them — but the army is not built yet, and a promise is not a product.",
+  "simple_view": "A page is not done when it looks pretty. It is done when every button does its job. You cannot skip steps, like a puzzle. Every piece must fit before the picture works. If a button says Open, a free time must really be there. If a message says Send, it must really go. We check it with our own eyes, then we go live.",
+  "grandma_view": "It's like this, love — a page can look lovely, dear, and still not work, and looking lovely is only half the job! The button has to open, the message has to arrive, the numbers have to move, dear — that is what makes it ten out of ten, not just the pretty picture! And you never skip steps, love — it's a great big puzzle, and every piece has to be in place before the engine can run! If a gate is meant to guard the door, dear, you check the gate is really there before you trust it — and if a piece is missing, you put the piece in first, then you test it, then you ask him! That is the way now, love, for everything that goes live!",
+  "naya_view": "A checker PASS is a milestone, never the verdict — the verdict is his eye on his own screen, plus function proven at click level and on live data. Never claim a 10 on a render alone. Never trust a gate you have not verified exists: check the pipeline first-hand — the Preview step, the migration files, the branch — before dispatching on a report's word. No production step until the whole puzzle is right: file what is missing, build the real preview path, prove the whole puzzle on preview, then the go-ahead packet back to his hand. Path B is dead — never offer production-direct again. Name the not-done in the same pass as the done: rail auto-organize, boards, DM audio/video, Send, MAIL bypass, ECOSYSTEM tile — carried into the next round, never hidden. Label from the same function that decides bookability, so a slot cannot say \"Open\" when nothing is free; test with real appointments, not empty batteries. Diagnose a leak from the filed bytes first and fix at the source, never over it. Fresh-apply proof before the rebuild is claimed proven; DROP candidates untouched until his word. Max: the affiliate army is a build owed, tracked inside the membership; the split is settled — 100% theirs on their own memberships, affiliates paid by them at the percentage they choose, distinct from the 50% NayaNET ambassador share.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4605",
+   "title": "The Whole Puzzle, Proven",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4605/IB-SMART-NOTE-20261121-sn4605-the-whole-puzzle-proven.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4605/IB-SMART-NOTE-20261121-sn4605-the-whole-puzzle-proven.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

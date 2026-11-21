@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4606",
+ "intelligence": {
+  "title": "The Pass Is Not the Proof",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4606-the-pass-is-not-the-proof",
+  "smart_note_id": "SN-4606",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4606/IB-SMART-NOTE-20261121-sn4606-the-pass-is-not-the-proof.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "",
+  "human_view": "Think of it like a car that passed its paperwork check but stalls when you turn the key. The papers say PASS — the engine says otherwise. On Personal, the build's papers were perfect: the right commit, the right hash, the checker green. But when someone actually used it, the post never landed, the sidebar would not come back, and the Mail-to-Messenger switch was nowhere to be found. The papers were not lying — they were just not the test. And on Supabase, the team caught the same trap before running: the small test would have failed on somebody else's file, not on the work being proved, so it would have proved nothing. The fix in both cases is the same: run the real thing, whole, from the start — the click, the runtime, the full chain from empty — and call it done only when that passes.",
+  "simple_view": "Imagine you say your homework is done! But the teacher checks it, and three answers are wrong! That is what happened here! A check said PASS, but the real test found three fails! And the other test stopped before it started, because the plan was too small! The real proof checks the whole thing, not just a little piece!",
+  "grandma_view": "It's like this, love — the papers said PASS, dear, but when you actually tried to use it, the post never landed, the sidebar would not come back, and the switch between Mail and Messenger was nowhere to be found! The papers weren't the test, love — the real test is using it yourself! And the other proof stopped before it started, dear, because the little test would have failed on the wrong thing! So now they run the whole thing, from the very beginning, love — the full chain, start to finish — and only then call it done!",
+  "naya_view": "Checker PASS is a milestone, never the verdict — the render proof is the verdict's first half, and the verdict is the click, the runtime, the screen. The stub resolver diagnostic comes first: bytes that contain the resolver but do not fire it at runtime. The sidebar reopen is a click-level fix, proven by click. The toggle must be one labelled control, found by the walk. Name what is not done, plainly — rail auto-organize, intelligent boards, DM Audio and Video, Message Send — and ask the \"My World\" question, never silently fix it. On the database side, correct the scope before running: sequences already sourced are never filed twice; a 19-file apply that fails first on a main-chain file proves nothing; the real proof is the full 195-file chain from empty on a free throwaway project, parity proven against live, project deleted when done. Paid tier stays dead without his word. A proof that records a known failure is not a proof.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4606",
+   "title": "The Pass Is Not the Proof",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4606/IB-SMART-NOTE-20261121-sn4606-the-pass-is-not-the-proof.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4606/IB-SMART-NOTE-20261121-sn4606-the-pass-is-not-the-proof.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

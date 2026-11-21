@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4598",
+ "intelligence": {
+  "title": "The Turning Point — Make Everything Work",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4598-the-turning-point-make-everything-work",
+  "smart_note_id": "SN-4598",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4598/IB-SMART-NOTE-20261121-sn4598-the-turning-point-make-everything-work.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "",
+  "human_view": "Think of it like a house that is finally built — the rooms are there, the doors are hung, the lights are in. Now the question changes: does the water run, does the door open where it says it opens, does the light actually turn on? His newest word is the map: if the map says PERSONAL, the door must open on the Personal world, not on mail. If a page looks wrong even though the frame is perfect, count the words — too many words is the defect, not the frame. The Inviter is placed where he can always find it, in the Hub and on Personal, and left alone until he comes back to it. Your invite link is just your name after joinus.nayanet.app — a link you can say out loud. The Dashboard is the heart: it must remember every like, share, point and action, or its numbers are decoration. And when a red light flashes — nearly half the database calls failing while the badge says Healthy — you do not explain the chart, you fix the cause and watch the numbers get better. That is the turning point: stop building more pieces, start proving the ones we have.",
+  "simple_view": "Shawn says the newest word wins. So the bar now says PERSONAL and BUSINESS, not MAIL and ACTIVITY. Every button must go where its name says it goes. The words on a page must be short, like the agreement. The Inviter lives in the Hub and on Personal, and it works. Your invite link is always joinus dot nayanet dot app slash your name. The Dashboard must really work, not just sit there looking pretty. When a red light flashes, we fix it, and we watch the numbers get better. Now we prove every piece works, one by one.",
+  "grandma_view": "It's like this, love — the newest word wins, dear, so the bar says PERSONAL and BUSINESS now, and every button goes where its name says it goes! The words on a page must be short and clear, love, like the agreement — not long walls nobody can read! The Inviter sits right there in the Hub and on Personal, dear, live and waiting, and we leave it alone until he comes back to it! Your invite link is just your name after joinus, love, simple as that! And the Dashboard must really work, dear — not just sit there looking pretty, but remember every little thing! When a red light flashes, love, we fix it, and we watch the numbers get better!",
+  "naya_view": "Newest word wins: Eleven Laws law 3 over Design Laws §3.2 — rename MAIL→PERSONAL, ACTIVITY→BUSINESS, label AND destination, harvested byte-for-byte from the Dashboard bar (branch inviter/bar-labels-20261121, +101 B, exactly one line changed, line 2193; destinations PERSONAL → nayanet.app/personal, BUSINESS → nayanet.app/business). Ghost bar removed in full in the same pass (687 lines out, 19 in; 321,778 B → 281,033 B). Density is the defect: split to agreement density — deck ~84–98, beats 27–43 — and give labels the frame's own .ib-kind treatment, harvested, not invented; .ib-rows has zero CSS rules, first field row glued, no short frames anywhere. Inviter: a door/button in the Hub and on Personal opening the Inviter as it exists (blob 8aecb71e) — there, live, no extra work now; the official nayanet.app URL is his tap. Invite link: joinus.nayanet.app/<username> for every citizen, forever; checked 10:13 MST it does not resolve yet (HTTP 000) while nayanet.app is live (HTTP 200) — joinus goes live serving the Inviter at root AND /<username>, proven with live curls; full ambassador tracking is NOT this round; if it needs a credential only Shawn holds, stop and report. Dashboard: diagnose what it tracks today, wire the missing Ledger tracking in Supabase — every action records, points accrue, money = joins only — prove it functionally: do the action, show the Ledger record, show the number moving. Max value: diagnose before building, brief carries exact base + laws + acceptance list, harvest ready pieces byte-for-byte, one lane one round, maker ×3 + seven questions → independent checker → captain double-checks the link first-hand → his eye; score = verified completions/hour, redo minutes bank zero. Membership: mobile cover-top + button-below, one design for both screens; portal page is the login, then the membership area, click through it all; deeper links below the frame opening text-by-text elevated blocks in the Smart Notes format; buttons at the bottom, matrix-like; every subject in three formats — AUDIO (PowerCast player as a frame), VIDEO (frame harvested from the collective agreement), TEXT (frame harvested); course is the hub, lessons the branches, formats the content of the branches; plus a button board with the table of contents; smart access behind a paywall, Naya Max building products behind a paywall with the portal entrance. Fix it: pull the Postgres error log, name which calls fail and why, fix the cause, prove it by the error count falling. Bridge: read-only inventory first — edge functions first, then database functions / tables / triggers / policies — each piece wired / built-but-unused / missing; trace GitHub↔Supabase↔Cloudflare↔NayaNET end to end; map and fix stay separate.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4598",
+   "title": "The Turning Point — Make Everything Work",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4598/IB-SMART-NOTE-20261121-sn4598-the-turning-point-make-everything-work.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4598/IB-SMART-NOTE-20261121-sn4598-the-turning-point-make-everything-work.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

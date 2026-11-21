@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4597",
+ "intelligence": {
+  "title": "The Look Is the Gap",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4597-the-look-is-the-gap",
+  "smart_note_id": "SN-4597",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4597/IB-SMART-NOTE-20261121-sn4597-the-look-is-the-gap.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "",
+  "human_view": "Think of it like a house he already furnished, and the builders keep proving the walls are the right walls while the rooms still don't look like his rooms. The measurements were right — the frame matched byte for byte — but when he walked in, it didn't look like the house. That is what his eye said: garbage. So the work is the look now, not the measurements. The rest of the call is the same house, tidied the same way: one bar at the bottom, not a ghost of the old one haunting it; one ADD button, the same on every page, so his hand learns it once; the front door to the Academy walking the steps he already knows — login, feature page, lessons below, each with a little picture; the lesson opening like a book, one page at a time, and you choose whether you watch, listen, or get the full mix. The membership page is just another room in the same house, not a new house. And when he hands over a list of fixes, an agent goes on each one right away — because a fix with nobody on it is a fix he will have to ask for twice. One thing he remembered that we forgot — the four-day plan, never finished — is a debt now, named and sequenced, not left silent.",
+  "simple_view": "His eyes are the boss! If the page looks yucky, it goes back! One bar at the bottom, not two! One ADD button on every page, always the same! Tap ADD, pick your feed, and write! A lesson opens like a book, one page at a time! And every fix gets a helper right away!",
+  "grandma_view": "It's like this, love — his eyes are the judge, dear, and if the page doesn't look right, it goes back, no matter how perfect the measurements were! One bar at the bottom, love, not the old one popping up like a ghost behind the new one! One ADD button, dear, the same on every page, so your hand learns it once and it works everywhere! The Academy is a gentle walk, love — log in, see the page, and the lessons waiting below, each with its own little picture! A lesson opens like a book, dear, one page at a time, and you choose whether you watch it, listen to it, or have the whole mix! And every fix he asks for gets a helper on it right away, love — nothing sits, nothing is forgotten!",
+  "naya_view": "The look is the verdict: frame the About build to LOOK like the collective agreement and the calendar, compare renders side by side, no scrolling inside a frame, split further if needed, date reading 21 November 2026 — a byte-identical frame is a milestone, never the verdict. Personal: evidence first, browser check on the live load, then the fix round on that evidence, top priority — no link back to him until the page moves under his own hand, phone first. One bar only: remove the old bar entirely, prove the ghost gone by render — scroll, stop, wait, tap through. One ADD, same on every page: tap → \"Which feed?\" (Personal, Business, Space, Hub) → composer like an intelligent block, social part at the bottom; one block, verbatim, public or private; images auto-format up to nine; image placement the citizen's choice — top above the headline, or just above the social sharing. Academy flow in order: login like the portal → feature page like Personal → lessons below in the feed, each with a thumbnail; Personal unfreezes first, then membership, then this flow. Lesson Player: cover like a Personal page featuring that lesson, button, frame by frame with images + video + text; toggle MIXED (default) / ALL VIDEO / ALL AUDIO; never offer an all-text view. Membership page: just another frame, the cover in the frame, courses → cover → frame by frame; old fix-8 page goes away. Course entrance: two frames only — cover with a button, then the table of contents with one button per lesson; NO links below. Every edit he names gets an agent on it in the same pass — count the agents, not the items. Unfinished work gets named, sequenced, and owned: the 4-day Fast Action Plan after the link list review; the video edit is his hands, never the machine's.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4597",
+   "title": "The Look Is the Gap",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4597/IB-SMART-NOTE-20261121-sn4597-the-look-is-the-gap.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4597/IB-SMART-NOTE-20261121-sn4597-the-look-is-the-gap.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

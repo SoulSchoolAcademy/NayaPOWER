@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4599",
+ "intelligence": {
+  "title": "Frame Everything — One Family, One Stage",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4599-frame-everything-one-family-one-stage",
+  "smart_note_id": "SN-4599",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4599/IB-SMART-NOTE-20261121-sn4599-frame-everything-one-family-one-stage.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "",
+  "human_view": "Think of NayaNET as a kingdom of rooms, and every room is staged the same way — the same elegant frame around everything in it, the same flowing stage that carries you from room to room without ever leaving. The frame is not decoration; it is how the system says \"this matters.\" When a page looks wrong, you don't build a new room — you take the room that already looks right, the agreement's own frame, and you change only what's inside it: the words, the picture, the button. A page his eye rejects goes in the bin whole, not patched up. Under the floorboards, every pipe and wire gets judged: keep it, drop it, or fix it — and the Smart Vault is the middle of the whole map, where all the intelligence lives and every citizen has their own. The work runs in order: Personal first, then the Hub and the main page live, then proof that it all works together as one. And before you ask him for a permission, check the keys you already hold — the answer may have been given weeks ago.",
+  "simple_view": "Every page sits in a pretty frame, like a picture in a frame! The frame moves back and forth, like a swing, and you never leave the room! If a page looks wrong, we throw it out and put new words inside the good frame! Your own Vault is the middle of the map, and every part must help it! First we fix Personal, then we go live, then we show it all works together! And Shawn's eyes are the boss — if it looks wrong to him, we start again!",
+  "grandma_view": "It's like this, love — every page sits in the same lovely frame, dear, like every room in a beautiful house dressed the same way, and the frame flows back and forth so you never leave the room, love! If a page looks wrong to his eye, dear, we throw it right out — we never patch it up — and we take the good frame we already have and just change the words inside it! Underneath it all, love, the Smart Vault is the middle of the map, where all the cleverness lives, and every little piece must help it or it goes! And we do it in order, dear: Personal first, then the Hub goes live, then we prove it all works together as one! And before we ask him for a key, love, we check the keys we already hold — the answer may have been given weeks ago!",
+  "naya_view": "Frame everything in the stage frame; primary pattern is the flowing stage (flow behind, back and forth) — start there, use the other styles from his screenshot reference set only where they fit. Match all 8 frame styles to their code (agreement blob `1f0b0474` + calendar blob `2f435d8d` first), file the image+code registry in lane `~/workspace/team-nitro/frame-styles-20261121/`; unmatched frames flagged, never invented; claim nothing before the screenshots arrive. Swap inside only: never start a new page — take the literal code from the collective agreement (frame blob `1f0b0474`), parts of the calendar concept if wanted, change only the inside (text, video, button label); About + Skills harvested that way, one family, all pages matching; dead builds (42-frame, 98-frame, rebuild lane) never touched or reused. His eye gates before anything is called done — a checker's byte-PASS does not stand against it. Inviter: whole page in the stage frame, one step per frame in order (green Connect my email, blue Your people, send invites, ambassador link, Smart Link, tell a friend / business contact / social posting), same forward/back buttons, stats out (stats live in Stats), top bar off entirely, Step 1–4 buttons stay; built from blocks already made, no new build. Inventory: map the whole of Supabase + the whole flow GitHub ↔ Supabase ↔ Cloudflare ↔ NayaNET as one bridge; every piece KEEP / DROP / FIX, mapped to a block, a flow, the Vault or the Ledger; the Smart Vault is the center — every citizen with their own Vault; dead weight dropped, just let it go. Sequence: Personal done first (freeze round 81fdebef), then the official Hub + main universal page live (Hub fix round 185f3e9a), then prove in Supabase they're all working together as one (inventory round c83037d1); Dashboard framing waits for the mechanics + red-spike round (926c2517) — one lane, one round per file. Hub smart feeds stay as they are — the named exception. Permissions: check the keys already held before reporting one missing — DNS key is `custom.cloudflare-dns`, Zone DNS Edit, given 2026-11-04; subdomain rounds do worker + route + DNS together; re-author the missing DNS connector doc (only `bin/cf-dns-api` exists).",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4599",
+   "title": "Frame Everything — One Family, One Stage",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4599/IB-SMART-NOTE-20261121-sn4599-frame-everything-one-family-one-stage.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4599/IB-SMART-NOTE-20261121-sn4599-frame-everything-one-family-one-stage.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

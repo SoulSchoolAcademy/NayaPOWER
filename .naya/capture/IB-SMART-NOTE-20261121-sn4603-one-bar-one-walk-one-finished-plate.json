@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4603",
+ "intelligence": {
+  "title": "One Bar, One Walk, One Finished Plate",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4603-one-bar-one-walk-one-finished-plate",
+  "smart_note_id": "SN-4603",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4603/IB-SMART-NOTE-20261121-sn4603-one-bar-one-walk-one-finished-plate.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "",
+  "human_view": "Think of the hubs like rooms in one house, and the DM bar like the phone on the wall in every room — the same phone, in the same place, working the same way, so you never have to relearn how to call someone when you walk into another room. Every button on it has to actually work: the little i shows you the person's card, message opens a chat, audio lets you hear them, video brings them onto a stage — a button that does nothing teaches you not to tap. Every new page starts the same way, with fifteen friendly questions, and at the end you may show off what you have done — your certificates, your awards — or skip it entirely, and nothing empty shows. The colours got settled too: Invite is royal purple, Connections is a bright true magenta, and they must look different at a glance, because two purples are one colour. Under the floorboards, one lesson: when something does not appear, check where it was supposed to land before rebuilding how it was made — the card-builder worked fine, it simply had nowhere to put the card. And the rule that guards the whole house: only bring him a plate when it is finished and beautiful. A page that opens is not a flow that works — the invite still has to actually arrive.",
+  "simple_view": "Every hub has the same bar! You can tap a friend and talk to them! Every button does its job when you tap it! Every new page starts with the same fifteen questions! You can show your best work if you want to! Only the finished plate comes to the table!",
+  "grandma_view": "It's like this, love — the same little bar on every page, dear, so you always know where your friends are and how to reach them! Tap the i and you see their card, love, tap message and you chat, tap audio and you hear them, tap video and there they are on the stage! Every new page starts with the same fifteen friendly questions, dear, and at the end you may show your certificates and awards if you like — or skip it, love, and nothing empty shows at all! And the rule, dear: only bring him a plate when it is finished and beautiful, like a royal feast on a silver platter!",
+  "naya_view": "Put the DM bar from his screenshot on every hub, the same way: YOUR WORLDS & NAYANET, Connect with Like Minds, search, person cards with match %, i / message / audio / video buttons — match the screenshot, do not redesign it. Make all four functions work inside the existing frame, each verified at click level: i → framed contact card; message → framed instant messenger; audio → PowerCast player, live-feeling audio of the conversation; video → framed stage player, fullscreen, multi-person. Follow the sequence: Personal first, Hub aligns, Business/Space clones carry it. Action row, final: Invite royal purple, Connections very evident true magenta, clear contrast, not the same; Share lighter blue; Join NayaNET green — colours from the settled palette, never invented; SN-4543's \"#8e24aa stays\" is superseded. Default every page creation to the locked 15-question walkthrough: About + Skills create the walkthrough, the walkthrough creates and fills the pages, then aligned. After the fifteen, the optional closing invitation in his words — never a 16th question — with a showcase frame for accomplishments (just listed) and certificates (uploaded if they want); blank stays hidden, no frame at all if skipped; an extra frame addable anytime in Settings. Offer the 9:16 video frame alongside 16:9, same frame, tall shape: URL in or 9×16 image uploaded; route through the frame-styles lane. Fix the stub block only (lines 42526–42568) with a resolver returning `#os-wall-list` if present, else the first `article.intel-board` parent in `#pcHubFeedMount`, else the mount, observer re-resolving per callback; leave the 42501 block alone. Prove the Smart Inviter send — a real invite sent and received — before claiming the Inviter works; the live page is not the proven flow. Wait for his show-and-tell, then relabel the Personal Bar button \"Your Worlds\" → \"Calendar\", label only; do not touch Your Worlds. Give status in three parts — cooking, done, needs checking — never re-check what was just checked, and bring only finished, beautiful plates.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4603",
+   "title": "One Bar, One Walk, One Finished Plate",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4603/IB-SMART-NOTE-20261121-sn4603-one-bar-one-walk-one-finished-plate.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4603/IB-SMART-NOTE-20261121-sn4603-one-bar-one-walk-one-finished-plate.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

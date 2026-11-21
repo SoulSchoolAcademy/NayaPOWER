@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4589",
+ "intelligence": {
+  "title": "SN-4589 — Calendar Fix Round 2 — NOT PASS, Item 1 Only — the Render Is the Arbiter",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4589-calendar-fix-round2-not-pass",
+  "smart_note_id": "SN-4589",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4589/IB-SMART-NOTE-20261121-sn4589-calendar-fix-round2-not-pass.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "Calendar fix round 2 — CHECKER VERDICT: NOT PASS, ITEM 1 ONLY. Everything passed except the fit of the open states: item 5 slot mismatch 101/101, pager pressed state, item 7 dead routing 13/13, Journal overflow fixed, design laws delta 0. Item 1 failed on a measurement dispute, not a hand-wave — the maker's table omits the slide head + essence (~114 px); checker totals vs the 780 px phone frame: Book a time ~915, Timeline ~876, List detail ~840, all over. DECISION: render is the arbiter — browser render proof running on this tip now (14:10 MST); fit closes item 1 with no rebuild, overflow means round 3 runs the shave list in CHECKER-REPORT-R2.md §8, and only then. Triangle calendar leg stays queued until a calendar round lands.",
+  "human_view": "",
+  "simple_view": "",
+  "grandma_view": "",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4589",
+   "title": "SN-4589 — Calendar Fix Round 2 — NOT PASS, Item 1 Only — the Render Is the Arbiter",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4589/IB-SMART-NOTE-20261121-sn4589-calendar-fix-round2-not-pass.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4589/IB-SMART-NOTE-20261121-sn4589-calendar-fix-round2-not-pass.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
