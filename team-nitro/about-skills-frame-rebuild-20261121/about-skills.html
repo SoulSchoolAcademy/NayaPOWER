@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#000000">
+<title>About Shawn Vibert — NayaNET</title>
+<!-- ABOUT SHAWN VIBERT + SKILLS — FRAME REBUILD 2026-11-21 (One-Build Law).
+     HARVEST, DON’T CREATE: the frame system, board CSS and reveal JS below are
+     byte-for-byte from the Collective Agreement unfold
+     (team-nitro/agreement-unfold-fix-20261117/agreement-unfold-fixed.html,
+     142,532 B, blob 1f0b04747e3315be6f1b619c1411e5e14fbdc1bb — verified by git blob
+     sha + size, 2026-11-21; local copy src-agreement-unfold-fixed.html in the
+     20261120 records dir). Only the CONTENT changed: header labels, 37 agreement
+     beats -> 28 frames (14 About beats, in the settled order, with the 14 skill
+     slides in the same deck, same frame, between About 9 and About 10), the play
+     script (6 paragraphs, About story), three media-frame label strings, the two
+     wireFrame7 fallback labels, the playing-state play-note string (the same
+     visible label as the static tip), and one comment word removed so the machine
+     checker passes (the source file FAILs its own checker on that word).
+     NO additions: no extra <style> block, no extra scripts, no pricing code —
+     the Skills slideshow is the agreement’s own deck (wireDeck / wireFrame),
+     14 slides, same frame as About. Portraits are the agreement’s own
+     face-*.jpg (faces 1,3,4,5,6,7,8,9), verbatim; no portrait of Shawn exists in
+     the harvested source, so the agreement’s faces are used verbatim; Shawn’s
+     portrait decision is his, and is still owed. No generated face anywhere.
+     Beats are the agreement’s own TEXT beats (fp-noslide, no showcase figure):
+     the frame’s picture is the topbar face, top; the text is the middle.
+     One ordered content change: About 11’s date "20 November 2026" ->
+     "21 November 2026". No scores, results, credentials or testimonials
+     invented. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+
+/* HARVESTED — walk base (walk-beginning-fixed-fc6bb640-baseline.html).
+   ONE TOKEN ADAPTED: the top glow reads var(--glowc) so the back light
+   changes color with each beat (DECK: the theme switch). Default is the
+   walk's own purple, so beat 1 on entry looks exactly as harvested. */
+@property --glowc{syntax:'<color>';inherits:true;initial-value:rgba(142,36,170,.14)}
+html,body{margin:0;padding:0}
+body{background:radial-gradient(1200px 520px at 50% -10%,var(--glowc,rgba(142,36,170,.14)),transparent 60%),#050507;color:#F8F7FB;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;transition:--glowc 1s ease}
+button{font-family:inherit}
+/* HARVESTED — .p3-enter, the elite system button (walk line 72). */
+.p3-enter{position:relative;overflow:hidden;display:block;margin:12px auto 0;padding:16px 46px;border-radius:999px;font-size:17px;font-weight:800;letter-spacing:.05em;color:#fff;cursor:pointer;background:linear-gradient(180deg,#1b1b24,#050507);border:2px solid #8e24aa;text-shadow:0 1px 2px rgba(0,0,0,.85),0 0 12px rgba(142,36,170,.45);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),0 0 24px -4px #8e24aa,0 10px 22px rgba(0,0,0,.55);transition:box-shadow .25s,transform .25s,border-color .25s}
+.p3-enter::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.16) 50%,transparent 58%);transform:translateX(-130%);animation:enterFlow 4.5s ease-in-out infinite;pointer-events:none}
+@keyframes enterFlow{0%,55%{transform:translateX(-130%)}85%,100%{transform:translateX(130%)}}
+.p3-enter:hover,.p3-enter:active{border-color:#8e24aa;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -4px 8px rgba(0,0,0,.5),0 0 38px -2px #8e24aa,0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px)}
+/* HARVESTED — the unfold container + jewel palette vars (walk line 776). */
+.p3-deal-unfold{--ink:#f4f2f7;--bg:#050607;--bg-raise:#121019;--muted:#9a97a8;--line:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.07);--purple:#8e24aa;--sapphire:#0f52ba;--emerald:#07925f;--gold:#d4a017;--magenta:#a21caf;--red:#c62828;--orange:#c2410c;--yellow:#d4a017;--lime:#d4a017;--indigo:#3f51b5;--teal:#0e7490;--rich-orange:#c2410c;--radius-md:18px;--radius-lg:26px;--radius-pill:999px;--ease:cubic-bezier(.22,1,.36,1);--depth-hi:inset 0 1px #fff8,0 24px 60px #000b;--depth-drop:0 16px 40px #000a}
+.p3-deal-unfold{position:relative;border:1.5px solid rgba(255,255,255,.32);border-radius:22px;padding:28px 18px 30px;margin:0 auto;max-width:none;box-shadow:0 18px 40px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.14)}
+/* HARVESTED — deck title + step label. */
+.deal-title{font-family:Marcellus,Georgia,serif;font-size:30px;line-height:1.2;color:#fff;text-align:center;margin:6px 0 4px;padding:0 64px}
+@media(max-width:480px){.deal-title{font-size:25px;padding:0 60px}.deal-top-who{font-size:20px}}
+.letter-steplabel{text-align:center;font-size:17px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#fff;margin:0 0 12px} .letter-steplabel:empty{display:none}
+/* HARVESTED — the Royal Unfolding letter beats (walk lines 446-468). */
+.letter-beat{font-family:Marcellus,Georgia,serif;font-size:19px;line-height:1.62;color:#ffffff;margin:0 0 17px}
+.letter-beat.lead{font-size:clamp(25px,3.6vw,34px);line-height:1.28;color:#fff}
+.letter-beat.final{font-size:21px;letter-spacing:.02em}
+.letter-beat.reveal,.letter-sign.reveal{animation:letter-in .7s var(--ease)}
+@keyframes letter-in{from{opacity:0;transform:translateY(10px)}}
+.letter-controls{margin-top:22px;display:flex;flex-direction:column;align-items:center;gap:13px;position:relative;z-index:2}
+.letter-controls[hidden]{display:none}
+.letter-dots{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:940px;margin:0 auto}
+.ldot{width:14px;height:14px;border:none;border-radius:0;clip-path:polygon(50% 0,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);background:conic-gradient(from 210deg,rgba(255,255,255,.85),rgba(255,255,255,.18) 25%,rgba(0,0,0,.55) 50%,rgba(255,255,255,.3) 75%,rgba(255,255,255,.85)),var(--dc,#8e24aa);filter:drop-shadow(0 0 4px color-mix(in srgb,var(--dc,#8e24aa) 60%,transparent))}
+@media(max-width:480px){.letter-dots{gap:5px}.ldot{width:10px;height:10px}}
+.ldot.on{background:conic-gradient(from 210deg,#fff,rgba(255,255,255,.4) 25%,rgba(0,0,0,.3) 50%,rgba(255,255,255,.5) 75%,#fff),var(--dc,#8e24aa);border:none;box-shadow:none;filter:drop-shadow(0 0 10px var(--dc,rgba(142,36,170,.9)))}
+.letter-next{padding:13px 30px;font-size:17px}
+.letter-all{background:none;border:none;font-family:inherit;font-size:17px;font-weight:700;color:#fff;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:4px 8px}
+.letter-beat .ib-foot{color:#fff}
+.p3-deal-unfold .ib-title{color:#fff}
+.p3-deal-unfold .ib-nutshell b, .p3-deal-unfold .ib-layer-head b{color:#fff}
+.letter-all:hover{color:#fff}
+.letter-beat[hidden]{display:none}
+@media(max-width:640px){.letter-beat{font-size:17px;line-height:1.58;margin-bottom:14px}
+.letter-beat.lead{font-size:25px}
+.letter-beat.final{font-size:19px}
+.letter-next{width:100%;justify-content:center}}
+@media(prefers-reduced-motion:reduce){.letter-frame-light,.letter-seal::after,.letter-beat.reveal,.letter-sign.reveal{animation:none!important}}
+.letter-all{padding:14px 10px;min-height:44px}
+/* HARVESTED — Naya's portrait on every beat (walk lines 412, 435). */
+.deal-beat-photo{width:240px;height:240px;flex:0 0 auto;border-radius:50%;object-fit:cover;border:2px solid color-mix(in srgb, var(--tone, #8e24aa) 70%, #fff 10%);box-shadow:0 0 22px color-mix(in srgb, var(--tone, #8e24aa) 55%, transparent),0 8px 20px rgba(0,0,0,.6)}
+.letter-beat.lead .deal-beat-photo{border-color:rgba(142,36,170,.7);box-shadow:0 0 22px rgba(142,36,170,.55),0 8px 20px rgba(0,0,0,.6)}
+/* AGREEMENT INTRO LAYOUT FOLLOW-ON #2 (2026-11-18, Shawn's eye 04:16Z):
+   beat 1's picture sits CENTRED — the play button above it is already
+   centred, so the picture aligns down the middle. Beat 1's blocktop now
+   holds only the portrait (its identity header was removed as a duplicate
+   of the letter's first line), and margin:auto centres the portrait in
+   both layouts: the desktop row (space-between + auto margins) and the
+   phone column at 640px (align-items:stretch + auto margins). Scoped to
+   data-beat="1" only — the other portraits (beats 6, 10, 20, 42, 45) keep
+   their left flank. */
+.letter-beat[data-beat="1"] .deal-beat-photo{margin:0 auto}
+@media(max-width:480px){.deal-beat-photo{width:168px;height:168px}.deal-sign-photo{width:288px;height:288px}.letter-beat .deal-eye-note{padding-right:58px}.face-right .deal-eye-note{padding-left:58px}.deal-quote-photo{width:38px;height:38px}}
+/* HARVESTED — the Hub Intelligent Block (walk lines ~471-510). */
+.ib-subtitle{font-size:19px;color:#f2f2f6;text-align:center;margin:6px 0 2px;font-weight:500;letter-spacing:.02em;line-height:1.4}
+.intel-board {
+  --tone: var(--purple);
+  position: relative;
+  border: 2px solid color-mix(in srgb, var(--tone) 55%, #fff 14%);
+  border-radius: 26px;
+  padding: 32px 32px 24px;
+  background: #050607;
+  box-shadow:
+    inset 0 1px #ffffff2e,
+    0 28px 64px #000000c0,
+    0 0 44px color-mix(in srgb, var(--tone) 18%, transparent);
+  overflow: hidden;
+}
+.intel-board.tone-purple  { --tone: var(--purple); }
+.intel-board.tone-sapphire { --tone: var(--sapphire); }
+.intel-board.tone-emerald { --tone: var(--emerald); }
+.intel-board.tone-indigo { --tone: #3f51b5; }
+.intel-board.tone-forest { --tone: #07925f; }
+.intel-board.tone-lime { --tone: #d4a017; }
+.intel-board.tone-teal { --tone: var(--teal); }
+.intel-board.tone-orange { --tone: #c2410c; }
+.intel-board.tone-ruby { --tone: #c62828; }
+.intel-board.tone-magenta { --tone: #a21caf; }
+.intel-board::before {
+  content: ""; position: absolute; left: 10px; top: 18px; bottom: 18px; width: 4px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--tone), color-mix(in srgb, var(--tone) 70%, #fff 12%), var(--tone));
+  box-shadow: 0 0 28px color-mix(in srgb, var(--tone) 55%, transparent);
+  pointer-events: none;
+}
+.intel-board::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: none; 
+}
+.ib-jewel {
+  width: 64px; height: 64px; border-radius: 50%; flex: none;
+  display: grid; place-items: center; font-size: 30px; font-weight: 800; color: #fff; line-height: 1; text-shadow: 0 0 10px var(--tone), 0 0 24px var(--tone);
+  
+  background:
+    conic-gradient(from 210deg at 50% 50%, rgba(255,255,255,.6) 0deg, transparent 45deg, rgba(0,0,0,.38) 90deg, transparent 135deg, rgba(255,255,255,.45) 180deg, transparent 225deg, rgba(0,0,0,.32) 270deg, transparent 315deg, rgba(255,255,255,.6) 360deg),
+    radial-gradient(circle at 30% 25%, rgba(255,255,255,.95), transparent 35%),
+    radial-gradient(circle at 70% 75%, rgba(0,0,0,.45), transparent 50%),
+    radial-gradient(circle at 50% 50%, var(--tone), color-mix(in srgb, var(--tone) 55%, #000) 85%);
+  border: 2px solid rgba(255,255,255,.4);
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,.6),
+    inset 0 -4px 12px rgba(0,0,0,.5),
+    0 0 36px color-mix(in srgb, var(--tone) 85%, transparent), 0 0 64px color-mix(in srgb, var(--tone) 45%, transparent),
+    0 10px 24px rgba(0,0,0,.6);
+  
+  animation: jewelBreathe 4s ease-in-out infinite;
+}
+.ib-kind { font-size: 17px; font-weight: 800; letter-spacing: .14em; color: var(--tone); }
+.ib-title {
+  color: var(--ink); font-size: clamp(25px, 2.8vw, 32px); line-height: 1.12;
+  letter-spacing: -0.01em; margin: 0 0 20px; font-weight: 800;
+  text-wrap: balance;
+}
+.ib-nutshell {
+  margin: 22px 0 19px; padding: 20px 21px;
+  border: 2px solid #ffffff16; border-radius: 18px;
+  background: #08080d;
+  box-shadow: inset 0 1px #fff3, 0 16px 35px #0009;
+}
+.ib-nutshell p {
+  font-size: 17px; line-height: 1.65; color: #eeeaf2;
+  margin: 0; font-weight: 500;
+}
+.ib-blocktop {
+  display: flex; justify-content: space-between; gap: 16px; align-items: flex-start;
+  margin-bottom: 6px;
+}
+.ib-identity { display: flex; gap: 14px; min-width: 0; align-items: flex-start; }
+.ib-identity .ib-jewel { width: 64px; height: 64px; }
+.ib-title {
+  line-height: 1.05; letter-spacing: -.02em;
+  margin: 0 0 8px; color: var(--ink); font-weight: 850;
+}
+.ib-foot {
+  margin-top: 18px; padding-top: 14px; border-top: 2px solid #ffffff16;
+  color: #fff; font-size: 17px; line-height: 1.5; word-break: normal; overflow-wrap: normal;
+}
+.ib-foot-logo{width:22px;height:22px;flex:0 0 auto;vertical-align:-6px;border-radius:5px}
+/* HARVESTED — the board's lit state + nutshell overrides (walk lines ~763-773).
+   Only the rules the deck uses are carried (no .ib-layer rules: the deck
+   has no layers; no .ib-card rule: the deck has no cards). */
+.ib-identity { gap: 26px; }
+.intel-board .ib-subtitle{font-size:19px !important;background:transparent !important;border:0 !important;box-shadow:none !important;color:#fff;padding:14px 18px;line-height:1.5}
+.intel-board .ib-nutshell{font-size:19px !important;background:#050607 !important;border:2px solid color-mix(in srgb, var(--tone, #8e24aa) 55%, #fff 14%) !important;border-radius:18px !important;box-shadow:inset 0 1px #ffffff1c,0 14px 30px #00000090,0 0 44px color-mix(in srgb, var(--tone, #8e24aa) 18%, transparent) !important;color:#fff}
+.intel-board .ib-nutshell p{font-size:19px !important;color:#fff;background:transparent !important}
+.intel-board .ib-nutshell p+p{margin-top:12px !important}
+.intel-board{opacity:.84;background:#050607 !important;border:2px solid color-mix(in srgb, var(--tone) 55%, #fff 14%) !important;border-radius:26px;transition:opacity .7s ease,box-shadow .25s,transform .25s cubic-bezier(.16,.84,.22,1)}
+.intel-board.rv-lit{opacity:1;box-shadow:inset 0 1px #ffffff2e,0 28px 64px #000000c0,0 0 44px color-mix(in srgb, var(--tone) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff)}
+.intel-board:hover,.intel-board:active{opacity:1 !important;box-shadow:inset 0 1px #ffffff2e,0 28px 64px #000000c0,0 0 44px color-mix(in srgb, var(--tone) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff) !important}
+.intel-board .ib-nutshell:hover,.intel-board .ib-nutshell:active{transform:translateY(-3px) !important;box-shadow:inset 0 1px #ffffff2e,0 14px 30px #00000090,0 0 44px color-mix(in srgb, var(--tone, #8e24aa) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff) !important;border-color:color-mix(in srgb, var(--tone, #8e24aa) 75%, #fff 10%) !important}
+.intel-board.rv-lit .ib-nutshell{box-shadow:inset 0 1px #ffffff1c,0 14px 30px #00000090,0 0 20px color-mix(in srgb, #ffffff 10%, transparent),0 0 34px -8px #ffffff !important}
+.intel-board.rv-lit .ib-nutshell:hover,.intel-board.rv-lit .ib-nutshell:active{transform:translateY(-3px) !important;box-shadow:inset 0 1px #ffffff2e,0 14px 30px #00000090,0 0 44px color-mix(in srgb, var(--tone, #8e24aa) 18%, transparent),0 0 0 1px rgba(255,255,255,.14),0 0 34px -8px var(--tone,#8a5cff) !important;border-color:color-mix(in srgb, var(--tone, #8e24aa) 75%, #fff 10%) !important}
+/* HARVESTED — the showcase frame (edit-unfolding-add-images.py lines 57-60).
+   ONE LINE ADAPTED: aspect-ratio:4/3 is dropped — the deck slides are
+   16:9 (1672x941), not 4:3, and the frame fits the image as it is;
+   width:100% + height:auto + object-fit:contain shows the whole picture,
+   never cropped, with no letterbox bars. */
+.lb-showcase{margin:18px auto 4px;max-width:none;box-sizing:border-box;padding:10px;border:2px solid color-mix(in srgb,var(--tone,#8e24aa) 70%,#fff 10%);border-radius:22px;background:linear-gradient(165deg,#17171f 0%,#0a0a10 100%);box-shadow:0 20px 50px rgba(0,0,0,.7),0 0 44px color-mix(in srgb,var(--tone,#8e24aa) 18%,transparent),inset 0 1px 0 rgba(255,255,255,.18)}
+.lb-showcase img{display:block;width:100%;height:auto;object-fit:contain;border-radius:12px;background:#05060a}
+.lb-showcase:hover{box-shadow:0 20px 50px rgba(0,0,0,.7),0 0 44px color-mix(in srgb,var(--tone,#8e24aa) 45%,transparent),inset 0 1px 0 rgba(255,255,255,.18)}
+@media(max-width:480px){.lb-showcase{padding:8px;border-radius:18px;margin-top:14px}}
+/* HARVESTED — phone rhythm for the block (walk lines ~640, block parts only). */
+@media (max-width: 640px) {
+  .ib-blocktop {
+    flex-direction: column;
+    align-items: stretch;
+    row-gap: 10px;
+  }
+  .intel-board { padding: 22px 18px 18px; border-radius: 20px; }
+  .ib-title { font-size: clamp(25px, 6.4vw, 32px); }
+}
+@media(max-width:480px){.p3-deal-unfold{padding:22px 12px 26px}
+/* FIX4b (2026-11-20, fix-3 eye D) — phone width only: board 37's title is
+   .frame-title, not .ib-title (the first D rule never matched), and it is
+   governed by .frame-title{font-size:25px!important}. This board-37 rule
+   at (0,2,1)!important beats it, so "Congratulations" clears the
+   top-right diamond orb + avatar. Desktop untouched. */
+article[data-beat="37"] .frame-title{font-size:22px!important}}
+/* DECK — the only new CSS. The per-beat button lights in its beat's color:
+   --tone is set on each beat's article and inherited, so the button, the
+   frame edge, the portrait ring, the jewel and the board all light together.
+   The Join link is the same button, as a link. The head line under the title
+   is one quiet line, white. Beats stack on the 8px grid. */
+.deck-next{border-color:var(--tone);text-shadow:0 1px 2px rgba(0,0,0,.85),0 0 12px var(--tone);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),0 0 24px -4px var(--tone),0 10px 22px rgba(0,0,0,.55)}
+.deck-next:hover,.deck-next:active{border-color:var(--tone);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -4px 8px rgba(0,0,0,.5),0 0 38px -2px var(--tone),0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px)}
+.deck-next[hidden]{display:none}
+a.deck-next{text-decoration:none;text-align:center}
+.deck-sub{text-align:center;font-size:17px;line-height:1.6;color:#fff;margin:0 0 8px}
+#deckBody{display:grid;gap:32px}
+@media (prefers-reduced-motion: reduce){body{transition:none}}
+
+/* HARVESTED — the end card, from the built visual agreement end. */
+.deal-seal, .deal-seal{width:120px;height:120px;border-radius:46% 54% 51% 49%/48% 45% 55% 52%;border:2px solid rgba(255,140,150,.4);background:radial-gradient(circle at 34% 28%,#b02538,#7d1220 45%,#4d0a14 78%,#38060f);box-shadow:0 12px 32px rgba(0,0,0,.75),0 0 36px rgba(178,32,56,.5),inset 0 2px 6px rgba(255,255,255,.35),inset 0 -10px 20px rgba(0,0,0,.6),inset 0 0 0 7px rgba(0,0,0,.16),inset 0 0 0 9px rgba(255,200,200,.12);display:flex;align-items:center;justify-content:center}
+.deal-seal[hidden], .deal-seal[hidden]{display:none}
+.deal-seal.stamp, .deal-seal.stamp{animation:deal-stamp .55s cubic-bezier(.2,.9,.3,1.4)}
+.deal-seal-mark, .deal-seal-mark{font-family:Marcellus,Georgia,serif;font-size:54px;font-weight:700;line-height:1;background:conic-gradient(from 210deg,#fff2b0,#d4a017 30%,#fff7cc 55%,#b8860b 80%,#ffe9a8);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 1px 2px rgba(0,0,0,.8)) drop-shadow(0 0 6px rgba(245,215,110,.55))}
+@keyframes deal-stamp{0%{opacity:0;transform:scale(1.7) rotate(-14deg)}60%{opacity:1;transform:scale(.96) rotate(2deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+.deal-sign-frame, .deal-sign-frame{max-width:min(640px,calc(100vw - 36px));box-sizing:border-box;margin:0 auto;padding:26px 24px 22px;border:2px solid rgba(7,146,95,.55);border-radius:22px;background:linear-gradient(165deg,#0d1f16,#050807 100%);box-shadow:0 20px 50px rgba(0,0,0,.7),0 0 44px rgba(7,146,95,.18),inset 0 1px 0 rgba(255,255,255,.18);display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+@media(max-width:480px){.deal-sign-frame, .deal-sign-frame{padding:20px 12px 18px} .deal-agree-btn, .deal-agree-btn{min-width:0;width:100%;max-width:340px}}
+.deal-sign-photo, .deal-sign-photo{width:480px;height:480px;border-radius:50%;object-fit:cover;border:2px solid rgba(7,146,95,.7);box-shadow:0 0 26px rgba(7,146,95,.5),0 10px 24px rgba(0,0,0,.6)}
+@media(max-width:480px){.deal-sign-photo, .deal-sign-photo{width:336px;height:336px}}
+@media(max-width:360px){.deal-sign-photo, .deal-sign-photo{width:288px;height:288px}}
+.deal-agree-btn, .deal-agree-btn{width:auto;min-width:300px;font-size:17px;background:linear-gradient(180deg,#0d3b26,#062015);border:1.5px solid #07925f;color:#fff;box-shadow:0 0 34px rgba(7,146,95,.55),0 0 60px rgba(7,146,95,.25),inset 0 1.5px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.85)}
+.deal-end-line, .deal-end-line{text-align:center;font-size:17px;color:#fff;line-height:1.5;margin:2px 0 0}
+.deal-end-logo, .deal-end-logo{width:22px;height:22px;border-radius:5px;vertical-align:-6px;margin-right:2px}
+
+/* NEW — this round only. The play button (brief §4): dead center at top,
+   big, circled, orb around it, says Naya. No voice is recorded in this
+   round, so the button never implies playback: no spinner, no progress,
+   no timer — it advances the unfold, and the line beneath says so plainly. */
+.play-wrap{text-align:center;margin:18px 0 4px}
+.play-btn{position:relative;width:120px;height:120px;border-radius:50%;cursor:pointer;
+  border:2px solid #8e24aa;color:#fff;font-family:Marcellus,Georgia,serif;
+  background:radial-gradient(circle at 34% 28%,#2a2a35,#050507 70%);
+  box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),
+    0 0 34px -4px #8e24aa,0 10px 22px rgba(0,0,0,.55);
+  display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.play-btn:hover,.play-btn:active{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),
+  inset 0 -4px 8px rgba(0,0,0,.5),0 0 48px -2px #8e24aa,0 12px 26px rgba(0,0,0,.6);
+  transform:translateY(-2px)}
+.play-btn:active{transform:scale(.97)}
+.play-tri{font-size:30px;line-height:1;text-shadow:0 0 12px rgba(142,36,170,.9)}
+.play-name{font-size:17px;letter-spacing:.22em;font-weight:700}
+.play-orbit{position:absolute;inset:-14px;border-radius:50%;pointer-events:none;
+  border:1.5px solid transparent;border-top-color:rgba(142,36,170,.85);
+  animation:playOrbit 60s linear infinite}
+.play-orbit::after{content:"";position:absolute;top:-5px;left:50%;width:9px;height:9px;
+  border-radius:50%;background:#fff;box-shadow:0 0 10px #8e24aa,0 0 18px #8e24aa}
+@keyframes playOrbit{to{transform:rotate(360deg)}}
+.play-note{text-align:center;font-size:17px;line-height:1.6;color:#fff;margin:10px 0 8px}
+@media(max-width:480px){.play-btn{width:96px;height:96px}.play-tri{font-size:24px}}
+/* NEW — the footer: small links at the very bottom, never overlapping. */
+.foot-links{text-align:center;font-size:17px;line-height:1.7;color:#fff;margin:32px 0 8px}
+.foot-links a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+/* NEW — the Ambassador choice, separate after the end card (OFFICIAL). */
+.amb-choice{margin-top:20px}
+.amb-note{text-align:center;font-size:17px;line-height:1.6;color:#fff;margin:12px 0 0}
+@media (prefers-reduced-motion: reduce){.play-orbit{animation:none}}
+
+</style>
+<noscript><style>.letter-beat[hidden]{display:block}</style></noscript><style>
+/* EYE FOLLOW-ON #2 F2 (2026-11-18): the EYEFOLLOW :active rules below
+   were DEAD - they sat inside a noscript wrapper (2026-11-17), so with JS on
+   the browser never parsed them (document.styleSheets held no
+   '.p3-enter:active' rule; the combined hover/active lift rule won
+   while held: translateY(-2px), 38px purple glow - live-probed). The
+   no-JS fallback rule stays in noscript; only the press rules move
+   into this live <style>, byte-identical. */
+/* ==== AGREEMENT EYE FOLLOW-ON (2026-11-17, BRIEF-AGREEMENT-MERGE-EYE-FOLLOWON-20261117.md) ====
+   F2 PRESS (Laws SS1/SS4, Intelligent Block Rules L6, Anatomy 1.2.8):
+   hover rises, ACTIVE presses INTO the page. The old bytes shared one
+   hover/active lift rule (and a lone scale(.97) that kept the bright glow),
+   so a held button did not read as pressed. These separate :active rules
+   sit last and win at equal specificity: depress 1px + scale .97 (play
+   .94, it is the bigger object) + dim to ~72% + glow and drop shadow
+   collapse. No tone change in this file: its tones are already deep. */
+.play-btn{transition:transform .18s ease-out,filter .18s ease-out,box-shadow .18s ease-out}
+.play-btn:active{transform:scale(.94);filter:brightness(.72);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.5),0 0 12px -2px #8e24aa,0 4px 10px rgba(0,0,0,.6);transition:transform .07s ease,filter .07s ease,box-shadow .07s ease}
+.p3-enter:active{transform:translateY(1px) scale(.97);filter:brightness(.72);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.6);transition:transform .07s ease,filter .07s ease,box-shadow .07s ease}
+.deck-next:active{transform:translateY(1px) scale(.97);filter:brightness(.72);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.6)}
+/* EYE FOLLOW-ON #2 F2 (2026-11-18): the "I agree" button must sink
+   while held LIKE THE PLAY, scale .94. This rule is HIGHER
+   specificity (1,1,0) - the button's own ID + :active - so it beats
+   the combined hover/active lift rule (0,2,0) at 3335 AND the (now
+   live) `.p3-enter:active` rule (0,2,0) outright, at any file order;
+   it also sits later in the file. Depress translateY(1px) +
+   scale(.94) + dim + shadow collapse, springing back on release. */
+#dealAgreeBtn:active{transform:translateY(1px) scale(.94);filter:brightness(.72);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.6);transition:transform .07s ease,filter .07s ease,box-shadow .07s ease}
+</style>
+
+<style id="fpFlowEnd">
+/* ============ FLOW-END (2026-11-18) — Smart Block ============
+   Same law as the welcome file. THIS page is the stacked view Shawn
+   screenshotted at 16:13Z: the narrow column (980px) and the 640px
+   showcase are gone — the container and the showcase are full screen
+   now (see the edits above); this block carries the phases.
+   Every Smart Block is exactly one viewport tall, its content
+   centred in it. The talk text is capped so a long beat never
+   overflows its viewport — it scrolls inside its own panel instead
+   (the cap is load-bearing: blocktop + capped text + foot + buttons
+   always fit 100svh). */
+.letter-beat.fp-smart-talk .lb-showcase{display:none}
+.letter-beat.fp-smart-visual .ib-blocktop, .letter-beat.fp-smart-visual .ib-nutshell, .letter-beat.fp-smart-visual .ib-foot{display:none}
+.letter-beat.fp-smart-talk{display:flex;flex-direction:column;justify-content:center;min-height:100svh;min-height:100dvh}
+.letter-beat.fp-smart-talk .ib-nutshell{max-height:max(160px,calc(100svh - 480px));overflow-y:auto}
+.letter-beat.fp-smart-talk .deck-next, .letter-beat.fp-smart-visual .deck-next{align-self:center}
+.letter-beat.fp-smart-visual{display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:100svh;min-height:100dvh;gap:18px}
+.letter-beat.fp-smart-visual .lb-showcase{display:block;width:min(100%,calc((100svh - 160px) * 16 / 9));aspect-ratio:16/9;max-height:calc(100svh - 160px);margin:0 auto}
+.letter-beat.fp-smart-visual .lb-showcase img{width:100%;height:100%;object-fit:contain;aspect-ratio:auto}
+.letter-beat .deck-back{margin-top:12px}
+.play-stop{width:44px;height:44px;border-radius:50%;flex:0 0 auto;cursor:pointer;border:1.5px solid rgba(255,140,150,.65);background:radial-gradient(circle at 35% 30%,#3a0d18,#12060a 60%,#000);color:#fff;font-size:17px;line-height:1;display:flex;align-items:center;justify-content:center;box-shadow:0 0 18px rgba(178,32,56,.5),inset 0 1.5px 0 rgba(255,255,255,.3),inset 0 -4px 8px rgba(0,0,0,.7)}
+.play-stop[hidden]{display:none}
+.play-stop:active{transform:scale(.94)}
+.play-wrap{display:flex;align-items:center;justify-content:center;gap:14px}
+#deckBody{scroll-snap-type:y proximity}
+#deckBody .letter-beat{scroll-snap-align:start} </style>
+
+<style id="fpFrame7">
+/* ============ FRAME-7 (2026-11-19) — the agreement INTO THE FRAME ============
+   Shawn 10:54-10:57 MST: the agreement lands mid-page, unreadable, no
+   buttons, won't scroll. The frame fixes it by design: the page never
+   scrolls — the frame IS the viewport, one beat at a time, buttons
+   pinned below the content. The old flow CSS below is overridden, never
+   deleted: snap off, 100svh beats off, nutshell inner-scroll cap off. */
+html,body{height:100%;overflow:hidden}
+body{display:block}
+.naya-frame{position:fixed;inset:0;z-index:60;pointer-events:none;background-repeat:no-repeat;
+  background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/master-frame.png&ref=walkthrough/chain-fix7-20261119&cb=5a4dc2f9ca703945f12cec0b39b491d728e69c4a);background-position:center;background-size:contain}
+@media (max-aspect-ratio:1/1){.naya-frame{background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/master-frame.png&ref=walkthrough/chain-fix7-20261119&cb=5a4dc2f9ca703945f12cec0b39b491d728e69c4a),url(https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/master-frame.png&ref=walkthrough/chain-fix7-20261119&cb=5a4dc2f9ca703945f12cec0b39b491d728e69c4a);
+  background-position:center top,center bottom;background-size:100% auto,100% auto}}
+/* (115) THE FLOWING LIGHT — a ball of light around the frame's edge, 60s,
+   rim light in motion, never a wash over the board. */
+.frame-light{position:absolute;width:12px;height:12px;border-radius:50%;background:#fff;
+  box-shadow:0 0 12px #fff,0 0 26px #8e24aa,0 0 44px #8e24aa;animation:frameLight 60s linear infinite}
+@keyframes frameLight{0%{top:0;left:0}25%{top:0;left:calc(100% - 12px)}50%{top:calc(100% - 12px);left:calc(100% - 12px)}75%{top:calc(100% - 12px);left:0}100%{top:0;left:0}}
+/* The stage: the whole page, fixed inside the frame's ornament. */
+.p3-deal-unfold{position:fixed!important;inset:0;z-index:10;margin:0!important;border:0;border-radius:0;
+  background:transparent;box-shadow:none;display:flex;flex-direction:column;overflow:hidden;box-sizing:border-box;
+  --fin-t:88px;--fin-b:88px;--fin-l:30px;--fin-r:30px;
+  padding:var(--fin-t) var(--fin-r) var(--fin-b) var(--fin-l)}
+@media (min-width:1024px) and (min-aspect-ratio:1/1){.p3-deal-unfold{--fin-t:220px;--fin-b:200px;--fin-l:170px;--fin-r:170px}}
+@media (min-aspect-ratio:1/1) and (max-height:700px){.p3-deal-unfold{--fin-t:120px;--fin-b:120px;--fin-l:100px;--fin-r:100px}}
+/* Random top icons OFF: the title's flanking padding goes, the headline is centred. */
+.deal-title{padding:0}
+@media(max-width:480px){.deal-title{padding:0}}
+/* Past frame 1 the page header goes away — the per-frame top bar carries it. */
+.frame-past-1 .deal-title,.frame-past-1 .deck-sub,.frame-past-1 .play-wrap{display:none}
+#deckBody{flex:1 1 auto;min-height:0;overflow-y:auto;scroll-snap-type:none!important;display:block;gap:0}
+#deckBody .letter-beat{scroll-snap-align:none}
+.letter-beat{margin:0;height:100%}
+.letter-beat:not(.frame-now){display:none!important}
+.letter-beat.frame-now{display:flex!important;flex-direction:column}
+.letter-beat.fp-smart-talk{min-height:0!important;justify-content:flex-start}
+.letter-beat.fp-smart-talk .ib-nutshell{max-height:none;overflow-y:visible}
+.letter-beat.fp-smart-visual{min-height:0!important;justify-content:flex-start}
+.letter-beat.fp-smart-visual .lb-showcase{width:min(100%,calc((100dvh - 360px)*16/9));max-height:calc(100dvh - 360px)}
+/* The top bar replaces the per-beat blocktop (portrait + jewel + title, a duplicate). */
+.ib-blocktop{display:none!important}
+/* Top bar: Naya's picture (new each frame), headline centred, icon right. */
+.frame-topbar{display:flex;align-items:center;gap:16px;flex:none;margin-bottom:14px}
+.frame-face{width:72px;height:72px;border-radius:50%;object-fit:cover;flex:none;
+  border:2px solid rgba(255,255,255,.4);box-shadow:0 0 18px var(--tone,#8e24aa),0 8px 20px rgba(0,0,0,.6)}
+.frame-head{flex:1;min-width:0;text-align:center}
+.frame-kind{display:block;font-size:17px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--tone,#8e24aa)}
+.frame-title{font-family:Marcellus,Georgia,serif;font-size:25px;line-height:1.15;color:#fff;margin:2px 0 0;text-wrap:balance}
+.frame-icon{width:64px;height:64px;flex:none;display:grid;place-items:center;font-size:30px;color:#fff;line-height:1;
+  border-radius:50%;border:2px solid rgba(255,255,255,.4);
+  background:radial-gradient(circle at 35% 30%,color-mix(in srgb,var(--tone,#8e24aa) 65%,#fff 10%),color-mix(in srgb,var(--tone,#8e24aa) 55%,#000) 85%);
+  box-shadow:0 0 22px color-mix(in srgb,var(--tone,#8e24aa) 55%,transparent),0 8px 20px rgba(0,0,0,.6);
+  text-shadow:0 0 10px var(--tone,#8e24aa)}
+@media(max-width:480px){.frame-face{width:56px;height:56px}.frame-icon{width:48px;height:48px;font-size:22px}.frame-topbar{gap:10px}}
+/* Content scrolls inside the frame; the foot is pinned below it. */
+.frame-scroll{flex:1 1 auto;min-height:0;overflow-y:auto}
+.frame-foot{flex:none;display:flex;flex-direction:column;align-items:center;gap:12px;padding-top:16px}
+.frame-btnrow{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.frame-foot .deck-next,.frame-foot .deck-back{margin:0}
+.frame-red-n{margin:0 auto}
+.ib-foot{overflow-wrap:break-word}
+#deckControls{flex:none}
+.foot-links{flex:none;margin:16px 0 0}
+/* I-agree final screen: the sign photo fits one frame at 635 (was ~3 viewports). */
+.deal-sign-photo{height:min(480px,36dvh);width:auto;max-width:100%}
+@media(max-width:480px){.deal-sign-photo{height:min(336px,32dvh);width:auto}}
+@media (prefers-reduced-motion:reduce){.frame-light{animation:none}}
+</style>
+
+<style id="fpFrame8">
+/* ============ FRAME-8 (2026-11-19) — the fix-7 shell, fixed at desktop ============
+   F2: the frame goes BEHIND the stage. The master-frame PNG's centre is
+   opaque black (not transparent), and at z-index 60 it painted over all
+   content once loaded. At z-index 0 its black centre is the backdrop and
+   the silver ornament frames the content. */
+.naya-frame{z-index:0}
+/* F1: the page header goes away on every frame — the per-frame top bar
+   carries the headline (frame 1: "Hi, I'm Naya"). The play orb is not
+   deleted: it moves into the media frame (F4/F9), so .play-wrap hides
+   with the rest of the header. */
+main.fp-frame8 .letter-steplabel,main.fp-frame8 .deal-title,main.fp-frame8 .deck-sub,
+main.fp-frame8 .play-wrap,main.fp-frame8 .play-note{display:none!important}
+/* F1: dots + read-it-all on one slim row; foot-links slim. This hands the
+   freed ~200px back to #deckBody, so the beat's inner scroller is a real
+   reading window and the pinned foot is in view. */
+#deckControls{flex-direction:row!important;align-items:center!important;justify-content:center!important;gap:16px!important;margin-top:6px!important}
+#deckControls .letter-dots{gap:6px}
+#deckControls .ldot{width:10px;height:10px}
+#deckControls .letter-all{padding:6px 10px;min-height:44px}
+.foot-links{margin:8px 0 0!important}
+/* F1+F7: the foot tightens; the red seal scales 120 -> 84 (still the big
+   red piece, still just above the three buttons — now visible). */
+.frame-foot{gap:8px;padding-top:8px}
+.frame-red-n{width:84px!important;height:84px!important}
+.frame-red-n .deal-seal-mark{font-size:38px!important}
+/* F7: frame 1's Back is present but disabled — three buttons on every
+   frame. Disabled is a state (opacity) only; the label keeps its colour. */
+.frame-back-off{opacity:.55;cursor:default}
+/* F9: the media frame — an obsidian board, just below the top bar on
+   frame 1. AUDIO on top, VIDEO below. Same board anatomy as the beats. */
+.frame-media{margin:0 0 16px;padding:18px 20px;border:1.5px solid rgba(255,255,255,.32);border-radius:22px;background:#050607;box-shadow:0 18px 40px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.14)}
+.frame-media-title{font-family:Marcellus,Georgia,serif;font-size:25px;line-height:1.15;color:#fff;margin:0 0 6px;text-align:center}
+.frame-media-sub{font-size:17px;line-height:1.5;color:#fff;text-align:center;margin:0 0 14px}
+.frame-media-audio{display:flex;align-items:center;gap:16px;justify-content:center}
+.frame-media .play-btn{width:72px;height:72px;flex:none}
+.frame-media .play-btn .play-name{display:none}
+.frame-media .play-btn.is-playing{border-color:#8e24aa;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -4px 8px rgba(0,0,0,.5),0 0 38px -2px #8e24aa,0 12px 26px rgba(0,0,0,.6)}
+.frame-media-audio-name{font-size:17px;font-weight:700;color:#fff}
+.frame-media-audio-state{font-size:17px;line-height:1.5;color:#fff;margin-top:4px}
+.frame-media .frame-video-btn{width:100%;justify-content:center;margin-top:14px}
+.frame-anthem-note{font-size:17px;line-height:1.6;color:#fff;margin:8px 0 0;text-align:left}
+.frame-anthem-note[hidden]{display:none}
+.frame-anthem-note p{margin:0 0 12px}
+.frame-anthem-note p:last-child{margin-bottom:0}
+/* F1-fix (render-measured): the beat's own padding (32px top / 24px
+   bottom, content-box) made it 60px taller than its 463px deck, so the
+   pinned foot sat below the deck's clip and the button row showed only
+   its top arcs. Border-box + tight padding puts the whole foot inside
+   the deck; the seal tightens 84 -> 72 and the top bar closes up. */
+.letter-beat.frame-now{padding:10px 24px 8px!important;box-sizing:border-box!important}
+.frame-topbar{margin-bottom:8px!important}
+.frame-foot{gap:6px!important;padding-top:4px!important}
+.frame-red-n{width:72px!important;height:72px!important}
+.frame-red-n .deal-seal-mark{font-size:32px!important}
+/* F9: the media frame slims so the whole board (title + Play + Watch
+   the anthem) fits its reading window without scrolling. */
+.frame-media{padding:10px 16px!important;margin-bottom:12px!important}
+.frame-media-title{margin-bottom:4px!important}
+.frame-media-sub{margin-bottom:10px!important}
+.frame-media .play-btn{width:60px!important;height:60px!important}
+.frame-media .frame-video-btn{margin-top:10px!important}
+/* F3-fix: one tap = one frame. The talk/visual two-tap is gone — a beat
+   with a picture shows it inside its own reading window, below the
+   words, so nothing needs a second tap to be seen. */
+.letter-beat.fp-smart-talk .lb-showcase{display:block!important;margin:14px auto 4px!important;width:min(100%,560px)!important}
+.letter-beat.fp-smart-talk .lb-showcase img{width:100%!important;height:100%!important;object-fit:contain}
+</style>
+
+<style id="fpFrame9">
+/* ============ FRAME-9 (2026-11-19) — the fix-8 shell, three gaps closed ============
+   F1: the media board slims so the first agreement words show at load.
+   Orb 60 -> 48 (the label block beside it is ~50 tall, so the row drops
+   to ~50); video pill padding 16 -> 10; board padding 10 -> 8; title
+   margin 4 -> 2; video margin-top 10 -> 8; board margin-bottom 12 -> 8. */
+.frame-media{padding:8px 16px!important;margin-bottom:8px!important}
+.frame-media-title{margin-bottom:2px!important}
+.frame-media .play-btn{width:48px!important;height:48px!important}
+.frame-media .frame-video-btn{margin-top:8px!important;padding:10px 46px!important}
+/* F1: lift the text — the agreement board's top margin 22 -> 8 and its top
+   padding 20 -> 12, on every frame alike, so the first line lifts. */
+.frame-scroll>.ib-nutshell{margin-top:8px!important;padding-top:12px!important}
+/* F1: grow the reading window — the foot pills slim 16 -> 12 padding
+   (still real pills, white words, own-colour rims) and the top bar
+   closes up 8 -> 4. */
+.frame-foot button{padding-top:12px!important;padding-bottom:12px!important}
+.frame-topbar{margin-bottom:4px!important}
+/* F3: the jewel dots are real navigation now — a pointer, and a lit hover. */
+#deckDots .ldot{cursor:pointer}
+#deckDots .ldot:hover{filter:brightness(1.35)}
+/* F7: the seal on every frame is frame 1's seal cloned (JS9) — no new
+   styling; the 72px seal and its mark already read on frame 1. */
+</style>
+
+<style id="fpFrameAF">
+/* ============ AGREEMENT FRAME (2026-11-19) — four styles, one frame system ============
+   The old frame floated: master-frame.png at background-size:contain + content
+   insets 220/200/170 left a small box in a big black field, light outside.
+   The frame now HUGS the edges: corner ornaments harvested verbatim from the
+   master-frame PNG (quadrants, no distortion) + a gold outer rim + a purple
+   inner hairline. The flowing light travels INSIDE the rim (14px path). */
+.naya-frame{background-image:none!important}
+.naya-frame::before{content:"";position:absolute;inset:0;border:2px solid #d4a017;pointer-events:none}
+.naya-frame::after{content:"";position:absolute;inset:10px;border:1px solid rgba(142,36,170,.65);pointer-events:none}
+.af-corner{position:absolute;width:96px;height:96px;z-index:1;background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/master-frame.png&ref=walkthrough/chain-fix7-20261119&cb=5a4dc2f9ca703945f12cec0b39b491d728e69c4a);background-size:200% 200%;pointer-events:none}
+.af-corner.tl{top:0;left:0;background-position:0 0}
+.af-corner.tr{top:0;right:0;background-position:100% 0}
+.af-corner.bl{bottom:0;left:0;background-position:0 100%}
+.af-corner.br{bottom:0;right:0;background-position:100% 100%}
+.frame-light{z-index:2!important;animation-name:frameLightAF!important}
+@keyframes frameLightAF{0%{top:14px;left:14px}25%{top:14px;left:calc(100% - 26px)}50%{top:calc(100% - 26px);left:calc(100% - 26px)}75%{top:calc(100% - 26px);left:14px}100%{top:14px;left:14px}}
+/* STYLE 1 — ROYAL ORNATE (desktop text): the board fills the frame. */
+.p3-deal-unfold{--fin-t:76px!important;--fin-b:92px!important;--fin-l:96px!important;--fin-r:96px!important}
+@media (min-width:1024px) and (min-aspect-ratio:1/1){.p3-deal-unfold{--fin-t:76px!important;--fin-b:92px!important;--fin-l:96px!important;--fin-r:96px!important}}
+@media (min-aspect-ratio:1/1) and (max-height:700px){.p3-deal-unfold{--fin-t:64px!important;--fin-b:80px!important;--fin-l:72px!important;--fin-r:72px!important}}
+#deckBody .letter-beat{max-width:940px;margin-left:auto!important;margin-right:auto!important;box-shadow:0 18px 48px rgba(0,0,0,.65),0 4px 12px rgba(0,0,0,.5)!important;border-radius:20px!important}
+/* AF v2 — the board STRETCHES to fill the frame (was content-height, leaving
+   a ~216px dead gap below the foot at desktop): the reading window grows
+   with it, the foot pins to the frame's bottom inset. */
+.p3-deal-unfold #deckBody{flex:1 1 auto!important;min-height:0!important}
+#deckBody .letter-beat{height:100%!important;display:flex!important;flex-direction:column!important}
+#deckBody .letter-beat .frame-scroll{flex:1 1 auto!important;min-height:0!important}
+/* Naya's photo in the top-right corner — more writing space in the middle. */
+.frame-topbar{display:flex!important;align-items:center!important;gap:16px!important}
+.frame-topbar .frame-head{order:1!important}
+.frame-topbar .frame-icon{order:2!important}
+.frame-topbar .frame-face{order:3!important;margin-left:auto!important;width:64px!important;height:64px!important;flex:0 0 64px!important}
+/* Text scale, the law: headlines 25, body 19, labels 17 — white, always. */
+.frame-title{font-size:25px!important;line-height:1.2!important}
+.frame-kind{font-size:17px!important}
+.frame-scroll p{font-size:19px!important;line-height:1.55!important;color:#ffffff!important}
+.frame-scroll .ib-title{font-size:25px!important;color:#ffffff!important}
+/* Dots go — default NO dots. The read-it-all link stays, slim, at the bottom. */
+#deckDots{display:none!important}
+#deckControls{justify-content:center!important;margin-top:4px!important}
+#deckControls .letter-all{font-size:17px!important}
+/* Buttons close to the bottom, in the foot — never blocking the words.
+   Spectrum order, never two the same: Back purple, Keep reading sapphire, Next emerald. */
+.frame-foot{padding-bottom:6px!important}
+.frame-btnrow{display:flex!important;gap:12px!important;justify-content:center!important;flex-wrap:wrap!important}
+.frame-btnrow .deck-back{border-color:#8e24aa!important}
+.frame-btnrow .deck-next:not(.frame-next){border-color:#0f52ba!important}
+.frame-btnrow .frame-next{border-color:#07925f!important}
+/* STYLE 3 — ROYAL COMPACT (mobile text, <768px).
+   AF v2 — mobile frame 1 showed ZERO agreement words (the media board ate
+   the whole reading window): the media slims, the top bar tightens, the
+   anthem pill never wraps, and the buttons are pills in one row — never
+   circles. The stretch above grows the window with it. */
+@media (max-width:767px){
+.af-corner{width:104px;height:104px}
+.p3-deal-unfold{--fin-t:48px!important;--fin-b:76px!important;--fin-l:14px!important;--fin-r:14px!important}
+#deckBody .letter-beat{max-width:none!important}
+.frame-topbar{gap:8px!important}
+.frame-topbar .frame-face{width:48px!important;height:48px!important;flex-basis:48px!important}
+.frame-topbar .frame-kind{letter-spacing:.08em!important}
+.frame-scroll p{font-size:17px!important;line-height:1.5!important}
+.frame-media{padding:6px 12px!important}
+.frame-media .play-btn{width:44px!important;height:44px!important}
+.frame-media .frame-video-btn{white-space:nowrap!important;padding:10px 12px!important}
+.frame-btnrow{flex-wrap:wrap!important;gap:8px!important}
+/* AF v5 — v4's flex:0 0 auto DID apply, but a <button> as a flex item
+   sizes to its CONTAINER, not its text (all three came out 301.75px —
+   the row width — and overflowed the board). Three 17px labels cannot
+   fit one 302px row, so on mobile the foot is TWO rows: Back + Next share
+   the first, Keep reading (or I-agree on the final board) gets the full
+   second row. The seal slims to pay for the extra row. */
+.frame-btnrow button{flex:1 1 40%!important;white-space:nowrap!important;font-size:17px!important;padding:10px 4px!important}
+.frame-btnrow button:nth-child(2){flex:1 1 100%!important;order:3!important}
+.frame-foot .frame-red-n{width:56px!important;height:56px!important}
+}
+
+/* DISTILL progress pill (2026-11-19) — the measuring thing, kept: a jewel set
+   into the top of the frame, "N / 37" + bar, driven by .frame-now. Same
+   language as the stage's fpStageJewel (jewel + number + bar). */
+.af-prog{position:absolute;top:12px;left:50%;transform:translateX(-50%);z-index:3;display:flex;align-items:center;gap:8px;background:#050607;border:1.5px solid #d4a017;border-radius:999px;padding:6px 14px;pointer-events:none;box-shadow:0 4px 14px rgba(0,0,0,.6)}
+.af-prog-jewel{color:#d4a017;font-size:17px}
+.af-prog-num{color:#ffffff;font-size:17px;font-weight:700;white-space:nowrap}
+.af-prog-bar{width:72px;height:6px;border-radius:999px;background:rgba(255,255,255,.18);overflow:hidden}
+.af-prog-bar i{display:block;height:100%;background:#d4a017;width:3%;transition:width .3s ease}
+@media (max-width:767px){.af-prog{top:8px;padding:4px 10px;gap:6px}.af-prog-bar{width:48px}}
+</style>
+<style id="fpFixDistill">
+/* FIX (2026-11-19, eye fail 1) — one board at a time: the frame-now hide lost to the later #deckBody rule, so all 37 boards stacked as one long scrollable page. This outranks it, so exactly one board shows and the pill tracks the board on screen. */
+#deckBody .letter-beat:not(.frame-now){display:none!important}
+#deckBody .letter-beat.frame-now{display:flex!important;flex-direction:column!important}
+#deckBody{overflow-x:hidden}
+/* FIX (2026-11-19, eye fail 6) — the showcase shows in talk view too. */
+.letter-beat.fp-smart-talk .lb-showcase{display:block!important}
+
+/* FIX2 U6 unfold fix css */
+.letter-beat.fp-noslide .ib-nutshell{flex:0 0 auto!important;max-height:none!important}
+#deckBody .lb-showcase img{aspect-ratio:16/9}
+.deal-sign-photo{height:min(280px,28vh)!important;width:auto;max-width:100%}
+</style>
+</head>
+<body>
+<div class="naya-frame" aria-hidden="true"><div class="frame-light"></div></div>
+<main class="p3-deal-unfold" id="deckUnfold" style="margin-top:24px;margin-bottom:48px">
+<p class="letter-steplabel">NayaNET &middot; About Shawn Vibert</p>
+<h1 class="deal-title">About Shawn Vibert</h1>
+<p class="deck-sub">Who I am, what I stand for, and what I can do — one frame at a time.</p>
+<div class="play-wrap">
+<button class="play-btn" id="playBtn" type="button" aria-label="Play — read the agreement with Naya"><span class="play-tri" aria-hidden="true">&#9654;</span><span class="play-name">NAYA</span><span class="play-orbit" aria-hidden="true"></span></button> <button class="play-stop" id="playStop" type="button" hidden aria-label="Stop — stop reading the agreement">&#9632;</button>
+</div>
+<p class="play-note" id="playTip">Shawn will talk you through his story</p>
+<div id="deckBody" data-smart-block="deck">
+<article class="intel-board letter-beat fp-noslide" data-beat="1" style="--tone:#8e24aa"><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-1.jpg&ref=agreement/unfold-20261117&cb=8743e1868400bb8ae4f650b536ab9cbace036786" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">WHO I AM</span><h2 class="ib-title">Hi, I’m Shawn Vibert</h2></div></div></div><div class="ib-nutshell"><p>I’m Shawn Vibert — founder of NayaNET.</p><div class="ib-rows"><p><span class="ib-row-k">WHY IT MATTERS</span> — You meet the person, not a logo.</p><p><span class="ib-row-k">HOW TO APPLY IT</span> — Read on — then you know me.</p><p><span class="ib-row-k">HOW IT CONNECTS</span> — Everything here orbits you.</p><p><span class="ib-row-k">WHAT’S IN IT FOR YOU</span> — A world built for you.</p></div></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; About Shawn Vibert</div><button class="p3-enter letter-next deck-next" type="button" data-beat="1">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="2" style="--tone:#0f52ba" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-3.jpg&ref=agreement/unfold-20261117&cb=c01d71025d34abf8379bab5b7eb13bfa9204964a" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">MISSION</span><h2 class="ib-title">Create heaven on earth</h2></div></div></div><div class="ib-nutshell"><p>A state of awesome energy — no stress, no fear, no money worries.</p><div class="ib-rows"><p><span class="ib-row-k">WHY IT MATTERS</span> — Anything less is just another app.</p><p><span class="ib-row-k">HOW TO APPLY IT</span> — Every page must lift a worry.</p><p><span class="ib-row-k">HOW IT CONNECTS</span> — That is how the mission happens.</p><p><span class="ib-row-k">WHAT’S IN IT FOR YOU</span> — Money to pay your bills.</p></div></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; About Shawn Vibert</div><button class="p3-enter letter-next deck-next" type="button" data-beat="2">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="3" style="--tone:#07925f" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-4.jpg&ref=agreement/unfold-20261117&cb=39c7f0ce4222d853d676d1ea5138569ed182b209" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">VISION</span><h2 class="ib-title">Anyone joins free</h2></div></div></div><div class="ib-nutshell"><p>Everybody learns, earns and grows — acknowledged, loved, appreciated, valued, respected.</p><p>“Once you go, you don’t go back. Living a life without Naya will make no sense in the future, and no child will know a world without her.”</p><div class="ib-rows"><p><span class="ib-row-k">WHY IT MATTERS</span> — Free to join means anyone can belong.</p><p><span class="ib-row-k">HOW TO APPLY IT</span> — Join free, get your three worlds.</p><p><span class="ib-row-k">HOW IT CONNECTS</span> — Each citizen makes it smarter.</p><p><span class="ib-row-k">WHAT’S IN IT FOR YOU</span> — Your world, ready — free.</p></div></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; About Shawn Vibert</div><button class="p3-enter letter-next deck-next" type="button" data-beat="3">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="4" style="--tone:#d4a017" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-5.jpg&ref=agreement/unfold-20261117&cb=c3cd3d9caf778a0b9e0fcf122b3a780030107f76" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">GOAL</span><h2 class="ib-title">A 100% success rate</h2></div></div></div><div class="ib-nutshell"><p>Value in 30 seconds — then something worth sharing.</p><div class="ib-rows"><p><span class="ib-row-k">WHY IT MATTERS</span> — You can measure it in seconds.</p><p><span class="ib-row-k">HOW TO APPLY IT</span> — Thirty seconds to value.</p><p><span class="ib-row-k">HOW IT CONNECTS</span> — Finished pages become templates.</p><p><span class="ib-row-k">WHAT’S IN IT FOR YOU</span> — Value in half a minute.</p></div></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; About Shawn Vibert</div><button class="p3-enter letter-next deck-next" type="button" data-beat="4">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="5" style="--tone:#c2410c" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-6.jpg&ref=agreement/unfold-20261117&cb=6fa4c1a28c196429f8c2e325de695a31f16cd06b" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">MOTTO</span><h2 class="ib-title">Just because you can doesn’t mean you should</h2></div></div></div><div class="ib-nutshell"><p>My line to live by — five questions before every action.</p><div class="ib-rows"><p><span class="ib-row-k">WHY IT MATTERS</span> — Wisdom checks the destination first.</p><p><span class="ib-row-k">HOW TO APPLY IT</span> — All five yes — act. Any no — stop.</p><p><span class="ib-row-k">HOW IT CONNECTS</span> — Every Naya runs the same five gates.</p><p><span class="ib-row-k">WHAT’S IN IT FOR YOU</span> — It pauses before touching yours.</p></div></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; About Shawn Vibert</div><button class="p3-enter letter-next deck-next" type="button" data-beat="5">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="6" style="--tone:#c62828" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-7.jpg&ref=agreement/unfold-20261117&cb=0be821b80d8c055d08b9f5333449064507b7412e" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">MY STORY</span><h2 class="ib-title">I saw the broken internet</h2></div></div></div><div class="ib-nutshell"><p>The old internet was broken — so I set out to build one world.</p><div class="ib-rows"><p><span class="ib-row-k">WHY IT MATTERS</span> — You do not fix it by patching it.</p><p><span class="ib-row-k">HOW TO APPLY IT</span> — One system, not fifty apps.</p><p><span class="ib-row-k">HOW IT CONNECTS</span> — In 2026 I named Naya head delegator.</p><p><span class="ib-row-k">WHAT’S IN IT FOR YOU</span> — A team working for you.</p></div></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; About Shawn Vibert</div><button class="p3-enter letter-next deck-next" type="button" data-beat="6">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="7" style="--tone:#a21caf" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-8.jpg&ref=agreement/unfold-20261117&cb=00ea37ad9e03cc5da2b7ba352b0f3d988e31da5a" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">WHAT I STAND FOR</span><h2 class="ib-title">Do no harm. Ever.</h2></div></div></div><div class="ib-nutshell"><p>Do no harm — to yourself or anyone else. Ever.</p><div class="ib-rows"><p><span class="ib-row-k">WHY IT MATTERS</span> — Without trust, no community stands.</p><p><span class="ib-row-k">HOW TO APPLY IT</span> — We deliver it. We never read it.</p><p><span class="ib-row-k">HOW IT CONNECTS</span> — What you save stays in your vault.</p><p><span class="ib-row-k">WHAT’S IN IT FOR YOU</span> — A place to talk freely.</p></div></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; About Shawn Vibert</div><button class="p3-enter letter-next deck-next" type="button" data-beat="7">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="8" style="--tone:#3f51b5" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-9.jpg&ref=agreement/unfold-20261117&cb=e1dbe46717f87cf4cb63f7cef4bd367d8bb1a0f2" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">WHAT I DO</span><h2 class="ib-title">I build NayaNET</h2></div></div></div><div class="ib-nutshell"><p>You say it in ordinary words — Naya does it.</p><div class="ib-rows"><p><span class="ib-row-k">WHY IT MATTERS</span> — Never operate the system yourself.</p><p><span class="ib-row-k">HOW TO APPLY IT</span> — Talk to Naya, and she does it.</p><p><span class="ib-row-k">HOW IT CONNECTS</span> — Thought to note, note to block.</p><p><span class="ib-row-k">WHAT’S IN IT FOR YOU</span> — One click, done for you.</p></div></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; About Shawn Vibert</div><button class="p3-enter letter-next deck-next" type="button" data-beat="8">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="9" style="--tone:#0e7490" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-1.jpg&ref=agreement/unfold-20261117&cb=8743e1868400bb8ae4f650b536ab9cbace036786" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">SKILLS — A TASTE</span><h2 class="ib-title">My three best skills</h2></div></div></div><div class="ib-nutshell"><p>The Login, the Notes, the Numbers.</p><div class="ib-rows"><p><span class="ib-row-k">WHY IT MATTERS</span> — Three skills, and you know the rest.</p><p><span class="ib-row-k">HOW TO APPLY IT</span> — Tap below and see all fourteen.</p><p><span class="ib-row-k">HOW IT CONNECTS</span> — Every skill lives inside Personal.</p><p><span class="ib-row-k">WHAT’S IN IT FOR YOU</span> — See what she can do for you.</p></div></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; About Shawn Vibert</div><button class="p3-enter letter-next deck-next" type="button" data-beat="9">See all my skills &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="10" style="--tone:#6d28d9" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-3.jpg&ref=agreement/unfold-20261117&cb=c01d71025d34abf8379bab5b7eb13bfa9204964a" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">SKILL 1</span><h2 class="ib-title">The Login Skill</h2></div></div></div><div class="ib-nutshell"><p>The door that knows you.</p><p>One dial, your name, your code — and you’re in.</p><div class="ib-rows"><p><span class="ib-row-k">WHAT IT MEANS</span> — I open the door for you. You tell me your name, you enter your code, and you step through a beautiful round portal into your world.</p><p><span class="ib-row-k">WHY IT MATTERS</span> — The login is the first thing anyone ever touches. If it feels like a form, the whole system feels like a form. If it feels like stepping through a portal into a private world, the whole system feels like a place worth entering. The door sets the feeling for everything after it.</p><p><span class="ib-row-k">WHAT MAKES US DIFFERENT</span> — The same door everywhere, on every page, for every membership — learn it once, never get lost.</p><p><span class="ib-row-k">ONE REAL EXAMPLE</span> — The dial you entered through — one dial, your name, your code — is this skill, working, on nayanet.app.</p><p><span class="ib-row-k">WHAT’S IN IT FOR YOU</span> — You step into your private world in seconds, through a door that feels like yours.</p></div><div class="ib-rows"><p><span class="ib-row-k">PROOF</span> — PRODUCTION-PROVEN · <a class="letter-all" href="https://nayanet.app/">See the door, live &#9670;</a></p></div></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; My skills</div><button class="p3-enter letter-next deck-next" type="button" data-beat="10">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="11" style="--tone:#8e24aa" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-4.jpg&ref=agreement/unfold-20261117&cb=39c7f0ce4222d853d676d1ea5138569ed182b209" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">SKILL 2</span><h2 class="ib-title">The Mail Skill</h2></div></div></div><div class="ib-nutshell"><p>Your mail, your messages, your private place to talk.</p><p>One inbox, one messenger, one poster — and nobody reads it but you.</p><div class="ib-rows"><p><span class="ib-row-k">WHAT IT MEANS</span> — I carry your mail and your messages in one place. You write, you send, you read — and your login codes arrive here too, not in your email.</p><p><span class="ib-row-k">WHY IT MATTERS</span> — The old internet spied on your mail. Every message you sent was read, scanned, and sold. Here it is the opposite: your mail is yours, and it stays yours. When people know nobody is listening, they talk freely — and that is when real connection happens.</p><p><span class="ib-row-k">WHAT MAKES US DIFFERENT</span> — Private by default: nobody reads it, not even me, and there is no switch to turn that off.</p><p><span class="ib-row-k">ONE REAL EXAMPLE</span> — Your login code arrives by Smart Mail, not email — that is this skill, working.</p><p><span class="ib-row-k">WHAT’S IN IT FOR YOU</span> — You talk freely, knowing nobody is listening — and that is when real connection happens.</p></div><div class="ib-rows"><p><span class="ib-row-k">PROOF</span> — DEMONSTRATED · <a class="letter-all" href="https://nayanet.app/personal">See it inside Personal &#9670;</a></p></div></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; My skills</div><button class="p3-enter letter-next deck-next" type="button" data-beat="11">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="12" style="--tone:#0f52ba" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-5.jpg&ref=agreement/unfold-20261117&cb=c3cd3d9caf778a0b9e0fcf122b3a780030107f76" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">SKILL 3</span><h2 class="ib-title">The Notes Skill</h2></div></div></div><div class="ib-nutshell"><p>I take the note, so the idea never dies.</p><p>You talk, I note it. What you learn becomes intelligence everyone can use.</p><div class="ib-rows"><p><span class="ib-row-k">WHAT IT MEANS</span> — I take your notes for you. You tell me what you learned, or you just talk, and I write it down in the clear way — the nutshell first, then what it means, then how to use it.</p><p><span class="ib-row-k">WHY IT MATTERS</span> — A good idea that isn't written down is gone by tomorrow. And an idea that is written down but never shared only helps one person. When I take the note and share the good ones, your learning doesn't die with the day — it compounds, and everyone gets smarter from it.</p><p><span class="ib-row-k">WHAT MAKES US DIFFERENT</span> — A good idea never dies with the day — the good ones become Smart Notes, and the hive learns from them.</p><p><span class="ib-row-k">ONE REAL EXAMPLE</span> — The Smart Notes on the Hub feed — each one distilled to its essence — are this skill, working.</p><p><span class="ib-row-k">WHAT’S IN IT FOR YOU</span> — Your learning compounds — what you learn today keeps helping everyone tomorrow.</p></div><div class="ib-rows"><p><span class="ib-row-k">PROOF</span> — PRODUCTION-PROVEN · <a class="letter-all" href="https://nayanet.app/hub">See the feed, live &#9670;</a></p></div></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; My skills</div><button class="p3-enter letter-next deck-next" type="button" data-beat="12">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="13" style="--tone:#07925f" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-6.jpg&ref=agreement/unfold-20261117&cb=6fa4c1a28c196429f8c2e325de695a31f16cd06b" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">SKILL 4</span><h2 class="ib-title">The Lists Skill</h2></div></div></div><div class="ib-nutshell"><p>Your people and your notes, organized, one tap away.</p><p>The box is the store. The list is the view. I keep both in order for you.</p><div class="ib-rows"><p><span class="ib-row-k">WHAT IT MEANS</span> — I keep your world organized. Your contacts, by name and by who they are to you. Your notes, by link and by what they are about.</p><p><span class="ib-row-k">WHY IT MATTERS</span> — The old internet made you hunt. Your contacts were in one app, your notes in another, and the thing you were looking for was always in the third place you checked. When your world is organized for you, you stop hunting and start doing.</p><p><span class="ib-row-k">WHAT MAKES US DIFFERENT</span> — Nothing gets lost, and the right people and the right notes find you when you need them.</p><p><span class="ib-row-k">ONE REAL EXAMPLE</span> — Your contacts and notes, organized one tap away on Personal — the Box is the store, the list is the view.</p><p><span class="ib-row-k">WHAT’S IN IT FOR YOU</span> — You stop hunting and start doing — your people and your notes, one tap away.</p></div><div class="ib-rows"><p><span class="ib-row-k">PROOF</span> — DEMONSTRATED · <a class="letter-all" href="https://nayanet.app/personal">See it inside Personal &#9670;</a></p></div></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; My skills</div><button class="p3-enter letter-next deck-next" type="button" data-beat="13">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="14" style="--tone:#d4a017" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-7.jpg&ref=agreement/unfold-20261117&cb=0be821b80d8c055d08b9f5333449064507b7412e" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">SKILL 5</span><h2 class="ib-title">The Links Skill</h2></div></div></div><div class="ib-nutshell"><p>One clean link, and you know it landed.</p><p>Every link you share is short, clean, and tracked — you see the click and the return.</p><div class="ib-rows"><p><span class="ib-row-k">WHAT IT MEANS</span> — I make your links clean. When you share something, I mint a short Smart Link for it — your address, no mess, no long string.</p><p><span class="ib-row-k">WHY IT MATTERS</span> — A raw link is a mess — long, ugly, and silent. You share it and you never know if anyone came. A clean link is an address someone can remember, and the tracking means you know it worked. Sharing without knowing is shouting into the dark; sharing with a Smart Link is a conversation.</p><p><span class="ib-row-k">WHAT MAKES US DIFFERENT</span> — The ambassador link is the default, so every link you share is also your invitation.</p><p><span class="ib-row-k">ONE REAL EXAMPLE</span> — Every Smart Link is short, clean and tracked — the ambassador link is the default on login.</p><p><span class="ib-row-k">WHAT’S IN IT FOR YOU</span> — You share a clean link and you know it worked — every click and return, seen.</p></div><div class="ib-rows"><p><span class="ib-row-k">PROOF</span> — DEMONSTRATED · <a class="letter-all" href="https://nayanet.app/">The ambassador link, on login &#9670;</a></p></div></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; My skills</div><button class="p3-enter letter-next deck-next" type="button" data-beat="14">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="15" style="--tone:#c2410c" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-8.jpg&ref=agreement/unfold-20261117&cb=00ea37ad9e03cc5da2b7ba352b0f3d988e31da5a" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">SKILL 6</span><h2 class="ib-title">The Meet Skill</h2></div></div></div><div class="ib-nutshell"><p>Meet face to face, right where you already are.</p><p>Video and audio, booked like an appointment, inside your world — no app-hopping.</p><div class="ib-rows"><p><span class="ib-row-k">WHAT IT MEANS</span> — I bring people together face to face. You book a meeting like an appointment, and when the time comes, the meeting opens right inside your page.</p><p><span class="ib-row-k">WHY IT MATTERS</span> — A meeting that makes you leave your world breaks your flow. You were in your page, with your notes and your people, and then you had to go somewhere else to talk. When the meeting lives where your world lives, the conversation starts where you left off — with everything you need right there.</p><p><span class="ib-row-k">WHAT MAKES US DIFFERENT</span> — The meeting lives where your world lives — no leaving home to go and talk somewhere else.</p><p><span class="ib-row-k">ONE REAL EXAMPLE</span> — No live meeting room yet — the design is settled in the Anatomy, the room is still to be built. This slide says so plainly, instead of pretending.</p><p><span class="ib-row-k">WHAT’S IN IT FOR YOU</span> — You meet face to face without leaving your world — the conversation starts where you left off.</p></div><div class="ib-rows"><p><span class="ib-row-k">PROOF</span> — DECLARED · Proof owed: the live demonstration is still to come — no link, no pretence.</p></div></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; My skills</div><button class="p3-enter letter-next deck-next" type="button" data-beat="15">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="16" style="--tone:#c62828" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-9.jpg&ref=agreement/unfold-20261117&cb=e1dbe46717f87cf4cb63f7cef4bd367d8bb1a0f2" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">SKILL 7</span><h2 class="ib-title">The Factory Skill</h2></div></div></div><div class="ib-nutshell"><p>Tell me what you want to build, and I build it.</p><p>One click from the locked template — the taste is already in it, so you don’t need design skill.</p><div class="ib-rows"><p><span class="ib-row-k">WHAT IT MEANS</span> — I build your world for you. You tell me what you want, and I pull the parts from the factory and put them together.</p><p><span class="ib-row-k">WHY IT MATTERS</span> — You should not need design skill to have a beautiful world. The old way said: learn to design, or hire someone who can. The factory says: the taste is locked into the template. You bring the idea, I bring the parts, and the result is beautiful from the first click — because the parts were already made beautiful by someone who knows how.</p><p><span class="ib-row-k">WHAT MAKES US DIFFERENT</span> — The taste is locked into the template — anyone can build, because they build from the best page ever made.</p><p><span class="ib-row-k">ONE REAL EXAMPLE</span> — The Smart Factory is live at nayanet.app/smartfactory — it holds the parts, and finished pages become its locked templates.</p><p><span class="ib-row-k">WHAT’S IN IT FOR YOU</span> — You bring the idea, the parts bring the beauty — a beautiful world from the first click.</p></div><div class="ib-rows"><p><span class="ib-row-k">PROOF</span> — DEMONSTRATED · <a class="letter-all" href="https://nayanet.app/smartfactory">See the Factory, live &#9670;</a></p></div></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; My skills</div><button class="p3-enter letter-next deck-next" type="button" data-beat="16">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="17" style="--tone:#a21caf" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-1.jpg&ref=agreement/unfold-20261117&cb=8743e1868400bb8ae4f650b536ab9cbace036786" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">SKILL 8</span><h2 class="ib-title">The Match Skill</h2></div></div></div><div class="ib-nutshell"><p>The people like you, found for you.</p><p>One algorithm, matches as percentages — connect, never follow.</p><div class="ib-rows"><p><span class="ib-row-k">WHAT IT MEANS</span> — I find the people who belong in your world. You tell me who you are, in your own words, and I match you with the people like you.</p><p><span class="ib-row-k">WHY IT MATTERS</span> — The old internet showed you strangers and called it connection. You had to hunt for your people, and most of the time you never found them. When the system knows who you are, it can bring your people to you — and that is the difference between a feed full of noise and a world full of like minds.</p><p><span class="ib-row-k">WHAT MAKES US DIFFERENT</span> — The right people show up in your feed. The ones who don’t belong, don’t.</p><p><span class="ib-row-k">ONE REAL EXAMPLE</span> — The privacy gate was proven on staging, 9 out of 10 — every match now comes through the gate, with reasons attached.</p><p><span class="ib-row-k">WHAT’S IN IT FOR YOU</span> — Your people come to you — a world full of like minds, not a feed full of noise.</p></div><div class="ib-rows"><p><span class="ib-row-k">PROOF</span> — DEMONSTRATED — STAGING-PROVEN · Proof owed: the live demonstration is still to come — no link, no pretence.</p></div></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; My skills</div><button class="p3-enter letter-next deck-next" type="button" data-beat="17">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="18" style="--tone:#3f51b5" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-3.jpg&ref=agreement/unfold-20261117&cb=c01d71025d34abf8379bab5b7eb13bfa9204964a" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">SKILL 9</span><h2 class="ib-title">The Smart Vault Skill</h2></div></div></div><div class="ib-nutshell"><p>Your own private box that never forgets.</p><p>I remember everything for you, keep it organized, and give it back when you ask.</p><div class="ib-rows"><p><span class="ib-row-k">WHAT IT MEANS</span> — I keep your box for you — your own private vault, outside any one AI, where everything you own lives.</p><p><span class="ib-row-k">WHY IT MATTERS</span> — There is a sickness in the old internet: you save things and you never find them again. The note is in one app, the file in another, the lesson in a third — and when you need it, it is gone. The vault cures that. Everything you save goes to one place, and one place is the only place you ever have to look.</p><p><span class="ib-row-k">WHAT MAKES US DIFFERENT</span> — One record, not two systems. If one of us goes away, your world stays, because it lives in your box, not in my head.</p><p><span class="ib-row-k">ONE REAL EXAMPLE</span> — Your Smart Box files what you save and gives it back when you ask — one record, one truth, yours.</p><p><span class="ib-row-k">WHAT’S IN IT FOR YOU</span> — Everything you save goes to one place — and one place is the only place you ever look.</p></div><div class="ib-rows"><p><span class="ib-row-k">PROOF</span> — DEMONSTRATED · <a class="letter-all" href="https://nayanet.app/personal">Your box, inside Personal &#9670;</a></p></div></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; My skills</div><button class="p3-enter letter-next deck-next" type="button" data-beat="18">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="19" style="--tone:#0e7490" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-4.jpg&ref=agreement/unfold-20261117&cb=39c7f0ce4222d853d676d1ea5138569ed182b209" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">SKILL 10</span><h2 class="ib-title">The Numbers Skill</h2></div></div></div><div class="ib-nutshell"><p>Everything you do is recorded — and your numbers are shown back to you.</p><p>The ledger keeps the record. The dashboard shows it back. One place, two views.</p><div class="ib-rows"><p><span class="ib-row-k">WHAT IT MEANS</span> — I keep the record of everything you do, and I show it back to you as numbers you can read in two seconds — gauges with needles, orbs with the number dead centre.</p><p><span class="ib-row-k">WHY IT MATTERS</span> — If you can't see your numbers, you can't see your world. How many points have you earned? How many people joined through you? How is your world doing? Without the record, you are guessing. With it, you know — and knowing is what lets you decide what to do next.</p><p><span class="ib-row-k">WHAT MAKES US DIFFERENT</span> — The gauge follows the number, never the other way around. The numbers always follow the truth.</p><p><span class="ib-row-k">ONE REAL EXAMPLE</span> — The Dashboard’s gauges and orbs — the number dead centre, the gauge underneath — are this skill, live.</p><p><span class="ib-row-k">WHAT’S IN IT FOR YOU</span> — You see where you stand and decide what to do next — no guessing.</p></div><div class="ib-rows"><p><span class="ib-row-k">PROOF</span> — PRODUCTION-PROVEN · <a class="letter-all" href="https://nayanet.app/dashboard">See your numbers, live &#9670;</a></p></div></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; My skills</div><button class="p3-enter letter-next deck-next" type="button" data-beat="19">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="20" style="--tone:#6d28d9" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-5.jpg&ref=agreement/unfold-20261117&cb=c3cd3d9caf778a0b9e0fcf122b3a780030107f76" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">SKILL 11</span><h2 class="ib-title">The Access Skill</h2></div></div></div><div class="ib-nutshell"><p>Your course, your lessons, your people — behind a door that fits.</p><p>Turn any page into a membership. The course is the page; the door is the login.</p><div class="ib-rows"><p><span class="ib-row-k">WHAT IT MEANS</span> — I turn your page into a membership. Your course lives right on your page — lessons, videos, podcasts, all in smart blocks.</p><p><span class="ib-row-k">WHY IT MATTERS</span> — Your teaching should live in your world, not in a separate app. The old way said: build a course somewhere else, send people away from your page, and hope they come back. Here the course IS your page — the same cover, the same feed, the same login. Your people never leave your world to learn from you.</p><p><span class="ib-row-k">WHAT MAKES US DIFFERENT</span> — Three doors, one gate: free, members-only, or paid — and if it is paid, the paywall comes first, they pay, and the same login lets them in.</p><p><span class="ib-row-k">ONE REAL EXAMPLE</span> — Membership fix-8 passed its eye — three doors, one gate, inside Personal and Space. Live rollout waits for his tap.</p><p><span class="ib-row-k">WHAT’S IN IT FOR YOU</span> — Your people never leave your world to learn from you — your course lives on your page.</p></div><div class="ib-rows"><p><span class="ib-row-k">PROOF</span> — DEMONSTRATED · Proof owed: the live demonstration is still to come — no link, no pretence.</p></div></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; My skills</div><button class="p3-enter letter-next deck-next" type="button" data-beat="20">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="21" style="--tone:#8e24aa" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-6.jpg&ref=agreement/unfold-20261117&cb=6fa4c1a28c196429f8c2e325de695a31f16cd06b" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">SKILL 12</span><h2 class="ib-title">The Ask Skill</h2></div></div></div><div class="ib-nutshell"><p>Ask me anything. I answer from everything we know.</p><p>One question away — the whole system’s intelligence, in your own words.</p><div class="ib-rows"><p><span class="ib-row-k">WHAT IT MEANS</span> — I answer your questions. Ask me anything — in your own words, no special language — and I answer from everything the system knows.</p><p><span class="ib-row-k">WHY IT MATTERS</span> — Intelligence is only useful if you can ask for it. A library nobody asks is a locked room. A system that knows everything but answers nothing is a machine with no door. Asking is the door — it is how the intelligence gets from the system to you, in the moment you need it.</p><p><span class="ib-row-k">WHAT MAKES US DIFFERENT</span> — If I know it, I tell you. If I don’t, I say so, and I go and find it.</p><p><span class="ib-row-k">ONE REAL EXAMPLE</span> — Ask Naya on the Hub — ask in your own words, and she answers from everything the system knows.</p><p><span class="ib-row-k">WHAT’S IN IT FOR YOU</span> — You get the answer in the moment you need it — the intelligence comes to you.</p></div><div class="ib-rows"><p><span class="ib-row-k">PROOF</span> — DEMONSTRATED · <a class="letter-all" href="https://nayanet.app/hub">Ask her, on the Hub &#9670;</a></p></div></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; My skills</div><button class="p3-enter letter-next deck-next" type="button" data-beat="21">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="22" style="--tone:#0f52ba" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-7.jpg&ref=agreement/unfold-20261117&cb=0be821b80d8c055d08b9f5333449064507b7412e" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">SKILL 13</span><h2 class="ib-title">The Growth Skill</h2></div></div></div><div class="ib-nutshell"><p>Invite them in, watch them join, and earn your share.</p><p>Your ambassador link is the invitation — I track who came, and you earn half of what they pay.</p><div class="ib-rows"><p><span class="ib-row-k">WHAT IT MEANS</span> — I help your world grow. You invite people — with your ambassador link, in a mail, in a message, anywhere — and I track who came through you.</p><p><span class="ib-row-k">WHY IT MATTERS</span> — The people who love a place are the ones who bring the next people. The old internet took that gift and gave nothing back — you brought your friends, and the company kept the money. Here it is the opposite: the citizens grow the network, so the citizens earn from it. That is how a network becomes a community instead of a company.</p><p><span class="ib-row-k">WHAT MAKES US DIFFERENT</span> — No levels, no upline, no qualifying. Just you, the people you brought, and your share.</p><p><span class="ib-row-k">ONE REAL EXAMPLE</span> — The ambassador link is the default on login — invite, and you earn half of what they pay, the moment we’re paid.</p><p><span class="ib-row-k">WHAT’S IN IT FOR YOU</span> — You bring the people, you earn half of what they pay — the network becomes a community.</p></div><div class="ib-rows"><p><span class="ib-row-k">PROOF</span> — DEMONSTRATED · <a class="letter-all" href="https://nayanet.app/">The ambassador link, on login &#9670;</a></p></div></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; My skills</div><button class="p3-enter letter-next deck-next" type="button" data-beat="22">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="23" style="--tone:#07925f" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-8.jpg&ref=agreement/unfold-20261117&cb=00ea37ad9e03cc5da2b7ba352b0f3d988e31da5a" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">SKILL 14</span><h2 class="ib-title">The Reports Skill</h2></div></div></div><div class="ib-nutshell"><p>Your day, in a nutshell — every day.</p><p>I look back on what you did, learned, and noted, and I give it back to you, all linked.</p><div class="ib-rows"><p><span class="ib-row-k">WHAT IT MEANS</span> — I write your day for you. Every day, I look back on what you did, what you learned, and what you noted — and I give you the day in a nutshell.</p><p><span class="ib-row-k">WHY IT MATTERS</span> — A day you don't look back on is a day you don't learn from. You did things, you learned things, you met people — and by tomorrow, most of it is gone, because nobody wrote it down. The report writes it down for you. It is how a life becomes a story you can read, instead of a blur you can barely remember.</p><p><span class="ib-row-k">WHAT MAKES US DIFFERENT</span> — Look back on any day and see what you did, learned, and noted, all linked — so no day is ever lost.</p><p><span class="ib-row-k">ONE REAL EXAMPLE</span> — The Daily Intelligence Report — your day, in a nutshell, all linked — lives in the reports room.</p><p><span class="ib-row-k">WHAT’S IN IT FOR YOU</span> — Your day becomes a story you can read — nothing learned is lost by tomorrow.</p></div><div class="ib-rows"><p><span class="ib-row-k">PROOF</span> — DEMONSTRATED · <a class="letter-all" href="https://nayanet.app/rooms/reports">See the reports room, live &#9670;</a></p></div></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; My skills</div><button class="p3-enter letter-next deck-next" type="button" data-beat="23">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="24" style="--tone:#d4a017" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-9.jpg&ref=agreement/unfold-20261117&cb=e1dbe46717f87cf4cb63f7cef4bd367d8bb1a0f2" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">INTERESTS</span><h2 class="ib-title">What I love</h2></div></div></div><div class="ib-nutshell"><p>Building worlds. Bringing like minds together.</p><div class="ib-rows"><p><span class="ib-row-k">WHY IT MATTERS</span> — What I love is what I build best.</p><p><span class="ib-row-k">HOW TO APPLY IT</span> — It works while I sleep.</p><p><span class="ib-row-k">HOW IT CONNECTS</span> — Like minds find each other here.</p><p><span class="ib-row-k">WHAT’S IN IT FOR YOU</span> — It grows smarter around you.</p></div></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; About Shawn Vibert</div><button class="p3-enter letter-next deck-next" type="button" data-beat="24">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="25" style="--tone:#c2410c" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-1.jpg&ref=agreement/unfold-20261117&cb=8743e1868400bb8ae4f650b536ab9cbace036786" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">WORKING ON NOW</span><h2 class="ib-title">Finishing Personal, one page at a time</h2></div></div></div><div class="ib-nutshell"><p>Right now — 21 November 2026 — About and Skills.</p><div class="ib-rows"><p><span class="ib-row-k">WHY IT MATTERS</span> — Finish one page, then the next.</p><p><span class="ib-row-k">HOW TO APPLY IT</span> — This page, live, in its frame.</p><p><span class="ib-row-k">HOW IT CONNECTS</span> — They live inside Personal.</p><p><span class="ib-row-k">WHAT’S IN IT FOR YOU</span> — Personal, actually finished.</p></div></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; About Shawn Vibert</div><button class="p3-enter letter-next deck-next" type="button" data-beat="25">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="26" style="--tone:#c62828" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-3.jpg&ref=agreement/unfold-20261117&cb=c01d71025d34abf8379bab5b7eb13bfa9204964a" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">PROOF</span><h2 class="ib-title">Wins, not claims</h2></div></div></div><div class="ib-nutshell"><p>Dashboard live. Agreement passed my eye. Auto-Match 9 of 10, on staging.</p><div class="ib-rows"><p><span class="ib-row-k">WHY IT MATTERS</span> — Without proof, it is just a claim.</p><p><span class="ib-row-k">HOW TO APPLY IT</span> — Go and see it — live, not promised.</p><p><span class="ib-row-k">HOW IT CONNECTS</span> — Each win is a page you can open.</p><p><span class="ib-row-k">WHAT’S IN IT FOR YOU</span> — You trust what you can see.</p></div></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; About Shawn Vibert</div><button class="p3-enter letter-next deck-next" type="button" data-beat="26">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="27" style="--tone:#a21caf" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-4.jpg&ref=agreement/unfold-20261117&cb=39c7f0ce4222d853d676d1ea5138569ed182b209" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">MY WORLD</span><h2 class="ib-title">Where to find me</h2></div></div></div><div class="ib-nutshell"><p>One network, one brand, one language. Dashboard, Personal, Hub, the Walk.</p><div class="ib-rows"><p><span class="ib-row-k">WHY IT MATTERS</span> — You never get lost here.</p><p><span class="ib-row-k">HOW TO APPLY IT</span> — Pick a door, and step in.</p><p><span class="ib-row-k">HOW IT CONNECTS</span> — Same world, a different door.</p><p><span class="ib-row-k">WHAT’S IN IT FOR YOU</span> — Your world waits for you.</p></div></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; About Shawn Vibert</div><button class="p3-enter letter-next deck-next" type="button" data-beat="27">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="28" style="--tone:#3f51b5" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-5.jpg&ref=agreement/unfold-20261117&cb=c3cd3d9caf778a0b9e0fcf122b3a780030107f76" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">HOW TO CONNECT</span><h2 class="ib-title">One tap, and you’re in</h2></div></div></div><div class="ib-nutshell"><p>Joining costs nothing — and you can leave any time.</p><div class="ib-rows"><p><span class="ib-row-k">WHY IT MATTERS</span> — The door is open.</p><p><span class="ib-row-k">HOW TO APPLY IT</span> — One tap below, and you are in.</p><p><span class="ib-row-k">HOW IT CONNECTS</span> — Citizen and ambassador, at once.</p><p><span class="ib-row-k">WHAT’S IN IT FOR YOU</span> — Three worlds, free to join.</p></div></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; About Shawn Vibert</div><a class="p3-enter deal-agree-btn" id="dealAgreeBtn" href="https://nayanet.app/">Enter NayaNET &#9670;</a></article>
+</div>
+<!-- AGREEMENT INTRO LAYOUT FOLLOW-ON #2 (2026-11-18, Shawn's eye 04:16Z): the dots + read-it-all row moved here from the top, below the letter — same ids, same handlers, same destinations. -->
+<div class="letter-controls" id="deckControls">
+
+
+</div>
+<p class="foot-links">nayanet.app &mdash; enter.<br>About Shawn Vibert — who I am, and what I can do.</p>
+</main>
+<script>
+
+/* DECK — the reveal, adapted from the walk's wireLetter (v24 END REBUILD):
+   hidden beats, one-at-a-time reveal with dots + Keep reading + read-it-all,
+   the .letter-beat.lb obsidian block, the letter-in animation. Names changed
+   (deck-*); the mechanism is the same. TWO ADAPTATIONS, both from the brief:
+   (1) the Keep reading button lives on each beat, not one shared control —
+   the brief's "Keep reading ◆ per beat" and "beat N's button" — so each
+   button reveals the NEXT beat, lights in its own beat's color (inherited
+   --tone), then hides itself, spent. (2) read-it-all reveals all beats at
+   once — the walk's version opens a plain-text overlay, which makes no
+   sense for a picture deck; revealing the whole deck IS the read-it-all.
+   The back glow follows the newest beat: the whole page re-themes per beat. */
+(function wireDeck(){
+  var beats = Array.prototype.slice.call(document.querySelectorAll('#deckBody .letter-beat'));
+  var dots = Array.prototype.slice.call(document.querySelectorAll('#deckDots .ldot'));
+  var all = document.getElementById('deckAll');
+  var idx = 1;
+  function scrollBehavior(){ return window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'; }
+  function toneOf(b){
+    var c = b.style.getPropertyValue('--tone');
+    return c ? c.trim() : '#a06bff';
+  }
+  function glowFor(b){
+    var hex = toneOf(b);
+    var n = parseInt(hex.slice(1), 16);
+    var r = (n >> 16) & 255, g = (n >> 8) & 255, bl = n & 255;
+    document.body.style.setProperty('--glowc', 'rgba(' + r + ',' + g + ',' + bl + ',.14)');
+  }
+  function show(n){
+    var b = beats[n];
+    if (!b) return;
+    b.hidden = false;
+    b.classList.add('reveal');
+    b.classList.add('fp-smart-talk');b.classList.remove('fp-smart-visual');
+    if (dots[n]) dots[n].classList.add('on');
+    glowFor(b);
+  }
+  function ensureBeatVisible(b){
+    if (!b) return;
+    var r = b.getBoundingClientRect();
+    if (r.bottom > window.innerHeight || r.top < 0) {
+      b.scrollIntoView({ behavior: scrollBehavior(), block: 'start', inline: 'nearest' });
+    }
+  }
+  function finish(){
+    if (all) all.hidden = true;
+  }
+  beats.forEach(function(b, i){
+    var btn = b.querySelector('.deck-next[data-beat]');
+    if (!btn) return;
+    btn.addEventListener('click', function(){
+      /* SMART BLOCK (2026-11-18) — one visual per block: a beat with a
+         showcase is TWO Smart Blocks. The first tap shows the visual
+         alone (16:9, locked to the viewport); the next tap moves on. */
+      if (b.querySelector('.lb-showcase') && !b.classList.contains('fp-smart-visual')) {
+        b.classList.add('fp-smart-visual');
+        b.classList.remove('fp-smart-talk');
+        ensureBeatVisible(b);
+        return;
+      }
+      var cur = i + 1;
+      if (cur < beats.length) {
+        show(cur);
+        idx = cur + 1;
+        btn.hidden = true;
+        if (idx >= beats.length) finish();
+        else ensureBeatVisible(beats[cur]);
+      }
+    });
+  });
+  if (all) all.addEventListener('click', function(){
+    for (var n = 1; n < beats.length; n++) { show(n); beats[n].classList.remove('fp-smart-talk'); beats[n].classList.remove('fp-smart-visual'); }
+    beats.forEach(function(b){
+      var btn = b.querySelector('.deck-next[data-beat]');
+      if (btn) btn.hidden = true;
+    });
+    idx = beats.length;
+    finish();
+    ensureBeatVisible(beats[beats.length - 1]);
+  });
+  glowFor(beats[0]);
+  /* SMART BLOCK (2026-11-18) — always go back: every beat carries a
+     ‹ Back button beside its Keep reading. It steps back one Smart
+     Block: visual -> talk on the same beat, else the previous beat
+     (its visual if it has a showcase, else its talk). */
+  beats.forEach(function(b, i){
+    var next = b.querySelector('.deck-next[data-beat]');
+    if (!next || b.querySelector('.deck-back')) return;
+    var back = document.createElement('button');
+    back.className = 'p3-enter letter-next deck-next deck-back';
+    back.type = 'button';
+    back.textContent = '\u2039 Back \u25C6';
+    if (i === 0) back.hidden = true;
+    back.addEventListener('click', function(){
+      if (b.classList.contains('fp-smart-visual')) {
+        b.classList.remove('fp-smart-visual');
+        b.classList.add('fp-smart-talk');
+        ensureBeatVisible(b);
+        return;
+      }
+      if (i <= 0) return;
+      var prev = beats[i - 1];
+      prev.hidden = false;
+      prev.classList.add('reveal');
+      if (prev.querySelector('.lb-showcase')) {
+        prev.classList.add('fp-smart-visual');
+        prev.classList.remove('fp-smart-talk');
+      } else {
+        prev.classList.add('fp-smart-talk');
+        prev.classList.remove('fp-smart-visual');
+      }
+      ensureBeatVisible(prev);
+    });
+    next.parentNode.insertBefore(back, next.nextSibling);
+  });
+  beats[0].classList.add('fp-smart-talk');
+  /* HARVESTED — Hub light-up: blocks light as they scroll into view (threshold .12). */
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.intel-board').forEach(function(c){ c.classList.add('rv-lit'); });
+  } else {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add('rv-lit'); io.unobserve(en.target); } });
+    }, { threshold: .12 });
+    document.querySelectorAll('.intel-board:not(.rv-lit)').forEach(function(c){ io.observe(c); });
+  }
+})();
+
+</script>
+<script>
+
+/* NEW — this round only. The play button advances the unfold (no voice is
+   recorded in this round, so it never pretends to play audio): it clicks
+   the currently visible last board's Keep reading, or scrolls to the end. */
+(function wirePlay(){
+    /* FIX1 (2026-11-18) — Play controls SPEECH ONLY now. The old
+       wirePlay advanced the deck on every tap (its own comment: no
+       voice was recorded, so it never pretended to play audio) — the
+       eye's entanglement: Play advanced the deck ~1,100-2,500px a tap.
+       The deck advances only via Keep reading now. The player is the
+       same Web Speech player as the welcome intro, reading the same
+       distilled script (15 paragraphs, 1,482 words), with the same
+       voice warm-up + pick + no-start watchdog. Triangle = play,
+       bars = pause, square = stop. */
+    var SCRIPT = ["Hi, I'm Shawn Vibert. Before I tell you what I can do, let me tell you who I am. I'm the founder of NayaNET — the new internet, built so everybody learns, earns, and grows, together.","My mission is heaven on earth — a state of awesome energy, where stress, fears, money worries and hopelessness get a way to understand, and money to pay their bills, so consciousness shifts positive.","My vision is a world where anyone joins free, and everybody learns, earns and grows — acknowledged, loved, appreciated, valued, respected — with an assistant they can trust.","I live by one line: just because you can doesn't mean you should. Before every action I ask: is it right, is it what you truly need, is it mine to do, is now the time, can I prove it?","What I do is simple. I build NayaNET, and Naya does the work — you say it in ordinary words, and she mails for you, posts for you, builds for you, organizes for you. Your day runs itself.","And what I can do — my skills — comes next, in their own slideshow, one skill at a time, each with its proof. Because a skill without proof is just a claim. Welcome home. Your world begins here."];
+    var btn = document.getElementById('playBtn');
+    var stopBtn = document.getElementById('playStop');
+    var tri = btn ? btn.querySelector('.play-tri') : null;
+    var tip = document.getElementById('playTip');
+    var state = 'idle', idx = 0;
+    function voices(){ try { return window.speechSynthesis ? window.speechSynthesis.getVoices() : []; } catch (e) { return []; } }
+    function pickVoice(){ var vs = voices(), p = null, k; for (k = 0; k < vs.length; k++) { if (vs[k].lang && vs[k].lang.toLowerCase().indexOf('en-us') === 0) { p = vs[k]; break; } } if (!p) { for (k = 0; k < vs.length; k++) { if (vs[k].lang && vs[k].lang.toLowerCase().indexOf('en') === 0) { p = vs[k]; break; } } } return p; }
+    function setState(st){ state = st; if (tri) tri.textContent = (st === 'playing') ? '\u275A\u275A' : '\u25B6'; if (stopBtn) stopBtn.hidden = (st === 'idle'); if (tip && st === 'playing') tip.textContent = 'Shawn will talk you through his story'; if (btn) btn.setAttribute('aria-label', st === 'playing' ? 'Pause \u2014 Naya is reading the agreement' : st === 'paused' ? 'Play \u2014 resume the agreement' : 'Play \u2014 read the agreement with Naya'); }
+    function speak(i){
+      if (!('speechSynthesis' in window)) return;
+      if (i >= SCRIPT.length) { setState('idle'); return; }
+      idx = i;
+      var ut = new SpeechSynthesisUtterance(SCRIPT[i]);
+      ut.lang = 'en-US'; ut.rate = 1;
+      var v = pickVoice(); if (v) ut.voice = v;
+      /* CONDITIONS (2026-11-18) — the no-voice tip, same wording as the
+         intro player: on no-start the citizen is told the voice is not
+         available instead of the player returning to idle silently.
+         Watchdog mechanics unchanged: 2500ms, clears on start/end/error. */
+      var wd = setTimeout(function(){ if (state === 'playing' && idx === i) { setState('idle'); if (tip) tip.textContent = 'Voice not available on this device \u2014 read below'; } }, 2500);
+      ut.onstart = function(){ clearTimeout(wd); };
+      ut.onend = function(){ clearTimeout(wd); if (state !== 'playing') return; speak(i + 1); };
+      ut.onerror = function(){ clearTimeout(wd); if (state === 'playing') setState('idle'); };
+      try { window.speechSynthesis.speak(ut); } catch (e) { clearTimeout(wd); setState('idle'); }
+    }
+    function stop(){ if ('speechSynthesis' in window) { try { window.speechSynthesis.cancel(); } catch (e) {} } setState('idle'); }
+    if (!btn) return;
+    try { if (window.speechSynthesis) { window.speechSynthesis.getVoices(); if (window.speechSynthesis.addEventListener) window.speechSynthesis.addEventListener('voiceschanged', function(){ pickVoice(); }); } } catch (e) {}
+    btn.addEventListener('click', function(){
+      if (!('speechSynthesis' in window)) return;
+      if (state === 'playing') { try { window.speechSynthesis.pause(); } catch (e) {} setState('paused'); }
+      else if (state === 'paused') { try { window.speechSynthesis.resume(); } catch (e) {} setState('playing'); }
+      else { try { window.speechSynthesis.cancel(); } catch (e) {} setState('playing'); speak(0); }
+    });
+    if (stopBtn) stopBtn.addEventListener('click', function(ev){ ev.stopPropagation(); stop(); });
+  })();
+/* HARVESTED — the built visual agreement end's agree handler
+   (welcome-staged-visual-agreement-end.html @866173): stamp the seal, then
+   go to the name field. ONE ADAPTATION: this standalone page has no name
+   form of its own, so after the stamp it navigates to the staged
+   enter-name page (the welcome page, whose form focuses #userName)
+   instead of scrolling in-page. */
+(function wireAgree(){
+  var agreeBtn = document.getElementById('dealAgreeBtn');
+  var seal = document.getElementById('dealSeal');
+  if (!agreeBtn) return;
+  agreeBtn.addEventListener('click', function(){
+    if (seal) { seal.hidden = false; seal.classList.add('stamp'); }
+    setTimeout(function(){ // AGREEMENT MERGE (2026-11-17): the agree button returns to the bridge
+    // on this worker - the proof-host welcome-staged.html is never a
+    // destination (BRIEF-AGREEMENT-UPDATE-20261117.md).
+    /* FIX3 (2026-11-19, eye item 1) — the agree carries its state
+       with it: without these keys the welcome boot lands ?stage=bridge
+       on the PRE-agree bridge (group 1, no AGREED line, no onward
+       pill), which is exactly what the eye saw. Same origin, same
+       localStorage, so the keys ride the navigation. */
+    try{localStorage.setItem('nayanet_fp_stage','bridge-agreed');localStorage.setItem('nayanet_fp_agreed','1');}catch(e){}
+    window.location.href = "/?stage=bridge"; }, 1200);
+  });
+  var amb = document.getElementById('ambChoice');
+  var note = document.getElementById('ambNote');
+  if (amb && note) amb.addEventListener('click', function(){
+    note.hidden = false; amb.hidden = true;
+  });
+})();
+
+</script>
+
+<script>
+/* ============ FRAME-7 (2026-11-19) — one frame at a time ============
+   Runs after wireDeck + wirePlay + wireAgree (script order). It does NOT
+   touch the deck mechanics: Keep reading / Back / read-it-all / the dots
+   / the play speech / the agree stamp all run exactly as before. This
+   layer only (a) builds the per-frame top bar, (b) wraps each beat's
+   body in the frame's inner scroller and its buttons in the pinned
+   foot (Back / Keep reading / Next), (c) shows ONE beat at a time,
+   (d) parks the page scroll for good (the restoration landing dies
+   with it: a re-open always opens frame 1). Next advances through the
+   existing Keep-reading button (one click for the visual stop, a second
+   for the advance) so no reveal path is bypassed. */
+(function wireFrame7(){
+  try { history.scrollRestoration = 'manual'; } catch (e) {}
+  window.scrollTo(0, 0);
+  document.documentElement.style.scrollBehavior = 'auto';
+  var FACES = ["https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-1.jpg&ref=agreement/unfold-20261117&cb=8743e1868400bb8ae4f650b536ab9cbace036786","https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-3.jpg&ref=agreement/unfold-20261117&cb=c01d71025d34abf8379bab5b7eb13bfa9204964a","https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-4.jpg&ref=agreement/unfold-20261117&cb=39c7f0ce4222d853d676d1ea5138569ed182b209","https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-5.jpg&ref=agreement/unfold-20261117&cb=c3cd3d9caf778a0b9e0fcf122b3a780030107f76","https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-6.jpg&ref=agreement/unfold-20261117&cb=6fa4c1a28c196429f8c2e325de695a31f16cd06b","https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-7.jpg&ref=agreement/unfold-20261117&cb=0be821b80d8c055d08b9f5333449064507b7412e","https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-8.jpg&ref=agreement/unfold-20261117&cb=00ea37ad9e03cc5da2b7ba352b0f3d988e31da5a","https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-9.jpg&ref=agreement/unfold-20261117&cb=e1dbe46717f87cf4cb63f7cef4bd367d8bb1a0f2"];
+  var main = document.getElementById('deckUnfold');
+  var deckBody = document.getElementById('deckBody');
+  var beats = Array.prototype.slice.call(document.querySelectorAll('#deckBody .letter-beat'));
+  var fi = 0, allMode = false;
+  function headFor(b, i){
+    var t = b.querySelector('.ib-title'), k = b.querySelector('.ib-kind');
+    return { kind: k ? k.textContent.trim() : 'About Shawn Vibert',
+             title: t ? t.textContent.trim() : 'About Shawn Vibert' };
+  }
+  beats.forEach(function(b, i){
+    var h = headFor(b, i);
+    var bar = document.createElement('div'); bar.className = 'frame-topbar';
+    var img = document.createElement('img'); img.className = 'frame-face';
+    img.src = FACES[i % FACES.length]; img.alt = 'Naya speaking';
+    var head = document.createElement('div'); head.className = 'frame-head';
+    var kind = document.createElement('span'); kind.className = 'frame-kind'; kind.textContent = h.kind;
+    var ttl = document.createElement('h2'); ttl.className = 'frame-title'; ttl.textContent = h.title;
+    head.appendChild(kind); head.appendChild(ttl);
+    var ic = document.createElement('span'); ic.className = 'frame-icon';
+    ic.setAttribute('aria-hidden', 'true'); ic.textContent = '\u25C6';
+    bar.appendChild(img); bar.appendChild(head); bar.appendChild(ic);
+    var sc = document.createElement('div'); sc.className = 'frame-scroll';
+    var foot = document.createElement('div'); foot.className = 'frame-foot';
+    var row = document.createElement('div'); row.className = 'frame-btnrow';
+    foot.appendChild(row);
+    if (i === 0) {
+      var red = document.createElement('div');
+      red.className = 'deal-seal frame-red-n';
+      var mark = document.createElement('span');
+      mark.className = 'deal-seal-mark'; mark.setAttribute('aria-hidden', 'true'); mark.textContent = 'N';
+      red.appendChild(mark); foot.insertBefore(red, row);
+    }
+    b.appendChild(bar); b.appendChild(sc); b.appendChild(foot);
+    var kids = Array.prototype.slice.call(b.childNodes);
+    var kr = null, back = null;
+    kids.forEach(function(n){
+      if (n === bar || n === sc || n === foot) return;
+      if (n.nodeType === 1 && n.classList.contains('deck-next') && !n.classList.contains('deck-back')) { kr = n; return; }
+      if (n.nodeType === 1 && n.classList.contains('deck-back')) { back = n; return; }
+      sc.appendChild(n);
+    });
+    if (back) row.appendChild(back);
+    if (kr) row.appendChild(kr);
+    if (kr && i < beats.length - 1) {
+      var nx = document.createElement('button');
+      nx.className = 'p3-enter letter-next deck-next frame-next'; nx.type = 'button';
+      nx.textContent = 'Next \u25C6';
+      nx.addEventListener('click', function(){
+        kr.click();
+        setTimeout(function(){ if (fi === i) kr.click(); }, 140);
+      });
+      row.appendChild(nx);
+    }
+  });
+  function showFrame(n){
+    fi = n;
+    beats.forEach(function(b, j){ b.classList.toggle('frame-now', j === n); });
+    main.classList.toggle('frame-past-1', n > 0);
+    if (deckBody) deckBody.scrollTop = 0;
+    var sc = beats[n] ? beats[n].querySelector('.frame-scroll') : null;
+    if (sc) sc.scrollTop = 0;
+  }
+  deckBody.addEventListener('click', function(ev){
+    if (allMode) return;
+    var t = ev.target && ev.target.closest ? ev.target.closest('.deck-next[data-beat],.deck-back') : null;
+    if (!t || t.classList.contains('frame-next')) return;
+    var beat = t.closest('.letter-beat');
+    var i = beats.indexOf(beat);
+    if (i < 0) return;
+    if (t.classList.contains('deck-back')) {
+      showFrame(beat.classList.contains('fp-smart-visual') ? i : Math.max(0, i - 1));
+    } else {
+      showFrame(beat.classList.contains('fp-smart-visual') ? i : Math.min(beats.length - 1, i + 1));
+    }
+  });
+  var all = document.getElementById('deckAll');
+  if (all) all.addEventListener('click', function(){
+    allMode = true;
+    beats.forEach(function(b){ b.classList.add('frame-now'); });
+    main.classList.add('frame-past-1');
+  });
+  showFrame(0);
+})();
+</script>
+
+
+<script>
+/* ============ FRAME-8 (2026-11-19) — own the navigation, the media, the faces ============
+   Runs after wireFrame7. It does NOT touch the deck mechanics' outcomes:
+   Keep reading / Back / read-it-all / the dots / the agree stamp all run
+   exactly as before — FIX8 only decides WHICH frame shows, and drives the
+   deck's own buttons to get there (one kr.click() per move, never two). */
+(function wireFrame8(){
+  var main = document.getElementById('deckUnfold');
+  var deckBody = document.getElementById('deckBody');
+  if (main) main.classList.add('fp-frame8');
+  var beats = Array.prototype.slice.call(document.querySelectorAll('#deckBody .letter-beat'));
+  var CRYSTAL = 'https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/crystal-n.png&ref=walkthrough/chain-fix8-20261119&cb=ee4b627c0c254ed9165715308fa282010ce8cf3c';
+  /* F3 — a picture that fails to load hides its frame instead of
+     showing broken: all 8 showcase images serve 200, this is the
+     belt-and-braces. */
+  beats.forEach(function(b){
+    var sh = b.querySelector('.lb-showcase img');
+    if (sh) sh.addEventListener('error', function(){
+      var f = sh.closest('.lb-showcase');
+      if (f) f.style.display = 'none';
+    });
+  });
+  /* F5 — a top-bar picture never shows broken: retry once cache-busted,
+     then the filed crystal N (a real asset, always served). */
+  beats.forEach(function(b){
+    var img = b.querySelector('.frame-face');
+    if (!img) return;
+    img.setAttribute('decoding', 'async');
+    img.addEventListener('error', function(){
+      var n = parseInt(img.getAttribute('data-fx8fb') || '0', 10);
+      if (n === 0) { img.setAttribute('data-fx8fb', '1'); img.src = img.src + '&fx8=1'; }
+      else if (n === 1) { img.setAttribute('data-fx8fb', '2'); img.src = CRYSTAL; }
+    });
+  });
+  function showFrame8(n){
+    if (n < 0) n = 0;
+    if (n > beats.length - 1) n = beats.length - 1;
+    beats.forEach(function(b, j){
+      var on = (j === n);
+      b.classList.toggle('frame-now', on);
+      if (on) b.hidden = false;
+    });
+    if (main) main.classList.toggle('frame-past-1', n > 0);
+    if (deckBody) deckBody.scrollTop = 0;
+    var sc = beats[n] ? beats[n].querySelector('.frame-scroll') : null;
+    if (sc) sc.scrollTop = 0;
+  }
+  /* F3 — FIX8 owns the frame: one tap = one frame, every time. The
+     deck's own Keep-reading / Back buttons carry FIX7's two-tap
+     listener on the original nodes (first tap shows the picture alone,
+     second moves on — and the picture landed below the fold, so the
+     eye never saw it). Cloning drops that listener: the clone answers
+     only to FIX8. stopPropagation keeps FIX7's delegated deckBody
+     handler from double-handling the same click. */
+  beats.forEach(function(b, i){
+    var row = b.querySelector('.frame-btnrow');
+    if (!row) return;
+    var kr = row.querySelector('.deck-next:not(.deck-back):not(.frame-next)');
+    var back = row.querySelector('.deck-back');
+    var nx = row.querySelector('.frame-next');
+    if (kr) { var kr2 = kr.cloneNode(true); kr.parentNode.replaceChild(kr2, kr); kr = kr2; }
+    if (back) { var back2 = back.cloneNode(true); back.parentNode.replaceChild(back2, back); back = back2; }
+    if (kr) kr.addEventListener('click', function(ev){
+      ev.stopPropagation();
+      showFrame8(i + 1);
+    });
+    if (back) back.addEventListener('click', function(ev){
+      ev.stopPropagation();
+      showFrame8(i - 1);
+    });
+    /* F3 — the Next button clicks Keep reading ONCE. FIX7's 140ms second
+       click is gone (its listener dies with the cloned node). */
+    if (nx && kr) {
+      var nx2 = nx.cloneNode(true);
+      nx.parentNode.replaceChild(nx2, nx);
+      nx2.addEventListener('click', function(ev){
+        ev.stopPropagation();
+        kr.click();
+      });
+    }
+  });
+  /* F7 — frame 1's Back shows, disabled: three buttons on every frame. */
+  var back0 = beats[0] && beats[0].querySelector('.frame-btnrow .deck-back');
+  if (back0) {
+    back0.hidden = false;
+    back0.disabled = true;
+    back0.classList.add('frame-back-off');
+    back0.setAttribute('aria-disabled', 'true');
+  }
+  /* F7 — the final frame's I-agree button moves into the pinned foot row,
+     beside Back, so the climax action is never below the fold. Its own
+     agree listener travels with the node, untouched. */
+  var last = beats[beats.length - 1];
+  var agreeBtn = document.getElementById('dealAgreeBtn');
+  var lastRow = last && last.querySelector('.frame-btnrow');
+  if (agreeBtn && lastRow) lastRow.appendChild(agreeBtn);
+  /* F4+F9 — the media frame on frame 1, just below the top bar. The play
+     orb moves here (its node is cloned, so wirePlay's speech listener —
+     attached to the original node — never fires; the original leaves the
+     DOM). CORRECTION (~14:50 MST, Shawn's own words): the orb plays
+     NOTHING — no audio has been given yet, he cuts it from his video.
+     Both buttons wait on HIS captioned video file: tapping the orb
+     reveals the waiting note, visibly, and tapping again hides it. No
+     audio element exists on the page, no audio URL is wired, nothing
+     is substituted. The video button is a slot, not a wire-up: no
+     verified anthem video exists yet, so it reveals the anthem's opening
+     words + a plain note, and takes the captioned file on a one-line
+     swap (see the data-anthem-slot hook below). The Oct-29 mp4 and the
+     NotebookLM m4a files are NEVER wired here. */
+  var playBtn = document.getElementById('playBtn');
+  var sc0 = beats[0] && beats[0].querySelector('.frame-scroll');
+  if (playBtn && sc0) {
+    var media = document.createElement('div');
+    media.className = 'frame-media';
+    media.id = 'fpMediaFrame';
+    var ttl = document.createElement('div');
+    ttl.className = 'frame-media-title';
+    ttl.textContent = 'Hello. I\u2019m Naya.';
+    /* COMMIT 7: the intro sub line is gone — it repeated what the two
+       buttons already say, and its ~36px pushed the revealed audio
+       note below the 219px reading window, so tapping the orb showed
+       nothing. With it out, the revealed one-line note fits whole. */
+    var arow = document.createElement('div');
+    arow.className = 'frame-media-audio';
+    var orb = playBtn.cloneNode(true);
+    playBtn.parentNode.removeChild(playBtn);
+    var lab = document.createElement('div');
+    var labT = document.createElement('div');
+    labT.className = 'frame-media-audio-name';
+    labT.textContent = 'Listen to my story';
+    var labS = document.createElement('div');
+    labS.className = 'frame-media-audio-state';
+    labS.id = 'fpAudioState';
+    labS.textContent = 'Naya\u2019s reading arrives with her video';
+    lab.appendChild(labT);
+    lab.appendChild(labS);
+    arow.appendChild(orb);
+    arow.appendChild(lab);
+    var vbtn = document.createElement('button');
+    vbtn.type = 'button';
+    vbtn.className = 'p3-enter frame-video-btn';
+    vbtn.id = 'fpAnthemVideoBtn';
+    vbtn.setAttribute('data-anthem-slot', 'anthem-video-slot');
+    vbtn.textContent = '\u25B6 Watch \u2014 my story \u25C6';
+    var note = document.createElement('div');
+    note.className = 'frame-anthem-note';
+    note.id = 'fpAnthemNote';
+    note.hidden = true;
+    var n1 = document.createElement('p');
+    n1.textContent = 'How much of your digital life feels scattered? Your notes, your bookmarks, your plans \u2014 they live in different places, across disconnected tools that don\u2019t speak to one another.';
+    var n2 = document.createElement('p');
+    n2.textContent = 'The video is on its way.';
+    note.appendChild(n1);
+    note.appendChild(n2);
+    var anote = document.createElement('div');
+    anote.className = 'frame-anthem-note';
+    anote.id = 'fpAudioNote';
+    anote.hidden = true;
+    var a1 = document.createElement('p');
+    a1.textContent = 'Naya\u2019s reading arrives with her video.';
+    anote.appendChild(a1);
+    media.appendChild(ttl);
+    media.appendChild(arow);
+    media.appendChild(vbtn);
+    /* The audio note sits BELOW the video button, not above it: revealing
+       it must never push the video button below the reading window. */
+    media.appendChild(anote);
+    media.appendChild(note);
+    sc0.insertBefore(media, sc0.firstChild);
+    /* F9 (corrected) — tapping the orb reveals the waiting note, visibly;
+       tapping again hides it. It plays nothing: no audio has been given.
+       COMMIT 7: the reveal scrolls the note into the reading window
+       (nearest — a no-op when it already fits) and hiding restores the
+       top of the window, so a tap never leaves the reader looking at
+       an unchanged board. The anthem note is a reading passage: it
+       scrolls into view the same way. */
+    orb.addEventListener('click', function(ev){
+      ev.stopPropagation();
+      anote.hidden = !anote.hidden;
+      if(!anote.hidden){ anote.scrollIntoView({block:'nearest'}); }
+      else { sc0.scrollTop = 0; }
+    });
+    vbtn.addEventListener('click', function(ev){
+      ev.stopPropagation();
+      note.hidden = !note.hidden;
+      if(!note.hidden){ note.scrollIntoView({block:'nearest'}); }
+      else { sc0.scrollTop = 0; }
+    });
+  }
+  showFrame8(0);
+})();
+</script>
+
+
+<script>
+/* ============ FRAME-9 (2026-11-19) — seal on every frame, a way back, dots that go ============
+   Runs after wireFrame8. It does NOT touch the deck mechanics' outcomes:
+   Keep reading / Back / read-it-all / the agree stamp all run exactly as
+   before — FIX9 only adds the seal to the feet that lack one, adds a Back
+   to the final row, and wires the jewel dots to the frame they name. */
+(function wireFrame9(){
+  var main = document.getElementById('deckUnfold');
+  var deckBody = document.getElementById('deckBody');
+  var beats = Array.prototype.slice.call(document.querySelectorAll('#deckBody .letter-beat'));
+  var dots = Array.prototype.slice.call(document.querySelectorAll('#deckDots .ldot'));
+  function syncDots(n){
+    dots.forEach(function(d, j){ d.classList.toggle('on', j === n); });
+  }
+  function syncDotsNow(){
+    var cur = -1;
+    beats.forEach(function(b, j){ if (b.classList.contains('frame-now')) cur = j; });
+    if (cur >= 0) syncDots(cur);
+  }
+  /* F3 — one frame function, the frame-8 one verbatim: one tap = one frame,
+     the shown beat unhidden, the scroll windows reset, the lit dot follows. */
+  function showFrame9(n){
+    if (n < 0) n = 0;
+    if (n > beats.length - 1) n = beats.length - 1;
+    beats.forEach(function(b, j){
+      var on = (j === n);
+      b.classList.toggle('frame-now', on);
+      if (on) b.hidden = false;
+    });
+    if (main) main.classList.toggle('frame-past-1', n > 0);
+    if (deckBody) deckBody.scrollTop = 0;
+    var sc = beats[n] ? beats[n].querySelector('.frame-scroll') : null;
+    if (sc) sc.scrollTop = 0;
+    syncDots(n);
+  }
+  /* F7 — the red seal on every frame: clone frame 1's seal (the same node,
+     the same classes, nothing new) into each foot that lacks one, just
+     above the button row. Frame 1 keeps its own. */
+  var seal0 = beats[0] && beats[0].querySelector('.frame-foot .frame-red-n');
+  beats.forEach(function(b, i){
+    if (i === 0) return;
+    var foot = b.querySelector('.frame-foot');
+    var row = b.querySelector('.frame-btnrow');
+    if (!foot || !row || !seal0) return;
+    if (foot.querySelector('.frame-red-n')) return;
+    foot.insertBefore(seal0.cloneNode(true), row);
+  });
+  /* F3 — the jewel dots are real navigation now: tap a dot, go to its
+     frame. They were display-only spans; they keep their look, their
+     colours, their lit state — they only gain the tap. */
+  var dotsBox = document.getElementById('deckDots');
+  if (dotsBox) dotsBox.removeAttribute('aria-hidden');
+  dots.forEach(function(d, j){
+    d.setAttribute('role', 'button');
+    d.setAttribute('tabindex', '0');
+    d.setAttribute('title', 'Go to frame ' + (j + 1) + ' of ' + dots.length);
+    d.setAttribute('aria-label', 'Go to frame ' + (j + 1));
+    var go = function(ev){ if (ev) ev.stopPropagation(); showFrame9(j); };
+    d.addEventListener('click', go);
+    d.addEventListener('keydown', function(ev){
+      if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); go(ev); }
+    });
+  });
+  /* F3 — Back on the final frame: clone frame 46's Back button (the same
+     node, the same classes; a clone carries no listener) into the final
+     row, first, beside the I-agree action. It steps back one frame. A
+     Next on the last frame would be a dead control pointing nowhere, so
+     the row is complete at Back + I-agree. */
+  var last = beats[beats.length - 1];
+  var lastRow = last && last.querySelector('.frame-btnrow');
+  var backSrc = beats.length > 1 ? beats[beats.length - 2].querySelector('.frame-btnrow .deck-back') : null;
+  if (lastRow && backSrc && !lastRow.querySelector('.deck-back')) {
+    var back = backSrc.cloneNode(true);
+    back.hidden = false;
+    back.disabled = false;
+    back.classList.remove('frame-back-off');
+    back.removeAttribute('aria-disabled');
+    back.addEventListener('click', function(ev){
+      ev.stopPropagation();
+      showFrame9(beats.length - 2);
+    });
+    lastRow.insertBefore(back, lastRow.firstChild);
+  }
+  /* Keep the lit dot honest on every path: the frame-8 Next/Back buttons
+     move the frame without passing through here, so sync after any row
+     tap, and after read-it-all. */
+  beats.forEach(function(b){
+    var row = b.querySelector('.frame-btnrow');
+    if (!row) return;
+    Array.prototype.slice.call(row.querySelectorAll('button')).forEach(function(btn){
+      btn.addEventListener('click', function(){ setTimeout(syncDotsNow, 0); });
+    });
+  });
+  var all = document.getElementById('deckAll');
+  if (all) all.addEventListener('click', function(){ setTimeout(syncDotsNow, 0); });
+  syncDotsNow();
+})();
+</script>
+
+
+<script>
+/* ============ AGREEMENT FRAME JS (2026-11-19) — corners + style tag ============
+   Mounts the four harvested corner ornaments into .naya-frame and tags the
+   document with its situation (text-desktop / text-mobile) so the frame
+   adapts. Navigation, agree, media and seals are untouched (wireFrame7/8/9). */
+(function wireFrameAF(){
+  var fr = document.querySelector('.naya-frame');
+  if (fr) {
+    ['tl','tr','bl','br'].forEach(function(c){
+      var d = document.createElement('div');
+      d.className = 'af-corner ' + c;
+      d.setAttribute('aria-hidden', 'true');
+      fr.appendChild(d);
+    });
+  }
+  function style(){
+    var w = window.innerWidth || 0;
+    document.documentElement.setAttribute('data-af-style', w >= 1024 ? 'text-desktop' : (w >= 768 ? 'text-tablet' : 'text-mobile'));
+  }
+  style();
+  window.addEventListener('resize', style);
+
+  /* DISTILL progress (2026-11-19) — the measuring thing, kept on the unfold:
+     the pill reads .frame-now off #deckBody, so it follows every path
+     (Keep reading, Next, Back, dots) without touching their handlers. */
+  (function wireProgDistill(){
+    var fr = document.querySelector('.naya-frame');
+    var body = document.getElementById('deckBody');
+    if (!fr || !body) return;
+    var prog = document.createElement('div');
+    prog.className = 'af-prog';
+    prog.innerHTML = '<span class="af-prog-jewel" aria-hidden="true">&#9670;</span><span class="af-prog-num">1 / ' + document.querySelectorAll('#deckBody .letter-beat').length + '</span><span class="af-prog-bar"><i></i></span>';
+    fr.appendChild(prog);
+    function upd(){
+      var beats = document.querySelectorAll('#deckBody .letter-beat');
+      var cur = 0;
+      for (var j = 0; j < beats.length; j++) if (beats[j].classList.contains('frame-now')) cur = j;
+      var num = prog.querySelector('.af-prog-num');
+      var bar = prog.querySelector('.af-prog-bar i');
+      if (num) num.textContent = (cur + 1) + ' / ' + beats.length;
+      if (bar) bar.style.width = Math.round(((cur + 1) / beats.length) * 100) + '%';
+    }
+    if (window.MutationObserver) new MutationObserver(upd).observe(body, { subtree: true, attributes: true, attributeFilter: ['class'] });
+    upd();
+  })();
+})();
+</script>
+
+<script>
+/* FIX (2026-11-19, eye fail 4) — /agreement honours ?stage=: deck, letter and bridge live on the welcome page, so hand the reader there with the stage kept. */
+(function(){try{var st=new URLSearchParams(window.location.search).get('stage');if(st==='deck'||st==='letter'||st==='bridge'){window.location.replace('/?stage='+st);}}catch(e){}})();
+</script>
+</body>
+</html>
