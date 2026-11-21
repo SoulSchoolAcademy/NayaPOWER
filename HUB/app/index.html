@@ -4647,7 +4647,7 @@ window.NayaLiveFeedConfig = { url: 'https://dahisasgpfvziswqvmvm.supabase.co', k
     var ctl = null, timer = null;
     try { ctl = new AbortController(); } catch (e) {}
     if (ctl) { timer = setTimeout(function(){ try { ctl.abort(); } catch (e) {} }, 15000); }
-    var q = '/rest/v1/hub_smart_notes?select=id,ib_id,title,nutshell,human_note,child_note,grandma_note,naya_note,machine_note,what_it_means,why_it_matters,whats_in_it_for_you,how_it_applies,source,author,github_path,created_at,note_created&ib_id=ilike.*sn' + num + '*&limit=5';
+    var q = '/rest/v1/hub_smart_notes?select=id,ib_id,title,nutshell,human_note,child_note,grandma_note,naya_note,machine_note,what_it_means,whats_in_it_for_you,how_it_applies,source,author,github_path,created_at,note_created&ib_id=ilike.*sn' + num + '*&limit=5';
     var p = ctl ? fetch(CFG.url + q, { signal: ctl.signal, headers: headers() }) : fetch(CFG.url + q, { headers: headers() });
     return p.then(function(r){ if (!r.ok) throw new Error('solo fetch ' + r.status); return r.json(); }).then(function(rows){
       if (timer) clearTimeout(timer);
@@ -4726,7 +4726,7 @@ window.NayaLiveFeedConfig = { url: 'https://dahisasgpfvziswqvmvm.supabase.co', k
   }
   var lastNewest = '';
   function fetchLive(){
-    var hubQ = '/rest/v1/hub_smart_notes?select=id,ib_id,title,nutshell,human_note,child_note,grandma_note,naya_note,machine_note,what_it_means,why_it_matters,whats_in_it_for_you,how_it_applies,source,author,github_path,created_at,note_created&order=created_at.desc&limit=200';
+    var hubQ = '/rest/v1/hub_smart_notes?select=id,ib_id,title,nutshell,human_note,child_note,grandma_note,naya_note,machine_note,what_it_means,whats_in_it_for_you,how_it_applies,source,author,github_path,created_at,note_created&order=created_at.desc&limit=200';
     var nnQ = '/rest/v1/naya_notes?select=id,title,body,category,created_at&owner_alias=eq.flagship-personal&category=eq.Smart%20Note&order=created_at.desc&limit=100';
     return Promise.all([
       fetch(CFG.url + hubQ, { cache:'no-store', headers: headers() }).then(function(r){ if(!r.ok) throw new Error('hub_smart_notes '+r.status); return r.json(); }),
