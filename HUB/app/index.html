@@ -2157,7 +2157,7 @@ body.msg-open{overflow:hidden;}
 /* Item 3 — inner board aligned: up a little, in a little bit; text glows; layers alive on hover */
 .intel-board .ib-layers { margin-top: -4px; padding-left: 4px; padding-right: 4px; }
 .intel-board .ib-layer { transition: transform .3s ease, box-shadow .3s ease; }
-.intel-board .ib-layer:hover { box-shadow: 0 18px 38px #000000a0, 0 0 24px -4px color-mix(in srgb, var(--lc) 55%, transparent); transform: translateY(-2px); }
+.intel-board .ib-layer:hover { border-color: color-mix(in srgb, var(--lc) 85%, #fff); box-shadow: 0 18px 38px #000000a0, 0 0 24px -4px color-mix(in srgb, var(--lc) 55%, transparent); transform: translateY(-2px); } /* SNB-LAYER-BOARDS-ELEVATED item 1: hover brightens the rim in the layer's own colour, like the nutshell's white rim-brightening (L14046). */
 .intel-board .ib-nutshell { text-shadow: 0 0 6px rgba(255,255,255,.64), 0 0 16px rgba(255,255,255,.36), 0 0 32px rgba(255,255,255,.18), 0 1px 2px rgba(0,0,0,.8); } .intel-board .ib-layer-body { text-shadow: 0 1px 2px rgba(0,0,0,.8); } /* SNB-STARS-WHITEBARS 2026-11-20 item 2: the white wash leaves the layer BODIES (dark drop only - the text sits directly on the obsidian board); the nutshell alone keeps the wash, white-lit as the headline. Supersedes the fix-1h dim, which only dimmed the wash instead of removing it. */
 /* SNB-FIX1C item 1 (eye GOES BACK #2): the .30/12px halo was too weak to read — a wide-blur low-alpha shadow spreads to near-invisible. The shadow now sits on the <p>/<ul>/<li> themselves (not just the wrapper): a tight 6px layer at .80 alpha so the halo reads, plus 16px/.45 and 32px/.22 outer layers. White stays white; headings untouched. */
 .intel-board .ib-nutshell p { text-shadow: 0 0 6px rgba(255,255,255,.64), 0 0 16px rgba(255,255,255,.36), 0 0 32px rgba(255,255,255,.18), 0 1px 2px rgba(0,0,0,.8); } .intel-board .ib-layer-body p, .intel-board .ib-layer-body ul, .intel-board .ib-layer-body li { text-shadow: 0 1px 2px rgba(0,0,0,.8); } /* SNB-STARS-WHITEBARS item 2: same split on the layer text itself (p/ul/li) - dark drop only, no white wash. */
@@ -2186,7 +2186,7 @@ body.msg-open{overflow:hidden;}
 .intel-board .add-intel { margin-left: auto; margin-right: auto; max-width: 600px; }
 .intel-board .add-intel-row input[type="text"] { border: 2px solid #ffffff; box-shadow: 0 0 0 1px rgba(255,255,255,.5), 0 0 18px rgba(255,255,255,.45); }
 .intel-board .add-intel-row input[type="text"]:hover, .intel-board .add-intel-row input[type="text"]:focus { border-color: #8e24aa; box-shadow: 0 0 0 2px #8e24aa, 0 0 24px rgba(142,36,170,.65); outline: none; }
-  .intel-board .add-intel-types { display: flex; gap: 24px; margin-top: 24px; margin-bottom: 24px; } /* SNB-FIX1G item 3: input->row 0 -> 24px, button->button 16px -> 24px (fix-1f's 24px gap still read as colliding to his eye — the collision was the 0px input->row gap). */
+  .intel-board .add-intel-types { display: flex; gap: 24px; margin-top: 64px; margin-bottom: 24px; } /* SNB-LAYER-BOARDS-ELEVATED 2026-11-20 item 6: margin-top 24px -> 64px — the input's :focus glow reaches 48px below the input (0 0 48px), so a 24px gap left the four buttons inside the glow: the collision his eye still sees. 64px clears the 48px glow with clear air, laptop and phone (this rule is unscoped; the <=700px stacked rule keeps it). */
 .intel-board .add-intel-types .intel-type { flex: 1 1 0; justify-content: center; }
 
 /* ——— SNB-FIX1C 2026-11-20 (captain's cloud-browser eye walk 11:29–11:39 MST — render requirements) ——— */
@@ -2408,8 +2408,8 @@ body.msg-open{overflow:hidden;}
   --lc: var(--ink);
   border: 2px solid color-mix(in srgb, var(--lc) 42%, #fff 8%);
   border-radius: 18px;
-  background: linear-gradient(135deg, var(--bg-raise), var(--bg));
-  box-shadow: 0 14px 30px #00000090;
+  background: #08080d; /* SNB-LAYER-BOARDS-ELEVATED 2026-11-20 item 1: the In a Nutshell board's own background (L2085), harvested — the faint raise gradient read as lines, not a board. */
+  box-shadow: 0 16px 35px #0009; /* SNB-LAYER-BOARDS-ELEVATED item 1: the nutshell's own shadow (L2085). Border stays the layer's own colour; radius stays 18px. */
   overflow: hidden;
 }
 /* Per-layer colors — Design Law v2 §2.3: one color, one job. */
@@ -3559,7 +3559,7 @@ body.ask-reading:has(.naya-ask-room) #nsbBottom{transform:translateY(calc(100% +
      still navigates (plain links to the same destinations tap() uses).
      When the script runs, NayaNotif.init() removes this node and builds
      the live bar (counts, menus, fold) in its place — no visual change. -->
-<nav id="naya-notif-bar" class="notif-bar" data-static="1" aria-label="Notifications"><div class="notif-row"><a class="notif-seg" data-notif="plus" style="--nc:#8e24aa" href="#/hub/feed" aria-label="ADD — open" title="ADD"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ADD</span></a><a class="notif-seg" data-notif="mail" style="--nc:#0f52ba" href="#/hub/mail" aria-label="MAIL — open" title="MAIL"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">MAIL</span></a><a class="notif-seg" data-notif="activity" style="--nc:#07925f" href="#/hub/feed-activity" aria-label="ACTIVITY — open" title="ACTIVITY"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ACTIVITY</span></a><a class="notif-seg" data-notif="spaces" style="--nc:#d4a017" href="#/hub/spaces" aria-label="WORLDS — open" title="WORLDS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">WORLDS</span></a><a class="notif-seg" data-notif="eco" style="--nc:#c2410c" href="#/hub/feed" aria-label="ECOSYSTEM — open" title="ECOSYSTEM"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ECOSYSTEM</span></a><a class="notif-seg" data-notif="plusR" style="--nc:#c62828" href="#/hub/mail" aria-label="CONNECT — open" title="CONNECT"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19.5c.7-3.4 2.9-5.2 5.5-5.2s4.8 1.8 5.5 5.2"/><circle cx="17" cy="9" r="2.7"/><path d="M16.2 14.6c2.5-.2 4.1 1.4 4.6 3.9"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">CONNECT</span></a></div></nav>
+<nav id="naya-notif-bar" class="notif-bar" data-static="1" aria-label="Notifications"><div class="notif-row"><a class="notif-seg" data-notif="plus" style="--nc:#8e24aa" href="#/hub/feed" aria-label="ADD — open" title="ADD"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ADD</span></a><a class="notif-seg" data-notif="personal" style="--nc:#0f52ba" href="https://nayanet.app/personal" aria-label="PERSONAL — open" title="PERSONAL"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4 3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">PERSONAL</span></a><a class="notif-seg" data-notif="business" style="--nc:#07925f" href="https://nayanet.app/business" aria-label="BUSINESS — open" title="BUSINESS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M4 13h16"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">BUSINESS</span></a><a class="notif-seg" data-notif="spaces" style="--nc:#d4a017" href="#/hub/spaces" aria-label="WORLDS — open" title="WORLDS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">WORLDS</span></a><a class="notif-seg" data-notif="eco" style="--nc:#c2410c" href="#/hub/feed" aria-label="ECOSYSTEM — open" title="ECOSYSTEM"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ECOSYSTEM</span></a><a class="notif-seg" data-notif="plusR" style="--nc:#c62828" href="#/hub/mail" aria-label="CONNECT — open" title="CONNECT"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19.5c.7-3.4 2.9-5.2 5.5-5.2s4.8 1.8 5.5 5.2"/><circle cx="17" cy="9" r="2.7"/><path d="M16.2 14.6c2.5-.2 4.1 1.4 4.6 3.9"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">CONNECT</span></a></div></nav>
 <button type="button" id="os-b3-hide" aria-label="Show the bottom bar" title="Show the bottom bar">▴</button> <!-- FOLLOW-ON 2026-11-19 (item 3): the corner control — the reader's own tap recalls the bar when folded. Chrome harvested from the Dashboard (#os-b3-hide). -->
 <noscript>
   <div style="min-height:100vh;display:grid;place-items:center;text-align:center;padding:40px;
@@ -6316,9 +6316,9 @@ function HubView(params) {
      LEFT is WHERE YOU GO. Hub (that IS the Smart Feed, the main home) ·
      Dashboard (your world IS the calendar → Smart Stats; it carries a
      Leaderboards link) · Personal as a SUB-TAB (Personal Mail · Personal
-     Instant Messages · Personal Page · Personal Connections) · Business
+     Instant Messages · Personal Page · Personal Lists) · Business
      (direct, count when a feed exists — none does yet, so the badge stays
-     hidden, never invented; Business Connections sub-row beneath it) ·
+     hidden, never invented; Business Lists sub-row beneath it) ·
      Your World (RENAMED from Space — your thing, your world) · Smart Worlds
      (the directory of all worlds/spaces, RIGHT UNDERNEATH Your World) ·
      then the room rows 7–11 in order: Intel Today · Your Reports · Smart
@@ -6333,7 +6333,7 @@ function HubView(params) {
      Personal Mail → mail; no other count feed exists on the Hub.
      Scroll lighting lives in the spy IIFE below. */
   /* AMENDMENT #1 2026-11-17 (Shawn 18:22Z): the three worlds expand into
-     sub-tabs — Page FIRST, then Mail, DMs, Connections — each its own icon
+     sub-tabs — Page FIRST, then Mail, DMs, Lists — each its own icon
      and its own color, following the spectrum flow from its parent (§3.8).
      Smart Worlds is the DIRECTORY of all the worlds you're connected to,
      including yours. Your Connections is the DIRECTORY of all your
@@ -6353,19 +6353,19 @@ function HubView(params) {
     { label: 'Personal Page', icon: 'home', color: '#0e7490', href: 'https://nayanet.app/personal' },
     { label: 'Personal Mail', icon: 'mail', color: '#07925f', href: 'https://nayanet.app/rooms/mail', countKey: 'mail' },
     { label: 'Personal DMs', icon: 'connect', color: '#d4a017', href: 'https://nayanet.app/rooms/mail' },
-    { label: 'Personal Connections', icon: 'chain', color: '#c2410c', href: 'https://nayanet.app/rooms/connections' }
+    { label: 'Personal Lists', icon: 'lists', color: '#c2410c', href: 'https://nayanet.app/lists' } /* SNB-LAYER-BOARDS-ELEVATED 2026-11-20 item 7: Personal Connections -> Personal Lists — the Smart Lists area (the lists room, R.ROOMS id 'lists'; public URL nayanet.app/lists). Icon 'lists' is the room's own icon, shared by function like the Mail rows share 'mail'. */
   ];
   var WORK_SUBS = [
     { label: 'Work Page', icon: 'browser', color: '#07925f', href: 'https://nayanet.app/business' },
-    { label: 'Work Mail', icon: 'mail', color: '#d4a017', href: 'https://nayanet.app/rooms/mail' },
+    { label: 'Work Mail', icon: 'mail', color: '#d4a017', href: 'https://nayanet.app/rooms/mail', countKey: 'mail' }, /* SNB-LAYER-BOARDS-ELEVATED item 11: the Business mail entry carries the mail count now — the notification indicator, like Personal Mail. */
     { label: 'Work DMs', icon: 'arrow', color: '#c2410c', href: 'https://nayanet.app/rooms/mail' },
-    { label: 'Work Connections', icon: 'a2a', color: '#c62828', href: 'https://nayanet.app/rooms/connections' }
+    { label: 'Business Lists', icon: 'lists', color: '#c62828', href: 'https://nayanet.app/lists' } /* SNB-LAYER-BOARDS-ELEVATED item 8: Business Connections -> Business Lists, same Lists area. */
   ];
   var WORLD_SUBS = [
     { label: 'World Page', icon: 'tabs', color: '#d4a017', href: 'https://nayanet.app/space' },
-    { label: 'World Mail', icon: 'mail', color: '#c2410c', href: 'https://nayanet.app/rooms/mail' },
+    { label: 'World Mail', icon: 'mail', color: '#c2410c', href: 'https://nayanet.app/rooms/mail', countKey: 'mail' }, /* SNB-LAYER-BOARDS-ELEVATED item 11: the World mail entry carries the mail count now. */
     { label: 'World DMs', icon: 'lists', color: '#c62828', href: 'https://nayanet.app/rooms/mail' },
-    { label: 'World Connections', icon: 'tunnel', color: '#6d28d9', href: 'https://nayanet.app/rooms/connections' } /* EYE-NOTES-FIX §3.1: violet — the red/magenta pair read as one purple */
+    { label: 'World Lists', icon: 'lists', color: '#6d28d9', href: 'https://nayanet.app/lists' } /* EYE-NOTES-FIX §3.1: violet — the red/magenta pair read as one purple */ /* SNB-LAYER-BOARDS-ELEVATED item 8: World Connections -> World Lists, same Lists area. */
   ];
   var HUB_AREAS = [
     { id: 'hub',       label: 'Hub',           icon: 'orbit', color: '#c2189b', href: 'https://nayanet.app/hub',       countKey: 'activity', glyphCls: 'glyph-xl' },
@@ -6376,7 +6376,7 @@ function HubView(params) {
     { id: 'smartworlds', label: 'Smart Worlds', icon: 'doors', color: '#c2410c', href: 'https://nayanet.app/#/hub/spaces', countKey: null, glyphCls: 'glyph-xl' } /* EYE-NOTES §3.8: orange per Shawn's chakra order 2026-11-20, flow step 6 (supersedes gold; was magenta — broke the consecutive flow; base value, not a recolor) — EYE-NOTES-FIX §3.5: glyph-xl, the door read as a globe at 0.283 scale */
   ];
   /* A world with sub-tabs (v4 Personal; AMENDMENT #1 2026-11-17: Business / Work
-     and Your World too): it expands into its Page · Mail · DMs · Connections —
+     and Your World too): it expands into its Page · Mail · DMs · Lists —
      Page first — and never navigates on the first tap. The rows come from
      a.subs, so every world is built the same way. */
   function buildWorldSubtab(a) {
@@ -6384,7 +6384,7 @@ function HubView(params) {
     btn.type = 'button'; btn.className = 'nav-btn nav-area';
     btn.setAttribute('data-area', a.id); btn.setAttribute('data-spy-key', 'area:' + a.id);
     btn.style.setProperty('--nav', a.color);
-    btn.setAttribute('aria-label', a.label + ' — expand for its page, mail, DMs and connections');
+    btn.setAttribute('aria-label', a.label + ' — expand for its page, mail, DMs and lists');
     btn.setAttribute('aria-expanded', 'false');
     btn.innerHTML = '<span class="ico">' + Icons.icon(a.icon, a.glyphCls || '') + '</span><span class="lbl">' + a.label + '</span><span class="chev">\u25be</span>';
     var wrap = document.createElement('div'); wrap.className = 'nav-subwrap'; wrap.hidden = true;
@@ -7198,7 +7198,7 @@ window.NayaNotif = window.NayaNotif || {
     counts() {
       var unread = 0;
       try { var seen = this.get('seen.activity'); unread = Math.max(0, ActivityLog.read().length - seen); } catch (e) {}
-      return { mail: this.get('mail'), activity: unread, spaces: this.get('spaces') };
+      return { mail: this.get('mail'), activity: unread, spaces: this.get('spaces'), personal: this.get('mail'), business: unread }; /* SNB-LAYER-BOARDS-ELEVATED 2026-11-20 items 12-13: the universal bar's PERSONAL/BUSINESS tiles carry the two network channels in their slots — PERSONAL the mail count, BUSINESS the activity unread — so the notification bubbles stay live on the relevant icon. (The Personal file's own bar carries no personal/business keys; this mapping is the Hub's, named here.) */
     },
     refresh() {
       var bar = document.getElementById('naya-notif-bar'); if (!bar) return;
@@ -7231,6 +7231,8 @@ window.NayaNotif = window.NayaNotif || {
       if (k === 'mail') { this.set('mail', 0); if (window.NayaRouter) window.NayaRouter.navigate('/hub/mail'); else location.hash = '#/hub/mail'; }
       else if (k === 'activity') { try { this.set('seen.activity', ActivityLog.read().length); } catch (e) {} if (window.NayaRouter) window.NayaRouter.navigate('/hub/feed-activity'); else location.hash = '#/hub/feed-activity'; }
       else if (k === 'spaces') { this.set('spaces', 0); if (window.NayaRouter) window.NayaRouter.navigate('/hub/spaces'); else location.hash = '#/hub/spaces'; }
+      else if (k === 'personal') { if (window.NayaHubGoStaged) window.NayaHubGoStaged('https://nayanet.app/personal'); else location.href = 'https://nayanet.app/personal'; } /* SNB-LAYER-BOARDS-ELEVATED item 12: PERSONAL goes to the Personal page (Personal's own tap, harvested: osShowView('home') on Personal; the Hub has no osShowView, so the page URL, staged-aware). No count clears here — opening the page is not opening mail. */
+      else if (k === 'business') { if (window.NayaHubGoStaged) window.NayaHubGoStaged('https://nayanet.app/business'); else location.href = 'https://nayanet.app/business'; } /* SNB-LAYER-BOARDS-ELEVATED item 12: BUSINESS goes to the Business page (Personal's own tap, harvested verbatim). */
       /* FOLLOW-UP 17: ECOSYSTEM opens the ecosystem — the right rail,
          "Your Worlds & NayaNET" (openRightRail, the panel the followup15
          eye saw from ECOSYSTEM). It never points at Home again. The
@@ -7250,8 +7252,8 @@ window.NayaNotif = window.NayaNotif || {
       if (bar) bar.remove(); /* SWEEP-3 F10: the static fallback (after #app) is replaced by the live bar — same six tiles, same colors; counts, menus and fold come with it. */
       var self = this;
       var ICONS = {
-        mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
-        activity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg>',
+        personal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4 3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z"/></svg>', /* SNB-LAYER-BOARDS-ELEVATED item 12: PERSONAL heart, harvested verbatim from the Personal file (FRAME-FIX 2026-11-19 F4). */
+        business: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M4 13h16"/></svg>', /* SNB-LAYER-BOARDS-ELEVATED item 12: BUSINESS brief, harvested verbatim from the Personal file (FRAME-FIX 2026-11-19 F4). */
         spaces: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg>',
         eco: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>',
         plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
@@ -7269,7 +7271,7 @@ window.NayaNotif = window.NayaNotif || {
      FIX-4 (Deep Palette, DNA §1): rims run the spectrum, one color each —
      left + royal purple, mail sapphire, activity emerald, worlds deep gold,
      grid burnt orange, right + ruby. Never the same twice in a row. */
-  var SEGS = [['plus', 'ADD', '#8e24aa'], ['mail', 'MAIL', '#0f52ba'], ['activity', 'ACTIVITY', '#07925f'], ['spaces', 'WORLDS', '#d4a017'], ['eco', 'ECOSYSTEM', '#c2410c'], ['plus-connect', 'CONNECT', '#c62828']]; /* EYE-NOTES-FIX §3.3(e): one set with Personal — same key, same + object */
+  var SEGS = [['plus', 'ADD', '#8e24aa'], ['personal', 'PERSONAL', '#0f52ba'], ['business', 'BUSINESS', '#07925f'], ['spaces', 'WORLDS', '#d4a017'], ['eco', 'ECOSYSTEM', '#c2410c'], ['plus-connect', 'CONNECT', '#c62828']]; /* SNB-LAYER-BOARDS-ELEVATED 2026-11-20 item 12: the UNIVERSAL bar, harvested verbatim from the Personal file (PERSONAL/index-master-20261105.html, FRAME-FIX 2026-11-19 F4) — MAIL/ACTIVITY out, PERSONAL/BUSINESS in, same order, same colours, same icons. FIX-4 spectrum: left + royal purple, personal sapphire, business emerald, worlds deep gold, grid burnt orange, right + ruby. Never the same twice in a row. */
       bar = document.createElement('nav'); bar.id = 'naya-notif-bar'; bar.className = 'notif-bar';
       bar.setAttribute('aria-label', 'Notifications');
       var row = document.createElement('div'); row.className = 'notif-row';
@@ -7320,12 +7322,13 @@ window.NayaNotif = window.NayaNotif || {
      one interface) and the Spaces room (Create world — the end-to-end
      create flow itself is a separate owed round, per Shawn 19:00Z). */
   window.hubClosePlusMenus = function () {
-    ['hubPlusCreate', 'hubPlusConnect', 'hubMenuChoices'].forEach(function (id) { var m = document.getElementById(id); if (m) m.hidden = true; });
+    ['hubPlusCreate', 'hubPlusConnect', 'hubMenuChoices', 'hubPlusPost'].forEach(function (id) { var m = document.getElementById(id); if (m) m.hidden = true; });
   };
   window.hubTogglePlusMenu = function (kind, anchor) {
     var id = kind === 'connect' ? 'hubPlusConnect' : 'hubPlusCreate';
     var other = document.getElementById(kind === 'connect' ? 'hubPlusCreate' : 'hubPlusConnect');
     if (other) other.hidden = true;
+    var postMenuEl = document.getElementById('hubPlusPost'); if (postMenuEl) postMenuEl.hidden = true; /* SNB-LAYER-BOARDS-ELEVATED item 14: the post-feed menu closes when a + menu opens. */
     var menu = document.getElementById(id);
     if (!menu) return;
     if (!menu.hidden) { menu.hidden = true; return; }
@@ -7341,6 +7344,21 @@ window.NayaNotif = window.NayaNotif || {
     var mh = menu.getBoundingClientRect().height;
     if (mh > window.innerHeight - 16) { menu.style.maxHeight = (window.innerHeight - 16) + 'px'; menu.style.overflowY = 'auto'; }
     else { menu.style.maxHeight = ''; menu.style.overflowY = ''; }
+  };
+
+  /* SNB-LAYER-BOARDS-ELEVATED 2026-11-20 item 14: the post-feed question menu.
+     Same .fc-plusmenu chrome as the create menu; it opens where the create
+     menu stood (its inline left/bottom), so the question appears in place. */
+  window.openPostFeedMenu = function () {
+    var menu = document.getElementById('hubPlusPost');
+    if (!menu) return;
+    var create = document.getElementById('hubPlusCreate');
+    if (create && create.style.left) menu.style.left = create.style.left;
+    else menu.style.left = '50%';
+    menu.style.top = '';
+    if (create && create.style.bottom) menu.style.bottom = create.style.bottom;
+    else menu.style.bottom = 'calc(var(--notif-h, 76px) + 12px)';
+    menu.hidden = false;
   };
 
   /* ——— HUB SMART NOTE COMPOSER (FORMAT FIX2, 2026-11-17) ———
@@ -7513,6 +7531,12 @@ window.NayaNotif = window.NayaNotif || {
         if (it.getAttribute('data-hub-composer') === 'smart-note') {
           window.hubClosePlusMenus();
           if (window.NayaHubComposer) window.NayaHubComposer.open();
+          return;
+        }
+        /* SNB-LAYER-BOARDS-ELEVATED 2026-11-20 item 14: ADD is for making a POST, not a smart note — "Make a post" asks which feed first (Personal, Business, Space, Hub), then posts there. */
+        if (it.getAttribute('data-hub-plus') === 'post') {
+          window.hubClosePlusMenus();
+          if (window.openPostFeedMenu) window.openPostFeedMenu();
           return;
         }
         /* FOLLOW-UP 16: every + item lands staged. Message opens the
@@ -14056,6 +14080,35 @@ html.nsb-nonav.nsb-nobottom .main{padding-bottom:74px}
   border-color:color-mix(in srgb, var(--room-accent,#8e24aa) 92%, #fff);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -22px 38px rgba(0,0,0,.5),0 0 14px -2px color-mix(in srgb, var(--room-accent,#8e24aa) 85%, transparent),0 30px 60px rgba(0,0,0,.65) !important; /* EYE-NOTES §3.2 edge-only */
 }
+/* ========== SNB-LAYER-BOARDS-ELEVATED 2026-11-20 — Shawn's eye, this round ==========
+   (2) VALUE / INTELLIGENCE are purple + white, never pink. The settled colours
+   (FIX1F L2177-L2180 backgrounds, FIX1G L2378-L2379 DM construction) re-asserted
+   here, late and !important, in both states — so no earlier washout can re-pink
+   them. Values harvested verbatim; opacity/filter (rated lit, unrated dim) untouched.
+   (3) STARS = THE DM ELEMENT, WHOLE. The star buttons already carry the DM
+   initial-orb's construction (.fc-pick-av L821-L822: position, overflow, DM
+   backgrounds, the 7s osOrbFlow wedge); this block adds the DM initial's own
+   glyph weight (900) and, below, the flow's survival under reduced motion. */
+.intel-board .rank-value .star-rating button,
+.intel-board .rank-value .star-rating button.on { background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.35) 0%, rgba(255,255,255,0) 42%), radial-gradient(circle at 50% 50%, color-mix(in srgb, #8e24aa 55%, #101014) 0%, color-mix(in srgb, #8e24aa 28%, #060607) 78%) !important; color: #ffffff !important; border-color: color-mix(in srgb, #8e24aa 80%, white) !important; }
+.intel-board .rank-intel .star-rating button,
+.intel-board .rank-intel .star-rating button.on { background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.35) 0%, rgba(255,255,255,0) 42%), radial-gradient(circle at 50% 50%, color-mix(in srgb, #ffffff 55%, #101014) 0%, color-mix(in srgb, #ffffff 28%, #060607) 78%) !important; color: #8e24aa !important; border-color: color-mix(in srgb, #ffffff 80%, white) !important; }
+.intel-board .star-rating button { font-weight: 900; } /* the DM initial's weight, on the star glyph */
+@media (prefers-reduced-motion: reduce) {
+  /* (3)(4)(5) NOTHING DEAD. The file's own record says the eye measures in a
+     reduced-motion environment (L211 tile-orb precedent: a later,
+     higher-specificity !important re-assertion inside reduce keeps the motion).
+     Shawn's newer word this round: every circle, orb and star alive with flow.
+     So these five flows are re-declared whole here — content, background and
+     animation, verbatim from their no-preference rules — with selectors that
+     beat the reduce kill list (L2003-L2006) on specificity. The rest of the
+     page still calms under reduced motion; only the board's circles survive. */
+  article.intel-board .rank-value .star-rating button::after { content: ""; position: absolute; inset: -2px; z-index: 1; border-radius: 50%; pointer-events: none; background: conic-gradient(from 0deg, transparent 0deg, rgba(255,255,255,.35) 40deg, transparent 90deg); animation: osOrbFlow 7s linear infinite !important; }
+  article.intel-board .rank-intel .star-rating button::after { content: ""; position: absolute; inset: -2px; z-index: 1; border-radius: 50%; pointer-events: none; background: conic-gradient(from 0deg, transparent 0deg, rgba(142,36,170,.35) 40deg, transparent 90deg); animation: osOrbFlow 7s linear infinite !important; }
+  .intel-board .rate-head .rate-pearl::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: 50%; background: conic-gradient(from 0deg, transparent 0deg, transparent 250deg, #8e24aa 300deg, rgba(255,255,255,.95) 330deg, transparent 360deg); -webkit-mask: radial-gradient(closest-side, transparent 72%, #000 84%); mask: radial-gradient(closest-side, transparent 72%, #000 84%); pointer-events: none; animation: orb-spin 60s linear infinite, naya-breathe 6s ease-in-out infinite alternate !important; }
+  .intel-board .rate-head .rate-pearl::before { content: ""; position: absolute; inset: -6px; z-index: -1; border-radius: 50%; pointer-events: none; border: 1px solid color-mix(in srgb, #8e24aa 35%, transparent); background: conic-gradient(from 0deg, transparent 0deg, transparent 250deg, #8e24aa 300deg, rgba(255,255,255,.95) 330deg, transparent 360deg); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask-composite: exclude; padding: 2px; animation: orb-spin 60s linear infinite !important; }
+  .intel-board .ib-card-orb::before { animation: orb-spin 60s linear infinite, naya-breathe 6s ease-in-out infinite alternate !important; }
+}
 </style>
 <script>
 /* ================= SMART BAR SYSTEM v1.0 ================= */
@@ -14871,9 +14924,16 @@ window.NayaSmartBar = {
      a deep spectrum color. -->
 <div id="hubPlusCreate" class="fc-plusmenu hub-plusmenu" hidden role="menu" aria-label="Create">
 <div class="fc-plusitem" role="menuitem" data-hub-plus="home" data-hub-href="https://nayanet.app/hub" style="--mc:#8e24aa"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/></svg></span><span data-mw-tr="pm">Home</span></div>
-<div class="fc-plusitem" role="menuitem" data-hub-plus="post" data-hub-href="https://nayanet.app/personal#home/post" style="--mc:#0f52ba"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></span><span data-mw-tr="pm">Make a post</span></div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="post" style="--mc:#0f52ba"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></span><span data-mw-tr="pm">Make a post</span></div>
 <div class="fc-plusitem" role="menuitem" data-hub-plus="smart" data-hub-composer="smart-note" style="--mc:#d4a017"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z"/></svg></span><span data-mw-tr="pm">Smart note</span></div>
 <div class="fc-plusitem" role="menuitem" data-hub-plus="naya" data-hub-href="https://nayanet.app/personal#home/naya" style="--mc:#07925f"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h6M9 16h6"/></svg></span><span data-mw-tr="pm">Naya note</span></div>
+</div>
+<!-- SNB-LAYER-BOARDS-ELEVATED 2026-11-20 item 14: ADD is for making a POST — "Make a post" asks which feed first. Same .fc-plusmenu chrome; icons harvested from this file's Icons registry (heart, brief, spaces, orbit); colours are the worlds' own (Personal sapphire, Business emerald, World gold, Hub #c2189b). Destinations are the feeds' own post routes (Personal's #home/post, harvested; Business/Space follow the same page grammar; Hub is the Hub feed itself — the Hub has no in-page post composer in this file, so the Hub choice lands on the feed where Hub posts live). -->
+<div id="hubPlusPost" class="fc-plusmenu hub-plusmenu" hidden role="menu" aria-label="Post to a feed">
+<div class="fc-plusitem" role="menuitem" data-hub-plus="post-personal" data-hub-href="https://nayanet.app/personal#home/post" style="--mc:#0f52ba"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4 3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z"/></svg></span>Post to Personal</div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="post-business" data-hub-href="https://nayanet.app/business#home/post" style="--mc:#07925f"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M4 13h16"/></svg></span>Post to Business</div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="post-space" data-hub-href="https://nayanet.app/space#home/post" style="--mc:#d4a017"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12L4 7.5M12 12v9"/></svg></span>Post to Space</div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="post-hub" data-hub-href="#/hub/feed" style="--mc:#c2189b"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(-20 12 12)"/><circle cx="19.5" cy="8.5" r="1.6" fill="currentColor" stroke="none"/></svg></span>Post to Hub</div>
 </div>
 <div id="hubPlusConnect" class="fc-plusmenu hub-plusmenu" hidden role="menu" aria-label="Connect">
 <div class="fc-plusitem" role="menuitem" data-hub-plus="message" data-hub-href="https://nayanet.app/rooms/mail" style="--mc:#0f52ba"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z"/></svg></span><span data-mw-tr="pm">Message</span></div>
