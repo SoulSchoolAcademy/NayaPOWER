@@ -4,7 +4,7 @@
 
 **NN-20261120-check-which-build-hes-looking-at · Naya Note · 2026-11-20 ~18:02–18:05 MST**
 
-*Paired Smart Note: SN-pending — Check Which Build He's Looking At (takes the next free number at filing)*
+*Paired Smart Note: SN-4389 — Check Which Build He's Looking At*
 
 **Category:** Law — how a verdict is judged
 
