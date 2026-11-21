@@ -4,7 +4,7 @@
 
 **NN-20261121-align-the-add-button-one-add-same-on-every-page · Naya Note · 2026-11-21 ~09:52 MST**
 
-*Paired Smart Note: SN-pending — Align the ADD Button — One ADD, Same on Every Page (takes the next free number at filing)*
+*Paired Smart Note: SN-4488 — Align the ADD Button — One ADD, Same on Every Page*
 
 **Category:** LAW — align ADD so you can literally make a post on any of the feeds; one ADD, same on every page; placement choice for the image
 
