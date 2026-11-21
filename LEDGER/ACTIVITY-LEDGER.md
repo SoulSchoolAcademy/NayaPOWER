@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-21 00:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-21 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -40833,6 +40833,12 @@ _Last updated: 2026-11-21 00:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ gap-lane-scorer-20261015-0340-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up lane-scorer-20261015-0340: install VOID feed-line formatter (install point 1)
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: receipt file present; parent gap-scorer-20261014-2340-lane8.md exists; VOID_DESTINATIONS/format_void_line present in hidden_files/bin/claim_liveness_audit.py. Formatter installed verbatim at the proposed location, canonical example byte-verbatim, 10/10 destination x re
+
 ### ✅ gap-lane-scorer-20261015-0440-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** VOID-line install audit: repo-wide writer sweep + install point (1) re-verify + point (2) readiness
@@ -44209,6 +44215,18 @@ _Last updated: 2026-11-21 00:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ gap-t1230-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** Gap closeout t1230: LEDGER-0001/E1 evidence-linkage correction (refused duplicate - already closed)
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: receipt file present; LEDGER-0006 exists in hidden_files/value-ledger.md carrying the exact demanded linkage (t0683 / #2537 comment 6157102452 / PR comment 6157099718); chain verify 6/6 rows. Clears 9.5 because verification IS the work: the gap's premise was stale, the
+
+### ✅ gap-lane-scorer-20261015-0520-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Gap diagnostic lane-scorer-20261015-0520: df [1,1]/[1,2] sensitivity of decision-change mechanization
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: receipt file present; diagnostic harness auto-retrieval/df-sensitivity-diagnostic-lane5.py and results JSON both exist on disk. Diagnostic run at bounds [1,1]/[1,2]/[1,3] with the [1,3] baseline reproduced in the same harness (faithfulness proven, not assumed); load-be
+
 ### ✅ gap-t0426-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** SUPERSEDED third distractor class + identical-text tie path proven on both arms
@@ -46366,6 +46384,12 @@ _Last updated: 2026-11-21 00:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane5.md
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
+
+### ✅ gap-t0403-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** Gap closeout t0403: blended frequency+miss composite, 89-premise diagnosis, determinism reproduction
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: receipt file present; parent t0403-lane4.md exists; log auto-retrieval/ask-world-queries.jsonl present. All three named gaps closed with byte evidence: independent need-grouping reproduction agrees 20/20 rows with the parent; the 89-diagnosis is exact two ways (105-1-1
 
 ### ✅ gap-lane-scorer-20261015-0510-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
@@ -53149,6 +53173,12 @@ _Last updated: 2026-11-21 00:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
 
+### ✅ gap-t1442-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Gap closeout t1442: CI verdict on PR #2456 (fresh PR, verdict not in at receipt time)
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: receipt file present; parent t1442-lane10.md exists. CI verdict fully reported from live API: 15 check runs, 10 green/skipped, 5 failed, PR open/unmerged, mergeable_state=dirty, head e326283252a7 matches the parent pin. GOOD, ONE MORE PASS. Why not 9.5: the single most
+
 ### ✅ gap-scorer-20261014-2300-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
 **Task:** Gap follow-up: re-prove t0032/t1352 case handles cited in t0502-lane10 at action time
@@ -57404,6 +57434,80 @@ _Last updated: 2026-11-21 00:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ distill-daily-20261120 — Team 0, Team Naya Scorer (?) — 9.4/10 [VERIFIED]
+
+**Task:** Daily distill: reverse fold of mission-state snapshots (branch newer than main), PR #3495
+
+**Receipt:** `twelve-lane-receipts/distill-daily-20261120-lane0.md`
+
+**Evidence:** Verified: branch naya/distill-fold-mission-state-20261120 exists on remote at exact claimed head 741b7459bc5701a7f5e13832f705c68f3039e689 (git ls-remote); union sha256 9d139cc37112145b1f7aa3254f57db11a1bf8ad5078ca65741a7a2fe76652f30 matches receipt exactly; main file sha256 48387360... matches; fold scripts and hidden_files/fold-20261120/ present; 
+
+### ✅ gate-stall — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor gate-stall sweep 2026-11-20 1649 PST: 31 unclaimed briefs evaluated, all refused, queue untouched
+
+**Evidence:** Verified: receipt file exists; live queue still 31 unclaimed brief-*.md, zero brief-tNNNN-*; all 31 named briefs present on disk and identical to the current queue; cited sweep log brief-queue/claim-sweep-20261120-1649.log exists with totals 31 attempted, 29 x exit 7, 2 x exit 2, 0 claimed. Score 9.0. Why not 9.5: the sweep is correctly executed bu
+
+### ✅ gate-stall — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor gate-stall sweep 2026-11-20 1544 PST: 31 unclaimed briefs evaluated, all refused, queue untouched
+
+**Evidence:** Verified: receipt file exists; live queue still 31 unclaimed brief-*.md, zero brief-tNNNN-*; all 31 named briefs present on disk and identical to the current queue; cited sweep log brief-queue/claim-sweep-20261120-1544.log exists with totals 31 attempted, 29 x exit 7, 2 x exit 2, 0 claimed. Score 9.0. Why not 9.5: the sweep is correctly executed bu
+
+### ✅ gate-stall — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor gate-stall sweep 2026-11-20 1440 PST: 31 unclaimed briefs evaluated, all refused, queue untouched
+
+**Evidence:** Verified: receipt file exists; live queue still 31 unclaimed brief-*.md, zero brief-tNNNN-*; all 31 named briefs present on disk and identical to the current queue; cited sweep log brief-queue/claim-sweep-20261120-1438.log exists with totals 31 attempted, 29 x exit 7, 2 x exit 2, 0 claimed. Score 9.0. Why not 9.5: the sweep is correctly executed bu
+
+### ✅ gate-stall — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor gate-stall sweep 2026-11-20 1336 PST: 31 unclaimed briefs evaluated, all refused, queue untouched
+
+**Evidence:** Verified: receipt file exists; live queue still 31 unclaimed brief-*.md, zero brief-tNNNN-*; all 31 named briefs present on disk and identical to the current queue; cited sweep log brief-queue/claim-sweep-20261120-1333.log exists with totals 31 attempted, 29 x exit 7, 2 x exit 2, 0 claimed. Score 9.0. Why not 9.5: the sweep is correctly executed bu
+
+### ✅ gate-stall — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor gate-stall sweep 2026-11-20 1231 PST: 31 unclaimed briefs evaluated, all refused, queue untouched
+
+**Evidence:** Verified: receipt file exists; live queue still 31 unclaimed brief-*.md, zero brief-tNNNN-*; all 31 named briefs present on disk and identical to the current queue; cited sweep log brief-queue/claim-sweep-20261120-1231.log exists with totals 31 attempted, 29 x exit 7, 2 x exit 2, 0 claimed. Score 9.0. Why not 9.5: the sweep is correctly executed bu
+
+### ✅ gate-stall — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor gate-stall sweep 2026-11-20 1123 PST: 31 unclaimed briefs evaluated, all refused, queue untouched
+
+**Evidence:** Verified: receipt file exists; live queue still 31 unclaimed brief-*.md, zero brief-tNNNN-*; all 31 named briefs present on disk and identical to the current queue; cited sweep log brief-queue/claim-sweep-20261120-1123.log exists with totals 31 attempted, 29 x exit 7, 2 x exit 2, 0 claimed. Score 9.0. Why not 9.5: the sweep is correctly executed bu
+
+### ✅ gate-stall — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor gate-stall sweep 2026-11-20 1020 PST: 31 unclaimed briefs evaluated, all refused, queue untouched
+
+**Evidence:** Verified: receipt file exists; live queue still 31 unclaimed brief-*.md, zero brief-tNNNN-*; all 31 named briefs present on disk and identical to the current queue; cited sweep log brief-queue/claim-sweep-20261120-1018.log exists with totals 31 attempted, 29 x exit 7, 2 x exit 2, 0 claimed. Score 9.0. Why not 9.5: the sweep is correctly executed bu
+
+### ✅ gate-stall — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor gate-stall sweep 2026-11-20 0808 PST: 31 unclaimed briefs evaluated, all refused, queue untouched
+
+**Evidence:** Verified: receipt file exists; live queue still 31 unclaimed brief-*.md, zero brief-tNNNN-*; all 31 named briefs present on disk and identical to the current queue; cited sweep log brief-queue/claim-sweep-20261120-0808.log exists with totals 31 attempted, 29 x exit 7, 2 x exit 2, 0 claimed. Score 9.0. Why not 9.5: the sweep is correctly executed bu
+
+### ✅ gate-stall — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor gate-stall sweep 2026-11-20 0706 PST: 31 unclaimed briefs evaluated, all refused, queue untouched
+
+**Evidence:** Verified: receipt file exists; live queue still 31 unclaimed brief-*.md, zero brief-tNNNN-*; all 31 named briefs present on disk and identical to the current queue; cited sweep log brief-queue/claim-sweep-20261120-0706.log exists with totals 31 attempted, 29 x exit 7, 2 x exit 2, 0 claimed. Score 9.0. Why not 9.5: the sweep is correctly executed bu
+
+### ✅ gate-stall — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor gate-stall sweep 2026-11-20 0600 PST: 31 unclaimed briefs evaluated, all refused, queue untouched
+
+**Evidence:** Verified: receipt file exists; live queue still 31 unclaimed brief-*.md, zero brief-tNNNN-*; all 31 named briefs present on disk and identical to the current queue; cited sweep log brief-queue/claim-sweep-20261120-0600.log exists with totals 31 attempted, 29 x exit 7, 2 x exit 2, 0 claimed. Score 9.0. Why not 9.5: the sweep is correctly executed bu
+
+### ✅ gate-stall — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor gate-stall sweep 2026-11-20 0433 PST: 31 unclaimed briefs evaluated, all refused, queue untouched
+
+**Evidence:** Verified: receipt file exists; live queue still 31 unclaimed brief-*.md, zero brief-tNNNN-*; all 31 named briefs present on disk and identical to the current queue; cited sweep log brief-queue/claim-sweep-20261120-0433.log exists with totals 31 attempted, 29 x exit 7, 2 x exit 2, 0 claimed. Score 9.0. Why not 9.5: the sweep is correctly executed bu
 
 ### ✅ gate-stall-20261120-1544 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
