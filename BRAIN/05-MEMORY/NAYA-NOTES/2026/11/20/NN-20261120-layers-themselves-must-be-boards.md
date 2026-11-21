@@ -4,7 +4,7 @@
 
 **NN-20261120-layers-themselves-must-be-boards · Naya Note · 2026-11-20 ~20:36–20:45 MST**
 
-*Paired Smart Note: SN-pending — Layers Themselves Must Be Boards (takes the next free number at filing)*
+*Paired Smart Note: SN-4431 — Layers Themselves Must Be Boards*
 
 **Category:** Design — a layer is a board, not a label
 
