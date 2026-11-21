@@ -1957,14 +1957,14 @@ body.msg-open{overflow:hidden;}
 .action[data-kind="share-intel"].on { border-color: #07925f; background: linear-gradient(135deg,#06281c,#09090d); } /* BUTTON-LIGHTUP 2026-11-20: SHARE lights emerald when on. Dark-emerald tint parallels the ruby #391019. */
 .star-rating {
   display: inline-flex; gap: 4px; align-items: center; padding: 6px;
-  border: 2px solid #d4a01788; border-radius: 14px; background: #0b0a0e;
+  border: 2px solid #8e24aa88; border-radius: 14px; background: #0b0a0e;
   box-shadow: 0 8px 18px #0008;
 }
 .star-rating button {
   width: 40px; height: 40px; flex: 0 0 auto; min-width: 0; position: relative;
-  border: 2px solid #d4a01788; border-radius: 50%;
+  border: 2px solid #8e24aa88; border-radius: 50%;
   background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.14), #07070b 62%, #050607 100%);
-  color: #d4a01766; font-size: 20px; line-height: 1; cursor: pointer;
+  color: #ffffff8c; font-size: 20px; line-height: 1; cursor: pointer;
   box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55);
   text-shadow: 0 1px 0 rgba(255,255,255,.35), 0 2px 6px rgba(0,0,0,.75);
   transition: transform .18s cubic-bezier(.16,.84,.22,1), box-shadow .18s, color .18s, border-color .18s;
@@ -1975,18 +1975,18 @@ body.msg-open{overflow:hidden;}
 .star-rating button:hover { transform: translateY(-2px); border-color: #8e24aa; color: #ffffff; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 8px 16px rgba(0,0,0,.55), 0 0 12px -2px rgba(142,36,170,.4); }
 .star-rating button:active { transform: translateY(1px) scale(.92); box-shadow: inset 0 1px rgba(255,255,255,.2), inset 0 -2px 4px rgba(0,0,0,.7), 0 2px 6px rgba(0,0,0,.6); }
 .star-rating button.on {
-  color: #d4a017; border-color: #d4a017;
+  color: #ffffff; border-color: #8e24aa;
   background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.16), #07070b 62%, #050607 100%);
-  box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 12px -2px rgba(212,160,23,.45);
+  box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 12px -2px rgba(142,36,170,.45);
   text-shadow: 0 1px 2px rgba(0,0,0,.45);
   animation: orbbreathe 4.4s ease-in-out infinite alternate;
 }
 .star-rating button:focus-visible { outline: 2px solid #8e24aa; outline-offset: 2px; }
-/* INTELLIGENCE track: the same obsidian ball, a blue star (23:21Z). */
-.star-rating-intel { border-color: #0f52ba88; box-shadow: inset 0 1px rgba(255,255,255,.25), 0 8px 18px rgba(0,0,0,.5), 0 0 14px -2px rgba(15,82,186,.3); }
-.star-rating-intel button { border-color: #0f52ba88; color: #0f52ba66; }
+/* INTELLIGENCE track: the same obsidian ball, a purple star on a white ball (23:21Z). */
+.star-rating-intel { border-color: rgba(255,255,255,.6); box-shadow: inset 0 1px rgba(255,255,255,.25), 0 8px 18px rgba(0,0,0,.5), 0 0 14px -2px rgba(255,255,255,.25); }
+.star-rating-intel button { border-color: #8e24aa88; color: #8e24aa8c; }
 .star-rating-intel button:hover { border-color: #8e24aa; color: #8e24aa; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 8px 16px rgba(0,0,0,.55), 0 0 12px -2px rgba(142,36,170,.4); }
-.star-rating-intel button.on { color: #93c5fd; border-color: #0f52ba; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 12px -2px rgba(15,82,186,.45); }
+.star-rating-intel button.on { color: #8e24aa; border-color: #8e24aa; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 12px -2px rgba(142,36,170,.45); }
 .star-rating-intel button:focus-visible { outline-color: #8e24aa; }
 /* The accessible readout only — the visible per-row points text is gone (23:21Z).
    HUB FEED FIX2 2026-11-18 (D8): the per-row rank readout joins it — screen-reader
@@ -2022,7 +2022,7 @@ body.msg-open{overflow:hidden;}
 .rank-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
 .rank-label { font-size: 17px; font-weight: 800; letter-spacing: .1em; color: #fff; min-width: 132px; }
 .rank-row.rank-value .rank-label { color: #8e24aa; text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 0 12px rgba(142,36,170,.55); animation: ranklabel-breathe 4.4s ease-in-out infinite alternate; } /* ROUND 2f (item 4): VALUE is purple — the word is lit in its row's colour, alive. */
-.rank-row.rank-intel .rank-label { color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 0 12px rgba(255,255,255,.35); animation: ranklabel-breathe 4.4s ease-in-out infinite alternate; } /* ROUND 2f (item 4): INTELLIGENCE is white — lit in its row's colour, alive. */
+.rank-row.rank-intel .rank-label { color: #8e24aa; text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 0 12px rgba(142,36,170,.55); animation: ranklabel-breathe 4.4s ease-in-out infinite alternate; } /* ROUND 2f (item 4): INTELLIGENCE is purple — lit in its row's colour, alive. */
 .rank-row .star-rating { flex: 1; min-width: 0; }
 .rank-readout { font-size: 17px; font-weight: 800; color: #fff; white-space: nowrap; }
 /* ——— MAKE THIS INTELLIGENCE BETTER (23:21Z) ——— */
@@ -2158,9 +2158,9 @@ body.msg-open{overflow:hidden;}
 .intel-board .ib-layers { margin-top: -4px; padding-left: 4px; padding-right: 4px; }
 .intel-board .ib-layer { transition: transform .3s ease, box-shadow .3s ease; }
 .intel-board .ib-layer:hover { box-shadow: 0 18px 38px #000000a0, 0 0 24px -4px color-mix(in srgb, var(--lc) 55%, transparent); transform: translateY(-2px); }
-.intel-board .ib-layer-body, .intel-board .ib-nutshell { text-shadow: 0 0 6px rgba(255,255,255,.64), 0 0 16px rgba(255,255,255,.36), 0 0 32px rgba(255,255,255,.18), 0 1px 2px rgba(0,0,0,.8); } /* SNB-FIX1H item 1: layer-body glow down 20% to the nutshell level (.80->.64, .45->.36, .22->.18) — fix-1g dimmed the nutshell only, leaving the child layer the brightest white wash on the board (the white box). Layers and nutshell now glow at one level. The fix-1g nutshell override (equal specificity, later in the file) still wins for the nutshell, so its render is unchanged. */
+.intel-board .ib-nutshell { text-shadow: 0 0 6px rgba(255,255,255,.64), 0 0 16px rgba(255,255,255,.36), 0 0 32px rgba(255,255,255,.18), 0 1px 2px rgba(0,0,0,.8); } .intel-board .ib-layer-body { text-shadow: 0 1px 2px rgba(0,0,0,.8); } /* SNB-STARS-WHITEBARS 2026-11-20 item 2: the white wash leaves the layer BODIES (dark drop only - the text sits directly on the obsidian board); the nutshell alone keeps the wash, white-lit as the headline. Supersedes the fix-1h dim, which only dimmed the wash instead of removing it. */
 /* SNB-FIX1C item 1 (eye GOES BACK #2): the .30/12px halo was too weak to read — a wide-blur low-alpha shadow spreads to near-invisible. The shadow now sits on the <p>/<ul>/<li> themselves (not just the wrapper): a tight 6px layer at .80 alpha so the halo reads, plus 16px/.45 and 32px/.22 outer layers. White stays white; headings untouched. */
-.intel-board .ib-layer-body p, .intel-board .ib-layer-body ul, .intel-board .ib-layer-body li, .intel-board .ib-nutshell p { text-shadow: 0 0 6px rgba(255,255,255,.64), 0 0 16px rgba(255,255,255,.36), 0 0 32px rgba(255,255,255,.18), 0 1px 2px rgba(0,0,0,.8); } /* SNB-FIX1H item 1: same 20% down on the layer text itself (p/ul/li) — the wash sits on the text, not just the wrapper. */
+.intel-board .ib-nutshell p { text-shadow: 0 0 6px rgba(255,255,255,.64), 0 0 16px rgba(255,255,255,.36), 0 0 32px rgba(255,255,255,.18), 0 1px 2px rgba(0,0,0,.8); } .intel-board .ib-layer-body p, .intel-board .ib-layer-body ul, .intel-board .ib-layer-body li { text-shadow: 0 1px 2px rgba(0,0,0,.8); } /* SNB-STARS-WHITEBARS item 2: same split on the layer text itself (p/ul/li) - dark drop only, no white wash. */
 /* Item 8 — headline + date lit up, living light */
 .intel-board .ib-head, .intel-board .board-head { text-shadow: 0 0 14px rgba(255,255,255,.45), 0 1px 2px rgba(0,0,0,.8); }
 .intel-board .ib-title { animation: snGlowPulse 7s ease-in-out infinite; }
@@ -2201,7 +2201,7 @@ body.msg-open{overflow:hidden;}
 /* Item 3b — four buttons, one line, desktop: the panel was max-width 600px while the four pills need ~896px at 17px (dot 16 + gap 8 + padding 36 + labels at 17px/800/.06em: ADD EVIDENCE ~198, BUILD ON THIS ~210, ASK A QUESTION ~221, REPORT AN OUTCOME ~267, + 3×8px gaps). 600px forced flex to shrink the pills and REPORT's text wrapped inside its button. Panel 1024px fits the board's desktop content width (~1147px at 1919: shell 264+1fr+300, board padding 32×2, frame sides 48×2, frame-body padding 24×2) with headroom; nowrap + tighter side padding (12px, was 18px) hold the line. Text stays 17px — never shrunk; labels unchanged. At 390px the four need ~896px against ~230px of content width, so they wrap by design (base flex-wrap:wrap below 701px) — desktop-only fix, named not claimed. */
 .intel-board .add-intel { max-width: 1024px; }
 @media (min-width: 701px) {
-  .intel-board .add-intel-types { flex-wrap: nowrap; }
+  .intel-board .add-intel-types { flex-wrap: wrap; /* SNB-STARS-WHITEBARS 2026-11-20 item 4: wrap, don't clip - the nowrap row (~1021px at .16em spacing) overflowed the panel at docked widths 1440-~1685px and the board's overflow:hidden cut ADD EVIDENCE's left edge and REPORT AN OUTCOME's right edge. One line whenever it fits (1919, 1400-1439); a clean centred 2x2 below that. */ }
   .intel-board .add-intel-types .intel-type { white-space: nowrap; padding: 12px 8px; } /* SNB-FIX1G item 3: side padding 12px -> 8px buys the 24px of wider gaps (row upper bound 1144 vs panel 1167 (SNB-FIX1H item 3: board margin restored, panel 16px wider again, row now fits with 23px)). */
 }
 
@@ -2261,6 +2261,12 @@ body.msg-open{overflow:hidden;}
   .intel-board .add-intel-types { justify-content: center; }
   .intel-board .add-intel-types .intel-type { flex: 0 0 auto; }
 }
+@media (max-width: 700px) {
+  /* SNB-STARS-WHITEBARS 2026-11-20 item 4: at 390px the four pills stack - one full-width pill per line, label whole on one line, 12px gaps. The 700-and-under base (flex:1 1 0 + wrap) squeezed them 2x2 with labels wrapping inside the pills; a stack is the clean line at this width. */
+  .intel-board .add-intel-types { gap: 12px; }
+  .intel-board .add-intel-types .intel-type { flex: 0 0 auto; width: 100%; justify-content: center; white-space: nowrap; }
+}
+
 /* Item 4 — STAR HOVER: make the balls feel alive. The existing :hover rules
    (L1972 generic, L1985 INTELLIGENCE) change nothing visible on the board's
    tracks: VALUE rests white-on-purple and hovers white-on-purple; INTELLIGENCE
@@ -2341,10 +2347,10 @@ body.msg-open{overflow:hidden;}
    with !important, and named in the reduce kill list (L2003), so no later
    rule can freeze them the way the orb was once frozen. */
 @media (prefers-reduced-motion: no-preference) {
-  .intel-board .rank-value .star-rating button::after { content: ""; position: absolute; inset: -2px; z-index: 1; border-radius: 50%; pointer-events: none; background: conic-gradient(from 0deg, transparent 0deg, rgba(255,255,255,.85) 60deg, transparent 120deg); animation: osOrbFlow 7s linear infinite !important; } /* SNB-FIX1H item 2: VALUE star flow VISIBLE — SUPERSEDES the SNB-FIX1G .35/40deg sheen (Shawn 2026-11-20 ~18:53 MST: the stars did not update). The DM wedge (.35/40deg) read as .147 through the .42 unrated dimming, so the stars looked unchanged. Wedge 40deg -> 60deg peak over 120deg; alpha .85 so the perceived sheen is the DM's .35 (0.85 x 0.42 = .36). Speed/direction untouched: osOrbFlow 7s, one direction, the DM's own. */
-  .intel-board .rank-intel .star-rating button::after { content: ""; position: absolute; inset: -2px; z-index: 1; border-radius: 50%; pointer-events: none; background: conic-gradient(from 0deg, transparent 0deg, rgba(142,36,170,.85) 60deg, transparent 120deg); animation: osOrbFlow 7s linear infinite !important; } /* SNB-FIX1H item 2: INTELLIGENCE star flow VISIBLE — SUPERSEDES the SNB-FIX1G .35/40deg sheen (same reason as VALUE). Purple sheen (the fix-1g colour substitution stands: white is invisible on a white orb). */
-  .intel-board .rank-value .star-rating button.on::after { background: conic-gradient(from 0deg, transparent 0deg, rgba(255,255,255,.35) 60deg, transparent 120deg); animation: osOrbFlow 7s linear infinite !important; } /* SNB-FIX1H item 2: RATED VALUE star — the DM sheen at its own .35 (a rated star is undimmed, like the DM orb). Same 60deg wedge in both states, so the flow never changes shape when tapped. */
-  .intel-board .rank-intel .star-rating button.on::after { background: conic-gradient(from 0deg, transparent 0deg, rgba(142,36,170,.35) 60deg, transparent 120deg); animation: osOrbFlow 7s linear infinite !important; } /* SNB-FIX1H item 2: RATED INTELLIGENCE star — purple sheen, DM .35, same 60deg wedge. */
+  .intel-board .rank-value .star-rating button::after { content: ""; position: absolute; inset: -2px; z-index: 1; border-radius: 50%; pointer-events: none; background: conic-gradient(from 0deg, transparent 0deg, rgba(255,255,255,.35) 40deg, transparent 90deg); animation: osOrbFlow 7s linear infinite !important; } /* SNB-STARS-WHITEBARS 2026-11-20 item 3: the DM wedge restored - .35/40deg, transparent by 90deg, osOrbFlow 7s, the DM's own shape and motion verbatim (.fc-pick-av::after, L823). The fix-1h .85/60deg wedge is superseded; it did not read as the DM flow to his eye. */
+  .intel-board .rank-intel .star-rating button::after { content: ""; position: absolute; inset: -2px; z-index: 1; border-radius: 50%; pointer-events: none; background: conic-gradient(from 0deg, transparent 0deg, rgba(142,36,170,.35) 40deg, transparent 90deg); animation: osOrbFlow 7s linear infinite !important; } /* SNB-STARS-WHITEBARS item 3: INTELLIGENCE flow - the DM wedge shape (.35/40deg/90deg, osOrbFlow 7s) with the fix-1g purple substitution (white is invisible on a white orb). */
+  .intel-board .rank-value .star-rating button.on::after { background: conic-gradient(from 0deg, transparent 0deg, rgba(255,255,255,.35) 40deg, transparent 90deg); animation: osOrbFlow 7s linear infinite !important; } /* SNB-STARS-WHITEBARS item 3: RATED VALUE star - the same DM wedge in both states, so the flow never changes shape when tapped. */
+  .intel-board .rank-intel .star-rating button.on::after { background: conic-gradient(from 0deg, transparent 0deg, rgba(142,36,170,.35) 40deg, transparent 90deg); animation: osOrbFlow 7s linear infinite !important; } /* SNB-STARS-WHITEBARS item 3: RATED INTELLIGENCE star - purple wedge, DM shape, same in both states. */
   .intel-board .rate-pearl::after { animation: orb-spin 60s linear infinite, naya-breathe 6s ease-in-out infinite alternate !important; } /* SNB-FIX1F item 5: the orb flows, CW 60s, same harvested speed as the DM rail. */
 }
 /* ——— END SNB-FIX1F ——— */
@@ -2388,6 +2394,13 @@ body.msg-open{overflow:hidden;}
 }
 /* ——— END SNB-FIX1G ——— */
 
+/* ========== SNB-STARS-WHITEBARS 2026-11-20 item 2 - LAYER LABELS ARE OBSIDIAN BOARD-BUTTONS (Shawn's redesign, ~20:18 MST) ==========
+   The white slabs go. Every layer label is an obsidian black (#050607) elevated board-button that INCLUDES its jewel icon: rim in the layer's own colour (--lc, already per-layer from layerColorFor - Child purple #8e24aa, Grandma indigo #3f51b5, What It Means emerald #07925f, Why It Matters gold #d4a017, How It Connects orange #c2410c, What's In It For You red #c62828), white text in the middle so it pops, rounded 16px corners (the white version's squared-off corners are part of what he disliked), lifted, alive on hover. Tapping still opens the layer - the open behaviour is untouched, presentation only. Anatomy harvested verbatim from .intel-type (L2031 rest / L2036 hover / L2038 on); the open head wears the lit rim like .on. Nutshell keeps its white-lit headline (L2161/L2378). */
+.intel-board .ib-layer-head { width: auto; margin: 8px 8px 0; padding: 14px 16px; background: linear-gradient(135deg, rgba(255,255,255,.14) 0%, rgba(255,255,255,0) 38%), #050607; border: 2px solid color-mix(in srgb, var(--lc) 62%, rgba(255,255,255,.12)); border-radius: 16px; box-shadow: inset 0 2px 3px rgba(255,255,255,.28), inset 0 -6px 12px rgba(0,0,0,.7), 0 8px 20px rgba(0,0,0,.6), 0 0 10px -2px color-mix(in srgb, var(--lc) 30%, transparent); }
+.intel-board .ib-layer-head b { color: #ffffff; text-shadow: 0 1px 2px rgba(0,0,0,.8); }
+.intel-board .ib-layer-head:hover { transform: translateY(-2px); border-color: var(--lc); box-shadow: inset 0 1px 0 rgba(255,255,255,.28), inset 0 -4px 10px rgba(0,0,0,.65), 0 8px 20px rgba(0,0,0,.55), 0 0 12px -2px color-mix(in srgb, var(--lc) 40%, transparent); }
+.intel-board .ib-layer-head.open { border-color: var(--lc); box-shadow: inset 0 0 0 1.5px var(--lc), inset 0 2px 5px rgba(255,255,255,.28), inset 0 -4px 10px rgba(0,0,0,.65), 0 0 12px -2px color-mix(in srgb, var(--lc) 40%, transparent), 0 8px 20px rgba(0,0,0,.55); }
+
 
 
 
@@ -2415,7 +2428,7 @@ body.msg-open{overflow:hidden;}
 .ib-layer.layer-red        { --lc: var(--red); }         /* the alarm */
 /* ——— SMART NOTE FORMAT (2026-11-17) ———
    Images: 16:9, aligned. The bottom, warmer: counts as digit tiles on the
-   objects, stars as real gold, the heart as a real jewel. No new buttons,
+   objects, stars as real purple, the heart as a real jewel. No new buttons,
    no new text, no new rows — depth and glow from the objects themselves. */
 .ib-feature { margin: 16px 0 4px; border: 2px solid rgba(255,255,255,.16); border-radius: 18px; overflow: hidden; background: #050607; box-shadow: inset 0 1px rgba(255,255,255,.12), 0 14px 30px rgba(0,0,0,.55), 0 0 24px rgba(255,255,255,.08); }
 .ib-feature img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
@@ -2430,7 +2443,7 @@ body.msg-open{overflow:hidden;}
    obsidian tile, rim in the button's own color, white digit (a measured
    count is a real zero; an unrated star row still shows its state). */
 .action-count { background: #050607; border: 2px solid var(--action-color, #8e24aa); border-radius: 8px; box-shadow: 0 0 14px rgba(0,0,0,.6), 0 0 12px var(--action-color, #8e24aa); color: #ffffff; }
-/* The heart as a real jewel you can press; the stars as real gold. */
+/* The heart as a real jewel you can press; the stars as real purple. */
 .board-actions .action[data-kind="love"], .board-actions .action[data-kind="like"], .board-actions .action[data-kind="comment"], .board-actions .action[data-kind="share-intel"] { background: linear-gradient(145deg, color-mix(in srgb, var(--action-color) 32%, #050607), #050607 60%); border-color: var(--action-color); box-shadow: inset 0 1px rgba(255,255,255,.22), inset 0 -6px 14px rgba(0,0,0,.65), 0 0 22px var(--action-color), 0 10px 24px rgba(0,0,0,.6); }
 .board-actions .action[data-kind="love"]:hover, .board-actions .action[data-kind="like"]:hover, .board-actions .action[data-kind="comment"]:hover, .board-actions .action[data-kind="share-intel"]:hover { box-shadow: inset 0 0 0 1.5px var(--action-color), inset 0 -6px 14px rgba(0,0,0,.65), 0 0 36px var(--action-color), 0 14px 36px rgba(0,0,0,.65); }
 .star-rating { border-color: #8e24aa; box-shadow: inset 0 1px rgba(255,255,255,.25), 0 8px 18px rgba(0,0,0,.5), 0 0 14px -2px rgba(142,36,170,.35); }
@@ -2438,9 +2451,9 @@ body.msg-open{overflow:hidden;}
 /* ——— END SMART NOTE FORMAT (2026-11-17) ——— */
 
 /* ——— SMART NOTE FORMAT FIX2 (2026-11-17) ———
-   Ten small gold star jewels in one row, ringed by the slow flow; the
+   Ten small purple star jewels in one row, ringed by the slow flow; the
    comment box unfolds below the note. New text is 17px or larger (Laws
-   2.3); text stays white or gold (Laws 2.2). */
+   2.3); text stays white or purple (Laws 2.2). */
 @property --star-flow { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
 .star-rating { position: relative; gap: 3px; padding: 5px; }
 .star-rating button { min-width: 0; flex: 1 1 0; min-height: 36px; font-size: 17px; padding: 0; }
@@ -2464,12 +2477,12 @@ body.msg-open{overflow:hidden;}
 /* ——— SMART NOTE NUTSHELL-CLIP FIX (2026-11-17) ———
    THE BETTER PRESENTATION, under the 3D LAW (Shawn 22:39Z) and the glow
    law (22:37Z: glow AROUND/BEHIND, never OVER the top).
-   Stars as full 3D gold orbs — round obsidian balls with a gold rim,
+   Stars as full 3D purple orbs — round obsidian balls with a purple rim,
    sphere shading (light top-left), inset top-light, deep shadow
    down-right: a ton of elevation, coming out of the page, not a flat
    square and not a hula hoop. Hover lifts the orb; press goes IN
    (scale .92) and release comes OUT — alive, something happening. The
-   lit star keeps the harvested radial-gold face (below). The slow flow
+   lit star keeps the harvested radial-purple face (below). The slow flow
    ring AROUND the row (FIX2 ::before) stays — glow behind, never the
    effect itself. The glyph stays crisp and separate from its rim at any
    zoom: 17px star inside a 40px orb, real space around it.
@@ -2501,7 +2514,7 @@ body.msg-open{overflow:hidden;}
   text-shadow: 0 1px 2px rgba(0,0,0,.45), 0 0 14px rgba(255,255,255,.85);
 }
 /* ROUND 2f (item 4): the white track below is INTELLIGENCE — white balls, purple
-   stars (Order 4, settled). The gold rules above are VALUE only; they would
+   stars (Order 4, settled). The purple rules above are VALUE only; they would
    otherwise swallow the white track — equal specificity, later wins — so the
    white track is re-asserted here, after all of them, with its own values. */
 .star-rating-intel { border-color: rgba(255,255,255,.6); box-shadow: inset 0 1px rgba(255,255,255,.25), 0 8px 18px rgba(0,0,0,.5), 0 0 14px -2px rgba(255,255,255,.25); }
@@ -2575,7 +2588,7 @@ body.msg-open{overflow:hidden;}
 .ib-layer-body strong { color: var(--ink); }
 .ib-layer-body code {
   font-family: ui-monospace, monospace; font-size: 17px; color: var(--yellow);
-  background: #ffffff10; padding: 2px 7px; border-radius: 6px;
+  background: transparent; padding: 2px 7px; border-radius: 6px; /* SNB-STARS-WHITEBARS item 2: the 6% white code chip goes too - no white behind layer-body text. */
 }
 /* Deeper layers sit quieter until opened */
 .ib-layer.is-deeper .ib-layer-head b { font-size: 17px; color: var(--ink); }
@@ -14000,8 +14013,8 @@ html.nsb-nonav.nsb-nobottom .main{padding-bottom:74px}
 .ib-layer-head:hover .ib-chev{color:#fff;text-shadow:0 0 12px var(--lc);}
 .board.lift:hover{background-image:linear-gradient(135deg,color-mix(in srgb, var(--room-accent) 22%, #151021f2),color-mix(in srgb, var(--room-accent) 10%, #0b0a10f2));}
 .board.lift:hover .board-title{text-shadow:0 0 14px color-mix(in srgb, var(--room-accent) 80%, transparent);}
-.ib-card-orb::before{animation-name:naya-orbit-dot-cw;}
-.show-feed > article:nth-child(even) .ib-card-orb::before,.intel-board:nth-of-type(even) .ib-card-orb::before{animation-name:naya-orbit-dot-ccw;animation-duration:150s;}
+.ib-card-orb::before{animation-name:orb-spin;animation-duration:60s;} /* SNB-STARS-WHITEBARS 2026-11-20 item 5: the base rule pointed at naya-orbit-dot-cw, which animates background-position only - a conic-gradient sized to the box cannot move that way, so the flow was dead by NAME (fix-1d diagnosed it; the L2230 !important guard already restores orb-spin under no-preference - this makes the base rule itself the rotating arc). */
+.show-feed > article:nth-child(even) .ib-card-orb::before,.intel-board:nth-of-type(even) .ib-card-orb::before{animation-name:orb-spin-rev;animation-duration:60s;} /* SNB-STARS-WHITEBARS item 5: even boards - CCW arc, 60s, same band as the guard. */
 .naya-guide-face{width:46px;height:46px;flex:0 0 auto;border-radius:50%;position:relative;border:2px solid var(--room-accent,#8e24aa);box-shadow:inset 0 -3px 6px rgba(0,0,0,.6),0 4px 10px rgba(0,0,0,.5),0 8px 18px rgba(0,0,0,.55);transition:transform .3s,box-shadow .3s,border-color .3s;}
 .naya-guide-face::after{content:'';position:absolute;inset:-6px;z-index:1;border-radius:50%;pointer-events:none;border:1px solid color-mix(in srgb, var(--room-accent,#8e24aa) 35%, transparent);background-image:radial-gradient(circle,#fff 0 1.5px,var(--room-accent,#8e24aa) 2px 3.5px,transparent 4.5px);background-size:9px 9px;background-repeat:no-repeat;background-position:50% 0;animation:naya-orbit-dot-ccw 132s linear infinite;}
 
