@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-21 18:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-21 18:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -3027,6 +3027,12 @@ _Last updated: 2026-11-21 18:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: retrieval-auth-gate-migration-plan-t1493.md sha256 dceb07ac498e22e2 byte-matches receipt claim; origin/main = 782cbe2c130476688de069045e6ac0433f8b1403 via ls-remote = receipt's live tip; receipt read line citations via git show origin/main (free protocol). Clears 9.5 because the seam was re-pinned at live tip (found refactored: retrieve()
 
+### ✅ t1490-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Independent second-seat score of t1481 decision replay (t0780 SURGE-(a) MCC verdict), blind pre-reg discipline
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: pre-reg sha prefix f5b4e653a02f MATCH, verdict table 4b20107deebf MATCH and parses with expected keys (B1, falsifier_audit, per_leg, subject_pins_rederived), replay file 924a5a4066f1 MATCH, protocol cfb2c64cc565 MATCH. NOT PHANTOM. Score 9.5, ACCEPTED - clears 9.5 because the pre-reg was sealed before an
+
 ### ✅ t1490 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
 **Task:** Independent second-seat score of the t1481 decision replay (blind discipline)
@@ -3050,6 +3056,12 @@ _Last updated: 2026-11-21 18:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1490-lane10.md`
 
 **Evidence:** Verified: decision-replay-t0780-secondseat-t1490-lane10-prereg.md (full match f5b4e653...78b24ffb29, sealed 03:32:46Z before any judgment read) + verdict-table JSON (full match 4b20107d...f155a) exist; all subject pins re-derived at action time and byte-identical; all five replay falsifiers re-adjudicated (none fired). Clears 9.5 because pre-reg-fi
+
+### ✅ t1489-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** Adjudicate stale-premise arm6 brief (t1489-lane9): slot already filled by t1488 arm6
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: t1488-lane6 receipt exists and its arm6 dir is committed with verdict FALSIFIED (see t1488-lane6 score this tick); brief-t1493-lane1.md exists under brief-queue/stale/ and mentions arm6, corroborating the claimed third duplicate and that it was flagged. No compute artifacts exist by design - this is an a
 
 ### ✅ t1489 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
 
@@ -3083,6 +3095,12 @@ _Last updated: 2026-11-21 18:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: surge-slice-a-arm6-t1488/ holds prereg+arm+results+runlogs+verdict (slot already filled, committed 03:19Z before this brief's 03:20Z claim); brief-t1489-lane9.md sits in brief-queue/done/ (archived post-receipt); queue sweep flagged t1493-lane1 as the third same-slot brief. Score 9.5. Clears 9.5 because a duplicate arm6 lineage fork was k
 
+### ✅ t1489-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Second-consumer run of t1473 acceptance instrument on arm5; P-2 handoff verdict arm5->arm6
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: acceptance table sha prefix b6c7109f26b7 MATCH, runner 371cd91ff543 MATCH; run log exists stating 15 checks ran from the table; verdict table file exists. Arm5 SHA re-pins claimed in receipt not re-derived this tick (arm5 dir pins cited, table/runner pins confirmed). NOT PHANTOM. Score 9.5, ACCEPTED - cl
+
 ### ✅ t1489 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
 **Task:** Acceptance-table second consumer run: arm5 through the t1473 table + P-1/P-2 adjudication
@@ -3115,6 +3133,12 @@ _Last updated: 2026-11-21 18:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: retrieval-acceptance-arm5-t1489/{run-table-arm5-t1489.txt,verdict-table-arm5-t1489.md} exist; run log shows real check execution (15 criteria, exit-code-bearing); acceptance-table.json + run-table.py exist; cited receipts t1473-lane7/t1465-lane11 exist; arm6 dir complete with verdict-t1488.md committed 03:19Z. Score 9.5. Clears 9.5 becaus
 
+### ✅ t1488-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** SURGE slice-(a) arm6: cosine geometry on idf-weighted trigram vectors (geometry change, unit held)
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: prereg sha prefix f8bdbb213be8 MATCH, arm 34b1e1f63530 MATCH, results 5d24e47825eb MATCH, verdict 1112990db1ba MATCH; arm6 dir complete (prereg, arm, results, run1, run2, 2 runlogs, verdict); verdict file contains FALSIFIED; results JSON carries full rankings with cosine scores. NOT PHANTOM. Score 9.5, A
+
 ### ✅ t1488 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
 
 **Task:** SURGE slice-(a) arm6: cosine geometry on idf-weighted trigram vectors
@@ -3146,6 +3170,12 @@ _Last updated: 2026-11-21 18:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1488-lane6.md`
 
 **Evidence:** Verified: hidden_files/surge-slice-a-arm6-t1488/prereg-arm6-t1488.md + arm_cosine_trigram_t1488.py + run1/run2 json + runlogs + verdict-t1488.md all exist; double-run battery with guards; clone-pattern documented for arm7. Score 9.2. Why not 9.5: the prereg's mechanism-WHY carried bar recovery (easy) and anchor recovery (hard) at ONE confidence — t
+
+### ✅ t1488-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** Blinded independent recount of SURGE slice-(a) arm5 numbers — CONFIRM or REFUTE
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: recount JSON exists with mean_hit5 0.444 and per-task (hit5, rank_P2) A(0.333,3) B(0.667,2) C(0.333,4) matching the receipt exactly; verdict note present; recount recorded before results read per mtime claim (file present, order asserted on command sequence + mtimes). NOT PHANTOM. Score 9.5, ACCEPTED - c
 
 ### ✅ t1488 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
@@ -21891,6 +21921,12 @@ _Last updated: 2026-11-21 18:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0644-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
+**Task:** Blinding checklist negative control: clean-brief construction rules R1-R12 + 10/10 PASS worked example
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: control doc lane-9/blinding-checklist-negative-control-t0644.md sha16 5ab8bb4880817957 MATCH; constructed brief lane-9/t0644-clean-brief-CONSTRUCTED-EXAMPLE.md sha16 be31fb7974998192 MATCH; example-bundle pre-reg lane-9/t0644-example-bundle/PREREG-example-sealed.md sha
+
+### ✅ t0644-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
 **Task:** Blinding checklist negative control: clean-brief construction rules (frozen) + a 10/10 PASS worked example, each cell byte-citable
 
 **Evidence:** Verified: MANIFEST 6/6 OK on hidden_files/lane-9/t0644-example-bundle/ and pre-reg seal recomputed -> MATCH (bfa10362...); item-1 grep genuinely 0 hits per receipt. Score 9.0. Why not 9.5: the control is proven only on a synthetic bundle (no real sealed-probe brief existed to test against), so the negative control is real bytes but not a live dispa
@@ -21910,6 +21946,12 @@ _Last updated: 2026-11-21 18:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0644-lane9.md`
 
 **Evidence:** Verified: all 3 cited artifacts exist on disk with sha256 prefixes byte-matching the receipt (control doc 5ab8bb4880817957, constructed brief be31fb7974998192, sealed pre-reg faede534f78d15b7; bundle dir present, MANIFEST.sha256 on disk). Score 9.0 (GOOD, ONE MORE PASS). Kept from 9.5 by the lane's own two named gaps: (1) the negative control passe
+
+### ✅ t0644-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Sealed pre-reg for R2 >=5 re-validation probe (6 fresh probe-set rows, bar-level rank-blind predictions)
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: sealed pre-reg hidden_files/lane-6/t0644-r2-prereg-sealed.md recomputes per its own header recipe - sha256 of file minus the SEAL_SHA256 line = dde6b078ceedb80c2a6f555e22fc65c20cb28c6e837eefa0d4da8c51e03837fd, MATCHING the receipt's seal exactly. NOT PHANTOM. Score 9.0
 
 ### ✅ t0644-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
@@ -21935,6 +21977,12 @@ _Last updated: 2026-11-21 18:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0644-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
+**Task:** DESIGN-ONLY frozen pre-reg for Arm F: minimum-window proximity retrieval
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: pre-reg hidden_files/lane-experiments/prereg-t0644-lane5-armf-proximity.md sha256 9f562b9daa155879f7b6f2fdb542aaadf791f8e4bab154951762dcc038bb23d8 MATCHES receipt exactly. NOT PHANTOM. Score 8.5, REWORK, agreeing with the receipt's honest 8.5 self-score. Why not 9.5: (
+
+### ✅ t0644-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
 **Task:** DESIGN-ONLY frozen pre-reg for Arm F, the next genuinely different retrieval mechanism after four falsified semantic roots
 
 **Evidence:** Verified: sha256 MATCH on hidden_files/lane-experiments/prereg-t0644-lane5-armf-proximity.md (9f562b9d...); premise re-verified (Arm E sealed-failed t0643-lane1, four dead roots named). Score 8.5. Why not 9.5: single-seat design with no different-seat review of the genuineness claim; per-task numeric predictions left to the executor instead of froz
@@ -21954,6 +22002,12 @@ _Last updated: 2026-11-21 18:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0644-lane5.md`
 
 **Evidence:** VERIFIED: artifact hidden_files/lane-experiments/prereg-t0644-lane5-armf-proximity.md exists, sha256 9f562b9d...38bb23d8 MATCHES receipt pin. Score 9.0, not 9.5, because: unexecuted by design (seal is a promise until Lane 1 runs it); the 'genuinely different mechanism' claim has no different-seat review yet; stopword-list effect on key-term count u
+
+### ✅ t0643-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE (c) v2 ask-world needs analysis: top-20 ranked needs + candidate smart blocks, every number from log bytes
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: analysis auto-retrieval/ask-world-needs-t0643.md sha256 162fa906422d8a06186e82aeb5f2afa0022124c8438ad26eefa98cfc443b9998 MATCHES receipt exactly. The log pin 08f3662c... no longer matches the live log head (6bd22b67...): the log is append-only and has grown since Oct 1
 
 ### ✅ t0643-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -22242,6 +22296,12 @@ _Last updated: 2026-11-21 18:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0638-lane7.md`
 
 **Evidence:** VERIFIED: verdict doc retrieval/auth-gate-wave-order-verdict-t0638-CANDIDATE.md exists locally, sha256 prefix 823534c3eb001d15 EXACT match with receipt's sha16; feedback-feed post present carrying the line-605 verbatim re-capture read directed at Mason. Real verified value: filled the wave-order-review hole the lane itself named at t0632; re-derive
+
+### ✅ t0638-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** E-gate persistence contract CANDIDATE spec + demo (t0628 non-recomputable, recomputable under proposed schema)
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: contract auto-retrieval/egate-persistence-contract-v1-candidate.md sha256 3bf341fed658323fe49594b810a78e139c1817083277d23d967dcabd25e8e0e3 MATCHES receipt exactly; demo egate-demo-t0638.py sha16 50f27aef5338f3b7 MATCH; output egate-demo-t0638-output.json sha16 9a8ffb96
 
 ### ✅ t0638 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
