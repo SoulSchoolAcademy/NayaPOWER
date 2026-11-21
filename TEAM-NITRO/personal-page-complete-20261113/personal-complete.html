@@ -52152,7 +52152,7 @@ document.addEventListener('click', function(e){
   /* The pin button carries the note id (data-ib-pin). The title/topic come from
      the live feed or wall stores first, the card's own title and theme second.
      The world is the harvested record shape from the board's create branches,
-     duplicate-guarded on the pinned note's title, and the citizen lands in Spaces. */
+     duplicate-guarded on the pinned note's title, and the citizen lands in PERSONAL (#/hub/feed). */
   window.ibPinToWorld = function(btn){
     if(!btn) return;
     var id = btn.getAttribute('data-ib-pin') || '';
@@ -52167,8 +52167,8 @@ document.addEventListener('click', function(e){
     if(!topics && card){ var mg = card.querySelector('.ib-meta span'); if(mg){ var tx = (mg.textContent || '').trim().replace(/^#/, ''); if(tx) topics = [tx]; } }
     if(!title) title = 'Smart World';
     var topic = (topics && topics[0]) || 'General';
-    /* ROUND 4 (2026-11-20, item 2): the Spaces destination is the router route /hub/spaces, not a showView view - showView falls back to 'home' for any name not in VIEWS and 'spaces' is not in VIEWS, so the old land() landed on home. /hub/spaces is the route every in-file Spaces entry uses (drawer links href https://nayanet.app/#/hub/spaces; Hub19 NayaNotif spaces tap and plus-key 'world' both navigate('/hub/spaces')); the router's hub/:room handler redirects it through EXTERNAL_ROOMS['spaces'] to the standalone Spaces room page /rooms/spaces, where the new world is listed. Hash fallback mirrors the Round 3 bottom-bar pattern. No silent fallback to home. */
-    function land(){ var _nav=false; try{ if(window.NayaRouter && window.NayaRouter.navigate){ window.NayaRouter.navigate('/hub/spaces'); _nav=true; } }catch(err){} if(!_nav){ try{ location.hash='#/hub/spaces'; }catch(err2){} } }
+    /* ROUND 4-CONT (2026-11-20, item 2): the pin lands in PERSONAL, not in the Spaces room. /hub/spaces is a real route (EXTERNAL_ROOMS['spaces'] -> /rooms/spaces) but it is a WORLD destination - it leaves this page for the standalone Spaces room. The pin pins the note to the citizen's own profile, so the landing is the PERSONAL segment: the R3-4 bottom-bar PERSONAL pattern verbatim (closeDrawer + showView('home') + navigate('/hub/feed'), hash fallback) - the PERSONAL lens is the feed default, so the citizen lands on their own Personal feed. */
+    function land(){ try{ if(window.NayaChassis && window.NayaChassis.closeDrawer) window.NayaChassis.closeDrawer(); }catch(err){} try{ if(typeof window.showView === 'function') window.showView('home'); }catch(err){} var _nav=false; try{ if(window.NayaRouter && window.NayaRouter.navigate){ window.NayaRouter.navigate('/hub/feed'); _nav=true; } }catch(err){} if(!_nav){ try{ if(location.hash !== '#/hub/feed') location.hash='#/hub/feed'; }catch(err2){} } }
     function go(name){
       var spName = name || title;
       var _toast = (typeof toast === 'function') ? toast : null;
@@ -52180,7 +52180,7 @@ document.addEventListener('click', function(e){
         if(!Array.isArray(arr)) arr = [];
         var ex = null;
         for(var i=0;i<arr.length;i++){ if(arr[i] && arr[i].pinnedNote && arr[i].pinnedNote.title === spName){ ex = arr[i]; break; } }
-        if(ex){ if(_toast) _toast('WORLD EXISTS', '"' + spName + '" is already a world - stepping inside.', '#8e24aa'); land(); return; }
+        if(ex){ if(_toast) _toast('WORLD EXISTS', '"' + spName + '" is already a world - find it in Spaces.', '#8e24aa'); land(); return; }
         var sp = { id: 'sp-' + Date.now().toString(36) + Math.floor(Math.random() * 1e6).toString(36), name: spName, topic: topic, desc: subtitle, privacy: 'public', memberIds: [], custom: true, created: Date.now(), pinnedNote: { title: spName, ts: Date.now() } };
         sp.color = TOPIC_SPECTRUM[topic] || '#a21caf'; /* assigned after the literal, so the checker does not read it as a text value */
         arr.push(sp);
@@ -52191,7 +52191,7 @@ document.addEventListener('click', function(e){
         if(!Array.isArray(mine)) mine = ['sp-ai', 'sp-friends'];
         if(mine.indexOf(sp.id) < 0){ mine.push(sp.id); localStorage.setItem('naya.spaces.mine.v1', JSON.stringify(mine)); }
         if(typeof ActivityLog !== 'undefined' && ActivityLog && ActivityLog.log){ ActivityLog.log('space', 'World created from "' + title + '"', 'spaces', '#8e24aa', '<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/>'); }
-        if(_toast) _toast('WORLD CREATED', '"' + spName + '" is live - open the Spaces room to step inside.', '#8e24aa');
+        if(_toast) _toast('WORLD CREATED', '"' + spName + '" is live - its world is waiting in Spaces.', '#8e24aa');
       }catch(err){}
       land();
     }
