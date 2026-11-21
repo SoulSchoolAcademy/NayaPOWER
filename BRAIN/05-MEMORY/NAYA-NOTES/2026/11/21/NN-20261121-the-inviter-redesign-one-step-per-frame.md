@@ -4,7 +4,7 @@
 
 **NN-20261121-the-inviter-redesign-one-step-per-frame · Naya Note · 2026-11-21 ~10:52–10:55 MST**
 
-*Paired Smart Note: SN-pending — The Inviter Redesign — One Step Per Frame (takes the next free number at filing)*
+*Paired Smart Note: SN-4512 — The Inviter Redesign — One Step Per Frame*
 
 **Category:** LAW — the Inviter page wrapped in the stage frame, one step per frame, same forward/back buttons; stats out, top bar off, Step buttons stay; built from the blocks already made
 
