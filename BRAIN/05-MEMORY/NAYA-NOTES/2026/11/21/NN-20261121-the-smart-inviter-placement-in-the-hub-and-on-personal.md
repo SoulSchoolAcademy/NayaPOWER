@@ -4,7 +4,7 @@
 
 **NN-20261121-the-smart-inviter-placement-in-the-hub-and-on-personal · Naya Note · 2026-11-21 ~10:11 MST**
 
-*Paired Smart Note: SN-pending — The Smart Inviter Placement — In the Hub and on Personal, Live, No Extra Work Now (takes the next free number at filing)*
+*Paired Smart Note: SN-4499 — The Smart Inviter Placement — In the Hub and on Personal, Live, No Extra Work Now*
 
 **Category:** LAW — the Inviter lives in the Hub and on Personal, there and live, not lost — and no extra work on it now
 
