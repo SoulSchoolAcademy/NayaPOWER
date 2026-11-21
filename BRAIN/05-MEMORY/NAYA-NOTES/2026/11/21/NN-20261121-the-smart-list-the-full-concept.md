@@ -4,7 +4,7 @@
 
 **NN-20261121-the-smart-list-the-full-concept · Naya Note · 2026-11-21 ~09:40–09:43 MST**
 
-*Paired Smart Note: SN-pending — The Smart List — the Full Concept (takes the next free number at filing)*
+*Paired Smart Note: SN-4486 — The Smart List — the Full Concept*
 
 **Category:** LAW — a Smart List IS the feature: lists of notes, contacts, worlds, your notes; tools where the citizen inputs; auto-organize; Your Worlds is the table of contents
 
