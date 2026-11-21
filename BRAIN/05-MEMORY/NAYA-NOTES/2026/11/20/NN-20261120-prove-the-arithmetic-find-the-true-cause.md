@@ -4,7 +4,7 @@
 
 **NN-20261120-prove-the-arithmetic-find-the-true-cause · Naya Note · 2026-11-20 ~19:45 MST**
 
-*Paired Smart Note: SN-pending — Prove the Arithmetic, Find the True Cause (takes the next free number at filing)*
+*Paired Smart Note: SN-4425 — Prove the Arithmetic, Find the True Cause*
 
 **Category:** Law — a checker that disproves, not just fails
 
