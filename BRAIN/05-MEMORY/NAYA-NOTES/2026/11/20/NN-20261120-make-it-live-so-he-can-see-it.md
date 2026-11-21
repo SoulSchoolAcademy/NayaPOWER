@@ -4,7 +4,7 @@
 
 **NN-20261120-make-it-live-so-he-can-see-it · Naya Note · 2026-11-20 ~20:51–21:00 MST**
 
-*Paired Smart Note: SN-pending — Make It Live So He Can See It (takes the next free number at filing)*
+*Paired Smart Note: SN-4442 — Make It Live So He Can See It*
 
 **Category:** Law — finished builds go live on the official URL
 
