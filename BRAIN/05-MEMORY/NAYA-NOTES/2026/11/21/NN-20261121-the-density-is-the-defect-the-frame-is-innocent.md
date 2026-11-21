@@ -4,7 +4,7 @@
 
 **NN-20261121-the-density-is-the-defect-the-frame-is-innocent · Naya Note · 2026-11-21 ~10:08 MST**
 
-*Paired Smart Note: SN-pending — The Density Is the Defect — the Frame Is Innocent (takes the next free number at filing)*
+*Paired Smart Note: SN-4498 — The Density Is the Defect — the Frame Is Innocent*
 
 **Category:** LAW — the frame is innocent; the density is the defect — split to agreement density, labels take the frame's own treatment
 
