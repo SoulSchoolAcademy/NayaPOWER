@@ -218,6 +218,14 @@ their own variant first. Their report is preserved verbatim as
 - **Branch:** `about-skills-rebuild-20261120` (created from main tip
   `505355d0460a0fb39239620be78ae28983b53c60`)
 - **File:** `team-nitro/about-skills-rebuild-20261120/about-skills.html`
-- **Page blob:** (filled below after the git-data filing)
-- **Commit:** (filled below)
-- **Staged proof link:** (filled below after the served-bytes check)
+- **Page blob:** `facf387c684d48da615e4185a506d46e9f069503` — 201,793 B,
+  sha256 `8749d432fcf26ce8af084f56ff962bf200392c800d9c17cfc0024c57d050885c`;
+  read back via the blob API (decoded 201,793 B, sha256 identical).
+- **Commit:** `0e05aeb4a54b0a53291d17b6c05b73edd4b249c7` (10 files: the
+  page, this report, HARVEST-PROOF.md, 4 diff proofs, both build
+  scripts, `pricing-harvest.css`). This report was then updated with
+  these values and filed as a follow-up commit on the same branch
+  (commit below).
+- **Staged proof link (HTTP 200, 201,793 B, sha256 identical):**
+  `https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/about-skills-rebuild-20261120/about-skills.html&ref=about-skills-rebuild-20261120&cb=facf387c684d48da615e4185a506d46e9f069503`
+- **Report-update commit:** (filled below)
