@@ -4,7 +4,7 @@
 
 **NN-20261120-the-ambassador-is-not-network-marketing · Naya Note · 2026-11-20 ~19:17 MST**
 
-*Paired Smart Note: SN-pending — The Ambassador Is Not Network Marketing (takes the next free number at filing)*
+*Paired Smart Note: SN-4412 — The Ambassador Is Not Network Marketing*
 
 **Category:** Law — how you get paid, what it is not
 
