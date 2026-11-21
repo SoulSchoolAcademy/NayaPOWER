@@ -4,7 +4,7 @@
 
 **NN-20261120-a-nutshell-is-three-or-four-sentences · Naya Note · 2026-11-20 ~18:53 MST**
 
-*Paired Smart Note: SN-pending — A Nutshell Is Three or Four Sentences (takes the next free number at filing)*
+*Paired Smart Note: SN-4400 — A Nutshell Is Three or Four Sentences*
 
 **Category:** Design — what a nutshell is
 
