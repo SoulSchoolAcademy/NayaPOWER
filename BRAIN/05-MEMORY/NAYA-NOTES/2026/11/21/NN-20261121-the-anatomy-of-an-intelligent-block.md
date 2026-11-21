@@ -4,7 +4,7 @@
 
 **NN-20261121-the-anatomy-of-an-intelligent-block · Naya Note · 2026-11-21 ~08:24–08:27 MST**
 
-*Paired Smart Note: SN-pending — The Anatomy of an Intelligent Block (takes the next free number at filing)*
+*Paired Smart Note: SN-4466 — The Anatomy of an Intelligent Block*
 
 **Category:** LAW — the anatomy of an intelligent block: what a smart note is, and what it must contain
 
