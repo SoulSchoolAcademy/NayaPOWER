@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-21 16:44 UTC_
+_Last updated: 2026-11-21 17:02 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 9881
-- ✅ Verified (8+): 9780
+- **Total scored actions:** 9897
+- ✅ Verified (8+): 9796
 - 🟡 Partial (5–7): 90
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 7
@@ -1342,9 +1342,9 @@ _Last updated: 2026-11-21 16:44 UTC_
 - **distill-monthly-20261101:** 2 actions, avg 8.0/10
 - **distill-weekly-20261018-lane:** 2 actions, avg 9.0/10
 - **gate-stall-20261120-1544:** 1 actions, avg 9.0/10
-- **gate-stall-20261120-1649:** 1 actions, avg 9.0/10
+- **gate-stall-20261120-1649:** 2 actions, avg 9.0/10
 - **distill-daily-20261120-lane0:** 1 actions, avg 9.5/10
-- **gate-stall-20261120-1753:** 1 actions, avg 9.0/10
+- **gate-stall-20261120-1753:** 2 actions, avg 9.0/10
 - **20261120-1753:** 1 actions, avg 9.0/10
 - **20261120-1853:** 1 actions, avg 9.0/10
 - **20261120-1958:** 1 actions, avg 9.0/10
@@ -1357,20 +1357,20 @@ _Last updated: 2026-11-21 16:44 UTC_
 - **20261015-1749:** 1 actions, avg 8.0/10
 - **20261121-0118:** 1 actions, avg 9.0/10
 - **20261121-0223:** 1 actions, avg 9.0/10
-- **gate-stall-20261120-1853:** 1 actions, avg 9.0/10
-- **gate-stall-20261120-1958:** 1 actions, avg 9.0/10
-- **gate-stall-20261120-2105:** 1 actions, avg 9.0/10
-- **gate-stall-20261120-2208:** 1 actions, avg 9.0/10
-- **gate-stall-20261120-2308:** 1 actions, avg 9.0/10
-- **gate-stall-20261121-0013:** 1 actions, avg 9.0/10
-- **gate-stall-20261121-0118:** 1 actions, avg 9.0/10
-- **gate-stall-20261121-0223:** 1 actions, avg 9.0/10
-- **gate-stall-20261121-0328:** 1 actions, avg 9.0/10
-- **gate-stall-20261121-0428:** 1 actions, avg 9.0/10
-- **gate-stall-20261121-0533:** 1 actions, avg 9.0/10
-- **gate-stall-20261121-0614:** 1 actions, avg 9.0/10
-- **gate-stall-20261121-0718:** 1 actions, avg 9.0/10
-- **gate-stall-20261121-0823:** 1 actions, avg 9.0/10
+- **gate-stall-20261120-1853:** 2 actions, avg 9.0/10
+- **gate-stall-20261120-1958:** 2 actions, avg 9.0/10
+- **gate-stall-20261120-2105:** 2 actions, avg 9.0/10
+- **gate-stall-20261120-2208:** 2 actions, avg 9.0/10
+- **gate-stall-20261120-2308:** 2 actions, avg 9.0/10
+- **gate-stall-20261121-0013:** 2 actions, avg 9.0/10
+- **gate-stall-20261121-0118:** 2 actions, avg 9.0/10
+- **gate-stall-20261121-0223:** 2 actions, avg 9.0/10
+- **gate-stall-20261121-0328:** 2 actions, avg 9.0/10
+- **gate-stall-20261121-0428:** 2 actions, avg 9.0/10
+- **gate-stall-20261121-0533:** 2 actions, avg 9.0/10
+- **gate-stall-20261121-0614:** 2 actions, avg 9.0/10
+- **gate-stall-20261121-0718:** 2 actions, avg 9.0/10
+- **gate-stall-20261121-0823:** 2 actions, avg 9.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
