@@ -4,7 +4,7 @@
 
 **NN-20261120-what-it-is-why-it-matters-whats-in-it-for-you · Naya Note · 2026-11-20 ~19:50 MST**
 
-*Paired Smart Note: SN-pending — What It Is, Why It Matters, What's In It for You (takes the next free number at filing)*
+*Paired Smart Note: SN-4420 — What It Is, Why It Matters, What's In It for You*
 
 **Category:** Law — the one pattern for About and Skills
 
