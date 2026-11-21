@@ -4,7 +4,7 @@
 
 **NN-20261120-the-icon-must-point-at-the-live-thing · Naya Note · 2026-11-20 ~18:50 MST**
 
-*Paired Smart Note: SN-pending — The Icon Must Point at the Live Thing (takes the next free number at filing)*
+*Paired Smart Note: SN-4407 — The Icon Must Point at the Live Thing*
 
 **Category:** Law — an icon that points at a dead address is a dead icon
 
