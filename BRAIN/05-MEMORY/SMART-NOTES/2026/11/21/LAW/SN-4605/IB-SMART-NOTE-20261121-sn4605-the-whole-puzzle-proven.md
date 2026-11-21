@@ -1,0 +1,72 @@
+# The Whole Puzzle, Proven
+
+SN-4605 · LAW / THE WHOLE PUZZLE, PROVEN
+
+**Created:** 2026-11-21 21:25Z
+
+**Kinds:** Honor · Multiplication · Craft · Knowledge
+
+## Hook
+
+"We don't go to production until we make it right." A checker PASS on bytes, a page that looks 10 out of 10, a dispatch authorized by his own hand — and still nothing is done until the whole puzzle is in place and proven on a real screen.
+
+## Nutshell
+
+Across 10 notes, one morning tells the same story four ways: the Personal round R5 passed its checker on bytes — the Calendar rename exactly 4 lines, delta 0 — while its render proof was still running and its not-done list stood named, not hidden: rail auto-organize not achieved, intelligent boards not done, DM audio and video not built, Message Send disabled, the MAIL button bypassing its toggle page, the ECOSYSTEM tile landing on the Hub instead of the drawer. That is why he ordered it, in the same hour: "Let's get her to 10 out of 10 on all levels so she's not just looking 10 out of 10 but she's performing 10 out of 10." No area earns a 10 on a render alone — function proven at click level and on live data. The schema packet proved the same law from the other side: he authorized the dispatch with Preview as the gate, and the coordinator checked first-hand and stopped — the pipeline has no Preview step at all, it applies migrations to production directly, and the §2 grants and §3 table that unblock posting, likes, comments, shares and messenger have no migration files, so a dispatch could not have delivered them. Eighteen unapplied migrations would have landed at once, and the production branch does not even exist. His answer, two minutes later, is now standing law: "We don't go to production until we make it right. You can't skip steps. You can't have part of the system work and not the other part." Path B — dispatch as-is, production-direct — is dead, never offered again. Path A is dispatched: file §2+§3, build a real preview path, prove the whole puzzle on preview, then bring the go-ahead packet back to his hand for his tap. The honest verdict on the whole system, delivered the same morning in the Daily Project Intelligence Report, is 5 out of 10 on performance — the look alone scores 8 — and six proofs define a 10: a post lands, a message arrives, a like moves the number, a call connects, a match appears at creation, the repo rebuilds the live database. The Supabase filing round closed the biggest break on paper — 143 filing units, byte-exact against live, checker PASS after three FAILs — but the fresh-apply proof against a scratch project is still owed, and the 129 DROP candidates stay untouched until his word. The Calendar fix round 1 shows why bytes are not proof: eight of nine failures fixed, verdict still NOT PASS — open states still overflow the 390×844 phone frame, and a slot at 14:00 says "Open" with zero free starts, because the label uses one function and bookability uses another, and the maker's tests never used appointments. The Dashboard framing walk failed overall for the same reason: the framing was complete on bytes, but the page renders its own JavaScript templates as visible text — ~400,600 characters of source, 66,890px tall, the gauge stuck on "Reading…", tabs dead, drill orbs showing literal labels — because the templates were already not rendering in the mechanics base underneath. And riding with all of it, the Max perk settled in words and still missing in build: a Max member gets their own affiliate army tracked inside their membership, keeps 100% of what they charge on their own memberships — NayaNET takes no cut — and pays their affiliates whatever percentage they choose, out of their 100%. That is distinct from the NayaNET ambassador share, 50% of NayaNET's revenue for bringing people to NayaNET — two splits, never confused.
+
+Across 10 notes, the thread is: a PASS is a milestone, never the verdict; the gate must exist before it is trusted; the whole puzzle in place, or the engine does not operate.
+
+## Human
+
+Think of it like a house he is building: the paint looks perfect, the doors are hung, and the inspector signs off on the measurements — but the lights do not turn on, the taps run dry, and the front door opens onto a wall. That house is not done, and no signature on paper makes it done. The same morning taught the machine twice: a dispatch he authorized could not exist as authorized, because the Preview gate he trusted was never built — the pipeline goes straight to production — and the pieces that unblock the whole feed were never filed as migrations at all. So he laid down the law that now governs all production work: no skipping steps, no half a system, the whole puzzle in place or the engine does not operate. The fix is always the same shape — file what is missing, build the real gate, prove the whole thing on preview, then bring it back to his hand. And the scorecard changed with it: the system scores 5 out of 10 on performance, because looking beautiful is only half the job. A slot that says "Open" when nothing is free, a send button that cannot send, a dashboard that shows its own code instead of its numbers — those are the things a citizen feels first. The Max promise rides the same honesty: the affiliate army is decided and the split is settled — 100% theirs, affiliates paid by them — but the army is not built yet, and a promise is not a product.
+
+## Child
+
+A page is not done when it looks pretty. It is done when every button does its job. You cannot skip steps, like a puzzle. Every piece must fit before the picture works. If a button says Open, a free time must really be there. If a message says Send, it must really go. We check it with our own eyes, then we go live.
+
+## Grandma
+
+It's like this, love — a page can look lovely, dear, and still not work, and looking lovely is only half the job! The button has to open, the message has to arrive, the numbers have to move, dear — that is what makes it ten out of ten, not just the pretty picture! And you never skip steps, love — it's a great big puzzle, and every piece has to be in place before the engine can run! If a gate is meant to guard the door, dear, you check the gate is really there before you trust it — and if a piece is missing, you put the piece in first, then you test it, then you ask him! That is the way now, love, for everything that goes live!
+
+## Naya
+
+A checker PASS is a milestone, never the verdict — the verdict is his eye on his own screen, plus function proven at click level and on live data. Never claim a 10 on a render alone. Never trust a gate you have not verified exists: check the pipeline first-hand — the Preview step, the migration files, the branch — before dispatching on a report's word. No production step until the whole puzzle is right: file what is missing, build the real preview path, prove the whole puzzle on preview, then the go-ahead packet back to his hand. Path B is dead — never offer production-direct again. Name the not-done in the same pass as the done: rail auto-organize, boards, DM audio/video, Send, MAIL bypass, ECOSYSTEM tile — carried into the next round, never hidden. Label from the same function that decides bookability, so a slot cannot say "Open" when nothing is free; test with real appointments, not empty batteries. Diagnose a leak from the filed bytes first and fix at the source, never over it. Fresh-apply proof before the rebuild is claimed proven; DROP candidates untouched until his word. Max: the affiliate army is a build owed, tracked inside the membership; the split is settled — 100% theirs on their own memberships, affiliates paid by them at the percentage they choose, distinct from the 50% NayaNET ambassador share.
+
+## What it means
+
+1. **A CHECKER PASS IS A MILESTONE, NEVER THE VERDICT:** R5 passed on bytes — Calendar rename exactly 4 lines, delta 0 — while render proof was still running and six items stood not-done. The verdict is his eye, on his own screen, with function proven at click level and on live data.
+2. **10/10 ON ALL LEVELS — LOOKS AND PERFORMANCE:** "Let's get her to 10 out of 10 on all levels so she's not just looking 10 out of 10 but she's performing 10 out of 10." No area earns a 10 on a render alone. A page that looks 10/10 and cannot send, play, open or save is a picture of a 10.
+3. **THE GATE MUST EXIST BEFORE IT IS TRUSTED:** the dispatch he authorized with Preview as the gate did not exist as authorized — the pipeline has no Preview step, it applies migrations to production directly, and §2+§3 have no migration files. The coordinator checked first-hand and stopped instead of dispatching on the report's word. The false Preview claim was corrected in public.
+4. **THE NO-SKIPPING LAW GOVERNS ALL PRODUCTION WORK:** "We don't go to production until we make it right. You can't skip steps. You can't have part of the system work and not the other part." The whole puzzle in place or the engine does not operate. Talking about it is no good.
+5. **PATH B IS DEAD, PATH A IS THE ROAD:** dispatch as-is, production-direct — never offered again. Path A: file §2+§3 as migration files on main, build a real preview path, prove the whole puzzle on preview, bring the go-ahead packet back to his hand for his tap. The push-trigger hazard gets a proposed guard, never a unilateral workflow change.
+6. **THE HONEST VERDICT IS 5/10 ON PERFORMANCE:** the look alone scores 8. Six proofs define a 10: post lands, message arrives, like moves the number, call connects, match appears at creation, repo rebuilds the live database. The report carries the scorecard per area, eight ten-lists, and an execution prompt commanding the whole team, area by area, until each is 10/10 or the gap to 10 is named.
+7. **THE LABEL CANNOT LIE:** slot 14:00 said "Open" with zero free starts because the label used `inHour` while bookability used `mcFreeTimes`, and the maker's tests never used appointments. Label slots from the same function that decides bookability, and test with real appointments.
+8. **THE FRAME LAW HOLDS AT PHONE SIZE:** open states still exceed the 390×844 frame by ~100–160 px and fall back to the slide's own scroll. Move open states to the next frame; prove fit by measurement AND render, never by bytes alone.
+9. **FIX AT THE SOURCE, NEVER OVER IT:** the Dashboard renders its own templates as visible text — ~400,600 characters, 66,890px tall — because the mechanics base was already broken underneath the framing CSS. Diagnose the exact leaking block from the filed bytes first, then fix it there.
+10. **THE MAX SPLIT IS SETTLED, THE ARMY IS OWED:** Max members get their own affiliate army tracked inside their membership — designed, not built. On their own memberships they keep 100%, NayaNET takes no cut, and they pay their affiliates whatever percentage they choose, out of their 100%. Distinct from the 50% NayaNET ambassador share — two splits, never confused.
+
+## Why it matters
+
+1. Without the milestone-not-verdict law, a checker PASS gets sent as done while the render proof is still running and the citizen meets a send button that cannot send — the look is claimed, the performance is not there.
+2. Without 10/10 on performance, every scorecard drifts back to beauty, and a beautiful page that does not work keeps scoring high while citizens keep hitting dead buttons.
+3. Without checking the gate first-hand, a dispatch runs on a false premise — 18 migrations onto production at once, no preview, no §2/§3 — and the correction has to be made in public after the fact instead of before it.
+4. Without the No-Skipping Law, the pressure to ship wins over the work of making it right, and half a system goes live — part working, part not, the engine not operating.
+5. Without Path B dead, the same production-direct offer comes back every time the road gets hard, and the law becomes a suggestion instead of a law.
+6. Without the honest 5/10 verdict written down, the team works from memory instead of from the record, and the holes stay in heads instead of in lists with names on them.
+7. Without labelling from the bookability function, a citizen taps "Open" and finds nothing free — the first thing they feel is a lie, and a lie at the tap is worse than a missing feature.
+8. Without the frame law proven by measurement and render, a phone page scrolls inside itself and the citizen fights the frame instead of using the calendar.
+9. Without fixing at the source, the framing round gets blamed for a base that was already broken, and the next round paints over the same leak.
+10. Without the settled split kept distinct, a citizen's own 100% gets confused with NayaNET's 50% ambassador share — and the Max promise, still unbuilt, gets claimed as a product instead of carried as a build owed.
+
+## What changes now
+
+1. Every round reports done AND not-done in the same pass, and no staged link goes to him as done until the render proof lands and his eye has the verdict.
+2. Every scorecard scores performance — render AND click proof AND live-data proof — area by area, until each is 10/10 or the gap to 10 is named.
+3. No dispatch runs on a report's word: the coordinator verifies the pipeline, the files, and the branch first-hand, and stops when the premise breaks.
+4. Path A runs: §2+§3 filed as migrations, a real preview path built, the whole puzzle proven on preview, the go-ahead packet back to his hand. Path B is never offered again.
+5. The push-trigger hazard is investigated and a guard proposed — the workflow is never changed unilaterally.
+6. The calendar round 2 labels slots from `mcFreeTimes`, moves open states to the next frame, localizes the Journal overflow, and proves fit by measurement AND render.
+7. The Dashboard fix round diagnoses the leaking block from the filed bytes, fixes at the source, and folds in bar-alignment and the "Earnings Per Click" relabel on the same page, one list.
+8. The Supabase fresh-apply proof runs against a scratch project before the rebuild is claimed proven; the 129 DROP candidates stay untouched until his word; the count is 143, never "128" again.
+9. The "My World" heading question goes to him — rename the calendar heading and settings button to "Calendar" too, or leave them — before any fix touches it.
+10. The affiliate army build is carried as owed: a citizen can create affiliates under their own membership, tracked inside it, with the calculator carrying a "your membership price" input — and the 100% / 50% split is never confused.
