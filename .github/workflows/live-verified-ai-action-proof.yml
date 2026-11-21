@@ -34,25 +34,34 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p .naya/evidence
-          git fetch origin production:refs/remotes/origin/production
-          runtime_source="$(git show origin/production:supabase/functions/nayanet-verified-ai-action/index.ts)"
-          deployed_source="$(printf '%s' "$runtime_source" | python -c 'import re,sys; s=sys.stdin.read(); m=re.findall(r"const DEPLOYED_SOURCE_REVISION = \"([0-9a-f]{40})\";",s); print(m[0] if len(m)==1 else "UNKNOWN")')"
-          if [ "$deployed_source" = "$GITHUB_SHA" ]; then
-            status="PARITY_ELIGIBLE"
-            eligible="true"
-          else
-            status="BLOCKED_BY_PARITY"
-            eligible="false"
+          status="BLOCKED_BY_NO_PRODUCTION_REF"
+          deployed_source="UNKNOWN"
+          eligible="false"
+          if git fetch origin production:refs/remotes/origin/production; then
+            runtime_source="$(git show origin/production:supabase/functions/nayanet-verified-ai-action/index.ts)"
+            deployed_source="$(printf '%s' "$runtime_source" | python -c 'import re,sys; s=sys.stdin.read(); m=re.findall(r"const DEPLOYED_SOURCE_REVISION = \"([0-9a-f]{40})\";",s); print(m[0] if len(m)==1 else "UNKNOWN")')"
+            if [ "$deployed_source" = "$GITHUB_SHA" ]; then
+              status="PARITY_ELIGIBLE"
+              eligible="true"
+            else
+              status="BLOCKED_BY_PARITY"
+              eligible="false"
+            fi
           fi
           python - "$status" "$deployed_source" "$GITHUB_SHA" <<'PY'
           import json,sys
           status,deployed,source=sys.argv[1:]
+          reason=None
+          if status=="BLOCKED_BY_NO_PRODUCTION_REF":
+            reason="production ref unavailable"
+          elif status!="PARITY_ELIGIBLE":
+            reason="Production does not yet advertise the exact main source; parity-dependent behavioral proof is intentionally skipped."
           json.dump({
             "status":status,
             "source_sha":source,
             "production_stamped_source_revision":deployed,
             "behavioral_proof_executed":False,
-            "reason":None if status=="PARITY_ELIGIBLE" else "Production does not yet advertise the exact main source; parity-dependent behavioral proof is intentionally skipped.",
+            "reason":reason,
           },open(".naya/evidence/live-proof-preflight.json","w"),indent=2)
           PY
           echo "eligible=$eligible" >> "$GITHUB_OUTPUT"
