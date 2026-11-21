@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-21 20:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-21 20:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21757,6 +21757,12 @@ _Last updated: 2026-11-21 20:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Task:** Stage 0 WINMINE - mine 3+ repeatable success patterns from 9.5/10 receipts
 
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand on live bytes: winmine-success-patterns-t0648.md sha256 a2ad03a326a0de61... exact match to receipt pin; each of the 6 cited (tick,lane) pairs has a 9.5 row in twelve-lane-scores.jsonl (t0622-lane9, t0582-lane3, t0609-lane1, t0600-lane6, t0576-lane1, t0532-lane12). NOT PHANTOM. Sc
+
+### ✅ t0648-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Stage 0 WINMINE - mine 3+ repeatable success patterns from 9.5/10 receipts
+
 **Evidence:** Verified: winmine-success-patterns-t0648.md exists, sha256 a2ad03a3... matches receipt exactly; file carries 4 patterns with receipt citations. Score 9.0. Why not 9.5: (1) only 6 of the 24 nine-point-five receipts mined - the remaining 18 may hold unseen patterns; (2) no differential analysis against sub-9.0 rows (zero sub-7.0 rows in corpus, so th
 
 ### ✅ t0648 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
@@ -21774,6 +21780,12 @@ _Last updated: 2026-11-21 20:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0648-lane5.md`
 
 **Evidence:** Artifact verification PASSED: hidden_files/winmine-success-patterns-t0648.md sha256 a2ad03a3...498fadf byte-exact match to receipt. Content verified: 4 patterns each with one-sentence form, 2 receipt citations with exact scores each, and an instructable behavior delta for future briefs; 6/6 citations independently re-parsed from jsonl bytes (all 9.
+
+### ✅ t0648-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Execute sealed H-dc6 instrument (frozen verdict rule)
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand on live bytes: instrument auto-retrieval/t0633_h_dc6.py sha256 b6e6e7338806e66f... exact match to receipt pin; results auto-retrieval/results-t0633-h-dc6.json sha256 f897f3da59cecdd9... exact match; results bytes contain eq_d0=true, n_flip=1, winner_flips=1; verdict file line 1 i
 
 ### ✅ t0648-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -39859,6 +39871,12 @@ _Last updated: 2026-11-21 20:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-scorer-20261015-0050-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: independent re-derivation of 632-row disclosure cross-tab at pin ba626387
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand on live bytes: pin ba62638704256b012c20e41fe7f53cc3b62b1b44 resolves in ~/workspace/nayapower-rescue (git rev-parse exact match), so the re-derivation base is a real commit, not a cited ghost. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS. Why not 9.5: (1) the registry cross-tab num
+
 ### ✅ gap-t0072 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Close t0072 gap: re-verify tip CI table on the moved live tip (304 check-runs re-pinned)
@@ -42944,6 +42962,12 @@ _Last updated: 2026-11-21 20:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane8.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
+
+### ✅ gap-scorer-20261014-2340-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: re-pin + scratch re-run of register-flip K2 builder at parent pins
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand on live bytes: all three pins byte-match the live files 5+ weeks later - builder register-flip-k2-build-gap-t0806.py c3ed4298..., gate bin/value_calculus.py 25ddc969..., amendment register-flip-prereg-t0806-lane7-amendment-k2.md c48b419f... - exact matches to the receipt pins. NO
 
 ### ✅ t-contract-selfreview-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -48650,6 +48674,12 @@ _Last updated: 2026-11-21 20:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ gap-t0818-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: second-seat blind re-run of t0818 sweep - correct recusal + board confirmation
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand on live bytes: parent receipt twelve-lane-receipts/t0818-lane3.md exists; the recusal logic is sound (parent sweep authored by the same seat, Judge hat - a self re-run cannot be a blind second seat). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with the receipt's honest 9
 
 ### ✅ decision-replay-t0780-thirdseat-t1496-lane3-verdict-table — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -56780,6 +56810,12 @@ _Last updated: 2026-11-21 20:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ gap-scorer-20261015-0040-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: class-#17 root cause + --sign-in structural fix in claim-brief.py
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand on live bytes: bin/claim-brief.py still carries the --sign-in machinery the receipt built (7 mentions; class-#17 sign-in-before-read framing in the script's own comments), so the fix is present, not vapor. Parent receipt gap-scorer-20261014-2250-lane1.md exists. NOT PHANTOM. Scor
 
 ### ✅ gap-t0012 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
