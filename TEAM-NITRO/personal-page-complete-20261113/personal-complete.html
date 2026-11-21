@@ -5135,6 +5135,7 @@ html.os-calm .os-dash .ph-card::after,html.os-calm .os-dash-pulse .stat-card::be
       <button class="up-act" id="skillsbtn" type="button" style="--ac:#c62828;" data-os-go="skills"><span class="os-jewel os-jewel-sm" style="--jc:#c62828">⚙</span> Skills</button>
       <button class="up-act" id="connbtn" type="button" style="--ac:#a21caf;" data-os-go="people"><span class="os-jewel os-jewel-sm" style="--jc:#a21caf">◈</span> Connections</button>
       <button class="up-act" id="growthbtn" type="button" style="--ac:#8e24aa;" data-os-go="growth"><span class="os-jewel os-jewel-sm" style="--jc:#8e24aa">↗</span> Invite</button>
+      <a class="up-act" id="inviterbtn" href="https://joinus.nayanet.app/" style="--ac:#8e24aa;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;"><span class="os-jewel os-jewel-sm" style="--jc:#8e24aa">✧</span> Smart Inviter</a>
       <button class="up-act" id="sharebtn" type="button" style="--ac:#0f52ba;"><span class="os-jewel os-jewel-sm" style="--jc:#0f52ba">⇄</span> Share</button>
       <a class="up-act" id="joinbtn" href="https://nayanet.app/joinus" style="--ac:#07925f;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;"><span class="os-jewel os-jewel-sm" style="--jc:#07925f">✦</span> Join NayaNET</a>
       <button class="up-act" id="memberbtn" type="button" style="--ac:#a21caf;display:none;">★ Become a Member</button>
@@ -40003,7 +40004,7 @@ function mwApplyLang(){
   try{ document.documentElement.lang=code; }catch(e){}
   var dict=MW_I18N[code]||{};
   var _joinLab='Join NayaNET'; try{ if(window.pcIsPageOwner && window.pcIsPageOwner()) _joinLab='Go to the Hub'; }catch(e){} /* FOLLOW-ON 2 (E3): the page-level Join reads as the owner's door — it routes the owner to the Hub, so it says so. Recomputed on every language pass. */
-  var byId={msgbtn:'Message',aboutbtn:'About',myworldbtn:'My World',statsbtn:'Stats',intelbtn:"Today's Intel",skillsbtn:'Skills',connbtn:'Connections',growthbtn:'Invite',sharebtn:'Share',joinbtn:_joinLab,settingsbtn:'Settings',memberbtn:'Become a Member',saBackBtn:'Back to my world',cvrbtn:'Change cover','tg-back':'Back to my words','tg-post-smart':'Post smart note',fcChatSend:'Send','os-dash-fb-btn':'Send'}; /* AUTO-TRANSLATE: the row's missing three (Stats, Today's Intel, Skills — the first two are dead ids today, covered for when they return) + the hidden-until-open buttons + the chat Send. The creator's two buttons are NOT here: os-post-btn's label is per-mode (tgSetMode owns it, re-run below) and os-sched-btn's label is dynamic (a scheduled date) — the byId pass would clobber both. */
+  var byId={msgbtn:'Message',aboutbtn:'About',myworldbtn:'My World',statsbtn:'Stats',intelbtn:"Today's Intel",skillsbtn:'Skills',connbtn:'Connections',growthbtn:'Invite',inviterbtn:'Smart Inviter',sharebtn:'Share',joinbtn:_joinLab,settingsbtn:'Settings',memberbtn:'Become a Member',saBackBtn:'Back to my world',cvrbtn:'Change cover','tg-back':'Back to my words','tg-post-smart':'Post smart note',fcChatSend:'Send','os-dash-fb-btn':'Send'}; /* AUTO-TRANSLATE: the row's missing three (Stats, Today's Intel, Skills — the first two are dead ids today, covered for when they return) + the hidden-until-open buttons + the chat Send. The creator's two buttons are NOT here: os-post-btn's label is per-mode (tgSetMode owns it, re-run below) and os-sched-btn's label is dynamic (a scheduled date) — the byId pass would clobber both. */
   Object.keys(byId).forEach(function(id){
     var el=$(id); if(!el) return;
     if(el.classList && el.classList.contains('pc-gear')) return; /* PERSONAL-COMPLETE: the gear is an icon, not a label. */
@@ -47271,8 +47272,8 @@ if(document.readyState==='loading'){
    -> envelope), not localStorage: in a fresh VM the label reads Message
    while os.connected is unset, and the label is what the citizen reads. */
 (function(){
-  var GLYPHS='\u2709\u2726\u25c9\u2302\u2699\u25c8\u2197\u21c4';
-  var JEWELS={aboutbtn:['\u25c9','#d4a017'],myworldbtn:['\u2302','#c2410c'],skillsbtn:['\u2699','#c62828'],connbtn:['\u25c8','#a21caf'],growthbtn:['\u2197','#8e24aa'],sharebtn:['\u21c4','#0f52ba'],joinbtn:['\u2726','#07925f']};
+  var GLYPHS='\u2709\u2726\u25c9\u2302\u2699\u25c8\u2197\u21c4\u2727';
+  var JEWELS={aboutbtn:['\u25c9','#d4a017'],myworldbtn:['\u2302','#c2410c'],skillsbtn:['\u2699','#c62828'],connbtn:['\u25c8','#a21caf'],growthbtn:['\u2197','#8e24aa'],inviterbtn:['\u2727','#8e24aa'],sharebtn:['\u21c4','#0f52ba'],joinbtn:['\u2726','#07925f']};
   function msgGlyphFor(txt){ return /^\s*Connect/i.test(txt) ? '\u2726' : '\u2709'; }
   function esc(t){ return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
   function pcR3EnsureUpJewel(id){
