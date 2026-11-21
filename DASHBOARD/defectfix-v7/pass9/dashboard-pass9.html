@@ -24883,7 +24883,7 @@ function liveSources(s){
 
 /* ---------- derivation copy: human words, computed from the spine ---------- */
 var POINT_RULES = { posts:25, notes:35, saves:5, invites:25, joins:50, memberBonus:40, likes:1, comments:3, shares:5, externalShares:10, sales:100, birth:0 }; /* canon — mirrors LD_VALUES, same numbers (FIXA 2026-11-07; LEDGER MECHANICS 2026-11-21: birth 0 — the 2X lives in NAYA_POINTS.score, never as a flat value) */
-var BIRTH = 75;                            /* canon birth value */
+var BIRTH = 0;                            /* canon birth value */
 
 function derivationFor(key, holder){
   var s = spine(); if(!s) return null;
