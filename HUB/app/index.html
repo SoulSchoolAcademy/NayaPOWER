@@ -2159,7 +2159,7 @@ body.msg-open{overflow:hidden;}
 .intel-board .star-rating button { width: 44px; height: 44px; font-size: 26px; line-height: 1; border-radius: 50%; display: inline-grid; place-items: center; padding: 0; }
 .intel-board .rank-value .star-rating button { background: radial-gradient(circle at 35% 30%, #ffffff, #b678e8 32%, #8e24aa 62%, #4a0a5e 100%); color: #ffffff; text-shadow: 0 1px 3px rgba(0,0,0,.7); box-shadow: 0 0 14px rgba(142,36,170,.55), 0 4px 10px rgba(0,0,0,.55); opacity: .42; filter: saturate(.7); }
 .intel-board .rank-value .star-rating button.on { opacity: 1; filter: none; box-shadow: 0 0 20px rgba(142,36,170,.95), 0 0 42px rgba(142,36,170,.45), 0 4px 10px rgba(0,0,0,.55); }
-.intel-board .rank-intel .star-rating button { background: radial-gradient(circle at 35% 30%, #ffffff, #f2f2f7 45%, #c9c9d6 100%); color: #8e24aa; text-shadow: 0 1px 2px rgba(0,0,0,.25); box-shadow: 0 0 14px rgba(255,255,255,.5), 0 4px 10px rgba(0,0,0,.55); opacity: .42; filter: saturate(.7); }
+.intel-board .rank-intel .star-rating button { background: #ffffff; color: #8e24aa; text-shadow: 0 1px 2px rgba(0,0,0,.25); box-shadow: 0 0 14px rgba(255,255,255,.5), 0 4px 10px rgba(0,0,0,.55); opacity: .42; filter: saturate(.7); } /* hub/detail-boards-unify-20261121 item 3: straight white (was a #ffffff→#c9c9d6 gray gradient). Unrated dimming (.42) is the settled exactly-N-lit language — untouched. */
 .intel-board .rank-intel .star-rating button.on { opacity: 1; filter: none; box-shadow: 0 0 20px rgba(255,255,255,.9), 0 0 42px rgba(255,255,255,.4), 0 4px 10px rgba(0,0,0,.55); }
 /* Item 5 — love/like count perfectly centered in its tile */
 .intel-board .action-count { display: inline-grid; place-items: center; min-width: 28px; height: 28px; line-height: 1; padding: 0 4px; text-align: center; }
@@ -2169,7 +2169,7 @@ body.msg-open{overflow:hidden;}
 .intel-board .add-intel { margin-left: auto; margin-right: auto; max-width: 600px; }
 .intel-board .add-intel-row input[type="text"] { border: 2px solid #ffffff; box-shadow: 0 0 0 1px rgba(255,255,255,.5), 0 0 18px rgba(255,255,255,.45); }
 .intel-board .add-intel-row input[type="text"]:hover, .intel-board .add-intel-row input[type="text"]:focus { border-color: #8e24aa; box-shadow: 0 0 0 2px #8e24aa, 0 0 24px rgba(142,36,170,.65); outline: none; }
-.intel-board .add-intel-types { display: flex; gap: 16px; } /* SNB-FIX1E item 9: real gaps between the pills (was 8px — they slid into each other). Upper-bound row 1152px vs panel inner 1167px = 15px margin, so the fix-1d natural-width fit still closes. */
+.intel-board .add-intel-types { display: flex; gap: 24px; margin-top: 128px; margin-bottom: 24px; } /* hub/detail-boards-unify-20261121 item 4: values harvested verbatim from the star-edge-light round's authored rule — margin-top 128px moves the four buttons down with REAL air from the comment input (the 64px checker PASS still crashed into it in Shawn's eye: the focus glow's visible tail runs to ~2x its 48px radius). The render at 390px is the proof, not the number. */
 .intel-board .add-intel-types .intel-type { flex: 1 1 0; justify-content: center; }
 
 /* ——— SNB-FIX1C 2026-11-20 (captain's cloud-browser eye walk 11:29–11:39 MST — render requirements) ——— */
@@ -2403,10 +2403,10 @@ body.msg-open{overflow:hidden;}
    stars (Order 4, settled). The gold rules above are VALUE only; they would
    otherwise swallow the white track — equal specificity, later wins — so the
    white track is re-asserted here, after all of them, with its own values. */
-.star-rating-intel { border-color: rgba(255,255,255,.6); box-shadow: inset 0 1px rgba(255,255,255,.25), 0 8px 18px rgba(0,0,0,.5), 0 0 14px -2px rgba(255,255,255,.25); }
-.star-rating-intel button { border-color: #8e24aa88; color: rgba(142,36,170,.55); background: radial-gradient(circle at 35% 30%, #ffffff, #c8ccd6 55%, #7a7e88 100%); text-shadow: 0 1px 0 rgba(0,0,0,.18); }
+.star-rating-intel { border-width: 1px; border-color: rgba(255,255,255,.35); box-shadow: inset 0 1px rgba(255,255,255,.25), 0 8px 18px rgba(0,0,0,.5), 0 0 8px -2px rgba(255,255,255,.18); } /* hub/detail-boards-unify-20261121 item 3: THIN white row edge — the 2px .6 border + 14px glow was too heavy. The flowing white ::before (new block) carries the light now. */
+.star-rating-intel button { border-color: #8e24aa88; color: rgba(142,36,170,.55); background: #ffffff; text-shadow: 0 1px 0 rgba(0,0,0,.18); } /* hub/detail-boards-unify-20261121 item 3: straight white (was a gray gradient). */
 .star-rating-intel button:hover { border-color: #8e24aa; color: #8e24aa; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 8px 16px rgba(0,0,0,.55), 0 0 12px -2px rgba(142,36,170,.4); }
-.star-rating-intel button.on { background: radial-gradient(circle at 35% 30%, #ffffff, #c8ccd6 55%, #7a7e88 100%); color: #8e24aa; text-shadow: 0 1px 2px rgba(0,0,0,.25), 0 0 14px rgba(142,36,170,.55); border-color: #8e24aa; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 12px -2px rgba(142,36,170,.45); }
+.star-rating-intel button.on { background: #ffffff; color: #8e24aa; text-shadow: 0 1px 2px rgba(0,0,0,.25), 0 0 14px rgba(142,36,170,.55); border-color: #8e24aa; box-shadow: inset 0 1px rgba(255,255,255,.3), inset 0 -3px 7px rgba(0,0,0,.6), 0 5px 12px rgba(0,0,0,.55), 0 0 12px -2px rgba(142,36,170,.45); } /* hub/detail-boards-unify-20261121 item 3: straight white (was a gray gradient). */
 @media (min-width: 701px) {
   /* Desktop: true circles, one size, no stretch. Phones keep the FIX2
      flex rule (<=700px) so ten orbs still fit 390px. */
@@ -2728,6 +2728,51 @@ button, .btn, .tab, .eco-btn, .activity-card {
   .ib-title { font-size: 25px; }
   .ib-layer-body p { font-size: 17px; }
 }
+
+/* ========== hub/detail-boards-unify-20261121 — follow-on: items 1–9, 11–13 ========== */
+/* (1) Detail-view board-button head + hover, mirrored from the feed card — same declarations, scoped to the detail views (.intel-full-block = Reports detail, .note-view .intel-board = solo note view). */
+.intel-full-block .ib-layer-head, .note-view .intel-board .ib-layer-head { width: auto; margin: 8px 8px 0; padding: 14px 16px; background: linear-gradient(135deg, rgba(255,255,255,.14) 0%, rgba(255,255,255,0) 38%), #050607; border: 2px solid color-mix(in srgb, var(--lc) 62%, rgba(255,255,255,.12)); border-radius: 16px; box-shadow: inset 0 2px 3px rgba(255,255,255,.28), inset 0 -6px 12px rgba(0,0,0,.7), 0 8px 20px rgba(0,0,0,.6), 0 0 10px -2px color-mix(in srgb, var(--lc) 30%, transparent); }
+.intel-full-block .ib-layer:hover, .note-view .intel-board .ib-layer:hover { border-color: color-mix(in srgb, var(--lc) 85%, #fff); box-shadow: 0 18px 38px #000000a0, 0 0 24px -4px color-mix(in srgb, var(--lc) 55%, transparent); transform: translateY(-2px); }
+/* (2) Scroll reveal — detail views ONLY. Each board starts lowered and dim; armLayerReveal adds .ib-reveal-lit as it enters view, so it lifts into place and lights up in its own --lc colour. The feed card never gets the lit class and these selectors never match it, so it is untouched. */
+.intel-full-block .ib-layer.ib-reveal, .intel-full-block .ib-nutshell.ib-reveal, .note-view .intel-board .ib-layer.ib-reveal, .note-view .intel-board .ib-nutshell.ib-reveal { transform: translateY(14px); opacity: .55; transition: transform .6s cubic-bezier(.16,.84,.22,1), opacity .6s ease, box-shadow .6s ease, border-color .6s ease; }
+.intel-full-block .ib-layer.ib-reveal-lit, .note-view .intel-board .ib-layer.ib-reveal-lit { transform: none; opacity: 1; border-color: color-mix(in srgb, var(--lc) 85%, #fff); box-shadow: inset 0 1px rgba(255,255,255,.28), 0 18px 36px rgba(0,0,0,.55), 0 0 14px -2px color-mix(in srgb, var(--lc) 45%, transparent); }
+.intel-full-block .ib-nutshell.ib-reveal-lit, .note-view .intel-board .ib-nutshell.ib-reveal-lit { transform: none; opacity: 1; border-color: color-mix(in srgb, #ffffff 70%, transparent); box-shadow: inset 0 1px rgba(255,255,255,.3), 0 14px 30px rgba(0,0,0,.56), 0 0 20px -4px rgba(255,255,255,.22); }
+@media (prefers-reduced-motion: reduce) { .intel-full-block .ib-reveal, .note-view .intel-board .ib-reveal { transform: none; opacity: 1; transition: none; } }
+/* (7) See-more — PROVISIONAL (A1 shape still forming; flagged in MAKER-REPORT.md). Bodies clamp to 4 lines; the See more button appears only when the text actually overflows, and expands the board. The :not([hidden]) guard keeps collapsed bodies hidden — the clamp never overrides the head toggle. 17px is the laws' text floor (25/19/17). */
+.ib-layer-body.ib-clamp:not([hidden]) { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.ib-layer.ib-expanded .ib-layer-body.ib-clamp:not([hidden]) { display: block; -webkit-line-clamp: unset; overflow: visible; }
+.ib-see-more { display: block; margin: 4px auto 16px; padding: 8px 18px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--lc) 65%, transparent); background: #050607; color: #fff; font-size: 17px; letter-spacing: .06em; cursor: pointer; }
+.ib-see-more:hover { border-color: var(--lc); box-shadow: 0 0 12px -2px color-mix(in srgb, var(--lc) 60%, transparent); }
+/* (5) ADD INTEL — steady WHITE light at rest, mirroring the comment input's settled rule (white at rest, purple when clicked). Hover brightens the white; focus/click goes purple. */
+.intel-board .action[data-kind="add-intel"] { border: 2px solid rgba(255,255,255,.9); box-shadow: inset 0 1px 0 rgba(255,255,255,.25), inset 0 -3px 8px rgba(0,0,0,.6), 0 0 14px rgba(255,255,255,.45), 0 0 28px rgba(255,255,255,.18), 0 6px 14px rgba(0,0,0,.55); }
+.intel-board .action[data-kind="add-intel"]:hover { border-color: #ffffff; box-shadow: inset 0 1px 0 rgba(255,255,255,.3), inset 0 -3px 8px rgba(0,0,0,.6), 0 0 18px rgba(255,255,255,.55), 0 0 34px rgba(255,255,255,.22), 0 6px 14px rgba(0,0,0,.55); }
+.intel-board .action[data-kind="add-intel"]:focus, .intel-board .action[data-kind="add-intel"]:active { border-color: #8e24aa; box-shadow: 0 0 0 2px rgba(142,36,170,.6), 0 0 24px rgba(142,36,170,.65), 0 6px 14px rgba(0,0,0,.55); outline: none; }
+/* (3) INTEL row edge — THIN white light flowing around the row, harvested from .star-rating::before: same mask-ring construction and starFlow, white instead of purple, 1px instead of 2px. INTEL row only — the date pill is untouched, no spin there. Beats the generic purple flow on specificity. */
+.star-rating-intel { position: relative; }
+.star-rating-intel::before { content: ""; position: absolute; inset: -6px; border-radius: 20px; padding: 1px; background: conic-gradient(from var(--star-flow), rgba(255,255,255,.95) 0deg, transparent 70deg, transparent 180deg, rgba(255,255,255,.5) 230deg, transparent 300deg); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask-composite: exclude; pointer-events: none; animation: starFlow 120s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .star-rating-intel::before { animation: none; } }
+/* (4) At 390px the one-line rule left "REPORT AN OUTCOME" 4px over its pill — the authors' intent is "label whole on one line", and the render showed it is not whole. Tighter tracking at <=700px only; 17px size untouched. */
+@media (max-width: 700px) { .intel-board .add-intel-types .intel-type { letter-spacing: .02em; } }
+/* (8) THE FLIP — one toggle per note, in the same board format: obsidian, Naya rim #0f52ba (the frame's layerColorFor for Naya Note — harvested, never invented), white 17px text. The back view stacks like .ib-layers (12px gap). Hover brightens the rim and lifts, the same hover language as the boards. */
+.naya-view { display: flex; flex-direction: column; gap: 12px; }
+.ib-flip { display: block; width: 100%; margin: 12px 0 0; padding: 14px 18px; background: #050607; border: 2px solid #0f52ba; border-radius: 18px; color: #ffffff; font-size: 17px; font-weight: 600; text-align: center; cursor: pointer; box-shadow: 0 10px 26px rgba(15,82,186,.35); transition: border-color .2s, box-shadow .2s, transform .2s; }
+.ib-flip:hover { border-color: #ffffff; box-shadow: 0 10px 30px rgba(15,82,186,.55), 0 0 18px rgba(255,255,255,.25); transform: translateY(-2px); }
+.ib-flip:focus-visible { outline: 2px solid #ffffff; outline-offset: 2px; }
+/* (8) HIDDEN-TRAP FIX: the flip sets hidden on .ib-layers and .naya-view — but both carry an author display:flex, which beats the UA [hidden]{display:none}, so the front boards stayed visible in the back view. [hidden] must win. (.ib-layer and .ib-nutshell carry no display rule, so hidden already works on them.) */
+.ib-layers[hidden], .naya-view[hidden] { display: none; }
+.ib-frame[hidden] { display: none; } /* (8) the flip hides the whole front frame — .ib-frame sets display:grid, so [hidden] alone would not hide it. */
+.ib-layer.naya-plain { white-space: pre-wrap; } /* A12 unformat: verbatim as inputted — the citizen's line breaks stay. */
+/* A12 — NO SOCIAL IN NAYA VIEW: the social area belongs to the front only. When the card carries .naya-flipped, hide the rate/love/like/share row (.board-actions) and the comment panel (.add-intel: input + mic + ADD INTEL + the four type buttons). Top actions stay (Create World / Pin It / Save — the file's own personal-private precedent). The flip button itself is appended to the card, not inside these wraps. */
+.intel-board.naya-flipped .board-actions, .intel-board.naya-flipped .add-intel,
+.intel-full-block.naya-flipped .board-actions, .intel-full-block.naya-flipped .add-intel { display: none; }
+/* A12 — UNFORMAT: one elevated block, verbatim as inputted. Headless-board padding mirrors .ib-nutshell (20px 21px); the .ib-layer base gives it the obsidian bg, own-colour rim and shadow — still a block, just not as nice. */
+.ib-layer.naya-plain { padding: 20px 21px; }
+/* (9) DETAIL IMAGE — the stage shows the image WHOLE, never cropped: the feed card's .ib-feature img is 16/9 cover (it crops); in the detail views the stage renders at its natural aspect. The solo view lifts the stage above the headline (flex order — the frame body stacks image, headline, text, all inside the NayaNET frame); the Reports detail builds that order in the DOM. Feed card untouched. */
+.note-view .ib-frame-body { display: flex; flex-direction: column; }
+.note-view .ib-frame-body > .ib-feature, .note-view .ib-frame-body > .ib-media-top { order: -1; }
+.note-view .ib-feature img, .note-view .ib-media-top img, .intel-full-block .ib-feature img { display: block; width: 100%; height: auto; aspect-ratio: auto; object-fit: contain; }
+/* (11) SINGLE-IMAGE STAGE — one image is a stage, full width in its own frame: whole, never cropped. The 2–9 grid keeps its harvested 16/9 cover (the t3 auto-format look); only the single stage renders at natural aspect. */
+.sp-media-single .sp-media-cell img { aspect-ratio: auto; height: auto; object-fit: contain; }
 
 /* ——— HUB SMART-POST COMPOSER (item 11 / A14, 2026-11-21) ———
      Auto-format, up to nine images. Harvested from .ib-media (16/9 cover, 16px radius, 1.5px rim, 12px gaps): the block arranges the images itself — 1 full-width stage; 2 side by side; 3 across; 4 four-corner 2x2; 5–9 rows of three, last row filling what remains (9 = 3x3). One renderer builds every row; the composer preview and the published post share it. */
@@ -4935,6 +4980,28 @@ window.NayaLiveFeedConfig = { url: 'https://dahisasgpfvziswqvmvm.supabase.co', k
     ].join('\n');
     (document.head||document.documentElement).appendChild(st);
   }
+  /* hub/detail-boards-unify-20261121 item 2 — SCROLL TRIGGER: each board
+     lights up in its own --lc colour AND moves as it comes into view.
+     Boards start lowered+dim (CSS .ib-reveal); the observer adds
+     .ib-reveal-lit on entry, so the board lifts into place and glows.
+     Detail views only (.intel-full-block + .note-view .intel-board) —
+     the feed card never carries .ib-reveal and is untouched. */
+  var io=null;
+  function armLayerReveal(scope){
+    if (!scope || !scope.querySelectorAll) return;
+    var boards = scope.querySelectorAll('.intel-full-block .ib-layer.ib-reveal, .intel-full-block .ib-nutshell.ib-reveal, .note-view .intel-board .ib-layer.ib-reveal, .note-view .intel-board .ib-nutshell.ib-reveal');
+    if (!boards.length) return;
+    try {
+      if (!('IntersectionObserver' in window)) { boards.forEach(function(b){ b.classList.add('ib-reveal-lit'); }); return; }
+      var seen = new WeakSet();
+      io = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if (en.isIntersecting) { en.target.classList.add('ib-reveal-lit'); io.unobserve(en.target); }
+        });
+      }, { threshold: .1, rootMargin: '0px 0px -10% 0px' });
+      boards.forEach(function(b){ if (!seen.has(b)) { seen.add(b); io.observe(b); } });
+    } catch(e){}
+  }
   var io=null;
   function armAlive(){
     try{
@@ -4943,6 +5010,7 @@ window.NayaLiveFeedConfig = { url: 'https://dahisasgpfvziswqvmvm.supabase.co', k
       document.querySelectorAll('.intel-board:not(.rv-lit)').forEach(function(c){ io.observe(c); });
     }catch(e){}
   }
+  window.armLayerReveal = armLayerReveal; /* shared with the Reports detail view + the solo note view (separate scripts) — same pattern as window.NayaRooms. Runs at script eval, before any route renders. */
   function fixProvenance(count, newest){
     try{
       if(window.NayaContent && window.NayaContent.meta && newest){ window.NayaContent.meta.as_of=newest; }
@@ -6040,6 +6108,7 @@ window.BoardActions = (() => {
       var NSR = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (!NSR) { micBtn.style.display = 'none'; return; }
       var rec = new NSR();
+      var dictBase = ''; /* hub/detail-boards-unify-20261121 item 6: the settled text — what the citizen typed before tapping the mic, plus every finalised result so far. The live interim rides after it, never instead of it. */
       rec.lang = navigator.language || 'en-US';
       rec.interimResults = true;
       rec.maxAlternatives = 1;
@@ -6050,16 +6119,17 @@ window.BoardActions = (() => {
         micBtn.setAttribute('aria-label', on ? 'Stop dictation' : 'Dictate your contribution');
       }
       rec.onresult = function (e) {
-        var txt = '';
-        for (var i = e.resultIndex; i < e.results.length; i++) { txt += e.results[i][0].transcript; }
-        input.value = txt;
+        var finalTxt = '', interimTxt = '';
+        for (var i = e.resultIndex; i < e.results.length; i++) { if (e.results[i].isFinal) finalTxt += e.results[i][0].transcript; else interimTxt += e.results[i][0].transcript; } /* hub/detail-boards-unify-20261121 item 6: the OLD loop took every new result and REPLACED the whole input with it — typed text and earlier dictation wiped on every event. Finals now accumulate into the session base; the interim shows live after them. */
+        if (finalTxt) dictBase = (dictBase ? dictBase.replace(/\s+$/, '') + ' ' : '') + finalTxt;
+        input.value = dictBase + (interimTxt ? (dictBase ? ' ' : '') + interimTxt : '');
         input.dispatchEvent(new Event('input', { bubbles: true }));
       };
       rec.onend = function () { setListening(false); };
-      rec.onerror = function () { setListening(false); };
+      rec.onerror = function (ev) { setListening(false); var errMsg = 'Dictation error: ' + ((ev && ev.error) || 'unknown'); micBtn.setAttribute('aria-label', errMsg); micBtn.title = errMsg; }; /* hub/detail-boards-unify-20261121 item 6: silent onerror hid the failure — the user just saw the mic stop. The reason now rides on the mic button (announced + on hover). */
       micBtn.addEventListener('click', function () {
         if (listening) { try { rec.stop(); } catch (_) {} return; }
-        try { rec.start(); setListening(true); } catch (_) { setListening(false); }
+        try { dictBase = input.value; rec.start(); setListening(true); } catch (err) { setListening(false); var startMsg = 'Dictation did not start: ' + (err && err.message ? err.message : 'microphone unavailable'); micBtn.setAttribute('aria-label', startMsg); micBtn.title = startMsg; } /* hub/detail-boards-unify-20261121 item 6: silent start-failure — the user tapped the mic and nothing happened with no reason given. */
       });
     })();
     const listWrap = el('div', 'intel-list');
@@ -7395,7 +7465,7 @@ window.NayaNotif = window.NayaNotif || {
     var MAX_IMAGES = 9;
     var FEEDS = [['personal', 'Personal', '#8e24aa'], ['business', 'Business', '#0f52ba'], ['space', 'Space', '#07925f'], ['hub', 'Hub', '#d4a017']];
     var overlay = null, feedBox = null, formBox = null, postedBox = null;
-    var curFeed = 'hub', curAudience = 'public', curImages = [], curPostedId = null;
+    var curFeed = 'hub', curAudience = 'public', curImages = [], curPostedId = null, curPlacement = 'top'; /* hub/detail-boards-unify-20261121 item 11.3: image placement, citizen's choice — 'top' (default) or 'bottom'. */
     var fields = {};
     function feedName(k) { for (var i = 0; i < FEEDS.length; i++) if (FEEDS[i][0] === k) return FEEDS[i][1]; return 'Hub'; }
     function feedColor(k) { for (var i = 0; i < FEEDS.length; i++) if (FEEDS[i][0] === k) return FEEDS[i][2]; return '#d4a017'; }
@@ -7410,7 +7480,7 @@ window.NayaNotif = window.NayaNotif || {
     function mediaRows(images, preview) {
       /* Auto-format, one renderer for the composer preview and the published post: 1 full-width stage; 2 side by side; 3 across; 4 four-corner 2x2; 5–9 rows of three, last row filling what remains (9 = 3x3). */
       var wrap = document.createElement('div');
-      wrap.className = 'sp-media' + (preview ? ' sp-media-preview' : '');
+      wrap.className = 'sp-media' + (preview ? ' sp-media-preview' : '') + (imgs.length === 1 ? ' sp-media-single' : ''); /* hub/detail-boards-unify-20261121 item 11.3: one image is a stage — the CSS renders it whole at its natural aspect, never cropped. The 2–9 grid keeps its harvested 16/9 cover. */
       var imgs = (images || []).slice(0, MAX_IMAGES);
       if (!imgs.length) return wrap;
       var rows = [];
@@ -7483,14 +7553,21 @@ window.NayaNotif = window.NayaNotif || {
       var fSideR = document.createElement('div'); fSideR.className = 'ib-frame-side ib-frame-side-r'; fSideR.setAttribute('aria-hidden', 'true');
       var fBottom = document.createElement('div'); fBottom.className = 'ib-frame-band ib-frame-band-bottom'; fBottom.setAttribute('aria-hidden', 'true');
       frame.append(fTop, fSideL, fBody, fSideR, fBottom);
+      var mediaEl = curImages.length ? mediaRows(curImages, true) : null;
+      var textEl = null;
       if (txt.trim()) {
-        var tb = document.createElement('div');
-        tb.className = 'ib-nutshell';
-        tb.innerHTML = verbatim(txt);
-        fBody.appendChild(tb);
+        textEl = document.createElement('div');
+        textEl.className = 'ib-nutshell';
+        textEl.innerHTML = verbatim(txt);
       }
-      if (curImages.length) fBody.appendChild(mediaRows(curImages, true));
-      pv.appendChild(frame);
+      /* hub/detail-boards-unify-20261121 item 11.3: image placement is the citizen's choice — top (above the headline, the default) or just above the social sharing below the text. */
+      if (curPlacement !== 'bottom') { if (mediaEl) fBody.appendChild(mediaEl); if (textEl) fBody.appendChild(textEl); }
+      else { if (textEl) fBody.appendChild(textEl); if (mediaEl) fBody.appendChild(mediaEl); }
+      /* hub/detail-boards-unify-20261121 item 12: the preview frame obeys the same framed pref as the published post. */
+      var framedPrev = true;
+      try { framedPrev = localStorage.getItem('nayanet.pref.naya_framed') !== '0'; } catch (e) {}
+      if (framedPrev) pv.appendChild(frame);
+      else { while (fBody.firstChild) pv.appendChild(fBody.firstChild); }
     }
     function downscale(dataUrl, done) {
       var im = new Image();
@@ -7579,13 +7656,22 @@ window.NayaNotif = window.NayaNotif || {
       idn.appendChild(tw);
       btop.appendChild(idn);
       b.appendChild(btop);
+      var postMedia = (post.images && post.images.length) ? mediaRows(post.images, false) : null;
+      var postText = null;
       if (post.text && post.text.trim()) {
-        var tb = document.createElement('div');
-        tb.className = 'ib-nutshell';
-        tb.innerHTML = verbatim(post.text);
-        b.appendChild(tb);
+        postText = document.createElement('div');
+        postText.className = 'ib-nutshell';
+        postText.innerHTML = verbatim(post.text);
       }
-      if (post.images && post.images.length) b.appendChild(mediaRows(post.images, false));
+      /* hub/detail-boards-unify-20261121 item 11.3: top = images before the headline (btop), text under it; bottom = text first, images just above the social sharing. Old records carry no placement and render as before (bottom). */
+      var placeTop = (post.placement || 'bottom') === 'top';
+      if (placeTop) {
+        if (postMedia) b.insertBefore(postMedia, btop);
+        if (postText) b.appendChild(postText);
+      } else {
+        if (postText) b.appendChild(postText);
+        if (postMedia) b.appendChild(postMedia);
+      }
       if (window.BoardActions) {
         btop.appendChild(window.BoardActions.topActions(bid, note.title, note));
         b.appendChild(window.BoardActions.bottomActions(bid, note.title, 'hub', note));
@@ -7630,6 +7716,7 @@ window.NayaNotif = window.NayaNotif || {
         audience: curAudience,
         text: fields.text.value,
         images: curImages.slice(0, MAX_IMAGES),
+        placement: curPlacement, /* hub/detail-boards-unify-20261121 item 11.3: the citizen's placement choice travels with the post. */
         createdAt: new Date().toISOString()
       };
       var all = readPosts();
@@ -7724,6 +7811,25 @@ window.NayaNotif = window.NayaNotif || {
       imgRow.appendChild(addBtn);
       imgRow.appendChild(cnt);
       formBox.appendChild(imgRow);
+      /* hub/detail-boards-unify-20261121 item 11.3 — the composer offers the choice in plain words; the preview re-renders in the new order at once. */
+      var placeRow = document.createElement('div');
+      placeRow.style.cssText = 'display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0 4px;';
+      var placeLab = document.createElement('span');
+      placeLab.textContent = 'Images go:';
+      placeLab.style.cssText = 'font-size:17px;color:#ffffff;';
+      var placeTopBtn = mkBtn('At the top', '#d4a017');
+      var placeBottomBtn = mkBtn('Above the sharing', '#0f52ba');
+      var paintPlace = function() {
+        placeTopBtn.style.background = curPlacement === 'top' ? '#d4a017' : '#050607';
+        placeBottomBtn.style.background = curPlacement === 'bottom' ? '#0f52ba' : '#050607';
+      };
+      placeTopBtn.addEventListener('click', function() { curPlacement = 'top'; paintPlace(); renderPreview(); });
+      placeBottomBtn.addEventListener('click', function() { curPlacement = 'bottom'; paintPlace(); renderPreview(); });
+      placeRow.appendChild(placeLab);
+      placeRow.appendChild(placeTopBtn);
+      placeRow.appendChild(placeBottomBtn);
+      formBox.appendChild(placeRow);
+      paintPlace();
       var pv = document.createElement('div');
       pv.setAttribute('data-preview', '');
       pv.style.cssText = 'margin:14px 0;';
@@ -8069,6 +8175,7 @@ window.NayaNotif = window.NayaNotif || {
   const RIGHT_ITEMS = [
     { id: 'myworlds', label: 'My Worlds', icon: 'spaces', color: '#c2410c', href: 'https://nayanet.app/#/hub/spaces' },
     { id: 'favworlds', label: 'Favorite Worlds', icon: 'star', color: '#a21caf', href: 'https://nayanet.app/#/hub/spaces' },
+    { id: 'inviter', label: 'Smart Inviter', icon: 'mail', color: '#3f51b5', href: 'https://naya-proof-host.nayapower.workers.dev/?file=INVITER/smart-inviter-finish-20261115.html&ref=inviter/bar-labels-20261121&cb=8aecb71e' }, /* hub/detail-boards-unify-20261121 item 14: THE SMART INVITER'S DOOR — one door, the Hub's own button pattern, in the right rail's door list. The Inviter page itself is untouched — this only opens it, as it exists on the proof host (branch inviter/bar-labels-20261121, blob 8aecb71e…, verified HTTP 200, 281,134 B, blob-sha match before wiring). Placed with the people/worlds cluster at the top of the rail: inviting belongs with people. Colour indigo #3f51b5 — the flow step between magenta #a21caf above and gold #d4a017 below, unused in the rail, so no two neighbours share a colour. Icon 'mail' — the invite goes out by email; unused in this list, so the rail keeps one icon per item. Opens in a new tab by the rail's own external-link rule (not nayanet.app); NayaHubStagedHref passes proof-host URLs through unchanged. When joinus.nayanet.app goes live (separate round, joinus-live-20261121), this one href swaps to the live URL. */
     { id: 'leaderboards', label: 'Leaderboards', icon: 'trophy', color: '#d4a017', href: 'https://nayanet.app/#/hub/leaderboards' },
     { id: 'academy', label: 'Naya Academy', icon: 'cap', color: '#c2410c', href: 'https://nayanet.groovepages.com/academy' },
     { id: 'masterclass', label: 'AI Masterclass', icon: 'star', color: '#8e24aa', href: 'https://aimasterclass.help/' },
@@ -8538,6 +8645,9 @@ document.addEventListener('click', function(e){
   var PC_GEM_COL_17={1:'#c62828',2:'#c2410c',3:'#d4a017',4:'#07925f',5:'#0e7490',6:'#3f51b5',7:'#8e24aa'};
   ensureGlobalKeys();
   window.frameIntelBoard = frameIntelBoard;
+  window.buildIntelLayerBoards = buildIntelLayerBoards; /* hub/detail-boards-unify-20261121 EXPOSURE FIX: this MUST live before `return shell;` — the builder declaration sits after it (hoisted, so it exists), but an assignment after the return never runs; the first exposure sat after it and window.buildIntelLayerBoards stayed undefined, so the Reports detail fell back to the flat loop. Shared with the Reports detail view (separate script). */
+  window.buildIntelBoard = buildIntelBoard;
+  window.attachIntelFlip = attachIntelFlip; /* same fix: the flip must be on window before the return, or the Reports detail never gets it. */
   return shell;
 
   /* ——— internals ——— */
@@ -9642,6 +9752,8 @@ window.NayaJewels = (() => {
   function frameIntelBoard(b) {
             var acts = b.querySelector(':scope > .board-actions');
             if (!acts) return;
+            /* hub/detail-boards-unify-20261121 item 12: Naya framed / Naya unframed — default framed; the setting lives in Settings §7. Unframed leaves the intelligence exactly as it is, with no frame bands. Independent of the unformat pref. */
+            try { if (localStorage.getItem('nayanet.pref.naya_framed') === '0') return; } catch (e) {}
             var rate = acts.querySelector(':scope > .rate-section');
             var frame = document.createElement('div');
             frame.className = 'ib-frame';
@@ -9665,6 +9777,361 @@ window.NayaJewels = (() => {
             if (rate) fBody.appendChild(rate);
             b.insertBefore(frame, acts);
   }
+  /* hub/detail-boards-unify-20261121 items 1, 7, 8 — SHARED BOARD HELPERS.
+     One board per layer: head button (jewel + name) + body (clamped to
+     4 lines, See more when it overflows). The builder and the flip's
+     Naya board both call buildIntelBoard, so the back view is the same
+     object as the front boards — never a second rendering. */
+  function isMeansLayerOf(L) { return /WHAT IT MEANS/i.test(String((L && L.name) || '').toUpperCase()); }
+  function declareHtml(html) {
+    return String(html || '').replace(/\n/g, '<br>').replace(/<strong>([^<]*)<\/strong>/g, '<span class="ib-declare">$1</span>');
+  }
+  function buildIntelBoard(L, opts) {
+    opts = opts || {};
+    var layer = el('div', 'ib-layer ib-reveal' + (L.color ? ' layer-' + L.color : '') + (L.tier === 'deeper' ? ' is-deeper' : ''));
+    layer.style.setProperty('--lc', layerColorFor(L.name)); // v5: layer light = its jewel colour
+    var lh = el('button', 'ib-layer-head');
+    /* FIX2: What It Means stands expanded on first read — the final
+       section is visible, never hidden behind a collapsed control. The
+       head still toggles, so a reader can fold it away. opts.open forces
+       the same for the lead boards (Human first, Naya back). */
+    var fmtOpen = (L.tier === 'primary') || isMeansLayerOf(L) || !!opts.open;
+    lh.setAttribute('aria-expanded', fmtOpen ? 'true' : 'false');
+    lh.innerHTML =
+      layerJewel(L.name, layerColorFor(L.name)) +
+      '<b>' + esc(L.name) + '</b>';
+    var lb = el('div', 'ib-layer-body ib-clamp');
+    var bodyHtml = md(L.body);
+    if (opts.declare) bodyHtml = declareHtml(bodyHtml);
+    lb.innerHTML = bodyHtml;
+    if (!fmtOpen) lb.hidden = true;
+    else lh.classList.add('open');
+    var moreBtn = el('button', 'ib-see-more');
+    moreBtn.type = 'button';
+    moreBtn.textContent = 'See more';
+    moreBtn.hidden = true;
+    var measureMore = function() {
+      if (lb.hidden || layer.classList.contains('ib-expanded')) return;
+      try { moreBtn.hidden = !(lb.scrollHeight > lb.clientHeight + 2); } catch (e) {}
+    };
+    moreBtn.addEventListener('click', function() {
+      var expanded = layer.classList.toggle('ib-expanded');
+      moreBtn.textContent = expanded ? 'See less' : 'See more';
+      if (!expanded) requestAnimationFrame(measureMore);
+    });
+    lh.addEventListener('click', function() {
+      var open = lb.hidden;
+      lb.hidden = !open;
+      lh.classList.toggle('open', open);
+      lh.setAttribute('aria-expanded', String(open));
+      if (open) requestAnimationFrame(measureMore);
+    });
+    layer.append(lh, lb);
+    layer.appendChild(moreBtn);
+    if (fmtOpen) requestAnimationFrame(measureMore);
+    return layer;
+  }
+
+  /* hub/detail-boards-unify-20261121 item 1 — THE SHARED DETAIL BUILDER.
+     One ordering implementation for the feed card, the solo note view and
+     the Reports detail: Human first, Nutshell, Truth Boundary, Child,
+     Grandma, What It Means, then Why It Matters / How It Connects /
+     How to Apply-or-Use / Hook / What's In It For You, then the rest.
+     The Machine Note is never built (rides as top-level note.machine for
+     SEO only). A section with no content in the data simply does not
+     render — nothing is invented; Child/Grandma/What It Means are
+     derived from the note's OWN words when missing (the FIX2 rule).
+     Returns { human, nutshell, truth, layers } — elements the caller
+     appends in that order. Boards carry .ib-reveal (the scroll trigger
+     lights them in detail views only) and .ib-clamp + See more (item 7,
+     PROVISIONAL). The Naya Note layer never renders on the front — it
+     is the flip's back view, built by attachIntelFlip. */
+  function buildIntelLayerBoards(note) {
+    /* — Nutshell: extracted from the "In A Nutshell" layer — */
+    var nutshellLayer = (note.layers || []).find(function(L) {
+      return String(L.name || '').toUpperCase().includes('NUTSHELL');
+    });
+    /* FIX2: a note with no Nutshell layer still opens with IN A NUTSHELL —
+       its "What it is" layer IS its nutshell, in its own words. It moves
+       up into the nutshell slot (never copied) so the format's first
+       section is present on every card. */
+    var nutSourceLayer = null;
+    if (!nutshellLayer) {
+      nutSourceLayer = (note.layers || []).find(function(L) {
+        return /WHAT IT IS/i.test(String(L.name || ''));
+      }) || null;
+    }
+    /* SNB-FIX1 item 1 — NUTSHELL LAW: the RENDERED nutshell is 3–4 sentences max.
+       The note's full content stays in the data; only the render is capped. */
+    var snCapSentences = function (t, max) {
+      var c = String(t || '').trim();
+      if (!c) return '';
+      var out = []; var rest = c; var mm;
+      while (out.length < (max || 4)) { if (out.length > 0) rest = rest.replace(/^(?:\s*(?:…|\.\.\.|\.))+\s*/, '').trim(); /* SNB-FIX1E item 1: skip a leading ellipsis/terminator run BETWEEN sentences — bodies carry ".." / "..." mid-text, and without this the sentence regex cannot match a remainder starting with a terminator, the loop exits early, and the fallback below pushes the whole remainder uncapped (sn2876: 8 sentences, sn2875: 6). Only between sentences: a leading "…" at the very start of the body is kept, per the fix-1d ruling. */ if (!rest) break; mm = rest.match(/^[^.!?]+[.!?]/); if (!mm) break; out.push(mm[0].trim()); rest = rest.slice(mm[0].length).trim(); }
+      if (out.length < (max || 4) && rest) { out.push(rest); rest = ''; } /* SNB-FIX1D item 5: the remainder is consumed here — clear rest, or the line below appends a spurious trailing ellipsis after complete text. */
+      var s = out.join(' ');
+      if (rest) s += ' \u2026';
+      else s = s.replace(/(?:\s*(?:…|\.\.\.))+\s*$/, ''); /* SNB-FIX1D item 5: strip a TRAILING ellipsis fragment the source body itself ends with — only when nothing was truncated, so the truncation marker above is never stripped. Mid-text ellipses untouched. */
+      return s;
+    };
+    var nutshellEl = null;
+    if (nutshellLayer) {
+      nutshellEl = el('div', 'ib-nutshell ib-reveal');
+      nutshellEl.innerHTML = '<b>IN A NUTSHELL</b>' + md(snCapSentences(nutshellLayer.body, 4)); /* NUTSHELL-CLIP FIX (2026-11-17): the full text — the 600-char slice cut every long nutshell mid-sentence with no ellipsis and no way to expand it. */
+    } else if (nutSourceLayer) {
+      nutshellEl = el('div', 'ib-nutshell ib-reveal');
+      nutshellEl.innerHTML = '<b>IN A NUTSHELL</b>' + md(snCapSentences(nutSourceLayer.body, 4)); /* NUTSHELL-CLIP FIX (2026-11-17): the full text — same cut, same fix. */
+    }
+
+    /* — Layers (excluding nutshell — already shown above) — */
+    /* v5.1 GOLD + RED (Shawn 01:52Z/01:54Z): board order is ... What It
+       Means, GOLD (What's In It For You, carrying How It Connects),
+       RED (Why It Matters) — spectrum order, gold #d4a017 then red
+       #c62828. The machine layer is NOT rendered anymore. Data order
+       is canonical (why-it-matters before what's-in-it-for-you), so
+       gold/red are pulled out and placed after What It Means;
+       everything else keeps data order. A section with no content in
+       the data simply does not render — nothing is invented. */
+    var isMachineLayer = function(L) { return /machine/i.test(String(L.name || '')); };
+    var isGoldLayer = function(L) { return /WHAT'S IN IT/i.test(String(L.name || '').toUpperCase()); };
+    var isConnectLayer = function(L) { return /HOW IT CONNECTS/i.test(String(L.name || '').toUpperCase()); };
+    var isApplyLayer = function(L) { return /HOW TO APPL/i.test(String(L.name || '').toUpperCase()); };
+    var isUseLayer = function(L) { return /HOW TO USE/i.test(String(L.name || '').toUpperCase()); };
+    var isRedLayer = function(L) { return /WHY IT MATTERS/i.test(String(L.name || '').toUpperCase()); };
+    var isMeansLayer = function(L) { return /WHAT IT MEANS/i.test(String(L.name || '').toUpperCase()); };
+    var isHumanLayer = function(L) { return /HUMAN NOTE|WHAT IT SAYS/i.test(String(L.name || '').toUpperCase()); };
+    var isTruthLayer = function(L) { return /TRUTH BOUNDARY/i.test(String(L.name || '').toUpperCase()); };
+    var isHookLayer = function(L) { return /HOOK/i.test(String(L.name || '').toUpperCase()); };
+    var humanLayer = null, truthLayer = null, goldLayer = null, connectLayer = null, redLayer = null, applyLayer = null, useLayer = null;
+    var hookLayers = [];
+    var otherLayers = [];
+    /* SMART NOTE FORMAT (2026-11-17): the cut sections never render, whatever
+       the data carries — the human-note section (and its governed-runtime
+       name, What It Says) and the naya-note section (What Naya Hears). The
+       nutshell IS the human note; "Naya Note" is the way Naya writes.
+       hub/detail-boards-unify-20261121 item 1: the Human section is cut
+       from the loop ONLY because it renders detached, FIRST, as its own
+       board (humanLayer, below) — never because it is dropped. The Naya
+       section stays cut: it is the flip's back view, never the front. */
+    var isCutLayer = function(L) { return /human note|what it says|naya note|what naya hears/i.test(String(L.name || '')); };
+    (note.layers || []).forEach(function(L) {
+      if (L === nutshellLayer || L === nutSourceLayer || isMachineLayer(L) || /LEARNING/i.test(String(L.name || ''))) return; // SNB-FIX1: the Learning board goes (Shawn live order 2026-11-20); v5.1: no machine note anymore; format: no cut sections (FIX2: the nutshell-source layer moved up already)
+      if (isHumanLayer(L) && !humanLayer) { humanLayer = L; return; }
+      if (isTruthLayer(L) && !truthLayer) { truthLayer = L; return; }
+      if (isCutLayer(L)) return;
+      if (isGoldLayer(L) && !goldLayer) { goldLayer = L; return; }
+      if (isConnectLayer(L) && !connectLayer) { connectLayer = L; return; }
+      if (isApplyLayer(L) && !applyLayer) { applyLayer = L; return; }
+      if (isUseLayer(L) && !useLayer) { useLayer = L; return; }
+      if (isRedLayer(L) && !redLayer) { redLayer = L; return; }
+      if (isHookLayer(L)) { hookLayers.push(L); return; }
+      otherLayers.push(L);
+    });
+    /* SNB-FIX1: How It Connects / How to Apply is its own ORANGE board now,
+        in its settled place between Why It Matters and What's In It For You —
+        never folded into gold. Gold is What's In It For You alone. */
+    var goldEntry = null;
+    if (goldLayer) { goldEntry = Object.assign({}, goldLayer); }
+    var connectEntry = null;
+    if (connectLayer) { connectEntry = Object.assign({}, connectLayer); }
+    var applyEntry = null;
+    if (applyLayer) { applyEntry = Object.assign({}, applyLayer); }
+    var useEntry = null;
+    if (useLayer) { useEntry = Object.assign({}, useLayer); }
+    /* SMART NOTE FORMAT (2026-11-17): the front order is Child -> Grandma ->
+       What It Means (after the nutshell, rendered above). The rank sort
+       enforces it; gold/red still fold in after What It Means, as before. */
+    var rankOf = function(L) {
+      var n = String(L.name || '').toUpperCase();
+      if (n.includes('CHILD')) return 0;
+      if (n.includes('GRANDMA')) return 1;
+      if (n.includes('WHAT IT MEANS')) return 2;
+      return 3;
+    };
+    var orderedLayers = otherLayers.slice().sort(function(a, b) { return rankOf(a) - rankOf(b); });
+    var anchor = orderedLayers.findIndex(isMeansLayer);
+    var insertAt = anchor === -1 ? orderedLayers.length : anchor + 1;
+    var afterMeans = [];
+    if (redLayer) afterMeans.push(redLayer);
+    if (connectEntry) afterMeans.push(connectEntry);
+    if (applyEntry) afterMeans.push(applyEntry);
+    if (useEntry) afterMeans.push(useEntry);
+    hookLayers.forEach(function(h) { afterMeans.push(h); });
+    if (goldEntry) afterMeans.push(goldEntry);
+    orderedLayers.splice(insertAt, 0, ...afterMeans);
+    /* ——— SMART NOTE FORMAT FIX2 (2026-11-17): the format holds on EVERY
+       card — IN A NUTSHELL -> Child -> Grandma -> What It Means. A section
+       missing from the data is derived from the note's OWN words, never
+       invented: Child = first sentence of the nutshell-source; Grandma =
+       first unused sentence of the nutshell-source — What It Means'
+       first sentence counts as already used (Means prints it), and no
+       other sentence of the means-source is taken either, or Grandma
+       would print again inside What It Means below; What It Means =
+       the means-source body, else an honest stub. A sentence already
+       used by another derived layer is never repeated — that layer
+       then says plainly it was not written.
+       Real layers always win; derived layers sort by the same rank. ——— */
+    var fmtFirstSentence = function (t) {
+      var c = String(t || '').replace(/[#>*_`"]/g, '').replace(/\s+/g, ' ').trim();
+      if (!c) return '';
+      var mm = c.match(/^[^.!?]+[.!?]/);
+      return (mm ? mm[0] : c.slice(0, 140)).trim();
+    };
+    var fmtFindLayer = function (re) {
+      for (var fi = 0; fi < orderedLayers.length; fi++) {
+        if (re.test(String(orderedLayers[fi].name || '').toUpperCase())) return orderedLayers[fi];
+      }
+      return null;
+    };
+    var fmtNutText = nutshellLayer ? String(nutshellLayer.body || '')
+      : (nutSourceLayer ? String(nutSourceLayer.body || '') : String(note.subtitle || ''));
+    var fmtMeansReal = fmtFindLayer(/WHAT IT MEANS/);
+    var fmtWhy = fmtFindLayer(/WHY IT MATTERS/);
+    var fmtMeansText = fmtMeansReal ? String(fmtMeansReal.body || '')
+      : (fmtWhy ? String(fmtWhy.body || '') : '');
+    var fmtSentences = function (t) {
+      /* Sentences of a text, in order. The first entry is exactly
+         fmtFirstSentence(t): the same cleaning, the same 140-char
+         fallback for a fragment with no terminator. */
+      var c = String(t || '').replace(/[#>*_`"]/g, '').replace(/\s+/g, ' ').trim();
+      if (!c) return [];
+      var fmtOut = [];
+      var fmtRest = c;
+      var fmtMm;
+      while ((fmtMm = fmtRest.match(/^[^.!?]+[.!?]/))) {
+        fmtOut.push(fmtMm[0].trim());
+        fmtRest = fmtRest.slice(fmtMm[0].length).trim();
+        if (!fmtRest) break;
+      }
+      if (fmtRest) fmtOut.push(fmtRest.slice(0, 140).trim());
+      return fmtOut.filter(Boolean);
+    };
+    var fmtUsed = {};
+    var fmtTake = function (texts) {
+      /* First UNUSED sentence across the texts, in order — scanning
+         every sentence of each text, not just its first. A sentence
+         already used by another layer (derived or printed) is skipped. */
+      for (var ti = 0; ti < texts.length; ti++) {
+        var fmtSs = fmtSentences(texts[ti]);
+        for (var fmtSi = 0; fmtSi < fmtSs.length; fmtSi++) {
+          if (fmtSs[fmtSi] && !fmtUsed[fmtSs[fmtSi]]) { fmtUsed[fmtSs[fmtSi]] = 1; return fmtSs[fmtSi]; }
+        }
+      }
+      return '';
+    };
+    if (!fmtFindLayer(/CHILD/)) {
+      var fmtChildBody = fmtTake([fmtNutText]);
+      var fmtChildLayer = { name: 'Child Note', key: 'CHILD NOTE', tier: 'primary', body: fmtChildBody || 'No Child layer was written for this note.' };
+      fmtChildLayer.color = 'purple'; /* SNB-FIX1: derived Child is purple */
+      orderedLayers.push(fmtChildLayer);
+    }
+    if (!fmtFindLayer(/GRANDMA/)) {
+      /* GRANDMA-REPEAT FIX (2026-11-17): What It Means prints its own
+         first sentence, so that sentence counts as already used before
+         Grandma is derived — Grandma never takes it, and never takes
+         any other sentence of the means-source either: a sentence taken
+         from it would print again inside What It Means directly below,
+         the same doubling-up one section down. Grandma falls through
+         to the nutshell's next unused sentence — its second sentence
+         when Child took the first — or the honest stub when the
+         nutshell has no unused sentence left. Nothing is invented:
+         every Grandma line is still the note's own words. */
+      var fmtMeansFirst = fmtFirstSentence(fmtMeansText);
+      if (fmtMeansFirst) fmtUsed[fmtMeansFirst] = 1;
+      var fmtGrandmaBody = fmtTake([fmtNutText]);
+      var fmtGrandmaLayer = { name: 'Grandma Note', key: 'GRANDMA NOTE', tier: 'primary', body: fmtGrandmaBody || 'No Grandma layer was written for this note.' };
+      fmtGrandmaLayer.color = 'indigo'; /* SNB-FIX1: derived Grandma is indigo */
+      orderedLayers.push(fmtGrandmaLayer);
+    }
+    if (!fmtMeansReal) {
+      /* The means-source layer ("Why it matters") is carried AS What It
+         Means — it moves, never copies, so its body never prints twice. */
+      if (fmtWhy) {
+        var fmtWhyIdx = orderedLayers.indexOf(fmtWhy);
+        if (fmtWhyIdx > -1) orderedLayers.splice(fmtWhyIdx, 1);
+      }
+      var fmtMeansLayer = { name: 'What It Means', key: 'WHAT IT MEANS', tier: 'primary', body: fmtMeansText || 'No meaning was written for this note.' };
+      fmtMeansLayer.color = 'emerald'; /* SNB-FIX1: derived What It Means is emerald */
+      orderedLayers.push(fmtMeansLayer);
+    }
+    orderedLayers.sort(function (a, b) { return rankOf(a) - rankOf(b); });
+    var layersEl = el('div', 'ib-layers');
+    orderedLayers.forEach(function(L) {
+      layersEl.appendChild(buildIntelBoard(L, {}));
+    });
+    var humanEl = humanLayer ? buildIntelBoard(humanLayer, { declare: true, open: true }) : null;
+    var truthEl = truthLayer ? buildIntelBoard(truthLayer, {}) : null;
+    return { human: humanEl, nutshell: nutshellEl, truth: truthEl, layers: layersEl };
+  }
+
+  /* hub/detail-boards-unify-20261121 item 8 — THE FLIP. One toggle per
+     note: front (the smart note, inside its frame) <-> back (ONE Naya
+     board, Naya's full note). Creator-only: the toggle is built only
+     when the viewer IS the note's creator (localStorage alias matches
+     the note's owner alias) AND the note carries a Naya Note layer;
+     otherwise nothing is added — no button, no Naya view in the DOM.
+     The Naya board is built lazily on first flip, reading the unformat
+     pref THEN (so a Settings change takes effect without a reload):
+     formatted = the same headed board as the front; unformatted = ONE
+     headless verbatim block (.ib-layer.naya-plain). .naya-flipped on
+     the card hides the social part (CSS, A12). The front frame hides
+     with the [hidden] rule (CSS) — never by rebuilding the card. */
+  function attachIntelFlip(card, note, host) {
+    if (!card || !note) return false;
+    var alias = null;
+    try { alias = localStorage.getItem('nayanet_smart_alias'); } catch (e) {}
+    var owner = note.owner_alias || note.author || note.alias || note.actor_alias || note.actor || note.citizen;
+    if (!alias || !owner || String(alias) !== String(owner)) return false;
+    var nayaLayer = (note.layers || []).find(function(L) {
+      return /NAYA NOTE|WHAT NAYA HEARS/i.test(String(L.name || ''));
+    }) || null;
+    if (!nayaLayer) return false;
+    if (card.querySelector('.ib-flip')) return true;
+    host = host || card;
+    var view = el('div', 'naya-view');
+    view.hidden = true;
+    var formattedEl = buildIntelBoard(nayaLayer, { open: true });
+    var plainEl = null;
+    var flip = el('button', 'ib-flip');
+    flip.type = 'button';
+    flip.textContent = "See Naya's full note";
+    var flipped = false;
+    var showNaya = function() {
+      var unformat = false;
+      try { unformat = localStorage.getItem('nayanet.pref.unformat_naya_notes') === '1'; } catch (e) {}
+      while (view.firstChild) view.removeChild(view.firstChild);
+      if (unformat) {
+        if (!plainEl) {
+          plainEl = el('div', 'ib-layer naya-plain');
+          plainEl.textContent = String(nayaLayer.body || '');
+        }
+        view.appendChild(plainEl);
+      } else {
+        view.appendChild(formattedEl);
+      }
+    };
+    flip.addEventListener('click', function() {
+      flipped = !flipped;
+      var frame = card.querySelector('.ib-frame');
+      if (flipped) {
+        showNaya();
+        if (frame) frame.hidden = true;
+        view.hidden = false;
+        card.classList.add('naya-flipped');
+        flip.textContent = 'Back to the smart note';
+        if (window.armLayerReveal) { try { window.armLayerReveal(view); } catch (e) {} }
+      } else {
+        if (frame) frame.hidden = false;
+        view.hidden = true;
+        card.classList.remove('naya-flipped');
+        flip.textContent = "See Naya's full note";
+      }
+    });
+    host.appendChild(view);
+    host.appendChild(flip);
+    return true;
+  }
+
   function intelBoard(note, idx, stream) {
     const b = el('article', 'intel-board tone-' + (note.tone || 'purple'));
     b.setAttribute('aria-label', 'Smart Note ' + (note.id || 'untitled'));
@@ -9787,221 +10254,17 @@ window.NayaJewels = (() => {
     const ibLayout = (note.imageLayout === 'top' || note.imageLayout === 'both') ? note.imageLayout : 'bottom';
     if (ibImgs.length && ibLayout !== 'bottom') b.appendChild(featureImageEl(ibImgs[0], note));
 
-    /* — Nutshell: extracted from the "In A Nutshell" layer — */
-    const nutshellLayer = (note.layers || []).find(L =>
-      String(L.name || '').toUpperCase().includes('NUTSHELL'));
-    /* FIX2: a note with no Nutshell layer still opens with IN A NUTSHELL —
-       its "What it is" layer IS its nutshell, in its own words. It moves
-       up into the nutshell slot (never copied) so the format's first
-       section is present on every card. */
-    var nutSourceLayer = null;
-    if (!nutshellLayer) {
-      nutSourceLayer = (note.layers || []).find(L =>
-        /WHAT IT IS/i.test(String(L.name || ''))) || null;
-    }
-    /* SNB-FIX1 item 1 — NUTSHELL LAW: the RENDERED nutshell is 3–4 sentences max.
-       The note's full content stays in the data; only the render is capped. */
-    var snCapSentences = function (t, max) {
-      var c = String(t || '').trim();
-      if (!c) return '';
-      var out = []; var rest = c; var mm;
-      while (out.length < (max || 4)) { if (out.length > 0) rest = rest.replace(/^(?:\s*(?:…|\.\.\.|\.))+\s*/, '').trim(); /* SNB-FIX1E item 1: skip a leading ellipsis/terminator run BETWEEN sentences — bodies carry ".." / "..." mid-text, and without this the sentence regex cannot match a remainder starting with a terminator, the loop exits early, and the fallback below pushes the whole remainder uncapped (sn2876: 8 sentences, sn2875: 6). Only between sentences: a leading "…" at the very start of the body is kept, per the fix-1d ruling. */ if (!rest) break; mm = rest.match(/^[^.!?]+[.!?]/); if (!mm) break; out.push(mm[0].trim()); rest = rest.slice(mm[0].length).trim(); }
-      if (out.length < (max || 4) && rest) { out.push(rest); rest = ''; } /* SNB-FIX1D item 5: the remainder is consumed here — clear rest, or the line below appends a spurious trailing ellipsis after complete text. */
-      var s = out.join(' ');
-      if (rest) s += ' \u2026';
-      else s = s.replace(/(?:\s*(?:…|\.\.\.))+\s*$/, ''); /* SNB-FIX1D item 5: strip a TRAILING ellipsis fragment the source body itself ends with — only when nothing was truncated, so the truncation marker above is never stripped. Mid-text ellipses untouched. */
-      return s;
-    };
-    if (nutshellLayer) {
-      const ns = el('div', 'ib-nutshell');
-      ns.innerHTML = '<b>IN A NUTSHELL</b>' + md(snCapSentences(nutshellLayer.body, 4)); /* NUTSHELL-CLIP FIX (2026-11-17): the full text — the 600-char slice cut every long nutshell mid-sentence with no ellipsis and no way to expand it. */
-      b.appendChild(ns);
-    } else if (nutSourceLayer) {
-      const ns = el('div', 'ib-nutshell');
-      ns.innerHTML = '<b>IN A NUTSHELL</b>' + md(snCapSentences(nutSourceLayer.body, 4)); /* NUTSHELL-CLIP FIX (2026-11-17): the full text — same cut, same fix. */
-      b.appendChild(ns);
-    }
-
-    /* — Layers (excluding nutshell — already shown above) — */
-    const layers = el('div', 'ib-layers');
-    /* v5.1 GOLD + RED (Shawn 01:52Z/01:54Z): board order is ... What It
-       Means, GOLD (What's In It For You, carrying How It Connects),
-       RED (Why It Matters) — spectrum order, gold #d4a017 then red
-       #c62828. The machine layer is NOT rendered anymore. Data order
-       is canonical (why-it-matters before what's-in-it-for-you), so
-       gold/red are pulled out and placed after What It Means;
-       everything else keeps data order. A section with no content in
-       the data simply does not render — nothing is invented. */
-    const isMachineLayer = (L) => /machine/i.test(String(L.name || ''));
-    const isGoldLayer = (L) => /WHAT'S IN IT/i.test(String(L.name || '').toUpperCase());
-    const isConnectLayer = (L) => /HOW IT CONNECTS/i.test(String(L.name || '').toUpperCase());
-    const isApplyLayer = (L) => /HOW TO APPL/i.test(String(L.name || '').toUpperCase());
-    const isRedLayer = (L) => /WHY IT MATTERS/i.test(String(L.name || '').toUpperCase());
-    const isMeansLayer = (L) => /WHAT IT MEANS/i.test(String(L.name || '').toUpperCase());
-    let goldLayer = null, connectLayer = null, redLayer = null, applyLayer = null;
-    const otherLayers = [];
-    /* SMART NOTE FORMAT (2026-11-17): the cut sections never render, whatever
-       the data carries — the human-note section (and its governed-runtime
-       name, What It Says) and the naya-note section (What Naya Hears). The
-       nutshell IS the human note; "Naya Note" is the way Naya writes. */
-    const isCutLayer = (L) => /human note|what it says|naya note|what naya hears/i.test(String(L.name || ''));
-    (note.layers || []).forEach(L => {
-      if (L === nutshellLayer || L === nutSourceLayer || isMachineLayer(L) || isCutLayer(L) || /LEARNING/i.test(String(L.name || ''))) return; // SNB-FIX1: the Learning board goes (Shawn live order 2026-11-20); v5.1: no machine note anymore; format: no cut sections (FIX2: the nutshell-source layer moved up already)
-      if (isGoldLayer(L) && !goldLayer) { goldLayer = L; return; }
-      if (isConnectLayer(L) && !connectLayer) { connectLayer = L; return; }
-      if (isApplyLayer(L) && !applyLayer) { applyLayer = L; return; }
-      if (isRedLayer(L) && !redLayer) { redLayer = L; return; }
-      otherLayers.push(L);
-    });
-    /* SNB-FIX1: How It Connects / How to Apply is its own ORANGE board now,
-        in its settled place between Why It Matters and What's In It For You —
-        never folded into gold. Gold is What's In It For You alone. */
-    let goldEntry = null;
-    if (goldLayer) { goldEntry = Object.assign({}, goldLayer); }
-    let connectEntry = null;
-    if (connectLayer) { connectEntry = Object.assign({}, connectLayer); }
-    let applyEntry = null;
-    if (applyLayer) { applyEntry = Object.assign({}, applyLayer); }
-    /* SMART NOTE FORMAT (2026-11-17): the front order is Child -> Grandma ->
-       What It Means (after the nutshell, rendered above). The rank sort
-       enforces it; gold/red still fold in after What It Means, as before. */
-    const rankOf = (L) => {
-      const n = String(L.name || '').toUpperCase();
-      if (n.includes('CHILD')) return 0;
-      if (n.includes('GRANDMA')) return 1;
-      if (n.includes('WHAT IT MEANS')) return 2;
-      return 3;
-    };
-    const orderedLayers = otherLayers.slice().sort((a, b) => rankOf(a) - rankOf(b));
-    const anchor = orderedLayers.findIndex(isMeansLayer);
-    const insertAt = anchor === -1 ? orderedLayers.length : anchor + 1;
-    const afterMeans = [];
-    if (redLayer) afterMeans.push(redLayer);
-    if (connectEntry) afterMeans.push(connectEntry);
-    if (applyEntry) afterMeans.push(applyEntry);
-    if (goldEntry) afterMeans.push(goldEntry);
-    orderedLayers.splice(insertAt, 0, ...afterMeans);
-    /* ——— SMART NOTE FORMAT FIX2 (2026-11-17): the format holds on EVERY
-       card — IN A NUTSHELL -> Child -> Grandma -> What It Means. A section
-       missing from the data is derived from the note's OWN words, never
-       invented: Child = first sentence of the nutshell-source; Grandma =
-       first unused sentence of the nutshell-source — What It Means'
-       first sentence counts as already used (Means prints it), and no
-       other sentence of the means-source is taken either, or Grandma
-       would print again inside What It Means below; What It Means =
-       the means-source body, else an honest stub. A sentence already
-       used by another derived layer is never repeated — that layer
-       then says plainly it was not written.
-       Real layers always win; derived layers sort by the same rank. ——— */
-    var fmtFirstSentence = function (t) {
-      var c = String(t || '').replace(/[#>*_`"]/g, '').replace(/\s+/g, ' ').trim();
-      if (!c) return '';
-      var mm = c.match(/^[^.!?]+[.!?]/);
-      return (mm ? mm[0] : c.slice(0, 140)).trim();
-    };
-    var fmtFindLayer = function (re) {
-      for (var fi = 0; fi < orderedLayers.length; fi++) {
-        if (re.test(String(orderedLayers[fi].name || '').toUpperCase())) return orderedLayers[fi];
-      }
-      return null;
-    };
-    var fmtNutText = nutshellLayer ? String(nutshellLayer.body || '')
-      : (nutSourceLayer ? String(nutSourceLayer.body || '') : String(note.subtitle || ''));
-    var fmtMeansReal = fmtFindLayer(/WHAT IT MEANS/);
-    var fmtWhy = fmtFindLayer(/WHY IT MATTERS/);
-    var fmtMeansText = fmtMeansReal ? String(fmtMeansReal.body || '')
-      : (fmtWhy ? String(fmtWhy.body || '') : '');
-    var fmtSentences = function (t) {
-      /* Sentences of a text, in order. The first entry is exactly
-         fmtFirstSentence(t): the same cleaning, the same 140-char
-         fallback for a fragment with no terminator. */
-      var c = String(t || '').replace(/[#>*_`"]/g, '').replace(/\s+/g, ' ').trim();
-      if (!c) return [];
-      var fmtOut = [];
-      var fmtRest = c;
-      var fmtMm;
-      while ((fmtMm = fmtRest.match(/^[^.!?]+[.!?]/))) {
-        fmtOut.push(fmtMm[0].trim());
-        fmtRest = fmtRest.slice(fmtMm[0].length).trim();
-        if (!fmtRest) break;
-      }
-      if (fmtRest) fmtOut.push(fmtRest.slice(0, 140).trim());
-      return fmtOut.filter(Boolean);
-    };
-    var fmtUsed = {};
-    var fmtTake = function (texts) {
-      /* First UNUSED sentence across the texts, in order — scanning
-         every sentence of each text, not just its first. A sentence
-         already used by another layer (derived or printed) is skipped. */
-      for (var ti = 0; ti < texts.length; ti++) {
-        var fmtSs = fmtSentences(texts[ti]);
-        for (var fmtSi = 0; fmtSi < fmtSs.length; fmtSi++) {
-          if (fmtSs[fmtSi] && !fmtUsed[fmtSs[fmtSi]]) { fmtUsed[fmtSs[fmtSi]] = 1; return fmtSs[fmtSi]; }
-        }
-      }
-      return '';
-    };
-    if (!fmtFindLayer(/CHILD/)) {
-      var fmtChildBody = fmtTake([fmtNutText]);
-      var fmtChildLayer = { name: 'Child Note', key: 'CHILD NOTE', tier: 'primary', body: fmtChildBody || 'No Child layer was written for this note.' };
-      fmtChildLayer.color = 'purple'; /* SNB-FIX1: derived Child is purple */
-      orderedLayers.push(fmtChildLayer);
-    }
-    if (!fmtFindLayer(/GRANDMA/)) {
-      /* GRANDMA-REPEAT FIX (2026-11-17): What It Means prints its own
-         first sentence, so that sentence counts as already used before
-         Grandma is derived — Grandma never takes it, and never takes
-         any other sentence of the means-source either: a sentence taken
-         from it would print again inside What It Means directly below,
-         the same doubling-up one section down. Grandma falls through
-         to the nutshell's next unused sentence — its second sentence
-         when Child took the first — or the honest stub when the
-         nutshell has no unused sentence left. Nothing is invented:
-         every Grandma line is still the note's own words. */
-      var fmtMeansFirst = fmtFirstSentence(fmtMeansText);
-      if (fmtMeansFirst) fmtUsed[fmtMeansFirst] = 1;
-      var fmtGrandmaBody = fmtTake([fmtNutText]);
-      var fmtGrandmaLayer = { name: 'Grandma Note', key: 'GRANDMA NOTE', tier: 'primary', body: fmtGrandmaBody || 'No Grandma layer was written for this note.' };
-      fmtGrandmaLayer.color = 'indigo'; /* SNB-FIX1: derived Grandma is indigo */
-      orderedLayers.push(fmtGrandmaLayer);
-    }
-    if (!fmtMeansReal) {
-      /* The means-source layer ("Why it matters") is carried AS What It
-         Means — it moves, never copies, so its body never prints twice. */
-      if (fmtWhy) {
-        var fmtWhyIdx = orderedLayers.indexOf(fmtWhy);
-        if (fmtWhyIdx > -1) orderedLayers.splice(fmtWhyIdx, 1);
-      }
-      var fmtMeansLayer = { name: 'What It Means', key: 'WHAT IT MEANS', tier: 'primary', body: fmtMeansText || 'No meaning was written for this note.' };
-      fmtMeansLayer.color = 'emerald'; /* SNB-FIX1: derived What It Means is emerald */
-      orderedLayers.push(fmtMeansLayer);
-    }
-    orderedLayers.sort(function (a, b) { return rankOf(a) - rankOf(b); });
-    orderedLayers.forEach(L => {
-      const layer = el('div', 'ib-layer layer-' + L.color + (L.tier === 'deeper' ? ' is-deeper' : ''));
-      layer.style.setProperty('--lc', layerColorFor(L.name)); // v5: layer light = its jewel colour
-      const lh = el('button', 'ib-layer-head');
-      /* FIX2: What It Means stands expanded on first read — the final
-         section is visible, never hidden behind a collapsed control. The
-         head still toggles, so a reader can fold it away. */
-      const fmtOpen = (L.tier === 'primary') || isMeansLayer(L);
-      lh.setAttribute('aria-expanded', fmtOpen ? 'true' : 'false');
-      lh.innerHTML =
-        layerJewel(L.name, layerColorFor(L.name)) +
-        '<b>' + esc(L.name) + '</b>';
-      const lb = el('div', 'ib-layer-body');
-      lb.innerHTML = md(L.body);
-      if (!fmtOpen) lb.hidden = true;
-      else lh.classList.add('open');
-      lh.addEventListener('click', (e) => {
-        const open = lb.hidden;
-        lb.hidden = !open;
-        lh.classList.toggle('open', open);
-        lh.setAttribute('aria-expanded', String(open));
-      });
-      layer.append(lh, lb);
-      layers.appendChild(layer);
-    });
+    /* — Nutshell + layers, in the new ten-layer order (item 1) — the
+       shared builder (buildIntelLayerBoards, just above) renders the SAME
+       boards here, in the solo view and in the Reports detail, so the
+       three views can never drift apart. Human first, Truth Boundary
+       right after the nutshell, Apply/Use in its settled slot. — */
+    const built = buildIntelLayerBoards(note);
+    const layers = built.layers;
+    if (built.human) b.appendChild(built.human);
+    if (built.nutshell) b.appendChild(built.nutshell);
+    if (built.truth) b.appendChild(built.truth);
+    b.appendChild(built.layers);
     /* — Images in the same format (renovation 23:07Z): 16:9; feature top OR
        bottom OR both; multiple = one feature top + grid bottom, perfectly
        aligned. Defensive: only when the note carries images. — */
@@ -10058,6 +10321,7 @@ window.NayaJewels = (() => {
           b.appendChild(window.BoardActions.addIntel(bid));
           /* ROUND 2f (item 8): THE FRAMED BLOCK — the intelligence only (title + layers + rating) sits inside the kingdom frame, like a trophy; the action row and the comment panel stay BELOW the frame, outside it. Nodes move, never rebuilt — every listener rides along. The rating section is lifted out of the action row into the frame. */
           frameIntelBoard(b);
+          attachIntelFlip(b, note, b); /* hub/detail-boards-unify-20261121 item 8: the flip, creator-only — no alias match, no button, no Naya view. */
         } else {
           /* Fallback: inline minimal actions if BoardActions missing */
           const fb = document.createElement('div');
@@ -10146,9 +10410,18 @@ window.NayaJewels = (() => {
        still waits for the feed, as before — its hashchange re-renders this view. */
     var live = window.NayaFeedIntelligence && (window.NayaFeedIntelligence.ref === 'live-registry' || window.NayaFeedIntelligence.ref === 'live-supabase');
     var note = findNoteBySlug(slug);
+    /* hub/detail-boards-unify-20261121 item 9 — the solo view shows the note's images on top: a shallow copy with imageLayout 'top' (the shared note is never mutated), only when the note carries images. */
+    var detailViewNote = function(n) {
+      var hasImages = (n.images && n.images.length) || n.image || n.cover || n.feature;
+      if (!hasImages) return n;
+      var copy = Object.assign({}, n);
+      copy.imageLayout = 'top';
+      return copy;
+    };
     if (note) {
       document.title = (note.title || ('Smart Note ' + String(slug).toUpperCase())) + ' — NayaNET';
-      wrap.appendChild(intelBoard(note, 0, 'collective'));
+      wrap.appendChild(intelBoard(detailViewNote(note), 0, 'collective'));
+      if (window.armLayerReveal) { try { window.armLayerReveal(wrap); } catch (e) {} }
       return wrap;
     }
     var loading = el('div', 'note-loading');
@@ -10174,7 +10447,7 @@ window.NayaJewels = (() => {
             var notes = (window.NayaFeedIntelligence && window.NayaFeedIntelligence.notes) || [];
             if (!notes.some(function(n){ return String(n.id) === String(fetched.id); })) notes.push(fetched);
           } catch (e) {}
-          if (loading.parentNode === wrap) wrap.replaceChild(intelBoard(fetched, 0, 'collective'), loading);
+          if (loading.parentNode === wrap) { wrap.replaceChild(intelBoard(detailViewNote(fetched), 0, 'collective'), loading); if (window.armLayerReveal) { try { window.armLayerReveal(wrap); } catch (e) {} } }
         } else { showMissing(res && res.error ? 'fetch' : 'gone'); }
       });
     }
@@ -11247,13 +11520,64 @@ window.HubView = HubView;
       close.style.setProperty('--btn-accent',r.accent);
       close.addEventListener('click',function(){ b.remove(); openNoteId=null; });
       b.body.appendChild(close);
-      (n.layers||[]).forEach(function(l){
-        var sec=el('section','report-section');
-        var h=el('h4',''); h.textContent=l.name||l.key||'Note'; sec.appendChild(h);
-        var p=el('p',''); p.innerHTML=md(l.body||''); sec.appendChild(p);
-        b.body.appendChild(sec);
-      });
+      /* hub/detail-boards-unify-20261121 items 1+9 — the opened note renders
+         through the SAME shared builder as the feed card (same boards, same
+         order), inside the SAME framed block: stage on top (the note's own
+         image, whole, in its own frame — only when the note carries one;
+         no image, no stage, never a hole), headline below, text underneath,
+         all inside the NayaNET frame. The frame is gated by the Naya framed
+         setting (item 12, default framed). The flip (item 8) rides the same
+         card as the feed card's. */
+      var built = (typeof window.buildIntelLayerBoards === 'function') ? window.buildIntelLayerBoards(n) : null;
+      var frame = el('div','ib-frame');
+      frame.setAttribute('aria-label','Framed intelligence');
+      var fTop = el('div','ib-frame-band ib-frame-band-top'); fTop.setAttribute('aria-hidden','true');
+      var fSideL = el('div','ib-frame-side ib-frame-side-l'); fSideL.setAttribute('aria-hidden','true');
+      var fBody = el('div','ib-frame-body');
+      var fSideR = el('div','ib-frame-side ib-frame-side-r'); fSideR.setAttribute('aria-hidden','true');
+      var fBottom = el('div','ib-frame-band ib-frame-band-bottom'); fBottom.setAttribute('aria-hidden','true');
+      frame.append(fTop, fSideL, fBody, fSideR, fBottom);
+      var framed = true;
+      try { framed = localStorage.getItem('nayanet.pref.naya_framed') !== '0'; } catch (e) {}
+      var stageSrc = n.feature || (Array.isArray(n.images) && n.images[0]) || n.image || n.cover || '';
+      stageSrc = String(stageSrc || '').trim();
+      var stage = null;
+      if (stageSrc) {
+        stage = el('div','ib-feature');
+        var simg = document.createElement('img');
+        simg.src = stageSrc; simg.alt = ''; simg.loading = 'lazy';
+        stage.appendChild(simg);
+      }
+      var head = el('h2','ib-title');
+      head.textContent = n.title || 'Untitled';
+      if (built) {
+        if (stage) fBody.appendChild(stage);
+        fBody.appendChild(head);
+        if (built.human) fBody.appendChild(built.human);
+        if (built.nutshell) fBody.appendChild(built.nutshell);
+        if (built.truth) fBody.appendChild(built.truth);
+        fBody.appendChild(built.layers);
+      } else {
+        /* Builder unavailable (should never happen — the Hub script loads
+           first): fall back to the flat sections so the note still opens. */
+        if (stage) fBody.appendChild(stage);
+        fBody.appendChild(head);
+        (n.layers||[]).forEach(function(l){
+          var sec=el('section','report-section');
+          var h=el('h4',''); h.textContent=l.name||l.key||'Note'; sec.appendChild(h);
+          var p=el('p',''); p.innerHTML=md(l.body||''); sec.appendChild(p);
+          fBody.appendChild(sec);
+        });
+      }
+      if (framed) b.body.appendChild(frame);
+      else {
+        /* Unframed: the same contents, no frame bands — move the body's
+           children out and drop the empty frame. */
+        while (fBody.firstChild) b.body.appendChild(fBody.firstChild);
+      }
+      if (built && typeof window.attachIntelFlip === 'function') window.attachIntelFlip(b, n, b.body);
       card.after(b);
+      if (window.armLayerReveal) { try { window.armLayerReveal(b.body); } catch (e) {} }
       b.scrollIntoView({block:'nearest',behavior:'smooth'});
     }
   }
@@ -11631,6 +11955,102 @@ window.HubView = HubView;
     const intro=K.board(r.accent,'spaces','Context worlds','A Space changes context across the Hub; it never becomes a duplicate memory store.');
     intro.body.innerHTML='<p style="color:var(--ink-dim);font-size:17px;line-height:1.6;max-width:760px">Projects, people and areas of life become governed contexts for retrieval, interpretation and sharing. Switching Space must materially change scoped intelligence.</p>';
     wrap.appendChild(intro);
+    /* hub/detail-boards-unify-20261121 item 13 — YOUR WORLDS, the table of
+       contents for all smart lists: names first — tap a name, the list
+       opens below with every item inside. Same frame and style as the
+       room (K.board), no redesign. Counts are honest: Smart Notes counts
+       the feed's loaded notes (blank until any are loaded — the feed
+       fills after this room renders, and opening the row counts what is
+       really there); Contacts and Worlds count from the runtime when
+       their list opens, blank until then — never a made-up zero. Your
+       Notes has no store in this file: opening it says plainly where
+       your notes live (with your calendar), it never pretends a list. */
+    var toc=K.board(r.accent,'spaces','Your Worlds','Every list in one place — tap a list to open it.');
+    var tocList=el('div','toc-list');
+    var tocRows={};
+    [['Contacts','Your people','#0f52ba','contacts'],
+     ['Smart Notes','Your Hub feed','#8e24aa','notes'],
+     ['Your Notes','Your own notes','#07925f','yournotes'],
+     ['Worlds','Your spaces','#d4a017','worlds']].forEach(function(def){
+      var row=el('button','toc-row');
+      row.type='button';
+      row.style.cssText='display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:#050607;border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:14px 16px;margin:0 0 10px;color:#ffffff;font-size:17px;cursor:pointer;';
+      var dot=el('span','toc-dot');
+      dot.style.cssText='flex:0 0 auto;width:14px;height:14px;border-radius:50%;background:'+def[2]+';box-shadow:0 0 10px '+def[2]+';';
+      var nm=el('span','toc-name'); nm.style.cssText='font-weight:700;'; nm.textContent=def[0];
+      var sub=el('span','toc-sub'); sub.style.cssText='color:var(--ink-dim);font-size:17px;' /* hub/detail-boards-unify-20261121 §11: 17px — the laws' text floor (was 15px). */; sub.textContent=def[1];
+      var cnt=el('span','toc-count'); cnt.style.cssText='margin-left:auto;color:#ffffff;opacity:.75;font-size:17px;white-space:nowrap;' /* hub/detail-boards-unify-20261121 §11: 17px — the laws' text floor (was 15px). */;
+      row.append(dot, nm, sub, cnt);
+      row.addEventListener('click', function(){ openTocList(def[3], def[0]); });
+      tocRows[def[3]]=cnt;
+      tocList.appendChild(row);
+    });
+    var tocOut=el('div','toc-out');
+    toc.body.appendChild(tocList);
+    toc.body.appendChild(tocOut);
+    wrap.appendChild(toc);
+    var nnCount=((window.NayaFeedIntelligence && window.NayaFeedIntelligence.notes) || []).length;
+    if (nnCount) setTocCount('notes', nnCount);
+    function setTocCount(kind, n) {
+      var c = tocRows[kind];
+      if (!c) return;
+      c.textContent = (typeof n === 'number') ? (n + (n === 1 ? ' item' : ' items')) : '';
+    }
+    function tocEmpty(name, body) {
+      var d = el('div','empty-instrument');
+      d.innerHTML = '<strong>' + K.safe(name) + ' is empty right now.</strong><p>' + K.safe(body) + '</p>';
+      return d;
+    }
+    function openTocList(kind, name) {
+      tocOut.innerHTML = '';
+      if (kind === 'notes') {
+        var notes = ((window.NayaFeedIntelligence && window.NayaFeedIntelligence.notes) || []).slice();
+        setTocCount('notes', notes.length);
+        if (!notes.length) { tocOut.appendChild(tocEmpty(name, 'No smart notes are loaded in your Hub feed yet. Open the Hub and they will appear here.')); return; }
+        var list = el('div','intelligence-list');
+        notes.forEach(function(n) {
+          var card = el('button','toc-item');
+          card.type = 'button';
+          card.style.cssText = 'display:block;width:100%;text-align:left;background:#050607;border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:12px 14px;margin:0 0 8px;color:#ffffff;font-size:17px;cursor:pointer;';
+          card.textContent = n.title || n.id || 'Smart Note';
+          card.addEventListener('click', function() {
+            if (window.NayaRouter) { var m = String(n.id || '').match(/sn(\d+)/i); if (m) window.NayaRouter.navigate('/smart-notes/sn' + m[1]); }
+          });
+          list.appendChild(card);
+        });
+        tocOut.appendChild(list);
+        return;
+      }
+      if (kind === 'yournotes') {
+        tocOut.appendChild(tocEmpty(name, 'Your Notes live with your calendar — there is no notes store on this page yet.'));
+        return;
+      }
+      if (kind === 'contacts') {
+        K.load(tocOut, 'connections', { view: 'all' }, function(payload, list, out) {
+          setTocCount('contacts', list.length);
+          if (!list.length) return;
+          var l = el('div','intelligence-list');
+          list.forEach(function(x) { l.appendChild(window.NayaRoomKit.intelCard(x, r.accent)); });
+          out.appendChild(l);
+        }, { title: 'No contacts yet', body: 'Your connections did not come back from the runtime just now.' });
+        return;
+      }
+      K.load(tocOut, 'spaces', { view: 'all' }, function(payload, list, out) {
+        setTocCount('worlds', list.length);
+        if (!list.length) return;
+        var l = el('div','space-grid');
+        list.forEach(function(x) {
+          var card = el('article','space-card');
+          card.innerHTML = '<div class="intel-type">' + K.safe(x.privacy || x.scope || 'SPACE') + '</div><h3>' + K.safe(K.title(x, 'Space')) + '</h3><p>' + K.safe(K.summary(x) || x.purpose || 'Governed context') + '</p>';
+          var btn = el('button','btn btn-ghost mini'); btn.innerHTML = '<span>Enter Space</span>';
+          btn.style.setProperty('--btn-accent', r.accent);
+          btn.addEventListener('click', function() { enter(x, out); });
+          card.appendChild(btn);
+          l.appendChild(card);
+        });
+        out.appendChild(l);
+      }, { title: 'No Spaces in this scope', body: 'Create/manage Spaces through the governed context service. The Hub will not fabricate context worlds.' });
+    }
     const zone=el('section','room-scene');wrap.appendChild(zone);
     K.load(zone,'spaces',{view:'all'},render,{title:'No Spaces in this scope',body:'Create/manage Spaces through the governed context service. The Hub will not fabricate context worlds.'});
     return wrap;
@@ -12385,6 +12805,21 @@ function SettingsRoom(){
       const row=document.createElement('div');row.style.cssText='margin-top:10px';
       row.appendChild(seg([{label:'17',value:'17'},{label:'19',value:'19'},{label:'25',value:'25'}],cur,function(v){setPref('nayanet.pref.text_size',v);applyTextSize();render();}));
       appear.body.appendChild(row);
+      /* hub/detail-boards-unify-20261121 item 12 — Naya framed / Naya unframed (default framed), and the unformat branch for Naya's notes (A12). Independent settings: framed governs the frame, unformat governs how Naya's full note renders — each works with the other on or off. Plain words, no jargon. */
+      var frLab = document.createElement('div');
+      frLab.style.cssText = 'color:var(--ink-dim);font-size:17px;margin-top:16px';
+      frLab.textContent = 'Naya framed — your notes sit inside the NayaNET frame:';
+      appear.body.appendChild(frLab);
+      var frRow = document.createElement('div'); frRow.style.cssText = 'margin-top:10px';
+      frRow.appendChild(seg([{label:'Framed',value:'1'},{label:'Unframed',value:'0'}], pref('nayanet.pref.naya_framed','1'), function(v){ setPref('nayanet.pref.naya_framed',v); T(v==='1'?'Your notes are framed.':'Your notes are unframed — the frame is off.','#8e24aa'); render(); }));
+      appear.body.appendChild(frRow);
+      var ufLab = document.createElement('div');
+      ufLab.style.cssText = 'color:var(--ink-dim);font-size:17px;margin-top:16px';
+      ufLab.textContent = 'Naya\u2019s full note — how it looks when you flip a note over:';
+      appear.body.appendChild(ufLab);
+      var ufRow = document.createElement('div'); ufRow.style.cssText = 'margin-top:10px';
+      ufRow.appendChild(seg([{label:'Formatted',value:'0'},{label:'Plain, as written',value:'1'}], pref('nayanet.pref.unformat_naya_notes','0'), function(v){ setPref('nayanet.pref.unformat_naya_notes',v); T(v==='1'?'Naya\u2019s full note shows plain, exactly as written.':'Naya\u2019s full note shows formatted.','#0f52ba'); render(); }));
+      appear.body.appendChild(ufRow);
     }
     render();
   })();
