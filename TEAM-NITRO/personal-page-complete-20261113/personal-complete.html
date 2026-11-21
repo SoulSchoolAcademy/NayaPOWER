@@ -2623,6 +2623,14 @@ body.is-owner .os-vis-only{display:none!important;}
    stretched. 4:5 portrait fills the phone card; 16:9 and 1:1 sit as they are. */
 .ib-photo{margin:14px 0 4px;}
 .ib-photo img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:#0a0a0f;}
+ /* UNIVERSAL-BAR 2026-11-21 (A17) — the post's images arrange themselves, up to nine, no manual layout. 1 full width in its own frame like a stage; 2 side by side; 3 across; 4 four-corner grid; 5-9 even rows of three, the last row filling what remains; 9 is the 3x3. Each image keeps its own shape — whole, never cropped, never stretched (R2) — in its own frame, the same frame as .ib-photo. */
+ .ib-photos{margin:14px 0 4px;display:grid;gap:10px;}
+ .ib-photos-row{display:grid;gap:10px;grid-template-columns:repeat(var(--rc,3),1fr);}
+ .ib-photos-row figure{margin:0;}
+ .ib-photos-row figure img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:#0a0a0f;}
+ /* UNIVERSAL-BAR 2026-11-21 (placement) — the citizen chooses where the pictures go: at the top above the headline, or just above the social sharing below the text. The chosen button wears the ADD purple. */
+ .os-place-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:10px 0 0;}
+ .os-place-btn[aria-pressed="true"]{border-color:#8e24aa;box-shadow:0 0 0 1px #8e24aa inset;}
 .ib-card-orb {
   width: 42px; height: 42px; flex: none; margin: 1px 0 0 18px;
   background:
@@ -4156,7 +4164,8 @@ body.fc-open{overflow:hidden;}
 <p class="os-note tg-hint" id="tg-hint" data-mw-tr="hint">Naya note — Naya formats your words beautifully. Write it, dictate it with the microphone — Naya writing it for you is coming soon.</p>
 <input class="os-input" id="os-post-author" type="text" placeholder="Your name (visitor or owner)" autocomplete="name">
 <div class="os-fieldwrap"><textarea class="os-textarea" id="os-post-body" rows="3" data-mw-ph="Make a post on this app’s feed…" placeholder="Make a post on this app&rsquo;s feed&hellip;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-post-body" aria-label="Dictate your post" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
-<div class="os-postimg-row" id="osPostImgRow"><input type="file" id="osPostImgIn" accept="image/*" hidden><button type="button" class="ph-msg" id="osPostImgBtn">🖼 Add a photo</button><button type="button" class="ph-msg" id="osPostImgRemove" hidden>Remove photo</button></div>
+<div class="os-postimg-row" id="osPostImgRow"><input type="file" id="osPostImgIn" accept="image/*" multiple hidden><button type="button" class="ph-msg" id="osPostImgBtn">🖼 Add photos</button><span class="os-note" id="osPostImgCount" style="margin:0;"></span><button type="button" class="ph-msg" id="osPostImgRemove" hidden>Remove photos</button></div>
+<div class="os-place-row" id="osPlaceRow"><span class="os-note" style="margin:0;">The pictures go:</span><button type="button" class="ph-msg os-place-btn" id="osPlaceTop" aria-pressed="true">At the top, above the headline</button><button type="button" class="ph-msg os-place-btn" id="osPlaceSocial" aria-pressed="false">Above the social sharing</button></div>
 <div id="osPostPreview" class="os-post-preview" hidden><p class="os-note" style="margin:0 0 8px;">Preview — how it will look:</p><div id="osPostPreviewCard"></div></div>
 <div class="ph-actions"><button class="ph-msg" id="os-sched-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Schedule</button><button class="ph-msg" id="os-vis-toggle" type="button" aria-pressed="false" title="Who can see this post"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Private</button><button class="ph-connect" id="os-post-btn" type="button">✦ Post my Naya note</button></div>
 <div class="os-status" id="os-post-status"></div>
@@ -4199,6 +4208,14 @@ body.fc-open{overflow:hidden;}
   <div class="fc-plusitem" role="menuitem" data-fc-plus="world" style="--mc:#8e24aa"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></span><span data-mw-tr="pm">Create world</span></div>
 </div>
 
+ <!-- UNIVERSAL-BAR 2026-11-21 — the post-feed question menu, harvested byte-verbatim from the Hub fix-up round (HUB/app/index.html, blob 09ccbe15e326c7a6f2c7fc81ac4f0599bbe735ac, lines 15108-15114). Same .fc-plusmenu chrome; colours are the worlds' own (Personal sapphire, Business emerald, World gold, Hub #c2189b). -->
+<div id="hubPlusPost" class="fc-plusmenu hub-plusmenu" hidden role="menu" aria-label="Post to a feed">
+<div class="fc-plusitem" role="menuitem" data-hub-plus="post-personal" data-hub-href="https://nayanet.app/personal#home/post" style="--mc:#0f52ba"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4 3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z"/></svg></span>Post to Personal</div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="post-business" data-hub-href="https://nayanet.app/business#home/post" style="--mc:#07925f"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M4 13h16"/></svg></span>Post to Business</div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="post-space" data-hub-href="https://nayanet.app/space#home/post" style="--mc:#d4a017"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12L4 7.5M12 12v9"/></svg></span>Post to Space</div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="post-hub" data-hub-post-composer="hub" style="--mc:#c2189b"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(-20 12 12)"/><circle cx="19.5" cy="8.5" r="1.6" fill="currentColor" stroke="none"/></svg></span>Post to Hub</div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="more" style="--mc:#8e24aa"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>More to make — smart note, Naya note</div>
+</div>
 
 
 
@@ -9176,7 +9193,7 @@ body:not(.os-bottom-hidden):not(.os-bottom-off) #os-b3-hide { bottom: 200px; }
      still navigates (plain links to the same destinations tap() uses).
      When the script runs, NayaNotif.init() removes this node and builds
      the live bar (counts, menus, fold) in its place — no visual change. -->
-<nav id="naya-notif-bar" class="notif-bar" data-static="1" aria-label="Notifications"><div class="notif-row"><a class="notif-seg" data-notif="plus" style="--nc:#8e24aa" href="https://nayanet.app/personal" aria-label="ADD — open" title="ADD"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ADD</span></a><a class="notif-seg" data-notif="personal" style="--nc:#0f52ba" href="https://nayanet.app/personal" aria-label="PERSONAL — open" title="PERSONAL"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4 3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">PERSONAL</span></a><a class="notif-seg" data-notif="business" style="--nc:#07925f" href="https://nayanet.app/business" aria-label="BUSINESS — open" title="BUSINESS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M4 13h16"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">BUSINESS</span></a><a class="notif-seg" data-notif="spaces" style="--nc:#d4a017" href="https://nayanet.app/space" aria-label="WORLDS — open" title="WORLDS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">WORLDS</span></a><a class="notif-seg" data-notif="eco" style="--nc:#c2410c" href="https://nayanet.app/#/hub" aria-label="ECOSYSTEM — open" title="ECOSYSTEM"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ECOSYSTEM</span></a><a class="notif-seg" data-notif="plusR" style="--nc:#c62828" href="https://nayanet.app/rooms/mail" aria-label="CONNECT — open" title="CONNECT"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19.5c.7-3.4 2.9-5.2 5.5-5.2s4.8 1.8 5.5 5.2"/><circle cx="17" cy="9" r="2.7"/><path d="M16.2 14.6c2.5-.2 4.1 1.4 4.6 3.9"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">CONNECT</span></a></div></nav>
+<nav id="naya-notif-bar" class="notif-bar" data-static="1" aria-label="Notifications"><div class="notif-row"><a class="notif-seg" data-notif="plus" style="--nc:#8e24aa" href="https://nayanet.app/personal" aria-label="ADD — open" title="ADD"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ADD</span></a><a class="notif-seg" data-notif="personal" style="--nc:#0f52ba" href="https://nayanet.app/personal" aria-label="PERSONAL — open" title="PERSONAL"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4 3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">PERSONAL</span></a><a class="notif-seg" data-notif="business" style="--nc:#07925f" href="https://nayanet.app/business" aria-label="BUSINESS — open" title="BUSINESS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M4 13h16"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">BUSINESS</span></a><a class="notif-seg" data-notif="spaces" style="--nc:#d4a017" href="https://nayanet.app/space" aria-label="WORLDS — open" title="WORLDS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">WORLDS</span></a><a class="notif-seg" data-notif="eco" style="--nc:#c2410c" href="https://nayanet.app/#/hub" aria-label="ECOSYSTEM — open" title="ECOSYSTEM"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ECOSYSTEM</span></a><a class="notif-seg" data-notif="plusR" style="--nc:#c62828" href="https://nayanet.app/rooms/connections" aria-label="CONNECT — open" title="CONNECT"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19.5c.7-3.4 2.9-5.2 5.5-5.2s4.8 1.8 5.5 5.2"/><circle cx="17" cy="9" r="2.7"/><path d="M16.2 14.6c2.5-.2 4.1 1.4 4.6 3.9"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">CONNECT</span></a></div></nav>
 <div id="app" aria-live="polite"></div>
 <script>
 /* Install prompt capture — registered in <head> so the browser's event is
@@ -12803,7 +12820,7 @@ window.NayaNotif = window.NayaNotif || {
         b.setAttribute('aria-label', (window.mwTr?window.mwTr(s[1]):s[1]) + ' — ' + (window.mwTr?window.mwTr('open'):'open'));
         b.setAttribute('title', (window.mwTr?window.mwTr(s[1]):s[1]));
         b.innerHTML = '<span class="notif-tile">' + (ICONS[s[0]] || ICONS.plus) + '<span class="notif-count">0</span></span><span class="notif-lbl">' + s[1] + '</span>'; /* FOLLOW-ON 2026-11-19 (item 3): the label renders under the tile — the 17px .notif-lbl existed in CSS but no label element was ever emitted, so nothing showed, even on hover. */
-        b.addEventListener('click', function () { if (s[0] === 'plus') { if (window.hubTogglePlusMenu) window.hubTogglePlusMenu('create', b); return; } if (s[0] === 'plus-connect') { if (window.hubTogglePlusMenu) window.hubTogglePlusMenu('connect', b); return; } self.tap(s[0]); });
+        b.addEventListener('click', function () { if (s[0] === 'plus') { /* UNIVERSAL-BAR 2026-11-21 item 3 (Eleven Law 4): ADD asks WHICH FEED first — Personal / Business / Space / Hub — then posts there. Harvested from the Hub fix-up round (HUB/app/index.html, blob 09ccbe15): the create menu (smart note, Naya note) is one tap further, via "More to make" in the feed menu. */ if (window.openPostFeedMenu) window.openPostFeedMenu(); return; } if (s[0] === 'plus-connect') { if (window.hubTogglePlusMenu) window.hubTogglePlusMenu('connect', b); return; } self.tap(s[0]); });
         row.appendChild(b);
       });
       bar.appendChild(row); document.body.appendChild(bar);
@@ -12844,12 +12861,13 @@ window.NayaNotif = window.NayaNotif || {
      one interface) and the Spaces room (Create world — the end-to-end
      create flow itself is a separate owed round, per Shawn 19:00Z). */
   window.hubClosePlusMenus = function () {
-    ['hubPlusCreate', 'hubPlusConnect', 'hubMenuChoices'].forEach(function (id) { var m = document.getElementById(id); if (m) m.hidden = true; });
+    ['hubPlusCreate', 'hubPlusConnect', 'hubMenuChoices', 'hubPlusPost'].forEach(function (id) { var m = document.getElementById(id); if (m) m.hidden = true; });
   };
   window.hubTogglePlusMenu = function (kind, anchor) {
     var id = kind === 'connect' ? 'hubPlusConnect' : 'hubPlusCreate';
     var other = document.getElementById(kind === 'connect' ? 'hubPlusCreate' : 'hubPlusConnect');
     if (other) other.hidden = true;
+    var postMenuEl = document.getElementById('hubPlusPost'); if (postMenuEl) postMenuEl.hidden = true; /* UNIVERSAL-BAR 2026-11-21: the post-feed menu closes when a + menu opens (Hub fix-up, blob 09ccbe15). */
     var menu = document.getElementById(id);
     if (!menu) return;
     if (!menu.hidden) { menu.hidden = true; return; }
@@ -12866,6 +12884,34 @@ window.NayaNotif = window.NayaNotif || {
     if (mh > window.innerHeight - 16) { menu.style.maxHeight = (window.innerHeight - 16) + 'px'; menu.style.overflowY = 'auto'; }
     else { menu.style.maxHeight = ''; menu.style.overflowY = ''; }
   };
+
+  /* UNIVERSAL-BAR 2026-11-21 — the post-feed question menu. Harvested from the Hub fix-up round (HUB/app/index.html, blob 09ccbe15, lines 7355-7368 + 7693-7709): the same .fc-plusmenu chrome as the create menu; it opens where the create menu stood, so the question appears in place. Destinations are the feeds' own post routes (Personal's #home/post is this page's own composer, opened in place; Business/Space follow the same page grammar; Hub is the Hub itself, whose ADD opens its composer). */
+  window.openPostFeedMenu = function () {
+    var menu = document.getElementById('hubPlusPost');
+    if (!menu) return;
+    var create = document.getElementById('hubPlusCreate');
+    if (create && create.style.left) menu.style.left = create.style.left;
+    else menu.style.left = '50%';
+    menu.style.top = '';
+    if (create && create.style.bottom) menu.style.bottom = create.style.bottom;
+    else menu.style.bottom = 'calc(var(--notif-h, 76px) + 12px)';
+    menu.hidden = false;
+  };
+  if (!window.__nayaPostFeedBound) {
+    window.__nayaPostFeedBound = true;
+    document.addEventListener('click', function (e) {
+      if (!e.target || !e.target.closest) return;
+      var it = e.target.closest('#hubPlusPost [data-hub-plus]');
+      if (!it) return;
+      var k = it.getAttribute('data-hub-plus');
+      window.hubClosePlusMenus();
+      if (k === 'post-personal') { if (window.fcOpenCreator) window.fcOpenCreator('post'); return; }
+      if (k === 'more') { if (window.hubTogglePlusMenu) window.hubTogglePlusMenu('create'); return; }
+      if (k === 'post-hub') { window.location.href = 'https://nayanet.app/hub'; return; }
+      var href = it.getAttribute('data-hub-href');
+      if (href) window.location.href = href;
+    });
+  }
 
   /* FRAME-FIX2 2026-11-19 (F2/F3) -- build the ADD/CONNECT menus the toggle
      looks up. They never existed on this page (0 in the bytes), so both taps
@@ -24701,7 +24747,7 @@ function wallCard(j, iso, pid, idx){
        the stub observer keeps the card on top). A scheduled post needs the live save. */
     if (!sb) {
       if(window.osSched && window.osSched.ts){ st.textContent='Connection unavailable — a scheduled post needs the live save.'; return; }
-      if(typeof window.fcStubInsert==='function' && window.fcStubInsert({k:'wall', a:a, b:b, photo:(window.__pxImg||null), noteType:(window.osNoteMode==='post'?'post':'naya'), vis:(window.pcPostVis||'private')})){
+      if(typeof window.fcStubInsert==='function' && window.fcStubInsert({k:'wall', a:a, b:b, photo:(window.__pxImg||null), photos:((window.__pxImgs&&window.__pxImgs.length)?window.__pxImgs.slice(0,9):null),placement:(window.__pxPlace||'top'), noteType:(window.osNoteMode==='post'?'post':'naya'), vis:(window.pcPostVis||'private')})){
         tgResetComposer((window.osNoteMode==='post' ? 'Posted — your words are on the feed, straight up. (Saved on this device — the live save is owed.)' : 'Posted — your Naya note is on the feed, your words beautiful. (Saved on this device — the live save is owed.)'));
       } else { st.textContent='Connection unavailable — post not saved.'; }
       return;
@@ -24719,7 +24765,7 @@ function wallCard(j, iso, pid, idx){
     }
     st.textContent='Posting\u2026';
     var sched=window.osSched||null;
-    var payload={k:'wall', a:a, b:b, photo:(window.__pxImg||null), noteType:(window.osNoteMode==='post'?'post':'naya'), vis:(window.pcPostVis||'private')};
+    var payload={k:'wall', a:a, b:b, photo:(window.__pxImg||null), photos:((window.__pxImgs&&window.__pxImgs.length)?window.__pxImgs.slice(0,9):null),placement:(window.__pxPlace||'top'), noteType:(window.osNoteMode==='post'?'post':'naya'), vis:(window.pcPostVis||'private')};
     if (sched && sched.ts) { payload.schedFor=new Date(sched.ts).toISOString(); payload.schedLabel=sched.label; }
     sb.from('smart_notes').insert({owner_alias:PAGE_ALIAS, content:JSON.stringify(payload)}).then(function(res){ osBustNotes();
       if (res.error) { try{console.warn('[fix8] wall post failed:', res.error && res.error.code, res.error && res.error.message);}catch(e){} st.setAttribute('data-fix8-post','failed'); /* FIX-20261112-F: the live save is blocked (42501) — the note still lands as a STUB, and the creator closes with an honest receipt naming the stub + the owed permission, instead of sitting open on an error while the card is already on the feed. */ if(typeof window.fcStubInsert==='function' && window.fcStubInsert(payload)){ tgResetComposer((window.osNoteMode==='post' ? 'Posted — your words are on the feed, straight up. (Saved on this device — the live save needs a one-time permission from Shawn.)' : 'Posted — your Naya note is on the feed, your words beautiful. (Saved on this device — the live save needs a one-time permission from Shawn.)')); } else { st.textContent='Couldn\u2019t post just now \u2014 the page\u2019s save needs a one-time permission from Shawn. Your words are still here; nothing was lost.'; } return; }
@@ -24734,7 +24780,7 @@ function wallCard(j, iso, pid, idx){
     if (!draft){ st.textContent='The draft is empty \u2014 write something first.'; return; }
     var sched=window.osSched||null;
     var d=window._tgDraft||{};
-    var payload={k:'wall', a:a, b:draft, raw:raw, photo:(window.__pxImg||null), noteType:'smart', vis:(window.pcPostVis||'private'),
+    var payload={k:'wall', a:a, b:draft, raw:raw, photo:(window.__pxImg||null), photos:((window.__pxImgs&&window.__pxImgs.length)?window.__pxImgs.slice(0,9):null),placement:(window.__pxPlace||'top'), noteType:'smart', vis:(window.pcPostVis||'private'),
       smart:{nutshell:d.nutshell||'', themes:d.themes||[], angles:d.angles||[]}};
     /* FIX-20261112-F: no live save in this session — the Smart note still lands, as a STUB
        (same receipt path as the live post). A scheduled post needs the live save. */
@@ -31980,7 +32026,27 @@ function el(tag, cls, html) {
        whole — width 100%, height auto, never cropped, never stretched.
        4:5 portrait is the hero shape on phone, 16:9 for video/landscape,
        1:1 square. No photo in the data → no photo on the card. */
-    if (note.photo){
+    var _photosEl = null; var _place = (note.placement === 'social' ? 'social' : (note.placement === 'top' ? 'top' : '')); /* UNIVERSAL-BAR 2026-11-21 (placement) — 'top' = at the top above the headline; 'social' = just above the social sharing below the text; anything else keeps the settled place, below the headline. */
+    if (note.photos && note.photos.length){
+      /* UNIVERSAL-BAR 2026-11-21 (A17) — the images arrange themselves. Rows of three; four is two rows of two (the four-corner grid); the last row fills what remains (1 full width, 2 side by side); nine is the 3x3. Each image in its own frame, whole, never cropped, never stretched. */
+      var _ph = document.createElement('div'); _ph.className = 'ib-photos'; _ph.setAttribute('data-n', String(note.photos.length));
+      var _list = note.photos.slice(0, 9);
+      var _rows = (_list.length === 4) ? [[0, 1], [2, 3]] : (function(){ var _r = []; for (var _i = 0; _i < _list.length; _i += 3) _r.push([_i, Math.min(_i + 3, _list.length)]); return _r; })();
+      _rows.forEach(function(_rg){
+        var _row = document.createElement('div'); _row.className = 'ib-photos-row';
+        var _rc = _rg[1] - _rg[0]; _row.style.setProperty('--rc', String(_rc));
+        for (var _k = _rg[0]; _k < _rg[1]; _k++){
+          var _f2 = document.createElement('figure'); var _i2 = document.createElement('img');
+          _i2.src = _list[_k]; _i2.alt = (note.title || 'Photo'); _i2.loading = 'lazy';
+          _f2.appendChild(_i2); _row.appendChild(_f2);
+        }
+        _ph.appendChild(_row);
+      });
+      _photosEl = _ph;
+      if (_place === 'top') { b.insertBefore(_ph, top); } /* the headline block is already on the board (appended just above), so this sits above the headline */
+      else if (_place === 'social') { /* stays off the board until the end of the board, where it goes just above the social sharing */ }
+      else { b.appendChild(_ph); }
+    } else if (note.photo){
       var _fig = document.createElement('figure'); _fig.className = 'ib-photo';
       var _im = document.createElement('img'); _im.src = note.photo;
       _im.alt = note.title || 'Photo'; _im.loading = 'lazy';
@@ -32103,6 +32169,9 @@ function el(tag, cls, html) {
     micro.innerHTML = '<span class="left" data-mw-tr="set" data-mw-en="ONE INTELLIGENCE · MANY VIEWS · ONE IDENTITY">' + (window.mwTr?window.mwTr('ONE INTELLIGENCE · MANY VIEWS · ONE IDENTITY'):'ONE INTELLIGENCE · MANY VIEWS · ONE IDENTITY') + '</span>' +
       '<span class="right" data-mw-tr="set" data-mw-en="TRUST: SOURCE / INTERPRETATION SEPARATED">' + (window.mwTr?window.mwTr('TRUST: SOURCE / INTERPRETATION SEPARATED'):'TRUST: SOURCE / INTERPRETATION SEPARATED') + '</span>';
     b.appendChild(micro);
+
+    /* UNIVERSAL-BAR 2026-11-21 (placement) — 'social' pictures go just above the social sharing below the text: ahead of the bottom actions bar (.board-actions, .board-bottom-actions on the fallback), or the microcopy when there is no actions bar. */
+    if (_photosEl && _place === 'social') { var _soc = b.querySelector('.board-actions') || b.querySelector('.board-bottom-actions') || micro; b.insertBefore(_photosEl, _soc); }
 
     return b;
   }
@@ -32654,7 +32723,8 @@ function ibWallNote(r){
   return {
     id: r.id, title: (j.t||j.title||''), subtitle: '', tone: ibToneFor(r), kind: 'personal',
     created_at: r.at, layers: layers,
-    photo: (j.photo || j.image || null) /* R2 — a post's photo rides through to the card */
+    photo: (j.photo || j.image || null), /* R2 — a post's photo rides through to the card */
+    photos: ((j.photos && j.photos.length) ? j.photos.slice(0, 9) : null), placement: (j.placement || '') /* UNIVERSAL-BAR 2026-11-21 (A17) — up to nine images ride through as an array; the card arranges them */
   };
 }
 window.ibRender = intelBoard;
@@ -46157,7 +46227,12 @@ pxEnhancePerson();
    and presents it in .ib-photo, so the preview below uses the SAME renderer (ibWallHTML)
    as the live wall — what you see is what posts. */
 (function(){
-  window.__pxImg=null;
+  window.__pxImg=null; window.__pxImgs=[]; /* UNIVERSAL-BAR 2026-11-21 (A17) — up to nine images; __pxImg stays the first, for the single-photo readers */
+  window.__pxPlace='top'; /* UNIVERSAL-BAR 2026-11-21 (placement) — the citizen's choice: 'top' above the headline (the default), 'social' just above the social sharing below the text. */
+  function setPlace(p){ window.__pxPlace=(p==='social'?'social':'top'); var _t=document.getElementById('osPlaceTop'), _s=document.getElementById('osPlaceSocial'); if(_t) _t.setAttribute('aria-pressed', String(window.__pxPlace==='top')); if(_s) _s.setAttribute('aria-pressed', String(window.__pxPlace==='social')); renderPreview(); }
+  var _plT=document.getElementById('osPlaceTop'), _plS=document.getElementById('osPlaceSocial');
+  if(_plT) _plT.addEventListener('click', function(){ setPlace('top'); });
+  if(_plS) _plS.addEventListener('click', function(){ setPlace('social'); });
   var inp=document.getElementById('osPostImgIn');
   var btn=document.getElementById('osPostImgBtn');
   var rem=document.getElementById('osPostImgRemove');
@@ -46171,7 +46246,7 @@ pxEnhancePerson();
     if(!prev||!card) return;
     var b=body?(body.value||'').trim():'';
     var a=auth?(auth.value||'').trim()||'Guest':'Guest';
-    if(!b && !window.__pxImg){ prev.hidden=true; card.innerHTML=''; return; }
+    if(!b && !(window.__pxImgs && window.__pxImgs.length) && !window.__pxImg){ prev.hidden=true; card.innerHTML=''; return; }
     prev.hidden=false;
     if(typeof window.ibWallHTML==='function'){
       /* FIX-AND-RECHECK F2 (2026-11-15) — a photo with no saying yet fell
@@ -46181,36 +46256,52 @@ pxEnhancePerson();
          derives the headline from it, exactly as the published card does —
          so only the untyped case gets a title here, "Your photo", never the
          banned fallback. */
-      var _pt = b ? undefined : (window.__pxImg ? 'Your photo' : undefined);
-      try{ card.innerHTML=window.ibWallHTML({j:{k:'wall',a:a,b:b,t:_pt,photo:(window.__pxImg||null),noteType:(window.osNoteMode==='post'?'post':'naya')},at:new Date().toISOString(),id:'px-preview'},0); }
+      var _pt = b ? undefined : ((window.__pxImgs && window.__pxImgs.length) ? 'Your photos' : (window.__pxImg ? 'Your photo' : undefined));
+      try{ card.innerHTML=window.ibWallHTML({j:{k:'wall',a:a,b:b,t:_pt,photo:(window.__pxImg||null),photos:((window.__pxImgs&&window.__pxImgs.length)?window.__pxImgs.slice(0,9):null),placement:(window.__pxPlace||'top'),noteType:(window.osNoteMode==='post'?'post':'naya')},at:new Date().toISOString(),id:'px-preview'},0); }
       catch(e){ card.innerHTML='<p class="os-note">Preview unavailable.</p>'; }
     } else { card.innerHTML='<p class="os-note">Preview unavailable.</p>'; }
   }
-  function clearImg(){ window.__pxImg=null; try{ inp.value=''; }catch(e){} if(rem) rem.hidden=true; renderPreview(); }
+  function clearImg(){ window.__pxImg=null; window.__pxImgs=[]; window.__pxPlace='top'; var _t=document.getElementById('osPlaceTop'), _s=document.getElementById('osPlaceSocial'); if(_t) _t.setAttribute('aria-pressed','true'); if(_s) _s.setAttribute('aria-pressed','false'); try{ inp.value=''; }catch(e){} if(rem) rem.hidden=true; var _cnt=document.getElementById('osPostImgCount'); if(_cnt) _cnt.textContent=''; renderPreview(); }
   btn.addEventListener('click', function(){ inp.click(); });
   if(rem) rem.addEventListener('click', clearImg);
   inp.addEventListener('change', function(){
-    var f=inp.files&&inp.files[0]; if(!f) return;
-    if(!/^image\//.test(f.type||'')){ if(typeof toast==='function') toast('That is not an image.'); return; }
-    var rd=new FileReader();
-    rd.onload=function(){
-      var img=new Image();
-      img.onload=function(){
-        try{
-          var max=1200, w=img.naturalWidth||img.width, h=img.naturalHeight||img.height;
-          var sc=Math.min(1, max/Math.max(w,h));
-          var cv=document.createElement('canvas');
-          cv.width=Math.max(1,Math.round(w*sc)); cv.height=Math.max(1,Math.round(h*sc));
-          var cx=cv.getContext('2d'); cx.drawImage(img,0,0,cv.width,cv.height);
-          window.__pxImg=cv.toDataURL(f.type==='image/png'?'image/png':'image/jpeg',0.82);
-        }catch(e){ window.__pxImg=rd.result; }
-        if(rem) rem.hidden=false;
-        renderPreview();
+    var files=inp.files?Array.prototype.slice.call(inp.files):[]; if(!files.length) return;
+    /* UNIVERSAL-BAR 2026-11-21 (A17) — the citizen just adds images; the block arranges them. Nine is the most: extras stay out, named plainly. Each image downscales the same way the single photo always did (max 1200px, JPEG 0.82, PNG kept PNG). */
+    var room=9-(window.__pxImgs?window.__pxImgs.length:0);
+    if(room<=0){ if(typeof toast==='function') toast('NINE IS THE MOST', 'Nine photos is the most a post holds — remove some to add others.', '#d4a017'); try{ inp.value=''; }catch(e){} return; }
+    var take=files.slice(0, room);
+    if(files.length>take.length && typeof toast==='function') toast('NINE IS THE MOST', 'Nine photos is the most a post holds — the first nine are in.', '#d4a017');
+    var pending=take.length;
+    take.forEach(function(f){
+      if(!/^image\//.test(f.type||'')){ if(typeof toast==='function') toast('That is not an image.'); if(--pending===0){ syncImgUI(); } return; }
+      var rd=new FileReader();
+      rd.onload=function(){
+        var img=new Image();
+        img.onload=function(){
+          var data=null;
+          try{
+            var max=1200, w=img.naturalWidth||img.width, h=img.naturalHeight||img.height;
+            var sc=Math.min(1, max/Math.max(w,h));
+            var cv=document.createElement('canvas');
+            cv.width=Math.max(1,Math.round(w*sc)); cv.height=Math.max(1,Math.round(h*sc));
+            var cx=cv.getContext('2d'); cx.drawImage(img,0,0,cv.width,cv.height);
+            data=cv.toDataURL(f.type==='image/png'?'image/png':'image/jpeg',0.82);
+          }catch(e){ data=rd.result; }
+          window.__pxImgs.push(data); window.__pxImg=window.__pxImgs[0];
+          if(--pending===0) syncImgUI();
+        };
+        img.onerror=function(){ window.__pxImgs.push(rd.result); window.__pxImg=window.__pxImgs[0]; if(--pending===0) syncImgUI(); };
+        img.src=rd.result;
       };
-      img.onerror=function(){ window.__pxImg=rd.result; if(rem) rem.hidden=false; renderPreview(); };
-      img.src=rd.result;
-    };
-    rd.readAsDataURL(f);
+      rd.readAsDataURL(f);
+    });
+    function syncImgUI(){
+      if(rem) rem.hidden=!(window.__pxImgs&&window.__pxImgs.length);
+      var _cnt=document.getElementById('osPostImgCount');
+      if(_cnt) _cnt.textContent=(window.__pxImgs&&window.__pxImgs.length)?(window.__pxImgs.length+' of 9 photos'):'';
+      try{ inp.value=''; }catch(e){}
+      renderPreview();
+    }
   });
   var t=null;
   function deb(){ clearTimeout(t); t=setTimeout(renderPreview,150); }
