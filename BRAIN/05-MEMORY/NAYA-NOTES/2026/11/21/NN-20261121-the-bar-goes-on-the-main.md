@@ -4,7 +4,7 @@
 
 **NN-20261121-the-bar-goes-on-the-main · Naya Note · 2026-11-21 ~09:21 MST**
 
-*Paired Smart Note: SN-pending — The Bar Goes on the Main (takes the next free number at filing)*
+*Paired Smart Note: SN-4479 — The Bar Goes on the Main*
 
 **Category:** LAW — the universal bottom bar belongs on the MAIN pages: Hub main, Personal main, Dashboard main
 
