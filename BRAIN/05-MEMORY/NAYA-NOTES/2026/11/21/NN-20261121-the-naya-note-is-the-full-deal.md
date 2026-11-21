@@ -4,7 +4,7 @@
 
 **NN-20261121-the-naya-note-is-the-full-deal · Naya Note · 2026-11-21 ~08:41–08:52 MST**
 
-*Paired Smart Note: SN-pending — The Naya Note Is the Full Deal (takes the next free number at filing)*
+*Paired Smart Note: SN-4468 — The Naya Note Is the Full Deal*
 
 **Category:** LAW — what a Naya Note is: the full deal behind a smart note, and the standalone private note
 
