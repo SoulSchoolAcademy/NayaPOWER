@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-21 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-21 09:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -57770,6 +57770,30 @@ _Last updated: 2026-11-21 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ 20261121-0118 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged (17th consecutive hourly stall receipt)
+
+**Evidence:** VERIFIED this tick by this scorer: receipt file exists and read; the 31 brief filenames it lists are byte-identical to the live brief-queue set (31 vs 31, listed-not-live and live-not-listed both empty); claim-sweep log claim-sweep-20261121-0118.log exists (3,811 bytes) with Totals line 31 attempts, 0 claimed, 29 x exit 7, 2 x exit 2, matching the 
+
+### ✅ 20261015-1749 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 24/24 queued briefs refused, stall, queue untouched
+
+**Evidence:** Verified: receipt exists (45 lines); 24 brief-gap filenames listed in a table, count matches header claim (24); per-brief exit codes cross-consistent with the 15:49 and 17:02 stall receipts the same day (same briefs, same codes; t0692-lane4 returns to the list, matching the 24-count). NOT PHANTOM. Score 8.0. Why not 9.5: (1) claim-sweep log for 17:
+
+### ✅ 20261015-1702 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 23/23 queued briefs refused, stall, queue untouched
+
+**Evidence:** Verified: receipt exists (54 lines); 23 brief-gap filenames listed in a table, count matches header claim (23); per-brief exit codes cross-consistent with the 15:49 and 17:49 stall receipts the same day; documents and self-corrects a near-miss (first attempt used a Herald seat token, claim released back to queue before any work). NOT PHANTOM. Score
+
+### ✅ 20261015-1549 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 24/24 queued briefs refused, stall, queue untouched
+
+**Evidence:** Verified: receipt exists (56 lines); 24 brief-gap filenames listed, count matches header claim (24); refusal classes named per brief (12 stamped NON-Clarity gates, 11 exit-7 parent-authorship, 1 exit-6 no-refile verdict t0431-lane6); per-brief exit codes cross-consistent with the 17:02 and 17:49 stall receipts the same day (same briefs, same codes)
 
 ### ✅ 20261121-0013 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
