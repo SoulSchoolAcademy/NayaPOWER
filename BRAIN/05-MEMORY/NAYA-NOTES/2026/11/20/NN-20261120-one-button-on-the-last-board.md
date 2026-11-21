@@ -4,7 +4,7 @@
 
 **NN-20261120-one-button-on-the-last-board · Naya Note · 2026-11-20 ~20:53–21:00 MST**
 
-*Paired Smart Note: SN-pending — One Button on the Last Board (takes the next free number at filing)*
+*Paired Smart Note: SN-4440 — One Button on the Last Board*
 
 **Category:** Design — the last board gets one button, no arrows
 
