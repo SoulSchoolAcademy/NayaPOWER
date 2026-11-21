@@ -4,7 +4,7 @@
 
 **NN-20261120-academy-is-live-proven-by-the-fetch · Naya Note · 2026-11-20 ~18:52 MST**
 
-*Paired Smart Note: SN-pending — Academy Is Live — Proven by the Fetch (takes the next free number at filing)*
+*Paired Smart Note: SN-4397 — Academy Is Live — Proven by the Fetch*
 
 **Category:** Law — a page is live only when a fresh fetch proves it
 
