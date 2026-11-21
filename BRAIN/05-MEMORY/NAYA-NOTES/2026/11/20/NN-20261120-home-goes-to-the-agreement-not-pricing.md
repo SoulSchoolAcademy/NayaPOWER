@@ -4,7 +4,7 @@
 
 **NN-20261120-home-goes-to-the-agreement-not-pricing · Naya Note · 2026-11-20 ~18:50 MST**
 
-*Paired Smart Note: SN-pending — Home Goes to the Agreement, Not Pricing (takes the next free number at filing)*
+*Paired Smart Note: SN-4398 — Home Goes to the Agreement, Not Pricing*
 
 **Category:** Law — where Home takes a citizen
 
