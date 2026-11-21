@@ -13,10 +13,12 @@
 -- by DO blocks; safe to replay on a DB that already has these objects.
 -- NOTE: trigger functions referenced below are filed by Seat 2 (FUNCTIONS) where live-only;
 --   this file creates the tables + trigger attachments only.
+-- NOTE (Seat 7 reorder, 2026-11-21 — SEAT-6-DECISION B4): the ALTER SEQUENCE ...
+--   OWNED BY line below now sits after the nayanet_identities CREATE TABLE + index
+--   (it was L19, before the table existed — 42P01). One line moved; nothing else changed.
 
 -- Sequences owned by columns in this group (live pg_sequences values).
 create sequence if not exists public."nayanet_identities_cert_no_seq" as bigint increment by 1 minvalue 1 maxvalue 9223372036854775807 start with 1 cache 1 no cycle;
-alter sequence public."nayanet_identities_cert_no_seq" owned by public."nayanet_identities"."cert_no";
 
 -- ---------------------------------------------------------------------------
 -- Table: public.memberships (15 columns, live)
@@ -258,6 +260,7 @@ create table if not exists public."nayanet_identities" (
 );
 
 create UNIQUE index if not exists nayanet_identities_cert_no_key ON public.nayanet_identities USING btree (cert_no);
+alter sequence public."nayanet_identities_cert_no_seq" owned by public."nayanet_identities"."cert_no";
 
 alter table public."nayanet_identities" enable row level security;
 -- live ACL (recorded verbatim, not applied as grants): {postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}

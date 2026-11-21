@@ -13,6 +13,31 @@
 -- by DO blocks; safe to replay on a DB that already has these objects.
 -- NOTE: trigger functions referenced below are filed by Seat 2 (FUNCTIONS) where live-only;
 --   this file creates the tables + trigger attachments only.
+-- NOTE (Seat 7 reorder, 2026-11-21 — SEAT-6-DECISION B5–B7): the
+--   smart_mail_aliases section below now precedes smart_spaces (it was L158–L176):
+--   smart_spaces / smart_space_members / user_connections FK to smart_mail_aliases,
+--   which did not exist yet at those points (42P01). smart_mail_aliases is PK-only
+--   with no FK back to any user table (re-checked first-hand), so the move is
+--   cycle-free. Every statement in the moved section is byte-identical; order only.
+
+-- ---------------------------------------------------------------------------
+-- Table: public.smart_mail_aliases (4 columns, live)
+create table if not exists public."smart_mail_aliases" (
+  "alias" text not null,
+  "display_name" text not null,
+  "kind" text default 'seat'::text not null,
+  "created_at" timestamp with time zone default now() not null,
+  constraint "smart_mail_aliases_pkey" PRIMARY KEY (alias)
+);
+
+alter table public."smart_mail_aliases" enable row level security;
+-- live ACL (recorded verbatim, not applied as grants): {postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres,anon=r/postgres}
+
+do $$ begin
+  if not exists (select 1 from pg_policies where schemaname='public' and tablename='smart_mail_aliases' and policyname='smart_mail_aliases_owner_select') then
+    create policy "smart_mail_aliases_owner_select" on public."smart_mail_aliases" as permissive for select to authenticated using ((alias = COALESCE(((auth.jwt() -> 'app_metadata'::text) ->> 'smart_alias'::text), ((auth.jwt() -> 'user_metadata'::text) ->> 'smart_alias'::text))));
+  end if;
+end $$;
 
 -- ---------------------------------------------------------------------------
 -- Table: public.smart_spaces (5 columns, live)
@@ -152,25 +177,6 @@ end $$;
 do $$ begin
   if not exists (select 1 from pg_policies where schemaname='public' and tablename='smart_mail_messages' and policyname='smart_mail_messages_owner_select') then
     create policy "smart_mail_messages_owner_select" on public."smart_mail_messages" as permissive for select to authenticated using ((from_alias = COALESCE(((auth.jwt() -> 'app_metadata'::text) ->> 'smart_alias'::text), ((auth.jwt() -> 'user_metadata'::text) ->> 'smart_alias'::text))));
-  end if;
-end $$;
-
--- ---------------------------------------------------------------------------
--- Table: public.smart_mail_aliases (4 columns, live)
-create table if not exists public."smart_mail_aliases" (
-  "alias" text not null,
-  "display_name" text not null,
-  "kind" text default 'seat'::text not null,
-  "created_at" timestamp with time zone default now() not null,
-  constraint "smart_mail_aliases_pkey" PRIMARY KEY (alias)
-);
-
-alter table public."smart_mail_aliases" enable row level security;
--- live ACL (recorded verbatim, not applied as grants): {postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres,anon=r/postgres}
-
-do $$ begin
-  if not exists (select 1 from pg_policies where schemaname='public' and tablename='smart_mail_aliases' and policyname='smart_mail_aliases_owner_select') then
-    create policy "smart_mail_aliases_owner_select" on public."smart_mail_aliases" as permissive for select to authenticated using ((alias = COALESCE(((auth.jwt() -> 'app_metadata'::text) ->> 'smart_alias'::text), ((auth.jwt() -> 'user_metadata'::text) ->> 'smart_alias'::text))));
   end if;
 end $$;
 

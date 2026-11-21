@@ -13,6 +13,11 @@
 -- by DO blocks; safe to replay on a DB that already has these objects.
 -- NOTE: trigger functions referenced below are filed by Seat 2 (FUNCTIONS) where live-only;
 --   this file creates the tables + trigger attachments only.
+-- NOTE (Seat 7 reorder, 2026-11-21 — SEAT-6-DECISION B2): the payment_links
+--   section below now precedes payments (it was L99–L147, before payment_connections):
+--   payments L61 FKs to payment_links, which did not exist yet at that point (42P01).
+--   payment_links has no FK back to payments (re-checked first-hand), so the move is
+--   cycle-free. Every statement in the moved section is byte-identical; order only.
 
 -- ---------------------------------------------------------------------------
 -- Table: public.smart_link_joins (6 columns, live)
@@ -35,6 +40,55 @@ alter table public."smart_link_joins" enable row level security;
 do $$ begin
   if not exists (select 1 from pg_policies where schemaname='public' and tablename='smart_link_joins' and policyname='smart_link_joins_append') then
     create policy "smart_link_joins_append" on public."smart_link_joins" as permissive for insert to anon with check (true);
+  end if;
+end $$;
+
+-- ---------------------------------------------------------------------------
+-- Table: public.payment_links (12 columns, live)
+create table if not exists public."payment_links" (
+  "id" uuid default gen_random_uuid() not null,
+  "owner_alias" text not null,
+  "owner_id" uuid,
+  "slug" text not null,
+  "title" text not null,
+  "description" text,
+  "amount_cents" integer not null,
+  "currency" text default 'usd'::text not null,
+  "smart_link_name" text,
+  "active" boolean default true not null,
+  "created_at" timestamp with time zone default now() not null,
+  "updated_at" timestamp with time zone default now() not null,
+  constraint "payment_links_amount_positive" CHECK ((amount_cents > 0)),
+  constraint "payment_links_currency_shape" CHECK ((char_length(currency) = 3)),
+  constraint "payment_links_slug_shape" CHECK ((slug ~ '^[a-z0-9][a-z0-9-]{1,62}$'::text)),
+  constraint "payment_links_title_nonempty" CHECK ((char_length(btrim(title)) > 0)),
+  constraint "payment_links_pkey" PRIMARY KEY (id)
+);
+
+create index if not exists payment_links_owner_idx ON public.payment_links USING btree (owner_alias, created_at DESC);
+create UNIQUE index if not exists payment_links_slug_unique ON public.payment_links USING btree (lower(slug));
+
+alter table public."payment_links" enable row level security;
+-- live ACL (recorded verbatim, not applied as grants): {postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}
+
+do $$ begin
+  if not exists (select 1 from pg_policies where schemaname='public' and tablename='payment_links' and policyname='payment_links_owner_delete') then
+    create policy "payment_links_owner_delete" on public."payment_links" as permissive for delete to authenticated using ((owner_id = ( SELECT auth.uid() AS uid)));
+  end if;
+end $$;
+do $$ begin
+  if not exists (select 1 from pg_policies where schemaname='public' and tablename='payment_links' and policyname='payment_links_owner_insert') then
+    create policy "payment_links_owner_insert" on public."payment_links" as permissive for insert to authenticated with check ((owner_id = ( SELECT auth.uid() AS uid)));
+  end if;
+end $$;
+do $$ begin
+  if not exists (select 1 from pg_policies where schemaname='public' and tablename='payment_links' and policyname='payment_links_owner_select') then
+    create policy "payment_links_owner_select" on public."payment_links" as permissive for select to authenticated using ((owner_id = ( SELECT auth.uid() AS uid)));
+  end if;
+end $$;
+do $$ begin
+  if not exists (select 1 from pg_policies where schemaname='public' and tablename='payment_links' and policyname='payment_links_owner_update') then
+    create policy "payment_links_owner_update" on public."payment_links" as permissive for update to authenticated using ((owner_id = ( SELECT auth.uid() AS uid))) with check ((owner_id = ( SELECT auth.uid() AS uid)));
   end if;
 end $$;
 
@@ -93,55 +147,6 @@ end $$;
 do $$ begin
   if not exists (select 1 from pg_trigger where tgname='payments_fill_owner' and tgrelid='public."payments"'::regclass) then
     CREATE TRIGGER payments_fill_owner BEFORE INSERT ON public.payments FOR EACH ROW EXECUTE FUNCTION payments_fill_owner();
-  end if;
-end $$;
-
--- ---------------------------------------------------------------------------
--- Table: public.payment_links (12 columns, live)
-create table if not exists public."payment_links" (
-  "id" uuid default gen_random_uuid() not null,
-  "owner_alias" text not null,
-  "owner_id" uuid,
-  "slug" text not null,
-  "title" text not null,
-  "description" text,
-  "amount_cents" integer not null,
-  "currency" text default 'usd'::text not null,
-  "smart_link_name" text,
-  "active" boolean default true not null,
-  "created_at" timestamp with time zone default now() not null,
-  "updated_at" timestamp with time zone default now() not null,
-  constraint "payment_links_amount_positive" CHECK ((amount_cents > 0)),
-  constraint "payment_links_currency_shape" CHECK ((char_length(currency) = 3)),
-  constraint "payment_links_slug_shape" CHECK ((slug ~ '^[a-z0-9][a-z0-9-]{1,62}$'::text)),
-  constraint "payment_links_title_nonempty" CHECK ((char_length(btrim(title)) > 0)),
-  constraint "payment_links_pkey" PRIMARY KEY (id)
-);
-
-create index if not exists payment_links_owner_idx ON public.payment_links USING btree (owner_alias, created_at DESC);
-create UNIQUE index if not exists payment_links_slug_unique ON public.payment_links USING btree (lower(slug));
-
-alter table public."payment_links" enable row level security;
--- live ACL (recorded verbatim, not applied as grants): {postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}
-
-do $$ begin
-  if not exists (select 1 from pg_policies where schemaname='public' and tablename='payment_links' and policyname='payment_links_owner_delete') then
-    create policy "payment_links_owner_delete" on public."payment_links" as permissive for delete to authenticated using ((owner_id = ( SELECT auth.uid() AS uid)));
-  end if;
-end $$;
-do $$ begin
-  if not exists (select 1 from pg_policies where schemaname='public' and tablename='payment_links' and policyname='payment_links_owner_insert') then
-    create policy "payment_links_owner_insert" on public."payment_links" as permissive for insert to authenticated with check ((owner_id = ( SELECT auth.uid() AS uid)));
-  end if;
-end $$;
-do $$ begin
-  if not exists (select 1 from pg_policies where schemaname='public' and tablename='payment_links' and policyname='payment_links_owner_select') then
-    create policy "payment_links_owner_select" on public."payment_links" as permissive for select to authenticated using ((owner_id = ( SELECT auth.uid() AS uid)));
-  end if;
-end $$;
-do $$ begin
-  if not exists (select 1 from pg_policies where schemaname='public' and tablename='payment_links' and policyname='payment_links_owner_update') then
-    create policy "payment_links_owner_update" on public."payment_links" as permissive for update to authenticated using ((owner_id = ( SELECT auth.uid() AS uid))) with check ((owner_id = ( SELECT auth.uid() AS uid)));
   end if;
 end $$;
 

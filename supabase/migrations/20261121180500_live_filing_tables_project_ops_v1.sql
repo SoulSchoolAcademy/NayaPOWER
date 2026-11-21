@@ -13,6 +13,12 @@
 -- by DO blocks; safe to replay on a DB that already has these objects.
 -- NOTE: trigger functions referenced below are filed by Seat 2 (FUNCTIONS) where live-only;
 --   this file creates the tables + trigger attachments only.
+-- NOTE (Seat 7 reorder, 2026-11-21 — SEAT-6-DECISION B8–B9): the projects
+--   section below now precedes project_intel_items (it was L279–L341):
+--   project_intel_items / work_items FK to projects, which did not exist yet at
+--   those points (42P01). projects references only itself (self-FK parent_id,
+--   re-checked first-hand), so the move is cycle-free. Every statement in the
+--   moved section is byte-identical; order only.
 -- NOTE (Seat 6 fix, 2026-11-21 — SEAT-5-DECISION finding): the two trigger blocks
 --   below (trg_items_state_changed, trg_items_transition_log) now guard on
 --   to_regproc('public.items_state_changed' / 'public.items_transition_log') IS NOT NULL,
@@ -21,6 +27,69 @@
 --   190008 creates both triggers itself (guarded), so they still land at the end
 --   of the chain. The two CREATE TRIGGER statements are byte-identical; nothing
 --   else in this file changed.
+
+-- ---------------------------------------------------------------------------
+-- Table: public.projects (6 columns, live)
+create table if not exists public."projects" (
+  "id" uuid default gen_random_uuid() not null,
+  "owner_alias" text not null,
+  "name" text not null,
+  "motto" text,
+  "created_at" timestamp with time zone default now() not null,
+  "parent_id" uuid,
+  constraint "projects_motto_bounded" CHECK ((char_length(COALESCE(motto, ''::text)) <= 300)),
+  constraint "projects_name_bounded" CHECK ((char_length(name) <= 120)),
+  constraint "projects_name_nonempty" CHECK ((char_length(btrim(name)) > 0)),
+  constraint "projects_parent_id_fkey" FOREIGN KEY (parent_id) REFERENCES projects(id) ON DELETE SET NULL,
+  constraint "projects_pkey" PRIMARY KEY (id)
+);
+
+create index if not exists projects_owner_idx ON public.projects USING btree (owner_alias, created_at DESC);
+create index if not exists projects_parent_idx ON public.projects USING btree (parent_id, created_at);
+
+alter table public."projects" enable row level security;
+-- live ACL (recorded verbatim, not applied as grants): {postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}
+
+do $$ begin
+  if not exists (select 1 from pg_policies where schemaname='public' and tablename='projects' and policyname='projects_del_anon') then
+    create policy "projects_del_anon" on public."projects" as permissive for delete to anon using (true);
+  end if;
+end $$;
+do $$ begin
+  if not exists (select 1 from pg_policies where schemaname='public' and tablename='projects' and policyname='projects_del_authenticated') then
+    create policy "projects_del_authenticated" on public."projects" as permissive for delete to authenticated using (true);
+  end if;
+end $$;
+do $$ begin
+  if not exists (select 1 from pg_policies where schemaname='public' and tablename='projects' and policyname='projects_ins_anon') then
+    create policy "projects_ins_anon" on public."projects" as permissive for insert to anon with check (true);
+  end if;
+end $$;
+do $$ begin
+  if not exists (select 1 from pg_policies where schemaname='public' and tablename='projects' and policyname='projects_ins_authenticated') then
+    create policy "projects_ins_authenticated" on public."projects" as permissive for insert to authenticated with check (true);
+  end if;
+end $$;
+do $$ begin
+  if not exists (select 1 from pg_policies where schemaname='public' and tablename='projects' and policyname='projects_sel_anon') then
+    create policy "projects_sel_anon" on public."projects" as permissive for select to anon using (true);
+  end if;
+end $$;
+do $$ begin
+  if not exists (select 1 from pg_policies where schemaname='public' and tablename='projects' and policyname='projects_sel_authenticated') then
+    create policy "projects_sel_authenticated" on public."projects" as permissive for select to authenticated using (true);
+  end if;
+end $$;
+do $$ begin
+  if not exists (select 1 from pg_policies where schemaname='public' and tablename='projects' and policyname='projects_upd_anon') then
+    create policy "projects_upd_anon" on public."projects" as permissive for update to anon using (true) with check (true);
+  end if;
+end $$;
+do $$ begin
+  if not exists (select 1 from pg_policies where schemaname='public' and tablename='projects' and policyname='projects_upd_authenticated') then
+    create policy "projects_upd_authenticated" on public."projects" as permissive for update to authenticated using (true) with check (true);
+  end if;
+end $$;
 
 -- ---------------------------------------------------------------------------
 -- Table: public.project_intel_items (20 columns, live)
@@ -273,69 +342,6 @@ end $$;
 do $$ begin
   if not exists (select 1 from pg_policies where schemaname='public' and tablename='work_transitions' and policyname='work_transitions_upd_authenticated') then
     create policy "work_transitions_upd_authenticated" on public."work_transitions" as permissive for update to authenticated using (true) with check (true);
-  end if;
-end $$;
-
--- ---------------------------------------------------------------------------
--- Table: public.projects (6 columns, live)
-create table if not exists public."projects" (
-  "id" uuid default gen_random_uuid() not null,
-  "owner_alias" text not null,
-  "name" text not null,
-  "motto" text,
-  "created_at" timestamp with time zone default now() not null,
-  "parent_id" uuid,
-  constraint "projects_motto_bounded" CHECK ((char_length(COALESCE(motto, ''::text)) <= 300)),
-  constraint "projects_name_bounded" CHECK ((char_length(name) <= 120)),
-  constraint "projects_name_nonempty" CHECK ((char_length(btrim(name)) > 0)),
-  constraint "projects_parent_id_fkey" FOREIGN KEY (parent_id) REFERENCES projects(id) ON DELETE SET NULL,
-  constraint "projects_pkey" PRIMARY KEY (id)
-);
-
-create index if not exists projects_owner_idx ON public.projects USING btree (owner_alias, created_at DESC);
-create index if not exists projects_parent_idx ON public.projects USING btree (parent_id, created_at);
-
-alter table public."projects" enable row level security;
--- live ACL (recorded verbatim, not applied as grants): {postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}
-
-do $$ begin
-  if not exists (select 1 from pg_policies where schemaname='public' and tablename='projects' and policyname='projects_del_anon') then
-    create policy "projects_del_anon" on public."projects" as permissive for delete to anon using (true);
-  end if;
-end $$;
-do $$ begin
-  if not exists (select 1 from pg_policies where schemaname='public' and tablename='projects' and policyname='projects_del_authenticated') then
-    create policy "projects_del_authenticated" on public."projects" as permissive for delete to authenticated using (true);
-  end if;
-end $$;
-do $$ begin
-  if not exists (select 1 from pg_policies where schemaname='public' and tablename='projects' and policyname='projects_ins_anon') then
-    create policy "projects_ins_anon" on public."projects" as permissive for insert to anon with check (true);
-  end if;
-end $$;
-do $$ begin
-  if not exists (select 1 from pg_policies where schemaname='public' and tablename='projects' and policyname='projects_ins_authenticated') then
-    create policy "projects_ins_authenticated" on public."projects" as permissive for insert to authenticated with check (true);
-  end if;
-end $$;
-do $$ begin
-  if not exists (select 1 from pg_policies where schemaname='public' and tablename='projects' and policyname='projects_sel_anon') then
-    create policy "projects_sel_anon" on public."projects" as permissive for select to anon using (true);
-  end if;
-end $$;
-do $$ begin
-  if not exists (select 1 from pg_policies where schemaname='public' and tablename='projects' and policyname='projects_sel_authenticated') then
-    create policy "projects_sel_authenticated" on public."projects" as permissive for select to authenticated using (true);
-  end if;
-end $$;
-do $$ begin
-  if not exists (select 1 from pg_policies where schemaname='public' and tablename='projects' and policyname='projects_upd_anon') then
-    create policy "projects_upd_anon" on public."projects" as permissive for update to anon using (true) with check (true);
-  end if;
-end $$;
-do $$ begin
-  if not exists (select 1 from pg_policies where schemaname='public' and tablename='projects' and policyname='projects_upd_authenticated') then
-    create policy "projects_upd_authenticated" on public."projects" as permissive for update to authenticated using (true) with check (true);
   end if;
 end $$;
 
