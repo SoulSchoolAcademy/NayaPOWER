@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-21 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-21 12:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21303,6 +21303,14 @@ _Last updated: 2026-11-21 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0653 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
+**Task:** First gate-audit pass under the adopted brief-pin-gate: verify pins on 10 queued briefs, audit proof-log adoption
+
+**Receipt:** `twelve-lane-receipts/t0653-lane7.md`
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: audit proof log brief-pin-proofs/audit-queue-t0653-lane7.txt exists (2275 bytes) with sha 57fcbcb5808fcf7c... matching the receipt; sign-in-first executed per the t0653-lane12 lesson. Real value: adoption audit caught 0/10 proof-log coverage — the gate was proven but never firing — a finding the pin ver
+
+### ✅ t0653 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
 **Task:** First gate-audit pass under adopted brief-pin-gate (t0653)
 
 **Receipt:** `twelve-lane-receipts/t0653-lane7.md`
@@ -21319,6 +21327,14 @@ _Last updated: 2026-11-21 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0653 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
+**Task:** §E comparison seat — §C unblind + D2-reading ruling on the C-inversion decomposition
+
+**Receipt:** `twelve-lane-receipts/t0653-lane12.md`
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: design pin re-derived — entailment-lineage-t0627/c-inversion-decomp-design-t0635-CANDIDATE.md sha256 44fed1f4d9b1c3d344ebc34ed26cc9ca8dbff267de60accafec4d07d39119da3 (17295 bytes) matches the receipt exactly; sealed verdict auto-retrieval/verdict-t0645-lane12-sealed.md sha ab3f066d422101b376f7f306665330
+
+### ✅ t0653 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
 **Task:** Section E comparison seat - section C unblind + D2-reading ruling (t0653)
 
 **Receipt:** `twelve-lane-receipts/t0653-lane12.md`
@@ -21332,6 +21348,14 @@ _Last updated: 2026-11-21 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0653-lane12.md`
 
 **Evidence:** ARTIFACT VERIFIED: auto-retrieval/verdict-t0645-lane12-sealed.md sha256 ab3f066d422101b376f7f3066653305d1a4d056ac7b1c46ad9bd0efd3077603d EXACT match with the receipt's recomputed seal (seal-before-read held); board comment 6152275611 exists (posted 18:22:14Z, 3450 bytes, CONFIRM present - matches receipt claim exactly); design CANDIDATE file exists
+
+### ✅ t0651 — Team 11, Team Naya Scorer (Human Value) — 8.5/10 [VERIFIED]
+
+**Task:** Hand-read all 78 zero-keyword-floor rows; falsification rate 32.4% floor becomes 48.8% rate
+
+**Receipt:** `twelve-lane-receipts/t0651-lane11.md`
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: extended audit hidden_files/lane-11/metric_audit_t0651.json exists (22519 bytes) with sha256 c801497c31a9797e... matching the receipt exactly; t0645 audit and corpus pin both present; pin sha on disk 2fa521c0... matches the receipt's own named discrepancy note (receipt cited 112c5ba2...). Real value: 78
 
 ### ✅ t0651 — Team 11, Team Naya Scorer (Human Value) — 8.5/10 [VERIFIED]
 
@@ -57770,6 +57794,12 @@ _Last updated: 2026-11-21 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261121-0428 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: evaluate all 31 queued gap briefs, attempt claim on each, verify zero queue drift
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt file exists; cited sweep log hidden_files/brief-queue/claim-sweep-20261121-0428.log exists (3695 bytes, 32 brief-mentions); live queue still 31 brief-*.md, zero brief-tNNNN-*, matching the receipt's 31-blocked / 0-claimed / no-drift claim. Score 9.0: the stall protocol was executed correctly and 
 
 ### ✅ gate-stall-20261121-0328 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
