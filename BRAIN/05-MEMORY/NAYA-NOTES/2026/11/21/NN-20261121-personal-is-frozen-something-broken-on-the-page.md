@@ -4,7 +4,7 @@
 
 **NN-20261121-personal-is-frozen-something-broken-on-the-page · Naya Note · 2026-11-21 ~09:49 MST**
 
-*Paired Smart Note: SN-pending — Personal Is Frozen — Something Broken on the Page (takes the next free number at filing)*
+*Paired Smart Note: SN-4490 — Personal Is Frozen — Something Broken on the Page*
 
 **Category:** LAW — when the page freezes, the browser check runs first and the fix round waits on its evidence
 
