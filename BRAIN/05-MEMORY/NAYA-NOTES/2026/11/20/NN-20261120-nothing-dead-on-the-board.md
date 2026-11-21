@@ -4,7 +4,7 @@
 
 **NN-20261120-nothing-dead-on-the-board · Naya Note · 2026-11-20 ~20:36–20:45 MST**
 
-*Paired Smart Note: SN-pending — Nothing Dead on the Board (takes the next free number at filing)*
+*Paired Smart Note: SN-4433 — Nothing Dead on the Board*
 
 **Category:** Design — every orb alive with its flow
 
