@@ -4,7 +4,7 @@
 
 **NN-20261120-a-stale-cache-is-not-a-broken-page · Naya Note · 2026-11-20 ~18:34 MST**
 
-*Paired Smart Note: SN-pending — A Stale Cache Is Not a Broken Page (takes the next free number at filing)*
+*Paired Smart Note: SN-4395 — A Stale Cache Is Not a Broken Page*
 
 **Category:** Law — how a "broken" page is checked
 
