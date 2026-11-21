@@ -4,7 +4,7 @@
 
 **NN-20261120-about-skills-overnight-membership-tomorrow · Naya Note · 2026-11-20 ~21:58–22:01 MST**
 
-*Paired Smart Note: SN-pending — Overnight Work Runs When Done Right — His Eye Comes in the Morning (takes the next free number at filing)*
+*Paired Smart Note: SN-4449 — Overnight Work Runs When Done Right — His Eye Comes in the Morning*
 
 **Category:** Law — overnight authorization is conditional, and the morning eye is the gate
 
