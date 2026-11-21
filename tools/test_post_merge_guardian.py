@@ -289,7 +289,7 @@ def test_blob_drift_escape_and_revert_prepared(tmp_path):
     # alarm + evidence in one motion, naming the defect and the revert
     assert len(fake.comments) == 1
     issue, body = fake.comments[0]
-    assert issue == 2793 and "FAITHFULNESS_BLOB_DRIFT" in body
+    assert issue == 3361 and "FAITHFULNESS_BLOB_DRIFT" in body
     assert "/pull/9001" in body
     assert "FAITHFULNESS_BLOB_DRIFT" in fx.opened[0]["body"]
 
