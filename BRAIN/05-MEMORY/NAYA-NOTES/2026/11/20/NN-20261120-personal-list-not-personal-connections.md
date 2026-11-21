@@ -4,7 +4,7 @@
 
 **NN-20261120-personal-list-not-personal-connections · Naya Note · 2026-11-20 ~20:36–20:45 MST**
 
-*Paired Smart Note: SN-pending — Personal List, Not Personal Connections (takes the next free number at filing)*
+*Paired Smart Note: SN-4437 — Personal List, Not Personal Connections*
 
 **Category:** Design — names must say what the thing opens
 
