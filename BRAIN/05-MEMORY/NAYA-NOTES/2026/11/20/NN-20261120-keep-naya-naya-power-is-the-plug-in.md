@@ -4,7 +4,7 @@
 
 **NN-20261120-keep-naya-naya-power-is-the-plug-in · Naya Note · 2026-11-20 ~19:20 MST**
 
-*Paired Smart Note: SN-pending — Keep Naya — Naya Power Is the Plug-In (takes the next free number at filing)*
+*Paired Smart Note: SN-4415 — Keep Naya — Naya Power Is the Plug-In*
 
 **Category:** Law — what you keep, what Naya Power is
 
