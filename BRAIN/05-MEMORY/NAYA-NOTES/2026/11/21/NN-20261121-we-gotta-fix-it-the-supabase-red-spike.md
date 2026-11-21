@@ -4,7 +4,7 @@
 
 **NN-20261121-we-gotta-fix-it-the-supabase-red-spike · Naya Note · 2026-11-21 ~10:27–10:29 MST**
 
-*Paired Smart Note: SN-pending — Fix It, Don't Just Explain It (takes the next free number at filing)*
+*Paired Smart Note: SN-4504 — Fix It, Don't Just Explain It*
 
 **Category:** LAW — a red signal is a fix order, not an explanation prompt; fixed is proven by the numbers moving, never by a code change alone
 
