@@ -2000,7 +2000,7 @@ body.msg-open{overflow:hidden;}
 @media (prefers-reduced-motion: reduce) {
   /* FOLLOW-UP 12 (FAIL 1): the tile orb is NOT in this kill list - its breathe is the motion the eye measures. */
   .star-rating button.on, .action[data-kind="love"].on .love-heart { animation: none !important; }
-  .notif-tile::after, .nav-btn .ico::after, .nav-sub .ico::after, .rail-toggle::after, .eco-bb-ico::after, .fc-plusitem .fc-pi-ico::after, .ib-card-orb::before { animation: none !important; }
+  .notif-tile::after, .nav-btn .ico::after, .nav-sub .ico::after, .rail-toggle::after, .eco-bb-ico::after, .fc-plusitem .fc-pi-ico::after, .ib-card-orb::before, .intel-board .rank-value .star-rating button::after, .intel-board .rank-intel .star-rating button::after, .intel-board .rate-pearl::after { animation: none !important; } /* SNB-FIX1F items 4/5/7/8: the new inside flows are named in the kill list — under reduced motion they stop, like everything else on this list. */
 }
 .add-intel {
   margin-top: 16px; padding: 24px 18px; /* SNB-FIX1E item 9: breathing room from the bar edge — 24px top/bottom (was 18px); sides stay 18px so the upper-bound row still fits (effective side breathing ~25px with the centred row). */
@@ -2157,10 +2157,10 @@ body.msg-open{overflow:hidden;}
 .intel-board .rate-head { display: flex; align-items: center; gap: 12px; }
 .intel-board .rate-head b { animation: snGlowPulse 7s ease-in-out infinite; }
 .intel-board .star-rating button { width: 44px; height: 44px; font-size: 26px; line-height: 1; border-radius: 50%; display: inline-grid; place-items: center; padding: 0; }
-.intel-board .rank-value .star-rating button { background: radial-gradient(circle at 35% 30%, #ffffff, #b678e8 32%, #8e24aa 62%, #4a0a5e 100%); color: #ffffff; text-shadow: 0 1px 3px rgba(0,0,0,.7); box-shadow: 0 0 14px rgba(142,36,170,.55), 0 4px 10px rgba(0,0,0,.55); opacity: .42; filter: saturate(.7); }
+.intel-board .rank-value .star-rating button { background: radial-gradient(circle at 35% 30%, #ffffff, #8e24aa 32%, #8e24aa 62%, #4a0a5e 100%); color: #ffffff; text-shadow: 0 1px 3px rgba(0,0,0,.7); box-shadow: 0 0 14px rgba(142,36,170,.55), 0 4px 10px rgba(0,0,0,.55); opacity: .42; filter: saturate(.7); } /* SNB-FIX1F item 4: darker, more royal purple — the bright lavender mid-stop #b678e8 is gone; the ball is royal purple #8e24aa from 32% down to the deep #4a0a5e end. White star centre kept. */
 .intel-board .rank-value .star-rating button.on { opacity: 1; filter: none; box-shadow: 0 0 20px rgba(142,36,170,.95), 0 0 42px rgba(142,36,170,.45), 0 4px 10px rgba(0,0,0,.55); }
-.intel-board .rank-intel .star-rating button { background: radial-gradient(circle at 35% 30%, #ffffff, #f2f2f7 45%, #c9c9d6 100%); color: #8e24aa; text-shadow: 0 1px 2px rgba(0,0,0,.25); box-shadow: 0 0 14px rgba(255,255,255,.5), 0 4px 10px rgba(0,0,0,.55); opacity: .42; filter: saturate(.7); }
-.intel-board .rank-intel .star-rating button.on { opacity: 1; filter: none; box-shadow: 0 0 20px rgba(255,255,255,.9), 0 0 42px rgba(255,255,255,.4), 0 4px 10px rgba(0,0,0,.55); }
+.intel-board .rank-intel .star-rating button { background: radial-gradient(circle at 35% 30%, #ffffff, #f2f2f7 45%, #c9c9d6 100%); color: #8e24aa; text-shadow: 0 1px 2px rgba(0,0,0,.25); box-shadow: inset 0 -8px 14px rgba(0,0,0,.45), 0 0 14px rgba(255,255,255,.5), 0 4px 10px rgba(0,0,0,.55); opacity: .42; filter: saturate(.7); } /* SNB-FIX1F item 7: the white bulb is a BALL now — the inset underside shade the board-scoped rule had dropped is restored, so the white circle has volume, not a flat disc. Purple star centre #8e24aa kept. */
+.intel-board .rank-intel .star-rating button.on { opacity: 1; filter: none; box-shadow: inset 0 -8px 14px rgba(0,0,0,.45), 0 0 20px rgba(255,255,255,.9), 0 0 42px rgba(255,255,255,.4), 0 4px 10px rgba(0,0,0,.55); } /* SNB-FIX1F item 7: lit white bulb keeps its underside shade too — a ball lit, not a flat disc lit. */
 /* Item 5 — love/like count perfectly centered in its tile */
 .intel-board .action-count { display: inline-grid; place-items: center; min-width: 28px; height: 28px; line-height: 1; padding: 0 4px; text-align: center; }
 /* Item 6 — Comment dead center (center column holds it); Share keeps the right corner */
@@ -2169,7 +2169,7 @@ body.msg-open{overflow:hidden;}
 .intel-board .add-intel { margin-left: auto; margin-right: auto; max-width: 600px; }
 .intel-board .add-intel-row input[type="text"] { border: 2px solid #ffffff; box-shadow: 0 0 0 1px rgba(255,255,255,.5), 0 0 18px rgba(255,255,255,.45); }
 .intel-board .add-intel-row input[type="text"]:hover, .intel-board .add-intel-row input[type="text"]:focus { border-color: #8e24aa; box-shadow: 0 0 0 2px #8e24aa, 0 0 24px rgba(142,36,170,.65); outline: none; }
-.intel-board .add-intel-types { display: flex; gap: 16px; } /* SNB-FIX1E item 9: real gaps between the pills (was 8px — they slid into each other). Upper-bound row 1152px vs panel inner 1167px = 15px margin, so the fix-1d natural-width fit still closes. */
+.intel-board .add-intel-types { display: flex; gap: 16px; margin-bottom: 24px; } /* SNB-FIX1F item 1: breathing room UNDERNEATH the four buttons (was 12px via the generic rule — they crashed into the input row below). 24px, multiples of 8. The 16px gaps between the pills stay. */
 .intel-board .add-intel-types .intel-type { flex: 1 1 0; justify-content: center; }
 
 /* ——— SNB-FIX1C 2026-11-20 (captain's cloud-browser eye walk 11:29–11:39 MST — render requirements) ——— */
@@ -2286,6 +2286,48 @@ body.msg-open{overflow:hidden;}
   .intel-board .rank-label { min-width: 168px; }
   .intel-board .rank-readout { min-width: 168px; text-align: left; }
 }
+/* ——— SNB-FIX1F 2026-11-20 (Shawn's eye ~16:54–16:57 MST on the fix-1e staged page; follow-up ~16:59 MST, items 7–8) ——— */
+/* Item 3 — BREATHING ROOM BELOW RATE THE INTELLIGENCE. The rate section sat
+   tight against the add-intel panel below it: its only separation was the
+   panel's 16px margin-top. The section now carries its own 24px bottom
+   margin (multiples of 8, Laws §4) — 24 + 16 = 40px of air between the RATE
+   unit and the MAKE THIS INTELLIGENCE BETTER panel. */
+/* Item 6 — SPACING BETWEEN THE ORB AND THE VALUE BOX. The rate head (orb +
+   headline) sat 12px above the VALUE row (generic .rate-head margin-bottom,
+   L2015) — tight enough to read as one clump. Board-scoped 24px now: the
+   head breathes, the VALUE row starts clearly below it. */
+.intel-board .rate-section { margin-bottom: 24px; } /* SNB-FIX1F item 3: 24px below the whole RATE unit (was 0 + panel 16px). */
+.intel-board .rate-head { margin-bottom: 24px; } /* SNB-FIX1F item 6: 24px between the orb/head and the VALUE row (was 12px). */
+/* Items 5 + 8 — THE RATE ORB, ONE BALL WITH THE FLOW INSIDE IT. The pearl
+   read as a ring with a circle in it: the L2153 ::after sat at inset -5px, a
+   separate ring OUTSIDE the SVG ball, and its comet was white-on-white
+   (invisible on the white pearl — that is why it read static). The ring is
+   collapsed INTO the ball: inset 0, the light band masked to 72–84% of the
+   radius (inside the rim, never outside), and the comet is royal purple
+   #8e24aa with a white highlight — the diamond at the ball's centre is
+   #8e24aa too, so the light belongs to the ball. Imagine a flowing earth:
+   light spinning around and within its own space, alive, not static, not a
+   ring. The L2153 grouped rule is NOT deleted — it still serves the layer
+   jewels and the avatar; this later equal-specificity rule overrides it for
+   the pearl only. The SVG ball itself (white pearl + purple diamond) is
+   untouched. */
+.intel-board .rate-pearl::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: 50%; background: conic-gradient(from 0deg, transparent 0deg, transparent 250deg, #8e24aa 300deg, rgba(255,255,255,.95) 330deg, transparent 360deg); -webkit-mask: radial-gradient(closest-side, transparent 72%, #000 84%); mask: radial-gradient(closest-side, transparent 72%, #000 84%); pointer-events: none; } /* SNB-FIX1F items 5+8: the flow lives INSIDE the one ball. */
+/* Items 4 + 7 — THE STARS' INSIDE FLOW, GUARDED. Each star button's ::after
+   carries the harvested DM conic comet INSIDE the ball (inset 0 — the
+   button's ::before stays the top-left facet, L1971, untouched; the FIX2 row
+   ring on .star-rating::before, L2346, stays — it rings the ROW, this flows
+   inside each STAR). VALUE: royal-purple comet, CW 60s. INTELLIGENCE: white
+   comet, CCW 60s — the track distinction holds (VALUE purple flow + bright
+   white star centre, INTELLIGENCE white flow + purple star centre). Guarded
+   the fix-1d way: inside @media (prefers-reduced-motion: no-preference)
+   with !important, and named in the reduce kill list (L2003), so no later
+   rule can freeze them the way the orb was once frozen. */
+@media (prefers-reduced-motion: no-preference) {
+  .intel-board .rank-value .star-rating button::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: 50%; pointer-events: none; border: 1px solid color-mix(in srgb, #8e24aa 35%, transparent); background: conic-gradient(from 0deg, transparent 0deg, transparent 250deg, #8e24aa 300deg, rgba(255,255,255,.95) 330deg, transparent 360deg); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask-composite: exclude; padding: 2px; animation: orb-spin 60s linear infinite, naya-breathe 6s ease-in-out infinite alternate !important; } /* SNB-FIX1F item 4: VALUE star, purple comet inside, CW 60s — DM harvest, inset 0. */
+  .intel-board .rank-intel .star-rating button::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: 50%; pointer-events: none; border: 1px solid rgba(255,255,255,.35); background: conic-gradient(from 0deg, transparent 0deg, transparent 250deg, #ffffff 300deg, rgba(255,255,255,.95) 330deg, transparent 360deg); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask-composite: exclude; padding: 2px; animation: orb-spin-rev 60s linear infinite, naya-breathe 6s ease-in-out infinite alternate !important; } /* SNB-FIX1F items 4+7: INTELLIGENCE star, white comet inside, CCW 60s — the white bulb's flow. */
+  .intel-board .rate-pearl::after { animation: orb-spin 60s linear infinite, naya-breathe 6s ease-in-out infinite alternate !important; } /* SNB-FIX1F item 5: the orb flows, CW 60s, same harvested speed as the DM rail. */
+}
+/* ——— END SNB-FIX1F ——— */
 
 
 
@@ -6028,7 +6070,7 @@ window.BoardActions = (() => {
     micBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></svg><span class="nsb-mic-dot" aria-hidden="true"></span>';
     (function () {
       var NSR = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (!NSR) { micBtn.style.display = 'none'; return; }
+      if (!NSR) { micBtn.setAttribute('aria-label', 'Dictation is not available in this browser — type your contribution instead'); micBtn.title = 'Dictation is not available in this browser — type your contribution instead'; micBtn.classList.add('no-dictation'); micBtn.addEventListener('click', function () { var ph = input.placeholder; input.placeholder = 'Dictation is not available in this browser — please type instead.'; input.focus(); setTimeout(function () { input.placeholder = ph; }, 4000); }); return; } /* SNB-FIX1F item 2: no speech API → the mic STAYS and SAYS SO (was display:none — a control that vanished without a word). Never a dead button: tap it and the field itself tells you to type. */
       var rec = new NSR();
       rec.lang = navigator.language || 'en-US';
       rec.interimResults = true;
