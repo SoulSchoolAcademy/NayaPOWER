@@ -4,7 +4,7 @@
 
 **NN-20261120-the-universal-bottom-bar · Naya Note · 2026-11-20 ~20:36–20:45 MST**
 
-*Paired Smart Note: SN-pending — The Universal Bottom Bar (takes the next free number at filing)*
+*Paired Smart Note: SN-4435 — The Universal Bottom Bar*
 
 **Category:** Design — one bar, the same on every page
 
