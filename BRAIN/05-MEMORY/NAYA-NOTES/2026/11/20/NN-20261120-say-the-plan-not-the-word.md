@@ -4,7 +4,7 @@
 
 **NN-20261120-say-the-plan-not-the-word · Naya Note · 2026-11-20 ~20:20 MST**
 
-*Paired Smart Note: SN-pending — Say the Plan, Not the Word (takes the next free number at filing)*
+*Paired Smart Note: SN-4428 — Say the Plan, Not the Word*
 
 **Category:** Law — an answer states what will be done, in plain words
 
