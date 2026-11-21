@@ -4,7 +4,7 @@
 
 **NN-20261120-the-fast-action-plan-hired-to-be-the-leader · Naya Note · 2026-11-20 ~19:15 MST**
 
-*Paired Smart Note: SN-pending — The Fast Action Plan — Hired to Be the Leader (takes the next free number at filing)*
+*Paired Smart Note: SN-4410 — The Fast Action Plan — Hired to Be the Leader*
 
 **Category:** Law — the plan, approved
 
