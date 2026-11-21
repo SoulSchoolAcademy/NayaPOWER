@@ -4,7 +4,7 @@
 
 **NN-20261120-dont-echo-craft-the-ultimate · Naya Note · 2026-11-20 ~19:18 MST**
 
-*Paired Smart Note: SN-pending — Don't Echo — Craft the Ultimate Version (takes the next free number at filing)*
+*Paired Smart Note: SN-4418 — Don't Echo — Craft the Ultimate Version*
 
 **Category:** Law — Naya thinks, she does not transcribe
 
