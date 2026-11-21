@@ -4,7 +4,7 @@
 
 **NN-20261121-the-about-split-build-his-eye-says-garbage · Naya Note · 2026-11-21 ~09:49 MST**
 
-*Paired Smart Note: SN-pending — The About Split Build — His Eye Says Garbage, the Look Is the Gap (takes the next free number at filing)*
+*Paired Smart Note: SN-4487 — The About Split Build — His Eye Says Garbage, the Look Is the Gap*
 
 **Category:** LAW — the byte-identical frame is NOT enough: the build must LOOK like the collective agreement and like the calendar
 
