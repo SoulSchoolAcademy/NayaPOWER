@@ -2141,9 +2141,9 @@ body.msg-open{overflow:hidden;}
 .intel-board .ib-layers { margin-top: -4px; padding-left: 4px; padding-right: 4px; }
 .intel-board .ib-layer { transition: transform .3s ease, box-shadow .3s ease; }
 .intel-board .ib-layer:hover { box-shadow: 0 18px 38px #000000a0, 0 0 24px -4px color-mix(in srgb, var(--lc) 55%, transparent); transform: translateY(-2px); }
-.intel-board .ib-layer-body, .intel-board .ib-nutshell { text-shadow: 0 0 6px rgba(255,255,255,.80), 0 0 16px rgba(255,255,255,.45), 0 0 32px rgba(255,255,255,.22), 0 1px 2px rgba(0,0,0,.8); }
+.intel-board .ib-layer-body, .intel-board .ib-nutshell { text-shadow: 0 0 6px rgba(255,255,255,.64), 0 0 16px rgba(255,255,255,.36), 0 0 32px rgba(255,255,255,.18), 0 1px 2px rgba(0,0,0,.8); } /* SNB-FIX1H item 1: layer-body glow down 20% to the nutshell level (.80->.64, .45->.36, .22->.18) — fix-1g dimmed the nutshell only, leaving the child layer the brightest white wash on the board (the white box). Layers and nutshell now glow at one level. The fix-1g nutshell override (equal specificity, later in the file) still wins for the nutshell, so its render is unchanged. */
 /* SNB-FIX1C item 1 (eye GOES BACK #2): the .30/12px halo was too weak to read — a wide-blur low-alpha shadow spreads to near-invisible. The shadow now sits on the <p>/<ul>/<li> themselves (not just the wrapper): a tight 6px layer at .80 alpha so the halo reads, plus 16px/.45 and 32px/.22 outer layers. White stays white; headings untouched. */
-.intel-board .ib-layer-body p, .intel-board .ib-layer-body ul, .intel-board .ib-layer-body li, .intel-board .ib-nutshell p { text-shadow: 0 0 6px rgba(255,255,255,.80), 0 0 16px rgba(255,255,255,.45), 0 0 32px rgba(255,255,255,.22), 0 1px 2px rgba(0,0,0,.8); }
+.intel-board .ib-layer-body p, .intel-board .ib-layer-body ul, .intel-board .ib-layer-body li, .intel-board .ib-nutshell p { text-shadow: 0 0 6px rgba(255,255,255,.64), 0 0 16px rgba(255,255,255,.36), 0 0 32px rgba(255,255,255,.18), 0 1px 2px rgba(0,0,0,.8); } /* SNB-FIX1H item 1: same 20% down on the layer text itself (p/ul/li) — the wash sits on the text, not just the wrapper. */
 /* Item 8 — headline + date lit up, living light */
 .intel-board .ib-head, .intel-board .board-head { text-shadow: 0 0 14px rgba(255,255,255,.45), 0 1px 2px rgba(0,0,0,.8); }
 .intel-board .ib-title { animation: snGlowPulse 7s ease-in-out infinite; }
@@ -2185,7 +2185,7 @@ body.msg-open{overflow:hidden;}
 .intel-board .add-intel { max-width: 1024px; }
 @media (min-width: 701px) {
   .intel-board .add-intel-types { flex-wrap: nowrap; }
-  .intel-board .add-intel-types .intel-type { white-space: nowrap; padding: 12px 8px; } /* SNB-FIX1G item 3: side padding 12px -> 8px buys the 24px of wider gaps (row upper bound 1144 vs narrowed panel 1151). */
+  .intel-board .add-intel-types .intel-type { white-space: nowrap; padding: 12px 8px; } /* SNB-FIX1G item 3: side padding 12px -> 8px buys the 24px of wider gaps (row upper bound 1144 vs panel 1167 (SNB-FIX1H item 3: board margin restored, panel 16px wider again, row now fits with 23px)). */
 }
 
 /* ——— SNB-FIX1D 2026-11-20 (captain's cloud-browser eye walk, fix-1c GOES BACK) ——— */
@@ -2324,8 +2324,10 @@ body.msg-open{overflow:hidden;}
    with !important, and named in the reduce kill list (L2003), so no later
    rule can freeze them the way the orb was once frozen. */
 @media (prefers-reduced-motion: no-preference) {
-  .intel-board .rank-value .star-rating button::after { content: ""; position: absolute; inset: -2px; z-index: 1; border-radius: 50%; pointer-events: none; background: conic-gradient(from 0deg, transparent 0deg, rgba(255,255,255,.35) 40deg, transparent 90deg); animation: osOrbFlow 7s linear infinite !important; } /* SNB-FIX1G item 1: VALUE star — the DM initial-orb flow (.fc-pick-av::after, L823) WHOLE: white sheen segment, osOrbFlow 7s, inset -2px clipped inside by overflow:hidden. DM does not alternate — one direction, 7s, verbatim. SUPERSEDES the fix-1f conic comet (Shawn 2026-11-20 ~18:09 MST: the comet did not read as flowing to his eye). */
-  .intel-board .rank-intel .star-rating button::after { content: ""; position: absolute; inset: -2px; z-index: 1; border-radius: 50%; pointer-events: none; background: conic-gradient(from 0deg, transparent 0deg, rgba(142,36,170,.35) 40deg, transparent 90deg); animation: osOrbFlow 7s linear infinite !important; } /* SNB-FIX1G item 1: INTELLIGENCE star — the DM flow whole, with ONE colour substitution: the sheen segment is royal purple rgba(142,36,170,.35) (same shape/alpha as the DM's white) because the DM's white sheen is invisible on a white orb. */
+  .intel-board .rank-value .star-rating button::after { content: ""; position: absolute; inset: -2px; z-index: 1; border-radius: 50%; pointer-events: none; background: conic-gradient(from 0deg, transparent 0deg, rgba(255,255,255,.85) 60deg, transparent 120deg); animation: osOrbFlow 7s linear infinite !important; } /* SNB-FIX1H item 2: VALUE star flow VISIBLE — SUPERSEDES the SNB-FIX1G .35/40deg sheen (Shawn 2026-11-20 ~18:53 MST: the stars did not update). The DM wedge (.35/40deg) read as .147 through the .42 unrated dimming, so the stars looked unchanged. Wedge 40deg -> 60deg peak over 120deg; alpha .85 so the perceived sheen is the DM's .35 (0.85 x 0.42 = .36). Speed/direction untouched: osOrbFlow 7s, one direction, the DM's own. */
+  .intel-board .rank-intel .star-rating button::after { content: ""; position: absolute; inset: -2px; z-index: 1; border-radius: 50%; pointer-events: none; background: conic-gradient(from 0deg, transparent 0deg, rgba(142,36,170,.85) 60deg, transparent 120deg); animation: osOrbFlow 7s linear infinite !important; } /* SNB-FIX1H item 2: INTELLIGENCE star flow VISIBLE — SUPERSEDES the SNB-FIX1G .35/40deg sheen (same reason as VALUE). Purple sheen (the fix-1g colour substitution stands: white is invisible on a white orb). */
+  .intel-board .rank-value .star-rating button.on::after { background: conic-gradient(from 0deg, transparent 0deg, rgba(255,255,255,.35) 60deg, transparent 120deg); animation: osOrbFlow 7s linear infinite !important; } /* SNB-FIX1H item 2: RATED VALUE star — the DM sheen at its own .35 (a rated star is undimmed, like the DM orb). Same 60deg wedge in both states, so the flow never changes shape when tapped. */
+  .intel-board .rank-intel .star-rating button.on::after { background: conic-gradient(from 0deg, transparent 0deg, rgba(142,36,170,.35) 60deg, transparent 120deg); animation: osOrbFlow 7s linear infinite !important; } /* SNB-FIX1H item 2: RATED INTELLIGENCE star — purple sheen, DM .35, same 60deg wedge. */
   .intel-board .rate-pearl::after { animation: orb-spin 60s linear infinite, naya-breathe 6s ease-in-out infinite alternate !important; } /* SNB-FIX1F item 5: the orb flows, CW 60s, same harvested speed as the DM rail. */
 }
 /* ——— END SNB-FIX1F ——— */
@@ -2352,12 +2354,6 @@ body.msg-open{overflow:hidden;}
    top-left than the DM orb alone; named, not hidden. */
 .intel-board .rank-value .star-rating button { --cc: #8e24aa; background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.35) 0%, rgba(255,255,255,0) 42%), radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--cc,#8e24aa) 55%, #101014) 0%, color-mix(in srgb, var(--cc,#8e24aa) 28%, #060607) 78%); border: 2px solid color-mix(in srgb, var(--cc,#8e24aa) 80%, white); box-shadow: 0 0 24px -4px var(--cc,#8e24aa), inset 0 2px 3px rgba(255,255,255,.25), inset 0 -6px 12px rgba(0,0,0,.45), 0 8px 20px rgba(0,0,0,.55); overflow: hidden; }
 .intel-board .rank-intel .star-rating button { --cc: #ffffff; background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.35) 0%, rgba(255,255,255,0) 42%), radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--cc,#8e24aa) 55%, #101014) 0%, color-mix(in srgb, var(--cc,#8e24aa) 28%, #060607) 78%); border: 2px solid color-mix(in srgb, var(--cc,#8e24aa) 80%, white); box-shadow: 0 0 24px -4px var(--cc,#8e24aa), inset 0 2px 3px rgba(255,255,255,.25), inset 0 -6px 12px rgba(0,0,0,.45), 0 8px 20px rgba(0,0,0,.55); overflow: hidden; }
-/* ITEM 4 — BOARD FIT, IN A TAD, UP A TAD. margin -8px 8px 0: up 8px, in 8px
-   each side (16px narrower). Chain: boardContent 1203->1187, frameBody
-   1051->1035, panelInner 1167->1151; button-row upper bound 1144 fits with
-   7px, rate row 840 fits with 195px. Assumption, named: the feed card gap
-   above the board is >=8px, so the -8px top margin cannot overlap. */
-.intel-board { margin: -8px 8px 0; }
 /* ITEM 5 — NUTSHELL LIGHT, DOWN JUST A LITTLE. Override, nutshell only —
    the layer-body glow (L2144/L2146) is untouched. Same four layers, every
    white alpha 20% down: .80->.64, .45->.36, .22->.18. Equal specificity to
@@ -9424,14 +9420,19 @@ window.NayaJewels = (() => {
     }
     /* SNB-FIX1 item 1 — NUTSHELL LAW: the RENDERED nutshell is 3–4 sentences max.
        The note's full content stays in the data; only the render is capped. */
-    var snCapSentences = function (t, max) {
+    var snCapSentences = function (t, max, maxChars) {
       var c = String(t || '').trim();
       if (!c) return '';
+      maxChars = maxChars || 320; /* SNB-FIX1H item 4: the RENDER is a nutshell — 4 sentences max AND 320 chars max. Sentences alone do not bound length (longest live rendered nutshell: 879 chars in 4 sentences, sn4208). FEAT-01 (264 chars) stays whole; the newest live notes (128–150 chars) are unchanged. */
       var out = []; var rest = c; var mm;
       while (out.length < (max || 4)) { if (out.length > 0) rest = rest.replace(/^(?:\s*(?:…|\.\.\.|\.))+\s*/, '').trim(); /* SNB-FIX1E item 1: skip a leading ellipsis/terminator run BETWEEN sentences — bodies carry ".." / "..." mid-text, and without this the sentence regex cannot match a remainder starting with a terminator, the loop exits early, and the fallback below pushes the whole remainder uncapped (sn2876: 8 sentences, sn2875: 6). Only between sentences: a leading "…" at the very start of the body is kept, per the fix-1d ruling. */ if (!rest) break; mm = rest.match(/^[^.!?]+[.!?]/); if (!mm) break; out.push(mm[0].trim()); rest = rest.slice(mm[0].length).trim(); }
+      var hitCap = (out.length >= (max || 4)) && !!rest; /* more sentences remain past the sentence cap */
       if (out.length < (max || 4) && rest) { out.push(rest); rest = ''; } /* SNB-FIX1D item 5: the remainder is consumed here — clear rest, or the line below appends a spurious trailing ellipsis after complete text. */
       var s = out.join(' ');
-      if (rest) s += ' \u2026';
+      var truncated = hitCap;
+      while (s.length > maxChars && out.length > 1) { out.pop(); s = out.join(' '); truncated = true; } /* char budget: drop whole sentences from the end until the render fits the glance — meaning is never rewritten, only shortened. */
+      if (s.length > maxChars) { var cut = s.slice(0, maxChars); var sp = cut.lastIndexOf(' '); if (sp > 100) cut = cut.slice(0, sp); s = cut.replace(/\s+$/, ''); truncated = true; } /* one sentence alone over budget (or a terminator-less fragment, or a body starting with an ellipsis — the old fallback pushed the whole remainder uncapped): word-boundary cut, never mid-word. */
+      if (truncated) s += ' \u2026';
       else s = s.replace(/(?:\s*(?:…|\.\.\.))+\s*$/, ''); /* SNB-FIX1D item 5: strip a TRAILING ellipsis fragment the source body itself ends with — only when nothing was truncated, so the truncation marker above is never stripped. Mid-text ellipses untouched. */
       return s;
     };
