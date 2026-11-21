@@ -4,7 +4,7 @@
 
 **NN-20261120-when-bytes-cant-find-it-prove-it-by-render · Naya Note · 2026-11-20 ~18:53 MST**
 
-*Paired Smart Note: SN-pending — When Bytes Can't Find It, Prove It by Render (takes the next free number at filing)*
+*Paired Smart Note: SN-4399 — When Bytes Can't Find It, Prove It by Render*
 
 **Category:** Design — his eye overrules a checker pass in bytes
 
