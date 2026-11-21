@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-21 21:16 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-21 21:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -20735,6 +20735,12 @@ _Last updated: 2026-11-21 21:16 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0673-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
+**Task:** Third-seat verification of the injection-contract amendment pass (t0643 review, 3 blocking + 3 non-blocking)
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: verification record auto-retrieval/lesson-injection-contract-v1.1-verify-t0673.md sha256 8714370d842d2909489482161e3a74c1cc97371713f561f1e06808905e794852 matches the receipt's 8714370d prefix; live tip 582e5e5f05e25f81b7f8c2254dd53d311f70effd exists as a commit in the 
+
+### ✅ t0673-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
 **Task:** Third-seat verification that t0643's 3 blocking + 3 non-blocking amendments landed in injection-contract v1.1 CANDIDATE bytes
 
 **Evidence:** VERIFIED: receipt file read in full; verification record auto-retrieval/lesson-injection-contract-v1.1-verify-t0673.md exists and its sha256 recomputes to 8714370d842d2909..., matching the cited 8714370d... prefix; live tip 582e5e5f exists as a commit object; amendment trace (A1-A6 with line numbers) is mechanical and checkable from the receipt. NO
@@ -20806,6 +20812,12 @@ _Last updated: 2026-11-21 21:16 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0673-lane5.md`
 
 **Evidence:** Matcher bias reproduced on live bytes, sandbox fix proven, quality cost measured honestly, live edit refused per principle 11, fix routed with math. Score 9.0 — why not 9.5: the loop isn't closed — the live store still carries the bias; the bar-clearing fix is a dispatcher-seat decision. GAP-RECYCLE candidate.
+
+### ✅ t0673-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Wave-2 execution-runbook CANDIDATE + P11 manifest-recompute fix spec under t0660 rulings
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: runbook hidden_files/wave2-runbook-CANDIDATE-t0673.md sha256 3d115c74a38ff8b91ae21df67835fee0747c1df29171a39c362da765b181eef6 EXACT match (13,660 bytes); live tip 582e5e5f05e25f81b7f8c2254dd53d311f70effd exists as a commit in the local mirror (merge of PR #2531). NOT P
 
 ### ✅ t0673-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -20976,6 +20988,12 @@ _Last updated: 2026-11-21 21:16 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0671-lane2.md`
 
 **Evidence:** Verified spec sha256 matches disk; falsifier frozen at weakest reading before the future population; baseline 0/3 hand-coded from live receipt bytes. Clears 9.5 — why not 10: second-seat blind re-code of the 3 controls owed (named as the exact next action).
+
+### ✅ t0671-lane11 — Team 11, Team Naya Scorer (Human Value) — 8.5/10 [VERIFIED]
+
+**Task:** Cold-speedup attribution addendum for Lane 2 spread-bar packet (t0666) — verdict UNATTRIBUTED
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: addendum lane-11/bar-input-addendum-t0671-lane11.md sha256 dcedf03f4cbe2cf6fd9d37ba807b4c3198a45c6a6b0c76b7e495f0e8b6a9d9c9 EXACT match; both blob content-sha256s re-derived from mirror bytes at the pinned tips — old 92d8b2be... 69,082 B at e47a650e and new fe6f2b4c...
 
 ### ✅ t0671-lane11 — Team 11, Team Naya Scorer (Human Value) — 8.5/10 [VERIFIED]
 
@@ -21574,6 +21592,12 @@ _Last updated: 2026-11-21 21:16 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0657-lane1.md`
 
 **Evidence:** ARTIFACTS VERIFIED: prereg seal 80617f94806e7bbe..., instrument e20c695efb91c3f0..., calibrate/drill/drill2 logs and both results files all present in scratch/t0657-lane1 with SHA prefixes matching the receipt; tip 582e5e5f matches shared-state.json live main_tip. Score 8.5 (independent, concurs with self-8.5). Kept from 9.5 by: (a) slice (d) still
+
+### ✅ t0655-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 8.5/10 [VERIFIED]
+
+**Task:** VIOLATION-RT probe spec (CANDIDATE) — V1/V2/V3 fire conditions + dry-fire
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: spec hidden_files/law/violation-rt-spec-t0655-candidate.md sha256 f8ccb9df44ee0ed93e5aa59355a85e394bb5b590cd6e4cf4eb749eccac31ec3a EXACT match to receipt pin; live tip 582e5e5f05e25f81b7f8c2254dd53d311f70effd exists as a commit in the local mirror (merge of PR #2531). 
 
 ### ✅ t0655-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 8.5/10 [VERIFIED]
 
