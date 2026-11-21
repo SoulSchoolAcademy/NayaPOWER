@@ -2175,9 +2175,9 @@ body.msg-open{overflow:hidden;}
 .intel-board .rate-head b { animation: snGlowPulse 7s ease-in-out infinite; }
 .intel-board .star-rating button { width: 44px; height: 44px; font-size: 26px; line-height: 1; border-radius: 50%; display: inline-grid; place-items: center; padding: 0; }
 .intel-board .rank-value .star-rating button { background: radial-gradient(circle at 35% 30%, #ffffff, #8e24aa 32%, #8e24aa 62%, #4a0a5e 100%); color: #ffffff; text-shadow: 0 1px 3px rgba(0,0,0,.7); box-shadow: 0 0 14px rgba(142,36,170,.55), 0 4px 10px rgba(0,0,0,.55); opacity: .42; filter: saturate(.7); } /* SNB-FIX1F item 4: darker, more royal purple — the bright lavender mid-stop #b678e8 is gone; the ball is royal purple #8e24aa from 32% down to the deep #4a0a5e end. White star centre kept. */
-.intel-board .rank-value .star-rating button.on { opacity: 1; filter: none; box-shadow: 0 0 20px rgba(142,36,170,.95), 0 0 42px rgba(142,36,170,.45), 0 4px 10px rgba(0,0,0,.55); }
+.intel-board .rank-value .star-rating button.on { opacity: 1; filter: none; box-shadow: 0 0 0 2px #8e24aa, 0 0 16px rgba(142,36,170,.95), 0 0 34px rgba(142,36,170,.55), 0 4px 10px rgba(0,0,0,.55); } /* SNB-STAR-EDGE-LIGHT 2026-11-20 item 1: the EDGE LIGHT — a solid 2px royal-purple ring tracing the star's edge (0 0 0 2px, zero blur) plus a brighter bloom, on the rated star itself, visible at rest. The old diffuse-only glow did not read as lit to Shawn's eye when rating 7 or 8. The flow ::after is untouched; the ring rides on .on, so exactly the rated stars (1..N) light up. */
 .intel-board .rank-intel .star-rating button { background: radial-gradient(circle at 35% 30%, #ffffff, #f2f2f7 45%, #c9c9d6 100%); color: #8e24aa; text-shadow: 0 1px 2px rgba(0,0,0,.25); box-shadow: inset 0 -8px 14px rgba(0,0,0,.45), 0 0 14px rgba(255,255,255,.5), 0 4px 10px rgba(0,0,0,.55); opacity: .42; filter: saturate(.7); } /* SNB-FIX1F item 7: the white bulb is a BALL now — the inset underside shade the board-scoped rule had dropped is restored, so the white circle has volume, not a flat disc. Purple star centre #8e24aa kept. */
-.intel-board .rank-intel .star-rating button.on { opacity: 1; filter: none; box-shadow: inset 0 -8px 14px rgba(0,0,0,.45), 0 0 20px rgba(255,255,255,.9), 0 0 42px rgba(255,255,255,.4), 0 4px 10px rgba(0,0,0,.55); } /* SNB-FIX1F item 7: lit white bulb keeps its underside shade too — a ball lit, not a flat disc lit. */
+.intel-board .rank-intel .star-rating button.on { opacity: 1; filter: none; box-shadow: inset 0 -8px 14px rgba(0,0,0,.45), 0 0 0 2px #ffffff, 0 0 16px rgba(255,255,255,.95), 0 0 34px rgba(255,255,255,.5), 0 4px 10px rgba(0,0,0,.55); } /* SNB-STAR-EDGE-LIGHT 2026-11-20 item 1: the EDGE LIGHT, white — a solid 2px white ring tracing the white orb's edge plus a brighter bloom, on the rated star itself, visible at rest. The inset underside shade stays, so the lit bulb keeps its volume (a ball lit, not a flat disc lit). The flow ::after is untouched; the ring rides on .on, so exactly the rated stars (1..N) light up. */ /* SNB-FIX1F item 7: lit white bulb keeps its underside shade too — a ball lit, not a flat disc lit. */
 /* Item 5 — love/like count perfectly centered in its tile */
 .intel-board .action-count { display: inline-grid; place-items: center; min-width: 28px; height: 22px; line-height: 1; padding: 0 4px; text-align: center; } /* BUTTON-LIGHTUP-REPAIR 2026-11-20 item 2: RECORD CORRECTION — the last round's mechanism is disproven and is not repeated. True numbers: under the file's global box-sizing:border-box the tile is 28px outer (not 32px: the 2px rim sits INSIDE the height), so its excess over the button's 25px content box (52 - 2x12 padding - 2x1.5 border) is 3px, not 7px. The button has NO fixed height (min-height:52px only), so it grows to fit the tile and .primo overflow:hidden cannot be the clipper. Font metrics prove no clip either: the digit is Inter 17px, line-height:1 (17px line box) inside the tile's 18px inner height (22 - 2x2 border); Inter's ascent/descent put the "0" ink 2.16px below the line-box top and 2.14px above its bottom, i.e. ~2.6px clear of the tile's border on both sides — measured from the Inter 600/800 font files. No ancestor clips it either (no fixed height, no overflow on .board-actions*; .intel-board overflow:hidden sits at the board edge only). The 22px tile stays — harmless and directionally right — but the zero is EYE-ONLY: only a render can confirm it reads whole, and if it still reads cut the cause is in the render, not in these bytes. Do not claim a fix. */
 /* Item 6 — Comment dead center (center column holds it); Share keeps the right corner */
@@ -2186,7 +2186,7 @@ body.msg-open{overflow:hidden;}
 .intel-board .add-intel { margin-left: auto; margin-right: auto; max-width: 600px; }
 .intel-board .add-intel-row input[type="text"] { border: 2px solid #ffffff; box-shadow: 0 0 0 1px rgba(255,255,255,.5), 0 0 18px rgba(255,255,255,.45); }
 .intel-board .add-intel-row input[type="text"]:hover, .intel-board .add-intel-row input[type="text"]:focus { border-color: #8e24aa; box-shadow: 0 0 0 2px #8e24aa, 0 0 24px rgba(142,36,170,.65); outline: none; }
-  .intel-board .add-intel-types { display: flex; gap: 24px; margin-top: 64px; margin-bottom: 24px; } /* SNB-LAYER-BOARDS-ELEVATED 2026-11-20 item 6: margin-top 24px -> 64px — the input's :focus glow reaches 48px below the input (0 0 48px), so a 24px gap left the four buttons inside the glow: the collision his eye still sees. 64px clears the 48px glow with clear air, laptop and phone (this rule is unscoped; the <=700px stacked rule keeps it). */
+  .intel-board .add-intel-types { display: flex; gap: 24px; margin-top: 128px; margin-bottom: 24px; } /* SNB-STAR-EDGE-LIGHT 2026-11-20 item 3: margin-top 64px -> 128px — Shawn's eye overrules the 64px checker PASS: the buttons still crashed into the comment input. The 64px was measured against the wrong reach: the focus glow's largest blur is 48px (L2199: 0 0 48px) and a blur's visible tail runs to ~2x its radius, so at 64px the purple halo still washed ~32px over the buttons' top edge. MEASURED GAP (bytes): input bottom -> button-row top = 128px; focus glow nominal reach 48px -> 80px clear air beyond it, 32px even counting the tail to ~96px; rest glow 42px -> 86px clear. Prior 64px: 16px nominal, -32px worst-case (overlap). Only the button row moves down — the input stays, the four buttons keep one line, order and wording (TYPE_DEFS untouched), laptop and phone (the <=700px stacked rule keeps this margin-top). */
 .intel-board .add-intel-types .intel-type { flex: 1 1 0; justify-content: center; }
 
 /* ——— SNB-FIX1C 2026-11-20 (captain's cloud-browser eye walk 11:29–11:39 MST — render requirements) ——— */
@@ -9739,14 +9739,22 @@ window.NayaJewels = (() => {
     /* ——— SMART NOTE FORMAT FIX2 (2026-11-17): the format holds on EVERY
        card — IN A NUTSHELL -> Child -> Grandma -> What It Means. A section
        missing from the data is derived from the note's OWN words, never
-       invented: Child = first sentence of the nutshell-source; Grandma =
-       first unused sentence of the nutshell-source — What It Means'
-       first sentence counts as already used (Means prints it), and no
-       other sentence of the means-source is taken either, or Grandma
-       would print again inside What It Means below; What It Means =
-       the means-source body, else an honest stub. A sentence already
-       used by another derived layer is never repeated — that layer
-       then says plainly it was not written.
+       invented: Child = the settled pattern in plain words — What this
+       is (first sentence of the nutshell-source), Why it matters (first
+       sentence of What It Means, else the nutshell's next unused
+       sentence), What you get (first sentence of What's In It For You,
+       else the nutshell's next unused sentence) — each labelled in plain
+       words, so the board says what the note means and why it matters.
+       Grandma = first unused sentence of the nutshell-source — What It
+       Means' first sentence counts as already used (Means prints it),
+       and no other sentence of the means-source is taken by Grandma,
+       or Grandma would print again inside What It Means below; What It
+       Means = the means-source body, else an honest stub. A sentence
+       already used by another derived layer is never repeated — that
+       layer then says plainly it was not written. (Child's taken
+       sentences also print in their own layers below — Child is the
+       plain-words summary at the top, the same meaning in the note's
+       own words, not a second copy of the board next door.)
        Real layers always win; derived layers sort by the same rank. ——— */
     var fmtFirstSentence = function (t) {
       var c = String(t || '').replace(/[#>*_`"]/g, '').replace(/\s+/g, ' ').trim();
@@ -9797,7 +9805,26 @@ window.NayaJewels = (() => {
       return '';
     };
     if (!fmtFindLayer(/CHILD/)) {
-      var fmtChildBody = fmtTake([fmtNutText]);
+      /* SNB-STAR-EDGE-LIGHT 2026-11-20 item 2b: the derived Child says, in
+         plain words a child understands, WHAT IT IS, WHY IT MATTERS and
+         WHAT'S IN IT FOR YOU — the settled pattern, up to 3 sentences, the
+         note's OWN words, never invented. What it is = first sentence of
+         the nutshell; why it matters = first sentence of What It Means
+         (else the nutshell's next unused sentence); what you get = first
+         sentence of What's In It For You (else the nutshell's next unused
+         sentence). Each sentence is labelled in plain words so a child can
+         see which job it does. Every sentence taken is marked used, so
+         Grandma never repeats it. The means/gold sentences also print in
+         their own layers below — Child is the plain-words summary at the
+         top of the board, the same meaning in the note's own words. */
+      var fmtChildParts = [];
+      var fmtChildWhat = fmtTake([fmtNutText]);
+      if (fmtChildWhat) fmtChildParts.push('What this is: ' + fmtChildWhat);
+      var fmtChildWhy = fmtTake([fmtMeansText, fmtNutText]);
+      if (fmtChildWhy) fmtChildParts.push('Why it matters: ' + fmtChildWhy);
+      var fmtChildGold = fmtTake([(goldLayer ? String(goldLayer.body || '') : ''), fmtNutText]);
+      if (fmtChildGold) fmtChildParts.push('What you get: ' + fmtChildGold);
+      var fmtChildBody = fmtChildParts.join(' ');
       var fmtChildLayer = { name: 'Child Note', key: 'CHILD NOTE', tier: 'primary', body: fmtChildBody || 'No Child layer was written for this note.' };
       fmtChildLayer.color = 'purple'; /* SNB-FIX1: derived Child is purple */
       orderedLayers.push(fmtChildLayer);
@@ -14269,6 +14296,9 @@ html.nsb-nonav.nsb-nobottom .main{padding-bottom:74px}
 .intel-board .rank-value .star-rating button.on { background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.35) 0%, rgba(255,255,255,0) 42%), radial-gradient(circle at 50% 50%, color-mix(in srgb, #8e24aa 55%, #101014) 0%, color-mix(in srgb, #8e24aa 28%, #060607) 78%) !important; color: #ffffff !important; border-color: color-mix(in srgb, #8e24aa 80%, white) !important; }
 .intel-board .rank-intel .star-rating button,
 .intel-board .rank-intel .star-rating button.on { background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.35) 0%, rgba(255,255,255,0) 42%), radial-gradient(circle at 50% 50%, color-mix(in srgb, #ffffff 55%, #101014) 0%, color-mix(in srgb, #ffffff 28%, #060607) 78%) !important; color: #8e24aa !important; border-color: color-mix(in srgb, #ffffff 80%, white) !important; }
+/* (4) SNB-STAR-EDGE-LIGHT 2026-11-20 item 1 — THE RATED STAR'S EDGE LIGHT, re-asserted late and !important, in both rows: a solid 2px ring in the row's own lit colour tracing the star's edge, plus the bloom, on the star itself at rest. VALUE purple #8e24aa, INTELLIGENCE white #ffffff. Rides on .on (rankRow sets .on on stars 1..N only), so a 7/10 rating lights exactly 7 stars around their edges and the rest stay dim. The flow ::after is untouched. */
+.intel-board .rank-value .star-rating button.on { box-shadow: 0 0 0 2px #8e24aa, 0 0 16px rgba(142,36,170,.95), 0 0 34px rgba(142,36,170,.55), 0 4px 10px rgba(0,0,0,.55) !important; }
+.intel-board .rank-intel .star-rating button.on { box-shadow: inset 0 -8px 14px rgba(0,0,0,.45), 0 0 0 2px #ffffff, 0 0 16px rgba(255,255,255,.95), 0 0 34px rgba(255,255,255,.5), 0 4px 10px rgba(0,0,0,.55) !important; }
 .intel-board .star-rating button { font-weight: 900; } /* the DM initial's weight, on the star glyph */
 @media (prefers-reduced-motion: reduce) {
   /* (3)(4)(5) NOTHING DEAD. The file's own record says the eye measures in a
