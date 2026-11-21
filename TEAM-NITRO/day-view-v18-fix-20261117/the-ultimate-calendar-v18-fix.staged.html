@@ -3256,6 +3256,32 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
 /* ============ FIX9F2 — calendar fix round 2, frame law (2026-11-21) ============ */
 /* PAGER PRESSED STATE: the pressed pill lights in its own colour (the day colour); the other waits quietly in obsidian — one lit pill, never two identical ones. Serves the timeline, journal and list pagers alike — all three wear .tl-pager. */
 .tl-pager .pill[aria-pressed="true"]{background:linear-gradient(180deg,color-mix(in srgb,var(--dc,#8e24aa) 55%,#050607),#050607)!important;border-color:var(--dc,#8e24aa)!important;box-shadow:0 0 18px color-mix(in srgb,var(--dc,#8e24aa) 45%,transparent),inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55)!important}
+/* ============ FIX9F3 — calendar fix round 3, the shave (2026-11-21) ============ */
+/* BOOK A TIME — the calendar's own air was the bulk: flex gap 16 between every step, 16 padding, 12 kind pills, 10 day tiles. The digits keep their harvested size; only the air around them shrinks. */
+.elite-cal{gap:8px!important;padding:8px!important}
+.mc-day{padding:6px 4px!important}
+.mc-time{padding:6px 10px!important}
+.r2-kind{padding:8px 12px!important;font-size:17px!important}
+.r2-kinds{gap:8px!important}
+.r2-step{margin:0!important;font-size:17px!important}
+.mc-dur select{padding:8px 12px!important;font-size:17px!important}
+.r2-more{padding:8px 16px!important}
+/* TIMELINE — the slots slim (padding 8 to 6, margin 6 to 4) so the group buttons clear the frame. */
+.tl-slot{padding:6px 10px!important;margin-bottom:4px!important}
+/* SMART LISTS CLOSED — the rows slim (56 to 48) and the list gap halves (16 to 8) so all five rows clear the frame. */
+.sl-frame .sum-row{min-height:48px!important}
+.sum-list.sl-frame{gap:8px!important}
+/* LONG ENTRIES — one entry can never exceed its frame: the row slims (12 to 8), text clips at five lines on a line boundary, never mid-glyph, and images cap at 160 tall. */
+.noteitem{padding:8px 6px!important}
+.noteitem p{display:-webkit-box!important;-webkit-line-clamp:5!important;-webkit-box-orient:vertical!important;overflow:hidden!important}
+.noteitem img{max-height:160px!important;object-fit:cover!important}
+@media(max-width:560px){
+  /* PHONE — the kind pills fit one row at the 17 floor, so Step 1 never wraps; the timeline slots slim once more so the group buttons clear the frame. */
+  #eliteCal .r2-kind{font-size:17px!important;padding:8px 10px!important}
+  #eliteCal .mc-time{padding:6px 8px!important}
+  .tl-slot{padding:4px 10px!important}
+  .smart-block[aria-label="Timeline"] .cat-essence{margin-top:4px!important;margin-bottom:4px!important}
+}
 </style>
   </head>
   <body>
@@ -4375,14 +4401,16 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
                   '<span class="tl-hour">' + hlabel + '</span><span class="tl-jewel" aria-hidden="true"></span><span class="tl-state">' +
                   (chips.join(" ") || '<span class="tl-open">Open — tap to book</span>') + "</span></div>"));
           }
-          /* FIX9F2 item 1 — the timeline pages in threes (6 slots a frame): 8+8 still left the Appointments slide ~150 px over the frame, so the timeline gets its own slide (see renderCategories) and 6 slots fit it with room. */
+          /* FIX9F3 item 1 — the timeline pages 6+5+5: the render at 1920x999 showed all six Morning slots whole with the group buttons half-clipped, so Morning keeps six and Midday/Evening take five — the shaved slot (see the FIX9F3 rules) plus one fewer slot clears the buttons on every page, busy days included. */
           var __page = (typeof __tlPage === "number" ? __tlPage : 0);
           if (__page > 2) __page = 2;
-          var __half = __slots.slice(__page * 6, __page * 6 + 6).join("");
+          var __sizes3 = [6, 5, 5];
+          var __start3 = __page === 0 ? 0 : (__page === 1 ? 6 : 11);
+          var __half = __slots.slice(__start3, __start3 + __sizes3[__page]).join("");
           var __pager = '<div class="tl-pager" role="group" aria-label="Times of day">' +
             '<button type="button" class="pill" data-tlpage="0" aria-pressed="' + (__page === 0) + '">Morning · 6–11 AM</button>' +
-            '<button type="button" class="pill" data-tlpage="1" aria-pressed="' + (__page === 1) + '">Midday · 12–5 PM</button>' +
-            '<button type="button" class="pill" data-tlpage="2" aria-pressed="' + (__page === 2) + '">Evening · 6–9 PM</button></div>';
+            '<button type="button" class="pill" data-tlpage="1" aria-pressed="' + (__page === 1) + '">Midday · 12–4 PM</button>' +
+            '<button type="button" class="pill" data-tlpage="2" aria-pressed="' + (__page === 2) + '">Evening · 5–9 PM</button></div>';
           return __half + __pager;
         }
 
@@ -4754,7 +4782,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           var k = keyOf(sel);
           if (listId === "nine") {
             /* FIX9F2 item 1 — nine items on one frame would push past it: the detail slide pages 5 to a frame. */
-            var __per9 = 5; var __pg9 = Math.min(__slPage || 0, Math.ceil(NINE_NOTES.length / __per9) - 1);
+            var __per9 = 4; /* FIX9F3 item 2 — four to a frame: five 2-line items pushed the detail slide past it. */ var __pg9 = Math.min(__slPage || 0, Math.ceil(NINE_NOTES.length / __per9) - 1);
             return NINE_NOTES.slice(__pg9 * __per9, __pg9 * __per9 + __per9).map(function (n) {
               return '<div class="noteitem"><p><strong>' + n.t + '</strong> — ' + n.d + '</p></div>';
             }).join("") + slPagerHTML(NINE_NOTES.length, __per9);
@@ -4762,7 +4790,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           if (listId === "smart") {
             var sns = mergedNotesFor(k).filter(function (n) { return (n.text || "").indexOf("Smart note — ") === 0; });
             if (!sns.length) return '<p class="none-line">No Smart notes saved for this day yet.</p>';
-            var __perS = 5; var __pgS = Math.min(__slPage || 0, Math.ceil(sns.length / __perS) - 1);
+            var __perS = 4; /* FIX9F3 item 2 — four to a frame, like nine. */ var __pgS = Math.min(__slPage || 0, Math.ceil(sns.length / __perS) - 1);
             return sns.slice(__pgS * __perS, __pgS * __perS + __perS).map(function (n) { return '<div class="noteitem"><p>' + escapeHTML(n.text || "") + '</p></div>'; }).join("") + slPagerHTML(sns.length, __perS);
           }
           if (listId === "yours") {
@@ -4771,22 +4799,29 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
                day was the walk's failure. */
             var todays = mergedNotesFor(k).filter(function (n) { return (n.text || "").indexOf("Smart note — ") !== 0; }).slice().reverse();
             if (!todays.length) return '<p class="none-line">Nothing written for this day yet — write it on the Your Notes slide.</p>';
-            var __perY = 5; var __pgY = Math.min(__slPage || 0, Math.ceil(todays.length / __perY) - 1);
+            var __perY = 4; /* FIX9F3 item 2 — four to a frame, like nine. */ var __pgY = Math.min(__slPage || 0, Math.ceil(todays.length / __perY) - 1);
             return '<p class="formtitle">' + dayLabelFor(k) + "</p>" + todays.slice(__pgY * __perY, __pgY * __perY + __perY).map(function (n) { return journalItemHTML(n); }).join("") + slPagerHTML(todays.length, __perY);
           }
           if (listId.indexOf("mine:") === 0) {
+            /* FIX9F3 item 4 — a long citizen list pages 5 to a frame like the rest: the day-group headers travel with the items on their page, in the same newest-first order as before. */
             var L = null; mylists.forEach(function (x) { if (x.id === listId.slice(5)) L = x; });
             if (!L) return '<p class="none-line">That list is gone.</p>';
             if (!L.items.length) return '<p class="none-line">Nothing in this list yet — add a note or a contact to it from where you write.</p>';
             var byDay = {};
             L.items.forEach(function (n) { var dk = n.day || ""; (byDay[dk] = byDay[dk] || []).push(n); });
-            return Object.keys(byDay).sort().reverse().map(function (dk) {
-              return '<p class="formtitle">' + (dk ? dayLabelFor(dk) : "No day") + '</p>' + byDay[dk].map(function (n) { return listItemHTML(n); }).join("");
-            }).join("");
+            var __flatM = [];
+            Object.keys(byDay).sort().reverse().forEach(function (dk) { byDay[dk].forEach(function (n) { __flatM.push({ dk: dk, n: n }); }); });
+            var __perM = 5; var __pgM = Math.min(__slPage || 0, Math.max(0, Math.ceil(__flatM.length / __perM) - 1));
+            var __pageM = __flatM.slice(__pgM * __perM, __pgM * __perM + __perM);
+            var __hM = ""; var __lastM = null;
+            __pageM.forEach(function (it) { if (it.dk !== __lastM) { __lastM = it.dk; __hM += '<p class="formtitle">' + (it.dk ? dayLabelFor(it.dk) : "No day") + "</p>"; } __hM += listItemHTML(it.n); });
+            return __hM + slPagerHTML(__flatM.length, __perM);
           }
           if (listId === "contacts") {
+            /* FIX9F3 item 4 — Contacts pages 5 to a frame like the rest; the add-a-contact tools stay below the pager. */
             var cs = contacts[k] || [];
-            var citems = cs.length ? cs.map(function (n) { return '<div class="noteitem"><p>' + escapeHTML(n.text || "") + "</p></div>"; }).join("") : '<p class="none-line">No contacts here yet — add one below. Connections is not connected yet; when it connects, people like you appear here, matched by what you share.</p>';
+            var __perC = 5; var __pgC = Math.min(__slPage || 0, Math.max(0, Math.ceil(cs.length / __perC) - 1));
+            var citems = cs.length ? cs.slice(__pgC * __perC, __pgC * __perC + __perC).map(function (n) { return '<div class="noteitem"><p>' + escapeHTML(n.text || "") + "</p></div>"; }).join("") + slPagerHTML(cs.length, __perC) : '<p class="none-line">No contacts here yet — add one below. Connections is not connected yet; when it connects, people like you appear here, matched by what you share.</p>';
             return citems + listToolsHTML("contact") +
               '<form id="contactForm"><p class="formtitle">Add a contact</p>' +
               '<div class="frow"><input type="text" id="contactText" placeholder="Their name" aria-label="Contact name" maxlength="120" />' +
@@ -4823,10 +4858,10 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
            screen, pops out toward the viewer a little, settles exactly);
            the day-scroll never scrolls — scrollTop stays 0. */
         var dayBlock = 0;
-        var __tlPage = 0; /* FIX9F item 1 — the timeline pages 6 slots a frame (FIX9F2: 8+8 still left the Appointments slide ~150 px over the frame). */
+        var __tlPage = 0; /* FIX9F item 1 — the timeline pages 6+5+5 slots a frame (FIX9F3: 6+6+4 left the group buttons half-clipped at 1920x999 — Morning keeps its six, Midday and Evening take five). */
         var __bookOpen = false; /* FIX9F2 item 1 — the booking flow (calendar + form) is open on its own two slides. */
         var __journalPage = 0; /* FIX9F2 item 1 — journal entries page 4 to a frame on their own slide. */
-        var __slPage = 0; /* FIX9F2 item 1 — an open list pages 5 items to a frame on its own slide. */
+        var __slPage = 0; /* FIX9F2 item 1 — an open list pages to a frame on its own slide (FIX9F3: nine / smart / yours take 4, citizen lists and Contacts take 5). */
         /* FIX12 item 2 — ONE navigation state, carried across days: the
            slide the citizen is on survives a day step, so day-to-day
            travel lands on the SAME slide, never slide 1. */
