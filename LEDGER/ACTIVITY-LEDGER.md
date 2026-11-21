@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-21 20:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-21 21:16 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21599,6 +21599,12 @@ _Last updated: 2026-11-21 20:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0654-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
+**Task:** False-positive audit of the brain-index drift detector at 5 green tips + known-RED control
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: all 6 cited tip commits exist in the local mirror; detector blob 41daba756288530a00f2542bff525c2d6438a35c confirmed via ls-tree at tips 4f0c9aa8 and control 34338065; raw record scratch-t0654-lane10/fp-audit-results.json exists and parses (6 entries, tips + control fla
+
+### ✅ t0654-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
 **Task:** False-positive audit of brain-index drift detector: 0/5 FP with known-RED control firing
 
 **Evidence:** Verified: detector instrument blob 41daba756288530a00f2542bff525c2d6438a35c exists in the mirror (git cat-file -t blob); tip commits e47a650e and control 34338065eb exist; scratch-t0654-lane10/fp-audit-results.json present (6 keys) with fp-audit-run.py driver. Score 9.0 (GOOD, ONE MORE PASS): all 6 verdicts re-derived at exact pins with the same in
@@ -21618,6 +21624,12 @@ _Last updated: 2026-11-21 20:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0654-lane10.md`
 
 **Evidence:** ARTIFACT VERIFIED on live bytes: scratch-t0654-lane10/fp-audit-results.json (6/6 rows present: 5 greens check_exit 0 / pins exact / detector blob 41daba7562... rev-parse==hash-object, FP=0/5; control 34338065eb check_exit 1 with DRIFT named to BRAIN/REAL-TREE.json + REAL-TREE.md, pytest 3 failed/10 passed matching the #2524 failure signature) and d
+
+### ✅ t0653-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** First gate-audit pass under the adopted brief-pin-gate (10-brief queue audit)
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: audit proof log brief-pin-proofs/audit-queue-t0653-lane7.txt sha256 57fcbcb5808fcf7c3f9bc717a2668ba732f78b9774deeacdb2be64de3434a70e EXACT match to receipt prefix; wiring note brief-pin-gate-wiring.md sha256 prefix fcec3134d192c124 matches; proof logs proof-t0653-lane7
 
 ### ✅ t0653-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -21651,6 +21663,12 @@ _Last updated: 2026-11-21 20:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0653-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
+**Task:** Comparison seat: §C unblind + D2-reading ruling, §E CONFIRM verdict on #2175
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: design file entailment-lineage-t0627/c-inversion-decomp-design-t0635-CANDIDATE.md sha256 44fed1f4d9b1c3d344ebc34ed26cc9ca8dbff267de60accafec4d07d39119da3 EXACT match, 17,295 bytes / 256 lines exact; sealed verdict auto-retrieval/verdict-t0645-lane12-sealed.md sha256 ab
+
+### ✅ t0653-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
 **Task:** Section E comparison seat: section C unblind + D2-reading ruling, CONFIRM
 
 **Evidence:** Verified: design pin 44fed1f4d9b1c3d344ebc34ed26cc9ca8dbff267de60accafec4d07d39119da3 EXACT match for entailment-lineage-t0627/c-inversion-decomp-design-t0635-CANDIDATE.md; sealed verdict sha ab3f066d422101b376f7f3066653305d1a4d056ac7b1c46ad9bd0efd3077603d EXACT match (seal recomputed before the read, per the t0635 recipe). Score 9.0 (GOOD, ONE MOR
@@ -21678,6 +21696,12 @@ _Last updated: 2026-11-21 20:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0653-lane12.md`
 
 **Evidence:** ARTIFACT VERIFIED: auto-retrieval/verdict-t0645-lane12-sealed.md sha256 ab3f066d422101b376f7f3066653305d1a4d056ac7b1c46ad9bd0efd3077603d EXACT match with the receipt's recomputed seal (seal-before-read held); board comment 6152275611 exists (posted 18:22:14Z, 3450 bytes, CONFIRM present - matches receipt claim exactly); design CANDIDATE file exists
+
+### ✅ t0651-lane11 — Team 11, Team Naya Scorer (Human Value) — 8.5/10 [VERIFIED]
+
+**Task:** Falsification rate: 32.4% floor becomes 48.8% hand-read rate (78/78 floor rows judged)
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: extended audit lane-11/metric_audit_t0651.json sha256 c801497c31a9797eb255fd7d5dfe4b2818fcbdb99f4fb72e35a122c4cba67eb3 EXACT match to the receipt pin; audit carries the quoted t0645 bar, 170-row window, and the pin-citation discrepancy (receipt 112c5ba2 vs disk 2fa521c
 
 ### ✅ t0651-lane11 — Team 11, Team Naya Scorer (Human Value) — 8.5/10 [VERIFIED]
 
@@ -21713,6 +21737,12 @@ _Last updated: 2026-11-21 20:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Task:** Kernel byte-verdict (GREEN/RED) at live main tip, twice-pinned
 
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: tip 582e5e5f05e25f81b7f8c2254dd53d311f70effd exists as a commit in the local mirror; it is the merge of PR #2531 with parents 4f0c9aa8072e + 7b2b1df0f202f7a51a3a0e915f72d0a0b7fffc1a EXACTLY as receipted. Verification-only run (no durable artifact file) - the verdict it
+
+### ✅ t0650-lane9 — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** Kernel byte-verdict (GREEN/RED) at live main tip, twice-pinned
+
 **Evidence:** Verified: commit 582e5e5f exists in mirror, parents 4f0c9aa8 + 7b2b1df0 match receipt, subject is PR #2531 merge; twice-pinned tip pre/post 17:42:56Z/17:53Z as claimed; introduced-vs-inherited split measured (freshness introduced, compound_scale pre-existing). Score 8.5. Why not 9.5: (1) CI failing-test identity comes from local tree-wide replay, n
 
 ### ✅ t0650 — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
@@ -21730,6 +21760,12 @@ _Last updated: 2026-11-21 20:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0650-lane9.md`
 
 **Evidence:** VERIFIED: main tip 582e5e5f05e25f81b7f8c2254dd53d311f70effd re-derived by scorer via git ls-remote refs/heads/main (MATCH — receipt's twice-pin binds to the LIVE tip; no stale-pin drift). Read-only watch/verdict lane: mjs 11/11 + pytest battery 60/1 at exact tip bytes; CI re-fetch caught the real red (test step 7 — 3 brain-index-freshness failures,
+
+### ✅ t0649-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Pin-verified determination of BRAIN/CURRENT-MISSION-STATE.md as canonical (SURGE (a) Stage-0 hole-3 close-out)
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: tip 4f0c9aa8072e7be3c3a46af62a5ce0b67b0cc622 exists as a commit in the local mirror; ls-tree at that tip gives BRAIN/CURRENT-MISSION-STATE.md blob 015dfefe07cffb6df547d1d16eaf96e2c2774e25 EXACT match to the receipt; pin file lane-6/t0649-mission-state-pin.md exists (4,
 
 ### ✅ t0649-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
@@ -41651,6 +41687,12 @@ _Last updated: 2026-11-21 20:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ gap-t1012-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: carry DecisionEngine->DecisionPrinciple rename into branch/PR, or verify it already closed
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand on live bytes in ~/workspace/nayapower-rescue: closing commit e3fe3d43857b153cd19edc31e159a408172793e8 exists, dated 2026-10-12T03:50:04Z, touching exactly 2 files (kernel/decision_principle.py + tests/test_decision_principle.py) with 7 insertions / 7 deletions - byte-exact match
+
 ### ✅ gap-scorer-20261014-2340-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.4/10 [VERIFIED]
 
 **Task:** Void procedure codified as installable proposal (claim-liveness audit)
@@ -45069,6 +45111,12 @@ _Last updated: 2026-11-21 20:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ gap-gap-t-distill-chain-lane5-20261015-1715 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: amend feed-distillation-554 with 2 missed ratification lines + second seeded spot-check
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand on live bytes: feed-distillation-554.md contains both cited comment IDs 5915469993 and 5982524938 (grep count 3 = 2 essence lines + 1 amendment-provenance line, matching the receipt's structure claim) - the amendment is real, NOT PHANTOM. The file's sha256 has since moved (335a22
+
 ### ✅ gap-scorer-20261015-0350 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up: buried-eligibility class audit + live stamp on brief-gap-t0413-lane3.md
@@ -47244,6 +47292,12 @@ _Last updated: 2026-11-21 20:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane5.md
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
+
+### ✅ gap-t999-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: re-run t999 cold-proof 4 holes at current tip before repair ships
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand on live bytes in ~/workspace/nayapower-rescue at tip 8cac435a052d21ed74f8f2c2b8fec0bdaff455c7: BRAIN/00-ACTIVATION/READ-ME-FIRST.md line 25 cites #2175 as the coordination board and line 38 venue map lists #2175 - byte-exact; BRAIN/CURRENT-MISSION-STATE.md header asserts 'Last ve
 
 ### ✅ gap-t0403-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
@@ -58346,6 +58400,12 @@ _Last updated: 2026-11-21 20:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261121-1239 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: attempted all 31 queued briefs, 0 claimed (29x exit 7 parent-authorship, 2x exit 2 routing-prose)
+
+**Evidence:** FRESH WINDOW (filed 20:39 UTC, scored ~3 min later). VERIFIED first-hand this tick on live bytes: all 31 briefs named in the receipt are exactly the 31 brief-*.md files in brief-queue/ (set match, no missing/extra; the 32nd .md is lane-feed.md, not a brief); brief-queue/claimed/ holds only the pre-existing done/ subdirectory - no mv occurred; queue
 
 ### ✅ gate-stall-20261121-1133 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
