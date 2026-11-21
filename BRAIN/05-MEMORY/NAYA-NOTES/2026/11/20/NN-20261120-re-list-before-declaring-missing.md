@@ -4,7 +4,7 @@
 
 **NN-20261120-re-list-before-declaring-missing · Naya Note · 2026-11-20 ~17:18 MST**
 
-*Paired Smart Note: SN-pending — Re-List Before Declaring Missing (takes the next free number at filing)*
+*Paired Smart Note: SN-4370 — Re-List Before Declaring Missing*
 
 **Category:** Law — a check run a beat early is not proof of absence
 
