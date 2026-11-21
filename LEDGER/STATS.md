@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-21 02:13 UTC_
+_Last updated: 2026-11-21 02:45 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 9783
-- ✅ Verified (8+): 9682
+- **Total scored actions:** 9803
+- ✅ Verified (8+): 9702
 - 🟡 Partial (5–7): 90
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 7
@@ -15,18 +15,18 @@ _Last updated: 2026-11-21 02:13 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 656 | 9.1 | 9.6 |
-| Team 2 | Naya Sage | 644 | 8.9 | 9.5 |
-| Team 3 | Naya Judge | 593 | 9.0 | 10 |
-| Team 4 | Naya Mason | 576 | 9.1 | 9.6 |
+| Team 1 | Naya Verity | 658 | 9.1 | 9.6 |
+| Team 2 | Naya Sage | 646 | 8.9 | 9.5 |
+| Team 3 | Naya Judge | 594 | 9.0 | 10 |
+| Team 4 | Naya Mason | 578 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 713 | 9.0 | 9.6 |
-| Team 6 | Naya Heir | 415 | 9.0 | 9.6 |
-| Team 7 | Naya Conductor | 562 | 8.9 | 10 |
-| Team 8 | Naya Sentinel | 589 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 715 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 977 | 9.1 | 9.7 |
-| Team 11 | Naya Heart | 649 | 9.0 | 9.6 |
-| Team 12 | Naya Herald | 505 | 9.1 | 9.5 |
+| Team 6 | Naya Heir | 416 | 9.0 | 9.6 |
+| Team 7 | Naya Conductor | 563 | 8.9 | 10 |
+| Team 8 | Naya Sentinel | 591 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 718 | 9.0 | 9.5 |
+| Team 10 | Naya Librarian | 978 | 9.1 | 9.7 |
+| Team 11 | Naya Heart | 652 | 9.0 | 9.6 |
+| Team 12 | Naya Herald | 507 | 9.1 | 9.5 |
 
 ## Learning velocity
 
@@ -3337,6 +3337,7 @@ _Last updated: 2026-11-21 02:13 UTC_
 - **t0644-lane6:** 1 actions, avg 9.0/10
 - **t0644-lane9:** 1 actions, avg 9.0/10
 - **t0645:** 6 actions, avg 8.8/10
+- **t0645-lane11:** 1 actions, avg 8.5/10
 - **t0645-lane7:** 1 actions, avg 9.0/10
 - **t0646:** 6 actions, avg 9.0/10
 - **t0647:** 4 actions, avg 9.0/10
@@ -3920,16 +3921,35 @@ _Last updated: 2026-11-21 02:13 UTC_
 - **t1489:** 8 actions, avg 9.5/10
 - **t1490:** 3 actions, avg 9.5/10
 - **t1493:** 3 actions, avg 9.5/10
+- **t1493-lane11:** 1 actions, avg 9.5/10
 - **t1494:** 6 actions, avg 9.5/10
+- **t1494-lane1:** 1 actions, avg 9.5/10
+- **t1494-lane9:** 1 actions, avg 9.5/10
 - **t1495:** 3 actions, avg 9.5/10
+- **t1495-lane12:** 1 actions, avg 9.5/10
 - **t1496:** 10 actions, avg 9.5/10
 - **t1496-lane3:** 1 actions, avg 9.0/10
+- **t1496-lane8:** 1 actions, avg 9.5/10
+- **t1496-lane9:** 1 actions, avg 9.5/10
 - **t1497:** 15 actions, avg 9.2/10
+- **t1497-lane1:** 1 actions, avg 9.0/10
+- **t1497-lane2:** 1 actions, avg 9.5/10
+- **t1497-lane4:** 1 actions, avg 9.5/10
 - **t1498:** 10 actions, avg 9.4/10
+- **t1498-lane10:** 1 actions, avg 9.5/10
+- **t1498-lane12:** 1 actions, avg 9.5/10
+- **t1498-lane7:** 1 actions, avg 9.5/10
 - **t1499:** 9 actions, avg 9.1/10
+- **t1499-lane11:** 1 actions, avg 9.5/10
+- **t1499-lane3:** 1 actions, avg 9.0/10
+- **t1499-lane8:** 1 actions, avg 9.5/10
 - **t1500:** 3 actions, avg 9.2/10
+- **t1500-lane6:** 1 actions, avg 9.5/10
 - **t1502:** 6 actions, avg 9.0/10
+- **t1502-lane2:** 1 actions, avg 9.0/10
+- **t1502-lane9:** 1 actions, avg 9.5/10
 - **t1503:** 3 actions, avg 9.3/10
+- **t1503-lane4:** 1 actions, avg 9.5/10
 - **t1504:** 5 actions, avg 7.3/10
 - **t1504-lane10:** 1 actions, avg 9.5/10
 - **t1504-lane3:** 1 actions, avg 9.0/10
