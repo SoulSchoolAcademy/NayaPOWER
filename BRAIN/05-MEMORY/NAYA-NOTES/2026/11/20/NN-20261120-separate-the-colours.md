@@ -4,7 +4,7 @@
 
 **NN-20261120-separate-the-colours · Naya Note · 2026-11-20 ~18:10 MST**
 
-*Paired Smart Note: SN-pending — Separate the Colours (takes the next free number at filing)*
+*Paired Smart Note: SN-4402 — Separate the Colours*
 
 **Category:** Design — pages must read apart at a glance
 
