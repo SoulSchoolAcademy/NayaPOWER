@@ -4,7 +4,7 @@
 
 **NN-20261121-a17-the-add-composer-and-the-image-auto-format · Naya Note · 2026-11-21 ~09:23 MST**
 
-*Paired Smart Note: SN-pending — A17 — The ADD Composer and the Image Auto-Format (takes the next free number at filing)*
+*Paired Smart Note: SN-4477 — A17 — The ADD Composer and the Image Auto-Format*
 
 **Category:** LAW — ADD pulls up a post composer like an intelligent block; images auto-format up to nine, no manual layout
 
