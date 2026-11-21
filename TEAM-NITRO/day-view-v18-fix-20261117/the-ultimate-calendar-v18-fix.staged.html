@@ -1796,7 +1796,7 @@
    The frame is the thing each block locks INTO. On unfold the new block comes
    into the screen, pops out toward the viewer a little (scale 1.008, lift
    -2px), and settles exactly in the viewport. */
-.smart-block{position:relative;flex:1;min-height:0;flex-direction:column;justify-content:safe center;overflow:hidden;
+.smart-block{position:relative;flex:1;min-height:0;flex-direction:column;justify-content:flex-start;overflow:hidden;
   border-top:2px solid color-mix(in srgb,var(--cc,var(--dc,#3fb8ff)) 60%,transparent);
   padding-top:20px;padding-bottom:76px}
 .smart-block>*{max-width:1100px;width:100%;margin-left:auto;margin-right:auto}
@@ -2258,7 +2258,8 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
 /* (4) NOTIFICATION DETAIL — an overlay inside its own section, clear of the
    nav at both widths; the head sticks so CLOSE never scrolls away, the rows
    scroll beneath it. */
-.smart-block .notif-detail{position:absolute!important;left:50%!important;transform:translateX(-50%)!important;top:96px!important;bottom:96px!important;width:min(1100px,100%)!important;z-index:6!important;border:1.5px solid color-mix(in srgb,var(--sc,#3fb8ff) 65%,#ffffff 10%)!important;box-shadow:0 18px 44px rgba(0,0,0,.7),0 0 24px color-mix(in srgb,var(--sc,#3fb8ff) 25%,transparent)!important}
+/* FIX9F item 8 — the detail panel sits IN FLOW below the bar now, never as an absolute overlay covering the scope tiles (taps on Business / Your Worlds / Appointments were refused as "covered" until CLOSE). Tapping another tile switches the panel, as before. */
+.smart-block .notif-detail{position:static!important;left:auto!important;transform:none!important;top:auto!important;bottom:auto!important;width:100%!important;margin-top:12px!important;z-index:2!important;border:1.5px solid color-mix(in srgb,var(--sc,#3fb8ff) 65%,#ffffff 10%)!important;box-shadow:0 18px 44px rgba(0,0,0,.7),0 0 24px color-mix(in srgb,var(--sc,#3fb8ff) 25%,transparent)!important}
 .smart-block .notif-detail .nd-head{position:sticky!important;top:0!important;z-index:2!important;background:linear-gradient(180deg,#151522,#090910)!important}
 /* (5) YOUR WORLDS — tighten the rows so Connections ends whole above the nav. */
 .worlds-slide .cat-row{margin:3px 0!important;padding:10px 12px!important}
@@ -2320,7 +2321,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
   #dayScroll .smart-block .sb-dots{position:sticky!important;top:10px!important;right:auto!important;order:-1!important;align-self:flex-end!important}
   #dayScroll .smart-block .sb-nav .p3-enter{padding:12px 12px!important}
   #dayScroll .smart-block .sb-nav .daystep-btn{padding:6px 8px!important}
-  .smart-block .notif-detail{top:12px!important;bottom:132px!important}
+  .smart-block .notif-detail{top:auto!important;bottom:auto!important;margin-top:10px!important}
   /* (14) S ORB — smaller, and the weekday shrinks so it ends clear of the orb. */
   .daybar .sigpiece{width:36px!important;height:36px!important}
   .hl-weekday{font-size:19px!important}
@@ -2635,7 +2636,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
    sticky/absolute nav rule is overridden here, later position, including
    the wisdom and chamber specials. */
 #dayScroll .smart-block{overflow:hidden!important;padding-bottom:0!important;justify-content:flex-start!important}
-#dayScroll .smart-block .sb-scroll{flex:1 1 auto!important;min-height:0!important;overflow-y:auto!important;overflow-x:hidden!important;display:flex!important;flex-direction:column!important;justify-content:safe center!important;width:100%!important;max-width:1100px!important;margin-left:auto!important;margin-right:auto!important}
+#dayScroll .smart-block .sb-scroll{flex:1 1 auto!important;min-height:0!important;overflow-y:auto!important;overflow-x:hidden!important;display:flex!important;flex-direction:column!important;justify-content:flex-start!important;width:100%!important;max-width:1100px!important;margin-left:auto!important;margin-right:auto!important}
 #dayScroll .smart-block .sb-scroll>*{max-width:1100px!important;width:100%!important;margin-left:auto!important;margin-right:auto!important}
 #dayScroll .smart-block .sb-nav{position:static!important;left:auto!important;right:auto!important;transform:none!important;bottom:auto!important;top:auto!important;margin:8px auto 0!important;flex:none!important;background:none!important;padding-top:8px!important;order:2!important;z-index:2!important}
 #dayScroll .smart-block .sb-dots{position:static!important;left:auto!important;right:auto!important;transform:none!important;bottom:auto!important;top:auto!important;margin:10px auto 0!important;flex:none!important;order:1!important;z-index:2!important;background:none!important;box-shadow:none!important}
@@ -2777,7 +2778,8 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
    DROP-DOWN (a real obsidian object, never a handful of flat pills).
    The Close button POPS: obsidian pill, 2px day-colour rim, layered
    shadow, underglow, lift on hover, press to .97. */
-.clock-menu{position:absolute!important;left:0!important;top:0!important;transform:none!important;width:auto!important;height:100%!important;max-height:100%!important;z-index:30!important;border-radius:18px!important;padding:24px!important;display:flex!important;flex-direction:column!important;gap:8px!important;overflow-y:auto!important}
+/* FIX9F item 4 — the menu is a centred dialog that fits the visible frame (max-height), never a full-height panel whose Close sits below the edge. */
+.clock-menu{position:fixed!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;width:min(420px,calc(100vw - 32px))!important;height:auto!important;max-height:calc(100dvh - 48px)!important;z-index:90!important;border-radius:18px!important;padding:24px!important;display:flex!important;flex-direction:column!important;gap:8px!important;overflow-y:auto!important}
 .clock-select-label{font-size:19px!important;font-weight:800!important;color:#fff!important;text-shadow:0 1px 0 #000,0 2px 3px rgba(0,0,0,.7)!important;margin-top:8px!important}
 .clock-select{width:100%!important;font-size:19px!important;font-weight:700!important;color:#fff!important;background:linear-gradient(180deg,#232330,#0b0b12)!important;border:2px solid color-mix(in srgb,var(--dc,#3fb8ff) 70%,transparent)!important;border-radius:14px!important;padding:14px 16px!important;cursor:pointer!important;box-shadow:inset 0 2px 8px rgba(0,0,0,.6),0 0 16px color-mix(in srgb,var(--dc,#3fb8ff) 25%,transparent)!important}
 .clock-select:focus{outline:none!important;border-color:var(--dc,#3fb8ff)!important;box-shadow:inset 0 2px 8px rgba(0,0,0,.6),0 0 24px color-mix(in srgb,var(--dc,#3fb8ff) 45%,transparent)!important}
@@ -3116,7 +3118,8 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
    1920; static-flow below the content at <=560px, as before). The Change
    cover function itself is unchanged where the pill remains. */
 .hl-center .hl-monthline{display:inline-flex!important;align-items:center!important;gap:28px!important;white-space:nowrap!important}
-#dayScroll:not(:has(#wisdomBanner.on)):not(:has(.worlds-slide.on))>.cover-change{display:none!important}
+#dayScroll:not(:has(#wisdomBanner.on)):not(:has(.worlds-slide.on)):not(:has(.twinblock.on))>.cover-change{display:none!important}
+/* FIX9F item 9 — Your Notes keeps the pill: the walk found the control absent on the Your Notes slide. */
 
 /* ============ FIX3 — calendar day follow-on round 2 fix 3 (2026-11-20) ============ */
 /* CHANGE COVER, GIVEN A TAP-VISIBLE CHOICE — the eye tapped Change cover on
@@ -3227,6 +3230,29 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
    scroll reveals it. Laws §6: a board that slices text mid-glyph is broken. */
 .smart-block[aria-label="Journal"] .ink-timeline{flex:none!important;max-height:none!important;overflow-y:visible!important}
 
+/* ============ FIX9F — calendar fix round, 9 walk failures + dynamic icons (2026-11-21) ============ */
+/* FRAME LAW (item 1): Smart Lists rows compact so all five fit the frame
+   closed; Summary rows compact so Intel Today is never a sliver; the
+   timeline pages morning/afternoon (JS) so the Appointments frame holds
+   its slots + Book a time. Phone widths compact further. */
+.sl-frame .sum-row{min-height:64px!important;padding:10px 14px!important}
+.smart-block[aria-label="Summary of the day"] .sum-row{min-height:72px!important}
+.tl-past{opacity:.55!important;cursor:default!important}
+.tl-pager{display:flex!important;gap:8px!important;margin:4px 0 8px!important}
+.tl-pager .pill{flex:1!important}
+@media(max-width:740px){
+  .sl-frame .sum-row{min-height:56px!important;padding:8px 12px!important}
+  .tl-slot{padding:8px 10px!important;margin-bottom:6px!important}
+}
+/* DYNAMIC ICONS (item 10, Laws §1/§8): the row chips take the harvested
+   .world-ico treatment — obsidian ball, own-colour rim, slow orbit ring,
+   white glyph with depth, whole-object lift + light on hover. The orbit
+   alternates direction row by row. Nothing flat survives. */
+.cat-row .chip{position:relative!important;width:48px!important;height:48px!important;border-radius:50%!important;background:radial-gradient(circle at 34% 26%,#2c3044 0%,#13131f 52%,#050607 100%)!important;border:2px solid var(--c,#fff)!important;box-shadow:0 10px 22px rgba(0,0,0,.55),0 0 14px color-mix(in srgb,var(--c,#fff) 30%,transparent),inset 0 2px 3px rgba(255,255,255,.4),inset 0 -8px 12px rgba(0,0,0,.6)!important;transition:transform .3s ease,box-shadow .3s ease,filter .3s ease!important}
+.cat-row .chip svg{width:24px!important;height:24px!important;filter:drop-shadow(0 1px 1px rgba(0,0,0,.8))!important}
+.cat-row .chip::after{content:""!important;position:absolute!important;inset:-7px!important;border-radius:50%!important;border:1.5px solid transparent!important;border-top-color:color-mix(in srgb,var(--c,#fff) 70%,#ffffff)!important;border-right-color:color-mix(in srgb,var(--c,#fff) 22%,transparent)!important;animation:orbitspin 90s linear infinite!important;pointer-events:none!important}
+.cat-row:nth-child(even) .chip::after{animation-direction:reverse!important}
+.cat-row:hover .chip{transform:translateY(-2px)!important;filter:brightness(1.22)!important;box-shadow:0 14px 28px rgba(0,0,0,.6),0 0 24px color-mix(in srgb,var(--c,#fff) 45%,transparent),inset 0 2px 3px rgba(255,255,255,.45),inset 0 -8px 12px rgba(0,0,0,.6)!important}
 </style>
   </head>
   <body>
@@ -3752,8 +3778,11 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
            clock: it lives inside #dayScroll now (absolute inset 0),
            not as a centred pop-up on the body. */
         function ensureClockMenu() { var m = $("clockMenu"); if (!m) { var ds = $("dayScroll"); if (ds) { ds.insertAdjacentHTML("beforeend", clockMenuHTML()); } else { document.body.insertAdjacentHTML("beforeend", clockMenuHTML()); } m = $("clockMenu"); } return m; }
-        function openClockMenu() { ensureClockMenu().classList.remove("hidden"); updateClockPreview(); }
-        function closeClockMenu() { var m = $("clockMenu"); if (m) m.classList.add("hidden"); }
+        /* FIX9F item 4 — the preview ticks live (1s) while the dialog
+           is open, so "Now in …" is never frozen at open. */
+        var __clockTick = null;
+        function openClockMenu() { ensureClockMenu().classList.remove("hidden"); updateClockPreview(); if (__clockTick) clearInterval(__clockTick); __clockTick = setInterval(updateClockPreview, 1000); }
+        function closeClockMenu() { var m = $("clockMenu"); if (m) m.classList.add("hidden"); if (__clockTick) { clearInterval(__clockTick); __clockTick = null; } }
         function setClockZone(id, keepOpen) {
           try { LS.set("nayacal.clock.v1", id); } catch (e) {}
           if (!keepOpen) closeClockMenu();
@@ -3770,9 +3799,9 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           var z = CLOCK_ZONES.filter(function (x) { return x.id === selEl.value; })[0] || CLOCK_ZONES[0];
           var n = new Date();
           var parts = z.tz ? clockPartsInZone(n, z.tz) : null;
-          var h24 = parts ? parts.h : n.getHours(), m = parts ? parts.m : n.getMinutes();
+          var h24 = parts ? parts.h : n.getHours(), m = parts ? parts.m : n.getMinutes(), s = parts ? parts.s : n.getSeconds();
           var ap = h24 >= 12 ? "PM" : "AM"; var h12 = h24 % 12; if (h12 === 0) h12 = 12;
-          pv.textContent = "Now in " + z.label + ": " + h12 + ":" + String(m).padStart(2, "0") + " " + ap;
+          pv.textContent = "Now in " + z.label + ": " + h12 + ":" + String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0") + " " + ap;
         }
         if (!window.__clockSelWired) {
           window.__clockSelWired = true;
@@ -4241,6 +4270,33 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             '<p class="intel-line">Wisdom carried: \u201C' + escapeHTML(WISDOM[sel.getDay()]) + "\u201D</p>";
         }
 
+        /* FIX9F item 6 — Intel Today is its own page now, not a second
+           copy of Daily Reports: the day itself, in full — every
+           appointment, note, journal entry and list item, not the
+           counts board. Daily Reports keeps the counts (stats board +
+           intel lines); Your Stats still opens Daily Reports. */
+        function intelTodayHTML() {
+          var k = keyOf(sel);
+          var dayAppts = dayApptsFor(k);
+          var dayNotes = mergedNotesFor(k);
+          var dayJournal = journal[k] || [];
+          var dayList = lists[k] || [];
+          var h = '<p class="intel-line"><strong>Intel Today</strong> — ' + WEEKDAYS[sel.getDay()] + ", " + MONTHS[sel.getMonth()] + " " + sel.getDate() + ".</p>";
+          h += dayAppts.length
+            ? '<p class="formtitle">Appointments</p>' + dayAppts.map(function (a) { return '<div class="noteitem"><p>' + fmtTime(a.time) + " — " + escapeHTML(a.title) + (a.meet ? " (Smart Meet)" : "") + "</p></div>"; }).join("")
+            : '<p class="none-line" style="text-align:left">No appointments for this day.</p>';
+          h += dayNotes.length
+            ? '<p class="formtitle">Notes</p>' + dayNotes.map(function (n) { return journalItemHTML(n); }).join("")
+            : '<p class="none-line" style="text-align:left">No notes for this day.</p>';
+          h += dayJournal.length
+            ? '<p class="formtitle">Journal</p>' + dayJournal.map(function (n) { return journalItemHTML(n); }).join("")
+            : '<p class="none-line" style="text-align:left">Nothing written in the journal for this day.</p>';
+          h += dayList.length
+            ? '<p class="formtitle">Lists</p>' + dayList.map(function (n) { return '<div class="noteitem"><p>' + escapeHTML(n) + "</p></div>"; }).join("")
+            : '<p class="none-line" style="text-align:left">Nothing on your list for this day.</p>';
+          return h;
+        }
+
         /* THE DAY-TO-DAY VIEWER (Shawn, 2026-11-17, v16): the day's
            whole place moves day to day — the stepper under the greeting
            walks one day at a time (‹ yesterday · today · tomorrow ›),
@@ -4280,7 +4336,10 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             var dd = new Date(ts);
             return fmtTime(String(dd.getHours()).padStart(2, "0") + ":" + String(dd.getMinutes()).padStart(2, "0"));
           }
-          var tl = "";
+          var tl = ""; var __slots = [];
+          var __tlNow = new Date();
+          var __tlIsToday = k === keyOf(__tlNow);
+          var __tlEarliest = __tlNow.getHours() * 60 + __tlNow.getMinutes() + 60;
           for (var h = 6; h <= 21; h++) {
             var hh = h % 12; if (hh === 0) hh = 12;
             var hlabel = hh + " " + (h < 12 ? "AM" : "PM");
@@ -4295,11 +4354,26 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
                hour shows its real booking (never invented); an open hour
                says so honestly. Tapping a slot opens the book-a-time
                flow for that hour (openBookFor, wired once below). */
-            tl += '<div class="tl-slot' + (inHour.length ? ' tl-booked' : '') + '" role="button" tabindex="0" data-slot="' + String(h).padStart(2, "0") + ':00" aria-label="Book ' + hlabel + (inHour.length ? ' — ' + inHour.length + ' booked' : ' — open') + '">' +
-              '<span class="tl-hour">' + hlabel + '</span><span class="tl-jewel" aria-hidden="true"></span><span class="tl-state">' +
-              (chips.join(" ") || '<span class="tl-open">Open — tap to book</span>') + "</span></div>";
+            var __past = __tlIsToday && (h + 1) * 60 <= __tlEarliest;
+            /* FIX9F item 5 — a past hour never advertises "Open": it
+               shows Past and opens no book flow (the flow's
+               minimum-notice rule would refuse it as "full"). */
+            __slots.push(__past
+              ? '<div class="tl-slot tl-past" aria-label="' + hlabel + ' — past, cannot book">' +
+                '<span class="tl-hour">' + hlabel + '</span><span class="tl-jewel" aria-hidden="true"></span><span class="tl-state">' +
+                (chips.join(" ") || '<span class="tl-open">Past</span>') + "</span></div>"
+              : '<div class="tl-slot' + (inHour.length ? ' tl-booked' : '') + '" role="button" tabindex="0" data-slot="' + String(h).padStart(2, "0") + ':00" aria-label="Book ' + hlabel + (inHour.length ? ' — ' + inHour.length + ' booked' : ' — open') + '">' +
+                '<span class="tl-hour">' + hlabel + '</span><span class="tl-jewel" aria-hidden="true"></span><span class="tl-state">' +
+                (chips.join(" ") || '<span class="tl-open">Open — tap to book</span>') + "</span></div>");
           }
-          return tl;
+          /* FIX9F item 1 — the timeline pages morning/afternoon (8 slots
+             a frame), never a 16-slot scroll inside the frame. */
+          var __page = (typeof __tlPage === "number" ? __tlPage : 0);
+          var __half = __slots.slice(__page * 8, __page * 8 + 8).join("");
+          var __pager = '<div class="tl-pager" role="group" aria-label="Times of day">' +
+            '<button type="button" class="pill" data-tlpage="0" aria-pressed="' + (__page === 0) + '">Morning · 6 AM–1 PM</button>' +
+            '<button type="button" class="pill" data-tlpage="1" aria-pressed="' + (__page === 1) + '">Afternoon · 2–9 PM</button></div>';
+          return __half + __pager;
         }
 
         function openDay(d, opts) {
@@ -4309,6 +4383,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              on today's screen: the notification menu closes on the walk */
           openScopeId = null; openRowId = null;
           unfolded = { appointments: false, record: false };
+          __tlPage = 0; /* FIX9F item 1 — a fresh day opens on the morning half of the timeline. */
           /* The month on screen follows the day on screen — back
              returns to the month holding this day */
           viewY = d.getFullYear(); viewM = d.getMonth();
@@ -4447,7 +4522,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
                failed to load/decode once (transient). One retry, 800ms later,
                with a cache-buster, per distinct cover URL — never a loop. */
             var __ci2 = $("coverImg");
-            if (__ci2 && !__ci2.__errWired) { __ci2.__errWired = true; __ci2.addEventListener("error", function () { var s = __ci2.src; if (s.indexOf("http") !== 0) return; var base = s.split("&r=")[0]; if (__ci2.__errBase === base) return; __ci2.__errBase = base; setTimeout(function () { if (__ci2.src.split("&r=")[0] === base) __ci2.src = base + (base.indexOf("?") >= 0 ? "&" : "?") + "r=1"; }, 800); }); }
+            if (__ci2 && !__ci2.__errWired) { __ci2.__errWired = true; __ci2.addEventListener("load", function () { __ci2.style.visibility = ""; var __bg0 = $("dayCoverBg"); if (__bg0) __bg0.style.background = ""; }); __ci2.addEventListener("error", function () { var s = __ci2.src; if (s.indexOf("http") !== 0) return; var base = s.split("&r=")[0]; if (__ci2.__errBase === base) { /* FIX9F item 9 — the retry failed too: never leave a broken cover — the day's own colour holds the band. */ __ci2.style.visibility = "hidden"; var __bg2 = $("dayCoverBg"); if (__bg2) __bg2.style.background = "linear-gradient(135deg," + DAY_COLORS[sel ? sel.getDay() : 4] + ",#050607)"; return; } __ci2.__errBase = base; setTimeout(function () { if (__ci2.src.split("&r=")[0] === base) __ci2.src = base + (base.indexOf("?") >= 0 ? "&" : "?") + "r=1"; }, 800); }); }
           }
           normalizeDayNavs();
           var sc = $("dayScroll"); if (sc) sc.scrollTop = 0;
@@ -4580,14 +4655,42 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           var img = n.img ? '<img src="' + n.img + '" alt="">' : "";
           return '<div class="noteitem"><p>' + kind + ' · ' + escapeHTML(n.text || "") + "</p>" + img + "</div>";
         }
-        function mylistsOptionsHTML(selectedId) {
-          return '<option value="">Add to a list…</option>' + mylists.map(function (L) {
-            return '<option value="' + L.id + '"' + (L.id === selectedId ? ' selected' : '') + '>' + escapeHTML(L.name) + '</option>';
-          }).join("");
+        /* FIX9F item 7 — the picker offers the citizen's real lists:
+           the five Smart Lists first (the writable ones live; the
+           others say plainly why they cannot take the item — Nine
+           Notes is read-only, Worlds is not connected yet, and a list
+           takes only its own kind), then the lists they made. */
+        var SMART_LIST_CHOICES = [
+          { id: "sl:yours", label: "Your Notes", kinds: ["note"] },
+          { id: "sl:smart", label: "Smart Notes", kinds: ["note"] },
+          { id: "sl:contacts", label: "Contacts", kinds: ["contact"] },
+          { id: "sl:nine", label: "Nine Notes", kinds: [] },
+          { id: "sl:worlds", label: "Your Worlds", kinds: [] }
+        ];
+        function smartChoiceLabel(c, kind) {
+          if (c.kinds.indexOf(kind) !== -1) return c.label;
+          if (c.id === "sl:nine") return "Nine Notes — read only";
+          if (c.id === "sl:worlds") return "Your Worlds — not connected yet";
+          return c.label + (kind === "note" ? " — people only" : " — notes only");
+        }
+        function mylistsOptionsHTML(selectedId, kind) {
+          kind = kind || "note";
+          var h = '<option value="">Add to a list…</option><optgroup label="Smart Lists">';
+          SMART_LIST_CHOICES.forEach(function (c) {
+            var ok = c.kinds.indexOf(kind) !== -1;
+            h += '<option value="' + c.id + '"' + (c.id === selectedId ? ' selected' : '') + (ok ? '' : ' disabled') + '>' + smartChoiceLabel(c, kind) + '</option>';
+          });
+          h += '</optgroup>';
+          if (mylists.length) {
+            h += '<optgroup label="Your lists">' + mylists.map(function (L) {
+              return '<option value="' + L.id + '"' + (L.id === selectedId ? ' selected' : '') + '>' + escapeHTML(L.name) + '</option>';
+            }).join("") + '</optgroup>';
+          }
+          return h;
         }
         function listToolsHTML(prefix) {
           return '<div class="frow" style="margin-top:10px">' +
-            '<select id="' + prefix + 'ListSelect" class="clock-select" aria-label="Add to a list">' + mylistsOptionsHTML(null) + '</select>' +
+            '<select id="' + prefix + 'ListSelect" class="clock-select" aria-label="Add to a list">' + mylistsOptionsHTML(null, prefix === "contact" ? "contact" : "note") + '</select>' +
             '<input type="text" id="' + prefix + 'ListName" placeholder="Name a new list…" aria-label="Name a new list" maxlength="60" />' +
             '<button type="button" class="pill" id="' + prefix + 'ListPlus" aria-label="Create a new list">+</button></div>';
         }
@@ -4609,24 +4712,9 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
            (nayacal.notes.v1 + the month file's mw.cal.notes.v1) —
            Smart notes excluded, they live in the Smart Notes list.
            Newest day first; inside a day, written order. */
-        function yourNotesByDay() {
-          var days = {};
-          Object.keys(notes).forEach(function (k) {
-            (notes[k] || []).forEach(function (n) {
-              if ((n.text || "").indexOf("Smart note — ") === 0) return;
-              (days[k] = days[k] || []).push(n);
-            });
-          });
-          try {
-            var raw = JSON.parse(localStorage.getItem("mw.cal.notes.v1") || "[]") || [];
-            raw.forEach(function (n) {
-              if (n && n.date && n.text) (days[n.date] = days[n.date] || []).push({ text: n.text, at: null });
-            });
-          } catch (e) {}
-          return Object.keys(days).sort().reverse().map(function (k) {
-            return { key: k, label: dayLabelFor(k), items: days[k] };
-          });
-        }
+        /* FIX9F item 2 — yourNotesByDay() is gone: the global by-day archive
+           was the walk's failure (the same list on every day). The day's own
+           notes come from mergedNotesFor(keyOf(sel)) now, in place. */
         /* One list's items, for the open list in the frame. Nine Notes
            is the settled nine; Smart Notes is the day's saved Smart
            notes; Contacts and Worlds have no data in this file yet —
@@ -4644,11 +4732,12 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             return sns.map(function (n) { return '<div class="noteitem"><p>' + escapeHTML(n.text || "") + '</p></div>'; }).join("");
           }
           if (listId === "yours") {
-            var byDay = yourNotesByDay();
-            if (!byDay.length) return '<p class="none-line">Nothing written yet — write your first note on the Your Notes slide.</p>';
-            return byDay.map(function (g) {
-              return '<p class="formtitle">' + g.label + '</p>' + g.items.map(function (n) { return journalItemHTML(n); }).join("");
-            }).join("");
+            /* FIX9F item 2 — this list shows THIS day's own notes,
+               never the global archive: the same full list on every
+               day was the walk's failure. */
+            var todays = mergedNotesFor(k).filter(function (n) { return (n.text || "").indexOf("Smart note — ") !== 0; }).slice().reverse();
+            if (!todays.length) return '<p class="none-line">Nothing written for this day yet — write it on the Your Notes slide.</p>';
+            return '<p class="formtitle">' + dayLabelFor(k) + "</p>" + todays.map(function (n) { return journalItemHTML(n); }).join("");
           }
           if (listId.indexOf("mine:") === 0) {
             var L = null; mylists.forEach(function (x) { if (x.id === listId.slice(5)) L = x; });
@@ -4699,6 +4788,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
            screen, pops out toward the viewer a little, settles exactly);
            the day-scroll never scrolls — scrollTop stays 0. */
         var dayBlock = 0;
+        var __tlPage = 0; /* FIX9F item 1 — the timeline pages morning/afternoon, 8 slots a frame. */
         /* FIX12 item 2 — ONE navigation state, carried across days: the
            slide the citizen is on survives a day step, so day-to-day
            travel lands on the SAME slide, never slide 1. */
@@ -4746,7 +4836,8 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
            applyCover, so the visible cover, its strip label and the saved
            choice can never drift apart again. */
         function coverLabelFor(src) { for (var i = 0; i < 7; i++) { if (COVER_DAY[i] === src) return WEEKDAYS[i]; } return "Your photo"; }
-        function applyCover(src, label) { var ci = $("coverImg"); if (ci) ci.src = src; var lb = $("coverStripLabel"); if (lb) lb.textContent = label || coverLabelFor(src); try { LS.set("nayacal.cover.v1." + keyOf(sel), { src: src }); } catch (e) {} }
+        /* FIX9F item 3 — the strip label names the DAY on screen, never the cover image's weekday: a Tuesday cover chosen for a Friday still reads Friday. */
+        function applyCover(src, label) { var ci = $("coverImg"); if (ci) ci.src = src; var lb = $("coverStripLabel"); if (lb) lb.textContent = sel ? WEEKDAYS[sel.getDay()] : (label || coverLabelFor(src)); try { LS.set("nayacal.cover.v1." + keyOf(sel), { src: src }); } catch (e) {} }
         function preloadCovers() { if (window.__coversPreloaded) return; window.__coversPreloaded = true; for (var i = 0; i < COVER_DAY.length; i++) { var im = new Image(); im.src = COVER_DAY[i]; } }
         function dayShow(a) {
           closeCoverChooser();
@@ -4926,6 +5017,18 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
            by day. The list tools ride here too — make a list, add
            the note to it. Labels in the design language, buttons as real
            obsidian objects (FIX11 CSS). */
+        /* FIX9F item 2 — the day's own notes, listed on the entry
+           slide itself: the slide never showed them (input + Save
+           only), so a saved note was invisible until the citizen
+           opened Smart Lists. Newest first, Smart notes excluded
+           (they live in the Smart Notes list). */
+        function yourNotesDayListHTML() {
+          if (!sel) return "";
+          var k = keyOf(sel);
+          var todays = mergedNotesFor(k).filter(function (n) { return (n.text || "").indexOf("Smart note — ") !== 0; }).slice().reverse();
+          if (!todays.length) return '<p class="none-line" style="text-align:left">Nothing written for this day yet — write your first note above.</p>';
+          return '<p class="formtitle">Notes for ' + dayLabelFor(k) + "</p>" + todays.map(function (n) { return journalItemHTML(n); }).join("");
+        }
         function yourNotesSection(dc) {
           var naya =
             '<section class="cat smart-block twinblock" style="--cc:' + dc + '" aria-label="Your Notes">' +
@@ -4939,6 +5042,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             '<input type="file" id="yourNoteImageInput" accept="image/*" hidden>' +
             '<button type="button" class="bookbtn" id="yourNoteSaveBtn">Save your note</button></div>' +
             '<p class="none-line" style="text-align:left">Saved to your Smart Vault — kept by day, so you can come back to any day and see its notes.</p>' +
+            yourNotesDayListHTML() +
             dayNav(dc, false) + '<div class="sb-dots"></div></section>';
           return naya;
         }
@@ -5065,7 +5169,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           var summaryInner = '<div class="panel summary-panel">' + intelHTML() + "</div>" + '<div class="sum-list">' +
             sumRow("journal", "#07925f", "book", "Your Journal", dayJournal.length ? dayJournal.length + (dayJournal.length === 1 ? " entry written for this day." : " entries written for this day.") : "Nothing written for this day yet.", dayJournal.length, null) +
             sumRow("reports", "#0e7490", "landmark", "Daily Reports", "The day's report — appointments, notes, journal and lists, counted.", 0, null) +
-            sumRow("daily", "#3f51b5", "spark", "Intel Today", "The day, counted — appointments, notes, journal and lists.", 0, null) +
+            sumRow("daily", "#3f51b5", "spark", "Intel Today", "The day itself — every appointment, note, journal entry and list, in full.", 0, null) +
             "</div>";
           /* SMART LISTS FRAME (2026-11-20; fifth list 2026-11-21):
              the lists area, in the same framed format as the rest of
@@ -5077,7 +5181,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              Contacts and Worlds have no data in this file yet, so they
              say so honestly — no invented people, notes, or worlds. */
           var smartCount = dayNotes.filter(function (n) { return (n.text || "").indexOf("Smart note — ") === 0; }).length;
-          var yoursCount = yourNotesByDay().reduce(function (a, g) { return a + g.items.length; }, 0);
+          var yoursCount = dayNotes.filter(function (n) { return (n.text || "").indexOf("Smart note — ") !== 0; }).length;
           var contactsCount = (contacts[k] || []).length;
           var slDetail = openListId ? '<div class="panel">' + slItemsHTML(openListId) + '</div>' : "";
           var smartListsInner = '<div class="sum-list sl-frame">' +
@@ -5202,7 +5306,9 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             if (!v) { $("yourNoteInput").focus(); return; }
             (notes[k] = notes[k] || []).push({ text: v, at: Date.now() });
             var lid = $("yourNoteListSelect") ? $("yourNoteListSelect").value : "";
-            if (lid) addToMyList(lid, { text: v, at: Date.now(), day: k, kind: "note" });
+            /* FIX9F item 7 — "Smart Notes" saves the note AS a smart note (the file's own marker), never a second copy beside the plain one. */
+            if (lid === "sl:smart") { notes[k][notes[k].length - 1].text = "Smart note — " + v; }
+            else if (lid) addToMyList(lid, { text: v, at: Date.now(), day: k, kind: "note" });
             saveStores();
             $("yourNoteInput").value = "";
             renderMonth();
@@ -5249,7 +5355,9 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             if (!cv) return;
             (contacts[k] = contacts[k] || []).push({ text: cv, at: Date.now() });
             var clid = $("contactListSelect") ? $("contactListSelect").value : "";
-            if (clid) addToMyList(clid, { text: cv, at: Date.now(), day: k, kind: "contact" });
+            /* FIX9F item 7 — "Smart Notes" keeps a smart note about the person, in the day's notes. */
+            if (clid === "sl:smart") { (notes[k] = notes[k] || []).push({ text: "Smart note — " + cv, at: Date.now() }); }
+            else if (clid) addToMyList(clid, { text: cv, at: Date.now(), day: k, kind: "contact" });
             saveStores();
             renderCategories(lastApptRows, lastTl); renderNotifBar(); renderNotifDetail(); dayShow(dayBlock);
           });
@@ -5458,7 +5566,9 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
                 openDoor(door);
               });
             });
-          } else if (door.id === "daily" || door.id === "reports") {
+          } else if (door.id === "daily") {
+            body.innerHTML = '<div class="panel">' + intelTodayHTML() + "</div>";
+          } else if (door.id === "reports") {
             body.innerHTML = statsBoardHTML() + '<div class="panel">' + intelHTML() + "</div>";
           } else if (door.id === "journal") {
             /* The Journal works like the notes — your day, in your
@@ -5626,7 +5736,14 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             __mc.timePage = Math.floor(times.indexOf(first) / 6);
             mcRenderCal(); mcRenderForm();
           } else {
-            __mc.refused = "That hour is full — here are the next open times.";
+            /* FIX9F item 5 — never call a past hour "full": it has
+               passed (the minimum-notice rule), it is not booked out. */
+            var __now2 = new Date();
+            var __isToday2 = sel && keyOf(sel) === keyOf(__now2);
+            var __earliest2 = __now2.getHours() * 60 + __now2.getMinutes() + 60;
+            __mc.refused = (__isToday2 && (h + 1) * 60 <= __earliest2)
+              ? "That hour has passed — here are the next open times."
+              : "That hour is full — here are the next open times.";
             __mc.timePage = 0;
             mcRenderCal(); mcRenderForm();
           }
@@ -5635,8 +5752,10 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           window.__tlSlotWired = true;
           document.addEventListener("click", function (ev) {
             if (ev.target.closest("[data-join]")) return;
+            var pg = ev.target.closest("[data-tlpage]");
+            if (pg) { __tlPage = parseInt(pg.getAttribute("data-tlpage"), 10) || 0; lastTl = timelineHTML(keyOf(sel)); renderCategories(lastApptRows, lastTl); renderNotifBar(); renderNotifDetail(); dayShow(dayBlock); return; }
             var s = ev.target.closest(".tl-slot");
-            if (s) openBookFor(s.getAttribute("data-slot"));
+            if (s && s.getAttribute("data-slot")) openBookFor(s.getAttribute("data-slot"));
           });
           document.addEventListener("keydown", function (ev) {
             if ((ev.key !== "Enter" && ev.key !== " ") || !ev.target.classList || !ev.target.classList.contains("tl-slot")) return;
@@ -6028,6 +6147,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
 
         /* What was written before is kept — load it before the first render */
         loadStores();
+        preloadCovers(); /* FIX9F item 9 — warm the seven covers while the month shows, so a day change never loads cold. */
         renderMonth();
       })();
     </script>
