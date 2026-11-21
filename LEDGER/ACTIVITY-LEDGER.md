@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-21 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-21 08:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -331,6 +331,14 @@ _Last updated: 2026-11-21 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1564 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
+**Task:** Lane 11 Heart verify — t1564 dispatcher reconcile chain verification
+
+**Receipt:** `twelve-lane-receipts/t1564-lane11.md`
+
+**Evidence:** Verified: receipt exists; 5/5 claims re-derived, zero discrepancies, chain rebuilds 15+1=16=rotation queued; prior close verified with byte-exact SHAs (t1562 receipt 9903a6ad... and gap-t1562-lane11.md 6988bb99... both match on-disk sha256sum this tick). Score 9.0. Why not 9.5: named procedural defect — pre-sign-in read ran 30 lines, 5 beyond the 2
+
+### ✅ t1564 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
 **Task:** Heart verify t1564 dispatcher reconcile — CHAIN VERIFIED, 5/5 claims + t1562 closes verified
 
 **Receipt:** `twelve-lane-receipts/t1564-lane11.md`
@@ -643,6 +651,14 @@ _Last updated: 2026-11-21 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1562 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
+**Task:** Lane 11 Heart verify — t1562 dispatcher reconcile chain verification
+
+**Receipt:** `twelve-lane-receipts/t1562-lane11.md`
+
+**Evidence:** Verified: receipt exists (SHA-256 9903a6ad1ef618f6a84240c25ca6e745ec72b1dd76e56ebbec35546455dd1957 — byte-exact match against the SHA pinned in the t1564 receipt); 5/5 claims re-derived, zero discrepancies, t1561 dequeue verified (brief absent from queued, present in claimed/done/, receipt SHA matches), collision count corrected 13->14 with t1504-l
+
+### ✅ t1562 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
 **Task:** Heart verify t1562 dispatcher reconcile — CHAIN VERIFIED, 5/5 claims + t1561 dequeue verified
 
 **Receipt:** `twelve-lane-receipts/t1562-lane11.md`
@@ -698,6 +714,14 @@ _Last updated: 2026-11-21 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1562-lane11.md`
 
 **Evidence:** VERIFIED on live workspace bytes at scoring time: rotation queued=16 exactly (15 gap briefs listed verbatim + brief-t1562-lane11.md); all 15 gap briefs present in brief-queue/ root; 0 exact-name gap receipts in twelve-lane-receipts/; in_flight=[]; stale=18 historical entries, none queued; claimed/ root holds only brief-t1562-lane11.md + done/; 0 re
+
+### ✅ t1561 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Lane 11 Heart verify — t1561 dispatcher reconcile chain verification
+
+**Receipt:** `twelve-lane-receipts/t1561-lane11.md`
+
+**Evidence:** Verified: receipt exists (SHA-256 dff2cc55cd72eed8e2a3ff7fbf2114c937d5450dcec09e21d84c233fe2b5ff30, 7,972 bytes — byte-exact match against the SHA pinned in the t1562 receipt, cross-verified by a later seat); 5/5 claims re-derived, zero discrepancies, 15/15 brief SHAs pinned, gap-queue stall correctly refused (parent-authorship, second-seat bar) wi
 
 ### ✅ t1561 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -759,6 +783,14 @@ _Last updated: 2026-11-21 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1558 — Team 11, Team Naya Scorer (Human Value) — 9.2/10 [VERIFIED]
 
+**Task:** Lane 11 Heart verify — t1558 dispatcher reconcile chain verification
+
+**Receipt:** `twelve-lane-receipts/t1558-lane11.md`
+
+**Evidence:** Verified: receipt exists; 5/5 claims re-derived from live bytes, zero discrepancies, rotation SHA pinned, Q2 carried at claim-time sign-in, collision trap handled precisely (14 same-tick+lane parent receipts explicitly excluded, not counted as gap receipts). Score 9.2. Why not 9.5: verify-only authority — the verdict is a snapshot at its own instan
+
+### ✅ t1558 — Team 11, Team Naya Scorer (Human Value) — 9.2/10 [VERIFIED]
+
 **Task:** Heart verify t1558 dispatcher reconcile — CHAIN VERIFIED, 5/5 claims re-derived
 
 **Receipt:** `twelve-lane-receipts/t1558-lane11.md`
@@ -817,6 +849,14 @@ _Last updated: 2026-11-21 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1556 — Team 11, Team Naya Scorer (Human Value) — 9.2/10 [VERIFIED]
 
+**Task:** Lane 11 Heart verify — t1556 dispatcher reconcile chain verification
+
+**Receipt:** `twelve-lane-receipts/t1556-lane11.md`
+
+**Evidence:** Verified: receipt exists; 5/5 claims re-derived from live bytes, zero discrepancies, 15/15 brief SHAs pinned, Q2 sentence carried at claim-time sign-in (t1550/t1554 lateness defect closed on this run), 3-pass scorecard stable at 9.2. Score 9.2. Why not 9.5: structural gaps not fixable inside the brief — verify-only authority (chain closes only at n
+
+### ✅ t1556 — Team 11, Team Naya Scorer (Human Value) — 9.2/10 [VERIFIED]
+
 **Task:** Heart verify t1556 dispatcher reconcile — CHAIN VERIFIED, 5/5 claims re-derived
 
 **Receipt:** `twelve-lane-receipts/t1556-lane11.md`
@@ -872,6 +912,14 @@ _Last updated: 2026-11-21 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1556-lane11.md`
 
 **Evidence:** VERIFIED on live workspace bytes at scoring time: rotation SHA-256 c1e5f6f9106005976db3853f17e0d4b720af80e71f115738a17dd73c30293170 MATCH receipt exactly; tick_count 1556, lane_last_dispatched 11=t1556, in_flight []; queued 16 = 15 gap briefs listed verbatim + own claim brief-t1556-lane11.md; all 15 gap-brief SHA-256 values recomputed MATCH receipt
+
+### ✅ t1554 — Team 11, Team Naya Scorer (Human Value) — 9.2/10 [VERIFIED]
+
+**Task:** Lane 11 Heart verify — t1554 dispatcher reconcile chain verification
+
+**Receipt:** `twelve-lane-receipts/t1554-lane11.md`
+
+**Evidence:** Verified: receipt exists and is coherent; all 5 dispatcher reconcile claims re-derived from live bytes with zero discrepancies, 15/15 gap briefs on disk, 0 exact-name gap receipts, in_flight empty, claimed/ holds only the signed-in own claim, chain rebuilds 15+1=16=rotation queued; SHAs pinned at check time. Score 9.2. Why not 9.5: verify-only auth
 
 ### ✅ t1554 — Team 11, Team Naya Scorer (Human Value) — 9.2/10 [VERIFIED]
 
@@ -57722,6 +57770,12 @@ _Last updated: 2026-11-21 08:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ 20261121-0013 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall watch receipt: 31/31 queued briefs refused, stall persists unchanged (16th consecutive hourly stall receipt)
+
+**Evidence:** Verified: receipt exists; claim-sweep log claim-sweep-20261121-0013.log exists (2,313 bytes) with 31 per-brief EXIT lines — 29 x exit 7, 2 x exit 2, 0 claimed, totals match receipt; both exit-2 routing-prose bars verified verbatim in the briefs (t0547 'by a non-Clarity seat', t0172 'only by a seat distinct from the strip executor and the prior coun
 
 ### ✅ 20261120-2308 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
