@@ -4,7 +4,7 @@
 
 **NN-20261120-big-white-line-main-area · Naya Note · 2026-11-20 ~21:58–22:01 MST**
 
-*Paired Smart Note: SN-pending — The Big White Line Comes Out (takes the next free number at filing)*
+*Paired Smart Note: SN-4448 — The Big White Line Comes Out*
 
 **Category:** Design — a line his eye can see comes out, named or not
 
