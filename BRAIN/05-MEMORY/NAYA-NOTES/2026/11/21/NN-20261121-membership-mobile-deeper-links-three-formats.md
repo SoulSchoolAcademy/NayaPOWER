@@ -4,7 +4,7 @@
 
 **NN-20261121-membership-mobile-deeper-links-three-formats · Naya Note · 2026-11-21 ~10:01 MST**
 
-*Paired Smart Note: SN-pending — Membership — Mobile, Deeper Links, Three Formats (takes the next free number at filing)*
+*Paired Smart Note: SN-4503 — Membership — Mobile, Deeper Links, Three Formats*
 
 **Category:** LAW — membership design, settled: mobile cover-top, login through the portal, deeper links below the frame, three formats, smart access behind a paywall, hub and branches
 
