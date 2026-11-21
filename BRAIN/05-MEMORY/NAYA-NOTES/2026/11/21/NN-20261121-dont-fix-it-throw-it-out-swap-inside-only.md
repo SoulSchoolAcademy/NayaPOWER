@@ -4,7 +4,7 @@
 
 **NN-20261121-dont-fix-it-throw-it-out-swap-inside-only · Naya Note · 2026-11-21 ~10:48–10:49 MST**
 
-*Paired Smart Note: SN-pending — Don't Fix It, Throw It Out — Swap Inside Only (takes the next free number at filing)*
+*Paired Smart Note: SN-4511 — Don't Fix It, Throw It Out — Swap Inside Only*
 
 **Category:** LAW — never start a new page; take the frame you already have, change ONLY the inside; a build his eye rejects gets thrown out, not fixed
 
