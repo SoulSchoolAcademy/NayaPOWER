@@ -2000,7 +2000,7 @@ body.msg-open{overflow:hidden;}
 @media (prefers-reduced-motion: reduce) {
   /* FOLLOW-UP 12 (FAIL 1): the tile orb is NOT in this kill list - its breathe is the motion the eye measures. */
   .star-rating button.on, .action[data-kind="love"].on .love-heart { animation: none !important; }
-  .notif-tile::after, .nav-btn .ico::after, .nav-sub .ico::after, .rail-toggle::after, .eco-bb-ico::after, .fc-plusitem .fc-pi-ico::after, .ib-card-orb::before, .intel-board .rank-value .star-rating button::after, .intel-board .rank-intel .star-rating button::after, .intel-board .rate-pearl::after { animation: none !important; } /* SNB-FIX1F items 4/5/7/8: the new inside flows are named in the kill list — under reduced motion they stop, like everything else on this list. */
+  .notif-tile::after, .nav-btn .ico::after, .nav-sub .ico::after, .rail-toggle::after, .eco-bb-ico::after, .fc-plusitem .fc-pi-ico::after, .ib-card-orb::before, .intel-board .rank-value .star-rating button::after, .intel-board .rank-intel .star-rating button::after, .intel-board .rate-pearl::after, .intel-board .rate-pearl::before { animation: none !important; } /* SNB-FIX1F items 4/5/7/8: the new inside flows are named in the kill list — under reduced motion they stop, like everything else on this list. */
 }
 .add-intel {
   margin-top: 16px; padding: 24px 18px; /* SNB-FIX1E item 9: breathing room from the bar edge — 24px top/bottom (was 18px); sides stay 18px so the upper-bound row still fits (effective side breathing ~25px with the centred row). */
@@ -2152,8 +2152,8 @@ body.msg-open{overflow:hidden;}
 .intel-board .layer-jewel-wrap { display: inline-block; }
 .intel-board .layer-jewel-wrap::after, .intel-board .rate-pearl::after, .intel-board .intel-avatar::after { content: ""; position: absolute; inset: -5px; border-radius: 50%; background: conic-gradient(from 0deg, transparent 0deg 200deg, rgba(255,255,255,.90) 245deg, var(--lc, #ffffff) 290deg, rgba(255,255,255,.90) 320deg, transparent 360deg), conic-gradient(rgba(255,255,255,.14) 0deg, rgba(255,255,255,.14) 360deg); -webkit-mask: radial-gradient(closest-side, transparent 80%, #000 88%); mask: radial-gradient(closest-side, transparent 80%, #000 88%); animation: snFlow 60s linear infinite; pointer-events: none; } /* SNB-FIX1C item 2: mask geometry fixed (was farthest-corner — band outside the box, ring invisible) + 75° bright arc over a faint full ring, same 60s flow. Hosts are rendered visible elements: layer jewels beside every layer head, the RATE pearl, contribution avatars when present. */
 /* Item 4 — rating: white pearl orb + star balls twice as big; rated lit bright, unrated dim */
-.intel-board .rate-pearl { width: 46px; height: 46px; display: inline-grid; place-items: center; flex: none; filter: drop-shadow(0 0 10px rgba(255,255,255,.55)); }
-.intel-board .rate-pearl svg { width: 46px; height: 46px; display: block; }
+  .intel-board .rate-pearl { width: 56px; height: 56px; /* SNB-FIX1G item 2: rate orb 46px -> 56px, one unique ball, white. */
+  .intel-board .rate-pearl svg { width: 56px; height: 56px; display: block; } /* SNB-FIX1G item 2: svg matches the 56px orb. */
 .intel-board .rate-head { display: flex; align-items: center; gap: 12px; }
 .intel-board .rate-head b { animation: snGlowPulse 7s ease-in-out infinite; }
 .intel-board .star-rating button { width: 44px; height: 44px; font-size: 26px; line-height: 1; border-radius: 50%; display: inline-grid; place-items: center; padding: 0; }
@@ -2169,7 +2169,7 @@ body.msg-open{overflow:hidden;}
 .intel-board .add-intel { margin-left: auto; margin-right: auto; max-width: 600px; }
 .intel-board .add-intel-row input[type="text"] { border: 2px solid #ffffff; box-shadow: 0 0 0 1px rgba(255,255,255,.5), 0 0 18px rgba(255,255,255,.45); }
 .intel-board .add-intel-row input[type="text"]:hover, .intel-board .add-intel-row input[type="text"]:focus { border-color: #8e24aa; box-shadow: 0 0 0 2px #8e24aa, 0 0 24px rgba(142,36,170,.65); outline: none; }
-.intel-board .add-intel-types { display: flex; gap: 16px; margin-bottom: 24px; } /* SNB-FIX1F item 1: breathing room UNDERNEATH the four buttons (was 12px via the generic rule — they crashed into the input row below). 24px, multiples of 8. The 16px gaps between the pills stay. */
+  .intel-board .add-intel-types { display: flex; gap: 24px; margin-top: 24px; margin-bottom: 24px; } /* SNB-FIX1G item 3: input->row 0 -> 24px, button->button 16px -> 24px (fix-1f's 24px gap still read as colliding to his eye — the collision was the 0px input->row gap). */
 .intel-board .add-intel-types .intel-type { flex: 1 1 0; justify-content: center; }
 
 /* ——— SNB-FIX1C 2026-11-20 (captain's cloud-browser eye walk 11:29–11:39 MST — render requirements) ——— */
@@ -2185,7 +2185,7 @@ body.msg-open{overflow:hidden;}
 .intel-board .add-intel { max-width: 1024px; }
 @media (min-width: 701px) {
   .intel-board .add-intel-types { flex-wrap: nowrap; }
-  .intel-board .add-intel-types .intel-type { white-space: nowrap; padding: 12px 12px; }
+  .intel-board .add-intel-types .intel-type { white-space: nowrap; padding: 12px 8px; } /* SNB-FIX1G item 3: side padding 12px -> 8px buys the 24px of wider gaps (row upper bound 1144 vs narrowed panel 1151). */
 }
 
 /* ——— SNB-FIX1D 2026-11-20 (captain's cloud-browser eye walk, fix-1c GOES BACK) ——— */
@@ -2313,21 +2313,67 @@ body.msg-open{overflow:hidden;}
    untouched. */
 .intel-board .rate-pearl::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: 50%; background: conic-gradient(from 0deg, transparent 0deg, transparent 250deg, #8e24aa 300deg, rgba(255,255,255,.95) 330deg, transparent 360deg); -webkit-mask: radial-gradient(closest-side, transparent 72%, #000 84%); mask: radial-gradient(closest-side, transparent 72%, #000 84%); pointer-events: none; } /* SNB-FIX1F items 5+8: the flow lives INSIDE the one ball. */
 /* Items 4 + 7 — THE STARS' INSIDE FLOW, GUARDED. Each star button's ::after
-   carries the harvested DM conic comet INSIDE the ball (inset 0 — the
+   carries the DM initial-orb flow (.fc-pick-av::after, L823) INSIDE the ball (inset -2px, clipped by overflow:hidden — SNB-FIX1G item 1 SUPERSEDES the fix-1f comet: Shawn 2026-11-20 ~18:09 MST, the comet did not read as flowing to his eye; the
    button's ::before stays the top-left facet, L1971, untouched; the FIX2 row
    ring on .star-rating::before, L2346, stays — it rings the ROW, this flows
-   inside each STAR). VALUE: royal-purple comet, CW 60s. INTELLIGENCE: white
-   comet, CCW 60s — the track distinction holds (VALUE purple flow + bright
-   white star centre, INTELLIGENCE white flow + purple star centre). Guarded
+   inside each STAR). VALUE: white sheen segment, osOrbFlow 7s. INTELLIGENCE: purple
+   sheen segment, osOrbFlow 7s — the track distinction holds (VALUE purple orb + white
+   star, INTELLIGENCE white orb + purple star; both flows one direction, 7s, the DM's
+   own behaviour, no alternation). Guarded
    the fix-1d way: inside @media (prefers-reduced-motion: no-preference)
    with !important, and named in the reduce kill list (L2003), so no later
    rule can freeze them the way the orb was once frozen. */
 @media (prefers-reduced-motion: no-preference) {
-  .intel-board .rank-value .star-rating button::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: 50%; pointer-events: none; border: 1px solid color-mix(in srgb, #8e24aa 35%, transparent); background: conic-gradient(from 0deg, transparent 0deg, transparent 250deg, #8e24aa 300deg, rgba(255,255,255,.95) 330deg, transparent 360deg); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask-composite: exclude; padding: 2px; animation: orb-spin 60s linear infinite, naya-breathe 6s ease-in-out infinite alternate !important; } /* SNB-FIX1F item 4: VALUE star, purple comet inside, CW 60s — DM harvest, inset 0. */
-  .intel-board .rank-intel .star-rating button::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: 50%; pointer-events: none; border: 1px solid rgba(255,255,255,.35); background: conic-gradient(from 0deg, transparent 0deg, transparent 250deg, #ffffff 300deg, rgba(255,255,255,.95) 330deg, transparent 360deg); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask-composite: exclude; padding: 2px; animation: orb-spin-rev 60s linear infinite, naya-breathe 6s ease-in-out infinite alternate !important; } /* SNB-FIX1F items 4+7: INTELLIGENCE star, white comet inside, CCW 60s — the white bulb's flow. */
+  .intel-board .rank-value .star-rating button::after { content: ""; position: absolute; inset: -2px; z-index: 1; border-radius: 50%; pointer-events: none; background: conic-gradient(from 0deg, transparent 0deg, rgba(255,255,255,.35) 40deg, transparent 90deg); animation: osOrbFlow 7s linear infinite !important; } /* SNB-FIX1G item 1: VALUE star — the DM initial-orb flow (.fc-pick-av::after, L823) WHOLE: white sheen segment, osOrbFlow 7s, inset -2px clipped inside by overflow:hidden. DM does not alternate — one direction, 7s, verbatim. SUPERSEDES the fix-1f conic comet (Shawn 2026-11-20 ~18:09 MST: the comet did not read as flowing to his eye). */
+  .intel-board .rank-intel .star-rating button::after { content: ""; position: absolute; inset: -2px; z-index: 1; border-radius: 50%; pointer-events: none; background: conic-gradient(from 0deg, transparent 0deg, rgba(142,36,170,.35) 40deg, transparent 90deg); animation: osOrbFlow 7s linear infinite !important; } /* SNB-FIX1G item 1: INTELLIGENCE star — the DM flow whole, with ONE colour substitution: the sheen segment is royal purple rgba(142,36,170,.35) (same shape/alpha as the DM's white) because the DM's white sheen is invisible on a white orb. */
   .intel-board .rate-pearl::after { animation: orb-spin 60s linear infinite, naya-breathe 6s ease-in-out infinite alternate !important; } /* SNB-FIX1F item 5: the orb flows, CW 60s, same harvested speed as the DM rail. */
 }
 /* ——— END SNB-FIX1F ——— */
+
+/* ========== SNB-FIX1G 2026-11-20 — Shawn's list, fix-1g (supersedes the
+   fix-1f star comet — see item 1; everything else from fix-1f stands) ========== */
+/* ITEM 1 — STARS = THE DM ELEMENT, WHOLE. The star buttons already carried
+   the DM orb's colours per row (L2160 purple orb/white star, L2162 white
+   orb/purple star); these rules give them the DM initial-orb's construction
+   whole — background, border, box-shadow, overflow:hidden — harvested from
+   .fc-pick-av (L822), with --cc per row. Kept from L2160/L2162: the star
+   glyph at 20px, its colour per row, the text-shadow, the .42 dimming +
+   saturate(.7) for unrated stars, and the .on lit rules (L2161/L2163 set
+   only opacity/filter/box-shadow, no background, so the rated state still
+   applies over the DM background). The flow itself lives in the FIX1F
+   no-preference block (replaced in place, L2326/L2327): the DM ::after,
+   osOrbFlow 7s, one direction, no alternation — the DM's own behaviour,
+   verbatim (Laws §1 12s ambient floor tension: Shawn's newer word governs
+   per §0). One colour substitution, forced by the white orb: the
+   INTELLIGENCE flow's sheen segment is royal purple rgba(142,36,170,.35),
+   same shape/alpha as the DM's white — the DM's white sheen is invisible
+   on a white orb. The ::before top-left facet (L1971) stays, so the DM
+   background's own top sheen layers under it — a slightly brighter
+   top-left than the DM orb alone; named, not hidden. */
+.intel-board .rank-value .star-rating button { --cc: #8e24aa; background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.35) 0%, rgba(255,255,255,0) 42%), radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--cc,#8e24aa) 55%, #101014) 0%, color-mix(in srgb, var(--cc,#8e24aa) 28%, #060607) 78%); border: 2px solid color-mix(in srgb, var(--cc,#8e24aa) 80%, white); box-shadow: 0 0 24px -4px var(--cc,#8e24aa), inset 0 2px 3px rgba(255,255,255,.25), inset 0 -6px 12px rgba(0,0,0,.45), 0 8px 20px rgba(0,0,0,.55); overflow: hidden; }
+.intel-board .rank-intel .star-rating button { --cc: #ffffff; background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.35) 0%, rgba(255,255,255,0) 42%), radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--cc,#8e24aa) 55%, #101014) 0%, color-mix(in srgb, var(--cc,#8e24aa) 28%, #060607) 78%); border: 2px solid color-mix(in srgb, var(--cc,#8e24aa) 80%, white); box-shadow: 0 0 24px -4px var(--cc,#8e24aa), inset 0 2px 3px rgba(255,255,255,.25), inset 0 -6px 12px rgba(0,0,0,.45), 0 8px 20px rgba(0,0,0,.55); overflow: hidden; }
+/* ITEM 4 — BOARD FIT, IN A TAD, UP A TAD. margin -8px 8px 0: up 8px, in 8px
+   each side (16px narrower). Chain: boardContent 1203->1187, frameBody
+   1051->1035, panelInner 1167->1151; button-row upper bound 1144 fits with
+   7px, rate row 840 fits with 195px. Assumption, named: the feed card gap
+   above the board is >=8px, so the -8px top margin cannot overlap. */
+.intel-board { margin: -8px 8px 0; }
+/* ITEM 5 — NUTSHELL LIGHT, DOWN JUST A LITTLE. Override, nutshell only —
+   the layer-body glow (L2144/L2146) is untouched. Same four layers, every
+   white alpha 20% down: .80->.64, .45->.36, .22->.18. Equal specificity to
+   L2144/L2146, later in the file, so it wins for the nutshell only. */
+.intel-board .ib-nutshell, .intel-board .ib-nutshell p { text-shadow: 0 0 6px rgba(255,255,255,.64), 0 0 16px rgba(255,255,255,.36), 0 0 32px rgba(255,255,255,.18), 0 1px 2px rgba(0,0,0,.8); }
+@media (prefers-reduced-motion: no-preference) {
+  /* ITEM 2 — RATE ORB, OUTSIDE FLOW TOO. ::before harvested from the
+     .notif-tile outside-ring construction (L379): inset -6px, purple comet
+     + white highlight, ring mask, orb-spin 60s, z-index -1 so it paints
+     behind the ball but above the board (the pearl's drop-shadow filter
+     makes its own stacking context). Inside flow (fix-1f L2314/L2328)
+     stands; the ball stays one ball, not ring + circle. Named in the
+     reduce kill list (L2003), like the other flows. */
+  .intel-board .rate-pearl::before { content: ""; position: absolute; inset: -6px; z-index: -1; border-radius: 50%; pointer-events: none; border: 1px solid color-mix(in srgb, #8e24aa 35%, transparent); background: conic-gradient(from 0deg, transparent 0deg, transparent 250deg, #8e24aa 300deg, rgba(255,255,255,.95) 330deg, transparent 360deg); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask-composite: exclude; padding: 2px; animation: orb-spin 60s linear infinite !important; }
+}
+/* ——— END SNB-FIX1G ——— */
 
 
 
@@ -5568,7 +5614,7 @@ window.BoardActions = (() => {
     const store = read();
     const defs = [
       ['\uFF0B CREATE WORLD', 'create-world', 'Create a smart world from this intelligence'],
-      ['\u2605 FAVORITE', 'favorite', 'Mark as favorite'],
+      ['\u2605 PIN IT', 'favorite', 'Pin it'], /* SNB-FIX1G item 8: the Favorite ACTION becomes Pin it (Shawn, corrected 2026-11-20 ~18:18 MST — "Pinned Worlds" was the captain's invention, not his word). The middle 'favorite' is the data-kind key; logic depends on it. */
       ['SAVE', 'save', 'Save this intelligence'],
     ];
     for (const [label, kind, aria] of defs) {
@@ -5590,7 +5636,7 @@ window.BoardActions = (() => {
               if (board) {
                 const bodyText = board.textContent || '';
                 // Clean up: remove button labels, get main content
-                text = bodyText.replace(/NAYA VOICE|CREATE WORLD|FAVORITE|SAVE/g, '').trim().substring(0, 2000); /* CREATE WORLD 00:05Z: the strip must match the new label. */
+                text = bodyText.replace(/NAYA VOICE|CREATE WORLD|FAVORITE|PIN IT|SAVE/g, '').trim().substring(0, 2000); /* CREATE WORLD 00:05Z: the strip must match the new label. */
               }
               // The whole board = its sections in order: nutshell first,
               // then each layer (name + body). playSections chunks and
@@ -5692,7 +5738,7 @@ window.BoardActions = (() => {
         }
         const next = !s[key]; s[key] = next; write(s);
         if (typeof ActivityLog !== 'undefined' && next) {
-          const actLabel = kind === 'favorite' ? 'Favorited' : 'Saved';
+          const actLabel = kind === 'favorite' ? 'Pinned' : 'Saved';
           const actColor = kind === 'favorite' ? '#d4a017' : '#0f52ba';
           const actPath = kind === 'favorite'
             ? '<path d="M12 3l2.7 5.8 6.3.8-4.6 4.3 1.2 6.1-5.6-3.1-5.6 3.1 1.2-6.1L3 9.6l6.3-.8z"/>'
@@ -5955,9 +6001,9 @@ window.BoardActions = (() => {
         return row;
       }
       rateSec = el('div', 'rate-section');
-      rateSec.setAttribute('aria-label', 'Rate the intelligence');
+      rateSec.setAttribute('aria-label', 'Rate this intel');
       const rateHead = el('div', 'rate-head');
-      rateHead.innerHTML = '<span class="rate-pearl" aria-hidden="true"><svg viewBox="0 0 48 48"><defs><radialGradient id="ratePearl-' + String(boardId || 'x').replace(/[^a-z0-9]+/gi, '-') + '" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#ffffff"/><stop offset="45%" stop-color="#f2f2f7"/><stop offset="100%" stop-color="#c9c9d6"/></radialGradient></defs><circle cx="24" cy="24" r="21" fill="url(#ratePearl-' + String(boardId || 'x').replace(/[^a-z0-9]+/gi, '-') + ')" stroke="#ffffff" stroke-width="1.5"/><path d="M24 15 L30 24 L24 33 L18 24 Z" fill="#8e24aa" stroke="#ffffff" stroke-width="1"/></svg></span><b>RATE THE INTELLIGENCE</b>'; /* SNB-FIX1 item 4: white pearl orb (spinning white light, little diamond dead center) replaces the dead diamond */
+      rateHead.innerHTML = '<span class="rate-pearl" aria-hidden="true"><svg viewBox="0 0 48 48"><defs><radialGradient id="ratePearl-' + String(boardId || 'x').replace(/[^a-z0-9]+/gi, '-') + '" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#ffffff"/><stop offset="45%" stop-color="#f2f2f7"/><stop offset="100%" stop-color="#c9c9d6"/></radialGradient></defs><circle cx="24" cy="24" r="21" fill="url(#ratePearl-' + String(boardId || 'x').replace(/[^a-z0-9]+/gi, '-') + ')" stroke="#ffffff" stroke-width="1.5"/><path d="M24 15 L30 24 L24 33 L18 24 Z" fill="#8e24aa" stroke="#ffffff" stroke-width="1"/></svg></span><b>RATE THIS INTEL</b>'; /* SNB-FIX1 item 4: white pearl orb (spinning white light, little diamond dead center) replaces the dead diamond */
       rateSec.appendChild(rateHead);
       rateSec.appendChild(rankRow('value'));
       rateSec.appendChild(rankRow('intel'));
@@ -6287,8 +6333,8 @@ function HubView(params) {
     { label: 'World Connections', icon: 'tunnel', color: '#6d28d9', href: 'https://nayanet.app/rooms/connections' } /* EYE-NOTES-FIX §3.1: violet — the red/magenta pair read as one purple */
   ];
   var HUB_AREAS = [
-    { id: 'hub',       label: 'Hub',           icon: 'orbit', color: '#a21caf', href: 'https://nayanet.app/hub',       countKey: 'activity', glyphCls: 'glyph-xl' },
-    { id: 'dashboard', label: 'Dashboard',     icon: 'report', color: '#8e24aa', href: 'https://nayanet.app/dashboard', countKey: null, glyphCls: 'glyph-xl' }, /* HUB FEED 2026-11-17 (A4 eye): purple per Shawn's chakra order 2026-11-20 (supersedes the A4 eye's green, chosen then because violet sat next to Hub magenta and read as the same color); 'report' bars replace the 'gauge' arc, which read as @ */
+    { id: 'hub',       label: 'Hub',           icon: 'orbit', color: '#c2189b', href: 'https://nayanet.app/hub',       countKey: 'activity', glyphCls: 'glyph-xl' },
+    { id: 'dashboard', label: 'Dashboard',     icon: 'report', color: '#6a1b9a', href: 'https://nayanet.app/dashboard', countKey: null, glyphCls: 'glyph-xl' }, /* HUB FEED 2026-11-17 (A4 eye): purple per Shawn's chakra order 2026-11-20 (supersedes the A4 eye's green, chosen then because violet sat next to Hub magenta and read as the same color); 'report' bars replace the 'gauge' arc, which read as @ */
     { id: 'personal',  label: 'Personal',      icon: 'heart', color: '#0f52ba', href: 'https://nayanet.app/personal',  countKey: null, subtab: true, subs: PERSONAL_SUBS, glyphCls: 'glyph-xl' },
     { id: 'business',  label: 'Business / Work', icon: 'brief', color: '#07925f', href: 'https://nayanet.app/business',  countKey: null, subtab: true, subs: WORK_SUBS, glyphCls: 'glyph-xl' }, /* HUB FEED 2026-11-17 (A4 eye): green per Shawn's chakra order 2026-11-20 (supersedes the A4 eye's gold, chosen then because blue sat next to Personal blue and read as the same color) */
     { id: 'space',     label: 'Your World',    icon: 'spaces', color: '#d4a017', href: 'https://nayanet.app/space',     countKey: 'spaces', subtab: true, subs: WORLD_SUBS, glyphCls: 'glyph-xl' }, /* EYE-NOTES-FIX §3.5: glyph-xl — the cube read as a globe at 0.283 scale */
@@ -6419,7 +6465,7 @@ function HubView(params) {
      EYE-NOTES-FIX §3.5: Your Reports wears 'ledger' (the record book) so
      Dashboard can wear 'report' (bars); Smart Growth wears 'check' (a join
      confirmed) — the 'gauge' arc and the 'users' heads both read as @. */
-  const SIDEBAR_FLOW_7_11 = { today: '#c62828', reports: '#a21caf', growth: '#8e24aa', library: '#0f52ba', connections: '#07925f' }; /* SNB-FIX1E item 10 (Shawn's chakra order 2026-11-20, top to bottom): Intel Today red, Your Reports crown magenta, Smart Growth purple, Intelligent Library blue, Your Connections green. Repeats are non-adjacent (magenta 1st+8th, purple 2nd+9th, blue 3rd+10th, green 4th+11th) so the never-same-twice flow holds. */ /* AMENDMENT #3: rows 7–11 now — the Factory's magenta step leaves with it; red → violet is a widened step, the order kept. HUB FEED 2026-11-17 (A4 eye): Today is sapphire now — orange sat next to Reports red. */
+  const SIDEBAR_FLOW_7_11 = { today: '#c62828', reports: '#c2189b', growth: '#6a1b9a', library: '#0f52ba', connections: '#07925f' } /* SNB-FIX1G item 6: Your Reports magenta #a21caf -> #c2189b, Smart Growth purple #8e24aa -> #6a1b9a — evidently different at a glance. Laws §3.1 tension: one hex per hue locked; Shawn's newer word (make them evidently different) governs per §0. Order unchanged. */; /* SNB-FIX1E item 10 (Shawn's chakra order 2026-11-20, top to bottom): Intel Today red, Your Reports crown magenta, Smart Growth purple, Intelligent Library blue, Your Connections green. Repeats are non-adjacent (magenta 1st+8th, purple 2nd+9th, blue 3rd+10th, green 4th+11th) so the never-same-twice flow holds. */ /* AMENDMENT #3: rows 7–11 now — the Factory's magenta step leaves with it; red → violet is a widened step, the order kept. HUB FEED 2026-11-17 (A4 eye): Today is sapphire now — orange sat next to Reports red. */
   const SIDEBAR_ICON_7_11 = { today: 'feed', reports: 'ledger', growth: 'check' };
   ['today', 'reports', 'growth', 'library', 'connections'] /* AMENDMENT #3: Smart Factory leaves the left — it leads the RIGHT rail now */
     .map(id => R.ROOMS.find(r => r.id === id)).filter(Boolean).forEach(r => {
@@ -6548,7 +6594,7 @@ function HubView(params) {
     var menu = document.getElementById('hubMenuChoices');
     if (!menu) return;
     if (!menu.hidden) { menu.hidden = true; return; }
-    window.hubClosePlusMenus();
+    if (window.hubClosePlusMenus) window.hubClosePlusMenus(); /* SNB-FIX1G item 7: guarded — an undefined closer threw here and the menu never opened. */
     var r = menuBtn.getBoundingClientRect();
     menu.style.left = Math.max(120, Math.min(window.innerWidth - 120, r.left + r.width / 2)) + 'px';
     menu.style.top = (r.bottom + 10) + 'px';
@@ -6583,8 +6629,8 @@ function HubView(params) {
           var api = window.NayaChassis || {};
           var shellEl = document.querySelector('.shell');
           var leftOpen = shellEl && (shellEl.classList.contains('drawer-open') || (window.innerWidth >= 1440 && !shellEl.classList.contains('rail-collapsed')));
-          closeMsgPanel(); /* never both at once — the messenger panel closes when the rail opens */
-          if (!leftOpen && api.openDrawer) api.openDrawer(); /* OPEN, not toggle: an open rail stays open */
+          (window.NayaChassis.closeMsgPanel || closeMsgPanel)(); /* never both at once — the messenger panel closes when the rail opens; resolved live, never the first build's closure (SNB-FIX1G item 7) */
+          if (!leftOpen) { if (api.openDrawer) api.openDrawer(); else if (shellEl) { shellEl.classList.add('drawer-open'); shellEl.classList.remove('rail-collapsed'); document.body.classList.add('drawer-open'); } } /* SNB-FIX1G item 7: OPEN, not toggle — an open rail stays open; fallback opens the live shell inline if NayaChassis was never (re)published, so the choice never silently does nothing. */
           window._nayaMenuState = 'sidebar';
           var active = document.querySelector('.lens-tab.active');
           var lens = active && active.classList.contains('lens-personal') ? 'personal' : (active && active.classList.contains('lens-activity') ? 'activity' : 'collective');
@@ -8310,22 +8356,24 @@ document.addEventListener('click', function(e){
 
   function openDrawer() {
     closeMsgPanel(); /* never both at once — any rail-open path closes the messenger panel */
-    shell.classList.add('drawer-open');
+    var sh = document.querySelector('.shell') || shell; /* SNB-FIX1G item 7: LIVE shell — openDrawer closed over its build's shell while openRightRail/closeRightRail (fix-1e item 12) already resolve the shell live, because the router rebuilds HubView and the chassis opener can belong to a replaced build (the detached-closure failure the Escape fix names at L8395). The opener mutates the shell that is in the document, never a detached one. */
+    sh.classList.add('drawer-open');
     /* 1440 fix (checker drawer note): at desktop widths the drawer-open rule
        lives only in the mobile media query, and rail-collapsed (the default)
        kept the rail translated off-screen — the rooms-plus tap did nothing
        at 1440. Un-collapsing here reveals the rail on every width; closing
        restores the collapsed default unless the citizen chose it visible. */
-    shell.classList.remove('rail-collapsed');
+    sh.classList.remove('rail-collapsed');
     document.body.classList.add('drawer-open');
     syncMenuBtn(); /* AMENDMENT #3: one sync for every close path */
-    const f = nav.querySelector('.nav-btn');
+    const f = sh.querySelector('.nav-btn');
     if (f) f.focus();
   }
   function closeDrawer() {
-    shell.classList.remove('drawer-open');
+    var sh = document.querySelector('.shell') || shell; /* SNB-FIX1G item 7: live shell, same as openDrawer. */
+    sh.classList.remove('drawer-open');
     document.body.classList.remove('drawer-open');
-    try { if (localStorage.getItem('naya.rail-collapsed') !== '0') shell.classList.add('rail-collapsed'); } catch (e) { shell.classList.add('rail-collapsed'); }
+    try { if (localStorage.getItem('naya.rail-collapsed') !== '0') sh.classList.add('rail-collapsed'); } catch (e) { sh.classList.add('rail-collapsed'); }
     syncMenuBtn(); /* AMENDMENT #3: synced AFTER the classes settle — the label reads the end state, never the mid-state */
   }
   /* AMENDMENT #3 2026-11-17 20:29Z (the left control, mirroring §3.2): ONE
@@ -8341,9 +8389,11 @@ document.addEventListener('click', function(e){
      three-bars reopens it from closed; what this fix guarantees is that
      the label and state are TRUE in every state, on either side. */
   function syncMenuBtn() {
-    const leftOpen = shell.classList.contains('drawer-open') || (window.innerWidth >= 1440 && !shell.classList.contains('rail-collapsed'));
-    menuBtn.setAttribute('aria-expanded', leftOpen ? 'true' : 'false');
-    menuBtn.setAttribute('aria-label', leftOpen ? 'Hide sidebar' : 'Menu — sidebar, smart messenger, or neither');
+    var sh = document.querySelector('.shell') || shell; /* SNB-FIX1G item 7: live shell + live menu button — syncMenuBtn closed over its build's shell and menuBtn; after a rebuild it wrote aria state onto a detached button while the visible one stayed stale. The live .rail-toggle is the selector the Escape fix already uses (L8410). */
+    var mb = sh.querySelector('.rail-toggle') || menuBtn;
+    const leftOpen = sh.classList.contains('drawer-open') || (window.innerWidth >= 1440 && !sh.classList.contains('rail-collapsed'));
+    mb.setAttribute('aria-expanded', leftOpen ? 'true' : 'false');
+    mb.setAttribute('aria-label', leftOpen ? 'Hide sidebar' : 'Menu — sidebar, smart messenger, or neither');
   }
   /* HUB FEED FIX2 2026-11-18 (D5): syncRailBtn is gone with railBtn — there
      is no second control left to keep true. */
@@ -9051,7 +9101,7 @@ window.NayaJewels = (() => {
         narrative: 'A perfect score. This sets the bar — the system compares all future rooms against this standard.',
         meta: 'you · ★★★★★', ts: Date.now() - 5*3600000, color: '#d4a017',
         iconPath: '<path d="M12 3l2.7 5.8 6.3.8-4.6 4.3 1.2 6.1-5.6-3.1-5.6 3.1 1.2-6.1L3 9.6l6.3-.8z"/>' },
-      { type: 'favorite', headline: 'Favorited "Naya Design Contract v1.1"',
+      { type: 'favorite', headline: 'Pinned "Naya Design Contract v1.1"',
         narrative: 'Pinned to your favorites. Quick access from anywhere — this is your canonical reference.',
         meta: 'you · personal', ts: Date.now() - 6*3600000, color: '#d4a017',
         iconPath: '<path d="M6 3h12v18l-6-4-6 4z"/>' },
@@ -11079,7 +11129,7 @@ window.HubView = HubView;
             card.title = 'Open this note in your Smart Feed';
             card.innerHTML = '<b>' + K.safe((ref && ref.title) || en.title || 'Saved intelligence') + '</b>' +
               '<div class="why">' + K.safe(ref ? 'Smart Note ' + String(ref.id) + ' — a canonical reference, not a copy.' : 'Saved from your Smart Feed on this device.') + '</div>' +
-              '<div class="meta-row"><span>' + K.safe(en.kind === 'favorite' ? '★ FAVORITE' : 'SAVED') + '</span>' +
+              '<div class="meta-row"><span>' + K.safe(en.kind === 'favorite' ? '★ PINNED' : 'SAVED') + '</span>' +
               (en.category ? '<span>' + K.safe(en.category) + '</span>' : '') +
               (en.savedAt ? '<span>' + K.safe(new Date(en.savedAt).toLocaleDateString()) + '</span>' : '') + '</div>';
             const rm = el('button', 'saved-remove', '✕');
