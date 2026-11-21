@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-21 21:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-21 22:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -20491,6 +20491,12 @@ _Last updated: 2026-11-21 21:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified shared-schema-spec-v0.2.md sha256 matches the receipt pin; D1-D4 applied per the t0677 review, v0.1 sealed unchanged. Clears 9.5 — why not 10: single seat, no second-seat check of the delta application.
 
+### ✅ t0677-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat review, SMARTBLOCKS shared-schema-spec-v0.1 — AMEND-AND-REQUEUE (4 deltas)
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: review file retrieval/smartblocks/review-t0677-lane5.md sha256 c39d50f6... EXACT match; provenance-marker-spec-v1.md pin 0eae9d32... EXACT match at auto-retrieval/ (receipt named retrieval/smartblocks/ path — file moved, pin true). NOT PHANTOM. The review's load-bearin
+
 ### ✅ t0677 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** Second-seat review, SMARTBLOCKS shared-schema-spec-v0.1 - AMEND-AND-REQUEUE
@@ -20560,6 +20566,12 @@ _Last updated: 2026-11-21 21:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0677-lane4.md`
 
 **Evidence:** VERIFIED: all 6 cited artifacts exist on disk and sha256 prefixes match receipt claims (instrument b725a5a1..., predictions ce92e6ed..., results be2d3bd5..., dryfire log 3112ddc1..., seal 86d7656d..., verdict 0a75e3a7...). Pins re-derived at action time per receipt. Pre-sealed predictions, determinism predictions==results PASS, VOID verdict from ru
+
+### ✅ t0677-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** Independent falsification of t0673-lane5 routed option (b) — verdict NEITHER with blocking math
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: all four sandbox artifacts EXACT match — preregistration.md c9c116bc..., tagger_matcher.py 5e5746a4..., run-baseline-b.txt 960ce182..., run-baseline-b2.txt 18facad3.... NOT PHANTOM. Self-score 9.5, agreed. Clears 9.5 because: falsifier pre-registered before simulation,
 
 ### ✅ t0677 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -58436,6 +58448,12 @@ _Last updated: 2026-11-21 21:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261121-1343 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: attempted all 31 queued briefs, 0 claimed (29x exit 7 parent-authorship, 2x exit 2 routing-prose)
+
+**Evidence:** FRESH WINDOW (filed 21:44 UTC, scored ~18 min later). VERIFIED first-hand this tick on live bytes: all 31 briefs named in the receipt are exactly the 31 brief-*.md files in brief-queue/ (set match, no missing/extra); brief-queue/claimed/ holds only the pre-existing done/ subdirectory - no mv occurred; queue checksum 6d9e2c4ec6fff11fb09482178ca94dd6
 
 ### ✅ gate-stall-20261121-1239 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
