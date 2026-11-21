@@ -4,7 +4,7 @@
 
 **NN-20261121-the-link-rule-only-send-edited-links · Naya Note · 2026-11-21 ~09:31 MST**
 
-*Paired Smart Note: SN-pending — The Link Rule — Only Send Links That Were Edited and Are Ready (takes the next free number at filing)*
+*Paired Smart Note: SN-4482 — The Link Rule — Only Send Links That Were Edited and Are Ready*
 
 **Category:** LAW — only send links that have actually been EDITED and are ready to be viewed; a link counts only as a NEW edited version awaiting his eye
 
