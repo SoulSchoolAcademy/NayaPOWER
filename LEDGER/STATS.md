@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-21 13:30 UTC_
+_Last updated: 2026-11-21 14:33 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 9849
-- ✅ Verified (8+): 9748
+- **Total scored actions:** 9858
+- ✅ Verified (8+): 9757
 - 🟡 Partial (5–7): 90
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 7
@@ -15,18 +15,18 @@ _Last updated: 2026-11-21 13:30 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 659 | 9.1 | 9.6 |
-| Team 2 | Naya Sage | 647 | 8.9 | 9.5 |
+| Team 1 | Naya Verity | 660 | 9.1 | 9.6 |
+| Team 2 | Naya Sage | 648 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 597 | 9.0 | 10 |
 | Team 4 | Naya Mason | 579 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 715 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 417 | 9.0 | 9.6 |
-| Team 7 | Naya Conductor | 564 | 8.9 | 10 |
-| Team 8 | Naya Sentinel | 593 | 9.0 | 9.5 |
+| Team 7 | Naya Conductor | 565 | 8.9 | 10 |
+| Team 8 | Naya Sentinel | 594 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 719 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 979 | 9.1 | 9.7 |
-| Team 11 | Naya Heart | 659 | 9.0 | 9.6 |
-| Team 12 | Naya Herald | 509 | 9.1 | 9.5 |
+| Team 10 | Naya Librarian | 980 | 9.1 | 9.7 |
+| Team 11 | Naya Heart | 660 | 9.0 | 9.6 |
+| Team 12 | Naya Herald | 510 | 9.1 | 9.5 |
 
 ## Learning velocity
 
@@ -1367,6 +1367,8 @@ _Last updated: 2026-11-21 13:30 UTC_
 - **gate-stall-20261121-0223:** 1 actions, avg 9.0/10
 - **gate-stall-20261121-0328:** 1 actions, avg 9.0/10
 - **gate-stall-20261121-0428:** 1 actions, avg 9.0/10
+- **gate-stall-20261121-0533:** 1 actions, avg 9.0/10
+- **gate-stall-20261121-0614:** 1 actions, avg 9.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -3379,10 +3381,17 @@ _Last updated: 2026-11-21 13:30 UTC_
 - **t0650:** 2 actions, avg 8.8/10
 - **t0650-lane9:** 1 actions, avg 8.5/10
 - **t0651:** 3 actions, avg 8.7/10
+- **t0651-lane11:** 1 actions, avg 8.5/10
 - **t0653:** 6 actions, avg 9.0/10
+- **t0653-lane12:** 1 actions, avg 9.0/10
+- **t0653-lane7:** 1 actions, avg 9.0/10
 - **t0654:** 2 actions, avg 9.0/10
+- **t0654-lane10:** 1 actions, avg 9.0/10
 - **t0655:** 2 actions, avg 8.8/10
+- **t0655-lane8:** 1 actions, avg 8.5/10
 - **t0657:** 9 actions, avg 8.8/10
+- **t0657-lane1:** 1 actions, avg 8.5/10
+- **t0657-lane2:** 1 actions, avg 9.0/10
 - **t0658:** 3 actions, avg 8.7/10
 - **t0659:** 4 actions, avg 8.9/10
 - **t0660:** 6 actions, avg 8.8/10
