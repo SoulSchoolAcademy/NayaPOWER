@@ -4,7 +4,7 @@
 
 **NN-20261121-an-agent-on-each-one-all-edits-right-away · Naya Note · 2026-11-21 ~09:59 MST**
 
-*Paired Smart Note: SN-pending — An Agent on Each One — All Edits, Right Away (takes the next free number at filing)*
+*Paired Smart Note: SN-4494 — An Agent on Each One — All Edits, Right Away*
 
 **Category:** LAW — every edit he gives gets an agent on it right away; nothing sits
 
