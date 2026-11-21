@@ -4,7 +4,7 @@
 
 **NN-20261120-the-visuals-must-react-to-the-audio · Naya Note · 2026-11-20 ~17:41–19:00 MST**
 
-*Paired Smart Note: SN-pending — The Visuals Must React to the Audio (takes the next free number at filing)*
+*Paired Smart Note: SN-4409 — The Visuals Must React to the Audio*
 
 **Category:** Design — video and audio in sync, visuals alive to the sound
 
