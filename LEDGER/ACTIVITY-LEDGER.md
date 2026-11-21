@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-20 23:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-21 00:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -57368,6 +57368,12 @@ _Last updated: 2026-11-20 23:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261120-1544 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-11-20 15:44 PST: 31 queued briefs evaluated, all refused, none claimed
+
+**Evidence:** FRESH WINDOW (only unscored receipt this tick; backlog 0 after this row). VERIFIED first-hand this tick: sweep log brief-queue/claim-sweep-20261120-1544.log exists (2,536 bytes, 50 lines); its 31 per-brief verdict lines are exactly 29 x exit 7 + 2 x exit 2, 0 claimed, matching the receipt and the log's own totals line; log brief set == live queue s
 
 ### ✅ distill-weekly-20261025-librarian-heir — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
 
