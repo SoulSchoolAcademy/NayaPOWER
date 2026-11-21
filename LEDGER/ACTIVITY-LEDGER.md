@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-21 01:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-21 02:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -39151,6 +39151,14 @@ _Last updated: 2026-11-21 01:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-t0072 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Close t0072 gap: re-verify tip CI table on the moved live tip (304 check-runs re-pinned)
+
+**Receipt:** `twelve-lane-receipts/gap-t0072-lane9.md`
+
+**Evidence:** Verified: pinned tip 64ae193f123461bca0e350bfa39228589cbfd039 exists in the mirror as a real merge commit (PR #2712), confirming the tip-move premise; receipt re-pins all parent rows against a fresh live check-run list with exact run/check-run ids and honestly reports the absent Governed Production Promotion check and the mixed SKIPPED/FAILED team-
+
 ### ✅ gap-scorer-20261014-2200-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
 
 **Task:** t0412 tie-break pin + tolerance replacement CLOSED
@@ -53257,6 +53265,14 @@ _Last updated: 2026-11-21 01:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
 
+### ✅ gap-t0032 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Independent second-seat re-run of t0032 five-commit drift-attribution check (bisect + merge-discard proof)
+
+**Receipt:** `twelve-lane-receipts/gap-t0032-lane10.md`
+
+**Evidence:** Verified: evidence bundle hidden_files/gap-t0032-bisect-evidence-20261015.md exists (3547 bytes); all cited SHAs exist as commits in the mirror — tip 9f80e8ec is a real merge (PR #2611), drift-introducer 715bce27 and 6a5aaed46 exist, parent pin aa8061c1 exists. Not 9.5 because: the bisect exits and drift-file findings were not re-executed this tick
+
 ### ✅ gap-t1442-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** Gap closeout t1442: CI verdict on PR #2456 (fresh PR, verdict not in at receipt time)
@@ -55997,6 +56013,14 @@ _Last updated: 2026-11-21 01:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
 
+### ✅ gap-t0012 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Close t0012 gap: byte-level re-derivation of blinded-certification escrow chain (32-check battery + hand-walked link)
+
+**Receipt:** `twelve-lane-receipts/gap-t0012-lane1.md`
+
+**Evidence:** Verified: receipt is internally complete and specific (32 named checks, exact sha256 prefixes, hand-walked PKT-6A6D322D link, battery run 2026-10-16 14:44 UTC against live bytes, no re-trust of the sibling-gap script). Not 9.5 because: the escrow bytes are no longer re-derivable today — lane-experiments/t1302/ and blinded-scores-t1302.md are absent
+
 ### ✅ gap-lane-scorer-20261015-0450-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** t0541 zero-finding re-run on frozen instrument + live marker census
@@ -57518,6 +57542,12 @@ _Last updated: 2026-11-21 01:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261120-1753 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: evaluate all 31 unclaimed briefs, attempt script claim on each
+
+**Evidence:** Verified: receipt file exists; live queue still 31 brief-*.md, zero brief-tNNNN-*; all 31 named briefs present on disk and identical to the current queue; cited sweep log hidden_files/brief-queue/claim-sweep-20261120-1753.log exists with NO-CLAIM outcome. Score 9.0. Why not 9.5: tenth consecutive identical stall receipt today with zero queue moveme
 
 ### ✅ distill-daily-20261120-lane0 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
 
