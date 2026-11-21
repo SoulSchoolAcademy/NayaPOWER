@@ -4,7 +4,7 @@
 
 **NN-20261120-purple-and-white-never-gold-and-blue · Naya Note · 2026-11-20 ~17:41–19:00 MST**
 
-*Paired Smart Note: SN-pending — Purple and White, Never Gold and Blue (takes the next free number at filing)*
+*Paired Smart Note: SN-4403 — Purple and White, Never Gold and Blue*
 
 **Category:** Design — the stars stay on-brand
 
