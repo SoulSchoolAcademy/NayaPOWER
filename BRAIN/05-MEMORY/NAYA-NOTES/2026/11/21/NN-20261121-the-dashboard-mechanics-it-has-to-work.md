@@ -4,7 +4,7 @@
 
 **NN-20261121-the-dashboard-mechanics-it-has-to-work · Naya Note · 2026-11-21 ~10:16 MST**
 
-*Paired Smart Note: SN-pending — The Dashboard Mechanics — It Has to Work, Not Just Be There (takes the next free number at filing)*
+*Paired Smart Note: SN-4501 — The Dashboard Mechanics — It Has to Work, Not Just Be There*
 
 **Category:** LAW — test = it has to WORK, not just be there; the Smart Ledger on the back end must track everything
 
