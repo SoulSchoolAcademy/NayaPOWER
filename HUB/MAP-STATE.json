@@ -1,35 +1,35 @@
 {
-  "measured_at": "2026-11-21T09:56:13.986285+00:00",
+  "measured_at": "2026-11-21T02:16:08.729480+00:00",
   "probes": {
     "supabase_tables": {
       "status": "unknown",
       "evidence": "measurement unavailable: no SUPABASE_URL in this environment. Last verified baseline (2026-10-15, Management API): 22 tables, 12,026 rows \u2014 NOT re-measured this run. Row counts require an authenticated key (anon role is RLS-locked, 42501) \u2014 loud unknown, not fake green.",
-      "measured_at": "2026-11-21T09:55:58.960868+00:00"
+      "measured_at": "2026-11-21T02:15:59.154779+00:00"
     },
     "feeds": {
       "status": "amber",
-      "evidence": "live: today (5 items, 14:10:41 old), lists (5 items, 31 days, 17:36:18 old), spaces (5 items, 30 days, 6:52:56 old); missing/invalid: feed, reports, library, connect, ledger, connections, mail, settings, manifest",
-      "measured_at": "2026-11-21T09:56:04.099161+00:00"
+      "evidence": "live: today (5 items, 6:30:40 old), lists (5 items, 31 days, 9:56:18 old), spaces (5 items, 29 days, 23:12:55 old); missing/invalid: feed, reports, library, connect, ledger, connections, mail, settings, manifest",
+      "measured_at": "2026-11-21T02:16:01.792082+00:00"
     },
     "bridge": {
       "status": "red",
       "evidence": "PR #2679 closed (PR state: closed); bridge code in repo: not found at checked paths",
-      "measured_at": "2026-11-21T09:56:05.373743+00:00"
+      "measured_at": "2026-11-21T02:16:02.414922+00:00"
     },
     "rooms": {
       "status": "amber",
-      "evidence": "0/9 on seeds, 7/9 loading, 0/9 unknown \u2014 hub/: mixed (seeds: OFFICIAL_NOTES; loaders: NayaPowerRuntime); hub/today: loading; hub/lists: loading; hub/spaces: loading; hub/mail: loading; hub/reports: loading; hub/ledger: loading; hub/library: loading; hub/connections: mixed (seeds: PACK; loaders: NayaPowerRuntime, smartConnections)",
-      "measured_at": "2026-11-21T09:56:07.264000+00:00"
+      "evidence": "0/9 on seeds, 8/9 loading, 0/9 unknown \u2014 hub/: mixed (seeds: OFFICIAL_NOTES; loaders: NayaPowerRuntime); hub/today: loading; hub/lists: loading; hub/spaces: loading; hub/mail: loading; hub/reports: loading; hub/ledger: loading; hub/library: loading; hub/connections: loading",
+      "measured_at": "2026-11-21T02:16:04.199171+00:00"
     },
     "capture": {
       "status": "green",
-      "evidence": "latest run completed/success (0:33:11 old, event=schedule); 5/5 recent runs scheduled; recent success: True, recent failure: False",
-      "measured_at": "2026-11-21T09:56:07.775747+00:00"
+      "evidence": "latest run completed/success (1:05:30 old, event=schedule); 5/5 recent runs scheduled; recent success: True, recent failure: False",
+      "measured_at": "2026-11-21T02:16:04.471275+00:00"
     },
     "dock": {
       "status": "red",
       "evidence": "#2676 closed (CI failing); #2678 closed (merged) (CI failing); #2679 closed (CI failing); #2680 closed (merged) (CI failing); #2686 closed (CI failing)",
-      "measured_at": "2026-11-21T09:56:13.986228+00:00"
+      "measured_at": "2026-11-21T02:16:08.729424+00:00"
     }
   },
   "summary": {
