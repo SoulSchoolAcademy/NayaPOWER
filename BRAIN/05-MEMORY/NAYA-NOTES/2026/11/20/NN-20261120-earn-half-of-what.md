@@ -4,7 +4,7 @@
 
 **NN-20261120-earn-half-of-what · Naya Note · 2026-11-20 ~20:53–21:00 MST**
 
-*Paired Smart Note: SN-pending — Earn Half of What? (takes the next free number at filing)*
+*Paired Smart Note: SN-4438 — Earn Half of What?*
 
 **Category:** Law — money words must name the thing the half is of
 
