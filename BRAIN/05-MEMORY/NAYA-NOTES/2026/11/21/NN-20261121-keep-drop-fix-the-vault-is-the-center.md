@@ -4,7 +4,7 @@
 
 **NN-20261121-keep-drop-fix-the-vault-is-the-center · Naya Note · 2026-11-21 ~10:35–10:36 MST**
 
-*Paired Smart Note: SN-pending — Keep / Drop / Fix — The Vault Is the Center (takes the next free number at filing)*
+*Paired Smart Note: SN-4507 — Keep / Drop / Fix — The Vault Is the Center*
 
 **Category:** LAW — every piece of Supabase gets a KEEP / DROP / FIX verdict; the Smart Vault is the center of the map; dead weight goes
 
