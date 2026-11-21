@@ -4,7 +4,7 @@
 
 **NN-20261120-the-star-is-the-dm-initial · Naya Note · 2026-11-20 ~20:36–20:45 MST**
 
-*Paired Smart Note: SN-pending — The Star Is the DM Initial (takes the next free number at filing)*
+*Paired Smart Note: SN-4432 — The Star Is the DM Initial*
 
 **Category:** Design — build the star from the element that already is
 
