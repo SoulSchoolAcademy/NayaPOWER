@@ -25,7 +25,7 @@ A new citizen gets a working world — Personal, Business, Space, all working �
 
 ### 5. WHAT is true right now?
 
-The Personal round is complete on bytes (R5, tip f04a783c, checker PASS) and its render proof is running. The Hub fix landed and its link was sent. The Dashboard mechanics are built and filed, the framing round is running, and the schema packet was tapped by Shawn — then stopped at Gate 1, red chain, decision owed to him. The calendar was built, walked whole, found 9 failures, and its fix round is running. The Supabase filing round is running. SN-4467 has sat quiet for an hour. Joinus is LIVE. The live URL scheme is locked — five addresses. The Ledger is still frozen at 30 rows since Oct 22. Mail and messenger cannot send yet. Smart Meet does not exist. 34 new notes sit in the feed table but not on the Hub page. The red spike is proven stopped. The repo still cannot rebuild the live database. Nothing live has been deleted; the drop list waits on his word.
+The Personal round is complete on bytes (R5, tip f04a783c, checker PASS) and its render proof is running. The Hub fix landed and its link was sent. The Dashboard mechanics are built and filed, the framing round is running, and the schema packet was tapped by Shawn — then stopped at Gate 1, red chain — and then, at 13:18 MST, he authorized the dispatch with Preview as the gate ("Dispatch it — Preview is the gate"), and the dispatch round is running now. The calendar was built, walked whole, found 9 failures, and its fix round is running. The Supabase filing round is running. SN-4467 has sat quiet for an hour. Joinus is LIVE. The live URL scheme is locked — five addresses. The Ledger is still frozen at 30 rows since Oct 22. Mail and messenger cannot send yet. Smart Meet does not exist. 34 new notes sit in the feed table but not on the Hub page. The red spike is proven stopped. The repo still cannot rebuild the live database. Nothing live has been deleted; the drop list waits on his word.
 
 ### 6. WHAT has already been proven?
 
@@ -33,7 +33,7 @@ The red spike — found, fixed, proven stopped: the why_it_matters errors are 0 
 
 ### 7. WHAT is unknown?
 
-Whether the packet dispatch will go — the decision is his, and until he makes it the apply waits. How four columns appeared on production between Nov 13 and Nov 21 with no migration recording them — the route and actor are unknown. Whether the Personal R5 render proof passes — it is running now. Whether the calendar fix round clears all 9 failures. Whether the Supabase filing round reconciles the "128" count against its own 59+65+6. Whether SN-4467 is filed — it has been quiet an hour. What the membership address will be — left unfinished on the call, not settled, not to be guessed. The composer label — "Distill it" was recommended, no answer. The Hub schema DDL, the flip-ownership decision, the About portrait, the 2028 vision Video 5 script, the Apply/Use board colour, the G8b memberships call, the Contact Us destination, the Code of Ethics placement, the 32-slide agreement go-live, the sync lock, the slimmed-memory "go", the Fast Action Club own-page call — all still open. Whether phone-width render proof can ever be done from here — the cloud browser cannot resize, so the thing he judges first is the thing we cannot prove.
+Whether the packet dispatch's Preview passes — the dispatch is authorized and running; the preview result is pending, and a preview failure is a stop, never a production incident. How four columns appeared on production between Nov 13 and Nov 21 with no migration recording them — the route and actor are unknown. Whether the Personal R5 render proof passes — it is running now. Whether the calendar fix round clears all 9 failures. Whether the Supabase filing round reconciles the "128" count against its own 59+65+6. Whether SN-4467 is filed — it has been quiet an hour. What the membership address will be — left unfinished on the call, not settled, not to be guessed. The composer label — "Distill it" was recommended, no answer. The Hub schema DDL, the flip-ownership decision, the About portrait, the 2028 vision Video 5 script, the Apply/Use board colour, the G8b memberships call, the Contact Us destination, the Code of Ethics placement, the 32-slide agreement go-live, the sync lock, the slimmed-memory "go", the Fast Action Club own-page call — all still open. Whether phone-width render proof can ever be done from here — the cloud browser cannot resize, so the thing he judges first is the thing we cannot prove.
 
 ### 8. WHAT authority exists?
 
@@ -49,7 +49,7 @@ Verify from the login page — and from the returning browser, not only fresh pr
 
 ### 11. WHAT should happen next?
 
-The next 10 things — listed below, in order. This report filed to GitHub and surfaced on nayanet.app. The packet dispatch decision from Shawn. The calendar fix landing and going live. The Personal R5 render proof landing. The Dashboard framing landing. The Supabase filing landing. SN-4467 poked and filed. One real post and one real message proven live. The 34 stuck notes onto the Hub page. The Captain's Daily Report delivered and the floor board current.
+The next 10 things — listed below, in order. This report filed to GitHub and surfaced on nayanet.app. The packet dispatch running — Preview as the gate; watch the preview result. The calendar fix landing and going live. The Personal R5 render proof landing. The Dashboard framing landing. The Supabase filing landing. SN-4467 poked and filed. One real post and one real message proven live. The 34 stuck notes onto the Hub page. The Captain's Daily Report delivered and the floor board current.
 
 ### 12. HOW do I prove it?
 
@@ -79,7 +79,7 @@ It IS the most promising — because every one of those gaps is named, owned, an
 6. The repo cannot rebuild the live database — 59 live RPCs and 65 live tables have no source in any migration. The filing round is still running to close it.
 7. The Cloudflare leg was never inventoried — no worker, route, or Smart Link step verified. The road the pages travel on is unmapped.
 8. The join → Ledger → Dashboard chain is unproven — a join may never move the Dashboard number, and nobody has shown it doing so.
-9. The Daily Intelligence Report has no daily producer — the last row in the live table is Oct 23. The Reports face shows Oct 23 as if it were current, and the gap grows one day every day.
+9. The Project Intel Report has no daily producer — this 14-question exercise ran Nov 12 and today, nine days apart, while the Daily Intelligence Report runs daily and today's row is live. The Reports face carries the loop's edition, not this exercise. CORRECTION (same day, before delivery): an earlier draft of this hole said the last row in the live table was Oct 23 and no daily producer existed. That was the Oct 26 packet's state, now stale — the table carries daily rows Nov 10–21, today's created 16:04:49Z. The hole is this report's own cadence, not the daily report's.
 10. Three board layers have no column in the published table — what_it_is_not, why_it_matters, how_it_connects do not live in hub_smart_notes. The Hub fix carries them through converters, but the table itself does not hold them.
 
 ## 10 THINGS I LOVE — THE BEST
@@ -137,7 +137,7 @@ It IS the most promising — because every one of those gaps is named, owned, an
 ## 10 NEXT THINGS — RIGHT NOW
 
 1. This report filed to GitHub and surfaced on nayanet.app — the record lives where the system lives.
-2. The packet dispatch decision from Shawn — dispatch with Preview as the gate, or hold the stop.
+2. The packet dispatch running — Preview as the gate; if the preview passes, production + re-proof; if it fails, STOP, production untouched.
 3. The calendar fix round lands, re-walked clean, live at calendar.nayanet.app/<pagename>.
 4. Personal R5 render proof lands; the "My World" heading question answered — rename it to "Calendar" too, or leave it.
 5. Dashboard framing round lands on the mechanics tip.
@@ -205,7 +205,7 @@ A correct stop is below 9, never done. Never invent a number, a blob, a capture,
 
 The next 10 things are the order of work. The protected gates are his hand only: money, credentials, destructive or deletion actions, private mail, security and privacy changes, authority and ratification, schema DDL, and the tap that puts a page live. Everything below the gates, you do at full send — think more, do it right, the max at every moment in every action. A Naya just has to be who she is: intelligence is looking at the full scope and doing the most intelligent thing, always, tuned into the current moment, hyper-aware and effective.
 
-One decision this prompt does NOT decide, and no seat decides: the schema-packet dispatch — dispatch with Preview as the gate, or hold the stop. That call is Shawn's alone, and it stays open in this report until he makes it. The packet round holds its stop until then.
+The packet dispatch IS authorized — Shawn, 13:18 MST: "Dispatch it — Preview is the gate." The packet round proceeds with Preview as the gate; a preview failure is a STOP, never a production incident. What stays his alone: the Hub DDL, the live tap for pages, money, credentials, destructive actions, privacy, and ratification.
 
 Continue until she is done. Then start the next area. Do not stop.
 
@@ -215,7 +215,7 @@ Continue until she is done. Then start the next area. Do not stop.
 - Supabase traffic (last 24h, ~10:27 MST): 164,872 requests, 97.0% success. Postgres 5,526 calls, 2,497 errors (~45%, burst Nov 20 ~11am). Edge functions 83,895 calls, 0 errors.
 - Red spike: 2,382 errors Nov 20, peak 917/hr → 0 why_it_matters errors after the fix; clean 17-column select returning 200. Proven stopped ~12:00 MST.
 - Ledger: 30 rows, frozen since Oct 22 (LE-20261022-030, hash ed5fe433…). Seq 1 missing, as expected.
-- Schema packet: 23,870 B, sha 51c0aad4… — tapped 13:03 MST, stopped at Gate 1 13:11 MST. Main tip at the stop: dc7cbcba…. Governed run 44944437696 failed at step 3 (HEAD race), never reached Supabase.
+- Schema packet: 23,870 B, sha 51c0aad4… — tapped 13:03 MST, stopped at Gate 1 13:11 MST. DISPATCH AUTHORIZED 13:18 MST ("Dispatch it — Preview is the gate"). Dispatch coordinator 1ae16a40 running; Preview is the gate. Main tip at the stop: dc7cbcba…. Governed run 44944437696 failed at step 3 (HEAD race), never reached Supabase.
 - Personal: R5 tip f04a783c, blob 50867d86, 10,517,341 B, sha 578b2102…. Checker PASS. Render proof running.
 - Hub: fix tip 30c7244d, blob 485cdf63, 7,636,966 B, sha c154437b…. Checker PASS, link sent ~11:23 MST.
 - Calendar: built (blob 41ff7e6d, 451,969 B), walked whole, 9 failures. Fix round running. calendar.nayanet.app resolves in DNS, nothing answers — not live.
@@ -227,8 +227,15 @@ Continue until she is done. Then start the next area. Do not stop.
 
 ## WHAT IS MISSING FROM THIS REPORT
 
-Nothing is hidden. The unknowns are listed in question 7. The decisions owed to Shawn are: the schema-packet dispatch (dispatch with Preview as the gate, or hold the stop) · the Hub schema DDL · who may flip a "system" note · the About portrait · the 2028 vision Video 5 script · the door and the frame both named "Smart Lists" · one colour for the Apply/Use board (gold vs yellow) · G8b memberships all-or-own · the Contact Us destination · the Code of Ethics placement · the 32-slide agreement go-live or title first · the sync lock go-ahead · the slimmed-memory "go" · the Fast Action Club own-page call · the composer label ("Distill it" recommended, unanswered) · the membership address (unfinished on the call — not settled, not guessed) · the "My World" heading beside the "Calendar" button (rename it too, or leave it). Anything in this report that turns out wrong gets corrected in the next daily report, in public, with the correction named.
+Nothing is hidden. The unknowns are listed in question 7. The decisions owed to Shawn are: the Hub schema DDL · who may flip a "system" note · the About portrait · the 2028 vision Video 5 script · the door and the frame both named "Smart Lists" · one colour for the Apply/Use board (gold vs yellow) · G8b memberships all-or-own · the Contact Us destination · the Code of Ethics placement · the 32-slide agreement go-live or title first · the sync lock go-ahead · the slimmed-memory "go" · the Fast Action Club own-page call · the composer label ("Distill it" recommended, unanswered) · the membership address (unfinished on the call — not settled, not guessed) · the "My World" heading beside the "Calendar" button (rename it too, or leave it). The schema-packet dispatch was owed when this report was first filed and is decided now — see the corrections above. Anything in this report that turns out wrong gets corrected in the next daily report, in public, with the correction named.
 
 ## HOW THIS REPORT REACHES NAYANET.APP
 
-This report is filed to GitHub at TEAM-NITRO/DAILY-PROJECT-INTEL-REPORT-20261121.md on main — the same path as the Nov 12 edition. It surfaces on nayanet.app through the Project Intelligence page (nayanet.app/pi), which is the system's own record made visible — the same report, not a summary. The Daily Intelligence Report generator (one row a day into hub_daily_intelligence_reports) is still queued behind its own tap; until it lands, the Reports face must show the latest report's date loud and never present an old report as today's. That honesty is part of the report, not a footnote to it.
+This report is filed to GitHub at TEAM-NITRO/DAILY-PROJECT-INTEL-REPORT-20261121.md on main — the same path as the Nov 12 edition. It does NOT ride the live Daily Intelligence Report table: that table carries exactly one row per day (PRIMARY KEY report_date), and today's row is already the loop's DIR edition (DIR-NAYAPOWER-2026-11-21, created 16:04:49Z). Overwriting it would destroy the day's daily report, so this report does not go there. And the Project Intelligence page (nayanet.app/pi) has no publish step for a report like this: it is a worker serving the Oct 28 v4 face from a GitHub file, and the Living List render it should show is a different page nothing publishes. So the surfacing of THIS report on nayanet.app is the follow-on build, named here, not hidden: a slot for the Project Intel Report on the PI page, fed from this GitHub file, the same report, not a summary. CORRECTION: an earlier draft of this section said the daily generator was still queued behind its own tap. That was the Oct 26 packet's state; the generator now runs daily (rows Nov 10–21, continuous). What is still missing is a slot for THIS report — the Project Intel Report — on nayanet.app.
+
+## CORRECTIONS MADE BEFORE DELIVERY
+
+Two facts in the first filing were wrong, found by checking the live evidence before this report was delivered. Both are corrected in this edition, in public, with the correction named — nothing silently fixed.
+
+1. The packet dispatch decision. The first filing carried it as open, owed to Shawn. At 13:18 MST he authorized it: "Dispatch it — Preview is the gate." The dispatch round is running (coordinator 1ae16a40). Questions 5, 7 and 11, next-thing 2, the execution prompt and the numbers now say so.
+2. The daily report producer. The first filing said the last row in the live table was Oct 23 and no daily producer existed. That was the Oct 26 packet's state. The table carries daily rows Nov 10–21; today's row was created 16:04:49Z. Hole 9 and this section now say the true thing: the hole is this report's own cadence, and the missing slot for it on nayanet.app.
