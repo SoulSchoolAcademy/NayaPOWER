@@ -4,7 +4,7 @@
 
 **NN-20261121-the-four-day-fast-action-plan-unfinished · Naya Note · 2026-11-21 ~09:54 MST**
 
-*Paired Smart Note: SN-pending — The 4-Day Fast Action Plan — Unfinished, Owed After the Link List (takes the next free number at filing)*
+*Paired Smart Note: SN-4493 — The 4-Day Fast Action Plan — Unfinished, Owed After the Link List*
 
 **Category:** LAW — unfinished work is owed, named, and sequenced — never silently dropped
 
