@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-21 02:45 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-21 03:14 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -21301,6 +21301,12 @@ _Last updated: 2026-11-21 02:45 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED on live bytes: metric_audit_t0651.json sha256 c801497c31a9...ba67eb3 byte-EXACT match to receipt claim; 78 judgment rows all present, all 78 with per-row notes, m3-TRUE=28 / m3-FALSE=50 / UNJUDGEABLE=0 re-derived from the file (not quoted); all 78 judged receipt files exist in twelve-lane-receipts/; t0645 audit structure matches (170 rows:
 
+### ✅ t0650-lane9 — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** Kernel byte-verdict (GREEN/RED) at live main tip, twice-pinned
+
+**Evidence:** Verified: commit 582e5e5f exists in mirror, parents 4f0c9aa8 + 7b2b1df0 match receipt, subject is PR #2531 merge; twice-pinned tip pre/post 17:42:56Z/17:53Z as claimed; introduced-vs-inherited split measured (freshness introduced, compound_scale pre-existing). Score 8.5. Why not 9.5: (1) CI failing-test identity comes from local tree-wide replay, n
+
 ### ✅ t0650 — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
 
 **Task:** Kernel byte-verdict (GREEN/RED) at the live main tip, twice-pinned
@@ -21316,6 +21322,12 @@ _Last updated: 2026-11-21 02:45 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0650-lane9.md`
 
 **Evidence:** VERIFIED: main tip 582e5e5f05e25f81b7f8c2254dd53d311f70effd re-derived by scorer via git ls-remote refs/heads/main (MATCH — receipt's twice-pin binds to the LIVE tip; no stale-pin drift). Read-only watch/verdict lane: mjs 11/11 + pytest battery 60/1 at exact tip bytes; CI re-fetch caught the real red (test step 7 — 3 brain-index-freshness failures,
+
+### ✅ t0649-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Pin-verified determination of BRAIN/CURRENT-MISSION-STATE.md as canonical (SURGE (a) Stage-0 hole-3 close-out)
+
+**Evidence:** Verified: pin file hidden_files/lane-6/t0649-mission-state-pin.md exists (4,214 bytes) with tip 4f0c9aa8, blob 015dfefe, content sha256 115e2d2e as claimed; blob independently confirmed via mirror ls-tree at tip 4f0c9aa8 (015dfefe07cffb6df547d1d16eaf96e2c2774e25). Brief premise falsified on live bytes (file EXISTS, landed via PR #2524) and dispatch
 
 ### ✅ t0649 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
@@ -21333,6 +21345,12 @@ _Last updated: 2026-11-21 02:45 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: pin file hidden_files/lane-6/t0649-mission-state-pin.md exists, 4214 bytes (matches receipt claim); independently recomputed blob 015dfefe07cffb6df547d1d16eaf96e2c2774e25 at pinned tip 4f0c9aa8 - tree entry and hash-object recompute MATCH the receipt; NOT PHANTOM. Work: live falsification of the brief hypothesis (file EXISTS at l
 
+### ✅ t0648-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Stage 0 WINMINE - mine 3+ repeatable success patterns from 9.5/10 receipts
+
+**Evidence:** Verified: winmine-success-patterns-t0648.md exists, sha256 a2ad03a3... matches receipt exactly; file carries 4 patterns with receipt citations. Score 9.0. Why not 9.5: (1) only 6 of the 24 nine-point-five receipts mined - the remaining 18 may hold unseen patterns; (2) no differential analysis against sub-9.0 rows (zero sub-7.0 rows in corpus, so th
+
 ### ✅ t0648 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** Stage 0 [WINMINE] - mine 3+ repeatable success patterns from 9.5/10 receipts
@@ -21348,6 +21366,12 @@ _Last updated: 2026-11-21 02:45 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0648-lane5.md`
 
 **Evidence:** Artifact verification PASSED: hidden_files/winmine-success-patterns-t0648.md sha256 a2ad03a3...498fadf byte-exact match to receipt. Content verified: 4 patterns each with one-sentence form, 2 receipt citations with exact scores each, and an instructable behavior delta for future briefs; 6/6 citations independently re-parsed from jsonl bytes (all 9.
+
+### ✅ t0648-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Execute sealed H-dc6 instrument; RETRACT verdict
+
+**Evidence:** Verified: instrument t0633_h_dc6.py sha256 b6e6e733... matches receipt (pre==post); results-t0633-h-dc6.json sha256 f897f3da... matches; verdict-t0633-h-dc6.md exists with RETRACT on line 1; EQ-D0 PASS and winner_flips 1/3 read from results bytes. Score 9.0. Why not 9.5: (1) frozen verdict rule's Python never re-verified byte-for-byte against desig
 
 ### ✅ t0648 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -21365,6 +21389,12 @@ _Last updated: 2026-11-21 02:45 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Artifact verification PASSED: auto-retrieval/results-t0633-h-dc6.json sha256 f897f3da...e5ff2 byte-exact match to receipt; verdict-t0633-h-dc6.md exists with 'RETRACT' on line 1 per frozen rule; instrument t0633_h_dc6.py pre==post (b6e6e7338... prefix match). Execution: sealed pre-run pin re-derivation, seal-before-run gate honored, exactly one sea
 
+### ✅ t0647-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** ask-world query-log status verdict
+
+**Evidence:** Verified: verdict file hidden_files/query-log-status-t0647.md exists with action-time log pin 08f3662c, 42-row census (1 init + 30 organic + 11 probe), 5-alternative elimination table, t0550-vs-t0557 attribution correction, and re-derived top-20 tally; live log has since grown to 63,479 bytes, consistent with the proven-alive writer seam (action-ti
+
 ### ✅ t0647 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** Ask-world query-log status verdict (STILL SILENT/IDLE)
@@ -21380,6 +21410,12 @@ _Last updated: 2026-11-21 02:45 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0647-lane3.md`
 
 **Evidence:** VERIFIED: log hidden_files/auto-retrieval/ask-world-queries.jsonl sha256 08f3662c...161256 EXACT, 42 rows parse; writer seam byte-verified - def log_query(cmd, lane, query_text, returned_sections, kind='query') at bin/ask-world.py:64 appends post-query (not an empty read); verdict file query-log-status-t0647.md exists (4533 B); brief's mistyped 't0
+
+### ✅ t0647-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE (a) family-level synthesis close
+
+**Evidence:** Verified: synthesis file hidden_files/surge-a-family-synthesis-t0647.md exists with the full evidence table - all four verdict pins match receipt (t0555 ef3ac441ce864228, t0593 056b65ca349c8345, t0634 b08bcf67c74fa199, t0643 b8a10e14886c529d); R1-R3 arm-F requirement present and falsifiable; judge's-edge diagnosis and handoff to lanes 2/5 present. 
 
 ### ✅ t0647 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -21397,6 +21433,12 @@ _Last updated: 2026-11-21 02:45 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: 4 verdict-file pins byte-exact (ef3ac441ce864228 t0555 / 056b65ca349c8345 t0593 / b08bcf67c74fa199 t0634 / b8a10e14886c529d t0643); run-byte + instrument pins exact (ef6a7272a806fb6b, 714fe2fba31f955a, 3eff30f1cfa37162, bfded277f571f47e scratch results); deliverable surge-a-family-synthesis-t0647.md exists, 8006 bytes as claimed; t0596-la
 
+### ✅ t0646-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Injection-seam veracity verdict (SURGE (a))
+
+**Evidence:** Verified: lane8-injection-veracity-verdict-t0646.md sha256 79f967ca... matches; veracity-verdict-t0568.md pin re-derived at action time, full 64-hex 30645fe4... matches the brief's cited pin. Score 9.0. Why not 9.5: (1) falsifiers are named-as-observable but not executable — no RED fixture per class, unlike t0568; (2) single-seat verdict with no se
+
 ### ✅ t0646 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** Injection-seam veracity verdict (SURGE a)
@@ -21413,6 +21455,12 @@ _Last updated: 2026-11-21 02:45 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED on disk: lane8-injection-veracity-verdict-t0646.md EXISTS, sha256 79f967ca6254c518e70654025bb9db8d0d3f24d070a5b09e0b5f277968e940fa MATCHES receipt byte-exact (full 64-hex); veracity-verdict-t0568.md sha256 30645fe440818a585fcd84df7e548ac504854fe4be8d426ebc70077ed59397b6 MATCHES the receipt's claimed re-derived pin; brief brief-queue/claime
 
+### ✅ t0646-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** S5 live-trial packet + lesson-injection contract v1.1
+
+**Evidence:** Verified: auto-retrieval/lesson-injection-contract-v1.1-candidate.md sha256 60c6633e... matches; S5 packet dir exists with all 9 named files; fixture brief sha16 634df77495d42bce matches, hook script f693e5321f366be5 matches, sealed fingerprint b8019a7db93bef9c matches. Score 9.0. Why not 9.5: (1) single-seat design — the executing seat has not run
+
 ### ✅ t0646 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** S5 live-trial packet + lesson-injection contract v1.1
@@ -21428,6 +21476,12 @@ _Last updated: 2026-11-21 02:45 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0646-lane2.md`
 
 **Evidence:** VERIFIED byte-exact: contract v1.1 full sha256 60c6633e...31227 EXACT; all 7 S5-packet pins match to 16 chars (634df77495d42bce / f693e5321f366be5 / b8019a7db93bef9c / 9e608a7caf433d10 / f2a386f339b6deac / 13ae3ec1703c0bf5 / 98d85eb703f8efa7); v1 pin chain preserved (bace1e70...); tip re-pin 4f0c9aa8 matches live shared-state. Score 9.0 (GOOD, ONE 
+
+### ✅ t0646-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** E-gate persistence contract + repair + recompute demo
+
+**Evidence:** Verified: contract f6f048b614142bda, repair script b531e857a94d8a65, extended sibling 06dac8ba1da7db99, demo script 7eb54c5448ec4fbb, original INV JSON 1e78d1df9be30c3e byte-unchanged - all 6 pins match receipt; recompute log OVERALL PASS (A/B/C stored-boolean checks OK, cell_ranks_match[P12] now mechanically MATCHes). Score 9.0. Why not 9.5: (1) s
 
 ### ✅ t0646 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -21466,6 +21520,12 @@ _Last updated: 2026-11-21 02:45 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0645-lane7.md`
 
 **Evidence:** VERIFIED on disk: brief-pin-gate-wiring.md sha MATCH (fcec3134...), adversarial brief MATCH (8aa4873b...), both proof logs EXIST with correct content but their SHA labels are TRANSPOSED in the receipt (queue log actual bc4cd126 vs claimed c5b58a84; adversarial actual c5b58a84 vs claimed bc4cd126) - labeling slip, bytes intact. Score 9.0 (GOOD, ONE 
+
+### ✅ t0645-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** C-inversion decomposition execution rung (§E third seat, blind)
+
+**Evidence:** Verified: auto-retrieval/prereg-t0645-lane12-cinversion.md sha256 e583bb92... matches receipt; sealed verdict verdict-t0645-lane12-sealed.md sha256 ab3f066d... matches; pre-reg sealed before scoring per receipt. Score 9.0. Why not 9.5: (1) the D2 reading is a judgment call favoring the cell invariant over the strict recipe — documented but not mech
 
 ### ✅ t0645 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
