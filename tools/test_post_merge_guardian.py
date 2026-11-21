@@ -437,6 +437,47 @@ def test_hub_surface_down_escape(tmp_path):
     assert records[0]["defect_classes"] == ["SURFACE_DOWN"]
 
 
+def test_pr_open_forbidden_keeps_verdict_alarm_and_log(tmp_path):
+    """Regression: job 136809400908 at 7bddb36a — the Guardian verified a
+    SURFACE_DOWN escape, pushed the revert branch, then died on POST
+    /pulls (403: Actions may not create PRs). The uncaught ApiError lost
+    the verdict, the log record, and the board alarm. A dead PR path
+    must degrade to an unprepared cure, never to a crash."""
+    repo = tmp_path / "repo"
+    base = build_base(repo)
+    head = add_feature(repo, base, {
+        "a.txt": "v2\n",
+        "HUB/app/index.html": "<html>feed OFFICIAL_NOTES v2</html>\n",
+    })
+    m = merge(repo, head)
+    fake = FakeClient(main_ref=m)
+    fake.set_push(base, m, [m], ["a.txt", "HUB/app/index.html"])
+    wire_pr(fake, m, head, ["a.txt", "HUB/app/index.html"])
+    fake.check_runs = ok_checks(base, m)
+
+    def forbidden_opener(branch, landing, body):
+        raise ApiError(403, "/pulls",
+                       "GitHub Actions is not permitted to create or "
+                       "approve pull requests.")
+    fx = Effects()
+    records, code, sink, _ = run_guardian(
+        fake, repo, base, m, fx=fx, pr_opener=forbidden_opener,
+        fetcher=lambda url: (500, ""))
+    assert code == 1
+    rec = records[0]
+    assert rec["verdict"] == "ESCAPE"
+    assert rec["defect_classes"] == ["SURFACE_DOWN"]
+    assert rec["cure"]["prepared"] is False
+    assert rec["cure"]["branch"] == f"guardian/revert-{m[:10]}"
+    assert "403" in rec["cure"]["reason"]
+    assert rec["cure"]["revert_sha"]  # pushed revert survives for hand use
+    assert fx.pushes == [f"guardian/revert-{m[:10]}"]
+    assert len(sink.records) == 1 and sink.records[0] is rec  # verdict logged
+    assert len(fake.comments) == 1                            # alarm posted
+    assert "Revert preparation failed" in fake.comments[0][1]
+    assert f"guardian/revert-{m[:10]}" in fake.comments[0][1]
+
+
 def test_hub_surface_ok(tmp_path):
     repo = tmp_path / "repo"
     base = build_base(repo)
