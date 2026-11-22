@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-22T03:49:28Z",
-  "tip": "5a35532c2f0981065d317d82b1e56b6755379530",
+  "generated_at": "2026-11-22T09:49:20Z",
+  "tip": "e52f090c8d871281c3e79093f8e9ec8dc9e56df2",
   "prs": [
     {
       "number": 3499,
@@ -64,7 +64,7 @@
       "action": "CURE",
       "cure": "Author cures the PR-caused red check(s): claim-evidence-gate; then re-derive at the new head.",
       "owner": "author lane",
-      "head": "dd8e380f326cd69291abf8f840d2bdec51d8afc7"
+      "head": "ae5e08a8265b597b6a5e0ab5e6f280dac7c3f120"
     },
     {
       "number": 3508,
