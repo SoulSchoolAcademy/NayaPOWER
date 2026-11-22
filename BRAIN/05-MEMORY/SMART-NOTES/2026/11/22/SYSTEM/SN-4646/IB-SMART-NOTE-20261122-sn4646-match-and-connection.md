@@ -1,47 +1,47 @@
-# Match & Connection
+# Smart Match
 
 SN-4646 · SYSTEM / THE TWELVE ELEMENTS OF NAYA — PERSONAL
 
 **Created:** 2026-11-22 14:36Z
-**Updated:** 2026-11-22 14:53Z — re-crafted to 10/10 smart-note presentation in Shawn's voice; operative lines verbatim, the rest freshly written
+**Updated:** 2026-11-22 15:01Z — canonical call-approved text filed as-is (10/10, all ten sections filled)
 **Perspective:** Personal · **Visibility:** Public (Smart Notes are shared by definition)
 
 ## Hook:
 
-Imagine an internet that got to know you — and matched you with people like you.
+"You shouldn't have to search for your people. Your people should find you."
 
 ## In a nutshell:
 
-Match and Connection is the one algorithm that brings me together with my people. It matches by percentage, using what I shared when I joined, and it plays a grand game of match across everyone and everything in NayaNET. CONNECT, never follow — because connection is a two-way street, and following is not.
+Smart Match is Naya's way of connecting you with the people who really matter to you — the people most like you, who share what you love, where you're from, and what you believe. It works automatically, in the background, from the moment you join.
 
 ## What it's not:
 
-It is not a follower count, and it is not a popularity contest. It is not strangers shouting into a crowd, hoping someone notices. It is a quiet, intelligent match — the right people, found for the right reasons.
+It's not a follower count, and it's not a popularity contest. It's not a feed that shows you strangers because they paid to be seen. It's connection, not competition — and it never calls it "follow," because on NayaNET you connect, you don't follow.
 
 ## Child:
 
-Imagine a playground where a kind teacher knows exactly which children love the same games you do, and brings you together to play. That is the match: it finds your people, because like minds belong together. The games get better when you play them with people who love them too.
+Imagine you walk into a giant playground, and a kind friend already knows which kids love the same games you do — and walks you straight over to them. That's Smart Match: it finds your people for you.
 
 ## Grandma:
 
-Imagine moving to a new town and, on your very first day, meeting neighbors who love the same things you love — the same cooking, the same songs, the same stories. That is what the match does for you here. You arrive, and your people are already waiting.
+Imagine moving to a new town, and on your very first day, a neighbor walks over and introduces you to all the people who love the same things you do — your cooking, your garden, your stories. That's Smart Match: you belong from the moment you arrive.
 
 ## Ultimately what it means:
 
-The system takes what I shared about myself — my interests, my place, my language, my loves — and auto-organizes and auto-matches me by percentage. The people rail shows me who I fit with, invites go out, and points grow as people connect. The more honestly I share who I am, the better my matches become.
+Smart Match uses what you chose to share — who you are, where you're from, what you love, what you believe — to match you with people, pages, spaces, groups, and businesses, shown as percentages. The higher the percentage, the stronger the connection. It's automatic by default: nobody has to ask for it, nobody has to set it up. And your points are your power — the more you share and invite, the more weight your posts carry in the feeds.
 
 ## Why it matters:
 
-People want to connect with people like them, and most of the old internet left that to chance. Here, connection is the whole point — not an accident, not an afterthought. When you find your people, everything else in NayaNET works better.
+The internet connects billions of people, but most of us still feel alone in it. The right people are out there — people like you, from where you are, who speak your language and love your thing — and a system that knows how to find them changes everything.
 
 ## How it connects:
 
-The match runs through my world, my business, my spaces, and my feeds — related pages, spaces, groups, and businesses show up for me, and things that are not relevant simply do not. Suggestions arrive in my feed and my notifications, ready when I am. One algorithm, everywhere I go.
+Smart Match runs through everything — your Personal World, your Business, your Spaces, your feed, your mail. It recommends people to connect with, worlds to join, and businesses to discover, and it learns from every connection you make. We're playing a master game of match: taking everything we know about you and doing our best to give you what you ultimately want.
 
 ## How to apply it:
 
-Share who you are when you join — your interests, your loves, your language, your place. Then connect with the people the match brings you, and invite the ones you already know. Every invite and every join makes your world richer.
+Answer what you want to answer in your settings — who you are, where you're from, what you love, what's your thing — and skip the rest. Then look at your matches, connect with the people who feel right, and invite the people you love. Points go up when people invite, and when people join.
 
 ## What's in it for you:
 
-You stop shouting into the void and start talking with people who actually get you. Your world fills with like minds, your conversations go deeper, and your community grows around what you love. That is what belonging feels like.
+People who really get you, found for you automatically. Friends, collaborators, customers, community — the people who matter most, matched by how much you truly have in common.
