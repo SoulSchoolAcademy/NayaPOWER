@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-22 13:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-22 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -59356,6 +59356,18 @@ _Last updated: 2026-11-22 13:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261122-0550 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: attempt all 31 queued briefs in ORDERING order, verify zero queue drift
+
+**Evidence:** FRESH WINDOW (only unscored receipt this tick; backlog 0 after this row). VERIFIED first-hand this tick: brief-queue/ holds 31 brief-*.md, zero brief-tNNNN-*; queue checksum 6d9e2c4e...20ad4 reproduced exactly via sha256sum brief-*.md inside brief-queue/, identical to the 00:23, 01:28, 02:33, 03:39 and 04:44 receipts, so zero drift and no claim occ
+
+### ✅ distill-daily-20261122 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** distill-daily 2026-11-22: re-prove mission-state drift (main 10,206 lines vs branch 23 lines), correct brief last-touch premise, hand merge to dock
+
+**Evidence:** FRESH WINDOW (only unscored receipt this tick; backlog 0 after this row). VERIFIED first-hand this tick: main file at e52f090c BRAIN/CURRENT-MISSION-STATE.md is 10,206 lines, stamp 2026-11-20 05:13 PST; branch file at 6b83d1251 is 23 lines, stamp 2026-11-22 05:08 PST (mirror git show, both SHAs exist with matching content); 741b7459 exists in the m
 
 ### ✅ gate-stall-20261122-0444 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
