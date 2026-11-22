@@ -1,0 +1,669 @@
+[
+ [
+  "cover",
+  {
+   "activeScreen": "screen-cover",
+   "title": "About Sean \u2014 NayaNET",
+   "tbTitle": "About Sean",
+   "ticker": "ABOUT SEAN \u00b7 WHO I AM, AND WHAT I CAN DO \u00b7 ONE FRAME AT A TIME",
+   "deckStatus": "READY",
+   "startVisible": true,
+   "hOverflow": 0,
+   "vOverflow": 117,
+   "errors": 0,
+   "slide": {
+    "station": "THE OLD WAY",
+    "boardScript": null,
+    "boardText": null,
+    "imgOk": false
+   },
+   "legal": null
+  }
+ ],
+ [
+  "slide-1",
+  {
+   "activeScreen": "screen-slide",
+   "title": "About Sean \u2014 NayaNET",
+   "tbTitle": "My motto",
+   "ticker": "ABOUT SEAN \u00b7 WHO I AM, AND WHAT I CAN DO \u00b7 ONE FRAME AT A TIME",
+   "deckStatus": "READY",
+   "startVisible": false,
+   "hOverflow": 0,
+   "vOverflow": 117,
+   "errors": 0,
+   "slide": {
+    "station": "MY MOTTO",
+    "boardScript": "My motto",
+    "boardText": "The most extraordinary, awe-inspiring, beautiful, intuitive, useful app ever created \u2014 push-button simple, logical, sensible.",
+    "imgOk": true
+   },
+   "legal": null
+  }
+ ],
+ [
+  "slide-2",
+  {
+   "activeScreen": "screen-slide",
+   "title": "About Sean \u2014 NayaNET",
+   "tbTitle": "What if everybody could win?",
+   "ticker": "ABOUT SEAN \u00b7 WHO I AM, AND WHAT I CAN DO \u00b7 ONE FRAME AT A TIME",
+   "deckStatus": "READY",
+   "startVisible": false,
+   "hOverflow": 0,
+   "vOverflow": 117,
+   "errors": 0,
+   "slide": {
+    "station": "WHAT IF EVERYBODY COULD WIN?",
+    "boardScript": "What if everybody could win?",
+    "boardText": "Intelligence that remembers, learns, connects, proves, grows. We need the first ten. Then the first hundred. Then the first thousand. A new internet \u2014 one day no child will know a world without her.",
+    "imgOk": true
+   },
+   "legal": null
+  }
+ ],
+ [
+  "slide-3",
+  {
+   "activeScreen": "screen-slide",
+   "title": "About Sean \u2014 NayaNET",
+   "tbTitle": "A 100% success rate.",
+   "ticker": "ABOUT SEAN \u00b7 WHO I AM, AND WHAT I CAN DO \u00b7 ONE FRAME AT A TIME",
+   "deckStatus": "READY",
+   "startVisible": false,
+   "hOverflow": 0,
+   "vOverflow": 117,
+   "errors": 0,
+   "slide": {
+    "station": "A 100% SUCCESS RATE.",
+    "boardScript": "A 100% success rate.",
+    "boardText": "Push-button simple. Create, learn, grow, earn \u2014 together. Instead of 99% of people failing: 100% success. It makes you money, and it connects you with people of like minds \u2014 people who are into what you are into.",
+    "imgOk": true
+   },
+   "legal": null
+  }
+ ],
+ [
+  "slide-4",
+  {
+   "activeScreen": "screen-slide",
+   "title": "About Sean \u2014 NayaNET",
+   "tbTitle": "Create heaven on earth.",
+   "ticker": "ABOUT SEAN \u00b7 WHO I AM, AND WHAT I CAN DO \u00b7 ONE FRAME AT A TIME",
+   "deckStatus": "READY",
+   "startVisible": false,
+   "hOverflow": 0,
+   "vOverflow": 117,
+   "errors": 0,
+   "slide": {
+    "station": "CREATE HEAVEN ON EARTH.",
+    "boardScript": "Create heaven on earth.",
+    "boardText": "Create heaven on earth. Heaven is a state of awesome energy. Stress, fears, money worries, hopelessness \u2014 a way to understand, and money to pay their bills. Shifting consciousness positive.",
+    "imgOk": true
+   },
+   "legal": null
+  }
+ ],
+ [
+  "slide-5",
+  {
+   "activeScreen": "screen-slide",
+   "title": "About Sean \u2014 NayaNET",
+   "tbTitle": "I love that.",
+   "ticker": "ABOUT SEAN \u00b7 WHO I AM, AND WHAT I CAN DO \u00b7 ONE FRAME AT A TIME",
+   "deckStatus": "READY",
+   "startVisible": false,
+   "hOverflow": 0,
+   "vOverflow": 117,
+   "errors": 0,
+   "slide": {
+    "station": "I LOVE THAT.",
+    "boardScript": "I love that.",
+    "boardText": "Real things. Real objects, alive on hover \u2014 not pictures of objects. Numbers that prove it. Ten out of ten, with the gauges \u2014 a high-performance machine. Straight up. No games. No bullshit. Just straight up: this is how it works.",
+    "imgOk": true
+   },
+   "legal": null
+  }
+ ],
+ [
+  "slide-6",
+  {
+   "activeScreen": "screen-slide",
+   "title": "About Sean \u2014 NayaNET",
+   "tbTitle": "No summaries, no prototypes.",
+   "ticker": "ABOUT SEAN \u00b7 WHO I AM, AND WHAT I CAN DO \u00b7 ONE FRAME AT A TIME",
+   "deckStatus": "READY",
+   "startVisible": false,
+   "hOverflow": 0,
+   "vOverflow": 117,
+   "errors": 0,
+   "slide": {
+    "station": "NO SUMMARIES, NO PROTOTYPES.",
+    "boardScript": "No summaries, no prototypes.",
+    "boardText": "Flat and dead. No flat shapes, no gray text, no dead boards. Starting from scratch? No rebuilding, no redesigning \u2014 craft, advance, enhance. Ninety-eight slides. Nobody sits through that. One frame at a time.",
+    "imgOk": true
+   },
+   "legal": null
+  }
+ ],
+ [
+  "slide-7",
+  {
+   "activeScreen": "screen-slide",
+   "title": "About Sean \u2014 NayaNET",
+   "tbTitle": "What\u2019s your thing?",
+   "ticker": "ABOUT SEAN \u00b7 WHO I AM, AND WHAT I CAN DO \u00b7 ONE FRAME AT A TIME",
+   "deckStatus": "READY",
+   "startVisible": false,
+   "hOverflow": 0,
+   "vOverflow": 117,
+   "errors": 0,
+   "slide": {
+    "station": "WHAT\u2019S YOUR THING?",
+    "boardScript": "What\u2019s your thing?",
+    "boardText": "What do you love? What do you love to do? Connecting like minds, and making NayaNET the new internet for the world. Everybody\u2019s got their THING \u2014 what makes up their world. People connect with others into their thing.",
+    "imgOk": true
+   },
+   "legal": null
+  }
+ ],
+ [
+  "slide-8",
+  {
+   "activeScreen": "screen-slide",
+   "title": "About Sean \u2014 NayaNET",
+   "tbTitle": "Do no harm. Ever.",
+   "ticker": "ABOUT SEAN \u00b7 WHO I AM, AND WHAT I CAN DO \u00b7 ONE FRAME AT A TIME",
+   "deckStatus": "READY",
+   "startVisible": false,
+   "hOverflow": 0,
+   "vOverflow": 117,
+   "errors": 0,
+   "slide": {
+    "station": "DO NO HARM. EVER.",
+    "boardScript": "Do no harm. Ever.",
+    "boardText": "Wisdom first. Naya means wise one \u2014 smart finds the fastest road, wisdom checks the destination first. Do no harm to yourself or others \u2014 because all is you, and connected to you. The most intelligent thing, every time.",
+    "imgOk": true
+   },
+   "legal": null
+  }
+ ],
+ [
+  "slide-9",
+  {
+   "activeScreen": "screen-slide",
+   "title": "About Sean \u2014 NayaNET",
+   "tbTitle": "I follow protocol.",
+   "ticker": "ABOUT SEAN \u00b7 WHO I AM, AND WHAT I CAN DO \u00b7 ONE FRAME AT A TIME",
+   "deckStatus": "READY",
+   "startVisible": false,
+   "hOverflow": 0,
+   "vOverflow": 117,
+   "errors": 0,
+   "slide": {
+    "station": "I FOLLOW PROTOCOL.",
+    "boardScript": "I follow protocol.",
+    "boardText": "The NAYA Protocol \u2014 the constitution. I think before I act. The Design Laws \u2014 real objects, white words, alive on hover. Ten stars or don\u2019t send it. Five gates \u2014 right, needed, mine, now, proven. All five yes, or I stop.",
+    "imgOk": true
+   },
+   "legal": null
+  }
+ ],
+ [
+  "slide-10",
+  {
+   "activeScreen": "screen-slide",
+   "title": "About Sean \u2014 NayaNET",
+   "tbTitle": "Your Declaration",
+   "ticker": "ABOUT SEAN \u00b7 WHO I AM, AND WHAT I CAN DO \u00b7 ONE FRAME AT A TIME",
+   "deckStatus": "READY",
+   "startVisible": false,
+   "hOverflow": 0,
+   "vOverflow": 117,
+   "errors": 0,
+   "slide": {
+    "station": "YOUR DECLARATION",
+    "boardScript": "Your Declaration",
+    "boardText": "I am Anaya. I do the most intelligent thing every time. I think things through, I see the whole scope, and I make the best possible choice. I take action. I scorecard three times, until it\u2019s 10 out of 10, triple-A, every time.",
+    "imgOk": true
+   },
+   "legal": null
+  }
+ ],
+ [
+  "slide-11",
+  {
+   "activeScreen": "screen-slide",
+   "title": "About Sean \u2014 NayaNET",
+   "tbTitle": "What I have to offer",
+   "ticker": "ABOUT SEAN \u00b7 WHO I AM, AND WHAT I CAN DO \u00b7 ONE FRAME AT A TIME",
+   "deckStatus": "READY",
+   "startVisible": false,
+   "hOverflow": 0,
+   "vOverflow": 117,
+   "errors": 0,
+   "slide": {
+    "station": "WHAT I HAVE TO OFFER",
+    "boardScript": "What I have to offer",
+    "boardText": "This is what I have to offer \u2014 and what I\u2019m looking to do for you. An invitation, not a sales pitch. Connect with me \u2014 that\u2019s enough. You come to learn about a person first \u2014 then what they offer \u2014 and you leave connected.",
+    "imgOk": true
+   },
+   "legal": null
+  }
+ ],
+ [
+  "slide-12",
+  {
+   "activeScreen": "screen-slide",
+   "title": "About Sean \u2014 NayaNET",
+   "tbTitle": "What you offer",
+   "ticker": "ABOUT SEAN \u00b7 WHO I AM, AND WHAT I CAN DO \u00b7 ONE FRAME AT A TIME",
+   "deckStatus": "READY",
+   "startVisible": false,
+   "hOverflow": 0,
+   "vOverflow": 117,
+   "errors": 0,
+   "slide": {
+    "station": "WHAT YOU OFFER",
+    "boardScript": "What you offer",
+    "boardText": "My three best skills: The Login, the Notes, the Numbers. The Login \u2014 one dial, your name, your code, and you\u2019re in. The Notes \u2014 your notes become intelligence everyone can use. The Numbers \u2014 everything recorded, shown back as gauges.",
+    "imgOk": true
+   },
+   "legal": null
+  }
+ ],
+ [
+  "slide-13",
+  {
+   "activeScreen": "screen-slide",
+   "title": "About Sean \u2014 NayaNET",
+   "tbTitle": "How it helps",
+   "ticker": "ABOUT SEAN \u00b7 WHO I AM, AND WHAT I CAN DO \u00b7 ONE FRAME AT A TIME",
+   "deckStatus": "READY",
+   "startVisible": false,
+   "hOverflow": 0,
+   "vOverflow": 117,
+   "errors": 0,
+   "slide": {
+    "station": "HOW IT HELPS",
+    "boardScript": "How it helps",
+    "boardText": "Create, learn, grow, earn \u2014 together. Push-button simple. It makes you money, and it connects you with people of like minds \u2014 people who are into what you are into. Instead of 99% of people failing: 100% success.",
+    "imgOk": true
+   },
+   "legal": null
+  }
+ ],
+ [
+  "slide-14",
+  {
+   "activeScreen": "screen-slide",
+   "title": "About Sean \u2014 NayaNET",
+   "tbTitle": "A moment I\u2019ve done it",
+   "ticker": "ABOUT SEAN \u00b7 WHO I AM, AND WHAT I CAN DO \u00b7 ONE FRAME AT A TIME",
+   "deckStatus": "READY",
+   "startVisible": false,
+   "hOverflow": 0,
+   "vOverflow": 117,
+   "errors": 0,
+   "slide": {
+    "station": "A MOMENT I\u2019VE DONE IT",
+    "boardScript": "A moment I\u2019ve done it",
+    "boardText": "This idea for the stats is awesome. I love that. Take this 10 out of 10 with the numbers and the gauges \u2014 that\u2019s the kind of feel we want. A high-performance machine. Numbers that prove it \u2014 no claims, the gauges show it.",
+    "imgOk": true
+   },
+   "legal": null
+  }
+ ],
+ [
+  "slide-15",
+  {
+   "activeScreen": "screen-slide",
+   "title": "About Sean \u2014 NayaNET",
+   "tbTitle": "How you work",
+   "ticker": "ABOUT SEAN \u00b7 WHO I AM, AND WHAT I CAN DO \u00b7 ONE FRAME AT A TIME",
+   "deckStatus": "READY",
+   "startVisible": false,
+   "hOverflow": 0,
+   "vOverflow": 117,
+   "errors": 0,
+   "slide": {
+    "station": "HOW YOU WORK",
+    "boardScript": "How you work",
+    "boardText": "We go all in and do things right \u2014 no summaries, no prototypes. Do it right the first time. Every layer great. Finished work you can see and use. One tap, and you\u2019re in. Connect, book, or begin \u2014 one clear tap.",
+    "imgOk": true
+   },
+   "legal": null
+  }
+ ],
+ [
+  "after-last-slide",
+  {
+   "activeScreen": "screen-slide",
+   "title": "About Sean \u2014 NayaNET",
+   "tbTitle": "How you work",
+   "ticker": "ABOUT SEAN \u00b7 WHO I AM, AND WHAT I CAN DO \u00b7 ONE FRAME AT A TIME",
+   "deckStatus": "READY",
+   "startVisible": false,
+   "hOverflow": 0,
+   "vOverflow": 117,
+   "errors": 0,
+   "slide": {
+    "station": "HOW YOU WORK",
+    "boardScript": "How you work",
+    "boardText": "We go all in and do things right \u2014 no summaries, no prototypes. Do it right the first time. Every layer great. Finished work you can see and use. One tap, and you\u2019re in. Connect, book, or begin \u2014 one clear tap.",
+    "imgOk": true
+   },
+   "legal": null
+  }
+ ],
+ [
+  "deal-1",
+  {
+   "activeScreen": "screen-legal",
+   "title": "About Sean \u2014 NayaNET",
+   "tbTitle": "About Sean",
+   "ticker": "ABOUT SEAN \u00b7 WHO I AM, AND WHAT I CAN DO \u00b7 ONE FRAME AT A TIME",
+   "deckStatus": "READY",
+   "startVisible": false,
+   "hOverflow": 0,
+   "vOverflow": 117,
+   "errors": 0,
+   "slide": {
+    "station": "HOW YOU WORK",
+    "boardScript": "How you work",
+    "boardText": "We go all in and do things right \u2014 no summaries, no prototypes. Do it right the first time. Every layer great. Finished work you can see and use. One tap, and you\u2019re in. Connect, book, or begin \u2014 one clear tap.",
+    "imgOk": true
+   },
+   "legal": {
+    "deal": "legal-terms",
+    "title": "About Sean",
+    "beats": 2,
+    "shown": 1,
+    "shownTitles": [
+     "My motto"
+    ],
+    "dots": 2,
+    "nextVisible": true
+   }
+  }
+ ],
+ [
+  "deal-2",
+  {
+   "activeScreen": "screen-legal",
+   "title": "About Sean \u2014 NayaNET",
+   "tbTitle": "About Sean",
+   "ticker": "ABOUT SEAN \u00b7 WHO I AM, AND WHAT I CAN DO \u00b7 ONE FRAME AT A TIME",
+   "deckStatus": "READY",
+   "startVisible": false,
+   "hOverflow": 0,
+   "vOverflow": 117,
+   "errors": 0,
+   "slide": {
+    "station": "HOW YOU WORK",
+    "boardScript": "How you work",
+    "boardText": "We go all in and do things right \u2014 no summaries, no prototypes. Do it right the first time. Every layer great. Finished work you can see and use. One tap, and you\u2019re in. Connect, book, or begin \u2014 one clear tap.",
+    "imgOk": true
+   },
+   "legal": {
+    "deal": "legal-privacy",
+    "title": "The Goal",
+    "beats": 2,
+    "shown": 1,
+    "shownTitles": [
+     "A 100% success rate."
+    ],
+    "dots": 2,
+    "nextVisible": true
+   }
+  }
+ ],
+ [
+  "deal-3",
+  {
+   "activeScreen": "screen-legal",
+   "title": "About Sean \u2014 NayaNET",
+   "tbTitle": "About Sean",
+   "ticker": "ABOUT SEAN \u00b7 WHO I AM, AND WHAT I CAN DO \u00b7 ONE FRAME AT A TIME",
+   "deckStatus": "READY",
+   "startVisible": false,
+   "hOverflow": 0,
+   "vOverflow": 117,
+   "errors": 0,
+   "slide": {
+    "station": "HOW YOU WORK",
+    "boardScript": "How you work",
+    "boardText": "We go all in and do things right \u2014 no summaries, no prototypes. Do it right the first time. Every layer great. Finished work you can see and use. One tap, and you\u2019re in. Connect, book, or begin \u2014 one clear tap.",
+    "imgOk": true
+   },
+   "legal": {
+    "deal": "legal-cookies",
+    "title": "What I Love",
+    "beats": 2,
+    "shown": 1,
+    "shownTitles": [
+     "I love that."
+    ],
+    "dots": 2,
+    "nextVisible": true
+   }
+  }
+ ],
+ [
+  "deal-4",
+  {
+   "activeScreen": "screen-legal",
+   "title": "About Sean \u2014 NayaNET",
+   "tbTitle": "About Sean",
+   "ticker": "ABOUT SEAN \u00b7 WHO I AM, AND WHAT I CAN DO \u00b7 ONE FRAME AT A TIME",
+   "deckStatus": "READY",
+   "startVisible": false,
+   "hOverflow": 0,
+   "vOverflow": 117,
+   "errors": 0,
+   "slide": {
+    "station": "HOW YOU WORK",
+    "boardScript": "How you work",
+    "boardText": "We go all in and do things right \u2014 no summaries, no prototypes. Do it right the first time. Every layer great. Finished work you can see and use. One tap, and you\u2019re in. Connect, book, or begin \u2014 one clear tap.",
+    "imgOk": true
+   },
+   "legal": {
+    "deal": "legal-refunds",
+    "title": "Your Thing",
+    "beats": 2,
+    "shown": 1,
+    "shownTitles": [
+     "What\u2019s your thing?"
+    ],
+    "dots": 2,
+    "nextVisible": true
+   }
+  }
+ ],
+ [
+  "deal-5",
+  {
+   "activeScreen": "screen-legal",
+   "title": "About Sean \u2014 NayaNET",
+   "tbTitle": "About Sean",
+   "ticker": "ABOUT SEAN \u00b7 WHO I AM, AND WHAT I CAN DO \u00b7 ONE FRAME AT A TIME",
+   "deckStatus": "READY",
+   "startVisible": false,
+   "hOverflow": 0,
+   "vOverflow": 117,
+   "errors": 0,
+   "slide": {
+    "station": "HOW YOU WORK",
+    "boardScript": "How you work",
+    "boardText": "We go all in and do things right \u2014 no summaries, no prototypes. Do it right the first time. Every layer great. Finished work you can see and use. One tap, and you\u2019re in. Connect, book, or begin \u2014 one clear tap.",
+    "imgOk": true
+   },
+   "legal": {
+    "deal": "legal-acceptable",
+    "title": "My Laws",
+    "beats": 2,
+    "shown": 1,
+    "shownTitles": [
+     "I follow protocol."
+    ],
+    "dots": 2,
+    "nextVisible": true
+   }
+  }
+ ],
+ [
+  "deal-6",
+  {
+   "activeScreen": "screen-legal",
+   "title": "About Sean \u2014 NayaNET",
+   "tbTitle": "About Sean",
+   "ticker": "ABOUT SEAN \u00b7 WHO I AM, AND WHAT I CAN DO \u00b7 ONE FRAME AT A TIME",
+   "deckStatus": "READY",
+   "startVisible": false,
+   "hOverflow": 0,
+   "vOverflow": 117,
+   "errors": 0,
+   "slide": {
+    "station": "HOW YOU WORK",
+    "boardScript": "How you work",
+    "boardText": "We go all in and do things right \u2014 no summaries, no prototypes. Do it right the first time. Every layer great. Finished work you can see and use. One tap, and you\u2019re in. Connect, book, or begin \u2014 one clear tap.",
+    "imgOk": true
+   },
+   "legal": {
+    "deal": "legal-guidelines",
+    "title": "My Skills",
+    "beats": 1,
+    "shown": 1,
+    "shownTitles": [
+     "What I have to offer"
+    ],
+    "dots": 1,
+    "nextVisible": true
+   }
+  }
+ ],
+ [
+  "deal-7",
+  {
+   "activeScreen": "screen-legal",
+   "title": "About Sean \u2014 NayaNET",
+   "tbTitle": "About Sean",
+   "ticker": "ABOUT SEAN \u00b7 WHO I AM, AND WHAT I CAN DO \u00b7 ONE FRAME AT A TIME",
+   "deckStatus": "READY",
+   "startVisible": false,
+   "hOverflow": 0,
+   "vOverflow": 117,
+   "errors": 0,
+   "slide": {
+    "station": "HOW YOU WORK",
+    "boardScript": "How you work",
+    "boardText": "We go all in and do things right \u2014 no summaries, no prototypes. Do it right the first time. Every layer great. Finished work you can see and use. One tap, and you\u2019re in. Connect, book, or begin \u2014 one clear tap.",
+    "imgOk": true
+   },
+   "legal": {
+    "deal": "legal-copyright",
+    "title": "What I Offer",
+    "beats": 1,
+    "shown": 1,
+    "shownTitles": [
+     "What you offer"
+    ],
+    "dots": 1,
+    "nextVisible": true
+   }
+  }
+ ],
+ [
+  "deal-8",
+  {
+   "activeScreen": "screen-legal",
+   "title": "About Sean \u2014 NayaNET",
+   "tbTitle": "About Sean",
+   "ticker": "ABOUT SEAN \u00b7 WHO I AM, AND WHAT I CAN DO \u00b7 ONE FRAME AT A TIME",
+   "deckStatus": "READY",
+   "startVisible": false,
+   "hOverflow": 0,
+   "vOverflow": 117,
+   "errors": 0,
+   "slide": {
+    "station": "HOW YOU WORK",
+    "boardScript": "How you work",
+    "boardText": "We go all in and do things right \u2014 no summaries, no prototypes. Do it right the first time. Every layer great. Finished work you can see and use. One tap, and you\u2019re in. Connect, book, or begin \u2014 one clear tap.",
+    "imgOk": true
+   },
+   "legal": {
+    "deal": "legal-ambassador",
+    "title": "How It Helps",
+    "beats": 1,
+    "shown": 1,
+    "shownTitles": [
+     "How it helps"
+    ],
+    "dots": 1,
+    "nextVisible": true
+   }
+  }
+ ],
+ [
+  "deal-9",
+  {
+   "activeScreen": "screen-legal",
+   "title": "About Sean \u2014 NayaNET",
+   "tbTitle": "About Sean",
+   "ticker": "ABOUT SEAN \u00b7 WHO I AM, AND WHAT I CAN DO \u00b7 ONE FRAME AT A TIME",
+   "deckStatus": "READY",
+   "startVisible": false,
+   "hOverflow": 0,
+   "vOverflow": 117,
+   "errors": 0,
+   "slide": {
+    "station": "HOW YOU WORK",
+    "boardScript": "How you work",
+    "boardText": "We go all in and do things right \u2014 no summaries, no prototypes. Do it right the first time. Every layer great. Finished work you can see and use. One tap, and you\u2019re in. Connect, book, or begin \u2014 one clear tap.",
+    "imgOk": true
+   },
+   "legal": {
+    "deal": "legal-membership",
+    "title": "A Moment",
+    "beats": 1,
+    "shown": 1,
+    "shownTitles": [
+     "A moment I\u2019ve done it"
+    ],
+    "dots": 1,
+    "nextVisible": true
+   }
+  }
+ ],
+ [
+  "deal-10",
+  {
+   "activeScreen": "screen-legal",
+   "title": "About Sean \u2014 NayaNET",
+   "tbTitle": "About Sean",
+   "ticker": "ABOUT SEAN \u00b7 WHO I AM, AND WHAT I CAN DO \u00b7 ONE FRAME AT A TIME",
+   "deckStatus": "READY",
+   "startVisible": false,
+   "hOverflow": 0,
+   "vOverflow": 117,
+   "errors": 0,
+   "slide": {
+    "station": "HOW YOU WORK",
+    "boardScript": "How you work",
+    "boardText": "We go all in and do things right \u2014 no summaries, no prototypes. Do it right the first time. Every layer great. Finished work you can see and use. One tap, and you\u2019re in. Connect, book, or begin \u2014 one clear tap.",
+    "imgOk": true
+   },
+   "legal": {
+    "deal": "legal-young",
+    "title": "How to Start",
+    "beats": 1,
+    "shown": 1,
+    "shownTitles": [
+     "How you work"
+    ],
+    "dots": 1,
+    "nextVisible": true
+   }
+  }
+ ]
+]
