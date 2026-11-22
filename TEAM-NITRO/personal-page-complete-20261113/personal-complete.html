@@ -5114,7 +5114,7 @@ html.os-calm .os-dash .ph-card::after,html.os-calm .os-dash-pulse .stat-card::be
       <button class="up-act" id="saBackBtn" type="button" style="--ac:#ffffff;display:none;">← Back to my world</button>
       <button class="up-act" id="msgbtn" type="button" style="--ac:#07925f;"><span class="os-jewel os-jewel-sm" style="--jc:#07925f">✉</span> Message</button>
       <button class="up-act" id="aboutbtn" type="button" style="--ac:#d4a017;" data-os-go="about"><span class="os-jewel os-jewel-sm" style="--jc:#d4a017">◉</span> About</button>
-      <button class="up-act" id="myworldbtn" type="button" style="--ac:#c2410c;" data-os-go="myworld"><span class="os-jewel os-jewel-sm" style="--jc:#c2410c">⌂</span> My World</button> <button class="up-act" id="calbtn" type="button" style="--ac:#07925f;" data-os-go="myworld"><span class="os-jewel os-jewel-sm" style="--jc:#07925f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span> Calendar</button>
+      <button class="up-act" id="myworldbtn" type="button" style="--ac:#07925f;" data-os-go="myworld"><span class="os-jewel os-jewel-sm" style="--jc:#07925f">▦</span> Calendar</button>
       <button class="up-act" id="skillsbtn" type="button" style="--ac:#c62828;" data-os-go="skills"><span class="os-jewel os-jewel-sm" style="--jc:#c62828">⚙</span> Skills</button>
       <button class="up-act" id="connbtn" type="button" style="--ac:#a21caf;" data-os-go="people"><span class="os-jewel os-jewel-sm" style="--jc:#a21caf">◈</span> Connections</button>
       <button class="up-act" id="growthbtn" type="button" style="--ac:#8e24aa;" data-os-go="growth"><span class="os-jewel os-jewel-sm" style="--jc:#8e24aa">↗</span> Invite</button>
@@ -39972,7 +39972,7 @@ function mwApplyLang(){
   try{ document.documentElement.lang=code; }catch(e){}
   var dict=MW_I18N[code]||{};
   var _joinLab='Join NayaNET'; try{ if(window.pcIsPageOwner && window.pcIsPageOwner()) _joinLab='Go to the Hub'; }catch(e){} /* FOLLOW-ON 2 (E3): the page-level Join reads as the owner's door — it routes the owner to the Hub, so it says so. Recomputed on every language pass. */
-  var byId={msgbtn:'Message',aboutbtn:'About',myworldbtn:'My World',statsbtn:'Stats',intelbtn:"Today's Intel",skillsbtn:'Skills',connbtn:'Connections',growthbtn:'Invite',sharebtn:'Share',joinbtn:_joinLab,settingsbtn:'Settings',memberbtn:'Become a Member',saBackBtn:'Back to my world',cvrbtn:'Change cover','tg-back':'Back to my words','tg-post-smart':'Post smart note',fcChatSend:'Send','os-dash-fb-btn':'Send'}; /* AUTO-TRANSLATE: the row's missing three (Stats, Today's Intel, Skills — the first two are dead ids today, covered for when they return) + the hidden-until-open buttons + the chat Send. The creator's two buttons are NOT here: os-post-btn's label is per-mode (tgSetMode owns it, re-run below) and os-sched-btn's label is dynamic (a scheduled date) — the byId pass would clobber both. */
+  var byId={msgbtn:'Message',aboutbtn:'About',myworldbtn:'Calendar',statsbtn:'Stats',intelbtn:"Today's Intel",skillsbtn:'Skills',connbtn:'Connections',growthbtn:'Invite',sharebtn:'Share',joinbtn:_joinLab,settingsbtn:'Settings',memberbtn:'Become a Member',saBackBtn:'Back to my world',cvrbtn:'Change cover','tg-back':'Back to my words','tg-post-smart':'Post smart note',fcChatSend:'Send','os-dash-fb-btn':'Send'}; /* AUTO-TRANSLATE: the row's missing three (Stats, Today's Intel, Skills — the first two are dead ids today, covered for when they return) + the hidden-until-open buttons + the chat Send. The creator's two buttons are NOT here: os-post-btn's label is per-mode (tgSetMode owns it, re-run below) and os-sched-btn's label is dynamic (a scheduled date) — the byId pass would clobber both. */
   Object.keys(byId).forEach(function(id){
     var el=$(id); if(!el) return;
     if(el.classList && el.classList.contains('pc-gear')) return; /* PERSONAL-COMPLETE: the gear is an icon, not a label. */
@@ -39993,7 +39993,7 @@ function mwApplyLang(){
     var keepSvg=(el.firstElementChild&&el.firstElementChild.tagName&&el.firstElementChild.tagName.toLowerCase()==='svg')?el.firstElementChild:null;
     el.textContent=(icon?icon[1]:'')+txt;
     if(keepSvg) el.insertBefore(keepSvg,el.firstChild);
-    if(id==='myworldbtn' && code==='en') el.textContent='My World';
+    if(id==='myworldbtn' && code==='en') el.textContent='Calendar';
   });
   /* AUTO-TRANSLATE: the Schedule button only when nothing is scheduled — a
      scheduled date label is data, never chrome, and must never be clobbered. */
@@ -41674,7 +41674,7 @@ function saCourseMode(on){
     }
     var pname3 = sa$('pname'); if(pname3) pname3.textContent = saSaved.name;
     var ptag3 = sa$('ptag'); if(ptag3) ptag3.textContent = saSaved.tag;
-    var mw3 = sa$('myworldbtn'); if(mw3) mw3.textContent = 'My World';
+    var mw3 = sa$('myworldbtn'); if(mw3) mw3.textContent = 'Calendar';
     var back3 = sa$('saBackBtn'); if(back3) back3.style.display = 'none';
     saSetFeedTabs(false);
     saSetFeedHead(null);
@@ -47220,8 +47220,8 @@ if(document.readyState==='loading'){
    -> envelope), not localStorage: in a fresh VM the label reads Message
    while os.connected is unset, and the label is what the citizen reads. */
 (function(){
-  var GLYPHS='\u2709\u2726\u25c9\u2302\u2699\u25c8\u2197\u21c4';
-  var JEWELS={aboutbtn:['\u25c9','#d4a017'],myworldbtn:['\u2302','#c2410c'],skillsbtn:['\u2699','#c62828'],connbtn:['\u25c8','#a21caf'],growthbtn:['\u2197','#8e24aa'],sharebtn:['\u21c4','#0f52ba'],joinbtn:['\u2726','#07925f']};
+  var GLYPHS='\u2709\u2726\u25c9\u2302\u2699\u25c8\u2197\u21c4\u25A6';
+  var JEWELS={aboutbtn:['\u25c9','#d4a017'],myworldbtn:['\u25A6','#07925f'],skillsbtn:['\u2699','#c62828'],connbtn:['\u25c8','#a21caf'],growthbtn:['\u2197','#8e24aa'],sharebtn:['\u21c4','#0f52ba'],joinbtn:['\u2726','#07925f']};
   function msgGlyphFor(txt){ return /^\s*Connect/i.test(txt) ? '\u2726' : '\u2709'; }
   function esc(t){ return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
   function pcR3EnsureUpJewel(id){
@@ -47875,10 +47875,10 @@ renderGrid();
 })();
 
 </script>
-<script>/* FOLLOW-ON R1 20261121 — Calendar + Settings doors: open the view, then jump to it.
+<script>/* FOLLOW-ON R1 20261121 — Calendar + Settings doors (BRIEF-UPDATE-1945: the Calendar door IS the relabeled My World spot): open the view, then jump to it.
    showView always smooth-scrolls to top:0 (~500ms), so the jump waits 650ms,
    scrolls instantly, and re-asserts at 1500ms against async layout shifts above. */
-(function(){function jump(id,sel){var b=document.getElementById(id);if(!b)return;b.addEventListener('click',function(){function go(){var g=document.querySelector(sel);if(g){try{g.scrollIntoView({behavior:'auto',block:'start'});}catch(e){}}}setTimeout(go,650);setTimeout(go,1500);});}jump('calbtn','#mwCalGrid');jump('setbtn','#settings');})();
+(function(){function jump(id,sel){var b=document.getElementById(id);if(!b)return;b.addEventListener('click',function(){function go(){var g=document.querySelector(sel);if(g){try{g.scrollIntoView({behavior:'auto',block:'start'});}catch(e){}}}setTimeout(go,650);setTimeout(go,1500);});}jump('myworldbtn','#mwCalGrid');jump('setbtn','#settings');})();
 </script>
 <style id="pc-bbr-20261116">
 /* PERSONAL BOTTOM-BAR RESTORE 2026-11-16 — one block for items 3/4/5/6. Harvest notes in the maker record. */
