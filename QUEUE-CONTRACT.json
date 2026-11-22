@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-22T09:49:20Z",
-  "tip": "e52f090c8d871281c3e79093f8e9ec8dc9e56df2",
+  "generated_at": "2026-11-22T15:49:23Z",
+  "tip": "046d8014fb8eba611eb8542df39d88717068d4d1",
   "prs": [
     {
       "number": 3499,
@@ -71,8 +71,8 @@
       "title": "fix(licp): derive backfilled-capture identity instead of failing step 6",
       "tier": "A",
       "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): claim-evidence-gate; then re-derive at the new head.",
-      "owner": "author lane",
+      "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
       "head": "02fb61f596742728b7d0a3d8a045a7ac976114c2"
     },
     {

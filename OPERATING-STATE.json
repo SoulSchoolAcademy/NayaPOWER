@@ -1,7 +1,7 @@
 {
   "schema": "naya.operating-state/1",
-  "generated_at": "2026-11-22T09:49:20Z",
-  "tip": "e52f090c8d871281c3e79093f8e9ec8dc9e56df2",
+  "generated_at": "2026-11-22T15:49:23Z",
+  "tip": "046d8014fb8eba611eb8542df39d88717068d4d1",
   "open_pr_count": 13,
   "queue_by_tier_action": {
     "B": {
@@ -15,9 +15,6 @@
     }
   },
   "tip_failing_checks": [
-    "completeness",
-    "door-obligation",
-    "fresh-lesson",
     "preflight",
     "promote-and-prove",
     "safety-grant-gate",
