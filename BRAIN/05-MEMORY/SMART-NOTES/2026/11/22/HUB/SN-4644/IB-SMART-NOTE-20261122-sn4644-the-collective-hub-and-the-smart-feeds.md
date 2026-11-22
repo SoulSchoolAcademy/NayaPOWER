@@ -8,7 +8,7 @@ SN-4644 · HUB / THE TWELVE ELEMENTS OF NAYA — PERSONAL
 
 ## Hook:
 
-Knowledge is most powerful when it's shared.
+"Knowledge is most powerful when it's shared."
 
 ## In a nutshell:
 
