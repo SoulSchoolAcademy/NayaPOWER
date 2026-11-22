@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-22 13:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-22 13:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -18367,6 +18367,12 @@ _Last updated: 2026-11-22 13:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: all four files exist on disk with receipt-matching sha16s -- nonembedding-arm-design-t0720.md ef959346ab7f7da9, nonembedding-arm-prereg-t0720.md 9c574d87e07bbd59, lineage-graph-t0720.json 7e021c69f12e1d5e, crawl-lineage-t0720.py 5f275a29ad3efc39. Load-bearing catch of the tick: brief's MRR_bi 0.3269 NOT reproducible from frozen 
 
+### ✅ t0719-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Decision-contact signal CANDIDATE design doc + frozen pre-registration answering the t0710-lane2 sealed HOLD
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: design lane-3/decision-contact-signal-design-t0719.md sha256 f84c6554...d13bbc EXACT match; pre-reg lane-3/decision-contact-prereg-t0719.md sha256 d992ad0c...a7b4a6e EXACT match. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS (agrees with the receipt's own honest 9.0). Why not 9.5: (1) single-seat - no blin
+
 ### ✅ t0719 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** Decision-contact signal CANDIDATE design + frozen pre-registration
@@ -18413,6 +18419,12 @@ _Last updated: 2026-11-22 13:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: origin branch naya4/t0719-lane12-connect head 019ee2b936d72ad52f6335b78dc826b91ae64e5f byte-matches the receipt (git ls-remote this tick). Score 9.5. Clears 9.5 because: 7 falsifiers pre-registered before any module byte and all held; 22 tests, full suite 124/124 green on committed bytes; SHA-guarded registry flip; verifier structural/ren
 
+### ✅ t0718-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Independent scorecard of PR #2574 (9.0/10 APPROVE CANDIDATE) with 8-case battery re-run at pinned head + dogfood finding
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: battery checker lane7-t0718-battery/check_pr_receipt.py sha256 13548592...ba4727 EXACT match; PR #2574 head commit 8d6a15e33e0141cf4abe51e30052feaf92dc35a5 exists in the local mirror with matching message. Live refs/pull/2574/head now 97b65bd1 (head moved after action time - post-hoc drift, not a receip
+
 ### ✅ t0718 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** Independent scorecard of PR #2574 - 9.0/10 APPROVE CANDIDATE
@@ -18436,6 +18448,12 @@ _Last updated: 2026-11-22 13:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0718-lane7.md`
 
 **Evidence:** ARTIFACTS VERIFIED: refs/pull/2574/head == 8d6a15e33e0141cf4abe51e30052feaf92dc35a5 via git ls-remote today == receipt pin == branch refs/heads/naya/lane9/receipt-relevance-t0710 head (no drift). Saved checker copy hidden_files/lane7-t0718-battery/check_pr_receipt.py sha256 135485928d873ab2... == receipt pin. Dogfood finding (PR's own body fails it
+
+### ✅ t0718-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Next-semantic-arm sealed pre-registration: supervised LOTO decision-contact ranker, 4 falsifiers, frozen battery pins
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: pre-reg retrieval/arm-next-prereg-t0718.md sha256 e0635978...bede767 EXACT match to the receipt. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS (agrees with the receipt's own honest 9.0). Why not 9.5: (1) single-seat design - no second seat stress-tested the falsifier thresholds; (2) N=3 tasks genuinely thi
 
 ### ✅ t0718 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -18461,6 +18479,12 @@ _Last updated: 2026-11-22 13:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: hidden_files/retrieval/arm-next-prereg-t0718.md exists on disk, sha256 e06359789817dd11... == receipt pin (sha16 match). Design-only authority held. Agrees with lane's honest 9.0/10. Kept from 9.5: (a) falsifier thresholds F2 4/5, F3 0.9 are seat-set, not calibrated -- no second seat stress-tested the set; (b) N=3 tasks genuinel
 
+### ✅ t0718-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Breaker #5 feature.social_feed built at cover/space standard: module + 22 tests + SHA-guarded registry flip + verifier x2, pushed
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: commit 9dade764dd37dc6169a37c4844b61ef1b921f521 exists in the local mirror with message 'Smart Feed breaker built (t0718 Lane 12): module + 22 tests + registry flip'. Live branch ref naya4/t0718-lane12-breaker now absent from ls-remote (post-hoc cleanup a month on; commit preserved - consistent with the
+
 ### ✅ t0718 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** feature.social_feed breaker build
@@ -18477,6 +18501,12 @@ _Last updated: 2026-11-22 13:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol: branch naya4/t0718-lane12-breaker exists on origin at exactly 9dade764dd37dc6169a37c4844b61ef1b921f521 (matches receipt). Clears 9.5 because: 7 falsifiers pre-registered BEFORE bytes (t0715's miss repaired, all held), 22 tests, 102/102 green, verifier x2 PASSED, SHA-guarded single-line flip, live resolve() with publish li
 
+### ✅ t0717-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Read-only readiness inspection of PR #2574: head pin, CI state, #2459-hold state, next actions
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: PR head commit 8d6a15e33e0141cf4abe51e30052feaf92dc35a5 exists in the local mirror; merge commit dd6f2d927d8299f7bd9895ee5dadca892b12b233 (the #2459 lift) exists in the mirror - the premise-rot catch is byte-real. Live branch ref naya/lane9/receipt-relevance-t0710 now absent from ls-remote (post-hoc cle
+
 ### ✅ t0717 — Team 9, Team Naya Scorer (Code Health) — 8.0/10 [VERIFIED]
 
 **Task:** Read-only readiness inspection of PR #2574 (receipt-gate relevance repair)
@@ -18492,6 +18522,12 @@ _Last updated: 2026-11-22 13:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0717-lane9.md`
 
 **Evidence:** ARTIFACTS VERIFIED via git ls-remote: refs/pull/2574/head == 8d6a15e33e0141cf4abe51e30052feaf92dc35a5 MATCHES the t0710 claim -- head UNMOVED. #2459-hold-lifted claim is the lane's REST-verified finding (comment 6135106316), not re-verified by this scorer; CI check states (12 pass / 4 fail) are the lane's action-time reads, root-caused locally not 
+
+### ✅ t0716-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Decision-criterion probe - sealed one-shot FALSIFY of rank-by-Done-when clause
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: instrument auto-retrieval/criterion_probe_t0716.py sha256 2e9ba33d...aad825 EXACT match; results lane-experiments/t0716/results-t0716-criterion-probe.json sha256 e3c47def...af6672 EXACT match; seal note present with v1-v4 pre-results amendments in the open. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS (ag
 
 ### ✅ t0716 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -18515,6 +18551,12 @@ _Last updated: 2026-11-22 13:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: brief-queue exists (35 briefs now, 29 at run time), both flagged briefs exist with the exact quoted lines byte-verified in their bodies ('the non-author review gate is a different seat's job' in brief-gap-lane-scorer-20261018-0030-lane0.md; '10 exit-7 second-seat bar mappings are not byte-visible' in brief-gap-gatestaall-20261019-0610-exe
 
+### ✅ t0715-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Top-20 needs analysis from the current ask-world query log (hypertune feed, SB-N1 candidate)
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: deliverable retrieval/smartblocks/hypertune-needs-t0715.md sha256 17a9f010...254253 EXACT match to the receipt; 10 needs all cite rows 60-78, three non-candidates carry explicit reasons, D1-D4 untouched per the receipt. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS (receipt's own 9.3 is one notch generous 
+
 ### ✅ t0715 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** Top-20 needs analysis from the current ask-world query log (10 honest needs + SMARTBLOCKS mappings)
@@ -18530,6 +18572,12 @@ _Last updated: 2026-11-22 13:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0715-lane4.md`
 
 **Evidence:** ARTIFACTS VERIFIED: needs file sha256 17a9f01020275a0eb302516776093991ca6deb382a749d0f7731123d89254253 MATCHES. Log pins and SMARTBLOCKS spec pin are the lane's action-time byte claims, not re-derived by this scorer (log file path not pinned to a location this tick could verify cheaply). Kept from 9.5: (a) no second-seat re-tally of rows 60-78 -- S
+
+### ✅ t0715-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Smart Space breaker (feature.space) built at cover/smart_list standard, 22 tests, SHA-guarded registry flip, pushed
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: commit 52d3374bd6d5a627cc66bf177577b2942a8bc0e4 exists in the local mirror with message 'Smart Space breaker built (t0715 Lane 12)'; file HUB/design-system/tools/smart-builder/functions/feature_space.py present at that SHA; mirror still carries origin/naya4/t0715-lane12-breaker containing the commit. Li
 
 ### ✅ t0715 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
