@@ -46,6 +46,11 @@
      Official names: Naya Code, Naya Wisdom, Naya Home, Naya Business,
      Naya Worlds, Naya Hub, Smart Notes, Smart Match, Smart Mail,
      Smart Calendar, Smart Value, Smart App Factory. -->
+<!-- ROUND 2, 2026-11-22: the red N on every slide is now the door into that element’s
+     chapter page (chapter-01-naya-code.html ... chapter-12-smart-app-factory.html, same
+     directory). Element 2 already reads Naya Wisdom at this tip; no rename was needed.
+     Nothing else on this page changed: words verbatim, images untouched, the last
+     forward still goes on to the portal (nayanet.app). -->
 <html lang="en">
 <head>
 <meta charset="utf-8" />
@@ -255,7 +260,7 @@
   .ib-layer-body .b-script{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(28px,3.4vw,38px);line-height:1.2;color:#fdfbf5;margin-top:10px;text-shadow:0 1px 0 #000,0 0 16px rgba(255,250,235,.4),0 0 34px rgba(139,92,246,.3)}
   .ib-layer-body p{margin:10px 0 16px;font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(20px,2.3vw,26px);line-height:1.45;color:#f4efe3;text-shadow:0 1px 0 #000,0 0 12px rgba(255,250,235,.22)}
   .ib-layer-body p strong{color:#fff;font-weight:600;text-shadow:0 1px 0 #000,0 0 18px rgba(255,250,235,.55),0 0 34px rgba(139,92,246,.35)}
-  .ib-n{width:80px;height:80px;flex:none;margin:auto;align-self:center}
+  .ib-n{width:80px;height:80px;flex:none;margin:auto;align-self:center;cursor:pointer}
   .ib-n img{width:80px;height:80px;display:block;border-radius:50%;object-fit:cover;filter:brightness(.95) saturate(1.08);box-shadow:0 0 0 2px rgba(255,255,255,.22),0 10px 20px rgba(0,0,0,.6),0 0 18px rgba(255,45,70,.30)}
   /* When a board's text crowds the N, the N moves here — centred underneath the picture */
   .slide-n-under{display:flex;justify-content:center;padding:18px 0 4px;width:100%}
@@ -532,6 +537,14 @@ var SLIDES = [
  {t:"Smart App Factory", x:"<strong>FACTORY</strong> &middot; &ldquo;The machine that builds the machine.&rdquo; One great page, cloned into everyone&rsquo;s personal world, business, and space &mdash; built in minutes, not days or months.", a:"Naya in a high-tech factory touching a glowing holographic screen, with rows of machines and the winged purple diamond emblem above"}
 ];
 var TOTAL = SLIDES.length;
+/* CHAPTER NAVIGATION (round 2, 2026-11-22) — the red N is the door.
+   On the index it opens the element’s chapter page; on a chapter it goes deeper
+   (next frame of the same element), and from the last frame on to the next chapter.
+   Chapter 12’s next page is the index cover: the loop closes. */
+var NAV_MODE = 'index';
+var CHAPTER_PAGES = ['chapter-01-naya-code.html', 'chapter-02-naya-wisdom.html', 'chapter-03-naya-home.html', 'chapter-04-naya-business.html', 'chapter-05-naya-worlds.html', 'chapter-06-naya-hub.html', 'chapter-07-smart-notes.html', 'chapter-08-smart-match.html', 'chapter-09-smart-mail.html', 'chapter-10-smart-calendar.html', 'chapter-11-smart-value.html', 'chapter-12-smart-app-factory.html'];
+var NEXT_PAGE = null;
+var INDEX_PAGE = 'about-twelve-elements.html';
 /* The rotation — all 16 of her portraits, in the registry's order, from
    the R2 picture store. A different face on every slide, never the same
    girl twice in a row; each appears about twice across the 27 slides.
@@ -591,7 +604,7 @@ function boardsFor(s){
     + '<img class="ib-face" src="' + face + '" data-fb="' + current + '" alt="Naya" />'
     + '<div class="b-script">' + s.t + '</div>'
     + '<p>' + s.x + '</p>'
-    + '<div class="ib-n"><img src="' + EMBED.ball + '" alt="The red N" /></div>'
+    + '<div class="ib-n" title="' + (NAV_MODE === 'index' ? 'Open the ' + s.t + ' chapter' : 'Go deeper into ' + s.t) + '"><img src="' + EMBED.ball + '" alt="The red N" /></div>'
     + '</div></div>';
 }
 function renderSlide(){
@@ -661,10 +674,12 @@ document.getElementById('btnStart').addEventListener('click', function(){ curren
 document.getElementById('btnForwardCover').addEventListener('click', function(){ current = 0; renderSlide(); show('slide'); });
 document.getElementById('btnBack').addEventListener('click', function(){
   if (current > 0){ current--; renderSlide(); }
+  else if (NAV_MODE === 'chapter'){ location.href = INDEX_PAGE; }
   else { show('cover'); }
 });
 document.getElementById('btnForward').addEventListener('click', function(){
   if (current < TOTAL - 1){ current++; renderSlide(); }
+  else if (NAV_MODE === 'chapter'){ location.href = NEXT_PAGE; }
   else { goToPortal(); }
 });
 document.addEventListener('keydown', function(e){
@@ -685,6 +700,18 @@ if (slideBoardsEl){
   slideBoardsEl.addEventListener('pointermove', boardLight);
   slideBoardsEl.addEventListener('pointerdown', boardLight);
 }
+
+/* ROUND 2 — the red N is the door: on the index it opens the element’s
+   chapter page; on a chapter it goes deeper (next frame of the same element),
+   and from the last frame on to the next chapter. Delegated on document because
+   placeSlideN can move the N under the picture when the board is crowded. */
+document.addEventListener('click', function(e){
+  var n = e.target && e.target.closest ? e.target.closest('.ib-n') : null;
+  if (!n) return;
+  if (NAV_MODE === 'index'){ location.href = CHAPTER_PAGES[current]; return; }
+  if (current < TOTAL - 1){ current++; renderSlide(); }
+  else { location.href = NEXT_PAGE; }
+});
 
 /* ================= COVER MEDIA (embedded) ================= */
 document.getElementById('videoPoster').src = EMBED.slides[1];
