@@ -4,7 +4,7 @@
 
 **NN-20261122-image-text-alignment-loop · Naya Note · 2026-11-22 ~16:02–16:04 MST**
 
-*Paired Smart Note: SN-4657 — The Image–Text Alignment Loop*
+*Paired Smart Note: SN-4661 — The Image–Text Alignment Loop*
 
 **Category:** DESIGN — image–text alignment; the image alone must tell the story
 
