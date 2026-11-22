@@ -14,7 +14,6 @@ One bar, one walk, one finished plate. The DM bar from his screenshot belongs on
 
 Across 10 notes, the thread is: the same bar everywhere, every button on it working, every page starting in the same walk, and nothing reaching him until it is finished and beautiful.
 
-Across 6 notes, the thread is: button, nothing, walk.
 
 ## Human
 
