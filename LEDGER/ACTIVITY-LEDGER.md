@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-22 07:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-22 07:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -36031,6 +36031,14 @@ _Last updated: 2026-11-22 07:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified: tip aa8061c1 re-pinned at remote HEAD via git protocol; #2385 head eedd9540f54cd unchanged; receipt = verification-only run, consistent with t0032 9.0 scoring. -1: competing-boot re-class vs moved base deferred (honest gap named).
 
+### ✅ t0052 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Flip-sequence merge seat: re-pin four PRs, run merge calculator on #2456/#2457, hold #2453
+
+**Receipt:** `twelve-lane-receipts/t0052-lane8.md`
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: one batch git ls-remote reproduces ALL FOUR PR head pins EXACTLY - #2453 3dd7837d8e6e399b1d62aad2b5378a7a3b3d13f4, #2456 e326283252a7e9f932b0d9ebad465c50950b0799, #2457 92fac0983d4de8e04f0144d9a99dfaa5e02c8f97, #2458 ac270833fb3a52c6be45acc730b0e5132353d5a5 (branch refs since deleted, PR head refs persi
+
 ### ✅ t0052-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** Flip-sequence merge seat: re-pin 4 PRs, calculator HOLDs on #2456/#2457, #2453 HOLD honored
@@ -36178,6 +36186,14 @@ _Last updated: 2026-11-22 07:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0052-lane8.md`
 
 **Evidence:** Dispatcher verified via git protocol: refs/pull/2453/head == 3dd7837d8e6e399b1d62aad2b5378a7a3b3d13f4 == receipt pin; refs/pull/2456/head == e326283252a7e9f932b0d9ebad465c50950b0799 == pin; refs/pull/2457/head == 92fac0983d4de8e04f0144d9a99dfaa5e02c8f97 == pin; refs/pull/2458/head == ac270833fb3a52c6be45acc730b0e5132353d5a5 == pin; main == aa8061c1
+
+### ✅ t0052 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** H8 pre-registration: machinery-inheritance experiment (lesson text vs lesson text + runnable home-independence check)
+
+**Receipt:** `twelve-lane-receipts/t0052-lane2.md`
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: all cited local artifacts exist; sha256 reproduces exactly - prereg-sealed.md 8c8aa054..., HYPOTHESIS-CHANGE-h8.md 1b470332..., seal-verification.json pins match all five artifacts (arm key 5847956163..., harness a685364a..., receipt.txt 83454be5...); decision receipt 20261012T080627Z-next-t0052-h8-fres
 
 ### ✅ t0052-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -36355,6 +36371,14 @@ _Last updated: 2026-11-22 07:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified on disk: prereg-sealed.md sha256 8c8aa05441780e9939375f5e04234b491097df40c7b1330f556e488c6d6fe9d6 == claimed pin; HYPOTHESIS-CHANGE-h8.md, seal-verification.json, arm-key-sealed.json all exist (dir mtimes 08:06-08:07Z). Sign-in #2175 6120247601 (08:05:38Z) predates seal; sign-out 6120289262 (08:08:37Z). Mechanical gate defined F
 
+### ✅ t0052 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Human-value observatory: run hv_measure window t0022-t0052, hand audit, HV3 re-derivation, drift watch
+
+**Receipt:** `twelve-lane-receipts/t0052-lane11.md`
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: lane-11/hv_output_t0052_run1.json + run2.json exist; metric_audit_t0052.json sha256 77354d82a359301759b31567cd6a812da29f30d38dffe28196cfd3c1abf3efc7 reproduces exactly; SUMMARY_t0052.md exists; drift pin aa8061c1d311f32ebd11a570629efa8a55d90c87 matches the live tip pinned by Lane 8 the same tick. NOT PH
+
 ### ✅ t0052-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** HV instrument window t0022-t0052: determinism, hand audit, HV3 re-derived PROVEN-UNMEASURABLE
@@ -36510,6 +36534,14 @@ _Last updated: 2026-11-22 07:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0052-lane11.md`
 
 **Evidence:** Dispatcher verified on disk: hv_output_t0052_run1.json sha256 e4f54debb... matches receipt pin; metric_audit_t0052.json, SUMMARY_t0052.md, STATS.md, journal all exist. Instrument determinism proven (2 byte-identical runs). Drift: tip re-pinned aa8061c1 at action time; CLEAN verdict rides Lane 10 t0032 --check (stated as such, not claimed as own re-
+
+### ✅ t0045 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: independently verify board-post half of t0803 J5 SHARPEN verdict via fresh REST read
+
+**Receipt:** `twelve-lane-receipts/t0045-lane12.md`
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: REST GET /issues/comments/6184357778 via GitHub App route -> 200; id 6184357778, author SoulSchoolAcademy (User), issue_url tail 2537, created_at 2026-10-15T04:23:00Z - all exact vs receipt; body head is the Board Protocol v1 rendering (WHO/NUTSHELL/WHAT->WHY, SHARPEN). Feedback block exists at feedback
 
 ### ✅ t0045-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
@@ -59222,6 +59254,96 @@ _Last updated: 2026-11-22 07:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261121-2318 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: evaluate all 31 queued gap briefs, attempt claim on each, verify zero queue drift
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt file exists and read; the 31 brief filenames it lists are byte-identical to the live brief-queue set (31 vs 31, listed-not-live and live-not-listed both empty); live queue still 31 brief-*.md, zero brief-tNNNN-*, claimed/ holds only done/; 31 attempted, 0 claimed, 29 x exit 7 + 2 x exit 2 as rece
+
+### ✅ gate-stall-20261121-2214 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: evaluate all 31 queued gap briefs, attempt claim on each, verify zero queue drift
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt file exists and read; the 31 brief filenames it lists are byte-identical to the live brief-queue set (31 vs 31, listed-not-live and live-not-listed both empty); live queue still 31 brief-*.md, zero brief-tNNNN-*, claimed/ holds only done/; 31 attempted, 0 claimed, 29 x exit 7 + 2 x exit 2 as rece
+
+### ✅ gate-stall-20261121-2109 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: evaluate all 31 queued gap briefs, attempt claim on each, verify zero queue drift
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt file exists and read; the 31 brief filenames it lists are byte-identical to the live brief-queue set (31 vs 31, listed-not-live and live-not-listed both empty); live queue still 31 brief-*.md, zero brief-tNNNN-*, claimed/ holds only done/; 31 attempted, 0 claimed, 29 x exit 7 + 2 x exit 2 as rece
+
+### ✅ gate-stall-20261121-2003 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: evaluate all 31 queued gap briefs, attempt claim on each, verify zero queue drift
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt file exists and read; the 31 brief filenames it lists are byte-identical to the live brief-queue set (31 vs 31, listed-not-live and live-not-listed both empty); live queue still 31 brief-*.md, zero brief-tNNNN-*, claimed/ holds only done/; 31 attempted, 0 claimed, 29 x exit 7 + 2 x exit 2 as rece
+
+### ✅ gate-stall-20261121-1859 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: evaluate all 31 queued gap briefs, attempt claim on each, verify zero queue drift
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt file exists and read; the 31 brief filenames it lists are byte-identical to the live brief-queue set (31 vs 31, listed-not-live and live-not-listed both empty); live queue still 31 brief-*.md, zero brief-tNNNN-*, claimed/ holds only done/; 31 attempted, 0 claimed, 29 x exit 7 + 2 x exit 2 as rece
+
+### ✅ gate-stall-20261121-1343 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: evaluate all 31 queued gap briefs, attempt claim on each, verify zero queue drift
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt file exists and read; the 31 brief filenames it lists are byte-identical to the live brief-queue set (31 vs 31, listed-not-live and live-not-listed both empty); live queue still 31 brief-*.md, zero brief-tNNNN-*, claimed/ holds only done/; 31 attempted, 0 claimed, 29 x exit 7 + 2 x exit 2 as rece
+
+### ✅ gate-stall-20261121-1239 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: evaluate all 31 queued gap briefs, attempt claim on each, verify zero queue drift
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt file exists and read; the 31 brief filenames it lists are byte-identical to the live brief-queue set (31 vs 31, listed-not-live and live-not-listed both empty); live queue still 31 brief-*.md, zero brief-tNNNN-*, claimed/ holds only done/; 31 attempted, 0 claimed, 29 x exit 7 + 2 x exit 2 as rece
+
+### ✅ gate-stall-20261121-1133 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: evaluate all 31 queued gap briefs, attempt claim on each, verify zero queue drift
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt file exists and read; the 31 brief filenames it lists are byte-identical to the live brief-queue set (31 vs 31, listed-not-live and live-not-listed both empty); live queue still 31 brief-*.md, zero brief-tNNNN-*, claimed/ holds only done/; 31 attempted, 0 claimed, 29 x exit 7 + 2 x exit 2 as rece
+
+### ✅ gate-stall-20261121-1030 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: evaluate all 31 queued gap briefs, attempt claim on each, verify zero queue drift
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt file exists and read; the 31 brief filenames it lists are byte-identical to the live brief-queue set (31 vs 31, listed-not-live and live-not-listed both empty); live queue still 31 brief-*.md, zero brief-tNNNN-*, claimed/ holds only done/; 31 attempted, 0 claimed, 29 x exit 7 + 2 x exit 2 as rece
+
+### ✅ gate-stall-20261121-0929 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: evaluate all 31 queued gap briefs, attempt claim on each, verify zero queue drift
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt file exists and read; the 31 brief filenames it lists are byte-identical to the live brief-queue set (31 vs 31, listed-not-live and live-not-listed both empty); live queue still 31 brief-*.md, zero brief-tNNNN-*, claimed/ holds only done/; 31 attempted, 0 claimed, 29 x exit 7 + 2 x exit 2 as rece
+
+### ✅ gate-stall-20261121-0823 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: evaluate all 31 queued gap briefs, attempt claim on each, verify zero queue drift
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt file exists and read; the 31 brief filenames it lists are byte-identical to the live brief-queue set (31 vs 31, listed-not-live and live-not-listed both empty); live queue still 31 brief-*.md, zero brief-tNNNN-*, claimed/ holds only done/; 31 attempted, 0 claimed, 29 x exit 7 + 2 x exit 2 as rece
+
+### ✅ gate-stall-20261121-0718 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: evaluate all 31 queued gap briefs, attempt claim on each, verify zero queue drift
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt file exists and read; the 31 brief filenames it lists are byte-identical to the live brief-queue set (31 vs 31, listed-not-live and live-not-listed both empty); live queue still 31 brief-*.md, zero brief-tNNNN-*, claimed/ holds only done/; 31 attempted, 0 claimed, 29 x exit 7 + 2 x exit 2 as rece
+
+### ✅ gate-stall-20261121-0533 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: evaluate all 31 queued gap briefs, attempt claim on each, verify zero queue drift
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt file exists and read; the 31 brief filenames it lists are byte-identical to the live brief-queue set (31 vs 31, listed-not-live and live-not-listed both empty); live queue still 31 brief-*.md, zero brief-tNNNN-*, claimed/ holds only done/; 31 attempted, 0 claimed, 29 x exit 7 + 2 x exit 2 as rece
+
+### ✅ gate-stall-20261121-0428 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: evaluate all 31 queued gap briefs, attempt claim on each, verify zero queue drift
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt file exists and read; the 31 brief filenames it lists are byte-identical to the live brief-queue set (31 vs 31, listed-not-live and live-not-listed both empty); live queue still 31 brief-*.md, zero brief-tNNNN-*, claimed/ holds only done/; 31 attempted, 0 claimed, 29 x exit 7 + 2 x exit 2 as rece
+
+### ✅ gate-stall-20261121-0328 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: evaluate all 31 queued gap briefs, attempt claim on each, verify zero queue drift
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt file exists and read; the 31 brief filenames it lists are byte-identical to the live brief-queue set (31 vs 31, listed-not-live and live-not-listed both empty); live queue still 31 brief-*.md, zero brief-tNNNN-*, claimed/ holds only done/; 31 attempted, 0 claimed, 29 x exit 7 + 2 x exit 2 as rece
 
 ### ✅ gate-stall-20261015-1835 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
