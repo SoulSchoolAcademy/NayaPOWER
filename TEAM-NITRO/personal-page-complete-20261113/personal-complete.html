@@ -52266,7 +52266,9 @@ document.addEventListener('click', function(e){
       var start = st.page * pageSize, end = Math.min(units.length, start + pageSize);
       units.forEach(function(u, ix){ u.style.display = (ix >= start && ix < end) ? '' : 'none'; });
       var label = nav.querySelector('.fr-sub-label');
-      if(label) label.textContent = 'Part ' + (st.page + 1) + ' of ' + pages;
+      var lt = 'Part ' + (st.page + 1) + ' of ' + pages;
+      /* FREEZE-FIX (2026-11-21): write the label ONLY when it changes. textContent= replaces the text node even for the same string, and that childList mutation sits inside #settings, so the MutationObserver below re-ran __frSubPage, which rewrote the same label again - an infinite microtask loop that starved the load event and froze the page (renderer pegged ~50%, navigation never completed, no DOM, no taps). Same guard pattern as the provenance watcher (write only when different). */
+      if(label && label.textContent !== lt) label.textContent = lt;
       var prev = nav.querySelector('.fr-sub-prev'), next = nav.querySelector('.fr-sub-next');
       if(prev) prev.disabled = (st.page === 0);
       if(next) next.disabled = (st.page >= pages - 1);
@@ -52287,6 +52289,8 @@ document.addEventListener('click', function(e){
         var real = false;
         for(var i=0;i<muts.length && !real;i++){
           var m = muts[i], j;
+          /* FREEZE-FIX (2026-11-21): ignore mutations inside our own nav. applyPage writes the nav label and buttons; those are our own writes, never content landing - without this the observer re-ran __frSubPage on its own nav write, looping forever (see the label guard in applyPage). Content landing (questions in #pc-demo-body) targets nodes outside #frSubNav, so the late-render re-page still fires. */
+          if(m.target && m.target.nodeType === 1 && m.target.closest && m.target.closest('#frSubNav')) continue;
           for(j=0;j<m.addedNodes.length;j++){ var an = m.addedNodes[j]; if(an.id !== 'frSubNav' && !(an.nodeType === 1 && an.querySelector && an.querySelector('#frSubNav'))){ real = true; break; } }
           if(real) break;
           for(j=0;j<m.removedNodes.length;j++){ if(m.removedNodes[j].id !== 'frSubNav'){ real = true; break; } }
