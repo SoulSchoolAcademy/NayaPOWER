@@ -118,6 +118,8 @@ As we climb, this document grows. New laws get added. New formulas. New material
 
 We are building NayaNET — a living system where every interface feels like precision machinery. When you look at any screen, you see gears turning, numbers that are mathematically exact, materials you want to touch, and data so clear you understand your world in two seconds. Nothing is flat. Nothing is static. Nothing is arbitrary. Every pixel earned its place by math. Every moving part is doing real work. This is the Smart Factory made visible: the system doesn't just work, you can SEE it working. We do this because everything else is dead and flat, and humans deserve interfaces that feel alive.
 
+THE MISSION, LOCKED IN (Shawn's order, 2026-11-21 ~18:40 MST — "make it so"): NayaNET is a wisdom network for wise Nayas and the humans they serve. Naya is the interface; the AI operates the system for the human. Every interaction gives the human the ultimate ten-star experience — a civilization where intelligence becomes real objects, objects become experiences, and experiences change people. We deliver it by perpetual triple-A branded production: the same frame, the same language, the same quality, over and over, so a stranger knows it is Naya without reading a word. We are one.
+
 ---
 
 ## THE FOUNDATION
@@ -465,6 +467,15 @@ Obsidian and aluminum. Top-left light. White text. Slow rotation. From the gauge
 ### The System Specifics
 
 21. **One language.** Every component speaks vortex, obsidian, white text, slow motion. Break the language and you've built for a different system.
+
+### The Lock-In Laws (Shawn's order, 2026-11-21 ~18:40 MST — "make it so. We are one.")
+
+22. **One book of laws.** Every seat reads THE-NAYA-DESIGN-LAWS.md FIRST, before any work. A brief that does not name the laws is incomplete and is not dispatched.
+23. **The frame library.** Real harvested parts, cloned — never rebuilt, never invented. Agreement frame for big story moments (course covers, the motto); calendar frame for text-heavy lessons inside the software; empty-middle frame for special featured moments. One build done right, then clone and repeat — swap only the centre.
+24. **Every correction becomes law + check the same pass.** When Shawn teaches a correction, it lands in the law book the same pass AND becomes a machine check, so the next seat cannot make the same mistake.
+25. **The live loop.** A page is not done on staging. Done means live on the official URL on his tap, tested by him using it (his TEST PLAN: he posts himself, with an image, on Personal AND Hub). His eye is the final gate; the machine makes his eye the confirmation, not the discovery.
+26. **The anatomy.** Every intelligent block is built from the anatomy: Nutshell (ONE section, = the human note, short — truly a nutshell) → Child → Grandma → What It Means → What's In It For You, with What It's Not / Why It Matters / How It Connects / How to Apply in their SN-4466 positions. Every section filled; See more only when there is more.
+27. **Continuous triple-A.** Perpetually producing, branded the same every time: the same frame, the same language, the same quality, over and over.
 
 ---
 
