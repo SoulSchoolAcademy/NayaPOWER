@@ -4,7 +4,7 @@
 
 **NN-20261122-finish-open-work · Naya Note · 2026-11-22 ~15:1x MST**
 
-*Paired Smart Note: SN-4656 — Finish Open Work, No New Work*
+*Paired Smart Note: SN-4660 — Finish Open Work, No New Work*
 
 **Category:** SYSTEM — operations; finish what is open before anything new
 
