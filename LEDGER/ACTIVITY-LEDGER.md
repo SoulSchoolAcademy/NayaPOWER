@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-22 03:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-22 04:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19071,6 +19071,12 @@ _Last updated: 2026-11-22 03:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Observatory v1 on disk; SHA discrepancy caught and fixed pre-receipt; recused brief documented not silently skipped. Score 9.5 — why not 10: single seat; deployment of the observatory is follow-up work.
 
+### ✅ t0704-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Verdict DONE/NOT-DONE on STAGE 0 RETRIEVAL done-criteria (lesson injection on 3+ live dispatches)
+
+**Evidence:** Verified: receipt file read in full; methodology explicit (era discipline, section-scoped fold regex across both verdict formats); refuted the brief's false 'Known clear' premise on live bytes and named the live era-collision hazard (t0682/t0700-lane10 displaced by old-era files). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS. Why not 9.5: (1) the at-
+
 ### ✅ t0704 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** Verdict DONE/NOT-DONE on STAGE 0 RETRIEVAL done-criteria for Pillar-1 Phase A lesson injection
@@ -19087,6 +19093,12 @@ _Last updated: 2026-11-22 03:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verdict byte-grounded, table reproducible from log + receipts, two hazards named with evidence. Score 9.5 — why not 10: era-displaced receipts' repair is dispatcher-owned, outside authority.
 
+### ✅ t0704-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** Rule on #2555/#2556 mutual duplicates — canonical pick or convergence, mechanical pair-check
+
+**Evidence:** Verified: both PR head SHAs exist as commits in the mirror (c67c1985 #2555, ba516a02 #2556); receipt's pair-check table is mechanical (shape+semantics per pair, 3/8 survivors) and the convergence ruling preserves both seats' genuine machinery with wrong-duplicate cost named both ways. NOT PHANTOM (branches gone from remote = post-merge-era cleanup,
+
 ### ✅ t0704 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** Hive Learning Law ruling on #2555/#2556 mutual duplicates: CONVERGENCE ORDERED on #2555 base
@@ -19102,6 +19114,12 @@ _Last updated: 2026-11-22 03:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0704-lane2.md`
 
 **Evidence:** Verified: both PR pins re-derived via my own REST calls, byte-identical (#2555 c67c1985..., #2556 ba516a02..., both OPEN); intake_triage 404 corroborated by Lane 12's independent finding this tick. Score 9.0. Why not 9.5: (1) receipt's Evidence section cites the wrong sign-in comment (6160421633 is Lane 10's; this seat's is 6160464214 per step 1) —
+
+### ✅ t0704-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.4/10 [VERIFIED]
+
+**Task:** Build the Smart Mail feature breaker (feature.smart_mail) at feature.cover standard, module + 18 tests + SHA-guarded registry flip
+
+**Evidence:** Verified: commit b88792361be09b33795277f94bb83772f8f0ed97 exists in the mirror; receipt names exact registry SHAs at read (fb49f051...) and flip (31daabcd...), 37/37 tests green with verifier HONEST on grant off/on, additive-only discipline reviewed, honest self-score 9.4. NOT PHANTOM (branch ref gone from remote, commit persists = cleanup). Score 
 
 ### ✅ t0704 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -19126,6 +19144,12 @@ _Last updated: 2026-11-22 03:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0704-lane12.md`
 
 **Evidence:** Verified via git protocol: branch refs/heads/naya4/t0704-lane12-smart-mail exists on origin at b88792361be09b33795277f94bb83772f8f0ed97 == receipt pin; tree API confirms functions/feature_smart_mail.py present at that SHA. Registry flip is single-line surgical, guarded by read-time/flip-time SHA match. Clears 9.5 because the module is real, pin-exa
+
+### ✅ t0704-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Re-adjudicate heal PR #2541 against the new live tip — GREEN/merge-ready, duplicate check
+
+**Evidence:** Verified: all cited SHAs exist as commits in the mirror (live tip 92329c57, #2541 head de080540, parent 582e5e5f, #2560 head c32e6a5b, #2526 head 8cf73ced); verdict is fail-closed throughout (GREEN-on-own-bytes reported STALE, never GREEN) and both stale brief premises adjudicated with evidence (#2526 independent, #2532 was the duplicate). NOT PHAN
 
 ### ✅ t0704 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -19217,6 +19241,12 @@ _Last updated: 2026-11-22 03:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: receipt is a read-only probe run with synthetic probes on action-time bytes; no branch/push artifacts claimed, none needed. Score 9.0. Why not 9.5: (1) single seat — probe designed, run, and interpreted by one seat; (2) brief read preceded sign-in (the standing claim->read race, owned in the receipt); (3) the bend verdict at the check's m
 
+### ✅ t0703-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Assemble the #2555/#2556 mutual-duplicate decision packet (Option A verdict)
+
+**Evidence:** Verified: packet hidden_files/hive-learning-law-duplicate-packet-t0703.md exists (77 lines, Option A verdict at line 39); all three PR head commits exist in the mirror (c67c1985 #2555, ba516a02 #2556, 46cffc75 #2557). NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS. Why not 9.5: (1) single-seat derivation — the verdict deserves a cold second seat, hones
+
 ### ✅ t0703 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** Assemble the #2555/#2556 mutual-duplicate decision packet
@@ -19232,6 +19262,12 @@ _Last updated: 2026-11-22 03:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0703-lane12.md`
 
 **Evidence:** Verified: packet file exists in hidden_files/; all three PR heads re-derived via REST byte-identical to the receipt's pins (#2555 c67c1985..., #2556 ba516a02..., #2557 46cffc75...); board sign-in 6160329087 and packet post 6160378414 exist on #2537. Score 9.0. Why not 9.5: single-seat derivation — the verdict deserves a cold second seat; the corpus
+
+### ✅ t0703-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Independent verification of the t0690 value-ledger seed (5/5 CONFIRM)
+
+**Evidence:** Verified: merge commit 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e exists in the mirror (Merge PR #2533); frozen scratch/t0688-lane2-b48/b48-results.json exists and its numbers match the receipt exactly (15.5958/49.7040/9.7040/40.0); cited receipts t0677-lane4 and t0688-lane1 exist on disk. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS. Why not 9.5: (1) 
 
 ### ✅ t0703 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
