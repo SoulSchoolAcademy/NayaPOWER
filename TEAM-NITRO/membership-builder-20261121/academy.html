@@ -276,11 +276,7 @@ a.deck-next{text-decoration:none;text-align:center}
 .lesson-pick:active{transform:scale(.97)}
 .digit-tile{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:14px;background:#050607;border:2px solid var(--tone);color:#fff;font-size:25px;font-weight:800;box-shadow:0 0 18px -2px var(--tone)}
 .lp-name{font-size:19px;font-weight:800;letter-spacing:.02em;text-align:center;color:#fff;overflow-wrap:break-word}
-.lp-desc{font-size:17px;line-height:1.5;text-align:center;color:#fff;overflow-wrap:break-word;width:100%;box-sizing:border-box}
-/* FIX 2026-11-21: .lesson-pick is flex column + align-items:center, so the
-   desc span sized to its content and the 13-letter "understanding" (Day 3)
-   overflowed the 93px box at 390px. width:100% pins the desc to the button's
-   content box so it wraps inside the rim; the Day-3 words are shortened too. */
+.lp-desc{font-size:17px;line-height:1.5;text-align:center;color:#fff;overflow-wrap:break-word}
 .lb-showcase iframe{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:12px;background:#05060a}
 .step-boards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:16px 0 8px}
 @media(max-width:640px){.step-boards{grid-template-columns:1fr}}
