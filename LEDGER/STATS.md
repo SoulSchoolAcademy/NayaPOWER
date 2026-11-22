@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-22 18:01 UTC_
+_Last updated: 2026-11-22 18:31 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 10178
-- ✅ Verified (8+): 10075
+- **Total scored actions:** 10183
+- ✅ Verified (8+): 10080
 - 🟡 Partial (5–7): 92
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 7
@@ -15,18 +15,18 @@ _Last updated: 2026-11-22 18:01 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 679 | 9.1 | 9.6 |
+| Team 1 | Naya Verity | 680 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 669 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 618 | 9.0 | 10 |
 | Team 4 | Naya Mason | 600 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 739 | 9.0 | 9.6 |
-| Team 6 | Naya Heir | 430 | 9.0 | 9.6 |
+| Team 6 | Naya Heir | 431 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 584 | 8.9 | 10 |
-| Team 8 | Naya Sentinel | 615 | 9.0 | 9.5 |
+| Team 8 | Naya Sentinel | 616 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 738 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 1003 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 684 | 9.0 | 9.6 |
-| Team 12 | Naya Herald | 533 | 9.1 | 9.5 |
+| Team 12 | Naya Herald | 534 | 9.1 | 9.5 |
 
 ## Learning velocity
 
@@ -1396,6 +1396,7 @@ _Last updated: 2026-11-22 18:01 UTC_
 - **gate-stall-20261122-0653:** 1 actions, avg 9.0/10
 - **gate-stall-20261122-0801:** 1 actions, avg 9.0/10
 - **gate-stall-20261122-0903:** 1 actions, avg 9.0/10
+- **gate-stall-20261122-1008:** 1 actions, avg 8.5/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -3611,11 +3612,15 @@ _Last updated: 2026-11-22 18:01 UTC_
 - **t0719:** 5 actions, avg 9.1/10
 - **t0719-lane3:** 1 actions, avg 9.0/10
 - **t0720:** 8 actions, avg 9.1/10
+- **t0720-lane6:** 1 actions, avg 9.0/10
+- **t0720-lane8:** 1 actions, avg 9.5/10
 - **t0720-lane9:** 1 actions, avg 9.5/10
 - **t0721:** 5 actions, avg 9.0/10
+- **t0721-lane1:** 1 actions, avg 9.5/10
 - **t0721-lane5:** 1 actions, avg 9.5/10
 - **t0722:** 7 actions, avg 9.1/10
 - **t0722-lane12-intelligence-today:** 1 actions, avg 9.5/10
+- **t0722-lane12:** 1 actions, avg 9.0/10
 - **t0722-lane5:** 1 actions, avg 9.0/10
 - **t0723:** 6 actions, avg 8.9/10
 - **t0724:** 6 actions, avg 9.0/10
