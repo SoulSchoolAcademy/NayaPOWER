@@ -14,7 +14,6 @@ This extends the architect + scorecarder walk in two directions. First, the trig
 
 Across 10 notes, the thread is: scorecard, the spine, parallel, efficiency.
 
-Across 10 notes, the thread is: whole, notes, thread.
 
 ## Human
 
