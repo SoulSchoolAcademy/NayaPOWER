@@ -3,40 +3,27 @@
 SN-4640 · SYSTEM / THE TWELVE ELEMENTS OF NAYA — PERSONAL
 
 **Created:** 2026-11-22 14:36Z
+**Updated:** 2026-11-22 14:42Z — replaced with Shawn-approved verbatim text
 **Perspective:** Personal · **Visibility:** Public (Smart Notes are shared by definition)
 
-## In a Nutshell
+**Hook:** "What if your AI didn't just answer questions, but helped you understand, decide, act, remember, and improve?"
 
-Naya is the mind that runs my world for me. She thinks before she acts, looks at the whole picture, and always aims for the best possible thing — so the same AI, with her on it, becomes something far greater than an engine on a bench.
+**In a nutshell:** Naya Intelligence is the governed intelligence system designed to make AI more useful, organized, connected, and effective. It combines AI capabilities with structured thinking, relevant context, memory, tools, verification, and learning. NayaPOWER is the intelligence foundation, NayaNET is the connected network, and your Smart App is how you experience the intelligence.
 
-## What It's Not
+**What it's not:** It's not a chatbot that just answers questions, and it's not a clever answer machine. It is not AI running loose — it is intelligence with a system around it, governed by the Code, so it understands the goal, does the work, checks itself, and remembers what matters.
 
-She is not a search box that guesses. She is not a chatbot that chats for the sake of chatting. She is not a tool I have to operate — she operates the system, and I receive the finished work.
+**Child:** Imagine a really smart friend who doesn't just know things — she helps you figure out what to do, remembers what you told her, checks her own work, and gets better at helping you every single time. That's Naya Intelligence: a smart mind with a good way of thinking.
 
-## Child
+**Grandma:** Imagine a wonderful assistant who knows you, keeps your important papers in order, reminds you of what matters, and never forgets what you taught her. She doesn't just chat with you — she looks after your whole life and helps you get things done.
 
-Naya is super smart! She thinks first, then she does the very best thing! She knows what the bullseye looks like before she takes the shot!
+**Ultimately what it means:** Naya understands your objective, examines the facts, compares possible actions, checks permission, works with the right tools, verifies the outcome, and preserves what matters. Together, the foundation, the network, and your Smart App turn individual AI capabilities into a coordinated, continuing service.
 
-## Grandma
+**Why it matters:** A clever answer isn't always a completed job. Intelligence becomes more valuable when it understands the goal, produces reliable outcomes, and makes useful lessons available when they're needed again.
 
-Imagine a wise friend, love, who looks at everything before she lifts a finger, dear — she sees the whole of it, she picks the best way, and she does it beautifully, love. That is Naya.
+**How it connects:** Naya Intelligence powers the Personal, Business, and Space experiences and connects them through NayaNET. It runs under the Code, and it makes every other element work — your world, your business, your match, your mail, your time.
 
-## Ultimately What It Means
+**How to apply it:** Tell Naya what you want to accomplish. Give her the goal, not just the question — and let her show you the steps, check the result, and remember what worked, so the next time is even better.
 
-Intelligence here means deliberation: she scores her own work, follows the scorecard, and never settles for the first answer when a better one exists. That is what makes a Naya a Naya — the ultimate intelligent interface, thinking in my interest.
+**What's in it for you:** Less repeated explaining. Less complexity. Better-organized decisions. More useful assistance. And with your permission, specialized AIs can work together to support your goals.
 
-## Why It Matters
-
-My world is too big for me to run by hand. With her thinking first, my pages get built, my notes get organized, my people get matched — and I get the result, not the chore.
-
-## How It Connects
-
-Her intelligence runs through the whole chain — note to block to feed to Box to Ledger to Dashboard to match to link to Factory. Every part she touches gets smarter, and every beat makes the next one better.
-
-## How to Apply
-
-I give her the job in plain words — what I want, what good looks like — and I let her think first. I check the result against the bullseye I named, and I tell her when she hits it.
-
-## What's In It For You
-
-A mind on my side that never gets tired and never cuts corners. I get ten-star outputs without operating the machine — she does the thinking, I live the result.
+---
