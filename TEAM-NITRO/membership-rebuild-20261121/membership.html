@@ -41648,6 +41648,7 @@ function saEnterCourse(){
   var wall = sa$('os-wall');
   if(wall) wall.scrollIntoView({block:'start'});
 }
+function saTabLabel(id){ var t = sa$(id); return t ? t.textContent : ''; }
 function saCourseMode(on){
   var course = sa$('saCourse'); if(!course) return;
   if(on){
@@ -41663,7 +41664,7 @@ function saCourseMode(on){
         coverSrc: cvrImg ? cvrImg.getAttribute('src') : null,
         coverHadImg: !!cvrImg,
         coverStyle: cvrImg ? cvrImg.getAttribute('style') : null,
-        tabLabels: [sa$('mwTabSmart').textContent, sa$('mwTabNaya').textContent, sa$('mwTabActivity').textContent],
+        tabLabels: [saTabLabel('mwTabSmart'), saTabLabel('mwTabNaya'), saTabLabel('mwTabActivity')],
         feedHead: headTxt
       };
     }
@@ -42412,14 +42413,14 @@ function saPcLoad(i, autoplay){
   if(!saAudio || !SA_PC[i]) return;
   saPcIdx = i;
   var e = SA_PC[i];
-  sa$('saPcNum').textContent = ('0'+(i+1)).slice(-2);
-  sa$('saPcTitle').textContent = e.t;
-  sa$('saPcDesc').textContent = e.x || '';
+  var _pcNum = sa$('saPcNum'); if(_pcNum) _pcNum.textContent = ('0'+(i+1)).slice(-2);
+  var _pcTitle = sa$('saPcTitle'); if(_pcTitle) _pcTitle.textContent = e.t;
+  var _pcDesc = sa$('saPcDesc'); if(_pcDesc) _pcDesc.textContent = e.x || '';
   var nx = SA_PC[(i+1)%SA_PC.length];
-  sa$('saPcUpNext').textContent = nx.t;
+  var _pcUp = sa$('saPcUpNext'); if(_pcUp) _pcUp.textContent = nx.t;
   var art = sa$('saPcArt');
   if(art){ art.src = saPcThumb(i); art.alt = 'PowerCast episode ' + (i+1) + ' \u2014 ' + e.t; }
-  sa$('saPcState').textContent = 'Loading…';
+  var _pcState = sa$('saPcState'); if(_pcState) _pcState.textContent = 'Loading…';
   saAudio.src = saPcUrl(i);
   if(autoplay){ saAudio.play().catch(function(){}); }
   saRenderPcList();
@@ -42433,7 +42434,7 @@ function saPcSync(){
   if(!saAudio) return;
   var btn = sa$('saPcPlay');
   if(btn) btn.textContent = saAudio.paused ? '▶ Play' : '❚❚ Pause';
-  sa$('saPcState').textContent = saAudio.paused ? 'Paused' : 'On air — playing';
+  var _pcSt = sa$('saPcState'); if(_pcSt) _pcSt.textContent = saAudio.paused ? 'Paused' : 'On air — playing';
   var cur = sa$('saPcCur'), tot = sa$('saPcTot'), fill = sa$('saPcFill'), bar = sa$('saPcBar');
   if(cur) cur.textContent = saFmt(saAudio.currentTime);
   if(tot) tot.textContent = saFmt(saAudio.duration);
@@ -42461,7 +42462,7 @@ function saPcInit(){
   saAudio.addEventListener('timeupdate', saPcSync);
   saAudio.addEventListener('loadedmetadata', saPcSync);
   saAudio.addEventListener('ended', function(){ saPcLoad((saPcIdx+1)%SA_PC.length, true); });
-  saAudio.addEventListener('error', function(){ sa$('saPcState').textContent = 'This browser couldn\u2019t play this audio \u2014 try another browser, or open the full PowerCast.'; });
+  saAudio.addEventListener('error', function(){ var _s = sa$('saPcState'); if(_s) _s.textContent = 'This browser couldn\u2019t play this audio \u2014 try another browser, or open the full PowerCast.'; });
   try{
     var pos = JSON.parse(localStorage.getItem('sa-pc-pos')||'{}');
     saAudio.addEventListener('timeupdate', function(){
@@ -42473,7 +42474,8 @@ function saPcInit(){
 
 /* ---------- enter the course ---------- */
 
-try{ saPcInit(); saWire(); }catch(e){ try{ console.warn('[sa]', e); }catch(_){} }
+try{ saPcInit(); }catch(e){ try{ console.warn('[sa]', e); }catch(_){} }
+try{ saWire(); }catch(e){ try{ console.warn('[sa]', e); }catch(_){} }
 })();
 
 </script>
