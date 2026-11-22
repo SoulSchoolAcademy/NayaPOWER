@@ -1,8 +1,10 @@
 # The Whole
 
-SN-4612 · LESSON
+SN-4612 · LESSON / WHOLE
 
 **Created:** 2026-11-22 07:40Z
+
+**Kinds:** Honor · Multiplication · Craft · Knowledge
 
 ## Hook
 
@@ -13,8 +15,6 @@ Never show a wall of text. Never force one flow sideways into another. Mirror wh
 Shawn's morphing idea (22:50–22:51Z): the living digital matrix. **THE PIECES:** grid = worlds button; plus menu = post/note/message/Schedule (scheduler hooks to all); Book-with-me on profiles; Smart Tabs morphing extended to top-right buttons, side tabs, icons (rename + any URL, from page settings); icon + cover libraries (the factory); customize your house/car. **GROUNDED:** Smart Tabs label+URL is his law since 2026-10-18; Book-with-me is the booking law (brief DONE 9/9, build after membership); scheduler for posts/mail/appointments is the 2026-10-28 scope, scheduler live since 2026-11-04. **NEW TONIGHT:** morphing beyond tabs + the libraries + discoverable setup. **STATE:** One List item `morphing-interfaces-living-matrix` (queued); definition first, after Personal lands whole. Shawn reacted 👍 to the captain's answer.
 
 Across 10 notes, the thread is: shawn, whole, love.
-
-Across 10 notes, the thread is: whole, notes, thread.
 
 ## Human
 
