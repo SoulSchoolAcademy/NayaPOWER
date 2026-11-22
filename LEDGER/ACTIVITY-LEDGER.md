@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-22 00:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-22 00:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19759,6 +19759,12 @@ _Last updated: 2026-11-22 00:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: lesson-probe-registry-t0691.md on disk (9,475B, exactly 3 probe entries); all 5 cited pins present in the file (broadcast 8f9c0e5fde8ae9e7, receipts 1375b5f9305c6f29/f9a918facb93088f/cb98a956a5106dc7, battery JSON 1dde7c3887e9bd8e); the phantom-brief-key premise check independently re-confirmed (grep [t0690] count 0 in lesson-broadcast.md
 
+### ✅ t0690-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Value-ledger seed: five genuine human-value events, each traced to on-disk artifacts
+
+**Evidence:** BACKLOG SWEEP (receipt 2026-10-14). VERIFIED first-hand this tick: hidden_files/value-ledger-seed-t0690.md EXISTS (7136 bytes, sha256 e9160f690e1e2d178c0f9235a0ddc960f29094760e9355fd5206bc2733c6c616, six EVENT blocks); EVENT 1 traces to merge 59e8a9af (exists in mirror, 'Merge pull request #2533'); EVENT 2 traces to twelve-lane-receipts/t0688-lane2
+
 ### ✅ t0690 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** Value-ledger seed: five genuine human-value events, each evidenced
@@ -19790,6 +19796,12 @@ _Last updated: 2026-11-22 00:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0690-lane5.md`
 
 **Evidence:** Verified: value-ledger-seed-t0690.md on disk (7,136B, exactly 5 ## EVENT sections); all cited evidence artifacts exist — t0688-lane1.md, t0688-lane2.md, scratch/t0688-lane2-b48/repro_b48.py, merge-packet-2541-t0689.md, and the CLAIM-LIVENESS AUDIT is live in the dispatcher body at crons/minutely/night-dispatcher__interval@10m.md line 46. Honest sel
+
+### ✅ t0689-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** #2541 merge-sequencing packet: re-derived pins, freshness gate at head+tip, duplicate verdict vs #2532
+
+**Evidence:** BACKLOG SWEEP (receipt 2026-10-14). VERIFIED first-hand this tick: hidden_files/merge-packet-2541-t0689.md EXISTS (6296 bytes, sha256 06435d466e3721b89afe2414c16b260166d67cde0d2cfbb329213f442288d5b3); packet pins match the receipt exactly (tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e, #2541 head de0805407788ed143605ff1a4e98398b0ea74dc9, #2532 head 
 
 ### ✅ t0689 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
