@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4649",
+ "intelligence": {
+  "title": "Memberships & Earning",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4649-memberships-and-earning",
+  "smart_note_id": "SN-4649",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4649/IB-SMART-NOTE-20261122-sn4649-memberships-and-earning.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "Memberships & Earning is how you turn what you know and love into something people pay to be part of — and how every citizen becomes an ambassador. Build a membership on any page — your Personal World, your Business, your Space — charge for access, and earn from genuine value you provide.",
+  "human_view": "",
+  "simple_view": "Imagine you have the coolest clubhouse in the neighborhood, and people pay a little bit to join because it's so much fun inside — and you get to keep what they pay, and even share it with the friends who told them about it. That's a membership: your club, your rules, your earnings.",
+  "grandma_view": "Imagine opening a little shop where people pay to become members — and they get your best recipes, your stories, your teaching — and you keep what they pay, fair and square, with no middleman taking a piece. That's a membership: your work, your reward.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4649",
+   "title": "Memberships & Earning",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4649/IB-SMART-NOTE-20261122-sn4649-memberships-and-earning.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4649/IB-SMART-NOTE-20261122-sn4649-memberships-and-earning.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

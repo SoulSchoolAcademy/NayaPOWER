@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4650",
+ "intelligence": {
+  "title": "The Smart App Factory",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4650-the-smart-app-factory",
+  "smart_note_id": "SN-4650",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4650/IB-SMART-NOTE-20261122-sn4650-the-smart-app-factory.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "The Smart App Factory is the system that builds NayaNET itself — the machine that builds the machine. It takes one page done right and clones it into Personal Worlds, Businesses, and Spaces — the same frame, the same language, the same quality, over and over, in minutes, not days or months.",
+  "human_view": "",
+  "simple_view": "Imagine you build the very best LEGO castle in the world — and then you have a magic machine that can build that same castle again and again, for every kid who wants one, with their own colors and their own rooms inside. That's the Smart App Factory: one great build, cloned for everyone.",
+  "grandma_view": "Imagine a master craftsman who builds one perfect chair — and then teaches a whole workshop to build that same chair, perfectly, every single time, for anyone who needs one. That's the Factory: the craft, learned once, shared forever.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4650",
+   "title": "The Smart App Factory",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4650/IB-SMART-NOTE-20261122-sn4650-the-smart-app-factory.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4650/IB-SMART-NOTE-20261122-sn4650-the-smart-app-factory.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

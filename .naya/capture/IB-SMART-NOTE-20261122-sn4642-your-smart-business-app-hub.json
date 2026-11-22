@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4642",
+ "intelligence": {
+  "title": "Your Smart Business App",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4642-your-smart-business-app-hub",
+  "smart_note_id": "SN-4642",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4642/IB-SMART-NOTE-20261122-sn4642-your-smart-business-app-hub.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "Your Smart Business App is an intelligent home for your business, your work, your services, your products, your customers, and your opportunities. It's designed to help you become discoverable, communicate professionally, organize your work, and earn money from genuine value you provide. Same as your Personal World — same features, same power — built for your business life.",
+  "human_view": "",
+  "simple_view": "Imagine you make the best lemonade on your street, and suddenly you have your very own shop — with your name on it, pictures of your lemonade, and a friendly helper who tells people about it, takes their orders, and keeps everything tidy. That's your Smart Business App: your own shop on the new internet.",
+  "grandma_view": "Imagine opening a little shop of your own, where everything you know how to do becomes something people can find, enjoy, and pay you fairly for — and a trusted helper who keeps the books, minds the door, and tells the right people you're open. That's what your Business App does for you.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4642",
+   "title": "Your Smart Business App",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4642/IB-SMART-NOTE-20261122-sn4642-your-smart-business-app-hub.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4642/IB-SMART-NOTE-20261122-sn4642-your-smart-business-app-hub.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

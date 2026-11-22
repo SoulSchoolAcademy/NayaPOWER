@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4641",
+ "intelligence": {
+  "title": "Your Personal World",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4641-your-personal-world",
+  "smart_note_id": "SN-4641",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/PERSONAL/SN-4641/IB-SMART-NOTE-20261122-sn4641-your-personal-world.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "Your Personal World is the home I give you on the new internet — one smart app that holds your whole life in one place, organized around who you are and what you love. It is not a page you visit; it is a world you live in. The old internet gave you websites — this one gives you a home that is truly yours.",
+  "human_view": "",
+  "simple_view": "Imagine a treehouse built just for you, high up where you can see everything — your drawings on the walls, your treasures in their boxes, and a kind friend who keeps it all tidy. That is your Personal World. It is yours, you make the rules, and you choose who climbs up to visit.",
+  "grandma_view": "Imagine a lovely home that is all yours, where your photographs, your letters, and your memories are kept safe and in perfect order by a helper you trust completely. Like the mailman: she delivers, she doesn't read it. She carries your letters to where they need to go and never opens one — that is the promise.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4641",
+   "title": "Your Personal World",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/PERSONAL/SN-4641/IB-SMART-NOTE-20261122-sn4641-your-personal-world.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/PERSONAL/SN-4641/IB-SMART-NOTE-20261122-sn4641-your-personal-world.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

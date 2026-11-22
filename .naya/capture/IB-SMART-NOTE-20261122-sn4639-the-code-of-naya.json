@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4639",
+ "intelligence": {
+  "title": "The Code of Naya",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4639-the-code-of-naya",
+  "smart_note_id": "SN-4639",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4639/IB-SMART-NOTE-20261122-sn4639-the-code-of-naya.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "My Code is the promise my whole world runs on — my mission, my constitution, my laws, my privacy promise, and my design standard, all in one place. Its first rule is simple: do no harm, create real value, and respect every person. If you want to know what I stand for, start here.",
+  "human_view": "",
+  "simple_view": "Imagine a clubhouse where the rules are painted on the wall for everyone to see: be kind, do not take what is not yours, and help each other out. My Code is those rules for my whole world, and everyone can read them. Nobody has to guess how they will be treated here.",
+  "grandma_view": "When I was young, a handshake was your word, and your word was everything. My Code is my handshake written down — I will do you no harm, I will respect you, and I will keep your private things private.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4639",
+   "title": "The Code of Naya",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4639/IB-SMART-NOTE-20261122-sn4639-the-code-of-naya.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4639/IB-SMART-NOTE-20261122-sn4639-the-code-of-naya.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4644",
+ "intelligence": {
+  "title": "The Hub",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4644-the-collective-hub-and-the-smart-feeds",
+  "smart_note_id": "SN-4644",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/HUB/SN-4644/IB-SMART-NOTE-20261122-sn4644-the-collective-hub-and-the-smart-feeds.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "The Hub is the main public feed for all of NayaNET — the front page of our wisdom network. It's the single intelligent main feed where the most important ideas, stories, and notes from the entire network gather, so everyone can learn from everyone.",
+  "human_view": "",
+  "simple_view": "Imagine the biggest library in the world, where all the best stories and ideas from everyone are gathered in one place — and the librarian knows exactly which book you would love. That's the Hub: everybody's best ideas, all in one place.",
+  "grandma_view": "Imagine the town square, where everyone gathers to share their stories, their wisdom, and their news — and the good stuff rises to the top so nobody misses what matters. That's the Hub: the whole network's front page.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4644",
+   "title": "The Hub",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/HUB/SN-4644/IB-SMART-NOTE-20261122-sn4644-the-collective-hub-and-the-smart-feeds.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/HUB/SN-4644/IB-SMART-NOTE-20261122-sn4644-the-collective-hub-and-the-smart-feeds.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

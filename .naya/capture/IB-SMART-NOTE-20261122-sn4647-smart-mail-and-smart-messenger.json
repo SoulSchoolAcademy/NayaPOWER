@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4647",
+ "intelligence": {
+  "title": "Smart Mail & Smart Messenger",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4647-smart-mail-and-smart-messenger",
+  "smart_note_id": "SN-4647",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/PRIVACY/SN-4647/IB-SMART-NOTE-20261122-sn4647-smart-mail-and-smart-messenger.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "Smart Mail and Smart Messenger are your private communication system on NayaNET — one place to send, receive, and organize your messages, and to talk instantly with anyone on the network. Mail and Messenger are one interface: your inbox, your instant messenger, and your poster, all together.",
+  "human_view": "",
+  "simple_view": "Imagine having a magic mailbox that sorts all your letters for you, tells you which ones matter most, and keeps them safe — and a telephone that lets you talk to any of your friends instantly. That's Smart Mail and Smart Messenger: your letters and your talking, all in one place.",
+  "grandma_view": "Imagine a post office that delivers your letters, keeps them organized, and never, ever opens them to read what's inside — and a telephone on the same desk so you can call anyone you love in an instant. That's your Smart Mail: private, organized, and yours.",
+  "naya_view": "",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4647",
+   "title": "Smart Mail & Smart Messenger",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/PRIVACY/SN-4647/IB-SMART-NOTE-20261122-sn4647-smart-mail-and-smart-messenger.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/PRIVACY/SN-4647/IB-SMART-NOTE-20261122-sn4647-smart-mail-and-smart-messenger.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
