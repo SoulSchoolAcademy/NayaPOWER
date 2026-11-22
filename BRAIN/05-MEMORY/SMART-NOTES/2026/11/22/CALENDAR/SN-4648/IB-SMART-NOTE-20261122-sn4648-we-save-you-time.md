@@ -3,45 +3,45 @@
 SN-4648 · CALENDAR / THE TWELVE ELEMENTS OF NAYA — PERSONAL
 
 **Created:** 2026-11-22 14:36Z
-**Updated:** 2026-11-22 14:53Z — re-crafted to 10/10 smart-note presentation in Shawn's voice; operative lines verbatim, the rest freshly written
+**Updated:** 2026-11-22 15:03Z — canonical call-approved text filed as-is (10/10, all ten sections filled)
 **Perspective:** Personal · **Visibility:** Public (Smart Notes are shared by definition)
 
 ## Hook:
 
-What if your whole day — your meetings, your memories, your news — organized itself?
+"Your time is the one thing you can't get back. Naya makes sure you spend it on what matters."
 
 ## In a nutshell:
 
-We Save You Time is my calendar, my booking, and my meeting room, all in one place. A super calendar, a shared journal, Smart Meet, and the scheduler work together so my days run themselves. NayaNET becomes part of my everyday life — she runs my world for me, and I get my time back.
+We Save You Time is Naya's way of looking after your time — your calendar, your booking, and your meetings, all in one place, all connected. Your appointments, your events, your reminders, all organized — so your day runs itself while you do the work only you can do.
 
 ## What it's not:
 
-It is not five separate apps fighting over your schedule, and it is not a calendar you have to fill in by hand. It is not a meeting tool that makes you hunt for a link. One calendar, one scheduler, one meeting room — and the organizing happens for you.
+It's not five different calendars fighting each other, and it's not a booking system that makes people email back and forth ten times. It's not a meeting link you have to chase down — it's your time, in one place, working for you.
 
 ## Child:
 
-Imagine a magic school timetable that writes itself — it knows your lessons, your games, and your friends' birthdays, and it tells you where to be and when. That is what my calendar does: it keeps my whole day in order, so I never miss the good stuff.
+Imagine having a helper who remembers everything for you — when soccer practice is, when your friend's birthday is, when it's time to leave — and tells you exactly what to do next. That's Naya with your time: she remembers, so you don't have to.
 
 ## Grandma:
 
-Imagine a dear friend who keeps your diary for you — she writes down what happened each day, reminds you of your appointments, and can tell you exactly what went on last Tuesday. That is my calendar and journal: my days, remembered for me, whenever I want to look back.
+Imagine a diary that keeps itself — every appointment written in, every birthday remembered, every visit planned — and a kind helper who reminds you gently and gets everything ready before you even ask. That's your calendar with Naya looking after it.
 
 ## Ultimately what it means:
 
-I book as personal, business, or space, on one shared calendar — and I can go back a week and see what went on that day in my world, my business, and the news. I get daily intelligence reports and intel-today highlights, so I always know what matters. My timeline is high-level, clear, and always mine.
+Your Calendar holds your appointments, events, and reminders, all organized in one place. Booking lets people book time with you — appointments, sessions, meetings — without the back-and-forth. Smart Meet is video and audio meetings right inside NayaNET — no separate app, no link to chase. And Naya reminds you, prepares you, and keeps your day in order.
 
 ## Why it matters:
 
-Time is the one thing you never get back, and the old internet stole it with busywork. When your calendar, your booking, and your meetings organize themselves, your hours go back to living, creating, and connecting. That is the whole point: NayaNET gives you time, not takes it.
+Your time is your most valuable resource, and most of us lose it to organizing, chasing, and remembering. Every minute Naya saves you is a minute you get back for the people and the work that matter.
 
 ## How it connects:
 
-My calendar joins my world, my business, and my spaces — appointments, bookings, and Smart Meet all flow through the same day. My journal links each day to its notes, its reports, and its news. One day, one view, everything connected.
+Time connects to everything — your Personal World, your Business, your Spaces, your Mail, your Match. A message can become a meeting, a meeting can become a booking, and a booking can become a customer. One system, one place, all connected.
 
 ## How to apply it:
 
-Let Naya organize your calendar — book your times, join your meets, and check your day each morning. Look back at any day to see what happened, and read your daily intelligence report to catch what matters. Your days will start running themselves.
+Put your day in the calendar and let Naya keep it. Let people book time with you instead of emailing back and forth. Meet on Smart Meet, right where you already are. And trust the reminders — they'll be there before you need them.
 
 ## What's in it for you:
 
-Hours back in your week, a day that runs smoothly, and a record of your life you can revisit any time. Less chasing, less forgetting, less juggling — and more time for the people and the work you love. That is what saving time really means.
+Hours back in your week, and a day that runs itself. Less chasing, less forgetting, less organizing — more time for what you love, with the people you love.
