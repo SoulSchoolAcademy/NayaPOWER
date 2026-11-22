@@ -17578,7 +17578,7 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
   // genuinely unknown routes still land on the feed.
   Router.on('smart-notes/:slug', params => window.HubView({ room: 'feed', note: params.slug }));
   /* FRAME-FIX4 2026-11-19 (F4): '*' must not hijack Personal-view hashes. A Personal view ('#people', '#home', '#about', ...) is not a Hub route, so the old fallback rewrote it to '#/hub' on any re-render (boot arrival, or a synthetic hashchange). Personal views keep their hash; 'home'/empty re-render the feed, which is this outlet's content. */
-  Router.on('*', () => { var _h=(location.hash||'').replace(/^#\/?/,'').split('?')[0].split('/')[0]; var _pv=['home','about','people','message','inbox','growth','lists','reports','settings','skills','scheduler','memberships','notes','dashboard','today','story','myworld']; if (!_h || _pv.indexOf(_h)>=0) { if (_h==='' || _h==='home') return window.HubView({ room: 'feed' }); return document.createElement('div'); } location.hash = '#/hub'; return document.createElement('div'); });
+  Router.on('*', () => { var _h=(location.hash||'').replace(/^#\/?/,'').split('?')[0].split('/')[0]; var _pv=['home','about','people','message','inbox','growth','lists','reports','settings','skills','scheduler','memberships','notes','dashboard','today','story','myworld']; if (!_h || _pv.indexOf(_h)>=0) { /* RELOAD-FIX R2 (2026-11-21): a Personal-view hash (#skills/#myworld/#about) is the boot state after a reload, and this outlet's content IS the feed - the Personal views live in the static shell outside #app. Returning an empty div here starved the room: HubView never ran, the title never set, the feed never built, window.pcRenderRailForTab (defined inside HubView) never existed, and the parse-time pcRenderRail() call below threw - blank black middle on every reload-after-panel, while taps never hit it (showView pushStates the hash, no hashchange, no render). Personal views keep their hash (untouched); unknown routes still rewrite to #/hub below. */ return window.HubView({ room: 'feed' }); } location.hash = '#/hub'; return document.createElement('div'); });
 
   // The Hub IS the app. No hash → straight to the feed — UNLESS the shell
   // was served at a clean note URL (/smart-notes/<slug>, /notes/<slug>,
@@ -43138,7 +43138,8 @@ if(wall&&rail&&wall.parentNode){
   var wrap=document.createElement('div'); wrap.className='pc-feedwrap'; wrap.id='pcFeedWrap';
   wall.parentNode.insertBefore(wrap, wall); wrap.appendChild(wall); wrap.appendChild(rail);
 }
-window.pcRenderRail();
+/* RELOAD-FIX R2 (2026-11-21): pcRenderRail() calls window.pcRenderRailForTab, which only exists once HubView has run. If the room has not rendered yet (any boot path that never reaches HubView), the bare call threw an uncaught TypeError at parse time and aborted this whole block (its click handlers never bound). Guard on the function it needs - same if+try/catch shape as the guarded pcRenderRail() call at L40057. */
+if(typeof window.pcRenderRailForTab==='function'){ try{ window.pcRenderRail(); }catch(e){} }
 /* the four buttons: chat + mail open the instant message in place; audio and
    video calls are not here yet — the buttons say so plainly instead of
    opening a composer that pretends to be a call. */
