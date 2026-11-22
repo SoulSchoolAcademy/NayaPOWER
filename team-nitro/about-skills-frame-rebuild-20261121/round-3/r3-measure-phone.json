@@ -1,0 +1,497 @@
+[
+ [
+  1,
+  {
+   "visible": "1",
+   "kind": "MOTTO",
+   "title": "My motto",
+   "frameTop": 48,
+   "frameH": 650,
+   "frameBottom": 698,
+   "vw": 390,
+   "vh": 844,
+   "nutBottom": 452,
+   "footBottom": 501,
+   "nextBtn": {
+    "top": 582,
+    "bottom": 628,
+    "cover": "p3-enter letter-next deck-next deck-back"
+   },
+   "frameOverlay": {
+    "top": 0,
+    "bottom": 844
+   },
+   "scroll": {
+    "sh": 389,
+    "ch": 389,
+    "sw": 310,
+    "cw": 310,
+    "vOverflow": 0,
+    "hOverflow": 0
+   },
+   "pill": "1 / 15"
+  }
+ ],
+ [
+  2,
+  {
+   "visible": "2",
+   "kind": "VISION",
+   "title": "What if everybody could win?",
+   "frameTop": 48,
+   "frameH": 650,
+   "frameBottom": 698,
+   "vw": 390,
+   "vh": 844,
+   "nutBottom": 418,
+   "footBottom": 468,
+   "nextBtn": {
+    "top": 582,
+    "bottom": 628,
+    "cover": "p3-enter letter-next deck-next deck-back"
+   },
+   "frameOverlay": {
+    "top": 0,
+    "bottom": 844
+   },
+   "scroll": {
+    "sh": 329,
+    "ch": 329,
+    "sw": 310,
+    "cw": 310,
+    "vOverflow": 0,
+    "hOverflow": 0
+   },
+   "pill": "2 / 15"
+  }
+ ],
+ [
+  3,
+  {
+   "visible": "3",
+   "kind": "GOAL",
+   "title": "A 100% success rate.",
+   "frameTop": 48,
+   "frameH": 650,
+   "frameBottom": 698,
+   "vw": 390,
+   "vh": 844,
+   "nutBottom": 417,
+   "footBottom": 466,
+   "nextBtn": {
+    "top": 582,
+    "bottom": 628,
+    "cover": "p3-enter letter-next deck-next deck-back"
+   },
+   "frameOverlay": {
+    "top": 0,
+    "bottom": 844
+   },
+   "scroll": {
+    "sh": 359,
+    "ch": 359,
+    "sw": 310,
+    "cw": 310,
+    "vOverflow": 0,
+    "hOverflow": 0
+   },
+   "pill": "3 / 15"
+  }
+ ],
+ [
+  4,
+  {
+   "visible": "4",
+   "kind": "MISSION",
+   "title": "Create heaven on earth.",
+   "frameTop": 48,
+   "frameH": 650,
+   "frameBottom": 698,
+   "vw": 390,
+   "vh": 844,
+   "nutBottom": 388,
+   "footBottom": 438,
+   "nextBtn": {
+    "top": 582,
+    "bottom": 628,
+    "cover": "p3-enter letter-next deck-next deck-back"
+   },
+   "frameOverlay": {
+    "top": 0,
+    "bottom": 844
+   },
+   "scroll": {
+    "sh": 359,
+    "ch": 359,
+    "sw": 310,
+    "cw": 310,
+    "vOverflow": 0,
+    "hOverflow": 0
+   },
+   "pill": "4 / 15"
+  }
+ ],
+ [
+  5,
+  {
+   "visible": "5",
+   "kind": "WHAT I LOVE",
+   "title": "I love that.",
+   "frameTop": 48,
+   "frameH": 650,
+   "frameBottom": 698,
+   "vw": 390,
+   "vh": 844,
+   "nutBottom": 415,
+   "footBottom": 465,
+   "nextBtn": {
+    "top": 582,
+    "bottom": 628,
+    "cover": "p3-enter letter-next deck-next deck-back"
+   },
+   "frameOverlay": {
+    "top": 0,
+    "bottom": 844
+   },
+   "scroll": {
+    "sh": 389,
+    "ch": 389,
+    "sw": 310,
+    "cw": 310,
+    "vOverflow": 0,
+    "hOverflow": 0
+   },
+   "pill": "5 / 15"
+  }
+ ],
+ [
+  6,
+  {
+   "visible": "6",
+   "kind": "WHAT I DON\u2019T",
+   "title": "No summaries, no prototypes.",
+   "frameTop": 48,
+   "frameH": 650,
+   "frameBottom": 698,
+   "vw": 390,
+   "vh": 844,
+   "nutBottom": 417,
+   "footBottom": 466,
+   "nextBtn": {
+    "top": 582,
+    "bottom": 628,
+    "cover": "p3-enter letter-next deck-next deck-back"
+   },
+   "frameOverlay": {
+    "top": 0,
+    "bottom": 844
+   },
+   "scroll": {
+    "sh": 359,
+    "ch": 359,
+    "sw": 310,
+    "cw": 310,
+    "vOverflow": 0,
+    "hOverflow": 0
+   },
+   "pill": "6 / 15"
+  }
+ ],
+ [
+  7,
+  {
+   "visible": "7",
+   "kind": "YOUR THING",
+   "title": "What\u2019s your thing?",
+   "frameTop": 48,
+   "frameH": 650,
+   "frameBottom": 698,
+   "vw": 390,
+   "vh": 844,
+   "nutBottom": 417,
+   "footBottom": 466,
+   "nextBtn": {
+    "top": 582,
+    "bottom": 628,
+    "cover": "p3-enter letter-next deck-next deck-back"
+   },
+   "frameOverlay": {
+    "top": 0,
+    "bottom": 844
+   },
+   "scroll": {
+    "sh": 359,
+    "ch": 359,
+    "sw": 310,
+    "cw": 310,
+    "vOverflow": 0,
+    "hOverflow": 0
+   },
+   "pill": "7 / 15"
+  }
+ ],
+ [
+  8,
+  {
+   "visible": "8",
+   "kind": "VALUES",
+   "title": "Do no harm. Ever.",
+   "frameTop": 48,
+   "frameH": 650,
+   "frameBottom": 698,
+   "vw": 390,
+   "vh": 844,
+   "nutBottom": 417,
+   "footBottom": 466,
+   "nextBtn": {
+    "top": 582,
+    "bottom": 628,
+    "cover": "p3-enter letter-next deck-next deck-back"
+   },
+   "frameOverlay": {
+    "top": 0,
+    "bottom": 844
+   },
+   "scroll": {
+    "sh": 359,
+    "ch": 359,
+    "sw": 310,
+    "cw": 310,
+    "vOverflow": 0,
+    "hOverflow": 0
+   },
+   "pill": "8 / 15"
+  }
+ ],
+ [
+  9,
+  {
+   "visible": "9",
+   "kind": "LAWS YOU FOLLOW",
+   "title": "I follow protocol.",
+   "frameTop": 48,
+   "frameH": 650,
+   "frameBottom": 698,
+   "vw": 390,
+   "vh": 844,
+   "nutBottom": 417,
+   "footBottom": 466,
+   "nextBtn": {
+    "top": 582,
+    "bottom": 628,
+    "cover": "p3-enter letter-next deck-next deck-back"
+   },
+   "frameOverlay": {
+    "top": 0,
+    "bottom": 844
+   },
+   "scroll": {
+    "sh": 359,
+    "ch": 359,
+    "sw": 310,
+    "cw": 310,
+    "vOverflow": 0,
+    "hOverflow": 0
+   },
+   "pill": "9 / 15"
+  }
+ ],
+ [
+  10,
+  {
+   "visible": "10",
+   "kind": "YOUR DECLARATION",
+   "title": "Your Declaration",
+   "frameTop": 48,
+   "frameH": 650,
+   "frameBottom": 698,
+   "vw": 390,
+   "vh": 844,
+   "nutBottom": 417,
+   "footBottom": 466,
+   "nextBtn": {
+    "top": 582,
+    "bottom": 628,
+    "cover": "p3-enter letter-next deck-next deck-back"
+   },
+   "frameOverlay": {
+    "top": 0,
+    "bottom": 844
+   },
+   "scroll": {
+    "sh": 359,
+    "ch": 359,
+    "sw": 310,
+    "cw": 310,
+    "vOverflow": 0,
+    "hOverflow": 0
+   },
+   "pill": "10 / 15"
+  }
+ ],
+ [
+  11,
+  {
+   "visible": "11",
+   "kind": "SKILL 1",
+   "title": "What I have to offer",
+   "frameTop": 48,
+   "frameH": 650,
+   "frameBottom": 698,
+   "vw": 390,
+   "vh": 844,
+   "nutBottom": 417,
+   "footBottom": 466,
+   "nextBtn": {
+    "top": 582,
+    "bottom": 628,
+    "cover": "p3-enter letter-next deck-next deck-back"
+   },
+   "frameOverlay": {
+    "top": 0,
+    "bottom": 844
+   },
+   "scroll": {
+    "sh": 359,
+    "ch": 359,
+    "sw": 310,
+    "cw": 310,
+    "vOverflow": 0,
+    "hOverflow": 0
+   },
+   "pill": "11 / 15"
+  }
+ ],
+ [
+  12,
+  {
+   "visible": "12",
+   "kind": "SKILL 2",
+   "title": "What you offer",
+   "frameTop": 48,
+   "frameH": 650,
+   "frameBottom": 698,
+   "vw": 390,
+   "vh": 844,
+   "nutBottom": 415,
+   "footBottom": 465,
+   "nextBtn": {
+    "top": 582,
+    "bottom": 628,
+    "cover": "p3-enter letter-next deck-next deck-back"
+   },
+   "frameOverlay": {
+    "top": 0,
+    "bottom": 844
+   },
+   "scroll": {
+    "sh": 389,
+    "ch": 389,
+    "sw": 310,
+    "cw": 310,
+    "vOverflow": 0,
+    "hOverflow": 0
+   },
+   "pill": "12 / 15"
+  }
+ ],
+ [
+  13,
+  {
+   "visible": "13",
+   "kind": "SKILL 3",
+   "title": "How it helps",
+   "frameTop": 48,
+   "frameH": 650,
+   "frameBottom": 698,
+   "vw": 390,
+   "vh": 844,
+   "nutBottom": 387,
+   "footBottom": 436,
+   "nextBtn": {
+    "top": 582,
+    "bottom": 628,
+    "cover": "p3-enter letter-next deck-next deck-back"
+   },
+   "frameOverlay": {
+    "top": 0,
+    "bottom": 844
+   },
+   "scroll": {
+    "sh": 389,
+    "ch": 389,
+    "sw": 310,
+    "cw": 310,
+    "vOverflow": 0,
+    "hOverflow": 0
+   },
+   "pill": "13 / 15"
+  }
+ ],
+ [
+  14,
+  {
+   "visible": "14",
+   "kind": "SKILL 4",
+   "title": "A moment I\u2019ve done it",
+   "frameTop": 48,
+   "frameH": 650,
+   "frameBottom": 698,
+   "vw": 390,
+   "vh": 844,
+   "nutBottom": 417,
+   "footBottom": 466,
+   "nextBtn": {
+    "top": 582,
+    "bottom": 628,
+    "cover": "p3-enter letter-next deck-next deck-back"
+   },
+   "frameOverlay": {
+    "top": 0,
+    "bottom": 844
+   },
+   "scroll": {
+    "sh": 359,
+    "ch": 359,
+    "sw": 310,
+    "cw": 310,
+    "vOverflow": 0,
+    "hOverflow": 0
+   },
+   "pill": "14 / 15"
+  }
+ ],
+ [
+  15,
+  {
+   "visible": "15",
+   "kind": "SKILL 5",
+   "title": "How you work",
+   "frameTop": 48,
+   "frameH": 650,
+   "frameBottom": 698,
+   "vw": 390,
+   "vh": 844,
+   "nutBottom": 387,
+   "footBottom": 436,
+   "nextBtn": {
+    "top": 555,
+    "bottom": 601,
+    "cover": "p3-enter letter-next deck-next deck-back"
+   },
+   "frameOverlay": {
+    "top": 0,
+    "bottom": 844
+   },
+   "scroll": {
+    "sh": 363,
+    "ch": 363,
+    "sw": 310,
+    "cw": 310,
+    "vOverflow": 0,
+    "hOverflow": 0
+   },
+   "pill": "15 / 15"
+  }
+ ]
+]
