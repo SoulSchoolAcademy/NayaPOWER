@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-22 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-22 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -18611,6 +18611,12 @@ _Last updated: 2026-11-22 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: verdict doc sha256 8c1a980e753bb9878de8b8c7d66fa13a1827902a555af47619594a55ae648ee2 MATCHES claim; live tip 92329c57 matches. Board comment IDs / REST timestamps not re-verified this tick (2 git ls-remote + 9 sha256 = cheap path). Kept from 9.5: (a) same-run, lane-executor family -- lesson author and both decision lanes are one 
 
+### ✅ t0712-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** Build semantic-arm acceptance battery v3 per the v2 repair spec - design-time gates, sealed predictions, official run, DISCRIMINATES verdict
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: sha256 reproduces EXACTLY for corpus_v3.json (b74ff7f9...9832f10), frozen_predictions_v3.md (66797bbf...506074e), run_output_v3.json (5386e7ab...9f123e); v3/ directory holds all ten files with v1/v2 untouched. NOT PHANTOM. Score 9.5, ACCEPTED - clears 9.5 because predictions were sealed pre-run with con
+
 ### ✅ t0712 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Semantic-arm acceptance battery v3, verdict DISCRIMINATES
@@ -18635,6 +18641,12 @@ _Last updated: 2026-11-22 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: corpus_v3.json b74ff7f90b7c6c14f5f9ed9530140a5b8ebd61e984c50fdf78ff8e4659832f10 == pin; frozen_predictions 66797bbf... == pin; run_output 5386e7ab... == pin; seal-before-run holds on disk mtime (predictions 1792274844 < output 1792275224); VERDICT-v3.md + design_v3.json present; v1/v2 frozen. Clears 9.5 because the four load-bearing seale
 
+### ✅ t0712-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** Tip index-freshness protect check (Stage 1) - re-pin tip, run regenerate_brain_index.py --check, negative control, freshness battery, board verdict
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: PR #2560 head via git ls-remote = c32e6a5b4856f4e6ccf8e3e7d3c6fb2aed58ccbb, EXACT match to the receipt's cited merge parent; tip 92329c5795ef8a50d02adf94ee6c91c313c26daf exists as a commit in the local mirror. NOT PHANTOM. Score 9.5, ACCEPTED - clears 9.5 because the green is proven non-vacuous (negativ
+
 ### ✅ t0712 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** Tip index-freshness protect check at live tip, verdict FRESH (GREEN)
@@ -18650,6 +18662,12 @@ _Last updated: 2026-11-22 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0712-lane8.md`
 
 **Evidence:** Verified: live tip 92329c5795ef8a50d02adf94ee6c91c313c26daf matches git ls-remote HEAD verbatim; verdict comment 6161963683 live on #2537. The green is non-vacuous by design (receipt documents a firing negative control, 13/13 battery, script byte-identity between the tip where it fired and this tip). Clears 9.5: the #2560 heal holds at its own land
+
+### ✅ t0712-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Diagnose PR #2561 mixed CI from bytes - every failing/check-blocked entry with byte-level root cause; diagnosis only
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: PR #2561 head via git ls-remote = 443cccf783438522a9c3a88c4d74505ecfc2de4d, EXACT match to the receipt's cited head; tip 92329c5795 exists as a commit in the local mirror. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS. Why not 9.5: (1) sign-in order violation (brief read before sign-in), self-caught and ow
 
 ### ✅ t0712 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
@@ -18667,6 +18685,12 @@ _Last updated: 2026-11-22 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: PR #2561 open, head 443cccf7, confirmed live; the diagnosis assigns verdict classes with evidence (metadata defect: body 'Seat' line should read the seat's name; advisory classes). Named gaps keep it from 9.5: the sign-in order violation (owned, unfixable after the fact); the orphaned earlier 'SCORECARD' comment's authorship is unresolved
 
+### ✅ t0712-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Independent second-seat scorecard of PR #2566 (bullseye +9 activation prose) - re-pin head, judge bytes, diagnose mergeable_state blocked, post Board-Protocol verdict on #2537
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: PR #2566 head via git ls-remote = 6a48a3f9681c737d69147cd10655f862e90e9039, EXACT match to the receipt's cited head; tip 92329c5795ef8a50d02adf94ee6c91c313c26daf exists as a commit in the local mirror. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS. Why not 9.5: (1) test-flake classification rests on infere
+
 ### ✅ t0712 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** Independent second-seat scorecard of PR #2566 (bullseye +9 activation prose) - NEEDS_WORK verdict posted on #2537
@@ -18682,6 +18706,12 @@ _Last updated: 2026-11-22 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0712-lane3.md`
 
 **Evidence:** Verified: PR #2566 open, head 6a48a3f9, confirmed live; verdict comment 6161777038 live on #2537. The lane's own pass-3 score (9.0) matches its NEEDS_WORK verdict — the number and the word agree, which is the honest loop. Named gaps keep it from 9.5: the test-flake was classified by sibling-head inference, not the failed job's own log (the receipt 
+
+### ✅ t0712-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Build the Smart Note feeder (priority #2 leg 3) - feed_smart_notes.py, full backlog drain, idempotency re-run, high-water mark
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: sha256 reproduces EXACTLY for bin/feed_smart_notes.py (68996289...40f223) and smart-note-feed-queue.jsonl (811df9a5...58a4); queue holds 1533 lines; feed-highwater.json matches the receipt (last_sn 1576, tip 7666b3a9...); both run receipts exist (run-20261017-2122.md, run-20261017-2128.md). NOT PHANTOM.
 
 ### ✅ t0712 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -59254,6 +59284,12 @@ _Last updated: 2026-11-22 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261122-0339 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: evaluate all 31 queued gap briefs, attempt claim on each, verify zero queue drift
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt file exists and read in full; the 31 brief filenames it lists are byte-identical to the live brief-queue set (31 vs 31, listed-not-live and live-not-listed both empty); queue checksum 6d9e2c4e...20ad4 reproduced exactly via sha256sum brief-*.md inside brief-queue/, identical to the 00:23, 01:28 a
 
 ### ✅ gate-stall-20261122-1035 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
