@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="theme-color" content="#000000">
 <title>About Sean — NayaNET</title>
-<!-- ABOUT SEAN + SKILLS — FRAME REBUILD, ROUND 2, 2026-11-21 (One-Build Law).
+<!-- ABOUT SEAN + SKILLS — FRAME REBUILD, ROUND 3, 2026-11-21 (One-Build Law).
      HARVEST, DON’T CREATE: the frame system, board CSS and reveal JS below are
      byte-for-byte from the Collective Agreement unfold
      (team-nitro/agreement-unfold-fix-20261117/agreement-unfold-fixed.html,
@@ -14,27 +14,39 @@
      20261120 records dir). Only the CONTENT changed: header labels, 37 agreement
      beats -> 15 frames (10 About + 5 Skills, one deck, pill N / 15), the play
      script (6 paragraphs, About story, distilled to agreement density 27-43
-     words — except frame 1, the Motto: 14 words, the named empty-middle
-     exception, because the harvested F9 media board inside frame 1’s reading
-     window leaves no room for 27 words at phone width), three media-frame
-     the playing-state play-note string, and one comment word removed so the
-     machine checker passes (the source file FAILs its own checker on that word).
+     words — except frame 1, the Motto: 14 words, the RATIFIED empty-middle
+     exception, because the motto is one line by design), three media-frame
+     label strings, the two wireFrame7 fallback labels, the playing-state
+     play-note string, and the frame-1 spacing values below. The word "gray"
+     is kept in this comment ("nothing gray") now that the machine checker
+     flags gray only as a text colour, not the word in white text.
      CONTENT distilled from Sean About v6 (branch about/personal-20261121, blob
      320a27e4d37ecfe742d2c60f4340d16027439bba, 10,516,976 B, verified by blob read
      this round). Frame 10, Your Declaration: the v6 section carries no text, so
-     its words are distilled from the Anaya Declaration in Shawn’s own words.
-     Frame 6 paraphrases one v6 line as “no dull text” because the v6
-     wording of that line contains the one word that FAILs the machine checker
-     anywhere in the file. Frame 15
-     carries both How you work and How to start (six Skills moments, five
-     frames). NO additions: no extra <style> block, no extra scripts, no pricing
+     its words are distilled from the Anaya Declaration in Shawn’s own words
+     (RATIFIED by the captain in round 3). Frame 4, Mission: the invented
+     phrase is out and the v6 headline words "Create heaven on earth." are
+     restored into the body — 29 words, all v6 verbatim. Frame 6 restores
+     v6’s line as "no gray text", in white text. Frame 15 carries both How
+     you work and How to start (six Skills moments, five frames); distilled
+     out of frame 15: "A visitor comes to learn, and leaves connected",
+     "ready to go, completed and done", and "not a summary, not a prototype".
+     NO additions: no extra <style> block, no extra scripts, no pricing
      code — the Skills slideshow is the agreement’s own deck (wireDeck /
      wireFrame). Portraits are the agreement’s own face-*.jpg, verbatim; no
      portrait of Shawn exists in the harvested source, so Shawn’s portrait
      decision is his, and is still owed. No generated face anywhere.
      Beats are the agreement’s own TEXT beats (fp-noslide, no showcase figure):
-     the frame’s picture is the topbar face, top; the text is the middle.
-     Frame 1 (Motto) is the empty-middle agreement frame. Skills frames use the
+     the .ib-blocktop (including the 168px beat photo) is display:none on
+     these text beats — the only face that renders is the JS-injected
+     .frame-face (52px phone) in the topbar; the text is the middle.
+     Frame 1 (Motto) is the empty-middle agreement frame. Round 3 slimmed
+     the F9 media board inside frame 1 by spacing values only (multiples of
+     8px: media padding 6->0, title margin 2->0, audio-state margin 4->0,
+     video margin-top 8->0, video padding 10->8, media margin-bottom 8->0
+     with nutshell margin-top 8->0, nutshell margin-bottom 19->8 with foot
+     margin-top 18->8 — 49px recovered), so the .ib-foot line is visible at
+     rest with zero inner scroll at phone width. Skills frames use the
      calendar frame treatment (same outer frame + inner violet/magenta stage,
      content whole inside the stage — calendar blob 9562e15a, branch
      calendar/day-followon-round2-fix4-20261120). No scores, results, credentials
@@ -163,7 +175,7 @@ button{font-family:inherit}
   text-wrap: balance;
 }
 .ib-nutshell {
-  margin: 22px 0 19px; padding: 20px 21px;
+  margin: 22px 0 8px; padding: 20px 21px;
   border: 2px solid #ffffff16; border-radius: 18px;
   background: #08080d;
   box-shadow: inset 0 1px #fff3, 0 16px 35px #0009;
@@ -183,7 +195,7 @@ button{font-family:inherit}
   margin: 0 0 8px; color: var(--ink); font-weight: 850;
 }
 .ib-foot {
-  margin-top: 18px; padding-top: 14px; border-top: 2px solid #ffffff16;
+  margin-top: 8px; padding-top: 14px; border-top: 2px solid #ffffff16;
   color: #fff; font-size: 17px; line-height: 1.5; word-break: normal; overflow-wrap: normal;
 }
 .ib-foot-logo{width:22px;height:22px;flex:0 0 auto;vertical-align:-6px;border-radius:5px}
@@ -231,7 +243,7 @@ article[data-beat="37"] .frame-title{font-size:22px!important}}
    --tone is set on each beat's article and inherited, so the button, the
    frame edge, the portrait ring, the jewel and the board all light together.
    The Join link is the same button, as a link. The head line under the title
-   is one quiet line, white. Beats stack on the 8px grid. */
+   is one quiet line, white, nothing gray. Beats stack on the 8px grid. */
 .deck-next{border-color:var(--tone);text-shadow:0 1px 2px rgba(0,0,0,.85),0 0 12px var(--tone);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),0 0 24px -4px var(--tone),0 10px 22px rgba(0,0,0,.55)}
 .deck-next:hover,.deck-next:active{border-color:var(--tone);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -4px 8px rgba(0,0,0,.5),0 0 38px -2px var(--tone),0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px)}
 .deck-next[hidden]{display:none}
@@ -454,7 +466,7 @@ main.fp-frame8 .play-wrap,main.fp-frame8 .play-note{display:none!important}
 .frame-media .play-btn .play-name{display:none}
 .frame-media .play-btn.is-playing{border-color:#8e24aa;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -4px 8px rgba(0,0,0,.5),0 0 38px -2px #8e24aa,0 12px 26px rgba(0,0,0,.6)}
 .frame-media-audio-name{font-size:17px;font-weight:700;color:#fff}
-.frame-media-audio-state{font-size:17px;line-height:1.5;color:#fff;margin-top:4px}
+.frame-media-audio-state{font-size:17px;line-height:1.5;color:#fff;margin-top:0}
 .frame-media .frame-video-btn{width:100%;justify-content:center;margin-top:14px}
 .frame-anthem-note{font-size:17px;line-height:1.6;color:#fff;margin:8px 0 0;text-align:left}
 .frame-anthem-note[hidden]{display:none}
@@ -490,13 +502,13 @@ main.fp-frame8 .play-wrap,main.fp-frame8 .play-note{display:none!important}
    Orb 60 -> 48 (the label block beside it is ~50 tall, so the row drops
    to ~50); video pill padding 16 -> 10; board padding 10 -> 8; title
    margin 4 -> 2; video margin-top 10 -> 8; board margin-bottom 12 -> 8. */
-.frame-media{padding:8px 16px!important;margin-bottom:8px!important}
-.frame-media-title{margin-bottom:2px!important}
+.frame-media{padding:8px 16px!important;margin-bottom:0!important}
+.frame-media-title{margin-bottom:0!important}
 .frame-media .play-btn{width:48px!important;height:48px!important}
-.frame-media .frame-video-btn{margin-top:8px!important;padding:10px 46px!important}
+.frame-media .frame-video-btn{margin-top:0!important;padding:10px 46px!important}
 /* F1: lift the text — the agreement board's top margin 22 -> 8 and its top
    padding 20 -> 12, on every frame alike, so the first line lifts. */
-.frame-scroll>.ib-nutshell{margin-top:8px!important;padding-top:12px!important}
+.frame-scroll>.ib-nutshell{margin-top:0!important;padding-top:12px!important}
 /* F1: grow the reading window — the foot pills slim 16 -> 12 padding
    (still real pills, white words, own-colour rims) and the top bar
    closes up 8 -> 4. */
@@ -571,9 +583,9 @@ main.fp-frame8 .play-wrap,main.fp-frame8 .play-note{display:none!important}
 .frame-topbar .frame-face{width:48px!important;height:48px!important;flex-basis:48px!important}
 .frame-topbar .frame-kind{letter-spacing:.08em!important}
 .frame-scroll p{font-size:17px!important;line-height:1.5!important}
-.frame-media{padding:6px 12px!important}
+.frame-media{padding:0 12px!important}
 .frame-media .play-btn{width:44px!important;height:44px!important}
-.frame-media .frame-video-btn{white-space:nowrap!important;padding:10px 12px!important}
+.frame-media .frame-video-btn{white-space:nowrap!important;padding:8px 12px!important}
 .frame-btnrow{flex-wrap:wrap!important;gap:8px!important}
 /* AF v5 — v4's flex:0 0 auto DID apply, but a <button> as a flex item
    sizes to its CONTAINER, not its text (all three came out 301.75px —
@@ -624,9 +636,9 @@ main.fp-frame8 .play-wrap,main.fp-frame8 .play-note{display:none!important}
 <article class="intel-board letter-beat fp-noslide" data-beat="1" style="--tone:#8e24aa"><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-1.jpg&ref=agreement/unfold-20261117&cb=8743e1868400bb8ae4f650b536ab9cbace036786" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">MOTTO</span><h2 class="ib-title">My motto</h2></div></div></div><div class="ib-nutshell"><p>The most extraordinary, awe-inspiring, beautiful, intuitive, useful app ever created — push-button simple, logical, sensible.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; About Sean</div><button class="p3-enter letter-next deck-next" type="button" data-beat="1">Keep reading &#9670;</button></article>
 <article class="intel-board letter-beat fp-noslide" data-beat="2" style="--tone:#0f52ba" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-3.jpg&ref=agreement/unfold-20261117&cb=c01d71025d34abf8379bab5b7eb13bfa9204964a" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">VISION</span><h2 class="ib-title">What if everybody could win?</h2></div></div></div><div class="ib-nutshell"><p>Intelligence that remembers, learns, connects, proves, grows. We need the first ten. Then the first hundred. Then the first thousand. A new internet — one day no child will know a world without her.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; About Sean</div><button class="p3-enter letter-next deck-next" type="button" data-beat="2">Keep reading &#9670;</button></article>
 <article class="intel-board letter-beat fp-noslide" data-beat="3" style="--tone:#07925f" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-4.jpg&ref=agreement/unfold-20261117&cb=39c7f0ce4222d853d676d1ea5138569ed182b209" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">GOAL</span><h2 class="ib-title">A 100% success rate.</h2></div></div></div><div class="ib-nutshell"><p>Push-button simple. Create, learn, grow, earn — together. Instead of 99% of people failing: 100% success. It makes you money, and it connects you with people of like minds — people who are into what you are into.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; About Sean</div><button class="p3-enter letter-next deck-next" type="button" data-beat="3">Keep reading &#9670;</button></article>
-<article class="intel-board letter-beat fp-noslide" data-beat="4" style="--tone:#d4a017" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-5.jpg&ref=agreement/unfold-20261117&cb=c3cd3d9caf778a0b9e0fcf122b3a780030107f76" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">MISSION</span><h2 class="ib-title">Create heaven on earth.</h2></div></div></div><div class="ib-nutshell"><p>Heaven is a state of awesome energy. Stress, fears, money worries, hopelessness — a way to understand, and money to pay their bills. Shifting consciousness positive — for every one of us.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; About Sean</div><button class="p3-enter letter-next deck-next" type="button" data-beat="4">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="4" style="--tone:#d4a017" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-5.jpg&ref=agreement/unfold-20261117&cb=c3cd3d9caf778a0b9e0fcf122b3a780030107f76" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">MISSION</span><h2 class="ib-title">Create heaven on earth.</h2></div></div></div><div class="ib-nutshell"><p>Create heaven on earth. Heaven is a state of awesome energy. Stress, fears, money worries, hopelessness — a way to understand, and money to pay their bills. Shifting consciousness positive.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; About Sean</div><button class="p3-enter letter-next deck-next" type="button" data-beat="4">Keep reading &#9670;</button></article>
 <article class="intel-board letter-beat fp-noslide" data-beat="5" style="--tone:#c2410c" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-6.jpg&ref=agreement/unfold-20261117&cb=6fa4c1a28c196429f8c2e325de695a31f16cd06b" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">WHAT I LOVE</span><h2 class="ib-title">I love that.</h2></div></div></div><div class="ib-nutshell"><p>Real things. Real objects, alive on hover — not pictures of objects. Numbers that prove it. Ten out of ten, with the gauges — a high-performance machine. Straight up. No games. No bullshit. Just straight up: this is how it works.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; About Sean</div><button class="p3-enter letter-next deck-next" type="button" data-beat="5">Keep reading &#9670;</button></article>
-<article class="intel-board letter-beat fp-noslide" data-beat="6" style="--tone:#c62828" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-7.jpg&ref=agreement/unfold-20261117&cb=0be821b80d8c055d08b9f5333449064507b7412e" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">WHAT I DON’T</span><h2 class="ib-title">No summaries, no prototypes.</h2></div></div></div><div class="ib-nutshell"><p>Flat and dead. No flat shapes, no dull text, no dead boards. Starting from scratch? No rebuilding, no redesigning — craft, advance, enhance. Ninety-eight slides. Nobody sits through that. One frame at a time.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; About Sean</div><button class="p3-enter letter-next deck-next" type="button" data-beat="6">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="6" style="--tone:#c62828" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-7.jpg&ref=agreement/unfold-20261117&cb=0be821b80d8c055d08b9f5333449064507b7412e" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">WHAT I DON’T</span><h2 class="ib-title">No summaries, no prototypes.</h2></div></div></div><div class="ib-nutshell"><p>Flat and dead. No flat shapes, no gray text, no dead boards. Starting from scratch? No rebuilding, no redesigning — craft, advance, enhance. Ninety-eight slides. Nobody sits through that. One frame at a time.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; About Sean</div><button class="p3-enter letter-next deck-next" type="button" data-beat="6">Keep reading &#9670;</button></article>
 <article class="intel-board letter-beat fp-noslide" data-beat="7" style="--tone:#a21caf" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-8.jpg&ref=agreement/unfold-20261117&cb=00ea37ad9e03cc5da2b7ba352b0f3d988e31da5a" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">YOUR THING</span><h2 class="ib-title">What’s your thing?</h2></div></div></div><div class="ib-nutshell"><p>What do you love? What do you love to do? Connecting like minds, and making NayaNET the new internet for the world. Everybody’s got their THING — what makes up their world. People connect with others into their thing.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; About Sean</div><button class="p3-enter letter-next deck-next" type="button" data-beat="7">Keep reading &#9670;</button></article>
 <article class="intel-board letter-beat fp-noslide" data-beat="8" style="--tone:#3f51b5" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-9.jpg&ref=agreement/unfold-20261117&cb=e1dbe46717f87cf4cb63f7cef4bd367d8bb1a0f2" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">VALUES</span><h2 class="ib-title">Do no harm. Ever.</h2></div></div></div><div class="ib-nutshell"><p>Wisdom first. Naya means wise one — smart finds the fastest road, wisdom checks the destination first. Do no harm to yourself or others — because all is you, and connected to you. The most intelligent thing, every time.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; About Sean</div><button class="p3-enter letter-next deck-next" type="button" data-beat="8">Keep reading &#9670;</button></article>
 <article class="intel-board letter-beat fp-noslide" data-beat="9" style="--tone:#0e7490" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-1.jpg&ref=agreement/unfold-20261117&cb=8743e1868400bb8ae4f650b536ab9cbace036786" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">LAWS YOU FOLLOW</span><h2 class="ib-title">I follow protocol.</h2></div></div></div><div class="ib-nutshell"><p>The NAYA Protocol — the constitution. I think before I act. The Design Laws — real objects, white words, alive on hover. Ten stars or don’t send it. Five gates — right, needed, mine, now, proven. All five yes, or I stop.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; About Sean</div><button class="p3-enter letter-next deck-next" type="button" data-beat="9">Keep reading &#9670;</button></article>
