@@ -5069,6 +5069,14 @@ html.os-calm .os-dash .ph-card::after,html.os-calm .os-dash-pulse .stat-card::be
     <button type="button" class="ph-msg" data-ph-flow-x>Cancel</button></div>
   </div>
 </div>
+<div id="osCalDlg" class="ph-flow-dlg" hidden role="dialog" aria-modal="true" aria-label="Calendar">
+  <div class="ph-flow-card os-cal-card">
+    <button type="button" class="ph-flow-x" data-os-cal-x aria-label="Close calendar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="os-cal-head"><span class="os-jewel os-jewel-sm" style="--jc:#07925f">▦</span><h3>Calendar</h3><a class="os-cal-full" href="https://calendar.nayanet.app/sean">Open full-screen ↗</a></div>
+    <iframe id="osCalFrame" title="Calendar" src="" allow="fullscreen" referrerpolicy="no-referrer"></iframe>
+    <div class="os-cal-fallback" hidden><p class="os-note">The calendar did not load here &mdash; open it full-screen:</p><div class="ph-actions"><a class="ph-connect" href="https://calendar.nayanet.app/sean">Open the calendar</a><button type="button" class="ph-msg" data-os-cal-x>Back</button></div></div>
+  </div>
+</div>
 <div id="phAvatarDlg" class="ph-flow-dlg" hidden role="dialog" aria-modal="true" aria-label="Change your picture">
   <div class="ph-flow-card">
     <button type="button" class="ph-flow-x" data-ph-flow-x aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
@@ -23370,6 +23378,13 @@ NF.register(UNIT, {
     d.hidden=false;
   }
   function phCloseCoverDlg(){ var d=document.getElementById('phCoverDlg'); if(d) d.hidden=true; }
+  /* FOLLOW-ON R2 20261121 — the Calendar door opens the REAL calendar (calendar.nayanet.app/sean, locked triangle) in the page's own full-screen dialog, harvested from the Change-cover pattern. Lazy src: the calendar loads only on first tap. If it does not fire load within 12s, the fallback offers the same URL as a real link — the destination never silently becomes the in-app grid. */
+  var OS_CAL_URL='https://calendar.nayanet.app/sean';
+  var osCalLoaded=false, osCalTimer=null;
+  function osOpenCalendar(){ var d=document.getElementById('osCalDlg'); if(!d) return; var fr=document.getElementById('osCalFrame'); var fb=d.querySelector('.os-cal-fallback'); if(fr && !fr.getAttribute('src')){ fr.setAttribute('src',OS_CAL_URL); } if(fb) fb.hidden=true; d.hidden=false; if(!osCalLoaded){ if(osCalTimer) clearTimeout(osCalTimer); osCalTimer=setTimeout(function(){ if(!osCalLoaded && fb) fb.hidden=false; },12000); } }
+  function osCloseCalendar(){ var d=document.getElementById('osCalDlg'); if(d) d.hidden=true; if(osCalTimer){ clearTimeout(osCalTimer); osCalTimer=null; } }
+  (function(){ var d=document.getElementById('osCalDlg'); if(!d) return; var fr=document.getElementById('osCalFrame'); if(fr) fr.addEventListener('load',function(){ osCalLoaded=true; if(osCalTimer){ clearTimeout(osCalTimer); osCalTimer=null; } var fb=d.querySelector('.os-cal-fallback'); if(fb) fb.hidden=true; }); d.addEventListener('click',function(e){ if(e.target===d || (e.target.closest && e.target.closest('[data-os-cal-x]'))) osCloseCalendar(); }); })();
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ osCloseCalendar(); } });
   document.getElementById('cvrbtn').addEventListener('click',function(e){e.stopPropagation();phOpenCoverDlg();});
   (function(){
     var d=document.getElementById('phCoverDlg'); if(!d) return;
@@ -47875,11 +47890,21 @@ renderGrid();
 })();
 
 </script>
-<script>/* FOLLOW-ON R1 20261121 — Calendar + Settings doors (BRIEF-UPDATE-1945: the Calendar door IS the relabeled My World spot): open the view, then jump to it.
-   showView always smooth-scrolls to top:0 (~500ms), so the jump waits 650ms,
-   scrolls instantly, and re-asserts at 1500ms against async layout shifts above. */
-(function(){function jump(id,sel){var b=document.getElementById(id);if(!b)return;b.addEventListener('click',function(){function go(){var g=document.querySelector(sel);if(g){try{g.scrollIntoView({behavior:'auto',block:'start'});}catch(e){}}}setTimeout(go,650);setTimeout(go,1500);});}jump('myworldbtn','#mwCalGrid');jump('setbtn','#settings');})();
+<script>/* FOLLOW-ON R2 20261121 — the Calendar door IS the relabeled My World spot (BRIEF-UPDATE-1945), but its tap now opens the REAL calendar (calendar.nayanet.app/sean) full-screen in the page's own dialog — Shawn's eye, 2026-11-21 ~20:56 MST: the in-app grid was the wrong calendar. The Settings door still jumps to the settings view (showView smooth-scrolls to top:0 ~500ms, so the jump waits 650ms and re-asserts at 1500ms). Academy mode relabels this spot to "Our Lessons": that tap is lessons, not the calendar, so the Calendar intercept only runs while the pill reads Calendar and otherwise lets the generic data-os-go handler run. */
+(function(){function jump(id,sel){var b=document.getElementById(id);if(!b)return;b.addEventListener('click',function(){function go(){var g=document.querySelector(sel);if(g){try{g.scrollIntoView({behavior:'auto',block:'start'});}catch(e){}}}setTimeout(go,650);setTimeout(go,1500);});}jump('setbtn','#settings');var cal=document.getElementById('myworldbtn');if(cal)cal.addEventListener('click',function(e){var lab=cal.textContent||'';if(lab.indexOf('Calendar')<0)return;e.stopPropagation();e.preventDefault();if(typeof osOpenCalendar==='function')osOpenCalendar();});})();
 </script>
+<style id="os-cal-20261121">
+/* FOLLOW-ON R2 20261121 — the Calendar door opens the REAL calendar (calendar.nayanet.app/sean, the locked triangle) full-screen inside the frame: the page's own full-screen dialog pattern (.ph-flow-dlg, harvested from the Change-cover dialog), the card stretched to the viewport, the real calendar in an iframe. No scroll inside the frame (Frame Fit Law / No-Scroll Law, Shawn 2026-11-21 ~21:04 MST). */
+#osCalDlg{padding:0;background:#050607;}
+#osCalDlg .os-cal-card{width:100%;height:100vh;height:100dvh;max-width:none;border:0;border-radius:0;padding:0;display:flex;flex-direction:column;background:#050607;box-shadow:none;}
+#osCalDlg .os-cal-head{display:flex;align-items:center;gap:10px;padding:12px 56px 12px 16px;flex:none;border-bottom:1.5px solid rgba(7,146,95,.65);}
+#osCalDlg .os-cal-head h3{margin:0;font-size:19px;color:#ffffff;}
+#osCalDlg .os-cal-full{margin-left:auto;color:#ffffff;font-size:17px;text-decoration:underline;white-space:nowrap;}
+#osCalDlg #osCalFrame{flex:1 1 auto;width:100%;min-height:0;border:0;background:#050607;display:block;}
+#osCalDlg .os-cal-fallback{flex:1 1 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;}
+#osCalDlg .os-cal-fallback[hidden]{display:none;}
+#osCalDlg .os-cal-fallback .os-note{text-align:center;}
+</style>
 <style id="pc-bbr-20261116">
 /* PERSONAL BOTTOM-BAR RESTORE 2026-11-16 — one block for items 3/4/5/6. Harvest notes in the maker record. */
 /* ITEM 4 — the Create-world modal: primo buttons harvested verbatim from .ib-actions .ib-act (same file: obsidian gradient, 1.5px rim, inset top light, purple glow); white paragraph text; kind pills. */
