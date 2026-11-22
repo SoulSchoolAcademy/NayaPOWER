@@ -385,6 +385,11 @@ body{display:block;height:auto;overflow:visible}
 .u-slot{position:relative;border:2px solid #ffffff;border-radius:18px;background:#050607;cursor:pointer;overflow:hidden;display:flex;align-items:center;justify-content:center;transition:transform .3s ease,box-shadow .3s ease;flex:1;min-height:0}
 .u-slot[data-orient="16:9"]{aspect-ratio:16/9}
 .u-slot[data-orient="9:16"]{aspect-ratio:9/16;width:100%;max-width:340px;margin-left:auto;margin-right:auto}
+/* FIX (round-1 fix round, 2026-11-22): desktop text-state 9:16 slots get the
+   same grow treatment the phone query already has. Board 11 (85 words) needs
+   a 639px text block + 4px borders = 643px minimum; strict 9:16 at 340px wide
+   gives only 604px, overflowing 19px. 660px leaves 17px headroom. */
+.u-slot[data-orient="9:16"][data-state="text"]{aspect-ratio:auto;min-height:660px}
 .u-slot:hover{transform:translateY(-4px);box-shadow:0 0 34px rgba(255,255,255,.45)}
 .u-slot:active{transform:scale(.97)}
 .u-slot:focus-visible{outline:3px solid #ffffff;outline-offset:4px}
