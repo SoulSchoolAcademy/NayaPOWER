@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coming soon — NayaNET</title>
+<style>
+  html,body{margin:0;padding:0;background:#050607;color:#fff;font-family:Georgia,'Times New Roman',serif;min-height:100%}
+  .frame{max-width:640px;margin:0 auto;padding:48px 24px;text-align:center;border:2px solid #8e24aa;border-radius:22px;margin-top:8vh;box-shadow:0 0 42px rgba(142,36,170,.55)}
+  h1{font-size:25px;line-height:1.3;margin:0 0 12px}
+  p{font-size:19px;line-height:1.6;margin:0 0 16px}
+  .small{font-size:17px;color:#fff}
+  a{color:#0f52ba}
+  button{background:#050607;color:#fff;border:2px solid #8e24aa;border-radius:999px;padding:12px 28px;font-size:19px;font-family:inherit;cursor:pointer}
+</style></head><body>
+<div class="frame">
+  <h1 id="pg">This page is coming soon</h1>
+  <p>The deeper page for <strong id="nm">this topic</strong> is being built.</p>
+  <p class="small">The twelve boards are the front door — this room opens next. Nothing is missing: the page simply does not exist yet, so there is no dead link and no 404.</p>
+  <p><button type="button" onclick="history.back()">Back to The Twelve Elements</button></p>
+  <p class="small"><a href="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/about-twelve-elements-20261122/about-twelve-elements.html&amp;ref=about%2Ftwelve-elements-20261122">The Twelve Elements of NayaNET</a></p>
+</div>
+<script>
+  var q = new URLSearchParams(location.search).get('page');
+  if (q) {
+    document.getElementById('nm').textContent = q;
+    document.getElementById('pg').textContent = q + ' — coming soon';
+    document.title = q + ' — coming soon — NayaNET';
+  }
+</script>
+</body></html>
