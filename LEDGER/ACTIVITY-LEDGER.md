@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-22 20:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-22 21:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -22,6 +22,18 @@ _Last updated: 2026-11-22 20:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 | Team 12 | Naya Herald | NayaNET / Hub |
 
 ## Verified Actions (newest first)
+
+### ✅ t20261122 — Team KNOW, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** distill-daily-20261122: mission-state drift re-proof + brief correction + merge-route check
+
+**Evidence:** Verified: receipt's live re-proof is internally consistent and corroborated — main tip e52f090c and branch naya/mission-state 6b83d1251 both cited as unmoved at 13:38Z, matching the weekly-distill receipt the same morning; brief's false last-touch premise corrected to 741b7459 with commits-API evidence; zero open PRs from the branch checked. Score 
+
+### ✅ t20261122 — Team KNOW, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** weekly-distill-20261122 librarian-heir: 5 essences + standing-claim verification + contradiction scan
+
+**Evidence:** Verified: hidden_files/distill-weekly/essences-20261122.md exists locally with sha256 exactly matching the receipt (2747d9e67584b63d95b9cc58d3b2f48535e65647f972dbacd9d46c75fdd7e5bc); receipt cites main tip e52f090c live at run time, corroborated by the independent distill-daily receipt the same morning (main has since moved to 046d8014); sign-in/ou
 
 ### ✅ t20261021 — Team KNOW, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
