@@ -3,40 +3,27 @@
 SN-4639 · LAW / THE TWELVE ELEMENTS OF NAYA — PERSONAL
 
 **Created:** 2026-11-22 14:36Z
+**Updated:** 2026-11-22 14:42Z — replaced with Shawn-approved verbatim text
 **Perspective:** Personal · **Visibility:** Public (Smart Notes are shared by definition)
 
-## In a Nutshell
+**Hook:** "Before we build the most powerful intelligence, we must decide what that intelligence stands for."
 
-Everything Naya does runs on a code I can read. The constitution, the laws, the privacy promise, the mission — all of it in one place, out in the open, so I know exactly what I am trusting before I trust it.
+**In a nutshell:** The Code of Naya is the foundation of NayaNET — our mission, constitution, values, laws, privacy principles, design standards, and responsibilities to one another. Its first principle is simple: do no harm, create genuine value, respect every person.
 
-## What It's Not
+**What it's not:** It's not fine print you never read, and it's not rules for their own sake. It does not exist to limit you — it exists so you can trust the place you're in.
 
-It is not fine print nobody reads. It is not rules hidden behind a wall. It is not a promise made in secret and changed in secret.
+**Child:** Imagine a clubhouse where everyone knows the rules: be kind, don't take what's not yours, help each other out. The Code is the rules of our clubhouse, written on the wall where everyone can see them.
 
-## Child
+**Grandma:** In my day, a handshake was your word. The Code is Naya's handshake — her word, written down: she will do no harm, she will respect you, and she will keep your private things private.
 
-There are rules, and I can read them all! The rules say: be kind, do no harm, keep my things private! And Naya follows her own rules, always!
+**Ultimately what it means:** Every Naya thinks, acts, decides, protects people, and proves her work under this Code. Nothing in the system operates outside it — not the intelligence, not the feeds, not the earning.
 
-## Grandma
+**Why it matters:** Powerful technology without accountability can cause enormous harm. The Code makes trust, fairness, transparency, consent, and human authority part of the foundation — not optional features added later.
 
-It's like this, love — a good house has its rules written on the wall where everyone can see them, dear, and this house is the same, love: the promise is plain, the laws are plain, and nobody moves them in the dark.
+**How it connects:** The Code governs all eleven elements that follow. Naya Intelligence answers to it. Your world, your business, your spaces, the Hub, the notes, the match, the mail, your time, your earning, the Factory — every one of them lives under it.
 
-## Ultimately What It Means
+**How to apply it:** Before you build anything, read it. When something feels wrong, check it against the Code. When a Naya acts, ask: does this follow the Code? If it doesn't, say so — that's what the Code is for.
 
-The Code is the premise my whole world stands on. My dashboard, my calendar, my vault, my mail — all of it runs on the same written code, and the code says Naya operates my world for me but never reads it, never sells it, never uses it against me.
+**What's in it for you:** You enter a world designed around your interests and your dignity — with clear rights, clear responsibilities, and real ways to hold the system accountable. The most intelligent system should also strive to be the most responsible.
 
-## Why It Matters
-
-Trust without something to read is just a feeling. I can open the Code, read what Naya stands for, and hold her to it — that is what makes this a place I can live in, not just visit.
-
-## How It Connects
-
-The Code connects to everything: the privacy law guards my mail and my vault; the design laws shape every page I touch; the mission — heaven on earth — is the reason the Code exists at all.
-
-## How to Apply
-
-When I join, I read the Code first — the short version, in plain words — and I keep it where I can find it. When something feels wrong, I check it against the Code before I decide.
-
-## What's In It For You
-
-A home with its promise written down. I know what Naya will do, what she will never do, and where the line is — and because the line is written, I can relax inside it.
+---
