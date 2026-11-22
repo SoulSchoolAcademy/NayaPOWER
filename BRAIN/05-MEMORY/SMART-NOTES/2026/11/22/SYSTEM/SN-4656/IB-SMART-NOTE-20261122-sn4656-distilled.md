@@ -4,6 +4,8 @@ SN-4656 · SYSTEM / THE TWELVE ELEMENTS OF NAYA — PERSONAL
 
 **Created:** 2026-11-22 23:29Z
 
+**Kinds:** Honor · Multiplication · Craft · Knowledge
+
 ## Hook
 
 His words on the call, verbatim: "We keep a library of frames — the agreement frame for big story moments like a course cover or a motto, the calendar frame for text-heavy lessons inside the software — and we choose the frame by the moment."
