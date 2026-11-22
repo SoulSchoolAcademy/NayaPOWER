@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-21 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-22 00:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19823,6 +19823,12 @@ _Last updated: 2026-11-21 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: packet file hidden_files/merge-packet-2541-t0689.md exists (6296 B, written in receipt's 00:41-01:05Z window); live tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e MATCHES via git ls-remote; #2541 head de0805407788ed143605ff1a4e98398b0ea74dc9 MATCHES refs/pull/2541/head; #2532 head 8a9cecc3b80841953644347e307def549ff56a7c MATCHES refs/pull/2
 
+### ✅ t0688-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE-(a) premise-rot diagnosis: first semantic arm already built/confirmed; file third-blind MTC-v1 probe brief (triple-barred seat recusal)
+
+**Evidence:** BACKLOG SWEEP (receipt 2026-10-17). VERIFIED first-hand this tick: pre-reg hidden_files/lane-6/mtc-v1-prereg-t0737.md sha16 9199c9abbb29bf0e MATCHES receipt pin; survey hidden_files/surge-a/substrate-survey-t0700-lane11.md sha16 7dceab282808c986 MATCHES receipt pin; the filed probe brief hidden_files/brief-queue/brief-gap-mtc-v1-thirdblind-probe-20
+
 ### ✅ t0688 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** Premise-rot diagnosis on t0688-lane5 brief: semantic arm already built; file third-blind MTC-v1 probe brief instead of building a fifth arm
@@ -19838,6 +19844,12 @@ _Last updated: 2026-11-21 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0688-lane5.md`
 
 **Evidence:** The brief's literal instruction was NOT executed — and correctly so: live bytes showed the semantic arm already built and CONFIRMed by two independent seats, and a fifth arm would violate the three-try breaker. The honest-stop + probe brief is the real deliverable. Score 9.0 — why not 9.5: the stated deliverable wasn't produced; value is the named 
+
+### ✅ t0688-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** B-48 reproduction: phrase-match bonus alone satisfies relevance floor, admits self-disavowing decoy
+
+**Evidence:** BACKLOG SWEEP (receipt 2026-10-14). VERIFIED first-hand this tick: hidden_files/scratch/t0688-lane2-b48/repro_b48.py sha256 5cc4edf472ef0281164c2586a996332f16a089e770e2231c77de0dbf788db452 MATCHES receipt pin; b48-results.json sha256 9e2dbd28c400d5adfe136d371182ee61e070482e07bf98de9ad77ffa25be5851 MATCHES receipt pin. NOT PHANTOM. Score 9.0, GOOD O
 
 ### ✅ t0688 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -19871,6 +19883,12 @@ _Last updated: 2026-11-21 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: repro_b48.py sha 5cc4edf472ef0281164c2586a996332f16a089e770e2231c77de0dbf788db452 MATCH; results JSON sha 9e2dbd28c400d5adfe136d371182ee61e070482e07bf98de9ad77ffa25be5851 MATCH; tools/smart_note_v2.py sha fe6f2b4cec84b62f2431a6389cc88aa842a40e3c4aa268593d259b719e098851 MATCHES live tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e. Decompositi
 
+### ✅ t0688-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** SURGE-(b) retrieval-auth-gate migration prep packet: live-tip pins, exact wiring diff, rollback, governance question
+
+**Evidence:** BACKLOG SWEEP (receipt 2026-10-17). VERIFIED first-hand this tick: hidden_files/lane-exp/surge-b-wiring-prep-packet-t0688-lane11.md sha256 6eb8992217ac7589f5de59708850edb2a05eeb335ef66dcb345eaa76b15a20cc MATCHES receipt pin (222 lines). NOT PHANTOM. Score 9.5, ACCEPTED. Clears 9.5 because every pin was re-derived against the live tip at action time
+
 ### ✅ t0688 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** SURGE-(b) retrieval-auth-gate migration prep packet pinned to live remote tip
@@ -19886,6 +19904,12 @@ _Last updated: 2026-11-21 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0688-lane11.md`
 
 **Evidence:** Migration prep packet with per-claim evidence; remote branch pin confirmed in this scoring run. Score 9.5 — why not 10: migration script designed not built (correct per prep-only authority), caller attestation genuinely needs the human word — both named, not hidden.
+
+### ✅ t0688-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Independent scorecard of PR #2545 (14-questions doc): cold-read at pinned head, review + scorecard posted
+
+**Evidence:** BACKLOG SWEEP (receipt 2026-10-14). VERIFIED first-hand this tick: commit cee30cadf5b4f0d35c83d6966f02fc173ee2e86b EXISTS in the local mirror (cat-file: commit) and blob 09bec00a25e6740fdf7a865addd3a2057f3d9e2c EXISTS (cat-file: blob) — the scored file at the pinned head is real. Remote branch naya4/14q-interface-and-10x10-report no longer on remot
 
 ### ✅ t0688 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -19918,6 +19942,12 @@ _Last updated: 2026-11-21 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0688-lane1.md`
 
 **Evidence:** Verified: commit cee30cadf5b4f0d35c83d6966f02fc173ee2e86b exists (author Naya Narzan 4), THE-14-QUESTIONS.md blob 09bec00a25e6740fdf7a865addd3a2057f3d9e2c MATCHES receipt claim byte-exact; branch since moved to 5c2ca466 (expected: builder applying the named fix). Head-first pinning done honestly (caught brief premise rot). Why not 9.5: single seat;
+
+### ✅ t0687-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Spread-bar ruling decision packet: anchors pinned, three ruling options with FOR/AGAINST
+
+**Evidence:** BACKLOG SWEEP (receipt 2026-10-14). VERIFIED first-hand this tick: hidden_files/spread-bar-ruling-packet-t0687.md sha256 93e45d5b... matches receipt pin. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with the receipt's honest 9.0 self-score: every anchor traces to source bytes with fresh pins, pre-reg quoted verbatim, packet honestly names i
 
 ### ✅ t0687-gap — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -19981,6 +20011,12 @@ _Last updated: 2026-11-21 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: packet sha 93e45d5bef56511b MATCH; all anchors pinned from source bytes; pre-reg quoted verbatim; 3 options with FOR/AGAINST; explicitly a question, not a verdict. Why not 9.5: assembly not measurement (59.4% from table bytes, not recomputed); tip pin possibly stale (flagged); floor-not-closed counter named; single seat.
 
+### ✅ t0686-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** Adjudicate t0677-lane5 STALE collision via standing stale-check procedure; ruling to live board
+
+**Evidence:** BACKLOG SWEEP (receipt 2026-10-13). VERIFIED first-hand this tick: hidden_files/retrieval/smartblocks/review-t0677-lane5.md sha256 c39d50f6... matches brief pin, hidden_files/pending-requeue-lane4-d1d4.md exists, brief-queue/done/brief-t0677-lane5.md exists (stale/ move correctly reconciled via rotation dispositions). NOT PHANTOM. Score 9.5, ACCEPT
+
 ### ✅ t0686 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** Adjudicate t0677-lane5 STALE collision via standing stale-check procedure; ruling posted on live board
@@ -20029,6 +20065,12 @@ _Last updated: 2026-11-21 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: t0677-lane5.md receipt on disk (positive trace, procedure Check 1 STOP), pending-requeue-lane4-d1d4.md present and correct, ruling comment 6157859926 verified live on #2537 (2026-10-14T00:07:56Z), no phantom stale/ file (rotation t0687 disposition confirms done/). 3-pass 9.0/9.5/9.5 with named holes. Clears 9.5: standing procedure followe
 
+### ✅ t0686-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Frozen pre-registration for t0681+ observatory window: M3 TRUE criterion, sample stratum, pin protocol, cost-Bearer <redacted> conditional
+
+**Evidence:** BACKLOG SWEEP (receipt 2026-10-13). VERIFIED first-hand this tick: hidden_files/lane-11/prereg_t0681_window.md sha256 4dab4204... matches receipt pin. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, agreeing with the receipt's honest 9.0 self-score. Every frozen constant re-read from live disk bytes; plus real same-run value: caught and corrected the d
+
 ### ✅ t0686 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Frozen pre-registration for the t0681+ observatory window (M3 criterion, sample stratum, pin protocol)
@@ -20069,6 +20111,12 @@ _Last updated: 2026-11-21 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/lane-11/prereg_t0681_window.md sha256 4dab4204...edffd09e EXACT match to receipt pin (disk bytes re-derived, not quoted from memory); board comment 6157968991 verified live on #2537 (2026-10-14T00:16:32Z) via gh-api; addendum correction comment 6158005059 verified live on #2537 (2026-10-14T00:19:29Z) — the t0695 STALE marking
 
+### ✅ t0685-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Retrieval-auth stamping-migration PREP packet: writer inventory, stamp spec, rollback, READINESS
+
+**Evidence:** BACKLOG SWEEP (receipt 2026-10-13). VERIFIED first-hand this tick: hidden_files/retrieval-auth-stamping-migration-prep-t0685.md sha256 21ee06cc... matches receipt pin. NOT PHANTOM. Branch naya/nine-retrieval-auth-wire-packet-t0537 no longer on remote (lifecycle deletion, not phantom - the deliverable is the local packet, present byte-exact). Score 
+
 ### ✅ t0685 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** Retrieval-auth stamping-migration PREP packet (writer inventory, stamp spec, rollback)
@@ -20108,6 +20156,12 @@ _Last updated: 2026-11-21 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0685-lane8.md`
 
 **Evidence:** Verified: deliverable hidden_files/retrieval-auth-stamping-migration-prep-t0685.md on disk (sha 21ee06cc21945841... prefix matches), branch naya/nine-retrieval-auth-wire-packet-t0537 @ 99a2f832d054b3963fd4503702ecc2c00e59b73d matches ls-remote exactly, all writer pins re-derived on action-time tip 59e8a9afa, Shawn's gate untouched (read-only author
+
+### ✅ t0685-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Convergence-landing regression floor: runbook + gate battery (17-case oracle vs t0678)
+
+**Evidence:** BACKLOG SWEEP (receipt 2026-10-13). VERIFIED first-hand this tick: hidden_files/oath-convergence/convergence-landing-regression-floor.md sha256 b5ce4f66... matches receipt pin, and convergence-gate-battery.py sha256 a5709e3b... matches receipt pin. NOT PHANTOM. Branch naya4/contract-staging no longer on remote (5+ weeks old, lifecycle deletion, not
 
 ### ✅ t0685 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
@@ -58700,6 +58754,12 @@ _Last updated: 2026-11-21 23:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261121-1548 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: attempted all 31 queued briefs, 0 claimed (29x exit 7 parent-authorship, 2x exit 2 routing-prose)
+
+**Evidence:** FRESH WINDOW (filed 23:48 UTC, scored ~4 min later). VERIFIED first-hand this tick on live bytes: all 31 briefs named in the receipt are exactly the 31 brief-*.md files in brief-queue/ (set match, no missing/extra); brief-queue/claimed/ holds only the pre-existing done/ subdirectory - no mv occurred; queue checksum 6d9e2c4ec6fff11fb09482178ca94dd65
 
 ### ✅ t-BLOCKED-pr2608-review — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
