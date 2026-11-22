@@ -276,6 +276,7 @@ The day is the unit. The calendar is the ultimate login for your life. The month
 - **Prime real estate.** If you have the opportunity to build anything on a page, build on ALL of it. Never a third built and the rest left blank. Never buttons on blank space. The page is the land you bought — build on the whole land.
 - **One area holds everything relevant.** Buttons open views WITHIN it — never a thousand top-level pages done wrong, never one endless scroll pretending to be unity.
 - **The viewport is the stage.** The object takes center stage. Dead center means DEAD center. A corner means the far corner, exactly.
+- **AUTO-OPTIMIZATION OF THE VIEWPORT (Shawn's law, 2026-11-18 — made official on his word "make it official").** As the citizen scrolls, the view zooms into their viewport, into their point of view. Each page fits perfectly above the fold where they are viewing — the page arranges itself around the person looking at it, so what they are looking at is always perfectly framed, never half off the screen, never lost below the fold. The system optimizes the viewport for the viewer, automatically, on every page. It feels MECHANICAL: all of a sudden you see the screen coming into your viewport, and then it going away — you feel the action, like a machine turning. The matrix turns side to side and down, like a Rubik's cube, and the viewport follows your gaze so every piece lands exactly where you are looking. It is automatic — most pages are already pretty good at it, but it must just be automatic, everywhere.
 - **Spacing is calculated.** Multiples of 8px. Every position calculated, never eyeballed.
 - **Three boards, then the button.** Legal pages unfold three elevated boards at a time, then a button to the next.
 - **The two official formats, one idea: press the button, go to the next experience.** THE UNFOLD (going down — press the button, the next piece unfolds down the page, one board at a time, one idea each). THE SLIDESHOW (going sideways — press Next, the next screen slides in). One canonical implementation each, harvested verbatim, never reinvented. Bits at a time, not the whole page or book — human psychology, they can only take in so much.
@@ -369,6 +370,9 @@ These are the errors he spots in one glance. If your page has ANY of these, it i
 - **"Today lights up WAY more" (03:47Z):** SUPERSEDED on mechanism by 03:54Z — no huge TODAY pill, no glow over the day, no lit cell. Today reads from the weekday plaque and the header TODAY button.
 - **Wisdom gray / wisdom without quotes:** SUPERSEDED — wisdom is white, in quotes (§2.1, §2.4).
 - **The Studio as a standalone app:** SUPERSEDED — the engine lives in creation (page creation), not as a feature to sell.
+- **Human Note + In a Nutshell as two boards:** SUPERSEDED (Shawn's correction, 2026-11-21 ~16:24 MST) — the Nutshell IS the human note, one section, not two (§16).
+- **Staged as done:** SUPERSEDED (Shawn's order, 2026-11-21 ~18:31 MST) — a page is not done on staging; done means live on the official URL on his tap (§15).
+- **Rebuilding a page to fix it:** SUPERSEDED by the frame library (§14) — take the frame that already works, swap only the centre, clone and repeat; never rebuild from scratch.
 
 **Open questions — awaiting Shawn's ruling, never decided by a round:**
 - **T2:** Naya Code §4 pill mapping (green twice, scrambled vs flow) vs DNA §1 ("NEVER the same color twice in a row") — which wins?
@@ -383,6 +387,51 @@ These are the errors he spots in one glance. If your page has ANY of these, it i
 - **Three globe tabs (common-language report):** Collective, World, and Worlds all use the globe glyph. Distinct glyphs for the three tabs, or does the rule cover icons only? His ruling owed.
 - **Toolbar Ask Naya green (common-language report):** the toolbar pill's Ask icon is green; §8 says Ask is purple. Either the toolbar predates the law or the pill is wrong — a live-byte check against the current toolbar is owed.
 - **Loading states (common-language report):** "Reading your…" placeholders and "— — — Ledger loading —" lines are everywhere in the live pages, and the book says nothing about loading or empty states. A loading-state law is owed — what a board shows while its numbers load, and whether dim placeholder text is ever allowed, given §2.2 bans gray text.
+
+---
+
+## §14 — THE FRAME LIBRARY (Shawn's order, 2026-11-21 ~18:00–18:12 MST — the law that stops the rebuild loop)
+
+**Real harvested parts, cloned — never rebuilt, never invented.** One build done right, then clone and repeat: keep the frame and the structure, swap only the centre (new video, new image, new text). A page that does not use the existing frame is not a build, it is waste.
+
+The library has three homes. Choose by the moment — be discerning about what makes sense where:
+
+1. **THE AGREEMENT FRAME — big story moments.** Outer ornate silver/chrome gothic-metal border (spiky filigree, pointed arches, diamond/star motifs, black square corners, winged N emblem top + bottom) + inner black stage with a thin glowing violet/magenta rim, empty middle, light going around the stage. For course covers, the motto (first/top frame), anything that sets the stage like a show. Harvested from the collective agreement v28 (live at nayanet.app/agreement).
+2. **THE CALENDAR FRAME — text-heavy lessons inside the software.** Same outer frame + inner stage, all content inside the inner stage, nothing spills. For lessons, straight text, anything inside the software where it needs to feel close and personal. Harvested from the calendar day view.
+3. **THE EMPTY-MIDDLE FRAME — special featured moments.** The frame with nothing in the middle and the light going around the stage — for featuring one thing, like a motto, where the presentation itself is the moment.
+
+**MUST:** every frame on a page shows its content VISIBLE inside the inner stage. A frame with its content hiding behind it — headline, player, input box invisible, only a sliver peeking out — is the walkthrough failure of 2026-11-21, and it is a fail, not a style. The frame code is proven byte-identical to the harvested source with a diff BEFORE anything reaches Shawn. Both frames are proven at phone width first (true 390×844) and desktop.
+
+---
+
+## §15 — THE LIVE LOOP (Shawn's order, 2026-11-21 ~18:31 MST — "how are you supposed to test if the smart note system works if you don't make it live and we don't test it?")
+
+**A page is not done on staging.** Done means live on the official URL on his tap, tested by him using it. Staging is where the machine proves the build; live is where the build proves itself.
+
+**MUST:**
+- Put finished pages live on the official simple URL immediately, on his tap. Staging links are effectively lost; live-for-us is not public launch.
+- Test live by his TEST PLAN: he posts himself, with an image, on Personal AND Hub, proper formatting. A round is done when HIS tests pass.
+- Verify live by live read-back — the live bytes, the live feed — never by a deploy claim. A deploy without a live read-back is not proven.
+- His eye is the final gate. The machine's job is to make his eye the confirmation, not the discovery.
+
+**MUST NOT:**
+- Report a page done from staging. Never claim staged as done.
+- Test the smart-note system anywhere but live: "smart note this" → GitHub → live Hub feed, in seconds, proven by a real note landing live.
+
+---
+
+## §16 — THE ANATOMY OF AN INTELLIGENT BLOCK (Shawn's correction, 2026-11-21 ~16:24 MST)
+
+**The Nutshell IS the human note — one section, not two.** The spine, in order:
+
+**In a Nutshell (= Human) → Child → Grandma → What It Means → What's In It For You.** What It's Not sits right after Nutshell; Why It Matters + How It Connects sit after What It Means; How to Apply sits after How It Connects, before What's In It For You (SN-4466 positions — those were NOT named for deletion and they stay).
+
+**MUST:**
+- The Nutshell is SHORT — truly a nutshell. A Nutshell that runs on forever is misleading, because it is not in a nutshell. Distilled to essence, in wise words a child can understand.
+- EVERY section filled. What's In It For You has text. How It Connects has text. A section left empty is not a section — it is a hole.
+- See more ONLY when there is more. A "See more" button with nothing behind it makes no sense — and neither does an action row (Add Evidence · Build on This · Ask a Question · Report an Outcome) floating with nothing above it. Buttons sit just under the block, close but not touching, no extra black space.
+- The block's text is the Nutshell's text, a little bigger, centered, beautifully formatted — never left-aligned plain text.
+- The format is a SYSTEM format: auto-formatted by the system, never hand-pasted by an agent. "Smart note this" → GitHub → Hub automatically, all sections filled, ~10×/day, no PR, no manual entry.
 
 ---
 
