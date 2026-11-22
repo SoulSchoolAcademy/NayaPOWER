@@ -739,6 +739,11 @@ function loadVideo(){
   shell.appendChild(f);
   shell.hidden = false;
   frame.classList.add('playing');
+  /* PLAYER-SYNC (round 2): the video autoplays here, so drive the orb
+     from our own play command — the PowerCast pattern (its `playing`
+     boolean is set directly in the play handler, never via a remote
+     callback). The YT state message below stays as a correction. */
+  videoPlaying = true; setDeckPlaying(true);
   setTimeout(function(){ ytPost('addEventListener'); ytPost('unMute'); }, 1200);
 }
 function ytPost(func, args){
@@ -748,8 +753,11 @@ function ytPost(func, args){
   }
 }
 function ytCommand(cmd){
-  if (cmd === 'play'){ if (!videoLoaded) loadVideo(); else { ytPost('unMute'); ytPost('playVideo'); } }
-  if (cmd === 'pause'){ ytPost('pauseVideo'); }
+  /* PLAYER-SYNC (round 2): PowerCast pattern — the orb's `playing` flag
+     is set here, in the page's own play/pause commands, so the visual
+     moves the moment play is pressed and rests the moment pause is. */
+  if (cmd === 'play'){ videoPlaying = true; setDeckPlaying(true); if (!videoLoaded) loadVideo(); else { ytPost('unMute'); ytPost('playVideo'); } }
+  if (cmd === 'pause'){ videoPlaying = false; setDeckPlaying(false); ytPost('pauseVideo'); }
 }
 var videoTime = 0, videoDur = 0;
 function ytSeek(sec){
