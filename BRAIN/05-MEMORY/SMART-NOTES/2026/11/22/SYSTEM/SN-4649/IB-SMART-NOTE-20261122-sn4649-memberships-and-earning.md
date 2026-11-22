@@ -3,45 +3,45 @@
 SN-4649 · SYSTEM / THE TWELVE ELEMENTS OF NAYA — PERSONAL
 
 **Created:** 2026-11-22 14:36Z
-**Updated:** 2026-11-22 14:53Z — re-crafted to 10/10 smart-note presentation in Shawn's voice; operative lines verbatim, the rest freshly written
+**Updated:** 2026-11-22 15:05Z — canonical call-approved text filed as-is (10/10, all ten sections filled)
 **Perspective:** Personal · **Visibility:** Public (Smart Notes are shared by definition)
 
 ## Hook:
 
-AI is not taking jobs, she is creating income for you.
+"Everyone who joins is hired."
 
 ## In a nutshell:
 
-Memberships and Earning turn what you know and love into income — offer your people memberships, share your world, and earn from genuine value. And here is the beautiful part: everyone who joins NayaNET is hired as an ambassador, sharing in the rewards as the network grows. We all win, together.
+Memberships & Earning is how you turn what you know and love into something people pay to be part of — and how every citizen becomes an ambassador. Build a membership on any page — your Personal World, your Business, your Space — charge for access, and earn from genuine value you provide.
 
 ## What it's not:
 
-It is not a paywall that locks people out, and it is not a job board where you wait to be picked. Membership here is an add-on to any page — never a separate app — and earning here is not a prize for the lucky few. It is a system built so everyone who contributes can earn.
+It's not a separate app you have to build, and it's not a platform that takes a cut of your work. It's not a paywall that locks people out of everything — it's a private club, a digital kingdom, that you open to the people who want in.
 
 ## Child:
 
-Imagine you build the coolest lemonade stand on your street, and everyone who helps you tell people about it gets a share of what it earns. That is how it works here: you build something people love, your friends help spread the word, and everyone shares in the good it brings.
+Imagine you have the coolest clubhouse in the neighborhood, and people pay a little bit to join because it's so much fun inside — and you get to keep what they pay, and even share it with the friends who told them about it. That's a membership: your club, your rules, your earnings.
 
 ## Grandma:
 
-Imagine a village market where everyone who brings something good to sell keeps what they earn — and everyone who brings a new customer is thanked with a share, too. Nobody takes a cut of your stall; your earnings are yours. That is a fair market, and that is what we built.
+Imagine opening a little shop where people pay to become members — and they get your best recipes, your stories, your teaching — and you keep what they pay, fair and square, with no middleman taking a piece. That's a membership: your work, your reward.
 
 ## Ultimately what it means:
 
-Naya means new; Naya Narzan means new hero — and this network is the new internet, built to empower humans and AI together. Smart Access is the add-on: Power, Pro, and Max. The ambassador share rewards the people who grow the network, the owner keeps 100% on their own memberships, and inviting is push-button simple.
+A membership is an add-on to any page, never a separate app — a button on your Personal, Business, or Space page. Your member page can hold video, PDFs, audios, and content. You set the price, you paste your own PayPal or Stripe link, and the sale is tracked back to your dashboard. On your own memberships, you keep 100% — NayaNET takes no cut — and you set your affiliates' percentage yourself. And as an ambassador, you earn 50% whenever NayaNET is paid through your invitation.
 
 ## Why it matters:
 
-Too many talented people have no way to earn from what they know, and too many platforms take most of what they make. Here, your knowledge becomes income, your community becomes your growth engine, and your share is real. When the network wins, you win — that is the deal.
+Most platforms take a cut of everything you earn, and most people with something valuable to teach never get paid for it at all. If you have knowledge worth sharing, you should be able to earn from it — simply, fairly, and without a middleman.
 
 ## How it connects:
 
-Memberships connect to your world, your business, and your spaces — Smart Growth and the Inviter carry your ambassador link out to the people who need what you offer. Every join through you is tracked, and every share pays back to you. Your world grows, your income grows, and the network grows with them.
+Memberships connect to your Personal World, your Business, your Spaces, your Smart Links, your Ledger, and your Growth tools. A Smart Link tracks the click, the buyer pays on PayPal, and the return is tracked back to your dashboard — so every sale counts, and every ambassador who brought them gets their share.
 
 ## How to apply it:
 
-Offer a membership from your page — your lessons, your community, your world — and invite the people who would love it. Use Smart Growth and the Inviter to share your ambassador link, and watch your world grow one person at a time. Start with the people who already believe in you.
+Pick your page, add a membership, and set your price. Power builds 10 membership sites, Pro builds 100, and Max builds unlimited — enormous value at every level, limited on purpose, so each step up is a clear upgrade. Fill your member page with your best content, share your link, and let your ambassadors do the rest.
 
 ## What's in it for you:
 
-Real income from real value, a community that grows because you grew it, and a share in a network that rewards the people who build it. You keep 100% of your own memberships, and you earn as an ambassador whenever someone joins through you. That is earning the Naya way.
+Real earning from real value — your knowledge, your community, your work, paid for fairly. You keep what you earn, your ambassadors earn with you, and every member who joins makes your world a little bigger.
