@@ -3,45 +3,45 @@
 SN-4643 · SYSTEM / THE TWELVE ELEMENTS OF NAYA — PERSONAL
 
 **Created:** 2026-11-22 14:36Z
-**Updated:** 2026-11-22 14:42Z — reshaped to the Shawn-approved shape (Hook + 9 sections)
+**Updated:** 2026-11-22 14:53Z — re-crafted to 10/10 smart-note presentation in Shawn's voice; canonical text (notes-05-crafted-text.md) filed as-is under ## headings
 **Perspective:** Personal · **Visibility:** Public (Smart Notes are shared by definition)
 
 ## Hook:
 
-"Any topic, group or community has its own world — and with World-Maker, you can create one for whatever your heart desires."
+Everybody belongs somewhere. What if you could create that somewhere yourself?
 
 ## In a nutshell:
 
-Any thing I love can have its own world. With World-Maker I create a space for my business, my dog, my city, my product, my sport — anything — and people who love it too can gather there.
+Spaces & Worlds are intelligent Smart Apps created around shared interests, topics, communities, places, products, projects, and passions. If something matters to you, you can give it a world of its own — a place where people who love the same thing can gather, share, and build together.
 
 ## What it's not:
 
-It is not a group chat that scrolls away. It is not a page I have to build from nothing. It is not a club with a locked door — it is a world, open to the people it is for.
+It's not another group or forum where good conversations get buried and forgotten. It's not a page you post on and walk away from — it's a living world with its own people, its own knowledge, and its own purpose.
 
 ## Child:
 
-I can make a world for anything I love — my dog, my city, my favourite game! And all my friends can come and play there!
+Imagine you love dogs more than anything, so you build a whole little world just for dog lovers — with pictures of dogs, questions about dogs, and all your dog-loving friends in one place. That's a Space: a world you make around whatever your thing is.
 
 ## Grandma:
 
-It's like opening a room for the thing you love most, dear. You put out the chairs, love, and everyone who loves it too comes in and sits down together.
+Imagine a clubhouse for anything you care about — your cooking, your hometown, a cause close to your heart — where everyone who loves the same thing can meet, share what they know, and look after each other. That's a Space, and you can build one yourself.
 
 ## Ultimately what it means:
 
-A space is my personal world turned toward one thing. The same features — feed, mail, lists, calendar, memberships — focused on whatever my heart desires, so a community grows around the thing itself.
+Each Space can have its own About, its own Skills or activities, its own members, its shared content, its calendar, its discussions, and its knowledge. The World-Maker helps you create it using the same familiar Smart App system you already know — no building from scratch, no technical skill needed.
 
 ## Why it matters:
 
-Belonging is not a feed of strangers. When people gather around the thing they love, they connect for real — and that is where my world grows beyond just me.
+The internet is full of communities, but their useful conversations and knowledge are often scattered, buried, or lost. A shared world organizes both its people and its collective knowledge around a meaningful purpose, so nothing valuable disappears.
 
 ## How it connects:
 
-Spaces connect to my personal world and my business world — the same machine, a different face. And they connect to the Hub, so what happens in my space feeds the collective intelligence too.
+Spaces connect personal identities, businesses, conversations, Smart Notes, and shared intelligence. Your world, your business, and your match all flow through the worlds you belong to — and every world you build becomes another part of NayaNET.
 
 ## How to apply it:
 
-I pick the thing I love and make its world with World-Maker. I invite the first few people who love it too, and I keep it alive by sharing smart notes from inside it.
+Pick your thing — dogs, hockey, cooking, parenting, business, photography, your hometown, a cause that matters to you. Create a world around it, invite the people who love it too, and share what you know. The world grows every time someone adds to it.
 
 ## What's in it for you:
 
-A place where your people find each other. Your thing gets its own world, your community gets its own home, and you are the one who opened the door.
+A place to belong, build a community, share what you love, meet people, and create something together. Every passion, every project, every place, every community deserves a world where it can thrive — including yours.
