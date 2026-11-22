@@ -4,6 +4,8 @@ SN-4657 · SYSTEM / THE LIKENESS LAW
 
 **Created:** 2026-11-22 23:30Z
 
+**Kinds:** Honor · Multiplication · Craft · Knowledge
+
 ## Hook
 
 "The answer is THREE 9:16 boards, not two." His ruling on the live call: the mockup's two-board version was the wrong thought — it narrowed the boards, left a big empty gap in the middle, and on a laptop there was nothing to click. Three boards fill the frame; one board at a time fills a phone.
