@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-22 05:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-22 06:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -48001,6 +48001,12 @@ _Last updated: 2026-11-22 05:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ gap-t0483-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up t0483-lane4: PR #2680 CI/merge state + root cause of Oct 7-8 capture-run failures (all 12 classified)
+
+**Evidence:** BACKLOG SWEEP (filed 2026-10-15, scored 2026-11-22 tick). VERIFIED first-hand this tick: parent receipt t0483-lane4.md exists and its ledger score is 9.0, matching the receipt's parent-score claim. NOT PHANTOM. The receipt quotes specific run IDs (12 failures + 2 successes), check-run IDs, and a full per-run failure taxonomy with the step's own AGE
+
 ### ✅ gap-scorer-20261015-0120-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up t0403-lane4: blended frequency+miss composite (0.5/0.5 policy + sensitivity) + '89+' figure diagnosis
@@ -57596,6 +57602,12 @@ _Last updated: 2026-11-22 05:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ gap-t0604-lane1-20261015-1642 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up t0604-lane1: corpus identity independently re-derived (second seat) - CHANGED at new tip
+
+**Evidence:** BACKLOG SWEEP (filed 2026-10-15, scored 2026-11-22 tick). VERIFIED first-hand this tick on live bytes: scratch driver verify_corpus_identity.py sha256 5c106852970012b91c... matches the receipt's pinned prefix exactly; verdict file c33e4d567d72e1fd35... matches exactly; verdict corroborates the pins (all 5 OK), the 631->632 row change, 624 CANDIDATE
 
 ### ✅ gap-scorer-20261015-0040-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
