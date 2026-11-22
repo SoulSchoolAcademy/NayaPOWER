@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-21T21:49:44Z",
-  "tip": "eb69fa7fd4e258ba06960665f0a55e5ab6da3e35",
+  "generated_at": "2026-11-22T03:49:28Z",
+  "tip": "5a35532c2f0981065d317d82b1e56b6755379530",
   "prs": [
     {
       "number": 3499,
@@ -92,6 +92,33 @@
       "cure": "Author cures the PR-caused red check(s): safety-grant-gate; then re-derive at the new head.",
       "owner": "author lane",
       "head": "9b9c4dd12f21b87d6b98f46104a80155df40e99f"
+    },
+    {
+      "number": 3513,
+      "title": "fix(guardian): point the post-merge alarm at the live board (#3361)",
+      "tier": "A",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "bab132a32b0a618516cea5db4d2bd800e53940bc"
+    },
+    {
+      "number": 3514,
+      "title": "fix(doc-gate): scope law-triple check to changed files in --changed-only mode",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "2375c49bf24bc530005fa913bca58ce5fbdccae4"
+    },
+    {
+      "number": 3515,
+      "title": "docs(brain): learning event 2026-11-21",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "1f37fa4b66e94ea6a5048866db45438e5ef829e6"
     }
   ]
 }
