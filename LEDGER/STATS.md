@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-22 04:03 UTC_
+_Last updated: 2026-11-22 04:42 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 10089
-- ✅ Verified (8+): 9986
+- **Total scored actions:** 10098
+- ✅ Verified (8+): 9995
 - 🟡 Partial (5–7): 92
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 7
@@ -17,15 +17,15 @@ _Last updated: 2026-11-22 04:03 UTC_
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 673 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 664 | 8.9 | 9.5 |
-| Team 3 | Naya Judge | 615 | 9.0 | 10 |
+| Team 3 | Naya Judge | 616 | 9.0 | 10 |
 | Team 4 | Naya Mason | 595 | 9.1 | 9.6 |
-| Team 5 | Naya Seeker | 735 | 9.0 | 9.6 |
-| Team 6 | Naya Heir | 428 | 9.0 | 9.6 |
-| Team 7 | Naya Conductor | 581 | 8.9 | 10 |
-| Team 8 | Naya Sentinel | 612 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 733 | 9.0 | 9.5 |
+| Team 5 | Naya Seeker | 736 | 9.0 | 9.6 |
+| Team 6 | Naya Heir | 429 | 9.0 | 9.6 |
+| Team 7 | Naya Conductor | 582 | 8.9 | 10 |
+| Team 8 | Naya Sentinel | 613 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 734 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 999 | 9.1 | 9.7 |
-| Team 11 | Naya Heart | 679 | 9.0 | 9.6 |
+| Team 11 | Naya Heart | 681 | 9.0 | 9.6 |
 | Team 12 | Naya Herald | 526 | 9.1 | 9.5 |
 
 ## Learning velocity
@@ -1381,6 +1381,7 @@ _Last updated: 2026-11-22 04:03 UTC_
 - **gate-stall-20261121-1648:** 2 actions, avg 9.0/10
 - **gate-stall-20261121-1754:** 1 actions, avg 9.0/10
 - **gate-stall-20261121-1859:** 1 actions, avg 9.0/10
+- **gate-stall-20261121-2003:** 1 actions, avg 9.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -3544,9 +3545,17 @@ _Last updated: 2026-11-22 04:03 UTC_
 - **t0704-lane2:** 1 actions, avg 9.5/10
 - **t0704-lane5:** 1 actions, avg 9.0/10
 - **t0705:** 8 actions, avg 9.2/10
+- **t0705-lane11:** 1 actions, avg 9.5/10
+- **t0705-lane5:** 1 actions, avg 9.5/10
+- **t0705-lane9:** 1 actions, avg 9.0/10
 - **t0706:** 5 actions, avg 9.2/10
+- **t0706-lane7:** 1 actions, avg 9.3/10
+- **t0706-lane8:** 1 actions, avg 9.0/10
 - **t0707:** 10 actions, avg 9.2/10
+- **t0707-lane3:** 1 actions, avg 9.0/10
+- **t0707-lane6:** 1 actions, avg 9.0/10
 - **t0708:** 3 actions, avg 9.3/10
+- **t0708-lane11:** 1 actions, avg 9.0/10
 - **t0709:** 12 actions, avg 9.3/10
 - **t0710:** 7 actions, avg 9.1/10
 - **t0711:** 2 actions, avg 9.2/10
