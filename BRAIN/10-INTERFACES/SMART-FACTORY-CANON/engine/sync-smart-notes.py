@@ -107,14 +107,35 @@ def gh_api(path):
     with urllib.request.urlopen(req, timeout=30) as resp:
         return json.loads(resp.read().decode())
 
+# SUPABASE COLUMNS (verified 2026-11-22 by live row read: 17 keys).
+# parse_smart_note returns MORE fields than the table holds -- the
+# §16 spine sections what_its_not / why_it_matters / how_it_connects
+# / how_to_apply + hook are parsed from the FILE for the bake's
+# gap-fill (build_live_notes), because the table has no such columns.
+# PostgREST 400s an upsert carrying an unknown column, so the upsert
+# sends only known columns: a parser addition can never break the
+# live sync. When a column lands in the table, add it here.
+SB_COLUMNS = frozenset([
+    'author', 'child_note', 'created_at', 'github_path',
+    'grandma_note', 'how_it_applies', 'human_note', 'ib_id', 'id',
+    'machine_note', 'naya_note', 'note_created', 'nutshell', 'source',
+    'title', 'what_it_means', 'whats_in_it_for_you',
+])
+
+
 def sb_upsert(note):
     """Upsert a note to hub_smart_notes.
 
     Only non-None fields are sent: merge-duplicates would otherwise
     overwrite good columns (written by the canonical IB projection)
-    with nulls for sections this parser could not extract.
+    with nulls for sections this parser could not extract. Only
+    known table columns are sent (see SB_COLUMNS): the parser's
+    file-only fields (§16 spine sections the table lacks) are dropped
+    here, never 400ing the upsert -- the bake reads them from the
+    file instead.
     """
-    note = {k: v for k, v in note.items() if v is not None}
+    note = {k: v for k, v in note.items()
+            if v is not None and k in SB_COLUMNS}
     req = urllib.request.Request(
         f"{SUPABASE_URL}/rest/v1/hub_smart_notes?on_conflict=ib_id",
         data=json.dumps(note).encode(),
@@ -332,9 +353,25 @@ def parse_smart_note(content, path):
         ib_id = filename[:100]  # Truncate to fit
 
     idx = section_index(content)
-    nutshell = _pick(idx, 'IN A NUTSHELL')
+    # 'NUTSHELL' (bare heading, e.g. SN-4610's "## Nutshell") is a
+    # first-class pick: without it the nutshell fell back to the Human
+    # text (SN-4610: 719 chars of Human served as the nutshell) while
+    # the real 527-char Nutshell sat unparsed.
+    nutshell = _pick(idx, 'IN A NUTSHELL', 'NUTSHELL')
     human = _pick(idx, 'HUMAN NOTE', 'HUMAN', 'HUMAN VIEW')
-    what_it_means = _pick(idx, 'WHAT IT ALL MEANS', 'WHAT IT MEANS')
+    what_it_means = _pick(idx, 'WHAT IT ALL MEANS', 'WHAT IT MEANS',
+                         'ULTIMATELY WHAT IT MEANS',
+                         'ULTIMATELY WHAT IT ALL MEANS')
+    # §16 SPINE (2026-11-21): the sections the table does NOT hold.
+    # Apostrophe norm: _norm_section_name turns "What's" into "WHAT S"
+    # (the apostrophe becomes a space), so the pick list carries the
+    # spaced form first -- the old 'WHATS IN IT FOR YOU' alone NEVER
+    # matched a "## What's In It For You" heading (latent bug: the
+    # sync never parsed WIIFY from apostrophe headings; the feed
+    # builder's norm_head strips the apostrophe instead, which is why
+    # its cards carry WIIFY and the bake's never did).
+    how_to_apply = _pick(idx, 'HOW TO APPLY', 'HOW IT APPLIES',
+                         'HOW TO USE IT')
     if not nutshell:
         # A card must always carry its nutshell: fall back to the
         # note's own summary dialects ('## Essence', '## Executive
@@ -395,9 +432,15 @@ def parse_smart_note(content, path):
         'grandma_note': _pick(idx, 'GRANDMA NOTE', 'GRANDMA', 'EVERYDAY VIEW'),
         'naya_note': _pick(idx, 'NAYA NOTE', 'NAYA', 'NAYA VIEW'),
         'what_it_means': what_it_means,
-        'whats_in_it_for_you': _pick(idx, 'WHATS IN IT FOR YOU'),
-        'how_it_applies': _pick(idx, 'HOW IT APPLIES', 'HOW TO USE IT',
-                                'HOW TO APPLY'),
+        'what_its_not': _pick(idx, 'WHAT IT S NOT', 'WHAT ITS NOT',
+                              'WHAT IT IS NOT'),
+        'why_it_matters': _pick(idx, 'WHY IT MATTERS'),
+        'how_it_connects': _pick(idx, 'HOW IT CONNECTS'),
+        'whats_in_it_for_you': _pick(idx, 'WHATS IN IT FOR YOU',
+                                     'WHAT S IN IT FOR YOU'),
+        'how_to_apply': how_to_apply,
+        'how_it_applies': how_to_apply,
+        'hook': _pick(idx, 'HOOK'),
         'source': 'github-sync',
         'github_path': path,
     }
@@ -467,8 +510,33 @@ def _chunk_text_js(text, maxlen=600):
     return out
 
 
-# (note field, layer name) in the exact order update_hub_and_deploy
-# bakes the layers and the board renders — and speaks — them.
+# (note field, layer name, layer key, color, tier) in the §16 SPINE
+# ORDER (design laws §16, 2026-11-21): Nutshell (= Human, ONE
+# section) FIRST -> What It's Not -> Child -> Grandma -> What It
+# Means -> Why It Matters -> How It Connects -> How to Apply ->
+# What's In It For You LAST. No Hook, no separate Human, no Naya,
+# no Machine in the front spine. Keys are the bake's UPPERCASE
+# dialect (the feed builder emits lowercase slugs; the render
+# matches both). Tiers follow the feed dialect: nutshell primary,
+# child/grandma view, the rest lens. The bake (build_live_notes)
+# and the repo copy's update_hub_and_deploy emit this same table.
+_SPINE_LAYERS = [
+    ('nutshell', 'In A Nutshell', 'IN A NUTSHELL', 'white', 'primary'),
+    ('what_its_not', "What It's Not", 'WHAT IT S NOT', 'white', 'lens'),
+    ('child_note', 'Child Note', 'CHILD NOTE', 'white', 'view'),
+    ('grandma_note', 'Grandma Note', 'GRANDMA NOTE', 'white', 'view'),
+    ('what_it_means', 'What It Means', 'WHAT IT MEANS', 'white', 'lens'),
+    ('why_it_matters', 'Why It Matters', 'WHY IT MATTERS', 'white', 'lens'),
+    ('how_it_connects', 'How It Connects', 'HOW IT CONNECTS', 'white', 'lens'),
+    ('how_to_apply', 'How to Apply', 'HOW TO APPLY', 'white', 'lens'),
+    ('whats_in_it_for_you', "What's In It For You", 'WHATS IN IT FOR YOU', 'white', 'lens'),
+]
+
+
+# (note field, layer name) in the order the board play SPEAKS them
+# (spoken_sections) -- voice order, NOT the visual spine: the visual
+# front order is _SPINE_LAYERS above. Voice is out of the §16 round's
+# scope and keeps its own order.
 _SPOKEN_LAYERS = [
     ('human_note', 'Human Note'),
     ('child_note', 'Child Note'),
@@ -703,30 +771,36 @@ def update_hub_and_deploy():
                 continue
             seen_paths.add(rpath)
 
+        # §16 SPINE (2026-11-21, design laws §16): the front layers,
+        # in order -- Nutshell (= Human, ONE section) first, What It's
+        # Not, Child, Grandma, What It Means, Why It Matters, How It
+        # Connects, How to Apply, What's In It For You last. No Hook
+        # layer, no separate Human layer, no Naya/Machine layer.
+        # ROW-ONLY in this copy: the table has no what_its_not /
+        # why_it_matters / how_it_connects column, so those sections
+        # are absent here when the row lacks them (the live workspace
+        # copy gap-fills them from the note file at bake time -- see
+        # fetch_parsed_for_paths there; this snapshot has no such
+        # fetch). A section with no text is left absent, never an
+        # empty layer, never invented.
+        _vals = {
+            'nutshell': row.get('nutshell'),
+            'what_its_not': row.get('what_its_not'),
+            'child_note': row.get('child_note'),
+            'grandma_note': row.get('grandma_note'),
+            'what_it_means': row.get('what_it_means'),
+            'why_it_matters': row.get('why_it_matters'),
+            'how_it_connects': row.get('how_it_connects'),
+            'how_to_apply': row.get('how_it_applies'),
+            'whats_in_it_for_you': row.get('whats_in_it_for_you'),
+        }
         layers = []
-        if row.get('nutshell'):
-            layers.append({"name": "In A Nutshell", "key": "IN A NUTSHELL", "color": "white", "tier": "primary", "body": row['nutshell']})
-        if row.get('human_note'):
-            layers.append({"name": "Human Note", "key": "HUMAN NOTE", "color": "magenta", "tier": "primary", "body": row['human_note']})
-        if row.get('child_note'):
-            layers.append({"name": "Child Note", "key": "CHILD NOTE", "color": "sapphire", "tier": "primary", "body": row['child_note']})
-        if row.get('grandma_note'):
-            layers.append({"name": "Grandma Note", "key": "GRANDMA NOTE", "color": "emerald", "tier": "primary", "body": row['grandma_note']})
-        if row.get('naya_note'):
-            layers.append({"name": "Naya Note", "key": "NAYA NOTE", "color": "purple", "tier": "primary", "body": row['naya_note']})
-        if row.get('machine_note'):
-            # machine_note is JSONB, convert to string
-            machine = row['machine_note']
-            if isinstance(machine, dict):
-                import json as js
-                machine = js.dumps(machine, indent=2)
-            layers.append({"name": "Machine Note", "key": "MACHINE NOTE", "color": "indigo", "tier": "deeper", "body": str(machine)})
-        if row.get('what_it_means'):
-            layers.append({"name": "What It Means", "key": "WHAT IT MEANS", "color": "indigo", "tier": "deeper", "body": row['what_it_means']})
-        if row.get('whats_in_it_for_you'):
-            layers.append({"name": "What's In It For You", "key": "WHATS IN IT FOR YOU", "color": "gold", "tier": "deeper", "body": row['whats_in_it_for_you']})
-        if row.get('how_it_applies'):
-            layers.append({"name": "How It Applies", "key": "HOW IT APPLIES", "color": "teal", "tier": "deeper", "body": row['how_it_applies']})
+        for _field, _name, _key, _color, _tier in _SPINE_LAYERS:
+            _body = _vals.get(_field)
+            if _body:
+                layers.append({"name": _name, "key": _key,
+                               "color": _color, "tier": _tier,
+                               "body": _body})
 
         # VIRAL LAW + FEED TRUTH: headline = the note's real title.
         # A generic title (a type, a kind, the bare ID, the filename)
