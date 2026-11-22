@@ -14,7 +14,6 @@ The return gate moves to his own driving: nothing comes back until it is a ten, 
 
 Across 10 notes, the thread is: efficiency, the factory, ten, his voice.
 
-Across 10 notes, the thread is: back, time, instead.
 
 ## Human
 
