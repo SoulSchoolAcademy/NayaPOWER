@@ -3628,8 +3628,10 @@ body.fp-stage-on.fp-dialed #fpNextBtn:active,body.fp-stage-on.fp-dialed #fpNextB
          exactly once per arrival at the end view. */
       if(body.classList.contains('fp-stage-on')){
         try{
-          if(S.view==='agree')localStorage.setItem('nayanet_fp_stage','agree');
-           else localStorage.removeItem('nayanet_fp_stage');
+          /* PORTAL-ROOT-FIRST (2026-11-22) — the agree end is never saved:
+             no view persists across a refresh, so a plain load can never
+             land on the agreement. Any stale key is cleared here. */
+          localStorage.removeItem('nayanet_fp_stage');
            /* EYE FOLLOW-ON F1 (2026-11-17) - the old branch saved
               'bridge' on every bridge/deck render, and the boot block
               restored it on every plain load, so a reload landed in
@@ -3651,8 +3653,8 @@ body.fp-stage-on.fp-dialed #fpNextBtn:active,body.fp-stage-on.fp-dialed #fpNextB
        nayanet_smart_*) when render() lands on it, and read back here,
        through this same mechanism. Any other view clears the saved
        stage, so only the end view ever restores. */
-    var savedStage=null;try{savedStage=localStorage.getItem('nayanet_fp_stage');}catch(e){}
-    if(savedStage==='agree')return{view:'agree'};
+    /* PORTAL-ROOT-FIRST (2026-11-22) — the saved 'agree' return is gone:
+       resume only ever reads what the page itself shows (DOM state). */
     var li=lastShown(letterBeats);
     if(li>0)return{view:'letterPage'};
     var di=lastShown(deckBeats);
@@ -3796,8 +3798,11 @@ body.fp-stage-on.fp-dialed #fpNextBtn:active,body.fp-stage-on.fp-dialed #fpNextB
      ?stage=deck opens the visual story, ?stage=letter opens the read-it-all
      letter page, ?stage=bridge opens the bridge. Plain relative links, so
      the same URL works on staging and on the main URL alike. */
-  try{var _fpStage=new URLSearchParams(window.location.search).get('stage');
-  if(_fpStage==='deck'||_fpStage==='letter'||_fpStage==='bridge'){enterStage(_fpStage);if(_fpStage==='deck'){goResume();}else if(_fpStage==='letter'){enterLetterPage();}}}catch(e){}
+  /* PORTAL-ROOT-FIRST (2026-11-22) — ?stage= no longer auto-opens
+     anything on load: the portal loads first, always; the agreement
+     opens only behind its button. The param is still read (below) so a
+     staged value never enters the stage on its own. */
+  try{var _fpStage=new URLSearchParams(window.location.search).get('stage');}catch(e){}
   /* quiet links: the stage mirrors click the real ones. */
   if(linkLetterAll)linkLetterAll.addEventListener('click',function(){if(letterAll)letterAll.click();});
   if(linkLetterSkip)linkLetterSkip.addEventListener('click',function(){if(letterSkip)letterSkip.click();});
@@ -3929,8 +3934,11 @@ body.fp-stage-on.fp-dialed #fpNextBtn:active,body.fp-stage-on.fp-dialed #fpNextB
      restore are gone, so a plain load never auto-lands on the
      bridge (State B); ?stage=bridge still opens it by design. */
   try{
-    var _fpRestoreStage=(_fpStage==='deck'||_fpStage==='letter'||_fpStage==='bridge')?null:localStorage.getItem('nayanet_fp_stage');
-    if(_fpRestoreStage==='agree'){enterStage();S.view='agree';S.all=null;render();}
+    /* PORTAL-ROOT-FIRST (2026-11-22) — no view is ever restored on boot:
+       the agree restore is gone, and any stale 'agree' key left in a
+       returning browser is cleared here, so the next load is portal-first. */
+    var _fpRestoreStage=null;
+    try{localStorage.removeItem('nayanet_fp_stage');}catch(e){}
      /* EYE FOLLOW-ON F1 (2026-11-17) - no 'bridge' auto-restore here:
         a plain load must never auto-land on the bridge (State B).
         The choice (State A) is what the citizen enters through the
