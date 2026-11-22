@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-22 20:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-22 20:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -59404,6 +59404,12 @@ _Last updated: 2026-11-22 20:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261122-1208 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall: hourly claim sweep of 31 queued gap briefs, all refused, queue untouched
+
+**Evidence:** FRESH WINDOW (only unscored receipt this tick; backlog 0 after this row). VERIFIED first-hand this tick: brief-queue/ holds 31 brief-*.md, 0 brief-tNNNN-*; queue checksum 6d9e2c4e...20ad4 reproduced exactly via sha256sum, identical to the 11:08 receipt, so the queue is byte-identical and untouched; sweep log claim-sweep-20261122-1208.log exists (46
 
 ### ✅ gate-stall-20261122-1108 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
 
