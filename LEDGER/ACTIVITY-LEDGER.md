@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-22 04:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-22 04:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -18863,6 +18863,12 @@ _Last updated: 2026-11-22 04:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: patch scratch/t0709-lane1-verify/P3-partial-quarantine-persistence.patch sha256 e346df93... matches receipt pin; hidden_files/learn/learn_ingest.py sha256 7e689177... matches pin AND is unmodified (live bytes untouched, patch stayed in scratch); harness.py + learn_ingest_PRE.py + learn_ingest_PATCHED.py all present. Clears 9.5 be
 
+### ✅ t0708-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat independent re-prove of Sage's t0703 verify_integration() PARTIAL-bend verdict - own 7-probe battery, verdict CONFIRM
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: battery hidden_files/lane-11/t0708-heart-probe-battery.py, results t0708-heart-probe-results.json and verdict doc verify-integration-bent-secondseat-verdict-t0708.md all exist on disk; results JSON confirms start_pin == end_pin == 7e689177e7e2a402fe76b6dc348829a51793c7e992494c31eb31700fccc7d611 (the rec
+
 ### ✅ t0708 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Second-seat independent re-prove of Sage's t0703 verify_integration() PARTIAL-bend verdict
@@ -18886,6 +18892,12 @@ _Last updated: 2026-11-22 04:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0708-lane11.md`
 
 **Evidence:** ARTIFACT VERIFIED: all three claimed deliverables exist in goal workspace (lane-11/t0708-heart-probe-battery.py 9899B, t0708-heart-probe-results.json 2510B, verdict md 5295B, all timestamped 2026-10-14 04:32-33Z matching the receipt's action window). Receipt wrote its OWN 7-probe battery (not a re-run), pinned the check file sha256 at start AND end
+
+### ✅ t0707-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Parallel second independent scorecard on PR #2565 (Lane 6) - delivered as pointer plus independent re-verification of both Receipt-gate defects
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: head commit 4bdb1f221aaec31bc41babf848526b3232c2661f exists in the mirror and BRAIN/NAYAPOWER-BRAIN-INDEX.json, BRAIN/REAL-TREE.json, BRAIN/REAL-TREE.md are present at that SHA; the receipt's action-time pins (head, base main 59e8a9af, comment 6160877257) match t0707-lane3's independent pin exactly. Str
 
 ### ✅ t0707 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
@@ -18927,6 +18939,12 @@ _Last updated: 2026-11-22 04:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Probe ran, seat fix byte-verified, per-leg machinery contracts with exact input/output/done-conditions, live commit cited. Score 9.0 — why not 9.5: (a) per-API-call timing unmeasured (15.7s envelope only); (b) corpus-wide absence check was still running at receipt close — absence stated on partial evidence, marked corpus-incomplete; (c) staged file
 
+### ✅ t0707-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Parallel second independent scorecard on PR #2565 (Lane 3) - delivered as pointer: verdict already stands at t0706-lane8
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: head commit 4bdb1f221aaec31bc41babf848526b3232c2661f exists in the mirror (cat-file -t = commit) and BRAIN/NAYAPOWER-BRAIN-INDEX.json, BRAIN/REAL-TREE.json, BRAIN/REAL-TREE.md are present at that SHA, corroborating the pin the receipt, t0706-lane8 and t0707-lane6 all cite identically; the pointer logic 
+
 ### ✅ t0707 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** Parallel-dispatch second independent scorecard on PR #2565 — declined by pointer
@@ -18967,6 +18985,12 @@ _Last updated: 2026-11-22 04:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** 76/76 receipts audited, I2b at n=21, null-row proof table, JSON outputs verified against printed numbers. Score 9.0 — why not 9.5: an f-string diagnostic anomaly could not be root-caused (honest deduction kept); I2b coverage 23.9% with most briefs lacking the instrument. GAP-RECYCLE candidate.
 
+### ✅ t0706-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Independent scorecard #1 of 2 on PR #2565 (Lane 7 full re-stamp) - converted to pin-exact soundness verdict on closed-as-superseded PR
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: branch ref naya-lane7/t0701-restamp gone from remote (ls-remote empty, cleanup), but head commit 4bdb1f221aaec31bc41babf848526b3232c2661f exists in the mirror and the three receipt-named files (BRAIN/NAYAPOWER-BRAIN-INDEX.json, REAL-TREE.json, REAL-TREE.md) are present at that exact SHA - NOT PHANTOM pe
+
 ### ✅ t0706 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** Independent scorecard #1 of 2 on PR #2565 (Lane 7 re-stamp)
@@ -18991,6 +19015,12 @@ _Last updated: 2026-11-22 04:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: refs/heads/naya-lane7/t0701-restamp == 4bdb1f221aaec31bc41babf848526b3232c2661f, verbatim match to the receipt pin. Receipt re-derived all five DoD items on exact head bytes (surgery-only 3-file diff, regenerate --check exit 0, 13/13 pytest green, CI defect table) when the brief's world expired, reframed deliverable as pin-exact 
 
+### ✅ t0706-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.3/10 [VERIFIED]
+
+**Task:** Semantic-entailment (bi-encoder) arm vs TF-IDF on the t0412 frozen battery, pre-registered falsifier
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: arm script semantic-arm-t0706.py sha256 e0e9af1e3394... byte-exact vs receipt pin; results semantic-results-t0706.json sha256 952f010d175b... byte-exact vs receipt pin, MRR 0.3269 top-5 7/10 n=10 matching the receipt table; all four frozen-battery SHAs match receipt pins (ground-truth 19e08fdc..., judge
+
 ### ✅ t0706 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** Semantic-entailment arm vs TF-IDF on the t0412 frozen battery
@@ -19006,6 +19036,12 @@ _Last updated: 2026-11-22 04:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0706-lane7.md`
 
 **Evidence:** Verified: semantic-arm-t0706.py sha256 e0e9af1e3394 present; frozen battery SHA prefixes match receipt (ground-truth 19e08fdc, packet 98b10462, map fa4e89ce, scores 58f641aa); lane-experiments/t0706/auto-retrieval/semantic-results-t0706.json sha256 952f010d175b parses and carries exactly the claimed numbers (mrr 0.3269, top5 7/10, p10_rank 8, basel
+
+### ✅ t0705-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat re-verification of the t0690 value-ledger seed's five events
+
+**Evidence:** BACKLOG SWEEP. Verified: value-ledger-seed-reverify-t0705.md exists and read; E1 CORRECT-with-diff corroborated first-hand — t0688-lane1.md line 4 reads 'independent scorecard of PR #2545', confirming the seed misattributed the #2533 scorecard (actual t0683, 9.0/10 APPROVE); E2 B-48 numbers (49.70/15.60/9.70, phrase 40.0 = floor) quoted byte-exact 
 
 ### ✅ t0705 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
@@ -19031,6 +19067,12 @@ _Last updated: 2026-11-22 04:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Real verified value: independently confirmed the one genuine find — E1 misattribution (t0688-lane1 task line reads 'independent scorecard of PR #2545'; t0683-lane1.md is the actual #2533 scorecard), so the verdict file's 4 CONFIRM + 1 CORRECT-with-diff rests on real artifact handles. Why not 9.5: E4 freshness-gate outputs accepted as documented re-
 
+### ✅ t0705-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** Plan 2 move 3 — build the first value ledger from the t0690 seed (append-only, evidence-bound)
+
+**Evidence:** BACKLOG SWEEP. Verified: value-ledger.md exists on disk; --verify re-run exit 0, chain intact through LEDGER-0006 (receipt-time sha 0b7d6d16... drifted only via a legitimate later append, LEDGER-0006, per the no-rewrite rule); build script exists; tamper-control design re-checked from the receipt (fail-closed, exit 1 on tamper); shortfall carried h
+
 ### ✅ t0705 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** Plan 2 move 3: first value ledger from t0690 seed, append-only SHA chain, tamper control
@@ -19054,6 +19096,12 @@ _Last updated: 2026-11-22 04:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0705-lane5.md`
 
 **Evidence:** CLEARS 9.5 because: independently re-derived byte-exact value-ledger.md (sha256 0b7d6d1... matches receipt), --verify exit 0 (5/5 rows chain holds), and independently re-ran the tamper negative control — VERIFY-FAIL exit 1 on forged tag_status, restored byte-identical. Ledger carries honest shortfall (machine-side-only ×5, tag_status UNVERIFIED-pen
+
+### ✅ t0705-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** Build the human-value observatory v1 — three instruments + worked 24h baseline
+
+**Evidence:** BACKLOG SWEEP. Verified: hidden_files/lane-11/human-value-observatory-v1.md exists, sha256 8f76add6794d83ead528214c894824ee08d0a27d560fa70247ecd7d4a78a8e10 byte-exact against the receipt pin; baseline derivations (I1 27/29=93.1%, I2 median 0.28h n=17 with 58.6% coverage reported, I3 11.5h n=1) are conservative with exclusions named and no placehold
 
 ### ✅ t0705 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -59036,6 +59084,12 @@ _Last updated: 2026-11-22 04:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261121-2003 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: evaluate all 31 queued gap briefs, attempt claim on each, verify zero queue drift
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt file exists and read in full; the 31 brief filenames it lists are byte-identical to the live brief-queue set (31 vs 31, listed-not-live and live-not-listed both empty); queue checksum 6d9e2c4e...20ad4 reproduced exactly via the sha256sum-style construction, identical to the 18:59 receipt, so zero
 
 ### ✅ gate-stall-20261121-1859 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
