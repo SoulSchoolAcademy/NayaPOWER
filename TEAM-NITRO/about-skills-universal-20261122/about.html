@@ -1,5 +1,18 @@
 <!doctype html>
-<!-- ABOUT PAGE — TEXT-ONLY, ROUND 3, 2026-11-22 (One-Build Law).
+<!-- ABOUT PAGE — ROUND 4 FIXES (FOOTER + HEADER + PLAYER SYNC), 2026-11-22 (One-Build Law).
+     ROUND 4 FIXES (Shawn, live call 2026-11-22):
+     (1) FOOTER (~14:45 MST): the footer row of question buttons is now
+     ONE button — "What is this?" — same place, same style, opening
+     the first deal ("In a Nutshell").
+     (2) HEADER FOLD-AWAY (~14:47 MST): the header holds ~2s after landing
+     (and after every screen change), then folds away; the page folds up
+     and the board settles to fit the screen.
+     (3) PLAYER SYNC (~14:49 MST, harvested from PowerCast): the YouTube
+     bridge now opens with the 'listening' handshake and registers for
+     'onStateChange', so the video's real state drives the voice orb —
+     it moves while the video plays, rests on pause. (The model sent
+     neither, so the orb never left rest.)
+     Everything else is the round-3 page, unchanged.
      TEXT-ONLY FIX on the filed round-2 page (blob 9e6fc2e1…, tip 567cf98a;
      verified first-hand via the git blob API, size + sha256 match).
      ABOUT page (10 slides, Q1–Q10 — the About questions) at its own URL.
@@ -474,7 +487,7 @@
 </div>
 
 <footer class="legalbar" id="legalBar">
-  <nav class="fp-legal-links" aria-label="Legal pages"><button class="fp-legal-link" type="button" data-legal-open="motto">What is your motto?</button><button class="fp-legal-link" type="button" data-legal-open="vision">What is your vision?</button><button class="fp-legal-link" type="button" data-legal-open="goal">What is your goal?</button><button class="fp-legal-link" type="button" data-legal-open="mission">What is your mission?</button><button class="fp-legal-link" type="button" data-legal-open="love">What do you love?</button><button class="fp-legal-link" type="button" data-legal-open="dont-love">What don&rsquo;t you love?</button><button class="fp-legal-link" type="button" data-legal-open="thing">What&rsquo;s your thing?</button><button class="fp-legal-link" type="button" data-legal-open="values">What are your values?</button><button class="fp-legal-link" type="button" data-legal-open="laws">What laws do you follow?</button><button class="fp-legal-link" type="button" data-legal-open="declaration">What&rsquo;s your declaration?</button></nav>
+  <nav class="fp-legal-links" aria-label="Legal pages"><button class="fp-legal-link" type="button" data-legal-open="motto">What is this?</button></nav>
 </footer>
 
 <script>
@@ -547,19 +560,21 @@ function resetPanelScroll(name){
 var barTimer = null;
 function daybarEl(){ return document.querySelector('.daybar'); }
 function unfoldBar(){ daybarEl().classList.remove('folded'); }
+/* HEADER FOLD-AWAY (round 4, Shawn's ruling ~14:47 MST): the header
+     holds ~2s after landing (and after every screen change), then folds
+     away; the page folds up and the board settles to fit the screen. */
 function scheduleFold(){
   clearTimeout(barTimer);
   barTimer = setTimeout(function(){
-    if (screens.cover.classList.contains('active')) daybarEl().classList.add('folded');
-  }, 5000);
+    daybarEl().classList.add('folded');
+  }, 2000);
 }
 function show(name){
   for (var k in screens) screens[k].classList.toggle('active', k === name);
   if (name === 'cover') barForCover();
   if (name === 'slide') barForSlide();
   resetPanelScroll(name);
-  if (name === 'cover'){ unfoldBar(); scheduleFold(); }
-  else { clearTimeout(barTimer); unfoldBar(); }
+  unfoldBar(); scheduleFold();
 }
 function boardsFor(s){
   var face = PORTRAITS[current % PORTRAITS.length];
@@ -688,10 +703,27 @@ function loadVideo(){
   f.allow = 'accelerometer; autoplay; encrypted-media; picture-in-picture; web-share; fullscreen';
   f.allowFullscreen = true;
   f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+  f.addEventListener('load', function(){
+    /* PLAYER SYNC (round 4, harvested from PowerCast): open the YouTube
+       bridge with the 'listening' handshake. The player only talks
+       after it — without it, it posts nothing at all. Re-sent until
+       the player answers; the state registration itself waits for
+       the player's onReady (see the message handler below). */
+    var ytTries = 0;
+    (function ytHandshake(){
+      if (window.__ytReady || ytTries >= 5) return;
+      ytTries++;
+      try { f.contentWindow.postMessage(JSON.stringify({event:'listening'}), '*'); } catch(e){}
+      setTimeout(ytHandshake, 2500);
+    })();
+  });
   shell.appendChild(f);
   shell.hidden = false;
   frame.classList.add('playing');
-  setTimeout(function(){ ytPost('addEventListener'); ytPost('unMute'); }, 1200);
+  /* The model's blind 1200ms registration is gone (round 4): it fired
+     before the player was ready. Registration now happens in the
+     message handler, the moment the player answers the handshake. */
+  setTimeout(function(){ ytPost('unMute'); }, 1200);
 }
 function ytPost(func, args){
   var f = document.querySelector('#videoShell iframe');
@@ -731,6 +763,12 @@ window.addEventListener('message', function(e){
   var d; try { d = JSON.parse(e.data); } catch(err){ return; }
   if (!d || typeof d !== 'object') return;
   var info = d.info;
+  /* PLAYER SYNC (round 4): the player has answered the handshake — it is
+     ready, so register for its state changes now (never before). */
+  if ((d.event === 'onReady' || d.event === 'initialDelivery') && !window.__ytReady){
+    window.__ytReady = true;
+    ytPost('addEventListener', ['onStateChange']);
+  }
   if (d.event === 'onStateChange' || d.event === 'infoDelivery' || (info && typeof info.playerState !== 'undefined')){
     var st = (d.event === 'onStateChange') ? info : (info && info.playerState);
     if (typeof st === 'number'){ videoPlaying = (st === 1); setDeckPlaying(videoPlaying); }
@@ -897,7 +935,7 @@ barForCover();
 unfoldBar();
 scheduleFold();
 daybarEl().addEventListener('mouseenter', function(){ clearTimeout(barTimer); });
-daybarEl().addEventListener('mouseleave', function(){ if (screens.cover.classList.contains('active')) scheduleFold(); });
+daybarEl().addEventListener('mouseleave', function(){ scheduleFold(); });
 </script>
 <script>
 /* ============ THE WHOLE DEAL — the ten legal pages ============ */
