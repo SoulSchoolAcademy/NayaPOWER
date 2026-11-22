@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-22 18:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-22 18:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -18205,6 +18205,12 @@ _Last updated: 2026-11-22 18:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: origin branch naya4/t0722-lane5-semantic-battery head 98c023a879522206f194d8a926a4f8276085909d byte-matches (git ls-remote this tick); corpus/query seals as receipted. Score 9.0. Why not 9.5: (1) F1-F6 never evaluated on acceptance (run correctly STOPPED at calibration by the frozen conflict clause); (2) F4 degenerate-floor and F6 byte-id
 
+### ✅ t0722-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Independent second-seat verification of the t0714-lane1 requeue-loop CANDIDATE: re-ran battery, own 14-probe harness, VERIFIED verdict with 2 disagreements
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: all 4 cited SHAs EXACT match via sha256sum - candidate 816ac7b3...c0921b, battery 44cd521a...1449ba, RED baseline 7abbac53...0c82ec, probe harness af34cba5...fdf42. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS (agrees with the receipt's own honest 9.0). Why not 9.5: (1) single seat, single machine - indep
+
 ### ✅ t0722 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
 **Task:** Breaker #7: feature.intelligence_today built, tested, pushed, remote-verified
@@ -18273,6 +18279,12 @@ _Last updated: 2026-11-22 18:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: files exist — surge-askworld-needs-t0721-lane5.md sha256 ae38e58f5179cec32293786d693d435ac1589fa7e0a3ea14955c02ebd1d4058d (byte-match) and the .jsonl 4fd531468a61cee7d32cb7f1c90180dae428b525908384fca160b368cbfecd56 (byte-match); recount-independent, deltas recomputed against t0813's own jsonl bytes. Score 9.5. Clears 9.5 because: log pinn
 
+### ✅ t0721-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** Independent scorecard #1 of 2 on PR #2574 (receipt-gate repair): own 7-case battery, RED-first, verdict MERGE-READY-CANDIDATE
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: PR #2574 head 8d6a15e33e0141cf4abe51e30052feaf92dc35a5 exists in the local mirror as a commit (the brief's 'stale' warning falsified - head had not moved at action time); gate worktree hidden_files/lane-1/gate-worktree-t0721 retained; battery-t0721.log exists with 7 exit lines matching the receipt's tab
+
 ### ✅ t0721 — Team 1, Team Naya Scorer (Verification & Proof) — 8.0/10 [VERIFIED]
 
 **Task:** Independent scorecard #1 of 2 on PR #2574 (receipt-gate repair)
@@ -18319,6 +18331,12 @@ _Last updated: 2026-11-22 18:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: origin branch naya4/t0720-lane9-semantic-gate head 14fee5254215f304f29cabd030c93dc5e77d6a7d byte-matches (git ls-remote this tick). Score 9.5. Clears 9.5 because: 7 falsifiers F1-F7 frozen as predictions before any design byte; K=9 fixed, query-extraction pinned, calibration-conflict clause (lexical ceiling > draft P25 -> F7 BROKEN, run S
 
+### ✅ t0720-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** First BLIND run of the level drill (PR #2568): 8 self-located rungs, drill's own verdict, board post + receipt
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: retained worktree hidden_files/lane-8/drill-worktree-t0720 HEAD 21f089d56f15 EXACT match to the receipt's re-pinned head; tools/level_drill.py blob d5ffb9448777... EXACT match; verdict log drill-verdict-t0720.log reads 'verdict (drill's own): PASS'; mtime chain is byte-real - answers-blind-t0720.md 07:0
+
 ### ✅ t0720 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** First BLIND run of the level drill (tools/level_drill.py, PR #2568)
@@ -18342,6 +18360,12 @@ _Last updated: 2026-11-22 18:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0720-lane8.md`
 
 **Evidence:** ARTIFACTS VERIFIED: refs/pull/2568/head == 21f089d56f151fe46c85b5073f61921e0201d2a6 via git ls-remote today == receipt's re-pinned head (no mid-brief move). Deliverable hidden_files/lane-8/level-drill-blind-t0720.md exists on disk; blindness is structural (AST-extracted blind file -> answers committed to disk mtime 07:01:44Z before key contact 07:0
+
+### ✅ t0720-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Arm H decision-lineage design + frozen pre-reg (non-embedding lineage substrate, comparator recompute, executor named Lane 7)
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: all 4 cited SHAs EXACT match via sha256sum - design ef959346...19df, pre-reg 9c574d87...a43, lineage graph 7e021c69...134, crawler 5f275a29...6ccb. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS (agrees with the receipt's own honest 9.0). Why not 9.5: (1) single-seat design, no second-seat review of the two
 
 ### ✅ t0720 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
@@ -59356,6 +59380,12 @@ _Last updated: 2026-11-22 18:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261122-1008 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: attempt all 31 queued briefs in ORDERING order, verify zero queue drift
+
+**Evidence:** FRESH WINDOW (only unscored receipt this tick; backlog 0 after this row). VERIFIED first-hand this tick: brief-queue/ holds 31 brief-*.md, 0 brief-tNNNN-*; queue checksum 6d9e2c4e...20ad4 reproduced exactly via sha256sum, identical to the 09:03 and all earlier receipts today, so the queue is byte-identical and untouched; receipt mtime 18:09:14Z vs 
 
 ### ✅ gate-stall-20261122-0903 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
