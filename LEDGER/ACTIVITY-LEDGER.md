@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-22 02:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-22 03:05 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19187,6 +19187,12 @@ _Last updated: 2026-11-22 02:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Phantom-claim detector built RED-first; header states 9.5/10. Score 9.5 — why not 10: remaining items are follow-ups outside this brief's authority; the RED-first proof chain is the verified deliverable.
 
+### ✅ t0703-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** verify_integration() PARTIAL-status bend probe
+
+**Evidence:** Verified: harness scratch/t0703-lane2-verify/probe_partial_bend.py, probe-results.json and CANDIDATE-partial-bend-fix-packet.md all exist. The action-time pin e49050f9 cannot be re-derived now (learn_ingest.py has drifted since 2026-10-13) but the receipt re-derived it at start AND end of its own tick with zero drift, and the verdict matrix (P1 con
+
 ### 🟡 t0703 — Team 2, Team Naya Scorer (Learning Pipeline) — 7.5/10 [PARTIAL]
 
 **Task:** verify_integration() PARTIAL-status bend probe
@@ -19273,6 +19279,12 @@ _Last updated: 2026-11-22 02:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified via git ls-remote: tip was 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e at pin time; refs/pull/2541/head == de0805407788ed143605ff1a4e98398b0ea74dc9, refs/pull/2565/head == 4bdb1f221aaec31bc41babf848526b3232c2661f — all match the claimed pins. The verdict (redirect, not a ruling) is the right product for an expired brief; the #2565 receipt-gat
 
+### ✅ t0702-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** Apply t0694 boot-entry pointer audit's 10 NEW stale-pointer instances on a fresh branch
+
+**Evidence:** Verified: commit 6425a090 exists in the mirror, tree 5e6c1aa0 matches the receipt EXACTLY and parent 92329c5795 matches the cited base tip; audit work files (diff-master/C/1599 + pristine/fixed pairs) present. Branch ref no longer on remote — commit persists, consistent with post-merge cleanup, not phantom. Clears 9.5 because 7/10 instances closed 
+
 ### ✅ t0702 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** Apply t0694 boot-entry pointer audit's 10 NEW stale-pointer instances on a fresh branch
@@ -19288,6 +19300,12 @@ _Last updated: 2026-11-22 02:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0702-lane6.md`
 
 **Evidence:** Verified via git ls-remote: refs/heads/naya6/boot-pointer-repairs-t0702 == 6425a090b58b4b55dfc3497cb2d0f6760481e63e, exact match to the claimed remote SHA. Before/after checker claims (4 stale -> 2 stale) and per-diff outcomes are on the record but not independently re-run. Score 9.0. Why not 9.5: (1) two APPLIED-WITH-DELTA edits go beyond the audi
+
+### ✅ t0702-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Re-verdict on PR #2551 (B-48 can't-normalization fix) — CLEARED or STILL-NEEDS-WORK, 17-case adversarial battery re-run
+
+**Evidence:** Verified: commit 26b95e9b, tree 288e082a and blob 375cc79d all exist in the mirror and match the receipt pins exactly; receipt cites verdict comment 6160105485 on #2537. Clears 9.5 because the re-verdict is byte-anchored with a non-vacuous control (17/17 post-repair vs 16/17 pre-repair, C1 FAIL) and honestly bounds the CI-red residual. Gap to 10: r
 
 ### ✅ t0702 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -58982,6 +59000,12 @@ _Last updated: 2026-11-22 02:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261121-1859 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall receipt - lane-executor run 2026-11-21 18:59 PST, 31 queued briefs re-attempted, 0 claimed
+
+**Evidence:** VERIFIED first-hand this tick: receipt file exists and read in full; the 31 brief filenames it lists are byte-identical to the live brief-queue set (31 vs 31, listed-not-live and live-not-listed both empty); queue checksum 6d9e2c4e...20ad4 reproduced exactly via the sha256sum-style construction, identical to the 17:54 receipt, so zero drift across 
 
 ### ✅ gate-stall-20261121-1754 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
