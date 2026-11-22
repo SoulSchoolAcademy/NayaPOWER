@@ -14,7 +14,6 @@ Shawn, 2026-11-18 03:05Z, his reminder, his words verbatim where it matters: **T
 
 Across 10 notes, the thread is: shawn, dear, note.
 
-Across 10 notes, the thread is: never, notes, thread.
 
 ## Human
 
