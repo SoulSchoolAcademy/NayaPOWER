@@ -4,24 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="theme-color" content="#000000">
-<title>Naya Academy — Smart Access | NayaNET</title>
-<!-- THE COLLECTIVE AGREEMENT IN THE OFFICIAL UNFOLD (2026-11-17, Shawn's
-     correction 17:32Z: he had never seen the official unfold done right).
-     HARVEST, DON'T CREATE: the unfold mechanism, the board CSS and the
-     reveal JS are byte-for-byte from deck-royal-unfolding.html (36,243 B,
-     sha256 c0ebd1a9cc7c26b2176f2bda960cd6fde6543f318e8e77daafa0ac3113552112,
-     blob 331496bd52bfe1add4ef301ac369f29f5b3f4b9b, branch
-     deck/royal-unfolding-20261115) — see the harvest manifest beside this
-     file. Documented adaptations only: the palette tokens bright -> deep
-     (Design Laws §3.1), sub-17px text -> 17px (§2.3), headline minimums
-     24 -> 25px, subtitle 18/20 -> 19px. The words are the OFFICIAL
-     manuscript (COLLECTIVE-AGREEMENT-OFFICIAL-20261115.md, 13,192 B),
-     verbatim — no rewording, no paraphrase, no new claim. The end card's
-     seal + agree behavior are harvested from
-     welcome-staged-visual-agreement-end.html (blob f5fd6448b6539cfbb265c17f9dccde4ca1cacaab).
-     No voice in this round: the play button advances the unfold and the
-     line beneath it says so plainly. -->
-<!-- MEMBERSHIP BUILDER 2026-11-21: Naya Academy through the builder. Frame + boards harvested byte-identical from agreement-followon.html (87,076 B, sha256 87fa3fa4d...). Documented adaptations only: title, header words, dots count, beats are the Academy course in the harvested board anatomy, foot-links words. FRAME ROUND 2026-11-21: two harvested frames (agreement blob 1f0b0474 + calendar blob 9562e15a; frame-round/frame-harvest.json) — agreement frame on story beats, calendar frame on lesson boards, switched by wire-builder.js. New this round: one <style id="frame-css"> and one <style id="builder-css"> and one wireBuilder script, appended after the harvested ones. No payment taken; the code gate is the paywall this round. -->
+<title>Naya Academy — Five Days with Naya | NayaNET</title>
+<!-- NAYA ACADEMY — CLONE ROUND 1 (2026-11-21, Shawn's order ~19:34 MST:
+     take the collective agreement flow and staging, keep the structure,
+     swap only the content).
+     BASE: the collective agreement in the official unfold, blob
+     1f0b04747e3315be6f1b619c1411e5e14fbdc1bb, 142,532 B, sha256
+     a3b3907f2f80d09a14c1e7e8bfb7a00c63332a7b26ac2707912c39436e177b98 —
+     all CSS, frame, deck engine and the real Web Speech player are that
+     file's code, byte-identical. CONTENT: the Academy's 29 screens
+     (cover, picker, five lessons x watch/listen/read/do, build-a-lesson
+     note, course-ready end) harvested verbatim from the framed Academy
+     (membership-builder-20261121/academy.html @ 5d211fb8, beats 2..30;
+     its beat 1 code gate dropped — cover first, per the brief).
+     Player SCRIPT is Academy words only (welcome + the five lesson
+     lines + next courses), same speechSynthesis player code. No prices.
+     Day 3 has no audio yet — the Listen board says so honestly. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -41,7 +39,7 @@ button{font-family:inherit}
 .p3-enter:hover,.p3-enter:active{border-color:#8e24aa;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -4px 8px rgba(0,0,0,.5),0 0 38px -2px #8e24aa,0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px)}
 /* HARVESTED — the unfold container + jewel palette vars (walk line 776). */
 .p3-deal-unfold{--ink:#f4f2f7;--bg:#050607;--bg-raise:#121019;--muted:#9a97a8;--line:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.07);--purple:#8e24aa;--sapphire:#0f52ba;--emerald:#07925f;--gold:#d4a017;--magenta:#a21caf;--red:#c62828;--orange:#c2410c;--yellow:#d4a017;--lime:#d4a017;--indigo:#3f51b5;--teal:#0e7490;--rich-orange:#c2410c;--radius-md:18px;--radius-lg:26px;--radius-pill:999px;--ease:cubic-bezier(.22,1,.36,1);--depth-hi:inset 0 1px #fff8,0 24px 60px #000b;--depth-drop:0 16px 40px #000a}
-.p3-deal-unfold{position:relative;border:1.5px solid rgba(255,255,255,.32);border-radius:22px;padding:28px 18px 30px;margin:0 auto;max-width:980px;box-shadow:0 18px 40px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.14)}
+.p3-deal-unfold{position:relative;border:1.5px solid rgba(255,255,255,.32);border-radius:22px;padding:28px 18px 30px;margin:0 auto;max-width:none;box-shadow:0 18px 40px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.14)}
 /* HARVESTED — deck title + step label. */
 .deal-title{font-family:Marcellus,Georgia,serif;font-size:30px;line-height:1.2;color:#fff;text-align:center;margin:6px 0 4px;padding:0 64px}
 @media(max-width:480px){.deal-title{font-size:25px;padding:0 60px}.deal-top-who{font-size:20px}}
@@ -74,6 +72,16 @@ button{font-family:inherit}
 /* HARVESTED — Naya's portrait on every beat (walk lines 412, 435). */
 .deal-beat-photo{width:240px;height:240px;flex:0 0 auto;border-radius:50%;object-fit:cover;border:2px solid color-mix(in srgb, var(--tone, #8e24aa) 70%, #fff 10%);box-shadow:0 0 22px color-mix(in srgb, var(--tone, #8e24aa) 55%, transparent),0 8px 20px rgba(0,0,0,.6)}
 .letter-beat.lead .deal-beat-photo{border-color:rgba(142,36,170,.7);box-shadow:0 0 22px rgba(142,36,170,.55),0 8px 20px rgba(0,0,0,.6)}
+/* AGREEMENT INTRO LAYOUT FOLLOW-ON #2 (2026-11-18, Shawn's eye 04:16Z):
+   beat 1's picture sits CENTRED — the play button above it is already
+   centred, so the picture aligns down the middle. Beat 1's blocktop now
+   holds only the portrait (its identity header was removed as a duplicate
+   of the letter's first line), and margin:auto centres the portrait in
+   both layouts: the desktop row (space-between + auto margins) and the
+   phone column at 640px (align-items:stretch + auto margins). Scoped to
+   data-beat="1" only — the other portraits (beats 6, 10, 20, 42, 45) keep
+   their left flank. */
+.letter-beat[data-beat="1"] .deal-beat-photo{margin:0 auto}
 @media(max-width:480px){.deal-beat-photo{width:168px;height:168px}.deal-sign-photo{width:288px;height:288px}.letter-beat .deal-eye-note{padding-right:58px}.face-right .deal-eye-note{padding-left:58px}.deal-quote-photo{width:38px;height:38px}}
 /* HARVESTED — the Hub Intelligent Block (walk lines ~471-510). */
 .ib-subtitle{font-size:19px;color:#f2f2f6;text-align:center;margin:6px 0 2px;font-weight:500;letter-spacing:.02em;line-height:1.4}
@@ -179,7 +187,7 @@ button{font-family:inherit}
    16:9 (1672x941), not 4:3, and the frame fits the image as it is;
    width:100% + height:auto + object-fit:contain shows the whole picture,
    never cropped, with no letterbox bars. */
-.lb-showcase{margin:18px auto 4px;max-width:min(640px,100%);box-sizing:border-box;padding:10px;border:2px solid color-mix(in srgb,var(--tone,#8e24aa) 70%,#fff 10%);border-radius:22px;background:linear-gradient(165deg,#17171f 0%,#0a0a10 100%);box-shadow:0 20px 50px rgba(0,0,0,.7),0 0 44px color-mix(in srgb,var(--tone,#8e24aa) 18%,transparent),inset 0 1px 0 rgba(255,255,255,.18)}
+.lb-showcase{margin:18px auto 4px;max-width:none;box-sizing:border-box;padding:10px;border:2px solid color-mix(in srgb,var(--tone,#8e24aa) 70%,#fff 10%);border-radius:22px;background:linear-gradient(165deg,#17171f 0%,#0a0a10 100%);box-shadow:0 20px 50px rgba(0,0,0,.7),0 0 44px color-mix(in srgb,var(--tone,#8e24aa) 18%,transparent),inset 0 1px 0 rgba(255,255,255,.18)}
 .lb-showcase img{display:block;width:100%;height:auto;object-fit:contain;border-radius:12px;background:#05060a}
 .lb-showcase:hover{box-shadow:0 20px 50px rgba(0,0,0,.7),0 0 44px color-mix(in srgb,var(--tone,#8e24aa) 45%,transparent),inset 0 1px 0 rgba(255,255,255,.18)}
 @media(max-width:480px){.lb-showcase{padding:8px;border-radius:18px;margin-top:14px}}
@@ -193,7 +201,13 @@ button{font-family:inherit}
   .intel-board { padding: 22px 18px 18px; border-radius: 20px; }
   .ib-title { font-size: clamp(25px, 6.4vw, 32px); }
 }
-@media(max-width:480px){.p3-deal-unfold{padding:22px 12px 26px}}
+@media(max-width:480px){.p3-deal-unfold{padding:22px 12px 26px}
+/* FIX4b (2026-11-20, fix-3 eye D) — phone width only: board 37's title is
+   .frame-title, not .ib-title (the first D rule never matched), and it is
+   governed by .frame-title{font-size:25px!important}. This board-37 rule
+   at (0,2,1)!important beats it, so "Congratulations" clears the
+   top-right diamond orb + avatar. Desktop untouched. */
+article[data-beat="37"] .frame-title{font-size:22px!important}}
 /* DECK — the only new CSS. The per-beat button lights in its beat's color:
    --tone is set on each beat's article and inherited, so the button, the
    frame edge, the portrait ring, the jewel and the board all light together.
@@ -256,137 +270,14 @@ a.deck-next{text-decoration:none;text-align:center}
 @media (prefers-reduced-motion: reduce){.play-orbit{animation:none}}
 
 </style>
-<style id="frame-css">
-/* ============ FRAME — CALENDAR .royal-frame (blob 9562e15a) ============
-/* The ornate silver/chrome border: bands top+bottom, sides, 4 corners,
-   winged N top+bottom, inner rim 3px #8e24aa + glow. Harvested verbatim,
-   line by line; the cascade resolves exactly as in the calendar file. */
-:root{--dc:#3fb8ff}
-.royal-frame{position:fixed;inset:0;z-index:40;pointer-events:none;
-  border:12px solid transparent;
-  border-image:linear-gradient(135deg,#f2f2f5 0%,#c8ccd6 22%,#7a7e88 48%,#e8e8ec 68%,#9a9ea8 84%,#f2f2f5 100%) 1;
-  box-shadow:inset 0 0 0 2px var(--dc,#3fb8ff),inset 0 0 26px color-mix(in srgb,var(--dc,#3fb8ff) 20%,transparent)}
-:root{--bw:96px}
-@media(max-width:1024px){:root{--bw:64px}}
-@media(max-width:560px){:root{--bw:32px}}
-.royal-frame{border:0!important;border-image:none!important;box-shadow:none!important}
-.royal-frame::after{content:"";position:absolute;inset:var(--bw,96px);border:2px solid var(--dc,#3fb8ff);border-radius:4px;box-shadow:0 0 24px color-mix(in srgb,var(--dc,#3fb8ff) 35%,transparent),inset 0 0 48px rgba(5,6,7,.85);pointer-events:none}
-.royal-frame::after{inset:0!important}
-.royal-frame::after{inset:var(--bw,96px)!important}
-.royal-frame::after{border:none!important}
-.royal-frame .rf-et{position:absolute;left:0;right:0;height:var(--bw,96px);background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/master-frame-band.png&ref=calendar/day-followon-live-20261119&cb=6ce94b251244eefa156ff5b91b8cbcd123cbc323&t=1795053268);background-size:auto 100%;background-repeat:round no-repeat;background-position:0 0;pointer-events:none;-webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(50% - var(--bw,96px)*1.254 - 48px),transparent calc(50% - var(--bw,96px)*1.254),transparent calc(50% + var(--bw,96px)*1.254),#000 calc(50% + var(--bw,96px)*1.254 + 48px),#000 100%);mask-image:linear-gradient(90deg,#000 0,#000 calc(50% - var(--bw,96px)*1.254 - 48px),transparent calc(50% - var(--bw,96px)*1.254),transparent calc(50% + var(--bw,96px)*1.254),#000 calc(50% + var(--bw,96px)*1.254 + 48px),#000 100%)}
-.royal-frame .rf-et.top{top:0}
-.royal-frame .rf-et.bottom{bottom:0}
-.royal-frame .rf-es{position:absolute;top:0;bottom:0;width:var(--bw,96px);background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/master-frame-band-side.png&ref=calendar/day-followon-live-20261119&cb=b8eabfdaa3fbe95dea6e0d7d0cc4fef6068a848b&t=1795053268);background-size:var(--bw,96px) calc(var(--bw,96px)*2.1875);background-repeat:repeat-y;background-position:0 0;pointer-events:none}
-.royal-frame .rf-es.left{left:0}
-.royal-frame .rf-es.right{right:0}
-.royal-frame .rf-rim{position:absolute;inset:var(--bw,96px);border:3px solid #8e24aa;border-radius:4px;box-shadow:0 0 24px rgba(142,36,170,.55);pointer-events:none}
-.royal-frame .rf-corner{position:absolute;width:var(--bw,96px);height:var(--bw,96px);background-size:91.67% 91.67%;background-position:center center;background-repeat:no-repeat;pointer-events:none}
-.royal-frame .rf-corner.tl{top:0;left:0;background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/master-frame-corner2-tl.png&ref=calendar/day-followon-live-20261119&cb=8a73dd3f9fe7cb945cb0a3884f78f951409f7fc1&t=1795053268)}
-.royal-frame .rf-corner.tr{top:0;right:0;background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/master-frame-corner2-tr.png&ref=calendar/day-followon-live-20261119&cb=d6cf11edac5598ea857485b2f5307f660b3284c5&t=1795053268)}
-.royal-frame .rf-corner.bl{bottom:0;left:0;background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/master-frame-corner2-bl.png&ref=calendar/day-followon-live-20261119&cb=40ceca0682df19903cc81d055f6cebcc4100bb6b&t=1795053268)}
-.royal-frame .rf-corner.br{bottom:0;right:0;background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/master-frame-corner2-br.png&ref=calendar/day-followon-live-20261119&cb=b96ada21c0113e73dd1749954f8559498529a3cb&t=1795053268)}
-.royal-frame .rf-n{position:absolute;top:0;left:50%;transform:translateX(-50%);height:var(--bw,96px);width:calc(var(--bw,96px)*632/252);background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/master-frame-n.png&ref=calendar/day-followon-live-20261119&cb=c5b80e13821574068ddb980b4ee26ee0ee7d874a&t=1795053268);background-size:100% 100%;background-repeat:no-repeat;pointer-events:none}
-.royal-frame .rf-n.bottom{top:auto;bottom:0}
-/* ============ FRAME — AGREEMENT .naya-frame (blob 1f0b0474) ============
-/* The cover/stage frame: corner quadrants of master-frame.png + gold outer
-   rim + purple inner hairline + flowing light inside the rim. */
-.naya-frame{position:fixed;inset:0;z-index:60;pointer-events:none;background-repeat:no-repeat;
-  background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/master-frame.png&ref=walkthrough/chain-fix7-20261119&cb=5a4dc2f9ca703945f12cec0b39b491d728e69c4a);background-position:center;background-size:contain}
-.frame-light{position:absolute;width:12px;height:12px;border-radius:50%;background:#fff;
-  box-shadow:0 0 12px #fff,0 0 26px #8e24aa,0 0 44px #8e24aa;animation:frameLight 60s linear infinite}
-@media (prefers-reduced-motion:reduce){.frame-light{animation:none}}
-.naya-frame{z-index:0}
-.naya-frame{background-image:none!important}
-.naya-frame::before{content:"";position:absolute;inset:0;border:2px solid #d4a017;pointer-events:none}
-.naya-frame::after{content:"";position:absolute;inset:10px;border:1px solid rgba(142,36,170,.65);pointer-events:none}
-.af-corner{position:absolute;width:96px;height:96px;z-index:1;background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/master-frame.png&ref=walkthrough/chain-fix7-20261119&cb=5a4dc2f9ca703945f12cec0b39b491d728e69c4a);background-size:200% 200%;pointer-events:none}
-.af-corner.tl{top:0;left:0;background-position:0 0}
-.af-corner.tr{top:0;right:0;background-position:100% 0}
-.af-corner.bl{bottom:0;left:0;background-position:0 100%}
-.af-corner.br{bottom:0;right:0;background-position:100% 100%}
-.frame-light{z-index:2!important;animation-name:frameLightAF!important}
-@keyframes frameLightAF{0%{top:14px;left:14px}25%{top:14px;left:calc(100% - 26px)}50%{top:calc(100% - 26px);left:calc(100% - 26px)}75%{top:calc(100% - 26px);left:14px}100%{top:14px;left:14px}}
-@media (max-width:767px){
-.af-corner{width:104px;height:104px}
-}
-
-</style>
-<style id="builder-css">
-/* BUILDER — new this round only. Follows the harvested board language:
-   obsidian inside, white words, the board's own deep color as rim + glow.
-   Sizes 25 / 19 / 17 only. No dim text anywhere.
-   FIX 2026-11-21: the harvested .p3-enter{display:block} beats the UA
-   [hidden]{display:none} rule, so hidden Watch / reskin buttons stayed
-   visible. This author rule restores [hidden] for .p3-enter only. */
-.p3-enter[hidden]{display:none}
-.gate-box{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin:16px 0 8px}
-#gateCode{background:#050607;color:#fff;border:2px solid var(--tone,#8e24aa);border-radius:999px;padding:16px 24px;font-size:17px;font-weight:700;letter-spacing:.08em;text-align:center;min-width:220px;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 -4px 8px rgba(0,0,0,.55),0 0 24px -4px var(--tone,#8e24aa)}
-#gateCode:focus{outline:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 -4px 8px rgba(0,0,0,.5),0 0 38px -2px var(--tone,#8e24aa)}
-.gate-hint{text-align:center;font-size:17px;line-height:1.6;color:#fff;margin:8px 0 0}
-.picker-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin:16px 0 8px}
-.picker-grid .lesson-pick:nth-child(1),.picker-grid .lesson-pick:nth-child(2),.picker-grid .lesson-pick:nth-child(3){grid-column:span 2}
-.picker-grid .lesson-pick:nth-child(4),.picker-grid .lesson-pick:nth-child(5){grid-column:span 3}
-.lesson-pick{position:relative;min-width:0;overflow-wrap:break-word;display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 8px;border-radius:22px;cursor:pointer;background:linear-gradient(135deg,#1e1e26 0%,#0a0a0f 50%,#1e1e26 100%);border:2px solid var(--tone);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 10px 22px rgba(0,0,0,.55),0 0 24px -4px var(--tone);transition:transform .25s,box-shadow .25s}
-.lesson-pick:hover,.lesson-pick:active{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 12px 26px rgba(0,0,0,.6),0 0 38px -2px var(--tone)}
-.lesson-pick:active{transform:scale(.97)}
-.digit-tile{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:14px;background:#050607;border:2px solid var(--tone);color:#fff;font-size:25px;font-weight:800;box-shadow:0 0 18px -2px var(--tone)}
-.lp-name{font-size:19px;font-weight:800;letter-spacing:.02em;text-align:center;color:#fff;overflow-wrap:break-word}
-.lp-desc{font-size:17px;line-height:1.5;text-align:center;color:#fff;overflow-wrap:break-word}
-.lb-showcase iframe{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:12px;background:#05060a}
-.step-boards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:16px 0 8px}
-@media(max-width:640px){.step-boards{grid-template-columns:1fr}}
-.step-board{border:2px solid var(--tone);border-radius:18px;background:#050607;padding:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 10px 22px rgba(0,0,0,.55),0 0 24px -4px var(--tone);transition:transform .25s,box-shadow .25s}
-.step-board:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 12px 26px rgba(0,0,0,.6),0 0 38px -2px var(--tone)}
-.step-name{font-size:19px;font-weight:800;color:#fff;margin:8px 0 4px}
-.step-line{font-size:17px;line-height:1.5;color:#fff;margin:0}
-.beat-nav{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
-.builder-form{display:grid;gap:16px;margin:16px 0 8px;text-align:left}
-.builder-form label{font-size:17px;color:#fff;font-weight:700}
-.builder-form input{width:100%;box-sizing:border-box;background:#050607;color:#fff;border:2px solid var(--tone,#d4a017);border-radius:18px;padding:16px;font-size:17px}
-.builder-form input:focus{outline:none;box-shadow:0 0 24px -4px var(--tone,#d4a017)}
-.builder-note,.builder-result{text-align:center;font-size:17px;line-height:1.6;color:#fff;margin:8px 0}
-
-/* ============ FRAME (2026-11-21 frame round) — ADAPTATIONS, not harvest ============
-   The frame itself lives in <style id="frame-css"> (frame.css, harvested verbatim
-   from calendar blob 9562e15a + agreement blob 1f0b0474; see
-   frame-round/frame-harvest.json for the line-by-line manifest + omissions).
-   These rules are the Academy's own: which frame shows, how the main sits inside
-   the inner stage, and the scroll offset so a beat never lands under the top band. */
-/* --dc: the calendar's day-blue #3fb8ff is not a design-law colour and the Academy
-   has no day colour; the rim's own royal purple leads (ONE rim, purple leading). */
-:root{--dc:#8e24aa}
-/* One frame at a time; the body class follows the visible beat (wire-builder.js). */
-.royal-frame{display:none}
-body.frame-calendar .royal-frame{display:block}
-.naya-frame{display:none}
-body.frame-agreement .naya-frame{display:block}
-/* The agreement frame: fpFrame8 put it BEHIND its fixed stage (z-0, harvested,
-   frame.css L406) — and it stays behind here. The corner quadrants are 96px
-   (104px mobile) squares of opaque-black art: above the content they would paint
-   over any text under them (proven in the probe: the gate steplabel read
-   "ET · SMART ACC" until the corners were hidden). Behind, the main
-   (position:relative, later in the DOM) paints above the frame, the text stays
-   readable, and the frame still shows in the margin band around the main —
-   exactly the agreement's own arrangement. The calendar frame stays z-40:
-   its content is inset exactly to the frame edge (--bw), so nothing goes under
-   its opaque art, and the rim must stay visible over the boards. */
-/* Main inside the inner stage. Agreement insets: the agreement file's --fin
-   (76/92/96 desktop, 48/76/14 mobile <768px). Calendar insets: var(--bw) 96/64/32. */
-body.frame-agreement .p3-deal-unfold{margin-top:76px;margin-bottom:92px;max-width:min(980px,calc(100% - 192px))}
-body.frame-calendar .p3-deal-unfold{margin-top:var(--bw,96px);margin-bottom:var(--bw,96px);max-width:min(980px,calc(100% - 2*var(--bw,96px)))}
-@media(max-width:767px){
-body.frame-agreement .p3-deal-unfold{margin-top:48px;margin-bottom:76px;max-width:calc(100% - 28px)}
-}
-/* Scroll offset: a beat scrolled to the viewport top must clear the top band. */
-.letter-beat{scroll-margin-top:calc(var(--bw,96px) + 8px)}
-body.frame-agreement .letter-beat{scroll-margin-top:84px}
-@media(max-width:767px){
-body.frame-agreement .letter-beat{scroll-margin-top:56px}
-}
-
-</style>
-<noscript><style>.letter-beat[hidden]{display:block}
+<noscript><style>.letter-beat[hidden]{display:block}</style></noscript><style>
+/* EYE FOLLOW-ON #2 F2 (2026-11-18): the EYEFOLLOW :active rules below
+   were DEAD - they sat inside a noscript wrapper (2026-11-17), so with JS on
+   the browser never parsed them (document.styleSheets held no
+   '.p3-enter:active' rule; the combined hover/active lift rule won
+   while held: translateY(-2px), 38px purple glow - live-probed). The
+   no-JS fallback rule stays in noscript; only the press rules move
+   into this live <style>, byte-identical. */
 /* ==== AGREEMENT EYE FOLLOW-ON (2026-11-17, BRIEF-AGREEMENT-MERGE-EYE-FOLLOWON-20261117.md) ====
    F2 PRESS (Laws SS1/SS4, Intelligent Block Rules L6, Anatomy 1.2.8):
    hover rises, ACTIVE presses INTO the page. The old bytes shared one
@@ -399,56 +290,353 @@ body.frame-agreement .letter-beat{scroll-margin-top:56px}
 .play-btn:active{transform:scale(.94);filter:brightness(.72);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.5),0 0 12px -2px #8e24aa,0 4px 10px rgba(0,0,0,.6);transition:transform .07s ease,filter .07s ease,box-shadow .07s ease}
 .p3-enter:active{transform:translateY(1px) scale(.97);filter:brightness(.72);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.6);transition:transform .07s ease,filter .07s ease,box-shadow .07s ease}
 .deck-next:active{transform:translateY(1px) scale(.97);filter:brightness(.72);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.6)}
-</style></noscript>
+/* EYE FOLLOW-ON #2 F2 (2026-11-18): the "I agree" button must sink
+   while held LIKE THE PLAY, scale .94. This rule is HIGHER
+   specificity (1,1,0) - the button's own ID + :active - so it beats
+   the combined hover/active lift rule (0,2,0) at 3335 AND the (now
+   live) `.p3-enter:active` rule (0,2,0) outright, at any file order;
+   it also sits later in the file. Depress translateY(1px) +
+   scale(.94) + dim + shadow collapse, springing back on release. */
+#dealAgreeBtn:active{transform:translateY(1px) scale(.94);filter:brightness(.72);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.6);transition:transform .07s ease,filter .07s ease,box-shadow .07s ease}
+</style>
+
+<style id="fpFlowEnd">
+/* ============ FLOW-END (2026-11-18) — Smart Block ============
+   Same law as the welcome file. THIS page is the stacked view Shawn
+   screenshotted at 16:13Z: the narrow column (980px) and the 640px
+   showcase are gone — the container and the showcase are full screen
+   now (see the edits above); this block carries the phases.
+   Every Smart Block is exactly one viewport tall, its content
+   centred in it. The talk text is capped so a long beat never
+   overflows its viewport — it scrolls inside its own panel instead
+   (the cap is load-bearing: blocktop + capped text + foot + buttons
+   always fit 100svh). */
+.letter-beat.fp-smart-talk .lb-showcase{display:none}
+.letter-beat.fp-smart-visual .ib-blocktop, .letter-beat.fp-smart-visual .ib-nutshell, .letter-beat.fp-smart-visual .ib-foot{display:none}
+.letter-beat.fp-smart-talk{display:flex;flex-direction:column;justify-content:center;min-height:100svh;min-height:100dvh}
+.letter-beat.fp-smart-talk .ib-nutshell{max-height:max(160px,calc(100svh - 480px));overflow-y:auto}
+.letter-beat.fp-smart-talk .deck-next, .letter-beat.fp-smart-visual .deck-next{align-self:center}
+.letter-beat.fp-smart-visual{display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:100svh;min-height:100dvh;gap:18px}
+.letter-beat.fp-smart-visual .lb-showcase{display:block;width:min(100%,calc((100svh - 160px) * 16 / 9));aspect-ratio:16/9;max-height:calc(100svh - 160px);margin:0 auto}
+.letter-beat.fp-smart-visual .lb-showcase img{width:100%;height:100%;object-fit:contain;aspect-ratio:auto}
+.letter-beat .deck-back{margin-top:12px}
+.play-stop{width:44px;height:44px;border-radius:50%;flex:0 0 auto;cursor:pointer;border:1.5px solid rgba(255,140,150,.65);background:radial-gradient(circle at 35% 30%,#3a0d18,#12060a 60%,#000);color:#fff;font-size:17px;line-height:1;display:flex;align-items:center;justify-content:center;box-shadow:0 0 18px rgba(178,32,56,.5),inset 0 1.5px 0 rgba(255,255,255,.3),inset 0 -4px 8px rgba(0,0,0,.7)}
+.play-stop[hidden]{display:none}
+.play-stop:active{transform:scale(.94)}
+.play-wrap{display:flex;align-items:center;justify-content:center;gap:14px}
+#deckBody{scroll-snap-type:y proximity}
+#deckBody .letter-beat{scroll-snap-align:start} </style>
+
+<style id="fpFrame7">
+/* ============ FRAME-7 (2026-11-19) — the agreement INTO THE FRAME ============
+   Shawn 10:54-10:57 MST: the agreement lands mid-page, unreadable, no
+   buttons, won't scroll. The frame fixes it by design: the page never
+   scrolls — the frame IS the viewport, one beat at a time, buttons
+   pinned below the content. The old flow CSS below is overridden, never
+   deleted: snap off, 100svh beats off, nutshell inner-scroll cap off. */
+html,body{height:100%;overflow:hidden}
+body{display:block}
+.naya-frame{position:fixed;inset:0;z-index:60;pointer-events:none;background-repeat:no-repeat;
+  background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/master-frame.png&ref=walkthrough/chain-fix7-20261119&cb=5a4dc2f9ca703945f12cec0b39b491d728e69c4a);background-position:center;background-size:contain}
+@media (max-aspect-ratio:1/1){.naya-frame{background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/master-frame.png&ref=walkthrough/chain-fix7-20261119&cb=5a4dc2f9ca703945f12cec0b39b491d728e69c4a),url(https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/master-frame.png&ref=walkthrough/chain-fix7-20261119&cb=5a4dc2f9ca703945f12cec0b39b491d728e69c4a);
+  background-position:center top,center bottom;background-size:100% auto,100% auto}}
+/* (115) THE FLOWING LIGHT — a ball of light around the frame's edge, 60s,
+   rim light in motion, never a wash over the board. */
+.frame-light{position:absolute;width:12px;height:12px;border-radius:50%;background:#fff;
+  box-shadow:0 0 12px #fff,0 0 26px #8e24aa,0 0 44px #8e24aa;animation:frameLight 60s linear infinite}
+@keyframes frameLight{0%{top:0;left:0}25%{top:0;left:calc(100% - 12px)}50%{top:calc(100% - 12px);left:calc(100% - 12px)}75%{top:calc(100% - 12px);left:0}100%{top:0;left:0}}
+/* The stage: the whole page, fixed inside the frame's ornament. */
+.p3-deal-unfold{position:fixed!important;inset:0;z-index:10;margin:0!important;border:0;border-radius:0;
+  background:transparent;box-shadow:none;display:flex;flex-direction:column;overflow:hidden;box-sizing:border-box;
+  --fin-t:88px;--fin-b:88px;--fin-l:30px;--fin-r:30px;
+  padding:var(--fin-t) var(--fin-r) var(--fin-b) var(--fin-l)}
+@media (min-width:1024px) and (min-aspect-ratio:1/1){.p3-deal-unfold{--fin-t:220px;--fin-b:200px;--fin-l:170px;--fin-r:170px}}
+@media (min-aspect-ratio:1/1) and (max-height:700px){.p3-deal-unfold{--fin-t:120px;--fin-b:120px;--fin-l:100px;--fin-r:100px}}
+/* Random top icons OFF: the title's flanking padding goes, the headline is centred. */
+.deal-title{padding:0}
+@media(max-width:480px){.deal-title{padding:0}}
+/* Past frame 1 the page header goes away — the per-frame top bar carries it. */
+.frame-past-1 .deal-title,.frame-past-1 .deck-sub,.frame-past-1 .play-wrap{display:none}
+#deckBody{flex:1 1 auto;min-height:0;overflow-y:auto;scroll-snap-type:none!important;display:block;gap:0}
+#deckBody .letter-beat{scroll-snap-align:none}
+.letter-beat{margin:0;height:100%}
+.letter-beat:not(.frame-now){display:none!important}
+.letter-beat.frame-now{display:flex!important;flex-direction:column}
+.letter-beat.fp-smart-talk{min-height:0!important;justify-content:flex-start}
+.letter-beat.fp-smart-talk .ib-nutshell{max-height:none;overflow-y:visible}
+.letter-beat.fp-smart-visual{min-height:0!important;justify-content:flex-start}
+.letter-beat.fp-smart-visual .lb-showcase{width:min(100%,calc((100dvh - 360px)*16/9));max-height:calc(100dvh - 360px)}
+/* The top bar replaces the per-beat blocktop (portrait + jewel + title, a duplicate). */
+.ib-blocktop{display:none!important}
+/* Top bar: Naya's picture (new each frame), headline centred, icon right. */
+.frame-topbar{display:flex;align-items:center;gap:16px;flex:none;margin-bottom:14px}
+.frame-face{width:72px;height:72px;border-radius:50%;object-fit:cover;flex:none;
+  border:2px solid rgba(255,255,255,.4);box-shadow:0 0 18px var(--tone,#8e24aa),0 8px 20px rgba(0,0,0,.6)}
+.frame-head{flex:1;min-width:0;text-align:center}
+.frame-kind{display:block;font-size:17px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--tone,#8e24aa)}
+.frame-title{font-family:Marcellus,Georgia,serif;font-size:25px;line-height:1.15;color:#fff;margin:2px 0 0;text-wrap:balance}
+.frame-icon{width:64px;height:64px;flex:none;display:grid;place-items:center;font-size:30px;color:#fff;line-height:1;
+  border-radius:50%;border:2px solid rgba(255,255,255,.4);
+  background:radial-gradient(circle at 35% 30%,color-mix(in srgb,var(--tone,#8e24aa) 65%,#fff 10%),color-mix(in srgb,var(--tone,#8e24aa) 55%,#000) 85%);
+  box-shadow:0 0 22px color-mix(in srgb,var(--tone,#8e24aa) 55%,transparent),0 8px 20px rgba(0,0,0,.6);
+  text-shadow:0 0 10px var(--tone,#8e24aa)}
+@media(max-width:480px){.frame-face{width:56px;height:56px}.frame-icon{width:48px;height:48px;font-size:22px}.frame-topbar{gap:10px}}
+/* Content scrolls inside the frame; the foot is pinned below it. */
+.frame-scroll{flex:1 1 auto;min-height:0;overflow-y:auto}
+.frame-foot{flex:none;display:flex;flex-direction:column;align-items:center;gap:12px;padding-top:16px}
+.frame-btnrow{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.frame-foot .deck-next,.frame-foot .deck-back{margin:0}
+.frame-red-n{margin:0 auto}
+.ib-foot{overflow-wrap:break-word}
+#deckControls{flex:none}
+.foot-links{flex:none;margin:16px 0 0}
+/* I-agree final screen: the sign photo fits one frame at 635 (was ~3 viewports). */
+.deal-sign-photo{height:min(480px,36dvh);width:auto;max-width:100%}
+@media(max-width:480px){.deal-sign-photo{height:min(336px,32dvh);width:auto}}
+@media (prefers-reduced-motion:reduce){.frame-light{animation:none}}
+</style>
+
+<style id="fpFrame8">
+/* ============ FRAME-8 (2026-11-19) — the fix-7 shell, fixed at desktop ============
+   F2: the frame goes BEHIND the stage. The master-frame PNG's centre is
+   opaque black (not transparent), and at z-index 60 it painted over all
+   content once loaded. At z-index 0 its black centre is the backdrop and
+   the silver ornament frames the content. */
+.naya-frame{z-index:0}
+/* F1: the page header goes away on every frame — the per-frame top bar
+   carries the headline (frame 1: "Hi, I'm Naya"). The play orb is not
+   deleted: it moves into the media frame (F4/F9), so .play-wrap hides
+   with the rest of the header. */
+main.fp-frame8 .letter-steplabel,main.fp-frame8 .deal-title,main.fp-frame8 .deck-sub,
+main.fp-frame8 .play-wrap,main.fp-frame8 .play-note{display:none!important}
+/* F1: dots + read-it-all on one slim row; foot-links slim. This hands the
+   freed ~200px back to #deckBody, so the beat's inner scroller is a real
+   reading window and the pinned foot is in view. */
+#deckControls{flex-direction:row!important;align-items:center!important;justify-content:center!important;gap:16px!important;margin-top:6px!important}
+#deckControls .letter-dots{gap:6px}
+#deckControls .ldot{width:10px;height:10px}
+#deckControls .letter-all{padding:6px 10px;min-height:44px}
+.foot-links{margin:8px 0 0!important}
+/* F1+F7: the foot tightens; the red seal scales 120 -> 84 (still the big
+   red piece, still just above the three buttons — now visible). */
+.frame-foot{gap:8px;padding-top:8px}
+.frame-red-n{width:84px!important;height:84px!important}
+.frame-red-n .deal-seal-mark{font-size:38px!important}
+/* F7: frame 1's Back is present but disabled — three buttons on every
+   frame. Disabled is a state (opacity) only; the label keeps its colour. */
+.frame-back-off{opacity:.55;cursor:default}
+/* F9: the media frame — an obsidian board, just below the top bar on
+   frame 1. AUDIO on top, VIDEO below. Same board anatomy as the beats. */
+.frame-media{margin:0 0 16px;padding:18px 20px;border:1.5px solid rgba(255,255,255,.32);border-radius:22px;background:#050607;box-shadow:0 18px 40px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.14)}
+.frame-media-title{font-family:Marcellus,Georgia,serif;font-size:25px;line-height:1.15;color:#fff;margin:0 0 6px;text-align:center}
+.frame-media-sub{font-size:17px;line-height:1.5;color:#fff;text-align:center;margin:0 0 14px}
+.frame-media-audio{display:flex;align-items:center;gap:16px;justify-content:center}
+.frame-media .play-btn{width:72px;height:72px;flex:none}
+.frame-media .play-btn .play-name{display:none}
+.frame-media .play-btn.is-playing{border-color:#8e24aa;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -4px 8px rgba(0,0,0,.5),0 0 38px -2px #8e24aa,0 12px 26px rgba(0,0,0,.6)}
+.frame-media-audio-name{font-size:17px;font-weight:700;color:#fff}
+.frame-media-audio-state{font-size:17px;line-height:1.5;color:#fff;margin-top:4px}
+.frame-media .frame-video-btn{width:100%;justify-content:center;margin-top:14px}
+.frame-anthem-note{font-size:17px;line-height:1.6;color:#fff;margin:8px 0 0;text-align:left}
+.frame-anthem-note[hidden]{display:none}
+.frame-anthem-note p{margin:0 0 12px}
+.frame-anthem-note p:last-child{margin-bottom:0}
+/* F1-fix (render-measured): the beat's own padding (32px top / 24px
+   bottom, content-box) made it 60px taller than its 463px deck, so the
+   pinned foot sat below the deck's clip and the button row showed only
+   its top arcs. Border-box + tight padding puts the whole foot inside
+   the deck; the seal tightens 84 -> 72 and the top bar closes up. */
+.letter-beat.frame-now{padding:10px 24px 8px!important;box-sizing:border-box!important}
+.frame-topbar{margin-bottom:8px!important}
+.frame-foot{gap:6px!important;padding-top:4px!important}
+.frame-red-n{width:72px!important;height:72px!important}
+.frame-red-n .deal-seal-mark{font-size:32px!important}
+/* F9: the media frame slims so the whole board (title + Play + Watch
+   the anthem) fits its reading window without scrolling. */
+.frame-media{padding:10px 16px!important;margin-bottom:12px!important}
+.frame-media-title{margin-bottom:4px!important}
+.frame-media-sub{margin-bottom:10px!important}
+.frame-media .play-btn{width:60px!important;height:60px!important}
+.frame-media .frame-video-btn{margin-top:10px!important}
+/* F3-fix: one tap = one frame. The talk/visual two-tap is gone — a beat
+   with a picture shows it inside its own reading window, below the
+   words, so nothing needs a second tap to be seen. */
+.letter-beat.fp-smart-talk .lb-showcase{display:block!important;margin:14px auto 4px!important;width:min(100%,560px)!important}
+.letter-beat.fp-smart-talk .lb-showcase img{width:100%!important;height:100%!important;object-fit:contain}
+</style>
+
+<style id="fpFrame9">
+/* ============ FRAME-9 (2026-11-19) — the fix-8 shell, three gaps closed ============
+   F1: the media board slims so the first agreement words show at load.
+   Orb 60 -> 48 (the label block beside it is ~50 tall, so the row drops
+   to ~50); video pill padding 16 -> 10; board padding 10 -> 8; title
+   margin 4 -> 2; video margin-top 10 -> 8; board margin-bottom 12 -> 8. */
+.frame-media{padding:8px 16px!important;margin-bottom:8px!important}
+.frame-media-title{margin-bottom:2px!important}
+.frame-media .play-btn{width:48px!important;height:48px!important}
+.frame-media .frame-video-btn{margin-top:8px!important;padding:10px 46px!important}
+/* F1: lift the text — the agreement board's top margin 22 -> 8 and its top
+   padding 20 -> 12, on every frame alike, so the first line lifts. */
+.frame-scroll>.ib-nutshell{margin-top:8px!important;padding-top:12px!important}
+/* F1: grow the reading window — the foot pills slim 16 -> 12 padding
+   (still real pills, white words, own-colour rims) and the top bar
+   closes up 8 -> 4. */
+.frame-foot button{padding-top:12px!important;padding-bottom:12px!important}
+.frame-topbar{margin-bottom:4px!important}
+/* F3: the jewel dots are real navigation now — a pointer, and a lit hover. */
+#deckDots .ldot{cursor:pointer}
+#deckDots .ldot:hover{filter:brightness(1.35)}
+/* F7: the seal on every frame is frame 1's seal cloned (JS9) — no new
+   styling; the 72px seal and its mark already read on frame 1. */
+</style>
+
+<style id="fpFrameAF">
+/* ============ AGREEMENT FRAME (2026-11-19) — four styles, one frame system ============
+   The old frame floated: master-frame.png at background-size:contain + content
+   insets 220/200/170 left a small box in a big black field, light outside.
+   The frame now HUGS the edges: corner ornaments harvested verbatim from the
+   master-frame PNG (quadrants, no distortion) + a gold outer rim + a purple
+   inner hairline. The flowing light travels INSIDE the rim (14px path). */
+.naya-frame{background-image:none!important}
+.naya-frame::before{content:"";position:absolute;inset:0;border:2px solid #d4a017;pointer-events:none}
+.naya-frame::after{content:"";position:absolute;inset:10px;border:1px solid rgba(142,36,170,.65);pointer-events:none}
+.af-corner{position:absolute;width:96px;height:96px;z-index:1;background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/master-frame.png&ref=walkthrough/chain-fix7-20261119&cb=5a4dc2f9ca703945f12cec0b39b491d728e69c4a);background-size:200% 200%;pointer-events:none}
+.af-corner.tl{top:0;left:0;background-position:0 0}
+.af-corner.tr{top:0;right:0;background-position:100% 0}
+.af-corner.bl{bottom:0;left:0;background-position:0 100%}
+.af-corner.br{bottom:0;right:0;background-position:100% 100%}
+.frame-light{z-index:2!important;animation-name:frameLightAF!important}
+@keyframes frameLightAF{0%{top:14px;left:14px}25%{top:14px;left:calc(100% - 26px)}50%{top:calc(100% - 26px);left:calc(100% - 26px)}75%{top:calc(100% - 26px);left:14px}100%{top:14px;left:14px}}
+/* STYLE 1 — ROYAL ORNATE (desktop text): the board fills the frame. */
+.p3-deal-unfold{--fin-t:76px!important;--fin-b:92px!important;--fin-l:96px!important;--fin-r:96px!important}
+@media (min-width:1024px) and (min-aspect-ratio:1/1){.p3-deal-unfold{--fin-t:76px!important;--fin-b:92px!important;--fin-l:96px!important;--fin-r:96px!important}}
+@media (min-aspect-ratio:1/1) and (max-height:700px){.p3-deal-unfold{--fin-t:64px!important;--fin-b:80px!important;--fin-l:72px!important;--fin-r:72px!important}}
+#deckBody .letter-beat{max-width:940px;margin-left:auto!important;margin-right:auto!important;box-shadow:0 18px 48px rgba(0,0,0,.65),0 4px 12px rgba(0,0,0,.5)!important;border-radius:20px!important}
+/* AF v2 — the board STRETCHES to fill the frame (was content-height, leaving
+   a ~216px dead gap below the foot at desktop): the reading window grows
+   with it, the foot pins to the frame's bottom inset. */
+.p3-deal-unfold #deckBody{flex:1 1 auto!important;min-height:0!important}
+#deckBody .letter-beat{height:100%!important;display:flex!important;flex-direction:column!important}
+#deckBody .letter-beat .frame-scroll{flex:1 1 auto!important;min-height:0!important}
+/* Naya's photo in the top-right corner — more writing space in the middle. */
+.frame-topbar{display:flex!important;align-items:center!important;gap:16px!important}
+.frame-topbar .frame-head{order:1!important}
+.frame-topbar .frame-icon{order:2!important}
+.frame-topbar .frame-face{order:3!important;margin-left:auto!important;width:64px!important;height:64px!important;flex:0 0 64px!important}
+/* Text scale, the law: headlines 25, body 19, labels 17 — white, always. */
+.frame-title{font-size:25px!important;line-height:1.2!important}
+.frame-kind{font-size:17px!important}
+.frame-scroll p{font-size:19px!important;line-height:1.55!important;color:#ffffff!important}
+.frame-scroll .ib-title{font-size:25px!important;color:#ffffff!important}
+/* Dots go — default NO dots. The read-it-all link stays, slim, at the bottom. */
+#deckDots{display:none!important}
+#deckControls{justify-content:center!important;margin-top:4px!important}
+#deckControls .letter-all{font-size:17px!important}
+/* Buttons close to the bottom, in the foot — never blocking the words.
+   Spectrum order, never two the same: Back purple, Keep reading sapphire, Next emerald. */
+.frame-foot{padding-bottom:6px!important}
+.frame-btnrow{display:flex!important;gap:12px!important;justify-content:center!important;flex-wrap:wrap!important}
+.frame-btnrow .deck-back{border-color:#8e24aa!important}
+.frame-btnrow .deck-next:not(.frame-next){border-color:#0f52ba!important}
+.frame-btnrow .frame-next{border-color:#07925f!important}
+/* STYLE 3 — ROYAL COMPACT (mobile text, <768px).
+   AF v2 — mobile frame 1 showed ZERO agreement words (the media board ate
+   the whole reading window): the media slims, the top bar tightens, the
+   anthem pill never wraps, and the buttons are pills in one row — never
+   circles. The stretch above grows the window with it. */
+@media (max-width:767px){
+.af-corner{width:104px;height:104px}
+.p3-deal-unfold{--fin-t:48px!important;--fin-b:76px!important;--fin-l:14px!important;--fin-r:14px!important}
+#deckBody .letter-beat{max-width:none!important}
+.frame-topbar{gap:8px!important}
+.frame-topbar .frame-face{width:48px!important;height:48px!important;flex-basis:48px!important}
+.frame-topbar .frame-kind{letter-spacing:.08em!important}
+.frame-scroll p{font-size:17px!important;line-height:1.5!important}
+.frame-media{padding:6px 12px!important}
+.frame-media .play-btn{width:44px!important;height:44px!important}
+.frame-media .frame-video-btn{white-space:nowrap!important;padding:10px 12px!important}
+.frame-btnrow{flex-wrap:wrap!important;gap:8px!important}
+/* AF v5 — v4's flex:0 0 auto DID apply, but a <button> as a flex item
+   sizes to its CONTAINER, not its text (all three came out 301.75px —
+   the row width — and overflowed the board). Three 17px labels cannot
+   fit one 302px row, so on mobile the foot is TWO rows: Back + Next share
+   the first, Keep reading (or I-agree on the final board) gets the full
+   second row. The seal slims to pay for the extra row. */
+.frame-btnrow button{flex:1 1 40%!important;white-space:nowrap!important;font-size:17px!important;padding:10px 4px!important}
+.frame-btnrow button:nth-child(2){flex:1 1 100%!important;order:3!important}
+.frame-foot .frame-red-n{width:56px!important;height:56px!important}
+}
+
+/* DISTILL progress pill (2026-11-19) — the measuring thing, kept: a jewel set
+   into the top of the frame, "N / 37" + bar, driven by .frame-now. Same
+   language as the stage's fpStageJewel (jewel + number + bar). */
+.af-prog{position:absolute;top:12px;left:50%;transform:translateX(-50%);z-index:3;display:flex;align-items:center;gap:8px;background:#050607;border:1.5px solid #d4a017;border-radius:999px;padding:6px 14px;pointer-events:none;box-shadow:0 4px 14px rgba(0,0,0,.6)}
+.af-prog-jewel{color:#d4a017;font-size:17px}
+.af-prog-num{color:#ffffff;font-size:17px;font-weight:700;white-space:nowrap}
+.af-prog-bar{width:72px;height:6px;border-radius:999px;background:rgba(255,255,255,.18);overflow:hidden}
+.af-prog-bar i{display:block;height:100%;background:#d4a017;width:3%;transition:width .3s ease}
+@media (max-width:767px){.af-prog{top:8px;padding:4px 10px;gap:6px}.af-prog-bar{width:48px}}
+</style>
+<style id="fpFixDistill">
+/* FIX (2026-11-19, eye fail 1) — one board at a time: the frame-now hide lost to the later #deckBody rule, so all 37 boards stacked as one long scrollable page. This outranks it, so exactly one board shows and the pill tracks the board on screen. */
+#deckBody .letter-beat:not(.frame-now){display:none!important}
+#deckBody .letter-beat.frame-now{display:flex!important;flex-direction:column!important}
+#deckBody{overflow-x:hidden}
+/* FIX (2026-11-19, eye fail 6) — the showcase shows in talk view too. */
+.letter-beat.fp-smart-talk .lb-showcase{display:block!important}
+
+/* FIX2 U6 unfold fix css */
+.letter-beat.fp-noslide .ib-nutshell{flex:0 0 auto!important;max-height:none!important}
+#deckBody .lb-showcase img{aspect-ratio:16/9}
+.deal-sign-photo{height:min(280px,28vh)!important;width:auto;max-width:100%}
+</style>
 </head>
-<body class="frame-agreement">
-<div class="naya-frame" aria-hidden="true"><div class="frame-light"></div><div class="af-corner tl" aria-hidden="true"></div><div class="af-corner tr" aria-hidden="true"></div><div class="af-corner bl" aria-hidden="true"></div><div class="af-corner br" aria-hidden="true"></div></div>
-<div class="royal-frame" aria-hidden="true"><div class="rf-et top"></div><div class="rf-et bottom"></div><div class="rf-es left"></div><div class="rf-es right"></div><div class="rf-rim"></div><div class="rf-corner tl"></div><div class="rf-corner tr"></div><div class="rf-corner bl"></div><div class="rf-corner br"></div><div class="rf-n top"></div><div class="rf-n bottom"></div></div>
-<main class="p3-deal-unfold" id="deckUnfold">
-<p class="letter-steplabel">NayaNET &middot; Smart Access — Naya Academy</p>
+<body>
+<div class="naya-frame" aria-hidden="true"><div class="frame-light"></div></div>
+<main class="p3-deal-unfold" id="deckUnfold" style="margin-top:24px;margin-bottom:48px">
+<p class="letter-steplabel">NayaNET &middot; Naya Academy</p>
 <h1 class="deal-title">Naya Academy</h1>
-<p class="deck-sub">Five days. One new way to work — with Naya.</p>
+<p class="deck-sub">Five days. One new way to work — with Naya. Watch, listen, read, do — one lesson at a time.</p>
 <div class="play-wrap">
-<button class="play-btn" id="playBtn" type="button" aria-label="Play — Naya talks you through this course"><span class="play-tri" aria-hidden="true">&#9654;</span><span class="play-name">NAYA</span><span class="play-orbit" aria-hidden="true"></span></button>
-<p class="play-note">Naya will talk you through this course — for now, read along with Naya.</p>
+<button class="play-btn" id="playBtn" type="button" aria-label="Play — Naya talks you through this course"><span class="play-tri" aria-hidden="true">&#9654;</span><span class="play-name">NAYA</span><span class="play-orbit" aria-hidden="true"></span></button> <button class="play-stop" id="playStop" type="button" hidden aria-label="Stop — stop reading the course">&#9632;</button>
 </div>
+<p class="play-note" id="playTip">Naya will talk you through this course</p>
+<div id="deckBody" data-smart-block="deck">
+<article class="intel-board letter-beat" data-beat="1" style="--tone:#3f51b5"><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-1.jpg&ref=agreement/unfold-20261117&cb=8743e1868400bb8ae4f650b536ab9cbace036786" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">NAYA ACADEMY · FIVE DAYS</span><h2 class="ib-title">Naya Academy</h2></div></div></div><div class="ib-nutshell"><p><strong>Five days. One new way to work — with Naya.</strong></p><p>Watch, listen, read, do — one lesson at a time.</p></div><figure class="lb-showcase"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/membership-round6-20261112/login-obsidian.jpg&ref=membership/round6-20261112&cb=7ba628ffb56a3e16721174aa98bd29ef42847953" alt="Naya Academy — the cover"></figure><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="2" style="--tone:#0e7490" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-1.jpg&ref=agreement/unfold-20261117&cb=8743e1868400bb8ae4f650b536ab9cbace036786" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">NAYA ACADEMY</span><h2 class="ib-title">Choose your lesson</h2></div></div></div><div class="ib-nutshell"><p><strong>Five lessons. Three on top, two below.</strong></p><p>Tap one — and begin.</p><p><strong>Day 1 — MEET NAYA</strong> — Meet Naya — experience me</p><p><strong>Day 2 — STOP STARTING OVER</strong> — Stop starting over — remember &amp; compound</p><p><strong>Day 3 — LEARN. MASTER.</strong> — Learn. Master. — build &amp; prove it</p><p><strong>Day 4 — CREATE</strong> — Create. Execute. — turn intelligence into results</p><p><strong>Day 5 — BECOME</strong> — Become — make it your way of operating</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div></article>
+<article class="intel-board letter-beat" data-beat="3" style="--tone:#07925f" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-3.jpg&ref=agreement/unfold-20261117&cb=c01d71025d34abf8379bab5b7eb13bfa9204964a" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">LESSON 1 OF 5 · NAYA ACADEMY</span><h2 class="ib-title">🔱 ACTIVATE YOU / EXPERIENCE ME! Day #1 of the Naya POWER Academy.🔱</h2></div></div></div><div class="ib-nutshell"><p>Talk to Naya. Let her get to know you — tell her who you are, what matters to you, and where you are going.</p><p>Meet Naya — experience me</p></div><figure class="lb-showcase"><img src="https://i.ytimg.com/vi/ZRIfvxCsYWY/hqdefault.jpg" alt="🔱 ACTIVATE YOU / EXPERIENCE ME! Day #1 of the Naya POWER Academy.🔱"></figure><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div></article>
+<article class="intel-board letter-beat" data-beat="4" style="--tone:#d4a017" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-3.jpg&ref=agreement/unfold-20261117&cb=c01d71025d34abf8379bab5b7eb13bfa9204964a" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">WATCH · LESSON 1</span><h2 class="ib-title">Watch — Day 1</h2></div></div></div><div class="ib-nutshell"><p><strong>Watch the lesson.</strong></p><p>Meet Naya. Activate the relationship. Feel the difference immediately by letting Naya understand who you are, what matters to you, and where you want to go.</p></div><figure class="lb-showcase"><iframe src="https://www.youtube-nocookie.com/embed/ZRIfvxCsYWY?rel=0&amp;modestbranding=1&amp;playsinline=1" title="🔱 ACTIVATE YOU / EXPERIENCE ME! Day #1 of the Naya POWER Academy.🔱" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:12px;background:#05060a"></iframe></figure><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="4">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="5" style="--tone:#c2410c" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-3.jpg&ref=agreement/unfold-20261117&cb=c01d71025d34abf8379bab5b7eb13bfa9204964a" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">LISTEN · LESSON 1</span><h2 class="ib-title">Listen — Day 1</h2></div></div></div><div class="ib-nutshell"><p>The audio for this lesson arrives with the owner’s recording. The video plays the same words.</p><p>Meanwhile, hear Naya’s voice on PowerCast — forty-two short talks on power, memory, and mastery.</p></div><a class="p3-enter letter-next deck-next" href="https://powercasts.nayapower.workers.dev" target="_blank" rel="noopener">Open PowerCast &#9670;</a><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="5">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="6" style="--tone:#c62828" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-3.jpg&ref=agreement/unfold-20261117&cb=c01d71025d34abf8379bab5b7eb13bfa9204964a" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">READ · LESSON 1</span><h2 class="ib-title">Read — Day 1</h2></div></div></div><div class="ib-nutshell"><p><strong>Day 1 is about becoming known — and discovering what changes when AI starts with you.</strong></p><p>Meet Naya. Activate the relationship. Feel the difference immediately by letting Naya understand who you are, what matters to you, and where you want to go.</p><p><strong>01 — MEET NAYA</strong> — Begin a relationship instead of another disconnected AI conversation.</p><p><strong>02 — BE UNDERSTOOD</strong> — Give Naya your identity, story, goals, priorities and direction.</p><p><strong>03 — SOLVE THE FIVE</strong> — See how Naya addresses directive, consistency, overwhelm, context and quality problems.</p><p><strong>04 — CAPTURE WHAT MATTERS</strong> — Begin making human and Naya notes so important experience is not lost.</p><p><strong>05 — FIRST PROOF</strong> — End the day with your Daily Intelligence Briefing and experience intelligence beginning to compound.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="6">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="7" style="--tone:#a21caf" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-3.jpg&ref=agreement/unfold-20261117&cb=c01d71025d34abf8379bab5b7eb13bfa9204964a" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">DO · LESSON 1</span><h2 class="ib-title">Do — Day 1</h2></div></div></div><div class="ib-nutshell"><p><strong>Do it in three steps.</strong></p><p>One step at a time — then the lesson is yours.</p><p><strong>1 — MEET NAYA</strong> — Begin a relationship instead of another disconnected AI conversation.</p><p><strong>2 — BE UNDERSTOOD</strong> — Give Naya your identity, story, goals, priorities and direction.</p><p><strong>3 — SOLVE THE FIVE</strong> — See how Naya addresses directive, consistency, overwhelm, context and quality problems.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="7">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat" data-beat="8" style="--tone:#8e24aa" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-4.jpg&ref=agreement/unfold-20261117&cb=39c7f0ce4222d853d676d1ea5138569ed182b209" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">LESSON 2 OF 5 · NAYA ACADEMY</span><h2 class="ib-title">🔱 REMEMBER / COMPOUND! Day #2 of the Naya POWER Academy. 🔱</h2></div></div></div><div class="ib-nutshell"><p>You don’t have to keep starting over. You need to preserve what matters.</p><p>Stop starting over — remember &amp; compound</p></div><figure class="lb-showcase"><img src="https://i.ytimg.com/vi/j0YwJsC6Q4Y/hqdefault.jpg" alt="🔱 REMEMBER / COMPOUND! Day #2 of the Naya POWER Academy. 🔱"></figure><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div></article>
+<article class="intel-board letter-beat" data-beat="9" style="--tone:#3f51b5" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-4.jpg&ref=agreement/unfold-20261117&cb=39c7f0ce4222d853d676d1ea5138569ed182b209" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">WATCH · LESSON 2</span><h2 class="ib-title">Watch — Day 2</h2></div></div></div><div class="ib-nutshell"><p><strong>Watch the lesson.</strong></p><p>Stop starting over. Turn useful experience into intelligence that can be remembered, retrieved, reviewed and carried forward.</p></div><figure class="lb-showcase"><iframe src="https://www.youtube-nocookie.com/embed/j0YwJsC6Q4Y?rel=0&amp;modestbranding=1&amp;playsinline=1" title="🔱 REMEMBER / COMPOUND! Day #2 of the Naya POWER Academy. 🔱" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:12px;background:#05060a"></iframe></figure><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="9">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="10" style="--tone:#0e7490" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-4.jpg&ref=agreement/unfold-20261117&cb=39c7f0ce4222d853d676d1ea5138569ed182b209" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">LISTEN · LESSON 2</span><h2 class="ib-title">Listen — Day 2</h2></div></div></div><div class="ib-nutshell"><p>The audio for this lesson arrives with the owner’s recording. The video plays the same words.</p><p>Meanwhile, hear Naya’s voice on PowerCast — forty-two short talks on power, memory, and mastery.</p></div><a class="p3-enter letter-next deck-next" href="https://powercasts.nayapower.workers.dev" target="_blank" rel="noopener">Open PowerCast &#9670;</a><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="10">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="11" style="--tone:#07925f" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-4.jpg&ref=agreement/unfold-20261117&cb=39c7f0ce4222d853d676d1ea5138569ed182b209" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">READ · LESSON 2</span><h2 class="ib-title">Read — Day 2</h2></div></div></div><div class="ib-nutshell"><p><strong>Day 2 changes the relationship from conversations that end to intelligence that carries forward.</strong></p><p>Stop starting over. Turn useful experience into intelligence that can be remembered, retrieved, reviewed and carried forward.</p><p><strong>01 — SMART NOTES</strong> — Capture the moments, lessons, decisions and breakthroughs actually worth remembering.</p><p><strong>02 — CONTEXT</strong> — Preserve the information that helps future conversations start further ahead.</p><p><strong>03 — RETRIEVE</strong> — Turn past experience into something useful instead of something forgotten.</p><p><strong>04 — REVIEW</strong> — Use daily, weekly, monthly and longer-term reviews to see what changed.</p><p><strong>05 — COMPOUND</strong> — Build a personal intelligence savings account where useful experience becomes more valuable over time.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="11">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="12" style="--tone:#d4a017" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-4.jpg&ref=agreement/unfold-20261117&cb=39c7f0ce4222d853d676d1ea5138569ed182b209" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">DO · LESSON 2</span><h2 class="ib-title">Do — Day 2</h2></div></div></div><div class="ib-nutshell"><p><strong>Do it in three steps.</strong></p><p>One step at a time — then the lesson is yours.</p><p><strong>1 — SMART NOTES</strong> — Capture the moments, lessons, decisions and breakthroughs actually worth remembering.</p><p><strong>2 — CONTEXT</strong> — Preserve the information that helps future conversations start further ahead.</p><p><strong>3 — RETRIEVE</strong> — Turn past experience into something useful instead of something forgotten.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="12">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat" data-beat="13" style="--tone:#c2410c" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-5.jpg&ref=agreement/unfold-20261117&cb=c3cd3d9caf778a0b9e0fcf122b3a780030107f76" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">LESSON 3 OF 5 · NAYA ACADEMY</span><h2 class="ib-title">Day 3 — Learn. Master.</h2></div></div></div><div class="ib-nutshell"><p>Don’t just know it. Prove it.</p><p>Learn. Master. — build &amp; prove it</p><p><strong>LEARN → TEST → IMPROVE → MASTER</strong></p></div><figure class="lb-showcase"><img src="https://i.ytimg.com/vi/PtYW43cIZng/hqdefault.jpg" alt="Day 3 — Learn. Master."></figure><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div></article>
+<article class="intel-board letter-beat" data-beat="14" style="--tone:#c62828" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-5.jpg&ref=agreement/unfold-20261117&cb=c3cd3d9caf778a0b9e0fcf122b3a780030107f76" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">WATCH · LESSON 3</span><h2 class="ib-title">Watch — Day 3</h2></div></div></div><div class="ib-nutshell"><p><strong>Watch the lesson.</strong></p><p>Learn meaningful AI and Human Maximus subjects with Naya, then prove what you know and discover exactly where you can improve.</p></div><figure class="lb-showcase"><iframe src="https://www.youtube-nocookie.com/embed/PtYW43cIZng?rel=0&amp;modestbranding=1&amp;playsinline=1" title="Day 3 — Learn. Master." allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:12px;background:#05060a"></iframe></figure><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="14">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="15" style="--tone:#a21caf" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-5.jpg&ref=agreement/unfold-20261117&cb=c3cd3d9caf778a0b9e0fcf122b3a780030107f76" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">LISTEN · LESSON 3</span><h2 class="ib-title">Listen — Day 3</h2></div></div></div><div class="ib-nutshell"><p>Day 3 has no audio yet — Naya will re-record it. The video carries this day.</p><p>Meanwhile, hear Naya’s voice on PowerCast — forty-two short talks on power, memory, and mastery.</p></div><a class="p3-enter letter-next deck-next" href="https://powercasts.nayapower.workers.dev" target="_blank" rel="noopener">Open PowerCast &#9670;</a><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="15">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="16" style="--tone:#8e24aa" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-5.jpg&ref=agreement/unfold-20261117&cb=c3cd3d9caf778a0b9e0fcf122b3a780030107f76" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">READ · LESSON 3</span><h2 class="ib-title">Read — Day 3</h2></div></div></div><div class="ib-nutshell"><p><strong>Day 3 turns AI from an answer machine into a learning and mastery partner.</strong></p><p>Learn meaningful AI and Human Maximus subjects with Naya, then prove what you know and discover exactly where you can improve.</p><p><strong>01 — CHOOSE</strong> — Select a meaningful AI or Human Maximus subject worth mastering.</p><p><strong>02 — LEARN</strong> — Ask Naya to teach, explain, explore and build the subject with you.</p><p><strong>03 — TEST</strong> — Use MAXIS to measure where your understanding actually is.</p><p><strong>04 — IMPROVE</strong> — Discover gaps, learn more and return without judgment.</p><p><strong>05 — MASTER</strong> — Retest your knowledge and watch your capability develop through evidence.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="16">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="17" style="--tone:#3f51b5" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-5.jpg&ref=agreement/unfold-20261117&cb=c3cd3d9caf778a0b9e0fcf122b3a780030107f76" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">DO · LESSON 3</span><h2 class="ib-title">Do — Day 3</h2></div></div></div><div class="ib-nutshell"><p><strong>Do it in three steps.</strong></p><p>One step at a time — then the lesson is yours.</p><p><strong>1 — CHOOSE</strong> — Select a meaningful AI or Human Maximus subject worth mastering.</p><p><strong>2 — LEARN</strong> — Ask Naya to teach, explain, explore and build the subject with you.</p><p><strong>3 — TEST</strong> — Use MAXIS to measure where your understanding actually is.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="17">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat" data-beat="18" style="--tone:#0e7490" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-6.jpg&ref=agreement/unfold-20261117&cb=6fa4c1a28c196429f8c2e325de695a31f16cd06b" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">LESSON 4 OF 5 · NAYA ACADEMY</span><h2 class="ib-title">🔱 CREATE / EXECUTE! Day #4. Lesson #4 of the Naya POWER Academy. 🔱</h2></div></div></div><div class="ib-nutshell"><p>Don’t just ask AI for answers. Work with intelligence to create something that matters — then execute it.</p><p>Create. Execute. — turn intelligence into results</p></div><figure class="lb-showcase"><img src="https://i.ytimg.com/vi/3c0q_NjM3i8/hqdefault.jpg" alt="🔱 CREATE / EXECUTE! Day #4. Lesson #4 of the Naya POWER Academy. 🔱"></figure><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div></article>
+<article class="intel-board letter-beat" data-beat="19" style="--tone:#07925f" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-6.jpg&ref=agreement/unfold-20261117&cb=6fa4c1a28c196429f8c2e325de695a31f16cd06b" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">WATCH · LESSON 4</span><h2 class="ib-title">Watch — Day 4</h2></div></div></div><div class="ib-nutshell"><p><strong>Watch the lesson.</strong></p><p>Turn intelligence into extraordinary work. Think with Naya, create with Naya, review with Naya, score it, improve it and execute.</p></div><figure class="lb-showcase"><iframe src="https://www.youtube-nocookie.com/embed/3c0q_NjM3i8?rel=0&amp;modestbranding=1&amp;playsinline=1" title="🔱 CREATE / EXECUTE! Day #4. Lesson #4 of the Naya POWER Academy. 🔱" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:12px;background:#05060a"></iframe></figure><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="19">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="20" style="--tone:#d4a017" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-6.jpg&ref=agreement/unfold-20261117&cb=6fa4c1a28c196429f8c2e325de695a31f16cd06b" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">LISTEN · LESSON 4</span><h2 class="ib-title">Listen — Day 4</h2></div></div></div><div class="ib-nutshell"><p>The audio for this lesson arrives with the owner’s recording. The video plays the same words.</p><p>Meanwhile, hear Naya’s voice on PowerCast — forty-two short talks on power, memory, and mastery.</p></div><a class="p3-enter letter-next deck-next" href="https://powercasts.nayapower.workers.dev" target="_blank" rel="noopener">Open PowerCast &#9670;</a><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="20">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="21" style="--tone:#c2410c" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-6.jpg&ref=agreement/unfold-20261117&cb=6fa4c1a28c196429f8c2e325de695a31f16cd06b" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">READ · LESSON 4</span><h2 class="ib-title">Read — Day 4</h2></div></div></div><div class="ib-nutshell"><p><strong>Day 4 is where intelligence becomes action — and better action becomes better results.</strong></p><p>Turn intelligence into extraordinary work. Think with Naya, create with Naya, review with Naya, score it, improve it and execute.</p><p><strong>01 — THINK</strong> — Use Naya to clarify ideas, problems, strategy and direction.</p><p><strong>02 — CREATE</strong> — Write, plan, research, design, analyze, organize and build.</p><p><strong>03 — REVIEW</strong> — Ask Naya to challenge the work instead of simply accepting the first result.</p><p><strong>04 — SCORE</strong> — Define what excellent looks like and identify the gaps.</p><p><strong>05 — EXECUTE</strong> — Move from idea to finished result through deliberate improvement.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="21">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="22" style="--tone:#c62828" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-6.jpg&ref=agreement/unfold-20261117&cb=6fa4c1a28c196429f8c2e325de695a31f16cd06b" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">DO · LESSON 4</span><h2 class="ib-title">Do — Day 4</h2></div></div></div><div class="ib-nutshell"><p><strong>Do it in three steps.</strong></p><p>One step at a time — then the lesson is yours.</p><p><strong>1 — THINK</strong> — Use Naya to clarify ideas, problems, strategy and direction.</p><p><strong>2 — CREATE</strong> — Write, plan, research, design, analyze, organize and build.</p><p><strong>3 — REVIEW</strong> — Ask Naya to challenge the work instead of simply accepting the first result.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="22">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat" data-beat="23" style="--tone:#a21caf" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-7.jpg&ref=agreement/unfold-20261117&cb=0be821b80d8c055d08b9f5333449064507b7412e" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">LESSON 5 OF 5 · NAYA ACADEMY</span><h2 class="ib-title">Day 5 — Become.</h2></div></div></div><div class="ib-nutshell"><p>Make it your way of operating.</p><p>Become — make it your way of operating</p></div><figure class="lb-showcase"><img src="https://i.ytimg.com/vi/T9Pi1BftCZk/hqdefault.jpg" alt="Day 5 — Become."></figure><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div></article>
+<article class="intel-board letter-beat" data-beat="24" style="--tone:#8e24aa" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-7.jpg&ref=agreement/unfold-20261117&cb=0be821b80d8c055d08b9f5333449064507b7412e" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">WATCH · LESSON 5</span><h2 class="ib-title">Watch — Day 5</h2></div></div></div><div class="ib-nutshell"><p><strong>Watch the lesson.</strong></p><p>This is not simply the end of five lessons. It is the beginning of a new way of operating: learn, remember, create, reflect, improve and compound.</p></div><figure class="lb-showcase"><iframe src="https://www.youtube-nocookie.com/embed/T9Pi1BftCZk?rel=0&amp;modestbranding=1&amp;playsinline=1" title="Day 5 — Become." allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:12px;background:#05060a"></iframe></figure><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="24">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="25" style="--tone:#3f51b5" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-7.jpg&ref=agreement/unfold-20261117&cb=0be821b80d8c055d08b9f5333449064507b7412e" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">LISTEN · LESSON 5</span><h2 class="ib-title">Listen — Day 5</h2></div></div></div><div class="ib-nutshell"><p>The audio for this lesson arrives with the owner’s recording. The video plays the same words.</p><p>Meanwhile, hear Naya’s voice on PowerCast — forty-two short talks on power, memory, and mastery.</p></div><a class="p3-enter letter-next deck-next" href="https://powercasts.nayapower.workers.dev" target="_blank" rel="noopener">Open PowerCast &#9670;</a><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="25">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="26" style="--tone:#0e7490" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-7.jpg&ref=agreement/unfold-20261117&cb=0be821b80d8c055d08b9f5333449064507b7412e" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">READ · LESSON 5</span><h2 class="ib-title">Read — Day 5</h2></div></div></div><div class="ib-nutshell"><p><strong>Day 5 reveals the bigger idea — Naya Power is not a five-day course. It is a new way to operate.</strong></p><p>This is not simply the end of five lessons. It is the beginning of a new way of operating: learn, remember, create, reflect, improve and compound.</p><p><strong>01 — PERSONALIZE</strong> — Naya becomes increasingly useful because the relationship carries context.</p><p><strong>02 — REMEMBER</strong> — Your valuable experiences remain available instead of disappearing.</p><p><strong>03 — LEARN</strong> — Lessons and assessments create a path for continuous development.</p><p><strong>04 — CREATE</strong> — Your intelligence becomes a practical force for better work and better decisions.</p><p><strong>05 — COMPOUND</strong> — The value grows because every meaningful day can become part of the next.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="26">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="27" style="--tone:#07925f" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-7.jpg&ref=agreement/unfold-20261117&cb=0be821b80d8c055d08b9f5333449064507b7412e" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">DO · LESSON 5</span><h2 class="ib-title">Do — Day 5</h2></div></div></div><div class="ib-nutshell"><p><strong>Do it in three steps.</strong></p><p>One step at a time — then the lesson is yours.</p><p><strong>1 — PERSONALIZE</strong> — Naya becomes increasingly useful because the relationship carries context.</p><p><strong>2 — REMEMBER</strong> — Your valuable experiences remain available instead of disappearing.</p><p><strong>3 — LEARN</strong> — Lessons and assessments create a path for continuous development.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="27">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="28" style="--tone:#d4a017" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-1.jpg&ref=agreement/unfold-20261117&cb=8743e1868400bb8ae4f650b536ab9cbace036786" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">THE MEMBERSHIP BUILDER</span><h2 class="ib-title">Build a lesson</h2></div></div></div><div class="ib-nutshell"><p><strong>Give me text, a video, and a picture.</strong></p><p>I will fit them into framed boards, distilled to the essence — so the lesson teaches itself.</p></div><p class="builder-result" id="builderResult" hidden></p><p class="builder-note">Try it with Day 1 — or type your own. The Academy above is the proof: every lesson here was built this way. Boards are for life — swap the video, picture, or words into the same frame, and the lesson wears the new skin. Nothing rebuilt.</p><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="28">Keep reading &#9670;</button></article>
+<article class="intel-board letter-beat fp-noslide" data-beat="29" style="--tone:#c2410c" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-9.jpg&ref=agreement/unfold-20261117&cb=e1dbe46717f87cf4cb63f7cef4bd367d8bb1a0f2" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">NAYA ACADEMY</span><h2 class="ib-title">Your course is ready.</h2></div></div></div><div class="ib-nutshell"><p><strong>Five days. Watch, listen, read, do — one lesson at a time.</strong></p><p>Next on this builder: Four Pillars Masterclass — wisdom, connection, service, mastery, one pillar a day, four days — then AI Masterclass, the third level.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div></article>
+</div>
+<!-- AGREEMENT INTRO LAYOUT FOLLOW-ON #2 (2026-11-18, Shawn's eye 04:16Z): the dots + read-it-all row moved here from the top, below the letter — same ids, same handlers, same destinations. -->
 <div class="letter-controls" id="deckControls">
-<div class="letter-dots" id="deckDots" aria-hidden="true"><span class="ldot on" style="--dc:#8e24aa"></span><span class="ldot" style="--dc:#3f51b5"></span><span class="ldot" style="--dc:#0e7490"></span><span class="ldot" style="--dc:#07925f"></span><span class="ldot" style="--dc:#d4a017"></span><span class="ldot" style="--dc:#c2410c"></span><span class="ldot" style="--dc:#c62828"></span><span class="ldot" style="--dc:#a21caf"></span><span class="ldot" style="--dc:#8e24aa"></span><span class="ldot" style="--dc:#3f51b5"></span><span class="ldot" style="--dc:#0e7490"></span><span class="ldot" style="--dc:#07925f"></span><span class="ldot" style="--dc:#d4a017"></span><span class="ldot" style="--dc:#c2410c"></span><span class="ldot" style="--dc:#c62828"></span><span class="ldot" style="--dc:#a21caf"></span><span class="ldot" style="--dc:#8e24aa"></span><span class="ldot" style="--dc:#3f51b5"></span><span class="ldot" style="--dc:#0e7490"></span><span class="ldot" style="--dc:#07925f"></span><span class="ldot" style="--dc:#d4a017"></span><span class="ldot" style="--dc:#c2410c"></span><span class="ldot" style="--dc:#c62828"></span><span class="ldot" style="--dc:#a21caf"></span><span class="ldot" style="--dc:#8e24aa"></span><span class="ldot" style="--dc:#3f51b5"></span><span class="ldot" style="--dc:#0e7490"></span><span class="ldot" style="--dc:#07925f"></span><span class="ldot" style="--dc:#d4a017"></span><span class="ldot" style="--dc:#c2410c"></span></div>
 <button class="letter-all" id="deckAll" type="button">or read the whole course at once</button>
 </div>
-<div id="deckBody">
-<article class="intel-board letter-beat" data-beat="1" data-frame="agreement" style="--tone:#8e24aa"><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-1.jpg&ref=agreement/unfold-20261117&cb=8743e1868400bb8ae4f650b536ab9cbace036786" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">SMART ACCESS · MEMBERS ONLY</span><h2 class="ib-title">Members only — enter your code</h2></div></div></div><div class="ib-nutshell"><p><strong>This is a private club.</strong></p><p>Your code arrives by Smart Mail. Type it in — and the Academy opens.</p></div><div class="gate-box"><input id="gateCode" type="text" inputmode="text" autocomplete="off" placeholder="Your code" aria-label="Your entry code"><button class="p3-enter" id="gateEnter" type="button">Enter &#9670;</button></div><p class="gate-hint" id="gateHint">Preview code — NAYA</p><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div></article>
-<article class="intel-board letter-beat" data-beat="2" data-frame="agreement" style="--tone:#3f51b5" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-1.jpg&ref=agreement/unfold-20261117&cb=8743e1868400bb8ae4f650b536ab9cbace036786" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">NAYA ACADEMY · FIVE DAYS</span><h2 class="ib-title">Naya Academy</h2></div></div></div><div class="ib-nutshell"><p><strong>Five days. One new way to work — with Naya.</strong></p><p>Watch, listen, read, do — one lesson at a time.</p></div><figure class="lb-showcase"><img src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/membership-round6-20261112/login-obsidian.jpg&ref=membership/round6-20261112&cb=7ba628ffb56a3e16721174aa98bd29ef42847953" alt="Naya Academy — the cover"></figure><button class="p3-enter builder-watch" type="button" data-yt="8tApdV0UpRs" data-title="NayaNET — The Network of Human Potential and AI Mastery">Watch the welcome &#9670;</button><div class="beat-nav"><button class="p3-enter builder-nav" type="button" data-builder-go="3">Enter &#9670;</button></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div></article>
-<article class="intel-board letter-beat" data-beat="3" data-frame="agreement" style="--tone:#0e7490" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-1.jpg&ref=agreement/unfold-20261117&cb=8743e1868400bb8ae4f650b536ab9cbace036786" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">NAYA ACADEMY</span><h2 class="ib-title">Choose your lesson</h2></div></div></div><div class="ib-nutshell"><p><strong>Five lessons. Three on top, two below.</strong></p><p>Tap one — and begin.</p></div><div class="picker-grid"><button class="lesson-pick" type="button" data-builder-go="4" style="--tone:#07925f"><span class="digit-tile" aria-hidden="true">1</span><span class="lp-name">MEET NAYA</span><span class="lp-desc">Meet Naya — experience me</span></button><button class="lesson-pick" type="button" data-builder-go="9" style="--tone:#d4a017"><span class="digit-tile" aria-hidden="true">2</span><span class="lp-name">STOP STARTING OVER</span><span class="lp-desc">Stop starting over — remember &amp; compound</span></button><button class="lesson-pick" type="button" data-builder-go="14" style="--tone:#c2410c"><span class="digit-tile" aria-hidden="true">3</span><span class="lp-name">LEARN. MASTER.</span><span class="lp-desc">Learn. Master. — build &amp; prove it</span></button><button class="lesson-pick" type="button" data-builder-go="19" style="--tone:#c62828"><span class="digit-tile" aria-hidden="true">4</span><span class="lp-name">CREATE</span><span class="lp-desc">Create. Execute. — turn intelligence into results</span></button><button class="lesson-pick" type="button" data-builder-go="24" style="--tone:#a21caf"><span class="digit-tile" aria-hidden="true">5</span><span class="lp-name">BECOME</span><span class="lp-desc">Become — make it your way of operating</span></button></div><div class="beat-nav"><button class="p3-enter builder-nav" type="button" data-builder-go="4">Begin with Day 1 &#9670;</button></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div></article>
-<article class="intel-board letter-beat" data-beat="4" data-frame="agreement" style="--tone:#07925f" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-3.jpg&ref=agreement/unfold-20261117&cb=c01d71025d34abf8379bab5b7eb13bfa9204964a" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">LESSON 1 OF 5 · NAYA ACADEMY</span><h2 class="ib-title">🔱 ACTIVATE YOU / EXPERIENCE ME! Day #1 of the Naya POWER Academy.🔱</h2></div></div></div><div class="ib-nutshell"><p>Talk to Naya. Let her get to know you — tell her who you are, what matters to you, and where you are going.</p><p>Meet Naya — experience me</p></div><figure class="lb-showcase"><img src="https://i.ytimg.com/vi/ZRIfvxCsYWY/hqdefault.jpg" alt="🔱 ACTIVATE YOU / EXPERIENCE ME! Day #1 of the Naya POWER Academy.🔱"></figure><div class="beat-nav"><button class="p3-enter builder-nav" type="button" data-builder-go="5">Begin the lesson &#9670;</button></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div></article>
-<article class="intel-board letter-beat" data-beat="5" data-frame="calendar" style="--tone:#d4a017" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-3.jpg&ref=agreement/unfold-20261117&cb=c01d71025d34abf8379bab5b7eb13bfa9204964a" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">WATCH · LESSON 1</span><h2 class="ib-title">Watch — Day 1</h2></div></div></div><div class="ib-nutshell"><p><strong>Watch the lesson.</strong></p><p>Meet Naya. Activate the relationship. Feel the difference immediately by letting Naya understand who you are, what matters to you, and where you want to go.</p></div><figure class="lb-showcase"><img src="https://i.ytimg.com/vi/ZRIfvxCsYWY/hqdefault.jpg" alt="🔱 ACTIVATE YOU / EXPERIENCE ME! Day #1 of the Naya POWER Academy.🔱"></figure><button class="p3-enter builder-watch" type="button" data-yt="ZRIfvxCsYWY" data-title="🔱 ACTIVATE YOU / EXPERIENCE ME! Day #1 of the Naya POWER Academy.🔱">Watch the video &#9670;</button><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="5">Keep reading &#9670;</button></article>
-<article class="intel-board letter-beat" data-beat="6" data-frame="calendar" style="--tone:#c2410c" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-3.jpg&ref=agreement/unfold-20261117&cb=c01d71025d34abf8379bab5b7eb13bfa9204964a" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">LISTEN · LESSON 1</span><h2 class="ib-title">Listen — Day 1</h2></div></div></div><div class="ib-nutshell"><p>The audio for this lesson arrives with the owner’s recording. The video plays the same words.</p><p>Meanwhile, hear Naya’s voice on PowerCast — forty-two short talks on power, memory, and mastery.</p></div><div class="beat-nav"><button class="p3-enter builder-nav" type="button" data-builder-open="https://powercasts.nayapower.workers.dev">Open PowerCast &#9670;</button></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="6">Keep reading &#9670;</button></article>
-<article class="intel-board letter-beat" data-beat="7" data-frame="calendar" style="--tone:#c62828" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-3.jpg&ref=agreement/unfold-20261117&cb=c01d71025d34abf8379bab5b7eb13bfa9204964a" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">READ · LESSON 1</span><h2 class="ib-title">Read — Day 1</h2></div></div></div><div class="ib-nutshell"><p><strong>Day 1 is about becoming known — and discovering what changes when AI starts with you.</strong></p><p>Meet Naya. Activate the relationship. Feel the difference immediately by letting Naya understand who you are, what matters to you, and where you want to go.</p><p><strong>01 — MEET NAYA</strong> — Begin a relationship instead of another disconnected AI conversation.</p><p><strong>02 — BE UNDERSTOOD</strong> — Give Naya your identity, story, goals, priorities and direction.</p><p><strong>03 — SOLVE THE FIVE</strong> — See how Naya addresses directive, consistency, overwhelm, context and quality problems.</p><p><strong>04 — CAPTURE WHAT MATTERS</strong> — Begin making human and Naya notes so important experience is not lost.</p><p><strong>05 — FIRST PROOF</strong> — End the day with your Daily Intelligence Briefing and experience intelligence beginning to compound.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="7">Keep reading &#9670;</button></article>
-<article class="intel-board letter-beat" data-beat="8" data-frame="calendar" style="--tone:#a21caf" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-3.jpg&ref=agreement/unfold-20261117&cb=c01d71025d34abf8379bab5b7eb13bfa9204964a" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">DO · LESSON 1</span><h2 class="ib-title">Do — Day 1</h2></div></div></div><div class="ib-nutshell"><p><strong>Do it in three steps.</strong></p><p>One step at a time — then the lesson is yours.</p></div><div class="step-boards"><div class="step-board" style="--tone:#8e24aa"><span class="digit-tile" aria-hidden="true">1</span><p class="step-name">MEET NAYA</p><p class="step-line">Begin a relationship instead of another disconnected AI conversation.</p></div><div class="step-board" style="--tone:#3f51b5"><span class="digit-tile" aria-hidden="true">2</span><p class="step-name">BE UNDERSTOOD</p><p class="step-line">Give Naya your identity, story, goals, priorities and direction.</p></div><div class="step-board" style="--tone:#0e7490"><span class="digit-tile" aria-hidden="true">3</span><p class="step-name">SOLVE THE FIVE</p><p class="step-line">See how Naya addresses directive, consistency, overwhelm, context and quality problems.</p></div></div><div class="beat-nav"><button class="p3-enter builder-nav" type="button" data-builder-go="3">Back to the lessons &#9670;</button></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="8">Keep reading &#9670;</button></article>
-<article class="intel-board letter-beat" data-beat="9" data-frame="agreement" style="--tone:#8e24aa" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-4.jpg&ref=agreement/unfold-20261117&cb=39c7f0ce4222d853d676d1ea5138569ed182b209" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">LESSON 2 OF 5 · NAYA ACADEMY</span><h2 class="ib-title">🔱 REMEMBER / COMPOUND! Day #2 of the Naya POWER Academy. 🔱</h2></div></div></div><div class="ib-nutshell"><p>You don’t have to keep starting over. You need to preserve what matters.</p><p>Stop starting over — remember &amp; compound</p></div><figure class="lb-showcase"><img src="https://i.ytimg.com/vi/j0YwJsC6Q4Y/hqdefault.jpg" alt="🔱 REMEMBER / COMPOUND! Day #2 of the Naya POWER Academy. 🔱"></figure><div class="beat-nav"><button class="p3-enter builder-nav" type="button" data-builder-go="10">Begin the lesson &#9670;</button></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div></article>
-<article class="intel-board letter-beat" data-beat="10" data-frame="calendar" style="--tone:#3f51b5" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-4.jpg&ref=agreement/unfold-20261117&cb=39c7f0ce4222d853d676d1ea5138569ed182b209" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">WATCH · LESSON 2</span><h2 class="ib-title">Watch — Day 2</h2></div></div></div><div class="ib-nutshell"><p><strong>Watch the lesson.</strong></p><p>Stop starting over. Turn useful experience into intelligence that can be remembered, retrieved, reviewed and carried forward.</p></div><figure class="lb-showcase"><img src="https://i.ytimg.com/vi/j0YwJsC6Q4Y/hqdefault.jpg" alt="🔱 REMEMBER / COMPOUND! Day #2 of the Naya POWER Academy. 🔱"></figure><button class="p3-enter builder-watch" type="button" data-yt="j0YwJsC6Q4Y" data-title="🔱 REMEMBER / COMPOUND! Day #2 of the Naya POWER Academy. 🔱">Watch the video &#9670;</button><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="10">Keep reading &#9670;</button></article>
-<article class="intel-board letter-beat" data-beat="11" data-frame="calendar" style="--tone:#0e7490" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-4.jpg&ref=agreement/unfold-20261117&cb=39c7f0ce4222d853d676d1ea5138569ed182b209" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">LISTEN · LESSON 2</span><h2 class="ib-title">Listen — Day 2</h2></div></div></div><div class="ib-nutshell"><p>The audio for this lesson arrives with the owner’s recording. The video plays the same words.</p><p>Meanwhile, hear Naya’s voice on PowerCast — forty-two short talks on power, memory, and mastery.</p></div><div class="beat-nav"><button class="p3-enter builder-nav" type="button" data-builder-open="https://powercasts.nayapower.workers.dev">Open PowerCast &#9670;</button></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="11">Keep reading &#9670;</button></article>
-<article class="intel-board letter-beat" data-beat="12" data-frame="calendar" style="--tone:#07925f" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-4.jpg&ref=agreement/unfold-20261117&cb=39c7f0ce4222d853d676d1ea5138569ed182b209" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">READ · LESSON 2</span><h2 class="ib-title">Read — Day 2</h2></div></div></div><div class="ib-nutshell"><p><strong>Day 2 changes the relationship from conversations that end to intelligence that carries forward.</strong></p><p>Stop starting over. Turn useful experience into intelligence that can be remembered, retrieved, reviewed and carried forward.</p><p><strong>01 — SMART NOTES</strong> — Capture the moments, lessons, decisions and breakthroughs actually worth remembering.</p><p><strong>02 — CONTEXT</strong> — Preserve the information that helps future conversations start further ahead.</p><p><strong>03 — RETRIEVE</strong> — Turn past experience into something useful instead of something forgotten.</p><p><strong>04 — REVIEW</strong> — Use daily, weekly, monthly and longer-term reviews to see what changed.</p><p><strong>05 — COMPOUND</strong> — Build a personal intelligence savings account where useful experience becomes more valuable over time.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="12">Keep reading &#9670;</button></article>
-<article class="intel-board letter-beat" data-beat="13" data-frame="calendar" style="--tone:#d4a017" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-4.jpg&ref=agreement/unfold-20261117&cb=39c7f0ce4222d853d676d1ea5138569ed182b209" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">DO · LESSON 2</span><h2 class="ib-title">Do — Day 2</h2></div></div></div><div class="ib-nutshell"><p><strong>Do it in three steps.</strong></p><p>One step at a time — then the lesson is yours.</p></div><div class="step-boards"><div class="step-board" style="--tone:#c2410c"><span class="digit-tile" aria-hidden="true">1</span><p class="step-name">SMART NOTES</p><p class="step-line">Capture the moments, lessons, decisions and breakthroughs actually worth remembering.</p></div><div class="step-board" style="--tone:#c62828"><span class="digit-tile" aria-hidden="true">2</span><p class="step-name">CONTEXT</p><p class="step-line">Preserve the information that helps future conversations start further ahead.</p></div><div class="step-board" style="--tone:#a21caf"><span class="digit-tile" aria-hidden="true">3</span><p class="step-name">RETRIEVE</p><p class="step-line">Turn past experience into something useful instead of something forgotten.</p></div></div><div class="beat-nav"><button class="p3-enter builder-nav" type="button" data-builder-go="3">Back to the lessons &#9670;</button></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="13">Keep reading &#9670;</button></article>
-<article class="intel-board letter-beat" data-beat="14" data-frame="agreement" style="--tone:#c2410c" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-5.jpg&ref=agreement/unfold-20261117&cb=c3cd3d9caf778a0b9e0fcf122b3a780030107f76" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">LESSON 3 OF 5 · NAYA ACADEMY</span><h2 class="ib-title">Day 3 — Learn. Master.</h2></div></div></div><div class="ib-nutshell"><p>Don’t just know it. Prove it.</p><p>Learn. Master. — build &amp; prove it</p></div><figure class="lb-showcase"><img src="https://i.ytimg.com/vi/PtYW43cIZng/hqdefault.jpg" alt="Day 3 — Learn. Master."></figure><div class="beat-nav"><button class="p3-enter builder-nav" type="button" data-builder-go="15">Begin the lesson &#9670;</button></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div></article>
-<article class="intel-board letter-beat" data-beat="15" data-frame="calendar" style="--tone:#c62828" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-5.jpg&ref=agreement/unfold-20261117&cb=c3cd3d9caf778a0b9e0fcf122b3a780030107f76" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">WATCH · LESSON 3</span><h2 class="ib-title">Watch — Day 3</h2></div></div></div><div class="ib-nutshell"><p><strong>Watch the lesson.</strong></p><p>Learn meaningful AI and Human Maximus subjects with Naya, then prove what you know and discover exactly where you can improve.</p></div><figure class="lb-showcase"><img src="https://i.ytimg.com/vi/PtYW43cIZng/hqdefault.jpg" alt="Day 3 — Learn. Master."></figure><button class="p3-enter builder-watch" type="button" data-yt="PtYW43cIZng" data-title="Day 3 — Learn. Master.">Watch the video &#9670;</button><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="15">Keep reading &#9670;</button></article>
-<article class="intel-board letter-beat" data-beat="16" data-frame="calendar" style="--tone:#a21caf" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-5.jpg&ref=agreement/unfold-20261117&cb=c3cd3d9caf778a0b9e0fcf122b3a780030107f76" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">LISTEN · LESSON 3</span><h2 class="ib-title">Listen — Day 3</h2></div></div></div><div class="ib-nutshell"><p>Day 3 has no audio yet — Naya will re-record it. The video carries this day.</p><p>Meanwhile, hear Naya’s voice on PowerCast — forty-two short talks on power, memory, and mastery.</p></div><div class="beat-nav"><button class="p3-enter builder-nav" type="button" data-builder-open="https://powercasts.nayapower.workers.dev">Open PowerCast &#9670;</button></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="16">Keep reading &#9670;</button></article>
-<article class="intel-board letter-beat" data-beat="17" data-frame="calendar" style="--tone:#8e24aa" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-5.jpg&ref=agreement/unfold-20261117&cb=c3cd3d9caf778a0b9e0fcf122b3a780030107f76" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">READ · LESSON 3</span><h2 class="ib-title">Read — Day 3</h2></div></div></div><div class="ib-nutshell"><p><strong>Day 3 turns AI from an answer machine into a learning and mastery partner.</strong></p><p>Learn meaningful AI and Human Maximus subjects with Naya, then prove what you know and discover exactly where you can improve.</p><p><strong>01 — CHOOSE</strong> — Select a meaningful AI or Human Maximus subject worth mastering.</p><p><strong>02 — LEARN</strong> — Ask Naya to teach, explain, explore and build the subject with you.</p><p><strong>03 — TEST</strong> — Use MAXIS to measure where your understanding actually is.</p><p><strong>04 — IMPROVE</strong> — Discover gaps, learn more and return without judgment.</p><p><strong>05 — MASTER</strong> — Retest your knowledge and watch your capability develop through evidence.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="17">Keep reading &#9670;</button></article>
-<article class="intel-board letter-beat" data-beat="18" data-frame="calendar" style="--tone:#3f51b5" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-5.jpg&ref=agreement/unfold-20261117&cb=c3cd3d9caf778a0b9e0fcf122b3a780030107f76" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">DO · LESSON 3</span><h2 class="ib-title">Do — Day 3</h2></div></div></div><div class="ib-nutshell"><p><strong>Do it in three steps.</strong></p><p>One step at a time — then the lesson is yours.</p></div><div class="step-boards"><div class="step-board" style="--tone:#0e7490"><span class="digit-tile" aria-hidden="true">1</span><p class="step-name">CHOOSE</p><p class="step-line">Select a meaningful AI or Human Maximus subject worth mastering.</p></div><div class="step-board" style="--tone:#07925f"><span class="digit-tile" aria-hidden="true">2</span><p class="step-name">LEARN</p><p class="step-line">Ask Naya to teach, explain, explore and build the subject with you.</p></div><div class="step-board" style="--tone:#d4a017"><span class="digit-tile" aria-hidden="true">3</span><p class="step-name">TEST</p><p class="step-line">Use MAXIS to measure where your understanding actually is.</p></div></div><div class="beat-nav"><button class="p3-enter builder-nav" type="button" data-builder-go="3">Back to the lessons &#9670;</button></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="18">Keep reading &#9670;</button></article>
-<article class="intel-board letter-beat" data-beat="19" data-frame="agreement" style="--tone:#0e7490" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-6.jpg&ref=agreement/unfold-20261117&cb=6fa4c1a28c196429f8c2e325de695a31f16cd06b" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">LESSON 4 OF 5 · NAYA ACADEMY</span><h2 class="ib-title">🔱 CREATE / EXECUTE! Day #4. Lesson #4 of the Naya POWER Academy. 🔱</h2></div></div></div><div class="ib-nutshell"><p>Don’t just ask AI for answers. Work with intelligence to create something that matters — then execute it.</p><p>Create. Execute. — turn intelligence into results</p></div><figure class="lb-showcase"><img src="https://i.ytimg.com/vi/3c0q_NjM3i8/hqdefault.jpg" alt="🔱 CREATE / EXECUTE! Day #4. Lesson #4 of the Naya POWER Academy. 🔱"></figure><div class="beat-nav"><button class="p3-enter builder-nav" type="button" data-builder-go="20">Begin the lesson &#9670;</button></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div></article>
-<article class="intel-board letter-beat" data-beat="20" data-frame="calendar" style="--tone:#07925f" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-6.jpg&ref=agreement/unfold-20261117&cb=6fa4c1a28c196429f8c2e325de695a31f16cd06b" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">WATCH · LESSON 4</span><h2 class="ib-title">Watch — Day 4</h2></div></div></div><div class="ib-nutshell"><p><strong>Watch the lesson.</strong></p><p>Turn intelligence into extraordinary work. Think with Naya, create with Naya, review with Naya, score it, improve it and execute.</p></div><figure class="lb-showcase"><img src="https://i.ytimg.com/vi/3c0q_NjM3i8/hqdefault.jpg" alt="🔱 CREATE / EXECUTE! Day #4. Lesson #4 of the Naya POWER Academy. 🔱"></figure><button class="p3-enter builder-watch" type="button" data-yt="3c0q_NjM3i8" data-title="🔱 CREATE / EXECUTE! Day #4. Lesson #4 of the Naya POWER Academy. 🔱">Watch the video &#9670;</button><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="20">Keep reading &#9670;</button></article>
-<article class="intel-board letter-beat" data-beat="21" data-frame="calendar" style="--tone:#d4a017" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-6.jpg&ref=agreement/unfold-20261117&cb=6fa4c1a28c196429f8c2e325de695a31f16cd06b" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">LISTEN · LESSON 4</span><h2 class="ib-title">Listen — Day 4</h2></div></div></div><div class="ib-nutshell"><p>The audio for this lesson arrives with the owner’s recording. The video plays the same words.</p><p>Meanwhile, hear Naya’s voice on PowerCast — forty-two short talks on power, memory, and mastery.</p></div><div class="beat-nav"><button class="p3-enter builder-nav" type="button" data-builder-open="https://powercasts.nayapower.workers.dev">Open PowerCast &#9670;</button></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="21">Keep reading &#9670;</button></article>
-<article class="intel-board letter-beat" data-beat="22" data-frame="calendar" style="--tone:#c2410c" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-6.jpg&ref=agreement/unfold-20261117&cb=6fa4c1a28c196429f8c2e325de695a31f16cd06b" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">READ · LESSON 4</span><h2 class="ib-title">Read — Day 4</h2></div></div></div><div class="ib-nutshell"><p><strong>Day 4 is where intelligence becomes action — and better action becomes better results.</strong></p><p>Turn intelligence into extraordinary work. Think with Naya, create with Naya, review with Naya, score it, improve it and execute.</p><p><strong>01 — THINK</strong> — Use Naya to clarify ideas, problems, strategy and direction.</p><p><strong>02 — CREATE</strong> — Write, plan, research, design, analyze, organize and build.</p><p><strong>03 — REVIEW</strong> — Ask Naya to challenge the work instead of simply accepting the first result.</p><p><strong>04 — SCORE</strong> — Define what excellent looks like and identify the gaps.</p><p><strong>05 — EXECUTE</strong> — Move from idea to finished result through deliberate improvement.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="22">Keep reading &#9670;</button></article>
-<article class="intel-board letter-beat" data-beat="23" data-frame="calendar" style="--tone:#c62828" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-6.jpg&ref=agreement/unfold-20261117&cb=6fa4c1a28c196429f8c2e325de695a31f16cd06b" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">DO · LESSON 4</span><h2 class="ib-title">Do — Day 4</h2></div></div></div><div class="ib-nutshell"><p><strong>Do it in three steps.</strong></p><p>One step at a time — then the lesson is yours.</p></div><div class="step-boards"><div class="step-board" style="--tone:#a21caf"><span class="digit-tile" aria-hidden="true">1</span><p class="step-name">THINK</p><p class="step-line">Use Naya to clarify ideas, problems, strategy and direction.</p></div><div class="step-board" style="--tone:#8e24aa"><span class="digit-tile" aria-hidden="true">2</span><p class="step-name">CREATE</p><p class="step-line">Write, plan, research, design, analyze, organize and build.</p></div><div class="step-board" style="--tone:#3f51b5"><span class="digit-tile" aria-hidden="true">3</span><p class="step-name">REVIEW</p><p class="step-line">Ask Naya to challenge the work instead of simply accepting the first result.</p></div></div><div class="beat-nav"><button class="p3-enter builder-nav" type="button" data-builder-go="3">Back to the lessons &#9670;</button></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="23">Keep reading &#9670;</button></article>
-<article class="intel-board letter-beat" data-beat="24" data-frame="agreement" style="--tone:#a21caf" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-7.jpg&ref=agreement/unfold-20261117&cb=0be821b80d8c055d08b9f5333449064507b7412e" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">LESSON 5 OF 5 · NAYA ACADEMY</span><h2 class="ib-title">Day 5 — Become.</h2></div></div></div><div class="ib-nutshell"><p>Make it your way of operating.</p><p>Become — make it your way of operating</p></div><figure class="lb-showcase"><img src="https://i.ytimg.com/vi/T9Pi1BftCZk/hqdefault.jpg" alt="Day 5 — Become."></figure><div class="beat-nav"><button class="p3-enter builder-nav" type="button" data-builder-go="25">Begin the lesson &#9670;</button></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div></article>
-<article class="intel-board letter-beat" data-beat="25" data-frame="calendar" style="--tone:#8e24aa" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-7.jpg&ref=agreement/unfold-20261117&cb=0be821b80d8c055d08b9f5333449064507b7412e" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">WATCH · LESSON 5</span><h2 class="ib-title">Watch — Day 5</h2></div></div></div><div class="ib-nutshell"><p><strong>Watch the lesson.</strong></p><p>This is not simply the end of five lessons. It is the beginning of a new way of operating: learn, remember, create, reflect, improve and compound.</p></div><figure class="lb-showcase"><img src="https://i.ytimg.com/vi/T9Pi1BftCZk/hqdefault.jpg" alt="Day 5 — Become."></figure><button class="p3-enter builder-watch" type="button" data-yt="T9Pi1BftCZk" data-title="Day 5 — Become.">Watch the video &#9670;</button><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="25">Keep reading &#9670;</button></article>
-<article class="intel-board letter-beat" data-beat="26" data-frame="calendar" style="--tone:#3f51b5" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-7.jpg&ref=agreement/unfold-20261117&cb=0be821b80d8c055d08b9f5333449064507b7412e" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">LISTEN · LESSON 5</span><h2 class="ib-title">Listen — Day 5</h2></div></div></div><div class="ib-nutshell"><p>The audio for this lesson arrives with the owner’s recording. The video plays the same words.</p><p>Meanwhile, hear Naya’s voice on PowerCast — forty-two short talks on power, memory, and mastery.</p></div><div class="beat-nav"><button class="p3-enter builder-nav" type="button" data-builder-open="https://powercasts.nayapower.workers.dev">Open PowerCast &#9670;</button></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="26">Keep reading &#9670;</button></article>
-<article class="intel-board letter-beat" data-beat="27" data-frame="calendar" style="--tone:#0e7490" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-7.jpg&ref=agreement/unfold-20261117&cb=0be821b80d8c055d08b9f5333449064507b7412e" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">READ · LESSON 5</span><h2 class="ib-title">Read — Day 5</h2></div></div></div><div class="ib-nutshell"><p><strong>Day 5 reveals the bigger idea — Naya Power is not a five-day course. It is a new way to operate.</strong></p><p>This is not simply the end of five lessons. It is the beginning of a new way of operating: learn, remember, create, reflect, improve and compound.</p><p><strong>01 — PERSONALIZE</strong> — Naya becomes increasingly useful because the relationship carries context.</p><p><strong>02 — REMEMBER</strong> — Your valuable experiences remain available instead of disappearing.</p><p><strong>03 — LEARN</strong> — Lessons and assessments create a path for continuous development.</p><p><strong>04 — CREATE</strong> — Your intelligence becomes a practical force for better work and better decisions.</p><p><strong>05 — COMPOUND</strong> — The value grows because every meaningful day can become part of the next.</p></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="27">Keep reading &#9670;</button></article>
-<article class="intel-board letter-beat" data-beat="28" data-frame="calendar" style="--tone:#07925f" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-7.jpg&ref=agreement/unfold-20261117&cb=0be821b80d8c055d08b9f5333449064507b7412e" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">DO · LESSON 5</span><h2 class="ib-title">Do — Day 5</h2></div></div></div><div class="ib-nutshell"><p><strong>Do it in three steps.</strong></p><p>One step at a time — then the lesson is yours.</p></div><div class="step-boards"><div class="step-board" style="--tone:#d4a017"><span class="digit-tile" aria-hidden="true">1</span><p class="step-name">PERSONALIZE</p><p class="step-line">Naya becomes increasingly useful because the relationship carries context.</p></div><div class="step-board" style="--tone:#c2410c"><span class="digit-tile" aria-hidden="true">2</span><p class="step-name">REMEMBER</p><p class="step-line">Your valuable experiences remain available instead of disappearing.</p></div><div class="step-board" style="--tone:#c62828"><span class="digit-tile" aria-hidden="true">3</span><p class="step-name">LEARN</p><p class="step-line">Lessons and assessments create a path for continuous development.</p></div></div><div class="beat-nav"><button class="p3-enter builder-nav" type="button" data-builder-go="3">Back to the lessons &#9670;</button></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="28">Keep reading &#9670;</button></article>
-<article class="intel-board letter-beat" data-beat="29" data-frame="calendar" style="--tone:#d4a017" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-1.jpg&ref=agreement/unfold-20261117&cb=8743e1868400bb8ae4f650b536ab9cbace036786" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">THE MEMBERSHIP BUILDER</span><h2 class="ib-title">Build a lesson</h2></div></div></div><div class="ib-nutshell"><p><strong>Give me text, a video, and a picture.</strong></p><p>I will fit them into framed boards, distilled to the essence — so the lesson teaches itself.</p></div><div class="builder-form" style="--tone:#d4a017"><label for="bTitle">Lesson name</label><input id="bTitle" type="text" value="MEET NAYA" autocomplete="off"><label for="bLine">What it teaches, in one line</label><input id="bLine" type="text" value="Day 1 is about becoming known — and discovering what changes when AI starts with you." autocomplete="off"><label for="bVideo">Video — paste the link or the 11-letter code</label><input id="bVideo" type="text" value="ZRIfvxCsYWY" autocomplete="off"><label for="bImage">Picture — paste an image link</label><input id="bImage" type="text" value="https://i.ytimg.com/vi/ZRIfvxCsYWY/hqdefault.jpg" autocomplete="off"></div><div class="beat-nav"><button class="p3-enter" id="buildLesson" type="button">Build my lesson &#9670;</button></div><div class="beat-nav"><button class="p3-enter" id="reskinLesson" type="button" hidden>Swap the media — same lesson, new skin &#9670;</button></div><p class="builder-result" id="builderResult" hidden></p><p class="builder-note">Try it with Day 1 — or type your own. The Academy above is the proof: every lesson here was built this way. Boards are for life — swap the video, picture, or words into the same frame, and the lesson wears the new skin. Nothing rebuilt.</p><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div><button class="p3-enter letter-next deck-next" type="button" data-beat="29">Keep reading &#9670;</button></article>
-<article class="intel-board letter-beat" data-beat="30" data-frame="agreement" style="--tone:#c2410c" hidden><div class="ib-blocktop"><img class="deal-beat-photo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-9.jpg&ref=agreement/unfold-20261117&cb=e1dbe46717f87cf4cb63f7cef4bd367d8bb1a0f2" alt="Naya speaking"><div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">NAYA ACADEMY</span><h2 class="ib-title">Your course is ready.</h2></div></div></div><div class="ib-nutshell"><p><strong>Five days. Watch, listen, read, do — one lesson at a time.</strong></p><p>Next on this builder: Four Pillars Masterclass — wisdom, connection, service, mastery, one pillar a day, four days — then AI Masterclass, the third level.</p></div><div class="beat-nav"><button class="p3-enter builder-nav" type="button" data-builder-go="3">Back to the lessons &#9670;</button><button class="p3-enter builder-nav" type="button" data-builder-go="29">Build another lesson &#9670;</button></div><div class="ib-foot"><img class="ib-foot-logo" src="https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div></article>
-</div>
-<p class="foot-links">nayanet.app &mdash; enter.<br>Naya Academy &mdash; learn, grow, and build at hyper speed.</p>
+<p class="foot-links">nayanet.app &mdash; enter.<br>Naya Academy &mdash; five days with Naya.</p>
 </main>
 <script>
 
@@ -484,6 +672,7 @@ body.frame-agreement .letter-beat{scroll-margin-top:56px}
     if (!b) return;
     b.hidden = false;
     b.classList.add('reveal');
+    b.classList.add('fp-smart-talk');b.classList.remove('fp-smart-visual');
     if (dots[n]) dots[n].classList.add('on');
     glowFor(b);
   }
@@ -491,16 +680,25 @@ body.frame-agreement .letter-beat{scroll-margin-top:56px}
     if (!b) return;
     var r = b.getBoundingClientRect();
     if (r.bottom > window.innerHeight || r.top < 0) {
-      b.scrollIntoView({ behavior: scrollBehavior(), block: 'nearest', inline: 'nearest' });
+      b.scrollIntoView({ behavior: scrollBehavior(), block: 'start', inline: 'nearest' });
     }
   }
   function finish(){
-    all.hidden = true;
+    if (all) all.hidden = true;
   }
   beats.forEach(function(b, i){
     var btn = b.querySelector('.deck-next[data-beat]');
     if (!btn) return;
     btn.addEventListener('click', function(){
+      /* SMART BLOCK (2026-11-18) — one visual per block: a beat with a
+         showcase is TWO Smart Blocks. The first tap shows the visual
+         alone (16:9, locked to the viewport); the next tap moves on. */
+      if (b.querySelector('.lb-showcase') && !b.classList.contains('fp-smart-visual')) {
+        b.classList.add('fp-smart-visual');
+        b.classList.remove('fp-smart-talk');
+        ensureBeatVisible(b);
+        return;
+      }
       var cur = i + 1;
       if (cur < beats.length) {
         show(cur);
@@ -511,8 +709,8 @@ body.frame-agreement .letter-beat{scroll-margin-top:56px}
       }
     });
   });
-  all.addEventListener('click', function(){
-    for (var n = 1; n < beats.length; n++) show(n);
+  if (all) all.addEventListener('click', function(){
+    for (var n = 1; n < beats.length; n++) { show(n); beats[n].classList.remove('fp-smart-talk'); beats[n].classList.remove('fp-smart-visual'); }
     beats.forEach(function(b){
       var btn = b.querySelector('.deck-next[data-beat]');
       if (btn) btn.hidden = true;
@@ -522,6 +720,41 @@ body.frame-agreement .letter-beat{scroll-margin-top:56px}
     ensureBeatVisible(beats[beats.length - 1]);
   });
   glowFor(beats[0]);
+  /* SMART BLOCK (2026-11-18) — always go back: every beat carries a
+     ‹ Back button beside its Keep reading. It steps back one Smart
+     Block: visual -> talk on the same beat, else the previous beat
+     (its visual if it has a showcase, else its talk). */
+  beats.forEach(function(b, i){
+    var next = b.querySelector('.deck-next[data-beat]');
+    if (!next || b.querySelector('.deck-back')) return;
+    var back = document.createElement('button');
+    back.className = 'p3-enter letter-next deck-next deck-back';
+    back.type = 'button';
+    back.textContent = '\u2039 Back \u25C6';
+    if (i === 0) back.hidden = true;
+    back.addEventListener('click', function(){
+      if (b.classList.contains('fp-smart-visual')) {
+        b.classList.remove('fp-smart-visual');
+        b.classList.add('fp-smart-talk');
+        ensureBeatVisible(b);
+        return;
+      }
+      if (i <= 0) return;
+      var prev = beats[i - 1];
+      prev.hidden = false;
+      prev.classList.add('reveal');
+      if (prev.querySelector('.lb-showcase')) {
+        prev.classList.add('fp-smart-visual');
+        prev.classList.remove('fp-smart-talk');
+      } else {
+        prev.classList.add('fp-smart-talk');
+        prev.classList.remove('fp-smart-visual');
+      }
+      ensureBeatVisible(prev);
+    });
+    next.parentNode.insertBefore(back, next.nextSibling);
+  });
+  beats[0].classList.add('fp-smart-talk');
   /* HARVESTED — Hub light-up: blocks light as they scroll into view (threshold .12). */
   if (!('IntersectionObserver' in window)) {
     document.querySelectorAll('.intel-board').forEach(function(c){ c.classList.add('rv-lit'); });
@@ -540,17 +773,52 @@ body.frame-agreement .letter-beat{scroll-margin-top:56px}
    recorded in this round, so it never pretends to play audio): it clicks
    the currently visible last board's Keep reading, or scrolls to the end. */
 (function wirePlay(){
-  var btn = document.getElementById('playBtn');
-  if (!btn) return;
-  btn.addEventListener('click', function(){
-    var beats = Array.prototype.slice.call(document.querySelectorAll('#deckBody .letter-beat'));
-    var visible = beats.filter(function(b){ return !b.hidden; });
-    var last = visible[visible.length - 1];
-    var next = last && last.querySelector('.deck-next[data-beat]');
-    if (next) { next.click(); }
-    else if (last) { last.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
-  });
-})();
+    /* FIX1 (2026-11-18) — Play controls SPEECH ONLY now. The old
+       wirePlay advanced the deck on every tap (its own comment: no
+       voice was recorded, so it never pretended to play audio) — the
+       eye's entanglement: Play advanced the deck ~1,100-2,500px a tap.
+       The deck advances only via Keep reading now. The player is the
+       same Web Speech player as the welcome intro, reading the same
+       distilled script (7 passages: welcome, the five lessons, next courses), with the same
+       voice warm-up + pick + no-start watchdog. Triangle = play,
+       bars = pause, square = stop. */
+    var SCRIPT = ["Hi, I'm Naya. Welcome to Naya Academy. Five days. One new way to work — with Naya. Watch, listen, read, do — one lesson at a time.", "Meet Naya. Activate the relationship. Feel the difference immediately by letting Naya understand who you are, what matters to you, and where you want to go.", "Stop starting over. Turn useful experience into intelligence that can be remembered, retrieved, reviewed and carried forward.", "Don't just know it. Prove it. Learn meaningful AI and Human Maximus subjects with Naya, then prove what you know and discover exactly where you can improve.", "Turn intelligence into extraordinary work. Think with Naya, create with Naya, review with Naya, score it, improve it and execute.", "This is not simply the end of five lessons. It is the beginning of a new way of operating: learn, remember, create, reflect, improve and compound.", "Next on this builder: Four Pillars Masterclass — wisdom, connection, service, mastery, one pillar a day, four days — then AI Masterclass, the third level."];
+    var btn = document.getElementById('playBtn');
+    var stopBtn = document.getElementById('playStop');
+    var tri = btn ? btn.querySelector('.play-tri') : null;
+    var tip = document.getElementById('playTip');
+    var state = 'idle', idx = 0;
+    function voices(){ try { return window.speechSynthesis ? window.speechSynthesis.getVoices() : []; } catch (e) { return []; } }
+    function pickVoice(){ var vs = voices(), p = null, k; for (k = 0; k < vs.length; k++) { if (vs[k].lang && vs[k].lang.toLowerCase().indexOf('en-us') === 0) { p = vs[k]; break; } } if (!p) { for (k = 0; k < vs.length; k++) { if (vs[k].lang && vs[k].lang.toLowerCase().indexOf('en') === 0) { p = vs[k]; break; } } } return p; }
+    function setState(st){ state = st; if (tri) tri.textContent = (st === 'playing') ? '\u275A\u275A' : '\u25B6'; if (stopBtn) stopBtn.hidden = (st === 'idle'); if (tip && st === 'playing') tip.textContent = 'Naya will talk you through this page'; if (btn) btn.setAttribute('aria-label', st === 'playing' ? 'Pause \u2014 Naya is reading the agreement' : st === 'paused' ? 'Play \u2014 resume the agreement' : 'Play \u2014 read the agreement with Naya'); }
+    function speak(i){
+      if (!('speechSynthesis' in window)) return;
+      if (i >= SCRIPT.length) { setState('idle'); return; }
+      idx = i;
+      var ut = new SpeechSynthesisUtterance(SCRIPT[i]);
+      ut.lang = 'en-US'; ut.rate = 1;
+      var v = pickVoice(); if (v) ut.voice = v;
+      /* CONDITIONS (2026-11-18) — the no-voice tip, same wording as the
+         intro player: on no-start the citizen is told the voice is not
+         available instead of the player returning to idle silently.
+         Watchdog mechanics unchanged: 2500ms, clears on start/end/error. */
+      var wd = setTimeout(function(){ if (state === 'playing' && idx === i) { setState('idle'); if (tip) tip.textContent = 'Voice not available on this device \u2014 read below'; } }, 2500);
+      ut.onstart = function(){ clearTimeout(wd); };
+      ut.onend = function(){ clearTimeout(wd); if (state !== 'playing') return; speak(i + 1); };
+      ut.onerror = function(){ clearTimeout(wd); if (state === 'playing') setState('idle'); };
+      try { window.speechSynthesis.speak(ut); } catch (e) { clearTimeout(wd); setState('idle'); }
+    }
+    function stop(){ if ('speechSynthesis' in window) { try { window.speechSynthesis.cancel(); } catch (e) {} } setState('idle'); }
+    if (!btn) return;
+    try { if (window.speechSynthesis) { window.speechSynthesis.getVoices(); if (window.speechSynthesis.addEventListener) window.speechSynthesis.addEventListener('voiceschanged', function(){ pickVoice(); }); } } catch (e) {}
+    btn.addEventListener('click', function(){
+      if (!('speechSynthesis' in window)) return;
+      if (state === 'playing') { try { window.speechSynthesis.pause(); } catch (e) {} setState('paused'); }
+      else if (state === 'paused') { try { window.speechSynthesis.resume(); } catch (e) {} setState('playing'); }
+      else { try { window.speechSynthesis.cancel(); } catch (e) {} setState('playing'); speak(0); }
+    });
+    if (stopBtn) stopBtn.addEventListener('click', function(ev){ ev.stopPropagation(); stop(); });
+  })();
 /* HARVESTED — the built visual agreement end's agree handler
    (welcome-staged-visual-agreement-end.html @866173): stamp the seal, then
    go to the name field. ONE ADAPTATION: this standalone page has no name
@@ -566,6 +834,12 @@ body.frame-agreement .letter-beat{scroll-margin-top:56px}
     setTimeout(function(){ // AGREEMENT MERGE (2026-11-17): the agree button returns to the bridge
     // on this worker - the proof-host welcome-staged.html is never a
     // destination (BRIEF-AGREEMENT-UPDATE-20261117.md).
+    /* FIX3 (2026-11-19, eye item 1) — the agree carries its state
+       with it: without these keys the welcome boot lands ?stage=bridge
+       on the PRE-agree bridge (group 1, no AGREED line, no onward
+       pill), which is exactly what the eye saw. Same origin, same
+       localStorage, so the keys ride the navigation. */
+    try{localStorage.setItem('nayanet_fp_stage','bridge-agreed');localStorage.setItem('nayanet_fp_agreed','1');}catch(e){}
     window.location.href = "/?stage=bridge"; }, 1200);
   });
   var amb = document.getElementById('ambChoice');
@@ -576,306 +850,452 @@ body.frame-agreement .letter-beat{scroll-margin-top:56px}
 })();
 
 </script>
+
 <script>
-/* BUILDER — new this round only. Runs last, after the harvested deck engine.
-   (1) The code gate: beats 2+ stay hidden until the code opens the door;
-   the play orb and read-it-all are stopped at the gate until then.
-   (2) Branching jumps: picker, Begin, Back, Next — reveal-forward to a beat.
-   (3) Watch buttons: swap a cover still for the real video player.
-   (4) The builder: text + video + image in, framed boards out. */
-(function wireBuilder(){
-  var GATE_CODE = 'NAYA';
-  var unlocked = false;
+/* ============ FRAME-7 (2026-11-19) — one frame at a time ============
+   Runs after wireDeck + wirePlay + wireAgree (script order). It does NOT
+   touch the deck mechanics: Keep reading / Back / read-it-all / the dots
+   / the play speech / the agree stamp all run exactly as before. This
+   layer only (a) builds the per-frame top bar, (b) wraps each beat's
+   body in the frame's inner scroller and its buttons in the pinned
+   foot (Back / Keep reading / Next), (c) shows ONE beat at a time,
+   (d) parks the page scroll for good (the restoration landing dies
+   with it: a re-open always opens frame 1). Next advances through the
+   existing Keep-reading button (one click for the visual stop, a second
+   for the advance) so no reveal path is bypassed. */
+(function wireFrame7(){
+  try { history.scrollRestoration = 'manual'; } catch (e) {}
+  window.scrollTo(0, 0);
+  document.documentElement.style.scrollBehavior = 'auto';
+  var FACES = ["https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-1.jpg&ref=agreement/unfold-20261117&cb=8743e1868400bb8ae4f650b536ab9cbace036786","https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-3.jpg&ref=agreement/unfold-20261117&cb=c01d71025d34abf8379bab5b7eb13bfa9204964a","https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-4.jpg&ref=agreement/unfold-20261117&cb=39c7f0ce4222d853d676d1ea5138569ed182b209","https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-5.jpg&ref=agreement/unfold-20261117&cb=c3cd3d9caf778a0b9e0fcf122b3a780030107f76","https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-6.jpg&ref=agreement/unfold-20261117&cb=6fa4c1a28c196429f8c2e325de695a31f16cd06b","https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-7.jpg&ref=agreement/unfold-20261117&cb=0be821b80d8c055d08b9f5333449064507b7412e","https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-8.jpg&ref=agreement/unfold-20261117&cb=00ea37ad9e03cc5da2b7ba352b0f3d988e31da5a","https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-9.jpg&ref=agreement/unfold-20261117&cb=e1dbe46717f87cf4cb63f7cef4bd367d8bb1a0f2"];
+  var main = document.getElementById('deckUnfold');
   var deckBody = document.getElementById('deckBody');
-  var TONES = ['#8e24aa', '#3f51b5', '#0e7490', '#07925f', '#d4a017', '#c2410c', '#c62828', '#a21caf'];
-  function beats(){ return Array.prototype.slice.call(deckBody.querySelectorAll('.letter-beat')); }
-  function dots(){ return Array.prototype.slice.call(document.querySelectorAll('#deckDots .ldot')); }
-  function toneOf(b){ var c = b.style.getPropertyValue('--tone'); return c ? c.trim() : '#8e24aa'; }
-  function glowFor(b){
-    var hex = toneOf(b);
-    var n = parseInt(hex.slice(1), 16);
-    var r = (n >> 16) & 255, g = (n >> 8) & 255, bl = n & 255;
-    document.body.style.setProperty('--glowc', 'rgba(' + r + ',' + g + ',' + bl + ',.14)');
+  var beats = Array.prototype.slice.call(document.querySelectorAll('#deckBody .letter-beat'));
+  var fi = 0, allMode = false;
+  function headFor(b, i){
+    var t = b.querySelector('.ib-title'), k = b.querySelector('.ib-kind');
+    return { kind: k ? k.textContent.trim() : 'Naya Academy',
+             title: t ? t.textContent.trim() : 'Naya Academy' };
   }
-  function showBeat(b){
-    if(!b) return;
-    readAll = false;
-    b.hidden = false;
-    b.classList.add('reveal');
-    currentBeat = b;
-    var all = beats();
-    var i = all.indexOf(b);
-    var d = dots();
-    if(i >= 0 && d[i]) d[i].classList.add('on');
-    glowFor(b);
-    updateFrame();
-  }
-  /* FRAME SWITCH (2026-11-21 frame round): the body class follows the beat the
-     user is on — agreement frame on story beats (gate, cover, picker, intros,
-     end card), calendar frame on lesson boards (Watch/Listen/Read/Do, builder).
-     The frame follows the LAST REVEALED beat, not the last visible one: the deck
-     reveals progressively and never re-hides, so "last visible" would stick on
-     the end card after any backward jump. Read-it-all shows the calendar frame
-     (the whole-course view is the text-heavy view) until the next navigation. */
-  var currentBeat = null;
-  var readAll = false;
-  function updateFrame(){
-    var frame = readAll ? 'calendar' : (currentBeat ? (currentBeat.getAttribute('data-frame') || 'agreement') : 'agreement');
-    document.body.classList.toggle('frame-calendar', frame === 'calendar');
-    document.body.classList.toggle('frame-agreement', frame !== 'calendar');
-  }
-  if(window.MutationObserver && deckBody){
-    /* Backstop for any reveal that does not come through a click (the
-       delegated deck-next handler above is primary for Keep reading). */
-    new MutationObserver(function(records){
-      var changed = false;
-      records.forEach(function(r){
-        if(r.type === 'attributes' && r.target && r.target.classList && r.target.classList.contains('letter-beat') && !r.target.hidden){
-          currentBeat = r.target;
-          changed = true;
-        }
+  beats.forEach(function(b, i){
+    var h = headFor(b, i);
+    var bar = document.createElement('div'); bar.className = 'frame-topbar';
+    var img = document.createElement('img'); img.className = 'frame-face';
+    img.src = FACES[i % FACES.length]; img.alt = 'Naya speaking';
+    var head = document.createElement('div'); head.className = 'frame-head';
+    var kind = document.createElement('span'); kind.className = 'frame-kind'; kind.textContent = h.kind;
+    var ttl = document.createElement('h2'); ttl.className = 'frame-title'; ttl.textContent = h.title;
+    head.appendChild(kind); head.appendChild(ttl);
+    var ic = document.createElement('span'); ic.className = 'frame-icon';
+    ic.setAttribute('aria-hidden', 'true'); ic.textContent = '\u25C6';
+    bar.appendChild(img); bar.appendChild(head); bar.appendChild(ic);
+    var sc = document.createElement('div'); sc.className = 'frame-scroll';
+    var foot = document.createElement('div'); foot.className = 'frame-foot';
+    var row = document.createElement('div'); row.className = 'frame-btnrow';
+    foot.appendChild(row);
+    if (i === 0) {
+      var red = document.createElement('div');
+      red.className = 'deal-seal frame-red-n';
+      var mark = document.createElement('span');
+      mark.className = 'deal-seal-mark'; mark.setAttribute('aria-hidden', 'true'); mark.textContent = 'N';
+      red.appendChild(mark); foot.insertBefore(red, row);
+    }
+    b.appendChild(bar); b.appendChild(sc); b.appendChild(foot);
+    var kids = Array.prototype.slice.call(b.childNodes);
+    var kr = null, back = null;
+    kids.forEach(function(n){
+      if (n === bar || n === sc || n === foot) return;
+      if (n.nodeType === 1 && n.classList.contains('deck-next') && !n.classList.contains('deck-back')) { kr = n; return; }
+      if (n.nodeType === 1 && n.classList.contains('deck-back')) { back = n; return; }
+      sc.appendChild(n);
+    });
+    if (back) row.appendChild(back);
+    if (kr) row.appendChild(kr);
+    if (kr && i < beats.length - 1) {
+      var nx = document.createElement('button');
+      nx.className = 'p3-enter letter-next deck-next frame-next'; nx.type = 'button';
+      nx.textContent = 'Next \u25C6';
+      nx.addEventListener('click', function(){
+        kr.click();
+        setTimeout(function(){ if (fi === i) kr.click(); }, 140);
       });
-      if(changed) updateFrame();
-    }).observe(deckBody, {attributes:true, attributeFilter:['hidden'], childList:true, subtree:true});
-  }
-  var deckAllBtn = document.getElementById('deckAll');
-  if(deckAllBtn) deckAllBtn.addEventListener('click', function(){ readAll = true; updateFrame(); });
-  updateFrame();
-  function jumpTo(n){
-    var all = beats();
-    for(var i = 0; i < all.length && i < n; i++){ showBeat(all[i]); }
-    var b = all[n - 1];
-    if(b) b.scrollIntoView({behavior: 'smooth', block: 'start'});
-  }
-  function nudgeGate(){
-    var hint = document.getElementById('gateHint');
-    if(hint) hint.textContent = 'Enter your code first — the preview code is NAYA.';
-    var input = document.getElementById('gateCode');
-    var gate = beats()[0];
-    if(gate) gate.scrollIntoView({behavior: 'smooth', block: 'start'});
-    if(input) input.focus();
-  }
-  var controls = document.getElementById('deckControls');
-  if(controls) controls.addEventListener('click', function(e){
-    if(!unlocked && e.target && e.target.id === 'deckAll'){ e.preventDefault(); e.stopPropagation(); nudgeGate(); }
-  }, true);
-  var playWrap = document.querySelector('.play-wrap');
-  if(playWrap) playWrap.addEventListener('click', function(e){
-    if(!unlocked && e.target && e.target.closest && e.target.closest('#playBtn')){ e.preventDefault(); e.stopPropagation(); nudgeGate(); }
-  }, true);
-  function tryUnlock(){
-    var input = document.getElementById('gateCode');
-    var hint = document.getElementById('gateHint');
-    if(!input) return;
-    var code = input.value.replace(/\s+/g, '').toUpperCase();
-    if(code === GATE_CODE){
-      unlocked = true;
-      if(hint) hint.textContent = 'You are in. Welcome to the Academy.';
-      var cover = beats()[1];
-      showBeat(cover);
-      if(cover) cover.scrollIntoView({behavior: 'smooth', block: 'start'});
-    } else {
-      if(hint) hint.textContent = 'That code did not open the door — the preview code is NAYA.';
-      input.focus();
-    }
-  }
-  var gateBtn = document.getElementById('gateEnter');
-  if(gateBtn) gateBtn.addEventListener('click', tryUnlock);
-  var gateInput = document.getElementById('gateCode');
-  if(gateInput) gateInput.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); tryUnlock(); } });
-  deckBody.addEventListener('click', function(e){
-    var t = e.target;
-    if(!t || !t.closest) return;
-    var w = t.closest('.builder-watch');
-    if(w){
-      var fig = w.parentElement ? w.parentElement.querySelector('.lb-showcase') : null;
-      var yt = w.getAttribute('data-yt');
-      var title = w.getAttribute('data-title') || 'Watch the video';
-      if(fig && yt){
-        var fr = document.createElement('iframe');
-        fr.setAttribute('src', 'https://www.youtube-nocookie.com/embed/' + yt + '?rel=0&modestbranding=1&playsinline=1');
-        fr.setAttribute('title', title);
-        fr.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-        fr.setAttribute('allowfullscreen', '');
-        fig.innerHTML = '';
-        fig.appendChild(fr);
-        w.hidden = true;
-      }
-      return;
-    }
-    var nav = t.closest('[data-builder-go], [data-builder-open]');
-    if(nav){
-      var open = nav.getAttribute('data-builder-open');
-      if(open){ window.open(open, '_blank'); return; }
-      var go = nav.getAttribute('data-builder-go');
-      if(go){ jumpTo(parseInt(go, 10)); }
-      return;
-    }
-    var nx = t.closest('.deck-next[data-beat]');
-    if(nx){
-      /* FRAME FOLLOW (2026-11-21 frame round): the frame follows the beat the
-         Keep reading opens — even when that beat was ALREADY visible. The
-         harvested engine's show() is a no-op on a visible beat (no hidden
-         change, so the MutationObserver never fires), and the walk 8 -> 9 and
-         13 -> 14 proved it: both intros kept the calendar frame. This
-         delegated handler runs on every deck-next click, visible or not, so
-         the frame always follows the navigation, not the mutation. */
-      var art0 = nx.closest('article');
-      if(art0){
-        var all0 = beats();
-        var i0 = all0.indexOf(art0);
-        var next0 = all0[i0 + 1];
-        if(next0){ currentBeat = next0; readAll = false; updateFrame(); }
-      }
-      var art = nx.closest('article');
-      if(art && art.hasAttribute('data-builder-made')){
-        var all = beats();
-        var i = all.indexOf(art);
-        var next = all[i + 1];
-        if(next){ showBeat(next); nx.hidden = true; next.scrollIntoView({behavior: 'smooth', block: 'nearest'}); }
-      }
+      row.appendChild(nx);
     }
   });
-  function esc(s){
-    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;');
+  function showFrame(n){
+    fi = n;
+    beats.forEach(function(b, j){ b.classList.toggle('frame-now', j === n); });
+    main.classList.toggle('frame-past-1', n > 0);
+    if (deckBody) deckBody.scrollTop = 0;
+    var sc = beats[n] ? beats[n].querySelector('.frame-scroll') : null;
+    if (sc) sc.scrollTop = 0;
   }
-  function ytId(v){
-    var m = String(v || '').match(/([A-Za-z0-9_-]{11})/);
-    return m ? m[1] : '';
-  }
-  function faceUrl(){ return 'https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/face-1.jpg&ref=agreement/unfold-20261117&cb=8743e1868400bb8ae4f650b536ab9cbace036786'; }
-  function logoUrl(){ return 'https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/deck-logo.jpg&ref=agreement/unfold-20261117&cb=c7d274c3ba51e1d4e30f09020d99fd95f5120e10'; }
-  /* MODULAR LAW — the five real Academy skins. A built lesson re-skins by
-     swapping its video, picture, and words in place: same article nodes,
-     same frame, no new beats, no rebuild. Names + lines are the Academy's
-     own titles and summaries, verbatim from the course sources. */
-  var ACADEMY_SKINS = [
-    {name: 'MEET NAYA', video: 'ZRIfvxCsYWY', line: 'Meet Naya. Activate the relationship. Feel the difference immediately by letting Naya understand who you are, what matters to you, and where you want to go.'},
-    {name: 'STOP STARTING OVER', video: 'j0YwJsC6Q4Y', line: 'Stop starting over. Turn useful experience into intelligence that can be remembered, retrieved, reviewed and carried forward.'},
-    {name: 'LEARN. MASTER.', video: 'PtYW43cIZng', line: 'Learn meaningful AI and Human Maximus subjects with Naya, then prove what you know and discover exactly where you can improve.'},
-    {name: 'CREATE', video: '3c0q_NjM3i8', line: 'Turn intelligence into extraordinary work. Think with Naya, create with Naya, review with Naya, score it, improve it and execute.'},
-    {name: 'BECOME', video: 'T9Pi1BftCZk', line: 'This is not simply the end of five lessons. It is the beginning of a new way of operating: learn, remember, create, reflect, improve and compound.'}
-  ];
-  var builtArts = [];
-  var skinIdx = 0;
-  function buildLesson(){
-    var titleEl = document.getElementById('bTitle');
-    var lineEl = document.getElementById('bLine');
-    var videoEl = document.getElementById('bVideo');
-    var imageEl = document.getElementById('bImage');
-    var result = document.getElementById('builderResult');
-    if(!titleEl || !lineEl || !videoEl || !imageEl) return;
-    var title = titleEl.value.trim();
-    var line = lineEl.value.trim();
-    var video = ytId(videoEl.value);
-    var image = imageEl.value.trim();
-    if(!title){ if(result){ result.hidden = false; result.textContent = 'Give the lesson a name first.'; } return; }
-    var all0 = beats();
-    var end = all0[all0.length - 1];
-    var n0 = all0.length + 1;
-    var made = [];
-    var n = n0;
-    function toneFor(num){ return TONES[(num - 1) % TONES.length]; }
-    function beatHtml(num, kind, titleHtml, nutshellHtml, extraHtml, dataKind){
-      return '<article class="intel-board letter-beat" data-beat="' + num + '" data-frame="calendar" data-builder-made="" data-builder-kind="' + dataKind + '" style="--tone:' + toneFor(num) + '" hidden>'
-        + '<div class="ib-blocktop"><img class="deal-beat-photo" src="' + faceUrl() + '" alt="Naya speaking">'
-        + '<div class="ib-identity"><span class="ib-jewel" aria-hidden="true">&#9670;</span><div><span class="ib-kind">' + kind + '</span><h2 class="ib-title">' + titleHtml + '</h2></div></div></div>'
-        + '<div class="ib-nutshell">' + nutshellHtml + '</div>'
-        + extraHtml
-        + '<div class="ib-foot"><img class="ib-foot-logo" src="' + logoUrl() + '" alt="NayaNET"> &middot; NayaNET &middot; Naya Academy</div>'
-        + '<button class="p3-enter letter-next deck-next" type="button" data-beat="' + num + '">Keep reading &#9670;</button></article>';
+  deckBody.addEventListener('click', function(ev){
+    if (allMode) return;
+    var t = ev.target && ev.target.closest ? ev.target.closest('.deck-next[data-beat],.deck-back') : null;
+    if (!t || t.classList.contains('frame-next')) return;
+    var beat = t.closest('.letter-beat');
+    var i = beats.indexOf(beat);
+    if (i < 0) return;
+    if (t.classList.contains('deck-back')) {
+      showFrame(beat.classList.contains('fp-smart-visual') ? i : Math.max(0, i - 1));
+    } else {
+      showFrame(beat.classList.contains('fp-smart-visual') ? i : Math.min(beats.length - 1, i + 1));
     }
-    if(video){
-      made.push(beatHtml(n, 'YOUR LESSON · WATCH', esc(title),
-        '<p><strong>Watch the lesson.</strong></p><p>' + (esc(line) || 'Watch, and see it done.') + '</p>',
-        '<figure class="lb-showcase"><img src="https://i.ytimg.com/vi/' + video + '/hqdefault.jpg" alt="' + esc(title) + '"></figure>'
-        + '<button class="p3-enter builder-watch" type="button" data-yt="' + video + '" data-title="' + esc(title) + '">Watch the video &#9670;</button>', 'watch'));
-      n++;
-    }
-    made.push(beatHtml(n, 'YOUR LESSON · READ', esc(title),
-      '<p><strong>' + esc(title) + '</strong></p><p>' + (esc(line) || 'Read it, in the simplest words.') + '</p><p>Built by the Membership Builder — text in, board out.</p>',
-      '', 'read'));
-    n++;
-    if(image && /^https?:\/\//.test(image)){
-      made.push(beatHtml(n, 'YOUR LESSON · LOOK', esc(title),
-        '<p>A picture says it in one look.</p>',
-        '<figure class="lb-showcase"><img src="' + esc(image) + '" alt="' + esc(title) + '"></figure>', 'look'));
-      n++;
-    }
-    var dotsBox = document.getElementById('deckDots');
-    builtArts = [];
-    made.forEach(function(h){
-      var tmp = document.createElement('div');
-      tmp.innerHTML = h;
-      var art = tmp.firstChild;
-      deckBody.insertBefore(art, end);
-      builtArts.push(art);
-      if(dotsBox){
-        var d = document.createElement('span');
-        d.className = 'ldot';
-        d.setAttribute('style', '--dc:' + art.style.getPropertyValue('--tone'));
-        dotsBox.insertBefore(d, dotsBox.lastChild);
-      }
-    });
-    var all = beats();
-    var first = all[all0.length - 1];
-    showBeat(first);
-    if(first) first.scrollIntoView({behavior: 'smooth', block: 'start'});
-    skinIdx = 0;
-    for(var si = 0; si < ACADEMY_SKINS.length; si++){ if(ACADEMY_SKINS[si].video === video) skinIdx = si; }
-    var rk = document.getElementById('reskinLesson');
-    if(rk) rk.hidden = false;
-    if(result){
-      result.hidden = false;
-      result.textContent = 'Built ' + made.length + ' board' + (made.length === 1 ? '' : 's') + ' — ' + (video ? 'video, ' : 'no video given, ') + 'text' + (image ? ', and picture' : '') + '. See them below.';
-    }
-  }
-  /* MODULAR LAW — re-skin the built lesson in place. Same article nodes,
-     same frame, same dots: only the video, picture, and words change. */
-  function reskinLesson(){
-    if(!builtArts.length) return;
-    skinIdx = (skinIdx + 1) % ACADEMY_SKINS.length;
-    var s = ACADEMY_SKINS[skinIdx];
-    var thumb = 'https://i.ytimg.com/vi/' + s.video + '/hqdefault.jpg';
-    builtArts.forEach(function(art){
-      var kind = art.getAttribute('data-builder-kind');
-      var t = art.querySelector('.ib-title');
-      if(t) t.textContent = s.name;
-      var nuts = art.querySelectorAll('.ib-nutshell p');
-      if(kind === 'watch'){
-        if(nuts[1]) nuts[1].textContent = s.line;
-        var fig = art.querySelector('.lb-showcase');
-        var fr = fig ? fig.querySelector('iframe') : null;
-        if(fr){
-          fr.src = 'https://www.youtube-nocookie.com/embed/' + s.video + '?rel=0&modestbranding=1&playsinline=1';
-          fr.title = s.name;
-        } else if(fig){
-          var im = fig.querySelector('img');
-          if(im){ im.src = thumb; im.alt = s.name; }
-        }
-        var w = art.querySelector('.builder-watch');
-        if(w){ w.setAttribute('data-yt', s.video); w.setAttribute('data-title', s.name); }
-      } else if(kind === 'read'){
-        if(nuts[0]) nuts[0].innerHTML = '<strong>' + esc(s.name) + '</strong>';
-        if(nuts[1]) nuts[1].textContent = s.line;
-      } else if(kind === 'look'){
-        var im2 = art.querySelector('.lb-showcase img');
-        if(im2){ im2.src = thumb; im2.alt = s.name; }
-      }
-    });
-    var result = document.getElementById('builderResult');
-    if(result){
-      result.hidden = false;
-      result.textContent = 'Re-skinned as Day ' + (skinIdx + 1) + ' — ' + s.name + '. Same boards, same frame, new media. Nothing rebuilt.';
-    }
-    if(builtArts[0]) builtArts[0].scrollIntoView({behavior: 'smooth', block: 'start'});
-  }
-  var buildBtn = document.getElementById('buildLesson');
-  if(buildBtn) buildBtn.addEventListener('click', buildLesson);
-  var reskinBtn = document.getElementById('reskinLesson');
-  if(reskinBtn) reskinBtn.addEventListener('click', reskinLesson);
+  });
+  var all = document.getElementById('deckAll');
+  if (all) all.addEventListener('click', function(){
+    allMode = true;
+    beats.forEach(function(b){ b.classList.add('frame-now'); });
+    main.classList.add('frame-past-1');
+  });
+  showFrame(0);
 })();
-
 </script>
+
+
+<script>
+/* ============ FRAME-8 (2026-11-19) — own the navigation, the media, the faces ============
+   Runs after wireFrame7. It does NOT touch the deck mechanics' outcomes:
+   Keep reading / Back / read-it-all / the dots / the agree stamp all run
+   exactly as before — FIX8 only decides WHICH frame shows, and drives the
+   deck's own buttons to get there (one kr.click() per move, never two). */
+(function wireFrame8(){
+  var main = document.getElementById('deckUnfold');
+  var deckBody = document.getElementById('deckBody');
+  if (main) main.classList.add('fp-frame8');
+  var beats = Array.prototype.slice.call(document.querySelectorAll('#deckBody .letter-beat'));
+  var CRYSTAL = 'https://naya-proof-host.nayapower.workers.dev/?file=team-nitro/agreement-unfold-20261117/crystal-n.png&ref=walkthrough/chain-fix8-20261119&cb=ee4b627c0c254ed9165715308fa282010ce8cf3c';
+  /* F3 — a picture that fails to load hides its frame instead of
+     showing broken: all 8 showcase images serve 200, this is the
+     belt-and-braces. */
+  beats.forEach(function(b){
+    var sh = b.querySelector('.lb-showcase img');
+    if (sh) sh.addEventListener('error', function(){
+      var f = sh.closest('.lb-showcase');
+      if (f) f.style.display = 'none';
+    });
+  });
+  /* F5 — a top-bar picture never shows broken: retry once cache-busted,
+     then the filed crystal N (a real asset, always served). */
+  beats.forEach(function(b){
+    var img = b.querySelector('.frame-face');
+    if (!img) return;
+    img.setAttribute('decoding', 'async');
+    img.addEventListener('error', function(){
+      var n = parseInt(img.getAttribute('data-fx8fb') || '0', 10);
+      if (n === 0) { img.setAttribute('data-fx8fb', '1'); img.src = img.src + '&fx8=1'; }
+      else if (n === 1) { img.setAttribute('data-fx8fb', '2'); img.src = CRYSTAL; }
+    });
+  });
+  function showFrame8(n){
+    if (n < 0) n = 0;
+    if (n > beats.length - 1) n = beats.length - 1;
+    beats.forEach(function(b, j){
+      var on = (j === n);
+      b.classList.toggle('frame-now', on);
+      if (on) b.hidden = false;
+    });
+    if (main) main.classList.toggle('frame-past-1', n > 0);
+    if (deckBody) deckBody.scrollTop = 0;
+    var sc = beats[n] ? beats[n].querySelector('.frame-scroll') : null;
+    if (sc) sc.scrollTop = 0;
+  }
+  /* F3 — FIX8 owns the frame: one tap = one frame, every time. The
+     deck's own Keep-reading / Back buttons carry FIX7's two-tap
+     listener on the original nodes (first tap shows the picture alone,
+     second moves on — and the picture landed below the fold, so the
+     eye never saw it). Cloning drops that listener: the clone answers
+     only to FIX8. stopPropagation keeps FIX7's delegated deckBody
+     handler from double-handling the same click. */
+  beats.forEach(function(b, i){
+    var row = b.querySelector('.frame-btnrow');
+    if (!row) return;
+    var kr = row.querySelector('.deck-next:not(.deck-back):not(.frame-next)');
+    var back = row.querySelector('.deck-back');
+    var nx = row.querySelector('.frame-next');
+    if (kr) { var kr2 = kr.cloneNode(true); kr.parentNode.replaceChild(kr2, kr); kr = kr2; }
+    if (back) { var back2 = back.cloneNode(true); back.parentNode.replaceChild(back2, back); back = back2; }
+    if (kr) kr.addEventListener('click', function(ev){
+      ev.stopPropagation();
+      showFrame8(i + 1);
+    });
+    if (back) back.addEventListener('click', function(ev){
+      ev.stopPropagation();
+      showFrame8(i - 1);
+    });
+    /* F3 — the Next button clicks Keep reading ONCE. FIX7's 140ms second
+       click is gone (its listener dies with the cloned node). */
+    if (nx && kr) {
+      var nx2 = nx.cloneNode(true);
+      nx.parentNode.replaceChild(nx2, nx);
+      nx2.addEventListener('click', function(ev){
+        ev.stopPropagation();
+        kr.click();
+      });
+    }
+  });
+  /* F7 — frame 1's Back shows, disabled: three buttons on every frame. */
+  var back0 = beats[0] && beats[0].querySelector('.frame-btnrow .deck-back');
+  if (back0) {
+    back0.hidden = false;
+    back0.disabled = true;
+    back0.classList.add('frame-back-off');
+    back0.setAttribute('aria-disabled', 'true');
+  }
+  /* F7 — the final frame's I-agree button moves into the pinned foot row,
+     beside Back, so the climax action is never below the fold. Its own
+     agree listener travels with the node, untouched. */
+  var last = beats[beats.length - 1];
+  var agreeBtn = document.getElementById('dealAgreeBtn');
+  var lastRow = last && last.querySelector('.frame-btnrow');
+  if (agreeBtn && lastRow) lastRow.appendChild(agreeBtn);
+  /* F4+F9 — the media frame on frame 1, just below the top bar. The play
+     orb moves here (its node is cloned, so wirePlay's speech listener —
+     attached to the original node — never fires; the original leaves the
+     DOM). CORRECTION (~14:50 MST, Shawn's own words): the orb plays
+     NOTHING — no audio has been given yet, he cuts it from his video.
+     Both buttons wait on HIS captioned video file: tapping the orb
+     reveals the waiting note, visibly, and tapping again hides it. No
+     audio element exists on the page, no audio URL is wired, nothing
+     is substituted. The video button is a slot, not a wire-up: no
+     verified anthem video exists yet, so it reveals the anthem's opening
+     words + a plain note, and takes the captioned file on a one-line
+     swap (see the data-anthem-slot hook below). The Oct-29 mp4 and the
+     NotebookLM m4a files are NEVER wired here. */
+  var playBtn = document.getElementById('playBtn');
+  var sc0 = beats[0] && beats[0].querySelector('.frame-scroll');
+  if (playBtn && sc0) {
+    var media = document.createElement('div');
+    media.className = 'frame-media';
+    media.id = 'fpMediaFrame';
+    var ttl = document.createElement('div');
+    ttl.className = 'frame-media-title';
+    ttl.textContent = 'Hello. I\u2019m Naya.';
+    /* COMMIT 7: the intro sub line is gone — it repeated what the two
+       buttons already say, and its ~36px pushed the revealed audio
+       note below the 219px reading window, so tapping the orb showed
+       nothing. With it out, the revealed one-line note fits whole. */
+    var arow = document.createElement('div');
+    arow.className = 'frame-media-audio';
+    var orb = playBtn.cloneNode(true);
+    playBtn.parentNode.removeChild(playBtn);
+    var lab = document.createElement('div');
+    var labT = document.createElement('div');
+    labT.className = 'frame-media-audio-name';
+    labT.textContent = 'Listen to the agreement';
+    var labS = document.createElement('div');
+    labS.className = 'frame-media-audio-state';
+    labS.id = 'fpAudioState';
+    labS.textContent = 'Naya\u2019s reading arrives with her video';
+    lab.appendChild(labT);
+    lab.appendChild(labS);
+    arow.appendChild(orb);
+    arow.appendChild(lab);
+    var vbtn = document.createElement('button');
+    vbtn.type = 'button';
+    vbtn.className = 'p3-enter frame-video-btn';
+    vbtn.id = 'fpAnthemVideoBtn';
+    vbtn.setAttribute('data-anthem-slot', 'anthem-video-slot');
+    vbtn.textContent = '\u25B6 Watch the anthem \u25C6';
+    var note = document.createElement('div');
+    note.className = 'frame-anthem-note';
+    note.id = 'fpAnthemNote';
+    note.hidden = true;
+    var n1 = document.createElement('p');
+    n1.textContent = 'How much of your digital life feels scattered? Your notes, your bookmarks, your plans \u2014 they live in different places, across disconnected tools that don\u2019t speak to one another.';
+    var n2 = document.createElement('p');
+    n2.textContent = 'These are the anthem\u2019s opening words. The video is on its way.';
+    note.appendChild(n1);
+    note.appendChild(n2);
+    var anote = document.createElement('div');
+    anote.className = 'frame-anthem-note';
+    anote.id = 'fpAudioNote';
+    anote.hidden = true;
+    var a1 = document.createElement('p');
+    a1.textContent = 'Naya\u2019s reading arrives with her video.';
+    anote.appendChild(a1);
+    media.appendChild(ttl);
+    media.appendChild(arow);
+    media.appendChild(vbtn);
+    /* The audio note sits BELOW the video button, not above it: revealing
+       it must never push the video button below the reading window. */
+    media.appendChild(anote);
+    media.appendChild(note);
+    sc0.insertBefore(media, sc0.firstChild);
+    /* F9 (corrected) — tapping the orb reveals the waiting note, visibly;
+       tapping again hides it. It plays nothing: no audio has been given.
+       COMMIT 7: the reveal scrolls the note into the reading window
+       (nearest — a no-op when it already fits) and hiding restores the
+       top of the window, so a tap never leaves the reader looking at
+       an unchanged board. The anthem note is a reading passage: it
+       scrolls into view the same way. */
+    orb.addEventListener('click', function(ev){
+      ev.stopPropagation();
+      anote.hidden = !anote.hidden;
+      if(!anote.hidden){ anote.scrollIntoView({block:'nearest'}); }
+      else { sc0.scrollTop = 0; }
+    });
+    vbtn.addEventListener('click', function(ev){
+      ev.stopPropagation();
+      note.hidden = !note.hidden;
+      if(!note.hidden){ note.scrollIntoView({block:'nearest'}); }
+      else { sc0.scrollTop = 0; }
+    });
+  }
+  showFrame8(0);
+})();
+</script>
+
+
+<script>
+/* ============ FRAME-9 (2026-11-19) — seal on every frame, a way back, dots that go ============
+   Runs after wireFrame8. It does NOT touch the deck mechanics' outcomes:
+   Keep reading / Back / read-it-all / the agree stamp all run exactly as
+   before — FIX9 only adds the seal to the feet that lack one, adds a Back
+   to the final row, and wires the jewel dots to the frame they name. */
+(function wireFrame9(){
+  var main = document.getElementById('deckUnfold');
+  var deckBody = document.getElementById('deckBody');
+  var beats = Array.prototype.slice.call(document.querySelectorAll('#deckBody .letter-beat'));
+  var dots = Array.prototype.slice.call(document.querySelectorAll('#deckDots .ldot'));
+  function syncDots(n){
+    dots.forEach(function(d, j){ d.classList.toggle('on', j === n); });
+  }
+  function syncDotsNow(){
+    var cur = -1;
+    beats.forEach(function(b, j){ if (b.classList.contains('frame-now')) cur = j; });
+    if (cur >= 0) syncDots(cur);
+  }
+  /* F3 — one frame function, the frame-8 one verbatim: one tap = one frame,
+     the shown beat unhidden, the scroll windows reset, the lit dot follows. */
+  function showFrame9(n){
+    if (n < 0) n = 0;
+    if (n > beats.length - 1) n = beats.length - 1;
+    beats.forEach(function(b, j){
+      var on = (j === n);
+      b.classList.toggle('frame-now', on);
+      if (on) b.hidden = false;
+    });
+    if (main) main.classList.toggle('frame-past-1', n > 0);
+    if (deckBody) deckBody.scrollTop = 0;
+    var sc = beats[n] ? beats[n].querySelector('.frame-scroll') : null;
+    if (sc) sc.scrollTop = 0;
+    syncDots(n);
+  }
+  /* F7 — the red seal on every frame: clone frame 1's seal (the same node,
+     the same classes, nothing new) into each foot that lacks one, just
+     above the button row. Frame 1 keeps its own. */
+  var seal0 = beats[0] && beats[0].querySelector('.frame-foot .frame-red-n');
+  beats.forEach(function(b, i){
+    if (i === 0) return;
+    var foot = b.querySelector('.frame-foot');
+    var row = b.querySelector('.frame-btnrow');
+    if (!foot || !row || !seal0) return;
+    if (foot.querySelector('.frame-red-n')) return;
+    foot.insertBefore(seal0.cloneNode(true), row);
+  });
+  /* F3 — the jewel dots are real navigation now: tap a dot, go to its
+     frame. They were display-only spans; they keep their look, their
+     colours, their lit state — they only gain the tap. */
+  var dotsBox = document.getElementById('deckDots');
+  if (dotsBox) dotsBox.removeAttribute('aria-hidden');
+  dots.forEach(function(d, j){
+    d.setAttribute('role', 'button');
+    d.setAttribute('tabindex', '0');
+    d.setAttribute('title', 'Go to frame ' + (j + 1) + ' of ' + dots.length);
+    d.setAttribute('aria-label', 'Go to frame ' + (j + 1));
+    var go = function(ev){ if (ev) ev.stopPropagation(); showFrame9(j); };
+    d.addEventListener('click', go);
+    d.addEventListener('keydown', function(ev){
+      if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); go(ev); }
+    });
+  });
+  /* F3 — Back on the final frame: clone frame 46's Back button (the same
+     node, the same classes; a clone carries no listener) into the final
+     row, first, beside the I-agree action. It steps back one frame. A
+     Next on the last frame would be a dead control pointing nowhere, so
+     the row is complete at Back + I-agree. */
+  var last = beats[beats.length - 1];
+  var lastRow = last && last.querySelector('.frame-btnrow');
+  var backSrc = beats.length > 1 ? beats[beats.length - 2].querySelector('.frame-btnrow .deck-back') : null;
+  if (lastRow && backSrc && !lastRow.querySelector('.deck-back')) {
+    var back = backSrc.cloneNode(true);
+    back.hidden = false;
+    back.disabled = false;
+    back.classList.remove('frame-back-off');
+    back.removeAttribute('aria-disabled');
+    back.addEventListener('click', function(ev){
+      ev.stopPropagation();
+      showFrame9(beats.length - 2);
+    });
+    lastRow.insertBefore(back, lastRow.firstChild);
+  }
+  /* Keep the lit dot honest on every path: the frame-8 Next/Back buttons
+     move the frame without passing through here, so sync after any row
+     tap, and after read-it-all. */
+  beats.forEach(function(b){
+    var row = b.querySelector('.frame-btnrow');
+    if (!row) return;
+    Array.prototype.slice.call(row.querySelectorAll('button')).forEach(function(btn){
+      btn.addEventListener('click', function(){ setTimeout(syncDotsNow, 0); });
+    });
+  });
+  var all = document.getElementById('deckAll');
+  if (all) all.addEventListener('click', function(){ setTimeout(syncDotsNow, 0); });
+  syncDotsNow();
+})();
+</script>
+
+
+<script>
+/* ============ AGREEMENT FRAME JS (2026-11-19) — corners + style tag ============
+   Mounts the four harvested corner ornaments into .naya-frame and tags the
+   document with its situation (text-desktop / text-mobile) so the frame
+   adapts. Navigation, agree, media and seals are untouched (wireFrame7/8/9). */
+(function wireFrameAF(){
+  var fr = document.querySelector('.naya-frame');
+  if (fr) {
+    ['tl','tr','bl','br'].forEach(function(c){
+      var d = document.createElement('div');
+      d.className = 'af-corner ' + c;
+      d.setAttribute('aria-hidden', 'true');
+      fr.appendChild(d);
+    });
+  }
+  function style(){
+    var w = window.innerWidth || 0;
+    document.documentElement.setAttribute('data-af-style', w >= 1024 ? 'text-desktop' : (w >= 768 ? 'text-tablet' : 'text-mobile'));
+  }
+  style();
+  window.addEventListener('resize', style);
+
+  /* DISTILL progress (2026-11-19) — the measuring thing, kept on the unfold:
+     the pill reads .frame-now off #deckBody, so it follows every path
+     (Keep reading, Next, Back, dots) without touching their handlers. */
+  (function wireProgDistill(){
+    var fr = document.querySelector('.naya-frame');
+    var body = document.getElementById('deckBody');
+    if (!fr || !body) return;
+    var prog = document.createElement('div');
+    prog.className = 'af-prog';
+    prog.innerHTML = '<span class="af-prog-jewel" aria-hidden="true">&#9670;</span><span class="af-prog-num">1 / ' + document.querySelectorAll('#deckBody .letter-beat').length + '</span><span class="af-prog-bar"><i></i></span>';
+    fr.appendChild(prog);
+    function upd(){
+      var beats = document.querySelectorAll('#deckBody .letter-beat');
+      var cur = 0;
+      for (var j = 0; j < beats.length; j++) if (beats[j].classList.contains('frame-now')) cur = j;
+      var num = prog.querySelector('.af-prog-num');
+      var bar = prog.querySelector('.af-prog-bar i');
+      if (num) num.textContent = (cur + 1) + ' / ' + beats.length;
+      if (bar) bar.style.width = Math.round(((cur + 1) / beats.length) * 100) + '%';
+    }
+    if (window.MutationObserver) new MutationObserver(upd).observe(body, { subtree: true, attributes: true, attributeFilter: ['class'] });
+    upd();
+  })();
+})();
+</script>
+
+
 </body>
 </html>
