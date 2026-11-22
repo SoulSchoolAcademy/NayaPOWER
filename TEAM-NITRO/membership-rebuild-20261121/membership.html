@@ -5111,7 +5111,7 @@ html.os-calm .os-dash .ph-card::after,html.os-calm .os-dash-pulse .stat-card::be
 
 </div>
 <div class="ph-actions-row up-actions">
-      <button class="up-act" id="saBackBtn" type="button" style="--ac:#ffffff;display:none;">← Back to my world</button>
+      <button class="up-act" id="saBackBtn" type="button" style="--ac:#ffffff;display:none;">← Back to Our Lessons</button>
       <button class="up-act" id="msgbtn" type="button" style="--ac:#07925f;"><span class="os-jewel os-jewel-sm" style="--jc:#07925f">✉</span> Message</button>
       <button class="up-act" id="aboutbtn" type="button" style="--ac:#d4a017;" data-os-go="about"><span class="os-jewel os-jewel-sm" style="--jc:#d4a017">◉</span> About</button>
       <button class="up-act" id="myworldbtn" type="button" style="--ac:#c2410c;" data-os-go="myworld"><span class="os-jewel os-jewel-sm" style="--jc:#c2410c">⌂</span> Our Lessons</button>
@@ -37649,7 +37649,7 @@ var MW_I18N={
   "Audio — Naya’s voice": "Audio - Die Stimme von Naya",
   "Auto-refresh": "Automatische Aktualisierung",
   "Back to my words": "Zurück zu meinen Worten",
-  "Back to my world": "Zurück zu meiner Welt",
+  "Back to Our Lessons": "Zurück zu meiner Welt",
   "Bars": "Balken",
   "Be the first to add intel...": "Füge als Erster Intel hinzu...",
   "Become a Member": "Werde Mitglied",
@@ -38458,7 +38458,7 @@ var MW_I18N={
   "Audio — Naya’s voice": "Audio - La voz de Naya",
   "Auto-refresh": "Actualización automática",
   "Back to my words": "Volver a mis palabras",
-  "Back to my world": "Volver a mi mundo",
+  "Back to Our Lessons": "Volver a mi mundo",
   "Bars": "Barras",
   "Be the first to add intel...": "Sé el primero en añadir intel...",
   "Become a Member": "Hazte miembro",
@@ -39267,7 +39267,7 @@ var MW_I18N={
   "Audio — Naya’s voice": "Audio - La voix de Naya",
   "Auto-refresh": "Actualisation automatique",
   "Back to my words": "Revenir à mes mots",
-  "Back to my world": "Retour à mon monde",
+  "Back to Our Lessons": "Retour à mon monde",
   "Bars": "Barres",
   "Be the first to add intel...": "Soyez le premier à ajouter de l’intel...",
   "Become a Member": "Devenez membre",
@@ -39934,7 +39934,7 @@ function mwApplyLang(){
   try{ document.documentElement.lang=code; }catch(e){}
   var dict=MW_I18N[code]||{};
   var _joinLab='Join NayaNET'; try{ if(window.pcIsPageOwner && window.pcIsPageOwner()) _joinLab='Go to the Hub'; }catch(e){} /* FOLLOW-ON 2 (E3): the page-level Join reads as the owner's door — it routes the owner to the Hub, so it says so. Recomputed on every language pass. */
-  var byId={msgbtn:'Message',aboutbtn:'About',myworldbtn:'Our Lessons',statsbtn:'Stats',intelbtn:"Today's Intel",skillsbtn:'Skills',connbtn:'Connections',growthbtn:'Invite',sharebtn:'Share',joinbtn:_joinLab,settingsbtn:'Settings',memberbtn:'Become a Member',saBackBtn:'Back to my world',cvrbtn:'Change cover','tg-back':'Back to my words','tg-post-smart':'Post smart note',fcChatSend:'Send','os-dash-fb-btn':'Send'}; /* AUTO-TRANSLATE: the row's missing three (Stats, Today's Intel, Skills — the first two are dead ids today, covered for when they return) + the hidden-until-open buttons + the chat Send. The creator's two buttons are NOT here: os-post-btn's label is per-mode (tgSetMode owns it, re-run below) and os-sched-btn's label is dynamic (a scheduled date) — the byId pass would clobber both. */
+  var byId={msgbtn:'Message',aboutbtn:'About',myworldbtn:'Our Lessons',statsbtn:'Stats',intelbtn:"Today's Intel",skillsbtn:'Skills',connbtn:'Connections',growthbtn:'Invite',sharebtn:'Share',joinbtn:_joinLab,settingsbtn:'Settings',memberbtn:'Become a Member',saBackBtn:'Back to Our Lessons',cvrbtn:'Change cover','tg-back':'Back to my words','tg-post-smart':'Post smart note',fcChatSend:'Send','os-dash-fb-btn':'Send'}; /* AUTO-TRANSLATE: the row's missing three (Stats, Today's Intel, Skills — the first two are dead ids today, covered for when they return) + the hidden-until-open buttons + the chat Send. The creator's two buttons are NOT here: os-post-btn's label is per-mode (tgSetMode owns it, re-run below) and os-sched-btn's label is dynamic (a scheduled date) — the byId pass would clobber both. */
   Object.keys(byId).forEach(function(id){
     var el=$(id); if(!el) return;
     if(el.classList && el.classList.contains('pc-gear')) return; /* PERSONAL-COMPLETE: the gear is an icon, not a label. */
@@ -45018,8 +45018,8 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
     });
     return list;
   }
-  function pcFavs(){ var f=readLS(LS_FAV); return Array.isArray(f)?f:[]; }
-  function pcCurrent(){ var c=readLS(LS_CUR); if(c&&c.name) return c; return {id:'personal', name:'Our Lessons'}; }
+  function pcFavs(){ var f=readLS(LS_FAV); if(!Array.isArray(f)) return []; return f.map(function(n){ return String(n||'').toLowerCase()==='my world'?'Our Lessons':n; }); }
+  function pcCurrent(){ var c=readLS(LS_CUR); if(c&&c.name){ if(String(c.name).toLowerCase()==='my world'){ c.name='Our Lessons'; writeLS(LS_CUR, c); } return c; } return {id:'personal', name:'Our Lessons'}; }
   window.pcCurrentWorld=function(){ return pcCurrent(); };
   function pcApplyWorld(w){
     window.MW_SEARCH_WORLD=w.name;
@@ -45050,7 +45050,7 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') pcHideRai
   }
   /* BOTTOM-BAR RESTORE 2026-11-16 (item 2): clear the world filter — back to Our Lessons, unfiltered, staying on the World tab. */
   window.mwClearWallWorld=function(){ try{ pcSetWorldObj({id:'personal', name:'Our Lessons'}, true); }catch(e){ window.MW_WALL_WORLD=null; if(typeof window.mwPaintWallPosts==='function'){ try{ window.mwPaintWallPosts(window.MW_WALL_POSTS||[]); }catch(e){} } } };
-  window.pcSetWorld=function(name){ var ws=pcWorlds(); for(var i=0;i<ws.length;i++){ if(ws[i].name===name){ pcSetWorldObj(ws[i]); return true; } } return false; };
+  window.pcSetWorld=function(name){ if(String(name||'').toLowerCase()==='my world') name='Our Lessons'; var ws=pcWorlds(); for(var i=0;i<ws.length;i++){ if(ws[i].name===name){ pcSetWorldObj(ws[i]); return true; } } return false; };
   function pcRenderFavTabs(){
     var host=document.getElementById('pcFavWorldTabs'); if(!host) return;
     var cur=pcCurrent().name;
