@@ -3,45 +3,45 @@
 SN-4646 · SYSTEM / THE TWELVE ELEMENTS OF NAYA — PERSONAL
 
 **Created:** 2026-11-22 14:36Z
-**Updated:** 2026-11-22 14:42Z — reshaped to the Shawn-approved shape (Hook + 9 sections)
+**Updated:** 2026-11-22 14:53Z — re-crafted to 10/10 smart-note presentation in Shawn's voice; operative lines verbatim, the rest freshly written
 **Perspective:** Personal · **Visibility:** Public (Smart Notes are shared by definition)
 
 ## Hook:
 
-"Imagine an internet that got to know you, and matched you with people like you."
+Imagine an internet that got to know you — and matched you with people like you.
 
 ## In a nutshell:
 
-NayaNET plays a grand game of match for me: one algorithm, matches as percentages. And the people it shows me are the people like me — so I connect with like minds, and the right people find me first.
+Match and Connection is the one algorithm that brings me together with my people. It matches by percentage, using what I shared when I joined, and it plays a grand game of match across everyone and everything in NayaNET. CONNECT, never follow — because connection is a two-way street, and following is not.
 
 ## What it's not:
 
-It is not following strangers and hoping. It is not a feed of whoever shouts loudest. It is not a popularity contest — it is a match, measured, in the open.
+It is not a follower count, and it is not a popularity contest. It is not strangers shouting into a crowd, hoping someone notices. It is a quiet, intelligent match — the right people, found for the right reasons.
 
 ## Child:
 
-Naya finds my friends for me! People who like what I like! And I can connect with them — not follow, connect!
+Imagine a playground where a kind teacher knows exactly which children love the same games you do, and brings you together to play. That is the match: it finds your people, because like minds belong together. The games get better when you play them with people who love them too.
 
 ## Grandma:
 
-It's like a wise friend who knows everyone in town, love. She says 'dear, you two would get along beautifully' — and she is usually right, love.
+Imagine moving to a new town and, on your very first day, meeting neighbors who love the same things you love — the same cooking, the same songs, the same stories. That is what the match does for you here. You arrive, and your people are already waiting.
 
 ## Ultimately what it means:
 
-The system gets to know me from my onboarding — what I love, where I am, what I do — and auto-organizes and auto-matches by percentage. CONNECT, never follow: a connection is two people choosing each other, not one chasing the other.
+The system takes what I shared about myself — my interests, my place, my language, my loves — and auto-organizes and auto-matches me by percentage. The people rail shows me who I fit with, invites go out, and points grow as people connect. The more honestly I share who I am, the better my matches become.
 
 ## Why it matters:
 
-The internet I want is one that knows me and brings me my people. Like minds can connect — and when they do, my world gets bigger in exactly the right direction.
+People want to connect with people like them, and most of the old internet left that to chance. Here, connection is the whole point — not an accident, not an afterthought. When you find your people, everything else in NayaNET works better.
 
 ## How it connects:
 
-Auto-Match connects my personal world to the whole network — related pages, spaces, groups, and businesses show up in my feed, and things not relevant do not. The people rail, the invites, the points — all of it is the match, working.
+The match runs through my world, my business, my spaces, and my feeds — related pages, spaces, groups, and businesses show up for me, and things that are not relevant simply do not. Suggestions arrive in my feed and my notifications, ready when I am. One algorithm, everywhere I go.
 
 ## How to apply it:
 
-I fill in my onboarding honestly — who I am, what I love, what I am building — and I answer the invitations the system brings me. I connect with the highest matches first, and I invite the people I already love.
+Share who you are when you join — your interests, your loves, your language, your place. Then connect with the people the match brings you, and invite the ones you already know. Every invite and every join makes your world richer.
 
 ## What's in it for you:
 
-Your people, found for you. No hunting, no shouting into the void — the people like you arrive, matched by percentage, ready to connect.
+You stop shouting into the void and start talking with people who actually get you. Your world fills with like minds, your conversations go deeper, and your community grows around what you love. That is what belonging feels like.
