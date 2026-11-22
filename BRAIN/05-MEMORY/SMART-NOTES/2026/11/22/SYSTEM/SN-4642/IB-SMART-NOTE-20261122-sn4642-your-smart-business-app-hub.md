@@ -8,7 +8,7 @@ SN-4642 · SYSTEM / THE TWELVE ELEMENTS OF NAYA — PERSONAL
 
 ## Hook:
 
-You shouldn't need a technology department to bring your business to life.
+"You shouldn't need a technology department to bring your business to life."
 
 ## In a nutshell:
 
