@@ -744,13 +744,44 @@ function loadVideo(){
      boolean is set directly in the play handler, never via a remote
      callback). The YT state message below stays as a correction. */
   videoPlaying = true; setDeckPlaying(true);
-  setTimeout(function(){ ytPost('addEventListener'); ytPost('unMute'); }, 1200);
+  setTimeout(function(){ ytPost('unMute'); }, 1200);
+  ytListen();
 }
 function ytPost(func, args){
   var f = document.querySelector('#videoShell iframe');
   if (f && f.contentWindow){
     try { f.contentWindow.postMessage(JSON.stringify({event:'command', func:func, args:args||[]}), '*'); } catch(e){}
   }
+}
+/* PLAYER-SYNC FIX (round 2 fix): subscribe to YouTube state ONLY after the
+   player's own first message proves its API bridge is up. Sending
+   addEventListener on the fixed 1200 ms timer raced the bridge and threw
+   a YouTube-internal pageerror (`this.api.logApiCall is not a function`)
+   in 2 of 5 runs — so the timer never subscribes now. The player only
+   starts talking once it hears the `listening` handshake (the IFrame
+   API's own pattern: it repeats `listening` until the player answers),
+   so we shake hands, repeat until the first real state message arrives,
+   and subscribe exactly once, on that message. If no message ever comes
+   the page behaves exactly as the base did — no worse, no error. */
+var ytSubscribed = false, ytListenTimer = null, ytListenTries = 0;
+function ytPostListen(){
+  var f = document.querySelector('#videoShell iframe');
+  if (f && f.contentWindow){
+    try { f.contentWindow.postMessage(JSON.stringify({event:'listening', id:1, channel:'widget'}), '*'); } catch(e){}
+  }
+}
+function ytListen(){
+  ytPostListen();
+  ytListenTimer = setInterval(function(){
+    if (ytSubscribed || ++ytListenTries > 20){ clearInterval(ytListenTimer); ytListenTimer = null; return; }
+    ytPostListen();
+  }, 500);
+}
+function ytSubscribe(){
+  if (ytSubscribed) return;
+  ytSubscribed = true;
+  if (ytListenTimer){ clearInterval(ytListenTimer); ytListenTimer = null; }
+  ytPost('addEventListener', ['onStateChange']);
 }
 function ytCommand(cmd){
   /* PLAYER-SYNC (round 2): PowerCast pattern — the orb's `playing` flag
@@ -788,6 +819,10 @@ window.addEventListener('message', function(e){
   if (!d || typeof d !== 'object') return;
   var info = d.info;
   if (d.event === 'onStateChange' || d.event === 'infoDelivery' || (info && typeof info.playerState !== 'undefined')){
+    /* PLAYER-SYNC FIX (round 2 fix): the player's first real state message
+       proves its API bridge is up — only now is it safe to subscribe, so
+       later YT-chrome pauses/plays arrive as onStateChange. */
+    ytSubscribe();
     var st = (d.event === 'onStateChange') ? info : (info && info.playerState);
     if (typeof st === 'number'){ videoPlaying = (st === 1); setDeckPlaying(videoPlaying); }
     if (info && typeof info.currentTime === 'number'){ videoTime = info.currentTime; paintDeckTime(); }
