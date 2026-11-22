@@ -5114,11 +5114,11 @@ html.os-calm .os-dash .ph-card::after,html.os-calm .os-dash-pulse .stat-card::be
       <button class="up-act" id="saBackBtn" type="button" style="--ac:#ffffff;display:none;">← Back to my world</button>
       <button class="up-act" id="msgbtn" type="button" style="--ac:#07925f;"><span class="os-jewel os-jewel-sm" style="--jc:#07925f">✉</span> Message</button>
       <button class="up-act" id="aboutbtn" type="button" style="--ac:#d4a017;" data-os-go="about"><span class="os-jewel os-jewel-sm" style="--jc:#d4a017">◉</span> About</button>
-      <button class="up-act" id="myworldbtn" type="button" style="--ac:#c2410c;" data-os-go="myworld"><span class="os-jewel os-jewel-sm" style="--jc:#c2410c">⌂</span> My World</button>
+      <button class="up-act" id="myworldbtn" type="button" style="--ac:#c2410c;" data-os-go="myworld"><span class="os-jewel os-jewel-sm" style="--jc:#c2410c">⌂</span> My World</button> <button class="up-act" id="calbtn" type="button" style="--ac:#07925f;" data-os-go="myworld"><span class="os-jewel os-jewel-sm" style="--jc:#07925f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span> Calendar</button>
       <button class="up-act" id="skillsbtn" type="button" style="--ac:#c62828;" data-os-go="skills"><span class="os-jewel os-jewel-sm" style="--jc:#c62828">⚙</span> Skills</button>
       <button class="up-act" id="connbtn" type="button" style="--ac:#a21caf;" data-os-go="people"><span class="os-jewel os-jewel-sm" style="--jc:#a21caf">◈</span> Connections</button>
       <button class="up-act" id="growthbtn" type="button" style="--ac:#8e24aa;" data-os-go="growth"><span class="os-jewel os-jewel-sm" style="--jc:#8e24aa">↗</span> Invite</button>
-      <button class="up-act" id="sharebtn" type="button" style="--ac:#0f52ba;"><span class="os-jewel os-jewel-sm" style="--jc:#0f52ba">⇄</span> Share</button>
+      <button class="up-act" id="sharebtn" type="button" style="--ac:#0f52ba;"><span class="os-jewel os-jewel-sm" style="--jc:#0f52ba">⇄</span> Share</button> <button class="up-act" id="setbtn" type="button" style="--ac:#3f51b5;" data-os-go="settings"><span class="os-jewel os-jewel-sm" style="--jc:#3f51b5"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.1"/><circle cx="12" cy="12" r="6.3"/><path d="M12 2.8v2.7M12 18.5v2.7M2.8 12h2.7M18.5 12h2.7M5.5 5.5l1.9 1.9M16.6 16.6l1.9 1.9M18.5 5.5l-1.9 1.9M7.4 16.6l-1.9 1.9"/></svg></span> Settings</button>
       <a class="up-act" id="joinbtn" href="https://nayanet.app/joinus" style="--ac:#07925f;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;"><span class="os-jewel os-jewel-sm" style="--jc:#07925f">✦</span> Join NayaNET</a>
       <button class="up-act" id="memberbtn" type="button" style="--ac:#a21caf;display:none;">★ Become a Member</button>
 </div>
@@ -5903,7 +5903,7 @@ a { color: inherit; }
    state below shows. ——— */
 .rail-people{margin:18px 0 0;display:flex;flex-direction:column;gap:8px;}
 .rail-people-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:2px 6px 0;}
-.rail-people-head b{font-size:17px;letter-spacing:.18em;font-weight:800;color:#fff;}
+.rail-people-head b{font-size:17px;letter-spacing:.18em;font-weight:800;color:#fff;}.rail-people-head b{letter-spacing:.06em;}
 .hub-people-list{display:flex;flex-direction:column;gap:8px;}
 .hub-people-empty{margin:0;padding:4px 6px;color:#fff;font-size:17px;line-height:1.6;}
 /* ——— HUB PERSONAL SIDEBAR — HARVESTED ROWS 2026-11-18 ———
@@ -6004,6 +6004,20 @@ a { color: inherit; }
 #hubPeopleList .pc-card-acts4 .pc-act-btn{flex:none;}
 #hubPeopleList .pc-card-acts .pc-act-btn{width:auto;height:36px;padding:0 12px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;font-size:17px;flex:none;}
 #hubPeopleList .pc-card-acts .pc-act-btn .pc-act-lab{font-size:17px;font-weight:800;letter-spacing:.02em;color:#fff;}
+#hubPeopleList .pc-card-acts .pc-act-btn:hover{transform:translateY(-2px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -4px 8px rgba(0,0,0,.6),0 0 24px color-mix(in srgb,var(--ac,#8e24aa) 65%,transparent),0 10px 22px rgba(0,0,0,.55);}
+#hubPeopleList .pc-card-acts .pc-act-btn:active{transform:translateY(1px) scale(.97);}
+#hubPeopleList .pc-card-acts4{display:flex;gap:8px;}
+#hubPeopleList .pc-card-acts4 .pc-act-btn{flex:none;}
+/* (8) THE "i" IS MORE ELEVATED — its standard is the initial orb: the same
+   flowing conic light that orbits the initial (osOrbFlow, 7s) now flows
+   around the "i", with a stronger white halo and lift. It still carries
+   data-pc-info, so the existing handler still opens the official card. */
+#hubPeopleList .pc-card-acts .pc-act-btn[data-pc-info]{position:relative;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -4px 8px rgba(0,0,0,.6),0 0 20px rgba(255,255,255,.35),0 10px 22px rgba(0,0,0,.6);}
+#hubPeopleList .pc-card-acts .pc-act-btn[data-pc-info]::after{content:'';position:absolute;inset:-2px;border-radius:50%;
+  background:conic-gradient(from 0deg,transparent 0deg,rgba(255,255,255,.35) 40deg,transparent 90deg);
+  animation:osOrbFlow 7s linear infinite,pcFlowBreathe 16s ease-in-out infinite;pointer-events:none;}
 @keyframes osOrbFlow{to{transform:rotate(360deg)}}
 /* Hub's own status line under the people list (the Audio/Video honest-
    status target — the harvested handler looks it up globally). */
@@ -7695,6 +7709,17 @@ button, .btn, .tab, .eco-btn, .activity-card {
 }
 
 </style>
+<style id="hub-followup14-20261119">
+/* ——— FOLLOW-UP 14 20261119 — search only (Shawn 19:01 MST: "All you need is a
+   search"). The 13 contacts category chips are gone; the rail keeps one small
+   search field in the same spot the chips sat. Treatment harvested from the
+   Hub's own chassis search (.searchRow): obsidian gradient, 1.5px rim, 17px
+   white text, white placeholder — rim white here, as briefed; no new colours,
+   no new glow. The field is a pill, like the chips were. */
+.pc-rail-search{display:block;width:100%;box-sizing:border-box;margin:0 0 12px;padding:10px 14px;background:linear-gradient(135deg,#050508,#0a0a10 55%,#050508);border:1.5px solid rgba(255,255,255,.9);border-radius:999px;color:#fff;font-size:17px;font-family:inherit;outline:none;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),0 4px 12px rgba(0,0,0,.5);}
+.pc-rail-search::placeholder{color:#fff;opacity:1;}
+.pc-rail-search:focus{border-color:#fff;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),0 0 14px rgba(255,255,255,.25),0 4px 12px rgba(0,0,0,.5);}
+</style>
 <style>/* css/components.css @ baf1221d9 */
 /* ═══════════════════════════════════════════════════════════════════
    COMPONENTS — boards, buttons, door cards, badges
@@ -9007,6 +9032,17 @@ html.nsb-nonav.nsb-nobottom .main{padding-bottom:74px}
   box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -22px 38px rgba(0,0,0,.5),0 0 14px -2px color-mix(in srgb, var(--room-accent,#8e24aa) 85%, transparent),0 30px 60px rgba(0,0,0,.65) !important; /* EYE-NOTES §3.2 edge-only */
 }
 </style>
+<!-- HUB FEED 2026-11-17 22:25Z (item 8): the top-bar menu's two choices.
+     Chrome harvested from the Personal correction's .fc-plusmenu (blob
+     3328238b), the same chrome as the two + menus above; glyphs harvested
+     verbatim from this file (the three-line hamburger, the mail envelope);
+     colors are the menu's own (purple) and mail's own (sapphire). -->
+<div id="hubMenuChoices" class="fc-plusmenu hub-plusmenu" hidden role="menu" aria-label="Menu">
+<div class="fc-plusitem" role="menuitem" data-hub-menu="sidebar" style="--mc:#8e24aa"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span><span class="hub-menu-label">Open sidebar</span></div>
+<div class="fc-plusitem" role="menuitem" data-hub-menu="messenger" style="--mc:#0f52ba"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span class="hub-menu-label">Open smart messenger</span></div>
+<div class="fc-plusitem" role="menuitem" data-hub-menu="neither" style="--mc:#07925f"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M6.5 6.5l11 11"/></svg></span><span class="hub-menu-label">Neither</span></div>
+<div class="fc-plusitem" role="menuitem" data-hub-menu="people" style="--mc:#d4a017"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.4"/><path d="M16 14.5c2.8.4 5 2.6 5 5.5"/></svg></span><span class="hub-menu-label">Open people rail</span></div>
+</div>
 <style id="hub-followup-20261119">
 /* FOLLOW-ON 2026-11-19 — Hub follow-on round (captain's eye verdict on round 2f).
    This block sits last in the document so its rules win ties against the older rules. */
@@ -12216,8 +12252,9 @@ function HubView(params) {
              router treats mail as EXTERNAL, so a router hop would leave the
              Hub exactly like the old location.href did. */
           var choice = it.getAttribute('data-hub-menu');
-          if (choice === 'neither') { var nApi = window.NayaChassis || {}; if (nApi.closeDrawer) nApi.closeDrawer(); closeMsgPanel(); window._nayaMenuState = 'neither'; return; }
-          if (choice === 'messenger') { var mApi = window.NayaChassis || {}; if (mApi.closeDrawer) mApi.closeDrawer(); window._nayaMenuState = 'messenger'; openMsgPanel(); return; }
+          if (choice === 'neither') { var nApi = window.NayaChassis || {}; if (nApi.closeDrawer) nApi.closeDrawer(); (window.NayaChassis.closeMsgPanel || closeMsgPanel)(); window._nayaMenuState = 'neither'; return; }
+          if (choice === 'messenger') { var mApi = window.NayaChassis || {}; if (mApi.closeDrawer) mApi.closeDrawer(); window._nayaMenuState = 'messenger'; (window.NayaChassis.openMsgPanel || openMsgPanel)(); return; }
+          if (choice === 'people') { var pApi = window.NayaChassis || {}; if (pApi.closeDrawer) pApi.closeDrawer(); (window.NayaChassis.closeMsgPanel || closeMsgPanel)(); window._nayaMenuState = 'people'; if (pApi.openRightRail) pApi.openRightRail(); return; } /* ROUND 11 (item 8): the right rail's narrow-width control — the menu's fourth choice. Closes the left drawer + the messenger panel (never both at once) and opens the rail through the live NayaChassis.openRightRail, the same opener the ECOSYSTEM tile uses. */
           /* Open sidebar — the live build's openDrawer, resolved through
              NayaChassis (re-published on every HubView build, never a stale
              closure). A tap while the sidebar stands open leaves it open — OPEN, not toggle (HUB FEED FIX 2026-11-18). When
@@ -13328,8 +13365,8 @@ window.NayaNotif = window.NayaNotif || {
      Until the harvest lands, the honest empty state shows and the section
      is the one open item. ——— */
   const peopleSec = el('section', 'rail-people');
-  peopleSec.setAttribute('aria-label', 'Your people — message them');
-  peopleSec.innerHTML = '<div class="rail-people-head"><b>YOUR PEOPLE</b></div><input type="search" id="pcRailSearch" class="pc-rail-search" placeholder="Search people…" aria-label="Search people" autocomplete="off"><div class="hub-people-list" id="hubPeopleList"><p class="hub-people-empty">Your people show here once the Personal sidebar lands — the people from your Personal page, with their match, ready to message.</p></div><p class="hub-people-status" data-pc-profile-call-status></p>';
+  peopleSec.setAttribute('aria-label', 'Connect with Like Minds');
+  peopleSec.innerHTML = '<div class="rail-people-head"><b>Connect with Like Minds</b></div><input type="search" id="pcRailSearch" class="pc-rail-search" placeholder="Search people…" aria-label="Search people" autocomplete="off"><div class="hub-people-list" id="hubPeopleList"><p class="hub-people-empty">Your people show here once the Personal sidebar lands — the people from your Personal page, with their match, ready to message.</p></div><p class="hub-people-status" data-pc-profile-call-status></p>';
   /* Feed-following: the people shown are the feed's people. The lens is read
      live from the active tab — the same three-way read the menu control uses
      (Personal / Business / World) — and the section re-renders whenever
@@ -13756,7 +13793,7 @@ document.addEventListener('click', function(e){
   window.NayaChassis.closeDrawer = closeDrawer;
   window.NayaChassis.openDrawer = openDrawer; /* HUB FEED 2026-11-17 22:25Z (item 8): the menu's "Open sidebar" choice resolves the LIVE build's opener through the Chassis, never a stale closure */
   window.NayaChassis.openRightRail = openRightRail;
-  window.NayaChassis.closeRightRail = closeRightRail;
+  window.NayaChassis.closeRightRail = closeRightRail;   if (typeof closeMsgPanel === 'function') window.NayaChassis.closeMsgPanel = closeMsgPanel; /* SNB-FIX1E item 12: publish the msg closers live — the menu's once-bound handlers resolve them at tap time instead of calling the first build's detached closures. typeof-guarded: out of scope here, nothing is published. */   if (typeof openMsgPanel === 'function') window.NayaChassis.openMsgPanel = openMsgPanel; /* SNB-FIX1E item 12: same, for the Messenger choice. */
 
   ensureGlobalKeys();
   return shell;
@@ -13957,15 +13994,17 @@ window.openMsgPanel = function(person, purpose){ if(person) window.__pcMsgPerson
        docked left rail remembers it — closing the drawer restores the
        on-load layout (both sidebars docked). Below desktop the left is a
        drawer of its own and the flag stays false, so nothing changes there. */
-    if (window.innerWidth >= 1440 && !shell.classList.contains('rail-collapsed')) rightDrawerLeftDocked = true;
-    shell.classList.add('rail-right-open');
-    shell.classList.remove('rail-right-collapsed');
+    var sh = document.querySelector('.shell') || shell; /* SNB-FIX1E item 12: resolve the shell LIVE on every open — the chassis closers can belong to a replaced build (same failure the Escape fix names at L8318); the X always closes the live rail, the open must open the live one. */
+    if (window.innerWidth >= 1440 && !sh.classList.contains('rail-collapsed')) rightDrawerLeftDocked = true;
+    sh.classList.add('rail-right-open');
+    sh.classList.remove('rail-right-collapsed');
     document.body.classList.remove('rail-right-collapsed'); /* ROUND 8: the body mirrors the shell's collapsed state -- #os-b3-hide is a direct child of <body>, so only a body class can govern it. */
     document.body.classList.add('rail-right-open');
     const f = navR.querySelector('.nav-btn');
     if (f) f.focus();
   }
   function closeRightRail() {
+    var sh = document.querySelector('.shell') || shell; /* SNB-FIX1E item 12: live shell, same as openRightRail — the closer must close the shell that is in the document, not the one the build closed over. */
     /* FIX 2026-11-16 (item B): a desktop drawer opened over a docked left
        rail closes back to the on-load layout — both sidebars docked — so
        the page never sits with zero sidebars after a drawer round-trip.
@@ -13973,20 +14012,20 @@ window.openMsgPanel = function(person, purpose){ if(person) window.__pcMsgPerson
        rail collapses and reopens from the menu control / ECOSYSTEM tile. */
     if (rightDrawerLeftDocked && window.innerWidth >= 1440) {
       rightDrawerLeftDocked = false;
-      shell.classList.remove('rail-right-open');
-      shell.classList.remove('rail-right-collapsed');
+      sh.classList.remove('rail-right-open');
+      sh.classList.remove('rail-right-collapsed');
       document.body.classList.remove('rail-right-collapsed'); /* ROUND 8: body mirrors shell (see D). */
-      shell.classList.remove('rail-collapsed');
+      sh.classList.remove('rail-collapsed');
       document.body.classList.remove('rail-right-open');
       syncMenuBtn(); /* AMENDMENT #3: closing the right drawer restores the LEFT docked — the old write marked the menu closed while the left stood open */
       return;
     }
     rightDrawerLeftDocked = false;
-    shell.classList.remove('rail-right-open');
+    sh.classList.remove('rail-right-open');
     /* HUB ICONS FIX 2026-11-16 (item 8): at desktop the right rail is docked
        visible — closing it collapses it (reopen from the bottom-bar
        ECOSYSTEM tile). Below desktop this class is inert. */
-    shell.classList.add('rail-right-collapsed');
+    sh.classList.add('rail-right-collapsed');
     document.body.classList.add('rail-right-collapsed'); /* ROUND 8: the body mirrors the shell's collapsed state -- this is the class the circle's right:12px rule matches on (see B). */
     document.body.classList.remove('rail-right-open');
   }
@@ -47835,6 +47874,11 @@ bind(); /* ROUND 2 (2026-11-20, item 2): the week strip + Back to Month live in 
 renderGrid();
 })();
 
+</script>
+<script>/* FOLLOW-ON R1 20261121 — Calendar + Settings doors: open the view, then jump to it.
+   showView always smooth-scrolls to top:0 (~500ms), so the jump waits 650ms,
+   scrolls instantly, and re-asserts at 1500ms against async layout shifts above. */
+(function(){function jump(id,sel){var b=document.getElementById(id);if(!b)return;b.addEventListener('click',function(){function go(){var g=document.querySelector(sel);if(g){try{g.scrollIntoView({behavior:'auto',block:'start'});}catch(e){}}}setTimeout(go,650);setTimeout(go,1500);});}jump('calbtn','#mwCalGrid');jump('setbtn','#settings');})();
 </script>
 <style id="pc-bbr-20261116">
 /* PERSONAL BOTTOM-BAR RESTORE 2026-11-16 — one block for items 3/4/5/6. Harvest notes in the maker record. */
