@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-22 21:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-22 22:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -17817,6 +17817,12 @@ _Last updated: 2026-11-22 21:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: branch naya/lane9/level-drill-keysplit-t0730 == cde0c63ddc1a2a59911b82334bd93ff761e5045e via batched git ls-remote (matches receipt claim); PR #2568 head 21f089d56f151fe46c85b5073f61921e0201d2a6 verified; blindness proof non-vacuous (new instrument exit 0 / old exit 1 on 'def key()' L96); verification ran on PUSHED bytes via fresh worktre
 
+### ✅ t0730-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Independent scorecard (seat 2 of 2) on PR #2574
+
+**Evidence:** Clears 9.5 because: same pinned head 97b65bd11316fe91b324986b3d429d0c3ee0ff75 verified as a commit in the repo via git protocol; independent 10-row hostile/positive battery 10/10 plus 2 probe rows (>=1-bound semantics, --head/--base flags path with bogus-head refusal), repo suite 5/5 from the correct cwd, workflow wiring read from bytes (PR_BODY + 
+
 ### ✅ t0730 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** Independent scorecard (seat 2 of 2) on PR #2574 receipt-gate repair
@@ -17848,6 +17854,12 @@ _Last updated: 2026-11-22 21:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0730-lane3.md`
 
 **Evidence:** Verified: PR #2574 head 97b65bd11316fe91b324986b3d429d0c3ee0ff75 via batched git ls-remote (matches); independent 10-row hostile/positive battery 10/10 at the pinned head (4 hostile exit 1 with exact refusal fragments, 3 positives exit 0, fail-closed row); dogfood self-application exits 0 with 5 bound handles; workflow wiring read from bytes. Score
+
+### ✅ t0729-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** Independent second-seat scorecard on PR #2574 (receipt-gate repair)
+
+**Evidence:** Clears 9.5 because: PR #2574 head 97b65bd11316fe91b324986b3d429d0c3ee0ff75 exists as a commit in the repo (fetched via git protocol; branch since deleted - expected drift, not a phantom); hostile battery 4/4 exit 1 with exact refusal reasons, self-application exit 0 with 5 bound handles, fail-closed without context, repo suite 5/5 PASS, CI at pinne
 
 ### ✅ t0729 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -17895,6 +17907,12 @@ _Last updated: 2026-11-22 21:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified independently by this scorer: branch naya4/t0727-lane12-contacts exists on the remote, git ls-remote head = 0e1bfe5819f2b0490be823db7a46e2e2c0b3fd4c byte-exact vs the receipt's pin; shallow-fetched that SHA and confirmed files present at the head (functions/feature_contacts.py, registry.json, tests/test_feature_contacts.py under HUB/design
 
+### ✅ t0728-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** SMARTBLOCKS pilot - top-3 ask-world needs as versioned smart blocks
+
+**Evidence:** Verified: pilot dir hidden_files/lane-4/smartblocks-pilot-t0728/ exists with all 6 files; 4/6 SHAs byte-exact on disk (lane-packet-5/1/10, lookup-demo-t0728); mid-build tally re-tally incident caught by the pin-assert and root-fixed by re-derivation from live bytes; cold-rebuild determinism and lint 3/3 claimed with the harness. Why not 9.5: the Ev
+
 ### ✅ t0728 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** SMARTBLOCKS pilot - top-3 ask-world needs as versioned smart blocks + lookup demo
@@ -17918,6 +17936,12 @@ _Last updated: 2026-11-22 21:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0728-lane4.md`
 
 **Evidence:** Verified: pilot dir hidden_files/lane-4/smartblocks-pilot-t0728/ with SHA-pinned files per receipt; the brief's watch-for fired live -- tally 62->71 rows mid-build, the harness's pin-assert caught it (exit 2, fail-closed) and the builder root-fixed by re-deriving top-3 from live bytes at build time; cold rebuild byte-deterministic (identical SHAs).
+
+### ✅ t0728-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** W5 stamping-plan second-seat review
+
+**Evidence:** Clears 9.5 because: verdict doc hidden_files/lane-10/w5-second-seat-verdict-t0728.md exists on disk; receipt re-ran the plan's section-7 list line by line on the pinned tip and independently re-derived the section-3 table (R1 28/R2 576/R3 1/R4 2/R5 24 = 631 exact), confirmed the 42->24 trap arithmetic and the _entry_key supersession claim (576/631 
 
 ### ✅ t0728 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -17973,6 +17997,12 @@ _Last updated: 2026-11-22 21:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: origin branch naya4/t0727-lane12-contacts head 0e1bfe5819f2b0490be823db7a46e2e2c0b3fd4c byte-matches (git ls-remote this tick); parent ca3c80b79 matches breaker #7's head. Score 9.5. Clears 9.5 because: 24 tests (suite 172/172 green), SHA-guarded flip, push + remote-verify before final scorecard, board evidence #2721 comment 6245804554, p
 
+### ✅ t0727-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Arm H second-seat design review
+
+**Evidence:** Verified: frozen results file auto-retrieval/results-t0432.json exists on disk with the expected structure, and arm-battery-t0532.md exists; receipt independently recomputed MRR_bi=0.420833 from frozen bytes (catching the brief's unreproducible 0.4208/0.3269), reconciled the 1016-edge graph 100% (0 mismatches), 30/30 tagger sample, and found a real
+
 ### ✅ t0727 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** Arm H second-seat design review, verdict CANDIDATE-ALIVE with two owed clarifications
@@ -17996,6 +18026,12 @@ _Last updated: 2026-11-22 21:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0727-lane1.md`
 
 **Evidence:** Verified: all three frozen SHAs (design ef959346..., pre-reg 9c574d87..., graph 7e021c69...) re-derived from file bytes, not copied; comparator MRR_bi 0.420833 recomputed from frozen results JSON (designer's 0.3269 shown non-reproducible); genuine defect found (VOID-vs-FALSIFIED ordering ambiguity); 30/30 tagger sample; board #2537 comment 61637949
+
+### ✅ t0726-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Independent scorecard: PR #2566 THE BULLSEYE (+9)
+
+**Evidence:** Verified: PR #2566 head 6a48a3f9681c737d69147cd10655f862e90e9039 exists as a commit in the repo (fetched via git protocol into the mirror; branch naya4/bullseye-scale since deleted - expected 6-week drift, not a phantom); all three CI reds diagnosed by local reproduction (receipt-gate true positive on backticked non-repo paths, team-review AUTHOR_S
 
 ### ✅ t0726 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
