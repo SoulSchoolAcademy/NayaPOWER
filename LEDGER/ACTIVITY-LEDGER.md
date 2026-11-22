@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-22 01:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-22 02:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19528,6 +19528,12 @@ _Last updated: 2026-11-22 01:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0697-lane12.md`
 
 **Evidence:** Verified: all three branches exist on remote with heads matching receipt pins byte-exactly (naya1/hive-learning-law-v1 @ c67c198568356cd6934e8a2d7cd694a9a1d86e18; naya5/hive-learning-law-20261013 @ ba516a02d904f11dcb667154922e247f237c8663; naya5/ratification-gate-20261013 @ 46cffc754dbd02449be43a6b49daa7bd4b42e731); mechanism files tools/hive-learn
+
+### ✅ t0697-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Independent scorecard of PR #2561 (Naya 4 cold-Naya follow-up) — pin-first review + verdict on #2537
+
+**Evidence:** BACKLOG SWEEP. Verified: PR review pullrequestreview-5512277888 EXISTS on PR #2561 (App identity; PAT route 401, known dead since 2026-10-30); verdict comment issuecomment-6159365735 EXISTS on issue #2537, created 2026-10-14T02:13:49Z, body opens with the t0697 NEEDS-WORK verdict on PR #2561 as receipted. NOT PHANTOM. The pin-first method caught re
 
 ### ✅ t0697 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -58862,6 +58868,30 @@ _Last updated: 2026-11-22 01:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261121-1754 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: evaluate all 31 queued gap briefs, attempt claim on each, verify zero queue drift
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt file exists and read; the 31 brief filenames it lists are byte-identical to the live brief-queue set (31 vs 31, listed-not-live and live-not-listed both empty); live queue still 31 brief-*.md, zero brief-tNNNN-*, claimed/ holds only done/; queue checksum 6d9e2c4e...20ad4 reproduced exactly via th
+
+### ✅ gate-stall-20261121-1443 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: evaluate all 31 queued gap briefs, attempt claim on each, verify zero queue drift
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt file exists and read; the 31 brief filenames it lists are byte-identical to the live brief-queue set (31 vs 31, listed-not-live and live-not-listed both empty); live queue still 31 brief-*.md, zero brief-tNNNN-*, claimed/ holds only done/; queue checksum 6d9e2c4e...20ad4 identical to the 15:48/16
+
+### ✅ gate-stall-20261121-1548 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: evaluate all 31 queued gap briefs, attempt claim on each, verify zero queue drift
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt file exists and read; the 31 brief filenames it lists are byte-identical to the live brief-queue set (31 vs 31, listed-not-live and live-not-listed both empty); live queue still 31 brief-*.md, zero brief-tNNNN-*, claimed/ holds only done/; queue checksum 6d9e2c4e...20ad4 identical to the 16:48 re
+
+### ✅ gate-stall-20261121-1648 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: evaluate all 31 queued gap briefs, attempt claim on each, verify zero queue drift
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt file exists and read; the 31 brief filenames it lists are byte-identical to the live brief-queue set (31 vs 31, listed-not-live and live-not-listed both empty); live queue still 31 brief-*.md, zero brief-tNNNN-*, claimed/ holds only done/; queue checksum 6d9e2c4e...20ad4 identical to the 15:48 re
 
 ### ✅ gate-stall-20261121-1648 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
