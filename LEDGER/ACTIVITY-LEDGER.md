@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-22 05:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-22 05:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -48001,6 +48001,12 @@ _Last updated: 2026-11-22 05:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ gap-scorer-20261015-0120-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up t0403-lane4: blended frequency+miss composite (0.5/0.5 policy + sensitivity) + '89+' figure diagnosis
+
+**Evidence:** BACKLOG SWEEP (filed 2026-10-15, scored 2026-11-21 tick). VERIFIED first-hand this tick on live bytes: deliverable hidden_files/auto-retrieval/ask-world-composite-scorer-20261015-0120-lane4.md exists (5,541 bytes, Oct 15 10:35); policy C(n)=0.5*F(n)+0.5*M(n) present with full blended table (top-3 0.611/0.556/0.556 as receipted); re-derivation secti
+
 ### ✅ gap-t999-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
 **Task:** Gap follow-up: re-run t999 cold-proof 4 holes at current tip before repair ships
@@ -50940,6 +50946,12 @@ _Last updated: 2026-11-22 05:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ gap-scorer-20261015-0140-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up scorer-20261014-2310-lane2: split sweep summary conflated open= bucket into absent_parents / present_but_not_closed
+
+**Evidence:** BACKLOG SWEEP (filed 2026-10-15, scored 2026-11-21 tick). VERIFIED first-hand this tick on live bytes: bucket split still present in hidden_files/bin/sweep-stale-gap-briefs.py (absent_parents / present_but_not_closed in docstring, counters and summary line); conflated open= gone from the summary (self-test case 13 PASS today); present_but_not_close
 
 ### 🟡 gap-scorer-20261014-2320-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 7.5/10 [PARTIAL]
 
