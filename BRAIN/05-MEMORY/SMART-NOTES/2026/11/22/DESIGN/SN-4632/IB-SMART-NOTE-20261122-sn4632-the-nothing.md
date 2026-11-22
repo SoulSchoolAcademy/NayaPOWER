@@ -14,7 +14,6 @@ One live call named three kinds of note and set them apart forever: the smart no
 
 Across 10 notes, the thread is: name things right, frame them beautifully, judge them whole — and check the destination before you move.
 
-Across 10 notes, the thread is: nothing, frame, live.
 
 ## Human
 
