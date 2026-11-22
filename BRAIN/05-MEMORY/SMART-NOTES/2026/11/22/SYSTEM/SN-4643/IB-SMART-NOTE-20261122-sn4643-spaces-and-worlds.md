@@ -8,7 +8,7 @@ SN-4643 · SYSTEM / THE TWELVE ELEMENTS OF NAYA — PERSONAL
 
 ## Hook:
 
-Everybody belongs somewhere. What if you could create that somewhere yourself?
+"Everybody belongs somewhere. What if you could create that somewhere yourself?"
 
 ## In a nutshell:
 
