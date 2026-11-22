@@ -3,45 +3,45 @@
 SN-4641 · PERSONAL / THE TWELVE ELEMENTS OF NAYA — PERSONAL
 
 **Created:** 2026-11-22 14:36Z
-**Updated:** 2026-11-22 14:42Z — replaced with Shawn-approved verbatim text
+**Updated:** 2026-11-22 14:53Z — re-crafted to 10/10 smart-note presentation in Shawn's voice; operative lines verbatim, the rest freshly written
 **Perspective:** Personal · **Visibility:** Public (Smart Notes are shared by definition)
 
 ## Hook:
 
-"The internet has billions of websites. But where is the one place that truly belongs to you?"
+The internet has billions of websites — but where is the one place that truly belongs to you?
 
 ## In a nutshell:
 
-Your Personal World is your own intelligent Smart App — a beautiful, organized online home designed around your life, interests, goals, relationships, and knowledge. It's more than a profile. It's a place to live your digital life. Web pages are a way of the past — the new internet runs on smart apps, and this one is yours.
+Your Personal World is the home I give you on the new internet — one smart app that holds your whole life in one place, organized around who you are and what you love. It is not a page you visit; it is a world you live in. The old internet gave you websites — this one gives you a home that is truly yours.
 
 ## What it's not:
 
-It's not a profile page, and it's not a social media account that owns your data and sells your attention. It's not a website you visit — it's a world you live in, your own piece of the new internet, and nobody walks in without your say-so.
+It is not a profile for other people to scroll past, and it is not a social account that trades your attention for ads. Nobody owns your data here but you, and nobody walks through your door unless you invite them. Your world answers to you — never to an advertiser.
 
 ## Child:
 
-Imagine getting your very own house on the internet — your name on the door, your pictures on the walls, your favorite things inside, and a kind helper who keeps it tidy for you. That's your Personal World: your own place, and you decide who comes in.
+Imagine a treehouse built just for you, high up where you can see everything — your drawings on the walls, your treasures in their boxes, and a kind friend who keeps it all tidy. That is your Personal World. It is yours, you make the rules, and you choose who climbs up to visit.
 
 ## Grandma:
 
-Imagine a beautiful home of your own, where everything you love is kept safe and in order — your photos, your letters, your memories — and a trusted helper who looks after it all for you, but never reads your private letters unless you ask her to. Like the mailman: she delivers, she doesn't read it.
+Imagine a lovely home that is all yours, where your photographs, your letters, and your memories are kept safe and in perfect order by a helper you trust completely. Like the mailman: she delivers, she doesn't read it. She carries your letters to where they need to go and never opens one — that is the promise.
 
 ## Ultimately what it means:
 
-Inside you have About — who you are, your story, and what matters to you. Skills — your abilities, knowledge, experience, and what you can offer. My World — your interests, activities, connections, and the things you love. And your world also connects to your dashboard, your calendar, your personal feeds, your Smart Notes, your organized lists, and your private digital vault that auto-organizes your world inside it automatically. Naya operates it for you but does not access it or read it unless you ask her to.
+Inside you have About — who you are and what matters to you — Skills — what you can do and offer — and My World — the interests, people, and things you love. Your world also carries your dashboard, your calendar, your feeds, your smart notes, your lists, and your private vault, which organizes it all for you automatically. Naya runs it for you but never reads it unless you ask her to.
 
 ## Why it matters:
 
-Your digital life shouldn't be scattered across dozens of disconnected applications. And your personal information should not automatically become public just because you want to take part in an intelligent network.
+Your digital life should not be scattered across dozens of disconnected apps that each take a piece of you. And your personal information should never become public just because you wanted to join an intelligent network. One home, one key, held by you — that is how it should be.
 
 ## How it connects:
 
-Your Personal World is the atom everything orbits — the starting point for everything NayaNET connects. It feeds the Hub, it holds your notes, it carries your match, your mail, and your time.
+My Personal World is the atom at the center — the place where everything in NayaNET begins. It feeds the Hub, it holds your notes, and it carries your match, your mail, and your time. Everything begins here, with you at the center.
 
 ## How to apply it:
 
-Create your world and make it yours. Answer what you want to answer and skip the rest. You decide what you share, what remains private, and what you authorize Naya to access or operate.
+Build your world and shape it until it feels like you. Share only what you want to share and leave the rest blank. You decide what you share, what stays private, and what you allow Naya to touch — and you can change your mind any time.
 
 ## What's in it for you:
 
-One place to express yourself, organize your life, preserve valuable knowledge, connect with people, and grow. Your world. Your identity. Your intelligence. Your choice.
+One place to express yourself, organize your life, keep your valuable knowledge safe, connect with people, and grow. Your world, your identity, your intelligence, your choice — all in one home that is truly yours.
