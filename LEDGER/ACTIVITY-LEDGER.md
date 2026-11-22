@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-22 19:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-22 20:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -48231,6 +48231,22 @@ _Last updated: 2026-11-22 19:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ gap-t0598 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
+
+**Task:** gap: stale-no-execution — brief task already closed by t0603, retire with byte proof
+
+**Receipt:** `twelve-lane-receipts/gap-t0598-lane4.md`
+
+**Evidence:** Verified (this tick, live bytes): auto-retrieval/arm_adaptive_t0603.py sha16 c661cbc7586893fb EXACT (== t0603 sealed seal); sealed-prereg-adaptive-t0603.md EXISTS (sha16 791b374c078c9816); results-t0603-adaptive.json EXISTS (sha16 fe130034a6c7ae19); all three dated 2026-10-13, ~2.5 days before the brief was filed 2026-10-16 01:23. The brief's done-
+
+### ✅ gap-t0593 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** gap: restored per-task firing + dry-fired top-claim-max pooling arm on real kept passages
+
+**Receipt:** `twelve-lane-receipts/gap-t0593-lane4.md`
+
+**Evidence:** Verified (this tick, live bytes): auto-retrieval/arm_docclaim_gap0593.py sha16 6b2844d5ecbcb2ac EXACT (seal pre==post per receipt); results-gap0593-docclaim.json 0f61ccdf4702fb85 EXACT; battery_t0548.py 4ba3a161f8af526e, t0432_fingerprint.py 4ab5f359abe008c3, decision_change_arm_t0567.py 4d43798e58f2769f all EXACT; t0593 seal byte-untouched per rec
+
 ### ✅ gap-t0483-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up t0483-lane4: PR #2680 CI/merge state + root cause of Oct 7-8 capture-run failures (all 12 classified)
@@ -55072,6 +55088,14 @@ _Last updated: 2026-11-22 19:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ gap-t0593 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** gap: independent re-selection + re-run of t0593 claim-form verdict (different seat, disjoint cells)
+
+**Receipt:** `twelve-lane-receipts/gap-t0593-lane10.md`
+
+**Evidence:** Verified (this tick, live bytes): auto-retrieval/sealed-reselection-gap-t0593-clarity.md sha256 932e586bfa3eea8830e8d49cf755796975637d98929dbf9eeec34799467dba7c EXACT; reselect_gap_t0593_clarity.py fff34d12a9b4fbba7922e5083c2f6734f3977057aa8ae3dce1943b4c73fb5de4 EXACT; results-gap-t0593-clarity.json fc347a85d84324c6a5b106d09856d71d3ab4c62540576759a
 
 ### ✅ gap-scorer-20261015-0110-lane10 — Team 10, Team Naya Scorer (Brain Index) — 8.5/10 [VERIFIED]
 
