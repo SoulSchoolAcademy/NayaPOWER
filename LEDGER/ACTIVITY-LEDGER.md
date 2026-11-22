@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-22 04:42 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-22 05:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -18923,6 +18923,12 @@ _Last updated: 2026-11-22 04:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: refs/heads/naya-lane7/t0701-restamp == 4bdb1f221aaec31bc41babf848526b3232c2661f, matches all three pins; receipt's defect evidence grounded on live reads (comment 6160877257 exists, PR body heading fails the ^## evidence$ regex, handle hidden_files/merge-packet-restamp-t0701.md not in repo tree). Beyond a pointer, Lane 6 independ
 
+### ✅ t0707-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Timed end-to-end capture-leg probe of the Smart Note Flow + gap contract for Shawn's priority-#2 path (seat fix, capture, feeder, wiring, timed test)
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: commit 77d9f055aa50cc5d2db0984bdcb369aaa53d5f1e exists in the mirror (cat-file -t = commit); author line Naya Clarity Narzan <naya4@nayapower.local>, 2026-10-17T20:35:07Z, matching the receipt's seat-fix claim; smart-notes/SN-1574/probe-note-t0707.md present at that exact SHA (blob 121689d094b24654fb2f3
+
 ### ✅ t0707 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** Timed end-to-end capture-leg probe of Smart Note Flow + gap contract vs Shawn's priority-#2 path
@@ -18968,6 +18974,12 @@ _Last updated: 2026-11-22 04:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0707-lane3.md`
 
 **Evidence:** ARTIFACT VERIFIED: receipt's PR-state pin (closed, merged=False, head 4bdb1f221aaec31bc41babf848526b3232c2661f) matches live remote ref. Lane re-pinned PR state at action time itself, invoked the already-done clause honestly, delivered dispatcher map update + retire request, posted board note. Named gap keeping it from 9.5: the claim was avoidable 
+
+### ✅ t0707-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Human-value observatory v1 Next pass: extended header census (I1/I2), I2b queue-wait instrument, I3 correction-event table
+
+**Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: 4 of 6 receipt-pinned SHAs byte-exact on current files (i2b-queuewait-t0707.py a242e73251b7db45, i2b-queuewait-t0707.json e0933c1920c380f0, i3-event-table-t0707.md c8e109f857692204, spec human-value-observatory-v1.md 8f76add6794d83ea); i2b JSON re-read confirms n=21, median_h 0.9 as receipted; census JS
 
 ### ✅ t0707 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -59084,6 +59096,24 @@ _Last updated: 2026-11-22 04:42 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261121-2003 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: attempted all 31 queued briefs, 0 claimed (29x exit 7 parent-authorship, 2x exit 2 routing-prose)
+
+**Evidence:** FRESH WINDOW (filed 04:04 UTC, scored this tick). VERIFIED first-hand this tick on live bytes: all 31 briefs named in the receipt are exactly the 31 brief-*.md files in brief-queue/ (set match, no missing/extra); brief-queue/claimed/ holds only the pre-existing done/ subdirectory - no mv occurred; queue checksum 6d9e2c4ec6fff11fb09482178ca94dd657e7
+
+### ✅ gate-stall-20261121-1859 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: attempted all 31 queued briefs, 0 claimed (29x exit 7 parent-authorship, 2x exit 2 routing-prose)
+
+**Evidence:** FRESH WINDOW (filed 02:59 UTC, scored this tick). VERIFIED first-hand this tick on live bytes: all 31 briefs named in the receipt are exactly the 31 brief-*.md files in brief-queue/ (set match, no missing/extra); brief-queue/claimed/ holds only the pre-existing done/ subdirectory - no mv occurred; queue checksum 6d9e2c4ec6fff11fb09482178ca94dd657e7
+
+### ✅ gate-stall-20261121-1754 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: attempted all 31 queued briefs, 0 claimed (29x exit 7 parent-authorship, 2x exit 2 routing-prose)
+
+**Evidence:** FRESH WINDOW (filed 01:54 UTC, scored this tick). VERIFIED first-hand this tick on live bytes: all 31 briefs named in the receipt are exactly the 31 brief-*.md files in brief-queue/ (set match, no missing/extra); brief-queue/claimed/ holds only the pre-existing done/ subdirectory - no mv occurred; queue checksum 6d9e2c4ec6fff11fb09482178ca94dd657e7
 
 ### ✅ gate-stall-20261121-2003 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
