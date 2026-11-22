@@ -542,7 +542,8 @@ def prepare_revert(repo_path, landing, tip_sha, pusher=None, pr_opener=None, pr_
 
     Effects are injectable (pusher, pr_opener) so tests exercise the real
     git machinery without network. Returns a cure dict; on a conflicting
-    revert it returns {prepared: False, reason} — the alarm still fires.
+    revert, or when the revert PR cannot be opened, it returns
+    {prepared: False, reason} — the alarm still fires.
     """
     merge_sha = landing["merge_sha"]
     branch = f"guardian/revert-{merge_sha[:10]}"
@@ -587,7 +588,21 @@ def prepare_revert(repo_path, landing, tip_sha, pusher=None, pr_opener=None, pr_
             pusher(wt, branch)
         cure = {"prepared": True, "branch": branch, "revert_sha": revert_sha}
         if pr_opener is not None:
-            cure.update(pr_opener(branch, landing, pr_body))
+            try:
+                cure.update(pr_opener(branch, landing, pr_body))
+            except ApiError as exc:
+                # The revert commit is already pushed; only the PR open
+                # failed (job 136809400908 at 7bddb36a: POST /pulls 403,
+                # "GitHub Actions is not permitted to create or approve
+                # pull requests"). Report it as an unprepared cure —
+                # never lose the verdict, the log record, or the board
+                # alarm over a dead PR path. run_guardian already
+                # renders this branch as "Revert preparation failed".
+                return {"prepared": False, "branch": branch,
+                        "revert_sha": revert_sha,
+                        "reason": f"revert PR open failed ({exc}); "
+                                  f"branch {branch} is pushed — open the "
+                                  "PR by hand"}
         return cure
     finally:
         _git(repo_path, "worktree", "remove", "--force", wt, check=False)
