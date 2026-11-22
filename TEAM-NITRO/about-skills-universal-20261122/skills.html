@@ -123,13 +123,13 @@
   @keyframes board-breathe{0%,100%{box-shadow:inset 0 1px rgba(255,255,255,.14),inset 0 -2px 6px rgba(0,0,0,.7),0 34px 90px rgba(0,0,0,.7),0 4px 18px rgba(0,0,0,.5),0 0 34px rgba(139,92,246,.10)}50%{box-shadow:inset 0 1px rgba(255,255,255,.14),inset 0 -2px 6px rgba(0,0,0,.7),0 34px 90px rgba(0,0,0,.7),0 4px 18px rgba(0,0,0,.5),0 0 64px rgba(139,92,246,.24),0 0 110px rgba(60,168,255,.10)}}
   .promax::before{content:"";position:absolute;inset:0;border-radius:22px;padding:1.5px;pointer-events:none;z-index:5;background:linear-gradient(135deg,#fbfbfc,#86868f 20%,#f0f0f3 40%,#63636c 60%,#dedde3 80%,#92929b);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
   .promax::after{content:"";position:absolute;inset:0;border-radius:22px;padding:2px;pointer-events:none;z-index:6;background:#ffffff; /* RIM LIGHT WHITE (Shawn, 2026-11-22 ~09:47): steady white ring, no rotation. */-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;opacity:.8;filter:drop-shadow(0 0 8px rgba(255,255,255,.6))}
-  .pm-top{display:flex;align-items:center;justify-content:space-between;padding:8px 20px 0;flex:none}
+  .pm-top{display:flex;align-items:center;justify-content:space-between;padding:4px 20px 0;flex:none}
   .np-tag{font-size:10px;font-weight:800;letter-spacing:.34em;color:#fff;opacity:.92}
   .deck-status{display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:800;letter-spacing:.22em;color:#fff;opacity:.85}
   .deck-status::before{content:"";width:8px;height:8px;border-radius:50%;background:#3a3a40;box-shadow:inset 0 1px 2px rgba(0,0,0,.6)}
   .deck-status.live{opacity:1}
   .deck-status.live::before{background:#ff3b30;box-shadow:0 0 10px rgba(255,59,48,.9);animation:blink 1.6s infinite}
-  .ticker{overflow:hidden;white-space:nowrap;position:relative;flex:none;background:linear-gradient(180deg,#000000,#08070c 55%,#030304);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:6px 14px;margin:4px 16px 0;box-shadow:inset 0 3px 14px rgba(0,0,0,.95),inset 0 -1px 0 rgba(255,255,255,.05)}
+  .ticker{overflow:hidden;white-space:nowrap;position:relative;flex:none;background:linear-gradient(180deg,#000000,#08070c 55%,#030304);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:6px 14px;margin:0 16px 0;box-shadow:inset 0 3px 14px rgba(0,0,0,.95),inset 0 -1px 0 rgba(255,255,255,.05)}
   .tick-track{display:inline-flex;gap:64px;white-space:nowrap;will-change:transform}
   .ticker:not(.scroll) #tickB{display:none}
   .ticker.scroll .tick-track{animation:tickmove 16s linear infinite;animation-play-state:paused}
@@ -139,7 +139,7 @@
   /* THE KEY ALIGNMENT: both columns start at the same top edge */
   .pm-main{display:flex;gap:26px;padding:14px 22px 20px;align-items:flex-start;flex:1 1 auto;min-height:0}
   .pm-art{flex:2 1 0;min-width:0;display:flex;flex-direction:column;align-items:center}
-  .pm-art-frame{position:relative;width:100%;aspect-ratio:16/9;line-height:0;flex:none;border-radius:18px;background:#07070a;box-shadow:0 42px 90px rgba(0,0,0,.78),0 12px 28px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.28),0 0 26px rgba(87,182,255,.22),0 0 54px rgba(139,92,246,.12)}
+  .pm-art-frame{position:relative;width:100%;aspect-ratio:16/9;line-height:0;flex:none;transition:width .9s ease;border-radius:18px;background:#07070a;box-shadow:0 42px 90px rgba(0,0,0,.78),0 12px 28px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.28),0 0 26px rgba(87,182,255,.22),0 0 54px rgba(139,92,246,.12)}
   .pm-art-frame::before{content:"";position:absolute;inset:0;border-radius:14px;padding:2px;pointer-events:none;z-index:4;background:conic-gradient(from var(--oa,0deg),transparent 0 210deg,rgba(87,182,255,.9) 292deg,#ffffff 322deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;animation:orbit-spin 9s linear infinite;opacity:.85;filter:drop-shadow(0 0 7px rgba(87,182,255,.55))}
   .pm-poster{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block;border-radius:14px}
   .pm-video-shell{position:absolute;inset:0;z-index:2;border-radius:14px;overflow:hidden;background:#07070a}
@@ -152,14 +152,16 @@
   .pm-facade-label{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 14px rgba(0,0,0,.8);text-align:center;line-height:1.5}
   .pm-facade-label small{display:block;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:none;color:#e6e9f5}
   /* Under the video: the saying, then the red N — centred, calm spacing */
-  .cover-saying{margin:8px auto 0;text-align:center;font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:600;font-size:clamp(27px,3.6vw,42px);letter-spacing:.015em;color:#ffffff;line-height:1.25;text-shadow:0 2px 3px rgba(0,0,0,.9),0 0 18px rgba(255,252,240,.45)}
-  .cover-n{display:block;width:72px;height:72px;margin:8px auto 0;border-radius:50%;object-fit:cover;filter:brightness(1.02) saturate(1.08);box-shadow:0 0 0 2px rgba(255,255,255,.22),0 12px 24px rgba(0,0,0,.6),0 0 22px rgba(255,45,70,.30)}
+  .cover-saying{margin:4px auto 0;text-align:center;font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:600;font-size:clamp(27px,3.6vw,42px);letter-spacing:.015em;color:#ffffff;line-height:1.25;text-shadow:0 2px 3px rgba(0,0,0,.9),0 0 18px rgba(255,252,240,.45)}
+  .cover-n{display:block;width:56px;height:56px;margin:6px auto 0;border-radius:50%;object-fit:cover;filter:brightness(1.02) saturate(1.08);box-shadow:0 0 0 2px rgba(255,255,255,.22),0 12px 24px rgba(0,0,0,.6),0 0 22px rgba(255,45,70,.30)}
   .pm-cap{display:flex;align-items:center;gap:12px;padding:14px 4px 0;width:100%;flex-wrap:wrap}
   /* Cover fit: the whole player — the red N fully visible, breathing room under it — sits above the fold, with the Back/Forward bar below the board */
-  #screen-cover .pm-main{padding-top:8px;padding-bottom:8px}
+  #screen-cover .pm-main{padding-top:6px;padding-bottom:6px}
   #screen-cover .pm-side{gap:8px;padding-top:10px;padding-bottom:10px}
-  #screen-cover .pm-cap{padding-top:10px}
+  #screen-cover .pm-cap{padding-top:6px}
   #screen-cover .side-actions{margin-top:4px}
+  /* ROUND 6 — SAYING WHOLE FROM THE FIRST PAINT: while the header is unfolded it takes ~110px of the panel, so the 16/9 frame is capped by the room that is actually there. 570px = header 110 + top margin 64 + footer 69 + panel padding 30 + floatnav 68 + pm-top/ticker/pm-main 64 + saying/N/cap 165. The cap lifts the moment the header folds (the sibling rule stops matching) and the frame grows back with the fold. On narrow screens the cap is wider than the art column, so it is a no-op — the phone cover is untouched. Slides are untouched: the rule names #screen-cover only. */
+  .inner > .daybar:not(.folded) ~ #screen-cover .pm-art-frame{width:min(100%,calc((100vh - 570px)*16/9))}
   .onair{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;font-size:11px;font-weight:800;letter-spacing:.18em;color:#fff;border-radius:999px;white-space:nowrap;border:1px solid rgba(255,255,255,.35);background:linear-gradient(180deg,#17171b,#0a0a0d);box-shadow:inset 0 1px rgba(255,255,255,.16),0 0 12px rgba(255,255,255,.08)}
   .onair-dot{width:8px;height:8px;border-radius:50%;background:#ff3b30;flex:0 0 8px;box-shadow:0 0 10px rgba(255,59,48,.9);animation:blink 1.6s infinite}
   .hero-eq{display:flex;align-items:flex-end;gap:3px;height:20px;margin-left:auto}
@@ -364,7 +366,7 @@
     .panel-body::before{animation:none !important}
     .promax,.promax::after,.pm-art-frame::before,.slide-frame::after,.ib-layer,.ib-layer::after,.orb-wrap.jewel,.slot .orb3d,.side-actions .naya-btn.view-btn,.pm-play-disc,#btnForward,#btnForward::after,#btnForward::before,#btnBack::before,#btnForwardCover::before,#btnBackCover::before,#screen-legal .ib-jewel,#screen-legal .letter-beat.reveal{animation:none !important}
     .hero-eq span,.onair-dot,.deck-status.live::before{animation:none}
-    .daybar{transition:none}
+    .daybar,.pm-art-frame{transition:none}
     .screen.active{animation:none}
     .naya-btn,.hbtn,.hero-play{transition:none !important}
     .naya-btn:hover,.hbtn:active,.hero-play:active{transform:none !important}
@@ -697,19 +699,20 @@ var audio = document.getElementById('welcomeAudio');
 audio.src = EMBED.audio;
 audio.load();
 
-/* ================= TWO PLAYERS, ONE AT A TIME (ROUND 5) =================
+/* ================= TWO PLAYERS, ONE VOICE (ROUND 6) =================
    The video plays from the picture / the deck; the recording plays
-   from its own bar — pressing play on the recording plays the
-   recording, never the video. One thing plays at a time: starting
-   one pauses the other, so the two can never mix or drift apart.
-   The deck’s clock and seek follow the video, and the voice orb
-   follows whichever is playing (the recording through its analyser,
-   the video through its state). */
+   from its own bar — pressing play on its bar plays the recording
+   aloud and rests the video. Pressing play on the video plays the
+   video AND the recording together: the recording runs silent under
+   the picture (same take, proven — see the shadow note below) so the
+   voice orb reads her real voice through its analyser. The deck’s
+   clock and seek follow the video, and the silent shadow is re-locked
+   to the video clock while it plays. */
 var videoLoaded = false, videoPlaying = false;
 function loadVideo(){
   if (videoLoaded) return;
   videoLoaded = true;
-  if (audio && !audio.paused) audio.pause(); /* ROUND 5: video starts — the recording rests */
+  startShadow(0); /* ROUND 6: video starts — the recording plays silent under it, same take, so the orb reads her real voice */
   var shell = document.getElementById('videoShell');
   var frame = document.getElementById('videoFrame');
   if (!shell || !frame) return;
@@ -748,8 +751,8 @@ function ytPost(func, args){
   }
 }
 function ytCommand(cmd){
-  if (cmd === 'play'){ if (audio && !audio.paused) audio.pause(); /* ROUND 5: video starts — the recording rests */ if (!videoLoaded) loadVideo(); else { ytPost('unMute'); ytPost('playVideo'); } }
-  if (cmd === 'pause'){ ytPost('pauseVideo'); }
+  if (cmd === 'play'){ if (!videoLoaded) loadVideo(); else { ytPost('unMute'); ytPost('playVideo'); startShadow(videoTime); } }
+  if (cmd === 'pause'){ stopShadow(); ytPost('pauseVideo'); }
 }
 var videoTime = 0, videoDur = 0;
 function ytSeek(sec){
@@ -757,6 +760,7 @@ function ytSeek(sec){
   sec = Math.max(0, videoDur ? Math.min(videoDur - .25, sec) : sec);
   videoTime = sec;
   ytPost('seekTo', [sec, true]);
+  if (shadowAudio){ try { audio.currentTime = sec; } catch(e){} }
   paintDeckTime();
 }
 function paintDeckTime(){
@@ -772,7 +776,10 @@ function setDeckPlaying(on){
   else { deckStatus.textContent = videoTime > .5 ? 'PAUSED' : 'READY'; deckStatus.classList.remove('live'); dPlay.innerHTML = '&#9654;'; dPlay.setAttribute('aria-label', 'Play the welcome video'); }
 }
 setInterval(function(){
-  if (videoPlaying){ videoTime += .5; if (videoDur && videoTime > videoDur) videoTime = videoDur; paintDeckTime(); }
+  if (videoPlaying){ videoTime += .5; if (videoDur && videoTime > videoDur) videoTime = videoDur; paintDeckTime();
+    /* ROUND 6: keep the silent shadow locked to the picture — the two are the same take, so a drift past 0.35s is a clock slip, not the words. */
+    if (shadowAudio && audio && !audio.paused){ var drift = audio.currentTime - videoTime; if (drift > .35 || drift < -.35){ try { audio.currentTime = videoTime; } catch(e){} } }
+  }
 }, 500);
 window.addEventListener('message', function(e){
   if (typeof e.data !== 'string') return;
@@ -787,8 +794,12 @@ window.addEventListener('message', function(e){
   }
   if (d.event === 'onStateChange' || d.event === 'infoDelivery' || (info && typeof info.playerState !== 'undefined')){
     var st = (d.event === 'onStateChange') ? info : (info && info.playerState);
-    if (typeof st === 'number'){ videoPlaying = (st === 1); setDeckPlaying(videoPlaying); }
-    if (info && typeof info.currentTime === 'number'){ videoTime = info.currentTime; paintDeckTime(); }
+    if (typeof st === 'number' && st !== -1){ videoPlaying = (st === 1); setDeckPlaying(videoPlaying);
+      /* ROUND 6: the player is the clock — its state starts/stops the silent shadow that feeds the orb. State -1 (unstarted) is ignored once playback has begun: the errored player can deliver it late with currentTime 0, which would otherwise unplay a playing session and pin the clock at 0. */
+      if (st === 1){ if (audio.paused && !shadowAudio) startShadow(videoTime); }
+      else if (st === 2 || st === 0){ stopShadow(); if (st === 0){ videoTime = 0; paintDeckTime(); } }
+    }
+    if (info && typeof info.currentTime === 'number' && st !== -1){ videoTime = info.currentTime; paintDeckTime(); }
     if (info && typeof info.duration === 'number' && info.duration > 0){ videoDur = info.duration; paintDeckTime(); }
   }
 });
@@ -807,13 +818,36 @@ var audioPlaying = false;
    events drive audioPlaying (so the orb dances to her real voice
    through the analyser, the PowerCast pattern); starting it rests
    the video, and it never starts the video. */
+/* ROUND 6 — TRUE AMPLITUDE, THE SHADOW: the YouTube video's soundtrack is the SAME recording as the native file (proven: native 258.15s vs YouTube 258.23s; 100ms-RMS envelope correlation 0.87 at lag 0, every 30s segment 0.85-0.89, sample-level cross-correlation 0.978 at -36ms — same take, no drift). A cross-origin iframe cannot be AnalyserNode'd, so the visual is driven from the native recording played SILENT under the video (one play button drives video + audio + visual). The recording is silenced by a GainNode AFTER the analyser — never by the element's volume, which would silence the analyser too. PowerCast has no analyser at all (its voiceAmp target is the canned playing?(.3+.7*burstS):.09) — nothing to harvest there, so the real thing is built here. */
+var shadowAudio = false;
+function setShadowGain(on){ try { if (syncGain) syncGain.gain.value = on ? 0 : 1; } catch(e){} }
+function startShadow(atSec){
+  ensureAnalyser();
+  shadowAudio = true;
+  setShadowGain(true);
+  try { audio.currentTime = Math.max(0, atSec || 0); } catch(e){}
+  var pr = null;
+  try { pr = audio.play(); } catch(e){ shadowAudio = false; setShadowGain(false); }
+  if (pr && pr.catch) pr.catch(function(){ shadowAudio = false; setShadowGain(false); });
+}
+function stopShadow(){
+  if (!shadowAudio) return;
+  shadowAudio = false;
+  setShadowGain(false);
+  try { audio.pause(); } catch(e){}
+}
 audio.addEventListener('play', function(){
   audioPlaying = true;
   ensureAnalyser();
+  if (shadowAudio){ /* our shadow start: silent, the video keeps playing */ return; }
+  setShadowGain(false);
   if (videoPlaying) ytCommand('pause');
 });
-audio.addEventListener('pause', function(){ audioPlaying = false; });
-audio.addEventListener('ended', function(){ audioPlaying = false; });
+audio.addEventListener('pause', function(){
+  audioPlaying = false;
+  if (shadowAudio){ shadowAudio = false; setShadowGain(false); if (videoPlaying) ytCommand('pause'); }
+});
+audio.addEventListener('ended', function(){ audioPlaying = false; if (shadowAudio){ shadowAudio = false; setShadowGain(false); } });
 function fmt(s){ if (!isFinite(s)) s = 0; s = Math.floor(s); return Math.floor(s/60) + ':' + ('0' + (s%60)).slice(-2); }
 dPlay.addEventListener('click', function(){
   if (videoPlaying) ytCommand('pause'); else ytCommand('play');
@@ -821,9 +855,9 @@ dPlay.addEventListener('click', function(){
 document.getElementById('dBack').addEventListener('click', function(){ ytSeek(videoTime - 15); });
 document.getElementById('dFwd').addEventListener('click', function(){ ytSeek(videoTime + 30); });
 document.getElementById('dStop').addEventListener('click', function(){ ytCommand('pause'); ytSeek(0); });
-/* The deck drives the VIDEO (round-4 bridge, untouched); the recording
-   plays from its own bar (round 5) and its length — 4:18 — is the deck
-   total on both pages. */
+/* The deck drives the VIDEO (round-4 bridge, untouched) and, with it, the
+   silent shadow recording (round 6); the recording plays aloud from its
+   own bar (round 5) and its length — 4:18 — is the deck total on both pages. */
 audio.addEventListener('loadedmetadata', function(){ document.getElementById('tDur').textContent = fmt(audio.duration); });
 document.getElementById('deckSeek').addEventListener('click', function(e){
   if (!videoDur) return;
@@ -841,11 +875,12 @@ setTimeout(fitTicker, 800);
 /* ================= VOICE CANVAS — driven by the REAL sound =================
    The recording runs through a Web Audio analyser (created on the
    first tap, the way browsers require), so the orb dances to her
-   actual voice. While the video plays, its state drives the same
-   orb. At rest, the orb idles gently. */
+   actual voice — solo from its own bar, or silent under the video
+   (same take, so the words line up). Loud syllables spike, quiet
+   passages settle, silence rests. At rest, the orb idles gently. */
 var voiceCv = document.getElementById('voice'), voiceCx = voiceCv.getContext('2d');
-var voiceAmp = .07, burstS = .3, voiceTt = 0;
-var actx = null, analyser = null, freqData = null;
+var voiceAmp = .07, voiceTt = 0;
+var actx = null, analyser = null, freqData = null, syncGain = null, timeData = null;
 function ensureAnalyser(){
   if (actx) { if (actx.state === 'suspended') actx.resume(); return; }
   try {
@@ -855,10 +890,14 @@ function ensureAnalyser(){
     var srcNode = actx.createMediaElementSource(audio);
     analyser = actx.createAnalyser();
     analyser.fftSize = 256;
+    analyser.smoothingTimeConstant = 0.3; /* syllables, not smear: the default 0.8 irons them flat */
+    timeData = new Uint8Array(analyser.fftSize);
     freqData = new Uint8Array(analyser.frequencyBinCount);
+    syncGain = actx.createGain(); syncGain.gain.value = 1;
     srcNode.connect(analyser);
-    analyser.connect(actx.destination);
-  } catch(e){ actx = null; analyser = null; }
+    analyser.connect(syncGain);
+    syncGain.connect(actx.destination);
+  } catch(e){ actx = null; analyser = null; syncGain = null; timeData = null; }
 }
 ['pointerdown','keydown'].forEach(function(ev){ document.addEventListener(ev, ensureAnalyser, {passive:true}); });
 function sizeCv(){
@@ -872,18 +911,16 @@ function drawWave(){
   x.clearRect(0, 0, W, H);
   var playing = isPlaying();
   var level = 0;
-  if (analyser && audioPlaying){
-    analyser.getByteFrequencyData(freqData);
-    var sum = 0, n = Math.min(48, freqData.length);
-    for (var i = 0; i < n; i++) sum += freqData[i];
-    level = sum / n / 255;
-  } else if (playing){
-    level = .35 + .3 * Math.abs(Math.sin(voiceTt * 2.3));
+  if (analyser && timeData && !audio.paused && !audio.ended){
+    analyser.getByteTimeDomainData(timeData);
+    var sum = 0, n = timeData.length;
+    for (var i = 0; i < n; i++){ var dv = (timeData[i] - 128) / 128; sum += dv * dv; }
+    level = Math.sqrt(sum / n);
   }
-  var raw = Math.abs(Math.sin(voiceTt*1.9)*.6 + Math.sin(voiceTt*3.1+1.2)*.3 + Math.sin(voiceTt*.7+.5)*.4);
-  burstS += (Math.min(1, raw) - burstS) * .09;
-  var target = playing ? Math.min(1, .25 + .75 * Math.max(burstS * .7, level * 1.6)) : .09;
-  voiceAmp += (target - voiceAmp) * .08;
+  /* ROUND 6 — TRUE AMPLITUDE: the level above IS the sound — the time-domain RMS of the recording, solo or silent under the video. The frequency mean was tried and rejected: it sat at 0.2-0.45 whatever she said, while the RMS swings 0.01 between syllables to 0.14 on loud ones (measured live). The canned sine branch is gone: while the video plays with no analyser yet, the orb rests instead of pretending. burstS is gone too — a sine sum that could out-shout the real voice. .06 + level*6.5 fills the orb on loud syllables (~0.9), settles it between words (~0.15) and rests it in silence. */
+  var target = playing ? Math.min(1, .06 + level * 6.5) : .09;
+  var easeK = 1 - Math.pow(0.92, waveDt / 16.7); /* ROUND 6: time-based ease — k=.08 at 60fps, same wall-clock follow at any frame rate (the VM runs rAF at ~1.7fps, where a per-frame ease takes ~10s to converge and the words could not be seen to move the orb). */
+  voiceAmp += (target - voiceAmp) * easeK;
   var A = voiceAmp;
   var g = x.createRadialGradient(cx0, cy0, 0, cx0, cy0, R);
   g.addColorStop(0, 'rgba(255,250,240,' + (.16*A+.04).toFixed(3) + ')');
@@ -949,7 +986,8 @@ function drawWave(){
   }
   x.shadowBlur = 0;
 }
-function wave(){ voiceTt += .025; try { drawWave(); } catch(e){} requestAnimationFrame(wave); }
+var lastWaveT = 0, waveDt = 16.7;
+function wave(){ var now = performance.now(); waveDt = lastWaveT ? Math.min(250, now - lastWaveT) : 16.7; lastWaveT = now; voiceTt += .025; try { drawWave(); } catch(e){} requestAnimationFrame(wave); }
 sizeCv();
 window.addEventListener('resize', sizeCv, {passive:true});
 wave();
