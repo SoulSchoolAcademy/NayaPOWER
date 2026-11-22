@@ -14,7 +14,6 @@ Shawn's house runs on one law that is really four promises kept together. The la
 
 Across 10 notes, the thread is: words, nothing, itself, law, naya.
 
-Across 10 notes, the thread is: system, eye, never.
 
 ## Human
 
