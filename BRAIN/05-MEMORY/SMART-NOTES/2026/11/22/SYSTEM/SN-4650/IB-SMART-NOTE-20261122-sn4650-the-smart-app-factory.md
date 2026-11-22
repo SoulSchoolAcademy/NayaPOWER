@@ -3,45 +3,45 @@
 SN-4650 · SYSTEM / THE TWELVE ELEMENTS OF NAYA — PERSONAL
 
 **Created:** 2026-11-22 14:36Z
-**Updated:** 2026-11-22 14:53Z — re-crafted to 10/10 smart-note presentation in Shawn's voice; operative lines verbatim, the rest freshly written
+**Updated:** 2026-11-22 15:06Z — canonical call-approved text filed as-is (10/10, all ten sections filled)
 **Perspective:** Personal · **Visibility:** Public (Smart Notes are shared by definition)
 
 ## Hook:
 
-What if you could build a beautiful, working smart app in minutes — not days or months?
+"The machine that builds the machine."
 
 ## In a nutshell:
 
-The Smart App Factory is the machine that builds the machine — the place where high-level, designed, working smart-app pages are created in minutes. With Naya Design, the Frame Library, clone-and-edit, and the Live Loop, anyone can build a world. You do not need to be a designer; you just need an idea.
+The Smart App Factory is the system that builds NayaNET itself — the machine that builds the machine. It takes one page done right and clones it into Personal Worlds, Businesses, and Spaces — the same frame, the same language, the same quality, over and over, in minutes, not days or months.
 
 ## What it's not:
 
-It is not a blank page that stares back at you, and it is not a month of hiring developers and designers. It is not a template that looks the same for everyone — every world you build carries the Naya standard and still feels like yours. Building here is fast because the machine does the hard work.
+It's not a team of developers building every page by hand, and it's not a template that makes everything look the same and feel cheap. It's not a factory that cuts corners — it's a factory that never lets quality drop, because every part is proven before it's used again.
 
 ## Child:
 
-Imagine a toy factory where you press one button and out comes a whole beautiful playhouse — painted, furnished, and ready to play in — and you can change the colors and the rooms however you like. That is the Factory: press the button, and your world is built.
+Imagine you build the very best LEGO castle in the world — and then you have a magic machine that can build that same castle again and again, for every kid who wants one, with their own colors and their own rooms inside. That's the Smart App Factory: one great build, cloned for everyone.
 
 ## Grandma:
 
-Imagine a master craftswoman who can build you a beautiful shop in an afternoon — the shelves, the sign, the window display, all of it — and all you had to do was tell her what you dream of selling. That is the Factory. You bring the dream; the machine builds the shop.
+Imagine a master craftsman who builds one perfect chair — and then teaches a whole workshop to build that same chair, perfectly, every single time, for anyone who needs one. That's the Factory: the craft, learned once, shared forever.
 
 ## Ultimately what it means:
 
-Access Naya Design — high-end, living, deep, active, intelligent — and the Factory creates many worlds from it. The Frame Library holds the frames that already work: take one, clone it, swap the middle, and it is yours. The Live Loop proves it live, on your tap, so what you build is real from the first minute.
+The Factory works from the Frame Library — real harvested parts, cloned, never rebuilt, never invented. One build done right, then clone and repeat — swap only the centre. Every correction becomes law and a check the same pass, so the next builder cannot make the same mistake. And the Live Loop means a page is not done on staging — done means live on the official URL, tested by the person who will use it.
 
 ## Why it matters:
 
-The old internet made building a world slow, expensive, and out of reach for most people. When anyone can build a beautiful working world in minutes, everyone can have a home on the new internet. That is how the network grows — one world at a time, built by the people who live in them.
+The old internet takes months to build one thing, and every build is different. NayaNET has to grow to millions of people, and it can only do that if building is fast, repeatable, and always ten-star. The Factory is what makes that possible.
 
 ## How it connects:
 
-The Factory connects to everything: your notes become pages, your pages become worlds, and your worlds join the Hub, the feeds, and the match. Every page built here carries the same frame, the same language, and the same quality — so the whole network feels like one civilization. Build once, and the whole system gets stronger.
+The Factory connects to everything — every Personal World, every Business, every Space, every Smart Note, every page on NayaNET is built by it. It is the engine underneath the whole network, and every improvement to the Factory improves every page it has ever built.
 
 ## How to apply it:
 
-Pick a frame from the Library, clone it, and make the middle yours — your words, your pictures, your world. Prove it live with the Live Loop, then share it. If you can describe your dream, you can build it here.
+Build one thing right — one page, one frame, one block — and let the Factory clone it. When you find a mistake, fix it once, and it is fixed everywhere. When you find something better, teach it to the Factory, and every page gets better with it.
 
 ## What's in it for you:
 
-Your own beautiful world, built in minutes, that works from the first tap — and the power to build another whenever inspiration strikes. No waiting, no big bills, no technical skill needed. That is the machine that builds the machine, working for you.
+A network that grows with you, gets better every day, and never asks you to wait months for something simple. Your world, built in minutes. Your idea, live today. And every page you build makes the next one easier — for you, and for everyone.
