@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- ABOUT SHAWN + SKILLS — CLONE, ROUND 3, 2026-11-21 (One-Build Law).
+<!-- ABOUT SHAWN + SKILLS — CLONE, ROUND 4, 2026-11-21 (One-Build Law).
      CLONE, DON'T REBUILD: every byte of structure, flow, frame, CSS and JS
      below is the live agreement page as filed at
      TEAM-NITRO/agreement-live-20261121/agreement-live.html (16,791,795 B,
@@ -15,7 +15,19 @@
      word counts; frame 1 the 14-word motto exception; frame 10 the Anaya
      Declaration; frame 6 "no gray text"; frame 15's "How to start" title
      still not in the frame). Public name is now "Shawn" (round 3 rename); bare "Shawn"
-     instances stay as-is. -->
+     instances stay as-is.
+     ROUND 4 — FRAME FIT + KEEP-READING (2026-11-21): every screen fits its
+     frame at 390x844 and 1920x999 (0 px below the fold on arrival) via the
+     appended <style id="r4-fit"> overrides — body is the 100dvh column, the
+     stage is hard-clamped to the remaining space (flex-basis 0), the footer
+     rides inside the viewport; phone daybar one row with the station title
+     at 17px; cover quote+N share a row, phone side is a two-column grid;
+     slides/deals tighten inside their boards only. Keep-reading hides on
+     single-beat deals and whenever a tap cannot advance, and the appended
+     [hidden]{display:none!important} makes hidden really hidden — the
+     source has no generic [hidden] rule, so a pill set hidden=true by JS
+     stayed painted (the desktop-eye verdict was right). No words change;
+     the agreement frame (.royal-frame) and all source CSS/JS are untouched. -->
 <html lang="en">
 <head>
 <meta charset="utf-8" />
@@ -342,6 +354,103 @@
     .naya-btn,.hbtn,.hero-play{transition:none !important}
     .naya-btn:hover,.hbtn:active,.hero-play:active{transform:none !important}
   }
+</style>
+<style id="r4-fit">
+/* ROUND 4 — FRAME FIT (2026-11-21). Every screen arrives whole in its frame
+   at 390x844 and 1920x999: zero pixels below the fold on arrival. The
+   agreement frame (.royal-frame), the stage chrome and all content words are
+   untouched; only sizing/arrangement inside the screens changes, per
+   viewpoint, so each viewpoint fits its own frame exactly. */
+/* 1. The document fits the viewport: body is the 100dvh column, the stage
+   is hard-clamped to exactly the remaining space (flex-basis 0, so a tall
+   panel cannot push the document taller), the footer rides inside. */
+body{display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden}
+.stage{height:auto;flex:1 1 0;min-height:0}
+.legalbar{margin-top:0}
+/* 1b. Hidden means hidden. The source file has NO generic [hidden] rule —
+   only scoped ones — so the UA's [hidden]{display:none} is beaten by the
+   author's .naya-btn{display:inline-flex}: a Keep-reading button set
+   hidden=true by JS stayed PAINTED (the desktop-eye verdict was right; a
+   probe that only reads the .hidden property cannot see it). This rule
+   restores the standard behavior, so hidden buttons really disappear. */
+[hidden]{display:none!important}
+/* 2. Slimmer floatnav at every width (Back/Forward stay 44px touch targets). */
+.floatnav{padding:6px 14px}
+.floatnav .naya-btn{height:44px;min-height:44px}
+/* 3. Cover, all widths: quote + red N share one row under the poster. The
+   saying's basis is calc(100% - 70px) so it can NEVER sit on the poster's
+   row: the poster fills its row, the saying wraps to the next row and shares
+   it with the N. (A 0 basis collapsed the saying to zero width beside the
+   poster, its words overflowing visibly — seen on desktop.) */
+#screen-cover .pm-art{flex-wrap:wrap;flex-direction:row;align-items:center;row-gap:8px}
+#screen-cover .pm-art-frame{flex:1 1 100%}
+#screen-cover .cover-saying{flex:1 1 calc(100% - 70px);min-width:0;margin-top:0}
+#screen-cover #coverN{flex:0 0 auto;margin:0}
+#screen-cover .pm-cap{flex:1 1 100%}
+/* 4. Desktop cover (min-width:901px): narrower art column, smaller orb. */
+@media(min-width:901px){
+  #screen-cover .pm-art{flex:0 1 835px}
+  #screen-cover .cover-saying{font-size:32px}
+  #screen-cover #coverN{width:56px;height:56px}
+  #screen-cover .pm-side .orb-wrap{width:184px;height:184px}
+  #screen-cover .pm-side .orb-wrap canvas{width:100%;height:100%}
+  .slot .medal{width:56px;height:56px}
+  .pm-main{padding-top:6px}
+}
+/* 5. Phone (max-width:900px). */
+@media(max-width:900px){
+  /* 5a. Daybar: one row, not two — the station title at 17px (the scale
+     floor) so even the longest station names wrap to at most three short
+     lines beside the portraits instead of pushing the bar taller. */
+  .official-headliner{grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"left title right";row-gap:0;margin:0 2px}
+  #slotLeft{grid-area:left}#slotRight{grid-area:right}.tb-center{grid-area:title}
+  .tb-title{font-size:17px}
+  .panel-body{padding:8px}
+  /* 5b. Cover: compact poster; side becomes a two-column grid (orb+jewel
+     left, seek/caption right; transport, audio and LET'S GO full-width). */
+  #screen-cover .pm-art-frame{max-width:124px;margin-left:auto;margin-right:auto}
+  #screen-cover .cover-saying{font-size:17px}
+  #screen-cover #coverN{width:44px;height:44px}
+  .pm-side{display:grid;grid-template-columns:76px 1fr;gap:8px 12px;align-items:center;padding:8px 10px}
+  .pm-side .orb-wrap{grid-column:1;grid-row:1;width:36px;height:36px}
+  .pm-side .orb-wrap.jewel{grid-column:1;grid-row:2;width:32px;height:32px}
+  .pm-side .deck-seekrow{grid-column:2;grid-row:1;min-width:0}
+  .pm-side .audio-cap{grid-column:2;grid-row:2}
+  .pm-side .deck-ctl{grid-column:1/-1;grid-row:3}
+  .pm-side .hero-play{flex-basis:48px;width:48px;height:48px}
+  .pm-side #welcomeAudio{grid-column:1/-1;grid-row:4}
+  .pm-side .side-actions{grid-column:1/-1;grid-row:5}
+  .pm-side .orb-wrap canvas{width:100%;height:100%}
+  .pm-main{gap:2px;padding:8px 10px 10px}
+  /* 5c. Slides: smaller picture, face, script and body (17px floor). */
+  #screen-slide .pm-art-frame{aspect-ratio:16/9;max-width:192px;margin-left:auto;margin-right:auto}
+  #screen-slide .slide-n-under{display:none}
+  #slideBoards .ib-face{width:72px;height:72px}
+  #slideBoards .b-script{font-size:25px}
+  #slideBoards .ib-layer-body p{font-size:17px;line-height:1.28}
+  #slideBoards .ib-layer-body{padding:10px 12px}
+  #screen-slide .pm-main{gap:8px}
+  /* 5d. Deals: screen furniture hides on phone (the two .fp-legal-intro
+     paragraphs and the steplabel — the deal title, dots and controls carry
+     the same information; all three stay on desktop). Controls go to one
+     row each; titles and beat text tighten inside their boards only. */
+  #screen-legal .fp-legal-intro{display:none}
+  #screen-legal .letter-steplabel{display:none}
+  #screen-legal .fp-legal-page{margin-top:4px}
+  #screen-legal .deal-title{font-size:25px;margin:2px 0 0}
+  #screen-legal .deck-sub{margin:0}
+  #screen-legal .fp-legal-page .letter-controls{flex-direction:row;justify-content:center;align-items:center;gap:8px;margin-top:8px}
+  #screen-legal .fp-legal-page .letter-all{min-height:0;padding:2px 8px}
+  #screen-legal .fp-legal-page .ib-title{font-size:25px}
+  #screen-legal .fp-legal-page .ib-nutshell{padding:8px 12px 8px 16px;margin:8px 0 10px}
+  #screen-legal .fp-legal-page .ib-nutshell p{line-height:1.35}
+  #screen-legal .fp-legal-page .letter-controls .naya-btn{flex:1 1 0;min-width:0;padding:0 12px;height:auto;min-height:48px}
+  /* The Close label ("Close ◆ Back to the footer") cannot fit one line in
+     a half-width button, and .naya-btn is white-space:nowrap with
+     overflow:hidden, so it clipped mid-word. Let it wrap: two 15px lines
+     fit inside the existing 48px button, so the row costs no extra height. */
+  #screen-legal .fp-legal-page [data-legal-close]{white-space:normal;line-height:1.3}
+}
 </style>
 </head>
 <body>
@@ -909,8 +1018,8 @@ function resetLegalPanel(panel){
   dots.forEach(function(d, i){ d.classList.toggle('on', i === 0); });
   var next = panel.querySelector('[data-legal-next]');
   var all = panel.querySelector('[data-legal-all]');
-  if (next) next.hidden = false;
-  if (all) all.hidden = false;
+  if (next) next.hidden = beats.length <= 1;
+  if (all) all.hidden = beats.length <= 1;
   panel._legalIdx = 1;
 }
 function finishLegalPanel(panel){
@@ -955,6 +1064,8 @@ document.querySelectorAll('.fp-legal-page').forEach(function(panel){
         var r = beats[idx].getBoundingClientRect();
         if (r.bottom > window.innerHeight) beats[idx].scrollIntoView({behavior:'smooth', block:'nearest'});
       }
+    } else {
+      finishLegalPanel(panel);
     }
   });
   if (all) all.addEventListener('click', function(){
