@@ -815,13 +815,29 @@ def run_guardian(client, repo_path, before, after, *,
                     body += (f"\n\n**Revert preparation failed:** {cure.get('reason', '')}\n"
                              "The escape stands verified; the revert must be prepared "
                              "by hand — now, not watched.")
+                else:
+                    # Prepared but no PR URL recorded (the opener opened
+                    # nothing / returned no URL): the branch is pushed,
+                    # the PR is not — say so, or the seat never learns
+                    # the revert is waiting to be opened by hand.
+                    body += (f"\n\n**Revert prepared but no PR opened:** branch "
+                             f"`{cure.get('branch', '')}` (revert "
+                             f"`{cure.get('revert_sha', '')}`) is pushed — "
+                             "open the PR by hand.")
             alarm = body if verdict == "ESCAPE" else (
                 body + f"\n\n**This escape is ON a [{REVERT_LABEL}] landing.** No "
                        "revert-of-a-revert was prepared (loop guard); a seat takes "
                        "the fix forward from here.")
             if act:
-                client.post(f"/issues/{board}/comments", {"body": alarm})
-                record["alarm_posted"] = True
+                try:
+                    client.post(f"/issues/{board}/comments", {"body": alarm})
+                    record["alarm_posted"] = True
+                except ApiError as exc:
+                    # A dead alarm channel must not lose the verdict: the
+                    # record still reaches the sinks below, marked with
+                    # the failure (same loss class as the 403 PR open).
+                    record["alarm_posted"] = False
+                    record["alarm_error"] = str(exc)
         records.append(record)
     for sink in sinks:
         sink.append(records)
