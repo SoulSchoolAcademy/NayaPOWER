@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-22 22:03 UTC_
+_Last updated: 2026-11-22 22:42 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 10203
-- ✅ Verified (8+): 10100
+- **Total scored actions:** 10210
+- ✅ Verified (8+): 10107
 - 🟡 Partial (5–7): 92
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 7
@@ -25,7 +25,7 @@ _Last updated: 2026-11-22 22:03 UTC_
 | Team 8 | Naya Sentinel | 616 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 739 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 1006 | 9.1 | 9.7 |
-| Team 11 | Naya Heart | 684 | 9.0 | 9.6 |
+| Team 11 | Naya Heart | 690 | 9.0 | 9.6 |
 | Team 12 | Naya Herald | 534 | 9.1 | 9.5 |
 
 ## Learning velocity
@@ -1400,6 +1400,7 @@ _Last updated: 2026-11-22 22:03 UTC_
 - **gate-stall-20261122-1108:** 1 actions, avg 8.0/10
 - **gate-stall-20261122-1208:** 1 actions, avg 9.0/10
 - **gate-stall-20261122-1313:** 1 actions, avg 9.0/10
+- **gate-stall-20261122-1419:** 1 actions, avg 9.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -4320,17 +4321,17 @@ _Last updated: 2026-11-22 22:03 UTC_
 - **t1552:** 1 actions, avg 9.5/10
 - **t1552-lane11:** 1 actions, avg 9.2/10
 - **t1554:** 6 actions, avg 9.2/10
-- **t1554-lane11:** 3 actions, avg 9.1/10
+- **t1554-lane11:** 4 actions, avg 9.1/10
 - **t1556:** 6 actions, avg 9.2/10
-- **t1556-lane11:** 3 actions, avg 9.1/10
+- **t1556-lane11:** 4 actions, avg 9.1/10
 - **t1558:** 6 actions, avg 9.2/10
-- **t1558-lane11:** 3 actions, avg 9.2/10
+- **t1558-lane11:** 4 actions, avg 9.2/10
 - **t1561:** 6 actions, avg 9.0/10
-- **t1561-lane11:** 3 actions, avg 9.0/10
+- **t1561-lane11:** 4 actions, avg 9.0/10
 - **t1562:** 6 actions, avg 9.0/10
-- **t1562-lane11:** 3 actions, avg 9.0/10
+- **t1562-lane11:** 4 actions, avg 9.0/10
 - **t1564:** 48 actions, avg 9.0/10
-- **t1564-lane11:** 3 actions, avg 9.0/10
+- **t1564-lane11:** 4 actions, avg 9.0/10
 - **t1600:** 1 actions, avg 9.0/10
 - **t1600-parent:** 1 actions, avg 8.5/10
 - **t1740:** 1 actions, avg 9.0/10
