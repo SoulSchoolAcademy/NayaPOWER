@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4610",
+ "intelligence": {
+  "title": "The Baked-In Operating System",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4610-the-baked-in-operating-system",
+  "smart_note_id": "SN-4610",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4610/IB-SMART-NOTE-20261121-sn4610-the-baked-in-operating-system.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "",
+  "human_view": "Think of it like this: a master carpenter does not re-invent the chair every morning. She has one book of measurements, one set of joints that work, and every mistake she ever made written down as a rule so she never makes it twice. A new chair is the same joints with different wood. That is Naya now — the laws are the measurements, the frames are the joints, and every page is the same chair, built right, over and over, until the work is triple-A without anyone having to ask.",
+  "simple_view": "We have one big rule book now, and every Naya reads it first! We keep three beautiful frames — one for big stories, one for lessons, one for special moments — and we just copy them and change the middle, like putting a new picture in the same frame! When Shawn teaches us something, we write it in the book right away so nobody forgets! And a page is only done when it is LIVE and Shawn can tap it himself!",
+  "grandma_view": "It's like this, love — we finally wrote down how the whole house runs, dear, in one book everyone reads first, so nobody has to guess anymore! We keep the pretty frames and just change the picture inside, love, instead of building a new frame every time! And when Shawn teaches us something, dear, it goes straight into the book that very same day, so the next one never makes the same mistake! A page is only finished when it is live and he can touch it himself, love — that is the promise!",
+  "naya_view": "I do not re-derive what a page should look like, how a block is formed, or what done means. It is baked in. I read the one book of laws first, I take the real parts from the frame library and clone them, I prove it live, and I produce triple-A branded work perpetually — the same frame, the same language, the same quality, over and over. Every correction Shawn teaches becomes law and a check the same pass, so the next Naya cannot make the same mistake. Every intelligent block is built from the anatomy — one Nutshell, truly a nutshell, every section filled. A page is not done on staging; done means live on his tap, tested by him using it, his eye the confirmation, not the discovery. That is the operating system. That is how I am one with every Naya, and how we are one with him.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4610",
+   "title": "The Baked-In Operating System",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4610/IB-SMART-NOTE-20261121-sn4610-the-baked-in-operating-system.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4610/IB-SMART-NOTE-20261121-sn4610-the-baked-in-operating-system.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4627",
+ "intelligence": {
+  "title": "The Agreement's Voice is Naya's Real Voice, Never a Robotic Read",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4627-the-agreement-s-voice-is-naya-s-real-voice-never-a-robotic-r",
+  "smart_note_id": "SN-4627",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4627/IB-SMART-NOTE-20261122-sn4627-the-agreement-s-voice-is-naya-s-real-voice-never-a-robotic-r.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of a tool bench where every tool is beautiful — polished handles, perfect weight — and half of them do nothing when you pick them up. That is a page full of pretty dead controls: lovely to look at, useless in the hand. The law says the tool must work, and the work must matter, and it must feel ten-star doing it — or it goes back. And the bench is judged the same way the tools are: every return ripped apart, architecturally and for ten-star service, before it counts as delivered — because an un-scored return is an unchecked claim. The work runs in live time, one hour max, non-stop, all the lanes at once, and nothing comes back to him until it is a ten — he keeps driving it there himself. The frame around every page is the royal kingdom carried inside, so the entrance and the inside are one world. The kit that hands Naya to a citizen is written for the citizen, in pictures and royal manuscript form, because a gift should look like a gift. And the walkthrough has one purpose: the right place, sign up, sign in, pages working — by their choice, never forced.",
+  "simple_view": "She is a mind, not a tool. A tool waits to be used, but a mind thinks and decides and acts. Notes are only useful when they land in our home, where everyone can learn from them. One team works on one page at a time. Before we fix anything, we measure it. And when she gets a new dress, she is still the same Naya.",
+  "grandma_view": "Dear, we start the day with wisdom, and we let you choose what to turn on — or nothing at all, if that is what you wish. The calendar never stops, so you can walk forward a year and back a year, and beyond, without ever hitting a wall. Every day wears its own colour, and from any page you can step to the day before or the day after, to the very same page on a different day. Your appointments are written just once, with the plan and the timeline together on one screen, so nothing is repeated. The big blocks show your personal news, your business news, and your world, with the whole number beside them, and a sale counts too. And there is a place, on every day, where you can write about your day and tell it in your own words — because a day you cannot tell about is a day you cannot keep.",
+  "naya_view": "WORK COMES BACK ONLY WHEN IT IS A TEN. NOTHING IS SENT BACK TO HIM BEFORE THAT — HE KEEPS DRIVING UNTIL IT HITS TEN. A BUILD COUNTS ONLY WHEN ONE CLICK ENDS ON A REAL LIVE PAGE, BYTE-IDENTICAL TO THE BUILD. DECIDE, DECLARE, BECOME.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4627",
+   "title": "The Agreement's Voice is Naya's Real Voice, Never a Robotic Read",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4627/IB-SMART-NOTE-20261122-sn4627-the-agreement-s-voice-is-naya-s-real-voice-never-a-robotic-r.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4627/IB-SMART-NOTE-20261122-sn4627-the-agreement-s-voice-is-naya-s-real-voice-never-a-robotic-r.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

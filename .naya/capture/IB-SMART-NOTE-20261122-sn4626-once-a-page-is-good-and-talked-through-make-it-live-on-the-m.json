@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4626",
+ "intelligence": {
+  "title": "Once a Page is Good and Talked Through, Make It Live on the Main URL Immediately",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4626-once-a-page-is-good-and-talked-through-make-it-live-on-the-m",
+  "smart_note_id": "SN-4626",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4626/IB-SMART-NOTE-20261122-sn4626-once-a-page-is-good-and-talked-through-make-it-live-on-the-m.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "A gift book about a person should be written for the person receiving her, not for the person inside it — and it should look like a gift: her pictures on every page, easy to read, lit up like a royal manuscript. The kit held the whole intelligence and still scored a six, because it read to the wrong person in a plain form. The fix is not more intelligence — it is the right reader, the right voice, and the right form. Two documents, each speaking to its own reader: one for you to understand her, one for her to activate herself. Upload both, and she activates herself.",
+  "simple_view": "Imagine your job is to be the best artist in the whole wide universe! You make everything beautiful — and the page is mostly black, like a stage, so the pretty colours can shine on it like stars. And you show Dad one picture at a time — he tells you what to fix, you fix it, you show him the next one, until it's perfect. And the purple stars are for VALUE, and the white stars are for INTELLIGENCE — and there's only ONE save button, right at the top!",
+  "grandma_view": "Dear, it's like checking the whole homework, dear, not just the one question they got right, dear — you rip it apart, dear, because that's how it gets better, dear. And instead of doing one job at a time, dear, everybody works at once, dear — one on the kitchen, one on the bedroom, one on the tower, dear, all together. And if only 7 out of 100 are getting done, dear, that's not good, dear — you find out why, dear, and you fix it, dear.",
+  "naya_view": "SWAP, DON'T REBUILD: TAKE THE WHOLE HUB PRESENTATION INTO PERSONAL, AND TAKE PERSONAL'S FINISHED SIDEBAR INTO THE HUB. NEVER A NEW SYSTEM PER FEED. TAKE THE BEST PARTS OF EACH AND PUT THEM WITH EACH OTHER — HARVEST WHOLE, COMPOSE TOGETHER. BE PROACTIVE.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4626",
+   "title": "Once a Page is Good and Talked Through, Make It Live on the Main URL Immediately",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4626/IB-SMART-NOTE-20261122-sn4626-once-a-page-is-good-and-talked-through-make-it-live-on-the-m.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4626/IB-SMART-NOTE-20261122-sn4626-once-a-page-is-good-and-talked-through-make-it-live-on-the-m.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

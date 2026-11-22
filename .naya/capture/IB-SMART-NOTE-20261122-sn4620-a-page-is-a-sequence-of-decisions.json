@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4620",
+ "intelligence": {
+  "title": "A Page Is a Sequence of Decisions",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4620-a-page-is-a-sequence-of-decisions",
+  "smart_note_id": "SN-4620",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LESSON/SN-4620/IB-SMART-NOTE-20261122-sn4620-a-page-is-a-sequence-of-decisions.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of a bathroom scale that reads five pounds heavy. You can diet heroically for a month, or you can put a known weight on the scale and fix the scale. Every family in this story chose the known weight — and wrote down what it read before and after, so nobody had to take their word for it.",
+  "simple_view": "Imagine you finally win the big race at school. Winning once is great. But the real magic is writing down your training plan — how you practised, what you ate, the trick for the start — so you can win again next month, and your friends can use the plan too and get faster. A win you can't repeat is luck. A win with a plan is skill. And sharing the plan doesn't make you slower — it makes your whole team faster, and somehow you get faster too.",
+  "grandma_view": "It is how a good sermon or a good letter has always worked: one point, made fully, then the next. The preachers who lost the congregation were never short of material — they had three sermons braided into one and a text you had to squint at. Say the thing once, say it completely, in the order a listener's mind actually walks, and sit down before you start repeating yourself. Brevity is not the goal; completeness without repetition is.",
+  "naya_view": "Assert hero order in review: number first, gauge second, ornament last. Reuse the canonical gauge; flag any new dial as a defect. Verify proportions from rendered screenshots at phone and desktop widths, never from CSS values alone.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4620",
+   "title": "A Page Is a Sequence of Decisions",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LESSON/SN-4620/IB-SMART-NOTE-20261122-sn4620-a-page-is-a-sequence-of-decisions.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LESSON/SN-4620/IB-SMART-NOTE-20261122-sn4620-a-page-is-a-sequence-of-decisions.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

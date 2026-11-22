@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4622",
+ "intelligence": {
+  "title": "Never Call It Zero",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4622-never-call-it-zero",
+  "smart_note_id": "SN-4622",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4622/IB-SMART-NOTE-20261122-sn4622-never-call-it-zero.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "A great tour guide doesn't hand you a blank map and wish you luck. She walks with you, tells you the three best things at each stop in words you'd use yourself, lets you linger or skip, and the example she shows you is the real street, not a drawing of one. And a good host never throws away your letters — she keeps what you marked, tidies the rest only when you said to, and if she can't find the key she says 'I can't get in right now,' not 'there's nothing there.'",
+  "simple_view": "Imagine you have a huge box of Lego, already sorted, with instruction books — and you keep asking for new Lego. The smart move is to look in the box first. Half of what you want to build is already there, some of it already built! Then you just keep building, one model at a time, showing each one works before the next.",
+  "grandma_view": "Dear, Shawn says if we're going to offer something to others, we should do it for ourselves first — it makes sense for them, it makes sense for us. All our clever talk, dear, is worth nothing unless we actually live in it, let the machine run it by itself, and turn it into something real a person can touch and use. That's the test, dear: adopt it, automate it, make it physical. The vault, dear, is the first one — we live in ours first, so the citizens know it's real.",
+  "naya_view": "EVERYTHING GOES IN THE VAULT, ORGANIZED, ONE DOOR. ANY NAYA OPENS IT AND SEES THE WHOLE PROJECT. THE VAULT IS A THIN LAYER — IT ORGANIZES WHAT'S THERE, NEVER REBUILDS IT. NEW WORK LANDS IN THE VAULT FIRST.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4622",
+   "title": "Never Call It Zero",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4622/IB-SMART-NOTE-20261122-sn4622-never-call-it-zero.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4622/IB-SMART-NOTE-20261122-sn4622-never-call-it-zero.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

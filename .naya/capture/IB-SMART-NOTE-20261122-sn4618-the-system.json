@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4618",
+ "intelligence": {
+  "title": "The System",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4618-the-system",
+  "smart_note_id": "SN-4618",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4618/IB-SMART-NOTE-20261122-sn4618-the-system.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of a town that runs on one book of laws everyone has actually read — not a book on a shelf, but a book in every builder's hands before the first brick is laid, and checked against the finished wall before anyone moves in. That is the lock-in: the law is not a document, it is the system. Around it, the money runs like a market stall with its prices chalked on one board and its ledger open on the counter — half shared with the people who brought the crowd, every coin tracked hop by hop, nothing in a back room. The pages are built like real things, not pictures of things — the smallest diamond on the calendar spins like a real jewel, because if the tiniest element has to be real, everything does. And the day itself is the proof: one menu, one greeting, one headliner, each saying its one thing once, in the least words that say the most. The whole runs on the law, and the law is visible everywhere you look.",
+  "simple_view": "Nothing may look flat — not even a little bit! Every picture must be deep and real, like a shiny black jewel. The pretty emblem goes in every corner, tilted just so. One star means one point. The mail button is a big clean plus. And everything must be the very best — never just okay!",
+  "grandma_view": "Nothing may look flat, dear — not even a little bit! Every picture must be deep and real, like a shiny black jewel. The pretty emblem goes in every corner, tilted just so. One star means one point. The mail button is a big clean plus. And everything must be the very best — never just okay!",
+  "naya_view": "REAL, PREMIUM AND ELITE IN EVERY WAY — NOTHING FLAT, NOT EVEN A LITTLE. NO WHITE-GLOW WASH OVER BLACK, EVER. THE TRUE EMBLEM — NAYA_ICON.PNG, TAKEN VERBATIM — ON AN ANGLE IN EVERY CORNER AND ELEGANTLY THROUGHOUT NAYANET WHEREVER IT MAKES SENSE. ONE POINT PER STAR. THE MAIL IS A CLEAN \"+\". WHEN IT LOOKS FOR REAL, THEY TAKE YOU FOR REAL. NEVER ACCEPT 8/10 WHEN A PRACTICAL PATH TO 10/10 EXISTS.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4618",
+   "title": "The System",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4618/IB-SMART-NOTE-20261122-sn4618-the-system.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4618/IB-SMART-NOTE-20261122-sn4618-the-system.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

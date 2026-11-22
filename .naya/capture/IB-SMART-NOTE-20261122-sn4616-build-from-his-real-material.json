@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4616",
+ "intelligence": {
+  "title": "Build from His Real Material",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4616-build-from-his-real-material",
+  "smart_note_id": "SN-4616",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LESSON/SN-4616/IB-SMART-NOTE-20261122-sn4616-build-from-his-real-material.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of a great hospital that never closes. Patients are never left in a corridor unwatched; every chart is one shared record that shows, truthfully, where each person stands; every treatment ends with the result written where the whole team can see it. The doctors know a blood test from this morning may already be stale by evening, so they re-check at the moment they act, not from memory. And the hospital does not do one operation at a time while the wards wait — theatres, labs, and wards all run at once, coordinated by people thinking about the whole building, not just their own room. That is what a living system feels like from inside: nothing neglected, nothing stale trusted, everything moving, and the movement itself is the care.",
+  "simple_view": "Imagine you are building with blocks, and every time you start a tower you wander off to start another one, until the whole floor is covered in towers with no tops. That is not building — that is just starting. Building is when one tower is finished and you can show it to someone and they can see it standing. And when a grown-up tells you to save an idea, you do not just say the idea out loud — you actually put the block in the box, in the system, right then, so it is really saved. Done means somebody can see it standing. If nobody can see it, it is not done yet.",
+  "grandma_view": "It reminds me of the way a good community used to work, dear. Nobody charged you to belong. You arrived, people learned your name, and your home was ready to live in — not a showroom you could look at but not touch. The earning was neighbourly too: if you brought good people in, you shared in what the community made, because your word was worth something. Claims about safety were not made until they were true, the way you would not call a roof sound until you had stood under it in the rain. Belonging first, business second, honesty always.",
+  "naya_view": "Build every score display as an instrument, never as text. Construct the number from the score itself: one tile per digit, each tile a reel whose strip slides to its target with easeOutQuint motion, staggered landings, and colour-sync so each passing digit flashes its chakra colour, throttled so it reads without strobing. Keep the glyph white and the colour on the rim, cap, and halo only; keep the face obsidian. Fit any length by scaling the whole number to its well — never wrap, never overflow, never cap the digits. Render the gauge on one fixed scale and let the needle lap it visibly past the top, with the lap shown. Place the master gauge as the hero and flow the mini gauges directly beneath it as the default stats view. Use the common colour language exactly — same colour, same meaning, everywhere — and slow the count down until a person can actually watch it arrive.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4616",
+   "title": "Build from His Real Material",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LESSON/SN-4616/IB-SMART-NOTE-20261122-sn4616-build-from-his-real-material.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LESSON/SN-4616/IB-SMART-NOTE-20261122-sn4616-build-from-his-real-material.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

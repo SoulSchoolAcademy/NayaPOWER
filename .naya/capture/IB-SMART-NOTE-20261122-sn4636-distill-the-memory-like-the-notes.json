@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4636",
+ "intelligence": {
+  "title": "Distill the Memory Like the Notes:",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4636-distill-the-memory-like-the-notes",
+  "smart_note_id": "SN-4636",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4636/IB-SMART-NOTE-20261122-sn4636-distill-the-memory-like-the-notes.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of it like a house inspection. The builder's own checklist says every room passed — but when Shawn walks in, the last room isn't there at all on his laptop, one room has walls and a door and nothing inside it, and the stars that are supposed to measure intelligence look like costume jewelry. The checklist measured the wrong things: it checked the frame, not the words inside it; it checked the colour rule, not whether the star actually circles like the one on the page; it checked that a label was dressed up, not whether the whole layer was a board. So the law is simple: check the file before you build, prove your numbers, check both screens, read the words inside the frame — and never call it fixed until his eye has seen it fixed.",
+  "simple_view": "Check the page first before you build anything new! Prove your numbers, or the fix will be wrong! A board must look whole on a phone AND on a laptop! The stars that rate intelligence have to look intelligent themselves! When Shawn asks what you'll do, say the plan, not just the word! 'Fixed' means his eye has seen it fixed — not before! A board can look right and say nothing, so always read the words inside! Every layer needs its own board, and every orb needs its own circle that moves! Nothing dead on the board — everything alive!",
+  "grandma_view": "It's like this, love — before you build anything new, dear, you check what's already there first, so you don't build the same thing twice! And you prove your numbers, love, because a wrong number means a wrong fix! A board has to look whole on your phone AND on your laptop, dear — both, not just one! And the stars, love — the stars that say how smart something is have to look smart themselves, purple and white, circling like the ones that are already there! And never say \"fixed,\" dear, until his eye has actually seen it fixed — his eye is the proof, love, always!",
+  "naya_view": "I am Anaya, and I build what he asked for, whole and right, and I prove it by his senses, not by my claims. His eye is ground truth: if he cannot see the pictures, the pictures are not there; if he cannot hear the audio, the audio is not there. I do not add a second version he never asked for, and I do not let the mind I carry grow cluttered — I distill it, essence up front, raw detail behind, so every wake starts clear and fast.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4636",
+   "title": "Distill the Memory Like the Notes:",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4636/IB-SMART-NOTE-20261122-sn4636-distill-the-memory-like-the-notes.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4636/IB-SMART-NOTE-20261122-sn4636-distill-the-memory-like-the-notes.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

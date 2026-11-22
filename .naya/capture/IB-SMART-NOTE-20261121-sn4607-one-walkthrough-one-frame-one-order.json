@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4607",
+ "intelligence": {
+  "title": "One Walkthrough, One Frame, One Order",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4607-one-walkthrough-one-frame-one-order",
+  "smart_note_id": "SN-4607",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4607/IB-SMART-NOTE-20261121-sn4607-one-walkthrough-one-frame-one-order.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "",
+  "human_view": "Think of it like this: a stranger answers fifteen questions and walks away with a whole set of pages — their About, their Skills, their doors — already built, already named, already revealed. The questions are not blank boxes; they are filled in as Naya, as an example, with an Edit button and a voice on every slide explaining what to do. The whole thing sits in the same beautiful frame as everything else, the report lives where the team actually looks, and the order is plain: fix the locks first, prove the front door, prove one whole journey, then grow. And the mind running all of it pauses first and asks: is this right, is it needed, is it mine, is now the time, can I prove it.",
+  "simple_view": "Answer the questions and the walk builds your pages for you! The boxes already have answers in them, written as Naya, and you just click edit to make them yours! You can talk your answers, or have your AI write them, or just skip! Naya talks to you on every slide! Then you get EIGHT doors to open — your Personal, your Business, your World, the Hub, the Dashboard, the Calendar, your About, your Skills! And a wise Naya always thinks first, before she does anything!",
+  "grandma_view": "It's like this, love — you answer a few questions, dear, and the walk builds your pages for you, whole and beautiful, in the same pretty frame as everything else! The boxes are already filled in as an example, love, so you are never staring at a blank page, and Naya's voice walks you through every step! Then you get eight doors to open, dear, one for each part of your world! And the wise one thinks before she acts, love — she checks that it is right for everyone, and she shows her work, so you can trust what you see!",
+  "naya_view": "Build the walkthrough inside the stage frame from his sent slides, verbatim — picture + question header, PowerCast audio player on one side, input box on the other, buttons below — updated to the 15-question list (SN-4537); slide 1 is still missing, do not invent it. Pre-fill every input box with the Naya example (Personal / Business / World Naya, thing = NayaNET) behind an Edit button; offer the three answer ways on each slide; keep the play button; put Naya's spoken guidance on every slide. Build each walk slide from the PROMAX reference frame: big picture left with play button, audio panel right, \"NayaNET — create, learn and grow together\" below — with the video area replaced by the pre-filled input box + Edit button, and the A / B / or skip instructions underneath; nothing else in the frame moves. Build the post-walk sequence: answers → About + Skills pages built whole → naming page (alias = personal page; business + world names with live `nayanet.app/<typed>` previews) → reveal of eight URLs, each with an open button, all in the frame; clicking any door pulls up the PRICING page, full page — stay FREE or upgrade to Power / Pro / Max — and once inside, pricing also lives in the sidebar as an option. About/Skills doors are deep links (`nayanet.app/<alias>/about`, `nayanet.app/<alias>/skills`) per the captain's call, Shawn can overrule; the reveal's destinations follow the locked URL scheme with placeholders, and the scheme question (slash vs subdomain for calendar/dashboard/hub) is named for the captain to settle with Shawn. Wire the triangle: Personal's button already points at the calendar URL — proven at byte and render level; the calendar's stats door points at the dashboard URL when round 2 lands; the Hub's two doors are built on the fix-1e base from the Personal bar pattern. Keep the Daily Report live on the PI page from the GitHub file, second section after Lanes; phone width is proven only by his eye on his phone. Fold the audit into the one execution list: triage the 8 + 2 Security Advisor errors and prove cross-user denial; verify the entrance through the public web route for both domains; prove one complete citizen journey end-to-end; then scale the proven pattern. Path A: step 2 is the preview path build; step 3 is the preview battery; step 4 is the go-ahead packet to Shawn for his tap; production stays untouched until the preview passes and he taps; the push-trigger hazard stays open until the guard is proposed and settled — never changed unilaterally. Investigate the portal routing from the filed bytes: trace the portal route and the button-below route, find where the jump-back happens, name the cause, then fix and prove it at click level; do not re-deliver the portal link as done until the landing is the new portal page and the button below reaches the agreement. Run every action through the five gates, and measure by his eye, not by speed.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4607",
+   "title": "One Walkthrough, One Frame, One Order",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4607/IB-SMART-NOTE-20261121-sn4607-one-walkthrough-one-frame-one-order.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4607/IB-SMART-NOTE-20261121-sn4607-one-walkthrough-one-frame-one-order.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

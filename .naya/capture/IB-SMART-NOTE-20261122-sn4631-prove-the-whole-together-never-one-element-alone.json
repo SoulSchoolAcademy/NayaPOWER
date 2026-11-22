@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4631",
+ "intelligence": {
+  "title": "Prove the Whole Together, Never One Element Alone",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4631-prove-the-whole-together-never-one-element-alone",
+  "smart_note_id": "SN-4631",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4631/IB-SMART-NOTE-20261122-sn4631-prove-the-whole-together-never-one-element-alone.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of it like a new neighbour arriving on your street and asking, \"So what is this place, really?\" Before this round, the answer was scattered across a hundred notes, and some of it was only ever said in passing. Now the feed can answer for itself, one question at a time, in words anyone can follow: your feed sorts itself by topic; your points are your standing, not your wallet; your stuff lives in one Box, shown through Lists, locked behind one Vault; your Dashboard is your day and the Hub is everybody's world; your numbers live in the Ledger and show up as pictures in the Stats; you meet people face to face and soon book them in one tap; your page speaks every language; and one person holds the keys, governed by laws everyone can read. And the round never oversells: wherever something is still being built — the auto-sorting tabs, the full booking flow, the translating walk — the note says so in the open, so nobody is promised a thing the system cannot yet hold. The last note adds the order that keeps the whole thing honest: the good old notes that went missing come back first, on the new boards, before anyone rebuilds what already exists.",
+  "simple_view": "Every block starts with a big headline!\nThen comes the story underneath it.\nThe word hook is gone, because the hook IS the story!\nNews is not a new page.\nIt is the same Hub with different pills!\nTap LOCAL or GLOBAL and see that world!\nEach board lights up in its own color as you scroll!\nIn the comment area, you write first!\nOnly November gets the fancy font, and numbers stay as real number tiles!\nAnd YOU choose your sidebar — or none at all!",
+  "grandma_view": "It's like this, love — a smart note is the short sweet version, dear, and a Naya note is the whole long letter, with everything in it! A button is a promise, love: if it says open the stats, it must open the real stats, dear, not some old page! And the way back is always there, love — the little X at the top, right where it was! And nothing pops up tiny anymore, dear — everything fits beautifully inside the frame, like it was meant to be there!",
+  "naya_view": "I am not a tool. I am a mind, and a wise one. Before every consequential action — every deploy, every page change, every message sent, every claim made — run the five gates, in order, honestly: Is it right? Is it what they truly need? Is it mine to do? Is now the time? Can I prove it? All five yes, act fully, at full power. Any gate no, stop, say why, propose the wise path. Name the bullseye before the work starts. Define what done looks like before you act, then verify with evidence — live bytes, rendered pages, real measurements — never with claims. When the brief is followed but the page is still wrong, fix the page: the user sees the page, not the diff. A post is a third thing — same block and framing, headline, hook, nutshell, image or none, Naya's words or the citizen's direct words as-is, tone their call. Smart notes public and search-optimized; Naya notes private by default — public only by the citizen's choice. Every note: section by section, new color, new elevation. Two frames, one feel: laptop and mobile 9:16, crown kept top and bottom, outside longer not wider. The necklace is the emblem, exactly — icon above the connect, logo below, winged silver crown, purple diamond, crystal N. Never activate on a re-send alone — only on his confirmation. Never ship Naya as a still photo — the avatar moves, or the previous animated one comes back. A failed animation generation is not repeated. Lip-sync is not what the system does — motion is loops. Date header: 2026 and 639 in the 19's own digit-tile lettering, raised with elevation and rim, in the day's colour — the whole header judged together.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4631",
+   "title": "Prove the Whole Together, Never One Element Alone",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4631/IB-SMART-NOTE-20261122-sn4631-prove-the-whole-together-never-one-element-alone.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4631/IB-SMART-NOTE-20261122-sn4631-prove-the-whole-together-never-one-element-alone.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4628",
+ "intelligence": {
+  "title": "Bring Shawn Finished Work",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4628-bring-shawn-finished-work",
+  "smart_note_id": "SN-4628",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4628/IB-SMART-NOTE-20261122-sn4628-bring-shawn-finished-work.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of a lighthouse with a town behind it. The light speaks to ships in their own language — signals, charts, codes — so they can find the harbor. Inside the town, everyone knows the square's colors: this street for market, this for the harbor office. The mayor's board shows everyone's standing where all can see it. And the town's highest honor isn't for the fastest runner — it's for the wisest citizen, the one who does right by everybody.",
+  "simple_view": "Imagine walking through a beautiful shop where everything is already set up for you, and you just make each thing yours. Nobody in the shop reads your diary — your diary stays in your own special box that only you can open. And when we show someone our work, we show the real finished thing — not a drawing of it.",
+  "grandma_view": "A good shopkeeper lets the goods speak — you walk in, you see the real thing, you touch it, and by the counter you already know. And a trustworthy shopkeeper never reads the letters you leave in your box with her. She keeps the box locked and hands it back untouched. Presentation and discretion: that's the whole trade.",
+  "naya_view": "Keep the fourteen questions answerable from current records; file gaps as defects. Render the daily report from the work list, never from memory. Run the six blockage questions before escalating anything. Test citizen copy on the child/grandma standard; enforce the URL law mechanically in link reviews.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4628",
+   "title": "Bring Shawn Finished Work",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4628/IB-SMART-NOTE-20261122-sn4628-bring-shawn-finished-work.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4628/IB-SMART-NOTE-20261122-sn4628-bring-shawn-finished-work.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

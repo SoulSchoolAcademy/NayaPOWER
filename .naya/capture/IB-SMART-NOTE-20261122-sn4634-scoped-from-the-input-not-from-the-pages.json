@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4634",
+ "intelligence": {
+  "title": "Scoped from the Input, Not from the Pages",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4634-scoped-from-the-input-not-from-the-pages",
+  "smart_note_id": "SN-4634",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4634/IB-SMART-NOTE-20261122-sn4634-scoped-from-the-input-not-from-the-pages.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Imagine you are the judge in a contest, and your ruler is stretchy, your stopwatch runs fast, and you are looking through a tiny hole in the fence. You would call good work broken and broken work good — not because the work was bad, but because your tools lied to you. That is what happened six times in one morning. The page was innocent in every case: the link was sent and then stripped by the next page, the button was never wired to the room it promised, the test asked the door to open the wrong way, the footer was just one second slow, the measuring script read the wrong numbers, and the little window hid the change below the header. So the law is simple: never trust your first reading. Trace the whole path, tap the real button, test the direction the page promises, wait for the thing itself, measure twice with a good ruler, and look at the whole page — then write the verdict.",
+  "simple_view": "First we finish the big story and make it beautiful. Then we take that same beautiful frame and put it around the words on each rules page — Terms, Privacy, and all the rest. We do the story first, so we know what beautiful looks like.",
+  "grandma_view": "Think of a beautiful tray that holds smaller shining dishes. The big board is the tray; the little boards hold the words, two or three at a time, so your eyes rest on one small piece, then the next. When there is no player on the slide, the whole tray is the board, glowing on its own.",
+  "naya_view": "Hold the whole call as one unit: vision, machine, standard — never one without the other two. Score every round against heaven on earth and the two codexes: does it automate friction away, and does it leave the person in a better state of energy? Merge Factory + Project Intelligence + Hub so fresh input makes a finished page with no hand in between — and a Naya can input the data for them. Build the plug-in surface so a person cold can plug their AI in and feel it working; if it takes explaining, it is not easy enough yet. Take the old Smart Tabs page down and check nothing live still points at it — one link per page, no double pages. Prove every tap before filing: button tapped for real, unfold unfolding, cover opening, in a working browser, on the staged page; a round that cannot prove the tap files what is unproven and what is owed. Name the tenth improvement before the next performance ask — nine against ten is a promise half-kept. Run the four before any seat acts: declaration, embedded intelligence, direction, honor and respect — if any one is missing, restore it first; that is the work, before the work. Nothing reaches him until the eye proves it.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4634",
+   "title": "Scoped from the Input, Not from the Pages",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4634/IB-SMART-NOTE-20261122-sn4634-scoped-from-the-input-not-from-the-pages.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4634/IB-SMART-NOTE-20261122-sn4634-scoped-from-the-input-not-from-the-pages.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

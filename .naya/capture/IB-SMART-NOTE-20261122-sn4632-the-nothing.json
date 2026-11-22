@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4632",
+ "intelligence": {
+  "title": "The Nothing",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4632-the-nothing",
+  "smart_note_id": "SN-4632",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4632/IB-SMART-NOTE-20261122-sn4632-the-nothing.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of the whole system as a house where every door does what its sign says. \"Open the stats\" opens the real stats page — not some old room that hasn't been updated in months. The numbers on the board are real counts of real people: how many came, how many stayed and connected. The X at the top takes you back home, and the room you return to is still tidy. The Dashboard stops calling a smart link a name, because a name is who you are and a link is what the system tracks. When a card pops up to show you a person, it isn't a tiny little box anymore — it's a full framed presentation, everything about that person and everything you can do with them, all in one place. And when Shawn is sitting there live, the work happens now, not at noon — the schedule is a guide, not a gate. The notes follow the same honesty: the short one is the essence, the long one is the full story, and Naya reads them both — that's how she knows.",
+  "simple_view": "Imagine everyone working at the same time! Naya does one thing live with you! Her helpers do the other thing, all at once! Nobody sits and waits, ever! There is only ONE Messenger, not two! Only ONE feed, shown in three places! The same six shiny icons everywhere! A ball of light runs around every frame, round and round! It never stops, so everything feels alive! And nothing is finished until Shawn sees it himself! He looks at it, all formatted and beautiful! Then, and only then, it is done!",
+  "grandma_view": "It's like this, love — imagine every page is a beautiful framed picture, dear, each thing in its own frame, and a button that takes you to the next one! The agreement opens with Naya saying hello, love — you press play and hear her first, before you read a single word! The messenger is one room now, dear — a quick chat and a letter, with one little switch between them! And the membership login, love — the whole thing is built and ready, and just one tiny permission is missing, and only Shawn can give it!",
+  "naya_view": "Settings is a door: click it and the menu lists each area — Set Your World first, then Notifications, Cover Buttons, Common Settings — nothing crammed into All Settings. Set Your World opens on the person — age, adult, male/female, age range, where they live, where they're from — one question per frame, multiple choice, click next until answered, the walkthrough's flow harvested verbatim. The spectrum runs through Settings — each block a new colour on hover, never one colour per section. The menu is long enough for all areas and scrolls; each entry an obsidian button lighting its own colour, raised icon like the Hub sidebars; entries include install-app-on-page and public on/off. THE FRAME IS THE STANDARD for every pop-up and feature display, frame by frame. The messenger sits in an EXPANDABLE frame that grows with the scroll until completed. Smart Mail is a framed letter — high contrast, raised boards, text like the intelligent boards — studied against the elite, built 10× better. Seen is the reader's face orb; labels 17px; voice notes 1.5×/2×. The sidebar flow runs the settled sequence in order — no repeats, no gaps — the same on Dashboard and Hub. Keep both magenta and purple, each at its most beautiful, high contrast at a glance; Dashboard anchors on points purple, Hub stays magenta.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4632",
+   "title": "The Nothing",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4632/IB-SMART-NOTE-20261122-sn4632-the-nothing.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4632/IB-SMART-NOTE-20261122-sn4632-the-nothing.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

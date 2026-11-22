@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4619",
+ "intelligence": {
+  "title": "Scorecard Every Page Against the Front Entrance",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4619-scorecard-every-page-against-the-front-entrance",
+  "smart_note_id": "SN-4619",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4619/IB-SMART-NOTE-20261122-sn4619-scorecard-every-page-against-the-front-entrance.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of a house where every room was built by a different builder from a different drawing — the doors don't match, the light switches are in different places, and nothing feels like the same home. That is what the pages had become. Shawn's answer, given across the whole night, was not eight separate fixes but one language: the words on every page written white first, in the same three sizes; the buttons all learning from the three best buttons on the Dashboard; the motion calm and intelligent like a real computer, not bouncy like a game; and every page scored honestly, ten things loved and ten things not, before anything is called done. When he corrected himself — today should light up, then no, no glow over the day — the correction itself became part of the language, because a system that learns from its corrections is the system.",
+  "simple_view": "Look at the front door of a house. It is beautiful. Every room inside should look that good too. The little eye is white and plain. It has a black middle so you can see the letter. No gray words. Just bright pictures that tell you what to do. The same five buttons sit at the bottom of every page. One grown-up checks every room. She asks two questions. Why is this not a ten? Why is it not ten times better? Then she fixes what is wrong. That is how the whole house stays beautiful.",
+  "grandma_view": "It is like the most beautiful language, love — and you promise to speak it forevermore, in everything you make! Every button is a real button, dear, raised up like a jewel, and it presses in and springs back out when you touch it! Every note has a map on the back, love, so the whole world can find it! Every link takes you straight to the right room, dear! And nobody reads your letters, nobody listens at the door — your words go after a week, love, and only the wisdom stays, with your name safe unless you choose to share it!",
+  "naya_view": "Harvest, never recreate: before building any element, locate its canonical source file and take the bytes verbatim; a retyped description is a defect, not a draft. When he shows you an object, the deliverable IS that object — same shape, same colours, same jewel, same glow; purple-on-purple where the original carried purple only in the jewel is a named failure. Compose from the Factory inventory; if a part is missing, say so and build the part once, properly, then inventory it. Judge every surface as an app, not a page. Test each asset twice: real and valuable? syncs with the whole? An element that is merely in the same spirit as the original fails review.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4619",
+   "title": "Scorecard Every Page Against the Front Entrance",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4619/IB-SMART-NOTE-20261122-sn4619-scorecard-every-page-against-the-front-entrance.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4619/IB-SMART-NOTE-20261122-sn4619-scorecard-every-page-against-the-front-entrance.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

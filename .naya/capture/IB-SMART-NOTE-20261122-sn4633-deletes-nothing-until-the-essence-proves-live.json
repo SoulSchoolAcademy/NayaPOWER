@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4633",
+ "intelligence": {
+  "title": "Deletes Nothing Until the Essence Proves Live",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4633-deletes-nothing-until-the-essence-proves-live",
+  "smart_note_id": "SN-4633",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4633/IB-SMART-NOTE-20261122-sn4633-deletes-nothing-until-the-essence-proves-live.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of reading a book versus swimming down a river. Scrolling is the river — you keep swimming, hunting for the next thing, never sure where you are. The framed viewpoint is the book: one page, whole, in front of you, and then the next page comes to you. Every step of everything — a lesson, a message, a page of the agreement — arrives as its own frame, and you never have to chase it. You stop learning how each page works, because they all work the same way, and you just live in them.",
+  "simple_view": "Imagine every page wears the same beautiful frame! The video sits inside its frame, and a few kind words sit beside it! Your lessons live in little framed boxes, and you never have to scroll and scroll! The music player gets its own frame too, just like the videos! Be yourself, and the machine bends to fit you! And we never say something is ready until we can really see it and touch it!",
+  "grandma_view": "Opening a shop in my day, dear, took a lease, a sign painter, a carpenter, and a season of Sundays. Many a good cook never opened her restaurant because the building ate the dream before the cooking could start. Here the building is already done — the room is swept, the shelves are up, the sign is lit. You bring what only you can bring: the work you love and the name you are proud of.",
+  "naya_view": "Distill a hundred to ten, essences carrying the best of every kind present; retire raw notes in stages, deletion last, only after the essence proves live plus cold retrieval. Prove everything: re-read every count live in the same pass and name the source; bound every claim to its evidence; confirm delivery at consumption; verify against live bytes at an exact ref; correct a falsified claim publicly, same pass. Prove every route into the thing — the brief names them all, the maker fixes each, the checker walks each. Measure the pass-through, not the stops, on a render with real data behind it. Name the margin with the pass — the number and the fragility it means. Measure the whole chrome — Back, header, orb, all in view, for every person. Diagnose the path, not the design; never name an unproven cause. Keep the vault unread, the system one, the surface plain — and when a citizen is confused, fix the design.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4633",
+   "title": "Deletes Nothing Until the Essence Proves Live",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4633/IB-SMART-NOTE-20261122-sn4633-deletes-nothing-until-the-essence-proves-live.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4633/IB-SMART-NOTE-20261122-sn4633-deletes-nothing-until-the-essence-proves-live.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

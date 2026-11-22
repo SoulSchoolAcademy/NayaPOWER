@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4608",
+ "intelligence": {
+  "title": "One Plus, One Walk, One Promise",
+  "intelligent_block_id": "IB-SMART-NOTE-20261121-sn4608-one-plus-one-walk-one-promise",
+  "smart_note_id": "SN-4608",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4608/IB-SMART-NOTE-20261121-sn4608-one-plus-one-walk-one-promise.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-21. No runtime provenance invented.",
+  "ingested_at": "2026-11-21",
+  "essence": "",
+  "human_view": "Think of it like this: at the bottom of the Hub there is one plus button, and it opens two doors — add a post, or create a whole new world. Creating a world is not a new thing to learn: it is the same fifteen questions that built your own pages, so the way in is the way pages are made. When Naya meets a stranger, she says three things in plain words: what she is, what she will do for them, and what she will never do — never read their mail, never listen in, never go into their vault — and that promise is the heart of it all. And when a round is judged, the render decides: a window that broke is not a page that failed, and a proof that stopped halfway is never called a pass.",
+  "simple_view": "Tap the big PLUS at the bottom and you get two choices — add a post, or make a whole new world! Making a world is easy — you answer the same fifteen questions, and your world appears! And when Naya meets someone new, she tells them three things: who she is, what she will do for them, and what she will NEVER do — never peek at their mail, never listen in, never open their vault! That promise is the most important part! And if the computer window breaks during a test, that is not the page's fault — we test it again!",
+  "grandma_view": "It's like this, love — one big plus button at the bottom, dear, and it opens two doors: add a post, or make a whole new world, just by answering the same fifteen questions you already know! And when Naya meets a stranger, dear, she says it plainly: who she is, what she will do for you, and what she will never do — never read your mail, never listen in on your conversations, never go into your vault, love! That promise is the heart of it all! And when we check the work, dear, we only believe what the eye can see — if the window broke during the test, we test it again, we never blame the page for the window!",
+  "naya_view": "Build the plus menu at the bottom of the Hub with the two choices, top first: add a post opens the dropdown to pick which world it goes to; create a world runs the 15-question walkthrough and the answers create that page with its URL, editable after. After the reveal, the Personal door runs the walkthrough and Personal is set up first; the Business door runs the SAME walkthrough and sets up the business; the Thing/World door runs it again; any page a person wants is created that way — one walkthrough, every page. Lay the eight reveal doors out two rows of four on mobile, each a real object in its stage, all inside the frame; eight is abundance — never stack them in one narrow column, never let the reveal scroll. Every introduction of Naya — first slide, first words, first meeting — answers three things in plain words: what she is, what she will ultimately do for people and why they should care, and what she will never do: never read their mail or instant messages, never listen in on conversations, never go into their vault; the promise is the heart — lead with it, say it plainly, never bury it. Re-run the calendar render proof with a stable window; round 3 runs only if the clean render shows overflow; the Smart Lists closed-frame fit at 1919×998 is on item 1's close list — a closed list never scrolls inside its frame. The captain's side runs the Hub render proof; when it passes, two triangle legs stand proven end to end; the calendar leg rides the calendar round that closes item 1 — \"Your Stats\" / Daily Reports door → the dashboard URL; the triangle closes only when the subdomains answer. Retry the Hub deploy when the write window opens (captain's call on restarting the loop); the parser+bake go-ahead and the Hub coordinator's image lane close the card gap; the share link and the filename slug wait on his call. Until then, say it plainly: SN-4467 is filed, live in the feed, portrait in the block — and the baked card is stale, named, not hidden.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4608",
+   "title": "One Plus, One Walk, One Promise",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4608/IB-SMART-NOTE-20261121-sn4608-one-plus-one-walk-one-promise.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-21 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4608/IB-SMART-NOTE-20261121-sn4608-one-plus-one-walk-one-promise.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

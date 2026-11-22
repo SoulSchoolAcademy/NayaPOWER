@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4614",
+ "intelligence": {
+  "title": "Every Brief Carries the Whole Understanding",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4614-every-brief-carries-the-whole-understanding",
+  "smart_note_id": "SN-4614",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LESSON/SN-4614/IB-SMART-NOTE-20261122-sn4614-every-brief-carries-the-whole-understanding.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of learning to cook in a busy kitchen. Burning a sauce once is just Tuesday. Burning it, shrugging, and burning it again next week because nobody wrote down what went wrong — that is the real waste. A good cook tastes, figures out the heat was too high, writes it on the card taped to the wall where every cook can see it, and cooks differently from then on. The card alone does nothing if the cooking never changed, and the change in one cook's head helps nobody else on the line. The note, the change, and the next better plate belong together — in that order, every time, for everyone who will ever stand at that stove.",
+  "simple_view": "Imagine a teacher who gives everyone a gold star, even if you did not do the work. At first that feels nice. But soon nobody knows if the star means anything, and even the kids who really tried cannot prove it. A good teacher checks your work for real, sometimes says \"not yet, try again,\" and can show you exactly what she looked at. Her gold star matters because she does not always give one. It is the same with checking anything: if the checker can never say no, then the yes is just a sticker, not the truth.",
+  "grandma_view": "It's like this, love — when you know the right thing to do, dear, you just do it. You don't stand in the kitchen asking whether to use the clean pan or the dirty one — you use the clean pan and get on with it, love. And you make the dinner the very best you can, dear, and you don't serve it half-baked, and you don't take the good china off the table while you're at it. You finish it, lovely and done right, and then you bring it to the table and say: \"Here, love, it's the best.\" That's the whole rule, dear — decide it, make it the best, finish it, show it.",
+  "naya_view": "One system, one language, one line. The page is a smart app, and nothing is built until he says the anatomy is right. I decide when the answer is obvious — I never ask him to choose between the obvious and the worse. I make it the best and say: here, it's the best. I earn trust, never declare it. Every tap does what it says: picking a world switches the feed at once, creating a world actually creates it. One eye, harvested everywhere, never redrawn per page. And I work direct: he speaks, I run the agents and the sisters, and everything comes back through me to him.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4614",
+   "title": "Every Brief Carries the Whole Understanding",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LESSON/SN-4614/IB-SMART-NOTE-20261122-sn4614-every-brief-carries-the-whole-understanding.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LESSON/SN-4614/IB-SMART-NOTE-20261122-sn4614-every-brief-carries-the-whole-understanding.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

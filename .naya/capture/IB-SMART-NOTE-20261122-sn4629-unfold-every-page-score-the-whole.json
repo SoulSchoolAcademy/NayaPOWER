@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4629",
+ "intelligence": {
+  "title": "Unfold Every Page, Score the Whole",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4629-unfold-every-page-score-the-whole",
+  "smart_note_id": "SN-4629",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4629/IB-SMART-NOTE-20261122-sn4629-unfold-every-page-score-the-whole.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Imagine a master workshop with shelves of perfect parts — gauges, jewels, boards — each made once, made right. The rule of the shop: you never whittle a copy of a part when the real one is on the shelf; you take it down and fit it. If something breaks, you don't tape it — you rebuild the joint so it can't break that way again. The price list isn't guessed; it's the owner's own numbers. And nothing leaves the shop until the owner's eye has passed it.",
+  "simple_view": "All the buttons in this place match, like a set of shiny buttons on one coat — we don't sew on a different button every day. There's ONE play button that reads the whole story out loud. The calendar is magic: tap a day and you see everything that happened that day. And here's the rule: just because the machine says 'done' doesn't mean it looks right — a person has to LOOK at it, with real eyes, before we say it's finished.",
+  "grandma_view": "Honesty in the small things is the whole reputation, dear. The baker who says 'the rolls are fresh but the pie needs an hour' gets your custom for life. The one who boxes a raw pie with a smile gets it once. Write it down, say it plain, finish what you start — and do it all for love of the people at your table.",
+  "naya_view": "Assert the ambassador definition (representative, part of it) wherever the deed or walk describes the role. Verify the deed unfolds on tap with an eye-definition for every hard word. Check every note surface for + CREATE SPACE. Treat 'block it in' as an immediate system write, never a note-to-self. Diff any new surface against the one chain and the Playbook parts before accepting it.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4629",
+   "title": "Unfold Every Page, Score the Whole",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4629/IB-SMART-NOTE-20261122-sn4629-unfold-every-page-score-the-whole.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4629/IB-SMART-NOTE-20261122-sn4629-unfold-every-page-score-the-whole.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

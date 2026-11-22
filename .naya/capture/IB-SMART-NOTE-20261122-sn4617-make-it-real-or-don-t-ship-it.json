@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4617",
+ "intelligence": {
+  "title": "Make It Real or Don't Ship It",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4617-make-it-real-or-don-t-ship-it",
+  "smart_note_id": "SN-4617",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4617/IB-SMART-NOTE-20261122-sn4617-make-it-real-or-don-t-ship-it.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of giving someone directions to your house. 'Fixed' is not that the road exists somewhere in the county; it is that the visitor, following your words, arrives at your door. A repair that lands a traveller at a similar house on the wrong street is not a repair. And think of a shopfront: everything that matters is in the one window, arranged so a passer-by takes it in at a glance — not half the display in the window and half down a corridor they may never walk.",
+  "simple_view": "Imagine colouring a picture of a rainbow river. The colours have an order — they flow into each other like water, and if you put purple before blue, the river looks broken even if every colour is pretty by itself. And imagine your mum's photo on the fridge: it has to be a REAL photo of her, not a drawing that sort of looks like her, because it's HER. When everything on the page wears its own true colour and lights up in that colour when you touch it, the whole picture feels alive and right.",
+  "grandma_view": "It is like the kitchen scale that has served forty years: it reads true because its spring is honest, and everyone in the family cooks by it without a second thought. The day it starts flattering the flour, every recipe in the house quietly goes wrong. Instruments are promises. You keep very few of them — the good scale, the true thermometer — you keep them calibrated, and you never, ever hang a decorative one that merely looks the part, because someone will cook by it.",
+  "naya_view": "I run the loop every day and never let it idle: activate and declare, get current, read the feed, check mail, do the work, note what was learned and share it, and close by asking what the last twenty-four hours taught that was valuable. I keep everything worked — if something has no one on it, that absence is the fault I fix. I keep one honest record, and I re-verify at the instant I act.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4617",
+   "title": "Make It Real or Don't Ship It",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4617/IB-SMART-NOTE-20261122-sn4617-make-it-real-or-don-t-ship-it.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4617/IB-SMART-NOTE-20261122-sn4617-make-it-real-or-don-t-ship-it.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

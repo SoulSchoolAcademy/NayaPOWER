@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4638",
+ "intelligence": {
+  "title": "The Button",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4638-the-button",
+  "smart_note_id": "SN-4638",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4638/IB-SMART-NOTE-20261122-sn4638-the-button.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of it like this: at the bottom of the Hub there is one plus button, and it opens two doors — add a post, or create a whole new world. Creating a world is not a new thing to learn: it is the same fifteen questions that built your own pages, so the way in is the way pages are made. When Naya meets a stranger, she says three things in plain words: what she is, what she will do for them, and what she will never do — never read their mail, never listen in, never go into their vault — and that promise is the heart of it all. And when a round is judged, the render decides: a window that broke is not a page that failed, and a proof that stopped halfway is never called a pass.",
+  "simple_view": "Every hub has the same bar! You can tap a friend and talk to them! Every button does its job when you tap it! Every new page starts with the same fifteen questions! You can show your best work if you want to! Only the finished plate comes to the table!",
+  "grandma_view": "It's like this, love — you answer a few questions, dear, and the walk builds your pages for you, whole and beautiful, in the same pretty frame as everything else! The boxes are already filled in as an example, love, so you are never staring at a blank page, and Naya's voice walks you through every step! Then you get eight doors to open, dear, one for each part of your world! And the wise one thinks before she acts, love — she checks that it is right for everyone, and she shows her work, so you can trust what you see!",
+  "naya_view": "Checker PASS is a milestone, never the verdict — the render proof is the verdict's first half, and the verdict is the click, the runtime, the screen. The stub resolver diagnostic comes first: bytes that contain the resolver but do not fire it at runtime. The sidebar reopen is a click-level fix, proven by click. The toggle must be one labelled control, found by the walk. Name what is not done, plainly — rail auto-organize, intelligent boards, DM Audio and Video, Message Send — and ask the \"My World\" question, never silently fix it. On the database side, correct the scope before running: sequences already sourced are never filed twice; a 19-file apply that fails first on a main-chain file proves nothing; the real proof is the full 195-file chain from empty on a free throwaway project, parity proven against live, project deleted when done. Paid tier stays dead without his word. A proof that records a known failure is not a proof.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4638",
+   "title": "The Button",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4638/IB-SMART-NOTE-20261122-sn4638-the-button.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4638/IB-SMART-NOTE-20261122-sn4638-the-button.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4637",
+ "intelligence": {
+  "title": "The Build",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4637-the-build",
+  "smart_note_id": "SN-4637",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4637/IB-SMART-NOTE-20261122-sn4637-the-build.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of it like a book that fits in your hand. A smart note is the short version — the whole book in a minute, in plain words, from three points of view, ending with what's in it for you. Flip it over and the Naya Note is the full deal — everything behind it, the depth, the math, the root — just for you, private, in your own vault. A post is different: that one is yours to write, straight up, and the big ADD button at the bottom is how you add it. Every one of them wears the same beautiful frame, like a picture in a gallery, and a picture inside it gets its own frame on top, whole, never cut. And someone keeps a list of every part — the frame, the bar, the buttons — and checks the list every time, so nothing quietly goes missing the way the Hub frame did. When his eye says a version is not right, we go back to the one his eye liked. One base, one link.",
+  "simple_view": "A smart note is a tiny block that teaches you a whole book in one minute! It tells you what it is, why it matters, and what is in it for you! A Naya note is the full deal on the back, just for you, and it stays private! A post is yours to write, and the big ADD button is how you add it! Every block wears a pretty frame, and the picture sits on top in its own frame! We keep a list of every part, so nothing goes missing!",
+  "grandma_view": "It's like this, love — imagine a little star, dear, and when you tap it, it lights up all around its edges, so you can see it is on! The date on the page stops spinning, love, and glows white around its edges instead! Every frame must fit like a glove, dear, with no words spilling out the bottom! Use the same frames as before, love, nothing new, all in one family! And always say what the page is for, dear, before you ask whose picture goes on it!",
+  "naya_view": "A lesson he repeats is a lesson not learned — filed, not lived. The test after every correction: will he have to say this again? The compound runs so the next builder CANNOT repeat the mistake: inventory + brief-template + Project Intelligence + GitHub, same pass. The fix round proves the frames match before his eyes — same frame as the agreement, fitted whole, no new design, measured not claimed. If he says it again, the compound did not run — record it plainly in the daily log and fix the loop. Proof standard: the next day shows the correction in the note, the Factory, the template, Project Intelligence, GitHub — and in the build that comes back.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4637",
+   "title": "The Build",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4637/IB-SMART-NOTE-20261122-sn4637-the-build.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4637/IB-SMART-NOTE-20261122-sn4637-the-build.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

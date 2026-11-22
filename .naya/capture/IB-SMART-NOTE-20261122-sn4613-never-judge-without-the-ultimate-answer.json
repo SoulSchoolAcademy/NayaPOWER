@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4613",
+ "intelligence": {
+  "title": "Never Judge Without the Ultimate Answer",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4613-never-judge-without-the-ultimate-answer",
+  "smart_note_id": "SN-4613",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LESSON/SN-4613/IB-SMART-NOTE-20261122-sn4613-never-judge-without-the-ultimate-answer.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Sixteen hours of 429s, and the fix was his hand on the dashboard: five dollars a month, one purchase, and the wall is gone — and the verification was ours, a live write landed, a live read-back matched, a live delete cleaned up, on the same store that refused writes all morning (SN-2951). The fastest shape we have is a tap: he tapped the options widget at 15:44Z and Naya Notes' place closed in the same minute — under the tabs, not its own tab — and two minutes later the Feed Law moved the chip from the topic side to the type side, because \"Naya Notes\" is a kind of thing on the feed, not a topic (SN-2952, SN-2953). At 16:01Z he named the mode that governs everything after it: \"the fast action plan\" — he says something, it gets done right away and comes back right away; the visual agreement had sat 10 hours and the sidebar round took hours, not because the making was slow, but because each verified step waited for the next queue (SN-2954). In the same message he set the deadline — Personal complete today, all the way through — and gave the end slide its plus button and its two honest links (SN-2955, SN-2956, SN-2957). Then, from the end-buttons discussion, two laws in one pass: always a way back, and never a show-all on the visual — and the proof case arrived half an hour later, when he clicked into the collective agreement and couldn't go back (SN-2958, SN-2959). And over the staged Personal page he asked for the anatomy itself: \"let's write the anatomy of a smart app\" — what it has, how it functions, what will be where, and why (SN-2960).",
+  "simple_view": "Imagine a circle that never stops. First you understand. Then you help. Then you check it worked. Then you learn. Then you do it better next time. Round and round! The same circle works for everything. Signing your name. Building a page. Writing words. Even judging your castle — ten things you love, ten you don't, ten you can do ten times better!",
+  "grandma_view": "It's like this, love — everything good goes in a circle. You understand what someone needs, you help them, you check it worked, you learn from it, and you do it better next time. Round and round, dear, never stopping. The same circle for a signature, for a page, for your words, for how you judge your work. And when something works beautifully, you use it everywhere — you don't go inventing a new way every time.",
+  "naya_view": "Proof is the real thing. I align both ways, harvest the room, measure in pixels, verify by blob, and sweep every click. I never close a lane without checking its children. A Firefox empty list is a probe failure, never a page failure. Just right is the standard — a direction says which way to move, a standard says where to stop.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4613",
+   "title": "Never Judge Without the Ultimate Answer",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LESSON/SN-4613/IB-SMART-NOTE-20261122-sn4613-never-judge-without-the-ultimate-answer.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LESSON/SN-4613/IB-SMART-NOTE-20261122-sn4613-never-judge-without-the-ultimate-answer.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

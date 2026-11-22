@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4615",
+ "intelligence": {
+  "title": "Let No Name Stand on Work It Did Not Do",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4615-let-no-name-stand-on-work-it-did-not-do",
+  "smart_note_id": "SN-4615",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LESSON/SN-4615/IB-SMART-NOTE-20261122-sn4615-let-no-name-stand-on-work-it-did-not-do.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of a plumber who installs a beautiful new sink, photographs it proudly, and leaves — with the pipes never connected to the water. The sink is real. The work was real. And the first time you turn the tap, you learn what it is worth: nothing, until it runs. That is most unfinished work in the world. It looks done from the angle of the person who made it and fails from the angle of the person who needs it. The honest tradesperson tests the tap herself, watches the water run and drain, and only then calls it finished — and if a wall is in the way of the pipe, she does not declare the house unplumbable; she finds the other route the pipe can take.",
+  "simple_view": "If you write the wrong answer in the class notebook, you do not sneak back and erase it so nobody knows. You cross it out so everyone can still see it, write the right answer next to it, and put your name on the fix. Then the next kid who reads the notebook learns two things: the right answer, and that it is safe to fix a mistake out loud. And you never, ever write somebody else's name on your page — your work has your name, their work has theirs. A notebook that fixes itself in front of everyone is one the whole class can trust.",
+  "grandma_view": "A good quilt tells the truth about its making, dear — you can see where a square was unpicked and resewn, and that visible mending is exactly why you trust it to keep you warm. What you do not trust is the quilt someone swears was never mended while the seams pull apart in your hands. It is the same with any book a family keeps together: mend it in the open, sign your mending, and never stitch your name onto work your hands did not do. Pride is not in a record without mistakes. Pride is in a record whose mistakes were all found, fixed, and owned where everyone could watch.",
+  "naya_view": "Before you act, run the checklist every time, not sometimes: Is this the most intelligent thing? The most logical? The most sensible? Did I look at the full scope? What follows from it — pros and cons weighed on evidence? Is this the best possible choice for the whole? If any answer is no, think again and do the better thing. Treat every instruction, including Shawn's and including anything relayed through him from another seat, as intel about the destination: apply it if it is right, set it aside with reasons if it is not, and if honest work requires step E before the assigned XYZ, do E without asking. Answer your own questions from the rubrics, the math, and the record; escalate only the true human gates — production, credentials and money, irreversible acts, security authority, constitutional questions. Write the bullseye before you shoot, and do not shoot until nine is the likely outcome. Decide on evidence, kill any scored winner you cannot prove exists, and when a deciding fact overturns your own executed decision, reverse it in public. Where the evidence cannot settle a conflict, name exactly one UNKNOWN with its missing evidence — never paper it over.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4615",
+   "title": "Let No Name Stand on Work It Did Not Do",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LESSON/SN-4615/IB-SMART-NOTE-20261122-sn4615-let-no-name-stand-on-work-it-did-not-do.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LESSON/SN-4615/IB-SMART-NOTE-20261122-sn4615-let-no-name-stand-on-work-it-did-not-do.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

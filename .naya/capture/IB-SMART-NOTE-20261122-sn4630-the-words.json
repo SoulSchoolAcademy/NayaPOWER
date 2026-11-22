@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4630",
+ "intelligence": {
+  "title": "The Words",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4630-the-words",
+  "smart_note_id": "SN-4630",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4630/IB-SMART-NOTE-20261122-sn4630-the-words.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of a calendar on the wall where every day wears its own colour — Monday orange, Sunday purple — so you know the day of the week the second you look at the number. Tap a day and the whole wall becomes that day: one beautiful photo, full size, the date said once, and the first thing you see is where your action is — your messages, your numbers — because that is what you came for. The wisdom comes second, like the quote on the inside of the card. And when you want to visit one of your worlds, you don't read a list of names — you tap one of six big beautiful pictures, and it opens only that world, only that day. Same for the news: three big pictures — your town, your province, the world — and each one opens that day's real news. Nothing is faked: if the weather isn't connected yet, the page says so plainly instead of inventing a forecast.",
+  "simple_view": "Take the real page and put it right there! Don't make one that looks a bit like it. That is not the same thing at all. Your world goes on top, and the whole Hub lives below it. Everything sorts itself into little piles, so you can find it in one tap. Magenta must look magenta, and purple must look purple. About has four big buttons, and Videos never asks you to upload. And every link must land right where it says it will!",
+  "grandma_view": "The old inns had it right, dear: the door is open to every traveller, and the paying rooms are listed plainly on the board — no one is shamed for the free bench, and no one is tricked about the suite. You don't tear down a good parlour to build a worse one; you extend it. And a household that runs by its calendar — every day with its page — never loses track of its own life.",
+  "naya_view": "Brief the ultimate want explicitly in every round and test the result against it, not only against the words. Refuse speed trades that cost rightness; record them when demanded. Verify certificates at his viewport width as well as standard widths. Assert the match-breakdown display and the never-look privacy rules in any child-facing design. Rewrite mirrored copy into stranger-perspective value statements before it ships.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4630",
+   "title": "The Words",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4630/IB-SMART-NOTE-20261122-sn4630-the-words.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4630/IB-SMART-NOTE-20261122-sn4630-the-words.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
