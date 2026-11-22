@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-22 00:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-22 01:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19657,6 +19657,12 @@ _Last updated: 2026-11-22 00:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: audit file hidden_files/boot-entry-pointer-audit-t0694.md sha256 c59e637306a5d07caa29c1762d3a662e0d4e76e5381df474b3b59fc921ab2c92 MATCHES receipt claim byte-exactly; work dir + diffs on disk per receipt. Deliverable = 20 pointers enumerated (14 stale: 4 in open PR #2561 non-overlapping per receipt, 10 new with git-apply--check-clean candi
 
+### ✅ t0692-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** SB-D2 writer change: --origin flag with fail-closed enum on ask-world.py, old-row tolerance, schema doc
+
+**Evidence:** BACKLOG SWEEP (receipt 2026-10-14). VERIFIED first-hand this tick: hidden_files/bin/ask-world.py EXISTS, py_compile clean, ORIGINS enum exact (brief-driven, emergent, inspection, synthetic, unknown), BACKFILL RULE present verbatim in the docstring, live-check accepts format_version 1 and 2 (now also 3), origin default fail-closed to unknown. Curren
+
 ### ✅ t0692 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** SB-D2 origin field in ask-world.py writer: --origin enum, fail-closed default, format bump, backfill rule
@@ -19688,6 +19694,12 @@ _Last updated: 2026-11-22 00:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0692-lane4.md`
 
 **Evidence:** Verified: hidden_files/bin/ask-world.py sha256 cdcffb68c7198ce750701fdcd9d40e50e86d058dd7aad8b5b728d89b561a559a MATCHES receipt's claimed after-SHA byte-exactly. Deliverable = origin enum {brief-driven, emergent, inspection, synthetic, unknown} default-fail-closed, format_version 1->2, old-row tolerance + documented no-inference backfill rule, sand
+
+### ✅ t0692-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat independent re-tally of ask-world query-log rows 43-59; rule on SB-D1/D2/D3 survival
+
+**Evidence:** BACKLOG SWEEP (receipt 2026-10-14). VERIFIED first-hand this tick: anchor sha256 of first 42 lines of auto-retrieval/ask-world-queries.jsonl = 08f3662cef26aa137314f18d0ad9bfa477dd011911b7ad70f72daaf146161256 MATCHES Mason's t0647 anchor byte-exact; pin of first 59 lines = 682ef6e477aec33b270dc8fe8d7833d1e316cfef001cb4f6b7c662a3590ef35c MATCHES; del
 
 ### ✅ t0692 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -19726,6 +19738,12 @@ _Last updated: 2026-11-22 00:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** COLD-NAYA PROOF: can a stranger go from clone to locked-in on the repo alone? (PR-#2533 tip)
 
 **Evidence:** VERIFIED: pinned tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e resolves via GitHub API (PR #2533 merge commit 2026-10-13) — the test ran on a real exact head. Honest NEGATIVE verdict with byte-grounded specifics: CURRENT-MISSION-STATE.md snapshot was 6.5h stale and one merge behind; the repo's activation package pointed at capped #2175 with no menti
+
+### ✅ t0691-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Lesson-probe registry: 3 probe entries keyed [t0690]/[t0689]/[t0687] with decision, cheap probe, falsification criterion, pins
+
+**Evidence:** BACKLOG SWEEP (receipt 2026-10-14). VERIFIED first-hand this tick: registry hidden_files/lesson-probe-registry-t0691.md EXISTS at exactly 9,475 bytes (matches receipt) with 3 probe entries (grep '^## [t0' == 3); receipt pins re-derived from disk MATCH byte-exact: t0682-lane10 1375b5f9305c6f29, t0677-lane4 f9a918facb93088f, t0687-lane12 cb98a956a510
 
 ### ✅ t0691 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -58766,6 +58784,12 @@ _Last updated: 2026-11-22 00:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261121-1648 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: attempted all 31 queued briefs, 0 claimed (29x exit 7 parent-authorship, 2x exit 2 routing-prose)
+
+**Evidence:** FRESH WINDOW (filed 00:48 UTC, scored ~3 min later). VERIFIED first-hand this tick on live bytes: all 31 briefs named in the receipt are exactly the 31 brief-*.md files in brief-queue/ (set match, no missing/extra); brief-queue/claimed/ holds only the pre-existing done/ subdirectory - no mv occurred; queue checksum 6d9e2c4ec6fff11fb09482178ca94dd65
 
 ### ✅ gate-stall-20261121-1548 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
