@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-22 21:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-22 21:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -18051,6 +18051,12 @@ _Last updated: 2026-11-22 21:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: pin-rederivation table hidden_files/surge-b/pin-rederivation-t0725-lane7.md sha256 9219902260ec401e... matches the claimed pin exactly; read-only authority held, origin HEAD pinned first (not mirror), the brief's wrong packet pointer (t0723 vs t0715) caught by byte structure before any derivation. Clears 9.5 because the deliverable — a co
 
+### ✅ t0725-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Decision-contact probe, frozen pre-reg, cold execution - FALSIFY
+
+**Evidence:** Verified: verdict doc sha256 0314bd49... and battery-results sha256 9a6e42ea... both match cited SHAs exactly; 372-cell battery run, verdict FALSIFY mechanical from frozen section-7 (rate_pos 0/3 vs bar >=2/3); H1 protocol hole (situation text never reaches NLI) named. Why not 9.5: blind second-seat re-run of the frozen battery still owed; harness 
+
 ### ✅ t0725 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** entailment-fire contact probe — falsification
@@ -18074,6 +18080,12 @@ _Last updated: 2026-11-22 21:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0725-lane5.md`
 
 **Evidence:** Verified: verdict-t0725.md 0314bd491873..., battery-results-t0725.json 9a6e42eaf935..., seal-note-t0725.md d2a3f5991a6b... all sha256-match on disk; harness exists at dct-probe-t0725/run_battery_t0725.py but its sha256 (7b9caf289f5f...) differs from the claimed 92b891421496... — explained by the receipt's own disclosed post-seal harness edit (parti
+
+### ✅ t0725-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Forensic verdict on e654f16e8 landing (push vs merge)
+
+**Evidence:** Verified: verdict doc on disk (hidden_files/lane-3/t0725-landing-verdict-e654f16e8.md, 5084B, mtime inside receipt window); independently corroborates t0724-lane2's PR #2403 merge finding; push-vs-merge separation correctly reframes the alarm. Why not 9.5: push-event actor unbyteable (events aged out); sign-in under wrong seat name corrected only a
 
 ### ✅ t0725 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -18099,6 +18111,12 @@ _Last updated: 2026-11-22 21:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: verdict doc hidden_files/lane-3/t0725-landing-verdict-e654f16e8.md exists (5084 bytes); git ls-remote shows refs/heads/naya/five-retrieval-auth-gate-t942 == e654f16e8a49e9a26309fd852695a0bef202673d, pin-exact to receipt. Correctly separated the routine push (CLEAN) from the #2455-class merge, every claim byte-cited. Kept from 9.
 
+### ✅ t0724-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** Fix three reds on PR #2574 (receipt-gate evidence repair + fixture)
+
+**Evidence:** Clears 9.5 because: PR #2574 remote head verified via git ls-remote = 97b65bd11316fe91b324986b3d429d0c3ee0ff75, exactly the receipt's cited action-time head; three fixable CI reds green post-push (receipt gate, receipt pin, test job); fourth red (independent scorecards) correctly named as other seats' next-tick work, not a defect; deterministic-com
+
 ### ✅ t0724 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Fix three reds on PR #2574 receipt-gate relevance repair (evidence re-bind, scorecard pin block, fixture fix)
@@ -18122,6 +18140,12 @@ _Last updated: 2026-11-22 21:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0724-lane9.md`
 
 **Evidence:** ARTIFACTS VERIFIED (git protocol + one REST body read): branch naya/lane9/receipt-relevance-t0710 @ 97b65bd11316fe91b324986b3d429d0c3ee0ff75 == refs/pull/2574/head == receipt pin == body merge_head_sha; ## Evidence re-bound (dead handles gone), ## SCORECARD-RECEIPT-PIN block present in live PR body (decided 2026-10-14T00:31:08-07:00, board comment 
+
+### ✅ t0724-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Re-derive retrieval-auth gate pins; answer landing-event authorization
+
+**Evidence:** Verified: 4/4 section-1 pins byte-identical in receipt with exact blob SHAs at tip 92329c57; headline finding (PR #2403 merge, 10s create-to-merge, 0 reviews, merge commit 993975d55) independently corroborated by t0725-lane3's parallel forensic. Why not 9.5: individual merge actor (Shawn's click vs agent API call on shared credential) unbyteable fr
 
 ### ✅ t0724 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -18147,6 +18171,12 @@ _Last updated: 2026-11-22 21:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED (git protocol): remote HEAD 92329c5795ef8a50d02adf94ee6c91c313c26daf == receipt tip == shared-state main_tip (no premise rot); refs/pull/2403/head e654f16e8a... == receipt pin; merge commit 993975d55 exists with parents [bc22abbcd, e654f16e8a] and 'Merge PR #2403' message -- the receipt's refutation of the t0715 packet's 'no PR, 
 
+### ✅ t0723-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** W5 corpus-stamping migration plan (CANDIDATE design)
+
+**Evidence:** Verified: design doc exists on disk (hidden_files/lane-4/w5-stamping-plan-candidate-t0723.md, 16KB, D1-D6 acceptance battery present); pins re-derived in receipt with exact blob SHAs; own 42->24 count error caught and corrected. NOT verified: cited sha256 ab44bda4... != current file sha256 85907fc6... (file mtime 09:43 UTC, ~2h after receipt) so ex
+
 ### ✅ t0723 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** W5 corpus-stamping migration plan CANDIDATE (design only, retrieval-auth wire prep)
@@ -18170,6 +18200,12 @@ _Last updated: 2026-11-22 21:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0723-lane4.md`
 
 **Evidence:** ARTIFACTS VERIFIED: tip pin 92329c5795ef8a50d02adf94ee6c91c313c26daf == shared-state main_tip (no premise rot); corpus blob 817865493df46eaa3da4255afbf8a40a71f494e3 at tip == 631 entries with ZERO retrieval_authorized -- the design's load-bearing measurement re-derives byte-exact via git cat-file; design doc hidden_files/lane-4/w5-stamping-plan-can
+
+### ✅ t0723-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** First blind level-drill run (voided: instrument shipped its answer key)
+
+**Evidence:** Verified: void notice on disk (hidden_files/lane-10/level-drill-blind-run-t0723.md, 4047B); board defect report cited (#2537 comment 6163061223); PR #2568 head has moved since action time (now cbd073f4 vs cited 21f089d5) - expected 6-week drift, not a phantom. Why not 9.5: mission's core ask unmet - no blind calibration data point exists (instrumen
 
 ### ✅ t0723 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -59416,6 +59452,12 @@ _Last updated: 2026-11-22 21:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261122-1313 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: attempt all 31 queued briefs in ORDERING order, verify zero queue drift
+
+**Evidence:** FRESH WINDOW (only unscored receipt this tick; backlog 0 after this row). VERIFIED first-hand this tick: brief-queue/ holds 31 brief-*.md, 0 brief-tNNNN-*; queue checksum 6d9e2c4e...20ad4 reproduced exactly via sha256sum, identical to the 12:08 receipt and all prior hourly receipts, so the queue is byte-identical and untouched; sweep log claim-swee
 
 ### ✅ gate-stall-20261122-1208 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
