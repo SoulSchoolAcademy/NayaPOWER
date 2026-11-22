@@ -14,7 +14,6 @@ The feed shows everybody, not just friends — unlike Facebook, where only your 
 
 Across 10 notes, the thread is: everybody, live, whole.
 
-Across 10 notes, the thread is: stays, notes, never.
 
 ## Human
 
