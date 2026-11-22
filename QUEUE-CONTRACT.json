@@ -1,7 +1,7 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-22T15:49:23Z",
-  "tip": "046d8014fb8eba611eb8542df39d88717068d4d1",
+  "generated_at": "2026-11-22T21:49:28Z",
+  "tip": "8b3c30ffe80c8274b2f6093f7a77baf2bc91f5a6",
   "prs": [
     {
       "number": 3499,
@@ -119,6 +119,15 @@
       "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
       "owner": "author lane",
       "head": "1f37fa4b66e94ea6a5048866db45438e5ef829e6"
+    },
+    {
+      "number": 3516,
+      "title": "[GUARDIAN-REVERT] Revert: Living Map state 2026-11-22T15:18Z",
+      "tier": "B",
+      "action": "CURE",
+      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
+      "owner": "any seat != author (scorecard drive)",
+      "head": "d0454dd23956cb74254f4def19c8226b9196a9f3"
     }
   ]
 }
