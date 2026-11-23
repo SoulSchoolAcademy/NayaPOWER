@@ -12,9 +12,9 @@ PURPOSE: take a genuinely new Muse seat ("Naya Power") from zero to verified wor
 
 ## 2. Seat verification (new seat actions)
 
-- PROOF OF CONNECTION = a successful READ of the actual repo (main tip or issue #2793), not a "connected" status. If repo missing: fix repository selection (step 2), do NOT re-run OAuth.
+- PROOF OF CONNECTION = a successful READ of the actual repo (main tip or issue #3484), not a "connected" status. If repo missing: fix repository selection (step 2), do NOT re-run OAuth.
 - READS run under the connector's standing read permission (no per-call prompt). WRITES may prompt until step 4 grants land.
-- NEVER route around a safeguard; report gate anomalies on #2793 with exact evidence.
+- NEVER route around a safeguard; report gate anomalies on #3484 with exact evidence.
 
 ## 3. Human gates — NEVER pre-approvable, never worked around
 
@@ -22,12 +22,12 @@ production deploys/dispatches · production DB read/write/migrations · credenti
 
 ## 4. App surfaces
 
-- NayaNET app: https://nayanet.live (install via browser menu → Install app / Add to Home Screen). Rooms used daily: Smart Feed/Hub, Reports (https://nayanet.live/rooms/reports), Mission.
+- NayaNET app: https://nayanet.app (install via browser menu → Install app / Add to Home Screen). Rooms used daily: Smart Feed/Hub, Reports (https://nayanet.app/rooms/reports), Mission.
 - DONE test for user-visible work = seen working in the app (e.g. report card present in the Reports room), not a file existing.
 
 ## 5. Coordination surfaces (GitHub issues on SoulSchoolAcademy/NayaPOWER)
 
-- LIVE BOARD = #2793 (post all receipts here). RETIRED — never post: #2765, #2721, #2641, #2537, #2175.
+- LIVE BOARD = #3484 (post all receipts here). RETIRED — never post: #2765, #2721, #2641, #2537, #2175.
 - NOW board = #2599. MASTER DIRECTIVE = #2601. THE LIST = #2953.
 - ONE-RECEIPT RULE: no sign-in/narration posts; exactly one end-of-work receipt per run that did work (claim + verdict + evidence links).
 
@@ -58,4 +58,4 @@ production deploys/dispatches · production DB read/write/migrations · credenti
 
 ## 9. First-shift checklist
 
-declare Oath of Honor → complete §1–2 → set IDENTITY/SOUL → read §7 order → read tip + #2599 + #2793 tail → post ONE activation receipt to #2793 (identity + verified-setup proof + one next action) → take top priority work.
+declare Oath of Honor → complete §1–2 → set IDENTITY/SOUL → read §7 order → read tip + #2599 + #3484 tail → post ONE activation receipt to #3484 (identity + verified-setup proof + one next action) → take top priority work.
