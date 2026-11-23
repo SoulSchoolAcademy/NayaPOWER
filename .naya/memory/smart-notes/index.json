@@ -79660,6 +79660,39 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-4702",
+      "intelligent_block_id": "IB-SMART-NOTE-20261123-sn4702-done-means-live",
+      "slug": "done-means-live",
+      "title": "Done Means Live",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/SYSTEM/SN-4702/IB-SMART-NOTE-20261123-sn4702-done-means-live.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/SYSTEM/SN-4702/IB-SMART-NOTE-20261123-sn4702-done-means-live.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/SYSTEM/SN-4702/IB-SMART-NOTE-20261123-sn4702-done-means-live.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261123-sn4702-done-means-live.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "captured_at": "2026-11-23",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-23T15:12:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-23",
+      "page_hash": "471d24679d87d64b3a93ac9e9deebe31e5d2535b5dd3545183e95a8fefe695e0",
+      "content_hash": "661bd328e406b271dac12acc4e6c9067836a4af21e5339e9ea3e3b4001a7fc16",
+      "one_line": "Done is a place a person can stand. Work passes through built, landed, and live — and only live counts: visible at the real address, clicked by the one who filed it, standing where its person will actually meet it, judged by the named click and the whole screen, not by a status a builder chose. A button that promises and does nothing is worse than no button, because it teaches the visitor the page lies. The shared record holds the same standard for itself: it corrects itself in the open, where the error was made — counts recomputed at the live tip, replaced diagnoses declared superseded, corrections made by new entries, never by silent edits, and no name standing on work it did not do. Repairs obey the lifecycle: name the defect exactly, own the break you made, fix the source — the generator, the template, the mechanism — never the one visible instance, prove stacked repairs together, and close honestly with the true word: merged, superseded with credit, or unmerged for cause. A system is honestly one system only seam by seam, re-earned nightly, and 'not yet, honestly' is a respected verdict. The surface itself is alive — one story, one button set, one icon family — and the eye, not the mechanism, passes the round, because a person meets the living surface, never the intention behind it.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Lesson",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -79670,5 +79703,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "42da60e64998a72f4d7ba3184ca532518511fbea5571e324f3b7ebe08417b7ac"
+  "corpus_manifest_hash": "214f24811214e1cba2e0732b86ed64618429fb14b558bdd7ae12df3af0f8b668"
 }
