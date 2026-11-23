@@ -197,6 +197,28 @@ def check_dir(directory: str | Path) -> list[ConformanceResult]:
     by_capture_id = {r.capture_id: r for r in results if r.capture_id}
     file_by_capture_id = {r.capture_id: f for r, f in zip(results, files) if r.capture_id}
 
+    # A supersession target may be a capture filed under an IB- stem
+    # (second-order distillation files IB-SMART-NOTE-*.json in this
+    # directory). Resolve any target the SMART-NOTE- enumeration missed
+    # from IB files whose CONTENT capture_id matches, and append the
+    # checked result so callers' capture_id maps can see it. Observed IB
+    # files are intelligent-block projections with no capture_id, so they
+    # never match and are never appended; the ratchet baseline
+    # (SMART-NOTE- names only) is untouched on the live tree.
+    for res in list(results):
+        if res.lifecycle_state != "SUPERSEDED":
+            continue
+        target_id = str(res.superseded_by_capture_id or "").strip()
+        if not target_id or target_id in by_capture_id:
+            continue
+        for ib_path in sorted(Path(directory).glob("IB-SMART-NOTE-*.json")):
+            ib_res = check_capture(ib_path)
+            if ib_res.capture_id == target_id:
+                results.append(ib_res)
+                by_capture_id[target_id] = ib_res
+                file_by_capture_id[target_id] = ib_path
+                break
+
     for res in results:
         if res.lifecycle_state != "SUPERSEDED":
             continue
