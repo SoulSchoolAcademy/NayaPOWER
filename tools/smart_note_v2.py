@@ -1922,13 +1922,25 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
         if not h:
             defects["entries_without_hash"].append(sn)
             continue
-        entry_hashes.setdefault(h, []).append(sn)
+        # RETIRED-TWIN EXEMPTION (Naya 5, 2026-11-21 — SN-3955..SN-3959 /
+        # SN-4203..SN-4207): a re-adjudication leaves the retired twin bound
+        # to the same content_hash as its live successor, with lifecycle_state
+        # SUPERSEDED + superseded_by_capture_id + supersession_reason on
+        # record. Two entries sharing a hash is a duplicate only when two
+        # LIVE entries claim it; a live entry plus its retired predecessors
+        # is a supersession chain, not a collision. Scoped on the retrieval
+        # layer's own inactive set so the audit, the vanish guard and
+        # retrieval agree on what counts as live. Missing lifecycle_state
+        # reads as ACTIVE, matching the vanish guard.
+        live = str(e.get("lifecycle_state") or "ACTIVE").upper() not in INDEX_VALIDATION_INACTIVE_STATES
+        entry_hashes.setdefault(h, []).append((sn, live))
         if h not in capture_by_hash:
             defects["entries_with_stale_hash"].append({"smart_note_id": sn, "content_hash": h})
 
-    for h, names in entry_hashes.items():
-        if len(names) > 1:
-            defects["duplicate_smart_note_ids"].append(sorted(names))
+    for h, holders in entry_hashes.items():
+        live_names = sorted(sn for sn, live in holders if live)
+        if len(live_names) > 1:
+            defects["duplicate_smart_note_ids"].append(live_names)
 
     for h, name in capture_by_hash.items():
         if h not in entry_hashes:
@@ -1989,7 +2001,13 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
         pp = e.get("projection_path")
         if published and not pp:
             defects["published_entries_missing_projection_path"].append(sn)
-        if pp and not _projection_path_exists(root / pp):
+        # Same exemption as the duplicate-hash class above: a retired entry's
+        # projection file was removed with the re-adjudication (the SN-3955..
+        # SN-3959 pages were deleted when the notes moved to SN-4203..SN-4207),
+        # so the path is a historical pointer, not a live file the entry must
+        # still have. Live entries with absent paths still fire.
+        retired = str(e.get("lifecycle_state") or "ACTIVE").upper() in INDEX_VALIDATION_INACTIVE_STATES
+        if pp and not retired and not _projection_path_exists(root / pp):
             defects["registry_projection_paths_absent"].append({"smart_note_id": sn, "projection_path": pp})
 
     pages_by_name = {}

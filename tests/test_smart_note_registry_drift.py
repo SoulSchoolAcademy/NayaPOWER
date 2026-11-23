@@ -235,6 +235,61 @@ def test_detector_catches_injected_drift(tmp_path, mutate, expected_class):
     assert report["counts"][expected_class] >= 1, report["defects"]
 
 
+def _add_superseded_twin(root):
+    """A retired twin of the clean fixture's entry: same content_hash, but
+    lifecycle_state SUPERSEDED with supersession evidence, and a
+    projection_path pointing at the page the re-adjudication removed.
+    Mirrors the live SN-3955..SN-3959 / SN-4203..SN-4207 twins."""
+    reg = root / ".naya" / "memory" / "smart-notes" / "index.json"
+    entries = read_entries(reg)
+    twin = dict(entries[0])
+    twin["smart_note_id"] = "SN-002"
+    twin["intelligent_block_id"] = "IB-2"
+    twin["lifecycle_state"] = "SUPERSEDED"
+    twin["superseded_by_capture_id"] = "c1.json"
+    twin["supersession_reason"] = "test twin: re-adjudicated to SN-001"
+    twin["projection_path"] = PAGE.replace("IB-1.md", "IB-MISSING.md")
+    entries.append(twin)
+    write_entries(reg, entries)
+
+
+def _add_live_twin(root):
+    """A second LIVE entry bound to the same content_hash — a genuine
+    collision the audit must still report."""
+    reg = root / ".naya" / "memory" / "smart-notes" / "index.json"
+    entries = read_entries(reg)
+    twin = dict(entries[0])
+    twin["smart_note_id"] = "SN-002"
+    twin["intelligent_block_id"] = "IB-2"
+    entries.append(twin)
+    write_entries(reg, entries)
+
+
+def test_superseded_twin_sharing_hash_is_not_a_duplicate(tmp_path):
+    """SN-3955..SN-3959 / SN-4203..SN-4207 (2026-11-21): a retired twin bound
+    to the same content_hash as its live successor is a supersession chain,
+    not a duplicate — and its removed projection file is history, not drift.
+    The ratchet must not fail on re-adjudication."""
+    build_clean_root(tmp_path)
+    assert mod.audit_registry(root=tmp_path)["ok"] is True, "fixture must start clean"
+    _add_superseded_twin(tmp_path)
+    report = mod.audit_registry(root=tmp_path)
+    assert report["counts"]["duplicate_smart_note_ids"] == 0, report["defects"]
+    assert report["counts"]["registry_projection_paths_absent"] == 0, report["defects"]
+    assert report["defect_total"] == 0, report["defects"]
+
+
+def test_two_live_entries_sharing_hash_still_a_duplicate(tmp_path):
+    """Control: the exemption is for retired twins only — two live entries
+    on one hash still fire, with the live holders named."""
+    build_clean_root(tmp_path)
+    _add_live_twin(tmp_path)
+    report = mod.audit_registry(root=tmp_path)
+    assert report["counts"]["duplicate_smart_note_ids"] == 1, report["defects"]
+    assert report["defects"]["duplicate_smart_note_ids"] == [["SN-001", "SN-002"]]
+    assert report["counts"]["registry_projection_paths_absent"] == 0, report["defects"]
+
+
 def _add_capture(root, intelligence):
     p = root / ".naya" / "capture" / "c2.json"
     p.write_text(json.dumps({"smart_note_id": "SN-002", "intelligence": intelligence}), encoding="utf-8")
