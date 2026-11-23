@@ -79627,6 +79627,39 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-4701",
+      "intelligent_block_id": "IB-SMART-NOTE-20261123-sn4701-proof-must-be-able-to-fail",
+      "slug": "proof-must-be-able-to-fail",
+      "title": "Proof Must Be Able to Fail",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/SYSTEM/SN-4701/IB-SMART-NOTE-20261123-sn4701-proof-must-be-able-to-fail.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/SYSTEM/SN-4701/IB-SMART-NOTE-20261123-sn4701-proof-must-be-able-to-fail.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/SYSTEM/SN-4701/IB-SMART-NOTE-20261123-sn4701-proof-must-be-able-to-fail.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261123-sn4701-proof-must-be-able-to-fail.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "captured_at": "2026-11-23",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-23T15:11:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-23",
+      "page_hash": "7a08d0766b9aa53119f54b70ee2fd09dc86d47df2767b9d0266bd28f9dbe759a",
+      "content_hash": "7b170535593fc8fa91debead2b6f0fca5cdd59fb5efe7476bc1713ebae2b2ed0",
+      "one_line": "No claim counts until it has survived a real chance to be wrong. Proof lives at the surface where the thing will be used, in live bytes read fresh — never in a stale list, a maker's own receipt, a green run whose jobs all skipped, or a state word like synced, filed, or registered, which describes a store and never the surface a person actually meets. Every verdict belongs to the exact bytes it was measured on and expires when those bytes move. The instrument is part of the proof: it is named, qualified on known-broken and known-green inputs, and proven able to say no before its yes means anything — and when the instrument and the surface disagree, the instrument is fixed in public, the failure reproduced both ways, and the proof routed back to the parent task that asked for it. Receipts come before reports: a win is written as a repeatable recipe the same night, not narrated afterward. Failure is handled the same honest way: a cause not yet tested is withdrawn as a guess, a wide pass and a true fail can stand in the same record, and a control that fails in plain words with the work restored is the shape of a good failure. Plain words carry it all to the citizen, with no backstage line allowed through.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Lesson",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -79637,5 +79670,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "c5d5995327bff72f7106432ef5b04f1df224c244df193f3aada6e421d8ce5cdc"
+  "corpus_manifest_hash": "42da60e64998a72f4d7ba3184ca532518511fbea5571e324f3b7ebe08417b7ac"
 }
