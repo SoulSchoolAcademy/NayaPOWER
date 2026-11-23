@@ -28,7 +28,7 @@ Feature: "send it in Smart Note language" — on request, any output is re-issue
 `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/YYYY-MM-DD-NAYAPOWER-DAILY-INTELLIGENCE-REPORT.md` — land on main (merge path). One truth, one copy; the Hub page is a presentation of this file, never a divergent copy.
 
 ## Publish procedure (into the Reports room)
-Public home: `https://nayanet.live/rooms/reports` (room contract `HUB/ROOMS/03-REPORTS.md`). Publishing is the sync lane's run; the author never builds a page.
+Public home: `https://nayanet.app/rooms/reports` (room contract `HUB/ROOMS/03-REPORTS.md`). Publishing is the sync lane's run; the author never builds a page.
 1. File on main. 2. Ask the sync lane to publish into the room in the room's own format. 3. Await the publish receipt. 4. Author verifies live: open the room, open today's report, observe it render. Only then is it published.
 First-run receipt (2026-10-23): report filed on main via PR #3007 (merged 15:27Z); room verified live holding 26 daily reports through 2026-10-22; the 2026-10-23 card was the owed publish step.
 
@@ -36,7 +36,7 @@ First-run receipt (2026-10-23): report filed on main via PR #3007 (merged 15:27Z
 The room's format governs: one raised card per report (CANONICAL tag, date, title, one-line arc, word/section counts, READ THE REPORT inline render, ↓ MD, COPY LINK). Never design a new page for a report; never send a homemade rendition as the deliverable. Before building anything presentational, open the existing surface and match it. (Bought lesson, 2026-10-23: an invented rendition was rejected by Shawn outright.)
 
 ## Delivery
-Both, in this order of proof: (1) the report itself in chat (nutshell + lists, Smart Note language); (2) the link `https://nayanet.live/rooms/reports` — only after step 4 of the publish procedure passes. A link is a claim of completion. Before live verification, chat carries the report and states plainly that the room page is being published.
+Both, in this order of proof: (1) the report itself in chat (nutshell + lists, Smart Note language); (2) the link `https://nayanet.app/rooms/reports` — only after step 4 of the publish procedure passes. A link is a claim of completion. Before live verification, chat carries the report and states plainly that the room page is being published.
 
 ## Timing
 Day edition closes the UTC day. A mid-day edition labels its window honestly and is extended — never silently replaced — by the close.

@@ -48,7 +48,7 @@ Either way: a request handed to another lane is a handoff, not a landing. The au
 
 ## What happens automatically
 
-The sync scans main, files the note into the Hub, mints its page at `https://nayanet.live/s/sn####`, makes its share image, and enqueues its voice. The BRAIN file on main plus the sync is what lights the link — bookkeeping files elsewhere are not.
+The sync scans main, files the note into the Hub, mints its page at `https://nayanet.app/s/sn####`, makes its share image, and enqueues its voice. The BRAIN file on main plus the sync is what lights the link — bookkeeping files elsewhere are not.
 
 ## The sync-window rule
 
@@ -62,7 +62,7 @@ Run the protocol's four verifications (§7, Step 8) yourself:
 
 1. The file is on main — read the tree, not a receipt.
 2. The card renders in the Hub feed.
-3. `nayanet.live/s/<id>` answers 200, with your title.
+3. `nayanet.app/s/<id>` answers 200, with your title.
 4. The share image answers 200.
 
 All four true = **VERIFIED_LIVE** — only now do you send the link. Anything less = **STALLED:<failing-step>**, named plainly and still owned by you. Any later edit to the note's bytes restarts this verification.
@@ -71,4 +71,4 @@ All four true = **VERIFIED_LIVE** — only now do you send the link. Anything le
 
 - The protocol — laws, categorization, scoring, failure modes, roles: `BRAIN/01-GOVERNANCE/0025-SMART-NOTE-PROTOCOL-V1.human.md`
 - The operating contract — what a note must achieve before it counts as learned intelligence: `NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md`
-- The worked example: SN-0832, live at https://nayanet.live/s/sn0832
+- The worked example: SN-0832, live at https://nayanet.app/s/sn0832

@@ -21,7 +21,7 @@ incl. note-door landings):
 |---|---|---|
 | Faithfulness | merge commit an ancestor of the live tip? every changed blob identical at PR head / merge commit / tip (later-commit touches excused)? | `FAITHFULNESS_NOT_ANCESTOR`, `FAITHFULNESS_BLOB_DRIFT` |
 | New red | a tip-failing check was **present and passing** at the parent commit (L636 derivation, per workflow)? | `NEW_RED` |
-| Surface | for `HUB/**` landings: `https://nayanet.live/` answers 200 with the feed present? | `SURFACE_DOWN` |
+| Surface | for `HUB/**` landings: `https://nayanet.app/` answers 200 with the feed present? | `SURFACE_DOWN` |
 
 Verdicts: `OK` · `PENDING` (checks unsettled inside the wait budget,
 bytes unverifiable, or a red whose before-state derived UNKNOWN —

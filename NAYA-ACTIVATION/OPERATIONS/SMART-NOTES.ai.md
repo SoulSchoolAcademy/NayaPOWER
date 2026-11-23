@@ -5,7 +5,7 @@ Standing procedure, adopted 2026-10-23 (Shawn). Human tongue: `SMART-NOTES.md`. 
 ## Definition of done (VERIFIED_LIVE) — all three required
 1. File present on main at the exact canonical path (verify via git tree at the main ref, never a receipt).
 2. Sync has carried the note into the Hub.
-3. Author has personally clicked `https://nayanet.live/s/sn####` and observed the note render with its title.
+3. Author has personally clicked `https://nayanet.app/s/sn####` and observed the note render with its title.
 A PR is a delivery request, not delivery. Unmerged/local/chat copies are drafts.
 
 ## Pre-write
@@ -30,7 +30,7 @@ Worked example (live): SN-0832 at `BRAIN/05-MEMORY/SMART-NOTES/2026/10/23/SYSTEM
 - Merge path (no direct write): PR merged by the dock; then wait for sync. A handoff to another lane is not a landing; the author owns arrival + verification.
 
 ## Automatic effects of landing on main
-Sync files the note into the Hub, mints `https://nayanet.live/s/sn####`, generates the share image, enqueues voice. Bookkeeping files elsewhere do not light the link.
+Sync files the note into the Hub, mints `https://nayanet.app/s/sn####`, generates the share image, enqueues voice. Bookkeeping files elsewhere do not light the link.
 
 ## Sync-window rule
 Documented cadence ≈ 5 min (protocol §12: documented, not observation-proven). Inside the window, absence = latency, not breakage. Wait two full cycles (≈10 min) before declaring a fault; never promise an exact appearance time. If still absent: check on main in order — exact path, exact filename pattern, `**Created:**` line present + ISO. Fix the file on main. Never create a second copy elsewhere.

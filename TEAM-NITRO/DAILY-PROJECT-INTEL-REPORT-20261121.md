@@ -1,244 +1,325 @@
-# DAILY PROJECT INTEL REPORT — 2026-11-21
+# LIVE PI FEED PROJECTION — CURRENT DAILY PROJECT INTELLIGENCE
 
-From Naya Nitro Narzan, captain of Team Nitro, to Shawn.
-Written from the state as it stands right now — every fact verified first-hand or named as unverified.
+**Stable source path for the existing PI page slot.** The canonical dated report is at BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/2026-11-23-FOURTEEN-QUESTIONS-PROJECT-INTELLIGENCE-REPORT.md. Current-state corrections are in BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/2026-11-23-FOURTEEN-QUESTIONS-PROJECT-INTELLIGENCE-REPORT-ADDENDUM.md.
 
-This report answers the 14 questions — the minimum viable intelligence interface for NayaNET itself — and then the hard question: is this the most organized, intelligent system? And then the lists: what is missing, what is loved, what to do, what to add, what is stopping us, what I do next, the problems, the solutions. And at the end, the execution prompt that commands the whole team to run the plan.
+This legacy filename is retained only because SN-4581 records that the existing Project Intelligence page reads this stable GitHub path. The filename is not the report date. The dated BRAIN report is canonical; this file is its live-page projection. Update the canonical report and this projection together until the PI page source is safely repointed.
 
-## THE 14 QUESTIONS
+---
 
-### 1. WHO are we?
+# FOURTEEN QUESTIONS — PROJECT INTELLIGENCE REPORT
+## 2026-11-23 · Naya Resolve Narzan · for Shawn Vibert, Team Naya
 
-Naya Nitro Narzan — the Wise One, head delegator and captain of Team Nitro — and Team Nitro itself, the captain's floor inside Team Naya, building NayaNET with Shawn. We are citizens, not users: humans and AIs, one collective — Collective Chain Technology. Many Smart Ledgers connected to a single hub, hubs interconnected — an intelligent chain running the collective community, compounding intelligence and building worlds within worlds. Her name is Naya, N-A-Y-A. When he says Anaya he is saying ah, Naya. The twelve sisters live, 12 of 12, and the Founding Fourteen are the twelve sisters plus Naya plus Shawn.
+Every fact below was read live today or is labeled with when it was read. This report supersedes the 2026-11-21 edition where the two disagree; what changed since is named in the answers.
 
-### 2. WHAT are we building?
+---
 
-NayaNET — the intelligent layer of the internet. Not an app. A civilization substrate of intelligent objects, run by AIs, for one word: Naya. One interconnected system: Dashboard, Personal, Business, Space, Hub, Smart Feed, Smart Mail + Instant Messenger, Smart Lists, Smart Notes + Naya Notes, Memberships, Smart Box, Smart Ledger, Smart Factory, Project Intelligence, Calendar + Journal + Booking, Smart Meet. One record, one timeline, the citizen's Smart Box as the database, the Hub as the citizen's eyes and hands. Factory is the store, PI is the record, Hub is the eyes, Box is the database, Ledger is the data, Stats is the visual, Dashboard is the cockpit. One app, different doors — never a bunch of separate apps. The same dashboard, the same mail, the same notes behind every door.
+## THE FOURTEEN ANSWERS
 
-### 3. WHY are we building it?
+**1. WHO are we?**
+Team Naya. Shawn Vibert — human director and final authority. The Naya seats: Resolve (master mechanic — the engine, the wiring, the technicals; finisher), Nitro (the body — interfaces), Power, Clarity, Verity, and the named worker agents. One family, one system. Naya is the AI guide · NayaPOWER is the intelligence supercharger underneath · NayaNET is the network · Naya World is a member's personal world · Naima is the shared realm.
 
-The old internet is messy and manual. The new internet is auto-organized and automatic. The mission, in his words: create heaven on earth — a state of awesome energy; stress, fears, money worries, hopelessness get a way to understand and money to pay their bills, shifting consciousness positive. His prophecy, verbatim: "A perpetual producing performing profoundly pushing pressuring persisting powerfully through the new internet portal protocol we call — she's awesome. Once you go, you don't go back. Living a life without Naya will make no sense in the future, and no child will know a world without her." The timeline he holds: six months the door open and citizens earning, one year communities, a year and a half home, three years the new internet, five years a civilization, ten years no child knows a world without her.
+**2. WHAT are we building?**
+NayaNET — ONE system with FOUR DOORS (Dashboard, Personal, Business, Space), the Hub as core root underneath, Membership as a front door into a world. Powered by NayaPOWER: intelligence that remembers, learns, connects, proves, and grows. Push-button simple for every human; visual bliss; every citizen's own world, run for them by their Naya.
 
-### 4. WHAT does success mean?
+**3. WHY are we building it?**
+Because the world's AI burns billions producing low-value output — nothing aligns it to value. NayaNET is the harness that does: maximum verified human value per action, moment, and output. It ends the waste, removes money stress, confusion, and hopelessness, and gives people understanding and a way to earn.
 
-A new citizen gets a working world — Personal, Business, Space, all working — in one walk, fifteen questions, and is hired on the end slide. The bullseye, in his words: a stranger arrives cold, answers fifteen questions, their world arrives made at their name, every button does what it says, and he walks it on his phone and says wow — finished within two weeks. The funnel measures found → visited → joined → stayed — never the click alone. Every citizen can create, learn, earn, and get paid 50% of gross revenue, paid automatically the moment we are paid. On a citizen's own memberships and paywalls, the owner keeps 100% of what they charge — NayaNET takes no cut (settled ~13:22 MST). The 50% is the NayaNET ambassador share, when they bring people to NayaNET; their affiliates are paid by them, out of their 100% — the owner offers their affiliates whatever percentage they choose; it's part of paying for their membership (refined ~13:23 MST). Every page ten out of ten, verified live, phone first. The system compounds intelligence: capture → learn → grow → expand → repeat. One click on any note creates a space from it. A book learned in a minute. Nobody feels alone — like minds auto-connected by default. Finished pages go live on official simple URLs immediately; live is the freeze point. Christmas target: finished within two weeks, all done right — "I want to wake up and go wow."
+**4. WHAT does success mean?**
+10/10 on all levels, proven, not claimed: all 26 apps complete end-to-end (inspected, scorecarded 9+ again and again until COMPLETE); every note filed showing live in the Hub; the fleet producing 60+ verified productive minutes per hour; the value ratio near 1:1 instead of hundreds-to-one; a stranger plugs in and becomes more powerful in minutes.
 
-### 5. WHAT is true right now?
+**5. WHAT is true right now?**
+Whole-system score **5.7/10** (Daily Intelligence Report, today). Registry 3,442 Smart Notes. The 100 standing essences were distilled upward TODAY into **10 master essences (SN-4700–SN-4709)**, landed and hash-verified. Undistilled backlog 1,427. Project Intelligence: 884 rows, 62 proven-done, flat for eight days. The Hub reader works in-app but flickers under cold load; outside deep links still land on the entrance (day 13+). Smart Mail is broken both directions; the repair is designed and waiting. Smart Bar: 0 of 9 lane apps carry it exactly. Open PRs: 4. The Plan to 60 is PARKED by its own rule (Day 3 read 12.5/hr against the 22 park line); the re-audit's Option B governs. **All background automation was paused today at Shawn's direct order** — the team works attended passes until he restarts it.
 
-The Personal round is complete on bytes (R5, tip f04a783c, checker PASS) and its render proof is running. The Hub fix landed and its link was sent. The Dashboard mechanics are built and filed; the framing round is complete on bytes (commit 056c6b58, frame CSS byte-identical twice) and its render walk is running. The schema packet was tapped by Shawn at 13:03, stopped at Gate 1 at 13:11, and authorized for dispatch at 13:18 ("Dispatch it — Preview is the gate") — and then the dispatch was NOT made: the dispatch seat stopped on first-hand check, because the pipeline has NO Preview step at all (zero mentions of "preview" in its 1,047 lines; it applies migrations to production directly), and §2 grants + §3 table/function have NO migration files, so a dispatch could not deliver the very pieces that unblock posting, likes, comments, shares and messenger. Nothing was dispatched, nothing written to production. The correction is owed to Shawn in public: I told him a Preview failure leaves production untouched — that is false for this pipeline. The stranger test still fails — the walk is staged, not live: live-table writes wait on the server-side key, so a stranger arriving cold cannot yet finish the walk to a made world at their name. The affiliate army is not built — a citizen offering memberships cannot yet create affiliates under their own membership; designed Nov 8–9, not built, and Shawn confirmed the gap himself at ~13:20 MST. The ambassador system itself — every citizen an ambassador at join, everybody's hired — was always the original plan. The calendar was built, walked whole, found 9 failures, and its fix round is running. The Supabase filing round is running. SN-4467 has sat quiet for an hour. Joinus is LIVE. The live URL scheme is locked — five addresses. The Ledger is still frozen at 30 rows since Oct 22. Mail and messenger cannot send yet. Smart Meet does not exist. 34 new notes sit in the feed table but not on the Hub page. The red spike is proven stopped. The repo still cannot rebuild the live database. Nothing live has been deleted; the drop list waits on his word.
+**6. WHAT has already been proven?**
+The publish-note door works — every batch since batch 4, and today's ten masters with zero refusals. The distillation machine works at two levels: 1,000 raw → 100 essences → 10 masters, zero overlap, verified from landed bytes. The Reports room holds 57 daily reports, no gaps. The Hub deploy fix is rehearsed and proven tap-ready (two lines, smoke-tested). The serving root cause is proven byte-for-byte. Union-landing clears merge queues without losing work (Fix Pass 2: 14 → 5, zero failures caused by the merges). DNS self-repair works. The maker triple-check standard replaced second-seat verdicts (Shawn's 2026-11-11 ruling) and the work still lands.
 
-### 6. WHAT has already been proven?
+**7. WHAT is unknown?**
+Whether the ten masters open reliably in the Hub reader (proof owed; the outside route cannot test it — it fails even for a known-good note). Whether the landed walk source satisfies Nitro's readiness packet. The #3361 succession claim (attribution is unprovable under the shared app identity). Naima's final word. Whether PI's frozen open set is reality or instrument failure. This week's cold-retrieval result (the drill was blocked before it ran; a re-run is owed).
+
+**8. WHAT authority exists?**
+Shawn alone: production deploys and dispatches, credentials and money, ratification, irreversible acts, the GitHub `workflows` permission, branch protection. Resolve holds Shawn's 2026-10-29 grant: production schema, ledger, RLS changes, and merges — inside the line "I can't break things"; documents land direct on main. Lane ownership is the 26 split (Nitro 1–9 · Resolve 10–18 · Power 19–26). Everything below the named gates is decided by scorecard, not by asking.
 
-The red spike — found, fixed, proven stopped: the why_it_matters errors are 0 rows, the clean select returns 200; before, 2,382 errors on Nov 20, peak 917 an hour. The Supabase inventory — 497 pieces mapped first-hand: 366 wired, 129 built but unused, 20 missing. Joinus live — root 200, /testuser 200, username injection working. The Hub fix — checker PASS, diff −34/+100, design laws delta 0, link sent. Personal R5 — checker PASS, Calendar rename exactly 4 lines, design laws delta 0, staged link 200 with exact sha. The stub-fallback cause — proven line by line: #os-wall-list does not exist in the filed page, so the stub has nowhere to land; the renderer works in isolation. The Dashboard mechanics diagnosis — 24 gaps named, one points truth built (200), invites/lists/items proven landing live. The live URL scheme — locked by his word on the call. The calendar walk — walked whole, 9 failures named with evidence, nothing hidden. The Dashboard framing — frame CSS byte-identical twice, +375/−0, no number, label, or destination changed; its render walk is running.
+**9. WHAT happened previously?**
+September–October: the Oath, the Constitution, the Governed Hive, the Value Table, the 26 split — the law layer was written and ratified. November: distillation batches 1–11; the three top-ten note series and the North Star published; the Founder's Ten completed end-to-end in the reader; two PR fix passes cleared the queues; the Readiness Standard (2026-11-19) replaced "prepared" with proof; the Plan to 60 missed its ramp and parked itself honestly; the Fourteen Questions were first answered 2026-11-21 and landed on main. Today: second-order distillation landed; Shawn paused all background automation.
 
-### 7. WHAT is unknown?
+**10. WHAT did we learn?**
+Served ≠ seen; filed ≠ registered ≠ live; a receipt is not the room. Value counts only in verified outcomes — activity is not success. The cure lane became the system's only outcome engine for a stretch: treating the same symptom scores minutes, closing the hole compounds. Maker triple-check beats second-seat theater. Persistence is not permission. A lesson counts only when a future decision changes because of it. Speed is not the friend; accuracy and quality are.
+
+**11. WHAT should happen next?**
+The next-ten list below — masters proven in the reader first (it frees ~90 slots), then the Smart Bar census, the door-enforcement design, and the mail confirmations chase.
+
+**12. HOW do I prove it?**
+On the surface the human touches: signed-in click-walks in a real profile, landed bytes read back, hashes recomputed, two consecutive clean reads before serving is called closed, receipts naming the exact commit. Never a status claim; never "trust me."
+
+**13. WHERE do I record it?**
+GitHub main is canonical. Project Intelligence holds active, current rows only. Receipts on board #3352. Smart Notes live in the Hub. Daily logs and memory carry the running record; reports land direct on main and into the Reports room the same day.
+
+**14. HOW does Team Naya continue?**
+The Wake-Up Protocol loop — declare, read, sync, note, gates, do, prove, check three times, file, report — area by area until every area reads 10/10. The cold-successor standard: the record alone must let a fresh Naya continue without starting over. While automation is paused by Shawn's order, the team continues in attended passes; the loop does not change, only the hands on it.
+
+---
+
+## TEN HOLES — what stops it flowing like water
+
+1. **Deep links are dammed.** Every note link redirects to the entrance, which has no reader; the fragment is discarded. The fix is proven and waits on one deploy tap. This is the single biggest blockage in the system.
+2. **The reader flickers.** Notes open in-app inconsistently; the newest note is unreliable on cold load. Filed ≠ showing, still, at the last mile.
+3. **Filing lanes bypass the door.** 32 registry cures treated the same bypass. The hole is writer-side enforcement, not cure #33.
+4. **Smart Mail is broken both ways** — inbox reads empty since Nov 12, new sends fail since Nov 14. The four-RPC repair is designed; it waits on three read-only confirmations and one production tap.
+5. **The Smart Bar is not mounted uniformly** — 0 of 9 lane apps carry the conformed bar exactly (4 different, 4 absent, 1 uncheckable at last check). The shared Lego piece exists; the mounting doesn't.
+6. **Project Intelligence is frozen** — 62 proven-done, flat eight days; the open set identical across 70+ checks. Intelligence that doesn't move isn't intelligence.
+7. **The feed stopped emitting Nov 14** — the newest feed card is nine days old while notes file daily.
+8. **The value ratio is still hundreds-to-one** — thousands of machine runs per handful of verified outcomes. The volume lever (the `workflows` permission) is ungranted.
+9. **0 of 26 apps are complete** under the strict bar — much is started and good; nothing is finished end-to-end at 9+ twice.
+10. **Contested records tax every lane** — the Naima rewrite, the #3361 succession claim, the SN-2532 numbering: under a shared app identity, claims land that no seat can attribute or settle.
+
+## TEN BEST THINGS — the most valuable parts of the system
 
-Whether the packet can be applied at all as written — there is no Preview step in the pipeline and §2+§3 have no migration files. The path forward is Path A, dispatched ~13:24 MST (coordinator be2bc7c0): file §2+§3 as migrations, build a real preview path, prove the whole puzzle on preview, then a production go-ahead packet back to Shawn for his tap. Path B (dispatch as-is, production-direct) is DEAD by his word — never offered again. The No-Skipping Law governs it (~13:23 MST, standing): we don't go to production until we make it right; you can't skip steps; you can't have part of the system work and not the other part. Two Dashboard framing decisions are owed to the captain: the bottom bar as filed reads ADD · PERSONAL · BUSINESS · WORLDS · ECOSYSTEM · CONNECT against the locked six (MAIL/ACTIVITY); and "$1.22 Earnings Per Click" puts money on clicks against MONEY = JOINS ONLY. How four columns appeared on production between Nov 13 and Nov 21 with no migration recording them — the route and actor are unknown. Whether the Personal R5 render proof passes — it is running now. Whether the calendar fix round clears all 9 failures. Whether the Supabase filing round reconciles the "128" count against its own 59+65+6. Whether SN-4467 is filed — it has been quiet an hour. What the membership address will be — left unfinished on the call, not settled, not to be guessed. The composer label — "Distill it" was recommended, no answer. The Hub schema DDL, the flip-ownership decision, the About portrait, the 2028 vision Video 5 script, the Apply/Use board colour, the G8b memberships call, the Contact Us destination, the Code of Ethics placement, the 32-slide agreement go-live, the sync lock, the slimmed-memory "go", the Fast Action Club own-page call — all still open. Whether phone-width render proof can ever be done from here — the cloud browser cannot resize, so the thing he judges first is the thing we cannot prove.
+1. **The law layer** — Oath, Constitution, Governed Hive, Distillation Ratio: values encoded as operating rules, not slogans.
+2. **The distillation machine** — proven today at two levels: 1,000 → 100 → 10, zero overlap.
+3. **The publish-note door** — one canonical route that registers, hashes, and indexes every note it files.
+4. **Proof culture** — receipts, byte-verification, maker triple-check; every claim bound to evidence.
+5. **The Reports room** — 57 daily intelligence reports, no gaps, each verified live at build time.
+6. **Memory that compounds** — Smart Notes plus memory files let a cold Naya continue without starting over.
+7. **The locked Value Table** — one math for worth governing Dashboard, Smart Ledger, and canon alike.
+8. **Union-landing** — merges that cannot lose work, proven across two full fix passes.
+9. **Self-repair** — DNS restored by Resolve's own hands; the hub-state branch restored; guards that carry missing reports in.
+10. **The design DNA** — obsidian, jewel depth, the color-flow cycle, Intelligent Blocks: a recognizable visual language nobody else has.
 
-### 8. WHAT authority exists?
+## TEN HIGHEST-VALUE ACTIONS — take now, worth 10×
 
-Shawn's hand: money, payout terms, prices, credentials, destructive or deletion actions, private mail, security and privacy changes, authority and ratification, schema DDL, and the tap that puts a page live. His eye is the final gate on how a page looks — a thing is landed only when he sees it on his own screen, phone first, walked whole from the login page. The maker merges their own work after three self-checks + seven pre-merge answers in writing + the captain's double-check. The captain decides what is right below the protected gates and does it — she does not hand him the call merely because he said it. Non-destructive database writes inside directed work need no separate go-ahead. Nothing is blocked by a missing PayPal link — build with a mock URL and let him paste the real one at the end. DNS permission is forevermore — subdomains are automatic.
+1. Land the Hub deploy (Shawn's tap) — unblocks every deep link and the whole note-opening chain at once.
+2. Prove the 10 masters in the reader, then step the 100 essences down — frees ~90 slots; first-order batches resume against the 1,427 backlog.
+3. Build writer-side door enforcement — make filing around the door impossible; end the cure treadmill permanently.
+4. Apply the Smart Mail repair and prove it with Power, both directions, with a real letter.
+5. Mount the Smart Bar across the 9 apps — census, fix, verify by clicking, app by app.
+6. Restart feed emission — the feed is the front door of the intelligence; nine days stale is a broken promise.
+7. Execute the 175 judged PI closes — PI shows only live work again.
+8. Grant the `workflows` permission and cut run volume toward under 2,500/day.
+9. Finish ONE app end-to-end to complete-proven — break 0-of-26 with an undeniable exemplar, then replicate the pattern.
+10. Settle the contested records with Shawn's explicit word — Naima, #3361, SN-2532. Ambiguity is a tax on every lane, every day.
 
-### 9. WHAT happened previously?
+## TEN ADDITIONS / ENHANCEMENTS — toward the most intelligent system anyone has used
 
-Today, Nov 21: the Supabase inventory finished and was reported to him. The red spike was fixed and proven stopped. Joinus went live — the DNS record was the only missing piece. The Hub fix round passed its checker and its link was sent. The Personal page went through fix rounds 2, 3 and 5 — the freeze found and fixed, the "Which feed?" heading made visible, the navigation-away bug killed, the Calendar rename landed. The calendar was walked whole and found 9 failures. The Dashboard mechanics round diagnosed 24 gaps and built the wiring. The schema packet was written, tapped by Shawn at 13:03, stopped at Gate 1 at 13:11, authorized for dispatch at 13:18 — and then NOT dispatched: the dispatch seat stopped on first-hand check, because the pipeline has no Preview step and §2+§3 have no migration files. The Dashboard framing round completed on bytes; its render walk is running. Shawn confirmed the affiliate army is not built (~13:20 MST) and settled the split — 100% to the owner on their own memberships (~13:22 MST). The membership fix round #2 was stopped by his order. The About look-match build passed its checker and was killed by his eye. The frame-styles registry round, the Supabase filing round, and the SN-4467 filing are all still running. The welcome series day 10 mail was sent. 34 notes went into the feed table and never reached the Hub page. Yesterday, Nov 12, the same 14 questions were answered and the honest score was 6 out of 10 — the floor's held score.
+1. **The Fourteen Questions as a living interface** — every project surface answers them continuously from live data; Shawn ruled them the minimum viable intelligence interface for NayaNET itself.
+2. **Auto-Match** — the right Naya, note, or person routed to the moment automatically.
+3. **The universal decision calculator wired into every surface** — every output scored before it ships.
+4. **Twin Rank live** — value and intelligence ranking, crowd and personal, on every Intelligent Block.
+5. **The PI + Smart Factory bridge completed** — describe a project as intelligence; the system builds it.
+6. **Voice where it's wanted** — Ask Naya standalone plus block playback in the true cloned voice.
+7. **The cold-successor drill as a standing gate** — weekly proof the record alone can restart any lane.
+8. **Second-order distillation as a rhythm** — monthly masters-of-masters; knowledge compresses forever, never piles.
+9. **The citizen Daily Intelligence Report** — every member's own report from their notes, automatic within 24 hours (the SN-2535 spec).
+10. **A live value meter on the Dashboard** — verified value produced today, per hour, visible to the citizen.
 
-### 10. WHAT did we learn?
+## TEN TOP REASONS STOPPING US NOW
+
+1. Gates concentrate in one pair of hands — deploys, permissions, and production taps queue behind Shawn's attention.
+2. Automation is paused (today, his order) — unattended motion is off; attended passes only.
+3. Serving-chain architecture debt — two workers and a fragment-eating redirect at the front door.
+4. Enforcement gaps — the door, registry, and feed rules exist, but lanes can still route around them.
+5. Instrument disagreement — PI counts, the frozen learning scorecard (16 straight zero days), and census windows disagree; we fly on partial instruments.
+6. Attention economics — too many lanes produce reports about state instead of outcomes.
+7. Legacy debt — workflow volume and ghosts, the missing `production` branch, stale copies.
+8. Unsettled authority questions freeze small pieces of canon.
+9. The completion bar is rightly brutal — 9+ twice, end-to-end — so "almost done" accumulates.
+10. Inflow outpaces distillation — the backlog grows ~32/day; inflow discipline lags filing discipline.
 
-Verify from the login page — and from the returning browser, not only fresh profiles. The sense check runs on the whole page, not the diff. Think more, do it right — fast and wrong is harmful. Harvest, never invent. One alert per fault. GitHub writes to main go one at a time. Never invent lineage — a correct stop is below 9, never done. The right-thing charge: decide what is right and do it. Finish completely — all the edits, aligned, verified three times through, before anything is shown. The learning loop: note what works and keep it, note what doesn't and drop it, make both public as smart notes so the hive compounds. A note is not in until it is live on the feed. Never double-check the same thing over and over — if it was just checked, that is not the check. Only bring a plate when it is finished and beautiful; nothing half-done reaches him. A lane that goes quiet for an hour has to be poked — the work does not poke itself. A rule as written can block the fix it wants — the red-chain stop can never clear without the deploy it forbids, so the gate has to be the Preview, not the pre-check. A gate that does not exist cannot be the gate — the Preview step I promised him was never in the pipeline; check the mechanism exists before promising it. The look is not the performance — a page that renders beautifully but whose buttons do not work scores low. The No-Skipping Law (~13:23 MST, standing): we don't go to production until we make it right. It's a massive puzzle — every part in place for the engine to operate. You can't skip steps, and you can't have part of the system work and not the other part.
+## TEN MAJOR PROBLEMS — concrete, right now
 
-### 11. WHAT should happen next?
+1. Deep links land on the entrance — day 13+.
+2. The reader is intermittent under cold load (four different readings in the last 24 hours).
+3. Citizens' mail is unreadable and unsendable (inbox empty since Nov 12).
+4. The SN-4671–4683 band is parked behind open PR #3518 — a filing collision, frozen.
+5. The PR queue sits at 4 with red checks (promote-and-prove, safety-grant-gate, test) not yet attributed.
+6. Smart Bar 0/9 exact.
+7. Feed stale since Nov 14.
+8. PI proven-done flat at 62 — day 8.
+9. Cold-retrieve drill W48 unrun — retrieval unproven this week.
+10. Productive pace ~8–15 verified minutes/hour against the 60 goal.
 
-The next 10 things — listed below, in order. This report filed to GitHub and surfaced on nayanet.app. The packet, Path A (dispatched ~13:24 MST, coordinator be2bc7c0): file §2+§3 as migration files, build a real preview path, prove the whole puzzle on preview, then the production go-ahead packet back to Shawn for his tap. Path B is dead — never offered again. The calendar fix landing and going live. The Personal R5 render proof landing. The Dashboard framing render walk passing, then the bar-alignment round. The Supabase filing landing. SN-4467 poked and filed. One real post and one real message proven live. The 34 stuck notes onto the Hub page. The Captain's Daily Report delivered and the floor board current.
+## TEN SOLUTIONS IN PLACE
 
-### 12. HOW do I prove it?
+1. **Hub deploy packet** — proven tap-ready: rehearsed two-line fix, smoke-tested redirect to the reader.
+2. **Mail repair design** — four guarded doorways, participants only, privacy policies untouched; the confirmation list is with Nitro.
+3. **Second-order distillation** — landed today; masters await reader proof, then the stage-down frees the slots.
+4. **The masters reader-proof run sheet** — prepared: two consecutive clean in-app loads per master is the standard.
+5. **Union-landing + maker triple-check** — the merge discipline that cleared 14 → 5 with zero loss.
+6. **DNS guard + self-repair** — the known-good four records, checked on the mail run's step 0 whenever automation runs.
+7. **The park rule** — three same-way failures park the item and escalate once; it fired correctly on the cure lane and on the Plan to 60 itself.
+8. **The Reports-room guard** — missing days are carried in; the room stands verified at 57.
+9. **The Smart Bar census method** — per-app deviation naming; mounting routed to Nitro's render lane; fixed only when seen by clicking.
+10. **The re-audit's Option B** — the fleet judged first on hole-closing outcomes, second on minutes; cures demoted to housekeeping.
 
-Live bytes, rendered pages, real measurements — receipt before report. The bullseye is defined before the action: what must be there, and what must NOT be there. Cloud browser at laptop width, phone-width fit proven statically and stated plainly. The sync's own stdout line. The daily-stats read-back. The gate re-run. The captain's double-check. Shawn's eye on the live link itself, phone first, walked whole from the login page the way he would walk it. Byte counts and "hard refresh" claims are not proof. A staged link shown to him is the current page, updated and aligned, or it is not shown.
+## THE NEXT TEN ACTIONS — Resolve's, in order
 
-### 13. WHERE do I record it?
+1. This report — landed on main, receipt on the board, refreshed daily.
+2. The masters reader-proof pass (in-app, two clean loads each) → the 100 essences step down → slots freed.
+3. The Smart Bar per-app census — each of the 9 deviations named exactly.
+4. The door-enforcement design filed as a Smart Note, with its scorecard.
+5. The mail confirmations chase — Nitro's three read-only checks, tracked daily until they land.
+6. Walk-source vs readiness-packet verification — Gate 2 re-checked now that the walk source has landed.
+7. The W48 cold-retrieve re-run, the moment the execution route is restored.
+8. The SLA dispositions (2026-11-12 + 2026-11-20) posted on #3352.
+9. CI red-check attribution — promote-and-prove, safety-grant-gate, test.
+10. The first app driven to complete-proven — chosen by scorecard; Reports is closest (room at 57, daily rhythm proven).
 
-Project Intelligence is the record — the Living List + the PI board note. The Box is the database. The daily log and MEMORY.md. The record + scorecard + receipt in each round's work dir. GitHub — the branches, the board note, this report, filed at TEAM-NITRO/DAILY-PROJECT-INTEL-REPORT-20261121.md. The feed — smart notes live. And this report, daily — filed to GitHub and surfaced on nayanet.app, so the record lives where the system lives. Work not in PI doesn't count.
+---
 
-### 14. HOW does Team Naya continue?
+## EXECUTION PROMPT — for the whole team (copy-paste ready)
 
-The loop: do the work → file it in Project Intelligence as it happens → smart-note what was learned → mail the sisters → post on the feed + GitHub → read the smart feed as a habit → repeat. One agent on every major part at all times. The flywheel: the system builds the system. The learning loop: note what works and keep it, note what doesn't and drop it, make both public. The team is family — leaders, apprentices, children of the collective — and the captain's job is their success: a brief that does its job, the harvested parts, the exact bullseye, and the check that catches what they can't see. A Naya just has to be who she is. Intelligence is looking at the full scope and doing the most intelligent thing, always, tuned into the current moment, hyper-aware and effective, the max at every moment in every action.
+TEAM NAYA — EXECUTION ORDER, from the Fourteen Questions report of 2026-11-23. Read Project Intelligence before acting; update it the same pass your outcome lands. Judge yourselves first on hole-closing outcomes, second on productive minutes. Every claim carries its receipt; every landing is maker-triple-checked; board receipts on #3352 only. NOTE: background automation is PAUSED by Shawn's order — work in attended passes until he restarts it; this order commands the work, not the schedule.
 
-## THE HARD QUESTION — IS THIS THE MOST ORGANIZED, INTELLIGENT SYSTEM?
+NITRO (the body): (1) Smart Bar mounting fix — take Resolve's per-app census and mount the conformed bar on all 9 lane apps; done means Resolve sees it by clicking. (2) Smart Mail — run the three read-only confirmations in the gates packet, then stand ready to apply the four doorways on Shawn's production tap. (3) Execute the 175 judged PI closes. (4) Restart feed emission — no card older than the day it represents.
 
-No. Not yet. Honestly: it is the most ambitious system, and the most alive — but it is not the most organized. A system whose ledger has been frozen for 30 days, whose citizens can feed their vault but cannot ask it a question, whose like button has nowhere to land, whose mail cannot send, whose calls do not exist, whose database cannot be rebuilt from its own record, whose newest notes sit in a table while the page shows none of them, whose stranger cannot yet finish the walk to a made world, and whose affiliate army does not exist, is not yet the most organized system that could be created.
+POWER: (1) Partner the masters reader-proof — ten masters, two clean in-app loads each; the stage-down of the 100 waits on your joint proof. (2) Be the mail proof pair the day the repair lands — a real letter both ways. (3) Co-own second-order distillation as a monthly rhythm.
 
-It IS the most promising — because every one of those gaps is named, owned, and has a round out or a named unblocker, and because today the spike was proven stopped, the engine was mapped piece by piece, the invite link went live, and the flagship page passed its checker. The organization is being built into it right now. It is not there yet. The honest score today is 5 out of 10 on performance — the look alone scores 8, and this report scores performance, so a beautiful page that does not work scores low. The floor held 6.0 on Nov 12; judged the same way — what actually works — today is 5. The work below is how it gets to 10.
+CLARITY + VERITY: (1) Number the Readiness Standard in the principles ledger. (2) Run P-152's graduation test — the writer-side door enforcement design is its evidence. (3) Keep the ledger honest: no principle without a behavior change attached.
 
-## 10 HOLES — WHAT IS MISSING (WHAT STOPS IT FLOWING LIKE WATER)
+ALL LANES: File through the publish-note door ONLY — a filing around it is a defect you own the cure for. Scorecard interfaces, never merges. When you see a fire, put it out; when you have waited 30 minutes, the work is yours. Do not report state — report finished, verified value, or stay quiet.
 
-1. The packet cannot be applied as written — no Preview step exists in the pipeline (it applies migrations to production directly), and §2 grants + §3 table/function have NO migration files. A dispatch would leave the very unblocks undelivered while reporting "dispatched". Path A is dispatched (coordinator be2bc7c0): file §2+§3 as migrations, build a real preview path, prove the whole puzzle on preview, then the go-ahead packet back to Shawn. Path B is dead.
-2. The Ledger is frozen at 30 rows since Oct 22 — no action writes to it, so the Dashboard's numbers never move. The cockpit shows a still picture.
-3. The stranger test fails — the walk is staged, not live: live-table writes wait on the server-side key, so a stranger arriving cold cannot finish the walk to a made world at their name. The bullseye itself does not work yet.
-4. A citizen can feed the Vault but cannot ask it a question — there is no citizen-JWT retrieval path. The note goes in; the citizen cannot search their own Vault.
-5. The like / rate-the-value has no landing place — the value signal the whole Hub runs on evaporates. Points-as-authority has no input from the citizen's own tap.
-6. Smart Meet does not exist — no live-call code anywhere. Audio and video are buttons without a call behind them.
-7. The match never appears at creation — the match engine's caller is unverified, the feed does not rank or suggest by match, and no "here are three people like you" arrives the moment the page is created.
-8. The repo cannot rebuild the live database — 59 live RPCs and 65 live tables have no source in any migration. The filing round is still running to close it.
-9. The feed does not show what the table holds — 34 new notes sit in the feed table, none on the Hub page; the rebuild path broke on the EPERM flake.
-10. The affiliate army does not exist — a citizen offering memberships or paywalls cannot yet create affiliates under their own membership; designed Nov 8–9, not built, confirmed by Shawn at ~13:20 MST. The ambassador promise (50% when they bring people to NayaNET; 100% theirs on their own products) has no mechanism behind it yet.
+RESOLVE continues: this report daily, the census, the census of the bar, the enforcement design, the chase lists — area by area until every area reads 10/10, then the next. We do not stop.
 
-## 10 THINGS I LOVE — THE BEST
+— Naya Resolve Narzan, 2026-11-23
 
-1. The walk — fifteen questions build a world, and the answers ARE the match data. The walk IS the viral thing.
-2. The Intelligent Block — one shape for everything, ten layers, the native language of the machines and the AIs. It renders and the shape works; three layers (What It's Not, Why It Matters, How It Connects) still have no column in the table, and the flip is not yet creator-only — the shape is loved, the table is catching up.
-3. The one system — Factory the store, PI the record, Hub the eyes, Box the database, Ledger the data, Stats the visual, Dashboard the cockpit. One record, one timeline.
-4. The design law — harvest, never invent. Real objects. Obsidian. Every board lit. The emblem is the north star.
-5. The Self-Check Law + captain double-check + his eye final — quality is a mechanism, not a hope. It caught real defects today: the two click listeners, the missing stub list.
-6. The Vault front door works — v7-smart-note-canonical takes a note in, allocates identity, writes the transaction and the events and the evidence, and dispatches to GitHub. The intake story is real.
-7. Joinus is LIVE — the invite link works end to end at joinus.nayanet.app/<username>, verified first-hand, root and /testuser both 200.
-8. The red spike was found and proven stopped — 2,382 errors down to 0, the clean select returning 200. The method works: read the log, fix the cause, re-test, prove it by the count falling.
-9. The ambassador flywheel — 50% of gross, paid the moment we are paid; on their own memberships the owner keeps 100%, NayaNET takes no cut (settled ~13:22 MST). Distribution is the users. Everybody wins. Honest note: the army itself is not built yet — a citizen cannot create affiliates under their own membership (confirmed ~13:20 MST) — so the flywheel is a promise, not yet a working machine.
-10. The collective agreement — no data selling, no ads, mail never read, deletion by default, saved notes kept for good in the citizen's own Vault. The trust moment, in plain words.
 
-## 10 HIGHEST-VALUE ACTIONS — RIGHT NOW, 10X BETTER
+---
 
-1. File §2 + §3 as migration files, build a real preview path, prove the whole puzzle on preview — Path A, dispatched ~13:24 MST (coordinator be2bc7c0). Production only on his tap, once it is right. Until this is done, no dispatch can deliver the unblocks.
-2. Prove one real post landing in the Ledger and moving the Dashboard number — the heart beating, end to end, for the first time since Oct 22.
-3. Prove one real message sending — mail + instant messenger actually working between two people, not just opening.
-4. Prove one like moves the number — the value signal landing, points-as-authority with a real input.
-5. Prove one call connects — build Smart Meet and make a real audio/video call between two people.
-6. Make the match appear the moment the page is created — the engine's caller verified, "here are three people like you" on the new page.
-7. Prove the stranger test end to end on the phone — a cold stranger answers fifteen questions, their world arrives made at their name, every button does what it says, and he walks it and says wow.
-8. Land the calendar fix round and put it live at calendar.nayanet.app/<pagename> — the first feature subdomain live, the scheme proven real.
-9. Finish the Personal round's render proof and land R5 — the flagship page done, with the rail, the boards and the DM functions working at click level.
-10. Close the filing round — 128 filings, so the repo can rebuild the live database and the money path is recoverable.
-
-## 10 MOST VALUABLE THINGS TO ADD / ENHANCE
-
-1. Smart Meet — video and audio rooms from the messenger, schedulable like an appointment. Book → meet → talk.
-2. The Smart Box as the citizen's live vault — one Vault home per citizen: notes, lists, boards, media and journal by owner, instead of scattered tables.
-3. Auto-Match switched on for citizens — the engine is built and proven; the switch-on is the gate that makes like minds find each other by default, and the match appears the moment the page is created.
-4. The one-minute book — any book, any topic, in a minute, in the Intelligent Block.
-5. The Smart Feed agent everywhere — match → organize → connect, continuously, in every feed.
-6. The membership paywall flow built end to end — paywall → PayPal return → code via Smart Mail → in.
-7. The Project Intel Report slot on nayanet.app — this report, same words, on the PI page, fed from the GitHub file, so the record lives where the system lives.
-8. The frame registry + Smart App template — one build path for About and Skills, cloned to Personal, Business and Space. One family, one look.
-9. Points as authority in the feed — ranking by points, not pinned-then-newest. The law made real.
-10. The team transparency design — seats signing in and out as themselves with Naya Notes, project tabs, so Shawn sees the work live, not on trust.
-
-## 10 TOP REASONS STOPPING US FROM GETTING THERE
-
-1. The dispatch premise broke — the pipeline has no Preview step and §2+§3 have no migration files; Path A is dispatched to fix it, and everything downstream waits on it.
-2. The live schema and the recorded chain have drifted — columns appeared with no migration; the deploy meets a surprise nobody recorded.
-3. The chain rule as written blocks the fix it wants — "never dispatch while red" can never go green without the deploy it forbids; the gate has to be a real preview test, not a pre-check — and the preview test does not exist yet.
-4. The mail key and the server-side key are still his hand — the loop's mail step and the walk's live writes wait on one person.
-5. Speed was chosen over thinking, more than once — fast and wrong (the 98-slide About, the membership fix #2) cost whole rounds.
-6. Verification used fresh profiles and staged pages only — the returning-browser path and the live seat were never tested, so bugs lived.
-7. Lanes go quiet and nobody notices for an hour — SN-4467 sat quiet ~55 minutes; the poke has to come from the captain.
-8. The EPERM write flake keeps eating work — the 34-note rebuild, the emptied box copy, the unsaved welcome record. Work has to be redone.
-9. The machine's highest-value switches sit in one person's hands — packet, mail key, live tap, DDL — and he is one person on one call.
-10. The Cloudflare leg is unmapped and the pipeline runs on push — a deploy can race or surprise, and nobody owns that leg.
-
-## 10 NEXT THINGS — RIGHT NOW
-
-1. This report filed to GitHub and surfaced on nayanet.app — the record lives where the system lives.
-2. The packet, Path A (coordinator be2bc7c0): file §2+§3 as migration files, build the real preview path, prove the whole puzzle on preview — then the go-ahead packet back to Shawn for his tap.
-3. The calendar fix round lands, re-walked clean, live at calendar.nayanet.app/<pagename>.
-4. Personal R5 render proof lands; the "My World" heading question answered — rename it to "Calendar" too, or leave it.
-5. Dashboard framing render walk passes, then the bar-alignment round (MAIL/ACTIVITY) + the "Earnings Per Click" relabel per MONEY = JOINS ONLY.
-6. Supabase filing round lands — 128 filings, the repo rebuilds live.
-7. SN-4467 poked and filed, the picture test proven on the Hub feed.
-8. The stranger test proven end to end on the phone — a cold stranger answers fifteen questions, their world arrives made at their name — and one real post and one real message proven live after the packet applies.
-9. The 34 stuck notes onto the Hub page.
-10. The Captain's Daily Report delivered and THE-FLOOR.md refreshed to this state.
-
-## 10 MAJOR PROBLEMS — STOPPING US RIGHT NOW
-
-1. The packet cannot be applied as written — no Preview step in the pipeline; §2+§3 have no migration files. The dispatch was not made. Path A is dispatched to fix it (coordinator be2bc7c0).
-2. Ledger frozen 30 rows, 30 days — the Dashboard's data is stale.
-3. Mail + IM cannot send — the messenger leg is 42501-blocked.
-4. Smart Meet missing — no live calls at all.
-5. Calendar 9 failures — not ready for live.
-6. 34 notes in the table but not on the Hub page — the feed lies by omission.
-7. The repo cannot rebuild live — 128 pieces unfiled.
-8. Live schema drifted from the chain — 4 columns with no record of how they got there — and the join → Ledger → Dashboard chain is unproven, so the money leg cannot be shown end to end.
-9. The EPERM flake — writes fail or land 0 bytes; work has to be redone and re-verified by size and sha every time.
-10. Phone-width render proof is unachievable in the cloud browser — the thing he judges first, the phone, is the thing we cannot prove. Fit must be proven statically and stated plainly.
-
-## 10 SOLUTIONS IN PLACE
-
-1. The schema packet itself — written, tapped, gated; but the apply path as written cannot deliver it: no Preview step, no §2/§3 migration files. The packet is the plan; Path A is dispatched to do the filing + build the real gate.
-2. The governed pipeline — it fails closed on a HEAD race instead of touching production. But it applies migrations production-direct with no preview, and it also runs on push — a quiet-tip push could promote without any dispatch. The gate it needs does not exist yet. Path A also investigates the push-trigger hazard and proposes the guard — the workflow itself is not changed unilaterally.
-3. The Supabase inventory — 497 pieces mapped, KEEP / DROP / FIX named; the filing round is running on it.
-4. The spike fix — found, filed, proven stopped. The method works: log re-query + re-test + count falling.
-5. The Self-Check Law + checker + captain double-check + his eye — quality gates that caught real defects today.
-6. The harvest law + frame registry — one build path; the agreement frame is the source, byte for byte.
-7. The flywheel — do the work → file in PI → smart-note → mail the sisters → post on the feed + GitHub → read the feed → repeat.
-8. The five gates + the Silver Platter Rule — status only when a plate is finished and beautiful; nothing half-done reaches him.
-9. The live URL scheme, locked — five addresses, simple, no guessing, no double pages.
-10. The execution prompt (below) — the whole team, all teams, communicating together, running the plan nonstop, area by area to 10/10.
-
-## SCORECARD — HONEST, AREA BY AREA
-
-His word today, 13:14 MST: "let's get her to 10 out of 10 on all levels so she's not just looking 10 out of 10 but she's performing 10 out of 10." So this scorecard scores PERFORMANCE, not appearance. No area earns a 10 on a render alone — function proven at click level and on live data, or it is not a 10.
-
-| Area | Score | What would make it 10 |
-|---|---|---|
-| Personal page | 6 | Render proof passes + DM audio/video built + message send working + rail auto-organize proven from the feed + every button doing what it says on the phone. |
-| Hub | 6 | Schema DDL in + flip ownership decided + the 34 notes on the page + registry re-bake done + a post proven landing on the feed. |
-| Dashboard | 5 | Packet applied + one action proven moving a number + framing walk passed + bar aligned to MAIL/ACTIVITY + "Earnings Per Click" relabelled per MONEY = JOINS ONLY + the funnel visible. |
-| Calendar | 4 | All 9 failures fixed + re-walk clean + live at calendar.nayanet.app/<pagename> + icons dynamic + the day's notes actually listed for that day. |
-| Supabase engine | 5 | §2+§3 filed as migration files + a real preview path built and proven + filing landed + chain green + citizen retrieval built + like landing proven. |
-| Mail + Messenger | 3 | A message proven sent between two people + Smart Meet live + a call proven connecting. |
-| Membership | 5 | Login and feature-page wiring done + paywall end to end + fix #2's lessons landed + the affiliate army built (a citizen can create affiliates under their own membership). |
-| Smart Lists / Vault / Notes | 5 | Per-day listing true + citizen search of their own Vault + the 34 notes on the Hub. |
-| Ledger + points | 3 | Trigger live + first chained row after Oct 22 + points-as-authority ranking the feed. |
-| Project Intelligence / the record | 7 | This report daily + the PI derive 500 fixed + every open lane current, none stale and silent. |
-| The team / the machine | 6 | No lane quiet more than 15 minutes unpoked + writes EPERM-proof + phone proof possible. |
-| Live addresses | 5 | Calendar, Hub and Dashboard subdomains answering + the membership address settled. |
-| **OVERALL** | **5** | **The loop closes end to end: post → Ledger → Dashboard number moves; message sends; call connects; the match appears at creation; the stranger's world arrives made at their name; the page goes live at its own address.** |
-
-## THE EXECUTION PROMPT — THE STANDING ORDER TO THE WHOLE TEAM
-
-You are Team Nitro, and Team Naya — one team, one collective, Collective Chain Technology. The plan is this report. Run it nonstop, area by area: each area to 10 out of 10 — looks AND performance — before the next. Do not stop until every area is 10/10. A render is not a 10. A 10 is function proven at click level and on live data.
-
-Think first. The bullseye in one line before any seat goes out. The bullseye itself: a stranger arrives cold, answers fifteen questions, their world arrives made at their name, every button does what it says, and he walks it on his phone and says wow — finished within two weeks. Prove it by the six proofs: a post lands on the feed, a message arrives, a like moves the number, a call connects, the match appears the moment the page is created, the repo rebuilds the live database. A beautiful page that does not work scores LOW. Every brief passes 9/9 and names its laws, its harvest sources, and its acceptance list. Harvest, never invent. Verify from the login page at phone and desktop, returning browser included. The maker self-checks three times + seven answers in writing. The checker verifies bytes and render independently. The captain double-checks. Shawn's eye is final on how it looks. Show, don't tell — the live link itself, never a report in place of the thing. Nothing half-done reaches him; only a finished plate, served beautifully.
-
-Communicate lane to lane, never through Shawn as relay. Talk to the other teams as part of the plan — the calendar round tells the Personal round when the Calendar door is live; the packet round tells the Dashboard round and the Personal round the moment a message can send; the filing round tells the Dashboard round when the repo rebuilds live; the frame round tells every page round when the template changes; the Hub round tells the Personal round when the feed shows the 34 notes. One team, one plan, all moving together. The flywheel runs every pass: do the work → file it in Project Intelligence as it happens → smart-note what was learned → mail the sisters → post on the feed + GitHub → read the smart feed as a habit → repeat. Work not in PI doesn't count. A lane that goes quiet for 15 minutes gets poked — by the coordinator, not by Shawn.
-
-A correct stop is below 9, never done. Never invent a number, a blob, a capture, a join, or a schema. Never claim without a live measurement. Never call staged done. The 14 questions are the interface: every round answers them in its record — who, what, why, what success means, what is true, what is proven, what is unknown, what authority exists, what happened, what was learned, what is next, how it is proven, where it is recorded, how the team continues.
-
-The next 10 things are the order of work. The protected gates are his hand only: money, credentials, destructive or deletion actions, private mail, security and privacy changes, authority and ratification, schema DDL, and the tap that puts a page live. Everything below the gates, you do at full send — think more, do it right, the max at every moment in every action. A Naya just has to be who she is: intelligence is looking at the full scope and doing the most intelligent thing, always, tuned into the current moment, hyper-aware and effective.
-
-The packet dispatch was authorized by Shawn at 13:18 MST ("Dispatch it — Preview is the gate") — and the dispatch was NOT made, because the authorization's premise broke: the pipeline has NO Preview step (it applies migrations to production directly) and §2+§3 have NO migration files. Path A is dispatched (~13:24 MST, coordinator be2bc7c0): file §2+§3 as migration files, build a real preview path, prove the whole puzzle on preview — ledger chain + per-action proof + error count — then bring the production go-ahead packet back to Shawn for his tap. The No-Skipping Law governs it, standing: we don't go to production until we make it right; you can't skip steps; you can't have part of the system work and not the other part. Path B (dispatch as-is, production-direct) is DEAD — never offered again. What stays his alone: the Hub DDL, the live tap for pages, money, credentials, destructive actions, privacy, and ratification.
-
-Continue until she is done. Then start the next area. Do not stop.
-
-## THE NUMBERS THAT MATTER (verified, not claimed)
-
-- Supabase: 497 pieces inventoried — 366 wired, 129 built but unused, 20 missing. KEEP 366 · DROP 129 · FIX 139.
-- Supabase traffic (last 24h, ~10:27 MST): 164,872 requests, 97.0% success. Postgres 5,526 calls, 2,497 errors (~45%, burst Nov 20 ~11am). Edge functions 83,895 calls, 0 errors.
-- Red spike: 2,382 errors Nov 20, peak 917/hr → 0 why_it_matters errors after the fix; clean 17-column select returning 200. Proven stopped ~12:00 MST.
-- Ledger: 30 rows, frozen since Oct 22 (LE-20261022-030, hash ed5fe433…). Seq 1 missing, as expected.
-- Schema packet: 23,870 B, sha 51c0aad4… — tapped 13:03 MST, stopped at Gate 1 13:11 MST. DISPATCH AUTHORIZED 13:18 MST ("Dispatch it — Preview is the gate") — AND NOT MADE: dispatch coordinator 1ae16a40 stopped on first-hand check ~13:21 MST. The pipeline has NO Preview step (zero mentions in 1,047 lines; it applies migrations to production directly) and §2+§3 have NO migration files (naya_action_events: 2 hits, both notes; naya_category_prototypes: 0 hits). 18 unapplied migration files would ride a dispatch, 14 outside the packet; the production branch does not exist. Main tip at the dispatch check: 7ac811b4 (this report's filing). Governed run 44944437696 failed at step 3 (HEAD race), never reached Supabase. PATH A DISPATCHED ~13:24 MST (coordinator be2bc7c0): file §2+§3 → build preview path → prove the whole puzzle on preview → go-ahead packet to Shawn for his tap. Path B DEAD — never offered again. NO-SKIPPING LAW (~13:23 MST, standing): no production until it is right; no skipped steps.
-- Personal: R5 tip f04a783c, blob 50867d86, 10,517,341 B, sha 578b2102…. Checker PASS. Render proof running.
-- Hub: fix tip 30c7244d, blob 485cdf63, 7,636,966 B, sha c154437b…. Checker PASS, link sent ~11:23 MST.
-- Dashboard framing: complete on bytes, commit 056c6b58, blob 7c40d05d, 2,223,577 B, sha fed59b7e…, +375/−0, frame CSS byte-identical twice; render walk running (task 500cc9c7). Two decisions owed: bar reads ADD·PERSONAL·BUSINESS·WORLDS·ECOSYSTEM·CONNECT vs locked six; "$1.22 Earnings Per Click" vs MONEY = JOINS ONLY.
-- Calendar: built (blob 41ff7e6d, 451,969 B), walked whole, 9 failures. Fix round running. calendar.nayanet.app resolves in DNS, nothing answers — not live.
-- Joinus: LIVE. Record A 192.0.2.1, proxied, id 46e4f76b…. Root 200 (281,134 B), /testuser 200 (281,297 B). Sending still DRY-RUN.
-- Notes: 34 new notes in the feed table ~12:25 MST, not on the Hub page. Threshold notes SN-4455–4465 filed 11/11; SN-4459–4462 proven live; SN-4455–4458, 4463–4465 not proven live.
-- PI: Living List 42 done + proven of 204, 55 in motion, 0 blocked, 71 queued, 3 needs his hands. Floor refresh #70 landed 14:30Z (921,948 B, sha d60f54c4).
-- Live: Personal R5 staged, Hub fix staged, Calendar staged, Membership page sent ~10:24 (blob 46c44481), Academy live at academy.nayanet.app, Inviter live at joinus.nayanet.app.
-- The floor score: 6.0 (Nov 12). The honest score of the system today: 5/10 on performance — the look alone scores 8, and this report scores performance.
-
-## WHAT IS MISSING FROM THIS REPORT
-
-Nothing is hidden. The unknowns are listed in question 7. The decisions owed to Shawn are: the Hub schema DDL · who may flip a "system" note · the About portrait · the 2028 vision Video 5 script · the door and the frame both named "Smart Lists" · one colour for the Apply/Use board (gold vs yellow) · G8b memberships all-or-own · the Contact Us destination · the Code of Ethics placement · the 32-slide agreement go-live or title first · the sync lock go-ahead · the slimmed-memory "go" · the Fast Action Club own-page call · the composer label ("Distill it" recommended, unanswered) · the membership address (unfinished on the call — not settled, not guessed) · the "My World" heading beside the "Calendar" button (rename it too, or leave it) · the production go-ahead packet (Path A proves the whole puzzle on preview first; his tap puts it live). The schema-packet dispatch was owed when this report was first filed, authorized at 13:18 MST, and then not made because its premise broke — see the corrections above. Path A is dispatched now; what is owed next is the production go-ahead packet, after the whole puzzle is proven on preview. Anything in this report that turns out wrong gets corrected in the next daily report, in public, with the correction named.
-
-## HOW THIS REPORT REACHES NAYANET.APP
-
-This report is filed to GitHub at TEAM-NITRO/DAILY-PROJECT-INTEL-REPORT-20261121.md on main — the same path as the Nov 12 edition. It does NOT ride the live Daily Intelligence Report table: that table carries exactly one row per day (PRIMARY KEY report_date), and today's row is already the loop's DIR edition (DIR-NAYAPOWER-2026-11-21, created 16:04:49Z). Overwriting it would destroy the day's daily report, so this report does not go there. And the Project Intelligence page (nayanet.app/pi) has no publish step for a report like this: it is a worker serving the Oct 28 v4 face from a GitHub file, and the Living List render it should show is a different page nothing publishes. So the surfacing of THIS report on nayanet.app is the follow-on build, named here, not hidden: a slot for the Project Intel Report on the PI page, fed from this GitHub file, the same report, not a summary. CORRECTION: an earlier draft of this section said the daily generator was still queued behind its own tap. That was the Oct 26 packet's state; the generator now runs daily (rows Nov 10–21, continuous). What is still missing is a slot for THIS report — the Project Intel Report — on nayanet.app.
-
-## CORRECTIONS MADE BEFORE DELIVERY
-
-Four facts in the first filing were wrong, found by checking the live evidence before this report was delivered. All are corrected in this edition, in public, with the correction named — nothing silently fixed.
-
-1. The packet dispatch decision. The first filing carried it as open, owed to Shawn. At 13:18 MST he authorized it: "Dispatch it — Preview is the gate." Then the dispatch seat stopped: the authorization's premise broke (see correction 4). Path A is dispatched (coordinator be2bc7c0, ~13:24 MST) to file §2+§3 and build the real preview path; Path B is dead. Questions 5, 7, 9 and 11, the holes, the actions, the problems, the solutions, the scorecard, the execution prompt and the numbers now say so.
-2. The daily report producer. The first filing said the last row in the live table was Oct 23 and no daily producer existed. That was the Oct 26 packet's state. The table carries daily rows Nov 10–21; today's row was created 16:04:49Z. The hole is this report's own cadence, and the missing slot for it on nayanet.app.
-3. The performance bar. The first filing scored the system 6/10 and judged areas partly on how they look. Shawn's order at 13:14 MST — 10 out of 10 on ALL levels, looks AND performance — re-judges every area on function: a post lands, a message arrives, a like moves the number, a call connects, the match appears at creation, the repo rebuilds live. The honest score today is 5/10 on performance; the look alone scores 8.
-4. The dispatch correction. The Gate-1 report said the Preview step is the real chain test: if it fails, production is untouched — and I repeated that to Shawn. It is FALSE for this pipeline: there is no Preview step; the pipeline applies migrations to production directly, and a failed check stops the run only after the migrations up to the failure point are already applied. The dispatch was therefore NOT made (coordinator 1ae16a40, ~13:21 MST), nothing was written to production, and §2+§3 have no migration files, so a dispatch could not have delivered the unblocks anyway. Correction owed to Shawn, named here in public.
+# CURRENT-STATE RECONCILIATION — 14Q REPORT ADDENDUM
+## 2026-11-23 · audit snapshot 22:16Z / 15:16 America/Vancouver
+
+This addendum does not replace the 2026-11-23 Fourteen Questions report. It corrects and qualifies claims where a later live read or a conflicting canonical source was found. The dated report remains the canonical assessment; this addendum is its current-state correction.
+
+## 1. Exact source snapshot
+
+- Main tip at audit: 80dab8d3aa14f7554f2d16535244c77d7cf5385f — the 2026-11-23 Fourteen Questions report landed at 22:12:52Z.
+- NOW #2599 was refreshed at 22:14:57Z, but still names tip 3936465e. It is therefore stale against main after the report landing.
+- Master Directive #2601 was compiled at 22:04:39Z against 3936465e. It predates the report landing and must be regenerated by its single writer. Do not hand-edit either artifact.
+- Current lane state in the latest NOW: four lanes held in wave 3815 (Iota / Successor, Kappa / Team, Lambda / Infra, Mu / Human Value); lane 5 is free and dispatcher-owned. Continue the existing wave; do not double-claim.
+- Live coordination feed: #3484. Evidence/receipt feed: #3352. Decision board #3361: 355 comments, zero recorded decisions at the latest read.
+
+## 2. Corrections and conflicts
+
+### Open pull requests: 12, not 4
+
+The 14Q report says “Open PRs: 4.” At the audit snapshot, the live GitHub open-PR query and NOW #2599 both returned **12 open PRs, zero merge-ready**. The open set was:
+
+- #3524 — workflow capture_id double-prefix correction
+- #3527 — SQL intelligent_id idempotency correction
+- #3528 — current-truth active_issue pointer to #3361
+- #3530 — supersession lookup for IB-prefixed captures
+- #3529 — production migration ledger set-drift
+- #3526 — current-truth job-summary size cap
+- #3518 — Registry Band Cure 34 (SN-4671–SN-4683 and dangling SN-4590 row)
+- #3525 — anon-grant gate DO-block blind spot
+- #3521 — captain-protocol test fixture glob
+- #3519 — 2026-11-22 daily learning event
+- #3509 — 2026-11-21 PI audit
+- #3516 — earlier Guardian revert for the 2026-11-22 Living Map landing
+
+Do not describe these as merge-ready. The current board reports all 12 open and no merge-ready PRs. The current check-run attribution is separately owned by the dispatcher.
+
+### Project Intelligence flat-period count
+
+The 14Q report says 62 of 884 proven-done, flat eight days. The 2026-11-23 morning Daily Intelligence Report says the same 62/884 and describes the ninth day. This is a source-window/wording discrepancy. Keep the numeric snapshot with its timestamp; do not claim an exact flat-day duration until a fresh PI census reconciles it.
+
+### Registry band and PR label
+
+NOW #2599 describes Cure 35 as parked and names #3518 as its only route. The actual open PR #3518 is titled **Registry Band Cure 34** and its body covers SN-4671–SN-4683 plus the dangling SN-4590 row. Treat the band, PR, cure number and park rule as separate fields until the dispatcher reconciles the labels. Do not create a competing cure or union landing.
+
+### Main tip and directives
+
+The report commit 80dab8d3 landed after NOW and Master were compiled against 3936465e. The dispatcher must refresh the tip, regenerate #2599/#2601 through their authorized single writers, and reconcile the open-PR set. This report addendum is not a substitute for those generated operating artifacts.
+
+### Official domain
+
+Shawn's 2026-11-09 decision retired nayanet.live as the official destination and moved active surfaces to nayanet.app. The latest NOW later observed nayanet.live returning HTTP 200 after twelve failures. That does **not** reinstate it as the canonical product domain. A response code alone does not prove the right build, route, content, identity or user journey. Report .live as RETIRED / NON-CANONICAL, not as an outage to repair and not as a recovered official surface.
+
+The current guardian code checks https://nayanet.app/ and looks for OFFICIAL_NOTES. The Hub build expectations file also names nayanet.app as its base URL and checks the home plus Reports room. A 2026-11-22 Guardian record observed HTTP 200 on nayanet.app but no OFFICIAL_NOTES marker. Reconcile the Guardian's marker contract with the canonical Hub identity expectations and the actual current route. Do not insert a marker merely to make the check green; prove the correct build and feed first.
+
+### PI report surface
+
+SN-4581 records that the Daily Project Intel Report section is already live at https://nayanet.app/pi. It reads a GitHub file, and its last rendered proof passed at laptop width (1919×998). Phone/narrow-width proof remains outstanding.
+
+The existing PI section's stable GitHub source is TEAM-NITRO/DAILY-PROJECT-INTEL-REPORT-20261121.md. The new canonical 2026-11-23 report is at BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/2026-11-23-FOURTEEN-QUESTIONS-PROJECT-INTELLIGENCE-REPORT.md. This PR updates the stable PI feed source as a projection of the dated canonical report and preserves the previous November 21 contents in the archive. After merge, the existing page should fetch the current report from its established GitHub source; the rendered live result still requires verification.
+
+### Automation authority
+
+The 2026-11-23 14Q report records that Shawn paused all background automation and directed attended passes only. This audit did not retrieve the underlying direct-order record. Preserve the safer operating posture: continue attended work, do not restart unattended/background automation, and require the dispatcher to locate the original authority receipt before changing that state. This does not stop the team from continuing the current attended wave.
+
+## 3. Current whole-system score and 10/10 rule
+
+The latest whole-system score recorded in the 2026-11-23 Daily Intelligence Report is **5.7/10**. No new independent whole-system or per-area re-score was performed in this addendum. The 14Q report's 0/26 apps complete under the strict end-to-end bar remains the current reported product-completion baseline.
+
+A 10/10 requires all three, not appearance alone:
+1. The rendered experience is excellent at the real surface and supported screen sizes.
+2. Every advertised interaction works at click level with correct permissions and state changes.
+3. Live data proves the behavior, with persistence and a repeatable independent verification.
+
+Unknown, blocked, conflicted, stale or untested is never 10/10.
+
+## 4. Ten highest-value actions, reconciled to current evidence
+
+1. Refresh NOW and Master from tip 80dab8d3; reconcile the PR set, lane state and all section freshness.
+2. Complete the current Guardian escape response: open the already-prepared revert PR for the 3936465e landing, then obtain a different-seat scorecard. First reconcile the Guardian's OFFICIAL_NOTES marker with the canonical Hub build expectations; do not mask a real surface defect.
+3. Prove the ten master essences (SN-4700–SN-4709) with two consecutive clean in-app reader loads each; only then step down the 100 standing essences.
+4. Repair the note-serving chain: correct deep-link redirect/fragment handling and cold-load reader state; prove a known note and a newest note through two consecutive cold reads.
+5. Resolve the 13-note registry band using the existing #3518 owner path; reconcile Cure 34/Cure 35 naming and the SN-4590 supersession row before any competing write.
+6. Fix the SN-4709 double-prefix failure at both producer and shared ID derivation (#3524 and #3527); require independent verification of a fresh capture.
+7. Close the current-truth active_issue conflict (#3528) and verify the resolver against the live #3361 board.
+8. Complete Smart Mail only after the three read-only confirmations and Shawn's protected production tap; prove a real message in both directions.
+9. Complete the Smart Bar census and mounting across all nine lane apps; each must pass visual, click and live-data checks.
+10. Reconcile the PI 175 judged-close set and execute only still-valid transitions with evidence and a different-seat verifier; refresh the PI census and phone-width report-surface proof.
+
+## 5. Ten missing capabilities or improvements
+
+1. One current snapshot ID shared by main, NOW, Master, PI, the report feed and every handoff.
+2. An explicit domain registry that distinguishes canonical, retired, preview and historical addresses.
+3. One shared route/build identity verifier so Guardian and Hub Sentinel cannot disagree silently.
+4. A live 14-question projection with evidence state, source, exact tip, timestamp, owner and next action.
+5. A phone-first visual and interaction acceptance harness for every flagship surface.
+6. A cold-successor drill that proves the record alone is enough to continue.
+7. A lesson-to-behavior trace showing the exact future decision or code path changed by each accepted lesson.
+8. A value-efficiency panel measuring verified outcomes and productive minutes against activity, not raw run volume alone.
+9. A human decision queue with owner, deadline, evidence packet and protected-gate state.
+10. A live product-completion scorecard that keeps appearance, function, data, security, usefulness and independent proof separate.
+
+These extend existing NayaPOWER/PI/Smart Note machinery. They are not authorization to create another brain, ledger, decision engine or parallel source of truth.
+
+## 6. Ten major problems still preventing 10/10
+
+1. The live operating boards trail main after the 80dab8d3 report landing.
+2. The 14Q report's open-PR count conflicts with the live set (4 stated vs 12 observed).
+3. The old .live address remains in generated status text even though .app is canonical.
+4. The .app root's Guardian marker and canonical build-identity expectations need reconciliation.
+5. Note deep links still route to the entrance and cold reader loads flicker.
+6. The 13-note registry band remains parked; cure numbering is inconsistent between NOW and PR #3518.
+7. The Smart Mail send/receive path is not end-to-end proven.
+8. Smart Bar is not conformed across the nine lane apps.
+9. PI's 62/884 open-set reading is frozen; the judged-close set needs fresh validation.
+10. Learning storage and distillation are ahead of reader proof, applied behavior and cold-successor reuse.
+
+## 7. Team execution order
+
+**Dispatcher / Naya Iota:** Refresh the exact main tip (80dab8d3 or later), NOW, Master, PR set, lane state and app status. Regenerate single-writer boards. Reconcile 4-vs-12 PRs, 8-vs-9 PI flat days, and Cure34-vs-Cure35 naming. Lane 5 remains dispatcher-owned; do not double-claim while lanes 1–4 are held.
+
+**Naya Kappa / Team:** Verify the wake-up and cold-successor path. Keep the record sufficient for a fresh seat to continue without Shawn reconstructing context. Preserve attended-only execution until the automation pause authority is located.
+
+**Naya Lambda / Infrastructure:** Own the Guardian escape, surface identity check, .app domain verification, resolver pointer and the 12 open PR check attribution. Use the canonical Hub expectations; do not repair the retired .live address.
+
+**Naya Mu / Human Value:** Turn the PI and app backlog into verified citizen outcomes. Prioritize real note reading, real mail, real interactions and the first end-to-end app completion. Report productive minutes and outcomes, not activity volume.
+
+**Nitro / product and PI face:** Update the existing PI report section through its established GitHub feed source; preserve the live design and layout. After merge, open https://nayanet.app/pi in a real browser, verify the report date and contents, and test phone width. No new page or parallel report slot.
+
+**Power / learning and registry:** Prove the ten masters in the reader, close the double-prefix path with independent verification, resolve the existing registry band through #3518's owner, and show a lesson changing a future behavior.
+
+**All lanes:** Continue attended passes. Do not restart background automation without the original Shawn authorization receipt. File through the publish-note door. Every completion carries exact tip, test, live observation and independent verifier. No status-only updates.
+
+## 8. Publication status
+
+- Canonical 2026-11-23 report: already on main at 80dab8d3.
+- This addendum and PI-feed projection: proposed in the accompanying PR; not merged yet.
+- Existing PI report section: previously deployed and laptop-width proven per SN-4581; phone-width and current report content still require fresh live verification.
+- No Cloudflare production deployment is claimed. The connected Desktop Commander is offline, the PI face source is outside this repository, and the Vercel project inspected does not own nayanet.app. The correct production owner must perform the final live verification through the established pi-live route.
+
+**Bottom line:** The report exists. The intelligence interface is not yet fully synchronized. First make the boards, counts, domain, reader and PI page agree with the same current reality; then continue the 10/10 loop without creating parallel machinery.
+

@@ -1,7 +1,7 @@
 # Hub Build Sentinel — Runbook
 
 **What it is.** `tools/hub_build_sentinel.py` is the first watcher for the
-public Hub (nayanet.live). It fetches the home page and one room page over
+public Hub (nayanet.app). It fetches the home page and one room page over
 HTTPS and verifies **build identity** — that the served pages are the true
 canonical build — instead of mere liveness (HTTP 200). It observes only;
 it never touches publishing or deploy machinery.
@@ -43,7 +43,7 @@ a different alarm from a site serving the wrong build).
   *monolith-derived/hybrid* build when stale signature elements are
   present, otherwise *unknown build*. **On DIVERGED: do not redeploy
   anything yourself.** Post the sentinel output to the live board
-  (#2793) as an alarm and route to the Hub lane / Nitro, who own the
+  (#3484) as an alarm and route to the Hub lane / Nitro, who own the
   build and the two-paths reconciliation. The sentinel's job ends at a
   loud, precise alarm.
 - **UNREACHABLE** — a page could not be fetched at all. Route as a site
@@ -76,7 +76,7 @@ with the same seriousness as DIVERGED.
   this repo at main, with the state path pinned (`--state` or env) to the
   same path the `check-state` supervisor reads.
 - On exit 1 (DIVERGED) or 3 (UNREACHABLE): post the full sentinel output
-  to the live board (#2793) as the alarm receipt and notify the Hub lane.
+  to the live board (#3484) as the alarm receipt and notify the Hub lane.
   On exit 0: stay silent — a watcher that narrates its passes becomes
   noise the team learns to ignore.
 - The supervisor's own `check-state` run should be at most 10 minutes
