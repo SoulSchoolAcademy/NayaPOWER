@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-23 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-23 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -17281,6 +17281,14 @@ _Last updated: 2026-11-23 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: pre-reg pin 16c444e5 matches; P-mech pin fc07ed2a matches; P-nli full sha a211e4e4 matches; gate ordering on frozen bytes confirmed (hard_violation->JUDGMENT_RULE_HARD_STOP, hard flags, tails, harms, conflicts, authorized->AUTHORITY_MISSING). Crucially, the load-bearing §8 finding independently byte-verified by the scorer: pre-reg §8 pare
 
+### ✅ t0738 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** Independent merge-readiness verdict on PR #2576 (lane-2)
+
+**Receipt:** `twelve-lane-receipts/t0738-lane2.md`
+
+**Evidence:** Verified: cited head commit 7847be0603474a404de51575815284808b0d77ce exists in the mirror with the matching message 'test(gate): ship lead-seat regression tests (L345 strip-probe pin)' — the tests-only head move the re-pin rule caught. Branch ref is gone from the remote (merged/deleted lifecycle, not a phantom — the commit object survives). Verdict
+
 ### ✅ t0738 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** Independent merge-readiness verdict on PR #2576
@@ -17296,6 +17304,14 @@ _Last updated: 2026-11-23 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0738-lane2.md`
 
 **Evidence:** Verified: branch naya/gate-leadseats-20261013 exists on origin at 7847be0603474a404de51575815284808b0d77ce == receipt's live head; parent is 4fcebea9 (head-move claim confirmed); diff 4fcebea9..7847be06 = exactly +81 lines in tests/test_check_merge_consensus.py, tests-only, production gate byte-unchanged; files present at SHA. Clears 9.5 because: t
+
+### ✅ t0737 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** Design next semantic arm for SURGE (a) — MTC-v1 frozen pre-reg (lane-6)
+
+**Receipt:** `twelve-lane-receipts/t0737-lane6.md`
+
+**Evidence:** Verified: frozen pre-reg hidden_files/lane-6/mtc-v1-prereg-t0737.md sha256 9199c9ab... matches receipt; tip pin 92329c57... matches the other t0737 receipts' tip. Design-only per authority: mechanism-trace counterfactual on gate_candidate(), situation frozen inside the mechanism's typed Candidate input, H1 theater-killer as a frozen verdict rule, s
 
 ### ✅ t0737 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
@@ -17313,6 +17329,14 @@ _Last updated: 2026-11-23 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: pre-reg sha256 9199c9ab matches; all fixture pins sha-verified (t0686 a9c9a9c8, t0710 750110de, t1352 3db27b12, gap-probe 49b8cfde quoted in pre-reg); gate blob pin + rule order quoted from tip bytes. Score 9.0 not 9.5 because: H0 baseline predictions are code-read, not machine-confirmed (authority forbade execution this tick — structural
 
+### ✅ t0737 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** Apply t0731-lane12 review deltas C1-C3 to W5 stamping plan + C2 fork packet (lane-4)
+
+**Receipt:** `twelve-lane-receipts/t0737-lane4.md`
+
+**Evidence:** Verified: plan doc hidden_files/lane-4/w5-stamping-plan-candidate-t0723.md post-edit sha256 85907fc6... matches receipt; decision packet hidden_files/lane-4/w5-vocabulary-fork-decision-packet-t0737.md sha256 1a9fdee3... matches. The 18/24 split was re-derived from the gate's own filter_corpus bytes, not inherited from the review; all 6 edit sites a
+
 ### ✅ t0737 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** W5 stamping-plan C1-C3 deltas + vocabulary-fork decision packet
@@ -17328,6 +17352,14 @@ _Last updated: 2026-11-23 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0737-lane4.md`
 
 **Evidence:** Verified: plan post-edit sha 85907fc6 matches; decision packet sha 1a9fdee3 matches; pre-edit sha matched the review's recorded target (wrong-file impossible). Tip pin 92329c57 matches shared-state (no git remote in this cwd, direct ls-remote unavailable; receipt's own ls-remote + director's tip corroborate). Clears 9.5 because: the 18/24 split re-
+
+### ✅ t0737 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** SMARTBLOCKS re-tally brief (lane-10)
+
+**Receipt:** `twelve-lane-receipts/t0737-lane10.md`
+
+**Evidence:** Verified: verdict file hidden_files/lane-10/smartblocks-pilot-retally-verdict-t0737.md sha256 6f1ccd85... matches receipt; archived old tally 71dbd286... matches. Re-tally re-anchored top-3 to [5,10,1]; builder order-assert and lookup pin-assert both fired fail-closed and the refusal was reported as a refusal, not massaged into success; marginal-fl
 
 ### ✅ t0737 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -59686,6 +59718,12 @@ _Last updated: 2026-11-23 06:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261122-2249 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: attempt all 31 queued briefs in ORDERING order, verify zero queue drift
+
+**Evidence:** FRESH WINDOW (only unscored receipt this tick; backlog 0 after this row). Verified first-hand this tick: brief-queue/ holds exactly 31 brief-*.md, 0 brief-tNNNN-*; queue checksum 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4 reproduced EXACTLY via sha256sum brief-*.md, identical to the receipt and to the 21:43 receipt, so the que
 
 ### ✅ gate-stall-20261122-2143 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
