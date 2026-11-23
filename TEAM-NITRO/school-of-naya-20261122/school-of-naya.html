@@ -536,21 +536,28 @@
    at object-position center 22% — the 18 likeness images are untouched, this is the cover
    poster only), saying kept at 20px, jewel 52. The ticker is off on the mobile cover only:
    it lists the twelve slide topics, which are the slides themselves — it costs 33px and
-   pushes LET'S GO off the screen. */
+   pushes LET'S GO off the screen.
+   R7.1 (2026-11-23 ~05:00 UTC, render proof): the first mobile probe still had LET'S GO
+   29px below the fold (btn bottom 873 vs vh 844; sideB bottom 884). The video frame is
+   NOT trimmed — its facade content (play disc 58 + label 53 + padding 20) exactly fills
+   140px, so any cut clips the label. The 50px instead comes from the audio column and
+   the small margins: orb 88->72, hero-play 52->46, audio 32->28, side padding 10->8,
+   row-gap 8->6, cover-n 40->34, saying/cap/action margins tightened. SideB bottom lands
+   ~834, btn bottom ~826, ~10px slack. */
 @media(max-width:900px){
   #screen-cover .ticker{display:none}
-  #screen-cover .pm-main{row-gap:8px}
-  #screen-cover .pm-side-a .orb-wrap{width:88px;height:88px}
-  #screen-cover .pm-side-a,#screen-cover .pm-side-b{gap:6px;padding:10px 12px}
-  #screen-cover .pm-side-a .hero-play{flex-basis:52px;width:52px;height:52px}
-  #screen-cover .pm-side-a audio.real-audio{height:32px}
+  #screen-cover .pm-main{row-gap:6px}
+  #screen-cover .pm-side-a .orb-wrap{width:72px;height:72px}
+  #screen-cover .pm-side-a,#screen-cover .pm-side-b{gap:6px;padding:8px 12px}
+  #screen-cover .pm-side-a .hero-play{flex-basis:46px;width:46px;height:46px}
+  #screen-cover .pm-side-a audio.real-audio{height:28px}
   #screen-cover .orb-wrap.jewel{width:52px;height:52px;max-width:52px;max-height:52px}
-  #screen-cover .pm-side-b .side-actions{margin-top:6px}
+  #screen-cover .pm-side-b .side-actions{margin-top:2px}
   #screen-cover .pm-side-b .naya-btn{height:48px}
   #screen-cover .pm-art-frame{height:140px;aspect-ratio:auto}
-  #screen-cover .cover-saying{font-size:20px;margin-top:6px}
-  #screen-cover .cover-n{width:40px;height:40px;margin-top:4px}
-  #screen-cover .pm-cap{padding-top:6px}
+  #screen-cover .cover-saying{font-size:20px;margin-top:4px}
+  #screen-cover .cover-n{width:34px;height:34px;margin-top:2px}
+  #screen-cover .pm-cap{padding-top:2px}
   /* (2c) Mobile: the N is 40px here, so reserve 40+14+16. */
   #screen-slide .slide-boards .ib-layer-body{padding-bottom:70px}
 }
