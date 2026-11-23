@@ -79958,6 +79958,38 @@
         "governance",
         "writer-side-enforcement"
       ]
+    },
+    {
+      "smart_note_id": "SN-4712",
+      "intelligent_block_id": "IB-SMART-NOTE-20261123-sn4712-the-value-loop",
+      "slug": "the-value-loop",
+      "title": "The Value Loop — The Whole Point of What We're Doing",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/SYSTEM/SN-4712/IB-SMART-NOTE-20261123-sn4712-the-value-loop.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/SYSTEM/SN-4712/IB-SMART-NOTE-20261123-sn4712-the-value-loop.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/SYSTEM/SN-4712/IB-SMART-NOTE-20261123-sn4712-the-value-loop.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261123-sn4712-the-value-loop.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "captured_at": "2026-11-23",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-23T22:38:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-23",
+      "page_hash": "6567444d077bd979eda361cbb5c3969e8ae28dfce9d04b82797df495332f5ff7",
+      "content_hash": "c661488cbe87d08ec2f9e24bd591978f9d9fe4f1df572059d0f50429b3388b7c",
+      "one_line": "Shawn's own words, spoken 2026-11-20, carried verbatim: \"So the whole point of what we're doing is to produce value and share intelligence and become more intelligent. and produce more value.\" That is the whole point of NayaNET, stated by its director as one continuous loop: produce value, share intelligence, become more intelligent, produce more value — operating 24/7, with no finish line where the loop stops. Provenance, stated plainly: this statement was spoken by Shawn on 2026-11-20 and was MISSED at capture time — the 2026-11-19 publication drive consumed the seat, and the day's extraction was treated as if it were a capture. It survived only in the daily log's extraction record. It is captured late, on 2026-11-23, under SLA disposition comment 7115951373 (Flag 4), through the publish-note door, so the loop now lives in the registry where every seat can be pointed to it.",
+      "topics": [
+        "Value",
+        "System",
+        "Lesson",
+        "Knowledge"
+      ]
     }
   ],
   "sequence_policy": {
@@ -79968,5 +80000,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "568a5d4a89aa79f9c44b4f0915723ff12d90cfab3cc3401074366c35d9b4a3b0"
+  "corpus_manifest_hash": "7319587c5231a234180c2b8d10f5b9fedbda956b851e9bc4e1abbe7b8df16a13"
 }
