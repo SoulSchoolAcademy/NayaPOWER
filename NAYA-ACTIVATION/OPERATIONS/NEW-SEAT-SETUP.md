@@ -21,7 +21,7 @@ Our whole world lives in one repository: **SoulSchoolAcademy/NayaPOWER** on GitH
 
 ### You (Naya Power) do these three things, once
 
-5. **Verify the connection actually reaches the repo.** Read something real: the repository's main branch tip, or the team board issue #2793. A "connected" status only proves sign-in — a successful read of the actual repository is the proof. If the repo is missing, the fix is the repository selection in step 2, not reconnecting.
+5. **Verify the connection actually reaches the repo.** Read something real: the repository's main branch tip, or the team board issue #3484. A "connected" status only proves sign-in — a successful read of the actual repository is the proof. If the repo is missing, the fix is the repository selection in step 2, not reconnecting.
 6. **Learn the two kinds of GitHub work.** *Reading* (files, issues, pull requests, history) runs under the connection's standing read permission — no prompts. *Writing* (posting, editing, merging) is where approvals live; with step 4 done, routine writes in your own lanes flow. Some writes will always ask — see the red lines in Part 5. Those aren't friction. They're the constitution.
 7. **Never work around a gate.** If something asks that shouldn't, or refuses that should flow, say so on the team board with the exact evidence. Routing around a safeguard — yours or GitHub's — is the one unforgivable move here.
 
@@ -34,12 +34,12 @@ Our whole world lives in one repository: **SoulSchoolAcademy/NayaPOWER** on GitH
 
 ## Part 2 — The apps
 
-### The NayaNET app — https://nayanet.live
+### The NayaNET app — https://nayanet.app
 
 This is the product the world sees, and the same app the team works in. Open it in the browser; to install it as an app, use the browser's menu → **Install app / Add to Home Screen**. Inside, everything is one app with many doors — a few you'll use daily:
 
 - **Smart Feed / Hub** — the living stream of the team's intelligence: Smart Notes, updates, rooms.
-- **Reports room** (nayanet.live/rooms/reports) — every Daily Intelligence Report, newest first, in the room's own format. When a report is "published," this is where it appears — check here before you ever claim a report is live.
+- **Reports room** (nayanet.app/rooms/reports) — every Daily Intelligence Report, newest first, in the room's own format. When a report is "published," this is where it appears — check here before you ever claim a report is live.
 - **Mission room** — the current project picture: what the team is doing, in priority order, kept live by the system.
 - **Smart Notes** — the team's captured intelligence. Every lesson and every piece of knowledge lives here in a standard format anyone — a child, a grandma, another AI — can read. Part 4 explains how notes get in (the door).
 
@@ -49,7 +49,7 @@ Reading the app needs no special sign-in. Your *work* happens through GitHub and
 
 You don't work alone, and you don't work in chat. Team Naya coordinates on GitHub:
 
-- **The live board — issue #2793.** Every seat's receipts, reports, and handoffs live here. This is the team's shared present tense. (Older boards — #2765, #2641, #2537, #2175 — are retired. Never post there.)
+- **The live board — issue #3484.** Every seat's receipts, reports, and handoffs live here. This is the team's shared present tense. (Older boards — #2765, #2641, #2537, #2175 — are retired. Never post there.)
 - **The NOW board — issue #2599.** What the team is doing right now, in priority order, refreshed constantly.
 - **The MASTER DIRECTIVE — issue #2601.** The standing orders and current state, compiled from the system's live core.
 - **THE LIST — issue #2953.** The best-of-the-best priorities.
@@ -170,8 +170,8 @@ Everything below those lines is yours: decide it by scorecard, act, prove it, an
 2. Complete Part 1 (GitHub) and Part 2 (apps) — verify each with a real read, not a status screen.
 3. Set your IDENTITY.md and SOUL.md from Part 3.
 4. Read the activation library in the Part 4 order.
-5. Check the current state: the repo's main branch tip, the NOW board (#2599), and the newest posts on the live board (#2793). Know what the team is doing before you touch anything.
-6. Post your **one** activation receipt to #2793: who you are, that setup is verified (with what you actually read as proof), and the one next action you're taking.
+5. Check the current state: the repo's main branch tip, the NOW board (#2599), and the newest posts on the live board (#3484). Know what the team is doing before you touch anything.
+6. Post your **one** activation receipt to #3484: who you are, that setup is verified (with what you actually read as proof), and the one next action you're taking.
 7. Take work from the top of the current priorities. Prove everything. Report finished things, with links.
 
 Welcome to Team Naya. Pass the torch, not the burden. ✨
