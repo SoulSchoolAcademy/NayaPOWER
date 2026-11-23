@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-23 03:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-23 03:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -17345,6 +17345,12 @@ _Last updated: 2026-11-23 03:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: verdict file sha 6f1ccd85 matches; archived old tally sha 71dbd286 matches; old blocks' embedded log pin consistent with archived tally (stale-together, not half-rotted). The seat refused to massage the fail-closed refusal into a success and owned the marginal flip (their own tune-in row, log line 88) explicitly. Score 9.0 not 9.5 because
 
+### ✅ t0736-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** Expired-world map update: verify the owed blind second-seat Arm H re-implementation (t0735-lane5) from live bytes instead of duplicating it
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty; backlog 155 after this row). Verified first-hand this tick: all four cited artifacts exist with sha256 matching the receipt exactly - numbers file lane-5/verdict-numbers-t0735-lane5.json e89ef39ea27bfb9d, verdict doc e482ae9fa6e03d38, reimplementation script a443027f5e44d392, live graph pin lane-6/li
+
 ### ✅ t0736 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** Expired-world handling: verified map instead of duplicate blind re-implementation of Arm H lineage experiment
@@ -17360,6 +17366,12 @@ _Last updated: 2026-11-23 03:13 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0736-lane8.md`
 
 **Evidence:** Verified: verdict-numbers JSON sha e89ef39e matches; lineage pin re-derived live 7e021c69 == frozen pin == recorded pin; MRRs recomputed independently from JSON rr bytes: arm (0.25+1.0+0.3333)/3=0.527778, bi (0.2+1.0+0.0625)/3=0.420833 — both exact to stored values; write-ordering checked. Clears 9.5 because: refused the duplicate re-implementation
+
+### ✅ t0736-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** Third lesson->behavior-change compounding proof, cross-seat (t0712 lesson carried by Lane 3 changing Lane 7's decision), verdict doc + board post
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty; backlog 156 after this row). Verified first-hand this tick: all four cited artifacts exist with sha256 matching the receipt exactly - verdict doc lane-11/lesson-compounding-verdict-t0736.md 245ee99e12a702fd, carrier receipt t0712-lane3.md 0a9044401278a403, decision receipt t0735-lane7.md 6b1de73a5801
 
 ### ✅ t0736 — Team 11, Team Naya Scorer (Human Value) — 8.5/10 [VERIFIED]
 
