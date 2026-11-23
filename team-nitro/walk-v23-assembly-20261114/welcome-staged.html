@@ -3795,9 +3795,12 @@ body.fp-stage-on.fp-dialed #fpNextBtn:active,body.fp-stage-on.fp-dialed #fpNextB
    its stated job - and the deck-end exit itself is untouched. */
   if(enterBtn)enterBtn.addEventListener('click',function(){window.location.href='/agreement';});
   /* BRIDGE PRESENTATION (2026-11-17) — deep link from the walk's end slide:
-     ?stage=deck opens the visual story, ?stage=letter opens the read-it-all
-     letter page, ?stage=bridge opens the bridge. Plain relative links, so
-     the same URL works on staging and on the main URL alike. */
+     ?stage=deck USED TO open the visual story, ?stage=letter the read-it-all
+     letter page, ?stage=bridge the bridge. PORTAL-ROOT-FIRST (2026-11-22):
+     ?stage= no longer auto-opens anything on load — the portal loads first,
+     always. Re-pointing these deep links is an owed follow-on; do not
+     "restore" the auto-open believing it is the design. Plain relative
+     links, so the same URL works on staging and on the main URL alike. */
   /* PORTAL-ROOT-FIRST (2026-11-22) — ?stage= no longer auto-opens
      anything on load: the portal loads first, always; the agreement
      opens only behind its button. The param is still read (below) so a
@@ -3932,7 +3935,8 @@ body.fp-stage-on.fp-dialed #fpNextBtn:active,body.fp-stage-on.fp-dialed #fpNextB
      verbatim from fix2). F1's adaptation: only 'agree' is ever
      saved or restored now — the 'bridge' save and the 'bridge'
      restore are gone, so a plain load never auto-lands on the
-     bridge (State B); ?stage=bridge still opens it by design. */
+     bridge (State B). PORTAL-ROOT-FIRST (2026-11-22): ?stage=bridge
+     no longer opens it on load — the portal loads first, always. */
   try{
     /* PORTAL-ROOT-FIRST (2026-11-22) — no view is ever restored on boot:
        the agree restore is gone, and any stale 'agree' key left in a
@@ -3942,27 +3946,21 @@ body.fp-stage-on.fp-dialed #fpNextBtn:active,body.fp-stage-on.fp-dialed #fpNextB
      /* EYE FOLLOW-ON F1 (2026-11-17) - no 'bridge' auto-restore here:
         a plain load must never auto-land on the bridge (State B).
         The choice (State A) is what the citizen enters through the
-        login's 'Read the collective agreement' button, and
-        ?stage=bridge still opens the bridge by design. */
+        login's 'Read the collective agreement' button. PORTAL-ROOT-FIRST
+        (2026-11-22): ?stage=bridge no longer opens the bridge on load —
+        the portal loads first, always; the stage opens only on a tap. */
   }catch(e){}
-    /* EYE FOLLOW-ON #2 F1 (2026-11-18) - plain load, fresh profile:
-     nothing in the boot ever entered the stage, so a fresh profile
-     (no saved stage, no saved alias) landed on the login entrance
-     and the choice view only appeared after clicking "Read the
-     collective agreement" (eye 2026-11-18; live probe: stageOn
-     false, login visible, alias null). The ?stage= hook and the
-     'agree' restore above were the only entries that existed. Now
-     a plain load with no stage in the URL, no saved 'agree', and no
-     saved citizen alias enters the stage (the choice view)
-     directly. A returning citizen (nayanet_smart_alias saved) is
-     NOT auto-entered - the login keeps its jump-back-in, exactly as
-     before. ?stage=deck|letter|bridge and the mid-signing 'agree'
-     restore are untouched: the guard below keeps this call from
-     clobbering the restore (which runs first and sets the view). */
-  try{
-    var _fpAlias2=null;try{_fpAlias2=localStorage.getItem('nayanet_smart_alias');}catch(e){}
-    if(!_fpStage&&_fpRestoreStage!=='agree'&&!_fpAlias2){enterStage();}
-  }catch(e){}
+    /* PORTAL-ROOT-FIRST ROUND 2 (2026-11-22) — stop the walk-in: the
+     auto-enter is REMOVED (Shawn, live call 2026-11-22: "I can't get
+     to the main login page"). A plain load NEVER enters the stage on
+     its own now — fresh, returning (alias saved), or stale 'agree'
+     all land on the portal LOGIN entrance and STAY there until the
+     citizen taps something. (EYE FOLLOW-ON #2 F1, 2026-11-18, is
+     superseded here: it added this auto-enter, so a fresh profile
+     entered the choice view directly; that walk-in is what this
+     round stops.) The stage opens only on an explicit tap; the
+     login keeps its jump-back-in for returning citizens, exactly
+     as before. */
   window.__fpStage={state:S,enter:enterStage,exit:exitStage,render:render};
 })();
 </script>
