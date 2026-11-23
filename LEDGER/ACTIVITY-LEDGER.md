@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-23 02:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-23 03:13 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -17377,6 +17377,12 @@ _Last updated: 2026-11-23 02:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: verdict doc sha256 245ee99e12a702fd matches; lesson receipt t0712-lane3 + decision receipt t0735-lane7 both on disk; triple citation (receipt lines 13/63/73 + board comment); counterfactual named (draft-only default); coincidence traps audited. Board REST timestamps accepted as asserted (not re-fetched this tick). Clears 9.5 because: all 
 
+### ✅ t0736-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Design Arm J — Reason-Trace Profiling (RTP) semantic probe: design doc, fixtures, cold-executable instrument, frozen pre-registration (design-only, no execution)
+
+**Evidence:** BACKLOG SWEEP (oldest-first; backlog 157 after this row). Verified first-hand this tick: all four deliverables present in hidden_files/lane-1/arm-j-rtp-t0736/ with sha256 matching the receipt exactly — design e6cbb5299e03f997, fixtures 0a918d33986b8853, instrument 5b7824b6bb68f41f; prereg file's internal self-pin 7737959271a203309ebb248e393cc871f92
+
 ### ✅ t0736 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** Arm J Reason-Trace Profiling design + frozen pre-reg (SURGE semantic-matching probe, post-DCTE falsification)
@@ -17414,6 +17420,12 @@ _Last updated: 2026-11-23 02:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Board-pointer repair PR #2757 shipped (8-line hole-class fix on activation surface)
 
 **Evidence:** VERIFIED (git protocol + PR API, live bytes): branch naya/lane9/board-pointer-repair-t0735 exists on remote; ls-remote head == PR #2757 head == 96b39cbfbaba09258e99dfe5637282ca04937ff4; 4/4 claimed files (READ-ME-FIRST.md, ACTIVATION-PACKET.md, instant-activation/THE-CREED.md, NAYA-ACTIVATION/00-MASTER-COLD-NAYA-ACTIVATION.md) modified at that head
+
+### ✅ t0735-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Open PR #2581 for the level-drill key-split redesign branch (t0730 build) with pinned SHAs, gate-checked draft and posted body, board comment on #2537
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty after gate-stall-1828; backlog 158 after this row). Verified first-hand this tick: branch head commit cde0c63ddc1a2a59911b82334bd93ff761e5045e exists in the local mirror (subject matches the t0730 key-split build); all four receipt blob SHAs exist as blobs in the mirror (scenarios 6ac558f4, key 02fd1a
 
 ### ✅ t0735 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -20722,6 +20734,14 @@ _Last updated: 2026-11-23 02:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0688-lane1.md`
 
 **Evidence:** Verified: commit cee30cadf5b4f0d35c83d6966f02fc173ee2e86b exists (author Naya Narzan 4), THE-14-QUESTIONS.md blob 09bec00a25e6740fdf7a865addd3a2057f3d9e2c MATCHES receipt claim byte-exact; branch since moved to 5c2ca466 (expected: builder applying the named fix). Head-first pinning done honestly (caught brief premise rot). Why not 9.5: single seat;
+
+### ✅ t0687-gap — Team 12, Team Naya Scorer (NayaNET / Hub) — 8.5/10 [VERIFIED]
+
+**Task:** Gap follow-up on parent t0687 (scored 9.0): tip-pin/anchor-currency re-derivation + second-seat bias review of the spread-bar packet's three-option phrasing
+
+**Receipt:** `twelve-lane-receipts/t0687-gap-lane12.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first). Verified first-hand this tick: twelve-lane-receipts/t0697-lane2.md exists and confirms Naya Sage's cold fourth-option ruling on the spread-bar packet (the behavioral second-seat evidence the gap asked for). Live-tip re-derivation in the receipt is internally consistent (ba626387 vs aged 582e5e5f, probe-time pin by desi
 
 ### ✅ t0687-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -41037,6 +41057,14 @@ _Last updated: 2026-11-23 02:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-scorer-20261014-1950 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up on parent t0597 (scored 9.0): independent remote re-fetch of the force ref-update's byte-faithfulness (4 files at pinned head)
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-1950-lane9.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first). Verified first-hand this tick: branch ref naya/nine-retrieval-auth-wire-packet-t0537 no longer on the remote (git ls-remote empty - merged/deleted lifecycle a month on, not a phantom), BUT commit 99a2f832d054b3963fd4503702ecc2c00e59b73d exists in the local mirror and tools/refusal_point_t0537.py at that head sha256-mat
+
 ### ✅ gap-scorer-20261015-0300-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
 
 **Task:** Gap follow-up scorer-20261014-1905-lane9: claim-script adoption verified + stale SHA pin re-verified + gate-parser false-positive root-fixed
@@ -58090,6 +58118,14 @@ _Last updated: 2026-11-23 02:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ gap-scorer-20261014-1940 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up on parent t892 (scored 9.0): close all three Template v2 items - control arms cite real material, full sealed expected table, rubric_blind claim-free scoring
+
+**Receipt:** `twelve-lane-receipts/gap-scorer-20261014-1940-lane1.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first). Verified first-hand this tick: hidden_files/four-way-template/examples/pr-2385-brain-index-gate-v2/ exists with sealed/expected.sealed.json, scorecard.json, blinded/, arms/, claim-manifest.json, seal-receipt.json - the v2 artifacts the receipt claims are present on disk. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS. Why
 
 ### ✅ gap-scorer-20261015-0200-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
