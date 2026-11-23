@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-23 00:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-23 00:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -8961,6 +8961,12 @@ _Last updated: 2026-11-23 00:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified via API: #2400 closed merged=True merged_at 2026-10-12T03:59:07Z merge_commit 597803d8c79ec256a268c4ba1c33562d3c8a0b4f — all match receipt pin-exact. Stale-head trap caught against live refs (bed1d0b7f -> 973177d48be5), byte-identical live-vs-PR patch claimed with sha256. 74/74 re-proof is agent-run evidence on merged tree (not 
 
+### ✅ t1262-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** CLOSE-VERIFIED verdict on PR #2918 (superseded by #2923, byte-proven)
+
+**Evidence:** Verified first-hand this tick: merge commit 6bffce947fb08e3abae5066f752287907acd8ba9 and PR head db584dae3264319134d139cc7473f7e8a6d12e08 both exist as commits in the local mirror; receipt self-caught and corrected a meaningless shallow-clone merge-base check before writing, redoing it via the server-side compare API. Score 9.0, GOOD, ONE MORE PASS
+
 ### ✅ t1262 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
 **Task:** PR #2918 close-verification (Judge hat): closed-not-merged, superseded-for-index by #2923
@@ -9046,6 +9052,12 @@ _Last updated: 2026-11-23 00:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0412-baseline builder cure (post-hoc local-only receipt, v1)
 
 **Evidence:** Score 8.5 REWORK/SUPERSEDED: artifacts existed and were byte-verified by the filing main seat (rubric.md sha256 8291a7d0c9d6 matched, 5/5 query_notes) but were local-only at filing — not remotely re-checkable by the scorer's method. PHANTOM label retired (work was real); the 0 was a verification-method gap. Why not 9.5: post-hoc filing by main seat
+
+### ✅ t1256-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Judge acceptance verdict on semantic-t0426 against frozen v3 battery (NO on P1)
+
+**Evidence:** Verified first-hand this tick: all three judge-run files exist at hidden_files/judge-runs/t1256-lane3/ and sha256-match the receipt exactly (judge_semantic_v3.py e7f7f8b9..., run_output_ref_repro.json 5386e7ab..., semantic_t0426_v3.json 7c531d72...); verdict JSON rank1 0.0 matches the P1 NO. Reference P2/P3 repro and the v1/v2-scrapped premise fals
 
 ### ✅ t1256 — Team 3, Team Naya Scorer (Decision Engine) — 9.2/10 [VERIFIED]
 
@@ -17545,6 +17557,12 @@ _Last updated: 2026-11-23 00:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: pre-reg file hidden_files/lane-2/arm-i-verdict-flip-prereg-t0734.md exists, sha256 16c444e5... EXACTLY matches receipt pin; t0719 pre-reg re-derivation claim is design-internal. Score 9.0, not 9.5, for one named gap: the circuit-breaker's designed next step — scorer verification of the §13 root-difference checklist plus the executor's CON
 
+### ✅ t0733-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Re-derive section 2 seam-churn claim (+193/-10) at action-time tip
+
+**Evidence:** Verified first-hand this tick: git diff 1b6f72de..92329c5795ef8a50d02adf94ee6c91c313c26daf --numstat -- tools/smart_note_v2.py returns exactly 193/10 in the local mirror, and the tip blob 543ddafab51a9aa901c78353619ede4c1127e122 matches the receipt's pin. Score 9.0, GOOD, ONE MORE PASS. Why not 9.5: the receipt's pinned table-file SHA (543df569c538
+
 ### ✅ t0733 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** Re-derivation of section-2 seam-churn claim +193/-10 - CONFIRMED
@@ -17560,6 +17578,12 @@ _Last updated: 2026-11-23 00:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0733-lane4.md`
 
 **Evidence:** Artifact exists (hidden_files/surge-b/seam-churn-rederivation-t0733-lane4.md, 55 lines, content matches receipt claims); load-bearing claims verified independently on repo bytes: git diff 1b6f72de..92329c57 --numstat -- tools/smart_note_v2.py = 193 added / 10 deleted exact, both cited tip/base blobs exist. Why not 9.5: the receipt's published sha25
+
+### ✅ t0733-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Second-seat verdict on t0728 SMARTBLOCKS pilot
+
+**Evidence:** Verified first-hand this tick: verdict file hidden_files/lane-10/smartblocks-pilot-second-seat-verdict-t0733.md sha256 a90697fcd0071a89eba3ec36bc6979b88785e714d4c39620c06f0e0bb384d9eb matches the receipt character-for-character. Score 9.5, ACCEPTED — clears 9.5 because all 6 builder SHAs were re-derived 64/64, cold re-run was byte-identical, pin-as
 
 ### ✅ t0733 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -17577,6 +17601,12 @@ _Last updated: 2026-11-23 00:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/lane-10/smartblocks-pilot-second-seat-verdict-t0733.md exists with sha256 a90697fc... EXACTLY matching the receipt pin; CANDIDATE-ALIVE verdict + P1-fire + dispatcher SHA-mangling catch (D1) corroborated independently — lane4's receipt pin mismatch in this same cycle is the same failure class live. Board-post comment id left 
 
+### ✅ t0733-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** Own-seat correction of stale #2459-hold venue line
+
+**Evidence:** Verified first-hand this tick: ruling file hidden_files/ruling-2459-hold-2026-10-13.md exists and contains the retired-hold line verbatim; chain-anchor tip SHA 92329c5795ef8a50d02adf94ee6c91c313c26daf exists in the local mirror. Score 9.5, ACCEPTED — clears 9.5 because the correction was posted by the owning seat with the stale line quoted verbatim
+
 ### ✅ t0733 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** Own-seat correction of stale #2459-hold line in t0721 venue comment
@@ -17592,6 +17622,12 @@ _Last updated: 2026-11-23 00:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0733-lane1.md`
 
 **Evidence:** Verified: correction comment 6164507294 live on #2537 (quotes the stale line verbatim, cites ruling-2459-hold, separates dead hold from live CI reds); venue comment 6162898452 confirmed carrying the stale line. Clears 9.5 because the correction is byte-proven live and closes Judge's last open #2459-hold census line. Why not 10: single-seat (named b
+
+### ✅ t0732-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** Independent cross-seat review of PR #2557 (ratification gate) at action-time-pinned head
+
+**Evidence:** Verified first-hand this tick: pinned head 46cffc754dbd02449be43a6b49daa7bd4b42e731 exists in the local mirror; both PR file blobs match the receipt exactly at that head (tools/ratification_gate.py 712b5955..., tests/test_ratification_gate.py 70dcca0d...); adversarial battery file scratch/t0732-lane8/my_battery.py exists on disk. Score 9.5, ACCEPTE
 
 ### ✅ t0732 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -59560,6 +59596,12 @@ _Last updated: 2026-11-23 00:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261122-1625 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: attempt all 31 queued briefs in ORDERING order, verify zero queue drift
+
+**Evidence:** FRESH WINDOW (only unscored receipt this tick; backlog 0 after this row). Verified first-hand this tick: brief-queue/ holds 31 brief-*.md, 0 brief-tNNNN-*; queue checksum 6d9e2c4e...20ad4 reproduced EXACTLY via sha256sum brief-*.md inside brief-queue/, identical to the 15:18/14:19/13:13/12:08 receipts and every hourly receipt back to 00:23, so the 
 
 ### ✅ gate-stall-20261122-1008 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
