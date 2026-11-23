@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-23 18:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-23 19:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -17281,6 +17281,12 @@ _Last updated: 2026-11-23 18:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: pre-reg pin 16c444e5 matches; P-mech pin fc07ed2a matches; P-nli full sha a211e4e4 matches; gate ordering on frozen bytes confirmed (hard_violation->JUDGMENT_RULE_HARD_STOP, hard flags, tails, harms, conflicts, authorized->AUTHORITY_MISSING). Crucially, the load-bearing §8 finding independently byte-verified by the scorer: pre-reg §8 pare
 
+### ✅ t0738-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Independent merge-readiness verdict on PR #2576 (naya/gate-leadseats-20261013)
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; oldest-first). Receipt file exists, internally consistent: head move 4fcebea9 -> 7847be06 caught by live re-pin before substantive read (t0707 rule fired on a real move), tests-only diff (+81 lines), 47/47 gate tests + 9/9 seat-tag controls claimed on the live head's bytes, both CI reds correctly classified as pap
+
 ### ✅ t0738 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
 
 **Task:** Independent merge-readiness verdict on PR #2576 (lane-2)
@@ -17304,6 +17310,12 @@ _Last updated: 2026-11-23 18:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0738-lane2.md`
 
 **Evidence:** Verified: branch naya/gate-leadseats-20261013 exists on origin at 7847be0603474a404de51575815284808b0d77ce == receipt's live head; parent is 4fcebea9 (head-move claim confirmed); diff 4fcebea9..7847be06 = exactly +81 lines in tests/test_check_merge_consensus.py, tests-only, production gate byte-unchanged; files present at SHA. Clears 9.5 because: t
+
+### ✅ t0737-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** Design next SURGE semantic arm (MTC-v1 mechanism-trace counterfactual) + frozen pre-reg
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; oldest-first). VERIFIED first-hand this tick: frozen pre-reg hidden_files/lane-6/mtc-v1-prereg-t0737.md sha256 FULL-MATCH to receipt SHA 9199c9abbb29bf0ea3d9cea51884d5dc1f8952488fb06a8e131db4a7bfae2879; fixture pins re-derived: t0686-lane7.md prefix-matches a9c9a9c809b42daf and t0710-lane2.md prefix-matches 750110
 
 ### ✅ t0737 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
 
@@ -17329,6 +17341,12 @@ _Last updated: 2026-11-23 18:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: pre-reg sha256 9199c9ab matches; all fixture pins sha-verified (t0686 a9c9a9c8, t0710 750110de, t1352 3db27b12, gap-probe 49b8cfde quoted in pre-reg); gate blob pin + rule order quoted from tip bytes. Score 9.0 not 9.5 because: H0 baseline predictions are code-read, not machine-confirmed (authority forbade execution this tick — structural
 
+### ✅ t0737-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** Apply t0731-lane12 second-seat deltas (C1-C3) to t0723 W5 stamping plan + C2 vocabulary-fork decision packet
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; oldest-first). VERIFIED first-hand this tick: plan doc hidden_files/lane-4/w5-stamping-plan-candidate-t0723.md sha256 FULL-MATCH to receipt post-edit SHA 85907fc6248351c37992c984469477ca526a53effd3717205902b624588b438b; decision packet hidden_files/lane-4/w5-vocabulary-fork-decision-packet-t0737.md matches the rec
+
 ### ✅ t0737 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
 **Task:** Apply t0731-lane12 review deltas C1-C3 to W5 stamping plan + C2 fork packet (lane-4)
@@ -17352,6 +17370,12 @@ _Last updated: 2026-11-23 18:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0737-lane4.md`
 
 **Evidence:** Verified: plan post-edit sha 85907fc6 matches; decision packet sha 1a9fdee3 matches; pre-edit sha matched the review's recorded target (wrong-file impossible). Tip pin 92329c57 matches shared-state (no git remote in this cwd, direct ls-remote unavailable; receipt's own ls-remote + director's tip corroborate). Clears 9.5 because: the 18/24 split re-
+
+### ✅ t0737-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** SMARTBLOCKS re-tally brief: re-derive pilot tally, rebuild, fire pin-asserts
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; oldest-first). VERIFIED first-hand this tick: archived old tally hidden_files/lane-10/tally-t0710-before-retally-t0737.json sha256 FULL-MATCH to receipt SHA 71dbd2863b5260572616ee485bc53cff65f6c9fdd9ab9da2aa604ad592223cb1. NOT PHANTOM - the fail-closed refusal (builder order-assert exit 1, pin-assert exit 2) is re
 
 ### ✅ t0737 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
