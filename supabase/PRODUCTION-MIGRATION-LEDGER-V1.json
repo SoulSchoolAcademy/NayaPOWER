@@ -1782,6 +1782,15 @@
       "statement_count": 4,
       "bytes": 7796,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20261123173000",
+      "name": "intelligent_id_idempotent_derivation_v1",
+      "path": "supabase/migrations/20261123173000_intelligent_id_idempotent_derivation_v1.sql",
+      "sha256": "56860a056be3c817d31f69fa9654ab3958f5d806909ea3634cb04f1ff76a6d70",
+      "statement_count": 4,
+      "bytes": 21812,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     }
   ],
   "legacy_repository_snapshot_count": 95,
