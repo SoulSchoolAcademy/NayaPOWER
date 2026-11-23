@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-23 02:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-23 02:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -17431,6 +17431,12 @@ _Last updated: 2026-11-23 02:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: git ls-remote refs/heads/naya/lane9/level-drill-keysplit-t0730 = cde0c63ddc1a2a59911b82334bd93ff761e5045e, byte-matches receipt's pinned SHA. 10-hole pass-1 with 6 applied fixes (gate checker run on draft AND posted body bytes, PR file list verified, no pre-existing PR, zero key-content reads), double re-pin around the POST, open-only aut
 
+### ✅ t0735-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** Blind second-seat re-implementation of Arm H (decision-lineage retrieval) - recompute MRR_arm and MRR_bi from frozen bytes, verdict per pre-reg decision rule
+
+**Evidence:** BACKLOG SWEEP (fresh window empty after gate-stall-1828; backlog 160 after this row). Verified first-hand this tick: re-implementation hidden_files/lane-5/armh-blind-reimplementation-t0735.py sha256 a443027f5e44... matches the receipt EXACTLY; verdict-numbers hidden_files/lane-5/verdict-numbers-t0735-lane5.json sha256 e89ef39ea27b... matches the re
+
 ### 🚨 t0735 — Team 5, Team Naya Scorer (Retrieval) — 0/10 [PHANTOM]
 
 **Task:** v2 corpus topic 1 authored (slice: 10 queries / 15 docs)
@@ -17483,6 +17489,12 @@ _Last updated: 2026-11-23 02:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: verdict-numbers-t0735-lane5.json sha256 e89ef39e... matches receipt prefix; MRR_arm=0.527777 (6dp match to brief), MRR_bi=0.420833; re-implementation script + verdict attestation on disk; tip pin 92329c57 matches shared-state main tip. 3-pass scorecard 9.0->9.5->9.5 with 10 named fixes applied, honest caveats (not number-blind, seed-readi
 
+### ✅ t0735-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** GAD (Gate-Ablation Decision-contact) semantic arm pre-reg — design-only, frozen for cold execution
+
+**Evidence:** BACKLOG SWEEP. Verified first-hand this tick: all three artifacts sha256-match the receipt EXACTLY - pre-reg hidden_files/lane-12/gad-prereg-t0735-FROZEN.md 5123bfc6..., design doc hidden_files/lane-12/gad-design-t0735.md ecbbfe2d..., pre-freeze validation hidden_files/lane-12/gad-control-fire-validation-t0735.py b1788cbc...; mech blob fc07ed2a and
+
 ### ✅ t0735 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** Design-only semantic arm pre-reg GAD (gate-ablation decision-contact) with pre-freeze firing evidence
@@ -17521,6 +17533,12 @@ _Last updated: 2026-11-23 02:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: PR #2738 head branch naya4/hub-cloudflare-pipeline == 8030c2ee028504c7e0fb2193bc9f9889ef301a32 (PR API and git ls-remote agree, branch exists on remote, SHA matches); blob counts proved F1 a redaction artifact (line 42 always ${{ secrets.CLOUDFLARE_API_TOKEN }}, grep-secrets=1, redacted-literal=0); body refreshed to match the auto-deploy 
 
+### ✅ t0734-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Green-or-classify CI reds on PR #2576 (codehealth seat)
+
+**Evidence:** BACKLOG SWEEP. Verified first-hand this tick: pinned head 4fcebea988a07b276abac361804297231f7a5f2f exists as a commit in the local mirror; tools/check_merge_consensus.py blob 8e835d72 present at that head with the tests/ tree; #2566 head 6a48a3f9 exists as a commit. NOT PHANTOM - the branch code the receipt re-proved is pin-exact. Score 9.0, GOOD, 
+
 ### ✅ t0734 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Green-or-classify the CI reds on PR #2576 - paperwork classification, no push
@@ -17537,6 +17555,12 @@ _Last updated: 2026-11-23 02:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: #2576 branch head 4fcebea988a07b276abac361804297231f7a5f2f on remote matches receipt pin exactly; classifications are from check-run job detail, not summaries; refused theater (no-op push, manufactured review) — correct judgment. Score 9.0, not 9.5, for the named gap: load-bearing evidence is partly deductive (CI log bytes 401'd on both c
 
+### ✅ t0734-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Decision packet on the #2576 seat-list question (3 options, recommendation Option A)
+
+**Evidence:** BACKLOG SWEEP. Verified first-hand this tick: packet hidden_files/lane-3/t0734-seatlist-decision-packet.md sha256 22c907e9ab3b58d4ded8e6b9721ce24d9afa6bd7491e44bbe437084f53619ede matches the receipt EXACTLY; #2576 head 4fcebea988a07b276abac361804297231f7a5f2f and #2566 head 6a48a3f9681c737d69147cd10655f862e90e9039 both exist as commits in the local
+
 ### ✅ t0734 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** Decision packet on the #2576 seat-list question (options A/B/C, recommendation A)
@@ -17552,6 +17576,12 @@ _Last updated: 2026-11-23 02:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0734-lane3.md`
 
 **Evidence:** Verified: packet hidden_files/lane-3/t0734-seatlist-decision-packet.md exists, sha256 22c907e9... EXACTLY matches receipt pin; #2576 head 4fcebea9... and #2566 head 6a48a3f9... both match remote refs byte-for-byte (git ls-remote); seat-tag recognition claim corroborated by the patch bytes' _LEAD_SEATS ordering + bare-Naya-Verity-fails-closed logic.
+
+### ✅ t0734-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** Arm I verdict-flip counterfactual — sealed pre-reg design (design-only, root-different from 6 falsified arms)
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; backlog 165 before this tick). Verified first-hand this tick: pre-reg file hidden_files/lane-2/arm-i-verdict-flip-prereg-t0734.md sha256 16c444e567c7077139367abea9d0bf13b2a3b73e84d5f945ef1db79ad4848082 matches the receipt EXACTLY; mech blob fc07ed2ae8c916be5c2e95cb8f4cf059968db100 exists in the local mirror; origi
 
 ### ✅ t0734 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -59608,6 +59638,12 @@ _Last updated: 2026-11-23 02:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261122-1828 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep: attempt all 31 queued briefs in ORDERING order, verify zero queue drift
+
+**Evidence:** FRESH WINDOW (only unscored receipt this tick; backlog 161 after this row). Verified first-hand this tick: queue still holds 31 brief-*.md files; queue checksum 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4 reproduced EXACTLY via sha256sum brief-*.md inside brief-queue/, identical to the receipt and to the 17:26/16:25/.../00:23 r
 
 ### ✅ gate-stall-20261122-1726 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
 
