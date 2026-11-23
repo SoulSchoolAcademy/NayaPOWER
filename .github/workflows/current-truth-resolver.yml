@@ -150,7 +150,25 @@ jobs:
         shell: bash
         run: |
           if [ -f current-truth-brief.md ]; then
-            cat current-truth-brief.md >> "$GITHUB_STEP_SUMMARY"
+            # GitHub caps a job summary at 1024k; the brief reached 1051k
+            # at 692f01d9 and the raw `cat` fails the step. Publish at most
+            # the first 900k and point at the full brief in the
+            # `current-truth-resolution` artifact uploaded below. The cut is
+            # a byte cut, not a line cut: the brief's content rides on single
+            # giant lines (one 1,072,036-byte line at 692f01d9), so cutting
+            # at a line boundary would gut the summary. A trailing partial
+            # UTF-8 sequence is dropped (errors='ignore' on an otherwise
+            # valid-UTF-8 brief) so the summary stays valid.
+            brief_bytes=$(( $(wc -c < current-truth-brief.md) ))
+            if [ "$brief_bytes" -gt 921600 ]; then
+              python3 -c "import sys; sys.stdout.buffer.write(open('current-truth-brief.md','rb').read(921600).decode('utf-8', errors='ignore').encode('utf-8'))" >> "$GITHUB_STEP_SUMMARY"
+              {
+                echo ""
+                echo "> **Brief truncated for the job-summary cap** — full brief (${brief_bytes} bytes) in the \`current-truth-resolution\` artifact, \`current-truth-brief.md\`."
+              } >> "$GITHUB_STEP_SUMMARY"
+            else
+              cat current-truth-brief.md >> "$GITHUB_STEP_SUMMARY"
+            fi
           else
             echo "Current-truth brief was not generated." >> "$GITHUB_STEP_SUMMARY"
           fi
