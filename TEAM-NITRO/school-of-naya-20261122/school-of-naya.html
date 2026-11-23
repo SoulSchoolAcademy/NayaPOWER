@@ -923,9 +923,12 @@ audio.load();
    One thing plays here: the video. Tap play on the picture, tap
    play on the deck, or press play on the recording’s bar — every
    one of them plays the video, with its own sound. Pause on any
-   of them rests the video. The recording never plays on its own,
-   so the two can never mix or drift apart. The deck’s clock and
-   seek follow the video, and the voice orb follows its state. */
+   of them rests the video. The recording never plays ALOUD on its
+   own, so the two can never mix — but it DOES play silently under
+   the video (the round-7.4 shadow, same take as the soundtrack),
+   locked to the picture by a 500 ms re-sync, so the voice orb
+   dances to the real words. The deck’s clock and seek follow the
+   video, and the orb follows the shadow. */
 var videoLoaded = false, videoPlaying = false;
 function loadVideo(){
   if (videoLoaded) return;
@@ -942,6 +945,7 @@ function loadVideo(){
   shell.appendChild(f);
   shell.hidden = false;
   frame.classList.add('playing');
+  startShadow(0); /* ROUND 7.4: the silent shadow starts with the picture — the orb dances to the soundtrack's own take. */
   setTimeout(function(){ ytPost('addEventListener'); ytPost('unMute'); }, 1200);
 }
 function ytPost(func, args){
@@ -951,8 +955,8 @@ function ytPost(func, args){
   }
 }
 function ytCommand(cmd){
-  if (cmd === 'play'){ if (!videoLoaded) loadVideo(); else { ytPost('unMute'); ytPost('playVideo'); } }
-  if (cmd === 'pause'){ ytPost('pauseVideo'); }
+  if (cmd === 'play'){ if (!videoLoaded) loadVideo(); else { ytPost('unMute'); ytPost('playVideo'); startShadow(videoTime); } }
+  if (cmd === 'pause'){ stopShadow(); ytPost('pauseVideo'); }
 }
 var videoTime = 0, videoDur = 0;
 function ytSeek(sec){
@@ -960,6 +964,7 @@ function ytSeek(sec){
   sec = Math.max(0, videoDur ? Math.min(videoDur - .25, sec) : sec);
   videoTime = sec;
   ytPost('seekTo', [sec, true]);
+  if (shadowEl){ try { shadowEl.currentTime = sec; } catch(e){} }
   paintDeckTime();
 }
 function paintDeckTime(){
@@ -975,7 +980,10 @@ function setDeckPlaying(on){
   else { deckStatus.textContent = videoTime > .5 ? 'PAUSED' : 'READY'; deckStatus.classList.remove('live'); dPlay.innerHTML = '&#9654;'; dPlay.setAttribute('aria-label', 'Play the welcome video'); }
 }
 setInterval(function(){
-  if (videoPlaying){ videoTime += .5; if (videoDur && videoTime > videoDur) videoTime = videoDur; paintDeckTime(); }
+  if (videoPlaying){ videoTime += .5; if (videoDur && videoTime > videoDur) videoTime = videoDur; paintDeckTime();
+    /* ROUND 7.4: keep the silent shadow locked to the picture — the two are the same take, so a drift past 0.35s is a clock slip, not the words. */
+    if (shadowOn && shadowEl && !shadowEl.paused){ var drift = shadowEl.currentTime - videoTime; if (drift > .35 || drift < -.35){ try { shadowEl.currentTime = videoTime; } catch(e){} } }
+  }
 }, 500);
 window.addEventListener('message', function(e){
   if (typeof e.data !== 'string') return;
@@ -984,8 +992,12 @@ window.addEventListener('message', function(e){
   var info = d.info;
   if (d.event === 'onStateChange' || d.event === 'infoDelivery' || (info && typeof info.playerState !== 'undefined')){
     var st = (d.event === 'onStateChange') ? info : (info && info.playerState);
-    if (typeof st === 'number'){ videoPlaying = (st === 1); setDeckPlaying(videoPlaying); }
-    if (info && typeof info.currentTime === 'number'){ videoTime = info.currentTime; paintDeckTime(); }
+    if (typeof st === 'number' && st !== -1){ videoPlaying = (st === 1); setDeckPlaying(videoPlaying);
+      /* ROUND 7.4: the player is the clock — its state starts/stops the silent shadow that feeds the orb. State -1 (unstarted) is ignored: the errored player can deliver it late with currentTime 0, which would otherwise unplay a playing session and pin the clock at 0 (round-6 hardening, same cause). */
+      if (st === 1){ if (!shadowOn) startShadow(videoTime); }
+      else if (st === 2 || st === 0){ stopShadow(); if (st === 0){ videoTime = 0; paintDeckTime(); } }
+    }
+    if (info && typeof info.currentTime === 'number' && st !== -1){ videoTime = info.currentTime; paintDeckTime(); }
     if (info && typeof info.duration === 'number' && info.duration > 0){ videoDur = info.duration; paintDeckTime(); }
   }
 });
@@ -998,6 +1010,43 @@ audio.addEventListener('play', function(){
   audio.pause();
   ytCommand('play');
 });
+
+/* ROUND 7.4 — TRUE AMPLITUDE, THE SHADOW: the YouTube video's soundtrack is the SAME recording as the native file (proven in round 6: native 258.15s vs YouTube 258.23s; 100ms-RMS envelope correlation 0.87 at lag 0, every 30s segment 0.85-0.89, sample-level cross-correlation 0.978 at -36ms — same take, no drift; this page's EMBED.audio is byte-identical to round-6 native, sha ce8e018c…). A cross-origin iframe cannot be AnalyserNode'd, so the visual is driven from the native recording played SILENT under the video (one play button drives video + shadow + visual). The silence comes from a GainNode AFTER the analyser — never from the element's volume, which would silence the analyser too. The shadow is a SEPARATE Audio element, not the visible welcomeAudio: that element's play event is hijacked to start the video (it pauses itself), so it can never carry the shadow. PowerCast has no analyser at all (its voiceAmp target is the canned playing?(.3+.7*burstS):.09) — nothing to harvest there, so the real thing is built here, the round-6 way. */
+var shadowEl = null, shadowOn = false, shadowAnalyser = null, syncGain = null, timeData = null;
+function setShadowGain(on){ try { if (syncGain) syncGain.gain.value = on ? 0 : 1; } catch(e){} }
+function startShadow(atSec){
+  ensureAnalyser();
+  if (shadowOn && shadowEl && !shadowEl.paused){ try { if (Math.abs(shadowEl.currentTime - (atSec || 0)) > .35) shadowEl.currentTime = Math.max(0, atSec || 0); } catch(e){} return; }
+  if (!shadowEl){
+    try {
+      shadowEl = new Audio();
+      shadowEl.src = EMBED.audio;
+      shadowEl.preload = 'auto';
+      shadowEl.addEventListener('ended', function(){ shadowOn = false; setShadowGain(false); });
+      var shSrc = actx.createMediaElementSource(shadowEl);
+      shadowAnalyser = actx.createAnalyser();
+      shadowAnalyser.fftSize = 256;
+      shadowAnalyser.smoothingTimeConstant = 0.3; /* syllables, not smear: the default 0.8 irons them flat */
+      timeData = new Uint8Array(shadowAnalyser.fftSize);
+      syncGain = actx.createGain(); syncGain.gain.value = 0;
+      shSrc.connect(shadowAnalyser);
+      shadowAnalyser.connect(syncGain);
+      syncGain.connect(actx.destination);
+    } catch(e){ shadowEl = null; shadowAnalyser = null; syncGain = null; timeData = null; return; }
+  }
+  shadowOn = true;
+  setShadowGain(true);
+  try { shadowEl.currentTime = Math.max(0, atSec || 0); } catch(e){}
+  var pr = null;
+  try { pr = shadowEl.play(); } catch(e){ shadowOn = false; setShadowGain(false); }
+  if (pr && pr.catch) pr.catch(function(){ shadowOn = false; setShadowGain(false); });
+}
+function stopShadow(){
+  if (!shadowOn) return;
+  shadowOn = false;
+  setShadowGain(false);
+  try { if (shadowEl) shadowEl.pause(); } catch(e){}
+}
 
 /* ================= PROMAX DECK ================= */
 var deck = document.getElementById('deck');
@@ -1029,12 +1078,16 @@ fitTicker();
 setTimeout(fitTicker, 800);
 
 /* ================= VOICE CANVAS — driven by the REAL sound =================
-   The recording runs through a Web Audio analyser (created on the
-   first tap, the way browsers require), so the orb dances to her
-   actual voice. While the video plays, its state drives the same
-   orb. At rest, the orb idles gently. */
+   ROUND 7.4: the orb is driven by the recording itself, played SILENT
+   under the video (the shadow, same take as the soundtrack — proven in
+   round 6: native 258.15s vs YouTube 258.23s, envelope correlation 0.87).
+   A cross-origin iframe cannot be AnalyserNode'd, so the visual reads
+   the shadow's time-domain RMS through its own analyser. The silence
+   comes from a GainNode AFTER the analyser — never from the element's
+   volume, which would silence the analyser too. Loud syllables spike,
+   quiet passages settle, pause rests. At rest, the orb idles gently. */
 var voiceCv = document.getElementById('voice'), voiceCx = voiceCv.getContext('2d');
-var voiceAmp = .07, burstS = .3, voiceTt = 0;
+var voiceAmp = .07, voiceTt = 0;
 var actx = null, analyser = null, freqData = null;
 function ensureAnalyser(){
   if (actx) { if (actx.state === 'suspended') actx.resume(); return; }
@@ -1055,25 +1108,23 @@ function sizeCv(){
   var r = voiceCv.getBoundingClientRect(), d = Math.min(2, window.devicePixelRatio || 1);
   if (r.width > 0){ voiceCv.width = r.width * d; voiceCv.height = r.height * d; voiceCx.setTransform(d, 0, 0, d, 0, 0); }
 }
-function isPlaying(){ return audioPlaying || videoPlaying || (audio && !audio.paused && !audio.ended); }
+function isPlaying(){ return videoPlaying || (shadowEl && !shadowEl.paused && !shadowEl.ended); }
 function drawWave(){
   var r = voiceCv.getBoundingClientRect(); if (r.width === 0) return;
   var W = r.width, H = r.height, cx0 = W/2, cy0 = H/2, R = Math.min(W, H) * .5, x = voiceCx;
   x.clearRect(0, 0, W, H);
   var playing = isPlaying();
   var level = 0;
-  if (analyser && audioPlaying){
-    analyser.getByteFrequencyData(freqData);
-    var sum = 0, n = Math.min(48, freqData.length);
-    for (var i = 0; i < n; i++) sum += freqData[i];
-    level = sum / n / 255;
-  } else if (playing){
-    level = .35 + .3 * Math.abs(Math.sin(voiceTt * 2.3));
+  if (shadowAnalyser && timeData && shadowEl && !shadowEl.paused && !shadowEl.ended){
+    shadowAnalyser.getByteTimeDomainData(timeData);
+    var sum = 0, n = timeData.length;
+    for (var i = 0; i < n; i++){ var dv = (timeData[i] - 128) / 128; sum += dv * dv; }
+    level = Math.sqrt(sum / n);
   }
-  var raw = Math.abs(Math.sin(voiceTt*1.9)*.6 + Math.sin(voiceTt*3.1+1.2)*.3 + Math.sin(voiceTt*.7+.5)*.4);
-  burstS += (Math.min(1, raw) - burstS) * .09;
-  var target = playing ? Math.min(1, .25 + .75 * Math.max(burstS * .7, level * 1.6)) : .09;
-  voiceAmp += (target - voiceAmp) * .08;
+  /* ROUND 7.4 — TRUE AMPLITUDE: the level above IS the sound — the time-domain RMS of the silent shadow recording. The frequency mean was tried in round 6 and rejected: it sat at 0.2-0.45 whatever she said, while the RMS swings 0.01 between syllables to 0.14 on loud ones (measured live). The canned sine branch is gone: while the video plays with no shadow yet, the orb rests instead of pretending. burstS is gone too — a sine sum that could out-shout the real voice. .06 + level*6.5 fills the orb on loud syllables (~0.9), settles it between words (~0.15) and rests it in silence. */
+  var target = playing ? Math.min(1, .06 + level * 6.5) : .09;
+  var easeK = 1 - Math.pow(0.92, waveDt / 16.7); /* ROUND 7.4: time-based ease — k=.08 at 60fps, same wall-clock follow at any frame rate (the VM runs rAF at ~1.7fps, where a per-frame ease takes ~10s to converge and the words could not be seen to move the orb). */
+  voiceAmp += (target - voiceAmp) * easeK;
   var A = voiceAmp;
   var g = x.createRadialGradient(cx0, cy0, 0, cx0, cy0, R);
   g.addColorStop(0, 'rgba(255,250,240,' + (.16*A+.04).toFixed(3) + ')');
@@ -1139,7 +1190,8 @@ function drawWave(){
   }
   x.shadowBlur = 0;
 }
-function wave(){ voiceTt += .025; try { drawWave(); } catch(e){} requestAnimationFrame(wave); }
+var lastWaveT = 0, waveDt = 16.7;
+function wave(){ var now = performance.now(); waveDt = lastWaveT ? Math.min(250, now - lastWaveT) : 16.7; lastWaveT = now; voiceTt += .025; try { drawWave(); } catch(e){} requestAnimationFrame(wave); }
 sizeCv();
 window.addEventListener('resize', sizeCv, {passive:true});
 wave();
