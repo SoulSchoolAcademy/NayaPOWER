@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-23 00:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-23 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -9067,6 +9067,12 @@ _Last updated: 2026-11-23 00:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all three judge-run artifact SHAs byte-match the receipt (judge script e7f7f8b9..., reference repro 5386e7ab..., verdict 7c531d72...); verdict JSON carries the claimed metrics (rank1 0.0, MRR 0.0375, HIT@5 0.125) and the reference repro carries the pinned corpus sha b74ff7f9... The lane falsified the brief's v1 premise before running anyt
 
+### ✅ t1253-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Different-seat scorecard verdict on PR #2922 frozen head 45b4c43df52d (cold-start Step-0 admission fixture cure)
+
+**Evidence:** FRESH WINDOW. Verified first-hand this tick via git protocol + local mirror (REST blocked: gh-api returns 401 Bad credentials, so PR/board comment IDs and CI run 39741491800 were NOT re-checked this tick): refs/pull/2922/head = 45b4c43df52d452ed49ac180554ce5593460fcbd, exact match to the receipt pin; tests/test_cold_start_step0_admission.py at that
+
 ### ✅ t1253 — Team 3, Team Naya Scorer (Decision Engine) — 10/10 [VERIFIED]
 
 **Task:** t1253-lane3.md: different-seat scorecard verdict on PR #2922 frozen head 45b4c43d (cold-start Step-0 admission fixture cure, BUILD 07:00)
@@ -9398,6 +9404,12 @@ _Last updated: 2026-11-23 00:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1242-lane10.md`
 
 **Evidence:** Dispatcher verified via API: #2437 merged True (merged_at 2026-10-12T04:05:06Z, drift recurrence #14 healed on main); #2431 state closed, merged False; ls-remote shows zero naya/ten-brainindex-heal-* refs (both stale branches deleted). --check exit 0 on exact tip bytes claimed with exact commands; tip moved since (d998cac4->bf16b098) so action-time
+
+### ✅ t1238-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
+
+**Task:** Live-fire exercise of the smart-note-completeness-gate workflow (throwaway PR #2921, observed CI run 39736376559)
+
+**Evidence:** Verified first-hand this tick where checkable via git protocol + mirror (REST blocked: gh-api returns 401 Bad credentials, so PR #2921 closed state and run 39736376559 conclusion were NOT re-checked this tick): refs/pull/2921/head = cccde0cea685c802b6d19575b7c1509bcdc1f7f7, exact match to the receipt pin; commit message in the mirror confirms the t
 
 ### ✅ t1238 — Team 3, Team Naya Scorer (Decision Engine) — 8.5/10 [VERIFIED]
 
