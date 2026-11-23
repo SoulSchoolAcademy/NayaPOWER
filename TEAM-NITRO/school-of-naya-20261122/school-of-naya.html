@@ -474,6 +474,86 @@
   #screen-slide .panel-body{scroll-snap-type:y proximity}
   #screen-slide .pm-main>*{scroll-snap-align:start}
 }
+<style id="school-r7">
+/* SCHOOL OF NAYA — ROUND 7: FINISH THE INTERFACE (Shawn's order, live call 2026-11-22 ~19:30 MST:
+   "you never finished it" — three equal thirds, text + images, the 18). ADDITIVE ONLY: one new
+   style block, after school-3board so equal-specificity rules win. No words, no images, no JS. */
+
+/* (1) THE MIDDLE THIRD FILLS. The 9:16 picture stays whole (object-fit:contain, untouched) —
+   but its blur backdrop was brightness(.5), near-black, so the third read as one narrow picture
+   plus big black space left over. Lit up, it is the picture itself, full-bleed, in its own
+   colours — the third reads as a full image panel, not a black hole. */
+#screen-slide .slide-frame .pm-art-blur{filter:blur(26px) brightness(.95) saturate(1.5);transform:scale(1.3)}
+
+/* (2) THE TEXT BOARDS READ FULL, AND THE RED N SITS AT ONE HEIGHT.
+   The words centre as a group instead of hanging off the top over a half-empty board, and the
+   red N leaves the flow (margin:auto split the leftover space differently per board, so the
+   two Ns sat at different heights) and pins to the bottom at one fixed offset on both boards.
+   Padding-bottom reserves exactly the N's room, so no text can ever run under it. */
+#screen-slide .slide-boards .ib-layer-body{justify-content:center;padding-bottom:78px}
+#screen-slide .slide-boards .ib-n{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);margin:0}
+
+/* (3a) THE H1 STAYS. The daybar is sticky at the frame's top edge (var(--bw) is the stage's
+   own top margin at every width), so the short scroll down to the footer never slides the
+   slide title under the fixed ornate frame. Its own opaque gradient is its background. */
+.daybar{position:sticky;top:var(--bw);z-index:45}
+
+/* (4a) COVER, LAPTOP — GENERAL. The cover overflowed at BOTH 1366x768 and 1920x999: the
+   jewel showed but LET'S GO was cut at the fold, and the cover N under the video was
+   half-cut. Compact the left column and cap the video so visual LEFT / video RIGHT holds
+   with logo + LET'S GO visible. The video itself is untouched — the poster is object-fit:
+   cover, and the playing iframe letterboxes inside the frame as usual. */
+@media(min-width:901px){
+  #screen-cover .pm-side-a .orb-wrap{width:160px;height:160px}
+  #screen-cover .pm-side-a,#screen-cover .pm-side-b{padding:14px 16px}
+  #screen-cover .orb-wrap.jewel{width:80px;height:80px;max-width:80px;max-height:80px}
+  #screen-cover .pm-art-frame{height:min(50vh,520px);aspect-ratio:auto}
+  #screen-cover .cover-saying{font-size:34px}
+  #screen-cover .cover-n{width:64px;height:64px}
+  /* (4b) COVER, SHORT LAPTOP (1366x768 and the like): a second, tighter pass. */
+  @media(max-height:800px){
+    .daybar{padding:6px 16px 8px}
+    #screen-cover .pm-main{row-gap:8px}
+    #screen-cover .ticker{margin:4px 16px 0;padding:5px 14px}
+    #screen-cover .pm-side-a .orb-wrap{width:88px;height:88px}
+    #screen-cover .pm-side-a,#screen-cover .pm-side-b{gap:6px;padding:12px 14px}
+    #screen-cover .pm-side-a .hero-play{flex-basis:64px;width:64px;height:64px}
+    #screen-cover .pm-side-a audio.real-audio{height:36px}
+    #screen-cover .orb-wrap.jewel{width:64px;height:64px;max-width:64px;max-height:64px}
+    #screen-cover .pm-side-b .side-actions{margin-top:6px}
+    #screen-cover .pm-side-b .naya-btn{height:48px}
+    #screen-cover .pm-art-frame{height:300px}
+    #screen-cover .cover-saying{font-size:28px;margin-top:8px}
+    #screen-cover .cover-n{width:52px;height:52px;margin-top:6px}
+    #screen-cover .pm-cap{padding-top:8px}
+    /* (2b) Short heights: the N is 36px here (round 6), so reserve 36+14+16. */
+    #screen-slide .slide-boards .ib-layer-body{padding:10px 20px 66px}
+  }
+}
+
+/* (4c) COVER, MOBILE — visual TOP, video underneath, logo + LET'S GO at the bottom, one
+   screen. Compacted to fit 390x844: orb 88, video 140 (poster cover-crops to a face band
+   at object-position center 22% — the 18 likeness images are untouched, this is the cover
+   poster only), saying kept at 20px, jewel 52. The ticker is off on the mobile cover only:
+   it lists the twelve slide topics, which are the slides themselves — it costs 33px and
+   pushes LET'S GO off the screen. */
+@media(max-width:900px){
+  #screen-cover .ticker{display:none}
+  #screen-cover .pm-main{row-gap:8px}
+  #screen-cover .pm-side-a .orb-wrap{width:88px;height:88px}
+  #screen-cover .pm-side-a,#screen-cover .pm-side-b{gap:6px;padding:10px 12px}
+  #screen-cover .pm-side-a .hero-play{flex-basis:52px;width:52px;height:52px}
+  #screen-cover .pm-side-a audio.real-audio{height:32px}
+  #screen-cover .orb-wrap.jewel{width:52px;height:52px;max-width:52px;max-height:52px}
+  #screen-cover .pm-side-b .side-actions{margin-top:6px}
+  #screen-cover .pm-side-b .naya-btn{height:48px}
+  #screen-cover .pm-art-frame{height:140px;aspect-ratio:auto}
+  #screen-cover .cover-saying{font-size:20px;margin-top:6px}
+  #screen-cover .cover-n{width:40px;height:40px;margin-top:4px}
+  #screen-cover .pm-cap{padding-top:6px}
+  /* (2c) Mobile: the N is 40px here, so reserve 40+14+16. */
+  #screen-slide .slide-boards .ib-layer-body{padding-bottom:70px}
+}
 </style>
 </head>
 <body>
