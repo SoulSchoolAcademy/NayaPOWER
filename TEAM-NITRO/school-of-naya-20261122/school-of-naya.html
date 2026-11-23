@@ -609,6 +609,55 @@
   #screen-links .fp-legal-links{grid-template-columns:minmax(0,1fr)}
 }
 </style>
+<style id="school-r75">
+/* SCHOOL OF NAYA — ROUND 7.5: TAP-ADVANCE + HEADER FOLD + MOBILE-COVER LET'S GO
+   (Shawn's phone check, live call 2026-11-23 ~08:05 MST, + the checker GOES BACK
+   finding on R7.1 that no earlier round addressed. ADDITIVE ONLY: one new style
+   block after school-r73 + three exact fold-gate edits + one new script. No words,
+   no images, no footer changes, no player/visual-wiring changes. The R7.1 thirds /
+   cover / H1 / N fixes, the R7.3 footer framed page and the R7.4 sync stay exactly
+   as filed — the diff proves it.) */
+
+/* (1) TAP THE BOARD ADVANCES — the active step reads as a real object (Laws §1,
+   §4): a bright rim in the board's own colour (var(--lc)), white on the image
+   frame (the frame's own white angel light). An outline, not a box-shadow: the
+   board's ib-breathe animation owns box-shadow, so a shadow rule would never
+   show. The whole slide area is tappable, so it takes the pointer cursor. */
+#slideMain{cursor:pointer}
+#slideMain .ib-layer.tap-on{outline:2px solid var(--lc);outline-offset:3px}
+#slideMain .pm-art-frame.tap-on{outline:2px solid rgba(255,255,255,.92);outline-offset:3px}
+
+/* (3a) MOBILE COVER — LET'S GO CLEAR OF THE ARROWS. Measured on the R7.4 base at
+   390x844, unfolded: the panel's visible bottom is 761, the button sits at
+   771-823 (below the panel edge AND inside the floatnav band 761-829), 0/50 grid
+   points return the label, tap at the label centre does nothing. The cover's
+   floatnav leaves the flow and goes to the BOTTOM CORNERS — so the panel extends
+   to the screen bottom (830) and the button (bottom 823) is inside it, visible
+   and tappable — and the arrows sit at the bottom, flanking the button, where
+   nav arrows belong (same home as desktop and the slides). The button narrows
+   294 -> 200px (centred) so the 60px arrows clear it horizontally, 10px of air
+   each side; height, pill, label and pulse are untouched. The first attempt put
+   the arrows at the top corners — measured first-hand, they land exactly on the
+   deck's PROMAX PLAYER tag and READY status, so the bottom corners are the fix,
+   not the top. pointer-events:none on the bar itself so taps pass through to
+   the panel everywhere except on the two arrow buttons. Cover-only
+   (#screen-cover) and mobile-only (max-width 900px): desktop keeps its bottom
+   arrows, slides keep theirs. */
+@media(max-width:900px){
+  #screen-cover{position:relative}
+  #screen-cover .floatnav{position:absolute;bottom:8px;left:0;right:0;z-index:3;display:flex;justify-content:space-between;padding:0 8px;pointer-events:none}
+  #screen-cover .floatnav .naya-btn{pointer-events:auto}
+  #screen-cover .pm-side-b .side-actions .naya-btn{width:200px;align-self:center}
+  /* (3b) TALLEST PHONE BOARD — G15/Q16 A is 657 tall on the base (content-driven,
+     85px over its 572 min-height) and its red N lands at 751-791, 30px under the
+     arrows (band top 761). Trim the phone slide boards only: p line-height
+     1.45 -> 1.3 (the short-laptop rule already uses 1.28) and padding-bottom
+     70 -> 58 (still 40 + 14 + 4 over the N, so no text can run under it). The
+     p stays 20px and the script 28px — the 25/19/17 scale is untouched. */
+  #screen-slide .slide-boards .ib-layer-body{padding-bottom:58px}
+  #screen-slide .slide-boards .ib-layer-body p{line-height:1.3}
+}
+</style>
 </head>
 <body>
 <div class="royal-frame" aria-hidden="true"><div class="rf-et top"></div><div class="rf-es left"></div><div class="rf-es right"></div><div class="rf-rim"></div><div class="rf-corner tl"></div><div class="rf-corner tr"></div><div class="rf-corner bl"></div><div class="rf-corner br"></div><div class="rf-n top"></div></div>
@@ -836,7 +885,7 @@ function unfoldBar(){ daybarEl().classList.remove('folded'); }
 function scheduleFold(){
   clearTimeout(barTimer);
   barTimer = setTimeout(function(){
-    if (screens.cover.classList.contains('active')) daybarEl().classList.add('folded');
+    daybarEl().classList.add('folded');
   }, 5000);
 }
 function show(name){
@@ -844,8 +893,7 @@ function show(name){
   if (name === 'cover') barForCover();
   if (name === 'slide') barForSlide();
   resetPanelScroll(name);
-  if (name === 'cover'){ unfoldBar(); scheduleFold(); }
-  else { clearTimeout(barTimer); unfoldBar(); }
+  unfoldBar(); scheduleFold();
 }
 /* THREE 9:16 BOARDS (Shawn's ruling, live call 2026-11-22 ~15:36–15:44 MST):
    one group = text board (Board A) · image · text board (Board B).
@@ -1200,7 +1248,7 @@ barForCover();
 unfoldBar();
 scheduleFold();
 daybarEl().addEventListener('mouseenter', function(){ clearTimeout(barTimer); });
-daybarEl().addEventListener('mouseleave', function(){ if (screens.cover.classList.contains('active')) scheduleFold(); });
+daybarEl().addEventListener('mouseleave', function(){ scheduleFold(); });
 </script>
 <script>
 /* ============ THE WHOLE DEAL — the ten legal pages ============ */
@@ -1284,6 +1332,70 @@ document.querySelectorAll('.fp-legal-page').forEach(function(panel){
    the same — the footer sits at the page bottom, so without it the new page would
    open out of sight. Nothing else. */
 (function(){var t=document.getElementById('legalBarToggle'),b=document.getElementById('legalBarBack'),scr=document.getElementById('screen-links');if(!t||!b||!scr||typeof show!=='function'||typeof setBar!=='function'||typeof activeScreenName!=='function')return;screens.links=scr;var back='cover';t.addEventListener('click',function(){back=activeScreenName();if(back==='legal'||back==='links')back='cover';show('links');setBar('Naya Code',logoSlot(),portraitSlot(PORTRAITS[0],0));window.scrollTo(0,0);});b.addEventListener('click',function(){show(back);window.scrollTo(0,0);});})();
+</script>
+
+<script>
+/* SCHOOL OF NAYA — ROUND 7.5 (1): TAP THE BOARD ADVANCES. One tap anywhere on the
+   slide's boards/image advances one screen inside the section — Board A (text) ->
+   image -> Board B (text) -> the next section (current+1, or the portal from the
+   last group, exactly like the Forward arrow). The step is real state: window.
+   __tapStep (0/1/2), data-tap-step on #screen-slide, .tap-on on the active third.
+   On phone the step's target scrolls into view inside the panel (arithmetic
+   panel scrollTop — never scrollHeight, never the window); on desktop the active
+   third takes its bright rim. Taps on genuinely interactive elements do their
+   own thing (the guard below); the cover/player region is untouched, so play /
+   pause can never break. renderSlide is WRAPPED, not edited: every section
+   starts on Board A. Nothing else in the page's wiring is touched. */
+(function(){
+  if (typeof renderSlide !== 'function' || typeof show !== 'function' ||
+      typeof goToPortal !== 'function' || typeof TOTAL === 'undefined' ||
+      typeof screens === 'undefined') return;
+  var main = document.getElementById('slideMain');
+  var panel = document.querySelector('#screen-slide .panel-body');
+  if (!main || !panel) return;
+  var tapStep = 0; /* 0 = Board A (text) · 1 = image · 2 = Board B (text) */
+  function stepTargets(){
+    return [
+      document.querySelector('#slideBoardsA .ib-layer'),
+      document.querySelector('#screen-slide .pm-art-frame'),
+      document.querySelector('#slideBoardsB .ib-layer')
+    ];
+  }
+  function setTapStep(n){
+    tapStep = n;
+    window.__tapStep = n;
+    var scr = document.getElementById('screen-slide');
+    if (scr) scr.setAttribute('data-tap-step', String(n));
+    var ts = stepTargets();
+    for (var i = 0; i < ts.length; i++){
+      if (ts[i]) ts[i].classList.toggle('tap-on', i === n);
+    }
+  }
+  function scrollStepIntoView(el){
+    if (!el) return;
+    var pr = panel.getBoundingClientRect(), er = el.getBoundingClientRect();
+    panel.scrollTop = panel.scrollTop + (er.top - pr.top);
+  }
+  function advanceFromTap(){
+    if (!screens.slide || !screens.slide.classList.contains('active')) return;
+    if (tapStep < 2){
+      setTapStep(tapStep + 1);
+      scrollStepIntoView(stepTargets()[tapStep]);
+    } else {
+      setTapStep(0);
+      if (current < TOTAL - 1){ current++; renderSlide(); show('slide'); }
+      else { goToPortal(); }
+    }
+  }
+  main.addEventListener('click', function(e){
+    var t = e.target;
+    if (t && t.closest && t.closest('button, a, input, select, textarea, audio, video, [data-legal-open]')) return;
+    advanceFromTap();
+  });
+  var _renderSlide = renderSlide;
+  renderSlide = function(){ var r = _renderSlide.apply(this, arguments); setTapStep(0); return r; };
+  setTapStep(0);
+})();
 </script>
 </body>
 </html>
