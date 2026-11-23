@@ -1,80 +1,8 @@
 {
   "schema": "naya.queue-contract/1",
-  "generated_at": "2026-11-22T21:49:28Z",
-  "tip": "8b3c30ffe80c8274b2f6093f7a77baf2bc91f5a6",
+  "generated_at": "2026-11-23T03:48:39Z",
+  "tip": "7b9d667fe6728ef7b877cb659d2db3c2479d5202",
   "prs": [
-    {
-      "number": 3499,
-      "title": "Personal/connection profile followon 20261117",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "b1bf7289f41532838441a37c104432e0a7fffd5b"
-    },
-    {
-      "number": 3501,
-      "title": "Fix Kernel Tests: Hub inline script parse failure + router/sidebar map drift",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): delivery-gate; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "9b646c64c30d89b4aab5ce634b27b2d5cd6ce78d"
-    },
-    {
-      "number": 3503,
-      "title": "docs(brain): learning event 2026-11-20",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "8af3401b2a02069352c550a30ee187f4ab6f872f"
-    },
-    {
-      "number": 3504,
-      "title": "Fix preflight: fail soft when the production ref is absent",
-      "tier": "A",
-      "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "a2d2614cd5f2c6d0429cfbdb934e7d70340dc696"
-    },
-    {
-      "number": 3505,
-      "title": "Cold retrieve: re-point compounding boundary test to live query (drill bank 4/5 -> 5/5)",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "4248ad071ddc97293988dce1d8cc6513ea6b757b"
-    },
-    {
-      "number": 3506,
-      "title": "fix(drift-audit): skip lifecycle-inactive entries in duplicate-hash and absent-path checks",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "e8218df284bb4fbd6b7e48efade4e3b158535a5a"
-    },
-    {
-      "number": 3507,
-      "title": "fix(guardian): never lose the verdict when the revert PR open fails (403)",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): claim-evidence-gate; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "ae5e08a8265b597b6a5e0ab5e6f280dac7c3f120"
-    },
-    {
-      "number": 3508,
-      "title": "fix(licp): derive backfilled-capture identity instead of failing step 6",
-      "tier": "A",
-      "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "02fb61f596742728b7d0a3d8a045a7ac976114c2"
-    },
     {
       "number": 3509,
       "title": "docs(pi): 2026-11-21 director audit, live security findings and 14Q execution plan",
@@ -85,42 +13,6 @@
       "head": "24dbdca1977b821409f51223d25b5826826486b0"
     },
     {
-      "number": 3512,
-      "title": "Audit: retired twins are supersession chains, not duplicate-hash drift",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): safety-grant-gate; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "9b9c4dd12f21b87d6b98f46104a80155df40e99f"
-    },
-    {
-      "number": 3513,
-      "title": "fix(guardian): point the post-merge alarm at the live board (#3361)",
-      "tier": "A",
-      "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 9.5/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "bab132a32b0a618516cea5db4d2bd800e53940bc"
-    },
-    {
-      "number": 3514,
-      "title": "fix(doc-gate): scope law-triple check to changed files in --changed-only mode",
-      "tier": "B",
-      "action": "CURE",
-      "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
-      "owner": "any seat != author (scorecard drive)",
-      "head": "2375c49bf24bc530005fa913bca58ce5fbdccae4"
-    },
-    {
-      "number": 3515,
-      "title": "docs(brain): learning event 2026-11-21",
-      "tier": "C",
-      "action": "CURE",
-      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
-      "owner": "author lane",
-      "head": "1f37fa4b66e94ea6a5048866db45438e5ef829e6"
-    },
-    {
       "number": 3516,
       "title": "[GUARDIAN-REVERT] Revert: Living Map state 2026-11-22T15:18Z",
       "tier": "B",
@@ -128,6 +20,24 @@
       "cure": "One different-seat gate-format scorecard >= 8.0/10 at the exact head (self-tested against the consensus matcher), then the paperwork checks pass.",
       "owner": "any seat != author (scorecard drive)",
       "head": "d0454dd23956cb74254f4def19c8226b9196a9f3"
+    },
+    {
+      "number": 3518,
+      "title": "Registry band cure 34: register SN-4671..SN-4683 + retire dangling SN-4590 row",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): claim-evidence-gate; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "f1d5b5516254aae2ac797643e81b2eaa5a588883"
+    },
+    {
+      "number": 3519,
+      "title": "docs(brain): learning event 2026-11-22",
+      "tier": "C",
+      "action": "CURE",
+      "cure": "Author cures the PR-caused red check(s): brain-index-freshness; then re-derive at the new head.",
+      "owner": "author lane",
+      "head": "949fd328833a234a306b4313c6e170aa5f416545"
     }
   ]
 }
