@@ -79924,6 +79924,40 @@
         "Knowledge",
         "Lesson"
       ]
+    },
+    {
+      "smart_note_id": "SN-4711",
+      "intelligent_block_id": "IB-SMART-NOTE-20261123-sn4711-the-sealed-door-writer-side-enforcement",
+      "slug": "the-sealed-door-writer-side-enforcement",
+      "title": "The Sealed Door: Writer-Side Enforcement for Smart Note Filing",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/GOVERNANCE/SN-4711/IB-SMART-NOTE-20261123-sn4711-the-sealed-door-writer-side-enforcement.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/GOVERNANCE/SN-4711/IB-SMART-NOTE-20261123-sn4711-the-sealed-door-writer-side-enforcement.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/GOVERNANCE/SN-4711/IB-SMART-NOTE-20261123-sn4711-the-sealed-door-writer-side-enforcement.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261123-sn4711-the-sealed-door-writer-side-enforcement.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "GOVERNANCE",
+      "captured_at": "2026-11-23",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-23T22:26:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-23",
+      "page_hash": "2a541ea3b3def553c18c20fecc89096280ad288e760e2af003cb8f4530519a4e",
+      "content_hash": "d8c9679f24c028bc9f9b41a8bde430c693a5c1e68929d91bdb2b3751824dcd07",
+      "one_line": "Thirty-two registry cures proved the same fact: filing lanes file Smart Notes around the publish-note door because nothing at the writer side stops them — the registry is a plain JSON file anyone with repo write can edit, every hash is a public formula, and no landing check is required by any ruleset. The Sealed Door design closes the bypass in three layers: (1) a receipt chain minted only inside the door, each entry chained to the previous entry's content hash, so a valid receipt can only be produced by running the door against the live registry; (2) the door-obligation checker completed — it learns to see classic captures, verifies the corpus manifest and the chain on every run; (3) a required landing gate (door-obligation as a required check, bypass actors narrowed for note paths) plus a consumer backstop, so any bypass that still lands is invisible downstream and auto-reverted. Winner of a five-option scorecard at 7.5/10. No option scores higher, and the design says why: two facts sit outside any design's reach — main requires no status check today (one settings change, Shawn's hand), and every seat shares one GitHub identity, so authorship can never be proven inside the repo (SN-0111: a seal proves consistency, not authorship). The graduation test is a red-team pass over all four known bypass routes plus three consecutive filing batches with zero band and zero cures; when it passes, the cure lane retires and P-152 graduates.",
+      "topics": [
+        "door-enforcement",
+        "smart-notes",
+        "registry",
+        "publishing",
+        "governance",
+        "writer-side-enforcement"
+      ]
     }
   ],
   "sequence_policy": {
@@ -79934,5 +79968,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "d891c92761b1b3222d00dbab6649d2392d158a6049a433ba4130c7eb47911db7"
+  "corpus_manifest_hash": "568a5d4a89aa79f9c44b4f0915723ff12d90cfab3cc3401074366c35d9b4a3b0"
 }
