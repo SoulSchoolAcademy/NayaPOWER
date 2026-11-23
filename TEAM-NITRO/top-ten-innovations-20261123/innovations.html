@@ -1195,11 +1195,24 @@ var DEPTH_BOARD = 0, DEPTH_IDX = 0, coverVidEl = null;
 /* DEPTH IMAGES — THE CHAPTER METHOD (Shawn, 2026-11-23): 3–4 images per
    chapter, 30–40 total, each batch labeled with its innovation. Slots
    are EMPTY (null) until Shawn approves that chapter's images — an empty
-   slot renders as ready, never broken. Chapter 4 (Collective chain) is
-   finished first: [chain of real books, one ledger into a hub, hubs
-   joining, worlds within worlds] fill slots 0–3 in that order when they
-   land approved. NEVER a front-board image here: the front image is the
-   chapter's cover; no story told twice. */
+   slot renders as ready, never broken. THE LITERAL LAW (Shawn, ~12:03
+   MST) judges every depth image: literal, 3D ultra-real, a real object,
+   obvious at first glance, never 2D text in the design — if it needs
+   explaining, it fails. THE REDO SEQUENCE restarts at chapter 1
+   (~12:04 MST): chapter 1 goes first, then the rest; keepers stay.
+   CHAPTER 1 (first): [the board swinging open like a real door; boards
+   behind boards receding into depth; the fingertip tapping the ball and
+   the board splitting open (Naya's hand — hands law — ball is the orb
+   with the gold N in the middle); the stack seen from the side].
+   CHAPTER 4: [people holding their book-minds joined to the hub; the
+   mother brain itself; the two-way light between person and hub; worlds
+   alive on the network]. The old chapter-4 list (chain of real books,
+   one ledger into a hub, hubs joining, worlds within worlds) and the
+   board-04 v3 file are SUPERSEDED by this redo — v3 is never placed.
+   Chapter 1's depth image (1) is a DIFFERENT image from the doorway v3
+   front-board image (pending his eye) — never conflate them, never swap
+   one for the other. NEVER a front-board image here: the front image is
+   the chapter's cover; no story told twice. */
 var DEPTH_IMGS = [[null,null,null,null],[null,null,null,null],[null,null,null,null],[null,null,null,null],[null,null,null,null],[null,null,null,null],[null,null,null,null],[null,null,null,null],[null,null,null,null],[null,null,null,null]];
 function slotKind(slot){
   if (slot === 'cover') return 'img';
@@ -1343,9 +1356,11 @@ function renderDepth(){
        the chapter's cover; depth images tell different parts of the
        chapter (chapter method: 3–4 per chapter). Slots are wired to
        DEPTH_IMGS[board]; all are empty/ready until Shawn approves the
-       chapter's images. Chapter 4's four land first, in order:
-       chain of real books, one ledger into a hub, hubs joining,
-       worlds within worlds. */
+       chapter's images. THE LITERAL LAW judges every one: literal, 3D
+       ultra-real, obvious at first glance. Chapter 1's four land first,
+       in order (see DEPTH_IMGS); chapter 4's four follow the literal
+       spec there. The old chapter-4 list is SUPERSEDED — never fill a
+       slot from it, never place board-04 v3. */
     var html = '';
     g.d.forEach(function(sec, k){
       html += '<h3 class="depth-h">' + escTx(sec[0]) + '</h3><p>' + escTx(sec[1]) + '</p>';
