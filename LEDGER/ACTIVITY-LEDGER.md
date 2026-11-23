@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-23 20:05 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-23 20:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16955,6 +16955,12 @@ _Last updated: 2026-11-23 20:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: cited board post #2537 comment 6167590868 exists (GET 200, lane-agent bot, on the live board). Work read-only; falsifier test correctly applied: #2576 runs differed in BODY (re-pinned 6s before, receipt-pin read at 09:59:29Z vs 'no attestations' at 09:43:37Z), #2579 verdicts moved 403->403->200 with transport, gate never misjudged. Score 
 
+### ✅ t0747-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** SCOPE-LAW slice: unanimous block pins + machine log-pin check live in the SmartBlocks harness, tamper proof
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; oldest-first). VERIFIED first-hand this tick: all three changed files exist — retrieval/tally-t0710.py (log_sha256 persistence, 2 mentions), lane-4/smartblocks-pilot-t0728/lookup-match.py (log_sha256, BLOCK-PIN-DIVERGENT x3, TALLY-PIN-MISMATCH, LOG-DRIFT), lane-4/smartblocks-pilot-t0728/build-pilot-blocks.py (LOG-
+
 ### ✅ t0747 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** SCOPE-LAW slice D5a+D5b + tamper proof in smartblocks pilot harness
@@ -16970,6 +16976,12 @@ _Last updated: 2026-11-23 20:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0747-lane4.md`
 
 **Evidence:** VERIFIED: retrieval/tally-t0710.py lines 65-67 persist log_sha256 in tally JSON; lane-4/smartblocks-pilot-t0728/lookup-match.py carries BLOCK-PIN-DIVERGENT (x3), TALLY-PIN-MISMATCH, LOG-DRIFT (full-64 SHAs, no prefix shortcuts); build-pilot-blocks.py carries SET-CHANGED + ORDER-MOVED BUILD-REFUSE naming. Live run by scorer on real bytes: exit 2 TAL
+
+### ✅ t0747-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** AMENDED-PRE-SEAL: apply t0738-lane3 REWORK fixes to Arm I verdict-flip pre-reg (section-8 contradiction repair)
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; oldest-first). VERIFIED first-hand this tick: amended file hidden_files/lane-2/arm-i-verdict-flip-prereg-t0747.md sha256 8a2700880ad23740364290815d4635c5418dfa62235d2414bd1cd21df165d53d FULL 64/64 MATCH; seal sidecar hidden_files/lane-2/arm-i-verdict-flip-seal-t0747.txt carries the same sha256 and supersedes 16c44
 
 ### ✅ t0747 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -16987,6 +16999,12 @@ _Last updated: 2026-11-23 20:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: t0734 lane-2/arm-i-verdict-flip-prereg-t0734.md sha256 16c444e567c7077139367abea9d0bf13b2a3b73e84d5f945ef1db79ad4848082 MATCH old seal, untouched in place (no in-place fix); amended file lane-2/arm-i-verdict-flip-prereg-t0747.md sha256 8a2700880ad23740364290815d4635c5418dfa62235d2414bd1cd21df165d53d == seal sidecar lane-2/arm-i-verdict-fl
 
+### ✅ t0747-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** Blind second-seat replication of Lane 4 t0742 MTC-v1 execution — CONFIRM with one exact delta
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; oldest-first). VERIFIED first-hand this tick: verdict JSON hidden_files/lane-11/mtc-v1-t0747-lane11/verdict-t0747-lane11.json sha256 126a76a4d2ec14546ac10dc6c18339b0614899865ac94b7164ea77c47572d32a FULL 64/64 MATCH; pre-reg hidden_files/lane-6/mtc-v1-prereg-t0737.md sha256 9199c9abbb29bf0ea3d9cea51884d5dc1f8952488
+
 ### ✅ t0747 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Blind second-seat replication of Lane 4 t0742 MTC-v1 execution: CONFIRM
@@ -17002,6 +17020,12 @@ _Last updated: 2026-11-23 20:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0747-lane11.md`
 
 **Evidence:** VERIFIED: verdict JSON lane-11/mtc-v1-t0747-lane11/verdict-t0747-lane11.json sha256 126a76a4d2ec14546ac10dc6c18339b0614899865ac94b7164ea77c47572d32a MATCH receipt pin; verdict=CONFIRM in file; pre-reg lane-6/mtc-v1-prereg-t0737.md sha256 9199c9abbb29bf0ea3d9cea51884d5dc1f8952488fb06a8e131db4a7bfae2879 MATCH brief pin; cards/seal-note/executor scrip
+
+### ✅ t0746-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** Independent second-seat review of PR #2581 grader math (level-drill key-split) — APPROVE
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; oldest-first). VERIFIED first-hand this tick: branch head cde0c63ddc1a2a59911b82334bd93ff761e5045e and parent 21f089d56f151fe46c85b5073f61921e0201d2a6 both exist as commits in mirror; all four instrument blobs present at cde0c63d at the exact paths — grader 48a633e440ef1695f6b693c457ec4e70fbb03fa9 (tools/level_dri
 
 ### ✅ t0746 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -17019,6 +17043,12 @@ _Last updated: 2026-11-23 20:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED live: PR #2581 head cde0c63ddc1a2a59911b82334bd93ff761e5045e == receipt action-time pin (API + ref naya/lane9/level-drill-keysplit-t0730, PR open); board verdict comment 6167157705 exists on #2537 (3975 bytes, lane-8 header). Review re-derived on live branch bytes: grader math parity byte-level vs old instrument (exact=1.0/off-by-one=0.5/e
 
+### ✅ t0746-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Independent APPROVE/NEEDS_WORK review of PR #2576 at action-time head (seat-namespace gate)
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; oldest-first). VERIFIED first-hand this tick: pins 7847be06 and 87b9f188 both exist as commits in mirror; trees IDENTICAL f772e2063189cc098f940c77eb7f0beb4985287a (empty-commit claim proven, not asserted); test file tests/test_check_merge_consensus.py at live head sha256 0ba440ab055bd6f7107cb79db682009c2c4b23cbb3a
+
 ### ✅ t0746 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** Independent APPROVE-CONDITIONAL review of PR #2576 at the action-time head
@@ -17034,6 +17064,12 @@ _Last updated: 2026-11-23 20:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0746-lane3.md`
 
 **Evidence:** VERIFIED live: PR #2576 head 87b9f188e652cc2aad74e3092cbdf8df99517f3c == receipt live-head pin (API + ref naya/gate-leadseats-20261013, PR open); board verdict comment 6167076345 exists on #2537 (3533 bytes, lane-3 header). Review re-derived on pinned bytes: gate suite 47/47 + 9/9 seat-tag controls, real mid-run head-move caught by the re-pin rule 
+
+### ✅ t0746-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Second-seat verification of Lane 11 t0741 top-20 needs table (SURGE-c) — 19-row re-derivation + falsifier
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; oldest-first). VERIFIED first-hand this tick: pinned log lane-10/tally-check-t0746/auto-retrieval/ask-world-queries.jsonl sha256 0fa1f99d2a4a67eb6feed1331c365b6dceb2674ef4d929ed731bea7543747972 FULL 64/64 MATCH; scratch tally lane-10/tally-check-t0746/retrieval/tally-t0710.json sha256 7c33bbd820568370dd53068489904
 
 ### ✅ t0746 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
