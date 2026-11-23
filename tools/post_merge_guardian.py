@@ -93,7 +93,7 @@ from datetime import datetime, timezone
 
 LAW_ID = "POST-MERGE-GUARDIAN-V1"
 DEFAULT_REPO = "SoulSchoolAcademy/NayaPOWER"
-DEFAULT_BOARD = 2793
+DEFAULT_BOARD = 3361  # live board; #2793 capped at 2,500 comments 2026-11-18 and rejects new comments (Guardian 231 alarm lost, 403)
 LOG_BRANCH = "live/guardian-log"
 LOG_PATH = "guardian-log.jsonl"
 REVERT_LABEL = "GUARDIAN-REVERT"

@@ -14,7 +14,7 @@ name: Post-Merge Guardian
 #   (c) for HUB/** landings, the live Hub still serves (200 + feed).
 # On a verified escape it prepares a GUARDIAN-REVERT PR (scorecard
 # substitute: the detection evidence itself) and posts the alarm +
-# evidence + revert link to the live board (#2793) in the same motion.
+# evidence + revert link to the live board (#3361) in the same motion.
 # It NEVER merges the revert — merges stay protocol. Every landing is
 # written to the guardian log (branch live/guardian-log), which the
 # balance gauge reads for the post-merge escape rate.

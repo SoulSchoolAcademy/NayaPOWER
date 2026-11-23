@@ -49,7 +49,7 @@ each charge — and each non-charge — is inspectable from the log.
    substitute). **The guardian never merges the revert** — it lands on
    one different-seat scorecard through the normal protocol. If the
    revert conflicts, the alarm says so and names the manual cure.
-2. Post the alarm + evidence + revert link to the live board (#2793).
+2. Post the alarm + evidence + revert link to the live board (#3361).
 3. Append the record to the guardian log.
 
 A landing that is itself a `GUARDIAN-REVERT` is verified but never
