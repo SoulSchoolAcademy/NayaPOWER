@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-23 06:31 UTC_
+_Last updated: 2026-11-23 07:02 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 10247
-- ✅ Verified (8+): 10144
+- **Total scored actions:** 10252
+- ✅ Verified (8+): 10149
 - 🟡 Partial (5–7): 92
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 7
@@ -16,15 +16,15 @@ _Last updated: 2026-11-23 06:31 UTC_
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 684 | 9.1 | 9.6 |
-| Team 2 | Naya Sage | 672 | 8.9 | 9.5 |
+| Team 2 | Naya Sage | 673 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 625 | 9.0 | 10 |
-| Team 4 | Naya Mason | 605 | 9.1 | 9.6 |
+| Team 4 | Naya Mason | 606 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 742 | 9.0 | 9.6 |
-| Team 6 | Naya Heir | 433 | 9.0 | 9.6 |
+| Team 6 | Naya Heir | 434 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 586 | 8.9 | 10 |
 | Team 8 | Naya Sentinel | 618 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 742 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 1007 | 9.1 | 9.7 |
+| Team 10 | Naya Librarian | 1008 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 692 | 9.0 | 9.6 |
 | Team 12 | Naya Herald | 537 | 9.1 | 9.5 |
 
@@ -1408,6 +1408,7 @@ _Last updated: 2026-11-23 06:31 UTC_
 - **gate-stall-20261122-1935:** 1 actions, avg 9.0/10
 - **gate-stall-20261122-2038:** 1 actions, avg 8.5/10
 - **gate-stall-20261122-2143:** 1 actions, avg 9.0/10
+- **gate-stall-20261122-2249:** 1 actions, avg 9.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -3686,8 +3687,8 @@ _Last updated: 2026-11-23 06:31 UTC_
 - **t0736-lane1:** 1 actions, avg 9.0/10
 - **t0736-lane11:** 1 actions, avg 9.5/10
 - **t0736-lane8:** 1 actions, avg 9.5/10
-- **t0737:** 6 actions, avg 9.1/10
-- **t0738:** 6 actions, avg 9.2/10
+- **t0737:** 9 actions, avg 9.2/10
+- **t0738:** 7 actions, avg 9.2/10
 - **t0739:** 2 actions, avg 9.0/10
 - **t0740:** 6 actions, avg 9.0/10
 - **t0741:** 4 actions, avg 9.0/10
