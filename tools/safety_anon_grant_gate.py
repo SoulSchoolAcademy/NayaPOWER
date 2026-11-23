@@ -48,6 +48,16 @@ _GRANT_RE = re.compile(
     re.IGNORECASE | re.DOTALL,
 )
 
+# A GRANT hidden inside a DO-block EXECUTE string, e.g.
+#   DO $$ BEGIN EXECUTE 'GRANT SELECT ON t TO anon'; END $$;
+# The enclosing statement starts with DO, so the statement loop below never
+# sees it. Anchor on EXECUTE + quoted literal: only string literals executed
+# as SQL are in scope; a literal merely mentioning "grant" elsewhere is not.
+_EXECUTE_LITERAL_RE = re.compile(
+    r"""execute\s+'(?P<body>(?:[^']|'')*)'""",
+    re.IGNORECASE | re.DOTALL,
+)
+
 _OBJTYPE_RE = re.compile(
     r"^(?P<objtype>table|function|sequence|schema|database|"
     r"all\s+tables|all\s+functions|all\s+sequences)\s+(?P<objects>.*)$",
@@ -88,6 +98,10 @@ def _strip_comments(sql: str) -> str:
     for line in sql.splitlines():
         s = line.strip()
         if s.startswith("--"):
+            # Keep the line (blank) so line numbers reported downstream
+            # still match the file -- the DO-block EXECUTE scan reports
+            # the true file line of each hidden grant.
+            out.append("")
             continue
         # cut trailing -- comments (naive: good enough for migrations)
         idx = line.find("--")
@@ -104,6 +118,41 @@ def _normalize_object(objtype: str, obj: str) -> str:
     return f"{objtype}:{obj}"
 
 
+def _parse_grant_statement(stmt: str, source: str,
+                         grants: list[Grant], problems: list[str]) -> None:
+    """Parse one GRANT statement into `grants`; append to `problems` if it
+    cannot be understood (fail closed). Shared by bare statements and by
+    grants hidden inside DO-block EXECUTE strings."""
+    m = _GRANT_RE.match(stmt + ";")
+    if not m:
+        problems.append(f"{source}: unparseable GRANT statement: {stmt[:120]!r}")
+        return
+    rest = m.group("rest").strip()
+    om = _OBJTYPE_RE.match(rest)
+    if om:
+        objtype = re.sub(r"\s+", " ", om.group("objtype").strip().lower())
+        objects = _split_top_level(om.group("objects"))
+    else:
+        # bare "ON <name>" without TABLE/FUNCTION keyword: infer from shape
+        objtype = None
+        objects = _split_top_level(re.sub(r"\s+in\s+schema\s+\S+$", "", rest, flags=re.IGNORECASE))
+    # privileges may carry a column list: "select (id, name)" -> "select"
+    raw_privs = _COLLIST_RE.sub("", m.group("privs"))
+    privs = tuple(p.strip().lower() for p in raw_privs.split(",") if p.strip())
+    grantees = tuple(g.strip().lower().strip('"') for g in m.group("grantees").split(",") if g.strip())
+    if not privs or not grantees or not objects:
+        problems.append(f"{source}: GRANT with empty privileges/grantees/objects: {stmt[:120]!r}")
+        return
+    if any(not re.fullmatch(r"[a-z_]+", p) for p in privs):
+        problems.append(f"{source}: GRANT with non-privilege tokens: {stmt[:120]!r}")
+        return
+    for obj in objects:
+        otype = objtype or ("function" if "(" in obj else "table")
+        grants.append(Grant(privileges=privs, objtype=otype,
+                            object=_normalize_object(otype, obj),
+                            grantees=grantees, source=source))
+
+
 def parse_grants(sql_text: str, source: str) -> tuple[list[Grant], list[str]]:
     """Return (grants, parse_problems). Problems fail the gate closed."""
     grants: list[Grant] = []
@@ -115,34 +164,19 @@ def parse_grants(sql_text: str, source: str) -> tuple[list[Grant], list[str]]:
             continue
         if not re.match(r"(?i)^\s*grant\b", stmt):
             continue
-        m = _GRANT_RE.match(stmt + ";")
-        if not m:
-            problems.append(f"{source}: unparseable GRANT statement: {stmt[:120]!r}")
+        _parse_grant_statement(stmt, source, grants, problems)
+    # Grants hidden inside DO-block EXECUTE strings: the enclosing statement
+    # starts with DO, so the loop above never sees them. Scan EXECUTE +
+    # quoted-literal pairs; a literal that starts with GRANT is parsed with
+    # the same rules (allowlist, privilege ceiling, fail-closed on garbage).
+    # Non-grant EXECUTE strings (e.g. EXECUTE 'SELECT ...') are skipped.
+    for lit in _EXECUTE_LITERAL_RE.finditer(cleaned):
+        body = lit.group("body").replace("''", "'")
+        if not re.match(r"(?i)^\s*grant\b", body):
             continue
-        rest = m.group("rest").strip()
-        om = _OBJTYPE_RE.match(rest)
-        if om:
-            objtype = re.sub(r"\s+", " ", om.group("objtype").strip().lower())
-            objects = _split_top_level(om.group("objects"))
-        else:
-            # bare "ON <name>" without TABLE/FUNCTION keyword: infer from shape
-            objtype = None
-            objects = _split_top_level(re.sub(r"\s+in\s+schema\s+\S+$", "", rest, flags=re.IGNORECASE))
-        # privileges may carry a column list: "select (id, name)" -> "select"
-        raw_privs = _COLLIST_RE.sub("", m.group("privs"))
-        privs = tuple(p.strip().lower() for p in raw_privs.split(",") if p.strip())
-        grantees = tuple(g.strip().lower().strip('"') for g in m.group("grantees").split(",") if g.strip())
-        if not privs or not grantees or not objects:
-            problems.append(f"{source}: GRANT with empty privileges/grantees/objects: {stmt[:120]!r}")
-            continue
-        if any(not re.fullmatch(r"[a-z_]+", p) for p in privs):
-            problems.append(f"{source}: GRANT with non-privilege tokens: {stmt[:120]!r}")
-            continue
-        for obj in objects:
-            otype = objtype or ("function" if "(" in obj else "table")
-            grants.append(Grant(privileges=privs, objtype=otype,
-                                object=_normalize_object(otype, obj),
-                                grantees=grantees, source=source))
+        line = cleaned.count("\n", 0, lit.start()) + 1
+        _parse_grant_statement(body.strip(), f"{source}:{line} (DO-block EXECUTE)",
+                               grants, problems)
     return grants, problems
 
 
