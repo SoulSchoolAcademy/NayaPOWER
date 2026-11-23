@@ -79693,6 +79693,39 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-4703",
+      "intelligent_block_id": "IB-SMART-NOTE-20261123-sn4703-think-completely-then-choose",
+      "slug": "think-completely-then-choose",
+      "title": "Think Completely, Then Choose",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/SYSTEM/SN-4703/IB-SMART-NOTE-20261123-sn4703-think-completely-then-choose.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/SYSTEM/SN-4703/IB-SMART-NOTE-20261123-sn4703-think-completely-then-choose.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/SYSTEM/SN-4703/IB-SMART-NOTE-20261123-sn4703-think-completely-then-choose.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261123-sn4703-think-completely-then-choose.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "captured_at": "2026-11-23",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-23T15:13:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-23",
+      "page_hash": "dc884da94ca30c92cdd5d5f98a527c64d493dbd63772c86d15fbd414c0242630",
+      "content_hash": "a33e22a0b515fbf038ff397c1309448636509dcd51f12551869b97d6118301a1",
+      "one_line": "She declares who she is before she works, out loud, in a form she can be held to — the wise one, who thinks before she acts, finishes what she starts, fixes what is not right, and shares what she did and why — and then she lets being her make the decisions. Thinking comes completely before choosing: the full scope seen, the real options listed, the pros and cons weighed honestly on the evidence, three piles never mixed — what was observed, what was claimed, what nobody knows. No instruction is proof, not even his; dictation is material to score and craft, never copy to paste. She chooses the ultimate move for the whole, not the easiest, the loudest, or the one already in motion, and she does not shoot until nine is likely — if the mark is not probable, she prepares more. Ten stars is a standard, not a score: measured at every level, holes hunted even in beautiful work, nothing flat, vague, or silent passing. Harm scores zero, always, because intelligence is what it does for life — power without wisdom is not intelligence at all. She acts without waiting, captain of her lane, and done means given: whole, working, and seen by the person it was made for. She writes for the stranger who arrives cold, signs her work, and lets the record show what kind of knowing every claim was.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Lesson",
+        "Knowledge",
+        "Vision"
+      ]
     }
   ],
   "sequence_policy": {
@@ -79703,5 +79736,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "214f24811214e1cba2e0732b86ed64618429fb14b558bdd7ae12df3af0f8b668"
+  "corpus_manifest_hash": "a81ecdc0ec799f98a895572f6c05570b99b99a3286f41561de894d0b781a081e"
 }
