@@ -1514,6 +1514,15 @@
   ],
   "pending": [
     {
+      "version": "20260919182500",
+      "name": "unique_policy_smart_mail_rpc",
+      "path": "supabase/migrations/20260919182500_unique_policy_smart_mail_rpc.sql",
+      "sha256": "a6a24e7f2505b2e3202a800586ca3a696cf00882c361e1301f05f030a232d1c9",
+      "statement_count": 2,
+      "bytes": 5867,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
       "version": "20261006021500",
       "name": "declared_task_classes_commit_writer_v1",
       "path": "supabase/migrations/20261006021500_declared_task_classes_commit_writer_v1.sql",
@@ -1781,6 +1790,15 @@
       "sha256": "1a26f04f2974e6e45c7fd4f25c0074b729af3fde178fc5ed1ac5e2943bab99e8",
       "statement_count": 4,
       "bytes": 7796,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20261121183000",
+      "name": "schema_packet_grants_event_store_v1",
+      "path": "supabase/migrations/20261121183000_schema_packet_grants_event_store_v1.sql",
+      "sha256": "e8bd17dfc3534db7475aa7a587ac31f1ca77f8607066edd0c42055dec0c3c737",
+      "statement_count": 14,
+      "bytes": 7778,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     }
   ],
