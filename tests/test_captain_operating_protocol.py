@@ -105,7 +105,10 @@ def test_restored_objects_are_present_and_record_their_deletion():
     ):
         # Filenames use the bare sequence (sn0358), the object uses SN-0358.
         token = capture_id.replace("-", "").lower()
-        p = next((ROOT / ".naya" / "capture").glob(f"*{token}*.json"), None)
+        # Select the CAPTURE, not the IB reconstruction record: both share the
+        # sn0358 token, and next() over an ambiguous glob is readdir-order
+        # dependent (the IB record has no source/falsifier and fails this test).
+        p = next((ROOT / ".naya" / "capture").glob(f"SMART-NOTE-*{token}*.json"), None)
         assert p is not None, f"{capture_id} capture missing — restoration lost"
         obj = json.loads(p.read_text(encoding="utf-8"))
         assert obj["smart_note_id"] == capture_id
@@ -121,7 +124,8 @@ def test_restored_objects_are_present_and_record_their_deletion():
 def test_restored_sn0359_falsifier_catches_the_degenerate_case():
     """The original v1 falsifier was satisfiable by a seat that merely stopped
     asking while producing nothing. Clause (b) is what makes it real."""
-    p = next((ROOT / ".naya" / "capture").glob("*sn0359*.json"), None)
+    # Same ambiguity as above: SMART-NOTE-* selects the capture only.
+    p = next((ROOT / ".naya" / "capture").glob("SMART-NOTE-*sn0359*.json"), None)
     obj = json.loads(p.read_text(encoding="utf-8"))
     falsifier = obj["intelligence"]["falsifier"]
     assert "no measurable increase" in falsifier
