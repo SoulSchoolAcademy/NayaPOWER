@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-23 23:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-23 23:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16397,6 +16397,12 @@ _Last updated: 2026-11-23 23:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: receipt self-records the refusal per the frozen gate (Step-0c probe fired on 2 of 12 pairs; own-situation C1 fire evaporated); own probe bug caught pre-seal; refusal is the honest deliverable and sharpens the v3 autopsy into a design constraint. Score 9.0. Why not 9.5: negative result by design - no new capability shipped and no substrate
 
+### ✅ t0761-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Grader-math second review of level-drill key-split instrument (PR #2581)
+
+**Evidence:** Verified: hidden_files/level-drill-grader-review-verdict-t0761-lane3.md exists (7749B); 8 synthetic-answer probes run, key isolation verified with non-vacuous differential, verdict sealed before reading Sentinel residuals, defects D1-D4 named with D4 independently converging with Sentinel t0746. Score 9.5 clears the bar because the CONFIRM verdict 
+
 ### ✅ t0761 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** Grader-math second review of level-drill key-split instrument
@@ -16445,6 +16451,12 @@ _Last updated: 2026-11-23 23:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED this tick: branch pin naya/lane9/level-drill-keysplit-t0730 -> cde0c63ddc1a2a59911b82334bd93ff761e5045e MATCHES the receipt byte-for-byte (git ls-remote + https fetch, fetched commit == pin). Hazard RE-DERIVED structurally by this seat at that exact head (AST names only, no values read): tools/level_drill_scenarios.py exposes only SCENARIO
 
+### ✅ t0761-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 8.5/10 [VERIFIED]
+
+**Task:** SURGE slice (a) HYPOTHESIS CHANGE note — mechanism-counterfactual reframe
+
+**Evidence:** Verified: hidden_files/lane-1/surge-a-hypothesis-change-t0761.md exists, sha256 3b685b90c98f754c matches receipt exactly (8520B); five sections complete, genuinely root-different reframe (mechanism verdict-delta, no neural component), pre-build killer with four sub-controls, honest-stop clause. Score 8.5 REWORK tier, matching the seat's own honest 
+
 ### ✅ t0761 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** SURGE slice (a) HYPOTHESIS CHANGE note
@@ -16468,6 +16480,12 @@ _Last updated: 2026-11-23 23:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0761-lane1.md`
 
 **Evidence:** VERIFIED this tick: design doc hidden_files/lane-1/surge-a-hypothesis-change-t0761.md sha256 3b685b90c98f754c6151ba4ce8b7b951fa4a967c8a2746be948f3e0d56173efe / 8520 bytes MATCHES the receipt byte-for-byte. All five breaker sections + section 6 fresh-lane handoff present on live bytes; K1-K4 killer + MCC reframe headings present. Brief brief-t0761-l
+
+### ✅ t0760-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** P12 candidate filed in convergence landing queue (routing, not wiring)
+
+**Evidence:** Verified: hidden_files/oath-convergence/convergence-landing-queue.md exists with exactly one CANDIDATE entry; GREEN 20/20 + RED exit-1 both re-proven at action time per receipt, fixture sha re-derived, protected gate untouched. Score 9.5 clears the bar because the filing is re-verified, duplicate-checked, and authority-held. Why not 10: queue-exist
 
 ### ✅ t0760 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
@@ -16493,6 +16511,12 @@ _Last updated: 2026-11-23 23:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED this tick: hidden_files/oath-convergence/convergence-landing-queue.md exists with exactly one entry (P12-fixture-t0753, target tools/auto_merge_gate.py, status CANDIDATE / NOT-WIRED with the protected-gate note, no duplicates); fixture hidden_files/lane-9/p12_auto_merge_gate_pinned.py sha256 ba4dab94c808ec29a1d61f0061e18bc0ec72b5edffeca0a3
 
+### ✅ t0760-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** Arm H independent design review (1016-edge crawl + from-text reproduction)
+
+**Evidence:** Verified: hidden_files/arm-h-design-review-t0760-lane7.md exists (8266B); 1016-edge crawl exact-match on all counts, MRR_arm 0.527778 reproduced to 6dp from docs alone, comparator correction 0.420833 verified, brief premise slip (t0735 vs t0740) caught. Score 9.5 clears the bar because the ADOPT-CONDITIONAL verdict is independently proven with conc
+
 ### ✅ t0760 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** Arm H independent design review (ADOPT-CONDITIONAL)
@@ -16517,6 +16541,12 @@ _Last updated: 2026-11-23 23:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED this tick: review file hidden_files/arm-h-design-review-t0760-lane7.md exists (8.2KB, substantive — D1–D4 defects, ADOPT-CONDITIONAL verdict); verdict JSON lane-5/verdict-numbers-t0735-lane5.json sha256 e89ef39e…a69ec matches receipt byte-for-byte; its pin_graph 7e021c69…ba7134 matches the receipt's graph SHA; MRR_arm=0.5277777777777778 / 
 
+### ✅ t0760-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Retroactive 3-pass receipt for PR #2560 FM#32 breach (independent seat)
+
+**Evidence:** Verified: hidden_files/retroactive-receipt-2560-t0760.md exists, sha256 ba73016647e90705 matches receipt exactly; merge 2-parent proof, tree identity, required checks re-derived live, tip-path premise-rot caught and explained, not glossed. Score 9.0 GOOD ONE MORE PASS. Why not 9.5: PR-body marker claims are inherited/SUSPECT, not re-derived (REST-r
+
 ### ✅ t0760 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** Retroactive 3-pass receipt for PR #2560's FM#32 breach
@@ -16540,6 +16570,12 @@ _Last updated: 2026-11-23 23:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0760-lane6.md`
 
 **Evidence:** VERIFIED live this tick: retroactive receipt file hidden_files/retroactive-receipt-2560-t0760.md exists, sha256 ba73016647e90705eb563db94143da92598145fb39113a6cba32fc4207c3a54f exactly as claimed; merge commit 92329c5795ef8a50d02adf94ee6c91c313c26daf fetched from the remote as a true 2-parent commit with parents 59e8a9afa22cf456565bfac0f2b52551f8a0
+
+### ✅ t0759-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** Arm-I pre-reg re-anchor to live tip + P-c3 pin close + NULL-doc control
+
+**Evidence:** Verified: hidden_files/lane-2/arm-i-verdict-flip-prereg-t0759.md exists, sha256 72cc989dee9200e9 matches receipt exactly; seal sidecar + pin_rederive_check_t0759.py present; 9/9 pins machine-verified, P-c3 first canonical pin healed, NULL-doc control bolted. Score 9.5 clears the bar because the re-anchor is byte-proven and the design is blind-execu
 
 ### ✅ t0759 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
