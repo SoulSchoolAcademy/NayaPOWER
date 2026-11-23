@@ -1132,7 +1132,9 @@ jobs:
               successor_id=str(capture.get("superseded_by_capture_id") or "").strip()
               assert successor_id and successor_id!=capture.get("capture_id")
               successor_doc=None
-              for candidate in Path(".naya/capture").glob("SMART-NOTE-*.json"):
+              # SMART-NOTE- first: a successor filed under either stem resolves;
+              # the canonical stem wins when both prefixes carry the capture_id.
+              for candidate in list(Path(".naya/capture").glob("SMART-NOTE-*.json")) + list(Path(".naya/capture").glob("IB-SMART-NOTE-*.json")):
                   doc=json.loads(candidate.read_text(encoding="utf-8"))
                   if doc.get("capture_id")==successor_id:
                       successor_doc=doc
@@ -1362,7 +1364,9 @@ jobs:
               successor_id=str(capture.get("superseded_by_capture_id") or "").strip()
               assert successor_id and successor_id!=capture.get("capture_id")
               successor_doc=None
-              for candidate in Path(".naya/capture").glob("SMART-NOTE-*.json"):
+              # SMART-NOTE- first: a successor filed under either stem resolves;
+              # the canonical stem wins when both prefixes carry the capture_id.
+              for candidate in list(Path(".naya/capture").glob("SMART-NOTE-*.json")) + list(Path(".naya/capture").glob("IB-SMART-NOTE-*.json")):
                   doc=json.loads(candidate.read_text(encoding="utf-8"))
                   if doc.get("capture_id")==successor_id:
                       successor_doc=doc
