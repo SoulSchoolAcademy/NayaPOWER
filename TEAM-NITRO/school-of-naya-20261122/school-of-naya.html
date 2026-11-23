@@ -446,7 +446,6 @@
   #screen-slide .slide-boards{flex:1 1 0;min-width:0;height:100%}
   /* The words must fit whole — the board text caps at 21px on laptop so the longest board (Q16 A, 117 words) sits whole with room. */
   #screen-slide .slide-boards .ib-layer-body p{font-size:clamp(17px,1.35vw,21px);line-height:1.5}
-  #screen-slide .slide-boards .ib-n,#screen-slide .slide-boards .ib-n img{width:48px;height:48px}
   /* ROUND 6 — SHORT LAPTOP HEIGHTS (his verdict ~16:30 MST: boards whole, no scrolling down):
      at 1366x768 the boards are only 458 tall while the laptop type holds 18.4px, so
      G08 Board A overflowed 25px and Q16 Board A 108px, sliced by overflow:hidden.
@@ -459,7 +458,6 @@
     #screen-slide .slide-boards .ib-layer-body{padding:10px 20px 10px}
     #screen-slide .slide-boards .ib-layer-body .b-script{font-size:28px;line-height:1.15;margin-top:4px}
     #screen-slide .slide-boards .ib-layer-body p{line-height:1.28;margin:8px 0 8px}
-    #screen-slide .slide-boards .ib-n,#screen-slide .slide-boards .ib-n img{width:36px;height:36px}
   }
 }
 @media(max-width:900px){
@@ -469,7 +467,6 @@
   #screen-slide .pm-art{flex:none;width:100%;height:auto}
   /* Text boards: at least 9:16 tall at phone width, taller only when the words need it — never clipped, never scrolled inside. */
   #screen-slide .slide-boards{flex:none;width:100%;height:auto;min-height:calc((100vw - 68px)*16/9)}
-  #screen-slide .slide-boards .ib-n,#screen-slide .slide-boards .ib-n img{width:40px;height:40px}
   /* One board at a time when scrolling. */
   #screen-slide .panel-body{scroll-snap-type:y proximity}
   #screen-slide .pm-main>*{scroll-snap-align:start}
@@ -490,8 +487,8 @@
    red N leaves the flow (margin:auto split the leftover space differently per board, so the
    two Ns sat at different heights) and pins to the bottom at one fixed offset on both boards.
    Padding-bottom reserves exactly the N's room, so no text can ever run under it. */
-#screen-slide .slide-boards .ib-layer-body{justify-content:center;padding-bottom:78px}
-#screen-slide .slide-boards .ib-n{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);margin:0}
+#screen-slide .slide-boards .ib-layer-body{justify-content:center;padding-bottom:118px} /* ROUND 8 — OFFICIAL N (Shawn's order, live call 2026-11-23 ~11:16 MST): N is 80px now, reserve 80+22+16 */
+#screen-slide .slide-boards .ib-n{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);margin:0} /* ROUND 8: N up 8px (one grid step, "just a tad") — bottom:14px was the control: the N is pinned absolute to the board, so About's .slide-boards.triple margin rule cannot move it (no .triple class in School; margin:0 wins) */
 
 /* (3a) THE H1 STAYS. The daybar is sticky at the frame's top edge (var(--bw) is the stage's
    own top margin at every width), so the short scroll down to the footer never slides the
@@ -526,8 +523,8 @@
     #screen-cover .cover-saying{font-size:28px;margin-top:8px}
     #screen-cover .cover-n{width:52px;height:52px;margin-top:6px}
     #screen-cover .pm-cap{padding-top:8px}
-    /* (2b) Short heights: the N is 36px here (round 6), so reserve 36+14+16. */
-    #screen-slide .slide-boards .ib-layer-body{padding:10px 20px 66px}
+    /* (2b) Short heights: ROUND 8 — the N is 80px here now (round-6 36px shrink deleted), so reserve 80+22+16. */
+    #screen-slide .slide-boards .ib-layer-body{padding:10px 20px 118px}
   }
 }
 
@@ -558,8 +555,8 @@
   #screen-cover .cover-saying{font-size:20px;margin-top:4px}
   #screen-cover .cover-n{width:34px;height:34px;margin-top:2px}
   #screen-cover .pm-cap{padding-top:2px}
-  /* (2c) Mobile: the N is 40px here, so reserve 40+14+16. */
-  #screen-slide .slide-boards .ib-layer-body{padding-bottom:70px}
+  /* (2c) Mobile: ROUND 8 — the N is 60px here now, so reserve 60+22+16. */
+  #screen-slide .slide-boards .ib-layer-body{padding-bottom:98px}
 }
 </style>
 <style id="school-r73">
@@ -652,9 +649,10 @@
      85px over its 572 min-height) and its red N lands at 751-791, 30px under the
      arrows (band top 761). Trim the phone slide boards only: p line-height
      1.45 -> 1.3 (the short-laptop rule already uses 1.28) and padding-bottom
-     70 -> 58 (still 40 + 14 + 4 over the N, so no text can run under it). The
+     58 -> 98 (60 + 22 + 16 over the N, the R7 reserve law; the R7.5 trim to 58 was
+     sized for the 40px N and lets the longest board's text run 8px under the 60px N). The
      p stays 20px and the script 28px — the 25/19/17 scale is untouched. */
-  #screen-slide .slide-boards .ib-layer-body{padding-bottom:58px}
+  #screen-slide .slide-boards .ib-layer-body{padding-bottom:98px}
   #screen-slide .slide-boards .ib-layer-body p{line-height:1.3}
 }
 </style>
