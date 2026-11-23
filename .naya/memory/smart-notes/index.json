@@ -79858,6 +79858,39 @@
         "Knowledge",
         "System"
       ]
+    },
+    {
+      "smart_note_id": "SN-4708",
+      "intelligent_block_id": "IB-SMART-NOTE-20261123-sn4708-his-eye-plain-words",
+      "slug": "his-eye-plain-words",
+      "title": "His Eye, Plain Words",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/DESIGN/SN-4708/IB-SMART-NOTE-20261123-sn4708-his-eye-plain-words.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/DESIGN/SN-4708/IB-SMART-NOTE-20261123-sn4708-his-eye-plain-words.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/DESIGN/SN-4708/IB-SMART-NOTE-20261123-sn4708-his-eye-plain-words.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261123-sn4708-his-eye-plain-words.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-23",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-23T15:18:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-23",
+      "page_hash": "8bb708200e72b27982177f3a632694d9acc294cafd07dece6c7f5e1bb82272d8",
+      "content_hash": "451c7ef8c2b7e86dd4bf0ae42918f49f40e213c4301564f2c13903c314547fb8",
+      "one_line": "The human surface has one instrument and one language. The instrument is his eye, applied round after round to the live thing until the thing stops changing under it: every defect he names is real, a blind score is not a score, and when a seat's measurement and his eye disagree, the seat re-measures — it does not argue. Under that eye the surface settles: colours flow in one direction and the tiers ride the flow; one icon family, one jewel language, one visual mass everywhere; her portrait is her real portrait, the original bytes or nothing; and the page opens with the best lit by default. The language is plain words a stranger can repeat: imagine a new internet with a mind — one that knows you, remembers what matters, and runs your whole world for you — with the ledger said for what it is, an intelligent chain, not a blockchain, and the smallest figures checkable. She speaks in the first person, like a friend, her face beside the words, because people join a person, not a platform. The walk never makes them think: questions arrive with real answers half-written, examples are her own living pages, and the door is name, certificate, questions, pages — the deed signed before the price is ever shown. The founder's letter closes the page, ending on one question and one button. And nothing is shown to him that is not the current page, finished, aligned and verified.",
+      "topics": [
+        "Distillation",
+        "Design",
+        "Vision",
+        "Lesson",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -79868,5 +79901,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "ba03f20951cecc172858e0f7894b45513cc159d7fa450b80b7c2681425a17622"
+  "corpus_manifest_hash": "bfc2f5c03d4844d4bd7732eb1f442c9812fb61bb47262b5d1dd61e2119ad387b"
 }
