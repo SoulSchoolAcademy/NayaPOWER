@@ -562,6 +562,53 @@
   #screen-slide .slide-boards .ib-layer-body{padding-bottom:70px}
 }
 </style>
+<style id="school-r73">
+/* SCHOOL OF NAYA — ROUND 7.3: THE FOOTER OPENS A FRAMED PAGE (refinement, Shawn's order,
+   live call 2026-11-23 ~08:10 MST — SUPERSEDES the R7.2 expanding panel: "tapping the one
+   word opens a frame-like page — one page, inside the frame — where all those links show."
+   NOT a dropdown, NOT a menu, NOT an expanding panel.
+   ADDITIVE ONLY: one toggle word in the footer + one new screen + one style block + one tiny
+   script. The twelve links themselves are byte-identical — same buttons, same order, same
+   destinations — moved from the footer row onto the framed page. Only the presentation changes. */
+
+/* THE ONE WORD — a real object (Laws §1, §2, §4, §5): an obsidian pill, white 19px word,
+   royal-purple rim + glow, the whole thing lifts and lights on hover, depresses on tap. */
+#legalBar .legalbar-toggle{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:8px 32px;border-radius:999px;cursor:pointer;background:linear-gradient(135deg,#0b0c10,#050607);border:1.5px solid #8e24aa;color:#fff;font-family:"Cormorant Garamond",serif;font-size:19px;font-weight:700;letter-spacing:.02em;box-shadow:0 6px 18px rgba(0,0,0,.55),0 0 18px rgba(142,36,170,.35);transition:transform .3s ease,box-shadow .3s ease}
+#legalBar .legalbar-toggle:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.6),0 0 28px rgba(142,36,170,.65)}
+#legalBar .legalbar-toggle:active{transform:scale(.97)}
+#legalBar .legalbar-toggle:focus-visible{outline:2px solid #fff;outline-offset:3px}
+
+/* THE FRAMED LINKS PAGE — the twelve links as tappable objects in the page's own language:
+   obsidian pills, white 19px words, one deep color each as rim + glow, in spectrum flow,
+   never the same twice in a row (Laws §3.2, §4, §5). Two columns on desktop, one on phone.
+   The intro line mirrors the legal screen's own intro rule (#screen-legal .fp-legal-intro)
+   — which is scoped to #screen-legal and does not reach this screen — at 19px, the type
+   scale (the legal 14.5px is a carried pre-existing violation, never copied). */
+#screen-links .fp-legal-intro{text-align:center;color:#e8ebf5;font-size:19px;line-height:1.6;margin:2px auto 4px;max-width:640px}
+#screen-links .fp-legal-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;max-width:860px;margin:8px auto 0}
+#screen-links .fp-legal-link{display:flex;align-items:center;justify-content:center;min-height:56px;padding:12px 24px;border-radius:999px;cursor:pointer;background:linear-gradient(135deg,#0b0c10,#050607);border:1.5px solid var(--lc,#8e24aa);color:#fff;font-family:"Cormorant Garamond",serif;font-size:19px;font-weight:700;text-decoration:none;letter-spacing:.02em;box-shadow:0 6px 18px rgba(0,0,0,.55),0 0 18px rgba(var(--lcrgb,142,36,170),.35);transition:transform .3s ease,box-shadow .3s ease}
+#screen-links .fp-legal-link:nth-child(12n+1){--lc:#8e24aa;--lcrgb:142,36,170}
+#screen-links .fp-legal-link:nth-child(12n+2){--lc:#0f52ba;--lcrgb:15,82,186}
+#screen-links .fp-legal-link:nth-child(12n+3){--lc:#07925f;--lcrgb:7,146,95}
+#screen-links .fp-legal-link:nth-child(12n+4){--lc:#d4a017;--lcrgb:212,160,23}
+#screen-links .fp-legal-link:nth-child(12n+5){--lc:#c2410c;--lcrgb:194,65,12}
+#screen-links .fp-legal-link:nth-child(12n+6){--lc:#c62828;--lcrgb:198,40,40}
+#screen-links .fp-legal-link:nth-child(12n+7){--lc:#a21caf;--lcrgb:162,28,175}
+#screen-links .fp-legal-link:nth-child(12n+8){--lc:#3f51b5;--lcrgb:63,81,181}
+#screen-links .fp-legal-link:nth-child(12n+9){--lc:#0e7490;--lcrgb:14,116,144}
+#screen-links .fp-legal-link:nth-child(12n+10){--lc:#6d28d9;--lcrgb:109,40,217}
+#screen-links .fp-legal-link:nth-child(12n+11){--lc:#8e24aa;--lcrgb:142,36,170}
+#screen-links .fp-legal-link:nth-child(12n+12){--lc:#0f52ba;--lcrgb:15,82,186}
+#screen-links .fp-legal-link:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.6),0 0 28px rgba(var(--lcrgb,142,36,170),.65)}
+#screen-links .fp-legal-link:active{transform:scale(.97)}
+#screen-links .fp-legal-link:focus-visible{outline:2px solid #fff;outline-offset:3px}
+/* The way back — the legal close button's own classes, harvested verbatim; only its
+   centring is mine. */
+#screen-links .legalbar-back{display:flex;margin:16px auto 8px}
+@media(max-width:900px){
+  #screen-links .fp-legal-links{grid-template-columns:minmax(0,1fr)}
+}
+</style>
 </head>
 <body>
 <div class="royal-frame" aria-hidden="true"><div class="rf-et top"></div><div class="rf-es left"></div><div class="rf-es right"></div><div class="rf-rim"></div><div class="rf-corner tl"></div><div class="rf-corner tr"></div><div class="rf-corner bl"></div><div class="rf-corner br"></div><div class="rf-n top"></div></div>
@@ -690,11 +737,22 @@
       </div>
     </section>
 
+    <!-- ======= LINKS — the footer, as one framed page (ROUND 7.3) ======= -->
+    <section class="screen" id="screen-links">
+      <div class="panel-body">
+        <div class="showcase legal-showcase">
+          <p class="fp-legal-intro">Twelve pages, in plain words &mdash; tap one to open it.</p>
+          <nav class="fp-legal-links" id="legalBarNav" aria-label="Legal pages"><button class="fp-legal-link" type="button" data-legal-open="l01">How Naya Works</button><button class="fp-legal-link" type="button" data-legal-open="l02">Naya Code</button><button class="fp-legal-link" type="button" data-legal-open="l03">Naya Wisdom</button><button class="fp-legal-link" type="button" data-legal-open="l04">Smart Notes</button><button class="fp-legal-link" type="button" data-legal-open="l05">The four feeds + daily intelligence report</button><button class="fp-legal-link" type="button" data-legal-open="l06">Smart Match, Smart Mail, Smart Calendar</button><button class="fp-legal-link" type="button" data-legal-open="l07">Collective chain + CIS</button><button class="fp-legal-link" type="button" data-legal-open="l08">Naya note vs smart post</button><button class="fp-legal-link" type="button" data-legal-open="l09">Your pages, your links, your points</button><button class="fp-legal-link" type="button" data-legal-open="l10">All in one &mdash; Naya, the interface</button><button class="fp-legal-link" type="button" data-legal-open="l11">Smart Value &mdash; how you get paid</button><button class="fp-legal-link" type="button" data-legal-open="l12">What it is NOT, how to start, the whole picture</button></nav>
+          <button class="naya-btn naya-btn--secondary naya-btn--sm legalbar-back" id="legalBarBack" type="button">Close &#9670; Back to the School</button>
+        </div>
+      </div>
+    </section>
+
   </div>
 </div>
 
 <footer class="legalbar" id="legalBar">
-  <nav class="fp-legal-links" aria-label="Legal pages"><button class="fp-legal-link" type="button" data-legal-open="l01">How Naya Works</button><button class="fp-legal-link" type="button" data-legal-open="l02">Naya Code</button><button class="fp-legal-link" type="button" data-legal-open="l03">Naya Wisdom</button><button class="fp-legal-link" type="button" data-legal-open="l04">Smart Notes</button><button class="fp-legal-link" type="button" data-legal-open="l05">The four feeds + daily intelligence report</button><button class="fp-legal-link" type="button" data-legal-open="l06">Smart Match, Smart Mail, Smart Calendar</button><button class="fp-legal-link" type="button" data-legal-open="l07">Collective chain + CIS</button><button class="fp-legal-link" type="button" data-legal-open="l08">Naya note vs smart post</button><button class="fp-legal-link" type="button" data-legal-open="l09">Your pages, your links, your points</button><button class="fp-legal-link" type="button" data-legal-open="l10">All in one &mdash; Naya, the interface</button><button class="fp-legal-link" type="button" data-legal-open="l11">Smart Value &mdash; how you get paid</button><button class="fp-legal-link" type="button" data-legal-open="l12">What it is NOT, how to start, the whole picture</button></nav>
+  <button class="legalbar-toggle" id="legalBarToggle" type="button" aria-controls="screen-links">Naya Code</button>
 </footer>
 
 <script>
@@ -1165,6 +1223,15 @@ document.querySelectorAll('.fp-legal-page').forEach(function(panel){
     show(lastScreen === 'legal' ? 'cover' : lastScreen);
   });
 });
+</script>
+
+<script>
+/* SCHOOL OF NAYA — ROUND 7.3: the footer opens a framed page. One word, one tap: the
+   links page opens inside the frame; the Back button returns to the School page.
+   The tap scrolls the window to the top so the page opens at its top, and Back does
+   the same — the footer sits at the page bottom, so without it the new page would
+   open out of sight. Nothing else. */
+(function(){var t=document.getElementById('legalBarToggle'),b=document.getElementById('legalBarBack'),scr=document.getElementById('screen-links');if(!t||!b||!scr||typeof show!=='function'||typeof setBar!=='function'||typeof activeScreenName!=='function')return;screens.links=scr;var back='cover';t.addEventListener('click',function(){back=activeScreenName();if(back==='legal'||back==='links')back='cover';show('links');setBar('Naya Code',logoSlot(),portraitSlot(PORTRAITS[0],0));window.scrollTo(0,0);});b.addEventListener('click',function(){show(back);window.scrollTo(0,0);});})();
 </script>
 </body>
 </html>
