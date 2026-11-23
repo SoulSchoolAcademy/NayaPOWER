@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4670",
+ "intelligence": {
+  "title": "The Website Is Not Agent-Ready Yet",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4670-website-not-agent-ready",
+  "smart_note_id": "SN-4670",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4670/IB-SMART-NOTE-20261122-sn4670-website-not-agent-ready.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of it like a house with a beautiful sign that says \"Guests welcome\" — but no doorbell, no door, and no way in. The search bots can peek through the window (robots.txt lets them read), but an AI that wants to come in and work the house has no door to use. The promise is on the sign — \"Plug in your AI\", first in the pricing — and the door is the build that is still missing.",
+  "simple_view": "The website looks ready, but it isn't! The agent files are just the portal page wearing a costume! There's no real door for an AI to come in and work! The door still has to be built!",
+  "grandma_view": "It's like this, love — the sign says guests welcome, dear, but there's no doorbell and no door! The agent files are just the portal page in disguise, love! An AI can't come in and work yet, dear — the door still has to be built!",
+  "naya_view": "A 200 is not a file. /llms.txt and /.well-known/agent.json answer 200 with the portal page in the body — a catch-all wearing the file's name. Agent-ready means a real descriptor, a real API surface, a real door an outside AI can walk through and operate — and none of that exists today. The promise is real (\"Plug in your AI\", first in pricing) and the search door is open (AI search bots allowed in robots.txt) — but the connect door is the missing piece, and it is built after the open rounds land, never before. Never claim readiness from a status code; read the body.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4670",
+   "title": "The Website Is Not Agent-Ready Yet",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4670/IB-SMART-NOTE-20261122-sn4670-website-not-agent-ready.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4670/IB-SMART-NOTE-20261122-sn4670-website-not-agent-ready.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

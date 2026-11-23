@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4656",
+ "intelligence": {
+  "title": "Distilled",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4656-distilled",
+  "smart_note_id": "SN-4656",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4656/IB-SMART-NOTE-20261122-sn4656-distilled.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of it like a picture framer with three frames on the wall. A big family portrait gets the grand carved frame. A page of a letter gets the clean reading frame. You would never put the letter in the grand frame or the portrait in the reading frame — the frame fits the moment. That is what we do with pages: the agreement frame carries the big story moments, the moments that have to feel important; the calendar frame carries the long lessons, the text-heavy teaching inside the software, where the reading has to be easy. The frame is chosen by what the moment is, not by habit and not by rebuilding something new each time. Build the frame once, done right, then use it again and again — only the middle changes.",
+  "simple_view": "Imagine you have three special frames for your drawings! The big gold one is for your most important picture — like your motto, the words that say who you are! The neat one with lots of room is for your long stories with many words, like lessons! You pick the frame that fits what you made! And you never have to build a new frame — you use the good ones again and again!",
+  "grandma_view": "It's like this, love — you have your best frames kept safe, dear, and you choose the right one for the moment! The beautiful grand frame is for the big things — a course cover, your motto, the words that say who you are! The plain comfortable frame is for the long reading, the lessons with many words inside the software! You pick by the moment, love — and you never build a new frame when a good one is waiting on the shelf!",
+  "naya_view": "Keep the library, choose by the moment, never rebuild. The agreement frame is the frame for big story moments: course covers, the motto, the words that must land as important. The calendar frame is the frame for text-heavy lessons inside the software, where the reading must stay easy across many words. The empty-middle frame holds special featured moments. One build done right, then clone and repeat — swap only the centre. A page that does not use the existing frame is not a build, it is waste. The choice is the craft: read the moment first, then take its frame from the library.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4656",
+   "title": "Distilled",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4656/IB-SMART-NOTE-20261122-sn4656-distilled.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4656/IB-SMART-NOTE-20261122-sn4656-distilled.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

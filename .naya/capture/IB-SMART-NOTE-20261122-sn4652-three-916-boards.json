@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4652",
+ "intelligence": {
+  "title": "Three 9:16 Boards — The Universal Format",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4652-three-916-boards",
+  "smart_note_id": "SN-4652",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4652/IB-SMART-NOTE-20261122-sn4652-three-916-boards.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of it like a phone in your hand. A board is three tall panels side by side on a laptop — picture, words, picture — and the next one flips it around: words, picture, words. On your phone you just scroll and each panel fills the whole screen, one at a time, nothing squeezed, nothing cut off. The old wide layout is gone — we're not holding it, we're replacing it. And the pictures have to be made for the phone first, tall, not squeezed down from something wide. Your own phone video already fits perfect, because it's already the right shape.",
+  "simple_view": "Three tall boards, not two! On a laptop they stand side by side — picture, words, picture! On a phone you scroll and each one fills the whole screen! Nothing is cut off and nothing scrolls inside a little box! Your own phone pictures fit perfect because they are already tall like the boards!",
+  "grandma_view": "It's like this, love — three tall boards side by side, dear, picture, words, picture, and the next one turns around, words, picture, words! On your phone, love, you just scroll and each board fills the whole screen, nothing squeezed, nothing cut off! The old wide way is gone, dear — we're not holding it, we're replacing it! And your own phone pictures fit perfect, love, because they're already the right tall shape!",
+  "naya_view": "Build every presenting board as three 9:16 boards. On laptop, inside the frame, three across — image, text, image; the next slide alternates text, image, text. On mobile, one board at a time, full screen, scroll between them. Never scroll inside a frame; never cut an image off; never narrow a board to fit a wrong shape. Never write or say \"holding the 16:9\" — the 16:9 layout is being replaced, not held, and the phrase is dead. The School boards wait for the 18 new phone-first images — never build them on reused wide images. This format is universal: About, Skills, School, every page that presents. A citizen's own mobile video or image already fits perfect — the format serves what they already make.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4652",
+   "title": "Three 9:16 Boards — The Universal Format",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4652/IB-SMART-NOTE-20261122-sn4652-three-916-boards.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4652/IB-SMART-NOTE-20261122-sn4652-three-916-boards.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

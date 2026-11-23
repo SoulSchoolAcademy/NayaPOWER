@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4667",
+ "intelligence": {
+  "title": "The First-Third Rule — Text Left, 16:9 Right",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4667-first-third-rule",
+  "smart_note_id": "SN-4667",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4667/IB-SMART-NOTE-20261122-sn4667-first-third-rule.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of it like a book. You always start on the left page — the words — and then the picture joins on the right. On your phone, the first thing you see is the words — the thing you read — and then the picture comes in beside it. If the picture came first, you'd be looking at a picture before you knew what it was about. So: words on the left, always first; picture on the right, joining after.",
+  "simple_view": "The words ALWAYS go on the left, first! The picture goes on the right, after! On your phone you see the words first — the thing you read! — and then the picture joins in! Always that way!",
+  "grandma_view": "It's like this, love — the words ALWAYS go on the left, dear, first! The picture goes on the right, after! On your phone you see the words first, love — the thing you read! — and then the picture joins in! Always that way, dear!",
+  "naya_view": "Put the text in the first third, on the left, always. The first third plays first — the citizen reads the words before anything else joins. If a 16:9 ever appears, it goes to the right, and the other two thirds join into it after the first third has played. Never reverse the order: never the picture first and the words after, never the 16:9 on the left. The layout reads the way the citizen reads — left to right, words first — on laptop and on mobile alike. This is the standard for About, Skills, and Memberships.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4667",
+   "title": "The First-Third Rule — Text Left, 16:9 Right",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4667/IB-SMART-NOTE-20261122-sn4667-first-third-rule.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4667/IB-SMART-NOTE-20261122-sn4667-first-third-rule.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

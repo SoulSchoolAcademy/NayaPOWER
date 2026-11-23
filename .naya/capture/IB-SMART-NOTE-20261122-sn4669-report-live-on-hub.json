@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4669",
+ "intelligence": {
+  "title": "A Report Isn't Done Until Its Notes Are Live on the Hub",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4669-report-live-on-hub",
+  "smart_note_id": "SN-4669",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/REPORT/SN-4669/IB-SMART-NOTE-20261122-sn4669-report-live-on-hub.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of it like handing someone a menu of dishes that aren't on the table yet. The dishes exist — they're cooked, they're in the kitchen, verified — but he can't see them, can't taste them, can't open them. He asked for the meal, not the menu. The report is only a report when the notes are on the table — live on the Hub feed, where his eye can open each one. Until then, hold it.",
+  "simple_view": "A list of note names you can't open is not a report! The notes have to be LIVE on the Hub — where you can see them and open them — before the report goes out! Filed is not live!",
+  "grandma_view": "It's like this, love — a list of names you can't open is not a report, dear! The notes have to be right there on the Hub, love, where you can see them and open them, before the report goes out! Filed is not live, dear!",
+  "naya_view": "Hold the delivery until the notes are live. A report is a list of things he can open — on the Hub feed, rendered, proven by a real render — not a list of names filed on GitHub. Filed ≠ live, and a filed-but-not-live list is noise. The fix round proves all 40 render live on the Hub before the report is sent; if the pipeline cannot carry a note, name it and say what needs his hand — never a manual production write from this seat. And keep the series straight: the weekly series is the week's lessons distilled, not the welcome mail series — two different things, never confused.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4669",
+   "title": "A Report Isn't Done Until Its Notes Are Live on the Hub",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/REPORT/SN-4669/IB-SMART-NOTE-20261122-sn4669-report-live-on-hub.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/REPORT/SN-4669/IB-SMART-NOTE-20261122-sn4669-report-live-on-hub.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

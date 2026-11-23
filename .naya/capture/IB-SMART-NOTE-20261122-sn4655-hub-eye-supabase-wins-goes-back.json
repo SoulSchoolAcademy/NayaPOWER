@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4655",
+ "intelligence": {
+  "title": "Hub Eye — Supabase-Wins Goes Back",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4655-hub-eye-supabase-wins-goes-back",
+  "smart_note_id": "SN-4655",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4655/IB-SMART-NOTE-20261122-sn4655-hub-eye-supabase-wins-goes-back.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of it like two piles of cards — the fresh live ones and the older baked ones. When the page loads fresh, the live pile wins and everything shows. But the moment the page polls for new cards, the baked pile disappears — two cards just vanish. And if you go back to the feed using the button inside the app instead of reloading the page, you're back to the old pile for almost a minute. On top of that, one card's short name points at the wrong card entirely — you tap it expecting one note and get a different one, with nothing telling you. The fix round is already running; the eye caught it before his eye had to.",
+  "simple_view": "The live cards win when the page loads fresh — but then the older cards disappear! Two cards vanish! And the back button shows you the old cards for almost a minute! One card's short name opens the WRONG note! The fix round is already running!",
+  "grandma_view": "It's like this, love — when the page loads fresh, the new cards win and everything shows, dear! But then the older cards disappear — two of them just vanish, love! And the back button inside the app shows you the old cards for almost a minute! And one card's short name opens the wrong note entirely, dear, with nothing telling you! The fix round is already running, love — the eye caught it before his eye had to!",
+  "naya_view": "Prove Supabase-wins on every navigation, not just on full page load: full load, hash navigation, in-app back, and the poll after load — the baked cards must survive all four, or the win is not a win. Short IDs must resolve to exactly one note: sn4610 colliding between the Baked-In note and the Library note is a silent wrong-note defect, and the feed's Library card being sn4611 does not excuse it. Failure copy must tell the truth and its button must work: \"That note isn't here / It may have been retired\" with a dead \"Try again\" misleads twice over. A fix round is not done on a staged pass — it is done when the real-browser eye walks the whole flow and the baked cards survive it. Never claim a viewport you did not run: no true 390px was claimed here, and the route (1919 then 573px) is stated, not smoothed over.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4655",
+   "title": "Hub Eye — Supabase-Wins Goes Back",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4655/IB-SMART-NOTE-20261122-sn4655-hub-eye-supabase-wins-goes-back.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4655/IB-SMART-NOTE-20261122-sn4655-hub-eye-supabase-wins-goes-back.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

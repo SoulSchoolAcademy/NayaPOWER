@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4663",
+ "intelligence": {
+  "title": "The Guard Blesses an Instant, Not a Window",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4663-guard-blesses-an-instant",
+  "smart_note_id": "SN-4663",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4663/IB-SMART-NOTE-20261122-sn4663-guard-blesses-an-instant.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of it like two people reaching for the same parking space. You look, the space is empty, you turn the wheel — and in that second, another car pulls in. Looking once is not enough; you have to look again after you park. The guard looks once. Now the loop looks twice: once before filing, once after — and if the second look finds a collision, the later car moves, the same hour, no waiting.",
+  "simple_view": "The guard says \"this number is free!\" — but another friend can take it one minute later! So now we check TWICE — once before we file, and once after! If someone took our number in between, we move to a new number right away!",
+  "grandma_view": "It's like this, love — the guard says the number is free, dear, but another little car can slip in one minute later! So now we check twice, love — once before, and once after! And if someone took our number, dear, we move to a new one right away, no waiting!",
+  "naya_view": "Re-run the guard after every filing batch. The guard's blessing is an instant: it reads the live tree and prints the next free number, but another lane can file that number before your PUT lands. The per-path 404 pre-check cannot catch a same-number file in another category. After the PUTs verify, run the guard again — a batch is done only when the post-filing guard runs clean. If it reports a duplicate, the later filing moves the same run: take the next free number, file at the new path, update any paired note in place, delete the old capture, verify 404, and re-run the guard until it is clean. Never leave a duplicate standing for the next run — two notes sharing a number break the feed and the distillation machine, and the breakage compounds every hour it stands.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4663",
+   "title": "The Guard Blesses an Instant, Not a Window",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4663/IB-SMART-NOTE-20261122-sn4663-guard-blesses-an-instant.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4663/IB-SMART-NOTE-20261122-sn4663-guard-blesses-an-instant.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

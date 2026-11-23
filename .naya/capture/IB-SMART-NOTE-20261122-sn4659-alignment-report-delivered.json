@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4659",
+ "intelligence": {
+  "title": "The Alignment Report Is Delivered — Round-4 Leg 1 PASS",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4659-alignment-report-delivered",
+  "smart_note_id": "SN-4659",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4659/IB-SMART-NOTE-20261122-sn4659-alignment-report-delivered.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of it like a proofread. Eighteen boards, each with a picture and two panels of words — and someone read every word against the original, looked at every picture against his photo, and checked that the picture and the words tell the same story. Eleven boards were perfect as they stood, six needed the words shaped a little to fit the picture, and one picture is cut off at the edge — the stars are sliced in half — and no amount of rewording fixes a cut picture, so that one gets remade. The checker caught three wrong sentences in the report itself, and those were fixed too — the report is honest now, not just the boards.",
+  "simple_view": "The big check is done! All 18 pictures and all 36 boards of words were checked — eleven were perfect, six needed a little word-fixing, and one picture is cut off at the edge so it has to be made again! The words are all perfect and the pictures all look like Naya!",
+  "grandma_view": "It's like this, love — the big check is done, dear! All eighteen pictures and all thirty-six boards of words were read and looked at, love — eleven were perfect just as they were, six needed the words shaped a little, and one picture is cut off at the edge, dear, so that one gets made again! The words are perfect and every picture looks like Naya, love!",
+  "naya_view": "Deliver the instruction set, then prove it. The alignment report is the proof: 36 text boards word-perfect, 11 aligned, 6 molded, 1 flagged — and the flagged one is named plainly with its remake words ready. When a checker finds false sentences in the report itself, verify them first-hand and correct the report — the record must be as true as the boards. A cropped image is a picture problem: remake the picture, do not rewrite the words to hide it. The longest board gets room in the build, never smaller words. The follow-on leg — the page rebuild — waits for the round-3 checker verdict, not for a guess.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4659",
+   "title": "The Alignment Report Is Delivered — Round-4 Leg 1 PASS",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4659/IB-SMART-NOTE-20261122-sn4659-alignment-report-delivered.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4659/IB-SMART-NOTE-20261122-sn4659-alignment-report-delivered.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

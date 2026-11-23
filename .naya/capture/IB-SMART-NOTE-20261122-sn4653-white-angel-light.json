@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4653",
+ "intelligence": {
+  "title": "White Angel Light — No Pink Edge",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4653-white-angel-light",
+  "smart_note_id": "SN-4653",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4653/IB-SMART-NOTE-20261122-sn4653-white-angel-light.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of it like snow light around a picture frame. The light around the edge is white and it shimmers, like Christmas lights — it makes the picture inside glow, without changing its colours. Pink light would tint everything pink, and his eye catches that even when the numbers say otherwise. White light just lifts it. The frame is there to make the middle beautiful, not to be the star itself.",
+  "simple_view": "The light around the frame is white, like snow! It shimmers like Christmas lights, like an angel! Not pink — pink would colour everything pink! The white light makes the picture inside glow!",
+  "grandma_view": "It's like this, love — the light around the frame is beautiful white light, dear, like snow, shimmering like Christmas lights, an angel light! Not pink, love — pink would tint everything, and his eye catches that straight away! The white light just lifts the picture inside, dear, and lets it shine!",
+  "naya_view": "Light every frame's edge white — actual white light around the edge, shimmering, with volume, never a flat white line and never pink, never purple, never any colour at all. The edge light complements the text or the image in the middle of the board; it lifts, it never tints, it never competes. Check every board against the eye: if the edge reads as any colour, it goes back — the bytes saying white is not proof, his eye saying white is. This rides with the emblem standard: real light with volume, real materials, nothing flat.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4653",
+   "title": "White Angel Light — No Pink Edge",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4653/IB-SMART-NOTE-20261122-sn4653-white-angel-light.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4653/IB-SMART-NOTE-20261122-sn4653-white-angel-light.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

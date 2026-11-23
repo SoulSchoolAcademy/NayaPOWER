@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4666",
+ "intelligence": {
+  "title": "Three Text Boards — The About, Skills, Memberships Standard",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4666-three-text-boards-standard",
+  "smart_note_id": "SN-4666",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4666/IB-SMART-NOTE-20261122-sn4666-three-text-boards-standard.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of it like a menu. One big board with everything on it looks fine on your phone, but on a laptop there's a big empty space underneath it — half the board is air. Three smaller boards side by side, each explaining one thing, fill the space nicely on a laptop and stack beautifully on a phone. And if you want a picture instead of words on any board, you just tap it and swap it — picture, video, whatever you like. The header folds away after a few seconds so everything fits — he saw it work himself.",
+  "simple_view": "Three boards of words instead of one big board! One big board leaves a big empty space on a laptop! Three boards fill the space nicely — on a laptop AND on a phone! And you can tap any board and swap it for a picture or a video!",
+  "grandma_view": "It's like this, love — three boards of words instead of one big board, dear! One big board leaves a big empty space on a laptop! Three boards fill the space nicely, love — on a laptop AND on a phone! And you can tap any board, dear, and swap it for a picture or a video!",
+  "naya_view": "Build About, Skills, and Memberships as three text boards per slide. Three boards explain each thing, in thirds, with room for the text to display nicely. Never a single big board: it leaves a big empty space underneath on a laptop, and a standard that works on mobile but not on laptop is not a standard. Make every board tap-to-swap: a member clicks any board and swaps it for an image or a video. Keep the header fold-away — he confirmed it working with his own eye: after a few seconds the header scrolls away and everything fits. Do not apply this to the School: the School keeps image-in-the-middle with two text boards.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4666",
+   "title": "Three Text Boards — The About, Skills, Memberships Standard",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4666/IB-SMART-NOTE-20261122-sn4666-three-text-boards-standard.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4666/IB-SMART-NOTE-20261122-sn4666-three-text-boards-standard.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

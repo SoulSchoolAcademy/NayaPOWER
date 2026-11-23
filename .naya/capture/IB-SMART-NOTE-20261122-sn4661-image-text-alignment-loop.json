@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4661",
+ "intelligence": {
+  "title": "The Image–Text Alignment Loop",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4661-image-text-alignment-loop",
+  "smart_note_id": "SN-4661",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4661/IB-SMART-NOTE-20261122-sn4661-image-text-alignment-loop.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of it like a picture book. You open it and the picture already tells you the story — you don't need someone standing next to you explaining it. If the picture needs the words to make sense, the picture is wrong. So you write the words first, perfectly, then you paint the picture the words describe, then you check they match, then you shape the words to the picture — back and forth until the picture and the words are telling one story, together.",
+  "simple_view": "The picture has to tell the story all by itself! If you look at just the picture and you don't know what it's about, it's the wrong picture! First you write the perfect words, then you make the picture that matches the words, then you check they match, then you fix the words to match the picture — round and round until the picture and the words are one story!",
+  "grandma_view": "It's like this, love — the picture must tell the story all by itself, dear! If you look at just the picture and you can't feel what it's about, love, the picture is wrong! First the perfect words, dear, then the picture that matches the words, then you check them together, then you shape the words to the picture — round and round, love, until the picture and the words are one story!",
+  "naya_view": "Make every image tell its story alone. Start with word-perfect text. Create the image that matches what the board says. Check the image is aligned — a stranger looking at the picture alone must already feel what the words say. Then mold the text to match the image. Repeat the loop — text, image, align image, align text to image — until image and text are one story. Never build an image without its per-board instruction set: what the board will say, plus what the image must display to match it. A beautiful image that needs the text to explain it is a miss, not a pass.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4661",
+   "title": "The Image–Text Alignment Loop",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4661/IB-SMART-NOTE-20261122-sn4661-image-text-alignment-loop.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4661/IB-SMART-NOTE-20261122-sn4661-image-text-alignment-loop.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

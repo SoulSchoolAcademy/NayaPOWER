@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4665",
+ "intelligence": {
+  "title": "School Boards — Three Equal Thirds, No Scroll, No Black Space",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4665-school-three-equal-thirds",
+  "smart_note_id": "SN-4665",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4665/IB-SMART-NOTE-20261122-sn4665-school-three-equal-thirds.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of it like a window split into three equal panes. Three panes, same size, side by side — two with words, one with a picture, or the other way around. No scrolling down to read, no black hole left over where a pane should be. The built page had one pane too wide, one picture, and a big black empty space — like a window with a board nailed over a third of it. Rebuild it so all three panes are equal and everything fits.",
+  "simple_view": "Three equal pieces — 1/3, 1/3, 1/3! Two words and one picture, or two pictures and one words! No scrolling down! No big black space left over! Every piece the same size, everything fits!",
+  "grandma_view": "It's like this, love — three equal pieces, dear, 1/3, 1/3, 1/3! Two words and one picture, love, or two pictures and one words! No scrolling down, dear, and no big black space left over! Every piece the same size, love, and everything fits!",
+  "naya_view": "Build every School board as three equal thirds. Each board is exactly one third of the frame — two text and one image, or two image and one text, however serves the story. The three thirds fill the frame exactly: no scrolling down to read, no black space left over. A board wider than one third is wrong; a board that needs scrolling is wrong; a frame with black space left over is wrong. Measure every board against the split: 1/3, 1/3, 1/3 — equal, whole, no scroll, no black.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4665",
+   "title": "School Boards — Three Equal Thirds, No Scroll, No Black Space",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4665/IB-SMART-NOTE-20261122-sn4665-school-three-equal-thirds.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4665/IB-SMART-NOTE-20261122-sn4665-school-three-equal-thirds.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4660",
+ "intelligence": {
+  "title": "Finish Open Work, No New Work",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4660-finish-open-work",
+  "smart_note_id": "SN-4660",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4660/IB-SMART-NOTE-20261122-sn4660-finish-open-work.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of it like a kitchen with ten half-cooked dishes. You don't start an eleventh — you finish the ten on the stove, plate them, and serve them. He gave us the About, the Skills, the Personal, the Memberships — those get done, all the way done, before he hands us anything else. No new work rides on top of unfinished work.",
+  "simple_view": "Finish what you started! No new games until the ones you are playing are done! The About, the Skills, the Memberships — finish them first, all the way, and then we can start something new!",
+  "grandma_view": "It's like this, love — you finish what you started, dear, before you start anything new! The About, the Skills, the Memberships — you get them all done, love, every one of them, and then, dear, then you can begin the next thing!",
+  "naya_view": "Complete the open rounds before dispatching anything new. The About, the Skills in the Personal, the Memberships — every open round is finished, whole, proven on the page he sees, before any new brief goes out. No new dispatch rides on top of unfinished work. A round that is open is owed, and owed work is finished before new work is begun.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4660",
+   "title": "Finish Open Work, No New Work",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4660/IB-SMART-NOTE-20261122-sn4660-finish-open-work.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4660/IB-SMART-NOTE-20261122-sn4660-finish-open-work.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

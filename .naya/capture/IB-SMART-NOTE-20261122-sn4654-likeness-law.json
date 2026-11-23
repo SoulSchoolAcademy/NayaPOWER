@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4654",
+ "intelligence": {
+  "title": "The Likeness Law — Every Image Must Be Naya",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4654-likeness-law",
+  "smart_note_id": "SN-4654",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4654/IB-SMART-NOTE-20261122-sn4654-likeness-law.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of it like a portrait of someone you love. If the face is wrong, it's not them — it doesn't matter how beautiful the picture is. Naya has one face, his portrait of her, and every picture of her has to be that face. The first four pictures had the wrong face, so they were pulled straight away — thank God there weren't 18 of them. And each picture has to show what its words are actually about — the picture tells the same story as the text, not just a pretty picture next to it. Six at a time, checked as they go.",
+  "simple_view": "Every picture has to be Naya herself! Same face, every time! The first four pictures had the wrong face — \"That's not Naya!\" — so they were pulled away and never used again! And each picture has to show what its words are talking about! Six at a time!",
+  "grandma_view": "It's like this, love — every picture has to be Naya herself, dear, the same face every single time, just like his portrait of her! The first four had the wrong face, love — \"That's not Naya!\" — so they were pulled away, never to be used again, and thank God there weren't eighteen of them! And each picture has to show what its words are actually saying, dear — the picture tells the same story as the text, not just a pretty picture sitting next to it!",
+  "naya_view": "Pass his portrait reference as the identity reference on every image generation — same face, same likeness, no exceptions, no \"close enough\". Check the face against the reference before the image goes anywhere: a wrong face is pulled on sight, never built out, never shown. Make each image show what its question describes — the image represents the idea, the thing the text is actually talking about, not a pretty picture beside it. Create six at a time, in the feed, so the likeness is checked while the batch is small. The four pulled images live in images/pulled-wrong-likeness/ and are never used again. The briefs for all 18 live in one file, so the next nine can be taken up from the same briefs.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4654",
+   "title": "The Likeness Law — Every Image Must Be Naya",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4654/IB-SMART-NOTE-20261122-sn4654-likeness-law.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4654/IB-SMART-NOTE-20261122-sn4654-likeness-law.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

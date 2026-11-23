@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4657",
+ "intelligence": {
+  "title": "The Live",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4657-the-live",
+  "smart_note_id": "SN-4657",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4657/IB-SMART-NOTE-20261122-sn4657-the-live.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of it like two piles of cards — the fresh live ones and the older baked ones. When the page loads fresh, the live pile wins and everything shows. But the moment the page polls for new cards, the baked pile disappears — two cards just vanish. And if you go back to the feed using the button inside the app instead of reloading the page, you're back to the old pile for almost a minute. On top of that, one card's short name points at the wrong card entirely — you tap it expecting one note and get a different one, with nothing telling you. The fix round is already running; the eye caught it before his eye had to.",
+  "simple_view": "Every picture has to be Naya herself! Same face, every time! The first four pictures had the wrong face — \"That's not Naya!\" — so they were pulled away and never used again! And each picture has to show what its words are talking about! Six at a time!",
+  "grandma_view": "It's like this, love — when the page loads fresh, the new cards win and everything shows, dear! But then the older cards disappear — two of them just vanish, love! And the back button inside the app shows you the old cards for almost a minute! And one card's short name opens the wrong note entirely, dear, with nothing telling you! The fix round is already running, love — the eye caught it before his eye had to!",
+  "naya_view": "Light every frame's edge white — actual white light around the edge, shimmering, with volume, never a flat white line and never pink, never purple, never any colour at all. The edge light complements the text or the image in the middle of the board; it lifts, it never tints, it never competes. Check every board against the eye: if the edge reads as any colour, it goes back — the bytes saying white is not proof, his eye saying white is. This rides with the emblem standard: real light with volume, real materials, nothing flat.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4657",
+   "title": "The Live",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4657/IB-SMART-NOTE-20261122-sn4657-the-live.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4657/IB-SMART-NOTE-20261122-sn4657-the-live.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4658",
+ "intelligence": {
+  "title": "18 Images, 36 Text Boards",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4658-18-images-36-text-boards",
+  "smart_note_id": "SN-4658",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4658/IB-SMART-NOTE-20261122-sn4658-18-images-36-text-boards.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of it like a gallery wall. Eighteen pictures, one for each idea — and each picture gets two plaques beside it, one on each side, so there is room to really explain it. The picture usually sits in the middle with words on both sides, but sometimes the story reads better with the picture on the left or the right — whatever serves the story best, and the brief for that board says which way it goes.",
+  "simple_view": "Eighteen pictures — one for each idea! And every picture gets TWO boards of words, one on each side — that's 36 boards of words! The picture usually sits in the middle, but sometimes it goes on the side if the story reads better that way!",
+  "grandma_view": "It's like this, love — eighteen pictures, dear, one for each idea, and every picture gets two boards of words, one on each side, love — 36 boards altogether, so there's room to tell the whole story! The picture usually sits in the middle, dear, but sometimes it moves to the side if the story reads better that way!",
+  "naya_view": "Build the School as 18 images with 36 text boards. One image per area — eighteen, not nine. Each image gets two text boards, one on either side, so one image and two pieces of text explain it, with room to breathe. Image in the middle by default; vary the arrangement per board however serves the story best — image-text-text, text-image-text, or text-text-image — and write each board's pattern into its brief. Inside the three-9:16-boards format: three across on laptop, one at a time full screen on mobile.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4658",
+   "title": "18 Images, 36 Text Boards",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4658/IB-SMART-NOTE-20261122-sn4658-18-images-36-text-boards.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4658/IB-SMART-NOTE-20261122-sn4658-18-images-36-text-boards.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

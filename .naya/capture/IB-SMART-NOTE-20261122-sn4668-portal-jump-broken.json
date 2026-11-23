@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4668",
+ "intelligence": {
+  "title": "nayanet.app — The Root Is Fine, The Jump Is Broken",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4668-portal-jump-broken",
+  "smart_note_id": "SN-4668",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4668/IB-SMART-NOTE-20261122-sn4668-portal-jump-broken.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by tools/check_door_obligation.py --fix on 2026-11-22. No runtime provenance invented.",
+  "ingested_at": "2026-11-22",
+  "essence": "",
+  "human_view": "Think of it like a front door that works perfectly — you open it, you're in the hall, everything is where it should be — but the button that says \"take me back to my room\" drops you in the wrong room. You don't rebuild the front door. You fix the button. His screenshot proved the front door is fine: the portal loads first, the agreement is just a small link at the bottom. The \"Jump back in\" button is the thing that goes to the wrong place.",
+  "simple_view": "The front door works fine! The portal loads first! It's the \"Jump back in\" button that's broken — it takes you to the wrong place! Fix the button, not the door!",
+  "grandma_view": "It's like this, love — the front door works fine, dear! The portal loads first! It's the \"Jump back in\" button that's broken, love — it takes you to the wrong place! Fix the button, dear, not the door!",
+  "naya_view": "Fix the jump, not the root. The portal loads first — verified by his screenshot and by live curl (HTTP 200, \"Main entrance\"). The agreement sits only as the small bottom link, where it belongs. The defect is \"Jump back in\": it takes him to some other page. Aim the fix round at the jump destination — where the button goes — and verify it lands on the portal's own world. Never rebuild a part his eye has proven working: the root stays exactly as it is. And when a first report names the wrong defect, correct the record in the same hour — a fix round dispatched against the wrong defect is a round spent breaking what works.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4668",
+   "title": "nayanet.app — The Root Is Fine, The Jump Is Broken",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4668/IB-SMART-NOTE-20261122-sn4668-portal-jump-broken.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-22 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4668/IB-SMART-NOTE-20261122-sn4668-portal-jump-broken.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": null
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
