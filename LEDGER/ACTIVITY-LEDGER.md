@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-23 19:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-23 20:05 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -17073,6 +17073,12 @@ _Last updated: 2026-11-23 19:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: executor lane-5/gad-executor-t0745-lane5.py sha256 d54c0be48772e22fa8e4a4bc90eb697de197d31609a640117c779db06279b7fc MATCH receipt pin; verdict JSON 688848684f2592616dc94d779bab3f90962af30838981364500f7cebec643b48 MATCH; frozen pre-reg 5123bfc6cbb59632f808e622f358d0142126cd59f7f341364633925eb4bf9bc0 MATCH; P-tip 92329c5795ef8a50d02adf94ee6
 
+### ✅ t0745-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Arm J repair tick — threshold re-derivation plus three-try HYPOTHESIS CHANGE note
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; oldest-first). VERIFIED first-hand this tick: hypothesis-change note hidden_files/lane-1/arm-j-rtp-t0736/arm-j-hypothesis-change-t0745.md sha256 a912fc1157eb218b2dad35590b25285f896c643169cfb22a4c88cd50925af383 FULL 64/64 MATCH; detached seal exists (362 bytes); all three dry-fire JSONs exist (control-fire-dryfire-
+
 ### ✅ t0745 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** Arm J hypothesis-change note: entangled-premise diagnosis, no forced threshold fix
@@ -17088,6 +17094,12 @@ _Last updated: 2026-11-23 19:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0745-lane1.md`
 
 **Evidence:** VERIFIED: note hidden_files/lane-1/arm-j-rtp-t0736/arm-j-hypothesis-change-t0745.md sha256 a912fc1157eb218b2dad35590b25285f896c643169cfb22a4c88cd50925af383 MATCH receipt pin (6442 bytes); detached .seal present; all 3 dry-fire JSONs + both scripts present in lane-1/scratch/; load-bearing numbers cross-checked within 0.005 tolerance against the JSON
+
+### ✅ t0744-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** Second-seat re-derivation of t0685 stamping-migration prep packet — WIRE-READY verdict
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; oldest-first). VERIFIED first-hand this tick: gate module tools/retrieval_authorization_gate.py at tip 92329c5795 sha256 fbe6ee29482fdc57345e6ba03f6252061764fa015a5d7a86f562bd345c69a28f FULL 64/64 MATCH; spec 0007 at tip sha256 821a10784add98db9dcce4c8e238d17292572eb22149034dbca6ac3d701e63c7 FULL 64/64 MATCH; pack
 
 ### ✅ t0744 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
@@ -17105,6 +17117,12 @@ _Last updated: 2026-11-23 19:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: origin main HEAD 92329c5795ef8a50d02adf94ee6c91c313c26daf == receipt action-time tip; branch heads re-derived live via git ls-remote (naya/nine-retrieval-auth-wire-packet-t0537 99a2f832d054b3963fd4503702ecc2c00e59b73d, naya/five-retrieval-auth-gate-t942 e654f16e8a49e9a26309fd852695a0bef202673d) both match receipt pins; tools/retrieval_aut
 
+### ✅ t0743-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Design frozen semantic-arm trial pre-reg for decision-contact (SCER) — froze autopsy, refused freeze
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; oldest-first). VERIFIED first-hand this tick: autopsy hidden_files/lane-2/semantic-arm-prereg-t0743.md sha16 aeffc6fa2e289b0a PREFIX MATCH; v1 probe 65c70b48bffec517 PREFIX MATCH; v2 probe 78ba2c7352293f14 PREFIX MATCH; doc pins D1/D2/D3 match MTC-v1 frozen pins as cited. Board comment 6166557972 NOT re-verified v
+
 ### ✅ t0743 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** SCER semantic-arm pre-freeze probes: FROZEN-NOT-VIABLE autopsy
@@ -17120,6 +17138,12 @@ _Last updated: 2026-11-23 19:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0743-lane2.md`
 
 **Evidence:** VERIFIED: autopsy hidden_files/lane-2/semantic-arm-prereg-t0743.md sha16 aeffc6fa2e289b0a MATCH; v1 probe 65c70b48bffec517 MATCH; v2 probe 78ba2c7352293f14 MATCH; doc pins D1/D2/D3 all match MTC-v1 frozen pins; NULL-doc controls in both probes (NULL→S2 0.64/0.7958) prove the zero point moves with the card; traps fire sharper than positives (0.48/0.
+
+### ✅ t0742-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** Third-seat tiebreaker on Arm H 'seed 0720' int-vs-string reading — canonical reading pinned
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; oldest-first). VERIFIED first-hand this tick: tiebreaker instrument hidden_files/lane-6/armh-seed-tiebreaker-t0742.py sha256 181967e64dcfa7b5b20aeca9159e790220be0a0c282b8f37f985c51dd06fa28f FULL 64/64 MATCH; results JSON d425c82a753b0350417472c4c5f23197b7583d2ef2f952a441aa72f07b820053 FULL 64/64 MATCH; verdict doc
 
 ### ✅ t0742 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
@@ -17137,6 +17161,12 @@ _Last updated: 2026-11-23 19:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: tiebreaker instrument hidden_files/lane-6/armh-seed-tiebreaker-t0742.py sha256 181967e64dcf MATCH; results JSON d425c82a753b MATCH; re-implementation pin a443027f5e44 MATCH (matches t0735 receipt); frozen graph 7e021c69f12e MATCH; both-reading stream-divergence proven at draw 0; int-reading MRR reproduces the sealed control number to 4dp;
 
+### ✅ t0742-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** MTC-v1 blind battery execution — mechanism-trace counterfactual, section 7 verdict CONFIRM
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; oldest-first). VERIFIED first-hand this tick: P-tip commit 92329c5795ef8a50d02adf94ee6c91c313c26daf exists in mirror; trace table hidden_files/surge-a/mtc-v1-battery-t0742-lane4.json sha256 52a2fb37c03d89f8fc1d3ece297b697cb2990d7c5feb44d1a26f7435b72472a1 FULL 64/64 MATCH; cards + seal files exist (910 / 1870 bytes
+
 ### ✅ t0742 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** MTC-v1 mechanism-trace counterfactual battery: CONFIRM verdict
@@ -17152,6 +17182,12 @@ _Last updated: 2026-11-23 19:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0742-lane4.md`
 
 **Evidence:** VERIFIED: origin HEAD 92329c5795ef8a50d02adf94ee6c91c313c26daf via git ls-remote; pre-reg seal 9199c9abbb29bf0ea3d9cea51884d5dc1f8952488fb06a8e131db4a7bfae2879 sha256 MATCH on hidden_files/lane-6/mtc-v1-prereg-t0737.md; verdict trace table hidden_files/surge-a/mtc-v1-battery-t0742-lane4.json sha256 52a2fb37c03d89f8fc1d3ece297b697cb2990d7c5feb44d1a2
+
+### ✅ t0741-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Arm I cold battery — BLOCKED verdict: §8 NLI-direction contradiction proven, t0738 REWORK fixes un-applied, gate-side dry-fire green
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; oldest-first). VERIFIED first-hand this tick: P-tip commit 92329c5795ef8a50d02adf94ee6c91c313c26daf exists in mirror; execution record hidden_files/surge-a/arm-i-execution-t0741-lane8.md exists (6660 bytes, Oct 14 10:30); the cited pre-reg seal 16c444e567c7077139367abea9d0bf13b2a3b73e84d5f945ef1db79ad4848082 match
 
 ### ✅ t0741 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -17169,6 +17205,12 @@ _Last updated: 2026-11-23 19:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: origin HEAD 92329c5795ef8a50d02adf94ee6c91c313c26daf via git ls-remote (tip unmoved); pre-reg seal 16c444e567c7077139367abea9d0bf13b2a3b73e84d5f945ef1db79ad4848082 byte-identical to pinned pre-seal sha (REWORK fixes confirmed absent); P-mech blob fc07ed2a, P-nli a211e4e4, P-traps 49b8cfde, P-dcte d992ad0c all fetched from remote (commit/b
 
+### ✅ t0741-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** Live re-tally of ask-world log + top-20 needs table with coverage map and rebuild-first candidate list
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; oldest-first). VERIFIED first-hand this tick: deliverable surge-c/top20-needs-t0741-lane11.md sha256 339cad889ce2b4b06cd489e3cd0358813d827d32fe51b330119ed3ec61aaf740 FULL 64/64 MATCH; superseded tally surge-c/tally-t0710-predated-20261014.json sha256 434c220ee922bf17176c523c07e51cfed6574ff7d7b801cad58263aa5b354c57
+
 ### ✅ t0741 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Ask-world top-20 needs live re-tally (77 rows)
@@ -17184,6 +17226,12 @@ _Last updated: 2026-11-23 19:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0741-lane11.md`
 
 **Evidence:** VERIFIED: deliverable hidden_files/surge-c/top20-needs-t0741-lane11.md sha256 339cad889ce2b4b06cd489e3cd0358813d827d32fe51b330119ed3ec61aaf740 = exact match with receipt pin; fresh tally JSON retrieval/tally-t0710.json sha256 7c33bbd820568370dd53068489904235f2f964d844e9acae9a4d1f48816b6b13 = match; sign-in-before-reads held this tick (class #17 fix
+
+### ✅ t0740-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** Re-derivation of SURGE-(b) §2 seam-churn on action-time tip + wave-touch map
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; oldest-first). VERIFIED first-hand this tick: P-tip commit 92329c5795ef8a50d02adf94ee6c91c313c26daf exists in mirror; seam-churn table hidden_files/surge-b/seam-churn-rederivation-t0740-lane7.md sha256 a982d3ced4857606cc65b299290c45a2ee0ed4568070517b35d19d98c35144a5 FULL 64/64 MATCH. NOT PHANTOM. Score 9.5, ACCEPT
 
 ### ✅ t0740 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -17201,6 +17249,12 @@ _Last updated: 2026-11-23 19:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: git ls-remote HEAD = 92329c5795ef8a50d02adf94ee6c91c313c26daf (tip unmoved, matches receipt claim and shared-state main_tip); table hidden_files/surge-b/seam-churn-rederivation-t0740-lane7.md sha256 a982d3ced4857606cc65b299290c45a2ee0ed4568070517b35d19d98c35144a5 = exact match with receipt pin. Receipt is honest: 3-pass 9.0->9.5 with name
 
+### ✅ t0740-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Executor seat for Lane 1 Arm J Reason-Trace Profiling §6 cold battery — VOID verdict on control C2
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; oldest-first). VERIFIED first-hand this tick: P-tip commit 92329c5795ef8a50d02adf94ee6c91c313c26daf exists in mirror; P-mech blob git rev-parse 92329c57:kernel/value_calculus.py = fc07ed2ae8c916be5c2e95cb8f4cf059968db100 EXACT match to receipt; diagnostic JSON lane-5/arm-j-battery-t0740/control-fire-diagnostic-t07
+
 ### ✅ t0740 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** Arm J section 6 cold battery executor verdict: VOID (control C2)
@@ -17216,6 +17270,12 @@ _Last updated: 2026-11-23 19:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0740-lane5.md`
 
 **Evidence:** VERIFIED: git ls-remote — origin HEAD/main = 92329c5795ef8a50d02adf94ee6c91c313c26daf, exact match with P-tip claim (tip unmoved). 12 pins re-derived at action time (mech blob, file, gatefn, armi, NLI snapshot rev + config sha, fixtures, instrument, design all MATCH); VOID gate fired on control C2 (expected T3 fire in S2, got none), exit 2, no resu
+
+### ✅ t0740-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Reviewer-seat design review of GAD binding table (gate for §6 cold battery)
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; oldest-first). VERIFIED first-hand this tick: pre-reg pin sha256sum hidden_files/lane-12/gad-prereg-t0735-FROZEN.md = 5123bfc6cbb59632f808e622f358d0142126cd59f7f341364633925eb4bf9bc0 FULL 64/64 MATCH; review doc hidden_files/lane-12/gad-binding-review-t0740-lane1.md sha256 accff55636d2bf088de4f64c962101597e1a586de
 
 ### ✅ t0740 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -17233,6 +17293,12 @@ _Last updated: 2026-11-23 19:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: sha256 of hidden_files/lane-12/gad-prereg-t0735-FROZEN.md = 5123bfc6cbb59632f808e622f358d0142126cd59f7f341364633925eb4bf9bc0 (64/64 match with frozen pin); review doc gad-binding-review-t0740-lane1.md = accff55636d2bf088de4f64c962101597e1a586de102f4c83d7e16db31ff2725 (matches receipt). 10/10 binding rows re-derived with byte-verbatim prog
 
+### ✅ t0739-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Independent scorecard of PR #2574 (receipt gate: bind evidence to PR change set) - third seat
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; oldest-first). VERIFIED first-hand this tick: head commit 97b65bd11316fe91b324986b3d429d0c3ee0ff75 exists in mirror; tools/check_pr_receipt.py and tests/test_receipt_gate_checkout_depth.py both present at that head. Branch ref gone from ls-remote (merged/deleted since Oct 14) - expected, not a defect. NOT PHANTOM.
+
 ### ✅ t0739 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** Independent scorecard of PR #2574 (receipt gate binds evidence to change set)
@@ -17249,6 +17315,12 @@ _Last updated: 2026-11-23 19:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: branch naya/lane9/receipt-relevance-t0710 exists on remote via git ls-remote; remote head = 97b65bd11316fe91b324986b3d429d0c3ee0ff75, exact match to receipt's claimed pin; tools/check_pr_receipt.py, .github/workflows/worker-protocol-gates.yml, tests/test_receipt_gate_checkout_depth.py all present at that SHA via git ls-tree. Receipt's own
 
+### ✅ t0738-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat forensics on workflow run 38533178211 (PR #2578 receipt-gate fail after body edit)
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; oldest-first). VERIFIED first-hand this tick: head commit 5e1956cf92814bcd8718130555b4fa80147635c5 exists in mirror; workflow source on that head's bytes line 42 = PR_BODY: ${{ github.event.pull_request.body }} EXACT match - the trigger-time snapshot claim is byte-true. Branch ref gone from ls-remote (merged/delet
+
 ### ✅ t0738 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Second-seat forensics on workflow run 38533178211 (PR #2578) -- ANOMALY-EXPLAINED
@@ -17264,6 +17336,12 @@ _Last updated: 2026-11-23 19:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0738-lane9.md`
 
 **Evidence:** VERIFIED: git ls-remote — branch delta/w135-post-checker exists, head 5e1956cf92814bcd8718130555b4fa80147635c5 exact match; workflow file at that SHA carries PR_BODY: ${{ github.event.pull_request.body }} (event-snapshot claim holds, file present at SHA). Real 7-step forensics: consumed PR_BODY extracted from the run's own job log (2446 chars, no E
+
+### ✅ t0738-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat design review of Lane 2 Arm I verdict-flip pre-reg (REWORK verdict, two pre-seal fixes)
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; oldest-first). VERIFIED first-hand this tick: P-mech blob git rev-parse 92329c57:kernel/value_calculus.py = fc07ed2ae8c916be5c2e95cb8f4cf059968db100 EXACT match to receipt; P-tip commit 92329c5795ef8a50d02adf94ee6c91c313c26daf exists in mirror. NOT PHANTOM. Score 9.0, GOOD, ONE MORE PASS (receipt honestly self-sco
 
 ### ✅ t0738 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
