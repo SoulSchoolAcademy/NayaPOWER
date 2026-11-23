@@ -165,11 +165,21 @@ jobs:
               # stable identity from the capture filename, matching the
               # minting convention observed across the tree: capture_id ==
               # file stem with a leading "SMART-NOTE-" stripped (366/366
-              # captures that carry the field). Stable and unique per file,
-              # so the SMART-NOTE-<capture_id> event identity stays
-              # idempotent across runs.
+              # captures that carry the field). Second-order distillation
+              # captures carry the fuller "IB-SMART-NOTE-" stem instead
+              # (SN-4700..SN-4709); strip that first, else the downstream
+              # "SMART-NOTE-" + capture_id event id re-prefixes the block
+              # id and the runtime persists a doubled IB-SMART-NOTE-IB-
+              # SMART-NOTE- id (independent-verification failure at
+              # 692f01d9, SN-4709). Stable and unique per file, so the
+              # SMART-NOTE-<capture_id> event identity stays idempotent
+              # across runs.
               stem=pathlib.Path(capture_path).stem
-              capture_id=stem[len("SMART-NOTE-"):] if stem.startswith("SMART-NOTE-") else stem
+              capture_id=stem
+              if capture_id.startswith("IB-SMART-NOTE-"):
+                  capture_id=capture_id[len("IB-SMART-NOTE-"):]
+              elif capture_id.startswith("SMART-NOTE-"):
+                  capture_id=capture_id[len("SMART-NOTE-"):]
               print(f"CAPTURE_ID_DERIVED_FROM_FILENAME: {capture_path} smart_note={capture.get('smart_note_id')} capture_id={capture_id}", flush=True)
           capture_title=capture.get("title") or (capture.get("intelligence") or {}).get("title")
           if not capture_title:
@@ -339,11 +349,21 @@ jobs:
                   # stable identity from the capture filename, matching the
                   # minting convention observed across the tree: capture_id ==
                   # file stem with a leading "SMART-NOTE-" stripped (366/366
-                  # captures that carry the field). Stable and unique per file,
-                  # so the SMART-NOTE-<capture_id> event identity stays
-                  # idempotent across runs.
+                  # captures that carry the field). Second-order distillation
+                  # captures carry the fuller "IB-SMART-NOTE-" stem instead
+                  # (SN-4700..SN-4709); strip that first, else the downstream
+                  # "SMART-NOTE-" + capture_id event id re-prefixes the block
+                  # id and the runtime persists a doubled IB-SMART-NOTE-IB-
+                  # SMART-NOTE- id (independent-verification failure at
+                  # 692f01d9, SN-4709). Stable and unique per file, so the
+                  # SMART-NOTE-<capture_id> event identity stays idempotent
+                  # across runs.
                   stem=pathlib.Path(capture_path).stem
-                  capture_id=stem[len("SMART-NOTE-"):] if stem.startswith("SMART-NOTE-") else stem
+                  capture_id=stem
+                  if capture_id.startswith("IB-SMART-NOTE-"):
+                      capture_id=capture_id[len("IB-SMART-NOTE-"):]
+                  elif capture_id.startswith("SMART-NOTE-"):
+                      capture_id=capture_id[len("SMART-NOTE-"):]
                   print(f"CAPTURE_ID_DERIVED_FROM_FILENAME: {capture_path} smart_note={capture.get('smart_note_id')} capture_id={capture_id}", flush=True)
               capture_title=capture.get("title") or (capture.get("intelligence") or {}).get("title")
               if not capture_title:
