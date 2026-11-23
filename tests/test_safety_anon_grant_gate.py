@@ -141,3 +141,52 @@ def test_main_returns_zero_on_clean_tree():
     violations, errors = gate.check(gate.DEFAULT_MIGRATIONS, gate.DEFAULT_ALLOWLIST)
     assert errors == [], errors
     assert violations == [], violations
+
+
+def test_do_block_execute_grant_is_seen(tmp_path):
+    # Regression test for the DO-block blind spot: a grant hidden inside
+    # EXECUTE '...' was invisible to the gate (statement starts with DO).
+    mig = _migrations(tmp_path, {"a.sql":
+        "DO $$\nBEGIN\n  EXECUTE 'GRANT SELECT ON public.secret_table TO anon';\nEND $$;"})
+    al = _allowlist(tmp_path, [])
+    violations, errors = gate.check(mig, al)
+    assert not errors
+    assert len(violations) == 1
+    assert "secret_table" in violations[0]
+    assert "DO-block EXECUTE" in violations[0]
+
+
+def test_do_block_execute_allowlisted_grant_passes(tmp_path):
+    mig = _migrations(tmp_path, {"a.sql":
+        "DO $$\nBEGIN\n  EXECUTE 'GRANT SELECT ON public.nayanet_intelligence_publications TO anon';\nEND $$;"})
+    al = _allowlist(tmp_path, [_entry("table:public.nayanet_intelligence_publications")])
+    violations, errors = gate.check(mig, al)
+    assert errors == []
+    assert violations == []
+
+
+def test_do_block_execute_grant_exceeding_allowlist_fails(tmp_path):
+    mig = _migrations(tmp_path, {"a.sql":
+        "DO $$\nBEGIN\n  EXECUTE 'GRANT SELECT, INSERT ON public.t TO anon';\nEND $$;"})
+    al = _allowlist(tmp_path, [_entry("table:public.t", privs=("select",))])
+    violations, errors = gate.check(mig, al)
+    assert not errors
+    assert any("exceed" in v for v in violations)
+
+
+def test_do_block_execute_authenticated_only_passes(tmp_path):
+    mig = _migrations(tmp_path, {"a.sql":
+        "DO $$\nBEGIN\n  EXECUTE 'GRANT SELECT ON public.secret_table TO authenticated';\nEND $$;"})
+    al = _allowlist(tmp_path, [])
+    violations, errors = gate.check(mig, al)
+    assert errors == []
+    assert violations == []
+
+
+def test_do_block_nongrant_execute_is_ignored(tmp_path):
+    mig = _migrations(tmp_path, {"a.sql":
+        "DO $$\nBEGIN\n  EXECUTE 'SELECT 1';\n  RAISE NOTICE 'grant applied';\nEND $$;"})
+    al = _allowlist(tmp_path, [])
+    violations, errors = gate.check(mig, al)
+    assert errors == []
+    assert violations == []
