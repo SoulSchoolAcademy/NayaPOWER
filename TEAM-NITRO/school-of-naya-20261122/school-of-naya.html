@@ -432,6 +432,13 @@
 #slideMain{flex:1;min-height:0}
 @media(min-width:901px){
   #slideMain{display:flex;flex-direction:row;gap:16px;justify-content:stretch;align-items:stretch}
+  /* NO SCROLLING DOWN (his verdict ~16:30 MST): the slide panel must not scroll on laptop. Its scrollHeight
+     (2702 vs 741 client, measured on the base too — identical) is a phantom from the frame's blue-rays disc
+     (.panel-body::before, width 170% + aspect-ratio 1, top -46%), but overflow-y:auto makes the scroll real:
+     a wheel-drag slides the three thirds away and leaves empty gradient. The panel content is 711 of 741,
+     so hiding the vertical overflow loses nothing — the three thirds sit whole and cannot be scrolled away.
+     Mobile keeps scrolling (one board at a time, by design) — this rule is laptop-only. */
+  #screen-slide .panel-body{overflow-y:hidden}
   /* THREE EQUAL THIRDS: each board flex:1 — 1/3 of the row, full row height, no black space left over. */
   #screen-slide .pm-art{flex:1 1 0;min-width:0;height:100%}
   /* The image frame fills its third whole; the 9:16 image sits inside it whole (object-fit:contain, blur behind). */
