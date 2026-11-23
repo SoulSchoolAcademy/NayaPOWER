@@ -79825,6 +79825,39 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-4707",
+      "intelligent_block_id": "IB-SMART-NOTE-20261123-sn4707-take-the-real-parts",
+      "slug": "take-the-real-parts",
+      "title": "Take the Real Parts",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/DESIGN/SN-4707/IB-SMART-NOTE-20261123-sn4707-take-the-real-parts.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/DESIGN/SN-4707/IB-SMART-NOTE-20261123-sn4707-take-the-real-parts.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/DESIGN/SN-4707/IB-SMART-NOTE-20261123-sn4707-take-the-real-parts.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261123-sn4707-take-the-real-parts.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-23",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-23T15:17:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-23",
+      "page_hash": "80b7205510118df584fc9ffb277e85aa41166eabafecb8372b911f5785c4b998",
+      "content_hash": "ae15d65472d113aee2349b7e658d62754d4fbf656893b7e6ba2099a82585879d",
+      "one_line": "Everything here is a real object, and the craft begins by refusing to fake one. A number is not text: it is a living instrument, built digit by digit from real tiles, always white, rolling slowly enough to watch, its colours meaning the same thing in the number, the orbs, the icons and every page — and it has no ceiling. There are exactly two gauges in this world, the hero and the inner detail gauge, each real, each fed by the same live source as the numbers beside it; every other gauge is a lie with a needle and gets replaced. The parts already exist, harvested byte for byte from the Factory: copy, never recreate, change only the text inside, because a description retyped is a copy at lower quality of a part refined over a year. The chart is the page — thirty-six rows of real parts and true numbers, stacked and centred so a difference between levels is seen, not narrated. On the Dashboard the number is the hero and the gauge is its frame, and every label must explain the number it stands beside, or the board has already failed. A page is a sequence of complete screens, one idea each, everything above the fold, nothing repeated. And every page unfolds, and every claim on it is scored — because a count can pass while the read still fails, and the read decides.",
+      "topics": [
+        "Distillation",
+        "Design",
+        "Craft",
+        "Knowledge",
+        "System"
+      ]
     }
   ],
   "sequence_policy": {
@@ -79835,5 +79868,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "e6548d93036a0ebfcf64b4e49a5f2b090d68e308628bd21b26b042fcc40cc78f"
+  "corpus_manifest_hash": "ba03f20951cecc172858e0f7894b45513cc159d7fa450b80b7c2681425a17622"
 }
