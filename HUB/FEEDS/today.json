@@ -1,9 +1,89 @@
 {
   "contract": "room-feed/v1",
   "room": "today",
-  "emitted_at": "2026-11-20T11:45:18.577821-08:00",
+  "emitted_at": "2026-11-22T16:02:44.966427-08:00",
   "source_ref": "engine-job:hub-feeds-emitter-t0479",
   "items": [
+    {
+      "id": "idx-6ab43eb5-05d5-4003-891f-6884a00424bb",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-11-22 22:42:19.110193+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-4e0f2a56-2b5f-4107-a83a-4dc9962d356d",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-11-22 22:42:18.757382+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-aa60736d-a720-4a46-99ee-6f4a1c7ac8c6",
+      "title": "Naya runtime flow lesson",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-11-22 22:38:24.836095+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-a8729ec6-ed30-4557-890e-2a3974960e09",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-11-22 22:38:24.483517+00"
+        }
+      ]
+    },
     {
       "id": "idx-002c646f-e9c2-49ec-8649-94a764f8cf5c",
       "title": "EXECUTION_RECEIPT",
@@ -201,86 +281,6 @@
           "color": "#FFFFFF",
           "tier": "primary",
           "body": "REFERENCE · status VERIFIED · event 2026-11-12 07:35:19.564959+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-2f991012-2426-4839-baaf-fa8dcf3de87e",
-      "title": "Invite People and Earn — share your ambassador link, earn 50% of the revenue",
-      "topics": [
-        "INTELLIGENT_BLOCK"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-11-12 07:35:19.251637+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-fa888ddf-a0cc-48a0-8963-aac5715148af",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-11-12 07:35:19.199721+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-a67e95b7-7d2f-462c-91a6-e0cbfe00627d",
-      "title": "The Dashboard — your cockpit: Smart Score gauge, orbs, Ledger and Stats in one place",
-      "topics": [
-        "INTELLIGENT_BLOCK"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-11-12 07:35:18.694839+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-97962f0d-6058-4aab-b294-26f8efe33a18",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-11-12 07:35:18.631006+00"
         }
       ]
     },
