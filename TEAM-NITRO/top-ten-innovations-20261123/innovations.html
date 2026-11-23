@@ -26,7 +26,9 @@
      in the report under "NOT IN BUILD — open call" (fold into chapter
      2's depth, or drop — Shawn decides).
      SWAPS ONLY: 11 new 9:16 feature images (EMBED.slides) + audio
-     removed (no innovations video — no dead player on the cover);
+     removed (no innovations AUDIO — the welcome audio deck and voice orb
+     do not come over; the opening video itself is RESTORED in the fix
+     round, checker-3 addendum 2026-11-23: uchF0A0wIFg, see COVER MEDIA);
      EMBED.portraits verified in place (12 entries, 2 unique JPEGs,
      sha256 88331e11… — the tip base carries them; nothing restored,
      nothing moved); cover intro marked DRAFT (maker-written, not
@@ -36,7 +38,7 @@
      except chapter 2's approved set, by explicit approval);
      GROUPS 18 -> 10 boards (front nutshell + depth Naya-note
      presentation, five questions, board 6 depth adds the five checks);
-     cover retitled, video/deck/voice out, intro text either side;
+     cover retitled, deck/voice out, intro text either side;
      School legal pages + links page + footer removed (School content);
      odd boards image·text·image, even boards text·image·text;
      Swap + Add-behind + Depth controls added (additive only).
@@ -761,9 +763,21 @@
    48px. (11) TEXT EDITOR + OVERFLOW-BEHIND — member click on board
    body text opens the editor; text longer than one screen is split at
    render time and the rest lives in a continuation depth layer behind
-   the N, never scrolled, never clipped. (12) VIDEO EMBEDS — YouTube,
+   the N, never scrolled, never clipped.    (12) VIDEO EMBEDS — YouTube,
    Instagram, TikTok, Facebook links resolve to playable embeds in the
-   slot; the library choice is wired to the build's own images. */
+   slot; the library choice is wired to the build's own images.
+   (13) V1 PLACEHOLDER TAG (fix round, checker-3 item 6) — the front
+   image of boards 4, 6, 7, 10 is a v1 placeholder and the rendered
+   front must SAY so, to a viewer, at both sizes: a small obsidian pill
+   with white 17px words and a royal-purple rim, overlaid top-left on
+   the image panel itself, inside the image area, never over a board
+   title, pointer-events none so taps pass through. The tag follows the
+   IMAGE (EMBED.slides 3, 4, 5, 6, 10): any slot showing one of those
+   slides gets it; a slot swapped to anything else loses it.
+   (14) OPENING VIDEO (fix round, checker-3 addendum) — the School's
+   cover player/facade is restored (4th script block, byte-identical
+   except ID/title); no CSS change was needed for it: the School's
+   .pm-facade / .pm-video-shell rules are already in the frame CSS. */
 #screen-cover .pm-poster{object-fit:contain;object-position:center;background:#07070a}
 #slideTextCenter{position:absolute;inset:0;z-index:2;display:flex}
 #slideTextCenter[hidden]{display:none}
@@ -818,6 +832,7 @@ body.member-signed-in #screen-slide .ib-layer-body p{cursor:text}
 #screen-cover .pm-side .ib-layer-body{padding-top:56px}
 #screen-slide .slide-boards .ib-layer-body p{font-size:clamp(22px,1.35vw,23px)}
 #screen-slide #slideTextCenter .ib-layer-body p{font-size:clamp(22px,2.3vw,26px)}
+.v1-tag[hidden]{display:none}.v1-tag{position:absolute;top:10px;left:10px;z-index:5;display:inline-block;padding:6px 12px;border-radius:999px;background:linear-gradient(135deg,#0b0c10,#050607);border:1.5px solid #8e24aa;box-shadow:0 6px 18px rgba(0,0,0,.55),0 0 14px rgba(142,36,170,.35);color:#fff;font-size:17px;font-weight:700;letter-spacing:.14em;line-height:1.2;pointer-events:none;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -845,7 +860,12 @@ body.member-signed-in #screen-slide .ib-layer-body p{cursor:text}
             <div class="pm-main">
               <div class="pm-art">
                 <div class="pm-art-frame" id="videoFrame">
-                  <img class="pm-poster" id="videoPoster" alt="Going in — an endless tunnel of screens" />
+                  <img class="pm-poster" id="videoPoster" alt="School of Naya how it works - by the end you'll never see the internet the same way again" />
+                  <div class="pm-video-shell" id="videoShell" hidden></div>
+                  <button class="pm-facade" id="videoFacade" type="button" aria-label="Play the welcome video — with sound">
+                    <span class="pm-play-disc" aria-hidden="true">&#9654;</span>
+                    <span class="pm-facade-label">Watch Naya&rsquo;s Welcome<small>Tap to play &mdash; with sound, and her voice on the deck</small></span>
+                  </button>
                   <button class="swap-btn tool-btn" type="button" data-slot="cover" aria-label="Member tools — change this slot"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5 5l1.8 1.8M17.2 17.2L19 19M19 5l-1.8 1.8M6.8 17.2L5 19"/></svg></button>
                   
                   
@@ -904,6 +924,7 @@ body.member-signed-in #screen-slide .ib-layer-body p{cursor:text}
                   <img id="slideImg" alt="" />
                   <div id="slideTextCenter" hidden></div>
                   <div id="slideVideo" hidden></div>
+                  <span class="v1-tag" id="slideV1Tag" hidden>v1 PLACEHOLDER</span>
                   <button class="swap-btn tool-btn" type="button" data-slot="C" aria-label="Member tools — change this slot"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5 5l1.8 1.8M17.2 17.2L19 19M19 5l-1.8 1.8M6.8 17.2L5 19"/></svg></button>
                   <button class="add-btn" type="button" data-slot="C">+ Behind</button>
                 </div>
@@ -1043,15 +1064,23 @@ function boardFor(g, which){
   if (txt === undefined) txt = which === 'A' ? g.a : g.b;
   return textPanelFor(g, txt, slot);
 }
+/* V1 PLACEHOLDER TAG (fix round, checker-3 item 6): EMBED.slides 3, 4,
+   5, 6, 10 are the v1 placeholder images (board-04, board-06, board-07
+   fading-words, board-07 saved-words, board-10). The tag follows the
+   IMAGE, not the board: any slot showing one of these five slides gets
+   the tag; a slot swapped to anything else loses it. */
+var V1_SLIDES = [3, 4, 5, 6, 10];
 function imgBoardFor(src, alt, slot, boardIdx){
   var key = boardIdx + '-' + slot;
   var txt = RUNTIME_TXT[key];
   if (txt !== undefined) return textPanelFor(GROUPS[boardIdx], txt, slot);
   var vid = RUNTIME_VID[key];
   var media = vid ? '<div class="ib-vid">' + vidHTML(vid) + '</div>' : (src ? '<img class="ib-img-el" src="' + src + '" alt="' + alt + '" />' : '');
+  var isV1Img = !vid && src && V1_SLIDES.indexOf(EMBED.slides.indexOf(src)) !== -1;
   return '<div class="ib-layer ib-img"><div class="ib-layer-body">'
     + '<button class="swap-btn tool-btn" type="button" data-slot="' + slot + '" aria-label="Member tools — change this slot"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5 5l1.8 1.8M17.2 17.2L19 19M19 5l-1.8 1.8M6.8 17.2L5 19"/></svg></button>'
     + '<button class="add-btn" type="button" data-slot="' + slot + '">+ Behind</button>'
+    + (isV1Img ? '<span class="v1-tag">v1 PLACEHOLDER</span>' : '')
     + media
     + '<button type="button" class="ib-n ib-n--small" aria-label="Go in — the full presentation behind this board"><img src="' + EMBED.ball + '" alt="The red N" /></button>'
     + '</div></div>';
@@ -1085,6 +1114,8 @@ function renderSlide(){
   var dec = document.createElement('div'); dec.innerHTML = g.t;
   document.getElementById('slideStation').textContent = (dec.textContent || g.t).toUpperCase();
   sv.hidden = true; sv.innerHTML = '';
+  var v1Tag = document.getElementById('slideV1Tag');
+  if (v1Tag) v1Tag.hidden = true;
   if (odd){
     var src1 = slideSrc(current, 'A'), src2 = slideSrc(current, 'B');
     document.getElementById('slideBoardsA').innerHTML = imgBoardFor(src1, g.t, 'A', current);
@@ -1126,6 +1157,10 @@ function renderSlide(){
       }
     }
   }
+  /* CENTRE V1 TAG (fix round): the even-board centre image is one of the
+     v1 placeholder slides (3, 4, 5, 6, 10) only when `src` is that slide —
+     text/video/empty centres leave `src` unset and the tag stays hidden. */
+  if (v1Tag) v1Tag.hidden = !(typeof src !== 'undefined' && src && V1_SLIDES.indexOf(EMBED.slides.indexOf(src)) !== -1);
   /* FRAME-LEVEL C CONTROLS: the slide frame carries its own Swap / + Behind
      for the centre slot — but only when the centre IS the frame's own image
      or video. When the centre is a TEXT panel (#slideTextCenter shown —
@@ -1177,10 +1212,14 @@ document.querySelectorAll('.slide-boards').forEach(function(el){
 });
 
 /* ================= COVER MEDIA (embedded) — TOP TEN INNOVATIONS =================
-   No video on this cover: there is no innovations video, so the School's
-   welcome video, audio deck and voice orb do not come over. The cover
-   image is the board-2 tunnel picture (EMBED.slides[0]); the Swap button
-   on it lets Shawn add a video by URL later. */
+   FIX ROUND (checker-3 addendum, 2026-11-23): the opening video is BACK —
+   the School's cover player/facade is restored (4th script block:
+   loadVideo + ONE PLAY PATH + shadow, byte-identical from the School tip
+   except the video ID and title). The video is "School of Naya how it
+   works - by the end you'll never see the internet the same way again"
+   (uchF0A0wIFg), replacing the School's previous welcome video (old ID retired). The cover image
+   stays the board-2 tunnel picture (EMBED.slides[0]) as the poster; the
+   Swap button on it lets a member add a video by URL later. */
 document.getElementById('videoPoster').src = EMBED.slides[0];
 document.getElementById('coverN').src = EMBED.ball;
 document.getElementById('jewelN').src = EMBED.ball;
@@ -1445,6 +1484,9 @@ function applyImageSwap(dataUrl){
   if (slot === 'cover'){
     var poster = document.getElementById('videoPoster');
     if (coverVidEl){ coverVidEl.remove(); coverVidEl = null; }
+    var shI = document.getElementById('videoShell'); if (shI){ shI.innerHTML = ''; shI.hidden = true; }
+    document.getElementById('videoFrame').classList.remove('playing');
+    var facI = document.getElementById('videoFacade'); if (facI) facI.style.display = '';
     poster.style.display = '';
     poster.src = dataUrl;
     closeSwap(); return;
@@ -1470,6 +1512,9 @@ function applyVideoSwap(embed){
     coverVidEl.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
     frame.appendChild(coverVidEl);
     poster.style.display = 'none';
+    var facV = document.getElementById('videoFacade'); if (facV) facV.style.display = 'none';
+    var shV = document.getElementById('videoShell'); if (shV){ shV.innerHTML = ''; shV.hidden = true; }
+    frame.classList.remove('playing');
     closeSwap(); return;
   }
   delete RUNTIME_IMG[current + '-' + slot];
@@ -1708,6 +1753,175 @@ document.addEventListener('click', function(e){
     if (pe){ openTextEditor(pe); return; }
   }
 });
+</script>
+<script>
+/* ================= OPENING VIDEO — RESTORED FROM THE SCHOOL TIP =================
+   Fix round, checker-3 addendum, 2026-11-23. The School's cover
+   player/facade, restored byte-identical from the tip base
+   (school-tip-base.html, script 0) EXCEPT the video ID and title:
+   embed uchF0A0wIFg ("School of Naya how it works - by the end
+   you'll never see the internet the same way again"), replacing
+   the School's previous welcome video (old ID retired).
+   Restored: loadVideo + the ONE PLAY PATH sync (ytPost, ytCommand,
+   ytSeek, paintDeckTime, setDeckPlaying, the 500 ms clock, the
+   YouTube state listener, the facade click), the ROUND 7.4 shadow,
+   the deck declarations it reads (deck, deckStatus, dPlay, fmt)
+   and ensureAnalyser (startShadow's dependency).
+   NOT restored, deliberately: the deck controls (dPlay/dBack/dFwd/
+   dStop, deckSeek, tCur/tDur — this build's cover pm-side-a is the
+   two intro text panels, by the settled design) and the audio
+   element + voice orb (no welcomeAudio element, no EMBED.audio
+   asset in this build). Consequences, honestly: the shadow degrades
+   silently by the code's own try/catch (no EMBED.audio to play
+   under the video, so no silent shadow and no orb — there is no orb
+   on this cover); the deck status line stays "NAYA PRESENTS" while
+   playing (setDeckPlaying returns early with no dPlay); the facade
+   label still reads "Watch Naya's Welcome" (the School's label,
+   kept byte-identical — a one-line label update is owed if Shawn
+   wants it to name the new video). the radio station "Watch on
+   YouTube" link is NOT restored — out of scope for this fix.
+   Playback itself is live-only: the VM has no network egress, so
+   the iframe mounts here and plays on the staged link with network. */
+var deck = document.getElementById('deck');
+var deckStatus = document.getElementById('deckStatus');
+var dPlay = document.getElementById('dPlay');
+function fmt(s){ if (!isFinite(s)) s = 0; s = Math.floor(s); return Math.floor(s/60) + ':' + ('0' + (s%60)).slice(-2); }
+var actx = null, analyser = null, freqData = null;
+function ensureAnalyser(){
+  if (actx) { if (actx.state === 'suspended') actx.resume(); return; }
+  try {
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    actx = new AC();
+    var srcNode = actx.createMediaElementSource(audio);
+    analyser = actx.createAnalyser();
+    analyser.fftSize = 256;
+    freqData = new Uint8Array(analyser.frequencyBinCount);
+    srcNode.connect(analyser);
+    analyser.connect(actx.destination);
+  } catch(e){ actx = null; analyser = null; }
+}
+/* ================= ONE PLAY PATH — THE VIDEO =================
+   One thing plays here: the video. Tap play on the picture, tap
+   play on the deck, or press play on the recording’s bar — every
+   one of them plays the video, with its own sound. Pause on any
+   of them rests the video. The recording never plays ALOUD on its
+   own, so the two can never mix — but it DOES play silently under
+   the video (the round-7.4 shadow, same take as the soundtrack),
+   locked to the picture by a 500 ms re-sync, so the voice orb
+   dances to the real words. The deck’s clock and seek follow the
+   video, and the orb follows the shadow. */
+var videoLoaded = false, videoPlaying = false;
+function loadVideo(){
+  if (videoLoaded) return;
+  videoLoaded = true;
+  var shell = document.getElementById('videoShell');
+  var frame = document.getElementById('videoFrame');
+  if (!shell || !frame) return;
+  var f = document.createElement('iframe');
+  f.src = 'https://www.youtube.com/embed/uchF0A0wIFg?autoplay=1&mute=0&playsinline=1&rel=0&enablejsapi=1';
+  f.title = 'School of Naya how it works - by the end you\'ll never see the internet the same way again';
+  f.allow = 'accelerometer; autoplay; encrypted-media; picture-in-picture; web-share; fullscreen';
+  f.allowFullscreen = true;
+  f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+  shell.appendChild(f);
+  shell.hidden = false;
+  frame.classList.add('playing');
+  startShadow(0); /* ROUND 7.4: the silent shadow starts with the picture — the orb dances to the soundtrack's own take. */
+  setTimeout(function(){ ytPost('addEventListener'); ytPost('unMute'); }, 1200);
+}
+function ytPost(func, args){
+  var f = document.querySelector('#videoShell iframe');
+  if (f && f.contentWindow){
+    try { f.contentWindow.postMessage(JSON.stringify({event:'command', func:func, args:args||[]}), '*'); } catch(e){}
+  }
+}
+function ytCommand(cmd){
+  if (cmd === 'play'){ if (!videoLoaded) loadVideo(); else { ytPost('unMute'); ytPost('playVideo'); startShadow(videoTime); } }
+  if (cmd === 'pause'){ stopShadow(); ytPost('pauseVideo'); }
+}
+var videoTime = 0, videoDur = 0;
+function ytSeek(sec){
+  if (!videoLoaded) return;
+  sec = Math.max(0, videoDur ? Math.min(videoDur - .25, sec) : sec);
+  videoTime = sec;
+  ytPost('seekTo', [sec, true]);
+  if (shadowEl){ try { shadowEl.currentTime = sec; } catch(e){} }
+  paintDeckTime();
+}
+function paintDeckTime(){
+  var tc = document.getElementById('tCur'), td = document.getElementById('tDur'), fl = document.getElementById('deckFill');
+  if (tc) tc.textContent = fmt(videoTime);
+  if (td && videoDur) td.textContent = fmt(videoDur);
+  if (fl) fl.style.width = (videoDur ? (videoTime / videoDur * 100) : 0) + '%';
+}
+function setDeckPlaying(on){
+  if (!deck || !dPlay || !deckStatus) return;
+  deck.classList.toggle('playing', on);
+  if (on){ deckStatus.textContent = 'ON AIR'; deckStatus.classList.add('live'); dPlay.innerHTML = '&#10073;&#10073;'; dPlay.setAttribute('aria-label', 'Pause the welcome video'); }
+  else { deckStatus.textContent = videoTime > .5 ? 'PAUSED' : 'READY'; deckStatus.classList.remove('live'); dPlay.innerHTML = '&#9654;'; dPlay.setAttribute('aria-label', 'Play the welcome video'); }
+}
+setInterval(function(){
+  if (videoPlaying){ videoTime += .5; if (videoDur && videoTime > videoDur) videoTime = videoDur; paintDeckTime();
+    /* ROUND 7.4: keep the silent shadow locked to the picture — the two are the same take, so a drift past 0.35s is a clock slip, not the words. */
+    if (shadowOn && shadowEl && !shadowEl.paused){ var drift = shadowEl.currentTime - videoTime; if (drift > .35 || drift < -.35){ try { shadowEl.currentTime = videoTime; } catch(e){} } }
+  }
+}, 500);
+window.addEventListener('message', function(e){
+  if (typeof e.data !== 'string') return;
+  var d; try { d = JSON.parse(e.data); } catch(err){ return; }
+  if (!d || typeof d !== 'object') return;
+  var info = d.info;
+  if (d.event === 'onStateChange' || d.event === 'infoDelivery' || (info && typeof info.playerState !== 'undefined')){
+    var st = (d.event === 'onStateChange') ? info : (info && info.playerState);
+    if (typeof st === 'number' && st !== -1){ videoPlaying = (st === 1); setDeckPlaying(videoPlaying);
+      /* ROUND 7.4: the player is the clock — its state starts/stops the silent shadow that feeds the orb. State -1 (unstarted) is ignored: the errored player can deliver it late with currentTime 0, which would otherwise unplay a playing session and pin the clock at 0 (round-6 hardening, same cause). */
+      if (st === 1){ if (!shadowOn) startShadow(videoTime); }
+      else if (st === 2 || st === 0){ stopShadow(); if (st === 0){ videoTime = 0; paintDeckTime(); } }
+    }
+    if (info && typeof info.currentTime === 'number' && st !== -1){ videoTime = info.currentTime; paintDeckTime(); }
+    if (info && typeof info.duration === 'number' && info.duration > 0){ videoDur = info.duration; paintDeckTime(); }
+  }
+});
+document.getElementById('videoFacade').addEventListener('click', function(){
+  loadVideo();
+});
+/* ROUND 7.4 — TRUE AMPLITUDE, THE SHADOW: the YouTube video's soundtrack is the SAME recording as the native file (proven in round 6: native 258.15s vs YouTube 258.23s; 100ms-RMS envelope correlation 0.87 at lag 0, every 30s segment 0.85-0.89, sample-level cross-correlation 0.978 at -36ms — same take, no drift; this page's EMBED.audio is byte-identical to round-6 native, sha ce8e018c…). A cross-origin iframe cannot be AnalyserNode'd, so the visual is driven from the native recording played SILENT under the video (one play button drives video + shadow + visual). The silence comes from a GainNode AFTER the analyser — never from the element's volume, which would silence the analyser too. The shadow is a SEPARATE Audio element, not the visible welcomeAudio: that element's play event is hijacked to start the video (it pauses itself), so it can never carry the shadow. PowerCast has no analyser at all (its voiceAmp target is the canned playing?(.3+.7*burstS):.09) — nothing to harvest there, so the real thing is built here, the round-6 way. */
+var shadowEl = null, shadowOn = false, shadowAnalyser = null, syncGain = null, timeData = null;
+function setShadowGain(on){ try { if (syncGain) syncGain.gain.value = on ? 0 : 1; } catch(e){} }
+function startShadow(atSec){
+  ensureAnalyser();
+  if (shadowOn && shadowEl && !shadowEl.paused){ try { if (Math.abs(shadowEl.currentTime - (atSec || 0)) > .35) shadowEl.currentTime = Math.max(0, atSec || 0); } catch(e){} return; }
+  if (!shadowEl){
+    try {
+      shadowEl = new Audio();
+      shadowEl.src = EMBED.audio;
+      shadowEl.preload = 'auto';
+      shadowEl.addEventListener('ended', function(){ shadowOn = false; setShadowGain(false); });
+      var shSrc = actx.createMediaElementSource(shadowEl);
+      shadowAnalyser = actx.createAnalyser();
+      shadowAnalyser.fftSize = 256;
+      shadowAnalyser.smoothingTimeConstant = 0.3; /* syllables, not smear: the default 0.8 irons them flat */
+      timeData = new Uint8Array(shadowAnalyser.fftSize);
+      syncGain = actx.createGain(); syncGain.gain.value = 0;
+      shSrc.connect(shadowAnalyser);
+      shadowAnalyser.connect(syncGain);
+      syncGain.connect(actx.destination);
+    } catch(e){ shadowEl = null; shadowAnalyser = null; syncGain = null; timeData = null; return; }
+  }
+  shadowOn = true;
+  setShadowGain(true);
+  try { shadowEl.currentTime = Math.max(0, atSec || 0); } catch(e){}
+  var pr = null;
+  try { pr = shadowEl.play(); } catch(e){ shadowOn = false; setShadowGain(false); }
+  if (pr && pr.catch) pr.catch(function(){ shadowOn = false; setShadowGain(false); });
+}
+function stopShadow(){
+  if (!shadowOn) return;
+  shadowOn = false;
+  setShadowGain(false);
+  try { if (shadowEl) shadowEl.pause(); } catch(e){}
+}
 </script>
 </body>
 </html>
