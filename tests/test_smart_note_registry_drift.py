@@ -86,6 +86,16 @@ PINNED_BASELINE = {
     "entries_without_hash": 28,
     "entries_with_stale_hash": 0,
     "duplicate_smart_note_ids": 0,
+    # 5 since 2026-11-23 (measured first-hand at main@7b9d667f, Naya 5):
+    # SN numbers claimed by 2+ distinct LIVE notes — SN-829 (SN-0829 "See It,
+    # Fix It, Write It Down" vs SN-829 "The To-Die-For Standard"), SN-1904,
+    # SN-2648, SN-2650, SN-4590 ("The Plus Button" vs "The Intelligent Block
+    # and Its Frame"). The hash-keyed duplicate class cannot see them
+    # (different hashes); the 94 cross-spelling live-vs-retired pairs do NOT
+    # count (retirement, not collision). SN-4590's second row is also the
+    # tip's single entries_with_stale_hash row (no capture on disk) and the
+    # single registry_projection_paths_absent row (page file absent).
+    "number_collisions_distinct_live_notes": 5,
     "published_entries_missing_projection_path": 0,
     "registry_projection_paths_absent": 0,
     "published_pages_without_registry_entry": 4,
@@ -288,6 +298,73 @@ def test_two_live_entries_sharing_hash_still_a_duplicate(tmp_path):
     assert report["counts"]["duplicate_smart_note_ids"] == 1, report["defects"]
     assert report["defects"]["duplicate_smart_note_ids"] == [["SN-001", "SN-002"]]
     assert report["counts"]["registry_projection_paths_absent"] == 0, report["defects"]
+
+
+def _add_number_collision(root, lifecycle_state=None):
+    """A second entry claiming the clean fixture's SN number under the
+    unpadded spelling, with its own capture and a different content_hash —
+    a distinct live note, not a duplicate row. Mirrors live SN-0829/SN-829
+    at tip (2026-11-23). lifecycle_state=None keeps it live; RETIRED or
+    SUPERSEDED (with supersession evidence) models the retired run."""
+    reg = root / ".naya" / "memory" / "smart-notes" / "index.json"
+    entries = read_entries(reg)
+    intelligence = {"essence": "c", "distilled_intelligence": "d"}
+    cap = root / ".naya" / "capture" / "c2.json"
+    cap.write_text(
+        json.dumps({"smart_note_id": "SN-1", "intelligence": intelligence}),
+        encoding="utf-8",
+    )
+    twin = dict(entries[0])
+    twin["smart_note_id"] = "SN-1"
+    twin["intelligent_block_id"] = "IB-1b"
+    twin["content_hash"] = _hash(intelligence)
+    if lifecycle_state is not None:
+        twin["lifecycle_state"] = lifecycle_state
+        twin["superseded_by_capture_id"] = "c1.json"
+        twin["supersession_reason"] = "test twin: re-issued padded as SN-001"
+    entries.append(twin)
+    write_entries(reg, entries)
+
+
+def test_cross_spelling_live_collision_fires(tmp_path):
+    """SN-0829/SN-829 at tip (2026-11-23): two distinct live notes sharing
+    one number under different spellings are invisible to the hash-keyed
+    duplicate class — the number class must fire, and the hash class must
+    stay silent (disjoint classes, no double-count)."""
+    build_clean_root(tmp_path)
+    _add_number_collision(tmp_path)
+    report = mod.audit_registry(root=tmp_path)
+    assert report["counts"]["number_collisions_distinct_live_notes"] == 1, report["defects"]
+    assert report["defects"]["number_collisions_distinct_live_notes"] == [
+        {
+            "number": 1,
+            "smart_note_ids": ["SN-001", "SN-1"],
+            "intelligent_block_ids": ["IB-1", "IB-1b"],
+        }
+    ], report["defects"]
+    assert report["counts"]["duplicate_smart_note_ids"] == 0, report["defects"]
+    assert report["defect_total"] == 1, report["defects"]
+
+
+def test_retired_number_twin_does_not_fire(tmp_path):
+    """The 94 cross-spelling pairs at tip are live-vs-retired (the early
+    unpadded run retired when numbers were re-issued padded) — a
+    supersession chain, not a collision. The fixture stays fully clean."""
+    build_clean_root(tmp_path)
+    _add_number_collision(tmp_path, lifecycle_state="RETIRED")
+    report = mod.audit_registry(root=tmp_path)
+    assert report["counts"]["number_collisions_distinct_live_notes"] == 0, report["defects"]
+    assert report["defect_total"] == 0, report["defects"]
+
+
+def test_superseded_number_tombstone_does_not_fire(tmp_path):
+    """SN-0833 at tip: a live entry plus its SUPERSEDED tombstone under the
+    same number is lifecycle, not a collision. The fixture stays fully clean."""
+    build_clean_root(tmp_path)
+    _add_number_collision(tmp_path, lifecycle_state="SUPERSEDED")
+    report = mod.audit_registry(root=tmp_path)
+    assert report["counts"]["number_collisions_distinct_live_notes"] == 0, report["defects"]
+    assert report["defect_total"] == 0, report["defects"]
 
 
 def _add_capture(root, intelligence):

@@ -1888,6 +1888,7 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
         "entries_without_hash": [],
         "entries_with_stale_hash": [],
         "duplicate_smart_note_ids": [],
+        "number_collisions_distinct_live_notes": [],
         "published_entries_missing_projection_path": [],
         "registry_projection_paths_absent": [],
         "published_pages_without_registry_entry": [],
@@ -1941,6 +1942,44 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
         live_names = sorted(sn for sn, live in holders if live)
         if len(live_names) > 1:
             defects["duplicate_smart_note_ids"].append(live_names)
+
+    # NUMBER-COLLISION CLASS (Naya 5, 2026-11-23 — measured at main@7b9d667f):
+    # the duplicate-hash class keys on content_hash, so two DIFFERENT notes
+    # sharing one SN number are invisible to it — including across the
+    # zero-padded / unpadded spelling split (SN-0829 vs SN-829), a legacy of
+    # the early unpadded numbering run (SN-1..SN-943, 2026-09-29..10-13)
+    # being re-issued padded. Most cross-spelling pairs are live-vs-retired
+    # (the old run retired) and correctly do NOT fire: liveness uses the
+    # same inactive set as the duplicate-hash class, so a live entry plus
+    # its retired predecessors is a supersession chain, not a collision.
+    # A number fires only when 2+ LIVE entries with 2+ DISTINCT content
+    # hashes claim it. Same-hash live rows stay solely in
+    # duplicate_smart_note_ids (exact duplicate rows, not distinct notes).
+    # Measured at tip: 5 — SN-829, SN-1904, SN-2648, SN-2650, SN-4590.
+    # SN-4590's second row ("The Intelligent Block and Its Frame") is also
+    # the tip's single entries_with_stale_hash row (no capture on disk) and
+    # the single registry_projection_paths_absent row (page file absent).
+    live_by_number = {}
+    for e in entries:
+        sn = str(e.get("smart_note_id") or "")
+        m = re.fullmatch(r"SN-0*(\d+)", sn, re.IGNORECASE)
+        if not m:
+            continue
+        live = str(e.get("lifecycle_state") or "ACTIVE").upper() not in INDEX_VALIDATION_INACTIVE_STATES
+        if not live:
+            continue
+        live_by_number.setdefault(int(m.group(1)), []).append(e)
+    for number in sorted(live_by_number):
+        holders = live_by_number[number]
+        hashes = {e.get("content_hash") for e in holders if e.get("content_hash")}
+        if len(holders) >= 2 and len(hashes) >= 2:
+            defects["number_collisions_distinct_live_notes"].append(
+                {
+                    "number": number,
+                    "smart_note_ids": sorted(str(e.get("smart_note_id")) for e in holders),
+                    "intelligent_block_ids": sorted(str(e.get("intelligent_block_id")) for e in holders),
+                }
+            )
 
     for h, name in capture_by_hash.items():
         if h not in entry_hashes:
