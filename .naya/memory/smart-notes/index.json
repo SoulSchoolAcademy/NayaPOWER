@@ -79792,6 +79792,39 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-4706",
+      "intelligent_block_id": "IB-SMART-NOTE-20261123-sn4706-everyone-gets-a-world",
+      "slug": "everyone-gets-a-world",
+      "title": "Everyone Gets a World",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/VISION/SN-4706/IB-SMART-NOTE-20261123-sn4706-everyone-gets-a-world.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/VISION/SN-4706/IB-SMART-NOTE-20261123-sn4706-everyone-gets-a-world.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/VISION/SN-4706/IB-SMART-NOTE-20261123-sn4706-everyone-gets-a-world.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261123-sn4706-everyone-gets-a-world.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-23",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-23T15:16:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-23",
+      "page_hash": "e4a6f1198f58dd9e32c7c3dc2922b394ef2042fae8ecc2779424c7cacf864da1",
+      "content_hash": "9da3a020426b0a3558170d67c06de1e998af5d0208b7b42624b9ac229efcc94f",
+      "one_line": "Everyone who claims a name receives a world as a gift — and that gift is the whole system in one breath. NayaNET is not another app and not a pile of apps: it is one system, one governed brain behind many doors — Personal, Business, Space, Membership — where the value and the intelligence go back to the users and compound between them. It is built for the citizen and operated by Naya: the human never runs the machinery, never holds a key; they answer a few welcome questions and receive their world already filled, already theirs — welcome home, never an empty room. Privacy is what makes the cycle safe: the network never reads your mail or your messages, and what you love you save, and what you save stays yours. The deal is stated honestly, in one breath: nine days free at full power, so there are no refunds; you keep half the sale price, gross, the fee coming out of our half; you are paid when we are paid; money is joins only. The deed makes ambassadors, not salespeople — hired, taught, part of it, never apart from it — and free is free forever, kept beautiful, because you belong even if you never pay. Three worlds wear three gems, the Hub holds them as one, and the top of the scale is not cleverness but wisdom: do no harm, honor everyone, and let the product itself, shown honestly, be the marketing.",
+      "topics": [
+        "Distillation",
+        "Vision",
+        "System",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -79802,5 +79835,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "04a419e35e764870b9d6fe18ac1e6e26658f3e253d782dd0c78e9adc88902482"
+  "corpus_manifest_hash": "e6548d93036a0ebfcf64b4e49a5f2b090d68e308628bd21b26b042fcc40cc78f"
 }
