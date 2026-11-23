@@ -735,8 +735,11 @@ audio.load();
    sound: its real amplitude envelope (measured from this video’s
    soundtrack — see the YT_ENV note below), read against the video
    clock, so the rings move with the words you hear. */
-var videoLoaded = false, videoPlaying = false;
+var videoLoaded = false, videoPlaying = false, videoPlayWanted = false;
 function loadVideo(){
+  /* FIX-1: the tap that creates the iframe IS the play gesture. Remember
+     it — play is driven through the API the moment the session is ready. */
+  videoPlayWanted = true;
   if (videoLoaded) return;
   videoLoaded = true;
   var shell = document.getElementById('videoShell');
@@ -748,10 +751,28 @@ function loadVideo(){
   f.allow = 'accelerometer; autoplay; encrypted-media; picture-in-picture; web-share; fullscreen';
   f.allowFullscreen = true;
   f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+  f.addEventListener('load', function(){
+    /* PLAYER SYNC (round 4, harvested from PowerCast): open the YouTube
+       bridge with the 'listening' handshake. The player only talks
+       after it — without it, it posts nothing at all. Re-sent until
+       the player answers; the state registration itself waits for
+       the player's onReady (see the message handler below). */
+    var ytTries = 0;
+    (function ytHandshake(){
+      if (window.__ytReady || ytTries >= 5) return;
+      ytTries++;
+      try { f.contentWindow.postMessage(JSON.stringify({event:'listening'}), '*'); } catch(e){}
+      setTimeout(ytHandshake, 2500);
+    })();
+  });
   shell.appendChild(f);
   shell.hidden = false;
   frame.classList.add('playing');
-  setTimeout(function(){ ytPost('addEventListener', ['onStateChange']); ytPost('unMute'); }, 1200);
+  /* FIX-1 (round 6): the blind 1200 ms subscription is gone — it fired
+     before the player was ready, into the void. Registration now
+     happens in the message handler, the moment the player answers
+     the handshake. */
+  setTimeout(function(){ ytPost('unMute'); }, 1200);
 }
 function ytPost(func, args){
   var f = document.querySelector('#videoShell iframe');
@@ -791,6 +812,15 @@ window.addEventListener('message', function(e){
   var d; try { d = JSON.parse(e.data); } catch(err){ return; }
   if (!d || typeof d !== 'object') return;
   var info = d.info;
+  /* FIX-1 (round 6): the player has answered the handshake — it is
+     ready, so register for its state changes now (never before). The
+     facade tap asked for play; drive it through the API now, since
+     autoplay never starts playback in a fresh cross-origin iframe. */
+  if ((d.event === 'onReady' || d.event === 'initialDelivery') && !window.__ytReady){
+    window.__ytReady = true;
+    ytPost('addEventListener', ['onStateChange']);
+    if (videoPlayWanted){ ytPost('unMute'); ytPost('playVideo'); }
+  }
   if (d.event === 'onStateChange' || d.event === 'infoDelivery' || (info && typeof info.playerState !== 'undefined')){
     var st = (d.event === 'onStateChange') ? info : (info && info.playerState);
     if (typeof st === 'number' && st !== -1){ videoPlaying = (st === 1); setDeckPlaying(videoPlaying); }
