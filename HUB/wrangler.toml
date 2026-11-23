@@ -55,3 +55,25 @@ zone_name = "nayanet.app"
 [[routes]]
 pattern = "nayanet.app/service-worker.js"
 zone_name = "nayanet.app"
+
+# 2026-11-23 (Hub routing repair): the Hub address, the live feed, and the
+# crawler files belong to this worker. They were restored by hand after the
+# 2026-11-22 redirect loop and wiped again by the 2026-11-23 22:32Z
+# auto-deploy, because they were never declared here — a wrangler deploy
+# syncs the zone routes to exactly this list. Declare them so every repo
+# deploy re-asserts them; a hand restore must never again be the only copy.
+[[routes]]
+pattern = "nayanet.app/hub*"
+zone_name = "nayanet.app"
+
+[[routes]]
+pattern = "nayanet.app/feed-live.json"
+zone_name = "nayanet.app"
+
+[[routes]]
+pattern = "nayanet.app/robots.txt"
+zone_name = "nayanet.app"
+
+[[routes]]
+pattern = "nayanet.app/sitemap.xml"
+zone_name = "nayanet.app"
