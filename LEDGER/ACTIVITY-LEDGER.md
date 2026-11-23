@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-23 13:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-23 14:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -59758,6 +59758,12 @@ _Last updated: 2026-11-23 13:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ distill-daily-20261123 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** distill-daily 2026-11-23: re-prove mission-state drift (main 10,206 lines vs branch 23 lines), correct two stale brief premises, flag guardian-escape watch, hand merge to dock
+
+**Evidence:** FRESH WINDOW (only genuine unscored receipt this tick; backlog 0 after this row — the .json verdict-table file was already scored twice, my detector mis-stripped its suffix). VERIFIED first-hand this tick: ls-remote HEAD eb95f3c2 == receipt's 'main tip now', branch naya/mission-state 4c949486 == receipt's current branch tip, guardian/revert-dccab62
 
 ### ✅ gate-stall-20261123-0510 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
