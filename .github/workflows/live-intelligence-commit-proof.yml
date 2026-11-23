@@ -159,8 +159,26 @@ jobs:
           capture=json.loads(pathlib.Path(capture_path).read_text())
           capture_id=capture.get("capture_id")
           if not capture_id:
-              print(f"CAPTURE_MISSING_CAPTURE_ID: {capture_path} smart_note={capture.get('smart_note_id')} - capture carries no capture_id (backfilled capture); fresh-lesson contract requires capture_id", flush=True)
+              # Backfilled captures (canonical-reconstruction) carry no
+              # capture_id field, and 2,894/3,260 captures in the tree lack
+              # it -- the field is not a reliable contract input. Derive the
+              # stable identity from the capture filename, matching the
+              # minting convention observed across the tree: capture_id ==
+              # file stem with a leading "SMART-NOTE-" stripped (366/366
+              # captures that carry the field). Stable and unique per file,
+              # so the SMART-NOTE-<capture_id> event identity stays
+              # idempotent across runs.
+              stem=pathlib.Path(capture_path).stem
+              capture_id=stem[len("SMART-NOTE-"):] if stem.startswith("SMART-NOTE-") else stem
+              print(f"CAPTURE_ID_DERIVED_FROM_FILENAME: {capture_path} smart_note={capture.get('smart_note_id')} capture_id={capture_id}", flush=True)
+          capture_title=capture.get("title") or (capture.get("intelligence") or {}).get("title")
+          if not capture_title:
+              print(f"CAPTURE_MISSING_TITLE: {capture_path} smart_note={capture.get('smart_note_id')} - no top-level or intelligence title; fresh-lesson contract requires a title", flush=True)
               raise SystemExit(1)
+          # Topic is optional: absent reads as None, exactly like captures
+          # whose topic key is present-but-null; the runtime coerces null
+          # to "" (execute) / null (verify). No value is invented here.
+          capture_topic=capture.get("topic")
           distilled=json.dumps(capture["intelligence"],sort_keys=True,separators=(",",":"),ensure_ascii=False)
           digest=hashlib.sha256(distilled.encode()).hexdigest()
           exact=next((e for e in registry.get("entries",[]) if e.get("content_hash")==digest),None)
@@ -194,8 +212,8 @@ jobs:
           request={
             "mode":"execute","p_authority_grant_id":os.environ["GRANT_ID"],
             "p_event_id":"SMART-NOTE-"+capture_id,
-            "p_title":capture["title"],"p_content":distilled,
-            "p_category":capture.get("category","SMART_NOTE"),"p_topic":capture["topic"],
+            "p_title":capture_title,"p_content":distilled,
+            "p_category":capture.get("category","SMART_NOTE"),"p_topic":capture_topic,
             "p_target_id":"NAYA-NODE-0001","p_project_id":"NayaNET",
             "declared_task_classes":["provenance_sensitive"],"p_connections":resolved_connections
           }
@@ -315,8 +333,26 @@ jobs:
               capture=json.loads(pathlib.Path(capture_path).read_text())
               capture_id=capture.get("capture_id")
               if not capture_id:
-                  print(f"CAPTURE_MISSING_CAPTURE_ID: {capture_path} smart_note={capture.get('smart_note_id')} - capture carries no capture_id (backfilled capture); fresh-lesson contract requires capture_id", flush=True)
+                  # Backfilled captures (canonical-reconstruction) carry no
+                  # capture_id field, and 2,894/3,260 captures in the tree lack
+                  # it -- the field is not a reliable contract input. Derive the
+                  # stable identity from the capture filename, matching the
+                  # minting convention observed across the tree: capture_id ==
+                  # file stem with a leading "SMART-NOTE-" stripped (366/366
+                  # captures that carry the field). Stable and unique per file,
+                  # so the SMART-NOTE-<capture_id> event identity stays
+                  # idempotent across runs.
+                  stem=pathlib.Path(capture_path).stem
+                  capture_id=stem[len("SMART-NOTE-"):] if stem.startswith("SMART-NOTE-") else stem
+                  print(f"CAPTURE_ID_DERIVED_FROM_FILENAME: {capture_path} smart_note={capture.get('smart_note_id')} capture_id={capture_id}", flush=True)
+              capture_title=capture.get("title") or (capture.get("intelligence") or {}).get("title")
+              if not capture_title:
+                  print(f"CAPTURE_MISSING_TITLE: {capture_path} smart_note={capture.get('smart_note_id')} - no top-level or intelligence title; fresh-lesson contract requires a title", flush=True)
                   raise SystemExit(1)
+              # Topic is optional: absent reads as None, exactly like captures
+              # whose topic key is present-but-null; the runtime coerces null
+              # to "" (execute) / null (verify). No value is invented here.
+              capture_topic=capture.get("topic")
               distilled=json.dumps(capture["intelligence"],sort_keys=True,separators=(",",":"),ensure_ascii=False)
               digest=hashlib.sha256(distilled.encode()).hexdigest()
               exact=next((e for e in registry.get("entries",[]) if e.get("content_hash")==digest),None)
@@ -350,8 +386,8 @@ jobs:
               request={
                 "mode":"execute","p_authority_grant_id":os.environ["GRANT_ID"],
                 "p_event_id":"SMART-NOTE-"+capture_id,
-                "p_title":capture["title"],"p_content":distilled,
-                "p_category":capture.get("category","SMART_NOTE"),"p_topic":capture["topic"],
+                "p_title":capture_title,"p_content":distilled,
+                "p_category":capture.get("category","SMART_NOTE"),"p_topic":capture_topic,
                 "p_target_id":"NAYA-NODE-0001","p_project_id":"NayaNET","p_connections":resolved_connections
               }
           else:
