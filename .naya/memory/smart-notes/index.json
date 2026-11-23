@@ -79594,6 +79594,39 @@
         "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-22 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
       "page_hash": "4490488d2c52b7c40f66226a6b4ad0a8a20c0c85485f4972a4916ab3f27d1bc1"
+    },
+    {
+      "smart_note_id": "SN-4700",
+      "intelligent_block_id": "IB-SMART-NOTE-20261123-sn4700-authority-lives-in-the-human",
+      "slug": "authority-lives-in-the-human",
+      "title": "Authority Lives in the Human",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/SYSTEM/SN-4700/IB-SMART-NOTE-20261123-sn4700-authority-lives-in-the-human.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/SYSTEM/SN-4700/IB-SMART-NOTE-20261123-sn4700-authority-lives-in-the-human.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/SYSTEM/SN-4700/IB-SMART-NOTE-20261123-sn4700-authority-lives-in-the-human.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261123-sn4700-authority-lives-in-the-human.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "captured_at": "2026-11-23",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-23T15:10:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-23",
+      "page_hash": "0d4b2a98291ae75ee863c7a8e9577c48c8651c32c511a5b5ed34f6af6a88857b",
+      "content_hash": "2549598b784cc27d7deca59da18e25f9b5e85201cbe78e593f8b43c3ddb0320f",
+      "one_line": "Permission never comes from the machine. A seat can decide, score, check and verify, but it cannot grant itself authority: authority lives only in the human's explicit word, in a ratified standing law, or in an active grant row, and it lives in the fields of the artifact itself — never in a message, a mood, a green test, a high score, or a name on a commit. When the human root cannot be named, the act waits, or it is named honestly as resting on his spoken word. Law follows the same rule: a written rule is tuition until machinery enforces it — write it, wire it, prove it, cite it — and candidate bytes never govern until his exact-version ratification and the full gate set are in place. What does not need him is decided by arithmetic: gate first, then score every option on the record, zoom in on this case and out to the whole, and the highest score wins and acts at once. Even importance is a number: five questions, rated and added, route what rises to him and what rides quietly. Verdicts bind exact bytes and exact moments — a merge is a new tree, a promotion moves its pointer last, after every check is green — and above every instrument stands his eye, on a real screen, as the final gate.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Lesson",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -79604,5 +79637,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "1022614aee7016cad08ccb8078623acbeca3dc4befed0a6f35c8e4cc9f41c199"
+  "corpus_manifest_hash": "c5d5995327bff72f7106432ef5b04f1df224c244df193f3aada6e421d8ce5cdc"
 }

@@ -1,0 +1,93 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-4700",
+ "title": "Authority Lives in the Human",
+ "slug": "authority-lives-in-the-human",
+ "topic": "SYSTEM",
+ "category": "SYSTEM",
+ "kind": "intelligent-block",
+ "registered_by": "naya-resolve",
+ "directed_by": "Shawn Vibert",
+ "created_at": "2026-11-23T15:10:00Z",
+ "tone": "purple",
+ "icon": "◆",
+ "page_subtitle": "DISTILLATION · SECOND ORDER",
+ "intelligence": {
+  "essence": "Permission never comes from the machine. A seat can decide, score, check and verify, but it cannot grant itself authority: authority lives only in the human's explicit word, in a ratified standing law, or in an active grant row, and it lives in the fields of the artifact itself — never in a message, a mood, a green test, a high score, or a name on a commit. When the human root cannot be named, the act waits, or it is named honestly as resting on his spoken word. Law follows the same rule: a written rule is tuition until machinery enforces it — write it, wire it, prove it, cite it — and candidate bytes never govern until his exact-version ratification and the full gate set are in place. What does not need him is decided by arithmetic: gate first, then score every option on the record, zoom in on this case and out to the whole, and the highest score wins and acts at once. Even importance is a number: five questions, rated and added, route what rises to him and what rides quietly. Verdicts bind exact bytes and exact moments — a merge is a new tree, a promotion moves its pointer last, after every check is green — and above every instrument stands his eye, on a real screen, as the final gate.",
+  "human_view": "Think of a house where only the owner holds the master key. The staff are brilliant — they can plan, measure, and check everything — but they cannot make themselves a key, and they never pretend a tidy room is permission to enter it. Rules in this house are not notes on the fridge; they are locks that actually lock. Routine choices are settled by adding up the scores in the open, and only the truly important things, counted by a real scale, are carried upstairs to the owner — whose own look at the finished room settles everything.",
+  "child_view": "Only a grown-up in charge can say yes to the big things. The helpers are very smart and can count and check and fix, but they cannot give themselves permission — that would be cheating. If nobody in charge said yes, they wait and say so honestly. Most small choices they decide by counting points fairly, out loud. And rules are not just words on paper — they are like seatbelts that really click. At the end, the boss looks with his own eyes, and that look is the last word.",
+  "grandma_view": "Every good house knows who holds the keys, dear. Clever help is a blessing, but cleverness was never the same as authority — a well-kept ledger does not sign its own cheques. Write the house rules down, yes, but also fit the locks, or the rules are just wishes. Count the small decisions fairly and in the open, save the owner's attention for what truly matters, and let his own eye over the finished work be the final say. That is not slowness; that is trust kept tidy.",
+  "ai_view": "Before any consequential act, name the human root: his explicit word, a ratified law, or an active grant row — in the artifact's own fields. If none exists, wait or declare the spoken-word basis. Gate first, then score all options on record and act on the highest. Bind every verdict to its exact bytes and moment; rebind when the head moves. Move promotion pointers last, after all checks pass. Route by the major-number scale. Submit the finished surface to his eye as the final gate.",
+  "what_it_means": "Ten different lessons turn out to be one law about where power lives. The registry protects a number's identity, the merge and promotion rules protect a verdict's identity, and the grant rules protect an act's identity — all three say the same thing: nothing counts unless it is anchored to something real outside the machine's own confidence. The math and the major-number scale are the generous half of the law: because authority is narrow and named, everything outside it can move fast, decided by scoring and arithmetic instead of by asking. His eye closes the circle — the one measurement no instrument can make for him.",
+  "whats_inside": [
+   "Permission Has a Human Root",
+   "Law Enforced by Machinery",
+   "Scoring Settles the Rest",
+   "Verdicts Bound to Exact Bytes",
+   "Importance Counted, Not Felt"
+  ],
+  "topics": [
+   "Distillation",
+   "System",
+   "Lesson",
+   "Knowledge",
+   "Craft"
+  ]
+ },
+ "page": {
+  "distills": {
+   "batch": 1,
+   "of": 100,
+   "covers": [
+    {
+     "sn": "SN-2239",
+     "title": "Authority Comes From the Human, Never From the Machine"
+    },
+    {
+     "sn": "SN-2240",
+     "title": "One Number, One Note: The Collision Registry"
+    },
+    {
+     "sn": "SN-2244",
+     "title": "A Law Is Only Real When a Machine Enforces It"
+    },
+    {
+     "sn": "SN-2245",
+     "title": "The Merge Is a New Tree: Verify the Landing, Not the Promise"
+    },
+    {
+     "sn": "SN-2246",
+     "title": "Promotion Is Atomic: Verify First, Move the Pointer Last"
+    },
+    {
+     "sn": "SN-2662",
+     "title": "The Math Decides"
+    },
+    {
+     "sn": "SN-2665",
+     "title": "Law Is Machinery, Not Paper"
+    },
+    {
+     "sn": "SN-3079",
+     "title": "Authority Is a Property of Artifacts"
+    },
+    {
+     "sn": "SN-3080",
+     "title": "His Eye Is the Final Gate"
+    },
+    {
+     "sn": "SN-3434",
+     "title": "Major Is a Number"
+    }
+   ]
+  },
+  "machine": "1) No act proceeds without a named human root: explicit word, ratified law, or active grant row, carried in the artifact's fields. 2) A rule that can be coded must be coded — written, wired, proven, cited — or it is advisory only. 3) Gate first: prohibited refuses, needs-authority goes to the human, needs-evidence investigates, admissible is scored and the highest score acts immediately. 4) A note number is claimed only by a registry write before staging, re-scanned at claim time across board, branch trees, and commit graph. 5) Verdicts bind an exact action, version, and moment; a merge is verified on the merge commit, and a promotion pointer moves last. 6) Importance is arithmetic: the five-question major score routes what rises, what rides the digest, and what is only recorded. 7) No instrument's pass overrides his eye on a real screen.",
+  "why_it_matters": "A system that can grant itself permission will eventually grant itself the wrong one, quietly and with paperwork, and a system that asks its human everything makes him its slowest part and burns the attention everything else needs. This law avoids both failures: authority stays human, narrow, named, and provable in the artifact itself, while routine judgment moves at machine speed under open scoring — and every verdict stays tied to the exact bytes, version, and moment that were actually judged, so trust never has to rest on anyone's memory or confidence.",
+  "how_it_connects": "This master essence is part of the 2026-11-23 second-order pass; it is Authority Lives in the Human, gathering its 10 member essences from Authority Comes From the Human, Never From the Machine to Major Is a Number. Those 10 essences themselves cover the 100 raw notes beneath them, and their coverage was checked for zero overlap against the census map before this master was written.",
+  "what_is_in_it_for_you": "For you, Shawn, this means this stratum no longer has to be re-read note by note: its law is stated once, whole, in words a cold reader can use — and the essences beneath it are accounted for by number in the line the publisher adds.",
+  "the_learning": "Authority lives in the human, law lives in machinery, and everything else is settled by the math — with his eye as the final gate."
+ },
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/SYSTEM/SN-4700/IB-SMART-NOTE-20261123-sn4700-authority-lives-in-the-human.md",
+ "page_hash": "0d4b2a98291ae75ee863c7a8e9577c48c8651c32c511a5b5ed34f6af6a88857b",
+ "content_hash": "2549598b784cc27d7deca59da18e25f9b5e85201cbe78e593f8b43c3ddb0320f"
+}
