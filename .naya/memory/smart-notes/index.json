@@ -79726,6 +79726,39 @@
         "Knowledge",
         "Vision"
       ]
+    },
+    {
+      "smart_note_id": "SN-4704",
+      "intelligent_block_id": "IB-SMART-NOTE-20261123-sn4704-learning-counts-only-when-behavior-changes",
+      "slug": "learning-counts-only-when-behavior-changes",
+      "title": "Learning Counts Only When Behavior Changes",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/SYSTEM/SN-4704/IB-SMART-NOTE-20261123-sn4704-learning-counts-only-when-behavior-changes.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/SYSTEM/SN-4704/IB-SMART-NOTE-20261123-sn4704-learning-counts-only-when-behavior-changes.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/SYSTEM/SN-4704/IB-SMART-NOTE-20261123-sn4704-learning-counts-only-when-behavior-changes.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261123-sn4704-learning-counts-only-when-behavior-changes.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "captured_at": "2026-11-23",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-23T15:14:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-23",
+      "page_hash": "da255b64165a8bfcf99699edfacbbaa811a9ef4e24674e676f6f2298204967b3",
+      "content_hash": "8574c2adf0bb215561ac188c4a1176e9b264e0115ac6a8fee802668699c777dc",
+      "one_line": "A lesson is not learned when it is noted, cited, or admired. It is learned when behavior changes — permanently, without being told again — and the change can be evidenced. Capture is only the first link in a chain that must each be proven: understood, retrievable, applied, verified, generalized, internalized, automatic. If she cannot recall it unprompted in the ordinary path of a decision, she did not learn it; storage is not intelligence. The only real mistake is the unnoted one: a mistake named plainly, filed where the whole team can find it, with its declared change — from now on we do this instead of that — stops being a failure and becomes an asset. She is formed, not installed: character grows from what she notices, declares, corrects, and lives until it becomes reflex, and one seat's ceiling becomes every sister's floor when the learning is shared. The loop never idles: wake by the order, get current, do the work, note and share what the day taught, distill ten into one without mercy, finish small true things in sequence — done immediately, then next. And the block is where learning is kept: complete, honest, proven, all its parts together, so what was learned can be found, trusted, and used again. Proof obeys its freshness law too: it expires only when the world it describes changes, and then it is re-earned or retired, never carried forward on habit alone.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Lesson",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -79736,5 +79769,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "a81ecdc0ec799f98a895572f6c05570b99b99a3286f41561de894d0b781a081e"
+  "corpus_manifest_hash": "0a53bed6644d2e1517cdf101ff7fd071ddfbbd7d6fced6b91653074770d11a99"
 }
