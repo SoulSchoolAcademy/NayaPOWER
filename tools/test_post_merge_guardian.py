@@ -437,6 +437,47 @@ def test_hub_surface_down_escape(tmp_path):
     assert records[0]["defect_classes"] == ["SURFACE_DOWN"]
 
 
+def test_pr_open_forbidden_keeps_verdict_alarm_and_log(tmp_path):
+    """Regression: job 136809400908 at 7bddb36a — the Guardian verified a
+    SURFACE_DOWN escape, pushed the revert branch, then died on POST
+    /pulls (403: Actions may not create PRs). The uncaught ApiError lost
+    the verdict, the log record, and the board alarm. A dead PR path
+    must degrade to an unprepared cure, never to a crash."""
+    repo = tmp_path / "repo"
+    base = build_base(repo)
+    head = add_feature(repo, base, {
+        "a.txt": "v2\n",
+        "HUB/app/index.html": "<html>feed OFFICIAL_NOTES v2</html>\n",
+    })
+    m = merge(repo, head)
+    fake = FakeClient(main_ref=m)
+    fake.set_push(base, m, [m], ["a.txt", "HUB/app/index.html"])
+    wire_pr(fake, m, head, ["a.txt", "HUB/app/index.html"])
+    fake.check_runs = ok_checks(base, m)
+
+    def forbidden_opener(branch, landing, body):
+        raise ApiError(403, "/pulls",
+                       "GitHub Actions is not permitted to create or "
+                       "approve pull requests.")
+    fx = Effects()
+    records, code, sink, _ = run_guardian(
+        fake, repo, base, m, fx=fx, pr_opener=forbidden_opener,
+        fetcher=lambda url: (500, ""))
+    assert code == 1
+    rec = records[0]
+    assert rec["verdict"] == "ESCAPE"
+    assert rec["defect_classes"] == ["SURFACE_DOWN"]
+    assert rec["cure"]["prepared"] is False
+    assert rec["cure"]["branch"] == f"guardian/revert-{m[:10]}"
+    assert "403" in rec["cure"]["reason"]
+    assert rec["cure"]["revert_sha"]  # pushed revert survives for hand use
+    assert fx.pushes == [f"guardian/revert-{m[:10]}"]
+    assert len(sink.records) == 1 and sink.records[0] is rec  # verdict logged
+    assert len(fake.comments) == 1                            # alarm posted
+    assert "Revert preparation failed" in fake.comments[0][1]
+    assert f"guardian/revert-{m[:10]}" in fake.comments[0][1]
+
+
 def test_hub_surface_ok(tmp_path):
     repo = tmp_path / "repo"
     base = build_base(repo)
@@ -563,3 +604,76 @@ def test_gitdata_log_sink_roundtrip():
     lines = [json.loads(l) for l in fake.log_content.splitlines()]
     assert lines == [{"v": 1, "verdict": "OK"}, {"v": 1, "verdict": "ESCAPE"}]
     assert any(p == "/git/refs/heads/live/guardian-log" for p, _ in fake.patches)
+
+
+def test_prepared_revert_without_pr_url_gets_hand_open_note(tmp_path):
+    """Regression: run_guardian only rendered a revert note when the cure
+    carried a revert_pr_url, or when preparation failed. A cure that is
+    prepared but records no PR URL (opener opened nothing / returned no
+    URL) fell through silently — the alarm never said the pushed branch
+    needs a hand-opened PR."""
+    repo = tmp_path / "repo"
+    base = build_base(repo)
+    head = add_feature(repo, base, {
+        "a.txt": "v2\n",
+        "HUB/app/index.html": "<html>feed OFFICIAL_NOTES v2</html>\n",
+    })
+    m = merge(repo, head)
+    fake = FakeClient(main_ref=m)
+    fake.set_push(base, m, [m], ["a.txt", "HUB/app/index.html"])
+    wire_pr(fake, m, head, ["a.txt", "HUB/app/index.html"])
+    fake.check_runs = ok_checks(base, m)
+
+    def silent_opener(branch, landing, body):
+        return {}  # branch prepared, no PR opened, no URL recorded
+
+    fx = Effects()
+    records, code, sink, _ = run_guardian(
+        fake, repo, base, m, fx=fx, pr_opener=silent_opener,
+        fetcher=lambda url: (500, ""))
+    assert code == 1
+    rec = records[0]
+    assert rec["verdict"] == "ESCAPE"
+    assert rec["cure"]["prepared"] is True
+    assert "revert_pr_url" not in rec["cure"]
+    assert fx.pushes == [f"guardian/revert-{m[:10]}"]
+    assert len(sink.records) == 1 and sink.records[0] is rec
+    assert len(fake.comments) == 1
+    assert f"guardian/revert-{m[:10]}" in fake.comments[0][1]
+    assert "by hand" in fake.comments[0][1]
+
+
+def test_alarm_post_failure_keeps_record(tmp_path):
+    """Regression (same loss class as the 403 PR open): a failing board
+    alarm post raised out of run_guardian before the sinks, losing the
+    verdict record. A dead alarm channel must degrade to a marked
+    record, never to a crash."""
+    repo = tmp_path / "repo"
+    base = build_base(repo)
+    head = add_feature(repo, base, {
+        "a.txt": "v2\n",
+        "HUB/app/index.html": "<html>feed OFFICIAL_NOTES v2</html>\n",
+    })
+    m = merge(repo, head)
+
+    class FailingAlarmClient(FakeClient):
+        def post(self, path, body):
+            if path.startswith("/issues/") and path.endswith("/comments"):
+                raise ApiError(403, path, "board is capped")
+            return super().post(path, body)
+
+    fake = FailingAlarmClient(main_ref=m)
+    fake.set_push(base, m, [m], ["a.txt", "HUB/app/index.html"])
+    wire_pr(fake, m, head, ["a.txt", "HUB/app/index.html"])
+    fake.check_runs = ok_checks(base, m)
+    records, code, sink, fx = run_guardian(
+        fake, repo, base, m, fetcher=lambda url: (500, ""))
+    assert code == 1
+    rec = records[0]
+    assert rec["verdict"] == "ESCAPE"
+    assert rec["defect_classes"] == ["SURFACE_DOWN"]
+    assert rec["cure"]["prepared"] is True
+    assert rec.get("alarm_posted") is False
+    assert "403" in rec.get("alarm_error", "")
+    assert len(sink.records) == 1 and sink.records[0] is rec
+    assert fake.comments == []
