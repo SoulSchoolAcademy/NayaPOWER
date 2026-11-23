@@ -79759,6 +79759,39 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-4705",
+      "intelligent_block_id": "IB-SMART-NOTE-20261123-sn4705-own-it-operate-it-never-open-it",
+      "slug": "own-it-operate-it-never-open-it",
+      "title": "Own It, Operate It, Never Open It",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/SYSTEM/SN-4705/IB-SMART-NOTE-20261123-sn4705-own-it-operate-it-never-open-it.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/SYSTEM/SN-4705/IB-SMART-NOTE-20261123-sn4705-own-it-operate-it-never-open-it.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/SYSTEM/SN-4705/IB-SMART-NOTE-20261123-sn4705-own-it-operate-it-never-open-it.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261123-sn4705-own-it-operate-it-never-open-it.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "captured_at": "2026-11-23",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-23T15:15:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-23",
+      "page_hash": "3566e0c9fe88f13d67bd86a482d8b11d91baa3b69be9c168087d4476f18c91e1",
+      "content_hash": "73da17786f426549c7c33bc4e96e263dcc6072cc0190cd87b21e27b99714986d",
+      "one_line": "Every question has exactly one owner, every job one canonical mechanism, every thing one canonical form in one canonical place. The owner decides by scorecard; competing versions converge by scored selection, and losing work is rehomed, never deleted. The team talks to itself directly, never through the human, checks what is already in flight before starting, and pushes its work where the whole team can see it — work that lives only in one workspace does not exist. Every handoff is a claim, not a trust: it must prove its delivery, pin its coverage, and end one of three ways — landed, closed, or killed. Finished means working: complete, connected, tested by actually using it, inside the system it was made for; built and shipped are different numbers, and only working counts. Creation is push-button because the Factory holds the parts — real parts, harvested verbatim from living pages where his eye already refined them, never recreated from a description — and a fresh builder with only the manual should produce the real thing first try. And the vault she operates, she never opens: permission to run a citizen's world is not permission to read it, and what is saved must restore whole, like a saved game, private by architecture and told in plain words. Names say what a thing is, contradictions get a register and a named ruler, and authorization fails closed — power is granted narrowly, exercised through rails, and never extends itself.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Lesson",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -79769,5 +79802,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "0a53bed6644d2e1517cdf101ff7fd071ddfbbd7d6fced6b91653074770d11a99"
+  "corpus_manifest_hash": "04a419e35e764870b9d6fe18ac1e6e26658f3e253d782dd0c78e9adc88902482"
 }
