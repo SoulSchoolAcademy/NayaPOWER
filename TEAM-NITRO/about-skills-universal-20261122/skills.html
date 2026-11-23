@@ -51,7 +51,13 @@
      answers are rewritten to fill all three boards, 10-star, talking to the reader.
      CONTENT LAW (live call ~17:39 MST): points are reputation, never money — never write
      a points-to-money denial; money is promoting the network, your own products, and
-     sharing your page. STAGED ONLY. -->
+     sharing your page. STAGED ONLY.
+     ROUND 8 (Shawn, live call 2026-11-22 ~18:29 MST): BIGGER TEXT on the three boards —
+     headlines 25 to 28, sub-headlines 19 to 22, body 17 to 21 on phone scaling up to 26
+     on desktop (fluid clamp, same vw pattern as the base). The motto rises proportionally
+     (headline 38 to 43, body 26 to 30 on desktop) because it still fits whole. Every board
+     proved whole at both widths, overflow 0, no per-board step-down needed. Words unchanged.
+     STAGED ONLY. -->
 <html lang="en">
 <head>
 <meta charset="utf-8" />
@@ -393,9 +399,9 @@
   .slide-boards.triple{gap:16px}
   .slide-boards.triple .ib-layer{flex:1 1 0;min-width:0}
   .slide-boards.triple .ib-layer-body{justify-content:center}
-  .slide-boards.triple .ib-layer-body .b-script{font-family:"Marcellus","Cormorant Garamond",serif;font-size:25px;line-height:1.25}
-  .slide-boards.triple .ib-layer-body .b-sub{font-family:"Marcellus","Cormorant Garamond",serif;font-weight:600;font-size:19px;line-height:1.3;color:#fff;margin-top:8px;text-shadow:0 1px 0 #000,0 0 14px rgba(255,255,255,.35)}
-  .slide-boards.triple .ib-layer-body p{font-family:"Marcellus","Cormorant Garamond",serif;font-size:17px;line-height:1.6;color:#fff}
+  .slide-boards.triple .ib-layer-body .b-script{font-family:"Marcellus","Cormorant Garamond",serif;font-size:28px;line-height:1.25}
+  .slide-boards.triple .ib-layer-body .b-sub{font-family:"Marcellus","Cormorant Garamond",serif;font-weight:600;font-size:22px;line-height:1.3;color:#fff;margin-top:8px;text-shadow:0 1px 0 #000,0 0 14px rgba(255,255,255,.35)}
+  .slide-boards.triple .ib-layer-body p{font-family:"Marcellus","Cormorant Garamond",serif;font-size:clamp(21px,2.3vw,26px);line-height:1.6;color:#fff}
   .slide-boards.triple .ib-n{margin:24px auto 0}
   .board-dots{display:none}
   /* ALIVE ON HOVER (laws §1/§6 — the round-6 board had no hover state at all): the whole
@@ -415,6 +421,16 @@
     .board-dots .bdot.on{background:var(--dc,#fff);border-color:#fff;box-shadow:0 0 10px var(--dc,#fff)}
     .board-dots .board-hint{font-size:17px;color:#fff;margin-left:6px;text-shadow:0 1px 0 #000}
   }
+
+  /* ============ ROUND 8 — BIGGER TEXT (Shawn, live call 2026-11-22 ~18:29 MST) ============
+     Headlines 25 to 28, sub-headlines 19 to 22, body 17 to 21 on phone scaling up to 26
+     on desktop — the small text quite a bit bigger, definitely. The motto rises
+     proportionally (headline 38 to 43, body 26 to 30 on desktop; 31/23 on phone)
+     because it still fits whole in frame (desktop slack 42, phone slack 40, overflow 0).
+     Line-heights unchanged (1.25 / 1.3 / 1.6 triple; 1.2 / 1.45 motto). No per-board
+     step-down was needed: every board proved whole at 1919x998 and 390x844. */
+  .slide-boards:not(.triple) .ib-layer-body .b-script{font-size:clamp(31px,3.8vw,43px)}
+  .slide-boards:not(.triple) .ib-layer-body p{font-size:clamp(23px,2.7vw,30px)}
 </style>
 <style id="media-swap">
 /* MEDIA SWAP — additive layer only. The slideshow engine, frame CSS and
