@@ -3432,6 +3432,31 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
   #dayScroll{padding-top:0!important}
   #dayScroll>.cover-strip-label{display:none!important}
 }
+/* ============ ROUND 11 — R10 GOES BACK list (2026-11-23 ~20:41 MST) ============ */
+/* (1) MONTH WEEKROW AT <=560px — the fail. FIX3's row rule (icon
+   beside the word) needs ~65px in a 39px column at 390, so every
+   label spills into the next column's icon. The base design stacks
+   the icon ABOVE the word — restore that at phone width, and let
+   the word scale to its column (12px floor at 360, 3.3vw, 17px cap
+   at 560) with a 1px stroke so the letters stay whole inside their
+   own date columns. Desktop untouched: this block is <=560px only.
+   Judge by the RENDERED row, not by column centres. */
+/* (2) WORLDS FRAME-2 LABELS — "Connections" is 107px at 17px in an
+   85px cell; the label span sizes to content, so it spills both
+   sides and touches "Messages". 12px + 4px cell padding fits it
+   (~75px in ~77px of room); max-width:100% means a label can never
+   again spill into its neighbour even if a font renders wide. */
+/* (3) BOOK-DOOR STRIP LABELS — .mc-wd at 17px is ~42px in a 36px
+   column at 360 (collisions to 6px). 13px puts "SUN" at ~32px with
+   room on both sides at 360 and 390. */
+@media(max-width:560px){
+  .weekrow .wk-col{flex-direction:column!important;gap:2px!important}
+  .weekrow .wk-word{max-width:100%!important}
+  .weekrow .wk-l{font-size:clamp(12px,3.3vw,17px)!important;-webkit-text-stroke-width:1px!important;letter-spacing:.02em!important}
+  .worlds-slide .world-cell{padding:8px 4px!important}
+  .worlds-slide .world-label{font-size:12px!important;max-width:100%!important}
+  .mc-day .mc-wd{font-size:13px!important;letter-spacing:.02em!important;max-width:100%!important}
+}
 </style>
   </head>
   <body>
@@ -6294,7 +6319,8 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           var ap = parseInt(p[0], 10) >= 12 ? "PM" : "AM";
           return WEEKDAYS[day.getDay()] + ", " + MONTHS[day.getMonth()] + " " + day.getDate() + " · " + h12 + ":" + p[1] + " " + ap + " · " + dur + " minutes";
         }
-        var __mc = { day: null, time: null, dur: 30, meet: false, edit: null, kind: null, timePage: 0, confirmed: null, refused: null };
+        /* ROUND 11 item 4 — __mc carries the typed title/who: the form is recreated from state on every kind/time/day tap, and the old code read __mc.edit only, so typed text vanished. */
+        var __mc = { day: null, time: null, dur: 30, meet: false, edit: null, kind: null, timePage: 0, confirmed: null, refused: null, title: "", who: "" };
         function mcMinutes(t) { var p = String(t).split(":"); return parseInt(p[0], 10) * 60 + parseInt(p[1], 10); }
         function mcFreeTimes(day, durMin) {
           var k = keyOf(day);
@@ -6385,9 +6411,13 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           form.innerHTML =
             (__mc.refused ? '<p class="r2-refused">' + escapeHTML(__mc.refused) + "</p>" : "") +
             '<p class="mc-chosen">' + r2WhenLine(d, __mc.time, __mc.dur) + " · " + kindLabel + "</p>" +
-            '<input type="text" id="mcTitle" placeholder="What is it?" aria-label="What is it?" maxlength="80" value="' + escapeHTML(__mc.edit ? __mc.edit.title : "").replace(/"/g, "&quot;") + '" />' +
-            '<input type="text" id="mcWho" placeholder="Who is it with?" aria-label="Who is it with?" maxlength="80" value="' + escapeHTML(__mc.edit ? (__mc.edit.who || "") : "").replace(/"/g, "&quot;") + '" />' +
+            '<input type="text" id="mcTitle" placeholder="What is it?" aria-label="What is it?" maxlength="80" value="' + escapeHTML(__mc.title || (__mc.edit ? __mc.edit.title : "")).replace(/"/g, "&quot;") + '" />' +
+            '<input type="text" id="mcWho" placeholder="Who is it with?" aria-label="Who is it with?" maxlength="80" value="' + escapeHTML(__mc.who || (__mc.edit ? (__mc.edit.who || "") : "")).replace(/"/g, "&quot;") + '" />' +
             '<button type="button" class="elite-bookpill" id="mcBook">' + (__mc.edit ? "Save the change" : "Book") + "</button>";
+          /* ROUND 11 item 4 — the inputs sync into __mc on every keystroke, so the next re-render (kind/time/day tap) keeps what the user typed. The edit object itself is never overwritten here, so mcBook's splice still matches the ORIGINAL title when an edited booking is saved. */
+          var __mcTi = $("mcTitle"), __mcWh = $("mcWho");
+          if (__mcTi) __mcTi.addEventListener("input", function () { __mc.title = __mcTi.value; });
+          if (__mcWh) __mcWh.addEventListener("input", function () { __mc.who = __mcWh.value; });
         }
         /* ROUND 7 (2026-11-23 ~18:57 MST) — the booking flow opens
            inward in the Book a time door now, not on three standalone
@@ -6395,7 +6425,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
            from the Timeline's Book button, the Appointments pill, or a
            timeline slot. The deck never carries booking slides. */
         function mcOpen(day, meet) {
-          __mc.day = day || sel; __mc.time = null; __mc.meet = !!meet; __mc.edit = null;
+          __mc.day = day || sel; __mc.time = null; __mc.meet = !!meet; __mc.edit = null; __mc.title = ""; __mc.who = "";
           __mc.kind = meet ? "meet" : null; __mc.timePage = 0; __mc.confirmed = null; __mc.refused = null;
           __bookOpen = true;
           var door = doorById("book"); if (door) openDoor(door);
@@ -6490,7 +6520,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           });
           var ch = $("r2Change");
           if (ch) ch.addEventListener("click", function () {
-            __mc.edit = { time: c.time, title: c.title, who: c.who || "" };
+            __mc.edit = { time: c.time, title: c.title, who: c.who || "" }; __mc.title = c.title; __mc.who = c.who || "";
             __mc.day = c.day; __mc.time = c.time; __mc.kind = c.kind; __mc.dur = c.dur || 30; __mc.confirmed = null; __mc.refused = null;
             mcRenderCal(); mcRenderTime(); mcRenderForm();
           });
@@ -6558,7 +6588,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             if (row && row.hasAttribute("data-mc-i")) {
               var a = dayApptsFor(keyOf(sel))[parseInt(row.getAttribute("data-mc-i"), 10)];
               if (!a || a.fromMonth) return;
-              __mc.edit = { time: a.time, title: a.title, who: a.who || "" };
+              __mc.edit = { time: a.time, title: a.title, who: a.who || "" }; __mc.title = a.title; __mc.who = a.who || "";
               __mc.day = sel; __mc.time = a.time; __mc.meet = !!a.meet; __mc.dur = a.dur || 30;
               __mc.kind = a.how || (a.meet ? "meet" : "person"); __mc.confirmed = null; __mc.refused = null; __mc.timePage = 0;
               /* ROUND 7 — editing opens the flow in the book door: the time is already picked, so the form block is the landing. */
