@@ -216,6 +216,7 @@
 .mm-topbar .mm-centre { flex:1; min-width:0; display:flex; align-items:center; justify-content:center; gap:16px; }
 .mm-title { font-family:"Marcellus",serif; font-size:25px; color:#ffffff; text-align:center; line-height:1.15; text-shadow:0 0 12px rgba(255,255,255,.3); }
 .mm-title small { display:block; font-family:"Archivo",sans-serif; font-size:17px; color:#ffffff; letter-spacing:.14em; text-transform:uppercase; }
+.mm-title .t-short { display:none; }
 .xbtn { width:46px; height:46px; flex:none; border-radius:50%; color:#ffffff; display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(180deg,#17171f 0%,#0a0a11 62%,#060609 100%); border:1.5px solid #c62828; box-shadow:0 0 18px rgba(198,40,40,.5), inset 0 1px 0 rgba(255,255,255,.28), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); transition:box-shadow .25s, filter .25s, transform .25s; }
 .xbtn:hover { filter:brightness(1.22); transform:translateY(-1px); }
 .xbtn:active { transform:scale(.97); }
@@ -262,7 +263,7 @@
 .mm-viewhead h2 { margin:0; font-family:"Marcellus",serif; font-size:25px; color:#ffffff; line-height:1.1; }
 .mm-viewhead .sub { font-size:17px; color:#ffffff; }
 .mm-msg { flex:1; min-height:0; display:flex; gap:16px; }
-.mm-rail { width:300px; flex:none; display:flex; flex-direction:column; border-radius:18px; padding:12px; overflow:hidden; background:linear-gradient(135deg,#17171f 0%,#0a0a11 62%,#060609 100%); border:1.5px solid #0f52ba; box-shadow:0 0 16px rgba(15,82,186,.35), 0 6px 16px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.25); }
+.mm-rail { width:300px; flex:none; min-height:0; display:flex; flex-direction:column; border-radius:18px; padding:12px; overflow:hidden; background:linear-gradient(135deg,#17171f 0%,#0a0a11 62%,#060609 100%); border:1.5px solid #0f52ba; box-shadow:0 0 16px rgba(15,82,186,.35), 0 6px 16px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.25); }
 .mm-rail h3 { margin:0 0 4px; font-family:"Marcellus",serif; font-size:19px; color:#ffffff; }
 .mm-rail .mm-scope { margin:0 0 8px; font-size:17px; color:#ffffff; }
 .mm-rail select { width:100%; min-height:44px; margin-bottom:12px; padding:6px 12px; border-radius:999px; background:linear-gradient(180deg,#17171f 0%,#0a0a11 62%,#060609 100%); border:1.5px solid #8e24aa; color:#ffffff; font-size:17px; font-family:inherit; }
@@ -275,7 +276,7 @@
 .mm-person .nm { font-size:19px; font-weight:700; color:#ffffff; line-height:1.2; }
 .mm-person .rl { font-size:17px; color:#ffffff; line-height:1.3; }
 .mm-rail-proof { flex:none; margin:12px 0 0; font-size:17px; color:#ffffff; line-height:1.4; }
-.mm-conv { flex:1; min-width:0; display:flex; flex-direction:column; }
+.mm-conv { flex:1; min-width:0; min-height:0; display:flex; flex-direction:column; }
 .mm-thread { flex:1; min-height:0; overflow-y:auto; display:flex; flex-direction:column; gap:12px; padding:4px; }
 .mm-bubble { max-width:78%; padding:12px 16px; border-radius:18px; font-size:17px; color:#ffffff; line-height:1.5; background:linear-gradient(135deg,#17171f 0%,#0a0a11 62%,#060609 100%); box-shadow:0 6px 14px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.25); transition:transform .3s ease, filter .3s ease; }
 .mm-bubble:hover { transform:translateY(-2px); filter:brightness(1.15); }
@@ -343,6 +344,11 @@
 .mm-bb.lit { filter:brightness(1.3); }
 @media (max-width:720px) {
   .mm-title { font-size:25px; }
+  .mm-title small { display:none; }
+  .mm-title .t-long { display:none; }
+  .mm-title .t-short { display:inline; }
+  .mm-tab svg { display:none; }
+  .mm-tab { overflow:hidden; }
   .mm-topbar { gap:8px; }
   .mm-topbar .mm-centre { gap:8px; }
   .norb { width:52px; height:52px; }
@@ -364,7 +370,7 @@
       <button class="backbtn" id="backBtn" aria-label="Back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
       <div class="mm-centre">
         <div class="norb" id="nOrb" role="button" tabindex="0" aria-label="Tap to enter Messenger"><span class="norb-ring"><i></i></span><span>N</span></div>
-        <div class="mm-title">Messenger + Smart Mail<small>One interface &middot; Inbox &middot; Messenger &middot; Poster</small></div>
+        <div class="mm-title"><span class="t-long">Messenger + Smart Mail</span><span class="t-short">Messenger</span><small>One interface &middot; Inbox &middot; Messenger &middot; Poster</small></div>
       </div>
       <button class="xbtn" id="closeBtn" aria-label="Close — back to the Hub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     </header>
