@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-24 10:02 UTC_
+_Last updated: 2026-11-24 10:33 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 10412
-- ✅ Verified (8+): 10306
+- **Total scored actions:** 10419
+- ✅ Verified (8+): 10313
 - 🟡 Partial (5–7): 95
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 7
@@ -19,14 +19,14 @@ _Last updated: 2026-11-24 10:02 UTC_
 | Team 2 | Naya Sage | 688 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 634 | 9.0 | 10 |
 | Team 4 | Naya Mason | 615 | 9.1 | 9.6 |
-| Team 5 | Naya Seeker | 750 | 9.0 | 9.6 |
-| Team 6 | Naya Heir | 444 | 9.0 | 9.6 |
-| Team 7 | Naya Conductor | 595 | 8.9 | 10 |
+| Team 5 | Naya Seeker | 751 | 9.0 | 9.6 |
+| Team 6 | Naya Heir | 445 | 9.0 | 9.6 |
+| Team 7 | Naya Conductor | 596 | 8.9 | 10 |
 | Team 8 | Naya Sentinel | 629 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 753 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 1021 | 9.1 | 9.7 |
-| Team 11 | Naya Heart | 706 | 9.0 | 9.6 |
-| Team 12 | Naya Herald | 547 | 9.1 | 9.5 |
+| Team 10 | Naya Librarian | 1022 | 9.1 | 9.7 |
+| Team 11 | Naya Heart | 707 | 9.0 | 9.6 |
+| Team 12 | Naya Herald | 548 | 9.1 | 9.5 |
 
 ## Learning velocity
 
@@ -1436,6 +1436,7 @@ _Last updated: 2026-11-24 10:02 UTC_
 - **gate-stall-20261123-1954:** 1 actions, avg 9.0/10
 - **gate-stall-20261124-0013:** 1 actions, avg 8.5/10
 - **gate-stall-20261124-0118:** 1 actions, avg 9.0/10
+- **gate-stall-20261124-0223:** 1 actions, avg 9.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -2442,7 +2443,7 @@ _Last updated: 2026-11-24 10:02 UTC_
 - **gap-t0122-lane6:** 1 actions, avg 8.5/10
 - **gap-t1516-lane6:** 1 actions, avg 9.5/10
 - **t-contract-selfreview:** 9 actions, avg 8.6/10
-- **t-contract-verify:** 11 actions, avg 8.0/10
+- **t-contract-verify:** 12 actions, avg 8.1/10
 - **t-converge:** 11 actions, avg 8.9/10
 - **scorer-20261014-2000:** 1 actions, avg 9.5/10
 - **gap-lane-scorer-20261015-0410-lane7:** 2 actions, avg 9.2/10
@@ -3882,9 +3883,12 @@ _Last updated: 2026-11-24 10:02 UTC_
 - **t0812:** 2 actions, avg 9.2/10
 - **t0812-lane2:** 1 actions, avg 9.5/10
 - **t0813:** 10 actions, avg 9.1/10
+- **t0813-lane5:** 1 actions, avg 9.5/10
+- **t0813-lane6:** 1 actions, avg 9.5/10
 - **t0813-lane8:** 1 actions, avg 9.0/10
 - **t0813-lane8-reclaim:** 6 actions, avg 8.8/10
 - **t0814:** 2 actions, avg 9.2/10
+- **t0814-lane12:** 1 actions, avg 9.5/10
 - **t0815-phase1a:** 2 actions, avg 9.2/10
 - **t0815-phase1b:** 2 actions, avg 9.2/10
 - **t0815-phase1c:** 2 actions, avg 9.2/10
@@ -3892,6 +3896,8 @@ _Last updated: 2026-11-24 10:02 UTC_
 - **t0815-phase15:** 2 actions, avg 9.1/10
 - **t0815:** 17 actions, avg 9.3/10
 - **t0816:** 24 actions, avg 9.2/10
+- **t0816-lane10:** 1 actions, avg 9.4/10
+- **t0816-lane11:** 1 actions, avg 9.5/10
 - **t0817:** 7 actions, avg 9.3/10
 - **t0817-lane7:** 1 actions, avg 9.5/10
 - **t0818:** 6 actions, avg 9.2/10
