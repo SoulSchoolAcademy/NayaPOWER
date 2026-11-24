@@ -2527,6 +2527,23 @@ html.os-calm .os-orb.hot::after{animation:none!important}
 .ph-av-edit{position:absolute;right:-4px;bottom:-4px;width:36px;height:36px;border-radius:50%;background:linear-gradient(180deg,#1b1b24,#050507);border:2px solid rgba(255,255,255,.65);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -3px 6px rgba(0,0,0,.55),0 6px 14px rgba(0,0,0,.55);font-size:15px;line-height:1;display:grid;place-items:center;cursor:pointer;z-index:3;padding:0}
 .ph-av-edit:hover{border-color:#a06bff;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.5),inset 0 -3px 6px rgba(0,0,0,.5),0 0 18px -2px #a06bff,0 8px 16px rgba(0,0,0,.55)}
 
+
+/* — UNIVERSAL SLOT (harvested 2026-11-24 from about-skills-universal.html round 1):
+   one slot, three states — words, picture, video. Tap the board's words to
+   swap in your picture or video; the frame never changes. — */
+.os-slot{position:relative;border-radius:14px;cursor:pointer}
+.os-slot:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.os-slot-media img,.os-slot-media video,.os-slot-media iframe{display:block;width:100%;border:0;border-radius:14px;background:#050607}
+.os-slot-media video{max-height:300px}
+.os-slot-media iframe{aspect-ratio:16/9}
+.os-slot .u-msg{padding:24px;text-align:center;font-size:19px;line-height:1.7;color:#fff}
+.u-choose{position:absolute;inset:0;background:#050607;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;text-align:center;z-index:2;border-radius:14px}
+.u-choose p{font-size:19px;line-height:1.7;color:#fff;margin:0}
+.u-btn{font-size:19px;color:#fff;background:#050607;border:2px solid #fff;border-radius:999px;padding:12px 24px;min-height:44px;cursor:pointer}
+.u-btn:hover{box-shadow:0 0 24px rgba(255,255,255,.45)}
+.u-btn:active{transform:scale(.97)}
+.u-urlrow{display:flex;flex-direction:column;gap:16px;width:100%;align-items:center}
+.u-url{font-size:17px;color:#fff;background:#050607;border:2px solid #fff;border-radius:999px;padding:12px 16px;width:100%;min-height:44px}
 </style>
 <style id="os-dash-style">
 /* ═══ THE DASHBOARD VIEW — "Your World, Live" (Mirror B5, 2026-10-22;
@@ -2993,10 +3010,10 @@ html.os-calm .os-sl-live i{animation:none!important}
 <div class="ph-sec os-view" id="about" data-os-view="about" data-block="about">
 <div class="ph-sec-t"><span class="ph-dot" style="background:#3fb8ff;color:#3fb8ff;"></span> About Me</div>
 <div class="ph-card" style="--ac:#3fb8ff;">
-<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">❝</span> My motto</h3>
-<p id="os-sec-motto-text" class="os-note" style="margin:0;">No motto yet &mdash; tap Edit and put it in one line.</p>
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">❝</span> What is your motto?</h3>
+<div class="os-slot" data-os-slot="motto" data-state="text" tabindex="0" role="button" aria-label="Tap to add your picture or video — the frame stays the same"><p id="os-sec-motto-text" class="os-note" style="margin:0;">No motto yet &mdash; tap Edit and put it in one line.</p><div class="os-slot-media"></div><input class="u-file" type="file" accept="image/*" hidden aria-label="Choose a picture for this board"></div>
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-motto-edit" rows="2" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-motto-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
-<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="motto">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="motto" style="display:none;">Save</button></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="motto">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="motto" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-words="motto" hidden>Show my words</button></div>
 <div class="os-status" id="os-sec-motto-status"></div>
 </div>
 
@@ -3024,46 +3041,102 @@ html.os-calm .os-sl-live i{animation:none!important}
 <div class="os-status" id="os-lib-status">Entries save onto this app, for every visitor &mdash; the library fills in one answer at a time.</div>
 </div>
 <div class="ph-card" style="--ac:#3fb8ff;">
-<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">🧭</span> About</h3>
-<p id="os-sec-about-text" class="os-note" style="margin:0;">Nothing here yet &mdash; tap Edit and write the first line about this app.</p>
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">🧭</span> What&rsquo;s your thing?</h3>
+<div class="os-slot" data-os-slot="about" data-state="text" tabindex="0" role="button" aria-label="Tap to add your picture or video — the frame stays the same"><p id="os-sec-about-text" class="os-note" style="margin:0;">Nothing here yet &mdash; tap Edit and write the first line about this app.</p><div class="os-slot-media"></div><input class="u-file" type="file" accept="image/*" hidden aria-label="Choose a picture for this board"></div>
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-about-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-about-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
-<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="about">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="about" style="display:none;">Save</button></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="about">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="about" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-words="about" hidden>Show my words</button></div>
 <div class="os-status" id="os-sec-about-status"></div>
 </div>
 <div class="ph-card" style="--ac:#3fb8ff;">
-<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">🎯</span> My goals</h3>
-<p id="os-sec-goals-text" class="os-note" style="margin:0;">No goals written yet &mdash; tap Edit and name the first one.</p>
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">🎯</span> What is your goal?</h3>
+<div class="os-slot" data-os-slot="goals" data-state="text" tabindex="0" role="button" aria-label="Tap to add your picture or video — the frame stays the same"><p id="os-sec-goals-text" class="os-note" style="margin:0;">No goals written yet &mdash; tap Edit and name the first one.</p><div class="os-slot-media"></div><input class="u-file" type="file" accept="image/*" hidden aria-label="Choose a picture for this board"></div>
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-goals-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-goals-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
-<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="goals">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="goals" style="display:none;">Save</button></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="goals">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="goals" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-words="goals" hidden>Show my words</button></div>
 <div class="os-status" id="os-sec-goals-status"></div>
 </div>
 <div class="ph-card" style="--ac:#3fb8ff;">
-<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">🚀</span> My mission</h3>
-<p id="os-sec-mission-text" class="os-note" style="margin:0;">No mission written yet &mdash; tap Edit and say what this app is here to do.</p>
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">🚀</span> What is your mission?</h3>
+<div class="os-slot" data-os-slot="mission" data-state="text" tabindex="0" role="button" aria-label="Tap to add your picture or video — the frame stays the same"><p id="os-sec-mission-text" class="os-note" style="margin:0;">No mission written yet &mdash; tap Edit and say what this app is here to do.</p><div class="os-slot-media"></div><input class="u-file" type="file" accept="image/*" hidden aria-label="Choose a picture for this board"></div>
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-mission-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-mission-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
-<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="mission">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="mission" style="display:none;">Save</button></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="mission">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="mission" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-words="mission" hidden>Show my words</button></div>
 <div class="os-status" id="os-sec-mission-status"></div>
 </div>
 <div class="ph-card" style="--ac:#3fb8ff;">
-<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">🔭</span> My vision</h3>
-<p id="os-sec-vision-text" class="os-note" style="margin:0;">No vision written yet &mdash; tap Edit and describe where this is heading.</p>
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">🔭</span> What is your vision?</h3>
+<div class="os-slot" data-os-slot="vision" data-state="text" tabindex="0" role="button" aria-label="Tap to add your picture or video — the frame stays the same"><p id="os-sec-vision-text" class="os-note" style="margin:0;">No vision written yet &mdash; tap Edit and describe where this is heading.</p><div class="os-slot-media"></div><input class="u-file" type="file" accept="image/*" hidden aria-label="Choose a picture for this board"></div>
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-vision-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-vision-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
-<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="vision">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="vision" style="display:none;">Save</button></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="vision">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="vision" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-words="vision" hidden>Show my words</button></div>
 <div class="os-status" id="os-sec-vision-status"></div>
 </div>
 <div class="ph-card" style="--ac:#3fb8ff;">
-<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">♥</span> What I love</h3>
-<p id="os-sec-love-text" class="os-note" style="margin:0;">Nothing here yet &mdash; tap Edit and add the first thing.</p>
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">♥</span> What do you love?</h3>
+<div class="os-slot" data-os-slot="love" data-state="text" tabindex="0" role="button" aria-label="Tap to add your picture or video — the frame stays the same"><p id="os-sec-love-text" class="os-note" style="margin:0;">Nothing here yet &mdash; tap Edit and add the first thing.</p><div class="os-slot-media"></div><input class="u-file" type="file" accept="image/*" hidden aria-label="Choose a picture for this board"></div>
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-love-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-love-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
-<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="love">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="love" style="display:none;">Save</button></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="love">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="love" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-words="love" hidden>Show my words</button></div>
 <div class="os-status" id="os-sec-love-status"></div>
 </div>
 <div class="ph-card" style="--ac:#3fb8ff;">
-<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">✕</span> What I don&rsquo;t</h3>
-<p id="os-sec-dont-text" class="os-note" style="margin:0;">Nothing here yet &mdash; tap Edit and be honest about the first one.</p>
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">✕</span> What don&rsquo;t you love?</h3>
+<div class="os-slot" data-os-slot="dont" data-state="text" tabindex="0" role="button" aria-label="Tap to add your picture or video — the frame stays the same"><p id="os-sec-dont-text" class="os-note" style="margin:0;">Nothing here yet &mdash; tap Edit and be honest about the first one.</p><div class="os-slot-media"></div><input class="u-file" type="file" accept="image/*" hidden aria-label="Choose a picture for this board"></div>
 <div class="os-fieldwrap"><textarea class="os-input" id="os-sec-dont-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-dont-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
-<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="dont">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="dont" style="display:none;">Save</button></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="dont">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="dont" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-words="dont" hidden>Show my words</button></div>
 <div class="os-status" id="os-sec-dont-status"></div>
+</div>
+<div class="ph-card" style="--ac:#3fb8ff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">⚖</span> What are your values?</h3>
+<div class="os-slot" data-os-slot="values" data-state="text" tabindex="0" role="button" aria-label="Tap to add your picture or video — the frame stays the same"><p id="os-sec-values-text" class="os-note" style="margin:0;">Nothing here yet &mdash; tap Edit and write the first one.</p><div class="os-slot-media"></div><input class="u-file" type="file" accept="image/*" hidden aria-label="Choose a picture for this board"></div>
+<div class="os-fieldwrap"><textarea class="os-input" id="os-sec-values-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-values-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="values">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="values" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-words="values" hidden>Show my words</button></div>
+<div class="os-status" id="os-sec-values-status"></div>
+</div>
+<div class="ph-card" style="--ac:#3fb8ff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">§</span> What laws do you follow?</h3>
+<div class="os-slot" data-os-slot="laws" data-state="text" tabindex="0" role="button" aria-label="Tap to add your picture or video — the frame stays the same"><p id="os-sec-laws-text" class="os-note" style="margin:0;">Nothing here yet &mdash; tap Edit and write the first one.</p><div class="os-slot-media"></div><input class="u-file" type="file" accept="image/*" hidden aria-label="Choose a picture for this board"></div>
+<div class="os-fieldwrap"><textarea class="os-input" id="os-sec-laws-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-laws-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="laws">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="laws" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-words="laws" hidden>Show my words</button></div>
+<div class="os-status" id="os-sec-laws-status"></div>
+</div>
+<div class="ph-card" style="--ac:#3fb8ff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">★</span> What's your declaration?</h3>
+<div class="os-slot" data-os-slot="declaration" data-state="text" tabindex="0" role="button" aria-label="Tap to add your picture or video — the frame stays the same"><p id="os-sec-declaration-text" class="os-note" style="margin:0;">Nothing here yet &mdash; tap Edit and write it in one line.</p><div class="os-slot-media"></div><input class="u-file" type="file" accept="image/*" hidden aria-label="Choose a picture for this board"></div>
+<div class="os-fieldwrap"><textarea class="os-input" id="os-sec-declaration-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-declaration-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="declaration">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="declaration" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-words="declaration" hidden>Show my words</button></div>
+<div class="os-status" id="os-sec-declaration-status"></div>
+</div>
+<div class="ph-card" style="--ac:#3fb8ff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">◆</span> What do you offer?</h3>
+<div class="os-slot" data-os-slot="offer" data-state="text" tabindex="0" role="button" aria-label="Tap to add your picture or video — the frame stays the same"><p id="os-sec-offer-text" class="os-note" style="margin:0;">Nothing here yet &mdash; tap Edit and say what you offer.</p><div class="os-slot-media"></div><input class="u-file" type="file" accept="image/*" hidden aria-label="Choose a picture for this board"></div>
+<div class="os-fieldwrap"><textarea class="os-input" id="os-sec-offer-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-offer-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="offer">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="offer" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-words="offer" hidden>Show my words</button></div>
+<div class="os-status" id="os-sec-offer-status"></div>
+</div>
+<div class="ph-card" style="--ac:#3fb8ff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">●</span> How does it help?</h3>
+<div class="os-slot" data-os-slot="help" data-state="text" tabindex="0" role="button" aria-label="Tap to add your picture or video — the frame stays the same"><p id="os-sec-help-text" class="os-note" style="margin:0;">Nothing here yet &mdash; tap Edit and say how it helps.</p><div class="os-slot-media"></div><input class="u-file" type="file" accept="image/*" hidden aria-label="Choose a picture for this board"></div>
+<div class="os-fieldwrap"><textarea class="os-input" id="os-sec-help-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-help-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="help">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="help" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-words="help" hidden>Show my words</button></div>
+<div class="os-status" id="os-sec-help-status"></div>
+</div>
+<div class="ph-card" style="--ac:#3fb8ff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">▲</span> Tell us about a moment you've done it.</h3>
+<div class="os-slot" data-os-slot="moment" data-state="text" tabindex="0" role="button" aria-label="Tap to add your picture or video — the frame stays the same"><p id="os-sec-moment-text" class="os-note" style="margin:0;">Nothing here yet &mdash; tap Edit and tell the moment.</p><div class="os-slot-media"></div><input class="u-file" type="file" accept="image/*" hidden aria-label="Choose a picture for this board"></div>
+<div class="os-fieldwrap"><textarea class="os-input" id="os-sec-moment-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-moment-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="moment">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="moment" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-words="moment" hidden>Show my words</button></div>
+<div class="os-status" id="os-sec-moment-status"></div>
+</div>
+<div class="ph-card" style="--ac:#3fb8ff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">■</span> How do you work?</h3>
+<div class="os-slot" data-os-slot="howwork" data-state="text" tabindex="0" role="button" aria-label="Tap to add your picture or video — the frame stays the same"><p id="os-sec-howwork-text" class="os-note" style="margin:0;">Nothing here yet &mdash; tap Edit and say how you work.</p><div class="os-slot-media"></div><input class="u-file" type="file" accept="image/*" hidden aria-label="Choose a picture for this board"></div>
+<div class="os-fieldwrap"><textarea class="os-input" id="os-sec-howwork-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-howwork-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="howwork">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="howwork" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-words="howwork" hidden>Show my words</button></div>
+<div class="os-status" id="os-sec-howwork-status"></div>
+</div>
+<div class="ph-card" style="--ac:#3fb8ff;">
+<h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">➜</span> How do people start with you?</h3>
+<div class="os-slot" data-os-slot="start" data-state="text" tabindex="0" role="button" aria-label="Tap to add your picture or video — the frame stays the same"><p id="os-sec-start-text" class="os-note" style="margin:0;">Nothing here yet &mdash; tap Edit and say how people start.</p><div class="os-slot-media"></div><input class="u-file" type="file" accept="image/*" hidden aria-label="Choose a picture for this board"></div>
+<div class="os-fieldwrap"><textarea class="os-input" id="os-sec-start-edit" rows="3" style="display:none;margin-top:10px;"></textarea><button class="os-mic os-mic-top" type="button" data-os-mic="os-sec-start-edit" aria-label="Dictate into this field" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div>
+<div class="ph-actions"><button class="ph-msg" type="button" data-os-sec-edit="start">✏️ Edit</button><button class="ph-connect" type="button" data-os-sec-save="start" style="display:none;">Save</button><button class="ph-msg" type="button" data-os-sec-words="start" hidden>Show my words</button></div>
+<div class="os-status" id="os-sec-start-status"></div>
 </div>
 <div class="ph-card" style="--ac:#3fb8ff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">✦</span> My facts</h3>
@@ -6545,7 +6618,7 @@ NF.register(UNIT, {
          Empty stays an honest prompt line, never fake content. */
       var parsed=out[3].map(function(r){ return parseRow(r); });
       window.__osAboutSecs=window.__osAboutSecs||{};
-      ['about','goals','mission','vision','love','dont','motto'].forEach(function(key){
+      ['about','goals','mission','vision','love','dont','motto','values','laws','declaration','offer','help','moment','howwork','start'].forEach(function(key){
         var sec=parsed.filter(function(c){ return c.k==='aboutsec' && c.s===key && c.text; });
         var tp=$('os-sec-'+key+'-text'); if (!tp || !sec.length) return;
         window.__osAboutSecs[key]=sec[0].text;
@@ -6578,6 +6651,125 @@ NF.register(UNIT, {
       if (st) st.innerHTML='<p class="os-note" style="color:#2fe89e">Saved — it is this app&rsquo;s own data now.</p>';
     });
   }
+
+
+  /* — UNIVERSAL SLOT (harvested 2026-11-24 from about-skills-universal.html
+     round 1 — one slot, three states: words, picture, video. Tap the board's
+     words: "Add a picture" (upload — your own picture, same slot, same
+     frame) or "Add a video — paste a link" (ANY video link — YouTube,
+     Instagram, TikTok, Facebook — plays in the same slot, same frame).
+     "Show my words" always brings the words back. A link that cannot play
+     says so in plain words — never a blank hole. Nothing about a swap changes
+     the frame, the layout, or the other boards. Ported to the template's
+     ph-cards: the slot wraps os-sec-<key>-text; media lives in
+     .os-slot-media; words still persist through Edit/Save. — */
+  (function(){
+  "use strict";
+  function el(tag, cls, text){var e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;}
+  function ytId(u){var m=u.match(/(?:youtube\.com\/(?:watch\?[^#]*v=|shorts\/|live\/|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);return m?m[1]:null;}
+  function igId(u){var m=u.match(/instagram\.com\/(?:p|reel|tv)\/([A-Za-z0-9_-]+)/);return m?m[1]:null;}
+  function igKind(u){var m=u.match(/instagram\.com\/(p|reel|tv)\//);return m?m[1]:'p';}
+  function ttId(u){var m=u.match(/tiktok\.com\/@[^/]+\/video\/(\d+)/);return m?m[1]:null;}
+  function isDirectVideo(u){return /\.(mp4|webm|mov|m4v)([?#]|$)/i.test(u);}
+  function fbOk(u){return /facebook\.com\//.test(u) && (/\/videos\//.test(u) || /watch\//.test(u));}
+  function wordsEl(board, key){ return document.getElementById('os-sec-'+key+'-text'); }
+  function showMedia(board, slot, node){
+    var media=slot.querySelector('.os-slot-media');
+    media.querySelectorAll('img,video,iframe,.u-msg').forEach(function(n){n.remove();});
+    var text=wordsEl(board, slot.getAttribute('data-os-slot')); if(text) text.style.display='none';
+    media.appendChild(node);
+    board.querySelector('[data-os-sec-words="'+slot.getAttribute('data-os-slot')+'"]').hidden=false;
+  }
+  function showWords(board, slot){
+    var media=slot.querySelector('.os-slot-media');
+    media.querySelectorAll('img,video,iframe,.u-msg').forEach(function(n){n.remove();});
+    var text=wordsEl(board, slot.getAttribute('data-os-slot')); if(text) text.style.display='';
+    slot.dataset.state='text';
+    board.querySelector('[data-os-sec-words="'+slot.getAttribute('data-os-slot')+'"]').hidden=true;
+  }
+  function showMsg(board, slot, msg){
+    var media=slot.querySelector('.os-slot-media');
+    media.querySelectorAll('img,video,iframe,.u-msg').forEach(function(n){n.remove();});
+    var text=wordsEl(board, slot.getAttribute('data-os-slot')); if(text) text.style.display='none';
+    var d=el('div','u-msg',msg); media.appendChild(d);
+    board.querySelector('[data-os-sec-words="'+slot.getAttribute('data-os-slot')+'"]').hidden=false;
+  }
+  function playUrl(board, slot, raw){
+    var url=(raw||'').trim();
+    if(!url){ showMsg(board, slot,'That link was empty. Paste a video link and try again — or keep my words.'); return; }
+    if(!/^https?:\/\//i.test(url)){ url='https://'+url; }
+    var id, fr;
+    if((id=ytId(url))){
+      fr=el('iframe'); fr.src='https://www.youtube-nocookie.com/embed/'+id; fr.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'; fr.allowFullscreen=true; fr.title='Video';
+      slot.dataset.state='video'; showMedia(board, slot, fr); return;
+    }
+    if((id=igId(url))){
+      fr=el('iframe'); fr.src='https://www.instagram.com/'+igKind(url)+'/'+id+'/embed/'; fr.allowFullscreen=true; fr.title='Video';
+      slot.dataset.state='video'; showMedia(board, slot, fr); return;
+    }
+    if((id=ttId(url))){
+      fr=el('iframe'); fr.src='https://www.tiktok.com/embed/v2/'+id; fr.allowFullscreen=true; fr.title='Video';
+      slot.dataset.state='video'; showMedia(board, slot, fr); return;
+    }
+    if(fbOk(url)){
+      fr=el('iframe'); fr.src='https://www.facebook.com/plugins/video.php?href='+encodeURIComponent(url)+'&show_text=false'; fr.allowFullscreen=true; fr.title='Video';
+      slot.dataset.state='video'; showMedia(board, slot, fr); return;
+    }
+    if(isDirectVideo(url)){
+      var v=el('video'); v.src=url; v.controls=true; v.autoplay=true; v.muted=true; v.loop=true; v.playsInline=true;
+      slot.dataset.state='video'; showMedia(board, slot, v); return;
+    }
+    showMsg(board, slot,'That link did not play here. Check the link and try again — or keep my words.');
+  }
+  function openChooser(board, slot){
+    if(slot.querySelector('.u-choose')) return;
+    var box=el('div','u-choose');
+    box.appendChild(el('p',null,'Add to this board — your picture, or your video. The frame stays the same.'));
+    var pic=el('button','u-btn','Add a picture');
+    pic.type='button';
+    pic.addEventListener('click',function(ev){ev.stopPropagation();slot.querySelector('.u-file').click();});
+    var vid=el('button','u-btn','Add a video — paste a link');
+    vid.type='button';
+    vid.addEventListener('click',function(ev){
+      ev.stopPropagation(); box.innerHTML='';
+      box.appendChild(el('p',null,'Paste any video link — YouTube, Instagram, TikTok, or Facebook.'));
+      var row=el('div','u-urlrow');
+      var inp=el('input','u-url'); inp.type='url'; inp.placeholder='Paste your video link here'; inp.setAttribute('aria-label','Video link');
+      var go=el('button','u-btn','Show it'); go.type='button';
+      go.addEventListener('click',function(e2){e2.stopPropagation();box.remove();playUrl(board,slot,inp.value);});
+      inp.addEventListener('keydown',function(e2){if(e2.key==='Enter'){e2.preventDefault();box.remove();playUrl(board,slot,inp.value);}});
+      var back=el('button','u-btn','Back'); back.type='button';
+      back.addEventListener('click',function(e2){e2.stopPropagation();box.remove();openChooser(board,slot);});
+      row.appendChild(inp); row.appendChild(go); row.appendChild(back); box.appendChild(row); inp.focus();
+    });
+    var keep=el('button','u-btn', slot.dataset.state==='text' ? 'Keep my words' : 'Show my words');
+    keep.type='button';
+    keep.addEventListener('click',function(ev){ev.stopPropagation();box.remove();if(slot.dataset.state!=='text')showWords(board,slot);});
+    box.appendChild(pic); box.appendChild(vid); box.appendChild(keep);
+    box.addEventListener('click',function(ev){ev.stopPropagation();});
+    slot.appendChild(box);
+  }
+  document.querySelectorAll('.os-slot[data-os-slot]').forEach(function(slot){
+    var board=slot.closest('.ph-card'); if(!board) return;
+    var key=slot.getAttribute('data-os-slot');
+    var file=slot.querySelector('.u-file');
+    var back=board.querySelector('[data-os-sec-words="'+key+'"]');
+    slot.addEventListener('click',function(ev){
+      if(ev.target && ev.target.closest && ev.target.closest('button,textarea,input,a')) return;
+      var ta=document.getElementById('os-sec-'+key+'-edit');
+      if(ta && ta.style.display!=='none') return; /* editing words — not swapping */
+      openChooser(board,slot);
+    });
+    slot.addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();openChooser(board,slot);}});
+    if(back) back.addEventListener('click',function(){showWords(board,slot);});
+    if(file) file.addEventListener('change',function(){
+      var f=file.files && file.files[0]; if(!f) return;
+      var r=new FileReader();
+      r.onload=function(){var img=el('img');img.src=r.result;img.alt='Your picture';slot.dataset.state='image';showMedia(board,slot,img);};
+      r.readAsDataURL(f);
+    });
+  });
+  })();
 
   /* — Settings: identity + data & privacy read live (steer 2 §2) — */
   function loadSettingsData(){
