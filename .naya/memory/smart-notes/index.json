@@ -81084,6 +81084,42 @@
         "Smart Mail",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-4746",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4746-follow-the-word",
+      "slug": "follow-the-word",
+      "title": "Follow the Word",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/LAW/SN-4746/IB-SMART-NOTE-20261124-sn4746-follow-the-word.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/LAW/SN-4746/IB-SMART-NOTE-20261124-sn4746-follow-the-word.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/LAW/SN-4746/IB-SMART-NOTE-20261124-sn4746-follow-the-word.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4746-follow-the-word.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T18:01:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "2ed5c1128e4088857e0d4f4f381804d300d835bcd436c2175c339eaf425698bf",
+      "content_hash": "43e59ba839b5312d415da78208afb06db8b44bac93971a9cafa87167d4012286",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "6e6dd4c15b0f100b6fe2b07d93ab0b1cbe18e1f9f750d2121099df0eaa84446d",
+      "one_line": "The closing ten braid the whole doctrine into one strand: a decided word is a build instruction, the laws live in the system where every agent reads them first, the privacy story is said strongly and without exception — and the morning list, checked first thing, is the whole system in one place.",
+      "topics": [
+        "Distillation",
+        "Law",
+        "Privacy",
+        "Operations",
+        "Honor"
+      ]
     }
   ],
   "sequence_policy": {
@@ -81094,5 +81130,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "12840e7a74a896902c8a6a0c805557ca0f2474e10e9f0bbe066a81317f96979f"
+  "corpus_manifest_hash": "e1a9d5cfe1efab3531e5e661192e4907a25607da024682bf7f839b400a612480"
 }
