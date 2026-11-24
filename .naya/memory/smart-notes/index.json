@@ -80183,6 +80183,42 @@
         "Knowledge",
         "Honor"
       ]
+    },
+    {
+      "smart_note_id": "SN-4721",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4721-right-first-time",
+      "slug": "right-first-time",
+      "title": "Right First Time",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4721/IB-SMART-NOTE-20261124-sn4721-right-first-time.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4721/IB-SMART-NOTE-20261124-sn4721-right-first-time.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4721/IB-SMART-NOTE-20261124-sn4721-right-first-time.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4721-right-first-time.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T17:14:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "a823ea8d8a9b080c7b452bc0e52899c3d6ffd75953a7b498c3e3d2f19721c67a",
+      "content_hash": "5dd2406c3b61be1d6758d38ff5335d051306e01e489793dcd641fadd0c16d36d",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "ba8396e10ffb4d1ed6101dbf15c4662bbd0b132913e1fd43eae2ae94a634ea49",
+      "one_line": "The day's tempo and the day's standard are the same sentence: fast action, one round after another — and right first time, because the guard is understanding before building. It starts at the door: every account row on the entrance carries its own X, warning first, then confirm, never one-click, because a test account must be removable or the list grows forever; the opening buttons sit in the middle of the screen, stacked, not stranded at the bottom; and the back control out of the agreement is verified working, because he clicked in and could not get back — the proof case of the Back-Button Law. Instructions are implemented right away, with the calendar as the main thing, worked live with him. The surfaces keep the same bar: the composer is asked, honestly, whether it is ten out of ten yet — the post itself must be the most beautiful post in the network. The level under your name is a ladder of stars — every level called a star, the name itself the level, so 'Mega Star' tells anyone exactly where you stand. Featured links edit all three ways — right-click, the little edit control, or Settings; if we can do it, we do it. A demographics question earns its place only if it answers what it matches you on. And the welcome is his simplest words: ask them who they are and what they are about, and let the system play the game of match.",
+      "topics": [
+        "Distillation",
+        "Design",
+        "Craft",
+        "Multiplication",
+        "Knowledge"
+      ]
     }
   ],
   "sequence_policy": {
@@ -80193,5 +80229,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "599d3f3ec67d16505cf2c9f2a933bd2176d90cf9fee86a7d1cadbc37ee3458ff"
+  "corpus_manifest_hash": "000aa502c326eb18c74fe146fb6d100d506eb3f9e07f5dc2c60621f29d8b4621"
 }

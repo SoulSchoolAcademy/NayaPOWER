@@ -1,0 +1,95 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-4721",
+ "title": "Right First Time",
+ "slug": "right-first-time",
+ "topic": "DESIGN",
+ "category": "DESIGN",
+ "kind": "intelligent-block",
+ "registered_by": "naya-resolve",
+ "directed_by": "Shawn Vibert",
+ "created_at": "2026-11-24T17:14:00Z",
+ "tone": "purple",
+ "icon": "◆",
+ "intelligence": {
+  "essence": "The day's tempo and the day's standard are the same sentence: fast action, one round after another — and right first time, because the guard is understanding before building. It starts at the door: every account row on the entrance carries its own X, warning first, then confirm, never one-click, because a test account must be removable or the list grows forever; the opening buttons sit in the middle of the screen, stacked, not stranded at the bottom; and the back control out of the agreement is verified working, because he clicked in and could not get back — the proof case of the Back-Button Law. Instructions are implemented right away, with the calendar as the main thing, worked live with him. The surfaces keep the same bar: the composer is asked, honestly, whether it is ten out of ten yet — the post itself must be the most beautiful post in the network. The level under your name is a ladder of stars — every level called a star, the name itself the level, so 'Mega Star' tells anyone exactly where you stand. Featured links edit all three ways — right-click, the little edit control, or Settings; if we can do it, we do it. A demographics question earns its place only if it answers what it matches you on. And the welcome is his simplest words: ask them who they are and what they are about, and let the system play the game of match.",
+  "human_view": "Speed is only a virtue when the first version is the right one. This essence binds the day's pace (implement right away, round after round) to its quality guards (understand first, verify the back button, ask whether the composer is really ten out of ten) and finishes the entrance: removable accounts, centered buttons, a welcome that simply asks who you are.",
+  "child_view": "We work fast, but we check before we build, so we do not have to do it twice. And when you first arrive, we just ask: who are you, and what are you about? Then we find your people.",
+  "grandma_view": "Things get done the moment they are asked for, and done properly the first time. The front door is tidy — old test accounts can be removed safely, the buttons sit where your thumb expects them, and you can always get back from anywhere.",
+  "ai_view": "Entrance + tempo standard distilled from SN-2967..SN-2976 (2026-11-16): (1) Composer bar: the post composer is judged against 10/10 explicitly; the rendered post must be the most beautiful in the network — not yet is an acceptable verdict, shipping anyway is not. (2) FAST ACTION TODAY: rounds run one after another with parallel agents; the guard is understanding-before-building so work lands right first time. (3) Every 'Also on this device' account row carries its own X; removal = warning, then confirm, never one-click. (4) Entrance layout: opening buttons centered vertically, stacked, differentiated by colour; the legal row sits at the very bottom. (5) The agreement's back control ('< Login') must be verified working — the Back-Button Law's proof case (SN-2958's law, this note's catch). (6) Implement instructions right away with airtight agent briefs; the calendar is the day's main build, worked live with the director. (7) STAR LADDER: every level is called a star and the name IS the level (e.g. Mega Star = 8 of 10); names update SN-2965's level display. (8) Featured links edit three ways: right-click, inline edit control, Settings. (9) Demographics admission test: a question stays only if it answers 'what does this match you on?' — a person or a thing. (10) The welcome, in his simplest words: ask who they are and what they are about; the system matches from the answer.",
+  "what_it_means": "Right-first-time is what makes fast action cheap instead of expensive: every rework round is a tax on a misunderstood brief. The entrance clauses matter because the door is where trust is decided — a citizen who cannot leave a page, remove an account, or be asked a simple question will not stay for the depths.",
+  "whats_inside": [
+   "Make a post, beautiful: is the composer ten out of ten yet? (SN-2967)",
+   "Fast action today — one after another, right first time; the X on every account; opening buttons in the middle (SN-2968, SN-2969, SN-2970)",
+   "Back from the agreement — the proof case; implement right away, the calendar is the main thing (SN-2971, SN-2972)",
+   "The star level names — the ladder; featured links all three ways (SN-2973, SN-2974)",
+   "The perfect demographics set; the welcome in his simplest words (SN-2975, SN-2976)"
+  ],
+  "topics": [
+   "Distillation",
+   "Design",
+   "Craft",
+   "Multiplication",
+   "Knowledge"
+  ]
+ },
+ "page": {
+  "distills": {
+   "batch": 12,
+   "of": 100,
+   "covers": [
+    {
+     "sn": "SN-2967",
+     "title": "Make a Post, Beautiful"
+    },
+    {
+     "sn": "SN-2968",
+     "title": "Fast Action Today — One After Another, Right First Time"
+    },
+    {
+     "sn": "SN-2969",
+     "title": "The X on Every Account"
+    },
+    {
+     "sn": "SN-2970",
+     "title": "Opening Buttons in the Middle"
+    },
+    {
+     "sn": "SN-2971",
+     "title": "Back From the Agreement"
+    },
+    {
+     "sn": "SN-2972",
+     "title": "Implement Right Away — the Calendar Is the Main Thing Today"
+    },
+    {
+     "sn": "SN-2973",
+     "title": "The Star Level Names — the Ladder"
+    },
+    {
+     "sn": "SN-2974",
+     "title": "Featured Links — All Three Ways"
+    },
+    {
+     "sn": "SN-2975",
+     "title": "The Perfect Demographics Set"
+    },
+    {
+     "sn": "SN-2976",
+     "title": "The Welcome, in His Simplest Words"
+    }
+   ]
+  },
+  "machine": "1) No build starts before the brief is understood; rework is charged to the brief, not the builder. 2) Account rows: per-row X, warn-then-confirm, never one-click delete. 3) Entrance buttons centered and stacked; legal row bottom. 4) Every exit control is click-verified, not assumed. 5) Level names are star names; the name encodes the level. 6) Any editable thing edits every way it can: inline, context, Settings. 7) A demographics question without a matching use is removed. 8) The welcome asks two questions: who are you, what are you about.",
+  "why_it_matters": "This decade is the operating tempo of the whole build in miniature — and its two failure modes are the fleet's two diseases: motion without understanding (rework) and polish without end (the composer question). Holding both in one essence keeps the cure attached to the disease.",
+  "how_it_connects": "Fifth essence of batch 12. It executes the anatomy SN-4720 specifies (its star ladder completes SN-2965; its back-button proof case enforces SN-2958), and its tempo is the same Fast Action Mode SN-4719 recorded as a ruling. The welcome it ends on opens the citizen journey that SN-4722's Hub-centred flow continues.",
+  "what_is_in_it_for_you": "You are met at the door with two simple questions and a system that already knows how to find your people — and everything you touch was built once, properly, instead of patched in front of you.",
+  "the_learning": "From now on, we measure a round by whether it lands right first time — understanding verified before building starts — instead of counting rounds and paying for rework."
+ },
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4721/IB-SMART-NOTE-20261124-sn4721-right-first-time.md",
+ "page_hash": "a823ea8d8a9b080c7b452bc0e52899c3d6ffd75953a7b498c3e3d2f19721c67a",
+ "content_hash": "5dd2406c3b61be1d6758d38ff5335d051306e01e489793dcd641fadd0c16d36d",
+ "published_via": "publish-note",
+ "door_version": "1",
+ "door_receipt": "ba8396e10ffb4d1ed6101dbf15c4662bbd0b132913e1fd43eae2ae94a634ea49"
+}
