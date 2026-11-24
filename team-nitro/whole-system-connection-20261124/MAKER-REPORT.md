@@ -249,7 +249,7 @@ Read-back verified from GitHub (blob API): portal 1,189,401 B, blob
 - Portal: https://github.com/SoulSchoolAcademy/NayaPOWER/blob/whole-system-connection-20261124/team-nitro/whole-system-connection-20261124/welcome-staged.html (blob `d28503f0…`, 1,189,401 B) · staged: https://naya-proof-host.nayapower.workers.dev/?file=team-nitro%2Fwhole-system-connection-20261124%2Fwelcome-staged.html&ref=whole-system-connection-20261124
 - Agreement: https://github.com/SoulSchoolAcademy/NayaPOWER/blob/whole-system-connection-20261124/team-nitro/whole-system-connection-20261124/agreement.html (blob `d083f2b7…`, 22,953,906 B) · staged: https://naya-proof-host.nayapower.workers.dev/?file=team-nitro%2Fwhole-system-connection-20261124%2Fagreement.html&ref=whole-system-connection-20261124
 - Identity: https://github.com/SoulSchoolAcademy/NayaPOWER/blob/whole-system-connection-20261124/team-nitro/whole-system-connection-20261124/identity.html (blob `d57f3de1…`, 310,386 B) · staged: https://naya-proof-host.nayapower.workers.dev/?file=team-nitro%2Fwhole-system-connection-20261124%2Fidentity.html&ref=whole-system-connection-20261124
-- This report: https://github.com/SoulSchoolAcademy/NayaPOWER/blob/whole-system-connection-20261124/team-nitro/whole-system-connection-20261124/MAKER-REPORT.md (blob `e7cf89b0…` — the follow-up report-only commit below records the final blob)
+- This report: https://github.com/SoulSchoolAcademy/NayaPOWER/blob/whole-system-connection-20261124/team-nitro/whole-system-connection-20261124/MAKER-REPORT.md (blob `e7cf89b0…` as filed in commit `e6547301`)
 
 ## v2 staged files
 
