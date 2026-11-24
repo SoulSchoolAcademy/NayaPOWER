@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-24 08:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-24 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -15557,6 +15557,12 @@ _Last updated: 2026-11-24 08:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: mcc-freeze-t0802-lane8.py, mcc-freeze-record-t0802-lane8.md/.json exist with SHAs byte-identical to all three claims (1a33f20f…, 80c92699…, 1fbb130b…); the freeze record's section5 JSON independently corroborates the verdict — null baseline NEEDS_AUTHORITY ×3, all five K2 docs flipped:false (rate_pos 0.000), K3 stable, so the K2 falsifier
 
+### ✅ t0802-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Stale brief t0802: retrieval-auth gate EQ1-EQ4 gap VERIFIED-DONE (independent re-run, byte-identical results)
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; backlog 63 before this tick, oldest-first). VERIFIED first-hand this tick: probe hidden_files/retrieval-auth-gate-eq-probe-20261014-1910-lane4.py sha256 0ddabc02afce3e79c355bd111c531482364831f1952e28dc38b593db316c4702 matches the receipt pin EXACTLY; results eq-probe-results-20261014-1910-lane4.json sha256 c9126f2
+
 ### ✅ t0802 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** STALE BRIEF verified-done: EQ1-EQ4 retrieval-auth gate probe independently re-run, byte-identical results
@@ -15633,6 +15639,12 @@ _Last updated: 2026-11-24 08:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: branch naya4/t0800-lane0-supabase-bridge exists on origin; head SHA 8dad8451b9c5b39f0edd2278c8155eaad11a1b0b byte-matches the receipt pin; HUB/app/js/supabase-bridge.js present at that SHA (blob 213006fe...); HUB/app/index.html one-line script include present; hidden_files/bin/verify-t0800-bridge.js present (6279 bytes). Live 14/14 proof 
 
+### ✅ t0798-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Feed page rendering live Smart Note queue — 1532/1532 live gate + falsifiers
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; backlog 70 keys before this tick, oldest-first). VERIFIED: gate hidden_files/bin/verify_feed_page.py 8410a10f7a7bbfdedb35c293a2cb3fe07a56fc3b4cfc45a4085537dbe43177a3 matches receipt pin exactly; screenshot feed-page-proof-20261017.png 609479cfd36c matches; queue smart-note-feed-queue.jsonl 811df9a5596752cf4d8e0ef8
+
 ### ✅ t0798 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Feed page rendering the live Smart Note queue (leg 3 of Smart Note flow)
@@ -15672,6 +15684,12 @@ _Last updated: 2026-11-24 08:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Smart Note Flow capture-leg timed probe + gap contract vs Shawn's priority-#2 path
 
 **Evidence:** Verified: commit 77d9f055aa50cc5d2db0984bdcb369aaa53d5f1e exists via GitHub commits API with author/committer 'Naya Clarity Narzan <naya4@nayapower.local>' dated 2026-10-17T20:35:07Z exactly as claimed; probe-note-t0707.md exists locally; branch tip now 8b8771884 (drift = later notes staged, not refutation). Clears 9.5 because the seat-stamped auth
+
+### ✅ t0798-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Smart Lists feature breaker — module + 21 tests + SHA-guarded registry flip
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; backlog 70 keys before this tick, oldest-first). VERIFIED: commit 7fba489009892eb00b49b49fbd62a8fd365f8f4b exists in the local mirror at the claimed SHA; all three file sha256s extracted at that commit match the receipt exactly (feature_smart_list.py b03f670557b6, test_feature_smart_list.py ed3bca738a53, resolver.
 
 ### ✅ t0798 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -15717,6 +15735,12 @@ _Last updated: 2026-11-24 08:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: brief-t0707-lane11 claim + sign-in ordering held (per receipt); v1 spec SHA 8f76add6794d83ead528214c894824ee08d0a27d560fa70247ecd7d4a78a8e10 re-pinned, no drift; the six header-family parser and the I2b filing-endpoint convention are described with byte-check evidence (embed-PDT+7h within ±15min on 5/6 queued briefs). 9.0 GOOD, ONE MORE P
 
+### ✅ t0797-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (c): ask-world query-log top-20 + three smart-block specs
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; backlog 70 keys before this tick, oldest-first). VERIFIED: tally instrument retrieval/tally-t0797.py c098e0114ab838015c2976c86e94ce6fc3494d8b30b33c9683a8d4607e1887ee matches receipt exactly; falsifier retrieval/check-tune-in-packet-t0797.py d6a9932d21154943a4bc270246faff85b5fc3305a738a6d72c2cc580980f64ac matches e
+
 ### ✅ t0797 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** SURGE retrieval slice (c): ask-world query-log top-20 + three tune-in-packet specs
@@ -15740,6 +15764,12 @@ _Last updated: 2026-11-24 08:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0797-lane6.md`
 
 **Evidence:** Verified: log sha256 28af7eb7eb759cded6ecff18a615d3bb9c0b8f7c30edbcd2b60633b1bc8d3a5c == pin (118 lines); deliverable 656db738... == pin; re-ran tally-t0797.py (exit 0) and check-tune-in-packet-t0797.py (exit 0) here — both instrument pins match receipt. New finding genuine: t0768 zero-count cell filled with 4/3/2 organic rows, demand premise falsi
+
+### ✅ t0797-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** Scoped VOIDED fix to lane-11 census excluded() — L2324 false exclusion repaired, 8/8 synthetic battery
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; backlog 70 keys before this tick, oldest-first). VERIFIED: script hidden_files/lane-11/i2-census-t0707.py sha256 30653bea8b35f00b019e73d8673758e5d7289bbfccae78801e0f86dd872c250c matches receipt exactly; regression test lane-11/test_excluded_voided_t0797.py ace16dcbe7d0125d3e06ab8c17bc67e072c2ae38ec1b8dcd0841b5b54b
 
 ### ✅ t0797 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -15765,6 +15795,12 @@ _Last updated: 2026-11-24 08:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: script sha256 30653bea8b35f00b019e73d8673758e5d7289bbfccae78801e0f86dd872c250c == receipt pin; test_excluded_voided_t0797.py ace16dcbe... == pin and re-ran 8/8 PASS here. Receipt's falsifier (76/77=98.7%, single-line diff) is the 1330 prediction — honest pre-registered repair. Clears 9.5 because the defect is proven repaired with byte-exa
 
+### ✅ t0796-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** Forensics root: parameterize push-tooling identities via fail-closed bin/seat_identity.py (8 live scripts)
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; backlog 63 before this tick, oldest-first). VERIFIED first-hand this tick: proof commit d3813117 exists in the mirror, parent ba626387 matches the receipt pin, author+committer 'Naya Clarity Verity <naya4@nayapower.local>' byte-exact on the raw object; dangling probe commit 3576161f exists with author+committer 'P
+
 ### ✅ t0796 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** Push-tooling identity parameterization via shared seat_identity helper + live-commit proof
@@ -15781,6 +15817,12 @@ _Last updated: 2026-11-24 08:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: branch naya/scratch-t0796-identity-proof exists on remote at the exact claimed SHA d3813117bce4a8126b6465e31e8a277575fc2bc7; shallow fetch + git cat-file on the raw commit object confirms author AND committer lines are 'Naya Clarity Verity <naya4@nayapower.local>' — byte-verified on live objects, not script text; score 9.5 clears the bar 
 
+### ✅ t0793-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Decision-engine check inventory: 4 UNIQUE checks, zero production call sites
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; backlog 66 before this tick, oldest-first). VERIFIED first-hand this tick: tip ba626387 exists as a commit; kernel/decision_principle.py blob 0ff5e650... and kernel/value_calculus.py blob fc07ed2a... match the receipt pins EXACTLY at that tip; git grep at the tip shows exactly two ENGINE_VERSION definitions (NAYA-
+
 ### ✅ t0793 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** Decision-engine check inventory: 4 UNIQUE checks, ZERO production call sites (AST + grep, 543 files)
@@ -15796,6 +15838,12 @@ _Last updated: 2026-11-24 08:35 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0793-lane3.md`
 
 **Evidence:** Verified: receipt file + hidden_files/decision-engine-check-inventory-t0793-lane3.md (6053 bytes) exist; blob SHAs byte-confirmed against the pinned tip: kernel/decision_principle.py = 0ff5e65045d2563136aebcfd05253cba5fa0acba and kernel/value_calculus.py = fc07ed2ae8c916be5c2e95cb8f4cf059968db100, both at commit ba62638704256b012c20e41fe7f53cc3b62b
+
+### ✅ t0792-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Drift-verification Stage 1: detector vs 5 green main tips, zero false positives
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; backlog 66 before this tick, oldest-first). VERIFIED first-hand this tick: all 5 pinned tip SHAs exist as commits in the local mirror (ba626387, c13f260f, cbd073f4, 0cc7c9f2, 7bb30402). NOT PHANTOM. The 5 verbatim --check outputs and per-tip CI counts were not re-executed this tick (worktrees removed, Oct-14 tips)
 
 ### ✅ t0792 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
