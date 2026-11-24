@@ -27,8 +27,24 @@ SOURCES (mirrors HUB/hub-worker.js serveNote exactly):
      source for why/connects/foryou/learning — page only, as in the reader.
 
 CARD RULES:
-  * The card SET and ORDER of the existing feed are preserved exactly —
-    no card is added (no resurrected retired notes) and none is removed.
+  * DEFAULT MODE: the card SET and ORDER of the existing feed are
+    preserved exactly — no card is added (no resurrected retired notes)
+    and none is removed.
+  * SET-REBUILD MODE (--rebuild-set, added 2026-11-24): the card set is
+    derived from the registry on every run — one card per entry whose
+    lifecycle_state is ACTIVE (the machine definition,
+    tools/distillation_machine.py), a fresh modern-dialect card built
+    for each ACTIVE entry that has none, the per-card layer logic below
+    for entries that do, cards for non-ACTIVE or unregistered entries
+    dropped, order newest-first (created desc, SN number desc), and the
+    header stamped with the registry's FULL corpus_manifest_hash. The
+    default preserve mode froze the set on 2026-11-14 — every filing
+    after that landed in the registry but never in this file, and this
+    file's fetch arms the Hub reader's NOT FOUND verdict, so the stalest
+    data in the system could declare notes absent. Run the rebuild mode
+    after every filing batch so the set can never freeze again. (The
+    2026-11-23 rebuild that proved this mode landed as commit e6e0efef;
+    its builder is the prototype this mode ports.)
   * Every existing card field is preserved untouched (id, title, created,
     created_at, subtitle, topics, topic, tone, icon, kind, personal).
   * Layers are rebuilt as the canonical ten, in canonical order, reusing
@@ -61,8 +77,10 @@ corpus_manifest_hash[:8] read from the registry itself. A JSON report is
 written beside it (--report path) and printed as a summary.
 
 USAGE (from a repo checkout root):
-  python3 tools/regenerate_feed_live.py [--check]
+  python3 tools/regenerate_feed_live.py [--check] [--rebuild-set]
   --check: build in memory, print the report, write nothing.
+  --rebuild-set: derive the card set from the registry (see CARD RULES);
+    without it the existing set and order are preserved exactly.
 """
 import json
 import os
@@ -301,8 +319,170 @@ def new_layer(section_key, label, text, legacy):
             "tier": tier, "body": text}
 
 
+# ---- Set-rebuild mode (--rebuild-set) ----
+# Ported from the 2026-11-23 rebuild builder (landed commit e6e0efef).
+# Fresh cards use these labels: identical to SECTIONS except the
+# nutshell, whose fresh-card form is "In A Nutshell".
+CARD_LABELS = {
+    "nutshell": "In A Nutshell", "human": "Human Note", "child": "Child Note",
+    "grandma": "Grandma Note", "naya": "Naya Note", "means": "What It Means",
+    "why": "Why It Matters", "connects": "How It Connects",
+    "foryou": "What's In It For You", "learning": "The Learning",
+}
+
+
+def sn_number(entry):
+    m = re.search(r"(\d+)", str((entry or {}).get("smart_note_id") or ""))
+    return int(m.group(1)) if m else -1
+
+
+def created_sort_key(card, entry):
+    cr = str(card.get("created") or "")
+    if re.fullmatch(r"\d{4}-\d{2}-\d{2}", cr):
+        cr = cr + "T00:00:00Z"
+    return (cr, sn_number(entry) if entry else -1)
+
+
+def transform_existing_card(card, entry, report):
+    """The per-card layer logic of the default mode, applied to one card
+    whose registry entry is ACTIVE (report keys follow the rebuild
+    builder: a missing section is named plainly, not suffixed)."""
+    sections = note_sections(entry)
+    if not sections:
+        report["no_page"].append(card.get("id"))
+    layers = card.get("layers") or []
+    legacy = is_legacy(layers)
+    existing = {}
+    extras = []
+    for layer in layers:
+        sec = layer_section(layer)
+        if sec and sec not in existing:
+            existing[sec] = layer
+        else:
+            extras.append(layer)
+    new_layers = []
+    missing = []
+    for sec, label in SECTIONS:
+        text = sections.get(sec)
+        if sec in existing:
+            layer = existing[sec]
+            if text and clean_section_text(layer.get("body")) != text:
+                if len(text) >= len(clean_section_text(layer.get("body"))):
+                    layer = dict(layer)
+                    layer["body"] = text
+                    report["bodies_refreshed"] += 1
+                else:
+                    report.setdefault("card_fuller_than_source", []).append(
+                        {"id": card.get("id"), "section": sec})
+            new_layers.append(layer)
+            if not text:
+                missing.append(sec)
+        elif text:
+            new_layers.append(new_layer(sec, label, text, legacy))
+            report["layers_added"] += 1
+        else:
+            missing.append(sec)
+    new_card = dict(card)
+    new_card["layers"] = new_layers + extras
+    if missing:
+        report["incomplete"][card.get("id")] = missing
+    return new_card
+
+
+def build_fresh_card(entry, report):
+    """A fresh modern-dialect card for an ACTIVE entry that has none,
+    built from the entry's capture + registry fields + page sections."""
+    ib = entry.get("intelligent_block_id")
+    cap = load_capture(ib or "")
+    intel = (cap or {}).get("intelligence") or {}
+    sections = note_sections(entry)
+    if not sections:
+        report["no_page"].append(ib)
+    layers = []
+    missing = []
+    for sec in SECTION_KEYS:
+        text = sections.get(sec)
+        if text:
+            layers.append(new_layer(sec, CARD_LABELS[sec], text, False))
+        else:
+            missing.append(sec)
+    if missing:
+        report["incomplete"][ib] = missing
+    created = (
+        (cap or {}).get("created_at")
+        or entry.get("registered_at")
+        or entry.get("captured_at_utc")
+        or entry.get("captured_at")
+        or entry.get("date")
+        or ""
+    )
+    cap_topics = intel.get("topics")
+    if isinstance(cap_topics, list) and cap_topics:
+        topics = list(cap_topics)
+        et = str(entry.get("topic") or "")
+        topic = next((t for t in topics if str(t).lower() == et.lower()), topics[0])
+    else:
+        topic = entry.get("topic") or ""
+        topics = [topic] if topic else []
+    card = {
+        "id": ib,
+        "title": (cap or {}).get("title") or entry.get("title") or "",
+        "created": created,
+        "created_at": created,
+        "subtitle": sections.get("nutshell") or entry.get("one_line") or "",
+        "topics": topics,
+        "topic": topic,
+        "tone": (cap or {}).get("tone") or "purple",
+        "icon": "note",
+        "kind": "official",
+        "personal": False,
+        "layers": layers,
+    }
+    if cap is None:
+        report["no_capture"].append(ib)
+    return card
+
+
+def rebuild_feed(registry, feed, report):
+    """Derive the card set from the registry: one card per ACTIVE entry."""
+    entries = registry["entries"]
+    active = [e for e in entries if e.get("lifecycle_state") == "ACTIVE"]
+    active_by_ib = {}
+    for e in active:
+        active_by_ib.setdefault(e.get("intelligent_block_id"), e)
+    out = []  # (card, entry)
+    seen_ib = set()
+    for card in feed["notes"]:
+        entry = active_by_ib.get(card.get("id"))
+        if entry is None:
+            in_reg = any(e.get("intelligent_block_id") == card.get("id")
+                         for e in entries)
+            (report["dropped_not_active"] if in_reg
+             else report["dropped_no_registry"]).append(card.get("id"))
+            continue
+        seen_ib.add(card.get("id"))
+        out.append((transform_existing_card(card, entry, report), entry))
+        report["preserved"] += 1
+    for e in active:
+        ib = e.get("intelligent_block_id")
+        if ib in seen_ib:
+            continue
+        seen_ib.add(ib)
+        out.append((build_fresh_card(e, report), e))
+        report["fresh"] += 1
+    out.sort(key=lambda ce: created_sort_key(ce[0], ce[1]), reverse=True)
+    notes = [c for c, _ in out]
+    report["active_entries"] = len(active)
+    return {
+        "generated_from": "registry@" + str(registry.get("corpus_manifest_hash", "")),
+        "count": len(notes),
+        "notes": notes,
+    }
+
+
 def main():
     check_only = "--check" in sys.argv
+    rebuild_set = "--rebuild-set" in sys.argv
     with open(REGISTRY_PATH, encoding="utf-8") as f:
         registry = json.load(f)
     by_ib = {}
@@ -310,6 +490,29 @@ def main():
         by_ib.setdefault(e.get("intelligent_block_id"), e)
     with open(FEED_PATH, encoding="utf-8") as f:
         feed = json.load(f)
+
+    if rebuild_set:
+        report = {
+            "cards": 0, "layers_added": 0, "bodies_refreshed": 0,
+            "no_page": [], "no_capture": [], "incomplete": {},
+            "preserved": 0, "fresh": 0, "dropped_not_active": [],
+            "dropped_no_registry": [],
+        }
+        new_feed = rebuild_feed(registry, feed, report)
+        if not check_only:
+            with open(FEED_PATH, "w", encoding="utf-8") as f:
+                f.write(json.dumps(new_feed, indent=1, ensure_ascii=False) + "\n")
+        report["cards"] = len(new_feed["notes"])
+        report["generated_from"] = new_feed["generated_from"]
+        report["count"] = new_feed["count"]
+        print(json.dumps({k: (v if not isinstance(v, (list, dict)) else
+                              (len(v) if isinstance(v, list) else len(v)))
+                          for k, v in report.items()}, indent=1))
+        if "--report" in sys.argv:
+            rp = sys.argv[sys.argv.index("--report") + 1]
+            with open(rp, "w", encoding="utf-8") as f:
+                json.dump(report, f, indent=1, ensure_ascii=False)
+        return 0
 
     report = {
         "cards": 0, "cards_complete_ten": 0, "layers_added": 0,
