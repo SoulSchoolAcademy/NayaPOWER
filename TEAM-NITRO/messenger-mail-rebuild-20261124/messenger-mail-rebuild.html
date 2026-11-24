@@ -5,7 +5,7 @@
 .mail-stage{
   position:relative; --ml-blue:#0f52ba; --ml-blue-lt:#0f52ba;
   --ml-ink:#ffffff; --ml-soft:#ffffff;
-  max-width:none; width:100%; margin:0; padding:10px clamp(16px,4vw,64px) 120px;
+  max-width:none; width:100%; box-sizing:border-box; margin:0; padding:10px clamp(16px,4vw,64px) 120px;
   color:var(--ml-ink);
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,"Segoe UI",sans-serif;
 }
@@ -39,9 +39,9 @@
   -webkit-backdrop-filter:blur(20px); backdrop-filter:blur(20px);
   box-shadow:0 10px 36px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.06); }
 .mail-stage .ml-folder{ --fc:#0f52ba; --fcl:#0f52ba;
-  display:flex; align-items:center; gap:14px;
-  padding:15px 18px; overflow:hidden;box-sizing:border-box;border-radius:14px; width:100%; text-align:left; white-space:nowrap;
-  font-size:17px; font-weight:700; letter-spacing:.12em; line-height:1.25;
+  display:flex; align-items:center; gap:8px;
+  padding:8px 12px; overflow:hidden;box-sizing:border-box;border-radius:14px; width:100%; text-align:left; white-space:nowrap;
+  font-size:17px; font-weight:700; letter-spacing:.02em; line-height:1.25;
   cursor:pointer; font-family:inherit; color:#ffffff;
   background:#050607;
   border:1px solid rgba(255,255,255,.09);
@@ -53,7 +53,7 @@
   filter:drop-shadow(0 0 5px color-mix(in srgb, var(--fc) 55%, transparent));
   transition:filter .3s, color .25s; }
 .mail-stage .ml-folder .ml-ficon svg{ width:100%; height:100%; display:block; }
-.mail-stage .ml-folder .ml-fname{ flex:1 1 auto; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.mail-stage .ml-folder .ml-fname{ flex:1 1 auto; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:normal; }
 .mail-stage .ml-folder:hover, .mail-stage .ml-folder:focus-visible{ outline:none;
   border-color:color-mix(in srgb, var(--fc) 55%, transparent);
   background:#050607;
@@ -94,7 +94,7 @@
 .ml-qa-dot{ width:10px; height:10px; flex:none; border-radius:99px; background:var(--pc,#0f52ba); box-shadow:0 0 8px var(--pc,#0f52ba); }
 @media(max-width:760px){ .mail-stage .ml-qa-label{ display:none; } .mail-stage .ml-qa{ flex-direction:row; } .mail-stage .ml-qa-item{ flex:1; white-space:nowrap; } }
 
-.mail-stage .ml-badge{ margin-left:8px; flex:none; min-width:20px; height:20px; padding:0 7px; border-radius:99px;
+.mail-stage .ml-badge{ margin-left:4px; flex:none; min-width:20px; height:20px; padding:0 7px; border-radius:99px;
   display:inline-flex; align-items:center; justify-content:center;
   font-size:17px; font-weight:800; letter-spacing:.04em; line-height:1; color:#ffffff;
   background:#050607;
@@ -141,7 +141,7 @@
 .mail-stage .ml-thread-top{ display:flex; align-items:center; gap:8px; margin-bottom:6px; }
 .ml-thread-from{ flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .mail-stage .ml-thread-from{ font-size:17px; font-weight:800; letter-spacing:.02em; }
-.mail-stage .ml-thread.unread .ml-thread-from{ color:#0f52ba; }
+.mail-stage .ml-thread.unread .ml-thread-from{ color:#0f52ba; font-weight:800; }
 .mail-stage .ml-thread-time{ font-size:17px; color:var(--ml-soft); flex:none; font-variant-numeric:tabular-nums; }
 .mail-stage .ml-thread-subj{ font-size:17px; font-weight:700; color:#fff; }
 .mail-stage .ml-thread-snip{
@@ -296,15 +296,15 @@
 .ml-toast .tk{ width:22px; height:22px; border-radius:50%; background:rgba(53,227,155,.2); border:1px solid #07925f; display:flex; align-items:center; justify-content:center; font-size:17px; color:#07925f; flex:none; }
 /* Search */
 .ml-searchwrap{ display:flex; align-items:center; gap:8px; margin-bottom:10px; }
-.ml-search{ flex:1; display:flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; background:rgba(0,0,0,.3); border:1px solid rgba(255,255,255,.1); transition:border-color .2s; }
+.ml-search{ flex:1; min-width:0; display:flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; background:rgba(0,0,0,.3); border:1px solid rgba(255,255,255,.1); transition:border-color .2s; }
 .ml-search:focus-within{ border-color:rgba(15,82,186,.75); }
-.ml-search input{ flex:1; background:none; border:none; outline:none; color:#fff; font-size:17px; font-family:inherit; }
+.ml-search input{ flex:1; min-width:0; background:none; border:none; outline:none; color:#fff; font-size:17px; font-family:inherit; }
 .ml-search input::placeholder{ color:#ffffff; }
 .ml-search-x{ background:none; border:none; color:#ffffff; cursor:pointer; font-size:17px; padding:2px 6px; display:none; }
 .ml-search-x.show{ display:block; }
 /* Filter chips */
 .ml-filters{ display:flex; gap:6px; margin-bottom:10px; flex-wrap:wrap; }
-.ml-fchip{ padding:7px 14px; border-radius:999px; font-size:17px; font-weight:700; letter-spacing:.06em; cursor:pointer; font-family:inherit; color:#ffffff; background:rgba(0,0,0,.25); border:1px solid rgba(255,255,255,.08); transition:all .2s; }
+.ml-fchip{ flex:none; padding:7px 14px; border-radius:999px; font-size:17px; font-weight:700; letter-spacing:.06em; cursor:pointer; font-family:inherit; color:#ffffff; background:rgba(0,0,0,.25); border:1px solid rgba(255,255,255,.08); transition:all .2s; }
 .ml-fchip.on{ color:#fff; border-color:rgba(15,82,186,.75); background:rgba(15,82,186,.12); box-shadow:0 0 12px -4px rgba(15,82,186,.75); }
 /* Bulk select */
 .ml-thread .ml-ck{ display:none; width:20px; height:20px; border-radius:6px; border:1.5px solid rgba(255,255,255,.3); flex:none; align-items:center; justify-content:center; font-size:17px; color:#fff; }
@@ -2131,7 +2131,7 @@ schRow.appendChild(dtWrap);
   var rightDrawer = h('nav','naya-drawer naya-drawer-right');
   rightDrawer.setAttribute('aria-label','NayaNET menu');
   rightDrawer.appendChild(h('p','naya-drawer-kicker','NAYANET'));
-  var FLOW = ['#6d28d9','#3f51b5','#0f52ba','#07925f','#07925f','#d4a017','#d4a017','#c2410c','#c62828','#8e24aa','#c62828','#c2410c'];
+  var FLOW = ['#6d28d9','#3f51b5','#0f52ba','#07925f','#0e7490','#d4a017','#a21caf','#c2410c','#c62828','#8e24aa','#c62828','#c2410c'];
   NAYA_LINKS.forEach(function(pair, i){
     var a = h('a','naya-drawer-btn naya-ext'); a.textContent = pair[0];
     a.style.setProperty('--nc', FLOW[i % FLOW.length]);
@@ -2249,7 +2249,19 @@ schRow.appendChild(dtWrap);
 .nm-orb-row{display:flex;align-items:center;justify-content:center;gap:16px;margin:0 0 16px;}
 .nm-orb{position:relative;flex:none;width:54px;height:54px;border-radius:50%;background:#050607;border:1.5px solid #8e24aa;color:#ffffff;display:grid;place-items:center;font-size:25px;font-weight:700;box-shadow:0 4px 10px rgba(0,0,0,.5);}
 .nm-orb::after{content:"";position:absolute;inset:-7px;border-radius:50%;border:1.5px solid #8e24aa;opacity:.55;animation:nm-orbit 120s linear infinite;}
-.nm-orb2::after{animation-duration:180s;animation-direction:reverse;}
+.nm-orb2{border-color:#d4a017;color:#d4a017;}
+.nm-orb2::after{border-color:#d4a017;animation-duration:180s;animation-direction:reverse;}
+/* STAGED FRAME — the harvested frame block keeps its relative master-frame.png
+   (byte-identical, local serving). The proof host cannot resolve a relative
+   URL — it serves files by ?file=…&ref=… — so on the staged link the PNG
+   400s and the frame is invisible. This later, same-specificity override
+   points the SAME border-image at the staged-resolvable proof-host URL of
+   the SAME blob (5a4dc2f9…, filed on this branch). It wins because it comes
+   later and both carry !important. It also works when served locally (the
+   browser fetches the same blob from the proof host). If the proof host ever
+   goes away, delete this rule and the relative ref in the harvested block
+   works again — nothing else changes. */
+.royal-frame{border-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO%2Fmessenger-mail-rebuild-20261124%2Fmaster-frame.png&ref=messenger-mail-rebuild-20261124) 300 / var(--bw,96px) / 0 round!important}
 @keyframes nm-orbit{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
 .nm-orb-note{font-size:17px;color:#ffffff;max-width:520px;}
 /* Messenger view — the same three panes as Mail: people | conversations | conversation. */
@@ -2535,7 +2547,11 @@ function nmConvRows(){
   return h;
 }
 function nmMsgViewHtml(){
-  var h = '<section class="nm-msg" id="nmMsgView" hidden><div class="nm-msg-panes">';
+  /* No `hidden` on this section: the view's visibility is owned by
+     nmSetTempo alone. (v2.1 bug: the template always emitted `hidden`, and
+     nmRefreshMsgView re-parsed it, so the Messenger view could never be
+     seen — the toggle un-hid it and the refresh re-hid it in the same call.) */
+  var h = '<section class="nm-msg" id="nmMsgView"><div class="nm-msg-panes">';
   h += '<div class="nm-pane"><h2>PEOPLE</h2><p class="nm-note">People · Spaces · Mail — views over one inbox, not separate products.</p>'
     + '<input class="nm-search" id="nmSearch" type="search" placeholder="Search anyone…" aria-label="Search anyone" value="' + esc(nmSearch) + '">'
     + '<div class="nm-space-pick">';
@@ -2543,7 +2559,8 @@ function nmMsgViewHtml(){
     h += '<button type="button" class="nm-space" data-nm-space="' + esc(sp.alias || sp.id) + '" aria-pressed="' + ((nmSpace === (sp.alias || sp.id)) ? 'true' : 'false') + '">' + esc(sp.name) + '</button>';
   });
   h += '</div><div id="nmPeopleList">' + nmMemberRows() + '</div>'
-    + '<p class="nm-note">InstaMessage is not in the Hub yet, so it is not here either — Messenger and Mail are the two ways to reach someone. Nothing invented.</p>';
+    + '<p class="nm-note">InstaMessage is not in the Hub yet, so it is not here either — Messenger and Mail are the two ways to reach someone. Nothing invented.</p>'
+    + '<h3>COMING NEXT — NOT BUILT YET</h3><p class="nm-note">The road ahead, named honestly: a right panel that pulls files, decisions and tasks out of your messages · presence rooms to drop into · the voice arc (voice note → live room → transcribed post) · a private AI layer (summaries, drafts in your voice, translation, task extraction, incognito mode) · one username identity, your phone never exposed · bots and mini-apps · export and portability, your words leave with you. None of it is built yet — this page is Messenger and Mail, and it says so.</p>';
   if(!nmMembers.length){
     h += '<h3>THE FAMILY, UNTIL THE ROSTER LANDS</h3><p class="nm-note">No live members returned for this space. These are the family — the twelve sisters and Shawn — shown as the family, never as members of this space.</p><div id="nmSeedList">';
     (window.PC_RAIL_SEED || []).forEach(function(p){
@@ -2565,7 +2582,8 @@ function nmMsgViewHtml(){
 function nmReaderHtml(){
   if(!nmSelectedConv && !nmSelectedPerson){
     return '<h2>CONVERSATION</h2><p class="nm-note">Pick a person on the left — or a conversation in the middle — and they are right here in the frame. Step 1 pick a person · Step 2 write it · Step 3 tap Send.</p>'
-      + '<p class="nm-note">Living messages fade unless kept. Kept means mailed or starred — the record stays. Nothing is kept by accident.</p>';
+      + '<p class="nm-note">Living messages fade unless kept. Kept means mailed or starred — the record stays. Nothing is kept by accident.</p>'
+      + '<p class="nm-note">Presence and read receipts are in. Typing is not live yet — there is no live channel, so nobody&rsquo;s typing is shown here. It is owed, not faked.</p>';
   }
   var alias = nmSelectedPerson || (nmConvs.filter(function(c){ return c.threadId === nmSelectedConv; })[0] || {}).with;
   if(!alias) return '<h2>CONVERSATION</h2><p class="nm-note">Pick a person to begin.</p>';
@@ -2606,9 +2624,11 @@ function nmRefreshMsgView(){
   if(!view) return;
   var stage = document.querySelector('.mail-stage');
   if(!stage) return;
+  var wasHidden = view.hidden; /* the refresh must never change visibility */
   var fresh = document.createElement('div');
   fresh.innerHTML = nmMsgViewHtml();
   var nv = fresh.firstChild;
+  nv.hidden = wasHidden;
   view.parentNode.replaceChild(nv, view);
   nmBindMsgView();
 }
@@ -2767,7 +2787,7 @@ function nmInit(){
     + '<button type="button" class="nm-toggle-btn" role="tab" data-tempo="chat" aria-pressed="true">MESSENGER<small>Chat — living, informal</small></button>'
     + '<button type="button" class="nm-toggle-btn" role="tab" data-tempo="mail" aria-pressed="false">MAIL<small>Mail — kept, signed, a record</small></button></div>'
     + '<div class="nm-steps"><span class="nm-step"><b>Step 1</b> — Pick a person</span><span class="nm-step"><b>Step 2</b> — Write it</span><span class="nm-step"><b>Step 3</b> — Tap Send</span><span class="nm-step">Same three steps, Chat or Mail.</span></div>'
-    + '<div class="nm-orb-row"><span class="nm-orb">N</span><span class="nm-orb nm-orb2">N</span><span class="nm-orb-note">Naya is beside you in the frame — she never reads your mail. One thread per person: flip the toggle and the next message changes tempo, never the thread.</span></div>';
+    + '<div class="nm-orb-row"><span class="nm-orb">N</span><span class="nm-orb nm-orb2">◆</span><span class="nm-orb-note">Naya (purple N) is beside you (gold ◆) in the frame — she never reads your mail. One thread per person: flip the toggle and the next message changes tempo, never the thread.</span></div>';
   stage.insertBefore(chrome, panes);
   stage.insertAdjacentHTML('beforeend', nmMsgViewHtml());
   chrome.querySelectorAll('.nm-toggle-btn').forEach(function(b){
@@ -2776,6 +2796,7 @@ function nmInit(){
   nmBootData();
   nmLoadDMs().then(function(){ if(nmTempo === 'chat') nmRefreshMsgView(); });
   nmBindMsgView();
+  nmSetTempo(nmTempo); /* sync the initial view to the initial toggle — v2.1 never did, so load showed Mail under a MESSENGER toggle */
   return true;
 }
 var __nmTries = 0;
