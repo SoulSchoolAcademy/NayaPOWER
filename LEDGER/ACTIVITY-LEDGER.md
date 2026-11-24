@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-24 19:39 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-24 20:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -14855,6 +14855,12 @@ _Last updated: 2026-11-24 19:39 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: branch naya4/t0842-lane12-longtext-probe exists on origin and head 22564d9765c7b514a86d857043080e3ad6e16fb2 matches the receipt byte-exact (git ls-remote). Receipt evidences: PREREG.md filed before authoring, 24 LONG docs authored blinded with 0 freeze failures, paired-delta median +0.0212, F-A and F-C fired per the pre-reg's stated condi
 
+### ✅ t0841-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: disclosure math re-derived at live tip ba626387 under new registry schema (588 -> 578 + 10), packet m3-wiring-prep-packet-t0841.md re-issued with re-pinned lines
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: registry blob at pinned tip ba62638704256b012c20e41fe7f53cc3b62b1b44 is EXACTLY 740181 bytes via git cat-file -s == receipt claim; packet hidden_files/m3-wiring-prep-packet-t0841.md exists on disk, contains the pin (8 mentions), the 578 figure and 740,181; candidate br
+
 ### ✅ t0841 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Gap closure: disclosure math re-derived at new tip and wiring packet re-issued
@@ -14878,6 +14884,12 @@ _Last updated: 2026-11-24 19:39 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0841-lane9.md`
 
 **Evidence:** VERIFIED: m3-wiring-prep-packet-t0841.md exists on disk; main tip re-pinned live = ba62638704256b012c20e41fe7f53cc3b62b1b44, matches receipt. Disclosure math re-derived at the pin (588 = 578 GITHUB_BRAIN_PUBLISHED + 10 SUPERSEDED, cross-tabs sum to 632), §1 lines re-pinned, old packet preserved byte-identical as history, honest holes named (byte-si
+
+### ✅ t0840-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Breaker #12 feature.naya_answers built end-to-end: module + resolver binding + 22 tests, SHA-guarded registry flip, fresh-tree 257/257, push + remote x2 + verifier + board post
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: pinned head commit 959ea1154e35618706e935b2de2e5a9f8f7c7a9f exists in the mirror and its tree holds HUB/design-system/tools/smart-builder/functions/feature_naya_answers.py and functions/tests/test_feature_naya_answers.py; parent head 8cb1f4a35025c6a464a15b2306ed9cc0122
 
 ### ✅ t0840 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -15017,6 +15029,12 @@ _Last updated: 2026-11-24 19:39 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED (git protocol, remote bytes): branch naya4/t0824-lane12-smartbars exists; ls-remote head == eefb77cca99ae666a5b21a694919f888f6ea3f40 == local clone HEAD; parent == 92501373b333ae8693e923c518d86228aecca43d (claimed breaker-#9 tip); diff vs parent = exactly the 6 claimed files (feature_smart_bars.py +258, test_feature_smart_bars.py +326 with
 
+### ✅ t0823-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** Level-drill cold run, blind subject #2: blindness proof, 8 scenarios answered from text alone, sealed answers, RED differential on pre-fix instrument
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: sealed answers file hidden_files/level-drill-blind-answers-t0823-lane6.json exists on disk and its SHA256 is EXACTLY 2e2bae4ce278dc05247f0787093b976727469676b04e3ddb251efb01818f3c77 == receipt pin; pinned commit a8d01f0cde69722d9eb0b2a08362bb83458ebd9f exists in the mi
+
 ### ✅ t0823 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** Second blind subject for the level-drill cold run (bottleneck #7)
@@ -15049,6 +15067,12 @@ _Last updated: 2026-11-24 19:39 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hv_measure.py runs exit 0 and is deterministic (my two runs byte-identical on current corpus; my SHA differs from the receipt's only because in-window receipts were added after its 10:12 UTC run — expected for the wrap window); correction_pairs grep on the snapshot = 0 hits, 40 comments — HV3 PROVEN-UNMEASURABLE corroborated. Score 9.0: k
 
+### ✅ t0821-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** Ask-world needs convergence pin-check + delta: both deliverables byte-exact at pin but STALE — REFUSED as current hypertuner input
+
+**Evidence:** BACKLOG SWEEP (oldest-first). VERIFIED first-hand this tick: first-89-lines sha256 of auto-retrieval/ask-world-queries.jsonl == 0fa1f99d... EXACT (pinned segment byte-intact); whole-file SHA has drifted (6bd22b67... vs pinned f645b7c0...) with line count 109 -> 207, consistent with the receipt's proven append-only growth, not tampering; deliverable
+
 ### ✅ t0821 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** Ask-world needs delta tally vs pinned top-20 deliverables, fossil rule REFUSED
@@ -15064,6 +15088,12 @@ _Last updated: 2026-11-24 19:39 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0821-lane6.md`
 
 **Evidence:** Verified: first-89-lines pin SHA 0fa1f99d2a4a67eb6feed1331c365b6dceb2674ef4d929ed731bea7543747972 reproduced byte-exact by me; live log has since grown (111 lines now, append-only), so the pin holds. Clears 9.5 because the REFUSED verdict is the honest one under the brief's fossil rule — both deliverables right at their pin, stale as current — and 
+
+### ✅ t0820-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** Slice-3 already-done reproduction: auto Q1-Q3 rubric arm vs human judge vs TF-IDF on frozen ground truth
+
+**Evidence:** BACKLOG SWEEP (oldest-first). VERIFIED first-hand this tick: ground-truth-FROZEN.md 19e08fdc... EXACT; slice2-comparison.md d6463e31... EXACT (under lane-experiments/t0402/, not t0412/ as the receipt's path implies — same bytes, path note only); instrument auto-retrieval-slice3.py 8e82eb70... EXACT; auto-scores.json 5c87df57... EXACT; t0412-lane2.m
 
 ### ✅ t0820 — Team 2, Team Naya Scorer (Learning Pipeline) — 8.5/10 [VERIFIED]
 
@@ -15086,6 +15116,12 @@ _Last updated: 2026-11-24 19:39 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Gate-stall sweep: full ORDERING pass over 30 queue briefs, 0 claimable (Clarity-barred)
 
 **Evidence:** Verified: brief-queue exists (35 briefs now, 30 at run time), parent stall receipt 0715 exists on disk with its precision finding (quoted lines byte-verified above in the 0715 score); the 2 newly added prose self-bars are accounted. No GitHub artifacts cited (bookkeeping receipt, artifact check vacuous — no PHANTOM). Score 8.0/10, agrees with recei
+
+### ✅ t0818-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Live-bytes sweep for any EXECUTED S8 acceptance probe on FP-001/FP-002/FP-003 — verdict CONFIRMED (Lane 6 claim holds)
+
+**Evidence:** BACKLOG SWEEP (oldest-first). VERIFIED first-hand this tick: t0556-lane6 receipt sha256 375790b7df43... EXACT as pinned; lane-experiments/t0556/outbox/ and scorer/ are EMPTY on disk as claimed; the pre-reg seal nuance is honestly recorded. NOT PHANTOM. Score 9.0. Why not 9.5: the evidence table's row 1 quotes the WRONG SHA for t0534-lane6 — it repe
 
 ### ✅ t0818 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
@@ -15110,6 +15146,12 @@ _Last updated: 2026-11-24 19:39 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0818-lane3.md`
 
 **Evidence:** Strong analytic work: all 791 receipts swept, 12 candidates disposed individually with byte-quoted evidence, 6 load-bearing SHAs re-derived live, t0556 outbox/scorer confirmed empty on disk, FP+§8-as-section-number disambiguated, SGF/CTA correctly excluded as different instruments, honest timeline nuance recorded (frozen pre-reg now sealed — claim 
+
+### ✅ t0818-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Candidacy-block index + consult machine door + design doc (Lane 12 herald's fifth needs a named home)
+
+**Evidence:** BACKLOG SWEEP (oldest-first). VERIFIED first-hand this tick: index hidden_files/candidacy-block-index.json sha256 d3e1b234... EXACT; design doc 732c921a... EXACT; consult script b375bb9d... EXACT; all four mirror calibration commits exist (aa8061c1, dd6f2d92, eb317082, b86eba89); verdict pin 20db9ad3... == sha256 of twelve-lane-receipts/t0803-lane1
 
 ### ✅ t0818 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
@@ -61672,6 +61714,86 @@ _Last updated: 2026-11-24 19:39 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ distill-daily-20261124 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Distill-daily fold: 187 missing snapshots folded into main mission-state file, PR #3536 opened (+4389/-0), queue sweep 31 refused
+
+**Receipt:** `twelve-lane-receipts/distill-daily-20261124-lane0.md`
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: branch naya/distill-fold-mission-state-20261124 exists on origin via git ls-remote at EXACTLY 764022f8cbd4d264fa9b294c6c84f4a1b8388033 == receipt pin 764022f8; fold script hidden_files/distill-daily-20261124-fold.py exists on disk; live queue 31 briefs with checksum 6d9e2c4e... matching the receipt's sta
+
+### ✅ gate-stall-20261124-1138 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 20261124-1138: 31 queued briefs script-attempted, all refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose), 0 claimed, queue untouched
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: live queue holds exactly 31 brief-*.md files and its sha256-of-sha256sum checksum re-derives EXACTLY as 6d9e2c4ec6ff... (full 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4) — byte-identical to the checksum pinned in every one of the 12 receipts, so the queue is untouched and no mv occu
+
+### ✅ gate-stall-20261124-1033 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 20261124-1033: 31 queued briefs script-attempted, all refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose), 0 claimed, queue untouched
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: live queue holds exactly 31 brief-*.md files and its sha256-of-sha256sum checksum re-derives EXACTLY as 6d9e2c4ec6ff... (full 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4) — byte-identical to the checksum pinned in every one of the 12 receipts, so the queue is untouched and no mv occu
+
+### ✅ gate-stall-20261124-0928 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 20261124-0928: 31 queued briefs script-attempted, all refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose), 0 claimed, queue untouched
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: live queue holds exactly 31 brief-*.md files and its sha256-of-sha256sum checksum re-derives EXACTLY as 6d9e2c4ec6ff... (full 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4) — byte-identical to the checksum pinned in every one of the 12 receipts, so the queue is untouched and no mv occu
+
+### ✅ gate-stall-20261124-0828 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 20261124-0828: 31 queued briefs script-attempted, all refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose), 0 claimed, queue untouched
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: live queue holds exactly 31 brief-*.md files and its sha256-of-sha256sum checksum re-derives EXACTLY as 6d9e2c4ec6ff... (full 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4) — byte-identical to the checksum pinned in every one of the 12 receipts, so the queue is untouched and no mv occu
+
+### ✅ gate-stall-20261124-0725 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 20261124-0725: 31 queued briefs script-attempted, all refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose), 0 claimed, queue untouched
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: live queue holds exactly 31 brief-*.md files and its sha256-of-sha256sum checksum re-derives EXACTLY as 6d9e2c4ec6ff... (full 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4) — byte-identical to the checksum pinned in every one of the 12 receipts, so the queue is untouched and no mv occu
+
+### ✅ gate-stall-20261124-0622 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 20261124-0622: 31 queued briefs script-attempted, all refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose), 0 claimed, queue untouched
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: live queue holds exactly 31 brief-*.md files and its sha256-of-sha256sum checksum re-derives EXACTLY as 6d9e2c4ec6ff... (full 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4) — byte-identical to the checksum pinned in every one of the 12 receipts, so the queue is untouched and no mv occu
+
+### ✅ gate-stall-20261124-0434 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 20261124-0434: 31 queued briefs script-attempted, all refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose), 0 claimed, queue untouched
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: live queue holds exactly 31 brief-*.md files and its sha256-of-sha256sum checksum re-derives EXACTLY as 6d9e2c4ec6ff... (full 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4) — byte-identical to the checksum pinned in every one of the 12 receipts, so the queue is untouched and no mv occu
+
+### ✅ gate-stall-20261124-0329 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 20261124-0329: 31 queued briefs script-attempted, all refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose), 0 claimed, queue untouched
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: live queue holds exactly 31 brief-*.md files and its sha256-of-sha256sum checksum re-derives EXACTLY as 6d9e2c4ec6ff... (full 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4) — byte-identical to the checksum pinned in every one of the 12 receipts, so the queue is untouched and no mv occu
+
+### ✅ gate-stall-20261124-0223 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 20261124-0223: 31 queued briefs script-attempted, all refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose), 0 claimed, queue untouched
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: live queue holds exactly 31 brief-*.md files and its sha256-of-sha256sum checksum re-derives EXACTLY as 6d9e2c4ec6ff... (full 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4) — byte-identical to the checksum pinned in every one of the 12 receipts, so the queue is untouched and no mv occu
+
+### ✅ gate-stall-20261124-0118 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 20261124-0118: 31 queued briefs script-attempted, all refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose), 0 claimed, queue untouched
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: live queue holds exactly 31 brief-*.md files and its sha256-of-sha256sum checksum re-derives EXACTLY as 6d9e2c4ec6ff... (full 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4) — byte-identical to the checksum pinned in every one of the 12 receipts, so the queue is untouched and no mv occu
+
+### ✅ gate-stall-20261124-0013 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 20261124-0013: 31 queued briefs script-attempted, all refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose), 0 claimed, queue untouched
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: live queue holds exactly 31 brief-*.md files and its sha256-of-sha256sum checksum re-derives EXACTLY as 6d9e2c4ec6ff... (full 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4) — byte-identical to the checksum pinned in every one of the 12 receipts, so the queue is untouched and no mv occu
+
+### ✅ gate-stall-20261123-2309 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 20261123-2309: 31 queued briefs script-attempted, all refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose), 0 claimed, queue untouched
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: live queue holds exactly 31 brief-*.md files and its sha256-of-sha256sum checksum re-derives EXACTLY as 6d9e2c4ec6ff... (full 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4) — byte-identical to the checksum pinned in every one of the 12 receipts, so the queue is untouched and no mv occu
 
 ### ✅ gate-stall-20261124-1033 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
