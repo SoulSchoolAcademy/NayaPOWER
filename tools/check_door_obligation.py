@@ -27,6 +27,21 @@ build the automation"), this tool is the prevention:
          SN-9998/SN-9999). Every defect prints one self-explaining line:
          MISSING: ... — CURE: ... (owner: ...)
 
+         Two registry-level completions (SN-4711, the Sealed Door):
+         the corpus manifest is recomputed over the entries array and
+         compared with the stamped corpus_manifest_hash on EVERY run
+         (MANIFEST_STALE — the writer re-stamps it inside its registry
+         transaction on every publish, so a mismatch is proof of an
+         out-of-door edit), and known legacy defects are grandfathered
+         by a shrink-only ratchet file
+         (tools/door_obligation_grandfathered.json): a defect named in
+         the ratchet is reported as GRANDFATHERED and does not fail the
+         run, but the ratchet may only SHRINK — a defect NOT named in
+         it fails as always, an allowance added since the comparison
+         ref is RATCHET_GREW, and an allowance whose defect has been
+         cured is RATCHET_STALE (the shrink is owed in the same push
+         as the cure).
+
   FIX    (--fix) — generate the missing capture + registry entry for a
          page FROM THE PAGE ITSELF, using tools/smart_note_v2.py's own
          hash functions (single hashing authority — never a second
@@ -63,6 +78,7 @@ ROOT = Path(__file__).resolve().parents[1]
 BRAIN_NOTES_REL = Path("BRAIN/05-MEMORY/SMART-NOTES")
 CAPTURE_REL = Path(".naya/capture")
 REGISTRY_REL = Path(".naya/memory/smart-notes/index.json")
+RATCHET_REL = Path("tools/door_obligation_grandfathered.json")
 
 BACKFILL_DATE = None  # set from --date or today (UTC) at runtime
 
@@ -407,6 +423,164 @@ def check_pages(root: Path, snv2, pages: list[dict], registry: dict,
                     "owner": "cure lane",
                 })
     return defects
+
+
+# --------------------------------------------------------------------------
+# Registry manifest + the shrink-only grandfather ratchet (SN-4711)
+# --------------------------------------------------------------------------
+
+def check_manifest(snv2, registry: dict) -> dict | None:
+    """MANIFEST_STALE: the writer re-stamps corpus_manifest_hash inside
+    registry_transaction on EVERY publish (tools/smart_note_v2.py), so a
+    stamped manifest that does not recompute over the registry's own
+    entries array is already proof of an out-of-door edit — no further
+    evidence is needed and none is claimed. Recomputed on every check
+    run, in every mode (the manifest is registry-global, not page
+    scope), and never grandfathered: a tolerated stale manifest would
+    tolerate the next out-of-door edit too."""
+    stamped = registry.get("corpus_manifest_hash")
+    computed = snv2._corpus_manifest_hash(registry.get("entries", []))
+    if stamped == computed:
+        return None
+    return {
+        "sn": "(registry)", "ib": "", "kind": "MANIFEST_STALE",
+        "path": str(REGISTRY_REL).replace("\\", "/"),
+        "missing": "corpus manifest for the registry — stamped "
+                   "corpus_manifest_hash does not recompute over the "
+                   "entries array (an out-of-door registry edit)",
+        "cure": "recompute corpus_manifest_hash from the entries array "
+                "with tools/smart_note_v2.py (the single hashing "
+                "authority) in the same push as the registry edit; if "
+                "the edit was not yours, reconcile the entries first",
+        "owner": _OWNER,
+    }
+
+
+def _defect_key(d: dict) -> tuple[str, str, str]:
+    return (str(d.get("sn") or ""), str(d.get("ib") or ""),
+            str(d.get("kind") or ""))
+
+
+# Kinds that must never be absorbed by a grandfather allowance: the
+# manifest is the registry's own integrity proof, and a duplicate
+# public id is an identity collision, not legacy debt.
+_NEVER_GRANDFATHERED = {"MANIFEST_STALE", "DUPLICATE_PUBLIC_ID"}
+
+
+def load_ratchet(root: Path) -> tuple[set, dict | None]:
+    """The grandfather ratchet file: the set of (sn, ib, kind) legacy
+    defects this checker tolerates, exactly as filed. An absent file is
+    an empty allowance set — nothing is grandfathered. A malformed file
+    tolerates nothing either, and is itself a defect: the checker must
+    never run with an unreadable ratchet silently treated as intent."""
+    p = root / RATCHET_REL
+    if not p.exists():
+        return set(), None
+    try:
+        doc = json.loads(p.read_text(encoding="utf-8"))
+        keys = {_defect_key(e) for e in doc["defects"]}
+    except (ValueError, UnicodeDecodeError, KeyError, TypeError) as exc:
+        return set(), {
+            "sn": "(ratchet)", "ib": "", "kind": "RATCHET_UNREADABLE",
+            "path": str(RATCHET_REL).replace("\\", "/"),
+            "missing": f"grandfather ratchet for the door obligation — "
+                       f"{RATCHET_REL} could not be parsed ({exc}); no "
+                       f"allowance is honored this run",
+            "cure": "restore tools/door_obligation_grandfathered.json "
+                    "to a valid {\"defects\": [{sn, ib, kind}, ...]} "
+                    "document; never hand-grow it — entries leave the "
+                    "file when their defect is cured, in the same push",
+            "owner": "door lane",
+        }
+    return keys, None
+
+
+def _ratchet_keys_at_ref(root: Path, ref: str) -> set | None:
+    """The ratchet set as committed at a git ref, or None when it cannot
+    be established (no git, ref missing, file absent at the ref — the
+    ratchet's first landing). Growth can only be judged against a
+    committed baseline; without one the check is skipped, never guessed."""
+    out = _git(root, "show", f"{ref}:{RATCHET_REL.as_posix()}")
+    if out is None:
+        return None
+    try:
+        doc = json.loads(out)
+        return {_defect_key(e) for e in doc["defects"]}
+    except (ValueError, KeyError, TypeError):
+        return None
+
+
+def ratchet_defects(root: Path, ratchet_keys: set,
+                    live_keys: set | None,
+                    range_spec: str | None) -> list[dict]:
+    """The ratchet's own check — shrink-only, enforced both ways:
+
+    RATCHET_GREW: an allowance present on disk but absent from the
+    committed baseline (the range base in delta mode, HEAD otherwise)
+    was ADDED — by an edit or by a run trying to absorb a new defect
+    into the tolerated set. Adding to the ratchet is itself a defect,
+    whoever wrote it.
+
+    RATCHET_STALE: an allowance whose defect no longer occurs. The
+    shrink is part of the cure: an allowance kept after its defect is
+    cured would silently absorb a recurrence of the same defect.
+    Judged only when live_keys covers the full corpus (full-tree
+    mode): in a scoped run, out-of-scope allowances would read as
+    false staleness, so the caller passes live_keys=None there.
+    """
+    out = []
+    baseline_ref = None
+    if range_spec:
+        try:
+            baseline_ref, _ = _range_endpoints(range_spec)
+        except RuntimeError:
+            baseline_ref = None
+    if baseline_ref is None:
+        baseline_ref = "HEAD"
+    baseline = _ratchet_keys_at_ref(root, baseline_ref)
+    if baseline is not None:
+        for sn, ib, kind in sorted(ratchet_keys - baseline):
+            out.append({
+                "sn": sn, "ib": ib, "kind": "RATCHET_GREW",
+                "path": str(RATCHET_REL).replace("\\", "/"),
+                "missing": f"grandfather ratchet grew — an allowance "
+                           f"for {sn} ({kind}) was added since "
+                           f"{baseline_ref}; the ratchet may only shrink",
+                "cure": "remove the added allowance; if the defect is "
+                        "real, cure the defect — never absorb a new "
+                        "defect into the tolerated set",
+                "owner": "door lane",
+            })
+    if live_keys is not None:
+        for sn, ib, kind in sorted(ratchet_keys - live_keys):
+            out.append({
+                "sn": sn, "ib": ib, "kind": "RATCHET_STALE",
+                "path": str(RATCHET_REL).replace("\\", "/"),
+                "missing": f"grandfather allowance for {sn} ({kind}) "
+                           f"no longer matches a live defect — the "
+                           f"ratchet must shrink in the same push as "
+                           f"the cure that removed the defect",
+                "cure": "delete the allowance from "
+                        "tools/door_obligation_grandfathered.json in "
+                        "the same push that cured the defect",
+                "owner": "cure lane",
+            })
+    return out
+
+
+def partition_grandfathered(items: list[dict],
+                            ratchet_keys: set) -> tuple[list[dict], list[dict]]:
+    """Split defects (or tombstones) into (hard, grandfathered). A
+    defect is grandfathered only when the ratchet names its exact
+    (sn, ib, kind); everything else fails as it always has."""
+    hard, grandfathered = [], []
+    for d in items:
+        if (d.get("kind") not in _NEVER_GRANDFATHERED
+                and _defect_key(d) in ratchet_keys):
+            grandfathered.append(d)
+        else:
+            hard.append(d)
+    return hard, grandfathered
 
 
 def filing_warnings(root: Path, registry: dict, scoped_pages: list[dict],
@@ -855,7 +1029,10 @@ def main(argv=None) -> int:
                       "corpus_manifest_hash recomputed, next_sequence bumped.")
             print("NEXT: run `python3 tools/regenerate_brain_index.py` and "
                   "commit captures + registry + regen output together "
-                  "(the same-push obligation).")
+                  "(the same-push obligation); if a cured id held a "
+                  "grandfather allowance, delete it from "
+                  "tools/door_obligation_grandfathered.json in the same "
+                  "push — the ratchet shrinks with the cure.")
         if args.with_regen:
             r = subprocess.run([sys.executable,
                                 str(root / "tools" / "regenerate_brain_index.py"),
@@ -912,6 +1089,27 @@ def main(argv=None) -> int:
                   file=sys.stderr)
             return 2
 
+    # ---- SN-4711 completion: corpus manifest + shrink-only ratchet ----
+    ratchet_keys, ratchet_err = load_ratchet(root)
+    live_keys = ({_defect_key(d) for d in defects}
+                 | {_defect_key(t) for t in tombstones})
+    defects, grandfathered = partition_grandfathered(defects, ratchet_keys)
+    tombstones, grandfathered_tombs = partition_grandfathered(
+        tombstones, ratchet_keys)
+    grandfathered += grandfathered_tombs
+    if ratchet_err is not None:
+        defects.append(ratchet_err)
+    manifest_defect = check_manifest(snv2, registry)
+    if manifest_defect is not None:
+        defects.append(manifest_defect)
+    # RATCHET_STALE is judged only when this run saw the full corpus
+    # (no --ids, no --range): a scoped run cannot tell a cured defect
+    # from an out-of-scope one.
+    full_mode = not args.range_spec and ids is None
+    defects.extend(ratchet_defects(
+        root, ratchet_keys, live_keys if full_mode else None,
+        args.range_spec))
+
     warnings = filing_warnings(root, registry, scoped, args.range_spec)
 
     if args.json:
@@ -919,6 +1117,7 @@ def main(argv=None) -> int:
             "pages_in_scope": len(scoped),
             "defects": defects,
             "tombstones": tombstones,
+            "grandfathered": grandfathered,
             "warnings": warnings,
             "twins": twins if not args.range_spec else [],
             "ok": not defects and not tombstones,
@@ -927,6 +1126,12 @@ def main(argv=None) -> int:
         for d in defects + tombstones:
             print(f"MISSING: {d['missing']} — CURE: {d['cure']} "
                   f"(owner: {d['owner']})")
+        for g in grandfathered:
+            print(f"GRANDFATHERED: {g['missing']} — tolerated by the "
+                  f"shrink-only ratchet "
+                  f"(tools/door_obligation_grandfathered.json); curing "
+                  f"it removes its allowance in the same push "
+                  f"(owner: {g['owner']})")
         for w in warnings:
             print(f"WARN {w['kind']}: {w['detail']} — CURE: {w['cure']} "
                   f"(owner: {w['owner']})")
@@ -940,6 +1145,10 @@ def main(argv=None) -> int:
         if total:
             print(f"DOOR OBLIGATION: {total} defect(s) across "
                   f"{len(scoped)} page(s) in scope.")
+        elif grandfathered:
+            print(f"DOOR OBLIGATION: OK — {len(scoped)} page(s) in scope, "
+                  f"no new defects; {len(grandfathered)} grandfathered "
+                  f"legacy defect(s) stand under the shrink-only ratchet.")
         else:
             print(f"DOOR OBLIGATION: OK — {len(scoped)} page(s) in scope, "
                   f"every page carries its capture + registry entry.")

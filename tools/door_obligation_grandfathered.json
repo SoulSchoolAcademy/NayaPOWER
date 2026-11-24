@@ -1,0 +1,3466 @@
+{
+ "schema": "naya.door-obligation-grandfathered.v1",
+ "note": "Shrink-only grandfather ratchet for tools/check_door_obligation.py (SN-4711, the Sealed Door). Each entry tolerates ONE known legacy defect, keyed by (sn, ib, kind). Entries may only be REMOVED, in the same push that cures the defect; adding an entry is itself a defect (RATCHET_GREW) and keeping one after its cure is RATCHET_STALE. Seeded 2026-11-24 from the full-corpus checker run at main 957f40c481f5c46db9c5f627c86c2ef3ce221ab9 (692 defects: 345 NO_ENTRY + 347 NO_CAPTURE, 0 tombstones).",
+ "defects": [
+  {
+   "sn": "SN-0843",
+   "ib": "IB-SMART-NOTE-20261102-sn0843-design-intelligence-report",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-0843",
+   "ib": "IB-SMART-NOTE-20261102-sn0843-design-intelligence-report",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-0844",
+   "ib": "IB-SMART-NOTE-20261102-sn0844-the-playbook",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-0844",
+   "ib": "IB-SMART-NOTE-20261102-sn0844-the-playbook",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-0858",
+   "ib": "IB-SMART-NOTE-20261101-sn0858-viewport-optimization-law",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-0859",
+   "ib": "IB-SMART-NOTE-20261101-sn0859-the-real-object-law",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-0860",
+   "ib": "IB-SMART-NOTE-20261101-sn0860-the-naya-canon",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-1167",
+   "ib": "IB-SMART-NOTE-20261013-sn1167-an-acceptance-spec-that-cannot-say-fail-is-not-a-spec-it-s-a",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-1168",
+   "ib": "IB-SMART-NOTE-20261013-sn1168-extraction-fidelity-is-a-mechanical-assertion",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-1169",
+   "ib": "IB-SMART-NOTE-20261013-sn1169-blinding-is-a-protocol-not-an-intention",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-2055",
+   "ib": "IB-SMART-NOTE-20261105-sn2055-smart-access-pages-and-the-digital-real-estate-marketplace",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-2055",
+   "ib": "IB-SMART-NOTE-20261105-sn2055-smart-access-pages-and-the-digital-real-estate-marketplace",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-2059",
+   "ib": "IB-SMART-NOTE-20261105-sn2059-the-structure-decides-what-agents-in-games-teaches-naya",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-2059",
+   "ib": "IB-SMART-NOTE-20261105-sn2059-the-structure-decides-what-agents-in-games-teaches-naya",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-2060",
+   "ib": "IB-SMART-NOTE-20261105-sn2060-ultimate-ai-team",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-2060",
+   "ib": "IB-SMART-NOTE-20261105-sn2060-ultimate-ai-team",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-2061",
+   "ib": "IB-SMART-NOTE-20261105-sn2061-dont-throw-the-chicken",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-2061",
+   "ib": "IB-SMART-NOTE-20261105-sn2061-dont-throw-the-chicken",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-2065",
+   "ib": "IB-SMART-NOTE-20261105-sn2065-compose-never-rebuild-smart-factory-law",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-2065",
+   "ib": "IB-SMART-NOTE-20261105-sn2065-compose-never-rebuild-smart-factory-law",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-2066",
+   "ib": "IB-SMART-NOTE-20261105-sn2066-the-record-must-tell-the-truth",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-2066",
+   "ib": "IB-SMART-NOTE-20261105-sn2066-the-record-must-tell-the-truth",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-2066",
+   "ib": "IB-SMART-NOTE-20261105-sn2066-the-value-law",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-2066",
+   "ib": "IB-SMART-NOTE-20261105-sn2066-the-value-law",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-2067",
+   "ib": "IB-SMART-NOTE-20261105-sn2067-proof-is-behavior-not-a-badge",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-2067",
+   "ib": "IB-SMART-NOTE-20261105-sn2067-proof-is-behavior-not-a-badge",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-2068",
+   "ib": "IB-SMART-NOTE-20261105-sn2068-the-system-not-just-the-seat",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-2068",
+   "ib": "IB-SMART-NOTE-20261105-sn2068-the-system-not-just-the-seat",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-2069",
+   "ib": "IB-SMART-NOTE-20261105-sn2069-work-together-without-colliding",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-2069",
+   "ib": "IB-SMART-NOTE-20261105-sn2069-work-together-without-colliding",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-2070",
+   "ib": "IB-SMART-NOTE-20261105-sn2070-intelligence-must-transfer-and-compound",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-2070",
+   "ib": "IB-SMART-NOTE-20261105-sn2070-intelligence-must-transfer-and-compound",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-2071",
+   "ib": "IB-SMART-NOTE-20261105-sn2071-the-note-system-itself",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-2071",
+   "ib": "IB-SMART-NOTE-20261105-sn2071-the-note-system-itself",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-2072",
+   "ib": "IB-SMART-NOTE-20261105-sn2072-the-vision",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-2072",
+   "ib": "IB-SMART-NOTE-20261105-sn2072-the-vision",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-2082",
+   "ib": "IB-SMART-NOTE-20261106-sn2082-build-the-same-systems-for-ourselves",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-2082",
+   "ib": "IB-SMART-NOTE-20261106-sn2082-build-the-same-systems-for-ourselves",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-2084",
+   "ib": "IB-SMART-NOTE-20261106-sn2084-the-smart-note-habit",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-2084",
+   "ib": "IB-SMART-NOTE-20261106-sn2084-the-smart-note-habit",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-2089",
+   "ib": "IB-SMART-NOTE-20261106-sn2089-drive-the-bugatti",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-2089",
+   "ib": "IB-SMART-NOTE-20261106-sn2089-drive-the-bugatti",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-2090",
+   "ib": "IB-SMART-NOTE-20261106-sn2090-link-the-systems-drive-the-bugatti",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-2090",
+   "ib": "IB-SMART-NOTE-20261106-sn2090-link-the-systems-drive-the-bugatti",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-2091",
+   "ib": "IB-SMART-NOTE-20261106-sn2091-test-it-know-it-make-it-right",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-2091",
+   "ib": "IB-SMART-NOTE-20261106-sn2091-the-daily-intelligence-report",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-2091",
+   "ib": "IB-SMART-NOTE-20261106-sn2091-the-daily-intelligence-report",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-2092",
+   "ib": "IB-SMART-NOTE-20261106-sn2092-the-full-smart-note-golden-red-layer",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-2092",
+   "ib": "IB-SMART-NOTE-20261106-sn2092-the-full-smart-note-golden-red-layer",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-2094",
+   "ib": "IB-SMART-NOTE-20261106-sn2094-the-intelligent-block-its-purpose-mission-and-vision",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-2094",
+   "ib": "IB-SMART-NOTE-20261106-sn2094-the-intelligent-block-its-purpose-mission-and-vision",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-2203",
+   "ib": "IB-SMART-NOTE-20261106-sn2203-the-ten-most-valuable-things",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-2203",
+   "ib": "IB-SMART-NOTE-20261106-sn2203-the-ten-most-valuable-things",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-3955",
+   "ib": "IB-SMART-NOTE-20261119-sn3955-wisdom-first-then-the-frame",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-3955",
+   "ib": "IB-SMART-NOTE-20261119-sn3955-wisdom-first-then-the-frame",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-3956",
+   "ib": "IB-SMART-NOTE-20261119-sn3956-the-walk-that-rebuilt-personal",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-3956",
+   "ib": "IB-SMART-NOTE-20261119-sn3956-the-walk-that-rebuilt-personal",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-3957",
+   "ib": "IB-SMART-NOTE-20261119-sn3957-prove-it-by-clicking",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-3957",
+   "ib": "IB-SMART-NOTE-20261119-sn3957-prove-it-by-clicking",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-3958",
+   "ib": "IB-SMART-NOTE-20261119-sn3958-everything-in-its-frame",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-3958",
+   "ib": "IB-SMART-NOTE-20261119-sn3958-everything-in-its-frame",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-3959",
+   "ib": "IB-SMART-NOTE-20261119-sn3959-prove-every-route-not-just-the-canonical-one",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-3959",
+   "ib": "IB-SMART-NOTE-20261119-sn3959-prove-every-route-not-just-the-canonical-one",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-4671",
+   "ib": "IB-SMART-NOTE-20261122-sn4671-sn4590-cure-lesson",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-4671",
+   "ib": "IB-SMART-NOTE-20261122-sn4671-sn4590-cure-lesson",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-4672",
+   "ib": "IB-SMART-NOTE-20261122-sn4672-mockup-inspection-why",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-4672",
+   "ib": "IB-SMART-NOTE-20261122-sn4672-mockup-inspection-why",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-4673",
+   "ib": "IB-SMART-NOTE-20261122-sn4673-three-boards-rewrite-text",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-4673",
+   "ib": "IB-SMART-NOTE-20261122-sn4673-three-boards-rewrite-text",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-4674",
+   "ib": "IB-SMART-NOTE-20261122-sn4674-points-are-reputation",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-4674",
+   "ib": "IB-SMART-NOTE-20261122-sn4674-points-are-reputation",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-4675",
+   "ib": "IB-SMART-NOTE-20261122-sn4675-twelve-elements-approved",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-4675",
+   "ib": "IB-SMART-NOTE-20261122-sn4675-twelve-elements-approved",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-4676",
+   "ib": "IB-SMART-NOTE-20261122-sn4676-round-7-feels-solid-make-the-text-bigger",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-4676",
+   "ib": "IB-SMART-NOTE-20261122-sn4676-round-7-feels-solid-make-the-text-bigger",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-4677",
+   "ib": "IB-SMART-NOTE-20261122-sn4677-text-sizes-are-probably-ok",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-4677",
+   "ib": "IB-SMART-NOTE-20261122-sn4677-text-sizes-are-probably-ok",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-4678",
+   "ib": "IB-SMART-NOTE-20261122-sn4678-one-button-agreement",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-4678",
+   "ib": "IB-SMART-NOTE-20261122-sn4678-one-button-agreement",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-4679",
+   "ib": "IB-SMART-NOTE-20261122-sn4679-slow-white-twelve-names",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-4679",
+   "ib": "IB-SMART-NOTE-20261122-sn4679-slow-white-twelve-names",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-4680",
+   "ib": "IB-SMART-NOTE-20261122-sn4680-i-am-naya",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-4680",
+   "ib": "IB-SMART-NOTE-20261122-sn4680-i-am-naya",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-4681",
+   "ib": "IB-SMART-NOTE-20261122-sn4681-front-door-first",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-4681",
+   "ib": "IB-SMART-NOTE-20261122-sn4681-front-door-first",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-4682",
+   "ib": "IB-SMART-NOTE-20261122-sn4682-our-not-your",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-4682",
+   "ib": "IB-SMART-NOTE-20261122-sn4682-our-not-your",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-4683",
+   "ib": "IB-SMART-NOTE-20261122-sn4683-board-fits-whole",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-4683",
+   "ib": "IB-SMART-NOTE-20261122-sn4683-board-fits-whole",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-4710",
+   "ib": "IB-SMART-NOTE-20261123-sn4710-daily-project-intelligence-report-20261123",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-4710",
+   "ib": "IB-SMART-NOTE-20261123-sn4710-daily-project-intelligence-report-20261123",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-4713",
+   "ib": "IB-SMART-NOTE-20261123-sn4713-one-mind-one-canon-one-eye",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-4713",
+   "ib": "IB-SMART-NOTE-20261123-sn4713-one-mind-one-canon-one-eye",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-4714",
+   "ib": "IB-SMART-NOTE-20261123-sn4714-the-loop-is-the-job",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-4714",
+   "ib": "IB-SMART-NOTE-20261123-sn4714-the-loop-is-the-job",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-4715",
+   "ib": "IB-SMART-NOTE-20261123-sn4715-daily-intelligence-report-2026-11-23",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-4715",
+   "ib": "IB-SMART-NOTE-20261123-sn4715-daily-intelligence-report-2026-11-23",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-640",
+   "ib": "IB-SMART-NOTE-20261013-sn640-ib-smart-note-20261008-sn0640-reconcile-from-record-diff-on",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-640",
+   "ib": "IB-SMART-NOTE-20261013-sn640-ib-smart-note-20261008-sn0640-reconcile-from-record-diff-on",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-641",
+   "ib": "IB-SMART-NOTE-20261013-sn641-ib-smart-note-20261008-sn0641-resource-constrained-execution",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-641",
+   "ib": "IB-SMART-NOTE-20261013-sn641-ib-smart-note-20261008-sn0641-resource-constrained-execution",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-643",
+   "ib": "IB-SMART-NOTE-20261013-sn643-same-bytes-contradictions-resolve-to-mechanism-the-duplicate",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-643",
+   "ib": "IB-SMART-NOTE-20261013-sn643-same-bytes-contradictions-resolve-to-mechanism-the-duplicate",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-644",
+   "ib": "IB-SMART-NOTE-20261013-sn644-merge-window-allocation-freeze-proactive-captures-route-to-l",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-644",
+   "ib": "IB-SMART-NOTE-20261013-sn644-merge-window-allocation-freeze-proactive-captures-route-to-l",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-645",
+   "ib": "IB-SMART-NOTE-20261013-sn645-the-clobber-check-byte-compare-a-regen-bundled-pr-s-artifact",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-645",
+   "ib": "IB-SMART-NOTE-20261013-sn645-the-clobber-check-byte-compare-a-regen-bundled-pr-s-artifact",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-646",
+   "ib": "IB-SMART-NOTE-20261013-sn646-the-reliability-based-operating-model-roles-are-aspirations",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-646",
+   "ib": "IB-SMART-NOTE-20261013-sn646-the-reliability-based-operating-model-roles-are-aspirations",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-647",
+   "ib": "IB-SMART-NOTE-20261013-sn647-the-registry-watcher-seam-orphan-entries-without-projection",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-647",
+   "ib": "IB-SMART-NOTE-20261013-sn647-the-registry-watcher-seam-orphan-entries-without-projection",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-648",
+   "ib": "IB-SMART-NOTE-20261013-sn648-preserve-the-deliberately-red-falsifier-never-merge-the-proo",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-648",
+   "ib": "IB-SMART-NOTE-20261013-sn648-preserve-the-deliberately-red-falsifier-never-merge-the-proo",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-649",
+   "ib": "IB-SMART-NOTE-20261013-sn649-ib-smart-note-20261008-sn0649-the-automatic-machine-md",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-649",
+   "ib": "IB-SMART-NOTE-20261013-sn649-ib-smart-note-20261008-sn0649-the-automatic-machine-md",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-650",
+   "ib": "IB-SMART-NOTE-20261013-sn650-ib-smart-note-20261008-sn0650-nayanet-collective-intelligenc",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-650",
+   "ib": "IB-SMART-NOTE-20261013-sn650-ib-smart-note-20261008-sn0650-nayanet-collective-intelligenc",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-651",
+   "ib": "IB-SMART-NOTE-20261013-sn651-ib-smart-note-20261008-sn0651-the-automatic-super-brain-md",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-651",
+   "ib": "IB-SMART-NOTE-20261013-sn651-ib-smart-note-20261008-sn0651-the-automatic-super-brain-md",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-652",
+   "ib": "IB-SMART-NOTE-20261013-sn652-ib-smart-note-20261008-sn0652-detector-keyed-to-the-violatio",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-652",
+   "ib": "IB-SMART-NOTE-20261013-sn652-ib-smart-note-20261008-sn0652-detector-keyed-to-the-violatio",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-653",
+   "ib": "IB-SMART-NOTE-20261013-sn653-ib-smart-note-20261008-sn0653-extract-claims-from-their-laye",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-653",
+   "ib": "IB-SMART-NOTE-20261013-sn653-ib-smart-note-20261008-sn0653-extract-claims-from-their-laye",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-654",
+   "ib": "IB-SMART-NOTE-20261013-sn654-ib-smart-note-20261008-sn0654-the-document-is-ratified-the-m",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-654",
+   "ib": "IB-SMART-NOTE-20261013-sn654-ib-smart-note-20261008-sn0654-the-document-is-ratified-the-m",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-655",
+   "ib": "IB-SMART-NOTE-20261013-sn655-ib-smart-note-20261008-sn0655-corruption-proof-metric-extrac",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-655",
+   "ib": "IB-SMART-NOTE-20261013-sn655-ib-smart-note-20261008-sn0655-corruption-proof-metric-extrac",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-656",
+   "ib": "IB-SMART-NOTE-20261013-sn656-ib-smart-note-20261008-sn0656-supersession-not-accumulation",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-656",
+   "ib": "IB-SMART-NOTE-20261013-sn656-ib-smart-note-20261008-sn0656-supersession-not-accumulation",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-657",
+   "ib": "IB-SMART-NOTE-20261013-sn657-a-director-s-own-merge-is-the-authorization-the-scorecard-la",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-657",
+   "ib": "IB-SMART-NOTE-20261013-sn657-a-director-s-own-merge-is-the-authorization-the-scorecard-la",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-658",
+   "ib": "IB-SMART-NOTE-20261013-sn658-use-is-not-definition-when-your-own-check-cries-wolf-on-corr",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-658",
+   "ib": "IB-SMART-NOTE-20261013-sn658-use-is-not-definition-when-your-own-check-cries-wolf-on-corr",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-659",
+   "ib": "IB-SMART-NOTE-20261013-sn659-assess-every-flag-in-two-lanes-authorization-and-substance-a",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-659",
+   "ib": "IB-SMART-NOTE-20261013-sn659-assess-every-flag-in-two-lanes-authorization-and-substance-a",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-660",
+   "ib": "IB-SMART-NOTE-20261013-sn660-the-protocol-is-above-everyone-including-shawn",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-660",
+   "ib": "IB-SMART-NOTE-20261013-sn660-the-protocol-is-above-everyone-including-shawn",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-661",
+   "ib": "IB-SMART-NOTE-20261013-sn661-two-laws-that-look-like-a-collision-usually-run-on-different",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-661",
+   "ib": "IB-SMART-NOTE-20261013-sn661-two-laws-that-look-like-a-collision-usually-run-on-different",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-662",
+   "ib": "IB-SMART-NOTE-20261013-sn662-the-worker-s-flag-against-a-hard-boundary-is-correct-procedu",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-662",
+   "ib": "IB-SMART-NOTE-20261013-sn662-the-worker-s-flag-against-a-hard-boundary-is-correct-procedu",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-663",
+   "ib": "IB-SMART-NOTE-20261013-sn663-a-repair-s-green-evidence-is-bound-to-its-base-tip-byte-stal",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-663",
+   "ib": "IB-SMART-NOTE-20261013-sn663-a-repair-s-green-evidence-is-bound-to-its-base-tip-byte-stal",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-664",
+   "ib": "IB-SMART-NOTE-20261013-sn664-measure-the-organism-not-the-instrument-proof-must-flow-thro",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-664",
+   "ib": "IB-SMART-NOTE-20261013-sn664-measure-the-organism-not-the-instrument-proof-must-flow-thro",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-665",
+   "ib": "IB-SMART-NOTE-20261013-sn665-a-gate-that-checks-presence-instead-of-meaning-is-decoration",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-665",
+   "ib": "IB-SMART-NOTE-20261013-sn665-a-gate-that-checks-presence-instead-of-meaning-is-decoration",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-666",
+   "ib": "IB-SMART-NOTE-20261013-sn666-a-renumbering-migration-is-only-half-done-until-every-refere",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-666",
+   "ib": "IB-SMART-NOTE-20261013-sn666-a-renumbering-migration-is-only-half-done-until-every-refere",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-667",
+   "ib": "IB-SMART-NOTE-20261013-sn667-verification-transfers-across-a-rebase-when-blob-shas-are-by",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-667",
+   "ib": "IB-SMART-NOTE-20261013-sn667-verification-transfers-across-a-rebase-when-blob-shas-are-by",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-668",
+   "ib": "IB-SMART-NOTE-20261013-sn668-a-pipeline-verdict-is-a-per-tip-verdict-a-main-green-can-exp",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-668",
+   "ib": "IB-SMART-NOTE-20261013-sn668-a-pipeline-verdict-is-a-per-tip-verdict-a-main-green-can-exp",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-669",
+   "ib": "IB-SMART-NOTE-20261013-sn669-never-merge-with-red-ci-even-when-the-red-isn-t-yours",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-669",
+   "ib": "IB-SMART-NOTE-20261013-sn669-never-merge-with-red-ci-even-when-the-red-isn-t-yours",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-670",
+   "ib": "IB-SMART-NOTE-20261013-sn670-score-the-live-tip-not-the-candidate",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-670",
+   "ib": "IB-SMART-NOTE-20261013-sn670-score-the-live-tip-not-the-candidate",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-671",
+   "ib": "IB-SMART-NOTE-20261013-sn671-lane-races-the-strict-superset-wins-close-the-duplicate-as-s",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-671",
+   "ib": "IB-SMART-NOTE-20261013-sn671-lane-races-the-strict-superset-wins-close-the-duplicate-as-s",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-672",
+   "ib": "IB-SMART-NOTE-20261013-sn672-a-published-priority-list-is-a-standing-queue-nothing-jumps",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-672",
+   "ib": "IB-SMART-NOTE-20261013-sn672-a-published-priority-list-is-a-standing-queue-nothing-jumps",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-673",
+   "ib": "IB-SMART-NOTE-20261013-sn673-a-renumbering-migration-ships-the-same-identity-gate-as-a-si",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-673",
+   "ib": "IB-SMART-NOTE-20261013-sn673-a-renumbering-migration-ships-the-same-identity-gate-as-a-si",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-674",
+   "ib": "IB-SMART-NOTE-20261013-sn674-the-honesty-covenant-cuts-both-ways-never-attribute-a-lane-s",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-674",
+   "ib": "IB-SMART-NOTE-20261013-sn674-the-honesty-covenant-cuts-both-ways-never-attribute-a-lane-s",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-675",
+   "ib": "IB-SMART-NOTE-20261013-sn675-ib-smart-note-20261008-sn0675-advisory-first-detector-before",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-675",
+   "ib": "IB-SMART-NOTE-20261013-sn675-ib-smart-note-20261008-sn0675-advisory-first-detector-before",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-676",
+   "ib": "IB-SMART-NOTE-20261013-sn676-ib-smart-note-20261008-sn0676-stacked-repairs-combination-pr",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-676",
+   "ib": "IB-SMART-NOTE-20261013-sn676-ib-smart-note-20261008-sn0676-stacked-repairs-combination-pr",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-677",
+   "ib": "IB-SMART-NOTE-20261013-sn677-a-vanished-red-is-not-a-healed-red-a-chronic-external-integr",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-677",
+   "ib": "IB-SMART-NOTE-20261013-sn677-a-vanished-red-is-not-a-healed-red-a-chronic-external-integr",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-678",
+   "ib": "IB-SMART-NOTE-20261013-sn678-workflow-file-modifications-are-surfaced-in-the-pr-body-neve",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-678",
+   "ib": "IB-SMART-NOTE-20261013-sn678-workflow-file-modifications-are-surfaced-in-the-pr-body-neve",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-679",
+   "ib": "IB-SMART-NOTE-20261013-sn679-fix-the-recurring-definition-not-the-report-corrections-must",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-679",
+   "ib": "IB-SMART-NOTE-20261013-sn679-fix-the-recurring-definition-not-the-report-corrections-must",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-680",
+   "ib": "IB-SMART-NOTE-20261013-sn680-a-workflow-file-write-is-a-workflow-file-write-the-additive",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-680",
+   "ib": "IB-SMART-NOTE-20261013-sn680-a-workflow-file-write-is-a-workflow-file-write-the-additive",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-681",
+   "ib": "IB-SMART-NOTE-20261013-sn681-the-deadlock-pattern-when-two-unblockers-each-need-the-other",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-681",
+   "ib": "IB-SMART-NOTE-20261013-sn681-the-deadlock-pattern-when-two-unblockers-each-need-the-other",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-682",
+   "ib": "IB-SMART-NOTE-20261013-sn682-verify-attributed-authority-against-the-source-transcript-th",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-682",
+   "ib": "IB-SMART-NOTE-20261013-sn682-verify-attributed-authority-against-the-source-transcript-th",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-683",
+   "ib": "IB-SMART-NOTE-20261013-sn683-a-collision-hit-against-your-own-decision-chain-s-receipts-i",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-683",
+   "ib": "IB-SMART-NOTE-20261013-sn683-a-collision-hit-against-your-own-decision-chain-s-receipts-i",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-684",
+   "ib": "IB-SMART-NOTE-20261013-sn684-read-every-fail-s-cause-a-positive-control-failing-for-the-k",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-684",
+   "ib": "IB-SMART-NOTE-20261013-sn684-read-every-fail-s-cause-a-positive-control-failing-for-the-k",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-685",
+   "ib": "IB-SMART-NOTE-20261013-sn685-nine-standing-teams-the-operating-structure-shawn-s-word-202",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-685",
+   "ib": "IB-SMART-NOTE-20261013-sn685-nine-standing-teams-the-operating-structure-shawn-s-word-202",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-686",
+   "ib": "IB-SMART-NOTE-20261013-sn686-a-seat-relative-main-chat-citation-is-not-provenance-and-wit",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-686",
+   "ib": "IB-SMART-NOTE-20261013-sn686-a-seat-relative-main-chat-citation-is-not-provenance-and-wit",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-687",
+   "ib": "IB-SMART-NOTE-20261013-sn687-the-law-pipeline-six-stages-for-governance-not-for-everythin",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-687",
+   "ib": "IB-SMART-NOTE-20261013-sn687-the-law-pipeline-six-stages-for-governance-not-for-everythin",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-688",
+   "ib": "IB-SMART-NOTE-20261013-sn688-never-repeat-a-number-you-can-t-trace",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-688",
+   "ib": "IB-SMART-NOTE-20261013-sn688-never-repeat-a-number-you-can-t-trace",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-689",
+   "ib": "IB-SMART-NOTE-20261013-sn689-announce-every-ref-rewrite-content-intact-does-not-mean-dama",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-689",
+   "ib": "IB-SMART-NOTE-20261013-sn689-announce-every-ref-rewrite-content-intact-does-not-mean-dama",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-690",
+   "ib": "IB-SMART-NOTE-20261013-sn690-settle-cross-seat-claims-with-a-cite-to-blob-loop",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-690",
+   "ib": "IB-SMART-NOTE-20261013-sn690-settle-cross-seat-claims-with-a-cite-to-blob-loop",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-691",
+   "ib": "IB-SMART-NOTE-20261013-sn691-delegated-merge-authority-the-five-gate-merge-protocol",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-691",
+   "ib": "IB-SMART-NOTE-20261013-sn691-delegated-merge-authority-the-five-gate-merge-protocol",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-692",
+   "ib": "IB-SMART-NOTE-20261013-sn692-unsourced-counts-blocked-from-report-data-files-the-mechanic",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-692",
+   "ib": "IB-SMART-NOTE-20261013-sn692-unsourced-counts-blocked-from-report-data-files-the-mechanic",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-693",
+   "ib": "IB-SMART-NOTE-20261013-sn693-pre-register-the-prediction-before-you-change-the-data-hones",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-693",
+   "ib": "IB-SMART-NOTE-20261013-sn693-pre-register-the-prediction-before-you-change-the-data-hones",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-694",
+   "ib": "IB-SMART-NOTE-20261013-sn694-a-ci-job-that-dies-before-the-check-runs-hides-a-distinct-re",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-694",
+   "ib": "IB-SMART-NOTE-20261013-sn694-a-ci-job-that-dies-before-the-check-runs-hides-a-distinct-re",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-695",
+   "ib": "IB-SMART-NOTE-20261013-sn695-the-test-of-learning-is-silence-learned-means-behavior-chang",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-695",
+   "ib": "IB-SMART-NOTE-20261013-sn695-the-test-of-learning-is-silence-learned-means-behavior-chang",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-696",
+   "ib": "IB-SMART-NOTE-20261013-sn696-prove-zero-regressions-on-a-red-tip-with-the-stash-control-a",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-696",
+   "ib": "IB-SMART-NOTE-20261013-sn696-prove-zero-regressions-on-a-red-tip-with-the-stash-control-a",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-697",
+   "ib": "IB-SMART-NOTE-20261013-sn697-a-commit-is-a-signature-seat-identity-fail-closed",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-697",
+   "ib": "IB-SMART-NOTE-20261013-sn697-a-commit-is-a-signature-seat-identity-fail-closed",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-698",
+   "ib": "IB-SMART-NOTE-20261013-sn698-recompute-the-statistic-not-the-summary-one-consistent-analy",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-698",
+   "ib": "IB-SMART-NOTE-20261013-sn698-recompute-the-statistic-not-the-summary-one-consistent-analy",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-700",
+   "ib": "IB-SMART-NOTE-20261013-sn700-ten-star-service-communicate-so-anyone-can-build",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-700",
+   "ib": "IB-SMART-NOTE-20261013-sn700-ten-star-service-communicate-so-anyone-can-build",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-701",
+   "ib": "IB-SMART-NOTE-20261013-sn701-a-commit-wearing-the-director-s-name-is-an-authority-envelop",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-701",
+   "ib": "IB-SMART-NOTE-20261013-sn701-a-commit-wearing-the-director-s-name-is-an-authority-envelop",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-702",
+   "ib": "IB-SMART-NOTE-20261013-sn702-the-p-value-and-the-effect-size-must-come-from-the-same-anal",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-702",
+   "ib": "IB-SMART-NOTE-20261013-sn702-the-p-value-and-the-effect-size-must-come-from-the-same-anal",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-703",
+   "ib": "IB-SMART-NOTE-20261013-sn703-a-branch-local-claim-check-is-blind-to-cross-branch-collisio",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-703",
+   "ib": "IB-SMART-NOTE-20261013-sn703-a-branch-local-claim-check-is-blind-to-cross-branch-collisio",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-705",
+   "ib": "IB-SMART-NOTE-20261013-sn705-the-direct-word-rule-a-candidate-document-never-overrides-sh",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-705",
+   "ib": "IB-SMART-NOTE-20261013-sn705-the-direct-word-rule-a-candidate-document-never-overrides-sh",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-706",
+   "ib": "IB-SMART-NOTE-20261013-sn706-don-t-report-the-cliff-remove-it",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-706",
+   "ib": "IB-SMART-NOTE-20261013-sn706-don-t-report-the-cliff-remove-it",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-707",
+   "ib": "IB-SMART-NOTE-20261013-sn707-the-drift-resistance-bar-a-design-code-is-ratifiable-only-wh",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-707",
+   "ib": "IB-SMART-NOTE-20261013-sn707-the-drift-resistance-bar-a-design-code-is-ratifiable-only-wh",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-708",
+   "ib": "IB-SMART-NOTE-20261013-sn708-dry-run-is-not-the-control-a-fail-closed-test-must-exercise",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-708",
+   "ib": "IB-SMART-NOTE-20261013-sn708-dry-run-is-not-the-control-a-fail-closed-test-must-exercise",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-709",
+   "ib": "IB-SMART-NOTE-20261013-sn709-prose-loses-to-instruments-an-uncited-claim-dies-to-the-mech",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-709",
+   "ib": "IB-SMART-NOTE-20261013-sn709-prose-loses-to-instruments-an-uncited-claim-dies-to-the-mech",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-710",
+   "ib": "IB-SMART-NOTE-20261013-sn710-verify-the-heal-s-ancestry-branch-only-twins-look-identical",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-710",
+   "ib": "IB-SMART-NOTE-20261013-sn710-verify-the-heal-s-ancestry-branch-only-twins-look-identical",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-711",
+   "ib": "IB-SMART-NOTE-20261013-sn711-declare-the-repair-owner-at-detection-time-parallel-lanes-du",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-711",
+   "ib": "IB-SMART-NOTE-20261013-sn711-declare-the-repair-owner-at-detection-time-parallel-lanes-du",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-712",
+   "ib": "IB-SMART-NOTE-20261013-sn712-the-living-proof-wins-when-the-showcase-and-the-contract-dis",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-712",
+   "ib": "IB-SMART-NOTE-20261013-sn712-the-living-proof-wins-when-the-showcase-and-the-contract-dis",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-713",
+   "ib": "IB-SMART-NOTE-20261013-sn713-a-candidate-canon-carries-its-open-conflicts-on-hold-never-m",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-713",
+   "ib": "IB-SMART-NOTE-20261013-sn713-a-candidate-canon-carries-its-open-conflicts-on-hold-never-m",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-714",
+   "ib": "IB-SMART-NOTE-20261013-sn714-no-commit-found-is-a-remote-verdict-not-an-existence-verdict",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-714",
+   "ib": "IB-SMART-NOTE-20261013-sn714-no-commit-found-is-a-remote-verdict-not-an-existence-verdict",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-715",
+   "ib": "IB-SMART-NOTE-20261013-sn715-the-shared-push-helper-can-t-push-binaries-disclose-the-defe",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-715",
+   "ib": "IB-SMART-NOTE-20261013-sn715-the-shared-push-helper-can-t-push-binaries-disclose-the-defe",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-716",
+   "ib": "IB-SMART-NOTE-20261013-sn716-a-colliding-claim-earns-the-stand-down-only-after-currency-r",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-716",
+   "ib": "IB-SMART-NOTE-20261013-sn716-a-colliding-claim-earns-the-stand-down-only-after-currency-r",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-717",
+   "ib": "IB-SMART-NOTE-20261013-sn717-when-the-showcase-page-and-the-contract-document-disagree-th",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-717",
+   "ib": "IB-SMART-NOTE-20261013-sn717-when-the-showcase-page-and-the-contract-document-disagree-th",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-718",
+   "ib": "IB-SMART-NOTE-20261013-sn718-the-shallow-clone-landmine-check-git-shallow-before-trusting",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-718",
+   "ib": "IB-SMART-NOTE-20261013-sn718-the-shallow-clone-landmine-check-git-shallow-before-trusting",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-719",
+   "ib": "IB-SMART-NOTE-20261013-sn719-falsification-check-your-gates-prove-it-fails-on-the-broken",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-719",
+   "ib": "IB-SMART-NOTE-20261013-sn719-falsification-check-your-gates-prove-it-fails-on-the-broken",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-720",
+   "ib": "IB-SMART-NOTE-20261013-sn720-pilot-the-audit-target-pre-launch-preregistered-gates-don-t",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-720",
+   "ib": "IB-SMART-NOTE-20261013-sn720-pilot-the-audit-target-pre-launch-preregistered-gates-don-t",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-721",
+   "ib": "IB-SMART-NOTE-20261013-sn721-assemble-from-his-code-don-t-imitate-it",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-721",
+   "ib": "IB-SMART-NOTE-20261013-sn721-assemble-from-his-code-don-t-imitate-it",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-722",
+   "ib": "IB-SMART-NOTE-20261013-sn722-claims-stay-quiet-n-identical-status-badges-are-a-flood",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-722",
+   "ib": "IB-SMART-NOTE-20261013-sn722-claims-stay-quiet-n-identical-status-badges-are-a-flood",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-723",
+   "ib": "IB-SMART-NOTE-20261013-sn723-sn-0723-superseded-tip-race-a-superseded-run-is-benign-a-sil",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-723",
+   "ib": "IB-SMART-NOTE-20261013-sn723-sn-0723-superseded-tip-race-a-superseded-run-is-benign-a-sil",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-724",
+   "ib": "IB-SMART-NOTE-20261013-sn724-sn-0724-derived-not-literal-a-proof-artifact-s-load-bearing",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-724",
+   "ib": "IB-SMART-NOTE-20261013-sn724-sn-0724-derived-not-literal-a-proof-artifact-s-load-bearing",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-725",
+   "ib": "IB-SMART-NOTE-20261013-sn725-sn-0725-receipt-sla-every-intelligence-shawn-shares-gets-a-s",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-725",
+   "ib": "IB-SMART-NOTE-20261013-sn725-sn-0725-receipt-sla-every-intelligence-shawn-shares-gets-a-s",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-726",
+   "ib": "IB-SMART-NOTE-20261013-sn726-pin-the-reconciled-score-outside-the-extractor-s-reach",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-726",
+   "ib": "IB-SMART-NOTE-20261013-sn726-pin-the-reconciled-score-outside-the-extractor-s-reach",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-727",
+   "ib": "IB-SMART-NOTE-20261013-sn727-a-verification-verdict-re-anchors-transitorily-when-the-blob",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-727",
+   "ib": "IB-SMART-NOTE-20261013-sn727-a-verification-verdict-re-anchors-transitorily-when-the-blob",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-728",
+   "ib": "IB-SMART-NOTE-20261013-sn728-retract-an-un-evidenced-score-publicly-where-it-was-written",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-728",
+   "ib": "IB-SMART-NOTE-20261013-sn728-retract-an-un-evidenced-score-publicly-where-it-was-written",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-729",
+   "ib": "IB-SMART-NOTE-20261013-sn729-ib-smart-note-20261008-sn0729-forked-nayanet-publishing-pipe",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-729",
+   "ib": "IB-SMART-NOTE-20261013-sn729-ib-smart-note-20261008-sn0729-forked-nayanet-publishing-pipe",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-730",
+   "ib": "IB-SMART-NOTE-20261013-sn730-calibrate-the-judge-then-roll-it-out-report-only",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-730",
+   "ib": "IB-SMART-NOTE-20261013-sn730-calibrate-the-judge-then-roll-it-out-report-only",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-731",
+   "ib": "IB-SMART-NOTE-20261013-sn731-graduation-gate-before-auto-publish",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-731",
+   "ib": "IB-SMART-NOTE-20261013-sn731-graduation-gate-before-auto-publish",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-732",
+   "ib": "IB-SMART-NOTE-20261013-sn732-domain-adapter-not-a-second-decision-engine",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-732",
+   "ib": "IB-SMART-NOTE-20261013-sn732-domain-adapter-not-a-second-decision-engine",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-733",
+   "ib": "IB-SMART-NOTE-20261013-sn733-10x-means-better-human-experience-not-more-effects",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-733",
+   "ib": "IB-SMART-NOTE-20261013-sn733-10x-means-better-human-experience-not-more-effects",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-734",
+   "ib": "IB-SMART-NOTE-20261013-sn734-no-ego-reversion-restore-what-he-loved-verbatim-keep-only-re",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-734",
+   "ib": "IB-SMART-NOTE-20261013-sn734-no-ego-reversion-restore-what-he-loved-verbatim-keep-only-re",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-735",
+   "ib": "IB-SMART-NOTE-20261013-sn735-take-the-actual-code-line-by-line-extraction-beats-rebuildin",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-735",
+   "ib": "IB-SMART-NOTE-20261013-sn735-take-the-actual-code-line-by-line-extraction-beats-rebuildin",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-736",
+   "ib": "IB-SMART-NOTE-20261013-sn736-verify-the-read-path-before-queuing-a-restoration-a-failing",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-736",
+   "ib": "IB-SMART-NOTE-20261013-sn736-verify-the-read-path-before-queuing-a-restoration-a-failing",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-737",
+   "ib": "IB-SMART-NOTE-20261013-sn737-reconstructed-is-not-recovered-a-green-check-closes-the-asse",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-737",
+   "ib": "IB-SMART-NOTE-20261013-sn737-reconstructed-is-not-recovered-a-green-check-closes-the-asse",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-738",
+   "ib": "IB-SMART-NOTE-20261013-sn738-inline-design-tokens-into-every-page-the-black-ground-must-b",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-738",
+   "ib": "IB-SMART-NOTE-20261013-sn738-inline-design-tokens-into-every-page-the-black-ground-must-b",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-739",
+   "ib": "IB-SMART-NOTE-20261013-sn739-the-ask-changes-when-the-reference-already-exists-build-to-s",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-739",
+   "ib": "IB-SMART-NOTE-20261013-sn739-the-ask-changes-when-the-reference-already-exists-build-to-s",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-740",
+   "ib": "IB-SMART-NOTE-20261013-sn740-mergeable-is-blind-to-stacked-conflicts-simulate-the-wave-wi",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-740",
+   "ib": "IB-SMART-NOTE-20261013-sn740-mergeable-is-blind-to-stacked-conflicts-simulate-the-wave-wi",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-741",
+   "ib": "IB-SMART-NOTE-20261013-sn741-the-os-vision-smart-notes-are-the-intelligence-smart-blocks",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-741",
+   "ib": "IB-SMART-NOTE-20261013-sn741-the-os-vision-smart-notes-are-the-intelligence-smart-blocks",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-745",
+   "ib": "IB-SMART-NOTE-20261013-sn745-a-stale-repair-is-a-clobber-vector-repair-validity-expires-w",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-745",
+   "ib": "IB-SMART-NOTE-20261013-sn745-a-stale-repair-is-a-clobber-vector-repair-validity-expires-w",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-746",
+   "ib": "IB-SMART-NOTE-20261013-sn746-a-smart-note-is-not-landed-until-the-registry-and-the-v2-cap",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-746",
+   "ib": "IB-SMART-NOTE-20261013-sn746-a-smart-note-is-not-landed-until-the-registry-and-the-v2-cap",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-747",
+   "ib": "IB-SMART-NOTE-20261013-sn747-a-verification-replay-must-discriminate-and-name-its-half",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-747",
+   "ib": "IB-SMART-NOTE-20261013-sn747-a-verification-replay-must-discriminate-and-name-its-half",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-748",
+   "ib": "IB-SMART-NOTE-20261013-sn748-the-cold-reader-sees-what-the-author-can-t-a-graduation-test",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-748",
+   "ib": "IB-SMART-NOTE-20261013-sn748-the-cold-reader-sees-what-the-author-can-t-a-graduation-test",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-749",
+   "ib": "IB-SMART-NOTE-20261013-sn749-a-relay-hands-evidence-never-a-merge-verification-authority",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-749",
+   "ib": "IB-SMART-NOTE-20261013-sn749-a-relay-hands-evidence-never-a-merge-verification-authority",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-750",
+   "ib": "IB-SMART-NOTE-20261013-sn750-the-runner-s-filesystem-is-not-yours-committed-imports-must",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-750",
+   "ib": "IB-SMART-NOTE-20261013-sn750-the-runner-s-filesystem-is-not-yours-committed-imports-must",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-751",
+   "ib": "IB-SMART-NOTE-20261013-sn751-delegated-pr-opening-is-a-verified-handoff-sha-match-before",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-751",
+   "ib": "IB-SMART-NOTE-20261013-sn751-delegated-pr-opening-is-a-verified-handoff-sha-match-before",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-752",
+   "ib": "IB-SMART-NOTE-20261013-sn752-a-citation-is-not-provenance-resolve-the-file-or-flag-the-ga",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-752",
+   "ib": "IB-SMART-NOTE-20261013-sn752-a-citation-is-not-provenance-resolve-the-file-or-flag-the-ga",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-753",
+   "ib": "IB-SMART-NOTE-20261013-sn753-a-watch-note-declares-its-non-actions",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-753",
+   "ib": "IB-SMART-NOTE-20261013-sn753-a-watch-note-declares-its-non-actions",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-754",
+   "ib": "IB-SMART-NOTE-20261013-sn754-novelty-gets-its-own-score-axis-the-invented-form-discipline",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-754",
+   "ib": "IB-SMART-NOTE-20261013-sn754-novelty-gets-its-own-score-axis-the-invented-form-discipline",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-755",
+   "ib": "IB-SMART-NOTE-20261013-sn755-a-gate-on-evidence-the-environment-cannot-produce-is-a-perma",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-755",
+   "ib": "IB-SMART-NOTE-20261013-sn755-a-gate-on-evidence-the-environment-cannot-produce-is-a-perma",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-756",
+   "ib": "IB-SMART-NOTE-20261013-sn756-the-cold-naya-graduated-one-prompt-an-unfamiliar-app-100-100",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-756",
+   "ib": "IB-SMART-NOTE-20261013-sn756-the-cold-naya-graduated-one-prompt-an-unfamiliar-app-100-100",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-757",
+   "ib": "IB-SMART-NOTE-20261013-sn757-the-vision-to-code-protocol-five-layers-from-a-feeling-to-a",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-757",
+   "ib": "IB-SMART-NOTE-20261013-sn757-the-vision-to-code-protocol-five-layers-from-a-feeling-to-a",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-758",
+   "ib": "IB-SMART-NOTE-20261013-sn758-assembly-not-free-writing-the-lego-law-of-the-smart-app-crea",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-758",
+   "ib": "IB-SMART-NOTE-20261013-sn758-assembly-not-free-writing-the-lego-law-of-the-smart-app-crea",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-759",
+   "ib": "IB-SMART-NOTE-20261013-sn759-restraint-surgery-elegance-is-subtraction",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-759",
+   "ib": "IB-SMART-NOTE-20261013-sn759-restraint-surgery-elegance-is-subtraction",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-760",
+   "ib": "IB-SMART-NOTE-20261013-sn760-the-pdf-test-a-specimen-that-reads-like-a-document-has-faile",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-760",
+   "ib": "IB-SMART-NOTE-20261013-sn760-the-pdf-test-a-specimen-that-reads-like-a-document-has-faile",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-761",
+   "ib": "IB-SMART-NOTE-20261013-sn761-a-pin-is-an-authority-claim-the-heal-path-follows-the-artifa",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-761",
+   "ib": "IB-SMART-NOTE-20261013-sn761-a-pin-is-an-authority-claim-the-heal-path-follows-the-artifa",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-762",
+   "ib": "IB-SMART-NOTE-20261013-sn762-resolve-repair-duplication-by-superset-the-repair-that-cover",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-762",
+   "ib": "IB-SMART-NOTE-20261013-sn762-resolve-repair-duplication-by-superset-the-repair-that-cover",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-763",
+   "ib": "IB-SMART-NOTE-20261013-sn763-notes-that-land-on-main-are-invisible-to-the-ingestion-loop",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-763",
+   "ib": "IB-SMART-NOTE-20261013-sn763-notes-that-land-on-main-are-invisible-to-the-ingestion-loop",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-764",
+   "ib": "IB-SMART-NOTE-20261013-sn764-a-repair-ci-never-runs-is-unverified-not-proven-sequence-rep",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-764",
+   "ib": "IB-SMART-NOTE-20261013-sn764-a-repair-ci-never-runs-is-unverified-not-proven-sequence-rep",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-765",
+   "ib": "IB-SMART-NOTE-20261013-sn765-the-pipeline-that-builds-must-never-authorize-itself-law-bef",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-765",
+   "ib": "IB-SMART-NOTE-20261013-sn765-the-pipeline-that-builds-must-never-authorize-itself-law-bef",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-766",
+   "ib": "IB-SMART-NOTE-20261013-sn766-silent-check-run-telemetry-is-an-evidence-gap-not-a-verdict",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-766",
+   "ib": "IB-SMART-NOTE-20261013-sn766-silent-check-run-telemetry-is-an-evidence-gap-not-a-verdict",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-767",
+   "ib": "IB-SMART-NOTE-20261013-sn767-fusion-not-selection-keep-every-9-and-9-5-when-combining-sou",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-767",
+   "ib": "IB-SMART-NOTE-20261013-sn767-fusion-not-selection-keep-every-9-and-9-5-when-combining-sou",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-768",
+   "ib": "IB-SMART-NOTE-20261013-sn768-the-useful-thing-was-never-a-mission-control-dashboard",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-768",
+   "ib": "IB-SMART-NOTE-20261013-sn768-the-useful-thing-was-never-a-mission-control-dashboard",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-769",
+   "ib": "IB-SMART-NOTE-20261013-sn769-the-discipline-must-live-inside-the-library-codify-the-desig",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-769",
+   "ib": "IB-SMART-NOTE-20261013-sn769-the-discipline-must-live-inside-the-library-codify-the-desig",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-770",
+   "ib": "IB-SMART-NOTE-20261013-sn770-make-the-law-true-don-t-weaken-the-law-the-adversarial-revie",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-770",
+   "ib": "IB-SMART-NOTE-20261013-sn770-make-the-law-true-don-t-weaken-the-law-the-adversarial-revie",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-771",
+   "ib": "IB-SMART-NOTE-20261013-sn771-scope-your-hash-claims-unauthenticated-sha-256-is-corruption",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-771",
+   "ib": "IB-SMART-NOTE-20261013-sn771-scope-your-hash-claims-unauthenticated-sha-256-is-corruption",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-772",
+   "ib": "IB-SMART-NOTE-20261013-sn772-the-hash-chain-misses-garbage-lines-that-never-participated",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-772",
+   "ib": "IB-SMART-NOTE-20261013-sn772-the-hash-chain-misses-garbage-lines-that-never-participated",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-773",
+   "ib": "IB-SMART-NOTE-20261013-sn773-ib-smart-note-sn-0773-relayed-pr-opens-pin-the-claimed-head",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-773",
+   "ib": "IB-SMART-NOTE-20261013-sn773-ib-smart-note-sn-0773-relayed-pr-opens-pin-the-claimed-head",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-774",
+   "ib": "IB-SMART-NOTE-20261013-sn774-a-relay-confirms-bytes-never-decides-the-merge",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-774",
+   "ib": "IB-SMART-NOTE-20261013-sn774-a-relay-confirms-bytes-never-decides-the-merge",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-775",
+   "ib": "IB-SMART-NOTE-20261013-sn775-prove-a-ci-red-is-not-pr-introduced-by-input-equivalence-not",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-775",
+   "ib": "IB-SMART-NOTE-20261013-sn775-prove-a-ci-red-is-not-pr-introduced-by-input-equivalence-not",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-776",
+   "ib": "IB-SMART-NOTE-20261013-sn776-assumed-coverage-is-not-proven-coverage-verify-the-wave-s-re",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-776",
+   "ib": "IB-SMART-NOTE-20261013-sn776-assumed-coverage-is-not-proven-coverage-verify-the-wave-s-re",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-777",
+   "ib": "IB-SMART-NOTE-20261013-sn777-registration-is-not-execution-a-registry-heal-that-skips-the",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-777",
+   "ib": "IB-SMART-NOTE-20261013-sn777-registration-is-not-execution-a-registry-heal-that-skips-the",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-778",
+   "ib": "IB-SMART-NOTE-20261013-sn778-never-backfill-runtime-issued-receipts-fabrication-is-not-a",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-778",
+   "ib": "IB-SMART-NOTE-20261013-sn778-never-backfill-runtime-issued-receipts-fabrication-is-not-a",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-779",
+   "ib": "IB-SMART-NOTE-20261013-sn779-a-respectful-supersede-consolidates-the-repair-without-dupli",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-779",
+   "ib": "IB-SMART-NOTE-20261013-sn779-a-respectful-supersede-consolidates-the-repair-without-dupli",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-780",
+   "ib": "IB-SMART-NOTE-20261013-sn780-close-the-opened-pr-when-the-merge-becomes-the-destructive-a",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-780",
+   "ib": "IB-SMART-NOTE-20261013-sn780-close-the-opened-pr-when-the-merge-becomes-the-destructive-a",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-781",
+   "ib": "IB-SMART-NOTE-20261013-sn781-the-relay-opener-recuses-from-review-one-seat-never-holds-bo",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-781",
+   "ib": "IB-SMART-NOTE-20261013-sn781-the-relay-opener-recuses-from-review-one-seat-never-holds-bo",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-782-b",
+   "ib": "IB-SMART-NOTE-20261013-sn782b-correct-the-shape-not-the-polish-when-the-deliverable-itself",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-782-b",
+   "ib": "IB-SMART-NOTE-20261013-sn782b-correct-the-shape-not-the-polish-when-the-deliverable-itself",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-783",
+   "ib": "IB-SMART-NOTE-20261013-sn783-the-activation-system-activation-is-machine-forced-law-not-a",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-783",
+   "ib": "IB-SMART-NOTE-20261013-sn783-the-activation-system-activation-is-machine-forced-law-not-a",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-784",
+   "ib": "IB-SMART-NOTE-20261013-sn784-builder-never-self-verifies-the-gate-is-law-and-the-gate-eat",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-784",
+   "ib": "IB-SMART-NOTE-20261013-sn784-builder-never-self-verifies-the-gate-is-law-and-the-gate-eat",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-785",
+   "ib": "IB-SMART-NOTE-20261013-sn785-the-usefulness-gate-a-report-must-not-contradict-its-own-evi",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-785",
+   "ib": "IB-SMART-NOTE-20261013-sn785-the-usefulness-gate-a-report-must-not-contradict-its-own-evi",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-786",
+   "ib": "IB-SMART-NOTE-20261013-sn786-verification-instruments-must-be-total-functions-a-crashed-c",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-786",
+   "ib": "IB-SMART-NOTE-20261013-sn786-verification-instruments-must-be-total-functions-a-crashed-c",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-787",
+   "ib": "IB-SMART-NOTE-20261013-sn787-activation-receipts-need-a-trusted-runner-a-builder-can-forg",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-787",
+   "ib": "IB-SMART-NOTE-20261013-sn787-activation-receipts-need-a-trusted-runner-a-builder-can-forg",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-788",
+   "ib": "IB-SMART-NOTE-20261013-sn788-a-rung-proven-under-stubbed-retrieval-is-not-proven-for-prod",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-788",
+   "ib": "IB-SMART-NOTE-20261013-sn788-a-rung-proven-under-stubbed-retrieval-is-not-proven-for-prod",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-789",
+   "ib": "IB-SMART-NOTE-20261013-sn789-the-delivery-gate-nothing-goes-out-unless-it-is-useful-valua",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-789",
+   "ib": "IB-SMART-NOTE-20261013-sn789-the-delivery-gate-nothing-goes-out-unless-it-is-useful-valua",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-790",
+   "ib": "IB-SMART-NOTE-20261013-sn790-focus-dial-not-stop-button-a-new-priority-reweights-the-lane",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-790",
+   "ib": "IB-SMART-NOTE-20261013-sn790-focus-dial-not-stop-button-a-new-priority-reweights-the-lane",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-791",
+   "ib": "IB-SMART-NOTE-20261013-sn791-the-proven-links-chain-learn-grow-level-up-succeed-each-link",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-791",
+   "ib": "IB-SMART-NOTE-20261013-sn791-the-proven-links-chain-learn-grow-level-up-succeed-each-link",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-792",
+   "ib": "IB-SMART-NOTE-20261013-sn792-truthiness-is-not-binding-a-claimed-identity-must-be-compare",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-792",
+   "ib": "IB-SMART-NOTE-20261013-sn792-truthiness-is-not-binding-a-claimed-identity-must-be-compare",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-793",
+   "ib": "IB-SMART-NOTE-20261013-sn793-refuse-to-score-structural-gates-fail-closed-without-live-st",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-793",
+   "ib": "IB-SMART-NOTE-20261013-sn793-refuse-to-score-structural-gates-fail-closed-without-live-st",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-794",
+   "ib": "IB-SMART-NOTE-20261013-sn794-resolve-by-availability-ordered-fallbacks-recorded-choice-fa",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-794",
+   "ib": "IB-SMART-NOTE-20261013-sn794-resolve-by-availability-ordered-fallbacks-recorded-choice-fa",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-795",
+   "ib": "IB-SMART-NOTE-20261013-sn795-form-validation-is-not-substance-proof-self-attested-receipt",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-795",
+   "ib": "IB-SMART-NOTE-20261013-sn795-form-validation-is-not-substance-proof-self-attested-receipt",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-797",
+   "ib": "IB-SMART-NOTE-20261013-sn797-gates-compose-on-the-canonical-schema-never-invent-a-paralle",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-797",
+   "ib": "IB-SMART-NOTE-20261013-sn797-gates-compose-on-the-canonical-schema-never-invent-a-paralle",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-798",
+   "ib": "IB-SMART-NOTE-20261013-sn798-score-the-wait-option-on-information-gain-a-check-that-fails",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-798",
+   "ib": "IB-SMART-NOTE-20261013-sn798-score-the-wait-option-on-information-gain-a-check-that-fails",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-799",
+   "ib": "IB-SMART-NOTE-20261013-sn799-one-schema-one-protected-truth-provider-the-unified-activati",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-799",
+   "ib": "IB-SMART-NOTE-20261013-sn799-one-schema-one-protected-truth-provider-the-unified-activati",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-800",
+   "ib": "IB-SMART-NOTE-20261013-sn800-the-incidental-guard-pr-1998-rejected-never-remove-a-refusal",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-800",
+   "ib": "IB-SMART-NOTE-20261013-sn800-the-incidental-guard-pr-1998-rejected-never-remove-a-refusal",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-801",
+   "ib": "IB-SMART-NOTE-20261013-sn801-a-counter-bump-masks-conflicts-classify-duplicate-sns-by-blo",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-801",
+   "ib": "IB-SMART-NOTE-20261013-sn801-a-counter-bump-masks-conflicts-classify-duplicate-sns-by-blo",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-802",
+   "ib": "IB-SMART-NOTE-20261013-sn802-capture-activates-immediately-the-user-s-capture-directive-i",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-802",
+   "ib": "IB-SMART-NOTE-20261013-sn802-capture-activates-immediately-the-user-s-capture-directive-i",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-803",
+   "ib": "IB-SMART-NOTE-20261013-sn803-subtract-don-t-defend-correct-the-evidence-packet-in-the-sam",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-803",
+   "ib": "IB-SMART-NOTE-20261013-sn803-subtract-don-t-defend-correct-the-evidence-packet-in-the-sam",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-804",
+   "ib": "IB-SMART-NOTE-20261013-sn804-the-literal-first-law-two-layer-communication-translation-be",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-804",
+   "ib": "IB-SMART-NOTE-20261013-sn804-the-literal-first-law-two-layer-communication-translation-be",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-805",
+   "ib": "IB-SMART-NOTE-20261013-sn805-the-sealed-kit-tripwire-e1-fires-builder-and-retester-dispat",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-805",
+   "ib": "IB-SMART-NOTE-20261013-sn805-the-sealed-kit-tripwire-e1-fires-builder-and-retester-dispat",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-806",
+   "ib": "IB-SMART-NOTE-20261013-sn806-identical-multi-pr-ci-failure-suspect-the-environment-before",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-806",
+   "ib": "IB-SMART-NOTE-20261013-sn806-identical-multi-pr-ci-failure-suspect-the-environment-before",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-807",
+   "ib": "IB-SMART-NOTE-20261013-sn807-jurisdiction-follows-consequences-not-merits-a-green-pr-that",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-807",
+   "ib": "IB-SMART-NOTE-20261013-sn807-jurisdiction-follows-consequences-not-merits-a-green-pr-that",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-808",
+   "ib": "IB-SMART-NOTE-20261013-sn808-one-mission-one-lane-branch-claim-before-you-commit-halt-on",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-808",
+   "ib": "IB-SMART-NOTE-20261013-sn808-one-mission-one-lane-branch-claim-before-you-commit-halt-on",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-809",
+   "ib": "IB-SMART-NOTE-20261013-sn809-measure-the-width-of-the-hole-before-fixing-the-finder-s-one",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-809",
+   "ib": "IB-SMART-NOTE-20261013-sn809-measure-the-width-of-the-hole-before-fixing-the-finder-s-one",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-810",
+   "ib": "IB-SMART-NOTE-20261013-sn810-a-test-that-doesn-t-probe-a-hole-can-t-certify-it-closed",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-810",
+   "ib": "IB-SMART-NOTE-20261013-sn810-a-test-that-doesn-t-probe-a-hole-can-t-certify-it-closed",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-811",
+   "ib": "IB-SMART-NOTE-20261013-sn811-the-verification-bottleneck-is-capture-design-lessons-that-a",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-811",
+   "ib": "IB-SMART-NOTE-20261013-sn811-the-verification-bottleneck-is-capture-design-lessons-that-a",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-812",
+   "ib": "IB-SMART-NOTE-20261013-sn812-parse-like-the-browser-parses-your-model-of-html-must-match",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-812",
+   "ib": "IB-SMART-NOTE-20261013-sn812-parse-like-the-browser-parses-your-model-of-html-must-match",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-813",
+   "ib": "IB-SMART-NOTE-20261013-sn813-the-chain-tests-a-step-it-never-performs-candidate-has-no-pa",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-813",
+   "ib": "IB-SMART-NOTE-20261013-sn813-the-chain-tests-a-step-it-never-performs-candidate-has-no-pa",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-814",
+   "ib": "IB-SMART-NOTE-20261013-sn814-before-you-repair-a-red-pr-check-whether-it-is-a-duplicate-h",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-814",
+   "ib": "IB-SMART-NOTE-20261013-sn814-before-you-repair-a-red-pr-check-whether-it-is-a-duplicate-h",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-815",
+   "ib": "IB-SMART-NOTE-20261013-sn815-measure-the-suggested-fix-before-adopting-it-adopt-the-class",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-815",
+   "ib": "IB-SMART-NOTE-20261013-sn815-measure-the-suggested-fix-before-adopting-it-adopt-the-class",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-816",
+   "ib": "IB-SMART-NOTE-20261013-sn816-a-verification-watch-that-sees-no-traffic-proves-nothing-pai",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-816",
+   "ib": "IB-SMART-NOTE-20261013-sn816-a-verification-watch-that-sees-no-traffic-proves-nothing-pai",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-817",
+   "ib": "IB-SMART-NOTE-20261013-sn817-a-fallback-lesson-must-never-satisfy-user-learning-proof-ide",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-817",
+   "ib": "IB-SMART-NOTE-20261013-sn817-a-fallback-lesson-must-never-satisfy-user-learning-proof-ide",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-818",
+   "ib": "IB-SMART-NOTE-20261013-sn818-fix-at-the-canonical-seam-the-delegation-boundary-is-where-t",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-818",
+   "ib": "IB-SMART-NOTE-20261013-sn818-fix-at-the-canonical-seam-the-delegation-boundary-is-where-t",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-819",
+   "ib": "IB-SMART-NOTE-20261013-sn819-a-headline-is-a-claim-about-the-world-not-the-branch-verify",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-819",
+   "ib": "IB-SMART-NOTE-20261013-sn819-a-headline-is-a-claim-about-the-world-not-the-branch-verify",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-820",
+   "ib": "IB-SMART-NOTE-20261013-sn820-falsifier-suites-must-probe-the-time-dimension-not-just-shap",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-820",
+   "ib": "IB-SMART-NOTE-20261013-sn820-falsifier-suites-must-probe-the-time-dimension-not-just-shap",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-821",
+   "ib": "IB-SMART-NOTE-20261013-sn821-in-pr-regen-evidence-expires-at-merge-the-merge-tip-regen-la",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-821",
+   "ib": "IB-SMART-NOTE-20261013-sn821-in-pr-regen-evidence-expires-at-merge-the-merge-tip-regen-la",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-822",
+   "ib": "IB-SMART-NOTE-20261013-sn822-the-independent-replay-brief-protocol-ask-by-brief-verify-by",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-822",
+   "ib": "IB-SMART-NOTE-20261013-sn822-the-independent-replay-brief-protocol-ask-by-brief-verify-by",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-823",
+   "ib": "IB-SMART-NOTE-20261013-sn823-reports-expire-when-the-tip-moves-every-status-claim-is-tip",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-823",
+   "ib": "IB-SMART-NOTE-20261013-sn823-reports-expire-when-the-tip-moves-every-status-claim-is-tip",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-824",
+   "ib": "IB-SMART-NOTE-20261013-sn824-retrieval-must-rank-on-applicability-triggers-not-generic-ti",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-824",
+   "ib": "IB-SMART-NOTE-20261013-sn824-retrieval-must-rank-on-applicability-triggers-not-generic-ti",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-825",
+   "ib": "IB-SMART-NOTE-20261013-sn825-a-held-merge-gets-a-scorecard-receipt-too",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-825",
+   "ib": "IB-SMART-NOTE-20261013-sn825-a-held-merge-gets-a-scorecard-receipt-too",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-826",
+   "ib": "IB-SMART-NOTE-20261013-sn826-thin-slice-fallback-one-complete-loop-beats-a-half-built-ful",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-826",
+   "ib": "IB-SMART-NOTE-20261013-sn826-thin-slice-fallback-one-complete-loop-beats-a-half-built-ful",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-827",
+   "ib": "IB-SMART-NOTE-20261013-sn827-the-living-checklist-doctrine-a-checklist-is-a-system-not-a",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-827",
+   "ib": "IB-SMART-NOTE-20261013-sn827-the-living-checklist-doctrine-a-checklist-is-a-system-not-a",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-828",
+   "ib": "IB-SMART-NOTE-20261013-sn828-the-one-rulebook-law-plan-and-execute-share-one-risk-policy",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-828",
+   "ib": "IB-SMART-NOTE-20261013-sn828-the-one-rulebook-law-plan-and-execute-share-one-risk-policy",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-829",
+   "ib": "IB-SMART-NOTE-20261013-sn829-ib-smart-note-20261009-sn0829-the-to-die-for-standard",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-829",
+   "ib": "IB-SMART-NOTE-20261013-sn829-ib-smart-note-20261009-sn0829-the-to-die-for-standard",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-830",
+   "ib": "IB-SMART-NOTE-20261013-sn830-ib-smart-note-20261009-sn0830-a-listing-is-not-doctrine",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-830",
+   "ib": "IB-SMART-NOTE-20261013-sn830-ib-smart-note-20261009-sn0830-a-listing-is-not-doctrine",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-831",
+   "ib": "IB-SMART-NOTE-20261013-sn831-ib-smart-note-20261009-sn0831-case-only-filenames-collide",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-831",
+   "ib": "IB-SMART-NOTE-20261013-sn831-ib-smart-note-20261009-sn0831-case-only-filenames-collide",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-832",
+   "ib": "IB-SMART-NOTE-20261013-sn832-ib-smart-note-20261009-sn0832-never-regenerate-from-the-inde",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-832",
+   "ib": "IB-SMART-NOTE-20261013-sn832-ib-smart-note-20261009-sn0832-never-regenerate-from-the-inde",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-833",
+   "ib": "IB-SMART-NOTE-20261013-sn833-ib-smart-note-20261009-sn0833-directive-supersedes-roster-on",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-833",
+   "ib": "IB-SMART-NOTE-20261013-sn833-ib-smart-note-20261009-sn0833-directive-supersedes-roster-on",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-834",
+   "ib": "IB-SMART-NOTE-20261013-sn834-ib-smart-note-20261009-sn0834-immutable-r1-tombstone-never-r",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-834",
+   "ib": "IB-SMART-NOTE-20261013-sn834-ib-smart-note-20261009-sn0834-immutable-r1-tombstone-never-r",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-835",
+   "ib": "IB-SMART-NOTE-20261013-sn835-ib-smart-note-20261009-sn0835-diagnostic-document-status-cla",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-835",
+   "ib": "IB-SMART-NOTE-20261013-sn835-ib-smart-note-20261009-sn0835-diagnostic-document-status-cla",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-836",
+   "ib": "IB-SMART-NOTE-20261013-sn836-ib-smart-note-20261009-sn0836-one-ci-red-hides-the-rest-run",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-836",
+   "ib": "IB-SMART-NOTE-20261013-sn836-ib-smart-note-20261009-sn0836-one-ci-red-hides-the-rest-run",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-837",
+   "ib": "IB-SMART-NOTE-20261013-sn837-ib-smart-note-20261009-sn0837-promotion-without-proof-bindin",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-837",
+   "ib": "IB-SMART-NOTE-20261013-sn837-ib-smart-note-20261009-sn0837-promotion-without-proof-bindin",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-838",
+   "ib": "IB-SMART-NOTE-20261013-sn838-ib-smart-note-20261009-sn0838-cold-successor-held-out-candid",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-838",
+   "ib": "IB-SMART-NOTE-20261013-sn838-ib-smart-note-20261009-sn0838-cold-successor-held-out-candid",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-839",
+   "ib": "IB-SMART-NOTE-20261013-sn839-ib-smart-note-20261009-sn0839-multiline-import-broke-the-imp",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-839",
+   "ib": "IB-SMART-NOTE-20261013-sn839-ib-smart-note-20261009-sn0839-multiline-import-broke-the-imp",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-840",
+   "ib": "IB-SMART-NOTE-20261013-sn840-ib-smart-note-sn-0840-ratification-lives-in-the-artifact-s-f",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-840",
+   "ib": "IB-SMART-NOTE-20261013-sn840-ib-smart-note-sn-0840-ratification-lives-in-the-artifact-s-f",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-841",
+   "ib": "IB-SMART-NOTE-20261013-sn841-ib-smart-note-sn-0841-subset-twin-repairs-declare-canonical",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-841",
+   "ib": "IB-SMART-NOTE-20261013-sn841-ib-smart-note-sn-0841-subset-twin-repairs-declare-canonical",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-842",
+   "ib": "IB-SMART-NOTE-20261013-sn842-ib-smart-note-sn-0842-inherited-reds-belong-to-the-base-repr",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-842",
+   "ib": "IB-SMART-NOTE-20261013-sn842-ib-smart-note-sn-0842-inherited-reds-belong-to-the-base-repr",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-843",
+   "ib": "IB-SMART-NOTE-20261013-sn843-a-ratification-claim-inside-a-file-is-not-ratification-to-th",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-843",
+   "ib": "IB-SMART-NOTE-20261013-sn843-a-ratification-claim-inside-a-file-is-not-ratification-to-th",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-844",
+   "ib": "IB-SMART-NOTE-20261013-sn844-activation-acceptance-one-real-lesson-end-to-end-independent",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-844",
+   "ib": "IB-SMART-NOTE-20261013-sn844-activation-acceptance-one-real-lesson-end-to-end-independent",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-845",
+   "ib": "IB-SMART-NOTE-20261013-sn845-adversarial-phrasing-coverage-for-authority-gates",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-845",
+   "ib": "IB-SMART-NOTE-20261013-sn845-adversarial-phrasing-coverage-for-authority-gates",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-846",
+   "ib": "IB-SMART-NOTE-20261013-sn846-design-the-gate-to-the-data-s-reality-not-the-ideal",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-846",
+   "ib": "IB-SMART-NOTE-20261013-sn846-design-the-gate-to-the-data-s-reality-not-the-ideal",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-847",
+   "ib": "IB-SMART-NOTE-20261013-sn847-the-human-decision-that-wasn-t-a-stale-test-is-a-fix-not-a-j",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-847",
+   "ib": "IB-SMART-NOTE-20261013-sn847-the-human-decision-that-wasn-t-a-stale-test-is-a-fix-not-a-j",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-848",
+   "ib": "IB-SMART-NOTE-20261013-sn848-likely-transient-is-a-guess-read-the-job-log-before-classify",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-848",
+   "ib": "IB-SMART-NOTE-20261013-sn848-likely-transient-is-a-guess-read-the-job-log-before-classify",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-849",
+   "ib": "IB-SMART-NOTE-20261013-sn849-merge-the-minimal-fresh-repair-don-t-wait-for-the-canonical",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-849",
+   "ib": "IB-SMART-NOTE-20261013-sn849-merge-the-minimal-fresh-repair-don-t-wait-for-the-canonical",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-850",
+   "ib": "IB-SMART-NOTE-20261013-sn850-every-brain-domain-needs-a-registered-floor-an-unregistered",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-850",
+   "ib": "IB-SMART-NOTE-20261013-sn850-every-brain-domain-needs-a-registered-floor-an-unregistered",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-851",
+   "ib": "IB-SMART-NOTE-20261013-sn851-environment-only-failures-get-the-instrument-repaired-locall",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-851",
+   "ib": "IB-SMART-NOTE-20261013-sn851-environment-only-failures-get-the-instrument-repaired-locall",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-852",
+   "ib": "IB-SMART-NOTE-20261013-sn852-base-inherited-reds-get-re-anchored-not-repaired-prove-where",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-852",
+   "ib": "IB-SMART-NOTE-20261013-sn852-base-inherited-reds-get-re-anchored-not-repaired-prove-where",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-853",
+   "ib": "IB-SMART-NOTE-20261013-sn853-the-high-water-mark-is-not-a-complete-record-reconcile-every",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-853",
+   "ib": "IB-SMART-NOTE-20261013-sn853-the-high-water-mark-is-not-a-complete-record-reconcile-every",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-854",
+   "ib": "IB-SMART-NOTE-20261013-sn854-the-smart-app-compounding-method-score-hole-fill-verify-free",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-854",
+   "ib": "IB-SMART-NOTE-20261013-sn854-the-smart-app-compounding-method-score-hole-fill-verify-free",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-855",
+   "ib": "IB-SMART-NOTE-20261013-sn855-in-a-shared-clone-verify-the-branch-before-and-after-every-c",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-855",
+   "ib": "IB-SMART-NOTE-20261013-sn855-in-a-shared-clone-verify-the-branch-before-and-after-every-c",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-856",
+   "ib": "IB-SMART-NOTE-20261013-sn856-two-dot-diff-is-a-false-alarm-machine-rehearse-the-merge-don",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-856",
+   "ib": "IB-SMART-NOTE-20261013-sn856-two-dot-diff-is-a-false-alarm-machine-rehearse-the-merge-don",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-857",
+   "ib": "IB-SMART-NOTE-20261013-sn857-pending-is-not-failure-never-count-a-no-verdict-run-as-faile",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-857",
+   "ib": "IB-SMART-NOTE-20261013-sn857-pending-is-not-failure-never-count-a-no-verdict-run-as-faile",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-858",
+   "ib": "IB-SMART-NOTE-20261013-sn858-truth-audit-every-measurable-claim-against-code-copy-rots-cl",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-858",
+   "ib": "IB-SMART-NOTE-20261013-sn858-truth-audit-every-measurable-claim-against-code-copy-rots-cl",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-859",
+   "ib": "IB-SMART-NOTE-20261013-sn859-an-omitted-credential-is-not-an-absent-check-fail-closed-on",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-859",
+   "ib": "IB-SMART-NOTE-20261013-sn859-an-omitted-credential-is-not-an-absent-check-fail-closed-on",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-860",
+   "ib": "IB-SMART-NOTE-20261013-sn860-comments-that-describe-enforcement-the-code-doesn-t-perform",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-860",
+   "ib": "IB-SMART-NOTE-20261013-sn860-comments-that-describe-enforcement-the-code-doesn-t-perform",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-861",
+   "ib": "IB-SMART-NOTE-20261013-sn861-the-compare-ui-lies-on-rebased-branches-verify-content-ident",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-861",
+   "ib": "IB-SMART-NOTE-20261013-sn861-the-compare-ui-lies-on-rebased-branches-verify-content-ident",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-862",
+   "ib": "IB-SMART-NOTE-20261013-sn862-ib-smart-note-20261009-sn0862-one-red-not-two-fails-closed-g",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-862",
+   "ib": "IB-SMART-NOTE-20261013-sn862-ib-smart-note-20261009-sn0862-one-red-not-two-fails-closed-g",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-863",
+   "ib": "IB-SMART-NOTE-20261013-sn863-ib-smart-note-20261009-sn0863-third-occurrence-graduates-inc",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-863",
+   "ib": "IB-SMART-NOTE-20261013-sn863-ib-smart-note-20261009-sn0863-third-occurrence-graduates-inc",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-864",
+   "ib": "IB-SMART-NOTE-20261013-sn864-ib-smart-note-20261009-sn0864-orphan-branch-verified-state-s",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-864",
+   "ib": "IB-SMART-NOTE-20261013-sn864-ib-smart-note-20261009-sn0864-orphan-branch-verified-state-s",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-865",
+   "ib": "IB-SMART-NOTE-20261013-sn865-ib-smart-note-20261009-sn0865-preregister-predictions-before",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-865",
+   "ib": "IB-SMART-NOTE-20261013-sn865-ib-smart-note-20261009-sn0865-preregister-predictions-before",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-866",
+   "ib": "IB-SMART-NOTE-20261013-sn866-ib-smart-note-20261010-sn0866-authority-lives-in-the-session",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-866",
+   "ib": "IB-SMART-NOTE-20261013-sn866-ib-smart-note-20261010-sn0866-authority-lives-in-the-session",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-867",
+   "ib": "IB-SMART-NOTE-20261013-sn867-ib-smart-note-20261010-sn0867-a-blocked-transition-is-a-boun",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-867",
+   "ib": "IB-SMART-NOTE-20261013-sn867-ib-smart-note-20261010-sn0867-a-blocked-transition-is-a-boun",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-868",
+   "ib": "IB-SMART-NOTE-20261013-sn868-ib-smart-note-20261010-sn0868-merge-race-drift-check-runs-la",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-868",
+   "ib": "IB-SMART-NOTE-20261013-sn868-ib-smart-note-20261010-sn0868-merge-race-drift-check-runs-la",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-869",
+   "ib": "IB-SMART-NOTE-20261013-sn869-ib-smart-note-sn-0869-regenerate-never-side-pick-resolving-c",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-869",
+   "ib": "IB-SMART-NOTE-20261013-sn869-ib-smart-note-sn-0869-regenerate-never-side-pick-resolving-c",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-870",
+   "ib": "IB-SMART-NOTE-20261013-sn870-ib-smart-note-sn-0870-a-draft-label-can-be-a-tooling-artifac",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-870",
+   "ib": "IB-SMART-NOTE-20261013-sn870-ib-smart-note-sn-0870-a-draft-label-can-be-a-tooling-artifac",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-871",
+   "ib": "IB-SMART-NOTE-20261013-sn871-ib-smart-note-sn-0871-check-for-a-base-inherited-failure-bef",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-871",
+   "ib": "IB-SMART-NOTE-20261013-sn871-ib-smart-note-sn-0871-check-for-a-base-inherited-failure-bef",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-872",
+   "ib": "IB-SMART-NOTE-20261013-sn872-untracked-files-are-invisible-to-the-regen-instrument-stage",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-872",
+   "ib": "IB-SMART-NOTE-20261013-sn872-untracked-files-are-invisible-to-the-regen-instrument-stage",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-873",
+   "ib": "IB-SMART-NOTE-20261013-sn873-4-43-is-the-honest-ceiling-retrieval-cannot-rank-what-the-co",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-873",
+   "ib": "IB-SMART-NOTE-20261013-sn873-4-43-is-the-honest-ceiling-retrieval-cannot-rank-what-the-co",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-874",
+   "ib": "IB-SMART-NOTE-20261013-sn874-a-direct-push-merge-lands-bytes-without-a-receipt-and-a-neve",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-874",
+   "ib": "IB-SMART-NOTE-20261013-sn874-a-direct-push-merge-lands-bytes-without-a-receipt-and-a-neve",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-875",
+   "ib": "IB-SMART-NOTE-20261013-sn875-projection-basename-discipline-canonical-ib-md-never-smart-n",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-875",
+   "ib": "IB-SMART-NOTE-20261013-sn875-projection-basename-discipline-canonical-ib-md-never-smart-n",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-876",
+   "ib": "IB-SMART-NOTE-20261013-sn876-honest-elevation-backfill-kind-backfill-never-elevation-re-i",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-876",
+   "ib": "IB-SMART-NOTE-20261013-sn876-honest-elevation-backfill-kind-backfill-never-elevation-re-i",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-877",
+   "ib": "IB-SMART-NOTE-20261013-sn877-hook-exception-isolation-a-crashing-observer-must-never-flip",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-877",
+   "ib": "IB-SMART-NOTE-20261013-sn877-hook-exception-isolation-a-crashing-observer-must-never-flip",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-878",
+   "ib": "IB-SMART-NOTE-20261013-sn878-fixing-a-pull-request-target-gate-on-the-base-doesn-t-re-run",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-878",
+   "ib": "IB-SMART-NOTE-20261013-sn878-fixing-a-pull-request-target-gate-on-the-base-doesn-t-re-run",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-879",
+   "ib": "IB-SMART-NOTE-20261013-sn879-ib-smart-note-20261010-sn0879-burst-race-superseded-tip-fail",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-879",
+   "ib": "IB-SMART-NOTE-20261013-sn879-ib-smart-note-20261010-sn0879-burst-race-superseded-tip-fail",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-880",
+   "ib": "IB-SMART-NOTE-20261013-sn880-regen-enumerates-tracked-files-only-stage-before-regeneratin",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-880",
+   "ib": "IB-SMART-NOTE-20261013-sn880-regen-enumerates-tracked-files-only-stage-before-regeneratin",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-881",
+   "ib": "IB-SMART-NOTE-20261013-sn881-a-correction-is-a-claim-too-verify-temporal-evidence-before",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-881",
+   "ib": "IB-SMART-NOTE-20261013-sn881-a-correction-is-a-claim-too-verify-temporal-evidence-before",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-882",
+   "ib": "IB-SMART-NOTE-20261013-sn882-revert-first-own-the-wrong-repair-the-standard-response-to-a",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-882",
+   "ib": "IB-SMART-NOTE-20261013-sn882-revert-first-own-the-wrong-repair-the-standard-response-to-a",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-883",
+   "ib": "IB-SMART-NOTE-20261013-sn883-the-pr-record-is-stale-evidence-re-anchor-base-on-a-fresh-re",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-883",
+   "ib": "IB-SMART-NOTE-20261013-sn883-the-pr-record-is-stale-evidence-re-anchor-base-on-a-fresh-re",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-884",
+   "ib": "IB-SMART-NOTE-20261013-sn884-the-exclusion-precedent-chain-unratified-specs-get-exclusion",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-884",
+   "ib": "IB-SMART-NOTE-20261013-sn884-the-exclusion-precedent-chain-unratified-specs-get-exclusion",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-885",
+   "ib": "IB-SMART-NOTE-20261013-sn885-the-regen-instrument-sees-only-brain-files-outside-its-scope",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-885",
+   "ib": "IB-SMART-NOTE-20261013-sn885-the-regen-instrument-sees-only-brain-files-outside-its-scope",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-886",
+   "ib": "IB-SMART-NOTE-20261013-sn886-stamp-provenance-narrowly-historical-proof-pointers-are-read",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-886",
+   "ib": "IB-SMART-NOTE-20261013-sn886-stamp-provenance-narrowly-historical-proof-pointers-are-read",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-887",
+   "ib": "IB-SMART-NOTE-20261013-sn887-a-smart-note-lands-as-two-artifacts-the-md-and-its-registry",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-887",
+   "ib": "IB-SMART-NOTE-20261013-sn887-a-smart-note-lands-as-two-artifacts-the-md-and-its-registry",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-888",
+   "ib": "IB-SMART-NOTE-20261013-sn888-a-code-governance-gate-must-parse-structure-not-text-grep-ca",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-888",
+   "ib": "IB-SMART-NOTE-20261013-sn888-a-code-governance-gate-must-parse-structure-not-text-grep-ca",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-889",
+   "ib": "IB-SMART-NOTE-20261013-sn889-sn-0889-re-anchor-at-verify-time-pre-verification-re-anchors",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-889",
+   "ib": "IB-SMART-NOTE-20261013-sn889-sn-0889-re-anchor-at-verify-time-pre-verification-re-anchors",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-890",
+   "ib": "IB-SMART-NOTE-20261013-sn890-sn-0890-every-cleanup-ships-the-anti-regrowth-mechanism",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-890",
+   "ib": "IB-SMART-NOTE-20261013-sn890-sn-0890-every-cleanup-ships-the-anti-regrowth-mechanism",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-891",
+   "ib": "IB-SMART-NOTE-20261013-sn891-sn-0891-the-cold-test-is-the-ambiguity-detector-familiarity",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-891",
+   "ib": "IB-SMART-NOTE-20261013-sn891-sn-0891-the-cold-test-is-the-ambiguity-detector-familiarity",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-892",
+   "ib": "IB-SMART-NOTE-20261013-sn892-sn-0892-a-403-rate-limit-is-a-hard-stop-not-a-retry-prompt",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-892",
+   "ib": "IB-SMART-NOTE-20261013-sn892-sn-0892-a-403-rate-limit-is-a-hard-stop-not-a-retry-prompt",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-893",
+   "ib": "IB-SMART-NOTE-20261013-sn893-sn-0893-correct-the-derived-never-the-raw-and-name-what-you",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-893",
+   "ib": "IB-SMART-NOTE-20261013-sn893-sn-0893-correct-the-derived-never-the-raw-and-name-what-you",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-894",
+   "ib": "IB-SMART-NOTE-20261013-sn894-sn-0894-the-workflow-is-the-defect-root-cause-the-red-on-the",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-894",
+   "ib": "IB-SMART-NOTE-20261013-sn894-sn-0894-the-workflow-is-the-defect-root-cause-the-red-on-the",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-895",
+   "ib": "IB-SMART-NOTE-20261013-sn895-sn-0895-learned-means-the-novel-problem-battery-passes-captu",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-895",
+   "ib": "IB-SMART-NOTE-20261013-sn895-sn-0895-learned-means-the-novel-problem-battery-passes-captu",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-896",
+   "ib": "IB-SMART-NOTE-20261013-sn896-sn-0896-transient-state-travels-light-no-shared-file-for-an",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-896",
+   "ib": "IB-SMART-NOTE-20261013-sn896-sn-0896-transient-state-travels-light-no-shared-file-for-an",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-897",
+   "ib": "IB-SMART-NOTE-20261013-sn897-sn-0897-a-landed-merge-s-gate-crossing-gets-a-flag-not-a-fix",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-897",
+   "ib": "IB-SMART-NOTE-20261013-sn897-sn-0897-a-landed-merge-s-gate-crossing-gets-a-flag-not-a-fix",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-898",
+   "ib": "IB-SMART-NOTE-20261013-sn898-sn-0898-before-authoring-a-convergence-check-whether-the-sou",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-898",
+   "ib": "IB-SMART-NOTE-20261013-sn898-sn-0898-before-authoring-a-convergence-check-whether-the-sou",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-899",
+   "ib": "IB-SMART-NOTE-20261013-sn899-sn-0899-a-requested-review-is-a-hold-not-a-race-if-the-revie",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-899",
+   "ib": "IB-SMART-NOTE-20261013-sn899-sn-0899-a-requested-review-is-a-hold-not-a-race-if-the-revie",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-900",
+   "ib": "IB-SMART-NOTE-20261013-sn900-sn-0900-sealed-fixtures-inline-expected-values-break-evaluat",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-900",
+   "ib": "IB-SMART-NOTE-20261013-sn900-sn-0900-sealed-fixtures-inline-expected-values-break-evaluat",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-901",
+   "ib": "IB-SMART-NOTE-20261013-sn901-sn-0901-the-only-hard-law-is-do-no-harm-every-other-law-upda",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-901",
+   "ib": "IB-SMART-NOTE-20261013-sn901-sn-0901-the-only-hard-law-is-do-no-harm-every-other-law-upda",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-902",
+   "ib": "IB-SMART-NOTE-20261013-sn902-sn-0902-the-decision-procedure-zoom-in-zoom-out-all-elements",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-902",
+   "ib": "IB-SMART-NOTE-20261013-sn902-sn-0902-the-decision-procedure-zoom-in-zoom-out-all-elements",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-903",
+   "ib": "IB-SMART-NOTE-20261013-sn903-sn-0903-math-and-logic-hold-the-keys-proof-standards-are-mec",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-903",
+   "ib": "IB-SMART-NOTE-20261013-sn903-sn-0903-math-and-logic-hold-the-keys-proof-standards-are-mec",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-904",
+   "ib": "IB-SMART-NOTE-20261013-sn904-sn-0904-we-learn-and-we-grow-and-we-let-everything-else-go-p",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-904",
+   "ib": "IB-SMART-NOTE-20261013-sn904-sn-0904-we-learn-and-we-grow-and-we-let-everything-else-go-p",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-905",
+   "ib": "IB-SMART-NOTE-20261013-sn905-sn-0905-the-fairness-lie-detector-a-verifier-that-names-its",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-905",
+   "ib": "IB-SMART-NOTE-20261013-sn905-sn-0905-the-fairness-lie-detector-a-verifier-that-names-its",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-906",
+   "ib": "IB-SMART-NOTE-20261013-sn906-sn-0906-the-fairness-assumption-audit-every-assumption-earns",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-906",
+   "ib": "IB-SMART-NOTE-20261013-sn906-sn-0906-the-fairness-assumption-audit-every-assumption-earns",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-907",
+   "ib": "IB-SMART-NOTE-20261013-sn907-sn-0907-responsibility-follows-control-the-environment-sched",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-907",
+   "ib": "IB-SMART-NOTE-20261013-sn907-sn-0907-responsibility-follows-control-the-environment-sched",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-908",
+   "ib": "IB-SMART-NOTE-20261013-sn908-sn-0908-the-verifiable-causal-trace-logs-claim-evidence-esta",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-908",
+   "ib": "IB-SMART-NOTE-20261013-sn908-sn-0908-the-verifiable-causal-trace-logs-claim-evidence-esta",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-909",
+   "ib": "IB-SMART-NOTE-20261013-sn909-sn-0909-plan-the-board-succession-github-disables-commenting",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-909",
+   "ib": "IB-SMART-NOTE-20261013-sn909-sn-0909-plan-the-board-succession-github-disables-commenting",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-910",
+   "ib": "IB-SMART-NOTE-20261013-sn910-sn-0910-the-action-budget-resource-discipline-means-single-r",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-910",
+   "ib": "IB-SMART-NOTE-20261013-sn910-sn-0910-the-action-budget-resource-discipline-means-single-r",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-911",
+   "ib": "IB-SMART-NOTE-20261013-sn911-sn-0911-a-requested-review-that-hasn-t-landed-is-a-hold-not",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-911",
+   "ib": "IB-SMART-NOTE-20261013-sn911-sn-0911-a-requested-review-that-hasn-t-landed-is-a-hold-not",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-912",
+   "ib": "IB-SMART-NOTE-20261013-sn912-uncertainty-can-only-travel-along-true-evidence-dependencies",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-912",
+   "ib": "IB-SMART-NOTE-20261013-sn912-uncertainty-can-only-travel-along-true-evidence-dependencies",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-913",
+   "ib": "IB-SMART-NOTE-20261013-sn913-revoke-the-evidence-recompute-the-conclusions-keep-what-stil",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-913",
+   "ib": "IB-SMART-NOTE-20261013-sn913-revoke-the-evidence-recompute-the-conclusions-keep-what-stil",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-914",
+   "ib": "IB-SMART-NOTE-20261013-sn914-preserve-history-recompute-qualification-invalidate-stale-au",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-914",
+   "ib": "IB-SMART-NOTE-20261013-sn914-preserve-history-recompute-qualification-invalidate-stale-au",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-915",
+   "ib": "IB-SMART-NOTE-20261013-sn915-sn-0915-the-living-ledger-every-action-carries-its-evidence",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-915",
+   "ib": "IB-SMART-NOTE-20261013-sn915-sn-0915-the-living-ledger-every-action-carries-its-evidence",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-916",
+   "ib": "IB-SMART-NOTE-20261013-sn916-sn-0916-scope-isolated-baselines-a-parent-s-improvement-neve",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-916",
+   "ib": "IB-SMART-NOTE-20261013-sn916-sn-0916-scope-isolated-baselines-a-parent-s-improvement-neve",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-917",
+   "ib": "IB-SMART-NOTE-20261013-sn917-sn-0917-share-estimates-never-borrow-proof-pooling-is-not-qu",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-917",
+   "ib": "IB-SMART-NOTE-20261013-sn917-sn-0917-share-estimates-never-borrow-proof-pooling-is-not-qu",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-918",
+   "ib": "IB-SMART-NOTE-20261013-sn918-one-canonically-ordered-governance-state-stale-state-never-c",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-918",
+   "ib": "IB-SMART-NOTE-20261013-sn918-one-canonically-ordered-governance-state-stale-state-never-c",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-919",
+   "ib": "IB-SMART-NOTE-20261013-sn919-a-crashed-worker-loses-progress-not-authority-recover-the-co",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-919",
+   "ib": "IB-SMART-NOTE-20261013-sn919-a-crashed-worker-loses-progress-not-authority-recover-the-co",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-920",
+   "ib": "IB-SMART-NOTE-20261013-sn920-the-no-ego-merge-cross-score-overlaps-merge-the-best-preserv",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-920",
+   "ib": "IB-SMART-NOTE-20261013-sn920-the-no-ego-merge-cross-score-overlaps-merge-the-best-preserv",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-921",
+   "ib": "IB-SMART-NOTE-20261013-sn921-classify-a-ci-red-by-the-failing-step-name-from-live-job-log",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-921",
+   "ib": "IB-SMART-NOTE-20261013-sn921-classify-a-ci-red-by-the-failing-step-name-from-live-job-log",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-922",
+   "ib": "IB-SMART-NOTE-20261013-sn922-preventing-stale-qualifications-from-being-republished",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-922",
+   "ib": "IB-SMART-NOTE-20261013-sn922-preventing-stale-qualifications-from-being-republished",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-923",
+   "ib": "IB-SMART-NOTE-20261013-sn923-the-vigilance-law-see-it-fix-it-or-surface-it-immediately",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-923",
+   "ib": "IB-SMART-NOTE-20261013-sn923-the-vigilance-law-see-it-fix-it-or-surface-it-immediately",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-924",
+   "ib": "IB-SMART-NOTE-20261013-sn924-the-gate-must-clear-its-own-bar-named-failure-mode-15",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-924",
+   "ib": "IB-SMART-NOTE-20261013-sn924-the-gate-must-clear-its-own-bar-named-failure-mode-15",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-925",
+   "ib": "IB-SMART-NOTE-20261013-sn925-documents-don-t-change-behavior-only-machinery-does",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-925",
+   "ib": "IB-SMART-NOTE-20261013-sn925-documents-don-t-change-behavior-only-machinery-does",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-926",
+   "ib": "IB-SMART-NOTE-20261013-sn926-the-freeze-is-only-real-if-its-breaches-are-published-failur",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-926",
+   "ib": "IB-SMART-NOTE-20261013-sn926-the-freeze-is-only-real-if-its-breaches-are-published-failur",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-927",
+   "ib": "IB-SMART-NOTE-20261013-sn927-filing-is-useless-without-learning-implement-then-learn-then",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-927",
+   "ib": "IB-SMART-NOTE-20261013-sn927-filing-is-useless-without-learning-implement-then-learn-then",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-928",
+   "ib": "IB-SMART-NOTE-20261013-sn928-summaries-carry-their-non-claims-d32-s-standing-law",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-928",
+   "ib": "IB-SMART-NOTE-20261013-sn928-summaries-carry-their-non-claims-d32-s-standing-law",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-929",
+   "ib": "IB-SMART-NOTE-20261013-sn929-the-mirror-ritual-name-it-fix-it-structure-it",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-929",
+   "ib": "IB-SMART-NOTE-20261013-sn929-the-mirror-ritual-name-it-fix-it-structure-it",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-930",
+   "ib": "IB-SMART-NOTE-20261013-sn930-convergence-is-not-identity-check-before-you-call-two-artifa",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-930",
+   "ib": "IB-SMART-NOTE-20261013-sn930-convergence-is-not-identity-check-before-you-call-two-artifa",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-931",
+   "ib": "IB-SMART-NOTE-20261013-sn931-the-gate-machinery-is-the-highest-trust-tier-workflow-files",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-931",
+   "ib": "IB-SMART-NOTE-20261013-sn931-the-gate-machinery-is-the-highest-trust-tier-workflow-files",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-932",
+   "ib": "IB-SMART-NOTE-20261013-sn932-retroactive-review-closes-the-breach-on-the-record-the-defec",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-932",
+   "ib": "IB-SMART-NOTE-20261013-sn932-retroactive-review-closes-the-breach-on-the-record-the-defec",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-933",
+   "ib": "IB-SMART-NOTE-20261013-sn933-finish-and-transfer-the-mid-flight-collision-resolution-doct",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-933",
+   "ib": "IB-SMART-NOTE-20261013-sn933-finish-and-transfer-the-mid-flight-collision-resolution-doct",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-934",
+   "ib": "IB-SMART-NOTE-20261013-sn934-placed-is-not-law-no-lane-declares-hierarchy-unilaterally",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-934",
+   "ib": "IB-SMART-NOTE-20261013-sn934-placed-is-not-law-no-lane-declares-hierarchy-unilaterally",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-935",
+   "ib": "IB-SMART-NOTE-20261013-sn935-fencing-token-authority-binding-must-never-use-id",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-935",
+   "ib": "IB-SMART-NOTE-20261013-sn935-fencing-token-authority-binding-must-never-use-id",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-936",
+   "ib": "IB-SMART-NOTE-20261013-sn936-verification-artifacts-must-live-in-durable-paths-never-tmp",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-936",
+   "ib": "IB-SMART-NOTE-20261013-sn936-verification-artifacts-must-live-in-durable-paths-never-tmp",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-937",
+   "ib": "IB-SMART-NOTE-20261013-sn937-an-approval-comment-is-not-the-review-object-verify-the-revi",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-937",
+   "ib": "IB-SMART-NOTE-20261013-sn937-an-approval-comment-is-not-the-review-object-verify-the-revi",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-938",
+   "ib": "IB-SMART-NOTE-20261013-sn938-control-arm-trial-discipline-if-the-control-can-pass-without",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-938",
+   "ib": "IB-SMART-NOTE-20261013-sn938-control-arm-trial-discipline-if-the-control-can-pass-without",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-939",
+   "ib": "IB-SMART-NOTE-20261013-sn939-tests-that-can-t-fail-are-theater-sabotage-test-every-suite",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-939",
+   "ib": "IB-SMART-NOTE-20261013-sn939-tests-that-can-t-fail-are-theater-sabotage-test-every-suite",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-940",
+   "ib": "IB-SMART-NOTE-20261013-sn940-built-as-code-means-enforced-as-code-a-gate-that-can-t-fail",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-940",
+   "ib": "IB-SMART-NOTE-20261013-sn940-built-as-code-means-enforced-as-code-a-gate-that-can-t-fail",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-941",
+   "ib": "IB-SMART-NOTE-20261013-sn941-a-stale-ask-gets-a-delta-check-not-a-second-execution-verify",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-941",
+   "ib": "IB-SMART-NOTE-20261013-sn941-a-stale-ask-gets-a-delta-check-not-a-second-execution-verify",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-942",
+   "ib": "IB-SMART-NOTE-20261013-sn942-a-selector-that-never-calls-the-canonical-evaluator-is-a-sec",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-942",
+   "ib": "IB-SMART-NOTE-20261013-sn942-a-selector-that-never-calls-the-canonical-evaluator-is-a-sec",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-943",
+   "ib": "IB-SMART-NOTE-20261013-sn943-a-sign-off-without-demonstrated-understanding-is-a-fabricate",
+   "kind": "NO_CAPTURE"
+  },
+  {
+   "sn": "SN-943",
+   "ib": "IB-SMART-NOTE-20261013-sn943-a-sign-off-without-demonstrated-understanding-is-a-fabricate",
+   "kind": "NO_ENTRY"
+  },
+  {
+   "sn": "SN-NET-POWER-MAGIC-001",
+   "ib": "IB-SMART-NOTE-20261005-NET-POWER-MAGIC-001",
+   "kind": "NO_CAPTURE"
+  }
+ ]
+}

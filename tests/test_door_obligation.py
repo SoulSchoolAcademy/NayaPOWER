@@ -131,7 +131,11 @@ def make_root(tmp_path: Path) -> Path:
         "entries": [],
         "sequence_policy": {"human_id_format": "SN-###",
                             "next_sequence": 810},
-        "corpus_manifest_hash": "0" * 64,
+        # The true manifest of an empty entries array —
+        # snv2._corpus_manifest_hash([]) — so the fixture registry is
+        # manifest-clean and MANIFEST_STALE fires only on tampering.
+        "corpus_manifest_hash":
+            "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
     }), encoding="utf-8")
     (tmp_path / ".naya" / "capture").mkdir(parents=True)
     return tmp_path
@@ -424,3 +428,125 @@ def test_page_hash_stale_fires_on_dated_page_drift(tmp_path):
     assert proc.returncode == 1, proc.stdout
     out = json.loads(proc.stdout)
     assert "PAGE_HASH_STALE" in [d["kind"] for d in out["defects"]], out
+
+
+# ---------------------------------------------------------------------------
+# SN-4711 checker completion: corpus manifest + shrink-only ratchet
+# ---------------------------------------------------------------------------
+
+def _write_ratchet(root: Path, defects: list[dict]) -> Path:
+    p = root / "tools" / "door_obligation_grandfathered.json"
+    p.write_text(json.dumps({
+        "schema": "naya.door-obligation-grandfathered.v1",
+        "defects": defects,
+    }), encoding="utf-8")
+    return p
+
+
+def _allowances(root: Path) -> list[dict]:
+    """The (sn, ib, kind) allowances matching the root's current defects,
+    projected from a live checker run — the ratchet names defects, it
+    does not describe them."""
+    proc = run_tool(root, "--json")
+    out = json.loads(proc.stdout)
+    return [{"sn": d["sn"], "ib": d["ib"], "kind": d["kind"]}
+            for d in out["defects"]]
+
+
+def test_manifest_stale_fires_on_tampered_registry(tmp_path):
+    """The writer re-stamps corpus_manifest_hash on every publish, so a
+    registry edited without re-stamping is provably out-of-door. Flip
+    one entry field and leave the manifest: MANIFEST_STALE must fire.
+    Untampered, the same registry is manifest-clean."""
+    root = make_root(tmp_path)
+    write_page(root, PAGE_REL, DIALECT1)
+    proc = run_tool(root, "--fix", "--date", "2026-10-21")
+    assert proc.returncode == 0, proc.stdout + proc.stderr
+    proc = run_tool(root, "--json")
+    assert proc.returncode == 0, proc.stdout
+    assert "MANIFEST_STALE" not in \
+        [d["kind"] for d in json.loads(proc.stdout)["defects"]]
+    reg_path = root / ".naya" / "memory" / "smart-notes" / "index.json"
+    reg = json.loads(reg_path.read_text(encoding="utf-8"))
+    reg["entries"][0]["title"] += " (hand edit)"
+    reg_path.write_text(json.dumps(reg, indent=2), encoding="utf-8")
+    proc = run_tool(root, "--json")
+    assert proc.returncode == 1, proc.stdout
+    out = json.loads(proc.stdout)
+    assert "MANIFEST_STALE" in [d["kind"] for d in out["defects"]], out
+
+
+def test_grandfathered_defects_do_not_fail_the_run(tmp_path):
+    """A defect named in the shrink-only ratchet is reported as
+    GRANDFATHERED and tolerated; the run passes with it standing."""
+    root = make_root(tmp_path)
+    write_page(root, PAGE_REL, DIALECT1)
+    allowances = _allowances(root)
+    assert {a["kind"] for a in allowances} == {"NO_ENTRY", "NO_CAPTURE"}
+    _write_ratchet(root, allowances)
+    proc = run_tool(root, "--json")
+    assert proc.returncode == 0, proc.stdout
+    out = json.loads(proc.stdout)
+    assert out["defects"] == []
+    assert {g["kind"] for g in out["grandfathered"]} == \
+        {"NO_ENTRY", "NO_CAPTURE"}
+    assert out["ok"] is True
+
+
+def test_unlisted_defect_still_fails(tmp_path):
+    """Grandfathering is by exact (sn, ib, kind): an allowance for one
+    defect never absorbs another. A run whose defect set would GROW the
+    tolerated set fails on the unlisted defect."""
+    root = make_root(tmp_path)
+    write_page(root, PAGE_REL, DIALECT1)
+    allowances = [a for a in _allowances(root) if a["kind"] == "NO_ENTRY"]
+    _write_ratchet(root, allowances)
+    proc = run_tool(root, "--json")
+    assert proc.returncode == 1, proc.stdout
+    out = json.loads(proc.stdout)
+    assert [d["kind"] for d in out["defects"]] == ["NO_CAPTURE"]
+    assert [g["kind"] for g in out["grandfathered"]] == ["NO_ENTRY"]
+
+
+def test_ratchet_stale_fires_after_cure_until_shrunk(tmp_path):
+    """The shrink is part of the cure: once the fixer removes the
+    defects, their allowances are RATCHET_STALE until the ratchet file
+    shrinks in the same push; an emptied ratchet is clean."""
+    root = make_root(tmp_path)
+    write_page(root, PAGE_REL, DIALECT1)
+    _write_ratchet(root, _allowances(root))
+    proc = run_tool(root, "--fix", "--date", "2026-10-21")
+    assert proc.returncode == 0, proc.stdout + proc.stderr
+    proc = run_tool(root, "--json")
+    assert proc.returncode == 1, proc.stdout
+    out = json.loads(proc.stdout)
+    assert [d["kind"] for d in out["defects"]] == \
+        ["RATCHET_STALE", "RATCHET_STALE"]
+    _write_ratchet(root, [])
+    proc = run_tool(root, "--json")
+    assert proc.returncode == 0, proc.stdout
+    assert json.loads(proc.stdout)["defects"] == []
+
+
+@pytest.mark.skipif(shutil.which("git") is None, reason="git unavailable")
+def test_ratchet_grew_fires_on_uncommitted_addition(tmp_path):
+    """Adding an allowance is itself a defect: with the ratchet
+    committed as the baseline, an uncommitted addition reads
+    RATCHET_GREW against HEAD — the ratchet may only shrink."""
+    root = make_root(tmp_path)
+    write_page(root, PAGE_REL, DIALECT1)
+    ratchet = _write_ratchet(root, _allowances(root))
+    _git(root, "init", "-q")
+    _git(root, "config", "user.email", "fixture@example.invalid")
+    _git(root, "config", "user.name", "fixture")
+    _git(root, "add", "-A")
+    _git(root, "commit", "-qm", "fixture: ratchet baseline")
+    proc = run_tool(root, "--json")
+    assert proc.returncode == 0, proc.stdout
+    doc = json.loads(ratchet.read_text(encoding="utf-8"))
+    doc["defects"].append({"sn": "SN-9999", "ib": "", "kind": "NO_ENTRY"})
+    ratchet.write_text(json.dumps(doc), encoding="utf-8")
+    proc = run_tool(root, "--json")
+    assert proc.returncode == 1, proc.stdout
+    out = json.loads(proc.stdout)
+    assert "RATCHET_GREW" in [d["kind"] for d in out["defects"]], out
