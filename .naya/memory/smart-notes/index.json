@@ -80002,6 +80002,43 @@
         "Lesson",
         "Knowledge"
       ]
+    },
+    {
+      "smart_note_id": "SN-4716",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4716-a-chain-with-no-head-verifies-nothing",
+      "slug": "a-chain-with-no-head-verifies-nothing",
+      "title": "A Chain With No Head Verifies Nothing",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/GOVERNANCE/SN-4716/IB-SMART-NOTE-20261124-sn4716-a-chain-with-no-head-verifies-nothing.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/GOVERNANCE/SN-4716/IB-SMART-NOTE-20261124-sn4716-a-chain-with-no-head-verifies-nothing.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/GOVERNANCE/SN-4716/IB-SMART-NOTE-20261124-sn4716-a-chain-with-no-head-verifies-nothing.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4716-a-chain-with-no-head-verifies-nothing.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "GOVERNANCE",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T16:27:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "149c7c53a3a16cf93dffa9593f51891777a9c0a06e55e7a5bdf9b7021def4ea7",
+      "content_hash": "45eca34803d2504f17e3d161d2be392524ab536180f930b570808307601e4525",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "6fa11b7a3bd316335b1285c1ee1729860a2d5b7a54b8bbfe27ba1e7a9051a220",
+      "one_line": "The Sealed Door was built in five slices and every slice verified — the door mints a receipt chain, the checker verifies it, the brain index excludes whatever fails. Then the graduation red-team attacked the finished system and it FAILED: a hand-assembled filing — page, capture, and registry entry with every hash correctly recomputed and no door stamp — registered and surfaced everywhere with zero defects (verdict on board #3352, comment 7137580012). The root cause is one sentence: the receipt chain had no head. The live registry held zero stamped entries — the chain-minting door had never once been used in production — so the chain check never engaged, and an unstamped append was indistinguishable from the 3,444 legacy entries it hid among. Every other check passed because the hash formulas are public by design. The lesson generalizes past this door: an enforcement mechanism that has never been genuinely used does not protect anything. Its checks do not merely weaken — they silently never run, and the system reports green. Activation by a first real filing is part of the build, not an afterthought. This note is that activation: the first genuine filing through the chain-minting door, chaining to SN-4712's tail, so that from this entry forward an unstamped append reads CHAIN_BROKEN.",
+      "topics": [
+        "door-enforcement",
+        "smart-notes",
+        "registry",
+        "verification",
+        "lesson",
+        "governance"
+      ]
     }
   ],
   "sequence_policy": {
@@ -80012,5 +80049,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "939098c24256811c67846befe8e88790b469978d3575064063e323608790dd3a"
+  "corpus_manifest_hash": "24261b2ed6bb1ba8f49659331b0f9c2858db7cdee30b1ac86239e66b55f73011"
 }
