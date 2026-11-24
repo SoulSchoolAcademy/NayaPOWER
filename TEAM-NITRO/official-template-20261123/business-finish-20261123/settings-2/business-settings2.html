@@ -17474,7 +17474,8 @@ function SettingsRoom(){
       const sbHead=document.createElement('div');
       sbHead.style.cssText='display:flex;justify-content:space-between;align-items:center;gap:16px';
       sbHead.innerHTML='<span style="'+LBL_STYLE+'">Smart Bar</span>';
-      sbHead.appendChild(seg([{label:'On',value:'1'},{label:'Off',value:'0'}],(window.NayaSmartBar&&window.NayaSmartBar.bottomBarOn())?'1':'0',function(v){if(window.NayaSmartBar){window.NayaSmartBar.setBottomBar(v==='1');}}));
+      /* SERVING FIX 2026-11-24 (D2): the v4 Smart Bar change removed the mount call, so window.NayaSmartBar.bottomBarOn/setBottomBar were never attached — the unguarded read threw on every re-render and the room showed "This room stumbled". Read guarded (API when present, else the stored setting, default on — the mwSystemBottomBar pattern); write guarded the same way (API when present, else store the choice). */
+      sbHead.appendChild(seg([{label:'On',value:'1'},{label:'Off',value:'0'}],(function(){try{if(window.NayaSmartBar&&typeof window.NayaSmartBar.bottomBarOn==='function')return !!window.NayaSmartBar.bottomBarOn();}catch(e){}try{var _sb=JSON.parse(localStorage.getItem('naya.smartbar.settings.v1')||'{}');return _sb.bottomBar!==false;}catch(e){return true;}})()?'1':'0',function(v){try{if(window.NayaSmartBar&&typeof window.NayaSmartBar.setBottomBar==='function'){window.NayaSmartBar.setBottomBar(v==='1');return;}}catch(e){}try{var _sb2=JSON.parse(localStorage.getItem('naya.smartbar.settings.v1')||'{}');_sb2.bottomBar=(v==='1');localStorage.setItem('naya.smartbar.settings.v1',JSON.stringify(_sb2));}catch(e2){}}));
       sbRow.appendChild(sbHead);
       const sbSub=document.createElement('p');
       sbSub.style.cssText=MUTED_STYLE+';margin-top:8px';
@@ -19540,6 +19541,9 @@ window.NayaSmartBar = {
     };
   }
 };
+/* SERVING FIX 2026-11-24 (D2): the v4 Smart Bar change removed the mount call, so the settings API attached inside mount() (bottomBarOn/setBottomBar/...) was never attached and the Hub Settings room crashed on re-render. Attach the bottom-bar read/write here, at parse time, WITHOUT mounting any bar — no top or bottom bar is painted (the v4 removal stands); only the stored setting is read and written, through this module's own getSettings/setBottomBar. */
+NayaSmartBar.bottomBarOn = function(){ return getSettings().bottomBar; };
+NayaSmartBar.setBottomBar = setBottomBar;
 })();
 </script>
 <script>
@@ -22342,7 +22346,7 @@ body:has([data-os-view="settings"].on) .naya-ask-room .side-topics{display:none!
 <div class="ph-card fr-frame-on" id="ps-install" style="--ac:#0f52ba;--fr-ac:#0f52ba;">
 <div class="ps-head"><button class="ps-back" type="button" data-ps-back aria-label="Back">←</button><h3 class="ps-title">Install on your phone</h3><button class="ps-x" type="button" data-ps-back aria-label="Close">✕</button></div>
 <p class="ps-note">Put this page on your home screen — it opens like any other app, no browser bars.</p>
-<div class="ps-preview"><img id="ps-install-icon" src="https://raw.githubusercontent.com/SoulSchoolAcademy/NayaPOWER/business/finish-20261123/TEAM-NITRO/official-template-20261123/business-finish-20261123/settings-2/naya-icon-512.png" alt="The icon this page will show on your phone"><div><b>The icon on your phone</b><span>The Naya emblem — the N icon, ready for your home screen.</span></div></div>
+<div class="ps-preview"><img id="ps-install-icon" src="https://raw.githubusercontent.com/SoulSchoolAcademy/NayaPOWER/business/finish-20261123/TEAM-NITRO/official-template-20261123/business-finish-20261123/settings-2/naya-icon-512.png" alt="The icon this page will show on your phone"><div><b>The icon on your phone</b><span>The red-ball N icon, ready for your home screen.</span></div></div>
 <p class="ps-note" id="ps-install-state">Checking install state…</p>
 <button class="ph-connect" id="ps-install-go" type="button">Install this app</button>
 <p class="ps-status" id="ps-install-status"></p>
@@ -27979,8 +27983,13 @@ function wallCard(j, iso, pid, idx){
     if (VIEWS.indexOf(bootView)<0) bootView='home';
     var hash=(location.hash||'').replace('#','');
     var hashParts=hash.split('/'); var hashView=hashParts[0]; var hashSec=hashParts[1]||'';
-    try { history.replaceState({osView:bootView}, '', location.pathname+location.search); } catch(e){}
+    /* SERVING FIX 2026-11-24 (D1): a #/hub/* deep link is the Router's, not a Personal view's — hashView comes out '' (not in VIEWS), so the old replaceState stripped the hash outright and, firing no hashchange, the Router never re-rendered: the deep-link state was gone on load. Keep the hash (skip the strip) and bring the room the Router already rendered at boot into view — it sits below the Personal cover, ~985px under the fold on the phone. */
+    var isHubHash=(location.hash||'').indexOf('#/hub')===0;
+    if (!isHubHash) { try { history.replaceState({osView:bootView}, '', location.pathname+location.search); } catch(e){} }
     if (VIEWS.indexOf(hashView)>=0 && hashView!==bootView) showView(hashView, true);
+    /* SERVING FIX 2026-11-24 (landing, screen): the settings screens hide/show on #settings[data-ps-screen] — show('home') is what the gear tap produces, via a MutationObserver that fires when .on is toggled AFTER its script parses. On a cold #settings load the back-seed toggles .on BEFORE that observer exists, so the observer never fires and the menu card (#ps-home) stays display:none while every other card stands exposed — a state the designed entry never produces. Set the home screen here, exactly what show('home') sets and nothing more; the observer no-ops on the already-set attribute, and the owner gate is untouched (the slideshow card stays os-own-only). */
+    if (hashView==='settings') { try{ var _ss=document.getElementById('settings'); if (_ss && !_ss.getAttribute('data-ps-screen')) _ss.setAttribute('data-ps-screen','home'); }catch(e){} }
+    if (isHubHash) { setTimeout(function(){ try{ var _hm=document.querySelector('#app .main')||document.getElementById('app'); if (_hm) _hm.scrollIntoView({behavior:'smooth', block:'start'}); }catch(e){} }, 350); }
     /* FRAME-FIX4 2026-11-19 (F1): scroll landings. The Hub lands a composer
        arrival on '#home' and an About arrival on '#about' - but '#home' alone
        cannot tell a composer landing from a plain arrival (the Hub sends the
@@ -27998,6 +28007,9 @@ function wallCard(j, iso, pid, idx){
         var _tries=0; (function _openComposer(){ try{ if (window.fcOpenCreator) { window.fcOpenCreator(kind); return; } }catch(e){} if (++_tries < 20) setTimeout(_openComposer, 250); })(); /* fcOpenCreator is defined in a later script than this boot block, so retry until it exists (max ~5s) instead of firing once and missing. */
       } else if (hashView==='about') {
         setTimeout(function(){ try{ var a=document.getElementById('about'); if (a) a.scrollIntoView({behavior:'smooth', block:'start'}); }catch(e){} }, 350);
+      } else if (hashView==='settings') {
+        /* SERVING FIX 2026-11-24 (landing): showView('settings') above opens the Personal Settings view and scrolls to the top — but the view itself sits below the in-flow Hub outlet (#app, min-height 100vh), so the first screen would still be the Hub feed. Bring the settings section itself into view, same 350ms pattern as #about. */
+        setTimeout(function(){ try{ var _st=document.getElementById('settings'); if (_st) _st.scrollIntoView({behavior:'smooth', block:'start'}); }catch(e){} }, 350);
       }
     })();
   })();
@@ -30802,6 +30814,9 @@ window.NayaSmartBar = {
     };
   }
 };
+/* SERVING FIX 2026-11-24 (D2): the v4 Smart Bar change removed the mount call, so the settings API attached inside mount() (bottomBarOn/setBottomBar/...) was never attached and the Hub Settings room crashed on re-render. Attach the bottom-bar read/write here, at parse time, WITHOUT mounting any bar — no top or bottom bar is painted (the v4 removal stands); only the stored setting is read and written, through this module's own getSettings/setBottomBar. */
+NayaSmartBar.bottomBarOn = function(){ return getSettings().bottomBar; };
+NayaSmartBar.setBottomBar = setBottomBar;
 })();
 </script>
 <script>
