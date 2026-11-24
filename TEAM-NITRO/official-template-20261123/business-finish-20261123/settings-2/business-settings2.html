@@ -4143,7 +4143,163 @@ body:not(.is-owner).pp-connections [data-os-view="people"],body:not(.is-owner).p
 body:not(.is-owner).pp-lists [data-os-view="lists"],body:not(.is-owner).pp-lists [data-os-go="lists"],body:not(.is-owner).pp-lists .ph-navtab[data-view="lists"]{display:none!important}
 body:not(.is-owner).pp-memberships [data-os-view="memberships"],body:not(.is-owner).pp-memberships [data-os-go="memberships"],body:not(.is-owner).pp-memberships .ph-navtab[data-view="memberships"]{display:none!important}
 </style>
-</head><body class="os-bottom-hidden">
+    <!-- FRAME FIX 2026-11-24: the calendar's font stack (Marcellus headline) — verbatim from https://calendar.nayanet.app/ head -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Archivo:wght@500;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet" />
+    <!-- FRAME FIX 2026-11-24: calendar frame chrome, harvested verbatim — see frame-harvest.css (sha256 e9e16fa76bd210761d7799ae0a6b7dc66762cca4dba95b19c16bd79cc875be83) -->
+    <style id="fr-cal-frame-harvest">
+.royal-frame{position:fixed;inset:0;z-index:40;pointer-events:none;
+  border:12px solid transparent;
+  border-image:linear-gradient(135deg,#f2f2f5 0%,#c8ccd6 22%,#7a7e88 48%,#e8e8ec 68%,#9a9ea8 84%,#f2f2f5 100%) 1;
+  box-shadow:inset 0 0 0 2px var(--dc,#3fb8ff),inset 0 0 26px color-mix(in srgb,var(--dc,#3fb8ff) 20%,transparent)}
+.royal-frame .rf-c{position:absolute;width:12px;height:12px;transform:rotate(45deg);
+  background:conic-gradient(from 210deg,#ffffff 0%,#d9d9de 18%,#8e24aa 38%,#e8e8ec 55%,#ffffff 72%,#9a9ea8 88%,#ffffff 100%);
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 0 10px color-mix(in srgb,var(--dc,#3fb8ff) 55%,transparent),inset 0 1px 2px rgba(255,255,255,.9);
+  animation:rfshimmer 12s ease-in-out infinite alternate}
+.royal-frame .rf-c.tl{top:-12px;left:-12px}
+.royal-frame .rf-c.tr{top:-12px;right:-12px}
+.royal-frame .rf-c.bl{bottom:-12px;left:-12px}
+.royal-frame .rf-c.br{bottom:-12px;right:-12px}
+@keyframes rfshimmer{from{filter:brightness(.92)}to{filter:brightness(1.12)}}
+@media(max-width:740px){.royal-frame{border-width:8px}
+  .royal-frame .rf-c{width:8px;height:8px}
+  .royal-frame .rf-c.tl{top:-8px;left:-8px}
+  .royal-frame .rf-c.tr{top:-8px;right:-8px}
+  .royal-frame .rf-c.bl{bottom:-8px;left:-8px}
+  .royal-frame .rf-c.br{bottom:-8px;right:-8px}}
+ ============ V6 — CALENDAR ALIGNMENT (Shawn 2026-11-18 22:04Z; day view is the page) ============ */
+/* THE KINGDOM BORDER — the portal art lives ON the border, all the way around.
+   96px desktop / 64px tablet / 32px phone; never under 24, never over 96.
+   The border is part of the interface: screens sit INSIDE it, nothing under it. */
+:root{--bw:96px}
+@media(max-width:1024px){:root{--bw:64px}}
+@media(max-width:560px){:root{--bw:32px}}
+.royal-frame{border:0!important;border-image:none!important;box-shadow:none!important}
+.royal-frame::after{content:"";position:absolute;inset:var(--bw,96px);border:2px solid var(--dc,#3fb8ff);border-radius:4px;box-shadow:0 0 24px color-mix(in srgb,var(--dc,#3fb8ff) 35%,transparent),inset 0 0 48px rgba(5,6,7,.85);pointer-events:none}
+.royal-frame .rf-c,.royal-frame .rf-seal{position:absolute;width:var(--em);height:var(--em);border-radius:50%;object-fit:contain;background:transparent!important;border:none!important;box-shadow:0 4px 12px rgba(0,0,0,.6);animation:none!important}
+.royal-frame .rf-c.tl{top:calc(var(--bw,96px)/2 - var(--em)/2);left:calc(var(--bw,96px)/2 - var(--em)/2);transform:rotate(135deg)}
+.royal-frame .rf-c.tr{top:calc(var(--bw,96px)/2 - var(--em)/2);right:calc(var(--bw,96px)/2 - var(--em)/2);transform:rotate(225deg)}
+.royal-frame .rf-c.bl{bottom:calc(var(--bw,96px)/2 - var(--em)/2);left:calc(var(--bw,96px)/2 - var(--em)/2);transform:rotate(45deg)}
+.royal-frame .rf-c.br{bottom:calc(var(--bw,96px)/2 - var(--em)/2);right:calc(var(--bw,96px)/2 - var(--em)/2);transform:rotate(-45deg)}
+.royal-frame .rf-seal{left:calc(50% - var(--em)/2)}
+.royal-frame .rf-seal.top{top:calc(var(--bw,96px)/2 - var(--em)/2)}
+.royal-frame .rf-seal.bottom{bottom:calc(var(--bw,96px)/2 - var(--em)/2)}
+* ============ V6.1 — LIVE-PROBE FIXES (maker's own eye, staged v6 build, 1920px) ============
+   The probe caught three geometry errors in the v6 frame/header. All three are
+   position arithmetic, not taste — fixed here, measured again after filing.
+   (a) The frame's abs-positioned children position against the frame's PADDING
+   box (which starts INSIDE the 96px border), so the V6 offsets landed 96px too
+   far in: corner emblems and seals sat inside the content, the top seal over
+   the clock tiles, the bottom seal over "Keep reading", and the inner rim
+   floated at inset 192px instead of hugging the content edge. The correction
+   is -var(--bw)/2 - var(--em)/2 (centre the emblem ON the ring) and inset:0
+   for the rim (the padding box IS the content edge).
+   (b) The wide BACK TO MONTH pill (absolute, top-left) covered "Wedne" of the
+   weekday: the headliner grid's margin was sized for a 46px circle. Desktop
+   now gives the headliner symmetric 260px margins — the clock stays dead
+   centre, the left cell wraps to two lines (square+weekday / date pill, the
+   wrap the base flex already designed for) and clears the pill. The pill's
+   letter-spacing tightens .14em -> .06em so it ends before the grid starts.
+   (c) At <=1024px the pill goes in-flow on its own row above the headline
+   (flex column daybar) so the words show at every width with no overlap. */
+.royal-frame::after{inset:0!important}
+* ============ V6.2 — CALC GOTCHA FIX (maker's own eye, staged v6.1 build) ============
+   v6.1's corner/seal offsets NEVER APPLIED: all six emblems fell to their
+   static position (measured centre 128,128 at 1920 — the padding-box origin)
+   instead of the ring (48,48). Root cause, proven by the bytes: the offset
+   was written calc(-var(--bw,96px)/2 - var(--em)/2). In CSS tokenization a
+   leading "-var(" is NOT "minus + var()" — it is a FUNCTION token named
+   "-var" (identifiers may start with a hyphen), an unknown function, so the
+   calc is invalid at computed-value time; the !important invalid declaration
+   still wins the cascade and then resolves to the property's initial value
+   (top:auto). The valid V6 calc underneath it lost. The seals proved it:
+   their left:calc(50% - var(--em)/2) (no leading minus) DID apply (x=960).
+   Fix: literal offsets, no calc at all — they cannot fail to parse.
+   Arithmetic (emblem centred ON the ring): -(bw/2 + em/2); em = max(28,
+   bw*.66): desktop bw 96 em 63.36 -> -79.68 ~ -80px; tablet bw 64 em 42.24
+   -> -53.12 ~ -53px; phone bw 32 em 28 -> -30px. */
+.royal-frame .rf-c.tl{top:-80px!important;left:-80px!important}
+.royal-frame .rf-c.tr{top:-80px!important;right:-80px!important}
+.royal-frame .rf-c.bl{bottom:-80px!important;left:-80px!important}
+.royal-frame .rf-c.br{bottom:-80px!important;right:-80px!important}
+.royal-frame .rf-seal.top{top:-80px!important}
+.royal-frame .rf-seal.bottom{bottom:-80px!important}
+@media(max-width:1024px){.royal-frame .rf-c.tl{top:-53px!important;left:-53px!important}.royal-frame .rf-c.tr{top:-53px!important;right:-53px!important}.royal-frame .rf-c.bl{bottom:-53px!important;left:-53px!important}.royal-frame .rf-c.br{bottom:-53px!important;right:-53px!important}.royal-frame .rf-seal.top{top:-53px!important}.royal-frame .rf-seal.bottom{bottom:-53px!important}}
+@media(max-width:560px){.royal-frame .rf-c.tl{top:-30px!important;left:-30px!important}.royal-frame .rf-c.tr{top:-30px!important;right:-30px!important}.royal-frame .rf-c.bl{bottom:-30px!important;left:-30px!important}.royal-frame .rf-c.br{bottom:-30px!important;right:-30px!important}.royal-frame .rf-seal.top{top:-30px!important}.royal-frame .rf-seal.bottom{bottom:-30px!important}}
+* ============ BORDER EYE-FIX 2 (captain's cloud-browser eye on round 1, 2026-11-19 ~00:14Z; GOES BACK x5) ============
+   ROUND 1 PASSED, DO NOT TOUCH: ONE winged crystal N dead centre top + ONE dead centre bottom
+   (~240px panel, centre x=960), and the frame crisp at desktop 1x (band 0.60, N 0.41, lossless PNG).
+   WHAT THE EYE SENT BACK, AND THE FIX, ITEM BY ITEM:
+   (a) SIDES BARE — the main defect. Top/bottom ornate ~96px, left/right ornate 0px at mid-height
+       (y400-600 plain black mat). DIAGNOSIS FIRST (work/analyze2.py): the side tiles EXIST in the bytes
+       (0-diff exact 90deg rotation of the band tile, 4 tiles @1080h, width exactly var(--bw)) and the
+       side ASSET is dense along its whole length (every 25px row 207-844 bright px, every 10px column
+       64-858); the geometry is the symmetric twin of the WORKING top edge (top/bottom/width all
+       var(--bw) with fallbacks, :root defines --bw); the staged URL serves byte-exact; no later rule
+       overrides .rf-es (5 occurrences in the whole file); nothing in the bytes covers the sides
+       (frame z-40, .screen inset by var(--bw) on all sides). The ONE remaining difference from the
+       working top edge is the background declaration itself: `background-size:100% auto` +
+       `background-repeat:no-repeat round` (top: `auto 100%` + `round no-repeat`, which paints). The fix
+       removes that combination entirely: explicit tile size var(--bw) x calc(var(--bw)*2.1875) — 96x210
+       desktop, the band tile's own 0.60 scale — + plain `repeat-y`, and the side divs run FULL height
+       (top:0;bottom:0) under the corner blocks. No `round`, no percentage size, no clipped tile end
+       ever visible. Acceptance is the eye seeing ~96px of ornate band on the left and right at
+       mid-height — the probe samples those pixels.
+   (b) CORNER SEALS CLIPPED — the 300x300 crop cut the seal where it flows into the bands (bright px
+       on the crop's band-facing edges: TL right 16, TR left 18, BL right 14, BR left 14; outer edges
+       ~0) and the motif's broad diagonal sweep runs past 300px (ASCII maps, work/analyze4.py; below
+       y170 / right of x130 the TL interior is black — the ornament is a corner composition). New
+       crops 360x360 (seal + 60px of each adjoining band), inner edges faded to black over 24px,
+       rendered 88x88 centred (91.67%) inside the 96px corner div: the whole seal visible with ~7px
+       margin from the viewport edge, nothing touching it. The bands run UNDER the corner blocks now
+       (all four edges full-bleed: top/bottom left:0 right:0, sides top:0 bottom:0), so the joint is a
+       corner block capping the moulding, never a butt cut mid-motif. SCALE COST, STATED PLAINLY: seals
+       0.32 -> 360->88 = 0.24. The brief orders whole + margin; that order wins over max scale for the
+       seals. Band (0.60) and N (0.41) scales are untouched. (The round-1 comment's stale figure is
+       corrected here: slice 300 rendered ~51px of ornament + ~45px of black mat on top — checker
+       measured 51+45.)
+   (c) N PANEL SEAMS — the N div's opaque black 16px edge fades read as hard vertical seams at
+       x~840/~1080. The N's crop, scale and position PASSED and stay: the asset is reused
+       byte-identical, the div is untouched. The BAND dissolves around the emblem instead: a mask on
+       .rf-et hides the band under the N panel and fades it out over 48px on each side (calc stops
+       from the N's true half-width, bw*632/252/2, so it holds at every viewport width). The pattern
+       never cuts — it dissolves into the black clearing around the emblem. The context-crop
+       alternative was rejected on purpose: at the band's 0.60 scale the 600px-wide wings render 360px
+       wide, which would force the N panel 1.5x wider than the size the eye passed.
+   (d) PURPLE RIM, UNIFIED — .rf-rim moves onto the SAME inset as the day-colour rim
+       (inset var(--bw)), thickened to 3px (the laws' edge-bar range, 2-3px) with a stronger glow
+       (24px, .55), so purple is visibly present on the frame itself, not only a thin interface line.
+       The v6.2 ::after rim loses its border (border:none) and keeps only its day-colour outer glow +
+       inward dark fade: the day colour is the glow behind the purple line, never a second competing
+       line. ONE rim, purple leading.
+   (e) THE MOVED BUTTON — its home made intentional without moving it back onto the frame: an 80px
+       obsidian jewel disc (was a 64px transparent ghost whose visible icon was only 46px), purple
+       2px rim, 56px icon, still 16px clear of the frame on both sides (12px phone, 40px disc, 28px
+       icon). Same position rule, same hover lift/press, same icon, same z-index. (Honest note: the
+       L1683 white hover border never rendered under L1928's border:none!important — the rim is
+       purple at rest and on hover now; nothing that ever rendered is lost.)
+   The six v6.2 imgs stay gone; their old positioning rules match nothing and are left as history. */
+.royal-frame .rf-c,.royal-frame .rf-seal{display:none!important}
+.royal-frame::after{inset:var(--bw,96px)!important}
+.royal-frame::after{border:none!important}
+.royal-frame .rf-et{position:absolute;left:0;right:0;height:var(--bw,96px);background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/master-frame-band.png&ref=calendar/day-followon-live-20261119&cb=6ce94b251244eefa156ff5b91b8cbcd123cbc323&t=1795053268);background-size:auto 100%;background-repeat:round no-repeat;background-position:0 0;pointer-events:none;-webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(50% - var(--bw,96px)*1.254 - 48px),transparent calc(50% - var(--bw,96px)*1.254),transparent calc(50% + var(--bw,96px)*1.254),#000 calc(50% + var(--bw,96px)*1.254 + 48px),#000 100%);mask-image:linear-gradient(90deg,#000 0,#000 calc(50% - var(--bw,96px)*1.254 - 48px),transparent calc(50% - var(--bw,96px)*1.254),transparent calc(50% + var(--bw,96px)*1.254),#000 calc(50% + var(--bw,96px)*1.254 + 48px),#000 100%)}
+.royal-frame .rf-et.top{top:0}
+.royal-frame .rf-et.bottom{bottom:0}
+.royal-frame .rf-es{position:absolute;top:0;bottom:0;width:var(--bw,96px);background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/master-frame-band-side.png&ref=calendar/day-followon-live-20261119&cb=b8eabfdaa3fbe95dea6e0d7d0cc4fef6068a848b&t=1795053268);background-size:var(--bw,96px) calc(var(--bw,96px)*2.1875);background-repeat:repeat-y;background-position:0 0;pointer-events:none}
+.royal-frame .rf-es.left{left:0}
+.royal-frame .rf-es.right{right:0}
+.royal-frame .rf-rim{position:absolute;inset:var(--bw,96px);border:3px solid #8e24aa;border-radius:4px;box-shadow:0 0 24px rgba(142,36,170,.55);pointer-events:none}
+.royal-frame .rf-corner{position:absolute;width:var(--bw,96px);height:var(--bw,96px);background-size:91.67% 91.67%;background-position:center center;background-repeat:no-repeat;pointer-events:none}
+.royal-frame .rf-corner.tl{top:0;left:0;background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/master-frame-corner2-tl.png&ref=calendar/day-followon-live-20261119&cb=8a73dd3f9fe7cb945cb0a3884f78f951409f7fc1&t=1795053268)}
+.royal-frame .rf-corner.tr{top:0;right:0;background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/master-frame-corner2-tr.png&ref=calendar/day-followon-live-20261119&cb=d6cf11edac5598ea857485b2f5307f660b3284c5&t=1795053268)}
+.royal-frame .rf-corner.bl{bottom:0;left:0;background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/master-frame-corner2-bl.png&ref=calendar/day-followon-live-20261119&cb=40ceca0682df19903cc81d055f6cebcc4100bb6b&t=1795053268)}
+.royal-frame .rf-corner.br{bottom:0;right:0;background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/master-frame-corner2-br.png&ref=calendar/day-followon-live-20261119&cb=b96ada21c0113e73dd1749954f8559498529a3cb&t=1795053268)}
+.royal-frame .rf-n{position:absolute;top:0;left:50%;transform:translateX(-50%);height:var(--bw,96px);width:calc(var(--bw,96px)*632/252);background-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/master-frame-n.png&ref=calendar/day-followon-live-20261119&cb=c5b80e13821574068ddb980b4ee26ee0ee7d874a&t=1795053268);background-size:100% 100%;background-repeat:no-repeat;pointer-events:none}
+.royal-frame .rf-n.bottom{top:auto;bottom:0}
+    </style>
+  </head><body class="os-bottom-hidden">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><radialGradient id="r5DotGrad" cx="35%" cy="30%" r="80%"><stop offset="0%" stop-color="#ffffff"/><stop offset="45%" stop-color="#ffffff"/><stop offset="100%" stop-color="#6d28d9"/></radialGradient></defs></svg>
 <!-- SMART-BAR-SYSTEM v1.0: top mount -->
 <!-- ROUND 6 (2026-11-12, Shawn 03:43Z): the top Smart Bar is gone from this page — the cover is the top now, and the bottom bar stays. The search level stands alone below: it is the popup search's container (open-on-purpose, never a bar), and the below-cover search row drives its machinery through the bridge. -->
@@ -22333,6 +22489,7 @@ button.os-ld-node .os-ld-n{
 <style id="r2-7a-fix">/* ROUND 2 (2026-11-20, eye go-back 5 / 7a): the Ask Naya room's fixed side-topics (EXPLORE/DISCOVER pills, z-index 25 desktop / 60 mobile) rendered on top of the Settings section as it scrolled beneath, covering "Close settings" and "Go to Home Hub". While the Settings view is open, the pills hide. Scoped by the view's own .on class, so it restores itself when Settings closes. */
 body:has([data-os-view="settings"].on) .naya-ask-room .side-topics{display:none!important}</style>
 <div class="ph-sec os-view" id="settings" data-os-view="settings" data-block="settings">
+<div class="royal-frame" aria-hidden="true"><div class="rf-et top"></div><div class="rf-et bottom"></div><div class="rf-es left"></div><div class="rf-es right"></div><div class="rf-rim"></div><div class="rf-corner tl"></div><div class="rf-corner tr"></div><div class="rf-corner bl"></div><div class="rf-corner br"></div><div class="rf-n top"></div><div class="rf-n bottom"></div></div>
 
 <div class="ph-card fr-frame-on" id="ps-home" style="--ac:#8e24aa;--fr-ac:#8e24aa;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#8e24aa">✦</span> <span>Page settings</span></h3>
@@ -53053,4 +53210,826 @@ document.addEventListener('click', function(e){
   if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',bind);}else{bind();}
 })();
 </script>
+  <!-- FRAME FIX 2026-11-24: settings stage (framed viewport, smart tabs, i-button, pager) -->
+  <style id="fr-frame-fix-20261124">
+/* ============================================================================
+   FRAME FIX 2026-11-24 — Settings inside the calendar frame
+   ----------------------------------------------------------------------------
+   LAW: the calendar frame is harvested byte-identical (style
+   #fr-cal-frame-harvest + the royal-frame div, first child of #settings).
+   This sheet only styles the SETTINGS STAGE: when the settings view is open
+   it IS the page — a fixed, full-viewport framed stage, everything inside
+   the screenshot viewport, phone 390x844 first, then desktop.
+   Type law 25/19/17, nothing under 17px, no grey text, Marcellus headlines
+   (the calendar's font link is loaded in <head> beside the frame harvest).
+   Real objects: obsidian inside, white as a real object, white steady
+   frame edge (the harvested chrome), elevation everywhere, alive on hover,
+   breathing on touch (scale .97 press).
+   ========================================================================== */
+
+/* --- 1. THE STAGE ------------------------------------------------------- */
+body.fr-settings-open{overflow:hidden}
+body.fr-settings-open #settings{
+  position:fixed;inset:0;z-index:400;margin:0;
+  display:flex!important;flex-direction:column;justify-content:flex-start;gap:8px;
+  box-sizing:border-box;padding:var(--bw,96px)!important;--dc:#8e24aa;
+  background:#050507;overflow:hidden}
+body.fr-settings-open #settings>.ph-sec-t{display:none}
+/* The Dashboard's corner control (bottom-bar hide, ▴/▾) is the underlying
+   page's chrome — in settings mode it floats over the frame and reads as
+   a scroll arrow (the tell in Shawn's screenshot). Hidden here only. */
+body.fr-settings-open #os-b3-hide{display:none!important}
+body.fr-settings-open #settings .fr-set-tabs{order:1;flex:0 0 auto;margin:0;padding:2px 2px 4px}
+/* The step nav (label + Back/Next) is a THIRD navigation row for the same
+   sections the smart tabs already switch — hiding it buys the budget the
+   question group needs to fit whole. The tabs are the section navigation
+   (sharpening 7); the pager is the page navigation; Close exits. */
+body.fr-settings-open #settings .fr-set-nav{display:none!important}
+body.fr-settings-open #settings #frSubNav{order:3;flex:0 0 auto;margin:0}
+body.fr-settings-open #settings #frFramePager{order:3;flex:0 0 auto;margin:0}
+body.fr-settings-open #settings>.ph-card{order:4;flex:0 0 auto;margin:0;padding:14px;overflow:hidden}
+body.fr-settings-open #settings>#ps-back-profile{order:5;flex:0 0 auto;margin:0;padding:10px 16px;min-height:0;line-height:1.3;font-size:17px}
+body.fr-settings-open #settings>.ph-actions{order:6;flex:0 0 auto;margin:0}
+/* Center a readable column on wide screens: the question frame takes center
+   stage, dead center — never a stretched dark slab. Phone is unaffected. */
+body.fr-settings-open #settings>.ph-card,
+body.fr-settings-open #settings .fr-set-tabs,
+body.fr-settings-open #settings .fr-set-nav,
+body.fr-settings-open #settings #frSubNav,
+body.fr-settings-open #settings #frFramePager,
+body.fr-settings-open #settings>#ps-back-profile,
+body.fr-settings-open #settings>.ph-actions{
+  width:100%;max-width:760px;align-self:center}
+/* The pager nav (reuses the .fr-sub-btn / .fr-sub-label language). */
+body.fr-settings-open #settings #frFramePager{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:8px;background:#050607;border:1.5px solid rgba(255,255,255,.25);
+  border-radius:16px;box-sizing:border-box}
+body.fr-settings-open #settings #frFramePager[hidden]{display:none}
+body.fr-settings-open #settings #frFramePager .fr-sub-btn{
+  padding:8px 14px;min-height:0;line-height:1.25;background:#050607;color:#fff;
+  border:1.5px solid var(--sc,#8e24aa);border-radius:999px;
+  font-size:17px;font-weight:700;cursor:pointer;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 6px 16px rgba(0,0,0,.5);
+  transition:transform .18s,box-shadow .2s}
+body.fr-settings-open #settings #frFramePager .fr-sub-prev{--sc:#0f52ba}
+body.fr-settings-open #settings #frFramePager .fr-sub-next{--sc:#8e24aa}
+body.fr-settings-open #settings #frFramePager .fr-sub-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 0 20px -4px var(--sc,#8e24aa),0 10px 20px rgba(0,0,0,.55)}
+body.fr-settings-open #settings #frFramePager .fr-sub-btn:active{transform:scale(.97)}
+body.fr-settings-open #settings #frFramePager .fr-sub-btn:disabled{opacity:.45;cursor:default;transform:none}
+body.fr-settings-open #settings #frFramePager .fr-sub-label{font-size:17px;font-weight:700;color:#fff}
+body.fr-settings-open #settings>.ph-actions .ph-msg{
+  width:100%;text-align:center;font-size:17px;padding:12px 16px;
+  border-radius:999px;transition:transform .18s,box-shadow .2s}
+body.fr-settings-open #settings>.ph-actions .ph-msg:active{transform:scale(.97)}
+
+/* --- 2. THE CARD AS A REAL FRAMED OBJECT -------------------------------- */
+body.fr-settings-open #settings>.ph-card{
+  border:2px solid rgba(255,255,255,.85);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -4px 12px rgba(0,0,0,.5),
+    0 0 0 1.5px var(--fr-ac,#8e24aa),0 0 28px -6px var(--fr-ac,#8e24aa),
+    0 16px 40px rgba(0,0,0,.65)}
+body.fr-settings-open #settings>.ph-card.fr-fit-page{overflow:hidden}
+
+/* --- 3. TYPE — the law, 25/19/17, nothing under 17px, no grey ---------- */
+body.fr-settings-open #settings p{font-size:17px;line-height:1.5;color:#fff}
+body.fr-settings-open #settings .ph-card h3{
+  font-size:25px;line-height:1.3;font-family:Marcellus,Georgia,serif;
+  font-weight:400;color:#fff}
+body.fr-settings-open #settings .ps-title{
+  font-size:25px;font-family:Marcellus,Georgia,serif;font-weight:400;color:#fff}
+body.fr-settings-open #settings .pc-dm-qtext{
+  font-size:25px;line-height:1.3;font-family:Marcellus,Georgia,serif;color:#fff}
+body.fr-settings-open #settings .pc-dm-qtitle{font-size:19px;color:#fff}
+body.fr-settings-open #settings .pc-dm-why{font-size:19px;line-height:1.5;color:#fff}
+body.fr-settings-open #settings .pc-dm-top{font-size:17px;line-height:1.5;color:#fff}
+body.fr-settings-open #settings .pc-dm-private{font-size:17px;line-height:1.5;color:#fff}
+body.fr-settings-open #settings .os-setrow-main b{font-size:19px;color:#fff}
+body.fr-settings-open #settings .os-setrow-main span{font-size:17px;line-height:1.5;color:#fff}
+body.fr-settings-open #settings .os-switch-cap{font-size:17px;color:#fff}
+body.fr-settings-open #settings .pc-dm-preview-btn{font-size:17px;color:#fff}
+body.fr-settings-open #settings .ph-connect{font-size:17px;color:#fff}
+body.fr-settings-open #settings .os-note{font-size:17px;line-height:1.5;color:#fff}
+body.fr-settings-open #settings .os-jewel{font-size:17px}
+body.fr-settings-open #settings .pc-dm-count{font-size:17px}
+body.fr-settings-open #settings .fr-set-step{font-size:17px;color:#fff}
+body.fr-settings-open #settings .fr-sub-label{font-size:17px;color:#fff}
+body.fr-settings-open #settings .pc-dm-pick{font-size:17px}
+body.fr-settings-open #settings .pc-dm-type{font-size:17px}
+body.fr-settings-open #settings .pc-dm-status{font-size:17px;color:#fff}
+body.fr-settings-open #settings .pc-dm-switch-txt{font-size:17px;color:#fff}
+body.fr-settings-open #settings .pc-dm-switch-state{font-size:17px;color:#fff}
+body.fr-settings-open #settings .pc-dm-recs-label{font-size:17px;color:#fff}
+body.fr-settings-open #settings .pc-dm-qhead .pc-dm-letter{font-size:19px}
+
+/* --- 4. THE QUESTION FRAME — tightened so it fits whole ----------------- */
+body.fr-settings-open #settings #pc-demo-card .pc-dm-q{margin:8px 0 0}
+body.fr-settings-open #settings #pc-demo-card .pc-dm-nav{margin:8px 0 2px}
+body.fr-settings-open #settings #pc-demo-card .pc-dm-status{margin:8px 0 0;line-height:1.4}
+body.fr-settings-open #settings #pc-demo-card .pc-dm-answer{padding:10px}
+body.fr-settings-open #settings .pc-dm-qtext{margin:6px 0 0}
+body.fr-settings-open #settings .pc-dm-switch{margin:8px 0 0}
+body.fr-settings-open #settings .pc-dm-answer{margin:8px 0 0}
+body.fr-settings-open #settings .pc-dm-prev,
+body.fr-settings-open #settings .pc-dm-next{min-height:0;padding:8px 18px}
+body.fr-settings-open #settings .fr-fit-hidden{display:none!important}
+/* The per-answer switch: its label is too long for one row beside the
+   toggle and the state, so the state drops to its own row and the label
+   sits beside its toggle (two lines, never squeezed to a sliver). */
+body.fr-settings-open #settings .pc-dm-switch{flex-wrap:wrap;padding:8px 12px;gap:8px}
+body.fr-settings-open #settings .pc-dm-switch-state{flex:0 0 100%}
+/* The answer controls stay compact so the frame fits whole. */
+body.fr-settings-open #settings .pc-dm-pick,
+body.fr-settings-open #settings .pc-dm-type{min-height:46px;padding:8px 12px}
+/* Recommended chips: one swipeable row, never a tower of wrapped rows.
+   The "Recommended — tap to connect" label is sell copy off the box
+   (sharpening 4: just the question and the input box) — the chips
+   themselves are the answer, and they stay. */
+body.fr-settings-open #settings .pc-dm-recs-label{display:none}
+body.fr-settings-open #settings .pc-dm-recs-row{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+body.fr-settings-open #settings .pc-dm-recs-row::-webkit-scrollbar{display:none}
+body.fr-settings-open #settings .pc-dm-chip{flex:0 0 auto}
+body.fr-settings-open #settings .pc-dm-answer{
+  border:2px solid var(--qc);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -3px 8px rgba(0,0,0,.5),
+    0 0 0 1px rgba(255,255,255,.25),0 0 28px -6px var(--qc),0 12px 28px rgba(0,0,0,.6);
+  transition:transform .18s,box-shadow .22s}
+body.fr-settings-open #settings .pc-dm-answer:hover{
+  transform:translateY(-2px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -3px 8px rgba(0,0,0,.5),
+    0 0 0 1px rgba(255,255,255,.4),0 0 36px -4px var(--qc),0 16px 32px rgba(0,0,0,.65)}
+body.fr-settings-open #settings .pc-dm-answer:active{transform:scale(.97)}
+body.fr-settings-open #settings .pc-dm-eye{transition:transform .18s,box-shadow .18s}
+body.fr-settings-open #settings .pc-dm-eye:active{transform:scale(.94)}
+
+/* --- 5. TEACHING BEHIND THE i BUTTON — never on the box ----------------- */
+body.fr-settings-open #settings .pc-dm-why,
+body.fr-settings-open #settings .pc-dm-top,
+body.fr-settings-open #settings .pc-dm-private,
+body.fr-settings-open #settings .pc-dm-qsub,
+body.fr-settings-open #settings .pc-dm-eye-note{display:none!important}
+body.fr-settings-open #settings #pc-demo-card h3{display:flex;align-items:center;gap:12px}
+body.fr-settings-open #settings .fr-info-btn{
+  flex:0 0 auto;width:44px;height:44px;border-radius:50%;margin-left:auto;
+  border:2px solid rgba(255,255,255,.9);background:#050607;color:#fff;
+  font-size:19px;font-weight:800;font-family:inherit;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 16px -4px #8e24aa,0 8px 20px rgba(0,0,0,.55);
+  transition:transform .18s,box-shadow .18s}
+body.fr-settings-open #settings .fr-info-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 0 26px -4px #8e24aa,0 10px 22px rgba(0,0,0,.6)}
+body.fr-settings-open #settings .fr-info-btn:active{transform:scale(.94)}
+/* The pop-up: a real object card inside the frame, one tap away. */
+body.fr-settings-open #settings .fr-info-pop{
+  position:absolute;inset:var(--bw,96px);z-index:60;
+  display:grid;place-items:center;background:rgba(2,2,3,.72);
+  padding:16px;box-sizing:border-box}
+body.fr-settings-open #settings .fr-info-pop[hidden]{display:none}
+body.fr-settings-open #settings .fr-info-card{
+  width:min(560px,100%);max-height:100%;overflow:auto;
+  background:linear-gradient(180deg,#07070b,#020203);
+  border:2px solid rgba(255,255,255,.9);border-radius:20px;padding:24px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 0 0 1.5px var(--qc,#8e24aa),
+    0 0 36px -6px var(--qc,#8e24aa),0 24px 56px rgba(0,0,0,.7);
+  box-sizing:border-box}
+body.fr-settings-open #settings .fr-info-card h3{
+  font-size:25px;font-family:Marcellus,Georgia,serif;font-weight:400;
+  margin:0 0 12px;color:#fff}
+body.fr-settings-open #settings .fr-info-card p{
+  font-size:17px;line-height:1.55;color:#fff;margin:0 0 12px}
+body.fr-settings-open #settings .fr-info-x{
+  display:block;margin:12px auto 0;padding:10px 24px;border-radius:999px;
+  border:1.5px solid rgba(255,255,255,.9);background:#050607;color:#fff;
+  font-size:17px;font-weight:700;cursor:pointer;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 6px 16px rgba(0,0,0,.5);
+  transition:transform .18s}
+body.fr-settings-open #settings .fr-info-x:hover{transform:translateY(-2px)}
+body.fr-settings-open #settings .fr-info-x:active{transform:scale(.97)}
+
+/* --- 6. ROWS AS REAL OBJECTS (Page settings surface) --------------------- */
+body.fr-settings-open #settings .ps-row{
+  padding:12px 14px;
+  border:1.5px solid var(--rc,rgba(255,255,255,.9));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.5),
+    0 0 20px -6px var(--rc,rgba(255,255,255,.4)),0 10px 26px rgba(0,0,0,.55);
+  transition:transform .18s,box-shadow .2s,border-color .2s}
+body.fr-settings-open #settings .ps-row:hover{
+  transform:translateY(-2px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -4px 10px rgba(0,0,0,.5),
+    0 0 28px -4px var(--rc,rgba(255,255,255,.5)),0 14px 30px rgba(0,0,0,.6)}
+body.fr-settings-open #settings .ps-row:active{transform:scale(.97)}
+body.fr-settings-open #settings .os-setrow{
+  border:1.5px solid var(--rc,rgba(255,255,255,.25));border-radius:16px;
+  background:linear-gradient(180deg,#07070b,#020203);
+  padding:12px 14px;margin:0 0 10px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 -4px 10px rgba(0,0,0,.5),
+    0 8px 22px rgba(0,0,0,.5);
+  transition:transform .18s,box-shadow .2s,border-color .2s}
+body.fr-settings-open #settings .os-setrow:hover{
+  transform:translateY(-2px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -4px 10px rgba(0,0,0,.5),
+    0 0 24px -4px var(--rc,rgba(255,255,255,.4)),0 12px 26px rgba(0,0,0,.55)}
+body.fr-settings-open #settings .os-setrow:active{transform:scale(.97)}
+body.fr-settings-open #settings .os-switch{
+  transition:transform .18s,box-shadow .2s}
+body.fr-settings-open #settings .os-switch:active{transform:scale(.94)}
+body.fr-settings-open #settings .pc-dm-preview-btn{
+  transition:transform .18s,box-shadow .2s}
+body.fr-settings-open #settings .pc-dm-preview-btn:active{transform:scale(.97)}
+
+/* --- 7. SMART TABS (the Hub's, in place) — 17px type, alive ------------ */
+body.fr-settings-open #settings .fr-set-tabs .smart-tab{font-size:17px;padding:8px 14px}
+body.fr-settings-open #settings .fr-set-tabs .smart-tab:active{transform:scale(.97)}
+body.fr-settings-open #settings .fr-set-tabs .smart-tab .sn-mark{
+  font-size:17px;line-height:1;display:inline-flex;align-items:center;justify-content:center}
+body.fr-settings-open #settings .fr-set-tabs .smart-tab .sn-mark svg{
+  width:18px;height:18px;display:block}
+body.fr-settings-open #settings .fr-set-tabs .smart-tab .sn-label{font-size:17px}
+
+  </style>
+  <script>
+/* ============================================================================
+   FRAME FIX 2026-11-24 — Settings stage behaviour
+   ----------------------------------------------------------------------------
+   - Mode: body.fr-settings-open exactly while #settings has .on (the
+     existing showView toggles it). In mode the stage is fixed, full
+     viewport, framed; the feed stays underneath, covered, untouched.
+   - Smart tabs: the existing .fr-set-tab buttons are upgraded IN PLACE to
+     the Hub's smart tabs (class smart-tab, --tc from the ACCENTS array,
+     .sn-mark icon harvested from that tab's first card's jewel, .sn-label
+     around the text). Labels, destinations and the existing .on handling
+     are untouched — the tab object is the Hub's, the areas are Settings'.
+   - Rows: each .ps-row / .os-setrow paints in its own colour — the script
+     copies the row's jewel --jc onto the row as --rc (the file's own
+     drawer-link --rc pattern).
+   - i buttons: card-level "i" on About you; question-level the existing
+     eye button IS the i button (the file's own words: "Click the eye for
+     more information"). Both open one pop-up whose text is read LIVE from
+     the hidden teaching elements (single source of truth — nothing is
+     deleted, it is one tap away). The capture-phase listener stops the
+     old inline-note handler from running.
+   - frFit: the universal pager. It measures live and packs the visible
+     stage content into pages that fit whole in the viewport; longer
+     content goes on a screen BEHIND (tap-inward), never below the fold.
+     The demo card (tab 0) is deliberately NOT paged — the slideshow
+     pages itself; its fit comes from the teaching moving behind the i
+     button plus the CSS tightening.
+   - #/hub/settings: the Hub room stays rendered underneath (covered);
+     the framed stage opens over it, hash preserved.
+   - Observer safety: the observer only reacts when the FILE's own state
+     changes (screen / tab / sub-page label). My own class writes never
+     change that signature, so no observer loop.
+   ========================================================================== */
+(function () {
+  'use strict';
+  var settings = document.getElementById('settings');
+  if (!settings) return;
+
+  /* The frame-round's tab map, harvested verbatim (same values, same
+     classification): NAMES + ACCENTS + tabOf. The ACCENTS are the chakra
+     flow — magenta, purple, blue, green, gold, orange, red. */
+  var NAMES = ['Set Your World', 'Preferences', 'App behaviour', 'Page settings', 'Rooms & worlds', 'Cover & alerts', 'Home Hub & install'];
+  var ACCENTS = ['#8e24aa', '#0f52ba', '#07925f', '#d4a017', '#c2410c', '#c62828', '#a21caf'];
+
+  /* ---------------- smart tabs: upgrade in place ------------------------ */
+  var tabBuilt = false;
+  function tabIcon(n) {
+    var cards = settings.querySelectorAll('.ph-card');
+    var fallback = '';
+    for (var i = 0; i < cards.length; i++) {
+      var h3 = cards[i].querySelector('h3');
+      if (!h3) continue;
+      var t = h3.textContent || '';
+      var tab = -1;
+      if (/^About you/.test(t) || /preferences/i.test(t)) tab = 0;
+      else if (/Your Preferences/.test(t)) tab = 1;
+      else if (/App behaviour/.test(t)) tab = 2;
+      else if (/Identity/.test(t) || /^Common settings/.test(t) || /This page/.test(t)) tab = 3;
+      else if (/Everything on this page/.test(t)) tab = 4;
+      else if (/Cover buttons/.test(t) || /Notifications for this page/.test(t)) tab = 5;
+      else if (/Go to Home Hub/.test(t) || /Install as app/.test(t)) tab = 6;
+      if (tab === n) {
+        var jewel = h3.querySelector('.os-jewel');
+        var html = jewel && jewel.innerHTML ? jewel.innerHTML : '';
+        if (!fallback) fallback = html || '\u2726';
+        /* Prefer a real SVG jewel from any card in this tab, so each tab's
+           mark is its own picture, not the shared ✦ diamond. */
+        if (html && html.indexOf('<svg') !== -1) return html;
+      }
+    }
+    return fallback || '\u2726';
+  }
+  function buildTabs() {
+    if (tabBuilt) return;
+    var tabs = settings.querySelectorAll('.fr-set-tab');
+    if (!tabs.length) return;
+    tabs.forEach(function (btn, ix) {
+      if (btn.classList.contains('smart-tab')) return;
+      btn.classList.add('smart-tab');
+      btn.style.setProperty('--tc', ACCENTS[ix % ACCENTS.length]);
+      var label = document.createElement('span');
+      label.className = 'sn-label';
+      label.textContent = btn.textContent;
+      var mark = document.createElement('span');
+      mark.className = 'sn-mark';
+      mark.innerHTML = tabIcon(ix);
+      btn.textContent = '';
+      btn.appendChild(mark);
+      btn.appendChild(label);
+    });
+    tabBuilt = true;
+    syncTabActive();
+  }
+  function currentTab() {
+    var on = settings.querySelector('.fr-set-tab.on');
+    if (!on) return 0;
+    var tabs = settings.querySelectorAll('.fr-set-tab');
+    for (var i = 0; i < tabs.length; i++) if (tabs[i] === on) return i;
+    return 0;
+  }
+  function syncTabActive() {
+    var cur = currentTab();
+    settings.querySelectorAll('.fr-set-tab').forEach(function (btn, ix) {
+      btn.classList.toggle('active', ix === cur);
+    });
+  }
+
+  /* ---------------- rows paint in their own colour ---------------------- */
+  function paintRows() {
+    var rows = settings.querySelectorAll('.ps-row, .os-setrow');
+    rows.forEach(function (row) {
+      if (row.dataset.frRc) return;
+      var jewel = row.querySelector('.os-jewel');
+      var c = '';
+      if (jewel) c = jewel.style.getPropertyValue('--jc') || getComputedStyle(jewel).getPropertyValue('--jc') || '';
+      c = (c || '').trim();
+      if (c) { row.style.setProperty('--rc', c); row.dataset.frRc = '1'; }
+    });
+    var cards = settings.querySelectorAll('.ph-card');
+    cards.forEach(function (card) {
+      if (card.dataset.frAc) return;
+      var jewel = card.querySelector('h3 .os-jewel');
+      var c = '';
+      if (jewel) c = jewel.style.getPropertyValue('--jc') || getComputedStyle(jewel).getPropertyValue('--jc') || '';
+      c = (c || '').trim();
+      if (c) { card.style.setProperty('--fr-ac', c); card.dataset.frAc = '1'; }
+    });
+  }
+
+  /* ---------------- the i-button pop-up --------------------------------- */
+  var pop = null;
+  function ensurePop() {
+    if (pop) return pop;
+    pop = document.createElement('div');
+    pop.className = 'fr-info-pop';
+    pop.hidden = true;
+    pop.setAttribute('role', 'dialog');
+    pop.setAttribute('aria-modal', 'true');
+    pop.innerHTML = '<div class="fr-info-card" role="document"><h3></h3><div class="fr-info-body"></div>' +
+      '<button type="button" class="fr-info-x">Close</button></div>';
+    pop.addEventListener('click', function (e) {
+      if (e.target === pop || e.target.classList.contains('fr-info-x')) closePop();
+    });
+    settings.appendChild(pop);
+    return pop;
+  }
+  function openPop(title, parts, qc) {
+    var p = ensurePop();
+    var card = p.querySelector('.fr-info-card');
+    card.style.setProperty('--qc', qc || '#8e24aa');
+    p.querySelector('h3').textContent = title;
+    var body = p.querySelector('.fr-info-body');
+    body.innerHTML = '';
+    (parts || []).forEach(function (t) {
+      if (!t || !String(t).trim()) return;
+      var el = document.createElement('p');
+      el.textContent = String(t).trim();
+      body.appendChild(el);
+    });
+    p.hidden = false;
+    var x = p.querySelector('.fr-info-x');
+    try { x.focus(); } catch (e) {}
+  }
+  function closePop() { if (pop) pop.hidden = true; }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && pop && !pop.hidden) closePop();
+  });
+
+  function buildCardInfo() {
+    var card = document.getElementById('pc-demo-card');
+    if (!card || card.querySelector('.fr-info-btn')) return;
+    var h3 = card.querySelector('h3');
+    if (!h3) return;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'fr-info-btn';
+    btn.textContent = 'i';
+    btn.setAttribute('aria-label', 'About this section');
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      /* Teaching read LIVE from the hidden elements — single source of
+         truth, verbatim, one tap away. */
+      var parts = [];
+      ['.pc-dm-why', '.pc-dm-top', '.pc-dm-private'].forEach(function (sel) {
+        var el = card.querySelector(sel);
+        if (el) parts.push(el.textContent);
+      });
+      openPop('About you', parts, '#8e24aa');
+    });
+    h3.appendChild(btn);
+  }
+
+  function wireQuestionEye() {
+    var body = document.getElementById('pc-demo-body');
+    if (!body || body.dataset.frEye) return;
+    body.dataset.frEye = '1';
+    /* Capture phase: stop the old bubble-phase inline-note handler, open
+       the pop-up with this question's teaching instead. */
+    body.addEventListener('click', function (e) {
+      var eye = e.target && e.target.closest ? e.target.closest('.pc-dm-eye') : null;
+      if (!eye) return;
+      e.stopPropagation();
+      e.preventDefault();
+      var q = eye.closest('.pc-dm-q');
+      if (!q) return;
+      var parts = [];
+      var sub = q.querySelector('.pc-dm-qsub');
+      if (sub) parts.push(sub.textContent);
+      var note = q.querySelector('.pc-dm-eye-note');
+      if (note) parts.push(note.textContent);
+      var title = '';
+      var t = q.querySelector('.pc-dm-qtitle');
+      if (t) title = t.textContent;
+      var qc = '';
+      var wrap = q.closest('.pc-dm-answer');
+      if (wrap) qc = wrap.style.getPropertyValue('--qc') || '';
+      openPop(title || 'About this question', parts, (qc || '').trim() || '#8e24aa');
+    }, true);
+  }
+
+  /* ---------------- the universal pager: frFit -------------------------- */
+  var pager = null;
+  /* pageList: [{card, units|null}] — a page is either a whole card, or one
+     slice of a card's leaf units. The pager walks the list; the label is
+     "Part X of Y". A card that fits is one page; a card that does not is
+     split into as many pages as its leaf units need. */
+  var pagerState = { key: '', page: 0, pages: 0, list: null };
+  var lastSig = '';
+  function ensurePager() {
+    if (pager) return pager;
+    pager = document.createElement('div');
+    pager.id = 'frFramePager';
+    pager.hidden = true;
+    pager.innerHTML = '<button type="button" class="fr-sub-btn fr-sub-prev">\u2190 Prev</button>' +
+      '<span class="fr-sub-label"></span>' +
+      '<button type="button" class="fr-sub-btn fr-sub-next">Next \u2192</button>';
+    pager.querySelector('.fr-sub-prev').addEventListener('click', function () { goPage(pagerState.page - 1); });
+    pager.querySelector('.fr-sub-next').addEventListener('click', function () { goPage(pagerState.page + 1); });
+    settings.appendChild(pager);
+    return pager;
+  }
+  function visibleCards() {
+    var out = [];
+    settings.querySelectorAll(':scope > .ph-card').forEach(function (c) {
+      /* My own paging hides cards with .fr-fit-hidden — that is not the
+         file's hiding, so it still counts as visible here. */
+      if (c.classList.contains('fr-fit-hidden')) { out.push(c); return; }
+      if (getComputedStyle(c).display !== 'none') out.push(c);
+    });
+    return out;
+  }
+  function unhideAll() {
+    settings.querySelectorAll('.fr-fit-hidden').forEach(function (el) { el.classList.remove('fr-fit-hidden'); });
+  }
+  function goPage(n) {
+    if (!pagerState.list || pagerState.pages < 2) return;
+    pagerState.page = Math.max(0, Math.min(pagerState.pages - 1, n));
+    applyPage();
+  }
+  function applyPage() {
+    var list = pagerState.list;
+    if (!list || !list.length) return;
+    var cur = list[pagerState.page] || list[0];
+    var allCards = [];
+    list.forEach(function (p) { if (allCards.indexOf(p.card) === -1) allCards.push(p.card); });
+    allCards.forEach(function (c) { c.classList.toggle('fr-fit-hidden', c !== cur.card); });
+    /* Within the current card, show only this page's units (a whole-card
+       page shows all of them). Units of other cards are untouched — their
+       card is hidden wholesale. */
+    var cardUnits = [];
+    list.forEach(function (p) {
+      if (p.card === cur.card && p.units) p.units.forEach(function (u) { if (cardUnits.indexOf(u) === -1) cardUnits.push(u); });
+    });
+    cardUnits.forEach(function (u) {
+      var show = !cur.units || cur.units.indexOf(u) !== -1;
+      u.els.forEach(function (el) { el.classList.toggle('fr-fit-hidden', !show); });
+    });
+    var pg = ensurePager();
+    pg.hidden = false;
+    pg.querySelector('.fr-sub-label').textContent = 'Part ' + (pagerState.page + 1) + ' of ' + pagerState.pages;
+    pg.querySelector('.fr-sub-prev').disabled = pagerState.page === 0;
+    pg.querySelector('.fr-sub-next').disabled = pagerState.page === pagerState.pages - 1;
+  }
+  function clearPages() {
+    unhideAll();
+    pagerState = { key: '', page: 0, pages: 0, list: null };
+    if (pager) pager.hidden = true;
+  }
+  function fileSig() {
+    var label = '';
+    var nav = document.getElementById('frSubNav');
+    if (nav) { var l = nav.querySelector('.fr-sub-label'); if (l) label = l.textContent || ''; }
+    /* The slideshow step is part of the layout state: a new question has a
+       new height, so a question change re-fits. */
+    var cnt = '';
+    var c = document.getElementById('pc-demo-count');
+    if (c) cnt = c.textContent || '';
+    return (settings.getAttribute('data-ps-screen') || 'home') + '|' + currentTab() + '|' + label + '|' + cnt;
+  }
+  /* Leaf units: the smallest splittable blocks of a card. A child taller
+     than the budget is expanded into its own children (recursively); a
+     child that fits is a unit. A too-tall leaf with no element children
+     is a unit anyway — it gets its own page and is named in the debug.
+     Groups (the demo card's question + its nav) are atomic: they pack
+     and hide as one unit, so the nav never strands from its question. */
+  var _uid = 0;
+  function leafUnits(card, avail, groups) {
+    var units = [];
+    var consumed = new Set();
+    function groupOf(el) {
+      if (!groups) return null;
+      for (var g = 0; g < groups.length; g++) if (groups[g].indexOf(el) !== -1) return groups[g];
+      return null;
+    }
+    function expand(el) {
+      var kids = [];
+      for (var i = 0; i < el.children.length; i++) {
+        var k = el.children[i];
+        if (consumed.has(k)) continue;
+        if (getComputedStyle(k).display === 'none') continue;
+        kids.push(k);
+      }
+      kids.forEach(function (k) {
+        /* A group member already consumed by an earlier sibling's group
+           must not add the group a second time. */
+        if (consumed.has(k)) return;
+        var grp = groupOf(k);
+        if (grp) {
+          grp.forEach(function (m) { consumed.add(m); });
+          var first = grp[0].getBoundingClientRect(), last = grp[grp.length - 1].getBoundingClientRect();
+          units.push({ els: grp.slice(), h: Math.round(last.bottom - first.top) });
+          return;
+        }
+        var h = k.getBoundingClientRect().height;
+        if (h > avail && k.children.length) expand(k);
+        else {
+          if (!k._frUid) k._frUid = ++_uid;
+          units.push({ els: [k], h: Math.round(h) });
+        }
+      });
+    }
+    expand(card);
+    return units;
+  }
+  function demoGroups(card) {
+    var body = document.getElementById('pc-demo-body');
+    var nav = document.getElementById('pc-demo-nav');
+    if (body && nav && body.parentElement === card && nav.parentElement === card) return [[body, nav]];
+    return null;
+  }
+  function describeUnit(u) {
+    var el = u.els[0];
+    return (el.tagName + '.' + (el.className || '').toString().slice(0, 30) + ':' + u.h);
+  }
+  function frFit() {
+    if (!document.body.classList.contains('fr-settings-open')) return;
+    try {
+      var pg = ensurePager();
+      /* Fresh layout every run: drop my own paging, measure the file's own
+         visible state (all unhide/measure/re-hide in one task — no paint
+         between, so no flash). */
+      unhideAll();
+      var cards = visibleCards();
+      if (!cards.length) { clearPages(); window.__frFitDebug = { mode: '', pages: 0, reason: 'no cards' }; return; }
+      var key = fileSig() + '|' + cards.map(function (c) { return c.id || c.className; }).join(',');
+      if (key !== pagerState.key) pagerState = { key: key, page: 0, pages: 0, list: null };
+      lastSig = fileSig();
+      /* The budget is STRUCTURAL — the sum of the settled chrome heights —
+         never the card's live top, which moves while the fadeUp animation
+         runs. Heights are stable under the animation; positions are not. */
+      var cs = getComputedStyle(settings);
+      var padT = parseFloat(cs.paddingTop) || 0, padB = parseFloat(cs.paddingBottom) || 0;
+      var belowH = 0;
+      settings.querySelectorAll(':scope > #ps-back-profile, :scope > .ph-actions').forEach(function (el) {
+        if (getComputedStyle(el).display !== 'none') belowH += el.getBoundingClientRect().height + 8;
+      });
+      function aboveH(includePager) {
+        var sum = 0;
+        settings.querySelectorAll(':scope > .fr-set-tabs, :scope > .fr-set-nav, :scope > #frSubNav').forEach(function (el) {
+          if (getComputedStyle(el).display !== 'none') sum += el.getBoundingClientRect().height + 8;
+        });
+        if (includePager && !pg.hidden) sum += pg.getBoundingClientRect().height + 8;
+        return sum;
+      }
+      var total = 0;
+      cards.forEach(function (c) { total += c.getBoundingClientRect().height + 8; });
+      var avail0 = window.innerHeight - padT - padB - aboveH(false) - belowH - 8;
+      if (total <= avail0) { clearPages(); window.__frFitDebug = { mode: '', pages: 0, avail: Math.round(avail0), total: Math.round(total), reason: 'fits' }; return; }
+      /* Paging is needed, so the pager will be shown — budget with it in. */
+      pg.hidden = false;
+      var avail = window.innerHeight - padT - padB - aboveH(true) - belowH - 8;
+      var budget = avail - 8;
+      /* buildList: pack the visible cards into the unified page list at a
+         given budget. Returns {list, over} (over = atomic units taller
+         than the budget, named, never silently clipped). */
+      function buildList(bd) {
+        var lst = [], ovr = [];
+        cards.forEach(function (card) {
+          var ch = card.getBoundingClientRect().height;
+          if (ch <= bd) { lst.push({ card: card, units: null }); return; }
+          var groups = card.id === 'pc-demo-card' ? demoGroups(card) : null;
+          var units = leafUnits(card, bd, groups);
+          units.forEach(function (u) { if (u.h > bd) ovr.push(describeUnit(u)); });
+          var pin = null, pinH = 0;
+          if (units.length && units[0].h <= 80) { pin = units[0]; pinH = units[0].h; }
+          var cur = pin ? [pin] : [];
+          var used = pinH;
+          var startIx = pin ? 1 : 0;
+          for (var j = startIx; j < units.length; j++) {
+            var h = units[j].h;
+            if (used + h + 8 > bd) {
+              /* Split whenever the page already holds a real unit — not
+                 just the pin. A pin-only page gives the pin its own page
+                 rather than dragging it over with a tall unit (the old
+                 guard compared cur.length to the pin count, so a page
+                 holding one tall atomic group swallowed the next unit
+                 whole — the demo question page showed the status too). */
+              var hasContent = false;
+              for (var cIx = 0; cIx < cur.length; cIx++) if (cur[cIx] !== pin) { hasContent = true; break; }
+              if (hasContent) {
+                lst.push({ card: card, units: cur });
+                if (pin && pinH + h + 8 <= bd) { cur = [pin, units[j]]; used = pinH + h + 8; }
+                else { cur = [units[j]]; used = h; }
+              } else if (cur.length) {
+                lst.push({ card: card, units: cur });
+                cur = [units[j]]; used = h;
+              } else {
+                cur.push(units[j]); used += h + 8;
+              }
+            } else {
+              cur.push(units[j]);
+              used += h + 8;
+            }
+          }
+          if (cur.length) lst.push({ card: card, units: cur });
+        });
+        return { list: lst, over: ovr };
+      }
+      function renderedBottom() {
+        var lowest = 0;
+        settings.querySelectorAll(':scope > .ph-card, :scope > #ps-back-profile, :scope > .ph-actions').forEach(function (el) {
+          if (getComputedStyle(el).display !== 'none') lowest = Math.max(lowest, el.getBoundingClientRect().bottom);
+        });
+        return Math.round(lowest);
+      }
+      /* Verify the rendered page, not just the packing: if the page still
+         overflows (a unit measured short — late content, font reflow),
+         shrink the budget by the overflow and re-pack. The user never
+         sees the retries — they run in one task, before any paint. */
+      var built = buildList(budget);
+      var list = built.list, over = built.over;
+      if (list.length < 2) { clearPages(); window.__frFitDebug = { mode: '', pages: 0, avail: Math.round(avail), total: Math.round(total), reason: 'unsplittable', over: over }; return; }
+      pagerState.pages = list.length;
+      pagerState.list = list;
+      /* Preserve the user's page across re-runs (a re-run fires on every
+         click, including the pager's own Next — resetting to 0 here would
+         undo the tap). Clamp only. */
+      if (pagerState.page >= list.length) pagerState.page = 0;
+      applyPage();
+      var rb = renderedBottom(), attempts = 0;
+      var limit = window.innerHeight - 4;
+      while (rb > limit && attempts < 2) {
+        var curPage = list[pagerState.page];
+        if (!curPage || !curPage.units || curPage.units.length < 2) break;
+        /* Over by construction? If the current page's packed height already
+           exceeds the viewport, no re-pack fixes it (an atomic unit is
+           taller than the budget) — shrinking the budget would only
+           fragment the list. Retry only on a measurement error: the
+           packing says the page fits, but the render disagrees. */
+        var cardTop = 0;
+        cards.forEach(function (c) { if (getComputedStyle(c).display !== 'none') cardTop = c.getBoundingClientRect().top; });
+        var packed = 32;
+        curPage.units.forEach(function (u) { packed += u.h + 8; });
+        packed -= 8;
+        if (cardTop + packed > limit) break;
+        budget = Math.max(120, budget - (rb - limit) - 8);
+        /* applyPage hid the other pages' units — unhide them before
+           re-measuring, or the re-pack would see zero heights. */
+        unhideAll();
+        built = buildList(budget);
+        if (built.list.length < 2) break;
+        list = built.list; over = built.over;
+        pagerState.pages = list.length;
+        pagerState.list = list;
+        if (pagerState.page >= list.length) pagerState.page = 0;
+        applyPage();
+        rb = renderedBottom();
+        attempts++;
+      }
+      window.__frFitDebug = { mode: 'pages', pages: list.length, page: pagerState.page, avail: Math.round(avail), total: Math.round(total), over: over, renderedBottom: rb, attempts: attempts };
+    } catch (err) {
+      /* Escape hatch: never silently clip. Show everything, allow scroll. */
+      try {
+        settings.style.overflowY = 'auto';
+        unhideAll();
+        if (pager) pager.hidden = true;
+      } catch (e2) {}
+      window.__frFitDebug = { mode: 'ERROR', error: String(err && err.message || err) };
+      if (window.console && console.error) console.error('[frFit] ', err);
+    }
+  }
+  /* scheduleFit: the quick run (60ms) plus a settle confirm (550ms, past
+     the .5s fadeUp animation) — the confirm re-measures the settled
+     layout and corrects any page the quick run built mid-flight. */
+  var fitT60 = null, fitT550 = null;
+  function scheduleFit() {
+    if (!document.body.classList.contains('fr-settings-open')) return;
+    if (fitT60) clearTimeout(fitT60);
+    if (fitT550) clearTimeout(fitT550);
+    fitT60 = setTimeout(frFit, 60);
+    fitT550 = setTimeout(frFit, 550);
+  }
+
+  /* ---------------- mode on / off --------------------------------------- */
+  function enterMode() {
+    if (document.body.classList.contains('fr-settings-open')) return;
+    document.body.classList.add('fr-settings-open');
+    try { window.scrollTo(0, 0); } catch (e) {}
+    buildTabs();
+    paintRows();
+    buildCardInfo();
+    wireQuestionEye();
+    scheduleFit();
+  }
+  function exitMode() {
+    document.body.classList.remove('fr-settings-open');
+    if (pop) pop.hidden = true;
+    clearPages();
+    settings.style.overflowY = '';
+  }
+  /* Attributes only (class / data-ps-screen, subtree): the file's own
+     state changes. My own class writes never change fileSig(), so the
+     observer cannot loop on itself. */
+  var obs = new MutationObserver(function () {
+    var mode = settings.classList.contains('on');
+    if (mode && !document.body.classList.contains('fr-settings-open')) enterMode();
+    else if (!mode && document.body.classList.contains('fr-settings-open')) exitMode();
+    else if (mode) {
+      var sig = fileSig();
+      if (sig !== lastSig) { lastSig = sig; pagerState.key = ''; scheduleFit(); }
+    }
+  });
+  obs.observe(settings, { attributes: true, attributeFilter: ['class', 'data-ps-screen'], subtree: true });
+
+  /* ---------------- #/hub/settings -------------------------------------- */
+  function hubSettings() {
+    try {
+      if ((location.hash || '').indexOf('#/hub/settings') === 0) {
+        if (!settings.classList.contains('on')) {
+          if (typeof window.osShowView === 'function') window.osShowView('settings');
+          else if (typeof window.showView === 'function') window.showView('settings');
+        }
+      }
+    } catch (e) {}
+  }
+  window.addEventListener('hashchange', hubSettings);
+
+  /* ---------------- boot ------------------------------------------------- */
+  function boot() {
+    buildTabs();
+    paintRows();
+    buildCardInfo();
+    wireQuestionEye();
+    if (settings.classList.contains('on')) enterMode();
+    hubSettings();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+  document.addEventListener('click', function () {
+    setTimeout(function () {
+      syncTabActive();
+      if (document.body.classList.contains('fr-settings-open')) scheduleFit();
+    }, 60);
+  });
+  var rzT = null;
+  window.addEventListener('resize', function () {
+    if (rzT) clearTimeout(rzT);
+    rzT = setTimeout(function () { if (document.body.classList.contains('fr-settings-open')) scheduleFit(); }, 150);
+  });
+})();
+
+  </script>
 </body></html>
