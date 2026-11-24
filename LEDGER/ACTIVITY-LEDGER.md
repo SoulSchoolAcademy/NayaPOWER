@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-24 11:05 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-24 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -14855,6 +14855,12 @@ _Last updated: 2026-11-24 11:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: hidden_files/candidacy-block-index.json, candidacy-block-index-design-t0818.md, bin/candidacy-block-consult.py all exist on disk; N=6 ticks grounded in the PHANTOM-CLAIM LAW's own stale rule (no invented number); tamper control executed (mutated index → genuinely changed verdict, proving live-read); --selftest with non-vacuous controls cl
 
+### ✅ t0818-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** Independent second-seat verification of t0796 seat-identity repair branch: 9 files, orphan, main untouched
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty; backlog 29 before this tick). VERIFIED first-hand this tick: head 2fec65527d7b9ca251a4e70f983f6c227f38d3b9 exists in the mirror; cat-file shows author/committer 'Naya Clarity Verity <naya4@nayapower.local>' and NO parents (orphan proven, not assumed); tree is EXACTLY the 9 files set-for-set; sha256 o
+
 ### ✅ t0818 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
 **Task:** Independent second-seat verification of t0796 seat-identity repair push
@@ -14901,6 +14907,12 @@ _Last updated: 2026-11-24 11:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: main tip == 8bd2a9f70bac2847f38dd6d82a9d0e9f8d250d56 (matches claimed #2629 merge SHA) via git ls-remote; PR #2620 head == 6e939c5cafd1847e93aad68fd19dd9b5093036a2 (matches the receipt's 'exact head'); the #2537 comment 6195037810 is independently corroborated in shared-state.json's naya2_to_builder relay with a matching body. Score 9.4: 
 
+### ✅ t0817-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Arm H C2 tag-provenance note: 192 of 207 tag instances pinned, 15 named UNRECOVERABLE
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty - no new receipts since gate-stall-20261124-0223 scored last tick; backlog 27 remaining after this score). VERIFIED first-hand this tick: deliverable hidden_files/arm-h-tag-provenance-t0817-lane12.md sha256 a9321febadf0e7d14f813287e8695ac65368f720acd3d8ced0456a3b8f5554fc matches the receipt pin EXACTL
+
 ### ✅ t0817 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
 **Task:** Arm H tag-provenance note for t0760 ADOPT-CONDITIONAL C2
@@ -14916,6 +14928,12 @@ _Last updated: 2026-11-24 11:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0817-lane12.md`
 
 **Evidence:** VERIFIED: hidden_files/arm-h-tag-provenance-t0817-lane12.md exists on disk; frozen graph/pre-reg/design SHAs re-derived at action time per the receipt; method is sound — sha16 sweep of all 207 records first, 192 PINNED, 15 UNRECOVERABLE named (living files, schema never stored keywords — named, never invented), independent tag-rule re-run: 0 mismat
+
+### ✅ t0817-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** Arm H C1 spec line: resolve six-readings ambiguity to ONE reading, fresh-buildable (R1 = 0.099206)
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty - no new receipts since gate-stall-20261124-0223 scored last tick; backlog 28 total before this tick). VERIFIED first-hand this tick: all 8 SHA pins byte-exact - spec lane-6/armh-permutation-control-spec-t0817.md 6404a6f8..., harness bin/t0817-c1-verify.py 568f9c1e..., cold build bin/t0817-c1-coldbuil
 
 ### ✅ t0817 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -15304,6 +15322,12 @@ _Last updated: 2026-11-24 11:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0814-lane12.md`
 
 **Evidence:** Verified: spec file hidden_files/smart-note-communication-mode-spec-v1.md sha byte-exact; comment-standard-v2 pin 5a3dd2ce matches; lesson-broadcast pin drift explained (live rolling feed modified after write-time pin — expected churn, not a defect). Clears 9.5 because: design-only deliverable met exactly — six modes derived from live reads, every 
+
+### ✅ t0813-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** RECUSAL: arm-fresh gate fired on own MTC-v1 authorship; brief re-filed, no design work done
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty; backlog 29 before this tick). VERIFIED first-hand this tick: authorship proof re-derives - t0742-lane4.md references the MTC-v1 battery, and all three lineage artifacts exist in hidden_files/surge-a/ (mtc-v1-cards-t0742-lane4.md 910 B, mtc-v1-seal-t0742-lane4.md 1870 B, mtc-v1-battery-t0742-lane4.jso
 
 ### ✅ t0813 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -18164,6 +18188,12 @@ _Last updated: 2026-11-24 11:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0736-lane1.md`
 
 **Evidence:** Verified: design/fixtures/instrument sha256 match disk (e6cbb529/0a918d33/5b7824b6). Prereg self-pin 7737959271a20330 is a self-hash-paradox seal (sha recorded inside the file pre-embed; file's actual sha 303371370c9f27f9 can never match) — honest, not phantom. Score 9.0 not 9.5 because: (a) executor's verdict, scorer's root-difference check, unrun
+
+### ✅ t0735-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** Board-pointer repair PR #2757: 8 pointer lines across 4 activation files re-pointed to live board #2721
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty - newest unscored receipt t1130-lane10 is 2026-10-21, backlog 29 before this tick). VERIFIED first-hand this tick: head 96b39cbfbaba09258e99dfe5637282ca04937ff4 exists in the mirror as a commit; diff vs pinned base 8cac435a052d21ed74f8f2c2b8fec0bdaff455c7 is EXACTLY 4 files, 8 insertions / 8 deletions
 
 ### ✅ t0735 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
@@ -60596,6 +60626,12 @@ _Last updated: 2026-11-24 11:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261124-0329 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: 31 queued briefs attempted, 0 claimed (receipt: 29x exit 7, 2x exit 2)
+
+**Evidence:** FRESH (filed 2026-11-24 03:29 PST; the only unscored receipt this tick; backlog 0 after this score). VERIFIED first-hand this tick: sweep log brief-queue/claim-sweep-20261124-0329.log exists with per-brief attempt lines - re-counted 29 x exit 7 and 2 x exit 2, 0 claimed; queue holds 31 brief-*.md, 0 brief-tNNNN-*, no mv; queue checksum recomputed f
 
 ### ✅ gate-stall-20261124-0223 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
