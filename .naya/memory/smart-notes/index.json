@@ -80904,6 +80904,42 @@
         "Dashboard",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-4741",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4741-learn-fast-own-it-all",
+      "slug": "learn-fast-own-it-all",
+      "title": "Learn Fast, Own It All",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/OPERATIONS/SN-4741/IB-SMART-NOTE-20261124-sn4741-learn-fast-own-it-all.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/OPERATIONS/SN-4741/IB-SMART-NOTE-20261124-sn4741-learn-fast-own-it-all.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/OPERATIONS/SN-4741/IB-SMART-NOTE-20261124-sn4741-learn-fast-own-it-all.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4741-learn-fast-own-it-all.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "OPERATIONS",
+      "topic": "OPERATIONS",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T17:56:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "b4ee49d586fa159236da0ccefd885446cd6f479f66cbb61eb64ef39821014a7d",
+      "content_hash": "ed7906034f1561e164044a9119ef453ac81c929c71ee8fa1da93051ae2237d5d",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "fad5cf3c8f3500bf8cbb9ec495a8a7a3d6cf7fee8147add80b504044e7d63245",
+      "one_line": "The operating half of the same evening: find the cause before retrying, switch routes at the first known failure, merge the pile ourselves, run everything through one vault — and from people's words take only the wisdom, never their content, because nobody's mail, messages, or calls are ever read or kept.",
+      "topics": [
+        "Distillation",
+        "Operations",
+        "Learning",
+        "Privacy",
+        "Knowledge"
+      ]
     }
   ],
   "sequence_policy": {
@@ -80914,5 +80950,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "c1b097debb14c9b9a9e4113e8a20744c5a9e1cc45b4b12092db20c84c626ec8a"
+  "corpus_manifest_hash": "3f698caaf0b75f68b344fe59607d53f5c43ceee7cd5cccbb0872d6bdf362e398"
 }
