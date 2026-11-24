@@ -1056,6 +1056,29 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 #screen-cover .showcase{flex:1 1 auto;min-height:0}
 }
 </style>
+<style>
+/* LEG2 — PHONE DEPTH TEXT, FULL HEIGHT (2026-11-24, checker GOES BACK check B).
+   Defect: on phone 390x844 every depth text column was a clipped strip
+   (panel 58-198px vs text 171-627px, 30 of 30, heading cut, mid-glyph).
+   Mechanism: .depth-thirds is flex:1 + min-height:0 inside the
+   viewport-high #depthBody, so the single-column grid's three rows were
+   squeezed into ~648px and .ib-layer{overflow:hidden} cut the centred
+   text. Desktop is fine (three columns share the height, text fits).
+   Fix, phone only: the stacked thirds stop being height-capped — the grid
+   sizes each row to its content (flex:0 0 auto, height:auto, rows auto),
+   text layers grow to their whole paragraph, heading included, and the
+   already-scrolling #depthBody (overflow-y:auto) scrolls the tall stack,
+   top Back/X and foot N staying in place. Image rows keep a definite
+   height (280px, the height they already measured) so their contained
+   images render exactly as before. Three-column structure, alternating
+   pattern, flow, back/close, cover, ch1 front B — all untouched. */
+@media(max-width:900px){
+.depth-thirds{flex:0 0 auto;height:auto;min-height:0;grid-auto-rows:auto}
+.depth-thirds .ib-layer{flex:0 0 auto;height:auto;min-height:0}
+.depth-thirds .ib-layer.ib-img:has(.ib-img-el){height:280px;min-height:280px}
+.depth-thirds .ib-layer.ib-img:has(.ib-vid){height:auto;min-height:280px}
+}
+</style>
 </head>
 <body>
 <div class="royal-frame" aria-hidden="true"><div class="rf-et top"></div><div class="rf-es left"></div><div class="rf-es right"></div><div class="rf-rim"></div><div class="rf-corner tl"></div><div class="rf-corner tr"></div><div class="rf-corner bl"></div><div class="rf-corner br"></div><div class="rf-n top"></div></div>
