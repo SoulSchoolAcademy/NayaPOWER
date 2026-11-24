@@ -80291,6 +80291,42 @@
         "Knowledge",
         "Multiplication"
       ]
+    },
+    {
+      "smart_note_id": "SN-4724",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4724-caught-by-the-walk",
+      "slug": "caught-by-the-walk",
+      "title": "Caught by the Walk",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4724/IB-SMART-NOTE-20261124-sn4724-caught-by-the-walk.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4724/IB-SMART-NOTE-20261124-sn4724-caught-by-the-walk.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4724/IB-SMART-NOTE-20261124-sn4724-caught-by-the-walk.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4724-caught-by-the-walk.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T17:17:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "2103fa9c458059c37eed20912cf7773b37ae9697cf86e0080d3d11a3894d7c02",
+      "content_hash": "f02fd2e8d79899ff65c842969ad720ccca8ca9520e81bda8b277dc4e3609bd5a",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "c592518e28dfafd588d56446f159c3f02017647d669a965841798110db1a32ae",
+      "one_line": "An evening of live walking caught what no checklist had: this decade is the catch list, and each catch is a law. First the frame: scorecarding starts from the ultimate answer — what are you ultimately trying to do? Figure that out first, then optimize for that. Then the protections: never remove what he didn't ask to remove — if the brief didn't instruct it, it stays; and never send in what isn't completed — unfinished text does not ship because a round is ending. The walk itself found the rest: sidebar icons light as you scroll, each area its own colour; the My World picker must switch the feed the moment a world is picked — he picked his world and nothing happened; what was good and got replaced gets restored, not iterated on — put it back; one icon that lights up, never an icon beside its own light; whether the extra plus stays is decided by the mobile fit, not by opinion; Create World must actually create — a flat modal that goes nowhere is the failure, creating must produce the feed and show it; and no button ever cuts off its own text. The method is the message: he found every one of these by walking the live thing, in minutes, after the parts had all passed.",
+      "topics": [
+        "Distillation",
+        "Design",
+        "Craft",
+        "Knowledge",
+        "Honor"
+      ]
     }
   ],
   "sequence_policy": {
@@ -80301,5 +80337,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "202f94f6718ac9756f1ee7286e847b2dbf7641168a9f55d023a7b34d84cf60fe"
+  "corpus_manifest_hash": "41f9fa169cb66f9ec30ea6189cb2226c6bf920f1ee553a0e0a48897f42124deb"
 }

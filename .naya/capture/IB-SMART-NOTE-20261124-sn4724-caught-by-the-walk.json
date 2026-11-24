@@ -1,0 +1,95 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-4724",
+ "title": "Caught by the Walk",
+ "slug": "caught-by-the-walk",
+ "topic": "DESIGN",
+ "category": "DESIGN",
+ "kind": "intelligent-block",
+ "registered_by": "naya-resolve",
+ "directed_by": "Shawn Vibert",
+ "created_at": "2026-11-24T17:17:00Z",
+ "tone": "purple",
+ "icon": "◆",
+ "intelligence": {
+  "essence": "An evening of live walking caught what no checklist had: this decade is the catch list, and each catch is a law. First the frame: scorecarding starts from the ultimate answer — what are you ultimately trying to do? Figure that out first, then optimize for that. Then the protections: never remove what he didn't ask to remove — if the brief didn't instruct it, it stays; and never send in what isn't completed — unfinished text does not ship because a round is ending. The walk itself found the rest: sidebar icons light as you scroll, each area its own colour; the My World picker must switch the feed the moment a world is picked — he picked his world and nothing happened; what was good and got replaced gets restored, not iterated on — put it back; one icon that lights up, never an icon beside its own light; whether the extra plus stays is decided by the mobile fit, not by opinion; Create World must actually create — a flat modal that goes nowhere is the failure, creating must produce the feed and show it; and no button ever cuts off its own text. The method is the message: he found every one of these by walking the live thing, in minutes, after the parts had all passed.",
+  "human_view": "Ten small laws, every one of them caught by a person using the real thing: a picker that did nothing, a button with its words chopped off, a good bar thrown away and redesigned, work sent in unfinished. The essence is the list — and the reminder that walking the live surface beats inspecting the parts.",
+  "child_view": "When you play with the toy yourself, you find the wobbly bits right away. These notes are the wobbly bits we found: a button that did nothing, words that did not fit, a good piece that got thrown away. Each one became a rule so it never happens again.",
+  "grandma_view": "These are the little things that make a page feel broken: you tap and nothing happens, a button's words are cut in half, something you liked disappears. We walked the pages the way you would, found them all, and made each one a rule.",
+  "ai_view": "Live-walk catches distilled from SN-2997..SN-3006 (2026-11-16 evening): (1) SCORECARDING — THE ULTIMATE ANSWER FIRST: state what you are ultimately trying to do before optimizing anything. (2) DON'T REMOVE WHAT HE DIDN'T ASK TO REMOVE: un-instructed removal is a defect even when the result looks cleaner (case: the agreement's big play button). (3) DON'T SEND IN WHAT ISN'T COMPLETED: unfinalized work never ships at round end (case: text sent unfinalized after a voice-note glitch). (4) Sidebar items each carry an icon; the icon of the area being scrolled lights in that area's own colour. (5) MY WORLD PICKER MUST SWITCH: picking a world switches the feed to that world immediately; a no-op pick is a P1 catch. (6) RESTORE WHAT WAS GOOD — DON'T ITERATE ON IT: a replaced good element (case: the five-icon bottom bar) is restored verbatim, not redesigned. (7) ONE ICON THAT LIGHTS UP: never an icon rendered beside a separate light element. (8) THE EXTRA +: duplicate-purpose controls are decided by the mobile-fit test, not taste. (9) CREATE WORLD MUST ACTUALLY CREATE: the create action must produce the world and land the citizen in its feed; a modal that goes nowhere fails the surface. (10) BUTTONS NEVER CUT OFF THEIR TEXT: text truncation in any button is a defect at sight.",
+  "what_it_means": "Quality at the surface is a long tail of small promises — a picker that switches, a button that fits its words, a good thing left alone. No specification enumerates them all in advance; they are found by use. This essence preserves both the catches and the method that caught them, so the method survives with the list.",
+  "whats_inside": [
+   "Scorecarding: the ultimate answer first (SN-2997)",
+   "Don't remove what he didn't ask to remove; don't send in what isn't completed (SN-2998, SN-2999)",
+   "Sidebar icons light as you scroll; the My World picker must switch (SN-3000, SN-3001)",
+   "Restore what was good — don't iterate on it; one icon that lights up (SN-3002, SN-3003)",
+   "The extra + is decided by the mobile test; Create World must actually create; buttons never cut off their text (SN-3004, SN-3005, SN-3006)"
+  ],
+  "topics": [
+   "Distillation",
+   "Design",
+   "Craft",
+   "Knowledge",
+   "Honor"
+  ]
+ },
+ "page": {
+  "distills": {
+   "batch": 12,
+   "of": 100,
+   "covers": [
+    {
+     "sn": "SN-2997",
+     "title": "Scorecarding — The Ultimate Answer First"
+    },
+    {
+     "sn": "SN-2998",
+     "title": "Don't Remove What He Didn't Ask to Remove"
+    },
+    {
+     "sn": "SN-2999",
+     "title": "Don't Send In What Isn't Completed"
+    },
+    {
+     "sn": "SN-3000",
+     "title": "Sidebar Icons Light As You Scroll"
+    },
+    {
+     "sn": "SN-3001",
+     "title": "My World Picker Must Switch"
+    },
+    {
+     "sn": "SN-3002",
+     "title": "Restore What Was Good — Don't Iterate On It"
+    },
+    {
+     "sn": "SN-3003",
+     "title": "One Icon That Lights Up — Never Icon and a Light"
+    },
+    {
+     "sn": "SN-3004",
+     "title": "The Extra + — The Mobile Test Decides"
+    },
+    {
+     "sn": "SN-3005",
+     "title": "Create World Must Actually Create"
+    },
+    {
+     "sn": "SN-3006",
+     "title": "Buttons Never Cut Off Their Text"
+    }
+   ]
+  },
+  "machine": "1) Every scorecard opens with the ultimate aim in one sentence. 2) Diff against the brief: any un-instructed removal blocks the landing. 3) Unfinished content blocks the send, whatever the round state. 4) Pickers and create actions are verified by their visible effect, not their handler. 5) A replaced good element is restored byte-for-byte before any new idea is entertained. 6) Icon = one element that lights; no companion light elements. 7) Duplicate controls resolve by the mobile-fit test. 8) Any truncated button text fails the walk on sight.",
+  "why_it_matters": "Every item here reached production-shaped surfaces and passed part-level checks before a human walk caught it in minutes. Filed together, they define the click-walk's charter — the standing proof standard that a surface is only proven when a person has used it as a person.",
+  "how_it_connects": "Eighth essence of batch 12. It is the catch-list companion to SN-4718 (probe discipline) and SN-4722 (read as a reader): three faces of one law — the surface is the truth. Its restore-don't-iterate rule restates SN-2981 (use what works) from the victim's side.",
+  "what_is_in_it_for_you": "The things you tap actually do what they promise: pickers switch, create creates, buttons fit their words — and the good pieces you liked are never quietly taken away.",
+  "the_learning": "From now on, we walk the live surface before we report it — and treat every catch as a standing rule — instead of certifying parts and letting the citizen find the breaks."
+ },
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4724/IB-SMART-NOTE-20261124-sn4724-caught-by-the-walk.md",
+ "page_hash": "2103fa9c458059c37eed20912cf7773b37ae9697cf86e0080d3d11a3894d7c02",
+ "content_hash": "f02fd2e8d79899ff65c842969ad720ccca8ca9520e81bda8b277dc4e3609bd5a",
+ "published_via": "publish-note",
+ "door_version": "1",
+ "door_receipt": "c592518e28dfafd588d56446f159c3f02017647d669a965841798110db1a32ae"
+}
