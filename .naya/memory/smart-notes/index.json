@@ -80436,6 +80436,42 @@
         "Honor",
         "Multiplication"
       ]
+    },
+    {
+      "smart_note_id": "SN-4728",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4728-one-system-settles",
+      "slug": "one-system-settles",
+      "title": "One System Settles",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/LESSON/SN-4728/IB-SMART-NOTE-20261124-sn4728-one-system-settles.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/LESSON/SN-4728/IB-SMART-NOTE-20261124-sn4728-one-system-settles.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/LESSON/SN-4728/IB-SMART-NOTE-20261124-sn4728-one-system-settles.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4728-one-system-settles.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LESSON",
+      "topic": "LESSON",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T17:46:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "97920b6c9be59342b4c4d6ba3674313ebbbc1a5f5be97b3cacaabf5c29ef1246",
+      "content_hash": "a80a9004c976cf072d7be63d0b77ac7ab1ace8893af96f970de7faab15c6df15",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "3f3e16512e52dc17a61c6c6c64a8826a87d39a23868990e6ee77de6cc2a4ce0f",
+      "one_line": "Not many systems — one ultimate system, one ultimate language, settling into law piece by piece. The deed is the name box: signing makes a citizen a member of the Society, and the agreement lives on the front page in plain sight, never behind a gate. The list is official at last, corrected by his hand and displayed as icon-buttons; the icons speak one language everywhere — obsidian in the middle, light on the outside, every icon a jewel. Coordination runs direct, Shawn to captain to sisters and back, because the mail loop never worked. And underneath it all one cycle runs everything: understand, serve, verify, learn, improve — the signing, the interface, the words, the craft, the judgment are the same loop run again. Wisdom is made visible or it is not wisdom: intelligence is what it does, proven where everyone can see.",
+      "topics": [
+        "Distillation",
+        "Lesson",
+        "Honor",
+        "Multiplication",
+        "Knowledge"
+      ]
     }
   ],
   "sequence_policy": {
@@ -80446,5 +80482,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "4cc62ce096018eda2ed73d1091826cd141adf3a0f37f3aff85c095a946a08410"
+  "corpus_manifest_hash": "06c952bff7ef158b4e211e6aabaec2abb6325b193f27cab7791d035e4c004fd4"
 }
