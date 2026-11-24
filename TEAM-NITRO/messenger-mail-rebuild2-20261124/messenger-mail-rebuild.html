@@ -5,7 +5,7 @@
 .mail-stage{
   position:relative; --ml-blue:#0f52ba; --ml-blue-lt:#0f52ba;
   --ml-ink:#ffffff; --ml-soft:#ffffff;
-  max-width:none; width:100%; box-sizing:border-box; margin:0; padding:0 clamp(16px,4vw,64px) 120px;
+  max-width:none; width:100%; box-sizing:border-box; margin:0; padding:0 clamp(16px,4vw,64px) calc(232px + env(safe-area-inset-bottom,0px));
   color:var(--ml-ink);
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,"Segoe UI",sans-serif;
 }
@@ -14,7 +14,7 @@
 .mail-stage 
 .ml-banner{ text-align:center; font-size:17px; letter-spacing:.14em; color:#ffffff; opacity:1; margin:14px 0 4px; font-weight:600; }
 .ml-head{ margin:0 0 12px; }
-.ml-head-row{ display:grid; grid-template-columns:200px 340px 1fr; gap:24px; align-items:center; }
+.ml-head-row{ display:grid; grid-template-columns:224px 340px 1fr; gap:24px; align-items:center; }
 .mail-stage .ml-kicker{
   font-size:17px; letter-spacing:.24em; font-weight:800; color:var(--ml-blue);
   margin:0 0 14px; text-shadow:0 0 14px rgba(15,82,186,.75);
@@ -28,19 +28,19 @@
 }
 /* three panes */
 .mail-stage .ml-panes{
-  display:grid; grid-template-columns:200px 340px 1fr; gap:24px;
-  margin:0; min-height:480px;
+  display:grid; grid-template-columns:224px 340px 1fr; gap:24px;
+  margin:0; min-height:400px;
 }
 
 /* folder rail — each folder owns its color: inbox blue, unread green, sent purple */
-.mail-stage .ml-rail{ display:flex; flex-direction:column; gap:6px;
-  border:1px solid rgba(255,255,255,.08); border-radius:20px; padding:8px 18px;
+.mail-stage .ml-rail{ display:flex; flex-direction:column; gap:4px;
+  border:1px solid rgba(255,255,255,.08); border-radius:20px; padding:6px 12px;
   background:linear-gradient(180deg, rgba(22,26,40,.72), rgba(10,12,20,.62));
   -webkit-backdrop-filter:blur(20px); backdrop-filter:blur(20px);
   box-shadow:0 10px 36px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.06); }
 .mail-stage .ml-folder{ --fc:#0f52ba; --fcl:#0f52ba;
   display:flex; align-items:center; gap:8px;
-  padding:4px 12px; overflow:hidden;box-sizing:border-box;border-radius:14px; width:100%; text-align:left; white-space:nowrap;
+  padding:3px 12px; overflow:hidden;box-sizing:border-box;border-radius:14px; width:100%; text-align:left; white-space:nowrap;
   font-size:17px; font-weight:700; letter-spacing:.02em; line-height:1.25;
   cursor:pointer; font-family:inherit; color:#ffffff;
   background:#050607;
@@ -67,15 +67,15 @@
 .ml-folder.on .ml-badge{ color:#fff; background:#050607; border-color:color-mix(in srgb, var(--fc) 70%, transparent);
   box-shadow:0 0 10px -2px var(--fc), inset 0 1px 0 rgba(255,255,255,.12); text-shadow:0 0 8px var(--fc); }
 /* ===== Quick Access (10-year Smart Mail) ===== */
-.ml-qa-label{ margin:0 4px 8px; font-size:17px; font-weight:800; letter-spacing:.06em; color:#ffffff; }
-.ml-qa{ display:flex; flex-direction:column; gap:8px; }
-.ml-qa-item{ --qc:#0e7490; display:flex; align-items:center; gap:8px; width:100%; max-width:100%; box-sizing:border-box; overflow:hidden; padding:11px 14px; border-radius:12px; cursor:pointer; font-family:inherit; font-size:17px; font-weight:800; letter-spacing:.14em; color:#ffffff; background:rgba(255,255,255,.02); border:1px solid rgba(232,234,242,.12); transition:border-color .2s, box-shadow .25s, transform .15s, background .25s; text-align:left; }
+.ml-qa-label{ margin:0 4px 4px; font-size:17px; font-weight:800; letter-spacing:.06em; color:#ffffff; }
+.ml-qa{ display:flex; flex-direction:column; gap:6px; }
+.ml-qa-item{ --qc:#0e7490; display:flex; align-items:center; gap:6px; width:100%; max-width:100%; box-sizing:border-box; overflow:hidden; padding:7px 10px; border-radius:12px; cursor:pointer; font-family:inherit; font-size:17px; font-weight:800; letter-spacing:.14em; color:#ffffff; background:rgba(255,255,255,.02); border:1px solid rgba(232,234,242,.12); transition:border-color .2s, box-shadow .25s, transform .15s, background .25s; text-align:left; }
 .ml-qa-item:hover{ border-color:var(--qc); box-shadow:0 0 18px -6px var(--qc); transform:translateY(-1px); }
 .ml-qa-item:hover .ml-qicon{ color:var(--qc); filter:drop-shadow(0 0 6px var(--qc)); }
 .ml-qicon{ width:20px; height:20px; flex:none; color:#ffffff; transition:color .25s, filter .25s; }
 .ml-qicon svg{ width:100%; height:100%; display:block; }
-.ml-qname{ flex:1 1 auto; min-width:0; white-space:nowrap; font-size:17px; letter-spacing:.08em; }
-.ml-qcount{ flex:none; min-width:20px; height:20px; padding:0 6px; border-radius:99px; display:inline-flex; align-items:center; justify-content:center; font-size:17px; font-weight:800; color:#ffffff; border:1px solid rgba(232,234,242,.18); background:rgba(0,0,0,.3); }
+.ml-qname{ flex:1 1 auto; min-width:0; white-space:normal; line-height:1.25; font-size:17px; letter-spacing:.02em; }
+.ml-qcount{ flex:none; margin-left:2px; min-width:20px; height:20px; padding:0 5px; border-radius:99px; display:inline-flex; align-items:center; justify-content:center; font-size:17px; font-weight:800; color:#ffffff; border:1px solid rgba(232,234,242,.18); background:rgba(0,0,0,.3); }
 .ml-qa-item:hover .ml-qcount{ color:#fff; border-color:var(--qc); }
 .ml-qa-panel{ position:absolute; top:0; right:0; bottom:0; width:min(340px,92%); z-index:60; display:flex; flex-direction:column; background:rgba(13,16,26,.97); border-left:1px solid rgba(255,255,255,.12); box-shadow:-24px 0 60px rgba(0,0,0,.55); transform:translateX(102%); transition:transform .32s cubic-bezier(.2,.8,.2,1); }
 .ml-qa-panel.open{ transform:none; }
@@ -92,7 +92,7 @@
 .ml-qa-nm{ font-size:17px; font-weight:700; color:#ffffff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .ml-qa-sub{ font-size:17px; color:#ffffff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .ml-qa-dot{ width:10px; height:10px; flex:none; border-radius:99px; background:var(--pc,#0f52ba); box-shadow:0 0 8px var(--pc,#0f52ba); }
-@media(max-width:760px){ .mail-stage .ml-qa-label{ display:none; } .mail-stage .ml-qa{ flex-direction:row; } .mail-stage .ml-qa-item{ flex:1; white-space:nowrap; } }
+@media(max-width:760px){ .mail-stage .ml-qa-label{ display:none; } .mail-stage .ml-qa{ flex-direction:row; } .mail-stage .ml-qa-item{ flex:1 0 210px; white-space:nowrap; } }
 
 .mail-stage .ml-badge{ margin-left:4px; flex:none; min-width:20px; height:20px; padding:0 7px; border-radius:99px;
   display:inline-flex; align-items:center; justify-content:center;
@@ -103,12 +103,12 @@
 
 /* thread list */
 .mail-stage .ml-list{
-  display:flex; flex-direction:column; gap:8px; overflow-y:auto; max-height:640px;
+  display:flex; flex-direction:column; gap:8px; overflow-y:auto; max-height:480px;
   border:1px solid rgba(255,255,255,.1); border-radius:18px; padding:12px;
   background:rgba(14,16,24,.55);
   -webkit-backdrop-filter:blur(18px); backdrop-filter:blur(18px);
 }
-.mail-stage .ml-empty{ color:var(--ml-soft); font-size:17px; padding:24px 12px; text-align:center; }
+.mail-stage .ml-empty{ color:var(--ml-soft); font-size:17px; padding:12px 12px; text-align:center; }
 .mail-stage .ml-thread{ position:relative; display:flex; gap:14px; align-items:flex-start;
   padding:18px 18px 18px 16px; border-radius:18px; text-align:left; cursor:pointer; font-family:inherit;
   color:#fff; width:100%;
@@ -164,17 +164,20 @@
   background:rgba(14,16,24,.55);
   -webkit-backdrop-filter:blur(18px); backdrop-filter:blur(18px);
   box-shadow:inset 0 1px rgba(255,255,255,.06), 0 22px 55px rgba(0,0,0,.5);
-  overflow-y:auto; max-height:640px;
+  overflow-y:auto; max-height:480px;
 }
 .mail-stage .ml-read-empty{ display:flex; flex-direction:column; align-items:center; justify-content:center;
-  min-height:60vh; text-align:center; padding:60px 32px; gap:20px; }
-.ml-read-empty .ml-empty-mark{ width:72px; height:72px; border-radius:50%;
-  border:1px solid rgba(15,82,186,.75); background:radial-gradient(circle at 35% 30%, rgba(15,82,186,.12), rgba(15,82,186,.02));
+  min-height:40vh; text-align:center; padding:32px 32px; gap:20px; }
+.ml-read-empty .ml-empty-mark{ position:relative; width:72px; height:72px; border-radius:50%;
+  border:1.5px solid #0f52ba; background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);
   display:flex; align-items:center; justify-content:center;
-  font-size:25px; color:rgba(15,82,186,.75);
-  box-shadow:0 0 32px -8px rgba(15,82,186,.75), inset 0 1px 0 rgba(255,255,255,.08); }
-.ml-read-empty p{ color:rgba(255,255,255,.85); font-size:17px; font-weight:500; letter-spacing:.02em; margin:0; max-width:280px; line-height:1.7; }
-.ml-read-empty .ml-empty-sub{ color:rgba(255,255,255,.75); font-size:17px; letter-spacing:.08em; margin:0; }
+  font-size:25px; color:#ffffff;
+  box-shadow:0 8px 24px rgba(0,0,0,.6), 0 0 32px -8px rgba(15,82,186,.65), inset 0 1px 0 rgba(255,255,255,.12); }
+.ml-read-empty .ml-empty-mark::after{ content:""; position:absolute; inset:-7px; border-radius:50%; border:1.5px solid #0f52ba; opacity:.55; animation:nm-orbit 120s linear infinite; pointer-events:none; }
+.ml-empty-orb-n{ position:absolute; right:-14px; bottom:-8px; width:40px; height:40px; border-radius:50%; background:#050607; border:1.5px solid #8e24aa; color:#ffffff; display:grid; place-items:center; font-size:19px; font-weight:700; box-shadow:0 8px 24px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.12); }
+.ml-empty-orb-d{ position:absolute; left:-12px; top:-10px; width:32px; height:32px; border-radius:50%; background:#050607; border:1.5px solid #d4a017; color:#d4a017; display:grid; place-items:center; font-size:17px; font-weight:700; box-shadow:0 8px 24px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.12); }
+.ml-read-empty p{ color:#ffffff; font-size:17px; font-weight:500; letter-spacing:.02em; margin:0; max-width:280px; line-height:1.7; }
+.ml-read-empty .ml-empty-sub{ color:#ffffff; font-size:17px; letter-spacing:.08em; margin:0; }
 .mail-stage .ml-read-subj{ font-size:19px; font-weight:900; margin:0 0 18px; color:#fff; line-height:1.3; }
 .mail-stage .ml-read-subj:focus{ outline:none; }
 .mail-stage .ml-read-meta{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:22px; padding-bottom:18px; border-bottom:1px solid rgba(255,255,255,.08); }
@@ -234,47 +237,42 @@
 
 /* responsive */
 @media(max-width:760px){
-  .mail-stage{ padding:28px 16px 110px; }
+  .mail-stage{ padding:28px 16px calc(216px + env(safe-area-inset-bottom,0px)); }
   .mail-stage .ml-panes{ grid-template-columns:1fr; }
   .mail-stage .ml-rail{ flex-direction:row; overflow-x:auto; }
-  .mail-stage .ml-folder{ flex:1; white-space:nowrap; }
+  .mail-stage .ml-folder{ flex:1 0 190px; white-space:nowrap; }
   .mail-stage .ml-list{ max-height:320px; }
   .mail-stage .ml-read{ max-height:none; padding:24px 20px; }
   .mail-stage .ml-compose{ bottom:18px; right:18px; }
 }
 
 /* --- compose CTA: primary action, top of page --- */
-.ml-cta-row{ display:flex; align-items:center; gap:18px; margin:24px 0 4px; flex-wrap:wrap; }
+.ml-cta-row{ display:flex; align-items:center; gap:18px; margin:8px 0 4px; flex-wrap:wrap; }
 .ml-compose-top{
   position:relative; overflow:hidden; width:100%; box-sizing:border-box;
-  padding:16px 32px; border-radius:16px; font-size:17px; font-weight:800; letter-spacing:.18em;
+  padding:8px 32px; border-radius:999px; font-size:17px; font-weight:800; letter-spacing:.18em;
   cursor:pointer; font-family:inherit; color:#fff; min-height:52px; min-width:0;
-  text-shadow:0 0 12px rgba(255,255,255,.55), 0 1px 2px rgba(0,0,0,.35);
-  background:linear-gradient(180deg,#0e7490 0%,#0e7490 38%,#0f52ba 72%,#0f52ba 100%);
-  border:1.5px solid rgba(200,230,255,.55);
-  box-shadow:0 12px 34px -8px rgba(15,82,186,.75), 0 0 22px -6px rgba(15,82,186,.75),
-    inset 0 1px 0 rgba(255,255,255,.45), inset 0 -3px 8px rgba(10,30,110,.45);
+  text-shadow:0 1px 2px rgba(0,0,0,.8);
+  background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);
+  border:1.5px solid #0f52ba;
+  box-shadow:0 12px 34px -8px rgba(0,0,0,.6), 0 0 24px -4px rgba(15,82,186,.65),
+    inset 0 1px 0 rgba(255,255,255,.12);
   transition:transform .16s ease, box-shadow .25s ease, filter .25s ease;
   -webkit-tap-highlight-color:transparent; touch-action:manipulation;
 }
-.ml-compose-top::before{
-  content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
-  background:linear-gradient(105deg, transparent 42%, rgba(255,255,255,.28) 50%, transparent 58%);
-  transform:translateX(-120%); animation:ml-sheen 4.5s ease-in-out infinite;
-}
-@keyframes ml-sheen{ 0%,72%{ transform:translateX(-120%); } 92%,100%{ transform:translateX(120%); } }
+/* v3: the bright sheen sweep went with the bright fill — inside stays board black. */
 .ml-compose-top .ml-plus{
   display:inline-block; font-size:17px; font-weight:800; margin-right:10px; color:#fff;
   text-shadow:0 0 10px rgba(255,255,255,.8); transition:transform .25s ease; vertical-align:-1px;
 }
-.ml-compose-top:hover{ transform:translateY(-2px); filter:brightness(1.1);
-  box-shadow:0 16px 40px -8px rgba(15,82,186,.75), 0 0 30px -4px rgba(15,82,186,.75),
-    inset 0 1px 0 rgba(255,255,255,.55), inset 0 -3px 8px rgba(10,30,110,.4);
+.ml-compose-top:hover{ transform:translateY(-2px);
+  box-shadow:0 16px 40px -8px rgba(0,0,0,.6), 0 0 30px -4px rgba(15,82,186,.65),
+    inset 0 1px 0 rgba(255,255,255,.12);
 }
-.ml-compose-top:hover .ml-plus{ transform:rotate(90deg); }
-.ml-compose-top:active{ transform:translateY(1px); filter:brightness(.96);
-  box-shadow:0 4px 14px -6px rgba(15,82,186,.75), 0 0 14px -6px rgba(15,82,186,.75),
-    inset 0 2px 10px rgba(8,24,90,.55), inset 0 -1px 0 rgba(255,255,255,.15);
+/* v3: the + glyph NEVER rotates (§8) — the harvested rotate is out. */
+.ml-compose-top:active{ transform:scale(.97);
+  box-shadow:0 4px 14px -6px rgba(0,0,0,.6), 0 0 14px -6px rgba(15,82,186,.65),
+    inset 0 1px 0 rgba(255,255,255,.08);
 }
 .ml-compose-top:focus-visible{ outline:2px solid rgba(147,197,253,.9); outline-offset:3px; }
 @media (prefers-reduced-motion: reduce){
@@ -283,10 +281,9 @@
   .ml-folder, .ml-folder .ml-ficon{ transition:none; }
   .ml-folder:hover{ transform:none; }
 }
-.ml-compose-top:hover{ filter:brightness(1.1); box-shadow:0 12px 36px -8px rgba(15,82,186,.75), inset 0 1px 0 rgba(255,255,255,.32); }
-.ml-compose-top:active{ transform:scale(.97); }
+/* v3: duplicate hover/active rules removed — the rules above govern. */
 .ml-cta-hint{ font-size:17px; letter-spacing:.1em; color:#ffffff; font-weight:600; }
-@media (max-width:760px){ .ml-col2{ display:flex; flex-direction:column; gap:12px; min-width:0; } .ml-compose-top{ width:100%; min-width:0; } }
+@media (max-width:760px){ .ml-col2{ display:flex; flex-direction:column; gap:4px; min-width:0; } .ml-compose-top{ width:100%; min-width:0; } }
 
 /* ===== Smart Mail 10-year features ===== */
 /* Toast */
@@ -295,16 +292,16 @@
 .ml-toast{ display:flex; align-items:center; gap:10px; padding:13px 20px; border-radius:999px; background:rgba(8,10,16,.92); border:1px solid rgba(15,82,186,.75); box-shadow:0 8px 32px rgba(0,0,0,.5), 0 0 24px -6px rgba(15,82,186,.75); color:#fff; font-size:17px; font-weight:600; white-space:nowrap; backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
 .ml-toast .tk{ width:22px; height:22px; border-radius:50%; background:rgba(53,227,155,.2); border:1px solid #07925f; display:flex; align-items:center; justify-content:center; font-size:17px; color:#07925f; flex:none; }
 /* Search */
-.ml-searchwrap{ display:flex; align-items:center; gap:8px; margin-bottom:10px; }
-.ml-search{ flex:1; min-width:0; display:flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; background:rgba(0,0,0,.3); border:1px solid rgba(255,255,255,.1); transition:border-color .2s; }
+.ml-searchwrap{ display:flex; align-items:center; gap:8px; margin-bottom:2px; }
+.ml-search{ flex:1; min-width:0; display:flex; align-items:center; gap:8px; padding:8px 14px; border-radius:12px; background:rgba(0,0,0,.3); border:1px solid rgba(255,255,255,.1); transition:border-color .2s; }
 .ml-search:focus-within{ border-color:rgba(15,82,186,.75); }
 .ml-search input{ flex:1; min-width:0; background:none; border:none; outline:none; color:#fff; font-size:17px; font-family:inherit; }
 .ml-search input::placeholder{ color:#ffffff; }
 .ml-search-x{ background:none; border:none; color:#ffffff; cursor:pointer; font-size:17px; padding:2px 6px; display:none; }
 .ml-search-x.show{ display:block; }
 /* Filter chips */
-.ml-filters{ display:flex; gap:6px; margin-bottom:10px; flex-wrap:wrap; }
-.ml-fchip{ flex:none; padding:7px 14px; border-radius:999px; font-size:17px; font-weight:700; letter-spacing:.06em; cursor:pointer; font-family:inherit; color:#ffffff; background:rgba(0,0,0,.25); border:1px solid rgba(255,255,255,.08); transition:all .2s; }
+.ml-filters{ display:flex; gap:6px; margin-bottom:2px; flex-wrap:wrap; }
+.ml-fchip{ flex:none; padding:4px 14px; border-radius:999px; font-size:17px; font-weight:700; letter-spacing:.06em; cursor:pointer; font-family:inherit; color:#ffffff; background:rgba(0,0,0,.25); border:1px solid rgba(255,255,255,.08); transition:all .2s; }
 .ml-fchip.on{ color:#fff; border-color:rgba(15,82,186,.75); background:rgba(15,82,186,.12); box-shadow:0 0 12px -4px rgba(15,82,186,.75); }
 /* Bulk select */
 .ml-thread .ml-ck{ display:none; width:20px; height:20px; border-radius:6px; border:1.5px solid rgba(255,255,255,.3); flex:none; align-items:center; justify-content:center; font-size:17px; color:#fff; }
@@ -487,7 +484,7 @@ body.naya-drawer-open{overflow:hidden}
 </style>
 <style>
 body{padding-top:calc(var(--bw,96px) + env(safe-area-inset-top,0px));}
-.mail-stage{padding-bottom:calc(120px + env(safe-area-inset-bottom,0px));}
+.mail-stage{padding-bottom:calc(232px + env(safe-area-inset-bottom,0px));}
 button,a{-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
 </style>
 <style>
@@ -1200,7 +1197,7 @@ function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className
       var t = findThread(state.selectedId);
       if(!t){
         var none = el('div','ml-read-empty');
-        var mark = el('div','ml-empty-mark',''); mark.innerHTML='&#9993;';
+        var mark = el('div','ml-empty-mark',''); mark.innerHTML='&#9993;<span class="ml-empty-orb-n">N</span><span class="ml-empty-orb-d">&#9670;</span>';
         none.appendChild(mark);
         var p1 = el('p','',''); p1.textContent='Select a thread to read it.';
         none.appendChild(p1);
@@ -2169,7 +2166,10 @@ schRow.appendChild(dtWrap);
    only. One light top-left (135deg). Inside is board black #050607 — no glow inside, ever.
    Slow motion only (ambient 120s / 180s; entry .5s; hover .3s). */
 .nm-chrome{padding:8px 0 0;}
+.nm-msg{padding-bottom:96px;}
+.mail-stage[data-tempo="mail"] .nm-icon-row,.mail-stage[data-tempo="mail"] .nm-steps,.mail-stage[data-tempo="mail"] .nm-orb-row{display:none;}
 .nm-privacy{text-align:center;font-size:19px;line-height:1.6;color:#ffffff;margin:0 0 6px;}
+@media (max-width:640px){.nm-privacy{font-size:17px;margin-left:-16px;margin-right:-16px;}}
 .nm-privacy b{color:#d4a017;}
 .nm-toggle{display:flex;justify-content:center;gap:0;margin:0 auto 6px;max-width:520px;background:#050607;border:1.5px solid #ffffff;border-radius:999px;padding:6px;box-shadow:0 8px 24px rgba(0,0,0,.5);}
 .nm-toggle-btn{flex:1;background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);border:1.5px solid transparent;border-radius:999px;color:#ffffff;font-size:19px;font-weight:700;font-family:inherit;padding:8px 16px;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;}
@@ -2207,7 +2207,7 @@ schRow.appendChild(dtWrap);
 .nm-pane h2{font-size:19px;color:#ffffff;margin:0 0 16px;letter-spacing:.12em;}
 .nm-pane h3{font-size:17px;color:#ffffff;margin:16px 0 8px;}
 .nm-pane p{font-size:17px;line-height:1.6;color:#ffffff;margin:8px 0;}
-.nm-search{width:100%;box-sizing:border-box;background:#050607;color:#ffffff;border:1.5px solid #0f52ba;border-radius:12px;padding:12px;font-size:17px;font-family:inherit;margin:0 0 16px;}
+.nm-search{width:100%;box-sizing:border-box;background:#050607;color:#ffffff;border:1.5px solid #0f52ba;border-radius:12px;padding:12px;font-size:17px;font-family:inherit;margin:0 0 8px;}
 .nm-search:focus{outline:2px solid #0f52ba;outline-offset:2px;}
 .nm-search::placeholder{color:#ffffff;}
 .nm-person{display:flex;align-items:center;gap:12px;padding:12px;border-radius:14px;border:1.5px solid transparent;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;}
@@ -2274,9 +2274,10 @@ schRow.appendChild(dtWrap);
 .nm-chip:hover{transform:translateY(-2px);box-shadow:0 0 16px -4px rgba(255,255,255,.25),0 4px 10px rgba(0,0,0,.5);}
 .nm-chip:active{transform:scale(.97);}
 .nm-chip[aria-pressed="true"]{border-color:#d4a017;box-shadow:0 0 18px -4px rgba(212,160,23,.6);}
-.nm-note{font-size:17px;line-height:1.6;color:#ffffff;}
-.nm-space-pick{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 16px;}
-.nm-space{background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);border:1.5px solid #ffffff;border-radius:999px;color:#ffffff;font-size:17px;font-weight:700;font-family:inherit;padding:8px 16px;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease;box-shadow:0 2px 8px rgba(0,0,0,.4);}
+.nm-note{font-size:17px;line-height:1.6;color:#ffffff;margin-top:6px;}
+.nm-pane p.nm-note{margin-top:6px;}
+.nm-space-pick{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 6px;}
+.nm-space{background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);border:1.5px solid #ffffff;border-radius:999px;color:#ffffff;font-size:17px;font-weight:700;font-family:inherit;padding:6px 16px;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease;box-shadow:0 2px 8px rgba(0,0,0,.4);}
 .nm-space:hover{transform:translateY(-2px);box-shadow:0 0 16px -4px rgba(255,255,255,.25),0 4px 10px rgba(0,0,0,.5);}
 .nm-space:active{transform:scale(.97);}
 .nm-space[aria-pressed="true"]{border-color:#d4a017;box-shadow:0 0 18px -4px rgba(212,160,23,.6);}
@@ -2303,19 +2304,29 @@ schRow.appendChild(dtWrap);
 .nm-toggle-btn:active,.nm-btn:active,.nm-mic:active,.nm-act:active,.nm-person:active,.nm-conv:active,.nm-bubble:active,.nm-react:active,.nm-keep:active,.nm-chip:active,.nm-space:active,.ml-thread:active,.ml-folder:active,.ml-qa-item:active{transform:scale(.97);transition:transform .1s ease;}
 .nm-toggle-btn[data-tempo="chat"]:hover{background:linear-gradient(135deg,rgba(142,36,170,.28) 0%,#050607 50%,rgba(142,36,170,.28) 100%);box-shadow:0 0 24px -4px rgba(142,36,170,.65),0 8px 24px rgba(0,0,0,.5);}
 .nm-toggle-btn[data-tempo="mail"]:hover{background:linear-gradient(135deg,rgba(15,82,186,.28) 0%,#050607 50%,rgba(15,82,186,.28) 100%);box-shadow:0 0 24px -4px rgba(15,82,186,.65),0 8px 24px rgba(0,0,0,.5);}
-/* ONE bottom bar (§3.2) — ADD · MAIL · ACTIVITY · WORLDS · ECOSYSTEM, one bar, everywhere.
-   Inset by var(--bw): the bar lives INSIDE the frame's inner stage — the
-   harvested frame's side bands (z-60) paint OVER anything at left:0/right:0,
-   and on phone they ate the ADD "+" and the ECOSYSTEM tail. */
+/* ONE bottom bar (settled 2026-11-24 ~10:36-10:40 MST) — ADD · MAIL · ACTIVITY ·
+   WORLDS · ECOSYSTEM · CONNECT, labeled icons, not bare icons. Inset by
+   var(--bw): the bar lives INSIDE the frame's inner stage — the harvested
+   frame's side bands (z-60) paint OVER anything at left:0/right:0.
+   Phone: six 17px labels sum 449px > 326px inner stage, so the phone bar is
+   two rows of three (row1 190px, row2 290px); desktop is one row of six. */
 .nm-onebar{position:fixed;bottom:var(--bw,96px);left:var(--bw,96px);right:var(--bw,96px);z-index:50;display:flex;align-items:flex-end;justify-content:center;gap:16px;padding:8px 16px calc(8px + env(safe-area-inset-bottom,0px));background:linear-gradient(180deg,transparent,rgba(5,5,8,.92) 30%);border-top:1px solid rgba(255,255,255,.08);box-sizing:border-box;max-width:100%;}
+.nm-onebar-row{display:contents;}
 .nm-onebar-btn{display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:none;padding:0;cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent;touch-action:manipulation;flex:none;min-width:0;}
-.nm-onebar-btn .nm-ob-circ{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);border:1.5px solid var(--bc,#8e24aa);color:#ffffff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.12);transition:transform .3s ease,box-shadow .3s ease;}
+.nm-onebar-btn .nm-ob-circ{position:relative;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);border:1.5px solid var(--bc,#8e24aa);color:#ffffff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.12);transition:transform .3s ease,box-shadow .3s ease;}
 .nm-onebar-btn .nm-ob-circ svg{width:24px;height:24px;}
 .nm-onebar-btn .nm-ob-circ span{font-size:25px;font-weight:700;line-height:1;}
 .nm-onebar-btn .nm-ob-lab{font-size:17px;font-weight:700;letter-spacing:.08em;color:#ffffff;text-shadow:0 1px 2px rgba(0,0,0,.8);}
 .nm-onebar-btn:hover .nm-ob-circ{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.6),0 0 24px -4px var(--bc,#8e24aa),0 10px 26px rgba(0,0,0,.55);}
 .nm-onebar-btn:active .nm-ob-circ{transform:scale(.97);transition:transform .1s ease;}
-@media (max-width:640px){.nm-onebar{gap:12px;padding:8px 8px calc(8px + env(safe-area-inset-bottom,0px));}.nm-onebar-btn .nm-ob-circ{width:48px;height:48px;}.nm-onebar-btn .nm-ob-circ svg{width:20px;height:20px;}.nm-onebar-btn .nm-ob-circ span{font-size:19px;}.nm-onebar-btn .nm-ob-lab{display:none;}.nm-icon{width:42px;height:42px;}.nm-icon::after{inset:-4px;}.nm-icon svg{width:20px;height:20px;}.nm-icon-row{gap:4px;flex-wrap:nowrap;}}
+.nm-ob-badge{position:absolute;top:-6px;right:-6px;min-width:22px;height:22px;padding:0 6px;border-radius:99px;background:#050607;border:1.5px solid #07925f;color:#ffffff;font-size:17px;font-weight:800;line-height:19px;display:grid;place-items:center;box-shadow:0 0 12px -2px #07925f,0 2px 8px rgba(0,0,0,.6);pointer-events:none;}
+.nm-ob-badge[hidden]{display:none;}
+/* + menu (settled ADD): create a post, create a world, create a note. */
+.nm-plus-menu{position:fixed;left:50%;transform:translateX(-50%);bottom:200px;z-index:55;display:flex;flex-direction:column;gap:8px;padding:12px;background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);border:1.5px solid #8e24aa;border-radius:18px;box-shadow:0 16px 48px rgba(0,0,0,.6),0 0 24px -4px rgba(142,36,170,.65);}
+.nm-plus-item{background:#050607;border:1.5px solid var(--pc,#8e24aa);border-radius:999px;color:#ffffff;font-size:17px;font-weight:700;font-family:inherit;padding:10px 20px;cursor:pointer;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.5);}
+.nm-plus-item:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.5),0 0 24px -4px var(--pc,#8e24aa);}
+.nm-plus-item:active{transform:scale(.97);}
+@media (max-width:640px){.nm-onebar{flex-direction:column;align-items:center;gap:6px;padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px));}.nm-onebar-row{display:flex;justify-content:center;gap:6px;}.nm-onebar-btn .nm-ob-circ{width:36px;height:36px;}.nm-onebar-btn .nm-ob-circ svg{width:18px;height:18px;}.nm-onebar-btn .nm-ob-circ span{font-size:19px;}.nm-onebar-btn .nm-ob-lab{display:block;font-size:17px;letter-spacing:.02em;}.nm-icon{width:42px;height:42px;}.nm-icon::after{inset:-4px;}.nm-icon svg{width:20px;height:20px;}.nm-icon-row{gap:4px;flex-wrap:nowrap;}}
 @media (max-width:900px){.nm-msg-panes{grid-template-columns:1fr;}}
 @media (max-width:640px){
   /* rebuild2: the ONE bar sits INSIDE the stage, so the tap landing must fit
@@ -2326,6 +2337,8 @@ schRow.appendChild(dtWrap);
   .nm-composer{margin-top:8px;padding-top:8px;}
   .nm-filter{margin:0 0 8px;}
   .nm-reader-head{margin:0 0 8px;}
+  .nm-space-pick{flex-wrap:nowrap;overflow-x:auto;}
+  .ml-filters{flex-wrap:nowrap;overflow-x:auto;}
 }
 </style>
 <script>
@@ -2604,6 +2617,7 @@ function nmRefreshMsgView(){
   nv.hidden = wasHidden;
   view.parentNode.replaceChild(nv, view);
   nmBindMsgView();
+  if(window.__nmActBadgeUpdate) window.__nmActBadgeUpdate();
 }
 function nmScrollReaderIntoView(){
   /* After focus() puts the composer on screen, the reader's head (Sophia's
@@ -2768,6 +2782,7 @@ function nmSyncToggle(){
 function nmSetTempo(tempo){
   nmTempo = (tempo === 'mail') ? 'mail' : 'chat';
   nmSyncToggle();
+  var st = document.querySelector('.mail-stage'); if(st) st.setAttribute('data-tempo', nmTempo);
   var panes = document.querySelector('.mail-stage .ml-panes');
   var view = document.getElementById('nmMsgView');
   if(!panes || !view) return;
@@ -2805,7 +2820,7 @@ function nmInit(){
     b.addEventListener('click', function(){ nmSetTempo(b.getAttribute('data-tempo')); });
   });
   nmBootData();
-  nmLoadDMs().then(function(){ if(nmTempo === 'chat') nmRefreshMsgView(); });
+  nmLoadDMs().then(function(){ if(window.__nmActBadgeUpdate) window.__nmActBadgeUpdate(); if(nmTempo === 'chat') nmRefreshMsgView(); });
   nmBindMsgView();
   nmSetTempo(nmTempo); /* sync the initial view to the initial toggle — v2.1 never did, so load showed Mail under a MESSENGER toggle */
   return true;
@@ -2816,7 +2831,7 @@ var __nmTimer = setInterval(function(){
   if(nmInit() || __nmTries > 40){ clearInterval(__nmTimer); }
 }, 250);
 window.NayaMsgRebuild = {
-  version: '2026-11-24-rebuild2',
+  version: '2026-11-24-rebuild2-v3',
   tempo: function(){ return nmTempo; },
   setTempo: nmSetTempo,
   send: sendMessage,
@@ -2827,12 +2842,17 @@ window.NayaMsgRebuild = {
 })();
 </script>
 
-<nav class="nm-onebar" aria-label="Naya — Add, Mail, Activity, Worlds, Ecosystem">
-  <button type="button" class="nm-onebar-btn" data-nm-bar="add" style="--bc:#8e24aa" aria-label="Add — write a message" title="Add — write a message"><span class="nm-ob-circ"><span>+</span></span><span class="nm-ob-lab">ADD</span></button>
+<nav class="nm-onebar" aria-label="Naya — Add, Mail, Activity, Worlds, Ecosystem, Connect">
+  <div class="nm-onebar-row">
+  <button type="button" class="nm-onebar-btn" data-nm-bar="add" style="--bc:#8e24aa" aria-label="Add — create a post, a world, a note" title="Add — create a post, a world, a note"><span class="nm-ob-circ"><span>+</span></span><span class="nm-ob-lab">ADD</span></button>
   <button type="button" class="nm-onebar-btn" data-nm-bar="mail" style="--bc:#0f52ba" aria-label="Mail" title="Mail"><span class="nm-ob-circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span class="nm-ob-lab">MAIL</span></button>
-  <button type="button" class="nm-onebar-btn" data-nm-bar="activity" style="--bc:#07925f" aria-label="Activity — conversations" title="Activity — conversations"><span class="nm-ob-circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></span><span class="nm-ob-lab">ACTIVITY</span></button>
+  <button type="button" class="nm-onebar-btn" data-nm-bar="activity" style="--bc:#07925f" aria-label="Activity — conversations" title="Activity — conversations"><span class="nm-ob-circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg><span class="nm-ob-badge" id="nmActBadge" hidden></span></span><span class="nm-ob-lab">ACTIVITY</span></button>
+  </div>
+  <div class="nm-onebar-row">
   <button type="button" class="nm-onebar-btn" data-nm-bar="worlds" style="--bc:#d4a017" aria-label="Worlds — spaces" title="Worlds — spaces"><span class="nm-ob-circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14 0 18M12 3c-3 3.5-3 14 0 18"/></svg></span><span class="nm-ob-lab">WORLDS</span></button>
-  <button type="button" class="nm-onebar-btn" data-nm-bar="ecosystem" style="--bc:#c2410c" aria-label="Ecosystem — people" title="Ecosystem — people"><span class="nm-ob-circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8 7.5 10.5 16M16 7.5 13.5 16M8.5 6h7"/></svg></span><span class="nm-ob-lab">ECOSYSTEM</span></button>
+  <button type="button" class="nm-onebar-btn" data-nm-bar="ecosystem" style="--bc:#c2410c" aria-label="Ecosystem — the Hub" title="Ecosystem — the Hub"><span class="nm-ob-circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8 7.5 10.5 16M16 7.5 13.5 16M8.5 6h7"/></svg></span><span class="nm-ob-lab">ECOSYSTEM</span></button>
+  <button type="button" class="nm-onebar-btn" data-nm-bar="connect" style="--bc:#c62828" aria-label="Connect — Connections page" title="Connect — Connections page"><span class="nm-ob-circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.4"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M15.5 5.2a3.4 3.4 0 0 1 0 5.9M17.8 14.2a6 6 0 0 1 3.2 5.8"/></svg></span><span class="nm-ob-lab">CONNECT</span></button>
+  </div>
 </nav>
 <script>
 /* REBUILD2 wiring — icon row + ONE bar. Delegated: the chrome is built by nmInit. */
@@ -2840,7 +2860,43 @@ window.NayaMsgRebuild = {
   function note(t){ var n = document.getElementById('nmIconNote'); if(!n) return; if(!t){ n.hidden = true; n.textContent=''; return; } n.hidden = false; n.textContent = t; }
   function tempo(t){ if(window.NayaMsgRebuild && window.NayaMsgRebuild.setTempo) window.NayaMsgRebuild.setTempo(t); }
   function focusEl(el){ if(!el) return false; el.scrollIntoView({block:'center'}); el.focus({preventScroll:true}); return true; }
+  /* + menu (settled ADD): create a post, create a world, create a note. */
+  var plusMenu = null;
+  function closePlusMenu(){ if(plusMenu){ plusMenu.remove(); plusMenu = null; } }
+  function openPlusMenu(){
+    if(plusMenu){ closePlusMenu(); return; }
+    var bar = document.querySelector('.nm-onebar');
+    plusMenu = document.createElement('div');
+    plusMenu.className = 'nm-plus-menu'; plusMenu.setAttribute('role','menu'); plusMenu.setAttribute('aria-label','Create');
+    plusMenu.innerHTML = '<button type="button" class="nm-plus-item" data-plus="post" style="--pc:#8e24aa">Create a post</button>'
+      + '<button type="button" class="nm-plus-item" data-plus="world" style="--pc:#d4a017">Create a world</button>'
+      + '<button type="button" class="nm-plus-item" data-plus="note" style="--pc:#0e7490">Create a note</button>';
+    document.body.appendChild(plusMenu);
+    var bt = bar ? bar.getBoundingClientRect().top : window.innerHeight - 120;
+    plusMenu.style.bottom = Math.max(8, window.innerHeight - bt + 8) + 'px';
+    plusMenu.querySelectorAll('[data-plus]').forEach(function(b){
+      b.addEventListener('click', function(ev){
+        ev.stopPropagation();
+        var k = b.getAttribute('data-plus'); closePlusMenu();
+        if(k === 'post'){ tempo('mail'); setTimeout(function(){ var c = document.querySelector('.ml-compose-top'); if(c) c.click(); setTimeout(function(){ var m = document.querySelector('.ml-mode[data-mode="post"]'); if(m) m.click(); }, 200); }, 200); }
+        else if(k === 'world'){ note('Create a world — not live yet.'); }
+        else { note('Create a note — notes live in Smart Notes, not here yet.'); }
+      });
+    });
+  }
+  /* ACTIVITY badge: the REAL live unread total from messenger_messages
+     (nmConvs unread = to me, never read). No network-wide notifications
+     table exists in this build, so no number is ever invented: the badge
+     shows only when the live total is above zero, and stays hidden otherwise. */
+  window.__nmActBadgeUpdate = function(){
+    var badge = document.getElementById('nmActBadge'); if(!badge) return;
+    var total = 0;
+    try{ (window.NayaMsgRebuild ? window.NayaMsgRebuild.convs() : []).forEach(function(c){ total += (c.unread || 0); }); }catch(e){}
+    if(total > 0){ badge.hidden = false; badge.textContent = String(total); badge.setAttribute('aria-label', total + ' unread messages'); }
+    else { badge.hidden = true; badge.textContent = ''; }
+  };
   document.addEventListener('click', function(ev){
+    if(plusMenu && !(ev.target.closest && ev.target.closest('.nm-plus-menu')) && !(ev.target.closest && ev.target.closest('[data-nm-bar="add"]'))){ closePlusMenu(); }
     var ic = ev.target.closest ? ev.target.closest('[data-nm-icon]') : null;
     if(ic){
       var k = ic.getAttribute('data-nm-icon'); note(null);
@@ -2856,11 +2912,12 @@ window.NayaMsgRebuild = {
     var b = ev.target.closest ? ev.target.closest('[data-nm-bar]') : null;
     if(!b) return;
     var a = b.getAttribute('data-nm-bar'); note(null);
-    if(a === 'add'){ if(!focusEl(document.getElementById('nmMsgBody'))) focusEl(document.getElementById('nmSearch')); }
+    if(a === 'add'){ openPlusMenu(); }
     else if(a === 'mail'){ tempo('mail'); var l = document.getElementById('nmConvList'); if(l) l.scrollIntoView({block:'start'}); }
     else if(a === 'activity'){ tempo('chat'); var c = document.getElementById('nmConvList'); if(c) c.scrollIntoView({block:'start'}); }
     else if(a === 'worlds'){ var w = document.querySelector('.nm-space-pick'); if(w) w.scrollIntoView({block:'center'}); }
-    else if(a === 'ecosystem'){ var p = document.getElementById('nmPeopleList'); if(p) p.scrollIntoView({block:'start'}); else window.scrollTo(0,0); }
+    else if(a === 'ecosystem'){ window.location.href = 'https://nayanet.app/hub'; }
+    else if(a === 'connect'){ window.location.href = 'https://nayanet.app/rooms/connections'; }
   });
 })();
 </script>
