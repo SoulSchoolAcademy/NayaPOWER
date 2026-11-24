@@ -81048,6 +81048,42 @@
         "Inspection",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-4745",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4745-the-eye-must-read",
+      "slug": "the-eye-must-read",
+      "title": "The Eye Must Read",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4745/IB-SMART-NOTE-20261124-sn4745-the-eye-must-read.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4745/IB-SMART-NOTE-20261124-sn4745-the-eye-must-read.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4745/IB-SMART-NOTE-20261124-sn4745-the-eye-must-read.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4745-the-eye-must-read.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T18:00:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "4634ef939759df7c1722478e0e6f204be507d4425cf4ba3e0da570daab7b0593",
+      "content_hash": "2aa7046684755599fa252079be9c402d82a17fe9c664e9db50ec88f95db43883",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "d9af187720f428fa9b1b0fd0c7dea1bc7844baf3430741e8034c1d6740ab098b",
+      "one_line": "The second Inspector sweep refines the same law at finer grain: the eye's 'i' must read in black on pearl, the day view is prime real estate, the Factory formats everything itself, one bar and one mail serve the whole world — alive like a high-tech computer, and scored without excitement.",
+      "topics": [
+        "Distillation",
+        "Design",
+        "Calendar",
+        "Smart Mail",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -81058,5 +81094,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "54e8427a5c50b7bb97167dcd265cd348586b8e36db30422b0333bc8e0ce9dd16"
+  "corpus_manifest_hash": "12840e7a74a896902c8a6a0c805557ca0f2474e10e9f0bbe066a81317f96979f"
 }
