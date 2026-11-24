@@ -327,21 +327,139 @@
 .mm-connrow .ds { font-size:17px; color:#ffffff; }
 .mm-linkboard { flex:1; min-height:0; overflow-y:auto; display:flex; flex-direction:column; gap:12px; padding:4px; }
 .mm-linkboard .mm-biglink { font-family:"Marcellus",serif; font-size:25px; color:#ffffff; word-break:break-all; }
-/* The one locked bottom bar — ADD purple, MAIL sapphire, ACTIVITY emerald,
-   WORLDS gold, ECOSYSTEM burnt orange, CONNECT ruby. Same six, same order,
-   same colours, everywhere. */
-.mm-bottombar { flex:none; display:flex; gap:8px; padding-top:12px; }
-.mm-bb { flex:1; min-width:0; min-height:56px; border-radius:999px; display:flex; align-items:center; justify-content:center; gap:8px; background:linear-gradient(180deg,#17171f 0%,#0a0a11 62%,#060609 100%); border:1.5px solid; color:#ffffff; font-size:17px; font-weight:700; text-decoration:none; box-shadow:inset 0 1px 0 rgba(255,255,255,.25), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); transition:transform .3s ease, filter .3s ease; }
-.mm-bb:hover { transform:translateY(-2px); filter:brightness(1.22); }
-.mm-bb:active { transform:scale(.97); }
-.mm-bb svg { width:20px; height:20px; flex:none; }
-.mm-bb[data-c=purple] { border-color:#8e24aa; box-shadow:0 0 14px rgba(142,36,170,.4), inset 0 1px 0 rgba(255,255,255,.25), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); }
-.mm-bb[data-c=blue] { border-color:#0f52ba; box-shadow:0 0 14px rgba(15,82,186,.4), inset 0 1px 0 rgba(255,255,255,.25), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); }
-.mm-bb[data-c=green] { border-color:#07925f; box-shadow:0 0 14px rgba(7,146,95,.4), inset 0 1px 0 rgba(255,255,255,.25), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); }
-.mm-bb[data-c=gold] { border-color:#d4a017; box-shadow:0 0 14px rgba(212,160,23,.4), inset 0 1px 0 rgba(255,255,255,.25), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); }
-.mm-bb[data-c=orange] { border-color:#c2410c; box-shadow:0 0 14px rgba(194,65,12,.4), inset 0 1px 0 rgba(255,255,255,.25), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); }
-.mm-bb[data-c=red] { border-color:#c62828; box-shadow:0 0 14px rgba(198,40,40,.4), inset 0 1px 0 rgba(255,255,255,.25), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); }
-.mm-bb.lit { filter:brightness(1.3); }
+/* ============ BOTTOM BAR — harvested from the Hub (followup19) ============ */
+/* Source: branch hub/personal-sidebar-followup19-20261119, HUB/app/index.html, */
+/* 7,188,454 B, sha256 df15217370dc0d55265ee109ff64db1cda9b6701294b502b368582915c0284ec. */
+/* Adaptations A1-A4 are marked on the lines they touch; the rest is byte-identical. */
+<!-- HARVEST-START hub followup19 lines 318-356 .notif-bar/.notif-seg/.notif-tile (A1: line 319 in-flow; A4: stray } line 357 out) -->
+.notif-bar {
+  flex: none; margin-top: 12px;
+  display: flex; justify-content: center;
+  background: rgba(5,5,9,.96);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  /* F3 (Shawn 16:06Z) — NO divider line above the trio: the border-top and
+     the inset 1px highlight are gone; the icons sit clean on the page. */
+  box-shadow: 0 -10px 34px rgba(0,0,0,.6);
+  padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px)); /* FOLLOW-ON 2026-11-19 (item 3): real clearance — the tiles sit fully inside the viewport, harvested from the Dashboard follow-on. */
+  animation: notifUp .55s cubic-bezier(.16,.84,.22,1) backwards;
+  transition: opacity .45s ease;
+}
+.notif-bar.nsb-trio-faded{opacity:0;pointer-events:none;}
+@keyframes notifUp { from { transform: translateY(100%); opacity: 0; } to { transform: none; opacity: 1; } }
+.notif-row { display: flex; gap: 40px /* A9 (2026-11-17): depth + separation — 6×54px + 5×40px = 524px, inside 640px. */; width: 100%; max-width: 640px; padding: 12px 14px 10px; justify-content: center; }
+.notif-seg {
+  position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 2px 6px 0; cursor: pointer; background: none; border: none;
+  color: #ffffff; font-family: inherit; transition: transform .12s;
+  -webkit-tap-highlight-color: transparent;
+}
+.notif-seg:active { transform: scale(.94); }
+/* SWEEP-3 F8: no gloss layer in the bytes — flat board black plus rim plus glow. Whether the rim-light IS the gloss is Shawn's eye call; do not invent a swoosh. */
+.notif-tile {
+  position: relative; z-index: 0; width: 54px; height: 54px; border-radius: 16px; /* MODEL TILE (blob 9a006c47, 22:48Z + 23:00Z): harvested verbatim — 16px, not the Hub's 26px squircle */
+  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(130% 140% at 30% 18%, color-mix(in srgb, var(--nc) 36%, #12121a), #07070b 78%); /* MODEL: the ball face — own-color top-left light, obsidian body */
+  border: 1.5px solid color-mix(in srgb, var(--nc) 62%, rgba(255,255,255,.12)); /* MODEL: the 62% rim */
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.38),
+    inset 0 -9px 15px rgba(0,0,0,.6),
+    inset 1px 0 0 rgba(255,255,255,.07),
+    0 7px 16px rgba(0,0,0,.6),
+    0 12px 28px rgba(0,0,0,.55),
+    0 0 17px color-mix(in srgb, var(--nc) 42%, transparent); /* MODEL: the around-glow, restrained */
+  color: #ffffff;
+  transition: box-shadow .3s, border-color .3s, transform .22s cubic-bezier(.16,.84,.22,1);
+}
+.notif-tile::before { display: none; } /* MODEL (Personal L32407): no clone layer — the later rule wins, exactly as in the model file. */
+<!-- HARVEST-END hub followup19 lines 318-356 .notif-bar/.notif-seg/.notif-tile (A1: line 319 in-flow; A4: stray } line 357 out) -->
+<!-- HARVEST-START hub followup19 lines 358-382 tile clone + orbit + label -->
+.notif-tile::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none; border: 1.5px solid color-mix(in srgb, var(--nc) 45%, transparent); transform: translate(1px, 1px); box-shadow: 0 4px 10px rgba(0,0,0,.5); /* EYE-NOTES-FIX §3.3(a)(b): radius follows the squircle; the clone shadow brought in tight */
+  background: #050607; /* BLACK DIAMOND: the wash is out — ::before is now the clone layer */
+
+}
+/* EYE-NOTES-FIX 2026-11-17 §3.3 + Amendment #1 (the ultimate bar) + #2 (the
+   right amount of elegance): the slow turning flow around every tile — the
+   orbit from this morning, taken from the hamburger and the brand mark
+   (the same travelling-dot object, never a rotating element, so the glyph
+   stays upright). AMENDMENT #3 (2026-11-17 20:29Z): the filed flow was
+   VERIFIED against the morning orbit and differed in exactly one
+   declaration — it missed background-repeat:no-repeat, so the 9px dot
+   tiled into a dotted band instead of one dot travelling the ring. The
+   no-repeat is restored from the canonical object (hamburger .rail-toggle,
+   brand mark), verbatim. Odd tiles turn clockwise in 120s, even tiles counter in
+   150s, the same pair as the hamburger (120s CW) and the brand mark
+   (150s CCW) — one treatment, congruent on all six. Amendment #2: the
+   flow goes here and NOWHERE else new in this round — the sidebar icons,
+   the sub-tabs, the tab jewels, the top controls and the brand mark
+   already carry it where it belongs; piling it onto more places in this
+   round would be too much in one place. */
+.notif-tile::after{content:""; position:absolute; inset:-6px; z-index:-1; pointer-events:none; border-radius:inherit; border:1px solid color-mix(in srgb, var(--nc) 35%, transparent); background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,var(--nc) 300deg,rgba(255,255,255,.95) 330deg,transparent 360deg); -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); mask-composite:exclude; padding:2px; animation:orb-spin 60s linear infinite, naya-breathe 6s ease-in-out infinite alternate;} /* MODEL (blob 9a006c47): the conic comet — a light that follows the line perfectly, 22:48Z. */
+.notif-seg:nth-child(even) .notif-tile::after{animation:naya-orbit-dot-ccw 150s linear infinite;}
+.notif-tile svg { width: 25px; height: 25px; color: #fff; filter: drop-shadow(0 2px 2px rgba(0,0,0,.7)); position: relative; transition: transform .22s, filter .22s; } /* MODEL: dark-only — the white glows in the middle are gone (22:48Z). */
+.notif-lbl { display: block; font-size: 17px; font-weight: 700; letter-spacing: .08em; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.9); white-space: nowrap; line-height: 1.2; } /* FOLLOW-ON 2026-11-19 (item 3): labels read — 17px bold white, harvested from the Dashboard follow-on (os-followup2-20261119). The 10.5px label was unreadable at 1920 and is gone. */
+<!-- HARVEST-END hub followup19 lines 358-382 tile clone + orbit + label -->
+<!-- HARVEST-START hub followup19 lines 388-395 landing + lit (count rule 383-387 out, A3) -->
+@keyframes notifLand { 0% { border-color:#fff; box-shadow: inset 0 -9px 15px rgba(0,0,0,.6), 0 7px 16px rgba(0,0,0,.6), 0 8px 18px rgba(0,0,0,.6), 0 0 0 1px #fff, 0 0 34px #fff, 0 0 50px color-mix(in srgb, var(--nc) 90%, transparent); } 100% { border-color: color-mix(in srgb, var(--nc) 88%, #ffffff); box-shadow: inset 0 -9px 15px rgba(0,0,0,.6), 0 7px 16px rgba(0,0,0,.6), 0 0 0 1px color-mix(in srgb, var(--nc) 30%, transparent), 0 0 26px color-mix(in srgb, var(--nc) 68%, transparent); } }
+@keyframes notifCountLand { 0% { transform: scale(1.15); } 100% { transform: scale(1); } } /* ROUND 6 2026-11-19 (defect 5): the 1.7x flare put the 26px ball half outside the tile's top edge — the straddle the eye saw. A 1.15x pop stays inside the tile and still reads as a landing. */
+.notif-seg.just-landed .notif-tile { animation: notifLand 1.4s ease-out 1; }
+.notif-seg.just-landed .notif-count { animation: notifCountLand .9s ease-out 1; } /* EYE-NOTES-FIX §3.3(d): the light-up is a once-off — bright and obvious when a notification lands, then it settles to the steady has-news glow. It never blinks forever. */
+.notif-seg.has-news .notif-tile {
+  border-color: color-mix(in srgb, var(--nc) 88%, #ffffff);
+  box-shadow: 0 7px 16px rgba(0,0,0,.6), 0 0 26px color-mix(in srgb, var(--nc) 68%, transparent); /* MODEL: the lit state, verbatim. */
+}
+<!-- HARVEST-END hub followup19 lines 388-395 landing + lit (count rule 383-387 out, A3) -->
+<!-- HARVEST-START hub followup19 lines 404-408 phone sizes -->
+@media (max-width:640px){ .notif-row{gap:10px;} .notif-tile{width:46px;height:46px;} .notif-seg{padding:2px 2px 0;} }
+@media (max-width:400px){ .notif-row{gap:4px;padding:12px 8px 10px;} .notif-tile{width:46px;height:46px;} .notif-seg{padding:2px 0 0;} }
+/* THE LINE (Personal correction, harvested): the page-wide button shadow's
+   inset top line is restated away on the seg itself. */
+.notif-seg{box-shadow: inset 0 -2px 8px rgba(0,0,0,.25), 0 6px 20px rgba(0,0,0,.4)!important;}
+<!-- HARVEST-END hub followup19 lines 404-408 phone sizes -->
+<!-- HARVEST-START hub followup19 lines 409-421 plus menus (A2: line 415 font-size 14px -> 17px) -->
+/* ——— HUB SIDEBARS+PLUS 2026-11-16 (item 4): the two + menus ———
+   Chrome harvested VERBATIM from the Personal correction's .fc-plusmenu
+   (blob 3328238b): fixed, centered on its anchor, own-color hover. */
+.fc-plusmenu{position:fixed;z-index:1700;transform:translateX(-50%);background:#050607;border:1.5px solid rgba(255,255,255,.2);border-radius:14px;padding:8px;min-width:220px;box-shadow:inset 0 -8px 16px rgba(0,0,0,.4),0 16px 40px rgba(0,0,0,.65),0 0 24px -6px rgba(142,36,170,.45);}
+.fc-plusmenu[hidden]{display:none;}
+/* SWEEP-3 F6: menu labels stay on their harvested scale — tile furniture under the open C5 question (see the count-bubble note above). Not resized on a guess. */
+.fc-plusitem{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:10px;color:#fff;font-size:17px;font-weight:700;cursor:pointer;background:#050607;border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 -3px 6px rgba(0,0,0,.5),0 3px 8px rgba(0,0,0,.4),0 8px 18px rgba(0,0,0,.55);transition:all .18s ease;}
+.fc-plusitem:hover{background:#050607;border-color:var(--mc,#8e24aa);box-shadow:0 0 18px -4px var(--mc,#8e24aa),0 6px 16px rgba(0,0,0,.5),0 10px 22px rgba(0,0,0,.55);transform:translateY(-2px);}
+.fc-plusitem:hover .fc-pi-ico{border-color:var(--mc,#8e24aa);box-shadow:inset 0 2px 3px rgba(255,255,255,.28),inset 0 -3px 6px rgba(0,0,0,.6),0 0 12px -2px color-mix(in srgb,var(--mc,#8e24aa) 55%,transparent),0 6px 14px rgba(0,0,0,.5);transform:translateY(-2px);} /* 22:48Z hover law: lift + rim, never glow over the icon. */
+.fc-plusitem .fc-pi-ico{color:#fff;flex:none;width:34px;height:34px;display:grid;place-items:center;position:relative;z-index:0;border-radius:10px;background:radial-gradient(130% 140% at 30% 18%, color-mix(in srgb, var(--mc,#8e24aa) 30%, #12121a), #07070b 78%);border:1.5px solid color-mix(in srgb,var(--mc,#8e24aa) 65%,rgba(255,255,255,.25));box-shadow:inset 0 2px 3px rgba(255,255,255,.28),inset 0 -3px 6px rgba(0,0,0,.6),0 0 12px -2px color-mix(in srgb,var(--mc,#8e24aa) 55%,transparent),0 6px 14px rgba(0,0,0,.5),0 10px 22px rgba(0,0,0,.55);} /* 3D LAW: the ball face. */
+.fc-plusitem .fc-pi-ico svg{width:19px;height:19px;filter:drop-shadow(0 2px 2px rgba(0,0,0,.7));} /* MODEL: dark-only — the white glow in the middle is gone (22:48Z). */
+/* BLACK DIAMOND: clone layer behind every + menu icon chip. */
+.fc-plusitem .fc-pi-ico::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;background:#050607;border:1.5px solid color-mix(in srgb, var(--mc, #8e24aa) 45%, transparent);transform:translate(1px,1px);box-shadow:0 6px 14px rgba(0,0,0,.5);}
+<!-- HARVEST-END hub followup19 lines 409-421 plus menus (A2: line 415 font-size 14px -> 17px) -->
+<!-- HARVEST-START hub followup19 lines 992/995/1001/1008/1011 press + hover -->
+.notif-seg:active .notif-tile { transform: translateY(2px) scale(.96); box-shadow: inset 0 1px 0 rgba(255,255,255,.28), inset 0 -6px 10px rgba(0,0,0,.7), 0 3px 8px rgba(0,0,0,.6), 0 0 8px -2px color-mix(in srgb, var(--nc) 40%, transparent); }
+.fc-plusitem:active .fc-pi-ico { transform: scale(.95); box-shadow: inset 0 1px 0 rgba(255,255,255,.2), inset 0 -2px 4px rgba(0,0,0,.75), 0 3px 8px rgba(0,0,0,.6); }
+.notif-seg:hover .notif-tile { border-color: color-mix(in srgb, var(--nc) 88%, #ffffff); box-shadow: inset 0 1px 0 rgba(255,255,255,.38), inset 0 -9px 15px rgba(0,0,0,.6), inset 1px 0 0 rgba(255,255,255,.07), 0 7px 16px rgba(0,0,0,.6), 0 12px 28px rgba(0,0,0,.55), 0 0 20px -2px color-mix(in srgb, var(--nc) 55%, transparent); transform: translateY(-2px); }
+.notif-seg:hover .notif-tile::after { border-color: color-mix(in srgb, var(--nc) 80%, transparent); }
+.fc-plusitem:hover .fc-pi-ico::after { border-color: color-mix(in srgb, var(--mc,#a06bff) 80%, transparent); }
+<!-- HARVEST-END hub followup19 lines 992/995/1001/1008/1011 press + hover -->
+<!-- HARVEST-START hub followup19 lines 13476-13486 hover (later rule wins ties) -->
+.notif-seg:hover .notif-tile {
+  transform: translateY(-3px);
+  border-color: var(--nc);
+  box-shadow:
+    inset 0 -9px 15px rgba(0,0,0,.6),
+    0 0 14px -2px color-mix(in srgb, var(--nc) 60%, transparent), /* EYE-NOTES §3.2 edge-only */
+    0 8px 18px rgba(0,0,0,.6),
+    0 0 0 1px color-mix(in srgb, var(--nc) 35%, transparent); /* EYE-NOTES-FIX §3.3(b): the outer hairline ring, brought in tight */
+  /* BLACK DIAMOND: inset white out. */
+}
+.notif-seg:hover .notif-tile svg { filter: drop-shadow(0 3px 3px rgba(0,0,0,.95)) drop-shadow(0 0 8px var(--nc)) drop-shadow(0 0 3px rgba(255,255,255,.9)); transform: scale(1.06); }
+<!-- HARVEST-END hub followup19 lines 13476-13486 hover (later rule wins ties) -->
+<!-- HARVEST-START hub followup19 keyframes 1999/3197/13532 orbit + breathe -->
+@keyframes naya-breathe { from { opacity: .55; } to { opacity: 1; } }
+@keyframes orb-spin { to { transform: rotate(360deg); } }
+@keyframes naya-orbit-dot-ccw{0%{background-position:50% 0}12.5%{background-position:0 0}25%{background-position:0 50%}37.5%{background-position:0 100%}50%{background-position:50% 100%}62.5%{background-position:100% 100%}75%{background-position:100% 50%}87.5%{background-position:100% 0}100%{background-position:50% 0}}
+<!-- HARVEST-END hub followup19 keyframes 1999/3197/13532 orbit + breathe -->
+<!-- HARVEST-START hub followup19 lines 14473-14474 follow-on gap + labels -->
+@media (min-width:641px){ .notif-row { gap: 24px; } }
+@media (max-width:640px){ .notif-lbl { display: none; } }
+<!-- HARVEST-END hub followup19 lines 14473-14474 follow-on gap + labels -->
 @media (max-width:720px) {
   .mm-title { font-size:25px; }
   .mm-title small { display:none; }
@@ -356,8 +474,6 @@
   .mm-rail { width:auto; flex:none; max-height:168px; }
   .mm-rail-list { flex-direction:row; overflow-x:auto; overflow-y:hidden; }
   .mm-person { min-width:168px; }
-  .mm-bb span { display:none; }
-  .mm-bb { border-radius:50%; min-height:48px; }
   .mm-tab { font-size:17px; }
   .mm-stage { padding:12px; }
 }
@@ -482,15 +598,21 @@
         </div>
       </section>
     </main>
-    <!-- The one locked bottom bar: ADD purple, MAIL sapphire, ACTIVITY emerald, WORLDS gold, ECOSYSTEM burnt orange, CONNECT ruby. -->
-    <nav class="mm-bottombar" aria-label="Bottom bar">
-      <button class="mm-bb" data-c="purple" id="bbAdd" aria-label="Add — make a post"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg><span>ADD</span></button>
-      <button class="mm-bb lit" data-c="blue" id="bbMail" aria-label="Mail — Smart Mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span>MAIL</span></button>
-      <a class="mm-bb" data-c="green" href="https://nayanet.app/hub" aria-label="Activity — the Hub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg><span>ACTIVITY</span></a>
-      <a class="mm-bb" data-c="gold" href="https://nayanet.app/personal" aria-label="Worlds — Personal, your world"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14 0 18M12 3c-3 3.5-3 14 0 18"/></svg><span>WORLDS</span></a>
-      <a class="mm-bb" data-c="orange" href="https://nayanet.app" aria-label="Ecosystem — the whole network"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.5"/><circle cx="19" cy="5" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M7.2 10.8l9.6-4.3M7.2 13.2l9.6 4.3"/></svg><span>ECOSYSTEM</span></a>
-      <button class="mm-bb" data-c="red" id="bbConnect" aria-label="Connect — your connections"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3.5"/><circle cx="16.5" cy="15.5" r="3.5"/><path d="M11 10.5l3 2.5"/></svg><span>CONNECT</span></button>
-    </nav>
+    <!-- The two + menus — harvested from the Hub (followup19 lines 14447-14457). -->
+    <!-- The bar itself is built by NayaNotif.init() in the script, from SEGS; -->
+    <!-- these two menus are the static chrome the + buttons open. Home is out -->
+    <!-- of the Create menu: the brief defines Create as Make a post, Smart -->
+    <!-- note, Naya note, and the X already goes to the Hub. -->
+<div id="hubPlusCreate" class="fc-plusmenu hub-plusmenu" hidden role="menu" aria-label="Create">
+<div class="fc-plusitem" role="menuitem" data-hub-plus="post" data-hub-href="https://nayanet.app/personal#home/post" style="--mc:#0f52ba"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></span><span data-mw-tr="pm">Make a post</span></div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="smart" data-hub-composer="smart-note" style="--mc:#d4a017"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z"/></svg></span><span data-mw-tr="pm">Smart note</span></div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="naya" data-hub-href="https://nayanet.app/personal#home/naya" style="--mc:#07925f"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h6M9 16h6"/></svg></span><span data-mw-tr="pm">Naya note</span></div>
+</div>
+<div id="hubPlusConnect" class="fc-plusmenu hub-plusmenu" hidden role="menu" aria-label="Connect">
+<div class="fc-plusitem" role="menuitem" data-hub-plus="message" data-hub-href="https://nayanet.app/rooms/mail" style="--mc:#0f52ba"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z"/></svg></span><span data-mw-tr="pm">Message</span></div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="mail" data-hub-href="https://nayanet.app/rooms/mail" style="--mc:#d4a017"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7.5l9 6 9-6"/></svg></span><span data-mw-tr="pm">Mail</span></div>
+<div class="fc-plusitem" role="menuitem" data-hub-plus="world" data-hub-href="https://nayanet.app/rooms/spaces" style="--mc:#07925f"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></span><span data-mw-tr="pm">Create world</span></div>
+</div>
   </div>
 <script>
   (function () {
@@ -514,6 +636,144 @@
       return out;
     }
     /* @dm-data-end */
+    /* ——— THE BOTTOM BAR — harvested from the Hub (followup19) ———
+       SEGS + ICONS + the init() build loop + the two + menus, adapted
+       only where the stage forces it (A-notes in the maker report).
+       NOT carried: counts, sound, storage — this page never reads mail,
+       never stores anything, never counts. */
+    window.NayaNotif = window.NayaNotif || {
+      tap: function (k) {
+        /* Hub tap() used the Hub router (NayaRouter / NayaChassis) and
+           cleared counts. The stage has no router and no counts: MAIL
+           opens the Mail view in this same stage (this page IS the mail
+           interface); the other three keep the settled destinations the
+           first build already proved (Hub / Personal / NayaNET). */
+        if (k === 'mail') { show('view-mail'); }
+        else if (k === 'activity') { window.location.href = 'https://nayanet.app/hub'; }
+        else if (k === 'spaces') { window.location.href = 'https://nayanet.app/personal'; }
+        else if (k === 'eco') { window.location.href = 'https://nayanet.app'; }
+      },
+      init: function () {
+        var self = this;
+        var bar;
+        /* HARVEST-START hub followup19 lines 6981-6989 ICONS, byte-identical */
+      var ICONS = {
+        mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
+        activity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg>',
+        spaces: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg>',
+        eco: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>',
+        plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
+        /* EYE-NOTES-FIX §3.3(e): the right + is the same + object as the left — one set with Personal. */
+        'plus-connect': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19.5c.7-3.4 2.9-5.2 5.5-5.2s4.8 1.8 5.5 5.2"/><circle cx="17" cy="9" r="2.7"/><path d="M16.2 14.6c2.5-.2 4.1 1.4 4.6 3.9"/></svg>' /* FOLLOW-ON 2026-11-19 (item 3): CONNECT is people, not a second + — the people glyph harvested verbatim from the Dashboard follow-on round 2 (blob e91ad3ca, nav line). */
+      };
+        /* HARVEST-END hub followup19 lines 6981-6989 */
+      /* SIXTH seg: CONNECT carries the people glyph — FOLLOW-ON 2026-11-19
+      (scorecard decision: the Personal set is OFFICIAL, 7/10 vs the Hub set
+      4/10): a real connect icon, never a second +. This supersedes the
+      2026-11-17 19:31Z "CONNECT IS +" ruling, which the Dashboard follow-on
+      round 2 already set aside with the same glyph. One-icon law: the Hub bar
+     matches the Personal bar again. F2 stands: spaces (WORLDS) is a globe
+     now — the same globe geometry the Create-world menu item already
+     carries — never the house again (a house means HOME).
+     FIX-4 (Deep Palette, DNA §1): rims run the spectrum, one color each —
+     left + royal purple, mail sapphire, activity emerald, worlds deep gold,
+     grid burnt orange, right + ruby. Never the same twice in a row. */
+        /* HARVEST-START hub followup19 line 7001 SEGS, byte-identical */
+  var SEGS = [['plus', 'ADD', '#8e24aa'], ['mail', 'MAIL', '#0f52ba'], ['activity', 'ACTIVITY', '#07925f'], ['spaces', 'WORLDS', '#d4a017'], ['eco', 'ECOSYSTEM', '#c2410c'], ['plus-connect', 'CONNECT', '#c62828']]; /* EYE-NOTES-FIX §3.3(e): one set with Personal — same key, same + object */
+        /* HARVEST-END hub followup19 line 7001 */
+        /* HARVEST-START hub followup19 lines 7002-7014 build loop */
+      bar = document.createElement('nav'); bar.id = 'naya-notif-bar'; bar.className = 'notif-bar';
+      bar.setAttribute('aria-label', 'Notifications');
+      var row = document.createElement('div'); row.className = 'notif-row';
+      SEGS.forEach(function (s) {
+        var b = document.createElement('button'); b.type = 'button'; b.className = 'notif-seg';
+        b.setAttribute('data-notif', s[0]); b.style.setProperty('--nc', s[2]);
+        b.setAttribute('aria-label', s[1] + ' — open');
+        b.setAttribute('title', s[1]);
+        b.innerHTML = '<span class="notif-tile">' + (ICONS[s[0]] || ICONS.plus) + '</span><span class="notif-lbl">' + s[1] + '</span>'; /* FOLLOW-ON 2026-11-19 (item 3): the label renders under the tile — the 17px .notif-lbl existed in CSS but no label element was ever emitted, so nothing showed, even on hover. */
+        b.addEventListener('click', function () { if (s[0] === 'plus') { if (window.hubTogglePlusMenu) window.hubTogglePlusMenu('create', b); return; } if (s[0] === 'plus-connect') { if (window.hubTogglePlusMenu) window.hubTogglePlusMenu('connect', b); return; } self.tap(s[0]); });
+        row.appendChild(b);
+      });
+      bar.appendChild(row); document.getElementById('app').appendChild(bar);
+        /* HARVEST-END hub followup19 lines 7002-7014 */
+        /* NOT carried from Hub init: the static-fallback removal (no static
+           bar on this page), the bottomBar stored-setting read (no storage on
+           this page, ever), body.has-notif, the storage/resize listeners,
+           refresh() and syncStack() (no counts, no fixed bar). */
+      }
+    };
+    /* HARVEST-START hub followup19 lines 7051-7073 close + toggle, byte-identical */
+  window.hubClosePlusMenus = function () {
+    ['hubPlusCreate', 'hubPlusConnect', 'hubMenuChoices'].forEach(function (id) { var m = document.getElementById(id); if (m) m.hidden = true; });
+  };
+  window.hubTogglePlusMenu = function (kind, anchor) {
+    var id = kind === 'connect' ? 'hubPlusConnect' : 'hubPlusCreate';
+    var other = document.getElementById(kind === 'connect' ? 'hubPlusCreate' : 'hubPlusConnect');
+    if (other) other.hidden = true;
+    var menu = document.getElementById(id);
+    if (!menu) return;
+    if (!menu.hidden) { menu.hidden = true; return; }
+    var r = anchor && anchor.getBoundingClientRect ? anchor.getBoundingClientRect() : null;
+    if (r) {
+      menu.style.left = Math.max(110, Math.min(window.innerWidth - 110, r.left + r.width / 2)) + 'px';
+      menu.style.top = '';
+      menu.style.bottom = (window.innerHeight - r.top + 10) + 'px';
+    } else {
+      menu.style.left = '50%'; menu.style.top = ''; menu.style.bottom = 'calc(var(--notif-h, 76px) + 12px)';
+    }
+    menu.hidden = false;
+    var mh = menu.getBoundingClientRect().height;
+    if (mh > window.innerHeight - 16) { menu.style.maxHeight = (window.innerHeight - 16) + 'px'; menu.style.overflowY = 'auto'; }
+    else { menu.style.maxHeight = ''; menu.style.overflowY = ''; }
+  };
+    /* HARVEST-END hub followup19 lines 7051-7073 */
+    /* The two + menus — item routing, adapted from the Hub document
+       delegation (followup19 lines 7217-7272). Structure kept: one
+       document click listener, menu items by data-hub-plus, outside
+       click closes, Escape closes. Branches adapted, one by one:
+       - smart: the Hub opens its in-page composer (NayaHubComposer,
+         on-device draft, Shawn-gated posting). No composer can run
+         on this interface-only page, so the item goes where creation
+         lives: the Personal page. The other creation items keep their
+         canonical data-hub-href destinations (post / naya).
+       - message / mail: the Hub opens its messenger room / router.
+         This page IS the Messenger + Mail interface, so the items open
+         the Message / Mail views in this same stage.
+       - world: canonical data-hub-href kept (rooms/spaces, curl 200).
+       - home: no Home item on this page (the Create menu is the three
+         creation items, per the brief; the X already goes to the Hub).
+       - Escape: closes an open menu FIRST and stops the page own
+         Escape-to-go-back from firing on the same keypress. */
+    function mmPlusWire() {
+      if (window.__mmPlusBound) { return; }
+      window.__mmPlusBound = true;
+      document.addEventListener('click', function (e) {
+        if (!e.target || !e.target.closest) { return; }
+        var it = e.target.closest('[data-hub-plus]');
+        if (it) {
+          var plusKey = it.getAttribute('data-hub-plus');
+          window.hubClosePlusMenus();
+          if (plusKey === 'smart') { window.location.href = 'https://nayanet.app/personal'; return; }
+          if (plusKey === 'message') { show('view-message'); var box = document.getElementById('msgBox'); if (box) { box.focus(); } return; }
+          if (plusKey === 'mail') { show('view-mail'); return; }
+          if (plusKey === 'world') { window.location.href = 'https://nayanet.app/rooms/spaces'; return; }
+          var href = it.getAttribute('data-hub-href');
+          if (href) { window.location.href = href; }
+          return;
+        }
+        var inMenu = e.target.closest('.hub-plusmenu');
+        var onPlus = e.target.closest('[data-notif="plus"], [data-notif="plus-connect"]');
+        if (!inMenu && !onPlus) { window.hubClosePlusMenus(); }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key !== 'Escape' && e.keyCode !== 27) { return; }
+        var tag = e.target && e.target.tagName;
+        if (tag === 'INPUT' || tag === 'TEXTAREA') { return; }
+        var c = document.getElementById('hubPlusCreate');
+        var n = document.getElementById('hubPlusConnect');
+        if ((c && !c.hidden) || (n && !n.hidden)) { window.hubClosePlusMenus(); e.stopImmediatePropagation(); }
+      });
+    }
     var MAILS = [
       { id: "m1", from: "Naya", subject: "Welcome to your Smart Mail (demo)", preview: "Demo mail — a placeholder, so you can see the shape.", body: "Demo mail — this is a placeholder, not real content. Your real mail arrives here, and nobody reads it but you." },
       { id: "m2", from: "Your week", subject: "Your week, in one note (demo)", preview: "Demo mail — a placeholder, so you can see the shape.", body: "Demo mail — this is a placeholder, not real content. What you did, what you learned, what is next — one note, yours." },
@@ -596,6 +856,8 @@
     }
     function sendReceipt(el, text) { el.textContent = text; el.classList.remove("hidden"); }
     function wire() {
+      mmPlusWire();
+      window.NayaNotif.init();
       $("tabMessage").addEventListener("click", function () { show("view-message"); });
       $("tabMail").addEventListener("click", function () { show("view-mail"); });
       $("tabInsta").addEventListener("click", function () { show("view-insta"); });
@@ -610,9 +872,6 @@
       $("openBackBtn").addEventListener("click", function () { show("view-mail"); });
       $("composeBackBtn").addEventListener("click", function () { show("view-mail"); });
       $("replyBtn").addEventListener("click", function () { show("view-compose"); var s = $("mailSubject"); if (s) { s.value = "Re: " + $("openSubject").textContent; } });
-      $("bbAdd").addEventListener("click", function () { show("view-compose"); });
-      $("bbMail").addEventListener("click", function () { show("view-mail"); });
-      $("bbConnect").addEventListener("click", function () { show("view-connections"); });
       $("msgSend").addEventListener("click", function () {
         var box = $("msgBox");
         var text = box.value.replace(/^\s+|\s+$/g, "");
