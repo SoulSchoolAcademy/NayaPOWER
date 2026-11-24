@@ -1,0 +1,95 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-4732",
+ "title": "As His Eye Settles It",
+ "slug": "as-his-eye-settles-it",
+ "topic": "DESIGN",
+ "category": "DESIGN",
+ "kind": "intelligent-block",
+ "registered_by": "naya-resolve",
+ "directed_by": "Shawn Vibert",
+ "created_at": "2026-11-24T17:50:00Z",
+ "tone": "purple",
+ "icon": "◆",
+ "intelligence": {
+  "essence": "One evening, page by page, his eye settled the surfaces. The day is one place — journal, notes, posts, intelligence, feeds, worlds in one room, not seven rooms to visit. The Hub as he sees it: the control sits beside what it opens, glow lives on edges only, and the spectrum flows in its fixed order from the crown — magenta, purple, indigo, cyan, green, gold, orange, red, and back — never shuffled, never reversed. Connections is a directory: find a person fast, and every way to reach them is one tap from their name. The sidebar speaks in the order of belonging — page, mail, messages, connections — and calls them personal DMs, the words people actually use. What he liked stays verbatim: the day view's top stands exactly as approved while the store line beneath the wisdom board goes; the Dashboard hero is the number and the speedometer only; Smart Mail is not tidied but revamped, keeping only the initials. And the inspector sweep is the standing response: every sitting link, one by one, scored and answered — no batching, no later. Above all: follow the word. When he already gave it, asking again is the failure.",
+  "human_view": "Page by page, the system is being shaped by looking at it the way you look at it — what delights stays exactly as it is, what clutters is removed without ceremony, and what you already decided is never asked about again. Your day gathers into one place, and the people in your life are one tap from every way of reaching them.",
+  "child_view": "Imagine a grown-up walking through every room of a house with you, saying 'this stays, that goes, this goes here' — and the house remembering every word. That's how the pages got their shape: looked at, judged, and settled, one by one.",
+  "grandma_view": "Things are put where your hand expects them. The button that opens the side panel sits right beside the panel's name. Colors run in a proper rainbow order that never scrambles. And nothing you have already decided gets asked about a second time, as if you'd never spoken.",
+  "ai_view": "Surface-settling rules distilled from SN-3125..SN-3134: (1) the day is one place — journal, Naya Notes, posts, smart notes, intelligence, feeds, worlds in a single room; the + becomes Add-Journal there. (2) A control sits beside what it opens (the sidebar toggle left of 'Life with Naya'); glow is edges only. (3) Spectrum flow order is fixed: magenta (963Hz crown) → purple → indigo → cyan → green → gold → orange → red → back to magenta; it never changes. (4) Connections = a directory: click a contact → notes, message, mail, IM, call, Smart Meet; the five pills move to the center. (5) The inspector sweep: every sitting link reviewed one by one with a full report — aligned? missing what? why not 10-star? — no batching, no skipping. (6) Sidebar order: Page → Mail → Messages → Connections; the label is 'Personal DMs'. (7) Approved tops stay verbatim; the store line under the wisdom board is removed — the board stands alone. (8) Dashboard hero = number + speedometer only; the greeting board lives on the Hub, not the Dashboard. (9) Smart Mail gets a total revamp (layers removed), keeping only the initial discs. (10) Follow the word: a decided thing is built, never re-asked.",
+  "what_it_means": "Design at this level is not invented in a studio; it is settled in a walk. His eye on the real screenshot is the instrument, and each ruling is small, exact, and permanent — control placement, color order, a removed line — because a system is the sum of ten thousand such settlements, all remembered.",
+  "whats_inside": [
+   "The day as one place — everything the day holds, in one room (SN-3125)",
+   "The Hub as he sees it, and the spectrum flow in its fixed order (SN-3126, SN-3127)",
+   "The Connections page — a directory with every reach one tap away (SN-3128)",
+   "The inspector sweep: every sitting link, one by one, full report (SN-3129)",
+   "Sidebar sub-tabs and order; the day view's top stays; the Dashboard hero; Smart Mail revamped; follow the word (SN-3130, SN-3131, SN-3132, SN-3133, SN-3134)"
+  ],
+  "topics": [
+   "Distillation",
+   "Design",
+   "Craft",
+   "Knowledge",
+   "Multiplication"
+  ]
+ },
+ "page": {
+  "distills": {
+   "batch": 13,
+   "of": 100,
+   "covers": [
+    {
+     "sn": "SN-3125",
+     "title": "The Day as One Place"
+    },
+    {
+     "sn": "SN-3126",
+     "title": "The Hub As He Sees It"
+    },
+    {
+     "sn": "SN-3127",
+     "title": "The Spectrum Flow"
+    },
+    {
+     "sn": "SN-3128",
+     "title": "The Connections Page"
+    },
+    {
+     "sn": "SN-3129",
+     "title": "The Inspector Sweep"
+    },
+    {
+     "sn": "SN-3130",
+     "title": "The Sidebar — Sub-Tabs for the Three Worlds"
+    },
+    {
+     "sn": "SN-3131",
+     "title": "The Day View — Top Stays, Rest Goes"
+    },
+    {
+     "sn": "SN-3132",
+     "title": "The Dashboard Hero — Number + Speedometer Only"
+    },
+    {
+     "sn": "SN-3133",
+     "title": "Smart Mail — Total Revamp, Keep Only the Initials"
+    },
+    {
+     "sn": "SN-3134",
+     "title": "The Bridge Page — Follow the Word"
+    }
+   ]
+  },
+  "machine": "1) One day = one room; no per-topic day rooms. 2) Controls adjacent to what they open; glow on edges only. 3) Spectrum order immutable. 4) Directory pattern for contacts: identity → all channels in one tap. 5) Sweeps are exhaustive and per-item; batching a sweep is a defect. 6) Labels use the citizen's words ('Personal DMs'). 7) Approved elements are verbatim-protected. 8) Hero minimalism: one number, one gauge. 9) Revamp beats tidy-up when a surface is a mess. 10) Decided = built, never re-asked.",
+  "why_it_matters": "This is the design memory of the system being formed in real time. If these settlements aren't distilled and carried, the next builder re-litigates the spectrum order or re-adds the store line — and the citizen's experience quietly un-settles. Distillation is how a walk becomes permanent.",
+  "how_it_connects": "Sixth essence of batch 13, covering the Nov 17 evening screenshot sittings in order. It applies SN-4731's discipline (settled only when seen) and hands SN-4733 the surfaces whose standards it then names — the certificate, the note format, the buttons, the bar.",
+  "what_is_in_it_for_you": "The pages stop changing their minds. What you approved stays, what annoyed you is gone, colors behave, and everything you need in a day is in one place — the system feels less like software being built and more like a home being kept.",
+  "the_learning": "From now on, every ruling his eye makes on a live surface is recorded as a settlement and carried to every sibling surface — instead of living only in the sitting where it was spoken."
+ },
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4732/IB-SMART-NOTE-20261124-sn4732-as-his-eye-settles-it.md",
+ "page_hash": "58f5dacba2ed273a27a72e8728c5441c3eba8367a4e8e9aef70280fd7a700719",
+ "content_hash": "d992b2786c8cfd4c9c266bb8269ef1c94b1ba1a747c1110923629c93f4da818f",
+ "published_via": "publish-note",
+ "door_version": "1",
+ "door_receipt": "c8dee9c8953081a58ea3304eb67c9f514f009aee3365c301f10e141748c45152"
+}

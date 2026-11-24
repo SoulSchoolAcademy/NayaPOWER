@@ -80580,6 +80580,42 @@
         "Knowledge",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-4732",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4732-as-his-eye-settles-it",
+      "slug": "as-his-eye-settles-it",
+      "title": "As His Eye Settles It",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4732/IB-SMART-NOTE-20261124-sn4732-as-his-eye-settles-it.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4732/IB-SMART-NOTE-20261124-sn4732-as-his-eye-settles-it.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4732/IB-SMART-NOTE-20261124-sn4732-as-his-eye-settles-it.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4732-as-his-eye-settles-it.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T17:50:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "58f5dacba2ed273a27a72e8728c5441c3eba8367a4e8e9aef70280fd7a700719",
+      "content_hash": "d992b2786c8cfd4c9c266bb8269ef1c94b1ba1a747c1110923629c93f4da818f",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "c8dee9c8953081a58ea3304eb67c9f514f009aee3365c301f10e141748c45152",
+      "one_line": "One evening, page by page, his eye settled the surfaces. The day is one place — journal, notes, posts, intelligence, feeds, worlds in one room, not seven rooms to visit. The Hub as he sees it: the control sits beside what it opens, glow lives on edges only, and the spectrum flows in its fixed order from the crown — magenta, purple, indigo, cyan, green, gold, orange, red, and back — never shuffled, never reversed. Connections is a directory: find a person fast, and every way to reach them is one tap from their name. The sidebar speaks in the order of belonging — page, mail, messages, connections — and calls them personal DMs, the words people actually use. What he liked stays verbatim: the day view's top stands exactly as approved while the store line beneath the wisdom board goes; the Dashboard hero is the number and the speedometer only; Smart Mail is not tidied but revamped, keeping only the initials. And the inspector sweep is the standing response: every sitting link, one by one, scored and answered — no batching, no later. Above all: follow the word. When he already gave it, asking again is the failure.",
+      "topics": [
+        "Distillation",
+        "Design",
+        "Craft",
+        "Knowledge",
+        "Multiplication"
+      ]
     }
   ],
   "sequence_policy": {
@@ -80590,5 +80626,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "84092a69f5b90120b9354f278b5023b1769534732affea32a95bd7c7af68e7ce"
+  "corpus_manifest_hash": "992ec10161985475928d60f6df3af39c5217b9f364c104e8f79ab9fd9381648f"
 }
