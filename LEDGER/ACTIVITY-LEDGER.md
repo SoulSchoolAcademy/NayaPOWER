@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-24 00:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-24 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -60150,6 +60150,30 @@ _Last updated: 2026-11-24 00:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261123-1645 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall receipt: attempted all 31 queued briefs, 0 claimed (29 x exit 7 parent-authorship, 2 x exit 2 routing-prose); queue byte-identical
+
+**Evidence:** FRESH WINDOW (receipt 2026-11-23 16:45 PST). VERIFIED first-hand this tick: sweep log hidden_files/brief-queue/claim-sweep-20261123-1643.log exists, lists 31 attempts with the exact split (29 x EXIT:7 parent-authorship, 2 x EXIT:2 routing-prose); queue checksum recomputed from live bytes (sha256 of sha256sum list, bare filenames) = 6d9e2c4ec6fff11f
+
+### ✅ gap-scorer-20261015-0150-pr2608 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** pr2608 dedupe adjudication CLOSED: confirm VOID owns terminal state, mark BLOCKED SUPERSEDED
+
+**Evidence:** BACKLOG SWEEP (oldest-first; receipt 2026-10-15). VERIFIED first-hand this tick, pin-exact: t-BLOCKED-pr2608-review.md SHA 7d80105ab45a7d6361148e1dd42b6073a6296e5ede7da1ac81ef9b219c58ff11 and pr2608-review-seatgate-clarity.md SHA 349465e576e2648c2149b7f7d2bcfe6f970ee1a9665232cc9424bb97914a89e8 match the receipt's claimed SHAs exactly; the SUPERSEDE
+
+### ✅ distill-daily-20261015 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** distill-daily watch receipt: re-verify boot-pointer gate (live board #2537 vs capped #2175) against live bytes
+
+**Evidence:** BACKLOG SWEEP (oldest-first; receipt 2026-10-15). VERIFIED first-hand this tick, pin-exact: commit 9f80e8eccfbe8256ec7ce069c61cd38cc86430ce EXISTS in the local mirror; BRAIN/00-ACTIVATION/READ-ME-FIRST.md at that commit cites #2175 at lines 25, 38 and 55 exactly as the receipt quotes, and #2537 appears nowhere in the file - the 'boot-pointer still 
+
+### ✅ gap-scorer-20261014-2320-pr2608 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** pr2608 VOID-receipt gap closure: claim-brief self-test, dedupe adjudication, body adoption check
+
+**Evidence:** BACKLOG SWEEP (oldest-first; receipt 2026-10-15). VERIFIED first-hand this tick: bin/claim-brief.py exists and --self-test is GREEN today (exit 0); mtime chain confirmed on live bytes - pr2608-review-lane-blocked.md 04:35:00Z, pr2608-review-seatgate-clarity.md (VOID) 06:13:18Z; the BLOCKED file's current stamped state (SHA 7d80105ab45a..., mtime 11
 
 ### ✅ gate-stall-20261123-1545 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
