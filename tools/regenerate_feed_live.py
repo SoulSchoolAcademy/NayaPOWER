@@ -37,7 +37,16 @@ CARD RULES:
     for each ACTIVE entry that has none, the per-card layer logic below
     for entries that do, cards for non-ACTIVE or unregistered entries
     dropped, order newest-first (created desc, SN number desc), and the
-    header stamped with the registry's FULL corpus_manifest_hash. The
+    header stamped with the registry's FULL corpus_manifest_hash.
+    CONSUMER FAIL-CLOSED (SN-4711 cure 2, 2026-11-24): in this mode an
+    ACTIVE entry the door checker judges CHAIN_BROKEN emits no card —
+    a forged-receipt filing is named by the checker and excluded from
+    the brain index, and it is not served here either. The verdict is
+    the checker's own (check_door_obligation.check_chain, loaded and
+    called — no second implementation of the chain rule lives here);
+    excluded entries are named in the report's dropped_chain_broken.
+    The default preserve mode is untouched by the chain: it preserves
+    the existing set exactly, as it always has. The
     default preserve mode froze the set on 2026-11-14 — every filing
     after that landed in the registry but never in this file, and this
     file's fetch arms the Hub reader's NOT FOUND verdict, so the stalest
@@ -82,15 +91,49 @@ USAGE (from a repo checkout root):
   --rebuild-set: derive the card set from the registry (see CARD RULES);
     without it the existing set and order are preserved exactly.
 """
+import importlib.util
 import json
 import os
 import re
 import sys
+from pathlib import Path
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REGISTRY_PATH = os.path.join(ROOT, ".naya", "memory", "smart-notes", "index.json")
 FEED_PATH = os.path.join(ROOT, "HUB", "app", "feed-live.json")
 CAPTURE_DIR = os.path.join(ROOT, ".naya", "capture")
+
+# ---- Receipt-chain verdict (SN-4711 cure 2: consumer fail-closed) ----
+# Verification belongs to the door checker (tools/check_door_obligation.py)
+# — this tool loads and calls it, exactly as regenerate_brain_index.py
+# does, and contains no second implementation of the chain rule.
+
+DOOR_CHECKER_REL = Path("tools/check_door_obligation.py")
+
+
+def _load_door_checker(root):
+    """Load tools/check_door_obligation.py from this tool's own checkout —
+    the single verification authority for the receipt chain."""
+    spec = importlib.util.spec_from_file_location(
+        "check_door_obligation", root / DOOR_CHECKER_REL)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def chain_broken_ibs(registry):
+    """IBs the door checker judges CHAIN_BROKEN over this registry,
+    computed entirely with the checker's own machinery (check_chain over
+    a CaptureIndex of this checkout, the checker's own snv2 load as the
+    hash authority). Raises on any machinery failure — the caller fails
+    closed rather than deriving a card set whose chain standing is
+    unknown."""
+    root = Path(ROOT)
+    checker = _load_door_checker(root)
+    snv2 = checker._load_snv2(root)
+    cap_index = checker.CaptureIndex(root, snv2)
+    return {d.get("ib") for d in checker.check_chain(snv2, registry, cap_index)
+            if d.get("ib")}
 
 # Canonical ten sections, in order (HUB/hub-worker.js SECTION_DEFS).
 SECTIONS = [
@@ -443,16 +486,34 @@ def build_fresh_card(entry, report):
     return card
 
 
-def rebuild_feed(registry, feed, report):
-    """Derive the card set from the registry: one card per ACTIVE entry."""
+def rebuild_feed(registry, feed, report, chain_broken=None):
+    """Derive the card set from the registry: one card per ACTIVE entry.
+
+    chain_broken (optional): IBs the door checker judges CHAIN_BROKEN —
+    consumer fail-closed (SN-4711 cure 2). An excluded entry emits no
+    card: an existing card is dropped, no fresh card is built, and the
+    IB is named once in report["dropped_chain_broken"]. None (direct
+    callers that computed no chain standing) derives the pre-cure set;
+    main() always passes the verdict."""
     entries = registry["entries"]
     active = [e for e in entries if e.get("lifecycle_state") == "ACTIVE"]
+    admissible = active
+    if chain_broken:
+        admissible = []
+        for e in active:
+            if e.get("intelligent_block_id") in chain_broken:
+                report.setdefault("dropped_chain_broken", []).append(
+                    e.get("intelligent_block_id"))
+            else:
+                admissible.append(e)
     active_by_ib = {}
-    for e in active:
+    for e in admissible:
         active_by_ib.setdefault(e.get("intelligent_block_id"), e)
     out = []  # (card, entry)
     seen_ib = set()
     for card in feed["notes"]:
+        if chain_broken and card.get("id") in chain_broken:
+            continue  # already named in dropped_chain_broken above
         entry = active_by_ib.get(card.get("id"))
         if entry is None:
             in_reg = any(e.get("intelligent_block_id") == card.get("id")
@@ -463,7 +524,7 @@ def rebuild_feed(registry, feed, report):
         seen_ib.add(card.get("id"))
         out.append((transform_existing_card(card, entry, report), entry))
         report["preserved"] += 1
-    for e in active:
+    for e in admissible:
         ib = e.get("intelligent_block_id")
         if ib in seen_ib:
             continue
@@ -496,9 +557,16 @@ def main():
             "cards": 0, "layers_added": 0, "bodies_refreshed": 0,
             "no_page": [], "no_capture": [], "incomplete": {},
             "preserved": 0, "fresh": 0, "dropped_not_active": [],
-            "dropped_no_registry": [],
+            "dropped_no_registry": [], "dropped_chain_broken": [],
         }
-        new_feed = rebuild_feed(registry, feed, report)
+        try:
+            broken = chain_broken_ibs(registry)
+        except Exception as exc:
+            print(f"CHAIN_UNVERIFIABLE: {exc} — refusing to derive a "
+                  f"card set whose receipt-chain standing is unknown",
+                  file=sys.stderr)
+            return 2
+        new_feed = rebuild_feed(registry, feed, report, broken)
         if not check_only:
             with open(FEED_PATH, "w", encoding="utf-8") as f:
                 f.write(json.dumps(new_feed, indent=1, ensure_ascii=False) + "\n")

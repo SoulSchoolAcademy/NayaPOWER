@@ -1225,6 +1225,12 @@ def _retrieval_idf(field_word_sets):
 #   INDEX_CORRUPT:PAGE_HASH_MISSING      — eligible entry has no page_hash (no grandfathering)
 #   INDEX_CORRUPT:PAGE_HASH_MISMATCH    — page bytes differ from the indexed hash
 #   INDEX_CORRUPT:MANIFEST_STALE        — entries differ from corpus_manifest_hash
+#   INDEX_CORRUPT:CHAIN_UNVERIFIABLE    — the door checker's receipt-chain
+#                                         verdict could not be computed
+#                                         (machinery failure; a CHAIN_BROKEN
+#                                         verdict itself is NOT corruption —
+#                                         those entries are excluded from the
+#                                         candidate pool, see _chain_broken_ibs)
 #
 # Threat model: accidental drift, NOT adversarial tampering (an actor who
 # recomputes hashes forges consistency — out of model, stated not hidden).
@@ -1383,6 +1389,47 @@ def _load_validated_registry():
     return registry
 
 
+def _chain_broken_ibs(registry):
+    """IBs whose registry entries the door checker judges CHAIN_BROKEN
+    (SN-4711, the Sealed Door — consumer fail-closed, red-team cure 2).
+
+    The verdict is the checker's own: tools/check_door_obligation.py's
+    check_chain, loaded and called — no second implementation of the
+    chain rule lives here. The checker is CODE and travels with the tool
+    suite, so it is loaded from beside this module (the code root,
+    Path(__file__).parents[1]) and its hash authority is its own snv2
+    load from that same root — the wiring slice 5's brain-index backstop
+    uses. The DATA is the call-time corpus: the registry dict the caller
+    already validated, and the captures CaptureIndex reads under the
+    call-time ROOT (test harnesses re-point ROOT and get the live value,
+    as with _validate_index_against_corpus). Loading the checker lazily,
+    inside this function, keeps the module graph one-directional: the
+    checker loads snv2 (for hashing and publishing); snv2 never imports
+    the checker at module level, so no cycle can form in either load
+    order.
+
+    A machinery failure raises INDEX_CORRUPT:CHAIN_UNVERIFIABLE — the
+    B-51 posture: retrieval never answers from a corpus whose chain
+    standing it could not establish. A CHAIN_BROKEN verdict itself is
+    not corruption and never raises: _ranked_candidates excludes those
+    entries from the candidate pool and retrieval proceeds over the
+    rest of the corpus."""
+    import importlib.util
+    code_root = Path(__file__).resolve().parents[1]
+    try:
+        spec = importlib.util.spec_from_file_location(
+            "check_door_obligation",
+            code_root / "tools" / "check_door_obligation.py")
+        checker = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(checker)
+        snv2 = checker._load_snv2(code_root)
+        cap_index = checker.CaptureIndex(ROOT, snv2)
+        defects = checker.check_chain(snv2, registry, cap_index)
+    except Exception as exc:
+        raise SystemExit(f"INDEX_CORRUPT:CHAIN_UNVERIFIABLE:{exc}")
+    return {d.get("ib") for d in defects if d.get("ib")}
+
+
 def _ranked_candidates(query, areas=None, task_contexts=None):
     """Score every active registry entry for query; returns the ranked list of
     (score, truth-state rank, entry) sorted descending. This is the testable
@@ -1399,6 +1446,15 @@ def _ranked_candidates(query, areas=None, task_contexts=None):
     produces a retrieval answer."""
     registry = _load_validated_registry()
     candidates = registry.get("entries", [])
+    # Consumer fail-closed (SN-4711 cure 2): entries the door checker
+    # judges CHAIN_BROKEN never enter the candidate pool — a forged
+    # receipt is named by the checker and excluded from the brain
+    # index; it must not be retrievable either. Exclusion, not
+    # corruption: retrieval proceeds over the remaining corpus.
+    chain_broken = _chain_broken_ibs(registry)
+    if chain_broken:
+        candidates = [e for e in candidates
+                      if e.get("intelligent_block_id") not in chain_broken]
     if areas or task_contexts:
         candidates = _applicability_filter_entries(
             candidates, areas=areas, task_contexts=task_contexts)

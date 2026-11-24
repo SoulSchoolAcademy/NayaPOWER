@@ -759,6 +759,127 @@ def test_retrieve_ignores_superseded_registry_entries(tmp_path, monkeypatch):
     assert result["explanation"] == "active answer"
 
 
+# --- Receipt-chain exclusion: consumer fail-closed (SN-4711 cure 2) ---
+# A forged-receipt entry is named CHAIN_BROKEN by the door checker and
+# excluded from the brain index; retrieval must not serve it either. The
+# verdict is the checker's own check_chain, reused — these tests mint
+# stamps with the module's own door_receipt_for (the single minting
+# authority) and assert exclusion is a pool filter, never a corruption
+# refusal, while a machinery failure IS a fail-closed refusal.
+def _chain_registry(tmp_path):
+    """A validator-clean registry in a three-entry chain state:
+    SN-9001 legacy (unstamped, pre-chain), SN-9002 genuine (door stamp
+    chained to SN-9001's content_hash), SN-9003 forged (door stamp
+    computed against the genesis prev instead of the live tail).
+    Captures live under tmp_path/.naya/capture so the checker's
+    CaptureIndex resolves them exactly as on the live corpus."""
+    brain = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
+    brain.mkdir(parents=True, exist_ok=True)
+    cap_dir = tmp_path / ".naya" / "capture"
+    cap_dir.mkdir(parents=True, exist_ok=True)
+
+    def note(sn, ib, page_name, lesson, stamp_prev):
+        page = brain / page_name
+        page.write_text(f"# {sn}\n\n## IN A NUTSHELL\n\n{lesson}",
+                        encoding="utf-8")
+        page_hash = mod._page_file_hash(page)
+        capture = {
+            "smart_note_id": sn,
+            "intelligent_block_id": ib,
+            "file": f"BRAIN/05-MEMORY/SMART-NOTES/{page_name}",
+            "intelligence": {"essence": lesson},
+        }
+        entry = {
+            "smart_note_id": sn,
+            "intelligent_block_id": ib,
+            "title": lesson,
+            "category": "SYSTEM",
+            "topic": "GOVERNANCE",
+            "subtopic": "",
+            "captured_at": "2026-11-24T00:00:00Z",
+            "projection_path": f"BRAIN/05-MEMORY/SMART-NOTES/{page_name}",
+            "lifecycle_state": "ACTIVE",
+            "content_hash": f"content-{sn}",
+            "capture_file": f".naya/capture/{ib}.json",
+        }
+        if stamp_prev is not None:
+            capture["published_via"] = "publish-note"
+            capture["door_version"] = "1"
+            capture["door_receipt"] = mod.door_receipt_for(
+                capture, page_hash, stamp_prev)
+            entry["published_via"] = "publish-note"
+            entry["door_version"] = "1"
+            entry["door_receipt"] = capture["door_receipt"]
+        (cap_dir / f"{ib}.json").write_text(json.dumps(capture),
+                                            encoding="utf-8")
+        return entry
+
+    entries = [
+        note("SN-9001", "IB-CHAIN-LEGACY", "legacy.md",
+             "legacy chain anchor words", None),
+        note("SN-9002", "IB-CHAIN-GENUINE", "genuine.md",
+             "genuine stamped note zeppelin", "content-SN-9001"),
+        note("SN-9003", "IB-CHAIN-FORGED", "forged.md",
+             "quixotic forgery unikat", mod.DOOR_GENESIS_PREV),
+    ]
+    rp = tmp_path / "index.json"
+    rp.write_text(json.dumps(_sealed_registry(entries, tmp_path)),
+                  encoding="utf-8")
+    return rp
+
+
+def _chain_setup(tmp_path, monkeypatch):
+    rp = _chain_registry(tmp_path)
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    monkeypatch.setattr(mod, "RETRIEVAL_RELEVANCE_FLOOR", 0)
+    return rp
+
+
+def test_chain_broken_ibs_names_only_the_forged_entry(tmp_path, monkeypatch):
+    rp = _chain_setup(tmp_path, monkeypatch)
+    registry = json.loads(rp.read_text(encoding="utf-8"))
+    assert mod._chain_broken_ibs(registry) == {"IB-CHAIN-FORGED"}
+
+
+def test_retrieve_excludes_chain_broken_entry(tmp_path, monkeypatch):
+    _chain_setup(tmp_path, monkeypatch)
+    ranked = mod._ranked_candidates("stamped note")
+    ranked_ibs = {e["intelligent_block_id"] for _, _, e in ranked}
+    assert "IB-CHAIN-GENUINE" in ranked_ibs
+    assert "IB-CHAIN-FORGED" not in ranked_ibs
+    # The forged note's own unique vocabulary now matches nothing: a
+    # plain relevance refusal, never an INDEX_CORRUPT crash.
+    try:
+        mod.retrieve("quixotic forgery unikat")
+    except SystemExit as exc:
+        assert str(exc) == "NO_RELEVANT_INTELLIGENCE"
+    else:
+        raise AssertionError("forged entry must not be retrievable")
+
+
+def test_retrieve_returns_genuine_stamped_entry(tmp_path, monkeypatch):
+    _chain_setup(tmp_path, monkeypatch)
+    result = mod.retrieve("genuine stamped note zeppelin")
+    assert result["retrieved"]["smart_note_id"] == "SN-9002"
+    assert result["retrieved"]["intelligent_block_id"] == "IB-CHAIN-GENUINE"
+
+
+def test_chain_unverifiable_fails_closed(tmp_path, monkeypatch):
+    _chain_setup(tmp_path, monkeypatch)
+    # Point the module at a tree whose tools/ carries no checker: the
+    # chain verdict cannot be computed, and retrieval refuses closed
+    # (B-51 posture) instead of answering from an unverifiable corpus.
+    monkeypatch.setattr(mod, "__file__",
+                        str(tmp_path / "nowhere" / "smart_note_v2.py"))
+    try:
+        mod.retrieve("genuine stamped note zeppelin")
+    except SystemExit as exc:
+        assert str(exc).startswith("INDEX_CORRUPT:CHAIN_UNVERIFIABLE")
+    else:
+        raise AssertionError("unverifiable chain must fail closed")
+
+
 # --- Retrieval truth-state tie-breaking (retrieval track, 2026-10-06) ---
 def _sealed_registry(entries, root):
     """Return a validator-clean registry dict for synthetic test corpora.
