@@ -240,8 +240,16 @@ filing; verify at file time) · **Checker verdict addressed:** `checker/CHECKER-
 re-verifies; the coordinator decides the deploy. This report goes to the parent
 orchestrator, NOT to Shawn.**
 
-**Filed: commit TBD (filled in the follow-up report-only commit, same pattern as
-v1's `fafd172c`).**
+**Filed 2026-11-24 — commit `e654730159b5ca9cc768e48fd68a10b7a9c20c09`
+(parent `fafd172c`, branch `whole-system-connection-20261124`, ref verified MATCH).**
+Read-back verified from GitHub (blob API): portal 1,189,401 B, blob
+`d28503f0…`; agreement 22,953,906 B, blob `d083f2b7…`; identity 310,386 B, blob
+`d57f3de1…`; report 37,514 B, blob `e7cf89b0…`.
+
+- Portal: https://github.com/SoulSchoolAcademy/NayaPOWER/blob/whole-system-connection-20261124/team-nitro/whole-system-connection-20261124/welcome-staged.html (blob `d28503f0…`, 1,189,401 B) · staged: https://naya-proof-host.nayapower.workers.dev/?file=team-nitro%2Fwhole-system-connection-20261124%2Fwelcome-staged.html&ref=whole-system-connection-20261124
+- Agreement: https://github.com/SoulSchoolAcademy/NayaPOWER/blob/whole-system-connection-20261124/team-nitro/whole-system-connection-20261124/agreement.html (blob `d083f2b7…`, 22,953,906 B) · staged: https://naya-proof-host.nayapower.workers.dev/?file=team-nitro%2Fwhole-system-connection-20261124%2Fagreement.html&ref=whole-system-connection-20261124
+- Identity: https://github.com/SoulSchoolAcademy/NayaPOWER/blob/whole-system-connection-20261124/team-nitro/whole-system-connection-20261124/identity.html (blob `d57f3de1…`, 310,386 B) · staged: https://naya-proof-host.nayapower.workers.dev/?file=team-nitro%2Fwhole-system-connection-20261124%2Fidentity.html&ref=whole-system-connection-20261124
+- This report: https://github.com/SoulSchoolAcademy/NayaPOWER/blob/whole-system-connection-20261124/team-nitro/whole-system-connection-20261124/MAKER-REPORT.md (blob `e7cf89b0…` — the follow-up report-only commit below records the final blob)
 
 ## v2 staged files
 
