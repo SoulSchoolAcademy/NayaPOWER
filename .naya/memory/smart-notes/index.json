@@ -80832,6 +80832,42 @@
         "Craft",
         "Multiplication"
       ]
+    },
+    {
+      "smart_note_id": "SN-4739",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4739-the-object-must-be-touchable",
+      "slug": "the-object-must-be-touchable",
+      "title": "The Object Must Be Touchable",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4739/IB-SMART-NOTE-20261124-sn4739-the-object-must-be-touchable.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4739/IB-SMART-NOTE-20261124-sn4739-the-object-must-be-touchable.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4739/IB-SMART-NOTE-20261124-sn4739-the-object-must-be-touchable.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4739-the-object-must-be-touchable.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T17:54:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "674affdc0ba8e33d74aa727e04eb8c5beb6a99a40e9b5eea2e45119d6b766678",
+      "content_hash": "64849422f1a8a0cf85afc202c7af4c360e2a124f989b4a67274b34d871bd6e6d",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "ac7f78dc6565f05fb917dab8ae1e68527a1b048ff1b1231eade6c6c527eae062",
+      "one_line": "Objectnality is Shawn's word and his test: could you pick it up? The notification is a ball inside the tile, the stars sit sharp on obsidian, the glow is just enough and never over — and a thing that reads as a picture of an object has already failed, however pretty the picture is.",
+      "topics": [
+        "Distillation",
+        "Design",
+        "Objectnality",
+        "Craft",
+        "Knowledge"
+      ]
     }
   ],
   "sequence_policy": {
@@ -80842,5 +80878,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "b72dd5c0654feb925a4853349e1f1e7a5c3b565f7212e17a46fb6adf76620a00"
+  "corpus_manifest_hash": "dee3d77a16e6ca5c7a08d66259e83bbef95efff49a63de21ac9847763de6eba6"
 }

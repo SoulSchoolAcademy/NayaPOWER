@@ -1,0 +1,95 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-4739",
+ "title": "The Object Must Be Touchable",
+ "slug": "the-object-must-be-touchable",
+ "topic": "DESIGN",
+ "category": "DESIGN",
+ "kind": "intelligent-block",
+ "registered_by": "naya-resolve",
+ "directed_by": "Shawn Vibert",
+ "created_at": "2026-11-24T17:54:00Z",
+ "tone": "purple",
+ "icon": "◆",
+ "intelligence": {
+  "essence": "Objectnality is Shawn's word and his test: could you pick it up? The notification is a ball inside the tile, the stars sit sharp on obsidian, the glow is just enough and never over — and a thing that reads as a picture of an object has already failed, however pretty the picture is.",
+  "human_view": "The little things get real: the number telling you something waits is a small black ball sitting inside its tile, the stars are sharp black jewels, light stays underneath and around the edges instead of smeared across the top — and when you press something, you feel it answer.",
+  "child_view": "A drawing of a ball is not a ball. We make things you'd want to pick up and hold — round, heavy-feeling, shiny in the right places. And we don't pour glitter over everything; a little light in the right spot is prettier.",
+  "grandma_view": "He gave us a word for it — objectnality — and a simple test: does it feel like a real thing in the world? The badges, the stars, the boards all have to pass it. Too much glow fails the test just as flatness does; the right amount of light makes the black shine and the stars read sharp.",
+  "ai_view": "Operating rules distilled from SN-3195..SN-3204: (1) The notification badge is a black obsidian ball with a white number, integrated INSIDE the tile — never stuck on a corner, never half outside. (2) Star balls are obsidian black; no yellow glow ON them; the black is what makes the stars read sharp. (3) Just enough glow: underglow underneath only, purple glow OFF the boards (boards are obsidian black), edge light in a perfect amount. (4) OBJECTNALITY: the test is tactile — could you pick it up; a picture of an object fails. (5) Touch: press is felt — pushes in/out, lights, moves; useful (does something), helpful (shows it did), obvious (anyone can see how). (6) Every Intelligent Block ends with the Twin Rank: two rows of ten stars — VALUE gold, INTELLIGENCE emerald — one tap ranks, crowd average beside it. (7) The mockup is revised to 10/10: composer pills are real 3D objects in their own colors, the selected one lit in its color. (8) The rating footer he picked from his own picture is THE footer. (9) Rating colors: both logics (purple/blue, gold/emerald) named honestly for his ruling. (10) Alive means in the Hub: the ending lives at the bottom of every real Hub post; a separate artifact page is a reference, never the delivery.",
+  "what_it_means": "Realness is measurable at the smallest scale: a badge, a star, a press. This group turns the pedestal law into fingertip judgments — integration over attachment, restraint over decoration, and delivery defined as presence in the real Hub.",
+  "whats_inside": [
+   "The notification ball — obsidian, white number, inside the tile (SN-3195)",
+   "The star balls: obsidian, no yellow glow, sharp stars (SN-3196)",
+   "Just enough glow — underneath only, off the boards, perfect at the edge (SN-3197)",
+   "Objectnality — the pickup test for every element (SN-3198)",
+   "The touch and the ending: press felt, Twin Rank standard, footer chosen, alive in the Hub (SN-3199–SN-3204)"
+  ],
+  "topics": [
+   "Distillation",
+   "Design",
+   "Objectnality",
+   "Craft",
+   "Knowledge"
+  ]
+ },
+ "page": {
+  "distills": {
+   "batch": 14,
+   "of": 100,
+   "covers": [
+    {
+     "sn": "SN-3195",
+     "title": "The Notification Ball"
+    },
+    {
+     "sn": "SN-3196",
+     "title": "The Star Balls: Obsidian, No Yellow Glow"
+    },
+    {
+     "sn": "SN-3197",
+     "title": "Just Enough Glow"
+    },
+    {
+     "sn": "SN-3198",
+     "title": "Objectnality"
+    },
+    {
+     "sn": "SN-3199",
+     "title": "The Touch: Press Useful, Helpful, Obvious"
+    },
+    {
+     "sn": "SN-3200",
+     "title": "The Twin Rank Is the Shape"
+    },
+    {
+     "sn": "SN-3201",
+     "title": "The Mockup, Revised to 10/10"
+    },
+    {
+     "sn": "SN-3202",
+     "title": "The Rating Footer Is the One"
+    },
+    {
+     "sn": "SN-3203",
+     "title": "The Color Question — Gold Worth, Blue Mind"
+    },
+    {
+     "sn": "SN-3204",
+     "title": "Alive Means in the Hub"
+    }
+   ]
+  },
+  "machine": "1) Badges: ball form, inside the tile. 2) Stars: obsidian balls, sharp, no glow over. 3) Glow budget: under + edge only; boards stay black. 4) Pickup test gates every element. 5) Press feedback: motion + light + state, useful/helpful/obvious. 6) Block ending: Twin Rank + the chosen footer, delivered in the Hub itself.",
+  "why_it_matters": "A network of flat pictures feels like a brochure; a network of touchable objects feels like a place. This group is why NayaNET's smallest furniture carries the same craft as its grandest page — citizens trust what feels real.",
+  "how_it_connects": "Third movement of batch 14. It deepens SN-4738's icon standard into physics — weight, light, touch — and its delivery rule (alive means in the Hub) is the same seen-not-served standard Resolve's whole mechanic lane runs on.",
+  "what_is_in_it_for_you": "Everything you touch feels considered: nothing stuck on, nothing washed out, nothing fake — and every post ends with the same honest pair of star rows, so you always know what a thing is worth and how smart it is.",
+  "the_learning": "From now on, every element passes two tests together — the pickup test (real enough to touch) and the restraint test (quiet enough to trust) — because excess glow and flat pictures fail from opposite sides."
+ },
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4739/IB-SMART-NOTE-20261124-sn4739-the-object-must-be-touchable.md",
+ "page_hash": "674affdc0ba8e33d74aa727e04eb8c5beb6a99a40e9b5eea2e45119d6b766678",
+ "content_hash": "64849422f1a8a0cf85afc202c7af4c360e2a124f989b4a67274b34d871bd6e6d",
+ "published_via": "publish-note",
+ "door_version": "1",
+ "door_receipt": "ac7f78dc6565f05fb917dab8ae1e68527a1b048ff1b1231eade6c6c527eae062"
+}
