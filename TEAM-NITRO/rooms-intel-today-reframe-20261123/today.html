@@ -94,84 +94,6 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 /* D5 FIX (2026-11-23) — the board N press-in was dead: this plain .ib-n:active rule (0,2,0) lost to the ROUND 8 ID rule #screen-slide .slide-boards .ib-n (1,2,0), so a held press lit the N but never scaled it. Same .93 scale, re-issued at (1,3,0) so it wins on board Ns; the depth N (#depthN, outside #screen-slide) keeps its working plain rule, and the spring-back transition is untouched. */
 #screen-slide .slide-boards .ib-n:active{transform:translateX(-50%) scale(.93)}
 .ib-n:active img{filter:brightness(1.12) saturate(1.2);box-shadow:0 0 0 2px rgba(255,255,255,.35),0 6px 12px rgba(0,0,0,.6),0 0 26px rgba(255,45,70,.55)}
-/* ——— Hub bar ——— */
-.notif-bar {
-  position: fixed; left: 0; right: 0; bottom: var(--smartbar-h, 0px); z-index: 45;
-  display: flex; justify-content: center;
-  background: rgba(5,5,9,.96);
-  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-  /* F3 (Shawn 16:06Z) — NO divider line above the trio: the border-top and
-     the inset 1px highlight are gone; the icons sit clean on the page. */
-  box-shadow: 0 -10px 34px rgba(0,0,0,.6);
-  padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px)); /* FOLLOW-ON 2026-11-19 (item 3): real clearance — the tiles sit fully inside the viewport, harvested from the Dashboard follow-on. */
-  animation: notifUp .55s cubic-bezier(.16,.84,.22,1) backwards;
-  transition: opacity .45s ease;
-}
-.notif-bar.nsb-trio-faded{opacity:0;pointer-events:none;}
-@keyframes notifUp { from { transform: translateY(100%); opacity: 0; } to { transform: none; opacity: 1; } }
-.notif-row { display: flex; gap: 40px /* A9 (2026-11-17): depth + separation — 6×54px + 5×40px = 524px, inside 640px. */; width: 100%; max-width: 640px; padding: 12px 14px 10px; justify-content: center; }
-.notif-seg {
-  position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px;
-  padding: 2px 6px 0; cursor: pointer; background: none; border: none;
-  color: #ffffff; font-family: inherit; transition: transform .12s;
-  -webkit-tap-highlight-color: transparent;
-}
-.notif-seg:active { transform: scale(.94); }
-/* SWEEP-3 F8: no gloss layer in the bytes — flat board black plus rim plus glow. Whether the rim-light IS the gloss is Shawn's eye call; do not invent a swoosh. */
-.notif-tile {
-  position: relative; z-index: 0; width: 54px; height: 54px; border-radius: 16px; /* MODEL TILE (blob 9a006c47, 22:48Z + 23:00Z): harvested verbatim — 16px, not the Hub's 26px squircle */
-  display: flex; align-items: center; justify-content: center;
-  background: radial-gradient(130% 140% at 30% 18%, color-mix(in srgb, var(--nc) 36%, #12121a), #07070b 78%); /* MODEL: the ball face — own-color top-left light, obsidian body */
-  border: 1.5px solid color-mix(in srgb, var(--nc) 62%, rgba(255,255,255,.12)); /* MODEL: the 62% rim */
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.38),
-    inset 0 -9px 15px rgba(0,0,0,.6),
-    inset 1px 0 0 rgba(255,255,255,.07),
-    0 7px 16px rgba(0,0,0,.6),
-    0 12px 28px rgba(0,0,0,.55),
-    0 0 17px color-mix(in srgb, var(--nc) 42%, transparent); /* MODEL: the around-glow, restrained */
-  color: #ffffff;
-  transition: box-shadow .3s, border-color .3s, transform .22s cubic-bezier(.16,.84,.22,1);
-}
-.notif-tile::before { display: none; } /* MODEL (Personal L32407): no clone layer — the later rule wins, exactly as in the model file. */
-.notif-tile::before {
-  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none; border: 1.5px solid color-mix(in srgb, var(--nc) 45%, transparent); transform: translate(1px, 1px); box-shadow: 0 4px 10px rgba(0,0,0,.5); /* EYE-NOTES-FIX §3.3(a)(b): radius follows the squircle; the clone shadow brought in tight */
-  background: #050607; /* BLACK DIAMOND: the wash is out — ::before is now the clone layer */
-
-}
-/* EYE-NOTES-FIX 2026-11-17 §3.3 + Amendment #1 (the ultimate bar) + #2 (the
-   right amount of elegance): the slow turning flow around every tile — the
-   orbit from this morning, taken from the hamburger and the brand mark
-   (the same travelling-dot object, never a rotating element, so the glyph
-   stays upright). AMENDMENT #3 (2026-11-17 20:29Z): the filed flow was
-   VERIFIED against the morning orbit and differed in exactly one
-   declaration — it missed background-repeat:no-repeat, so the 9px dot
-   tiled into a dotted band instead of one dot travelling the ring. The
-   no-repeat is restored from the canonical object (hamburger .rail-toggle,
-   brand mark), verbatim. Odd tiles turn clockwise in 120s, even tiles counter in
-   150s, the same pair as the hamburger (120s CW) and the brand mark
-   (150s CCW) — one treatment, congruent on all six. Amendment #2: the
-   flow goes here and NOWHERE else new in this round — the sidebar icons,
-   the sub-tabs, the tab jewels, the top controls and the brand mark
-   already carry it where it belongs; piling it onto more places in this
-   round would be too much in one place. */
-.notif-tile::after{content:""; position:absolute; inset:-6px; z-index:-1; pointer-events:none; border-radius:inherit; border:1px solid color-mix(in srgb, var(--nc) 35%, transparent); background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,var(--nc) 300deg,rgba(255,255,255,.95) 330deg,transparent 360deg); -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); mask-composite:exclude; padding:2px; animation:orb-spin 60s linear infinite, naya-breathe 6s ease-in-out infinite alternate;} /* MODEL (blob 9a006c47): the conic comet — a light that follows the line perfectly, 22:48Z. */
-.notif-seg:nth-child(even) .notif-tile::after{animation:naya-orbit-dot-ccw 150s linear infinite;}
-.notif-tile svg { width: 25px; height: 25px; color: #fff; filter: drop-shadow(0 2px 2px rgba(0,0,0,.7)); position: relative; transition: transform .22s, filter .22s; } /* MODEL: dark-only — the white glows in the middle are gone (22:48Z). */
-.notif-lbl { display: block; font-size: 17px; font-weight: 700; letter-spacing: .08em; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.9); white-space: nowrap; line-height: 1.2; } /* FOLLOW-ON 2026-11-19 (item 3): labels read — 17px bold white, harvested from the Dashboard follow-on (os-followup2-20261119). The 10.5px label was unreadable at 1920 and is gone. */
-@keyframes notifLand { 0% { border-color:#fff; box-shadow: inset 0 -9px 15px rgba(0,0,0,.6), 0 7px 16px rgba(0,0,0,.6), 0 8px 18px rgba(0,0,0,.6), 0 0 0 1px #fff, 0 0 34px #fff, 0 0 50px color-mix(in srgb, var(--nc) 90%, transparent); } 100% { border-color: color-mix(in srgb, var(--nc) 88%, #ffffff); box-shadow: inset 0 -9px 15px rgba(0,0,0,.6), 0 7px 16px rgba(0,0,0,.6), 0 0 0 1px color-mix(in srgb, var(--nc) 30%, transparent), 0 0 26px color-mix(in srgb, var(--nc) 68%, transparent); } }
-@keyframes notifCountLand { 0% { transform: scale(1.15); } 100% { transform: scale(1); } } /* ROUND 6 2026-11-19 (defect 5): the 1.7x flare put the 26px ball half outside the tile's top edge — the straddle the eye saw. A 1.15x pop stays inside the tile and still reads as a landing. */
-.notif-seg.just-landed .notif-tile { animation: notifLand 1.4s ease-out 1; }
-.notif-seg.just-landed .notif-count { animation: notifCountLand .9s ease-out 1; } /* EYE-NOTES-FIX §3.3(d): the light-up is a once-off — bright and obvious when a notification lands, then it settles to the steady has-news glow. It never blinks forever. */
-.notif-seg.has-news .notif-tile {
-  border-color: color-mix(in srgb, var(--nc) 88%, #ffffff);
-  box-shadow: 0 7px 16px rgba(0,0,0,.6), 0 0 26px color-mix(in srgb, var(--nc) 68%, transparent); /* MODEL: the lit state, verbatim. */
-}
-@media (max-width:640px){ .notif-row{gap:10px;} .notif-tile{width:46px;height:46px;} .notif-seg{padding:2px 2px 0;} }
-@media (max-width:400px){ .notif-row{gap:4px;padding:12px 8px 10px;} .notif-tile{width:46px;height:46px;} .notif-seg{padding:2px 0 0;} }
-/* THE LINE (Personal correction, harvested): the page-wide button shadow's
-   inset top line is restated away on the seg itself. */
-.notif-seg{box-shadow: inset 0 -2px 8px rgba(0,0,0,.25), 0 6px 20px rgba(0,0,0,.4)!important;}
 /* ——— HUB SIDEBARS+PLUS 2026-11-16 (item 4): the two + menus ———
    Chrome harvested VERBATIM from the Personal correction's .fc-plusmenu
    (blob 3328238b): fixed, centered on its anchor, own-color hover. */
@@ -190,22 +112,6 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 .notif-seg:hover .notif-tile { border-color: color-mix(in srgb, var(--nc) 88%, #ffffff); box-shadow: inset 0 1px 0 rgba(255,255,255,.38), inset 0 -9px 15px rgba(0,0,0,.6), inset 1px 0 0 rgba(255,255,255,.07), 0 7px 16px rgba(0,0,0,.6), 0 12px 28px rgba(0,0,0,.55), 0 0 20px -2px color-mix(in srgb, var(--nc) 55%, transparent); transform: translateY(-2px); }
 .notif-seg:hover .notif-tile::after { border-color: color-mix(in srgb, var(--nc) 80%, transparent); }
 .fc-plusitem:hover .fc-pi-ico::after { border-color: color-mix(in srgb, var(--mc,#a06bff) 80%, transparent); }
-.notif-seg:hover .notif-tile {
-  transform: translateY(-3px);
-  border-color: var(--nc);
-  box-shadow:
-    inset 0 -9px 15px rgba(0,0,0,.6),
-    0 0 14px -2px color-mix(in srgb, var(--nc) 60%, transparent), /* EYE-NOTES §3.2 edge-only */
-    0 8px 18px rgba(0,0,0,.6),
-    0 0 0 1px color-mix(in srgb, var(--nc) 35%, transparent); /* EYE-NOTES-FIX §3.3(b): the outer hairline ring, brought in tight */
-  /* BLACK DIAMOND: inset white out. */
-}
-.notif-seg:hover .notif-tile svg { filter: drop-shadow(0 3px 3px rgba(0,0,0,.95)) drop-shadow(0 0 8px var(--nc)) drop-shadow(0 0 3px rgba(255,255,255,.9)); transform: scale(1.06); }
-@keyframes naya-breathe { from { opacity: .55; } to { opacity: 1; } }
-@keyframes orb-spin { to { transform: rotate(360deg); } }
-@keyframes naya-orbit-dot-ccw{0%{background-position:50% 0}12.5%{background-position:0 0}25%{background-position:0 50%}37.5%{background-position:0 100%}50%{background-position:50% 100%}62.5%{background-position:100% 100%}75%{background-position:100% 50%}87.5%{background-position:100% 0}100%{background-position:50% 0}}
-@media (min-width:641px){ .notif-row { gap: 24px; } }
-@media (max-width:640px){ .notif-lbl { display: none; } }
 /* ——— Hub .primo pill ——— */
 /* ——— NAYA-BTN-005 "Primo Purple" — harvested verbatim from factory.css (STANDARD .primo) ——— */
 .primo { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 800; font-size: 17px; letter-spacing: .08em; color: #F8F7FB; padding: 16px 32px; border-radius: 999px; border: 1.5px solid rgba(248,247,251,.9);
@@ -238,11 +144,10 @@ body{color:#fff;-webkit-text-size-adjust:100%;}
 .today-frame .ib-n{cursor:pointer;background:none;border:none;padding:0;-webkit-tap-highlight-color:transparent;}
 .today-frame .ib-n:active{transform:scale(.93);}
 .today-frame .ib-n:active img{filter:brightness(1.12) saturate(1.2);box-shadow:0 0 0 2px rgba(255,255,255,.35),0 6px 12px rgba(0,0,0,.6),0 0 26px rgba(255,45,70,.55);}
-/* ——— Foot: SAVE/SHARE row, then the arrows row. Two stacked rows, static,
-       nothing overlapping, nothing clipped. ——— */
+/* ——— Foot (ROUND 6): the arrows row only — SAVE/SHARE removed on Shawn's
+       ruling (~21:00 MST, he never asked for them). Static, nothing
+       overlapping, nothing clipped. ——— */
 .today-foot{flex:none;display:flex;flex-direction:column;gap:8px;padding-top:10px;}
-.today-actions{flex:none;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
-.today-actions .action.primo{font-size:17px !important;padding:14px 28px;min-height:52px;}
 .today-frame .floatnav{position:static;flex:none;margin:0;padding:2px 0 0;transform:none;z-index:auto;}
 .today-frame .naya-btn{font-size:17px;}
 .fc-plusitem{font-size:17px;}
@@ -266,27 +171,18 @@ body{color:#fff;-webkit-text-size-adjust:100%;}
 .ov-body p{margin:0 0 12px;font-size:17px;line-height:1.7;color:#fff;}
 .ov-close{flex:none;margin:12px auto 16px;display:block;font-size:17px;font-weight:800;color:#fff;background:#050607;border:1.5px solid #8e24aa;border-radius:999px;padding:14px 28px;cursor:pointer;}
 
-/* ——— ROUND 4 (FRAME): bar-aware bottom + desktop 9:16 slab ———
-   Authored adaptations in the viewer's own stylesheet; the harvested
-   bytes above are untouched. The Hub bar is fixed at the viewport
-   bottom (z-index 45, above the frame's 40) and would hide the frame's
-   bottom edge, so the whole frame clears it: rim bottom, stage bottom
-   and stage height all lift by the measured bar height + 12px.
-   CORNER DEVIATION, named: the brief gave
-   bottom:calc(var(--today-bar-h,88px) + 12px - var(--bw)) for the bottom
-   corners — that puts their bottom edge at viewport-bottom minus
-   bar+12-bw, i.e. at desktop (bw 64, bar ~90) the corners would span
-   52px INTO the bar zone and hide behind it, breaking the brief's own
-   rule that the frame must read complete on all four sides. The
-   harvested geometry anchors the rim's bottom corner 14px above the
-   corner element's bottom edge; this rule keeps that anchor (12px
-   overhang, 2px off harvested, invisible) with the corner bottom
-   exactly at the bar's top edge — nothing hidden, nothing floating.
-   Same for the side strips (.rf-es): harvested they run to the viewport
-   bottom, so their lower ~bar-height would vanish behind the bar; they
-   end at the bar top instead, on the same line as the corner bottoms,
-   so the corner ornaments still overlap the strips' lower ends exactly
-   as harvested.
+/* ——— ROUND 6 (BAR REMOVAL + FIT): the Hub bar is gone on Shawn's ruling
+   (~21:00 MST — he never asked for it), so the round-4 bar-aware bottom
+   overrides are DELETED and the HARVESTED geometry governs again, exactly
+   as innovations has it: .rf-rim bottom 14px (inset var(--bw) var(--bw)
+   14px var(--bw)), .rf-corner bottom 0, .rf-es top 0 / bottom 0, .stage
+   margin var(--bw) var(--bw) 14px and height calc(100dvh - var(--bw) -
+   14px). The stage gains the bar's height back (90px phone / 124px
+   desktop), so the frame still reads complete on all four sides with
+   12px clear at the viewport bottom on both sizes — rim bottom 14px above
+   the viewport bottom, corners spanning to the viewport bottom exactly as
+   harvested (the round-4 corner deviation no longer applies: with no bar
+   there is no bar top edge to anchor the corners to).
    DESKTOP SLAB: adapted from innovations #screen-slide .pm-art-frame
    at min-width:901px (tip line 506: width:auto;height:
    min(76vh,940px);aspect-ratio:9/16;margin:0 auto) — here height:100%
@@ -296,10 +192,29 @@ body{color:#fff;-webkit-text-size-adjust:100%;}
    with it (the "· N of 88" total hides, as it does below 640px) —
    otherwise the back/step/forward row (68+160+68+2x18=332px) would
    overflow a ~330px slab. */
-.royal-frame .rf-rim{bottom:calc(var(--today-bar-h,88px) + 12px)}
-.royal-frame .rf-es{bottom:calc(var(--today-bar-h,88px))}
-.royal-frame .rf-corner.bl,.royal-frame .rf-corner.br{bottom:calc(var(--today-bar-h,88px))}
-.stage{margin-bottom:calc(var(--today-bar-h,88px) + 12px);height:calc(100dvh - var(--bw) - var(--today-bar-h,88px) - 12px)}
+@media(min-width:901px){
+.promax.today-frame{width:auto;height:100%;aspect-ratio:9/16;margin:0 auto;align-self:center}
+.promax.today-frame .today-step-inline .today-total{display:none}
+/* SLAB PHONE SIZES (round 4, authored adaptation): the slab is a phone-width
+   column, but vw-based sizes resolve against the DESKTOP viewport (face 160px,
+   title 38px, highlight 26px, N 80px) — the telling then has no room and the
+   highlight sits below the fold. Inside the slab the board takes the page's
+   OWN phone values (the max-width:640px rules above): face 96, N 64, title
+   28, highlight 20. Nothing invented; the slab reads as a phone. */
+.promax.today-frame .ib-face{width:96px;height:96px}
+.promax.today-frame .ib-n,.promax.today-frame .ib-n img{width:64px;height:64px}
+.promax.today-frame .ib-layer-body .b-script{font-size:28px}
+.promax.today-frame .ib-layer-body p:not(.ib-meta){font-size:20px}
+}
+/* ——— ROUND 6 (STEP LINE): the step line wrapped on every Yesterday frame
+   ("Yesterday · 60 of 73" left a lone "73" on line 2). Fix, text kept at
+   17px (the law): no-wrap + letter-spacing 0, and the nav arrows narrow
+   68px -> 56px with the nav gap 18px -> 14px, so the step box grows from
+   160px to 192px on the phone (183px in the desktop slab) — room for the
+   longest Yesterday step at 17px. Proven by render at both sizes. */
+.today-frame .floatnav{gap:14px}
+.today-frame .floatnav .naya-btn{width:56px}
+.today-step-inline{white-space:nowrap;letter-spacing:0}
 @media(min-width:901px){
 .promax.today-frame{width:auto;height:100%;aspect-ratio:9/16;margin:0 auto;align-self:center}
 .promax.today-frame .today-step-inline .today-total{display:none}
@@ -326,7 +241,6 @@ body{color:#fff;-webkit-text-size-adjust:100%;}
       <div class="today-state" id="stateLine">Reading today&rsquo;s notes&hellip;</div>
     </div>
     <div class="today-foot" id="frameFoot" hidden>
-      <div class="actions today-actions" id="frameActions"></div>
       <div class="floatnav" id="frameNav"></div>
     </div>
   </div>
@@ -340,40 +254,17 @@ body{color:#fff;-webkit-text-size-adjust:100%;}
   </div>
 </div>
 <script>
-/* ——— THE HUB BAR, harvested (Hub followup19, 7,188,454 B) ———
-   SEGS + ICONS + the build loop + the two + menus are byte-identical
-   to the Hub file. Adaptations, named: tap destinations are stage-true;
-   no counts (the count span is dropped); Create menu minus Home;
-   A6 — 'var bar;' declared here: the Hub file runs non-strict, where the
-   loop's bare 'bar = ...' creates a global; this page runs strict, where
-   it throws ReferenceError and kills the whole bar. The loop slice itself
-   stays byte-identical. */
+/* ——— ROUND 6: THE HUB BAR IS GONE (Shawn's ruling ~21:00 MST — he never
+   asked for it). What stays is only the two + menus (Create: Make a post |
+   Smart note | Naya note; Connect) and their open/close functions, so the
+   menu itself is not lost with the bar. NOTE — with the bar's ADD tile
+   gone there is no on-screen trigger left to open them; they are retained
+   as code (window.hubTogglePlusMenu) pending the captain's ruling on a
+   trigger or on dropping the menus outright. The bar element, its SEGS
+   build loop, __todayBarTap destinations and the measureBar /
+   --today-bar-h plumbing are deleted entirely. */
 (function(){
   'use strict';
-  var bar;
-      var ICONS = {
-        mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
-        activity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg>',
-        spaces: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg>',
-        eco: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>',
-        plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
-        /* EYE-NOTES-FIX §3.3(e): the right + is the same + object as the left — one set with Personal. */
-        'plus-connect': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19.5c.7-3.4 2.9-5.2 5.5-5.2s4.8 1.8 5.5 5.2"/><circle cx="17" cy="9" r="2.7"/><path d="M16.2 14.6c2.5-.2 4.1 1.4 4.6 3.9"/></svg>' /* FOLLOW-ON 2026-11-19 (item 3): CONNECT is people, not a second + — the people glyph harvested verbatim from the Dashboard follow-on round 2 (blob e91ad3ca, nav line). */
-      };
-  var SEGS = [['plus', 'ADD', '#8e24aa'], ['mail', 'MAIL', '#0f52ba'], ['activity', 'ACTIVITY', '#07925f'], ['spaces', 'WORLDS', '#d4a017'], ['eco', 'ECOSYSTEM', '#c2410c'], ['plus-connect', 'CONNECT', '#c62828']]; /* EYE-NOTES-FIX §3.3(e): one set with Personal — same key, same + object */
-      bar = document.createElement('nav'); bar.id = 'naya-notif-bar'; bar.className = 'notif-bar';
-      bar.setAttribute('aria-label', 'Notifications');
-      var row = document.createElement('div'); row.className = 'notif-row';
-      SEGS.forEach(function (s) {
-        var b = document.createElement('button'); b.type = 'button'; b.className = 'notif-seg';
-        b.setAttribute('data-notif', s[0]); b.style.setProperty('--nc', s[2]);
-        b.setAttribute('aria-label', (window.mwTr?window.mwTr(s[1]):s[1]) + ' — ' + (window.mwTr?window.mwTr('open'):'open'));
-        b.setAttribute('title', (window.mwTr?window.mwTr(s[1]):s[1]));
-        b.innerHTML = '<span class="notif-tile">' + (ICONS[s[0]] || ICONS.plus) + '</span><span class="notif-lbl">' + s[1] + '</span>'; /* FOLLOW-ON 2026-11-19 (item 3): the label renders under the tile — the 17px .notif-lbl existed in CSS but no label element was ever emitted, so nothing showed, even on hover. */
-        b.addEventListener('click', function () { if (s[0] === 'plus') { if (window.hubTogglePlusMenu) window.hubTogglePlusMenu('create', b); return; } if (s[0] === 'plus-connect') { if (window.hubTogglePlusMenu) window.hubTogglePlusMenu('connect', b); return; } window.__todayBarTap(s[0]); });
-        row.appendChild(b);
-      });
-      bar.appendChild(row); document.body.appendChild(bar);
   window.hubClosePlusMenus = function () {
     ['hubPlusCreate', 'hubPlusConnect', 'hubMenuChoices'].forEach(function (id) { var m = document.getElementById(id); if (m) m.hidden = true; });
   };
@@ -400,10 +291,6 @@ body{color:#fff;-webkit-text-size-adjust:100%;}
   var menusWrap = document.createElement('div');
   menusWrap.innerHTML = "<div id=\"hubPlusCreate\" class=\"fc-plusmenu hub-plusmenu\" hidden role=\"menu\" aria-label=\"Create\">\n<div class=\"fc-plusitem\" role=\"menuitem\" data-hub-plus=\"post\" data-hub-href=\"https://nayanet.app/personal#home/post\" style=\"--mc:#0f52ba\"><span class=\"fc-pi-ico\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z\"/></svg></span><span data-mw-tr=\"pm\">Make a post</span></div>\n<div class=\"fc-plusitem\" role=\"menuitem\" data-hub-plus=\"smart\" data-hub-composer=\"smart-note\" style=\"--mc:#d4a017\"><span class=\"fc-pi-ico\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\" stroke=\"none\" aria-hidden=\"true\"><path d=\"M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z\"/></svg></span><span data-mw-tr=\"pm\">Smart note</span></div>\n<div class=\"fc-plusitem\" role=\"menuitem\" data-hub-plus=\"naya\" data-hub-href=\"https://nayanet.app/personal#home/naya\" style=\"--mc:#07925f\"><span class=\"fc-pi-ico\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M6 3h9l4 4v14H6z\"/><path d=\"M15 3v4h4\"/><path d=\"M9 12h6M9 16h6\"/></svg></span><span data-mw-tr=\"pm\">Naya note</span></div>\n</div>\n<div id=\"hubPlusConnect\" class=\"fc-plusmenu hub-plusmenu\" hidden role=\"menu\" aria-label=\"Connect\">\n<div class=\"fc-plusitem\" role=\"menuitem\" data-hub-plus=\"message\" data-hub-href=\"https://nayanet.app/rooms/mail\" style=\"--mc:#0f52ba\"><span class=\"fc-pi-ico\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z\"/></svg></span><span data-mw-tr=\"pm\">Message</span></div>\n<div class=\"fc-plusitem\" role=\"menuitem\" data-hub-plus=\"mail\" data-hub-href=\"https://nayanet.app/rooms/mail\" style=\"--mc:#d4a017\"><span class=\"fc-pi-ico\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"M3 7.5l9 6 9-6\"/></svg></span><span data-mw-tr=\"pm\">Mail</span></div>\n<div class=\"fc-plusitem\" role=\"menuitem\" data-hub-plus=\"world\" data-hub-href=\"https://nayanet.app/rooms/spaces\" style=\"--mc:#07925f\"><span class=\"fc-pi-ico\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M3 12h18\"/><path d=\"M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z\"/></svg></span><span data-mw-tr=\"pm\">Create world</span></div>\n</div>";
   while (menusWrap.firstChild) document.body.appendChild(menusWrap.firstChild);
-  window.__todayBarTap = function(k){
-    var dest = { mail:'https://nayanet.app/rooms/mail', activity:'https://nayanet.app/hub', spaces:'https://nayanet.app/personal', eco:'https://nayanet.app' }[k];
-    if (dest) location.href = dest;
-  };
   document.addEventListener('click', function(e){
     if (!e.target || !e.target.closest) return;
     var it = e.target.closest('[data-hub-plus]');
@@ -421,14 +308,6 @@ body{color:#fff;-webkit-text-size-adjust:100%;}
   document.addEventListener('keydown', function(e){
     if (e.key === 'Escape' || e.keyCode === 27) window.hubClosePlusMenus();
   });
-  function measureBar(){
-    var bar = document.getElementById('naya-notif-bar');
-    if (bar) document.documentElement.style.setProperty('--today-bar-h', bar.offsetHeight + 'px');
-  }
-  window.addEventListener('resize', measureBar);
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', measureBar);
-  else measureBar();
-  requestAnimationFrame(measureBar);
 })();
 </script>
 <script>
@@ -466,7 +345,7 @@ function shape(r){var o={id:r.ib_id||r.id,title:cleanMd(r.title||''),created_at:
    100dvh board whose foot is the fixed red N — so a long nutshell runs
    past the visible bottom and the rest sits below, scrollable with no
    affordance, reading as cut off mid-thought. The full note stays one tap
-   away (red N overlay, SHARE text — both untouched, whole). The frame
+   away (red N overlay — untouched, whole). The frame
    highlight now ends on a complete thought: whole sentences are dropped
    from the end until the telling fits without scrolling, measured live at
    this viewport — phone shows fewer sentences, desktop more, a short
@@ -483,21 +362,55 @@ function splitSentences(s){
   return tmp.split('\x01').map(function(x){return x.replace(/\x00/g,'.').trim();}).filter(Boolean);
 }
 var curInner=null,curPar=null;
-/* Second resort (same round): a single opening sentence can itself be
-   taller than the telling — 7 of the 88 notes (longest first sentences
-   200–410 chars). Dropping sentences cannot help there, so the fit falls
-   back to whole CLAUSES inside that one sentence: cut points after a
-   semicolon or an em-dash, outside parentheses, longest fitting prefix
-   wins, never shorter than 80 chars, never ending on a colon, never
-   leaving a quote or paren open — and, only if none of those fits, after
-   a colon (the colon itself is not shown, the same as the semicolon and
-   the dash at any other cut: the separator is dropped, the words stay
-   verbatim). A clause is a complete phrase in the note's own words — no
-   punctuation added, no word changed. If no clause fits either, the whole
-   sentence stays (scrollable) and the frame is named as owed, not
-   silently trimmed. */
+/* ROUND 6 — clauseCut with a shorter-prefix fallback BELOW the old
+   80-char floor (the verdict-4 §8 direction, now the fix for desktop
+   frames 4/68 and phone 3/75 + desktop 1). The old floor's give-up path
+   left the whole first sentence standing (302 / 410 chars) whenever no
+   >=80-char clause cut fitted — that IS the +292/+278px overflow.
+   FLOOR 40: the shortest prefix that still reads as a complete thought —
+   a clause with a subject and a verb, never a dangling word, never a cut
+   mid-word. CUT TIERS, strongest first, longest fitting prefix wins in
+   each tier: (1) semicolon / em-dash, (2) colon, (3) comma, (4) the
+   conjunctions "and" / "but" / "so" — all outside parentheses, all
+   dropping the separator (the words stay verbatim). Comma and conjunction
+   cuts carry one extra guard the strong tiers do not need: the prefix
+   must not end on a dangling word (and, or, the, a, to, of, is, that …),
+   so the telling ends on a noun or verb phrase that reads finished.
+   THE FIT TEST (fits): the checker's own metric — scrollHeight minus
+   clientHeight <= 1 — which already leaves room for the highlight's 16px
+   bottom margin + the body's 24px bottom padding, because scrollHeight
+   counts both: a frame passes only when its last line ends 40px above
+   the body bottom (the geometric check beside it says the same thing in
+   plain geometry). A threshold of clientHeight-40 would be untestable —
+   scrollHeight never drops below clientHeight — so the loop tests the
+   gate metric itself, and the shorter fallback is what lets a frame
+   reach it. If no candidate reaches the gate, the shortest candidate
+   (>=40, guards passed) is returned instead of the whole sentence, so
+   the overflow shrinks to its minimum and the telling still reads
+   finished — that case is named in the maker report, never silent. */
+function fits(){
+  if(!curInner||!curPar)return true;
+  if(curInner.scrollHeight>curInner.clientHeight+1)return false;
+  var b=curInner.getBoundingClientRect();
+  var p=curPar.getBoundingClientRect();
+  var cs=getComputedStyle(curInner);
+  var ps=getComputedStyle(curPar);
+  var slack=parseFloat(cs.paddingBottom||'0')+parseFloat(ps.marginBottom||'0');
+  return p.bottom+slack<=b.bottom+1;
+}
+var DANGLING=' and or but so the a an to of in on for with by as at is was are were be been that which who when if than then not no my his her their our your its this these those one two three four five six seven eight nine ten first second third more most less very just only also even still now here there it he she we they you ';
+function clauseEndClean(pre){
+  if(!pre)return false;
+  if(/[:(\u2014]$/.test(pre))return false;
+  var words=pre.split(' ');
+  var last=words[words.length-1].toLowerCase().replace(/[^a-z']/g,'');
+  if(DANGLING.indexOf(' '+last+' ')>=0)return false;
+  var quotes=(pre.match(/"/g)||[]).length;
+  if(quotes%2!==0)return false;
+  return true;
+}
 function clauseCut(s){
-  var cuts=[];var colonCuts=[];var depth=0;var i;var ch;
+  var cuts=[];var colonCuts=[];var commaCuts=[];var conjCuts=[];var depth=0;var i;var ch;
   for(i=0;i<s.length;i++){
     ch=s[i];
     if(ch==='(')depth++;
@@ -506,24 +419,25 @@ function clauseCut(s){
       if(ch===';'&&s[i+1]===' ')cuts.push(i);
       else if(ch==='\u2014'&&s[i-1]===' '&&s[i+1]===' ')cuts.push(i-1);
       else if(ch===':'&&s[i+1]===' ')colonCuts.push(i);
+      else if(ch===','&&s[i+1]===' ')commaCuts.push(i);
+      else if(ch===' '&&(s.slice(i+1,i+5)==='and '||s.slice(i+1,i+5)==='but '||s.slice(i+1,i+4)==='so '))conjCuts.push(i);
     }
   }
-  cuts.sort(function(a,b){return b-a;});
-  colonCuts.sort(function(a,b){return b-a;});
-  var lists=[cuts,colonCuts];
-  for(var l=0;l<lists.length;l++){
-    var list=lists[l];
+  var lists=[cuts,colonCuts,commaCuts,conjCuts];
+  for(var l=0;l<lists.length;l++)lists[l].sort(function(a,b){return b-a;});
+  var shortest=null;
+  for(var l2=0;l2<lists.length;l2++){
+    var list=lists[l2];
     for(var k=0;k<list.length;k++){
       var pre=s.slice(0,list[k]).trim();
-      if(pre.length<80)continue;
-      if(/[:(\u2014]$/.test(pre))continue;
-      var quotes=(pre.match(/"/g)||[]).length;
-      if(quotes%2!==0)continue;
+      if(pre.length<40)continue;
+      if(!clauseEndClean(pre))continue;
+      if(shortest===null||pre.length<shortest.length)shortest=pre;
       curPar.textContent=pre;
-      if(curInner.scrollHeight<=curInner.clientHeight+1)return pre;
+      if(fits())return pre;
     }
   }
-  return null;
+  return shortest;
 }
 function fitHighlight(){
   if(!curInner||!curPar)return;
@@ -533,23 +447,19 @@ function fitHighlight(){
   if(!parts.length){curPar.textContent=full;return;}
   var n=parts.length;
   curPar.textContent=parts.join(' ');
-  while(n>1&&curInner.scrollHeight>curInner.clientHeight+1){
+  while(n>1&&!fits()){
     n--;
     curPar.textContent=parts.slice(0,n).join(' ');
   }
-  if(n===1&&curInner.scrollHeight>curInner.clientHeight+1){
+  if(n===1&&!fits()){
     var cut=clauseCut(parts[0]);
     if(cut)curPar.textContent=cut;
     else curPar.textContent=parts[0];
   }
 }
 var notes=[];var ix=0;var todayStr='';var ydayStr='';
-var SMARTLIST_KEY='nayanet.today.smartlist.v1';
-var smartList=[];try{var raw=localStorage.getItem(SMARTLIST_KEY);if(raw)smartList=JSON.parse(raw).filter(function(x){return typeof x==='string';});}catch(err){smartList=[];}
-function persistSmartList(){try{localStorage.setItem(SMARTLIST_KEY,JSON.stringify(smartList));}catch(err){}}
 var bodyEl=document.getElementById('frameBody');
 var footEl=document.getElementById('frameFoot');
-var actionsEl=document.getElementById('frameActions');
 var navEl=document.getElementById('frameNav');
 var overlay=document.getElementById('noteOverlay');
 var ovBody=document.getElementById('ovBody');
@@ -605,28 +515,8 @@ function render(){
   board.appendChild(foot);
   board.addEventListener('click',function(){step(ix+1);});
   bodyEl.appendChild(board);
-  /* SAVE / SHARE: the Hub primo pills, rebuilt for this note. */
-  actionsEl.innerHTML='';
-  var isOn=smartList.indexOf(n.id)>=0;
-  var save=el('button','action primo'+(isOn?' carry-on':''),isOn?'\u2605 SAVED':'SAVE');save.type='button';
-  save.setAttribute('aria-pressed',isOn?'true':'false');
-  save.setAttribute('aria-label',(isOn?'Remove from your Smart List: ':'Save to your Smart List: ')+(n.title||''));
-  save.style.setProperty('--action-color',isOn?'#7dffb0':'#55e39a');
-  save.style.setProperty('--glow',isOn?'#7dffb0':'#55e39a');
-  save.addEventListener('click',function(e){e.stopPropagation();
-    var at=smartList.indexOf(n.id);
-    if(at>=0)smartList.splice(at,1);else smartList.push(n.id);
-    persistSmartList();render();
-  });
-  var share=el('button','action primo','SHARE');share.type='button';
-  share.style.setProperty('--action-color','#55b9ee');share.style.setProperty('--glow','#55b9ee');
-  share.setAttribute('aria-label','Share: '+(n.title||''));
-  share.addEventListener('click',function(e){e.stopPropagation();
-    var text=(n.title||'')+(n.nutshell?'\n\n'+n.nutshell:'');
-    if(navigator.share){navigator.share({title:n.title||'Intel Today',text:text,url:location.href}).catch(function(){});}
-    else if(navigator.clipboard){navigator.clipboard.writeText(text).then(function(){share.textContent='COPIED';setTimeout(function(){share.textContent='SHARE';},1500);}).catch(function(){});}
-  });
-  actionsEl.appendChild(save);actionsEl.appendChild(share);
+  /* ROUND 6: SAVE/SHARE removed on Shawn's ruling (~21:00 MST — he never
+     asked for them). The foot is the arrows row only. */
   /* Arrows: back, position, forward — one row, clear of the pills above. */
   navEl.innerHTML='';
   var back=el('button','naya-btn');back.type='button';back.id='todayBack';back.setAttribute('aria-label','Back');
