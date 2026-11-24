@@ -37,8 +37,24 @@ Reconciliation rules (2026-09-30 brain-reconciliation ledger; ratchet since 2026
     - The three index files are self-referential: instead of listing their own
       blob SHAs (which would make the content a moving target — the SHA changes
       every time the file is regenerated), their table entries carry
-      "_self_referential": true with no blob SHA. file_count always equals the
-      true tree size, so the ledger's count assertions still hold.
+      "_self_referential": true with no blob SHA.
+    - Verified-set corpus (SN-4711, the Sealed Door, consumer backstop):
+      a Smart Note page (an IB-*.md file under BRAIN/05-MEMORY/SMART-NOTES/)
+      enters the index ONLY when it carries a verified registry entry —
+      entry present, hashes bind, and its standing valid (door receipt
+      chain verifies, or its legacy defects are carried by the door
+      checker's shrink-only grandfather ratchet, or it bears the fixer's
+      canonical-reconstruction mark). A page with no verified entry is
+      EXCLUDED from the inventory, the domain counts, and the floors, and
+      is reported as UNREGISTERED_PAGE (printed on every run and named in
+      BRAIN/REAL-TREE.json under "unregistered_pages") — never silently
+      absorbed. Verification is the door checker's own
+      (tools/check_door_obligation.py, loaded and called, never
+      reimplemented here), so the index stocks exactly what the checker
+      verifies. file_count therefore equals the VERIFIED corpus size;
+      the git tree may hold more files, and the difference is exactly
+      the unregistered pages named in the report. Every other BRAIN/
+      file is inventoried as before.
 
 Exit codes: 0 = ok (or --check passed); 1 = --check found drift;
            2 = usage/git error, count drift, or dangling pointer.
@@ -48,6 +64,7 @@ from __future__ import annotations
 
 import argparse
 import datetime
+import importlib.util
 import json
 import re
 import subprocess
@@ -276,6 +293,132 @@ def inventory(root: Path) -> list[dict]:
     return files
 
 
+# --------------------------------------------------------------------------
+# Verified-set corpus (SN-4711 step 6, the consumer backstop)
+#
+# The brain index is a consumer surface: it stocks only Smart Note pages
+# whose registration verifies. Verification belongs to the door checker
+# (tools/check_door_obligation.py) — this tool loads and calls it, and
+# contains no second implementation of any hash, chain, or ratchet rule.
+# A page is UNREGISTERED (excluded, reported) when:
+#   * it has no registry entry at all (NO_ENTRY) — the ratchet tolerates
+#     the checker's defect, it does not manufacture an entry; or
+#   * its entry's hashes do not bind (a hard HASH_MISMATCH /
+#     PAGE_HASH_STALE defect the ratchet does not carry); or
+#   * it carries any other hard (non-grandfathered) door defect; or
+#   * its entry stands in a broken receipt chain (CHAIN_BROKEN).
+# An entry whose only defects are grandfathered by the shrink-only
+# ratchet is verified by the ratchet route the design names; a
+# canonical-reconstruction backfill is chain-exempt by its mark and is
+# judged by the same defect rules as any other entry. The corpus
+# manifest is NOT part of this set's criteria (SN-4711 step 6 names
+# entry / hashes / chain-ratchet-reconstruction only); a stale manifest
+# remains the checker's own registry-global defect.
+# --------------------------------------------------------------------------
+
+DOOR_CHECKER_REL = Path("tools/check_door_obligation.py")
+
+
+def _load_door_checker(root: Path):
+    """Load tools/check_door_obligation.py from the target root — the
+    single verification authority for what counts as registered."""
+    spec = importlib.util.spec_from_file_location(
+        "check_door_obligation", root / DOOR_CHECKER_REL)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def unregistered_note_pages(root: Path) -> list[dict]:
+    """Canonical Smart Note pages with NO verified registry entry.
+
+    Returns [{sn, ib, path, reasons}] sorted by path, computed entirely
+    by the door checker's own machinery (check_pages + the grandfather
+    partition + check_chain) over the checkout at `root`. Raises on any
+    machinery failure — the caller fails closed (exit 2) rather than
+    falling back to absorbing unverified pages.
+    """
+    checker = _load_door_checker(root)
+    snv2 = checker._load_snv2(root)
+    registry = checker.load_registry(root)
+    pages, _twins = checker.discover_pages(root)
+    cap_index = checker.CaptureIndex(root, snv2)
+    defects = checker.check_pages(root, snv2, pages, registry, cap_index)
+    ratchet_keys, _ratchet_err = checker.load_ratchet(root)
+    hard, _grandfathered = checker.partition_grandfathered(
+        defects, ratchet_keys)
+    chain_broken = {d.get("ib") for d in
+                    checker.check_chain(snv2, registry, cap_index)
+                    if d.get("ib")}
+    entries = {e.get("intelligent_block_id"): e
+               for e in registry.get("entries", [])}
+    hard_kinds: dict[str, list[str]] = {}
+    for d in hard:
+        hard_kinds.setdefault(d["path"], []).append(d["kind"])
+    unregistered = []
+    for page in pages:
+        reasons: list[str] = []
+        if entries.get(page["ib"]) is None:
+            reasons.append("NO_ENTRY")
+        else:
+            reasons.extend(sorted(set(hard_kinds.get(page["path"], []))))
+            if page["ib"] in chain_broken:
+                reasons.append("CHAIN_BROKEN")
+        if reasons:
+            unregistered.append({
+                "sn": page["sn"], "ib": page["ib"], "path": page["path"],
+                "reasons": reasons,
+            })
+    unregistered.sort(key=lambda u: u["path"])
+    return unregistered
+
+
+def verified_corpus(root: Path, files: list[dict]) -> tuple[list[dict], list[dict]]:
+    """Split the BRAIN/ inventory into (verified corpus, unregistered).
+
+    Only Smart Note pages can be unregistered: an inventory file is
+    excluded exactly when it is an IB-*.md page under SMART_NOTE_PREFIX
+    whose IB stem the checker judges unregistered (a twin rendering
+    shares its canonical page's stem and therefore its verdict). Every
+    other file — including non-page files under SMART-NOTES/ — stays.
+    """
+    unregistered = unregistered_note_pages(root)
+    bad_stems = {u["ib"] for u in unregistered}
+    corpus = []
+    for f in files:
+        name = f["path"].rsplit("/", 1)[-1]
+        if (f["path"].startswith(SMART_NOTE_PREFIX)
+                and name.startswith("IB-") and name.endswith(".md")
+                and name[:-3] in bad_stems):
+            continue
+        corpus.append(f)
+    return corpus, unregistered
+
+
+def prepare(root: Path, files: list[dict]) -> dict:
+    """The verified corpus + the counts and floors computed over it.
+
+    Floors are recomputed over the verified set (SN-4711 step 5 of the
+    design record): floor_domain_counts is fed the corpus, so a bare
+    page no longer raises the 05-MEMORY floor to legitimize itself.
+    """
+    corpus, unregistered = verified_corpus(root, files)
+    counts = domain_counts(corpus)
+    floors = floor_domain_counts(corpus)
+    return {"corpus": corpus, "counts": counts, "floors": floors,
+            "unregistered": unregistered}
+
+
+def report_unregistered(unregistered: list[dict]) -> None:
+    for u in unregistered:
+        print(f"UNREGISTERED_PAGE: {u['sn']} — {u['path']} is excluded "
+              f"from the brain index (no verified registry entry: "
+              f"{', '.join(u['reasons'])}) — file it through the door "
+              f"(tools/learning_loop.py publish-note) or backfill it "
+              f"with tools/check_door_obligation.py --fix "
+              f"(owner: door lane / cure lane)")
+
+
 def domain_of(path: str) -> str:
     if path == "BRAIN/REAL-TREE.json" or path == "BRAIN/REAL-TREE.md":
         return "ROOT"
@@ -386,7 +529,8 @@ def validate_pointers(root: Path) -> list[str]:
     return errors
 
 
-def build_real_tree_json(basis: str, files: list[dict], counts: dict[str, int], today: str) -> str:
+def build_real_tree_json(basis: str, files: list[dict], counts: dict[str, int], today: str,
+                         unregistered: list[dict] = ()) -> str:
     entries = []
     for f in files:
         if f["path"] in RECEIPT_PATHS:
@@ -403,14 +547,22 @@ def build_real_tree_json(basis: str, files: list[dict], counts: dict[str, int], 
         "ledger_assertion": (
             "Per-domain counts asserted against the 2026-09-30 brain-reconciliation "
             "ledger classification table. Any drift fails regeneration instead of "
-            "silently rewriting the table."
+            "silently rewriting the table. Smart Note pages are counted only "
+            "when they carry a verified registry entry (SN-4711); pages without "
+            "one are excluded and named under unregistered_pages."
         ),
         "files": entries,
     }
+    if unregistered:
+        doc["unregistered_pages"] = [
+            {"sn": u["sn"], "path": u["path"], "reasons": u["reasons"]}
+            for u in unregistered
+        ]
     return json.dumps(doc, indent=2, ensure_ascii=False) + "\n"
 
 
-def build_real_tree_md(basis: str, files: list[dict], counts: dict[str, int], today: str) -> str:
+def build_real_tree_md(basis: str, files: list[dict], counts: dict[str, int], today: str,
+                       unregistered: list[dict] = ()) -> str:
     lines = [
         "# NayaPOWER Brain — Real Tree (machine-verified)",
         "",
@@ -444,6 +596,21 @@ def build_real_tree_md(basis: str, files: list[dict], counts: dict[str, int], to
         else:
             lines.append(f"- `{f['path']}` — `{f['sha'][:12]}` ({f['size']} bytes)")
     lines.append("")
+    if unregistered:
+        lines += [
+            "## Unregistered Smart Note pages (excluded)",
+            "",
+            "These IB pages stand in the git tree without a verified registry "
+            "entry (SN-4711). They are excluded from the inventory above and "
+            "reported as UNREGISTERED_PAGE by the generator; a page enters "
+            "the index only when its registration verifies with the door "
+            "checker (tools/check_door_obligation.py).",
+            "",
+        ]
+        for u in unregistered:
+            lines.append(f"- `{u['path']}` — {u['sn']} "
+                         f"({', '.join(u['reasons'])})")
+        lines.append("")
     return "\n".join(lines)
 
 
@@ -462,10 +629,12 @@ def patch_brain_index(root: Path, basis: str, counts: dict[str, int], today: str
         "method": "tools/regenerate_brain_index.py from the committed git tree",
         "domain_counts": counts,
         "note": (
-            "Counts are machine-verified against the Git tree. Semantic sections "
-            "(nine_nodes, proof_boundary, operations, ...) are preserved untouched; "
-            "only generated_at, inventory_file_count, last_reconciled_main and this "
-            "section are mechanical."
+            "Counts are machine-verified against the Git tree. Smart Note pages "
+            "enter the count only with a verified registry entry (SN-4711); "
+            "unregistered pages are excluded and reported by the generator. "
+            "Semantic sections (nine_nodes, proof_boundary, operations, ...) "
+            "are preserved untouched; only generated_at, inventory_file_count, "
+            "last_reconciled_main and this section are mechanical."
         ),
     }
     return json.dumps(doc, indent=2, ensure_ascii=False) + "\n"
@@ -511,11 +680,16 @@ def write_lf(path: Path, text: str) -> None:
     path.write_text(text, encoding="utf-8", newline="\n")
 
 
-def check(root: Path) -> int:
+def check(root: Path, prepared: dict | None = None) -> int:
     files = inventory(root)
-    counts = domain_counts(files)
+    if prepared is None:
+        prepared = prepare(root, files)
+    corpus = prepared["corpus"]
+    counts = prepared["counts"]
+    unregistered = prepared["unregistered"]
+    report_unregistered(unregistered)
     problems = []
-    floors = floor_domain_counts(files)
+    floors = prepared["floors"]
     violations = floor_violations(counts, floors)
     if violations:
         problems.append("domain counts below baseline floor: " + "; ".join(violations))
@@ -530,8 +704,8 @@ def check(root: Path) -> int:
     basis = basis_commit(root)
     today = datetime.date.today().isoformat()
     want = {
-        "BRAIN/REAL-TREE.json": normalize_json(build_real_tree_json(basis, files, counts, today)),
-        "BRAIN/REAL-TREE.md": normalize_md(build_real_tree_md(basis, files, counts, today)),
+        "BRAIN/REAL-TREE.json": normalize_json(build_real_tree_json(basis, corpus, counts, today, unregistered)),
+        "BRAIN/REAL-TREE.md": normalize_md(build_real_tree_md(basis, corpus, counts, today, unregistered)),
         "BRAIN/NAYAPOWER-BRAIN-INDEX.json": normalize_json(
             patch_brain_index(root, basis, counts, today)
         ),
@@ -559,7 +733,13 @@ def check(root: Path) -> int:
         for p in problems:
             print(" -", p)
         return 1
-    print(f"OK: index layer matches git tree ({len(files)} files)")
+    if unregistered:
+        print(f"OK: index layer matches git tree ({len(corpus)} files in "
+              f"the verified corpus; {len(files)} in the git tree, "
+              f"{len(unregistered)} unregistered Smart Note page(s) "
+              f"excluded — see the UNREGISTERED_PAGE report above)")
+    else:
+        print(f"OK: index layer matches git tree ({len(files)} files)")
     return 0
 
 
@@ -579,8 +759,17 @@ def main() -> int:
         print(f"error: {exc}", file=sys.stderr)
         return 2
 
-    counts = domain_counts(files)
-    floors = floor_domain_counts(files)
+    try:
+        prepared = prepare(root, files)
+    except Exception as exc:  # verification machinery error: fail closed
+        print(f"error: verified-set computation failed: {exc} — refusing "
+              f"to regenerate an index that would absorb unverified pages",
+              file=sys.stderr)
+        return 2
+    corpus = prepared["corpus"]
+    counts = prepared["counts"]
+    floors = prepared["floors"]
+    unregistered = prepared["unregistered"]
     violations = floor_violations(counts, floors)
     if violations:
         print("error: BRAIN/ files were REMOVED below the baseline floor:", file=sys.stderr)
@@ -600,18 +789,23 @@ def main() -> int:
         return 2
 
     if args.check:
-        return check(root)
+        return check(root, prepared)
 
     basis = basis_commit(root)
     today = datetime.date.today().isoformat()
     write_lf(root / "BRAIN" / "REAL-TREE.json",
-             build_real_tree_json(basis, files, counts, today))
+             build_real_tree_json(basis, corpus, counts, today, unregistered))
     write_lf(root / "BRAIN" / "REAL-TREE.md",
-             build_real_tree_md(basis, files, counts, today))
+             build_real_tree_md(basis, corpus, counts, today, unregistered))
     write_lf(root / "BRAIN" / "NAYAPOWER-BRAIN-INDEX.json",
              patch_brain_index(root, basis, counts, today))
-    print(f"regenerated index layer from basis {basis[:8]}: {len(files)} files, "
+    report_unregistered(unregistered)
+    print(f"regenerated index layer from basis {basis[:8]}: {len(corpus)} files, "
           f"{len(counts)-1} domains + ROOT")
+    if unregistered:
+        print(f"verified corpus: {len(corpus)} of {len(files)} git-tree "
+              f"files; {len(unregistered)} unregistered Smart Note page(s) "
+              f"excluded (see the UNREGISTERED_PAGE report above)")
     return 0
 
 
