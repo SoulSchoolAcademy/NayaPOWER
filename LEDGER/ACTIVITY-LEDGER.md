@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-24 10:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-24 11:05 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -14933,6 +14933,12 @@ _Last updated: 2026-11-24 10:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: hidden_files/lane-6/armh-permutation-control-spec-t0817.md exists on disk; R1 fresh-build -> 0.099206 byte-exact match with t0731's recorded number, and the cold build (docs + spec line alone, no seat code) reproduces 0.099206 independently; six-reading resolution table pins the ONE reading (draw->edge iteration order was the real ambigui
 
+### ✅ t0816-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** Retrieval-auth gate wiring-prep packet (proposal, NOT wired): exact diff, call-site census, migration checklist, rollback
+
+**Evidence:** BACKLOG SWEEP (oldest-first). VERIFIED first-hand this tick: packet hidden_files/wiring-prep-retrieval-auth-gate-t0816-lane9.md exists (7,960 B, sha256 ad314e21e5b3bd0bfcb19c3efcff70888110c7ddbb0efbfcda20d42cf61b5672); tip ba626387 exists in the mirror as a commit (Merge PR #2568); at that tip tools/smart_note_v2.py is 1,588 lines with _ranked_cand
+
 ### ✅ t0816 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Retrieval-auth gate wiring-prep packet (proposal, NOT wired)
@@ -14998,6 +15004,12 @@ _Last updated: 2026-11-24 10:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** VOID fail-closed: blind level-drill recusal after prior answer-key contact
 
 **Evidence:** Verified: eligibility audit ran pre-instrument, no answer files opened this tick, fail-closed within 7 minutes with contamination documented from the record. 9.4 not 9.5: the eligibility check should have been possible at dispatch time from the registry (a dispatcher hole the receipt flags); and the sign-in promised a pre-reg sha that never came be
+
+### ✅ t0816-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** MCC semantic-arm falsification INDEPENDENTLY CONFIRMED: fresh-code re-derivation of rate_pos=0.000, B4-swap sensitivity, pre-reg tripwire check
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty - no new receipts since gate-stall-20261124-0223 scored last tick). VERIFIED first-hand this tick: frozen record mcc-freeze-record-t0802-lane8.json sha256 1fbb130b644c85b1dc35fc20e6467e306b0bfde526f549e44c39cfa4f610c45a matches the receipt pin EXACTLY; frozen script mcc-freeze-t0802-lane8.py sha256 1a
 
 ### ✅ t0816 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
@@ -20793,6 +20805,12 @@ _Last updated: 2026-11-24 10:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0699-lane9 — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
 
+**Task:** Section 7 falsifier battery non-author adjudication: 23-pair matrix re-run, 20 CONFIRMED, 3 AMENDED, 0 OVERTURNED
+
+**Evidence:** BACKLOG SWEEP (oldest-first). VERIFIED first-hand this tick: pre-reg lane-9/t0699/prereg-t0699.md sha256 e3e498ebf1ccda015217c29980a975cee8ce85ad80fa074c6ca9b5f6f9cf254e matches the receipt pin EXACTLY (frozen pre-run, post-run re-hash confirmed in the receipt). NOT PHANTOM. Score 8.5, REWORK band (agrees with the receipt's own Pass-3 8.5). Why not
+
+### ✅ t0699-lane9 — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
+
 **Task:** Section 7 falsifier battery non-author adjudication
 
 **Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: sign-in #2537 comment 6159630541 EXISTS (2026-10-14T02:36:36Z) via App identity; pre-reg hidden_files/lane-9/t0699/prereg-t0699.md sha256 e3e498eb...f254e byte-identical to the frozen pre-run pin; #2486 comment IDs byte-matched t0571 pins and feedback-feed.md premise-rot (512->553 lines) caught and hand
@@ -20828,6 +20846,12 @@ _Last updated: 2026-11-24 10:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0699-lane9.md`
 
 **Evidence:** Verified: pre-reg hidden_files/lane-9/t0699/prereg-t0699.md sha256 e3e498eb... MATCHES byte-exactly (frozen pre-run, re-verified post-run); t0571 receipt twelve-lane-receipts/t0571-lane3.md on disk (8.7KB); corpus re-pin independently confirmed — feedback-feed.md 553 lines sha256 278fd3c6... MATCHES receipt byte-exactly, premise-rot from t0571 (512
+
+### ✅ t0699-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** verify_integration() probe audit: 5 probes, 3 genuine partials fire, 2 bend-points named with byte-level fixes
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window t1553-t1564 empty; backlog 1136 before this tick). VERIFIED first-hand this tick: probe script probes-t0699-lane5/probe_verify_integration.py sha256 b6a3598414dd55684f0f98c31886dbb1d996e8b8563e33971c01c1308708fd3c matches the receipt pin EXACTLY; probe-results.json sha256 f35bf7012213cb629da92086a6473ffb4eb
 
 ### ✅ t0699-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
