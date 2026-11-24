@@ -80147,6 +80147,42 @@
         "Craft",
         "Honor"
       ]
+    },
+    {
+      "smart_note_id": "SN-4720",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4720-anatomy-of-a-smart-app",
+      "slug": "anatomy-of-a-smart-app",
+      "title": "Anatomy of a Smart App",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4720/IB-SMART-NOTE-20261124-sn4720-anatomy-of-a-smart-app.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4720/IB-SMART-NOTE-20261124-sn4720-anatomy-of-a-smart-app.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4720/IB-SMART-NOTE-20261124-sn4720-anatomy-of-a-smart-app.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4720-anatomy-of-a-smart-app.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T17:13:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "6398005e10c2e05d505e80373c46ff496498633b134b98eaaffc957b60e3f0ca",
+      "content_hash": "deccc7fd5ddfe7cdb565299255bbb584678efe9839476bb0ab3a3d8dd4cb2593",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "0f29434c3a07ecf2bee9696b86e5427100dff2b408011acee4b138c24b3c9076",
+      "one_line": "A page is not a page — it is a smart app, and it gets written down as one: what it has, how it functions, what works, what will be where. The anatomy dictated on 2026-11-16: every app always carries a back button, elegant and blocking nothing, so a person can always go back and forth simply. The visual deck never offers show-all — one slide at a time; read-all is for text only. 'Tap to view' goes to the citizen's real page; there is one page to see and it is theirs. The app installs as an app, and its icon is the citizen's to pick — their upload, their picture, the gallery, the orb library in every colour, any photo. The page is public or private at the citizen's choice, and location is never shared: it exists only to connect people, never to expose them. In Settings, the demographics that connect you are each on or off at your call, and they feed matching — people like you, in your feed. The side column is the citizen's own: your top three featured links, so visitors go straight to your profiles. Under the profile sits your level — points, stars, a bar running to ten stars, and your name itself changing with your level. And when a pop-up opens, it takes the whole screen: no more small pop-ups to squint into.",
+      "topics": [
+        "Distillation",
+        "Design",
+        "Craft",
+        "Knowledge",
+        "Honor"
+      ]
     }
   ],
   "sequence_policy": {
@@ -80157,5 +80193,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "73110a64c75e8937f7f06371afa25ec60836f1af46e750e87a318ab434a62939"
+  "corpus_manifest_hash": "599d3f3ec67d16505cf2c9f2a933bd2176d90cf9fee86a7d1cadbc37ee3458ff"
 }
