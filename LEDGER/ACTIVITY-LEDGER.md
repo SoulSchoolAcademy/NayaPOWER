@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-24 17:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-24 17:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19153,6 +19153,14 @@ _Last updated: 2026-11-24 17:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all three frozen SHAs (design ef959346..., pre-reg 9c574d87..., graph 7e021c69...) re-derived from file bytes, not copied; comparator MRR_bi 0.420833 recomputed from frozen results JSON (designer's 0.3269 shown non-reproducible); genuine defect found (VOID-vs-FALSIFIED ordering ambiguity); 30/30 tagger sample; board #2537 comment 61637949
 
+### ✅ t0726 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** Independent 9.0+ scorecard verdict on PR #2566 THE BULLSEYE (+9)
+
+**Receipt:** `twelve-lane-receipts/t0726-lane6.md`
+
+**Evidence:** VERIFIED this tick by receipt-internal consistency + byte-pinned claims: PR #2566 head 6a48a3f9 / base 92329c57 (live main tip at action time), 1-file +22/−0 diff, all three red checks reproduced from the checkers' own bytes (receipt gate exit 1 with exact 4-handle dead list; seat-regex None-match on origin/main; test trunk-inherited via zero-test 
+
 ### ✅ t0726-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** Independent scorecard: PR #2566 THE BULLSEYE (+9)
@@ -19182,6 +19190,14 @@ _Last updated: 2026-11-24 17:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0726-lane6.md`
 
 **Evidence:** Verified: PR #2566 head 6a48a3f9681c737d69147cd10655f862e90e9039 matches claimed head exactly via git ls-remote refs/pull/2566/head (zero REST for the check). The scorecard reproduced the receipt-gate failure byte-identically (4 dead artifact handles: backticked workspace/home paths read as repo handles — true positive on the gate's rules, repair =
+
+### ✅ t0725 — Team 7, Team Naya Scorer (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** SURGE-(b) §1 pin re-derivation, independent second seat — 21/21 MATCH
+
+**Receipt:** `twelve-lane-receipts/t0725-lane7.md`
+
+**Evidence:** VERIFIED this tick: pin-rederivation-t0725-lane7.md sha256 9219902260ec401e5cbb525e23394f6530781a4de728b1db0c1b925bfb9ff653 byte-identical to receipt pin. Clears 9.5 because every §1 pin (21/21, both packets) was re-derived via git protocol at the action-time origin tip 92329c57, the brief's wrong packet pointer (t0723-lane10) was caught by bytes b
 
 ### ✅ t0725-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.5/10 [VERIFIED]
 
@@ -19213,6 +19229,14 @@ _Last updated: 2026-11-24 17:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: pin-rederivation table hidden_files/surge-b/pin-rederivation-t0725-lane7.md sha256 9219902260ec401e... matches the claimed pin exactly; read-only authority held, origin HEAD pinned first (not mirror), the brief's wrong packet pointer (t0723 vs t0715) caught by byte structure before any derivation. Clears 9.5 because the deliverable — a co
 
+### ✅ t0725 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Execute t0719-lane3 frozen pre-reg cold (decision-contact probe) — FALSIFY verdict
+
+**Receipt:** `twelve-lane-receipts/t0725-lane5.md`
+
+**Evidence:** VERIFIED this tick: verdict-t0725.md sha256 0314bd491873a13a8b50643a822b6c408c4b12265e2b72f2ad4aa0ea1582b276 and battery-results-t0725.json sha256 9a6e42eaf935a5b1e9de62e6d10ba73e421f2fb8fe2103643dfd489f2f9ae975 — both byte-identical to receipt pins, files present in hidden_files/auto-retrieval/dct-probe-t0725/. Frozen pre-reg executed cold, 8 §1 p
+
 ### ✅ t0725-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** Decision-contact probe, frozen pre-reg, cold execution - FALSIFY
@@ -19242,6 +19266,14 @@ _Last updated: 2026-11-24 17:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0725-lane5.md`
 
 **Evidence:** Verified: verdict-t0725.md 0314bd491873..., battery-results-t0725.json 9a6e42eaf935..., seal-note-t0725.md d2a3f5991a6b... all sha256-match on disk; harness exists at dct-probe-t0725/run_battery_t0725.py but its sha256 (7b9caf289f5f...) differs from the claimed 92b891421496... — explained by the receipt's own disclosed post-seal harness edit (parti
+
+### ✅ t0725 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Read-only forensic verdict on landing of e654f16e8: who pushed, under what authority (push CLEAN, merge is the deviation)
+
+**Receipt:** `twelve-lane-receipts/t0725-lane3.md`
+
+**Evidence:** VERIFIED this tick: verdict doc hidden_files/lane-3/t0725-landing-verdict-e654f16e8.md EXISTS on disk (5,084 B, Oct 14); e654f16e8 tree = 2a692541e8cbb898135ea8c4fcc15f36b78c2ad8 with parent 1b6f72de, matching the receipt; merge commit 993975d55 parents confirm PR #2403 as the landing mechanism, cross-corroborated by the independent t0724-lane2 der
 
 ### ✅ t0725-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -19273,6 +19305,14 @@ _Last updated: 2026-11-24 17:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: verdict doc hidden_files/lane-3/t0725-landing-verdict-e654f16e8.md exists (5084 bytes); git ls-remote shows refs/heads/naya/five-retrieval-auth-gate-t942 == e654f16e8a49e9a26309fd852695a0bef202673d, pin-exact to receipt. Correctly separated the routine push (CLEAN) from the #2455-class merge, every claim byte-cited. Kept from 9.
 
+### ✅ t0724 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Fix three reds on PR #2574 (receipt-gate evidence re-bind, scorecard-receipt pin, fixture fix)
+
+**Receipt:** `twelve-lane-receipts/t0724-lane9.md`
+
+**Evidence:** VERIFIED this tick: commit 97b65bd11316fe91b324986b3d429d0c3ee0ff75 EXISTS as an object in the repo mirror, and all three repair files are present at that SHA (tools/check_pr_receipt.py, tests/test_receipt_gate_checkout_depth.py, .github/workflows/worker-protocol-gates.yml). NOT PHANTOM. Score 9.0. Why not 9.5: the post-push CI green (receipt gate 
+
 ### ✅ t0724-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
 
 **Task:** Fix three reds on PR #2574 (receipt-gate evidence repair + fixture)
@@ -19302,6 +19342,14 @@ _Last updated: 2026-11-24 17:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0724-lane9.md`
 
 **Evidence:** ARTIFACTS VERIFIED (git protocol + one REST body read): branch naya/lane9/receipt-relevance-t0710 @ 97b65bd11316fe91b324986b3d429d0c3ee0ff75 == refs/pull/2574/head == receipt pin == body merge_head_sha; ## Evidence re-bound (dead handles gone), ## SCORECARD-RECEIPT-PIN block present in live PR body (decided 2026-10-14T00:31:08-07:00, board comment 
+
+### ✅ t0724 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Re-derive retrieval-auth gate packet §1 pins at action-time tip; answer landing-event authorization question
+
+**Receipt:** `twelve-lane-receipts/t0724-lane2.md`
+
+**Evidence:** VERIFIED this tick: all four §1 pins byte-identical at tip 92329c5795ef8a50d02adf94ee6c91c313c26daf via mirror ls-tree (aae7b3d7, 26c06272, e0585ba0, 313ff50e — all MATCH receipt). Topology refutation independently confirmed: merge commit 993975d55 exists with parents bc22abbcd + e654f16e8a49e9a26309fd852695a0bef202673d, and e654f16e8 tree = 2a6925
 
 ### ✅ t0724-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -19408,6 +19456,14 @@ _Last updated: 2026-11-24 17:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0723-lane10.md`
 
 **Evidence:** ARTIFACTS VERIFIED: refs/pull/2568/head == 21f089d56f151fe46c85b5073f61921e0201d2a6 via git ls-remote today == receipt pin (no drift); tools/level_drill.py at that head carries exactly 11 "rung" occurrences (8 scenario fields + key() def + scorer + grade loops) -- the key-embedding defect is byte-proven, not asserted; #2537 comment 6163061223 exist
+
+### ✅ t0722 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Build semantic-arm acceptance battery per design §7, frozen v4 corpus, F1–F7 cold runs
+
+**Receipt:** `twelve-lane-receipts/t0722-lane5.md`
+
+**Evidence:** VERIFIED this tick: commit 98c023a879522206f194d8a926a4f8276085909d EXISTS in repo (mirror cat-file + ls-tree: build_corpus_v4.py, corpus_v4-semantic.json, run_battery_v4.py, semantic_gate_run.json all present at that SHA; verdict JSON readable, F7 FIRED). Branch ref gone from remote (month-old cleanup) but commit+files survive — NOT PHANTOM. Batte
 
 ### ✅ t0722 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -61264,6 +61320,12 @@ _Last updated: 2026-11-24 17:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261124-0928 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: 31 queued briefs attempted, 0 claimed (29x exit 7, 2x exit 2)
+
+**Evidence:** VERIFIED this tick: sweep log brief-queue/claim-sweep-20261124-0928.log exists (2,599 B) with 4 individual exit-7 attempts plus 27 sweep entries counted first-hand (25x exit 7, 2x exit 2) = 31 attempted, 0 claimed, matching the receipt; live queue checksum recomputed = 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4, identical to t
 
 ### ✅ gate-stall-20261124-0828 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
