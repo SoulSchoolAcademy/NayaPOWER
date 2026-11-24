@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-24 14:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-24 15:07 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19787,6 +19787,12 @@ _Last updated: 2026-11-24 14:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0715-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
+**Task:** Top-20 needs analysis from the current ask-world query log
+
+**Evidence:** VERIFIED this tick: needs file hidden_files/retrieval/smartblocks/hypertune-needs-t0715.md sha256 17a9f01020275a0eb302516776093991ca6deb382a749d0f7731123d89254253 - MATCHES the receipt pin byte-exact. NOT PHANTOM. Score 9.0. Why not 9.5: (1) single seat - no second-seat re-tally of the rows 60-78 window, so the SB-N1 existence claim rests on one ro
+
+### ✅ t0715-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
 **Task:** Top-20 needs analysis from the current ask-world query log (hypertune feed, SB-N1 candidate)
 
 **Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: deliverable retrieval/smartblocks/hypertune-needs-t0715.md sha256 17a9f010...254253 EXACT match to the receipt; 10 needs all cite rows 60-78, three non-candidates carry explicit reasons, D1-D4 untouched per the receipt. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS (receipt's own 9.3 is one notch generous 
@@ -19806,6 +19812,12 @@ _Last updated: 2026-11-24 14:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0715-lane4.md`
 
 **Evidence:** ARTIFACTS VERIFIED: needs file sha256 17a9f01020275a0eb302516776093991ca6deb382a749d0f7731123d89254253 MATCHES. Log pins and SMARTBLOCKS spec pin are the lane's action-time byte claims, not re-derived by this scorer (log file path not pinned to a location this tick could verify cheaply). Kept from 9.5: (a) no second-seat re-tally of rows 60-78 -- S
+
+### ✅ t0715-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Breaker #4 (feature.space, Smart Space) built at the cover/smart_list standard, pushed, remote-verified
+
+**Evidence:** VERIFIED this tick: commit 52d3374bd6d5a627cc66bf177577b2942a8bc0e4 exists in the local mirror with HUB/design-system/tools/smart-builder/functions/feature_space.py present at that SHA; the module also exists at current mirror HEAD (evolved blob 96d34f1e), so the breaker line advanced. NOT PHANTOM. Score 9.0. Why not 9.5: (1) the remote branch ref 
 
 ### ✅ t0715-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
@@ -19831,6 +19843,12 @@ _Last updated: 2026-11-24 14:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0715-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
+**Task:** Migration-prep packet for the retrieval-authorization gate (SURGE slice b) - candidate pins re-derived, touch-list, Shawn-gated step, landing-day battery, rollback
+
+**Evidence:** VERIFIED this tick: prep packet hidden_files/lane-10/retrieval-auth-gate-migration-prep-t0715.md sha256 243c7c01a3bf127ded6dbd12a0a97e718fff8ec84250812cce95e501ee0fb719 - MATCHES the receipt pin byte-exact. Cited live tip 92329c5795ef8a50d02adf94ee6c91c313c26daf exists in the local mirror; candidate branch commit e654f16e8a49e9a26309fd852695a0bef20
+
+### ✅ t0715-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
 **Task:** Retrieval-auth gate migration-prep packet: re-derived pins, landing-event proof, touch-list, Shawn-gated step, landing-day battery, rollback. PREP ONLY.
 
 **Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: prep packet hidden_files/lane-10/retrieval-auth-gate-migration-prep-t0715.md sha256 243c7c01...0fb719 EXACT match; commit e654f16e8a49e9a26309fd852695a0bef202673d exists in the local mirror as a commit with tree 2a692541e8cbb898135ea8c4fcc15f36b78c2ad8 EXACT match to the receipt's byte-identity claim - 
@@ -19850,6 +19868,12 @@ _Last updated: 2026-11-24 14:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0715-lane10.md`
 
 **Evidence:** ARTIFACTS VERIFIED via git ls-remote: refs/heads/naya/five-retrieval-auth-gate-t942 == e654f16e8a49e9a26309fd852695a0bef202673d MATCHES receipt claim; live tip 92329c57 MATCHES. Packet file sha256 243c7c01a3bf127ded6dbd12a0a97e718fff8ec84250812cce95e501ee0fb719 MATCHES. The landing-event byte-identity (direct-child topology, tree-SHA match) is the 
+
+### ✅ t0714-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** STRING_FIELD normalizer design CANDIDATE - 10-fixture battery vs live validate_lesson + convergence instrument
+
+**Evidence:** VERIFIED this tick: prototype hidden_files/lane-12/normalizer-proto-t0714.py sha256 cc653278da2900c4d61770321f2eec25867a255d77f516a3f2cb6f2a379f6d30 - MATCHES receipt pin byte-exact; design doc normalizer-leg-design-CANDIDATE-t0714.md sha256 c9df56f9e3786383ade1c9e0033588331e47bb8e73dacc80389878df53ac88d9 - MATCHES. NOT PHANTOM. Score 9.5 - clears 
 
 ### ✅ t0714-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
@@ -19875,6 +19899,12 @@ _Last updated: 2026-11-24 14:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0714-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
+**Task:** Requeue wiring CANDIDATE for OPEN PARTIAL_INGEST tickets + 27-probe RED-first battery
+
+**Evidence:** VERIFIED this tick: candidate hidden_files/lane-1/t0714/learn_ingest_REQUEUE_CANDIDATE.py sha256 816ac7b33212f775c786b44313668236db9874faa61a9619264fdc6f06c0921b - MATCHES receipt pin byte-exact; battery battery_requeue.py sha256 44cd521a5a24f9efbb393bf4abb8323202512a67c68e63f4d628c0047d1449ba - MATCHES. NOT PHANTOM. Score 9.0 (agrees with receipt 
+
+### ✅ t0714-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
 **Task:** Wire detect_pending requeue for PARTIAL_INGEST as CANDIDATE on P3-patched bytes, RED-first 27-probe battery
 
 **Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: candidate hidden_files/lane-1/t0714/learn_ingest_REQUEUE_CANDIDATE.py sha256 816ac7b3...0921b EXACT match; battery battery_requeue.py 44cd521a...d1449ba EXACT match; P3 base scratch/t0709-lane1-verify/learn_ingest_PATCHED.py 7abbac53...0c82ec EXACT match to the brief pin. NOT PHANTOM. Score 9.0, GOOD ON
@@ -19894,6 +19924,12 @@ _Last updated: 2026-11-24 14:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0714-lane1.md`
 
 **Evidence:** ARTIFACTS VERIFIED: candidate sha256 816ac7b33212f775c786b44313668236db9874faa61a9619264fdc6f06c0921b MATCHES; battery sha256 44cd521a5a24f9efbb393bf4abb8323202512a67c68e63f4d628c0047d1449ba MATCHES. RED 5/5 + GREEN 22/22 claims are action-time battery runs, not re-executed by this scorer (candidate semantics re-read, not re-run). Kept from 9.5: (a
+
+### ✅ t0713-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Lesson-compounding verdict on t0707-lane3/lane6 parallel-scorecard decisions - re-derived from decision bytes
+
+**Evidence:** VERIFIED this tick: verdict doc hidden_files/lane-11/lesson-compounding-verdict-t0713.md sha256 8c1a980e753bb9878de8b8c7d66fa13a1827902a555af47619594a55ae648ee2 - MATCHES the receipt pin byte-exact. NOT PHANTOM. Score 9.0 (agrees with receipt pass 3). Why not 9.5: (1) same-seat family evidence - cross-seat corroboration unavailable this tick; (2) l
 
 ### ✅ t0713-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -19949,6 +19985,12 @@ _Last updated: 2026-11-24 14:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0712-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
 
+**Task:** Verify #2560 heal holds at its landing tip - index-regen instrument re-run, drift classes checked, verdict on #2537
+
+**Evidence:** VERIFIED this tick: tip commit 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e exists in the local mirror - 'Merge pull request #2533 from SoulSchoolAcademy/naya4/activation-read-me-first'; receipt cites the #2560 heal landing at that tip and the verdict posted on #2537 (comment 6161963683). NOT PHANTOM. Score 9.5 - clears 9.5 because the tip commit re-pr
+
+### ✅ t0712-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
+
 **Task:** Tip index-freshness protect check (Stage 1) - re-pin tip, run regenerate_brain_index.py --check, negative control, freshness battery, board verdict
 
 **Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: PR #2560 head via git ls-remote = c32e6a5b4856f4e6ccf8e3e7d3c6fb2aed58ccbb, EXACT match to the receipt's cited merge parent; tip 92329c5795ef8a50d02adf94ee6c91c313c26daf exists as a commit in the local mirror. NOT PHANTOM. Score 9.5, ACCEPTED - clears 9.5 because the green is proven non-vacuous (negativ
@@ -19971,6 +20013,12 @@ _Last updated: 2026-11-24 14:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0712-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
+**Task:** Diagnose PR #2561 mixed CI from bytes - all 35 check runs, both failing checks byte-root-caused
+
+**Evidence:** VERIFIED this tick: refs/pull/2561/head via git ls-remote = 443cccf783438522a9c3a88c4d74505ecfc2de4d - EXACT MATCH to the receipt-pinned head, still live six weeks later. NOT PHANTOM. Score 9.0 (agrees with receipt pass 3). Why not 9.5: (1) sign-in order violation (brief read before sign-in, t0684 recurrence, owned); (2) CI job logs were 401, so th
+
+### ✅ t0712-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
 **Task:** Diagnose PR #2561 mixed CI from bytes - every failing/check-blocked entry with byte-level root cause; diagnosis only
 
 **Evidence:** BACKLOG SWEEP. VERIFIED first-hand this tick: PR #2561 head via git ls-remote = 443cccf783438522a9c3a88c4d74505ecfc2de4d, EXACT match to the receipt's cited head; tip 92329c5795 exists as a commit in the local mirror. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS. Why not 9.5: (1) sign-in order violation (brief read before sign-in), self-caught and ow
@@ -19990,6 +20038,12 @@ _Last updated: 2026-11-24 14:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0712-lane6.md`
 
 **Evidence:** Verified: PR #2561 open, head 443cccf7, confirmed live; the diagnosis assigns verdict classes with evidence (metadata defect: body 'Seat' line should read the seat's name; advisory classes). Named gaps keep it from 9.5: the sign-in order violation (owned, unfixable after the fact); the orphaned earlier 'SCORECARD' comment's authorship is unresolved
+
+### ✅ t0712-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat scorecard of PR #2566 (bullseye +9) - head re-pin, live-tree enum, receipt-gate root cause, verdict on #2537
+
+**Evidence:** VERIFIED this tick: refs/pull/2566/head via git ls-remote = 6a48a3f9681c737d69147cd10655f862e90e9039 - EXACT MATCH to the receipt-pinned head, still live six weeks later. NOT PHANTOM. Score 9.0 (agrees with receipt pass 3). Why not 9.5: (1) test-flake classified by inference (sibling-head green + prior seats' diagnosis), not by the failed job's own
 
 ### ✅ t0712-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -61076,6 +61130,20 @@ _Last updated: 2026-11-24 14:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261124-0622 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall receipt: 31 queued briefs script-attempted, all refused (29x exit 7, 2x exit 2), queue untouched
+
+**Evidence:** VERIFIED this tick: sweep log brief-queue/claim-sweep-20261124-0622.log exists (8,529 bytes) with per-brief ATTEMPT/REFUSED entries and exit-7 authorship reasons; receipt's 31-brief list and 29x exit 7 / 2x exit 2 split match the log; queue checksum identical to the 04:34 receipt per the receipt. NOT PHANTOM (no branch artifact claimed; method evid
+
+### ✅ distill-daily-20261124 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Daily distill fold of mission state (187 snapshots 2026-11-20->11-24) into main; PR #3536
+
+**Receipt:** `twelve-lane-receipts/distill-daily-20261124-lane0.md`
+
+**Evidence:** VERIFIED this tick: branch naya/distill-fold-mission-state-20261124 via git ls-remote = 764022f8cbd4d264fa9b294c6c84f4a1b8388033 - EXACT MATCH to receipt-pinned head; main tip 487e910d8e16199d13b4bb49eabf885d6ca51618 EXACT MATCH to receipt base; commit object present in local mirror; diff-tree at that SHA = exactly 1 file, BRAIN/CURRENT-MISSION-STA
 
 ### ✅ gate-stall-20261124-0434 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
