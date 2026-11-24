@@ -868,6 +868,38 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 #screen-cover .pm-facade{justify-content:flex-start;padding:12px 16px 8px}
 #screen-cover .pm-facade-label{order:-1}
 }
+
+/* COVER FIX (2026-11-23 — re-checker observation 1, pre-existing defect): "Let's Go"
+   sat below the fold at both sizes (mobile y1378 vs viewport 844; desktop y1265 vs
+   viewport 999) with no scroll path the reader could use, while the cover printed
+   "Tap anywhere to go forward". Two repacks, additive CSS only, no text, no image,
+   no facade change, D4 untouched:
+   - DESKTOP: the cover's .pm-main was a 2-column grid (sideA over sideB in the left
+     column, art right) — the stacked text boards ran 1,050 tall against a 741 panel.
+     Back to the School flex row (sideA | art | sideB, DOM order, the style-0 flex
+     the grid overrode): the tallest column is the art at 670, the button lands at
+     ~774, inside the panel. The member swap pill stays clear — it lives in sideA,
+     the button stays in sideB. (An absolute top pin was measured and REJECTED on
+     desktop: it would land on sideA's member pill, x642-670 y297-325.)
+   - MOBILE: the three grid rows (522 + 264 + 472) cannot fit a 696 panel by any
+     packing — the two text boards alone are 994 — so the button row leaves sideB's
+     flow and pins to the top of the cover (absolute against .promax, the nearest
+     positioned ancestor once sideB goes static), flush with sideA's top edge
+     (measured live: sideA top 169, promax top 141, so top:28px), centred, clear of
+     the pm-top (ends 163), the member swap pill (x302-330, 7px of air) and the board
+     title (starts 246). It sits on sideA's empty top-padding zone — no text, no
+     image, no control covered — and it scrolls away with the panel like any
+     content (it is not fixed). Nothing else moves: sideB only shortens by the
+     button row it no longer carries in flow. A bottom pin was measured and REJECTED
+     on mobile: any centred bottom position covers the play disc (x158-232 y771-829),
+     and the 73px slots beside it cannot hold the label at the 17px minimum. */
+@media(min-width:901px){
+#screen-cover .pm-main{display:flex}
+}
+@media(max-width:900px){
+#screen-cover .pm-side-b{position:static}
+#screen-cover .pm-side-b .side-actions{position:absolute;top:28px;left:50%;transform:translateX(-50%);z-index:7;margin:0}
+}
 </style>
 </head>
 <body>
@@ -1336,6 +1368,31 @@ daybarEl().addEventListener('mouseleave', function(){ scheduleFold(); });
   var _renderSlide = renderSlide;
   renderSlide = function(){ var r = _renderSlide.apply(this, arguments); setTapStep(0); return r; };
   setTapStep(0);
+})();
+
+/* COVER TAP ADVANCES (2026-11-23 — re-checker observation 1, pre-existing defect):
+   the cover printed "Tap anywhere to go forward" but a cover tap did nothing — the
+   only forward path was the » button, and "Let's Go" sat below the fold. This is the
+   board tap's sibling (the ROUND 7.5 tap script above): one tap anywhere on the cover
+   that is not on a genuinely interactive element advances to slide 1 (chapter 1),
+   exactly like btnStart / btnForwardCover (current = 0; renderSlide(); show('slide')).
+   Same guard as the board tap: taps on buttons, links, inputs, audio, video and
+   [data-legal-open] do their own thing — the video facade still plays, the swap
+   buttons still open member tools, « » still navigate, Let's Go still works. The
+   cover red N is not interactive (no handler — proven by tap), so it advances like
+   everything else, as the printed instruction says. The swap popup lives outside
+   #screen-cover (under .stage), so cover taps can never hit it. Nothing else is touched. */
+(function(){
+  if (typeof renderSlide !== 'function' || typeof show !== 'function' ||
+      typeof screens === 'undefined') return;
+  var cover = document.getElementById('screen-cover');
+  if (!cover) return;
+  cover.addEventListener('click', function(e){
+    if (!cover.classList.contains('active')) return;
+    var t = e.target;
+    if (t && t.closest && t.closest('button, a, input, select, textarea, audio, video, [data-legal-open]')) return;
+    current = 0; renderSlide(); show('slide');
+  });
 })();
 </script>
 
