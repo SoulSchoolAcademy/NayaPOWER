@@ -80976,6 +80976,42 @@
         "Honor",
         "Craft"
       ]
+    },
+    {
+      "smart_note_id": "SN-4743",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4743-the-vault-holds-the-gold",
+      "slug": "the-vault-holds-the-gold",
+      "title": "The Vault Holds the Gold",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/LAW/SN-4743/IB-SMART-NOTE-20261124-sn4743-the-vault-holds-the-gold.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/LAW/SN-4743/IB-SMART-NOTE-20261124-sn4743-the-vault-holds-the-gold.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/LAW/SN-4743/IB-SMART-NOTE-20261124-sn4743-the-vault-holds-the-gold.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4743-the-vault-holds-the-gold.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T17:58:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "f56b6aa816a04f0a87bd05e66069d679f73c0e4762ce633952d9189915dc77ac",
+      "content_hash": "7b03440fb1c0da51f39bfdff270c87320c3937ea12e55473cf7751686b59908e",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "31717bcee3fec093d20c7867c5a74f43cffd80d19f5944be1be1056c5aabfed5",
+      "one_line": "The vault is where the mining lands: intelligence distilled to gold, labeled, inventoried, and active the moment it exists — while the day stays the unit of life, NayaNET stands as a new land rather than an app, and a calendar that reads terribly is thrown out and rebuilt from its pieces instead of patched.",
+      "topics": [
+        "Distillation",
+        "Law",
+        "Vault",
+        "Calendar",
+        "Knowledge"
+      ]
     }
   ],
   "sequence_policy": {
@@ -80986,5 +81022,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "584b25d5bbdfbd970349dc89542d015cdff3d5c52a4de5b80a15e8fd57da5091"
+  "corpus_manifest_hash": "bdb30ac5b6ea5f4ba9133d25faf323b269d78e1dcae71d9d3dcbbec09181dea4"
 }

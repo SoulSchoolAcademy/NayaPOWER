@@ -1,0 +1,95 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-4743",
+ "title": "The Vault Holds the Gold",
+ "slug": "the-vault-holds-the-gold",
+ "topic": "LAW",
+ "category": "LAW",
+ "kind": "intelligent-block",
+ "registered_by": "naya-resolve",
+ "directed_by": "Shawn Vibert",
+ "created_at": "2026-11-24T17:58:00Z",
+ "tone": "purple",
+ "icon": "◆",
+ "intelligence": {
+  "essence": "The vault is where the mining lands: intelligence distilled to gold, labeled, inventoried, and active the moment it exists — while the day stays the unit of life, NayaNET stands as a new land rather than an app, and a calendar that reads terribly is thrown out and rebuilt from its pieces instead of patched.",
+  "human_view": "Everything the team learns gets refined and stored where it can be found and used — like gold in a vault, except this gold works for you every day. Your day becomes the center the whole system arranges itself around, and the calendar gets rebuilt properly instead of endlessly patched.",
+  "child_view": "Digging up rocks isn't the treasure — the gold you make from them is. We melt down what we learn into shiny, useful pieces and keep them in one safe place, labeled, so anyone can find them. And if a toy is built wrong, we don't keep gluing it — we build a new one from the good parts.",
+  "grandma_view": "There's a difference between a pile of clippings and a organized pantry. He had us sharpen the vault: everything labeled, inventoried, and alive — put to work, not just put away. Same with the calendar: it looked a fright, so out it goes, and a proper one gets built from the pieces that were already beautiful.",
+  "ai_view": "Operating rules distilled from SN-3235..SN-3244: (1) The Master Vault is digital gold: mining's product is not raw intelligence but distilled, super-valuable functions, interfaces, products, systems — the art is the distillation. (2) Personal first: the one births the many; priority is an order, not a feeling; nothing is lost — the notes live in the feed table, only stale surfaces hide them. (3) The vault, sharpened: labeled, inventoried, organized, ACTIVE — becoming, not made-then-vaulted; the gap between 'into the vault when made' and 'immediately working' is closed. (4) The one set: aligned everywhere — unaligned colors/forms are a defect like flatness; the check is comparison against the set. (5) The day is the unit: everything for a day aligns on that day; the day view is the cockpit where a day's everything lives together. (6) The new land: NayaNET is a land — somewhere you live and build — not an app you open and close; the word governs the design. (7) Readability: too much text is a fail; his eye overrules a conditional pass — the pass stands for its items, never as the verdict. (8) The Bugatti calendar scored honestly at 4/10: the four is real (month fits, today glows, timeline real, never invents); the missing six are presentation, menu, knowing. (9) The obsidian calendar: throw the current one out — rainbow, cheap, unpolished — and rebuild from the pieces. (10) The most intelligent interface disappears: the question is a brief to SHOW the thing, not describe it.",
+  "what_it_means": "Storage is a verb and honesty is a score: intelligence counts only when distilled and active, a rebuild beats a patch when the foundation reads wrong, and a low true number moves the work further than a kind false one.",
+  "whats_inside": [
+   "The Master Vault — digital gold; the art is the distillation (SN-3235)",
+   "Personal first — the one births the many (SN-3236)",
+   "The vault, sharpened — labeled, inventoried, organized, active (SN-3237)",
+   "The one set, the day as unit — aligned everywhere, the day view as cockpit (SN-3238, SN-3239)",
+   "The new land, read honestly: readability law, the 4/10 Bugatti scorecard, throw it out and rebuild, the interface disappears (SN-3240–SN-3244)"
+  ],
+  "topics": [
+   "Distillation",
+   "Law",
+   "Vault",
+   "Calendar",
+   "Knowledge"
+  ]
+ },
+ "page": {
+  "distills": {
+   "batch": 14,
+   "of": 100,
+   "covers": [
+    {
+     "sn": "SN-3235",
+     "title": "The Master Vault — Digital Gold; The Art"
+    },
+    {
+     "sn": "SN-3236",
+     "title": "Personal First — The One Births the Many"
+    },
+    {
+     "sn": "SN-3237",
+     "title": "The Vault, Sharpened — Labeled, Inventoried, Organized, Active"
+    },
+    {
+     "sn": "SN-3238",
+     "title": "The One Set — Aligned Everywhere"
+    },
+    {
+     "sn": "SN-3239",
+     "title": "The Day Is the Unit — The Day View Is the Cockpit"
+    },
+    {
+     "sn": "SN-3240",
+     "title": "The New Land — NayaNET, the Elite of the Elite"
+    },
+    {
+     "sn": "SN-3241",
+     "title": "Readability — Too Much Text Is a Fail"
+    },
+    {
+     "sn": "SN-3242",
+     "title": "The Bugatti Calendar — The Most Intelligent Calendar"
+    },
+    {
+     "sn": "SN-3243",
+     "title": "The Obsidian Calendar — Throw It Out, Build It from the Pieces"
+    },
+    {
+     "sn": "SN-3244",
+     "title": "The Most Intelligent Interface — The Interface Disappears"
+    }
+   ]
+  },
+  "machine": "1) Vault entries: distilled, labeled, inventoried, active at creation. 2) Build order: Personal first, clones after. 3) Alignment: one set; deviation = defect. 4) Unit of organization: the day. 5) Scores: honest numbers with the missing points named; his eye overrules item-passes. 6) Foundation reads wrong → rebuild from pieces, never patch.",
+  "why_it_matters": "This group is the Distillation Ratio with its storage half attached: minimize to the essence, then keep the essence findable and working. It is also why this batch exists — raw notes become gold only when a later reader can retrieve and use them.",
+  "how_it_connects": "Seventh movement of batch 14. The calendar verdict it carries (honest 4/10, rebuild ordered) is refined at fingertip scale in SN-4744 and SN-4745; the vault doctrine completes SN-4741's one-door rule — one door, and gold behind it.",
+  "what_is_in_it_for_you": "What the team learns stops evaporating: it lands in one organized, working vault, your day sits at the center of your world, and when something is built wrong you get a proper rebuild instead of endless patching.",
+  "the_learning": "From now on, nothing is 'kept' by being stored — it is kept by being distilled, labeled, and active — and a score we give is the real number with its gaps named, instead of the kindest defensible one."
+ },
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/LAW/SN-4743/IB-SMART-NOTE-20261124-sn4743-the-vault-holds-the-gold.md",
+ "page_hash": "f56b6aa816a04f0a87bd05e66069d679f73c0e4762ce633952d9189915dc77ac",
+ "content_hash": "7b03440fb1c0da51f39bfdff270c87320c3937ea12e55473cf7751686b59908e",
+ "published_via": "publish-note",
+ "door_version": "1",
+ "door_receipt": "31717bcee3fec093d20c7867c5a74f43cffd80d19f5944be1be1056c5aabfed5"
+}
