@@ -920,7 +920,7 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
    on every step, with a solid background so text never shows through.
    The step counter is plain white 17px chrome — no new sentences. */
 #depthView .innov-pop-card{width:min(1080px,100%)}
-#depthView .depth-top{position:sticky;top:0;z-index:5;margin:0 -22px 6px;padding:0 22px;background:linear-gradient(135deg,#17171f,#0a0a10)}
+#depthView .depth-top{position:sticky;top:-20px;z-index:5;margin:0 -22px 6px;padding:0 22px;background:linear-gradient(135deg,#17171f,#0a0a10)}
 #depthView .depth-foot{position:sticky;bottom:0;z-index:5;margin:18px -22px -20px;padding:12px 22px 20px;background:linear-gradient(135deg,#17171f,#0a0a10)}
 .depth-step{color:#fff;font-family:"Cormorant Garamond",serif;font-size:17px;letter-spacing:.14em;white-space:nowrap}
 .depth-stage{display:flex;gap:16px;align-items:stretch}
@@ -1173,7 +1173,11 @@ function boardFor(g, which){
 }
 /* V1 PLACEHOLDER TAG (fix round, checker-3 item 6): EMBED.slides 3, 4 are the v1 placeholder images (board-04, board-06). Board 7's slides 5, 6 are the PASS ch07-A/B set since the ch7/8 fold-in — no tag. Board 10's slide 10 is the PASS ch10-A set since the ch10 fold-in — no tag. The tag follows the
    IMAGE, not the board: any slot showing one of these two slides gets
-   the tag; a slot swapped to anything else loses it. */
+   the tag; a slot swapped to anything else loses it. EXCEPTION (Shawn's
+   correction, 2026-11-23 — tag off the Chain board): board 4 (index 3)
+   never shows the tag, in either place — its front picture is still the
+   v1 placeholder image (slides[3]) and now presents as final; board 6
+   (slides[4]) keeps its tag exactly as before. */
 var V1_SLIDES = [3, 4];
 function imgBoardFor(src, alt, slot, boardIdx){
   var key = boardIdx + '-' + slot;
@@ -1181,7 +1185,7 @@ function imgBoardFor(src, alt, slot, boardIdx){
   if (txt !== undefined) return textPanelFor(GROUPS[boardIdx], txt, slot);
   var vid = RUNTIME_VID[key];
   var media = vid ? '<div class="ib-vid">' + vidHTML(vid) + '</div>' : (src ? '<img class="ib-img-el" src="' + src + '" alt="' + alt + '" />' : '');
-  var isV1Img = !vid && src && V1_SLIDES.indexOf(EMBED.slides.indexOf(src)) !== -1;
+  var isV1Img = boardIdx !== 3 && !vid && src && V1_SLIDES.indexOf(EMBED.slides.indexOf(src)) !== -1;
   return '<div class="ib-layer ib-img"><div class="ib-layer-body">'
     + '<button class="swap-btn tool-btn" type="button" data-slot="' + slot + '" aria-label="Member tools — change this slot"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5 5l1.8 1.8M17.2 17.2L19 19M19 5l-1.8 1.8M6.8 17.2L5 19"/></svg></button>'
     + '<button class="add-btn" type="button" data-slot="' + slot + '">+ Behind</button>'
@@ -1264,8 +1268,10 @@ function renderSlide(){
   }
   /* CENTRE V1 TAG (fix round): the even-board centre image is one of the
      v1 placeholder slides (3, 4) only when `src` is that slide —
-     text/video/empty centres leave `src` unset and the tag stays hidden. */
-  if (v1Tag) v1Tag.hidden = !(typeof src !== 'undefined' && src && V1_SLIDES.indexOf(EMBED.slides.indexOf(src)) !== -1);
+     text/video/empty centres leave `src` unset and the tag stays hidden.
+     Board 4 never shows it (Shawn's correction, 2026-11-23 — tag off the
+     Chain board); board 6 keeps it. */
+  if (v1Tag) v1Tag.hidden = !(current !== 3 && typeof src !== 'undefined' && src && V1_SLIDES.indexOf(EMBED.slides.indexOf(src)) !== -1);
   /* FRAME-LEVEL C CONTROLS: the slide frame carries its own Swap / + Behind
      for the centre slot — but only when the centre IS the frame's own image
      or video. When the centre is a TEXT panel (#slideTextCenter shown —
