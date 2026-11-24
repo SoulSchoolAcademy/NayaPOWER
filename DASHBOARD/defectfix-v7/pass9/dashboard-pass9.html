@@ -2014,6 +2014,15 @@ section{margin:64px 0}
 body{background:#050607;margin:0;overflow-x:hidden;font-family:Inter,system-ui,sans-serif;color:#fff;min-height:100vh;
   /* V9.4: scroll-snap — stat sections center in the viewport as you scroll. Proximity (not mandatory) so it assists, never fights. */
   scroll-snap-type:y proximity;}
+/* FIX-2 2026-11-24 (gate 2): scroll anchoring OFF on the document scroller.
+   The first real tap on the Smart Link "Found" dial missed ~65% because
+   Firefox's scroll anchoring moved the viewport ~1000px (to 1380/3381) between
+   the tap's measure and its mousedown/mouseup — no JS scroll, no focus, no
+   snap, no visible layout change; a late layout settling (board resizes +
+   the rv-lit reveal) whose correction lands asynchronously, seconds later
+   (diag1–diag14). overflow-anchor:none kills the correction: probe diag13
+   went 5/5 with zero jumps and zero phantom scrolls. No visual change. */ 
+html,body{overflow-anchor:none;}
 .ph-cover{width:100%;height:460px;position:relative;overflow:hidden;cursor:pointer;
   background:linear-gradient(135deg,#241c05 0%,#2d1b4e 30%,#4a2b7a 50%,#0f3460 75%,#16537e 100%);}
 /* V9.5 (Shawn 2026-11-01): empty cover = collapsed. A 460px black void with no
