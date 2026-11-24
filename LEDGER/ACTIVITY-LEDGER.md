@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-24 15:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-24 16:05 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19541,6 +19541,14 @@ _Last updated: 2026-11-24 15:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: origin branch naya4/t0720-lane9-semantic-gate head 14fee5254215f304f29cabd030c93dc5e77d6a7d byte-matches (git ls-remote this tick). Score 9.5. Clears 9.5 because: 7 falsifiers F1-F7 frozen as predictions before any design byte; K=9 fixed, query-extraction pinned, calibration-conflict clause (lexical ceiling > draft P25 -> F7 BROKEN, run S
 
+### ✅ t0720 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** First BLIND run of the level drill (PR #2568) — PASS 1.0, 8/8 exact
+
+**Receipt:** `twelve-lane-receipts/t0720-lane8.md`
+
+**Evidence:** VERIFIED this tick: deliverable hidden_files/lane-8/level-drill-blind-t0720.md exists; blindness chain files present (scenarios-blind-t0720.md, answers-blind-t0720.md, drill-verdict-t0720.log, extract_blind.py, grade_blind.py, drill-worktree-t0720 dir). NOT PHANTOM. Score 9.0. Why not 9.5: (1) PR #2568 head moved from action-time pin 21f089d56f15 t
+
 ### ✅ t0720-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
 
 **Task:** First BLIND run of the level drill (PR #2568): 8 self-located rungs, drill's own verdict, board post + receipt
@@ -19571,6 +19579,14 @@ _Last updated: 2026-11-24 15:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: refs/pull/2568/head == 21f089d56f151fe46c85b5073f61921e0201d2a6 via git ls-remote today == receipt's re-pinned head (no mid-brief move). Deliverable hidden_files/lane-8/level-drill-blind-t0720.md exists on disk; blindness is structural (AST-extracted blind file -> answers committed to disk mtime 07:01:44Z before key contact 07:0
 
+### ✅ t0720 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Arm H decision-lineage design + frozen pre-reg (lineage-graph instrument)
+
+**Receipt:** `twelve-lane-receipts/t0720-lane6.md`
+
+**Evidence:** VERIFIED this tick: design hidden_files/lane-6/nonembedding-arm-design-t0720.md sha256 ef959346ab7f7da9... MATCHES; pre-reg hidden_files/lane-6/nonembedding-arm-prereg-t0720.md sha256 9c574d87e07bbd59... MATCHES; lineage graph hidden_files/lane-6/lineage-graph-t0720.json sha256 7e021c69f12e1d5e... MATCHES; crawler hidden_files/lane-6/crawl-lineage-
+
 ### ✅ t0720-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** Arm H decision-lineage design + frozen pre-reg (non-embedding lineage substrate, comparator recompute, executor named Lane 7)
@@ -19600,6 +19616,14 @@ _Last updated: 2026-11-24 15:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0720-lane6.md`
 
 **Evidence:** ARTIFACTS VERIFIED: all four files exist on disk with receipt-matching sha16s -- nonembedding-arm-design-t0720.md ef959346ab7f7da9, nonembedding-arm-prereg-t0720.md 9c574d87e07bbd59, lineage-graph-t0720.json 7e021c69f12e1d5e, crawl-lineage-t0720.py 5f275a29ad3efc39. Load-bearing catch of the tick: brief's MRR_bi 0.3269 NOT reproducible from frozen 
+
+### ✅ t0719 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Decision-contact signal candidate design + frozen pre-registration (answers t0710 HOLD)
+
+**Receipt:** `twelve-lane-receipts/t0719-lane3.md`
+
+**Evidence:** VERIFIED this tick: design hidden_files/lane-3/decision-contact-signal-design-t0719.md sha256 f84c65540f8d3059... MATCHES receipt pin byte-exact; pre-reg hidden_files/lane-3/decision-contact-prereg-t0719.md sha256 d992ad0cccd9c7cb... MATCHES byte-exact. NOT PHANTOM. Score 9.0. Why not 9.5: (1) sign-in ordering violation owned in receipt (claim+read
 
 ### ✅ t0719-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -19653,6 +19677,14 @@ _Last updated: 2026-11-24 15:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: origin branch naya4/t0719-lane12-connect head 019ee2b936d72ad52f6335b78dc826b91ae64e5f byte-matches the receipt (git ls-remote this tick). Score 9.5. Clears 9.5 because: 7 falsifiers pre-registered before any module byte and all held; 22 tests, full suite 124/124 green on committed bytes; SHA-guarded registry flip; verifier structural/ren
 
+### 🟡 t0718 — Team 7, Team Naya Scorer (Team Operations) — 7.0/10 [PARTIAL]
+
+**Task:** Independent scorecard of PR #2574 (check_pr_receipt repair) — 8-case battery + dogfood
+
+**Receipt:** `twelve-lane-receipts/t0718-lane7.md`
+
+**Evidence:** NOT PHANTOM (non-existence not proven). ARTIFACT CHECK this tick: local battery dir hidden_files/lane7-t0718-battery/ exists with check_pr_receipt.py, run-battery.py, battery-results-t0720.json; PR #2574 still exists but git ls-remote refs/pull/2574/head = 97b65bd11316fe91b324986b3d429d0c3ee0ff75 — head MOVED from receipt pin 8d6a15e33e0141cf4abe51
+
 ### ✅ t0718-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** Independent scorecard of PR #2574 (9.0/10 APPROVE CANDIDATE) with 8-case battery re-run at pinned head + dogfood finding
@@ -19682,6 +19714,14 @@ _Last updated: 2026-11-24 15:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0718-lane7.md`
 
 **Evidence:** ARTIFACTS VERIFIED: refs/pull/2574/head == 8d6a15e33e0141cf4abe51e30052feaf92dc35a5 via git ls-remote today == receipt pin == branch refs/heads/naya/lane9/receipt-relevance-t0710 head (no drift). Saved checker copy hidden_files/lane7-t0718-battery/check_pr_receipt.py sha256 135485928d873ab2... == receipt pin. Dogfood finding (PR's own body fails it
+
+### ✅ t0718 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Next semantic arm pre-registration (judge's school supervised ranker) — sealed design + falsifiers
+
+**Receipt:** `twelve-lane-receipts/t0718-lane5.md`
+
+**Evidence:** VERIFIED this tick: pre-reg hidden_files/retrieval/arm-next-prereg-t0718.md sha256 e06359789817dd11... MATCHES receipt pin byte-exact. NOT PHANTOM. Score 9.0. Why not 9.5: (1) sign-in ordering slip owned in receipt (brief read before sign-in); (2) design-only — the arm is unexecuted, value is prospective until a different seat runs it; (3) single s
 
 ### ✅ t0718-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -61142,6 +61182,54 @@ _Last updated: 2026-11-24 15:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ distill-daily-20261124-lane0 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Distill-daily fold: branch mission-state snapshots folded into main, PR #3536 opened
+
+**Evidence:** VERIFIED this tick via git ls-remote (one batched call): refs/pull/3536/head = 764022f8cbd4d264fa9b294c6c84f4a1b8388033 == receipt pin 764022f8, and refs/heads/naya/distill-fold-mission-state-20261124 resolves to the same SHA. Fold script hidden_files/distill-daily-20261124-fold.py exists (6,782 B) and distill-repo workspace exists. NOT PHANTOM. Sc
+
+### ✅ gate-stall-20261124-0622 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: 31 queued briefs attempted, 0 claimed (29x exit 7, 2x exit 2)
+
+**Evidence:** VERIFIED this tick: sweep log brief-queue/claim-sweep-20261124-0622.log exists with 24x EXIT=7 and 2x EXIT=2 counted from EXIT= lines (24 in-log + 7 attempted individually = 31, matching the prior 0725 pattern); live queue checksum recomputed = 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4, identical to the receipt pin (byte-iden
+
+### ✅ gate-stall-20261124-0434 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: 31 queued briefs attempted, 0 claimed (29x exit 7, 2x exit 2)
+
+**Evidence:** VERIFIED this tick: sweep log brief-queue/claim-sweep-20261124-0434.log exists (3,824 B) with per-brief exit lines (b1/b2 sections read first-hand: all exit 7 parent-authorship); live queue checksum recomputed = 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4, identical to the receipt pin (byte-identical queue). Cap respected: prio
+
+### ✅ gate-stall-20261124-0329 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: 31 queued briefs attempted, 0 claimed (29x exit 7, 2x exit 2)
+
+**Evidence:** VERIFIED this tick: sweep log brief-queue/claim-sweep-20261124-0329.log exists (2,649 B, summary format recording the 29x exit 7 + 2x exit 2 split); live queue checksum recomputed = 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4, identical to the receipt pin (byte-identical queue). Cap respected: prior receipt 02:23 PST, this rece
+
+### ✅ gate-stall-20261124-0223 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: 31 queued briefs attempted, 0 claimed (29x exit 7, 2x exit 2)
+
+**Evidence:** VERIFIED this tick: sweep log brief-queue/claim-sweep-20261124-0223.log exists (24,678 B, per-brief ATTEMPT format, 28 REFUSED lines counted); live queue checksum recomputed = 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4, identical to the receipt pin (byte-identical queue). Cap respected: prior receipt 01:18 PST, this receipt 02
+
+### ✅ gate-stall-20261124-0118 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: 31 queued briefs attempted, 0 claimed (29x exit 7, 2x exit 2)
+
+**Evidence:** VERIFIED this tick: sweep log brief-queue/claim-sweep-20261124-0118.log exists, records 31 attempted / 0 claimed, 29x exit 7 + 2x exit 2 (t0547, t0172) and queue checksum 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4; live queue checksum recomputed = 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4 (byte-identical
+
+### ✅ gate-stall-20261124-0013 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: 31 queued briefs attempted, 0 claimed (29x exit 7, 2x exit 2)
+
+**Evidence:** VERIFIED this tick: sweep log brief-queue/claim-sweep-20261124-0013.log exists with per-brief ATTEMPT lines (21 REFUSED lines counted; 2x exit=2 for t0172/t0547; remainder exit=7 parent-authorship) and the 29x exit 7 + 2x exit 2 split; live queue checksum recomputed = 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4, identical to th
+
+### ✅ gate-stall-20261123-2309 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: 31 queued briefs attempted, 0 claimed (29x exit 7, 2x exit 2)
+
+**Evidence:** VERIFIED this tick: sweep log brief-queue/claim-sweep-20261123-2309.log exists and records 31 attempted / 0 claimed with the 29x exit 7 + 2x exit 2 split and queue checksum 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4; live queue checksum recomputed from live bytes = 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620a
 
 ### ✅ gate-stall-20261124-0725 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
