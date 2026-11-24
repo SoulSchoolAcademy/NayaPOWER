@@ -80363,6 +80363,43 @@
         "Craft",
         "Knowledge"
       ]
+    },
+    {
+      "smart_note_id": "SN-4726",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4726-confirmed-by-his-corrections",
+      "slug": "confirmed-by-his-corrections",
+      "title": "Confirmed by His Corrections",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/GOVERNANCE/SN-4726/IB-SMART-NOTE-20261124-sn4726-confirmed-by-his-corrections.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/GOVERNANCE/SN-4726/IB-SMART-NOTE-20261124-sn4726-confirmed-by-his-corrections.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/GOVERNANCE/SN-4726/IB-SMART-NOTE-20261124-sn4726-confirmed-by-his-corrections.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4726-confirmed-by-his-corrections.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "GOVERNANCE",
+      "topic": "GOVERNANCE",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T17:19:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "713ff6c4f5210981cb2da556769abc79b3a4a2b599cc40744db60c1b5816e24b",
+      "content_hash": "cdcba21410f61d8b5d70d4de2bd6f241318b397f436b42a5c9be5299ffc70e9c",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "cc982d683354bc64896375e8fcd3758168d4cf5516b77d7e69d5bc2a5f480a05",
+      "one_line": "The list became official the way everything true here becomes official: a proposal was made by thinking, he corrected it, and his corrections are the list. Round one put Pricing to the right and Worlds at the top. Round two named Smart Worlds, kept some buttons Hub-only, and let Mail lead the start. Round three settled it — Smart Feed is the Hub, Your World and Connections stay — and when the playback reached him he confirmed it: 'I think that's right now.' Official List v4, display is the icons, sent onward the same pass. Inside the same hours: the name boxes at entry are not form fields, they are the deed signing — your land, your domain, your real estate — and must feel like it; a voice note is not official and not a priority, and he sees the exact words before anything is recorded; and when the ground itself fails — the browsers died again — the resilience law answers: build systems around it, the way around built before it happens, so the system must not fail when the ground does. The decade closes with the summit statements: having the most intelligent AI is nothing — what it can do, right now, is everything; power is not intelligence — intelligence is doing the most intelligent thing and proving it on the live thing where everybody can see it; and the presentation is the promise — free forever, plainly, in a universe that unfolds one beat at a time instead of lying flat.",
+      "topics": [
+        "Distillation",
+        "Governance",
+        "Honor",
+        "Multiplication",
+        "Craft",
+        "Knowledge"
+      ]
     }
   ],
   "sequence_policy": {
@@ -80373,5 +80410,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "ef5e6b2934183f1950e65058039698e4118ca580c3a326a50d07d7327edfdcb5"
+  "corpus_manifest_hash": "78d30e0b9de5f7233fe939bf5d0ff4170865adf1ba77f5317b5d6029893d1e30"
 }
