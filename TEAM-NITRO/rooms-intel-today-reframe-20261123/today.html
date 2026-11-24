@@ -362,6 +362,92 @@ function deriveCat(r){var gp=String(r.github_path||'');var m=gp.match(/SMART-NOT
    stray asterisks/underscores are all removed; the words stay verbatim. */
 function cleanMd(s){return String(s).replace(/\*\*/g,'').replace(/__/g,'').replace(/\*/g,'');}
 function shape(r){var o={id:r.ib_id||r.id,title:cleanMd(r.title||''),created_at:r.created_at||'',github_path:r.github_path||''};Object.keys(MAP).forEach(function(k){var v=r[MAP[k]];if(typeof v==='string'&&v.trim())o[k]=cleanMd(v.trim());});o.category=deriveCat(r);o.day=vDay(r.created_at);return o;}
+/* FIX (2026-11-23, fix round 3 — captain's-eye catch on the PASS) — every
+   frame's highlight ended mid-sentence at the same vertical point, just
+   above the red N. The cause is in the layout, not the data: the full
+   nutshell is rendered (shape() keeps it whole — frame 1 is 705 chars,
+   frame 15 is 1,387, frame 88 is 887), but the telling sits in
+   .ib-layer-body, a fixed-height flex child with overflow-y:auto inside a
+   100dvh board whose foot is the fixed red N — so a long nutshell runs
+   past the visible bottom and the rest sits below, scrollable with no
+   affordance, reading as cut off mid-thought. The full note stays one tap
+   away (red N overlay, SHARE text — both untouched, whole). The frame
+   highlight now ends on a complete thought: whole sentences are dropped
+   from the end until the telling fits without scrolling, measured live at
+   this viewport — phone shows fewer sentences, desktop more, a short
+   nutshell shows whole. No text is shrunk, no word is cut, no sentence is
+   ever split. Trade-off, named: on small screens the frame shows the
+   opening sentences of a long nutshell, not all of them — the whole note
+   is one tap on the red N away. */
+function splitSentences(s){
+  var t=String(s).replace(/\s+/g,' ').trim();
+  if(!t)return [];
+  var tmp=t.replace(/(\d)\.(\d)/g,'$1\x00$2');
+  tmp=tmp.replace(/\b(U\.S|U\.K|e\.g|i\.e|Mr|Mrs|Ms|Dr|vs|etc|[A-Z])\./g,function(m){return m.replace(/\./g,'\x00');});
+  tmp=tmp.replace(/([.!?]+["'\)\]]*)(\s+|$)/g,'$1\x01$2');
+  return tmp.split('\x01').map(function(x){return x.replace(/\x00/g,'.').trim();}).filter(Boolean);
+}
+var curInner=null,curPar=null;
+/* Second resort (same round): a single opening sentence can itself be
+   taller than the telling — 7 of the 88 notes (longest first sentences
+   200–410 chars). Dropping sentences cannot help there, so the fit falls
+   back to whole CLAUSES inside that one sentence: cut points after a
+   semicolon or an em-dash, outside parentheses, longest fitting prefix
+   wins, never shorter than 80 chars, never ending on a colon, never
+   leaving a quote or paren open — and, only if none of those fits, after
+   a colon (the colon itself is not shown, the same as the semicolon and
+   the dash at any other cut: the separator is dropped, the words stay
+   verbatim). A clause is a complete phrase in the note's own words — no
+   punctuation added, no word changed. If no clause fits either, the whole
+   sentence stays (scrollable) and the frame is named as owed, not
+   silently trimmed. */
+function clauseCut(s){
+  var cuts=[];var colonCuts=[];var depth=0;var i;var ch;
+  for(i=0;i<s.length;i++){
+    ch=s[i];
+    if(ch==='(')depth++;
+    else if(ch===')')depth=Math.max(0,depth-1);
+    else if(depth===0){
+      if(ch===';'&&s[i+1]===' ')cuts.push(i);
+      else if(ch==='\u2014'&&s[i-1]===' '&&s[i+1]===' ')cuts.push(i-1);
+      else if(ch===':'&&s[i+1]===' ')colonCuts.push(i);
+    }
+  }
+  cuts.sort(function(a,b){return b-a;});
+  colonCuts.sort(function(a,b){return b-a;});
+  var lists=[cuts,colonCuts];
+  for(var l=0;l<lists.length;l++){
+    var list=lists[l];
+    for(var k=0;k<list.length;k++){
+      var pre=s.slice(0,list[k]).trim();
+      if(pre.length<80)continue;
+      if(/[:(\u2014]$/.test(pre))continue;
+      var quotes=(pre.match(/"/g)||[]).length;
+      if(quotes%2!==0)continue;
+      curPar.textContent=pre;
+      if(curInner.scrollHeight<=curInner.clientHeight+1)return pre;
+    }
+  }
+  return null;
+}
+function fitHighlight(){
+  if(!curInner||!curPar)return;
+  var full=curPar.dataset.full||curPar.textContent;
+  curPar.dataset.full=full;
+  var parts=splitSentences(full);
+  if(!parts.length){curPar.textContent=full;return;}
+  var n=parts.length;
+  curPar.textContent=parts.join(' ');
+  while(n>1&&curInner.scrollHeight>curInner.clientHeight+1){
+    n--;
+    curPar.textContent=parts.slice(0,n).join(' ');
+  }
+  if(n===1&&curInner.scrollHeight>curInner.clientHeight+1){
+    var cut=clauseCut(parts[0]);
+    if(cut)curPar.textContent=cut;
+    else curPar.textContent=parts[0];
+  }
+}
 var notes=[];var ix=0;var todayStr='';var ydayStr='';
 var SMARTLIST_KEY='nayanet.today.smartlist.v1';
 var smartList=[];try{var raw=localStorage.getItem(SMARTLIST_KEY);if(raw)smartList=JSON.parse(raw).filter(function(x){return typeof x==='string';});}catch(err){smartList=[];}
@@ -399,6 +485,7 @@ function groupAt(n){return notes.filter(function(x){return x.day===n.day;}).find
 function render(){
   var n=notes[ix];if(!n)return;
   bodyEl.innerHTML='';
+  curInner=null;curPar=null;
   var board=el('div','ib-layer');
   board.style.setProperty('--lc','#8e24aa');
   var inner=el('div','ib-layer-body');
@@ -411,7 +498,7 @@ function render(){
   var mb=el('b','',dayLabel(n));var mt=document.createElement('span');mt.textContent=' \u00B7 '+n.category;
   meta.appendChild(mb);meta.appendChild(mt);inner.appendChild(meta);
   var hl=n.nutshell||n.human||'';
-  if(hl){var par=el('p','',hl);inner.appendChild(par);}
+  if(hl){var par=el('p','',hl);inner.appendChild(par);curInner=inner;curPar=par;}
   board.appendChild(inner);
   /* The red N sits at the FOOT of the board, outside the scrolling telling —
      so it is on first paint at phone width too, never scrolled out of reach. */
@@ -461,6 +548,7 @@ function render(){
   fwd.addEventListener('click',function(){step(ix+1);});
   navEl.appendChild(back);navEl.appendChild(mid);navEl.appendChild(fwd);
   footEl.hidden=false;
+  fitHighlight();
 }
 function step(next){var c=Math.max(0,Math.min(notes.length-1,next));if(c===ix)return;ix=c;render();}
 function openNote(n){
@@ -483,6 +571,15 @@ document.addEventListener('keydown',function(e){
   else if(e.key==='ArrowRight'){step(ix+1);}
   else if(e.key==='Escape'){closeNote();}
 });
+window.addEventListener('resize',function(){fitHighlight();});
+if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){fitHighlight();});}
+/* The ready promise above can resolve before the frame font is even
+   requested (no Cormorant text exists until the first render), so the
+   refit that matters is the one AFTER the font actually arrives: the
+   loadingdone event and window load both re-run the fit, which starts
+   from the full text each time and re-expands when there is room. */
+if(document.fonts&&document.fonts.addEventListener){document.fonts.addEventListener('loadingdone',function(){fitHighlight();});}
+window.addEventListener('load',function(){fitHighlight();});
 load();
 })();
 </script>
