@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" href="data:," />
+    <title>Messenger + Smart Mail — NayaNET</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Archivo:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+<!-- HARVEST-START v18 lines 13-61 :root, body, button, #app, .screen, .hidden -->
+      :root {
+        --bg: #040407;
+        --panel: #0a0a10;
+        --ink: #f4f4f8;
+        --rim: rgba(255, 255, 255, 0.09);
+        /* The day colors — the week as a color flow, hexes from the
+           machine spec's weekday table (§3.3), never from a screenshot */
+        --d0: #8e24aa; /* Sunday — royal purple · 963 Hz */
+        --d1: #c2410c; /* Monday — burnt orange · 417 Hz */
+        --d2: #d4a017; /* Tuesday — deep gold · 528 Hz */
+        --d3: #0f52ba; /* Wednesday — sapphire · 741 Hz */
+        --d4: #07925f; /* Thursday — emerald · 639 Hz */
+        --d5: #c62828; /* Friday — ruby · 396 Hz */
+        --d6: #3f51b5; /* Saturday — indigo · 852 Hz */
+        /* The official type scale — locked, all the way through:
+           headlines 25 · sub-headlines 19 · small text 17.
+           No text on this page is set at any other size. */
+        --type-headline: 25px;
+        --type-sub: 19px;
+        --type-small: 17px;
+      }
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        background:
+          radial-gradient(120% 70% at 50% -10%, rgba(255, 255, 255, 0.05), transparent 55%),
+          radial-gradient(90% 60% at 50% 115%, rgba(106, 108, 255, 0.05), transparent 60%),
+          var(--bg);
+        color: var(--ink);
+        font-family: "Archivo", system-ui, sans-serif;
+        font-size: var(--type-small);
+        -webkit-font-smoothing: antialiased;
+        overflow: hidden;
+      }
+      button { font-family: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+      button:focus-visible, input:focus-visible, textarea:focus-visible {
+        outline: 2px solid rgba(255, 255, 255, 0.75);
+        outline-offset: 2px;
+      }
+
+      #app {
+        height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        padding: clamp(8px, 1.6vmin, 18px);
+      }
+      .screen { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+      .hidden { display: none !important; }
+<!-- HARVEST-END v18 lines 13-61 -->
+<!-- HARVEST-START v18 lines 63-136 digit tiles verbatim -->
+      /* ---------- Digit tiles — harvested VERBATIM from the Dashboard
+         (fix-9 mini tiles: cap + digit + rim + chakra colour per digit).
+         Not a remake — the Dashboard's own CSS, values untouched. ---------- */
+      .os-mini-num{display:inline-flex;align-items:flex-start;gap:3px;white-space:nowrap;vertical-align:middle;}
+      .os-mini-tile{display:inline-block;width:30px;border-radius:6px;overflow:hidden;vertical-align:top;background:linear-gradient(180deg,#171720,#0f0f15 55%,#020203);border:1.5px solid rgba(255,255,255,.9);box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 10px rgba(255,255,255,.18),inset 0 1px 0 rgba(255,255,255,.35);}
+      .os-mini-tile .cap{display:block;height:5px;background:linear-gradient(180deg,#e8e8ec,#c9c9cf 55%,#8a8a90);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 -1px 2px rgba(0,0,0,.35);}
+      .os-mini-tile .rd{display:block;height:30px;line-height:30px;text-align:center;font-size:27px;font-weight:900;color:#fff;text-shadow:0 0 8px rgba(134,126,152,.65),0 0 16px rgba(255,255,255,.25);}
+      .os-mini-num.med{gap:4px;}
+      .os-mini-num.med .os-mini-tile{width:54px;border-radius:10px;border-width:2px;box-shadow:0 8px 18px rgba(0,0,0,.75),0 0 18px rgba(255,255,255,.22),inset 0 1px 0 rgba(255,255,255,.35);}
+      .os-mini-num.med .os-mini-tile .cap{height:9px;}
+      .os-mini-num.med .os-mini-tile .rd{height:54px;line-height:54px;font-size:48px;}
+      .os-mini-tile.dollar{border-color:#ffbf3d;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,191,61,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+      .os-mini-tile.dollar .cap{background:linear-gradient(180deg,#fff3a0,#f5d76e 55%,#c9930a);}
+      .os-mini-gap{flex:none;width:10px;}
+      .os-mini-num.med .os-mini-gap{width:14px;}
+      .os-mini-tile.dot{width:12px;}
+      .os-mini-num.med .os-mini-tile.dot{width:20px;}
+      .os-mini-tile.dot .rd{display:flex;align-items:flex-end;justify-content:center;height:30px;line-height:1;padding-bottom:4px;box-sizing:border-box;}
+      .os-mini-num.med .os-mini-tile.dot .rd{height:54px;padding-bottom:8px;}
+      .os-mini-tile.pct{width:34px;}
+      .os-mini-num.med .os-mini-tile.pct{width:60px;}
+      .os-mini-tile.d0{border-color:#fff;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,255,255,.45),inset 0 1px 0 rgba(255,255,255,.35);}
+      .os-mini-tile.d0 .cap{background:linear-gradient(180deg,#fff,#d9d9de 55%,#9a9aa0);}
+      .os-mini-tile.d1{border-color:#ff2a2a;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,42,42,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+      .os-mini-tile.d1 .cap{background:linear-gradient(180deg,#ff8a8a,#e60000 55%,#8f0000);}
+      .os-mini-tile.d2{border-color:#ff8c00;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,140,0,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+      .os-mini-tile.d2 .cap{background:linear-gradient(180deg,#ffc27a,#ff8c00 55%,#994d00);}
+      .os-mini-tile.d3{border-color:#f5d76e;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(245,215,110,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+      .os-mini-tile.d3 .cap{background:linear-gradient(180deg,#fff3a0,#f5d76e 55%,#c9930a);}
+      .os-mini-tile.d4{border-color:#00a86b;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(0,168,107,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+      .os-mini-tile.d4 .cap{background:linear-gradient(180deg,#6ee7a0,#00a86b 55%,#005c3a);}
+      .os-mini-tile.d5{border-color:#29b6f6;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(41,182,246,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+      .os-mini-tile.d5 .cap{background:linear-gradient(180deg,#a5e3ff,#29b6f6 55%,#0e6b9e);}
+      .os-mini-tile.d6{border-color:#3f51b5;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(63,81,181,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+      .os-mini-tile.d6 .cap{background:linear-gradient(180deg,#9aa5ff,#3f51b5 55%,#232a6b);}
+      .os-mini-tile.d7{border-color:#8e24aa;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(142,36,170,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+      .os-mini-tile.d7 .cap{background:linear-gradient(180deg,#d8a0ff,#8e24aa 55%,#4d0f5e);}
+      .os-mini-tile.d8{border-color:#b388ff;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(179,136,255,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+      .os-mini-tile.d8 .cap{background:linear-gradient(180deg,#e9d5ff,#b388ff 55%,#6d4bb0);}
+      .os-mini-tile.d9{border-color:#ff1493;box-shadow:0 4px 10px rgba(0,0,0,.7),0 0 12px rgba(255,20,147,.5),inset 0 1px 0 rgba(255,255,255,.35);}
+      .os-mini-tile.d9 .cap{background:linear-gradient(180deg,#ff9ed2,#ff1493 55%,#8f0057);}
+      /* THE CLOCK TILES (v15 amendment, Shawn 2026-11-17): the live time
+         as Dashboard blocks — digitsHTML/miniTileHTML above, harvested
+         verbatim, nothing rebuilt. The colon is a plain white separator
+         between the groups. AM/PM ride in the SAME tile block: the
+         harvested .os-mini-tile anatomy (cap + face) with the hour's
+         colour (--hc, set on the clock) as rim + glow, because letters
+         take the hour's colour. The clock is one treatment everywhere */
+      .clocknum { align-items: center; }
+      .clock-colon { color: #ffffff; font-weight: 900; font-size: var(--type-sub); line-height: 1; text-shadow: 0 0 8px rgba(255,255,255,.35); }
+      .os-mini-tile.letter { border-color: var(--hc, #ffffff); box-shadow: 0 4px 10px rgba(0,0,0,.7), 0 0 12px color-mix(in srgb, var(--hc, #ffffff) 50%, transparent), inset 0 1px 0 rgba(255,255,255,.35); }
+      .os-mini-tile.letter .cap { background: linear-gradient(180deg,#ffffff,#d9d9de 55%,#9a9aa0); }
+      .os-mini-tile.letter .rd { font-size: 24px; }
+      @media (max-width:768px){
+        .os-mini-tile{width:20px;border-radius:4px;}
+        .os-mini-tile .cap{height:4px;}
+        .os-mini-tile .rd{height:22px;line-height:22px;font-size:19px;}
+        /* v18-fix: the AM/PM letter is 17px in the 20px tile — the
+           v18 19px still clipped 2px live (real Archivo 900 "M" at
+           19px is 20px wide in the 18px content box; at 17px the "M"
+           is ~18px, the box). The v17 defect was the letter rd
+           staying 24px in a 20px tile */
+        .os-mini-tile.letter .rd{font-size:17px;}
+        .os-mini-num{gap:2px;}
+        .os-mini-num.med .os-mini-tile{width:40px;}
+        .os-mini-num.med .os-mini-tile .cap{height:7px;}
+        .os-mini-num.med .os-mini-tile .rd{height:40px;line-height:40px;font-size:36px;}
+        .os-mini-tile.dot{width:8px;}
+        .os-mini-num.med .os-mini-tile.dot{width:14px;}
+        .os-mini-tile.pct{width:24px;}
+        .os-mini-num.med .os-mini-tile.pct{width:44px;}
+        .os-mini-gap{width:8px;}
+        .os-mini-num.med .os-mini-gap{width:10px;}
+      }
+<!-- HARVEST-END v18 lines 63-136 -->
+<!-- HARVEST-START v18 lines 182-208 .navcluster + .navbtn -->
+      .navcluster { display: flex; gap: 8px; align-items: center; min-width: 96px; }
+      .navcluster.right { justify-content: flex-end; }
+      .navbtn {
+        width: 44px; height: 44px; border-radius: 50%;
+        display: inline-flex; align-items: center; justify-content: center;
+        color: #fff;
+        background: linear-gradient(180deg, #17171f 0%, #0a0a11 62%, #060609 100%);
+        border: 1.5px solid rgba(255, 255, 255, 0.55);
+        box-shadow:
+          0 0 16px rgba(255, 255, 255, 0.16),
+          inset 0 1px 0 rgba(255, 255, 255, 0.28),
+          inset 0 -6px 10px rgba(0, 0, 0, 0.5),
+          0 5px 12px rgba(0, 0, 0, 0.5);
+        transition: box-shadow 0.25s, transform 0.25s, filter 0.25s;
+      }
+      /* BOTH arrows carry the royal purple — purple and purple
+         (Shawn, 2026-11-17: the green forward arrow goes) */
+      #prevMonth, #nextMonth {
+        border-color: #8e24aa;
+        box-shadow:
+          0 0 10px rgba(142, 36, 170, 0.28),
+          inset 0 1px 0 rgba(255, 255, 255, 0.28),
+          inset 0 -6px 10px rgba(0, 0, 0, 0.5),
+          0 5px 12px rgba(0, 0, 0, 0.5);
+      }
+      .navbtn:hover { transform: translateY(-1px); filter: brightness(1.22); }
+      .navbtn svg { width: 18px; height: 18px; }
+<!-- HARVEST-END v18 lines 182-208 -->
+<!-- HARVEST-START v18 lines 421-461 .backbtn family -->
+      .backbtn {
+        /* The inner screens' back arrow speaks the same language: the
+           PTS purple as rim + glow on an obsidian disc, bold white mark */
+        width: 46px; height: 46px; flex: none; border-radius: 50%; color: #fff;
+        display: inline-flex; align-items: center; justify-content: center;
+        background: linear-gradient(180deg, #17171f 0%, #0a0a11 62%, #060609 100%);
+        border: 1.5px solid #9a5cff;
+        box-shadow:
+          0 0 18px rgba(154, 92, 255, 0.5),
+          inset 0 1px 0 rgba(255, 255, 255, 0.28),
+          inset 0 -6px 10px rgba(0, 0, 0, 0.5),
+          0 5px 12px rgba(0, 0, 0, 0.5);
+        transition: box-shadow 0.25s, filter 0.25s;
+      }
+      .backbtn:hover { filter: brightness(1.22); }
+      .backbtn svg { width: 19px; height: 19px; }
+      /* v18 — THE EYE BACK TO MONTH (Shawn's word, 2026-11-17 18:33Z):
+         the back control is the approved info eye — the small dark
+         obsidian jewel with the white "i", not a white blob and not
+         a chevron. Disc treatment harvested verbatim from .cell
+         .jewel (same radial, same rim, same shadows, same 74% "i");
+         only the size is the back button's own 46px. The day's
+         colour rims it, so it reads as this day's eye */
+      .backbtn.eye {
+        background: radial-gradient(circle at 34% 26%, #2c3044 0%, #13131f 52%, #050508 100%);
+        border: 1.5px solid color-mix(in srgb, var(--dc, #fff) 55%, rgba(255, 255, 255, 0.25) 45%);
+        box-shadow:
+          0 3px 7px rgba(0, 0, 0, 0.6),
+          0 0 8px color-mix(in srgb, var(--dc, #fff) 22%, transparent),
+          inset 0 1px 2px rgba(255, 255, 255, 0.35),
+          inset 0 -3px 5px rgba(0, 0, 0, 0.7);
+      }
+      .backbtn.eye .jewel { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
+      .backbtn.eye .jewel svg { width: 74%; height: 74%; display: block; }
+      .backbtn.eye:hover {
+        box-shadow:
+          0 5px 10px rgba(0, 0, 0, 0.65),
+          0 0 12px color-mix(in srgb, var(--dc, #fff) 40%, transparent),
+          inset 0 1px 2px rgba(255, 255, 255, 0.45),
+          inset 0 -3px 5px rgba(0, 0, 0, 0.7);
+      }
+<!-- HARVEST-END v18 lines 421-461 -->
+/* ============ MESSENGER + SMART MAIL — centre content, this round ============ */
+/* The frame above is harvested verbatim from the v18 calendar fix. What
+   follows is only the centre: the interface inside the inner stage. */
+.mm-topbar { display:flex; align-items:center; gap:16px; padding:4px 0 12px; flex:none; }
+.mm-topbar .mm-centre { flex:1; min-width:0; display:flex; align-items:center; justify-content:center; gap:16px; }
+.mm-title { font-family:"Marcellus",serif; font-size:25px; color:#ffffff; text-align:center; line-height:1.15; text-shadow:0 0 12px rgba(255,255,255,.3); }
+.mm-title small { display:block; font-family:"Archivo",sans-serif; font-size:17px; color:#ffffff; letter-spacing:.14em; text-transform:uppercase; }
+.xbtn { width:46px; height:46px; flex:none; border-radius:50%; color:#ffffff; display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(180deg,#17171f 0%,#0a0a11 62%,#060609 100%); border:1.5px solid #c62828; box-shadow:0 0 18px rgba(198,40,40,.5), inset 0 1px 0 rgba(255,255,255,.28), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); transition:box-shadow .25s, filter .25s, transform .25s; }
+.xbtn:hover { filter:brightness(1.22); transform:translateY(-1px); }
+.xbtn:active { transform:scale(.97); }
+.xbtn svg { width:19px; height:19px; }
+/* The N — the glowing red 3D ball orb, golden N, tap to enter. It breathes
+   in then out (12s) and its orbit ring turns slowly (120s). It never sits
+   in the bottom bar. */
+.norb { width:64px; height:64px; flex:none; border-radius:50%; position:relative; display:flex; align-items:center; justify-content:center; cursor:pointer; background:radial-gradient(circle at 34% 26%, #ff9a9a 0%, #c62828 38%, #7a0d0d 72%, #3d0505 100%); border:2px solid rgba(212,160,23,.85); box-shadow:0 0 26px rgba(198,40,40,.55), 0 8px 18px rgba(0,0,0,.7), inset 0 2px 6px rgba(255,255,255,.45), inset 0 -8px 14px rgba(0,0,0,.6); animation:norb-breathe 12s ease-in-out infinite; transition:filter .3s, transform .3s; }
+.norb:hover { filter:brightness(1.25); transform:translateY(-2px); }
+.norb:active { transform:scale(.97); }
+.norb span { font-family:"Marcellus",serif; font-size:25px; color:#d4a017; text-shadow:0 1px 2px rgba(0,0,0,.85), 0 0 12px rgba(212,160,23,.65); }
+.norb-ring { position:absolute; inset:-10px; border-radius:50%; border:1.5px solid rgba(198,40,40,.55); animation:norb-orbit 120s linear infinite; pointer-events:none; }
+.norb-ring i { position:absolute; top:-5px; left:50%; margin-left:-4px; width:8px; height:8px; border-radius:50%; background:#ffffff; box-shadow:0 0 10px rgba(255,255,255,.9); }
+@keyframes norb-breathe { 0%,100% { transform:scale(1); } 50% { transform:scale(1.05); } }
+@keyframes norb-orbit { to { transform:rotate(360deg); } }
+/* The three doors of the one interface — spectrum flow, never the same twice */
+.mm-tabs { display:flex; gap:8px; flex:none; margin-bottom:12px; }
+.mm-tab { flex:1; min-width:0; min-height:48px; border-radius:999px; display:flex; align-items:center; justify-content:center; gap:8px; background:linear-gradient(180deg,#17171f 0%,#0a0a11 62%,#060609 100%); border:1.5px solid rgba(255,255,255,.35); color:#ffffff; font-size:19px; font-weight:700; box-shadow:inset 0 1px 0 rgba(255,255,255,.25), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); transition:transform .3s ease, box-shadow .3s ease, filter .3s ease; }
+.mm-tab:hover { transform:translateY(-2px); filter:brightness(1.22); }
+.mm-tab:active { transform:scale(.97); }
+.mm-tab.lit-purple { border-color:#8e24aa; box-shadow:0 0 16px rgba(142,36,170,.45), inset 0 1px 0 rgba(255,255,255,.28), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); }
+.mm-tab.lit-blue { border-color:#0f52ba; box-shadow:0 0 16px rgba(15,82,186,.45), inset 0 1px 0 rgba(255,255,255,.28), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); }
+.mm-tab.lit-green { border-color:#07925f; box-shadow:0 0 16px rgba(7,146,95,.45), inset 0 1px 0 rgba(255,255,255,.28), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); }
+.mm-tab svg { width:20px; height:20px; flex:none; }
+/* The page menu, as doors — the settled menu, linked out, never rebuilt */
+.mm-doors { display:flex; flex-wrap:wrap; gap:8px; flex:none; margin-bottom:12px; }
+.mm-door { flex:1 1 auto; min-height:44px; padding:6px 16px; border-radius:999px; display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(180deg,#17171f 0%,#0a0a11 62%,#060609 100%); border:1.5px solid; color:#ffffff; font-size:17px; font-weight:700; text-decoration:none; white-space:nowrap; box-shadow:inset 0 1px 0 rgba(255,255,255,.25), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); transition:transform .3s ease, filter .3s ease; }
+.mm-door:hover { transform:translateY(-2px); filter:brightness(1.22); }
+.mm-door:active { transform:scale(.97); }
+.mm-door[data-c=purple] { border-color:#8e24aa; box-shadow:0 0 12px rgba(142,36,170,.4), inset 0 1px 0 rgba(255,255,255,.25), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); }
+.mm-door[data-c=blue] { border-color:#0f52ba; box-shadow:0 0 12px rgba(15,82,186,.4), inset 0 1px 0 rgba(255,255,255,.25), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); }
+.mm-door[data-c=green] { border-color:#07925f; box-shadow:0 0 12px rgba(7,146,95,.4), inset 0 1px 0 rgba(255,255,255,.25), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); }
+.mm-door[data-c=gold] { border-color:#d4a017; box-shadow:0 0 12px rgba(212,160,23,.4), inset 0 1px 0 rgba(255,255,255,.25), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); }
+.mm-door[data-c=orange] { border-color:#c2410c; box-shadow:0 0 12px rgba(194,65,12,.4), inset 0 1px 0 rgba(255,255,255,.25), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); }
+.mm-door[data-c=red] { border-color:#c62828; box-shadow:0 0 12px rgba(198,40,40,.4), inset 0 1px 0 rgba(255,255,255,.25), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); }
+/* The inner stage — all content lives inside it, nothing spills */
+.mm-stage { flex:1; min-height:0; display:flex; flex-direction:column; border-radius:22px; padding:16px; overflow:hidden; background:linear-gradient(135deg,#101016 0%,#050508 55%,#0b0b10 100%); border:1.5px solid #8e24aa; box-shadow:0 0 22px rgba(142,36,170,.35), 0 12px 28px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.2); }
+.mm-view { flex:1; min-height:0; display:flex; flex-direction:column; }
+.mm-privacy { flex:none; border-radius:18px; padding:12px 16px; margin-bottom:12px; text-align:center; background:linear-gradient(135deg,#17171f 0%,#0a0a11 62%,#060609 100%); border:1.5px solid #07925f; box-shadow:0 0 16px rgba(7,146,95,.35), 0 6px 16px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.25); transition:transform .3s ease, filter .3s ease; }
+.mm-privacy:hover { transform:translateY(-2px); filter:brightness(1.15); }
+.mm-privacy p { margin:0; font-family:"Marcellus",serif; font-size:19px; color:#ffffff; line-height:1.4; }
+.mm-privacy p small { display:block; font-family:"Archivo",sans-serif; font-size:17px; color:#ffffff; }
+.mm-viewhead { flex:none; display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+.mm-viewhead h2 { margin:0; font-family:"Marcellus",serif; font-size:25px; color:#ffffff; line-height:1.1; }
+.mm-viewhead .sub { font-size:17px; color:#ffffff; }
+.mm-msg { flex:1; min-height:0; display:flex; gap:16px; }
+.mm-rail { width:300px; flex:none; display:flex; flex-direction:column; border-radius:18px; padding:12px; overflow:hidden; background:linear-gradient(135deg,#17171f 0%,#0a0a11 62%,#060609 100%); border:1.5px solid #0f52ba; box-shadow:0 0 16px rgba(15,82,186,.35), 0 6px 16px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.25); }
+.mm-rail h3 { margin:0 0 4px; font-family:"Marcellus",serif; font-size:19px; color:#ffffff; }
+.mm-rail .mm-scope { margin:0 0 8px; font-size:17px; color:#ffffff; }
+.mm-rail select { width:100%; min-height:44px; margin-bottom:12px; padding:6px 12px; border-radius:999px; background:linear-gradient(180deg,#17171f 0%,#0a0a11 62%,#060609 100%); border:1.5px solid #8e24aa; color:#ffffff; font-size:17px; font-family:inherit; }
+.mm-rail-list { flex:1; min-height:0; overflow-y:auto; display:flex; flex-direction:column; gap:8px; }
+.mm-person { display:flex; align-items:center; gap:12px; padding:8px; border-radius:14px; text-align:left; width:100%; background:linear-gradient(135deg,#17171f 0%,#0a0a11 62%,#060609 100%); border:1.5px solid rgba(255,255,255,.25); transition:transform .3s ease, filter .3s ease, box-shadow .3s ease; }
+.mm-person:hover { transform:translateY(-2px); filter:brightness(1.2); border-color:#07925f; box-shadow:0 0 14px rgba(7,146,95,.45), 0 6px 14px rgba(0,0,0,.5); }
+.mm-person:active { transform:scale(.97); }
+.mm-face { width:48px; height:48px; flex:none; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:"Marcellus",serif; font-size:19px; color:#ffffff; background:radial-gradient(circle at 34% 26%, #2c3044 0%, #13131f 52%, #050508 100%); border:1.5px solid #07925f; box-shadow:0 3px 7px rgba(0,0,0,.6), 0 0 10px rgba(7,146,95,.35), inset 0 1px 2px rgba(255,255,255,.35); }
+.mm-person .who { min-width:0; }
+.mm-person .nm { font-size:19px; font-weight:700; color:#ffffff; line-height:1.2; }
+.mm-person .rl { font-size:17px; color:#ffffff; line-height:1.3; }
+.mm-rail-proof { flex:none; margin:12px 0 0; font-size:17px; color:#ffffff; line-height:1.4; }
+.mm-conv { flex:1; min-width:0; display:flex; flex-direction:column; }
+.mm-thread { flex:1; min-height:0; overflow-y:auto; display:flex; flex-direction:column; gap:12px; padding:4px; }
+.mm-bubble { max-width:78%; padding:12px 16px; border-radius:18px; font-size:17px; color:#ffffff; line-height:1.5; background:linear-gradient(135deg,#17171f 0%,#0a0a11 62%,#060609 100%); box-shadow:0 6px 14px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.25); transition:transform .3s ease, filter .3s ease; }
+.mm-bubble:hover { transform:translateY(-2px); filter:brightness(1.15); }
+.mm-bubble.them { align-self:flex-start; border:1.5px solid #07925f; box-shadow:0 0 12px rgba(7,146,95,.3), 0 6px 14px rgba(0,0,0,.5); }
+.mm-bubble.me { align-self:flex-end; border:1.5px solid #0f52ba; box-shadow:0 0 12px rgba(15,82,186,.3), 0 6px 14px rgba(0,0,0,.5); }
+.mm-bubble .tag { display:block; font-size:17px; color:#ffffff; margin-bottom:4px; }
+.mm-bubble .tag b { color:#d4a017; }
+.mm-compose { flex:none; display:flex; gap:8px; margin-top:12px; }
+.mm-compose textarea { flex:1; min-width:0; min-height:56px; max-height:120px; resize:none; border-radius:18px; padding:12px 16px; font-size:17px; font-family:inherit; color:#ffffff; background:linear-gradient(135deg,#17171f 0%,#0a0a11 62%,#060609 100%); border:1.5px solid #8e24aa; box-shadow:inset 0 2px 8px rgba(0,0,0,.6), 0 0 12px rgba(142,36,170,.3); }
+.mm-compose textarea::placeholder { color:#ffffff; }
+.mm-send { flex:none; width:104px; min-height:56px; border-radius:999px; display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg,#17171f 0%,#0a0a11 62%,#060609 100%); border:1.5px solid #0f52ba; color:#ffffff; font-size:19px; font-weight:800; box-shadow:0 0 16px rgba(15,82,186,.45), inset 0 1px 0 rgba(255,255,255,.28), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); transition:transform .3s ease, filter .3s ease; }
+.mm-send:hover { transform:translateY(-2px); filter:brightness(1.22); }
+.mm-send:active { transform:scale(.97); }
+.mm-receipt { flex:none; margin-top:12px; padding:12px 16px; border-radius:18px; font-size:17px; color:#ffffff; line-height:1.5; background:linear-gradient(135deg,#17171f 0%,#0a0a11 62%,#060609 100%); border:1.5px solid #d4a017; box-shadow:0 0 14px rgba(212,160,23,.35), 0 6px 14px rgba(0,0,0,.5); }
+.mm-inbox { flex:1; min-height:0; overflow-y:auto; display:flex; flex-direction:column; gap:12px; padding:4px; }
+.mm-mailrow { display:flex; align-items:center; gap:12px; width:100%; text-align:left; padding:12px 16px; border-radius:18px; background:linear-gradient(135deg,#17171f 0%,#0a0a11 62%,#060609 100%); border:1.5px solid #0f52ba; box-shadow:0 0 12px rgba(15,82,186,.3), 0 6px 14px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.25); transition:transform .3s ease, filter .3s ease; }
+.mm-mailrow:hover { transform:translateY(-2px); filter:brightness(1.2); }
+.mm-mailrow:active { transform:scale(.97); }
+.mm-mailrow .ic { width:48px; height:48px; flex:none; border-radius:50%; display:flex; align-items:center; justify-content:center; background:radial-gradient(circle at 34% 26%, #2c3044 0%, #13131f 52%, #050508 100%); border:1.5px solid #0f52ba; box-shadow:0 3px 7px rgba(0,0,0,.6), 0 0 10px rgba(15,82,186,.35); }
+.mm-mailrow .ic svg { width:22px; height:22px; }
+.mm-mailrow .tx { min-width:0; flex:1; }
+.mm-mailrow .sj { font-family:"Marcellus",serif; font-size:19px; color:#ffffff; line-height:1.3; }
+.mm-mailrow .pv { font-size:17px; color:#ffffff; line-height:1.4; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.mm-mailrow .ct { flex:none; }
+.mm-openbody { flex:1; min-height:0; overflow-y:auto; border-radius:18px; padding:16px; background:linear-gradient(135deg,#17171f 0%,#0a0a11 62%,#060609 100%); border:1.5px solid #0f52ba; box-shadow:0 0 12px rgba(15,82,186,.3), 0 6px 14px rgba(0,0,0,.5); }
+.mm-openbody p { margin:0 0 12px; font-size:19px; color:#ffffff; line-height:1.55; }
+.mm-openbody p.small { font-size:17px; color:#ffffff; }
+.mm-form { flex:1; min-height:0; overflow-y:auto; display:flex; flex-direction:column; gap:12px; padding:4px; }
+.mm-field { flex:none; display:flex; flex-direction:column; gap:8px; }
+.mm-field label { font-size:17px; color:#ffffff; }
+.mm-field input, .mm-field textarea { width:100%; min-height:56px; border-radius:18px; padding:12px 16px; font-size:17px; font-family:inherit; color:#ffffff; background:linear-gradient(135deg,#17171f 0%,#0a0a11 62%,#060609 100%); border:1.5px solid #8e24aa; box-shadow:inset 0 2px 8px rgba(0,0,0,.6), 0 0 12px rgba(142,36,170,.3); }
+.mm-field input::placeholder, .mm-field textarea::placeholder { color:#ffffff; }
+.mm-field textarea { min-height:120px; resize:vertical; }
+.mm-actions { flex:none; display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.mm-pill { flex:1 1 auto; min-height:56px; padding:6px 20px; border-radius:999px; display:inline-flex; align-items:center; justify-content:center; gap:8px; background:linear-gradient(180deg,#17171f 0%,#0a0a11 62%,#060609 100%); border:1.5px solid #07925f; color:#ffffff; font-size:19px; font-weight:800; box-shadow:0 0 16px rgba(7,146,95,.4), inset 0 1px 0 rgba(255,255,255,.28), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); transition:transform .3s ease, filter .3s ease; }
+.mm-pill:hover { transform:translateY(-2px); filter:brightness(1.22); }
+.mm-pill:active { transform:scale(.97); }
+.mm-pill.blue { border-color:#0f52ba; box-shadow:0 0 16px rgba(15,82,186,.45), inset 0 1px 0 rgba(255,255,255,.28), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); }
+.mm-pill.gold { border-color:#d4a017; box-shadow:0 0 16px rgba(212,160,23,.45), inset 0 1px 0 rgba(255,255,255,.28), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); }
+.mm-pill.purple { border-color:#8e24aa; box-shadow:0 0 16px rgba(142,36,170,.45), inset 0 1px 0 rgba(255,255,255,.28), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); }
+.mm-conn { flex:1; min-height:0; overflow-y:auto; display:flex; flex-direction:column; gap:12px; padding:4px; }
+.mm-conn h3 { margin:4px 0 0; font-family:"Marcellus",serif; font-size:19px; color:#ffffff; }
+.mm-connrow { display:flex; align-items:center; gap:12px; width:100%; text-align:left; padding:12px 16px; border-radius:18px; background:linear-gradient(135deg,#17171f 0%,#0a0a11 62%,#060609 100%); border:1.5px solid #d4a017; box-shadow:0 0 12px rgba(212,160,23,.3), 0 6px 14px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.25); transition:transform .3s ease, filter .3s ease; }
+.mm-connrow:hover { transform:translateY(-2px); filter:brightness(1.2); }
+.mm-connrow:active { transform:scale(.97); }
+.mm-connrow .tx { min-width:0; flex:1; }
+.mm-connrow .nm { font-size:19px; font-weight:700; color:#ffffff; }
+.mm-connrow .ds { font-size:17px; color:#ffffff; }
+.mm-linkboard { flex:1; min-height:0; overflow-y:auto; display:flex; flex-direction:column; gap:12px; padding:4px; }
+.mm-linkboard .mm-biglink { font-family:"Marcellus",serif; font-size:25px; color:#ffffff; word-break:break-all; }
+/* The one locked bottom bar — ADD purple, MAIL sapphire, ACTIVITY emerald,
+   WORLDS gold, ECOSYSTEM burnt orange, CONNECT ruby. Same six, same order,
+   same colours, everywhere. */
+.mm-bottombar { flex:none; display:flex; gap:8px; padding-top:12px; }
+.mm-bb { flex:1; min-width:0; min-height:56px; border-radius:999px; display:flex; align-items:center; justify-content:center; gap:8px; background:linear-gradient(180deg,#17171f 0%,#0a0a11 62%,#060609 100%); border:1.5px solid; color:#ffffff; font-size:17px; font-weight:700; text-decoration:none; box-shadow:inset 0 1px 0 rgba(255,255,255,.25), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); transition:transform .3s ease, filter .3s ease; }
+.mm-bb:hover { transform:translateY(-2px); filter:brightness(1.22); }
+.mm-bb:active { transform:scale(.97); }
+.mm-bb svg { width:20px; height:20px; flex:none; }
+.mm-bb[data-c=purple] { border-color:#8e24aa; box-shadow:0 0 14px rgba(142,36,170,.4), inset 0 1px 0 rgba(255,255,255,.25), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); }
+.mm-bb[data-c=blue] { border-color:#0f52ba; box-shadow:0 0 14px rgba(15,82,186,.4), inset 0 1px 0 rgba(255,255,255,.25), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); }
+.mm-bb[data-c=green] { border-color:#07925f; box-shadow:0 0 14px rgba(7,146,95,.4), inset 0 1px 0 rgba(255,255,255,.25), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); }
+.mm-bb[data-c=gold] { border-color:#d4a017; box-shadow:0 0 14px rgba(212,160,23,.4), inset 0 1px 0 rgba(255,255,255,.25), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); }
+.mm-bb[data-c=orange] { border-color:#c2410c; box-shadow:0 0 14px rgba(194,65,12,.4), inset 0 1px 0 rgba(255,255,255,.25), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); }
+.mm-bb[data-c=red] { border-color:#c62828; box-shadow:0 0 14px rgba(198,40,40,.4), inset 0 1px 0 rgba(255,255,255,.25), inset 0 -6px 10px rgba(0,0,0,.5), 0 5px 12px rgba(0,0,0,.5); }
+.mm-bb.lit { filter:brightness(1.3); }
+@media (max-width:720px) {
+  .mm-title { font-size:25px; }
+  .mm-topbar { gap:8px; }
+  .mm-topbar .mm-centre { gap:8px; }
+  .norb { width:52px; height:52px; }
+  .mm-msg { flex-direction:column; gap:12px; }
+  .mm-rail { width:auto; flex:none; max-height:168px; }
+  .mm-rail-list { flex-direction:row; overflow-x:auto; overflow-y:hidden; }
+  .mm-person { min-width:168px; }
+  .mm-bb span { display:none; }
+  .mm-bb { border-radius:50%; min-height:48px; }
+  .mm-tab { font-size:17px; }
+  .mm-stage { padding:12px; }
+}
+@media (prefers-reduced-motion: reduce) { * { animation:none !important; transition:none !important; } }
+    </style>
+  </head>
+<body>
+  <div id="app">
+    <header class="mm-topbar">
+      <button class="backbtn" id="backBtn" aria-label="Back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="mm-centre">
+        <div class="norb" id="nOrb" role="button" tabindex="0" aria-label="Tap to enter Messenger"><span class="norb-ring"><i></i></span><span>N</span></div>
+        <div class="mm-title">Messenger + Smart Mail<small>One interface &middot; Inbox &middot; Messenger &middot; Poster</small></div>
+      </div>
+      <button class="xbtn" id="closeBtn" aria-label="Close — back to the Hub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </header>
+    <nav class="mm-tabs" aria-label="Message, Mail, InstaMessage">
+      <button class="mm-tab lit-purple" id="tabMessage" data-view="view-message"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-8 8H4l2-3a8 8 0 1 1 15-5z"/></svg>Message</button>
+      <button class="mm-tab lit-blue" id="tabMail" data-view="view-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Mail</button>
+      <button class="mm-tab lit-green" id="tabInsta" data-view="view-insta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 8.7l5.4-.8z"/></svg>InstaMessage</button>
+    </nav>
+    <nav class="mm-doors" aria-label="Page menu">
+      <a class="mm-door" data-c="purple" href="https://calendar.nayanet.app">Calendar</a>
+      <a class="mm-door" data-c="blue" href="https://nayanet.app/about">About</a>
+      <a class="mm-door" data-c="green" href="https://nayanet.app/skills">Skills</a>
+      <button class="mm-door" data-c="gold" id="doorConnections">Connections</button>
+      <button class="mm-door" data-c="orange" id="doorInvite">Invite</button>
+      <a class="mm-door" data-c="red" href="https://nayanet.app">Join NayaNET</a>
+    </nav>
+    <main class="mm-stage" id="stage">
+      <!-- MESSAGE — the first view. Sends the message. -->
+      <section class="mm-view" id="view-message" aria-label="Messenger">
+        <div class="mm-privacy"><p>&ldquo;Your mail is yours. Nobody reads it &mdash; not even Naya.&rdquo;<small>Your messages are yours too. This interface delivers them. It never reads them.</small></p></div>
+        <div class="mm-msg">
+          <aside class="mm-rail" aria-label="Members you can message here">
+            <h3>Fellow members here</h3>
+            <p class="mm-scope">Inside: <b id="railMembershipName">Naya Academy</b> &mdash; this rail shows only people in this same private members area.</p>
+            <label for="memberSelect" style="position:absolute;left:-9999px;">Choose the membership you are inside</label>
+            <select id="memberSelect" aria-label="Choose the membership you are inside">
+              <option value="Naya Academy">Naya Academy</option>
+              <option value="AI Masterclass">AI Masterclass</option>
+              <option value="Fast Action Club">Fast Action Club</option>
+            </select>
+            <div class="mm-rail-list" id="railList"></div>
+            <p class="mm-rail-proof" id="railProof"></p>
+          </aside>
+          <div class="mm-conv">
+            <div class="mm-viewhead"><h2>Message</h2><span class="sub">Step 1 &mdash; pick a fellow member, Step 2 &mdash; write it, Step 3 &mdash; tap Send.</span></div>
+            <div class="mm-thread" id="msgThread">
+              <div class="mm-bubble them"><span class="tag"><b>Amara</b> &middot; fellow member &middot; demo thread</span>Demo thread &mdash; the words here are placeholders so you can see the shape. Your real messages stay yours, and nobody reads them.</div>
+              <div class="mm-bubble me"><span class="tag"><b>You</b> &middot; demo thread</span>Demo reply &mdash; a placeholder in your own voice, so the shape is clear before anything real arrives.</div>
+            </div>
+            <div class="mm-compose">
+              <label for="msgBox" style="position:absolute;left:-9999px;">Write your message</label>
+              <textarea id="msgBox" placeholder="Write your message&hellip;"></textarea>
+              <button class="mm-send" id="msgSend">Send</button>
+            </div>
+            <div class="mm-receipt hidden" id="msgReceipt"></div>
+          </div>
+        </div>
+      </section>
+      <!-- MAIL — the citizen’s mail, same frame family. -->
+      <section class="mm-view hidden" id="view-mail" aria-label="Smart Mail">
+        <div class="mm-privacy"><p>&ldquo;Your mail is yours. Nobody reads it &mdash; not even Naya.&rdquo;<small>Smart Mail delivers your mail. It never opens it for anyone but you.</small></p></div>
+        <div class="mm-viewhead"><h2>Inbox</h2><span class="sub">Your mail, newest first.</span><span class="ct"><span class="os-mini-num"><span class="os-mini-tile d3"><span class="cap"></span><span class="rd">3</span></span></span></span></div>
+        <div class="mm-inbox" id="inboxList"></div>
+        <div class="mm-actions"><button class="mm-pill blue" id="writeMailBtn">Write mail</button></div>
+      </section>
+      <!-- INSTAMESSAGE — the third door of the same interface. -->
+      <section class="mm-view hidden" id="view-insta" aria-label="InstaMessage">
+        <div class="mm-privacy"><p>&ldquo;Your messages are yours. Nobody reads them &mdash; not even Naya.&rdquo;<small>InstaMessage is the quick word, in the same family as Mail and Messenger.</small></p></div>
+        <div class="mm-viewhead"><h2>InstaMessage</h2><span class="sub">The quick word, with your people.</span></div>
+        <div class="mm-thread" id="instaThread" style="flex:1;min-height:0;overflow-y:auto;">
+          <div class="mm-bubble them"><span class="tag"><b>Benoit</b> &middot; fellow member &middot; demo thread</span>Demo note &mdash; a placeholder so you can see the shape. Nothing here is real content.</div>
+          <div class="mm-bubble me"><span class="tag"><b>You</b> &middot; demo thread</span>Demo reply &mdash; your words, in your own voice, kept yours.</div>
+        </div>
+        <div class="mm-compose">
+          <label for="instaBox" style="position:absolute;left:-9999px;">Write your InstaMessage</label>
+          <textarea id="instaBox" placeholder="Write your InstaMessage&hellip;"></textarea>
+          <button class="mm-send" id="instaSend">Send</button>
+        </div>
+        <div class="mm-receipt hidden" id="instaReceipt"></div>
+      </section>
+      <!-- OPEN MAIL — one mail, open, inside the same stage. -->
+      <section class="mm-view hidden" id="view-open" aria-label="Open mail">
+        <div class="mm-viewhead"><h2 id="openSubject">Mail</h2><span class="sub" id="openFrom"></span></div>
+        <div class="mm-openbody" id="openBody"></div>
+        <div class="mm-actions"><button class="mm-pill blue" id="replyBtn">Reply</button><button class="mm-pill gold" id="openBackBtn">Back to inbox</button></div>
+      </section>
+      <!-- COMPOSE MAIL — write it, send it. -->
+      <section class="mm-view hidden" id="view-compose" aria-label="Compose mail">
+        <div class="mm-viewhead"><h2>Write mail</h2><span class="sub">Step 1 &mdash; who, Step 2 &mdash; what, Step 3 &mdash; tap Send.</span></div>
+        <div class="mm-form">
+          <div class="mm-field"><label for="mailTo">To</label><input id="mailTo" type="text" placeholder="A fellow member, or your own Smart Mail" /></div>
+          <div class="mm-field"><label for="mailSubject">Subject</label><input id="mailSubject" type="text" placeholder="What is it about?" /></div>
+          <div class="mm-field"><label for="mailBody">Your mail</label><textarea id="mailBody" placeholder="Write your mail&hellip;"></textarea></div>
+        </div>
+        <div class="mm-actions"><button class="mm-pill blue" id="mailSendBtn">Send mail</button><button class="mm-pill purple" id="composeBackBtn">Back to inbox</button></div>
+        <div class="mm-receipt hidden" id="mailReceipt"></div>
+      </section>
+      <!-- CONNECTIONS — everybody in your world, inside the same stage frame. -->
+      <section class="mm-view hidden" id="view-connections" aria-label="Connections">
+        <div class="mm-viewhead"><h2>Connections</h2><span class="sub">Everybody in your world &mdash; all your Smart Lists, your Smart Notes, your list of everything.</span></div>
+        <div class="mm-conn">
+          <h3>Smart Lists</h3>
+          <button class="mm-connrow" data-open="list"><span class="mm-face" style="border-color:#d4a017;">L</span><span class="tx"><span class="nm">My Smart Lists</span><br /><span class="ds">Your lists, your way &mdash; people, notes and worlds, filed together.</span></span></button>
+          <h3>Smart Notes</h3>
+          <button class="mm-connrow" data-open="notes"><span class="mm-face" style="border-color:#0f52ba;">N</span><span class="tx"><span class="nm">My Smart Notes</span><br /><span class="ds">The intelligence you saved &mdash; yours, kept in your Smart Box.</span></span></button>
+          <h3>Everybody in your world</h3>
+          <button class="mm-connrow" data-open="people"><span class="mm-face" style="border-color:#07925f;">P</span><span class="tx"><span class="nm">All my people</span><br /><span class="ds">Every connection, in one list &mdash; fellow members and friends alike.</span></span></button>
+        </div>
+        <div class="mm-receipt hidden" id="connReceipt"></div>
+      </section>
+      <!-- INVITE — share NayaNET, from your page. -->
+      <section class="mm-view hidden" id="view-invite" aria-label="Invite">
+        <div class="mm-viewhead"><h2>Invite</h2><span class="sub">Invite people to NayaNET &mdash; share it, and they join from your page.</span></div>
+        <div class="mm-linkboard">
+          <div class="mm-privacy"><p>&ldquo;Come and see what we are building &mdash; a world where intelligence compounds and everybody wins.&rdquo;<small>Your Smart Link is the door. Share it, and they join NayaNET from your page.</small></p></div>
+          <div class="mm-openbody"><p class="small">Your Smart Link</p><p class="mm-biglink" id="smartLinkText">nayanet.app/your-name</p><p class="small">One short address for everything you share &mdash; and every click on it, counted. Pick the name you want, and your short link is live.</p></div>
+          <div class="mm-actions"><button class="mm-pill gold" id="copyLinkBtn">Copy my Smart Link</button><a class="mm-pill blue" href="https://nayanet.app" style="text-decoration:none;">Join NayaNET</a></div>
+          <div class="mm-receipt hidden" id="inviteReceipt"></div>
+        </div>
+      </section>
+    </main>
+    <!-- The one locked bottom bar: ADD purple, MAIL sapphire, ACTIVITY emerald, WORLDS gold, ECOSYSTEM burnt orange, CONNECT ruby. -->
+    <nav class="mm-bottombar" aria-label="Bottom bar">
+      <button class="mm-bb" data-c="purple" id="bbAdd" aria-label="Add — make a post"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg><span>ADD</span></button>
+      <button class="mm-bb lit" data-c="blue" id="bbMail" aria-label="Mail — Smart Mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span>MAIL</span></button>
+      <a class="mm-bb" data-c="green" href="https://nayanet.app/hub" aria-label="Activity — the Hub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg><span>ACTIVITY</span></a>
+      <a class="mm-bb" data-c="gold" href="https://nayanet.app/personal" aria-label="Worlds — Personal, your world"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14 0 18M12 3c-3 3.5-3 14 0 18"/></svg><span>WORLDS</span></a>
+      <a class="mm-bb" data-c="orange" href="https://nayanet.app" aria-label="Ecosystem — the whole network"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.5"/><circle cx="19" cy="5" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M7.2 10.8l9.6-4.3M7.2 13.2l9.6 4.3"/></svg><span>ECOSYSTEM</span></a>
+      <button class="mm-bb" data-c="red" id="bbConnect" aria-label="Connect — your connections"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3.5"/><circle cx="16.5" cy="15.5" r="3.5"/><path d="M11 10.5l3 2.5"/></svg><span>CONNECT</span></button>
+    </nav>
+  </div>
+<script>
+  (function () {
+    "use strict";
+    function $(id) { return document.getElementById(id); }
+    /* @dm-data-start — the membership gate lives here, and only here. */
+    var PEOPLE = [
+      { name: "Amara", role: "Naya Academy · fellow member", rim: "#07925f", memberOf: ["Naya Academy"] },
+      { name: "Benoit", role: "Naya Academy · AI Masterclass", rim: "#0f52ba", memberOf: ["Naya Academy", "AI Masterclass"] },
+      { name: "Celia", role: "Naya Academy · fellow member", rim: "#d4a017", memberOf: ["Naya Academy"] },
+      { name: "Dario", role: "Fast Action Club · not a member here", rim: "#c2410c", memberOf: ["Fast Action Club"] }
+    ];
+    /* THE GATE: the rail is built ONLY from this filtered list. A person
+       whose memberOf does not include the membership you are inside is
+       never handed to the renderer — not hidden, never surfaced. */
+    function railMembers(membershipId, people) {
+      var out = [];
+      for (var i = 0; i < people.length; i++) {
+        if (people[i].memberOf.indexOf(membershipId) !== -1) { out.push(people[i]); }
+      }
+      return out;
+    }
+    /* @dm-data-end */
+    var MAILS = [
+      { id: "m1", from: "Naya", subject: "Welcome to your Smart Mail (demo)", preview: "Demo mail — a placeholder, so you can see the shape.", body: "Demo mail — this is a placeholder, not real content. Your real mail arrives here, and nobody reads it but you." },
+      { id: "m2", from: "Your week", subject: "Your week, in one note (demo)", preview: "Demo mail — a placeholder, so you can see the shape.", body: "Demo mail — this is a placeholder, not real content. What you did, what you learned, what is next — one note, yours." },
+      { id: "m3", from: "Naya", subject: "A note from Naya (demo)", preview: "Demo mail — a placeholder, so you can see the shape.", body: "Demo mail — this is a placeholder, not real content. A wise word, in plain words, for your day." }
+    ];
+    var stack = ["view-message"];
+    function show(id, push) {
+      var views = document.querySelectorAll(".mm-view");
+      for (var i = 0; i < views.length; i++) { views[i].classList.add("hidden"); }
+      var el = $(id);
+      if (el) { el.classList.remove("hidden"); }
+      if (push !== false && stack[stack.length - 1] !== id) { stack.push(id); }
+      var lit = { "view-message": "tabMessage", "view-mail": "tabMail", "view-insta": "tabInsta" };
+      var tabs = document.querySelectorAll(".mm-tab");
+      for (var j = 0; j < tabs.length; j++) { tabs[j].classList.remove("lit-purple", "lit-blue", "lit-green"); }
+      if (lit[id]) { var t = $(lit[id]); if (t) { t.classList.add(id === "view-message" ? "lit-purple" : id === "view-mail" ? "lit-blue" : "lit-green"); } }
+    }
+    function goBack() {
+      if (stack.length > 1) { stack.pop(); show(stack[stack.length - 1], false); }
+      else { window.location.href = "https://nayanet.app/personal"; }
+    }
+    function renderRail() {
+      var sel = $("memberSelect");
+      var membershipId = sel ? sel.value : "Naya Academy";
+      var nameEl = $("railMembershipName");
+      if (nameEl) { nameEl.textContent = membershipId; }
+      var shown = railMembers(membershipId, PEOPLE);
+      var keptOut = PEOPLE.length - shown.length;
+      var list = $("railList");
+      list.innerHTML = "";
+      for (var i = 0; i < shown.length; i++) {
+        var p = shown[i];
+        var b = document.createElement("button");
+        b.className = "mm-person"; b.type = "button";
+        b.setAttribute("data-person", p.name);
+        var face = document.createElement("span");
+        face.className = "mm-face"; face.style.borderColor = p.rim;
+        face.textContent = p.name.charAt(0);
+        var who = document.createElement("span"); who.className = "who";
+        var nm = document.createElement("span"); nm.className = "nm"; nm.textContent = p.name;
+        var rl = document.createElement("span"); rl.className = "rl"; rl.textContent = p.role;
+        who.appendChild(nm); who.appendChild(document.createElement("br")); who.appendChild(rl);
+        b.appendChild(face); b.appendChild(who);
+        b.addEventListener("click", (function (person) { return function () { show("view-message"); var box = $("msgBox"); if (box) { box.placeholder = "Write to " + person.name + "\u2026"; box.focus(); } }; })(p));
+        list.appendChild(b);
+      }
+      var proof = $("railProof");
+      if (proof) { proof.textContent = "Inside " + membershipId + " \u00b7 " + shown.length + " fellow member" + (shown.length === 1 ? "" : "s") + " here \u00b7 " + keptOut + " person" + (keptOut === 1 ? "" : "s") + " kept out \u2014 not a member of this area."; }
+    }
+    function renderInbox() {
+      var list = $("inboxList");
+      list.innerHTML = "";
+      for (var i = 0; i < MAILS.length; i++) {
+        var m = MAILS[i];
+        var b = document.createElement("button");
+        b.className = "mm-mailrow"; b.type = "button";
+        b.setAttribute("data-mail", m.id);
+        var ic = document.createElement("span"); ic.className = "ic";
+        ic.innerHTML = "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#ffffff\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"M3 7l9 6 9-6\"/></svg>";
+        var tx = document.createElement("span"); tx.className = "tx";
+        var sj = document.createElement("span"); sj.className = "sj"; sj.textContent = m.subject;
+        var pv = document.createElement("span"); pv.className = "pv"; pv.textContent = m.from + " \u00b7 " + m.preview;
+        tx.appendChild(sj); tx.appendChild(document.createElement("br")); tx.appendChild(pv);
+        var ct = document.createElement("span"); ct.className = "ct";
+        ct.innerHTML = "<span class=\"os-mini-num\"><span class=\"os-mini-tile d" + (i + 1) + "\"><span class=\"cap\"></span><span class=\"rd\">" + (i + 1) + "</span></span></span>";
+        b.appendChild(ic); b.appendChild(tx); b.appendChild(ct);
+        b.addEventListener("click", (function (mail) { return function () { openMail(mail); }; })(m));
+        list.appendChild(b);
+      }
+    }
+    function openMail(m) {
+      $("openSubject").textContent = m.subject;
+      $("openFrom").textContent = "From " + m.from + " \u00b7 demo mail \u2014 placeholder, not real content";
+      var body = $("openBody");
+      body.innerHTML = "";
+      var p1 = document.createElement("p"); p1.textContent = m.body;
+      var p2 = document.createElement("p"); p2.className = "small"; p2.textContent = "Demo mail \u2014 a placeholder, so you can see the shape. Your real mail is yours, and nobody reads it \u2014 not even Naya.";
+      body.appendChild(p1); body.appendChild(p2);
+      show("view-open");
+    }
+    function sendReceipt(el, text) { el.textContent = text; el.classList.remove("hidden"); }
+    function wire() {
+      $("tabMessage").addEventListener("click", function () { show("view-message"); });
+      $("tabMail").addEventListener("click", function () { show("view-mail"); });
+      $("tabInsta").addEventListener("click", function () { show("view-insta"); });
+      $("backBtn").addEventListener("click", goBack);
+      $("closeBtn").addEventListener("click", function () { window.location.href = "https://nayanet.app/hub"; });
+      $("nOrb").addEventListener("click", function () { show("view-message"); var box = $("msgBox"); if (box) { box.focus(); } });
+      $("nOrb").addEventListener("keydown", function (ev) { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); show("view-message"); } });
+      $("doorConnections").addEventListener("click", function () { show("view-connections"); });
+      $("doorInvite").addEventListener("click", function () { show("view-invite"); });
+      $("memberSelect").addEventListener("change", renderRail);
+      $("writeMailBtn").addEventListener("click", function () { show("view-compose"); });
+      $("openBackBtn").addEventListener("click", function () { show("view-mail"); });
+      $("composeBackBtn").addEventListener("click", function () { show("view-mail"); });
+      $("replyBtn").addEventListener("click", function () { show("view-compose"); var s = $("mailSubject"); if (s) { s.value = "Re: " + $("openSubject").textContent; } });
+      $("bbAdd").addEventListener("click", function () { show("view-compose"); });
+      $("bbMail").addEventListener("click", function () { show("view-mail"); });
+      $("bbConnect").addEventListener("click", function () { show("view-connections"); });
+      $("msgSend").addEventListener("click", function () {
+        var box = $("msgBox");
+        var text = box.value.replace(/^\s+|\s+$/g, "");
+        if (!text) { sendReceipt($("msgReceipt"), "Write your message first — Step 2, then Send."); return; }
+        var th = $("msgThread");
+        var d = document.createElement("div"); d.className = "mm-bubble me";
+        var tag = document.createElement("span"); tag.className = "tag";
+        tag.innerHTML = "<b>You</b> \u00b7 outbox \u2014 not sent yet";
+        var tx = document.createElement("span"); tx.textContent = text;
+        d.appendChild(tag); d.appendChild(tx); th.appendChild(d);
+        th.scrollTop = th.scrollHeight; box.value = "";
+        sendReceipt($("msgReceipt"), "Saved to your outbox. Sending NOT proven — this interface only. A real send is proved separately.");
+      });
+      $("instaSend").addEventListener("click", function () {
+        var box = $("instaBox");
+        var text = box.value.replace(/^\s+|\s+$/g, "");
+        if (!text) { sendReceipt($("instaReceipt"), "Write your InstaMessage first — then Send."); return; }
+        var th = $("instaThread");
+        var d = document.createElement("div"); d.className = "mm-bubble me";
+        var tag = document.createElement("span"); tag.className = "tag";
+        tag.innerHTML = "<b>You</b> \u00b7 outbox \u2014 not sent yet";
+        var tx = document.createElement("span"); tx.textContent = text;
+        d.appendChild(tag); d.appendChild(tx); th.appendChild(d);
+        th.scrollTop = th.scrollHeight; box.value = "";
+        sendReceipt($("instaReceipt"), "Saved to your outbox. Sending NOT proven — this interface only.");
+      });
+      $("mailSendBtn").addEventListener("click", function () {
+        var body = $("mailBody").value.replace(/^\s+|\s+$/g, "");
+        if (!body) { sendReceipt($("mailReceipt"), "Write your mail first — Step 2, then Send."); return; }
+        sendReceipt($("mailReceipt"), "Saved to your outbox. Sending NOT proven — this interface only. A real send is proved separately.");
+      });
+      var conns = document.querySelectorAll(".mm-connrow");
+      for (var i = 0; i < conns.length; i++) {
+        conns[i].addEventListener("click", function () {
+          sendReceipt($("connReceipt"), "Your lists open here, inside this same stage — Smart Lists, Smart Notes and all your people, one list of everything. The full list view lands with the Lists build; nothing here leads nowhere.");
+        });
+      }
+      $("copyLinkBtn").addEventListener("click", function () {
+        var link = $("smartLinkText").textContent;
+        function done() { sendReceipt($("inviteReceipt"), "Your Smart Link is copied: " + link + " — share it, and they join NayaNET from your page."); }
+        if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText("https://" + link).then(done, done); }
+        else { done(); }
+      });
+      document.addEventListener("keydown", function (ev) {
+        if (ev.key !== "Escape") { return; }
+        var tag = ev.target && ev.target.tagName;
+        if (tag === "INPUT" || tag === "TEXTAREA") { return; }
+        goBack();
+      });
+      renderRail();
+      renderInbox();
+      show("view-message", false);
+    }
+    if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", wire); }
+    else { wire(); }
+  })();
+</script>
+</body>
+</html>
