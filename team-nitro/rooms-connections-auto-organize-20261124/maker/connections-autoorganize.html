@@ -950,6 +950,7 @@
        to the list inside the frame. */
     var savedScroll = 0;
     function openCard(c){
+      savedScroll = window.scrollY || document.documentElement.scrollTop || 0; /* FIX 2026-11-24: capture BEFORE any display swap — hiding the list clamps scrollY to 0 */
       state.draftFor = c.id;
       cardView.innerHTML = '';
       var wrap = el('div','cx-framewrap');
@@ -1035,7 +1036,6 @@
       cardView.appendChild(wrap);
       listView.style.display = 'none';
       cardView.style.display = 'block'; /* not '' — the glue rule hides .cx-cardview by default, so '' would stay hidden */
-      savedScroll = window.scrollY || document.documentElement.scrollTop || 0;
       window.scrollTo(0, 0);
       var first = lp.querySelector('.cx-lbtn'); if(first) first.focus();
     }
