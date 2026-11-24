@@ -972,28 +972,36 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 }
 </style>
 <style>
-/* COVER VIDEO AS A FULL 9:16 BOARD (2026-11-24, Shawn's eye — Rubik's Cube):
-   tapping the cover red N must open the NEXT FULL BOARD behind it, not the
-   floating rectangle the shared depth view shows (width min(1080px,100%),
-   max-height 84vh, centred over a dim backdrop, cover visible around it).
-   COVER-ONLY: the cover opener adds .cover-full to #depthView and the
-   shared closeDepth removes it — the shared chapter-depth mechanism is
-   untouched, so every chapter depth view keeps its floating-panel
-   presentation. The board is viewport-filling at every size (the 16:9
-   video inside keeps its own aspect — the BOARD is full, the video is
-   what it is). Back top-left, X top-right, red N in the foot, title +
-   "1 of 1" step — the same depth-view chrome, now filling the viewport
-   with no cover visible around it. The [hidden] override matters:
-   .innov-pop[hidden] must still hide the view, or the ID-scoped
-   display:grid below would win over it. */
+/* EVERY DEPTH VIEW AS A FULL 9:16 BOARD (2026-11-24, Shawn's eye — Rubik's Cube):
+   tapping the N must open the NEXT FULL BOARD behind it, not the
+   floating rectangle the shared depth view showed (width min(1080px,100%),
+   max-height 84vh, centred over a dim backdrop, the front board visible
+   around it). The cover video got the full board first (cover round);
+   this round extends the SAME class to chapter depth — no second mechanism,
+   no second overlay, no second class system. The cover opener, openDepth
+   AND openDepthAt all add .cover-full to #depthView and the shared
+   closeDepth removes it, so every behind-N board opens viewport-filling
+   with nothing of the front board visible around it, and every close
+   starts the next open clean. The board is viewport-filling at every size
+   (a 16:9 video inside keeps its own aspect — the BOARD is full, the
+   video is what it is). Back top-left, X top-right, red N in the foot,
+   title + step counter — the same depth-view chrome, now filling the
+   viewport. Two small generalizations for chapter steps: (1) the middle
+   (#depthBody) scrolls internally (overflow-y:auto) — the card is
+   overflow:hidden, and a long text step must stay readable with Back / X /
+   N in place; (2) the depth N presses straight in (scale .93, no sideways
+   shift — the plain .ib-n:active rule carries translateX(-50%) for the
+   board Ns). The [hidden] override matters: .innov-pop[hidden] must still
+   hide the view, or the ID-scoped display:grid below would win over it. */
 #depthView.cover-full{display:grid;place-items:stretch;padding:0;background:#02030a}
 #depthView.cover-full[hidden]{display:none}
 #depthView.cover-full .innov-pop-card{width:100%;max-width:none;height:100vh;height:100dvh;max-height:none;border-radius:0;border:0;padding:16px 20px 20px;display:flex;flex-direction:column;overflow:hidden}
 #depthView.cover-full .depth-top{position:static;margin:0 0 8px;padding:0}
 #depthView.cover-full .depth-foot{position:static;margin:12px 0 0;padding:0}
 #depthView.cover-full .depth-stage{flex:1 1 auto;min-height:0}
-#depthView.cover-full #depthBody{flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+#depthView.cover-full #depthBody{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;overflow-y:auto}
 #depthView.cover-full #depthBody .ib-vid{flex:1 1 auto;min-height:0;height:auto}
+#depthView.cover-full #depthN:active{transform:scale(.93)}
 </style>
 </head>
 <body>
@@ -1763,6 +1771,7 @@ function openDepthAt(boardIdx, layerIdx){
   DEPTH_BOARD = boardIdx; DEPTH_IDX = layerIdx;
   document.getElementById('depthN').querySelector('img').src = EMBED.ball;
   renderDepth();
+  document.getElementById('depthView').classList.add('cover-full');
   document.getElementById('depthView').hidden = false;
 }
 function fitPanels(){
@@ -1836,6 +1845,7 @@ function openDepth(boardIdx){
   DEPTH_BOARD = boardIdx; DEPTH_IDX = 0;
   document.getElementById('depthN').querySelector('img').src = EMBED.ball;
   renderDepth();
+  document.getElementById('depthView').classList.add('cover-full');
   document.getElementById('depthView').hidden = false;
 }
 /* COVER VIDEO BEHIND THE RED N (first-two-boards fix, 2026-11-24 — Shawn's eye):
@@ -1931,7 +1941,7 @@ function renderDepth(){
     setSides(-1, -1);
   } else if (L.kind === 'video'){
     title.textContent = g.t + ' — behind the board';
-    body.innerHTML = '<div class="ib-vid" style="height:320px">' + vidHTML(L.src) + '</div>';
+    body.innerHTML = '<div class="ib-vid">' + vidHTML(L.src) + '</div>';
     setSides(-1, -1);
   } else if (L.kind === 'text'){
     title.textContent = g.t + (L.cont ? ' — continued' : ' — behind the board');
@@ -1957,6 +1967,25 @@ document.getElementById('depthClose').addEventListener('click', closeDepth);
 document.getElementById('depthView').addEventListener('click', function(e){ if (e.target === this) closeDepth(); });
 /* ENDS THAT WORK (2026-11-23 full-build round): a ready depth-image frame is a working end — tap it and you go on to the next chapter (portal on the last board). */
 document.getElementById('depthStage').addEventListener('click', function(e){ var b = e.target && e.target.closest ? e.target.closest('.depth-img-slot--ready') : null; if (!b) return; closeDepth(); if (current < TOTAL - 1){ current++; renderSlide(); show('slide'); } else { goToPortal(); } });
+/* TAP THE BOARD = NEXT LAYER (chapter-depth full-board round, 2026-11-24 —
+   Shawn's Rubik's Cube rule, 07:02 call): tapping the N OR tapping the
+   board goes to the next full board behind it. This mirrors the depthN
+   handler exactly — same step order, same close on the last layer — and
+   never fires for the things that already have their own tap: Back / X /
+   N (buttons), ready depth-image frames (their own end-button handler
+   above, which closes to the next chapter), the video box (the player
+   keeps its own taps), links and form controls. The cover video board
+   has no next layer, so COVER_DEPTH returns early and its N / Back / X
+   keep closing it. */
+document.querySelector('#depthView .innov-pop-card').addEventListener('click', function(e){
+  if (COVER_DEPTH) return;
+  var t = e.target;
+  if (!t || !t.closest) return;
+  if (t.closest('button, a, iframe, video, .ib-vid, input, select, textarea, .depth-img-slot--ready')) return;
+  var layers = depthLayers(DEPTH_BOARD);
+  if (DEPTH_IDX < layers.length - 1){ DEPTH_IDX++; renderDepth(); }
+  else closeDepth();
+});
 document.addEventListener('click', function(e){
   var t = e.target;
   if (!t || !t.closest) return;
