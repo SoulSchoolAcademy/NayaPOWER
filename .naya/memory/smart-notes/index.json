@@ -80327,6 +80327,42 @@
         "Knowledge",
         "Honor"
       ]
+    },
+    {
+      "smart_note_id": "SN-4725",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4725-one-system-one-language",
+      "slug": "one-system-one-language",
+      "title": "One System, One Language",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SYSTEM/SN-4725/IB-SMART-NOTE-20261124-sn4725-one-system-one-language.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SYSTEM/SN-4725/IB-SMART-NOTE-20261124-sn4725-one-system-one-language.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SYSTEM/SN-4725/IB-SMART-NOTE-20261124-sn4725-one-system-one-language.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4725-one-system-one-language.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T17:18:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "dc04f385f9b3e5c70b07c354674de83892d7322eb3680e885727b983a055f2fe",
+      "content_hash": "c8e10f6a433f3d55ed455dc8bbb8789d9fe15c8e6825561092af92840d4dad05",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "b4b0d727ee842abfb21b0c1764e57b259cf1db132e75bee794efe4c71adb282d",
+      "one_line": "Not many systems — one ultimate system, one ultimate language. The evening's work was alignment: one eye, not a new eye per page — when something is good you use it, you never make a new one — and the one eye gets more depth the clone-trick way, doubled layer, a real object instead of a blob. One navigation system: every page's sidebars are the same sidebars, Home at the top of both, aligned across the whole system from one official list — and the official list is made by thinking, not transcribed from a screenshot, because a screenshot shows the problem, not the list. The Hub is the main central stage: good morning, the Wisdom of the Day, the time and the date — and the wrong lines come out. Around the alignment sit the motion rules: the team fine-tuned to be on fire around the clock at a perfect flow; leaderboards that let anyone see where they score in any area, with the top shown; and the cycle as the clock — not minutes, but finished, shown, approved, forward, in live time and fast time action. Even beauty gets a persistence clause: the red N orb is one of the most beautiful pieces we did, and it must still be there when you refresh.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Multiplication",
+        "Craft",
+        "Knowledge"
+      ]
     }
   ],
   "sequence_policy": {
@@ -80337,5 +80373,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "41f9fa169cb66f9ec30ea6189cb2226c6bf920f1ee553a0e0a48897f42124deb"
+  "corpus_manifest_hash": "ef5e6b2934183f1950e65058039698e4118ca580c3a326a50d07d7327edfdcb5"
 }
