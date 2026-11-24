@@ -30,6 +30,18 @@ since build, sha `1a72623524ea…`).
 
 Staged links: **to be filled on filing** (commit/blob per file below).
 
+**Filed 2026-11-24 ~18:35 MST — commit `b2900a93e9c5edbc38af125581c710401524c17f`
+(parent `bcf747ca`, branch `whole-system-connection-20261124`, ref verified MATCH).**
+Read-back verified from GitHub (blob API, raw): agreement 22,950,575 B,
+sha256 `1a72623524ea…`, blob `ec558632…`; portal 1,186,194 B, sha256
+`55eb1b1e522c…`, blob `011a4cdf…`. Tree `3dd28449…` confirmed with all 6 entries.
+
+- Portal: https://github.com/SoulSchoolAcademy/NayaPOWER/blob/whole-system-connection-20261124/team-nitro/whole-system-connection-20261124/welcome-staged.html (blob `011a4cdf…`, 1,186,194 B)
+- Agreement: https://github.com/SoulSchoolAcademy/NayaPOWER/blob/whole-system-connection-20261124/team-nitro/whole-system-connection-20261124/agreement.html (blob `ec558632…`, 22,950,575 B)
+- Identity: https://github.com/SoulSchoolAcademy/NayaPOWER/blob/whole-system-connection-20261124/team-nitro/whole-system-connection-20261124/identity.html (blob `1b86d392…`, 309,681 B)
+- /welcome redirect: https://github.com/SoulSchoolAcademy/NayaPOWER/blob/whole-system-connection-20261124/team-nitro/whole-system-connection-20261124/welcome-redirect.html (blob `6f41470b…`, 1,047 B)
+- This report: https://github.com/SoulSchoolAcademy/NayaPOWER/blob/whole-system-connection-20261124/team-nitro/whole-system-connection-20261124/MAKER-REPORT.md (blob `04160e3d…`)
+
 ## The /welcome redirect mechanism (item 66)
 
 `/welcome` never renders its own gate again. The worker serves
