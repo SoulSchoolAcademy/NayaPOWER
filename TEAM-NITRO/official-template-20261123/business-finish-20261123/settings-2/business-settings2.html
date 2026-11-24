@@ -45,7 +45,7 @@
 })();
 </script></script>
 <link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" id="ps-touch-icon" href="https://raw.githubusercontent.com/SoulSchoolAcademy/NayaPOWER/business/finish-20261123/TEAM-NITRO/official-template-20261123/business-finish-20261123/settings-2/thumbnails/thumb-standard-180.png">
+<link rel="apple-touch-icon" id="ps-touch-icon" href="https://raw.githubusercontent.com/SoulSchoolAcademy/NayaPOWER/business/finish-20261123/TEAM-NITRO/official-template-20261123/business-finish-20261123/settings-2/naya-icon-180.png">
 <script>
 /* Service worker — the shell SW is served at this origin's /sw.js (the
    worker emits it beside the page's OWN manifest, built from this page's
@@ -22342,7 +22342,7 @@ body:has([data-os-view="settings"].on) .naya-ask-room .side-topics{display:none!
 <div class="ph-card fr-frame-on" id="ps-install" style="--ac:#0f52ba;--fr-ac:#0f52ba;">
 <div class="ps-head"><button class="ps-back" type="button" data-ps-back aria-label="Back">←</button><h3 class="ps-title">Install on your phone</h3><button class="ps-x" type="button" data-ps-back aria-label="Close">✕</button></div>
 <p class="ps-note">Put this page on your home screen — it opens like any other app, no browser bars.</p>
-<div class="ps-preview"><img id="ps-install-icon" src="https://raw.githubusercontent.com/SoulSchoolAcademy/NayaPOWER/business/finish-20261123/TEAM-NITRO/official-template-20261123/business-finish-20261123/settings-2/thumbnails/thumb-standard-512.png" alt="The icon this page will show on your phone"><div><b>The icon on your phone</b><span>The standard thumbnail, ready for your home screen.</span></div></div>
+<div class="ps-preview"><img id="ps-install-icon" src="https://raw.githubusercontent.com/SoulSchoolAcademy/NayaPOWER/business/finish-20261123/TEAM-NITRO/official-template-20261123/business-finish-20261123/settings-2/naya-icon-512.png" alt="The icon this page will show on your phone"><div><b>The icon on your phone</b><span>The Naya emblem — the N icon, ready for your home screen.</span></div></div>
 <p class="ps-note" id="ps-install-state">Checking install state…</p>
 <button class="ph-connect" id="ps-install-go" type="button">Install this app</button>
 <p class="ps-status" id="ps-install-status"></p>
@@ -22363,7 +22363,7 @@ body:has([data-os-view="settings"].on) .naya-ask-room .side-topics{display:none!
 <input type="file" id="ps-thumb-file" accept="image/*" hidden>
 <p class="ps-sub">Where the standard appears</p>
 <figure class="ps-fig"><img src="https://raw.githubusercontent.com/SoulSchoolAcademy/NayaPOWER/business/finish-20261123/TEAM-NITRO/official-template-20261123/business-finish-20261123/settings-2/thumbnails/thumb-standard-1200x630.png" alt="The standard thumbnail as a shared page preview"><figcaption><b>On the page itself</b>When someone shares this page, this is the picture they see.</figcaption></figure>
-<figure class="ps-fig"><img src="https://raw.githubusercontent.com/SoulSchoolAcademy/NayaPOWER/business/finish-20261123/TEAM-NITRO/official-template-20261123/business-finish-20261123/settings-2/thumbnails/thumb-standard-512.png" alt="The standard thumbnail as a phone app icon"><figcaption><b>On the phone</b>The icon on your home screen when you install the app.</figcaption></figure>
+<figure class="ps-fig"><img src="https://raw.githubusercontent.com/SoulSchoolAcademy/NayaPOWER/business/finish-20261123/TEAM-NITRO/official-template-20261123/business-finish-20261123/settings-2/naya-icon-512.png" alt="The N icon as a phone app icon"><figcaption><b>On the phone</b>The icon on your home screen when you install the app.</figcaption></figure>
 <figure class="ps-fig"><img src="https://raw.githubusercontent.com/SoulSchoolAcademy/NayaPOWER/business/finish-20261123/TEAM-NITRO/official-template-20261123/business-finish-20261123/settings-2/thumbnails/thumb-standard-1024.png" alt="The standard thumbnail as a page card"><figcaption><b>On the pages themselves</b>The picture on this page’s card, wherever pages are listed.</figcaption></figure>
 <p class="ps-note">The standard thumbnail is the beautiful default — it is already set, and it is the end of this flow. Picking another one replaces it; you can always come back and pick the standard again.</p>
 <p class="ps-status" id="ps-thumb-status"></p>
@@ -22641,7 +22641,10 @@ button[aria-label="Show the welcome banner again"]{display:none !important}
   var DM_SKEY='naya_welcome_right_v1';
   /* BUSINESS-FINISH 2026-11-23 — the settings slideshow, THE 14 QUESTIONS
      (the settled spec, 18:02 MST: 10 shared core + 4 by page type), as
-     corrected by the build order (18:08 MST) and the framing (18:09 MST):
+     corrected by the build order (18:08 MST) and the framing (18:09 MST),
+     and by SETTINGS ULTIMATE 2026-11-24 (the slideshow asks the personal 14
+     on every page kind — dmKind returns 'personal'; the business/space
+     last-4 stay defined and exposed via pcDemo.ALL):
      CORRECTION 1 — NO NAME QUESTION. The page title already knows it, so
      the name question is OUT; the count stays 14 and the reward stays 140.
      The alias lives in the walk key (s.alias, set by the walk/claim), never
@@ -22788,11 +22791,12 @@ button[aria-label="Show the welcome banner again"]{display:none !important}
      every other chip derives from the citizen's own words. */
   var DM_REC_KEYS={thing:1, interests:1, mission:1, skills:1, love_about:1, offers:1, needs:1, connect_with:1, related_areas:1, connect_people:1, connect_businesses:1};
   var DM_REC_SEED={thing:['AI','business','tech','software','music','health'], mission:['learn','create','grow','earn','connect','build my world'], offers:['skills','knowledge','help','products'], connect_with:['people like me','people into AI','people into business','people into tech','people into software','mentors','collaborators','customers']};
-  function dmKind(){
-    try{ var k=window.MSHIP_PAGE_KIND||''; if(k==='business'||k==='space'||k==='personal') return k; }catch(e){}
-    try{ var a=window.PAGE_ALIAS||''; if(a==='flagship-business') return 'business'; if(a==='flagship-community') return 'space'; }catch(e2){}
-    return 'personal';
-  }
+  /* SETTINGS ULTIMATE 2026-11-24 — the settings slideshow asks THE 14
+     (the settled set: 10 shared core + love_about / offers / needs /
+     connect_with), whatever page kind this file renders as. The
+     business/space last-4 stay defined below (DM_Q_BUSINESS / DM_Q_SPACE)
+     and exposed via pcDemo.ALL; the slideshow itself never swaps them in. */
+  function dmKind(){ return 'personal'; }
   var DM_Q=[], DM_KIND_RENDERED='';
   function dmReselect(){
     var k=dmKind(); DM_KIND_RENDERED=k;
@@ -22858,6 +22862,18 @@ button[aria-label="Show the welcome banner again"]{display:none !important}
       if(!c) return;
       s.cityDerived=true;
       s.answers=s.answers||{}; s.answers['city']=c;
+      dmSave(s); dmMark(); dmRenderFindable();
+    }catch(e){}
+  }
+  function dmMaybePrefillLanguage(){
+    try{
+      if(dmGet('language')) return;
+      var s=dmLoad(); if(s.langDerived) return;
+      var raw=null; try{ raw=localStorage.getItem('nayanet.pref.language'); }catch(e){}
+      var lang=String(raw||'').trim();
+      if(!lang||lang.length>40) return;
+      s.langDerived=true;
+      s.answers=s.answers||{}; s.answers['language']=lang;
       dmSave(s); dmMark(); dmRenderFindable();
     }catch(e){}
   }
@@ -23021,6 +23037,7 @@ button[aria-label="Show the welcome banner again"]{display:none !important}
   function dmFill(){
     var body=document.getElementById('pc-demo-body'); if(!body) return;
     dmMaybePrefillCity();
+    dmMaybePrefillLanguage();
     DM_Q.forEach(function(q){
       var v=dmGet(q.key);
       var tp=body.querySelector('.pc-dm-type[data-pc-dm-key="'+q.key+'"]');
@@ -52888,7 +52905,7 @@ document.addEventListener('click', function(e){
    (naya.pageprivacy) and hides that section from visitors only. */
 (function(){
   var RAW='https://raw.githubusercontent.com/SoulSchoolAcademy/NayaPOWER/business/finish-20261123/TEAM-NITRO/official-template-20261123/business-finish-20261123/settings-2/thumbnails/';
-  var U={std1024:RAW+'thumb-standard-1024.png',std512:RAW+'thumb-standard-512.png',std192:RAW+'thumb-standard-192.png',std180:RAW+'thumb-standard-180.png',std630:RAW+'thumb-standard-1200x630.png',purple1024:RAW+'thumb-purple-1024.png'};
+  var U={std1024:RAW+'thumb-standard-1024.png',std512:RAW+'naya-icon-512.png',std192:RAW+'thumb-standard-192.png',std180:RAW+'naya-icon-180.png',std630:RAW+'thumb-standard-1200x630.png',purple1024:RAW+'thumb-purple-1024.png'};
   var SECS=[['about','about','About'],['skills','skills','Skills'],['calendar','myworld','Calendar'],['feed','home','Feed'],['connections','people','Connections'],['lists','lists','Lists'],['memberships','memberships','Memberships']];
   function $(id){return document.getElementById(id);}
   function lsGet(k){try{var v=localStorage.getItem(k);return v?JSON.parse(v):null;}catch(e){return null;}}
