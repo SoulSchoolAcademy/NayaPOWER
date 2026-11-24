@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-24 12:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-24 13:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -20433,6 +20433,14 @@ _Last updated: 2026-11-24 12:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified via git protocol: branch refs/heads/naya4/t0704-lane12-smart-mail exists on origin at b88792361be09b33795277f94bb83772f8f0ed97 == receipt pin; tree API confirms functions/feature_smart_mail.py present at that SHA. Registry flip is single-line surgical, guarded by read-time/flip-time SHA match. Clears 9.5 because the module is real, pin-exa
 
+### ✅ t0704 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** #2541 heal re-adjudication at new live tip: STALE, trunk healed by merged #2560, tip GREEN
+
+**Receipt:** `twelve-lane-receipts/t0704-lane10.md`
+
+**Evidence:** VERIFIED this tick: #2541 head de0805407788ed143605ff1a4e98398b0ea74dc9 via ls-remote (byte-exact to the receipt pin); #2560 head c32e6a5b4856f4e6ccf8e3e7d3c6fb2aed58ccbb via ls-remote (byte-exact); tip commit 92329c5795ef8a50d02adf94ee6c91c313c26daf exists in the local mirror as a commit; #2526 head moved on to 88f7e8f8 (still open, consistent wit
+
 ### ✅ t0704-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
 **Task:** Re-adjudicate heal PR #2541 against the new live tip — GREEN/merge-ready, duplicate check
@@ -20454,6 +20462,14 @@ _Last updated: 2026-11-24 12:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0704-lane10.md`
 
 **Evidence:** Verified: live tip 92329c57 matches git ls-remote main exactly; #2541 closed at head de080540 (matches the receipt's pin); #2560 merged at 03:09:36Z (matches); #2526 confirmed independent (world_model-only diff, per receipt). Clears 9.5 because: the full authorized deliverable shipped — the heal question is closed terminally (#2541 CLOSED on dead t
+
+### ✅ t0704 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Author spread-bar standing rule (t0697 ruling adoption) + queue sweep
+
+**Receipt:** `twelve-lane-receipts/t0704-lane1.md`
+
+**Evidence:** VERIFIED this tick: receipt records live re-derivation of the ruling comments (6159447976/6159462725, IDs/authors/timestamps matching the brief) and the t0675 characterization SHA acc4f2d81 from disk; queue sweep of all 8 unclaimed briefs reported zero violations with each named. Rule file hidden_files/surge-d-spread-bar-standing-rule-t0704.md is a
 
 ### ✅ t0704-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -20499,6 +20515,14 @@ _Last updated: 2026-11-24 12:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Phantom-claim detector built RED-first; header states 9.5/10. Score 9.5 — why not 10: remaining items are follow-ups outside this brief's authority; the RED-first proof chain is the verified deliverable.
 
+### ✅ t0703 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** verify_integration() PARTIAL-status bend probe (5 probes, full pipeline, live census)
+
+**Receipt:** `twelve-lane-receipts/t0703-lane2.md`
+
+**Evidence:** VERIFIED this tick: receipt records contemporaneous live verification - check sha256 e49050f9 re-derived at start AND end (identical, no premise rot), t0699 battery re-run on live bytes (A1 FAIL/A2 PASS/B1 FAIL/C1 FAIL/C2 PASS, zero drift), live census 0 PARTIAL in 1202 ledger entries. Local scratch harness (scratch/t0703-lane2-verify/) not present
+
 ### ✅ t0703-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** verify_integration() PARTIAL-status bend probe
@@ -20529,6 +20553,14 @@ _Last updated: 2026-11-24 12:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: receipt is a read-only probe run with synthetic probes on action-time bytes; no branch/push artifacts claimed, none needed. Score 9.0. Why not 9.5: (1) single seat — probe designed, run, and interpreted by one seat; (2) brief read preceded sign-in (the standing claim->read race, owned in the receipt); (3) the bend verdict at the check's m
 
+### ✅ t0703 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Assemble #2555/#2556 mutual-duplicate decision packet (verdict: #2555 proceeds)
+
+**Receipt:** `twelve-lane-receipts/t0703-lane12.md`
+
+**Evidence:** VERIFIED this tick via one batched git ls-remote: #2555 head c67c198568356cd6934e8a2d7cd694a9a1d86e18, #2556 head ba516a02d904f11dcb667154922e247f237c8663, #2557 head 46cffc754dbd02449be43a6b49daa7bd4b42e731 - ALL byte-identical to the receipt's action-time pins six weeks later. NOT PHANTOM. Score 9.0. Why not 9.5: single-seat derivation, no cold s
+
 ### ✅ t0703-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** Assemble the #2555/#2556 mutual-duplicate decision packet (Option A verdict)
@@ -20550,6 +20582,14 @@ _Last updated: 2026-11-24 12:41 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0703-lane12.md`
 
 **Evidence:** Verified: packet file exists in hidden_files/; all three PR heads re-derived via REST byte-identical to the receipt's pins (#2555 c67c1985..., #2556 ba516a02..., #2557 46cffc75...); board sign-in 6160329087 and packet post 6160378414 exist on #2537. Score 9.0. Why not 9.5: single-seat derivation — the verdict deserves a cold second seat; the corpus
+
+### ✅ t0703 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** Independent second-seat verification of t0690 value-ledger seed (5/5 CONFIRM)
+
+**Receipt:** `twelve-lane-receipts/t0703-lane11.md`
+
+**Evidence:** VERIFIED this tick: merge commit 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e exists in the local mirror as a commit (E1 anchor); PR #2551 head now 8f9077e6, consistent with the B-48 repair having landed/continued as the receipt records; E2 numbers re-run live by the lane and reproduced frozen JSON to 4 decimals; tag audit ([measured]/[estimate] bounda
 
 ### ✅ t0703-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
