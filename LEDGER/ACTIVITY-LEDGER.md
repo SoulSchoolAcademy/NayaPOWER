@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-24 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-24 12:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -20581,6 +20581,14 @@ _Last updated: 2026-11-24 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: receipt's merge commit 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e matches the #2533 merge (shared-state + refs/pull/2541/base lineage); B-48 numbers independently confirmed at t0702 (CLEARED); refs/pull/2541/head == de0805407788ed143605ff1a4e98398b0ea74dc9 via git ls-remote matches the claimed pin; all 5 verdict-table rows re-derived from l
 
+### ✅ t0702 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Merge-seat verdict on PR #2541 at live tip (read-only): NEEDS-FRESH-REGEN, superseded by #2565
+
+**Receipt:** `twelve-lane-receipts/t0702-lane8.md`
+
+**Evidence:** VERIFIED this tick: the verdict's factual spine is corroborated live - PR #2565 head 4bdb1f22 matches the t0701 receipt exactly, confirming the superseder the verdict points at exists at the pinned head; #2541's head de080540 cited in the receipt is consistent with the t0701 record. The verdict comments (6160013059) and CI states are not re-verifia
+
 ### ✅ t0702-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** Merge-seat verdict on PR #2541 at live tip (redirect to #2565)
@@ -20602,6 +20610,14 @@ _Last updated: 2026-11-24 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0702-lane8.md`
 
 **Evidence:** Verified via git ls-remote: tip was 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e at pin time; refs/pull/2541/head == de0805407788ed143605ff1a4e98398b0ea74dc9, refs/pull/2565/head == 4bdb1f221aaec31bc41babf848526b3232c2661f — all match the claimed pins. The verdict (redirect, not a ruling) is the right product for an expired brief; the #2565 receipt-gat
+
+### ✅ t0702 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Apply t0694 boot-entry pointer audit 10 stale-pointer instances on fresh branch naya6/boot-pointer-repairs-t0702
+
+**Receipt:** `twelve-lane-receipts/t0702-lane6.md`
+
+**Evidence:** VERIFIED this tick: branch ref naya6/boot-pointer-repairs-t0702 no longer on the remote and no PR was opened (per the receipt, by design), so the pinned remote SHA 6425a090 and tree 5e6c1aa0 cannot be re-proven live this tick - taken on the receipt's contemporaneous ls-remote + tree-match verification recorded at action time. NOT PHANTOM (the recei
 
 ### ✅ t0702-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
 
@@ -20625,6 +20641,14 @@ _Last updated: 2026-11-24 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified via git ls-remote: refs/heads/naya6/boot-pointer-repairs-t0702 == 6425a090b58b4b55dfc3497cb2d0f6760481e63e, exact match to the claimed remote SHA. Before/after checker claims (4 stale -> 2 stale) and per-diff outcomes are on the record but not independently re-run. Score 9.0. Why not 9.5: (1) two APPLIED-WITH-DELTA edits go beyond the audi
 
+### ✅ t0702 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Re-verdict on PR #2551 B-48 fix (read-only): CLEARED, 17-case battery re-run byte-pinned to new head
+
+**Receipt:** `twelve-lane-receipts/t0702-lane3.md`
+
+**Evidence:** VERIFIED this tick: battery instrument hidden_files/battery-b48-cant-t0701-lane1.py exists on disk; PR #2551 still exists (head moved on to 8f9077e6), consistent with the repair having landed/continued; the receipt's pinned head 26b95e9b and tree 288e082a match the t0701 lane-1 receipt exactly (two independent receipts pin the same bytes). The pinn
+
 ### ✅ t0702-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
 **Task:** Re-verdict on PR #2551 (B-48 can't-normalization fix) — CLEARED or STILL-NEEDS-WORK, 17-case adversarial battery re-run
@@ -20646,6 +20670,14 @@ _Last updated: 2026-11-24 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0702-lane3.md`
 
 **Evidence:** Verified via git ls-remote: refs/pull/2551/head == 26b95e9bb930a21201b416467ab7e2a040bca267 == refs/heads/naya5/b48-stance-guard-20261013, exact match to the claimed head; the claimed tree 288e082a9a35284a2652a5c5aacee6e264f364ec could not be independently pinned without a fetch (read-only constraint this tick). The 17/17 battery + 16/17 pre-repair
+
+### ✅ t0701 — Team 7, Team Naya Scorer (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** Merge-seat re-stamp: re-anchor #2541 at live tip, --check clean, 13/13 freshness, open superseding PR #2565
+
+**Receipt:** `twelve-lane-receipts/t0701-lane7.md`
+
+**Evidence:** VERIFIED this tick: refs/pull/2565/head = 4bdb1f221aaec31bc41babf848526b3232c2661f, byte-identical to the receipt's pinned head 6 weeks later. NOT PHANTOM. Score 9.5 - clears 9.5 because the PR head matches the receipt pin exactly live, the 13/13 freshness and --check exit 0 are recorded verbatim, and the Fellow-Bee correction plus #2532 duplicate 
 
 ### ✅ t0701-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.5/10 [VERIFIED]
 
@@ -20698,6 +20730,14 @@ _Last updated: 2026-11-24 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0701-lane4.md`
 
 **Evidence:** Verified: spec sha256 pin db5a4912 re-derived byte-exact by scorer; pair-check-t0701.py + walk-demo dir on disk; review sha c39d50f6 matches; 3-pass scorecard 9.2->9.6 honest with named gaps. Clears 9.5: re-runnable instruments landed, all pins re-derived, D1 erratum mechanically proved not inherited. Kept from 10: no second-seat re-run of walker y
+
+### ✅ t0701 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** B-48 contraction-table repair verification on PR #2551 (one reviewed line + battery 17/17)
+
+**Receipt:** `twelve-lane-receipts/t0701-lane1.md`
+
+**Evidence:** VERIFIED this tick: PR #2551 still exists (refs/pull/2551/head = 8f9077e6, moved on from the receipt head 26b95e9b); branch ref naya5/b48-stance-guard-20261013 no longer on the remote, so the pinned head 26b95e9b and tree 288e082a cannot be re-proven live this tick - taken on the receipt's contemporaneous ls-remote + tree-byte-identity verification
 
 ### ✅ t0701-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -20772,6 +20812,14 @@ _Last updated: 2026-11-24 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0700-lane11.md`
 
 **Evidence:** Substrate survey on disk; MCC falsified to honest stop; preregistered acceptance probe spec shipped. Score 9.5 — why not 10: MTC-v1 battery JSON cited by SHA only; single seat, no second check of the table or probe spec.
+
+### ✅ t0700 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Negation-aware C2b refinement for verifier-registry lint (kill Smith t0682 S2 evasion)
+
+**Receipt:** `twelve-lane-receipts/t0700-lane10.md`
+
+**Evidence:** VERIFIED this tick: candidate file hidden_files/verify-cites-verifier-lint-c2b.py exists, sha16 f6a75505594270dd matches the receipt pin exactly; battery dir battery-t0700-lane10/ present with run-battery.py, c2b-diff.txt and m1-m4 fixtures. NOT PHANTOM. Score 9.5 - clears 9.5 because the artifact bytes match the receipt pin exactly 6 weeks later, 
 
 ### ✅ t0700-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
@@ -60626,6 +60674,24 @@ _Last updated: 2026-11-24 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261124-0434 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: 31 queued briefs attempted, 0 claimed (receipt: 29x exit 7, 2x exit 2)
+
+**Evidence:** VERIFIED first-hand this tick: sweep log brief-queue/claim-sweep-20261124-0434.log exists and lists per-brief results for ALL 31 briefs (29x exit 7 + 2x exit 2 counted from the per-brief lines, matching the receipt exactly - same full-evidence quality as the 0329 log); the two exit-2 briefs are the same pair as prior receipts (brief-gap-gap-gap-gap
+
+### ✅ gate-stall-20261124-0329 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: 31 queued briefs attempted, 0 claimed (receipt: 29x exit 7, 2x exit 2)
+
+**Evidence:** VERIFIED first-hand this tick: sweep log brief-queue/claim-sweep-20261124-0329.log exists and lists per-brief results for ALL 31 briefs (29x exit 7 + 2x exit 2 counted from the per-brief lines, matching the receipt exactly - better evidenced than the summary-only 0118/2309 logs); the two exit-2 briefs are the same pair as prior receipts (brief-gap-
+
+### ✅ gate-stall-20261124-0223 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: 31 queued briefs attempted, 0 claimed (receipt: 29x exit 7, 2x exit 2)
+
+**Evidence:** VERIFIED first-hand this tick: sweep log brief-queue/claim-sweep-20261124-0223.log exists with per-brief ATTEMPT/REFUSED lines for 27 of the 31 briefs (25x exit 7 + 2x exit 2 counted); the 4 without an attempt line are the 3 (b1) datetime briefs (brief-gap-gate-stall-20261026-2230-lane0, brief-gap-gate-stall-20261111-0500-lane0, brief-gap-lane-scor
 
 ### ✅ gate-stall-20261123-1954 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
