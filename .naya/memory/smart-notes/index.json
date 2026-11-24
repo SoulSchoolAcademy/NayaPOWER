@@ -81012,6 +81012,42 @@
         "Calendar",
         "Knowledge"
       ]
+    },
+    {
+      "smart_note_id": "SN-4744",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4744-every-cell-inspected",
+      "slug": "every-cell-inspected",
+      "title": "Every Cell, Inspected",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4744/IB-SMART-NOTE-20261124-sn4744-every-cell-inspected.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4744/IB-SMART-NOTE-20261124-sn4744-every-cell-inspected.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4744/IB-SMART-NOTE-20261124-sn4744-every-cell-inspected.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4744-every-cell-inspected.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T17:59:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "55f19617c0f3b58fbf76013356cfd0f45303d2ed8ee372c9f55adaa11660c6a0",
+      "content_hash": "2cbd10655b57242b26d26fd98efe051dcb10d9fcb7403dbaef218a92750f3ccc",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "ff1458c8e85eedcb114681ceb9df1f124d7ea4d163d479acc4867123f5c0cd78",
+      "one_line": "The Smart Factory is the north star and the Inspector is its standing guard: numbers must be epic because they are everywhere, calendar cells are ruled to the corner, the info eye stays plain and readable — quality swept continuously after every landing, never audited once and trusted.",
+      "topics": [
+        "Distillation",
+        "Design",
+        "Calendar",
+        "Inspection",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -81022,5 +81058,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "bdb30ac5b6ea5f4ba9133d25faf323b269d78e1dcae71d9d3dcbbec09181dea4"
+  "corpus_manifest_hash": "54e8427a5c50b7bb97167dcd265cd348586b8e36db30422b0333bc8e0ce9dd16"
 }
