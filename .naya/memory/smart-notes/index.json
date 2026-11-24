@@ -81120,6 +81120,266 @@
         "Operations",
         "Honor"
       ]
+    },
+    {
+      "smart_note_id": "SN-4671",
+      "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4671-sn4590-cure-lesson",
+      "title": "A Cure That Only Touches the Registry Is Not a Cure",
+      "content_hash": "7b074dbfb2fe53fe4ae622d377a393ea50a7f8814c51282d62c90263b9db6d5c",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4671/IB-SMART-NOTE-20261122-sn4671-sn4590-cure-lesson.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "",
+      "captured_at": "2026-11-23",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 5b155e194fca27c172bd8171035d8914b8ce716c ('SN-4671 A Cure That Only Touches the Registry Is Not a Cure (intelligence-loop run 532)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by Naya 5 cold-retrieve builder run r17 on 2026-11-23 — the tools/check_door_obligation.py --fix derivation replicated, not executed, per the r12 execution-risk notice class — under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "d44e1bd28ee4f5759242c5ad5967314d96663cb8a6b73b6d5b9c3d86476bee9d"
+    },
+    {
+      "smart_note_id": "SN-4672",
+      "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4672-mockup-inspection-why",
+      "title": "The Idea Wasn't the Problem; the Build Was",
+      "content_hash": "1355646c8974e07be26b2e9fff8ee9538ceaed551ba64bddf06e072d900b0844",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4672/IB-SMART-NOTE-20261122-sn4672-mockup-inspection-why.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-23",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 4580cf71a327e645eb928dd23407b2257f4accf1 ('SN-4672 The Idea Wasn't the Problem; the Build Was (intelligence-loop run 532)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by Naya 5 cold-retrieve builder run r17 on 2026-11-23 — the tools/check_door_obligation.py --fix derivation replicated, not executed, per the r12 execution-risk notice class — under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "26aca4cea6997b86043e9cd696b124ea1e18bf30621a98843458dd971cfac5c2"
+    },
+    {
+      "smart_note_id": "SN-4673",
+      "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4673-three-boards-rewrite-text",
+      "title": "Rewrite the Text to Fill All Three Boards",
+      "content_hash": "34bd67e0108c0d42e2ab279d42aecb4c199b89ced3bfe91b66100f53c5d5db92",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4673/IB-SMART-NOTE-20261122-sn4673-three-boards-rewrite-text.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-23",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit fb10903db2d105e191e1d794a5fc05f38356af18 ('SN-4673 Rewrite the Text to Fill All Three Boards (intelligence-loop run 532)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by Naya 5 cold-retrieve builder run r17 on 2026-11-23 — the tools/check_door_obligation.py --fix derivation replicated, not executed, per the r12 execution-risk notice class — under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "73341225251ceea0c6164412cea8ade740e760e0b1ab84f47765f9473e724512"
+    },
+    {
+      "smart_note_id": "SN-4674",
+      "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4674-points-are-reputation",
+      "title": "Points Are Reputation — Do Not Even Raise Money",
+      "content_hash": "61258d62a23439d1a6ed25c98495f870861c2ed9bc43cd8a95e21165d2c48713",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4674/IB-SMART-NOTE-20261122-sn4674-points-are-reputation.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "",
+      "captured_at": "2026-11-23",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit ebe0affd2b565c361b9a6579a5f0c84eafde0a14 ('SN-4674 Points Are Reputation — Do Not Even Raise Money (intelligence-loop run 533)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by Naya 5 cold-retrieve builder run r17 on 2026-11-23 — the tools/check_door_obligation.py --fix derivation replicated, not executed, per the r12 execution-risk notice class — under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "5467ea01b84a0f1b5761a6c97bd024bb2d4009dd15dbdd7850ea64b35ddc7de0"
+    },
+    {
+      "smart_note_id": "SN-4675",
+      "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4675-twelve-elements-approved",
+      "title": "Twelve Elements Approved — Focus Is About, Skills, How It Works",
+      "content_hash": "b7ba7976bea7acd610ce01c532d2c5bf253e0285ced8dea316862cdb4363d48f",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4675/IB-SMART-NOTE-20261122-sn4675-twelve-elements-approved.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "subtopic": "",
+      "captured_at": "2026-11-23",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit b0b27148f8936a5129ae327d29e01741555c5bc1 ('SN-4675 Twelve Elements Approved — Focus Is About, Skills, How It Works (intelligence-loop run 533)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by Naya 5 cold-retrieve builder run r17 on 2026-11-23 — the tools/check_door_obligation.py --fix derivation replicated, not executed, per the r12 execution-risk notice class — under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "900ad7aebe4d34cbb7a7b00b1a6a4a4967ee5828b10e08bb56f854ac0cbcf237"
+    },
+    {
+      "smart_note_id": "SN-4676",
+      "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4676-round-7-feels-solid-make-the-text-bigger",
+      "title": "Round 7 Feels Solid — Make the Text Bigger",
+      "content_hash": "b02c1304c7a9a27445f184bcbb816da807329de440e0182bb8064719e30275be",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4676/IB-SMART-NOTE-20261122-sn4676-round-7-feels-solid-make-the-text-bigger.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-23",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 11780b1f2665800e01fd6ea9dbd99cf95b33626e ('SN-4676 Round 7 Feels Solid — Make the Text Bigger (intelligence-loop run 535)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by Naya 5 cold-retrieve builder run r17 on 2026-11-23 — the tools/check_door_obligation.py --fix derivation replicated, not executed, per the r12 execution-risk notice class — under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "526e39c1983f7892ed27dce555042445385fa4a5549dffb95422b0bec15f7f91"
+    },
+    {
+      "smart_note_id": "SN-4677",
+      "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4677-text-sizes-are-probably-ok",
+      "title": "Text Sizes Are Probably OK — His Phone Verdict Softens the Bigger-Text Order",
+      "content_hash": "2cc8d2c5f2bb636991f10550791c033b194322cfcd80b4fcea496077157ffdae",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4677/IB-SMART-NOTE-20261122-sn4677-text-sizes-are-probably-ok.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-23",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 8adf7f6916ac971e00f3a1f0d937daf4cc99a70c ('SN-4677 Text Sizes Are Probably OK (intelligence-loop run 536)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by Naya 5 cold-retrieve builder run r17 on 2026-11-23 — the tools/check_door_obligation.py --fix derivation replicated, not executed, per the r12 execution-risk notice class — under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "64159acb2d43a5b5e23fdd06c33a53ba979020055cc6f375d3186d82501405af"
+    },
+    {
+      "smart_note_id": "SN-4678",
+      "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4678-one-button-agreement",
+      "title": "One Button: \"Agreement\"",
+      "content_hash": "da11852d253909ce8af72a96e303ef6cee317adf60730be56a43d3944af99041",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4678/IB-SMART-NOTE-20261122-sn4678-one-button-agreement.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-23",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 3358b69254c4a1f275b1cdfd240c0be8f904bf11 ('SN-4678 One Button: Agreement (intelligence-loop run 536)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by Naya 5 cold-retrieve builder run r17 on 2026-11-23 — the tools/check_door_obligation.py --fix derivation replicated, not executed, per the r12 execution-risk notice class — under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "83273d3b6e7b8efa024f69d5fc274e4eda303d2eade9ec381a0c9de693639461"
+    },
+    {
+      "smart_note_id": "SN-4679",
+      "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4679-slow-white-twelve-names",
+      "title": "Slow, White, the Twelve Names",
+      "content_hash": "75335c2cfbe8f351cdb0d8ecfef8def5ca44fcfeb9d315fd829cf5e473812cce",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4679/IB-SMART-NOTE-20261122-sn4679-slow-white-twelve-names.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "subtopic": "",
+      "captured_at": "2026-11-23",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 7275aea009c4f923320bc33e33f98dea5ef421d8 ('SN-4679 Slow, White, the Twelve Names (intelligence-loop run 536)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by Naya 5 cold-retrieve builder run r17 on 2026-11-23 — the tools/check_door_obligation.py --fix derivation replicated, not executed, per the r12 execution-risk notice class — under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "35e1d532fcf40085efa9dd41a36285ee6b439882d29e6cd68c8c230cf7dc9235"
+    },
+    {
+      "smart_note_id": "SN-4680",
+      "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4680-i-am-naya",
+      "title": "\"I Am Naya\" — No Bullseye Guarantee",
+      "content_hash": "dbce8d233902da0bf4210957148eeb955ca55ed3d3997af8a2f78aeaba71ccba",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4680/IB-SMART-NOTE-20261122-sn4680-i-am-naya.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-23",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 5be29c80ab32e413fe88a70bee9f5313bf715640 ('SN-4680 I Am Naya (intelligence-loop run 536)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by Naya 5 cold-retrieve builder run r17 on 2026-11-23 — the tools/check_door_obligation.py --fix derivation replicated, not executed, per the r12 execution-risk notice class — under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "7d73f8f966c0568cd3edeaa798503bb20e1ae05351e034440eb208b39195f31d"
+    },
+    {
+      "smart_note_id": "SN-4681",
+      "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4681-front-door-first",
+      "title": "The Front Door Loads First, For Everyone",
+      "content_hash": "3987778291597dd0af87eaa00058df282283e08881f017512736088f593c1b32",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4681/IB-SMART-NOTE-20261122-sn4681-front-door-first.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-23",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit 527f71a375b3c8e702434d6b431f2cbdc4a3a6e9 ('SN-4681 The Front Door Loads First, For Everyone (intelligence-loop run 536)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by Naya 5 cold-retrieve builder run r17 on 2026-11-23 — the tools/check_door_obligation.py --fix derivation replicated, not executed, per the r12 execution-risk notice class — under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "22be3a967dcb535711fe099c3b235cf5085eae6547d8dea14140191906f1331f"
+    },
+    {
+      "smart_note_id": "SN-4682",
+      "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4682-our-not-your",
+      "title": "\"Our\", Not \"Your\" — Change Only What He Told You",
+      "content_hash": "199fcdcd572ba4399b2fbaac0df05556998816eb023c24fc88ed22bcbc9637a9",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4682/IB-SMART-NOTE-20261122-sn4682-our-not-your.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-23",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit db04dd45c5f34d188c6d4012819294d5d62d08fd ('SN-4682 Our, Not Your (intelligence-loop run 536)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by Naya 5 cold-retrieve builder run r17 on 2026-11-23 — the tools/check_door_obligation.py --fix derivation replicated, not executed, per the r12 execution-risk notice class — under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "81d51b4655028f9b08f09428ac935b0e9915711bd366cb40cedd973062102365"
+    },
+    {
+      "smart_note_id": "SN-4683",
+      "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4683-board-fits-whole",
+      "title": "A Board Always Fits Whole",
+      "content_hash": "6dae31554f4340fb0eafa79bcb05afff57ac4f91bc3d59ece191850e85171c6a",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4683/IB-SMART-NOTE-20261122-sn4683-board-fits-whole.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "subtopic": "",
+      "captured_at": "2026-11-23",
+      "lifecycle_state": "ACTIVE",
+      "provenance": {
+        "ingestion": "canonical-reconstruction",
+        "note": "published directly as a BRAIN projection in commit e1d8a8abcbdfb11020742c52242e1054bf2a3402 ('SN-4683 A Board Always Fits Whole (intelligence-loop run 536)') with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by Naya 5 cold-retrieve builder run r17 on 2026-11-23 — the tools/check_door_obligation.py --fix derivation replicated, not executed, per the r12 execution-risk notice class — under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
+      },
+      "page_hash": "0d5a0cba7471e27645831e26565ab1c7a4fd4342ba1bb58c5befc5eb8b4df9b6"
     }
   ],
   "sequence_policy": {
@@ -81130,5 +81390,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "e1a9d5cfe1efab3531e5e661192e4907a25607da024682bf7f839b400a612480"
+  "corpus_manifest_hash": "59bad669859a4ef1da8ee79410ce793f936587c171f9280bd8889ac71085c681"
 }

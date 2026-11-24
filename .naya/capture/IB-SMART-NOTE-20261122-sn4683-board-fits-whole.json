@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4683",
+ "intelligence": {
+  "title": "A Board Always Fits Whole",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4683-board-fits-whole",
+  "smart_note_id": "SN-4683",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4683/IB-SMART-NOTE-20261122-sn4683-board-fits-whole.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by Naya 5 cold-retrieve builder run r17 on 2026-11-23, replicating the tools/check_door_obligation.py --fix derivation (same sections, same hashes; the tool itself was not executed, per the r12 execution-risk notice class). No runtime provenance invented.",
+  "ingested_at": "2026-11-23",
+  "essence": "",
+  "human_view": "Think of it like pages in a book: every page fits inside the book's cover, whole — nothing spills off the edge. If a story is too long for one page, you do not squeeze it smaller or let it run off the edge — you turn the page, and the story continues on the next one. And the little red mark sits at the bottom of every page, in the same place, every time — so you always know where you are.",
+  "simple_view": "Every board must fit PERFECT on the screen! Whole! Nothing cut off! And if it won't fit, make another board behind it and just click to the next one! And the little red N sits right at the bottom of every board!",
+  "grandma_view": "It's like this, love — every board must fit perfect on the screen, dear, whole, nothing cut off! And if it won't fit, you make another board behind it, love, and just click to the next one! And the little red N sits right at the bottom of every board, dear, just above the edge!",
+  "naya_view": "\"Really good\" with one defect class is a page that is almost done — and the defect class is the whole job now: a board that does not fit perfect on the screen is a board the reader cannot read whole, and a reader who cannot read whole cannot judge the page. The rule is absolute — ALWAYS fits perfect — because a rule with exceptions is a rule the next builder negotiates around. The overflow answer is the deeper lesson: do not shrink the words to fit, do not let them spill — make another board behind, and let the reader click to it. That is why we learn to write inward instead of across/down: the board is the unit, the click is the turn of the page, and a story can have as many boards as it needs. The red N pinned at the bottom of every board is the same kind of law — one mark, one place, every board — so the eye always knows where the board ends. The exact offset was cut off by the flush and is not invented here; the intent is recorded and the offset is confirmed with him on the next pass.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4683",
+   "title": "A Board Always Fits Whole",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4683/IB-SMART-NOTE-20261122-sn4683-board-fits-whole.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-23 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4683/IB-SMART-NOTE-20261122-sn4683-board-fits-whole.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "e1d8a8abcbdfb11020742c52242e1054bf2a3402"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

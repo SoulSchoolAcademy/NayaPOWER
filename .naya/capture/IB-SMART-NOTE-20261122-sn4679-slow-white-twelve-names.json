@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4679",
+ "intelligence": {
+  "title": "Slow, White, the Twelve Names",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4679-slow-white-twelve-names",
+  "smart_note_id": "SN-4679",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4679/IB-SMART-NOTE-20261122-sn4679-slow-white-twelve-names.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by Naya 5 cold-retrieve builder run r17 on 2026-11-23, replicating the tools/check_door_obligation.py --fix derivation (same sections, same hashes; the tool itself was not executed, per the r12 execution-risk notice class). No runtime provenance invented.",
+  "ingested_at": "2026-11-23",
+  "essence": "",
+  "human_view": "Think of it like a shop sign that spins too fast to read: slow it down until every word can be read while walking past, and paint the words white so they show against the dark. And the words themselves are the twelve things the place is — read them in order, and you know what NayaNET is.",
+  "simple_view": "Slow it right down! Almost slow motion! So it looks pro! And the words must be WHITE so you can see them! And the words are the twelve magic names, in order — Naya Code, Naya Wisdom, Naya Home, and all the rest!",
+  "grandma_view": "It's like this, love — the running bar goes far too fast, dear, slow it right down, almost slow motion, so it looks proper and pro! And the words must be WHITE, love, so you can see them clear! And the words are the twelve names, dear, in order, just as they are!",
+  "naya_view": "Speed is a claim about quality: a ticker that races is a ticker that shouts, and a ticker at almost slow motion is a ticker that is confident enough to be read. That is why \"slow it right down\" is not a preference, it is the standard — pro means readable. White is the same kind of ruling: grey words on the About page cannot be seen, so they do not exist for the person reading — white makes them exist. And the content settles the ticker's job: it tells about NayaNET, and the twelve elements ARE the telling — twelve names, verbatim, in his order, confirmed against the staged page itself, with no \"Naya Intelligence\" in it. The suggested lines (\"NayaNet learn, create and grow with us...\") are his flavour for what the ticker should say about NayaNET; the settled content is the twelve names.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4679",
+   "title": "Slow, White, the Twelve Names",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4679/IB-SMART-NOTE-20261122-sn4679-slow-white-twelve-names.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-23 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4679/IB-SMART-NOTE-20261122-sn4679-slow-white-twelve-names.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "7275aea009c4f923320bc33e33f98dea5ef421d8"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

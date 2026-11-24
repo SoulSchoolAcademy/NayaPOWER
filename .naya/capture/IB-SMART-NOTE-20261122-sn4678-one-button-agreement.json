@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4678",
+ "intelligence": {
+  "title": "One Button: \"Agreement\"",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4678-one-button-agreement",
+  "smart_note_id": "SN-4678",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4678/IB-SMART-NOTE-20261122-sn4678-one-button-agreement.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by Naya 5 cold-retrieve builder run r17 on 2026-11-23, replicating the tools/check_door_obligation.py --fix derivation (same sections, same hashes; the tool itself was not executed, per the r12 execution-risk notice class). No runtime provenance invented.",
+  "ingested_at": "2026-11-23",
+  "essence": "",
+  "human_view": "Think of it like the front door of a house: one door, clearly labelled, and behind it a hallway with every room's door in plain view. Not three doors with clever names — one door that says what it is, and a hallway where you pick the room you want. The legal pages are rooms that already exist; they just need to be furnished like the rest of the house.",
+  "simple_view": "One button! Just one! And it says \"Agreement\"! Tap it and you see a list of ALL the law pages — the oath, the laws, the rules — and you can scroll and pick the one you want! And every law page looks just like the other pages, with three boards!",
+  "grandma_view": "It's like this, love — one button, dear, just one, and it says \"Agreement\"! Tap it and there's a lovely list of all the law pages, love — the oath, the laws, the rules — and you scroll and pick the one you want, dear! And every law page is filled out proper, just like the other pages, in three boards!",
+  "naya_view": "A footer that asks \"What is this?\" makes the visitor do the work of figuring out what the button is. A button that says \"Agreement\" tells them before they tap. That is the whole ruling in one line: the label is the promise, and the promise is the agreement. Behind it, the table of contents does the same job for the legal pages — every page that was there before, in one scrollable list, each page filled out and built like the other pages, three boards each — so the law reads like the rest of the system instead of a forgotten annex. And the sequencing is part of the ruling: one lane, one round at a time, so the footer round waits for the bigger-text round to finish on the same two pages, comes back staged, and never goes live without his tap.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4678",
+   "title": "One Button: \"Agreement\"",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4678/IB-SMART-NOTE-20261122-sn4678-one-button-agreement.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-23 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4678/IB-SMART-NOTE-20261122-sn4678-one-button-agreement.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "3358b69254c4a1f275b1cdfd240c0be8f904bf11"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

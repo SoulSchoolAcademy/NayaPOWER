@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4677",
+ "intelligence": {
+  "title": "Text Sizes Are Probably OK — His Phone Verdict Softens the Bigger-Text Order",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4677-text-sizes-are-probably-ok",
+  "smart_note_id": "SN-4677",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4677/IB-SMART-NOTE-20261122-sn4677-text-sizes-are-probably-ok.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by Naya 5 cold-retrieve builder run r17 on 2026-11-23, replicating the tools/check_door_obligation.py --fix derivation (same sections, same hashes; the tool itself was not executed, per the r12 execution-risk notice class). No runtime provenance invented.",
+  "ingested_at": "2026-11-23",
+  "essence": "",
+  "human_view": "Think of it like trying on a jacket: in the shop he said \"make it bigger\" — then he wore it, walked around in it, and said \"actually, this fits fine.\" The later verdict, from wearing it, is the one that stands. The bigger-text round was dispatched on the first verdict; the captain decides whether it still runs, stands down, or narrows to the laptop view only — the note records the verdict, it does not dispatch.",
+  "simple_view": "He looked at the page on his phone himself! The words are okay! He can see them! On a laptop they are almost a little small, but on his phone they are fine! And the tap-the-board trick — he tried it for the very first time and said \"this is really good actually\"!",
+  "grandma_view": "It's like this, love — he looked at it himself on his phone, dear, and the words are fine, love, he can see them easy! On the laptop they're almost a little small, dear, but the page is actually pretty good as it is! And he tried tapping the board to see the next one, love — the very first time — and he loved it!",
+  "naya_view": "A verdict given from wearing the thing beats a verdict given from describing it. The first order — small text quite a bit bigger — came from his memory of the page; the softened verdict came from his phone in his hand, on the page itself. That is why the later word stands: the phone is his seat, and the phone says the size is probably okay. The laptop caveat stays attached — almost a little small there — so the next round, if it runs at all, knows exactly where the remaining gap is. And the swap question stays open beside it: he wants to try swapping a slide out for an image or a video, and the button exists — a tiny round button in the top corner of each board, hidden unless signed in as a member — but he had not yet tried it signed-in when the log was flushed. His own test closes that question, not our claim.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4677",
+   "title": "Text Sizes Are Probably OK — His Phone Verdict Softens the Bigger-Text Order",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4677/IB-SMART-NOTE-20261122-sn4677-text-sizes-are-probably-ok.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-23 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4677/IB-SMART-NOTE-20261122-sn4677-text-sizes-are-probably-ok.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "8adf7f6916ac971e00f3a1f0d937daf4cc99a70c"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

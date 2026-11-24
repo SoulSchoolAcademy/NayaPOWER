@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4682",
+ "intelligence": {
+  "title": "\"Our\", Not \"Your\" — Change Only What He Told You",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4682-our-not-your",
+  "smart_note_id": "SN-4682",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4682/IB-SMART-NOTE-20261122-sn4682-our-not-your.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by Naya 5 cold-retrieve builder run r17 on 2026-11-23, replicating the tools/check_door_obligation.py --fix derivation (same sections, same hashes; the tool itself was not executed, per the r12 execution-risk notice class). No runtime provenance invented.",
+  "ingested_at": "2026-11-23",
+  "essence": "",
+  "human_view": "Think of it like editing a letter someone wrote about their family: \"your\" makes it sound like it belongs to the reader alone; \"our\" makes it belong to all of us. The letter stays the same — only the little word on the envelope changes. And the rule for the editor is simple: change what you were asked to change, and leave the rest exactly as it was. An editor who rewrites the whole letter was not asked to rewrite the letter.",
+  "simple_view": "\"Our\" not \"your\"! It's OUR motto! OUR vision! OUR goal! OUR mission! What do WE love? We love seeing YOU succeed with Naya! And the words inside stay the same — only the titles change! And only change what he told you to change — nothing else!",
+  "grandma_view": "It's like this, love — it's OUR motto, dear, OUR vision, OUR goal, OUR mission! What do WE love? We love seeing you succeed with Naya, love! And the words inside stay just as they are, dear — only the titles change! And you only change what he told you to change, love — nothing else!",
+  "naya_view": "\"Your\" points the page at the reader; \"our\" points it at all of us — and the page is about all of us, so the titles were pointing the wrong way. That is the whole clean-up: seven titles, one word each, the text untouched. The values text is fine — \"Do no harm ever\" — and the ruling says so explicitly, so nobody \"improves\" it. And the meta-rule is the law that governs every round after this one: change what he told you to change, and do NOT change what he did not tell you to change. A round that changes what it was not told to change is not thoroughness — it is disobedience dressed as initiative, and it is how a page he liked comes back with words he never asked for. The title round was still building when the log was flushed — his phone still showed \"What is your vision?\" — so this note records the order, not the delivery. His eye on the updated titles is still owed.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4682",
+   "title": "\"Our\", Not \"Your\" — Change Only What He Told You",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4682/IB-SMART-NOTE-20261122-sn4682-our-not-your.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-23 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4682/IB-SMART-NOTE-20261122-sn4682-our-not-your.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "db04dd45c5f34d188c6d4012819294d5d62d08fd"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

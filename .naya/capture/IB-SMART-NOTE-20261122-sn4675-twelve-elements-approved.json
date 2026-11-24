@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4675",
+ "intelligence": {
+  "title": "Twelve Elements Approved — Focus Is About, Skills, How It Works",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4675-twelve-elements-approved",
+  "smart_note_id": "SN-4675",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4675/IB-SMART-NOTE-20261122-sn4675-twelve-elements-approved.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by Naya 5 cold-retrieve builder run r17 on 2026-11-23, replicating the tools/check_door_obligation.py --fix derivation (same sections, same hashes; the tool itself was not executed, per the r12 execution-risk notice class). No runtime provenance invented.",
+  "ingested_at": "2026-11-23",
+  "essence": "",
+  "human_view": "Think of it like a book with twelve chapters — he read them all, and they all work, so the book gets its own shelf. But the shelf is not the job today. Today the job is three other rooms: About, Skills, and How It Works. And How It Works is a button that opens the School — eighteen pictures, three at a time across the page.",
+  "simple_view": "All twelve chapters are good! The whole book works! It gets its own special page! But right now we work on three other things — About, Skills, and How It Works! And How It Works is a button — you click it and the School opens, with eighteen pictures!",
+  "grandma_view": "It's like this, love — all twelve chapters work, dear, every one of them, so the book gets its own page, love! But that's not today's work, dear — today we work on About, and Skills, and How It Works! And How It Works is the button, love — you click it and the School opens, eighteen pictures, three by three!",
+  "naya_view": "Approval and focus are two different rulings, and this call made both. The twelve elements are done — approved, authorized for their own address, icon on the main page, the end returning to the hub. That closes the chapters as work. But \"done and approved\" is not \"work on this now\" — the focus ruling says the opposite: About, Skills, and How It Works are where we are working, and the twelve elements are not. The open question inside the approval must stay open: he said the end goes back into the hub, while the round-2 build proves the end returns to the portal — until he confirms which he means, neither destination is treated as settled. And the button ruling settles a naming question that had been drifting: it is called \"How It Works\", and it opens the 18-image School build — the School of Naya IS the How It Works page content, one third, one third, one third.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4675",
+   "title": "Twelve Elements Approved — Focus Is About, Skills, How It Works",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4675/IB-SMART-NOTE-20261122-sn4675-twelve-elements-approved.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-23 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4675/IB-SMART-NOTE-20261122-sn4675-twelve-elements-approved.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "b0b27148f8936a5129ae327d29e01741555c5bc1"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

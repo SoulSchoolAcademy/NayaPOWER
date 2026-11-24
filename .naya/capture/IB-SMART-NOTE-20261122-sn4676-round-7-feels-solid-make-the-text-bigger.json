@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4676",
+ "intelligence": {
+  "title": "Round 7 Feels Solid — Make the Text Bigger",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4676-round-7-feels-solid-make-the-text-bigger",
+  "smart_note_id": "SN-4676",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4676/IB-SMART-NOTE-20261122-sn4676-round-7-feels-solid-make-the-text-bigger.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by Naya 5 cold-retrieve builder run r17 on 2026-11-23, replicating the tools/check_door_obligation.py --fix derivation (same sections, same hashes; the tool itself was not executed, per the r12 execution-risk notice class). No runtime provenance invented.",
+  "ingested_at": "2026-11-23",
+  "essence": "",
+  "human_view": "Think of it like a poster on a phone — the words are there, the layout is solid, but the small print is too small to read comfortably. He likes the poster. He just wants the words bigger. And bigger words have to still fit on the poster — every board whole, on the phone and on the laptop, before it comes back to him.",
+  "simple_view": "The page feels good! He likes it! But the little words are too little! Make them bigger — much bigger — so he can read them easy on his phone! And make sure they still fit — all the words, on every board!",
+  "grandma_view": "It's like this, love — the page is nearly there, dear, it feels solid! But the small words are too small to read easy, love — make them bigger, quite a bit bigger! And check they still fit whole on every board, dear — on the phone and on the laptop — before it comes back to him!",
+  "naya_view": "\"Close to good\" is a verdict with a condition, and the condition is specific: the small text is too small, on the phone, at 17 — and he wants it quite a bit bigger. The scale is now recorded as the baseline — headlines 25, sub-headlines 19, small text 17 — so the next round's growth is measured against numbers, not guessed. And the gate is the same as every round: bigger words must still fit whole on every board, desktop and phone, proven before it reaches his eye — because a board that overflows after growing is not bigger text, it is a broken board. His eye is the verdict, and his eye is on mobile.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4676",
+   "title": "Round 7 Feels Solid — Make the Text Bigger",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4676/IB-SMART-NOTE-20261122-sn4676-round-7-feels-solid-make-the-text-bigger.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-23 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4676/IB-SMART-NOTE-20261122-sn4676-round-7-feels-solid-make-the-text-bigger.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "11780b1f2665800e01fd6ea9dbd99cf95b33626e"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

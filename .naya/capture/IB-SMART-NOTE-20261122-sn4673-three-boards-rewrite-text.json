@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4673",
+ "intelligence": {
+  "title": "Rewrite the Text to Fill All Three Boards",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4673-three-boards-rewrite-text",
+  "smart_note_id": "SN-4673",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4673/IB-SMART-NOTE-20261122-sn4673-three-boards-rewrite-text.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by Naya 5 cold-retrieve builder run r17 on 2026-11-23, replicating the tools/check_door_obligation.py --fix derivation (same sections, same hashes; the tool itself was not executed, per the r12 execution-risk notice class). No runtime provenance invented.",
+  "ingested_at": "2026-11-23",
+  "essence": "",
+  "human_view": "Think of it like three picture frames on a wall, waiting for photos that haven't been taken yet. You don't leave two of them nearly empty — you fill all three with beautiful writing now, so the wall looks finished today, and the photos can swap in later. Squeezing the old paragraph across three frames leaves each one thin and sad. Write it fresh, for three frames, so every frame is full.",
+  "simple_view": "One big board is boring! Three boards are better — but only if every board is FULL! Don't just stretch the old words thin across three boards! Write NEW words that fill all three boards and sound amazing!",
+  "grandma_view": "It's like this, love — one big board is boring, dear, but three thin boards are worse! Don't just stretch the old words across them, love — write it fresh so every board is full and sounds amazing, dear! The boards are waiting for pictures one day, love, but today they hold beautiful words!",
+  "naya_view": "Reflow is not rewrite. Fitting the old text into three boards produces three thin boards — and thin boards don't look right, which is exactly the failure the three-board standard was meant to fix. The order is to write for the frame: three boards, each full, each sounding amazing, 10-star output. The structure exists for the person who has nothing yet — spots for their images and videos later, text filling those spots now. And the words are a draft for his eye, never final until he says word perfect. A board that is thin is a board that was fitted, not written.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4673",
+   "title": "Rewrite the Text to Fill All Three Boards",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4673/IB-SMART-NOTE-20261122-sn4673-three-boards-rewrite-text.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-23 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/DESIGN/SN-4673/IB-SMART-NOTE-20261122-sn4673-three-boards-rewrite-text.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "fb10903db2d105e191e1d794a5fc05f38356af18"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

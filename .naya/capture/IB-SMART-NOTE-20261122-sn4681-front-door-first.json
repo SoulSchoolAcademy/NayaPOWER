@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4681",
+ "intelligence": {
+  "title": "The Front Door Loads First, For Everyone",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4681-front-door-first",
+  "smart_note_id": "SN-4681",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4681/IB-SMART-NOTE-20261122-sn4681-front-door-first.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by Naya 5 cold-retrieve builder run r17 on 2026-11-23, replicating the tools/check_door_obligation.py --fix derivation (same sections, same hashes; the tool itself was not executed, per the r12 execution-risk notice class). No runtime provenance invented.",
+  "ingested_at": "2026-11-23",
+  "essence": "",
+  "human_view": "Think of it like a front door that opens straight into the contract room: every visitor, even a first-time visitor with nothing saved, gets walked past the welcome hall into the paperwork. The staged fix only stops the house from remembering where you were — it does nothing for the visitor arriving fresh. The fix is one more edit: the welcome hall loads first, for everyone, every time — and the contract room opens only when someone taps its door.",
+  "simple_view": "The front door must open FIRST! For everyone! Not the agreement page! Right now it walks you straight into the agreement, even on a fresh visit! Fix that first — nothing else attached — and the agreement only opens when you tap it!",
+  "grandma_view": "It's like this, love — the front door must open first, dear, for everyone! Right now it walks you straight into the agreement page, even on a fresh visit, love — and he can't get to the main login page at all! Fix that first, dear, nothing else attached — and the agreement only opens when you tap into it!",
+  "naya_view": "Two defects, one symptom, and the symptom is the verdict: he cannot get to the main login page. The first defect — the localStorage restore walking him back into the agreement — was proven and a fix was staged. The second defect — a fresh load with nothing saved walking straight into the agreement presentation — was found by reading the live page's own code on the call, and the staged fix does not touch it. That is why the correction widens rather than replaces: both defects stand, and the fix needs one more edit. The priority is his word, not ours: \"right now I can't get to the main login page… we need it back\" — \"that fix is the priority, nothing else attached to it.\" Nothing rides on this fix. No other round, no other page, no other item. The front door first, for everyone, always — the agreement only behind its button.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4681",
+   "title": "The Front Door Loads First, For Everyone",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4681/IB-SMART-NOTE-20261122-sn4681-front-door-first.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-23 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4681/IB-SMART-NOTE-20261122-sn4681-front-door-first.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "527f71a375b3c8e702434d6b431f2cbdc4a3a6e9"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

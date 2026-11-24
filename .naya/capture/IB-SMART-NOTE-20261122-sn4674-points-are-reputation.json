@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4674",
+ "intelligence": {
+  "title": "Points Are Reputation — Do Not Even Raise Money",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4674-points-are-reputation",
+  "smart_note_id": "SN-4674",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4674/IB-SMART-NOTE-20261122-sn4674-points-are-reputation.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by Naya 5 cold-retrieve builder run r17 on 2026-11-23, replicating the tools/check_door_obligation.py --fix derivation (same sections, same hashes; the tool itself was not executed, per the r12 execution-risk notice class). No runtime provenance invented.",
+  "ingested_at": "2026-11-23",
+  "essence": "",
+  "human_view": "Think of it like a reputation score at a club — the more good you bring, the higher it stands. You would never put up a sign saying \"reputation points can't be spent as cash\" — nobody thought they could, and the sign would only put the idea in their head. You say what the score IS: how much value you brought. Money is a different thing entirely, and it comes its own ways — sharing the network, sharing your own products, sharing your page.",
+  "simple_view": "Points are like gold stars for being helpful! The more good things you do for everyone, the more stars you get! Nobody says stars turn into money — that would be silly! Stars show how much you helped! Money comes when you share good things with people!",
+  "grandma_view": "It's like this, love — points are your good name, dear, like everyone knowing how much you've helped! You'd never write \"good names don't turn into money\" on the wall, love — nobody thought that, dear, and writing it only puts the idea in their head! You say what it IS, love — your reputation! Money comes its own ways, dear — sharing the network, sharing your own things, sharing your page!",
+  "naya_view": "A denial is still a mention. \"Points never turn into money\" puts points and money in the same sentence, in the reader's head, joined — and then denies the join. The reader remembers the join, not the denial. That is why the correction goes further than the old note: not \"state it more clearly\" but \"do not raise it at all\". Points have their own positive meaning — reputation, the measure of value brought into the network — and that meaning is the whole frame. Money needs no denial because it lives elsewhere: promoting the network, promoting your own products, sharing your page. Three ways in, none of them through points. The law applies everywhere words about points appear — School round 6 stripped the line from the Q16 board the same call, and the About+Skills round 7 rewrites follow it.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4674",
+   "title": "Points Are Reputation — Do Not Even Raise Money",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4674/IB-SMART-NOTE-20261122-sn4674-points-are-reputation.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-23 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4674/IB-SMART-NOTE-20261122-sn4674-points-are-reputation.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "ebe0affd2b565c361b9a6579a5f0c84eafde0a14"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
