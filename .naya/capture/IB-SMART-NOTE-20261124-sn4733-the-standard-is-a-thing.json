@@ -1,0 +1,95 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-4733",
+ "title": "The Standard Is a Thing",
+ "slug": "the-standard-is-a-thing",
+ "topic": "DESIGN",
+ "category": "DESIGN",
+ "kind": "intelligent-block",
+ "registered_by": "naya-resolve",
+ "directed_by": "Shawn Vibert",
+ "created_at": "2026-11-24T17:51:00Z",
+ "tone": "purple",
+ "icon": "◆",
+ "intelligence": {
+  "essence": "A standard you can point at beats a standard you can only describe. The Hub buttons are the standard — sharp, motion, active states, layers, depth — not a paragraph about buttons: that build, those buttons, judged against everything future. The certificate shows the current certificate, the name elevated and almost glowing on black, never an outdated one kept for relevance. The Smart Note has an official format — nutshell lit in silver, then Child, then Grandma, then What It Means — and the nutshell is the human note; nothing is said twice. A Naya Note is intelligence distilled to its essence, beautiful, dated, timed, organized, kept in the Smart Vault. The bottom bar mirrors Personal exactly — same tiles, same order — folds down when you scroll, and its middle stays white. Color is judged by the eye, not the hex: if two neighbors read the same, they are the same. The orbit comes back to all six buttons because the older buttons were nicer. Flatness fails at the zoom. And the feed speaks the house language: love, like, ten stars — never five.",
+  "human_view": "When we say 'make it like the standard', there is a real thing to point at — the buttons on the Hub that you already approved. Your certificate always shows your current one, beautifully raised. Notes arrive in one clear format you can learn once, and the bar at the bottom of every page is the same familiar bar, which politely folds away while you read.",
+  "child_view": "It's like having one perfect cookie cutter: every new cookie is checked against it. If a cookie comes out flat or squished, it goes back. And the stars you give things go all the way to ten, because ten is our number.",
+  "grandma_view": "There is one approved example of how things should look, and everything new is compared to it — no guessing, no drift. Your certificate is always the current one, never last year's left in the frame. The writing comes in a tidy, familiar order, and nothing important is said twice.",
+  "ai_view": "Pointable-standard rules distilled from SN-3135..SN-3144: (1) the certificate surface shows the CURRENT certificate only; the name treatment is elevated, raised, near-glowing on black. (2) The official Smart Note format: nutshell (silver-lit headline) → Child Note → Grandma Note → What It Means; the nutshell IS the human note — no separate human note, nothing twice. (3) A Naya Note = a thing's essence and value, beautifully formatted, noted/saved/dated/timed/organized in the Smart Vault, shareable in NayaNET. (4) The Hub buttons are the standard: every future button is judged against that build, not against a description. (5) The bottom bar mirrors Personal (same glyphs, colors, order), folds down on scroll; the tile middle stays white. (6) Color separation is judged by the eye: adjacent steps that read identical are identical, whatever the hex says. (7) Restore what was nicer verbatim — the slow orbit returns to all six bottom buttons; never design a third version. (8) Flatness is a defect wherever it is; the test is the zoom — if zooming disappoints, it isn't done. (9) The feed post template: love, like, ten stars (the house number), comment — stars light up; never a five-star cap.",
+  "what_it_means": "Taste becomes transferable when it is embodied. This decade converts one evening of 'that one — like that' into durable law: an approved build as the measuring instrument, a format as the container, and the eye — his, then the zoom's — as the court that outranks every table of values.",
+  "whats_inside": [
+   "The certificate — current, not outdated; the name elevated on black (SN-3135)",
+   "The Smart Note format — the official language; the nutshell is the human note (SN-3136)",
+   "What a Naya Note is — essence, beauty, the Smart Vault (SN-3137)",
+   "The Hub buttons are the standard — a thing, not a description (SN-3138)",
+   "The bottom bar mirrors Personal; color separation by the eye; the orbit returns; no flatness; the feed template in ten stars (SN-3139, SN-3140, SN-3141, SN-3142, SN-3143, SN-3144)"
+  ],
+  "topics": [
+   "Distillation",
+   "Design",
+   "Craft",
+   "Honor",
+   "Knowledge"
+  ]
+ },
+ "page": {
+  "distills": {
+   "batch": 13,
+   "of": 100,
+   "covers": [
+    {
+     "sn": "SN-3135",
+     "title": "The Certificate — Current, Not Outdated"
+    },
+    {
+     "sn": "SN-3136",
+     "title": "The Smart Note Format — The Official Language"
+    },
+    {
+     "sn": "SN-3137",
+     "title": "What a Naya Note Is — And the Block Bottom, Warmer"
+    },
+    {
+     "sn": "SN-3138",
+     "title": "The Hub Buttons Are the Standard"
+    },
+    {
+     "sn": "SN-3139",
+     "title": "The Bottom Bar — Mirror Personal, Fold Down, White in the Middle, Calendar for the Day"
+    },
+    {
+     "sn": "SN-3140",
+     "title": "The Day View, Even Better — v18"
+    },
+    {
+     "sn": "SN-3141",
+     "title": "Color Separation — Adjacent Steps Must Read as Different Colors"
+    },
+    {
+     "sn": "SN-3142",
+     "title": "The Orbit Is Back on All Six Bottom Buttons"
+    },
+    {
+     "sn": "SN-3143",
+     "title": "No Flatness — All the Way Through"
+    },
+    {
+     "sn": "SN-3144",
+     "title": "The Feed Post Template — Love, Like, Stars, Comment"
+    }
+   ]
+  },
+  "machine": "1) Only the current certificate renders. 2) Note format is fixed: nutshell → child → grandma → meaning; zero repetition. 3) Standards are artifacts: judge against the named approved build. 4) One bottom bar everywhere (Personal's), fold-on-scroll. 5) Color verdicts by eye/pixel-sample, never hex alone. 6) Nicer-old beats newer: restore verbatim. 7) Zoom test gates every object. 8) Ratings speak ten stars. 9) A removed feature (Intel Today line) stays removed — copied text is not accuracy.",
+  "why_it_matters": "Teams lose their standard the moment it lives in prose, because prose is re-interpreted by every reader. Naming the artifact — these buttons, this format, this bar — is what lets a hundred builders produce one look, and lets a checker say 'not the standard' with evidence instead of taste.",
+  "how_it_connects": "Seventh essence of batch 13. It gives SN-4732's settlements their measuring instruments and sets up SN-4734, where the same logic crowns the morning orbit icons and the emblem as named standards.",
+  "what_is_in_it_for_you": "Consistency you can feel: the same beautiful bar under your thumb on every page, notes that always open the same clear way, your certificate always current — the system holds its quality because its standards are real things, not memories.",
+  "the_learning": "From now on, when something is approved as the best, we name it the standard and judge against the artifact itself — instead of writing descriptions of it that drift with every reader."
+ },
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4733/IB-SMART-NOTE-20261124-sn4733-the-standard-is-a-thing.md",
+ "page_hash": "214cda50fe128b0d3ebb4b8bc9fd9ff9c82ffb8e8941e7778835f9a932c7ed22",
+ "content_hash": "76f9e70caadd799af06f10f9c502a4d05ec5fed85584bc3e386b60aac5a43088",
+ "published_via": "publish-note",
+ "door_version": "1",
+ "door_receipt": "38ddb63ecb5dda39f417cb927cb3766840fc510a9553da95a4d4713c557d4389"
+}

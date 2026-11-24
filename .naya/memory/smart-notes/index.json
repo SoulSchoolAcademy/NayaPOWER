@@ -80616,6 +80616,42 @@
         "Knowledge",
         "Multiplication"
       ]
+    },
+    {
+      "smart_note_id": "SN-4733",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4733-the-standard-is-a-thing",
+      "slug": "the-standard-is-a-thing",
+      "title": "The Standard Is a Thing",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4733/IB-SMART-NOTE-20261124-sn4733-the-standard-is-a-thing.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4733/IB-SMART-NOTE-20261124-sn4733-the-standard-is-a-thing.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4733/IB-SMART-NOTE-20261124-sn4733-the-standard-is-a-thing.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4733-the-standard-is-a-thing.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T17:51:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "214cda50fe128b0d3ebb4b8bc9fd9ff9c82ffb8e8941e7778835f9a932c7ed22",
+      "content_hash": "76f9e70caadd799af06f10f9c502a4d05ec5fed85584bc3e386b60aac5a43088",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "38ddb63ecb5dda39f417cb927cb3766840fc510a9553da95a4d4713c557d4389",
+      "one_line": "A standard you can point at beats a standard you can only describe. The Hub buttons are the standard — sharp, motion, active states, layers, depth — not a paragraph about buttons: that build, those buttons, judged against everything future. The certificate shows the current certificate, the name elevated and almost glowing on black, never an outdated one kept for relevance. The Smart Note has an official format — nutshell lit in silver, then Child, then Grandma, then What It Means — and the nutshell is the human note; nothing is said twice. A Naya Note is intelligence distilled to its essence, beautiful, dated, timed, organized, kept in the Smart Vault. The bottom bar mirrors Personal exactly — same tiles, same order — folds down when you scroll, and its middle stays white. Color is judged by the eye, not the hex: if two neighbors read the same, they are the same. The orbit comes back to all six buttons because the older buttons were nicer. Flatness fails at the zoom. And the feed speaks the house language: love, like, ten stars — never five.",
+      "topics": [
+        "Distillation",
+        "Design",
+        "Craft",
+        "Honor",
+        "Knowledge"
+      ]
     }
   ],
   "sequence_policy": {
@@ -80626,5 +80662,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "992ec10161985475928d60f6df3af39c5217b9f364c104e8f79ab9fd9381648f"
+  "corpus_manifest_hash": "857a279766442c59ca77974abea352230ac483d852c7186b9c4cee35a079e638"
 }
