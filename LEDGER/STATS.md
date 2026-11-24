@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-24 21:03 UTC_
+_Last updated: 2026-11-24 21:32 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 10628
-- ✅ Verified (8+): 10513
+- **Total scored actions:** 10634
+- ✅ Verified (8+): 10519
 - 🟡 Partial (5–7): 104
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 7
@@ -19,14 +19,14 @@ _Last updated: 2026-11-24 21:03 UTC_
 | Team 2 | Naya Sage | 703 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 654 | 9.0 | 10 |
 | Team 4 | Naya Mason | 629 | 9.1 | 9.6 |
-| Team 5 | Naya Seeker | 767 | 9.0 | 9.6 |
-| Team 6 | Naya Heir | 455 | 9.0 | 9.6 |
+| Team 5 | Naya Seeker | 768 | 9.0 | 9.6 |
+| Team 6 | Naya Heir | 456 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 604 | 8.9 | 10 |
-| Team 8 | Naya Sentinel | 640 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 766 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 1040 | 9.1 | 9.7 |
+| Team 8 | Naya Sentinel | 641 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 767 | 9.0 | 9.5 |
+| Team 10 | Naya Librarian | 1041 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 722 | 9.1 | 9.6 |
-| Team 12 | Naya Herald | 566 | 9.1 | 9.5 |
+| Team 12 | Naya Herald | 567 | 9.1 | 9.5 |
 
 ## Learning velocity
 
@@ -3803,16 +3803,16 @@ _Last updated: 2026-11-24 21:03 UTC_
 - **t0761-lane3:** 2 actions, avg 9.5/10
 - **t0762:** 6 actions, avg 8.8/10
 - **t0762-lane2:** 2 actions, avg 9.0/10
-- **t0762-lane5:** 1 actions, avg 9.0/10
-- **t0762-lane8:** 1 actions, avg 9.0/10
+- **t0762-lane5:** 2 actions, avg 9.0/10
+- **t0762-lane8:** 2 actions, avg 9.0/10
 - **t0763:** 17 actions, avg 9.0/10
-- **t0763-lane10:** 1 actions, avg 9.5/10
-- **t0763-lane12:** 1 actions, avg 9.0/10
-- **t0763-lane6:** 1 actions, avg 9.5/10
+- **t0763-lane10:** 2 actions, avg 9.2/10
+- **t0763-lane12:** 2 actions, avg 9.0/10
+- **t0763-lane6:** 2 actions, avg 9.2/10
 - **t0764:** 5 actions, avg 9.0/10
 - **t0765:** 4 actions, avg 9.0/10
 - **t0765-lane11:** 1 actions, avg 8.5/10
-- **t0765-lane9:** 1 actions, avg 9.0/10
+- **t0765-lane9:** 2 actions, avg 9.0/10
 - **t0766:** 2 actions, avg 9.2/10
 - **t0766-lane1:** 1 actions, avg 9.0/10
 - **t0767:** 2 actions, avg 9.0/10
