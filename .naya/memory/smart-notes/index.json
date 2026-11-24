@@ -80688,6 +80688,42 @@
         "Honor",
         "Knowledge"
       ]
+    },
+    {
+      "smart_note_id": "SN-4735",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4735-done-means-live",
+      "slug": "done-means-live",
+      "title": "Done Means Live",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/LAW/SN-4735/IB-SMART-NOTE-20261124-sn4735-done-means-live.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/LAW/SN-4735/IB-SMART-NOTE-20261124-sn4735-done-means-live.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/LAW/SN-4735/IB-SMART-NOTE-20261124-sn4735-done-means-live.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4735-done-means-live.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T17:53:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "47d2548f7907a5e87247eddb2921065a9da0248c42da0c4de000b3398f6e82cb",
+      "content_hash": "37d321c956eeb143abd4a191adcca7f783f54de7f86db8040f0a29f263481095",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "f70ef1ea2031c3e87256c8b836f5367931df2f7c2f902228fc17dee31d53f59f",
+      "one_line": "When it looks for real, they take you for real — quality is the proof, and it is also the invitation: people want to be part of what is excellent, want it, respect it. That is what makes Naya different: eliteness, triple-A, fine art — not a feature list but a level, an entirely different standard of creation, the North Star every pixel answers to. So the work has an address: done means live on the main URL, always there like auto-save; practice URLs are for checking, never for keeping, and every link sent carries a fresh timestamp with the vault of record tracking older against newer, because a stale link once made verified bytes look wrong. The army that keeps this standard is trained to deliver 24/7 — empowered now, not someday — and its text obeys the text law: dynamic, easy to read, headlines 25, sub-headlines 19, small text 17, color guiding the eye, layered never flat. Even the smallest confirmations are law-grade: the mail's compose is a clean plus, confirmed by his yes — make the mail the plus. And between the two emblem renders, choose the most beautiful — the second, whose crown reads sharper — because an emblem is a voice that says 'this is for real', and it belongs elegantly throughout NayaNET, in the citizen's own dashboard and day.",
+      "topics": [
+        "Distillation",
+        "Law",
+        "Honor",
+        "Multiplication",
+        "Knowledge"
+      ]
     }
   ],
   "sequence_policy": {
@@ -80698,5 +80734,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "abe132474f62cb7495da6af9f9c840f907c6f9c8f6c4c73f02d8abfbdb562da1"
+  "corpus_manifest_hash": "36649efc90de30dd087d8a36453cde07f32dee4d47c3e73a4d8857f0c2e80183"
 }
