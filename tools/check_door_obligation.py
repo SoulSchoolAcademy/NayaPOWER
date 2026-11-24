@@ -27,13 +27,19 @@ build the automation"), this tool is the prevention:
          SN-9998/SN-9999). Every defect prints one self-explaining line:
          MISSING: ... — CURE: ... (owner: ...)
 
-         Two registry-level completions (SN-4711, the Sealed Door):
+         Three registry-level completions (SN-4711, the Sealed Door):
          the corpus manifest is recomputed over the entries array and
          compared with the stamped corpus_manifest_hash on EVERY run
          (MANIFEST_STALE — the writer re-stamps it inside its registry
          transaction on every publish, so a mismatch is proof of an
-         out-of-door edit), and known legacy defects are grandfathered
-         by a shrink-only ratchet file
+         out-of-door edit); the door's receipt chain is verified over
+         the registry in stored order on EVERY run (CHAIN_BROKEN — each
+         door-stamped entry's receipt must recompute from its capture,
+         its page_hash, and the previous entry's content_hash, using
+         the writer's own receipt functions; a stamp stripped from
+         either mirror, or an unstamped non-exempt entry appended
+         after the chain head, is likewise a broken link); and known
+         legacy defects are grandfathered by a shrink-only ratchet file
          (tools/door_obligation_grandfathered.json): a defect named in
          the ratchet is reported as GRANDFATHERED and does not fail the
          run, but the ratchet may only SHRINK — a defect NOT named in
@@ -462,9 +468,13 @@ def _defect_key(d: dict) -> tuple[str, str, str]:
 
 
 # Kinds that must never be absorbed by a grandfather allowance: the
-# manifest is the registry's own integrity proof, and a duplicate
-# public id is an identity collision, not legacy debt.
-_NEVER_GRANDFATHERED = {"MANIFEST_STALE", "DUPLICATE_PUBLIC_ID"}
+# manifest is the registry's own integrity proof, a duplicate public
+# id is an identity collision, not legacy debt, and a tolerated broken
+# receipt-chain link would tolerate the next forgery too (legacy
+# entries never produce CHAIN_BROKEN — they precede the chain head
+# and carry no stamp to break).
+_NEVER_GRANDFATHERED = {"MANIFEST_STALE", "DUPLICATE_PUBLIC_ID",
+                        "CHAIN_BROKEN"}
 
 
 def load_ratchet(root: Path) -> tuple[set, dict | None]:
@@ -581,6 +591,167 @@ def partition_grandfathered(items: list[dict],
         else:
             hard.append(d)
     return hard, grandfathered
+
+
+# --------------------------------------------------------------------------
+# Receipt-chain verification (SN-4711, the Sealed Door)
+# --------------------------------------------------------------------------
+
+def _chain_exempt(entry: dict) -> bool:
+    """Entries the design exempts from the receipt chain: the fixer's
+    canonical-reconstruction backfills stay permanently marked and
+    chain-exempt (SN-4711 step 2) — the fixer derives its records from
+    the published page only and mints no door receipt, wherever in the
+    entries array a backfill lands."""
+    prov = entry.get("provenance")
+    if isinstance(prov, dict) and \
+            prov.get("ingestion") == "canonical-reconstruction":
+        return True
+    return (entry.get("ingest") == "canonical-reconstruction"
+            or entry.get("ingestion") == "canonical-reconstruction")
+
+
+def check_chain(snv2, registry: dict, cap_index: CaptureIndex) -> list[dict]:
+    """CHAIN_BROKEN: verify the door's receipt chain over the registry
+    in stored order (SN-4711 step 2, the checker half of the chain).
+
+    The writer (tools/smart_note_v2.py, step 1) stamps every door
+    filing with door_receipt = sha256(canon(capture without the
+    receipt) || page_hash || prev entry's content_hash), mirrored onto
+    the registry entry; a filing chains to the then-current tail, and
+    an empty or hashless tail means the genesis zeros. Recomputation
+    here uses the writer's own functions (snv2.door_receipt_for /
+    snv2._door_prev_content_hash) — the single authority, never a
+    second implementation. Judged on every check run, in every mode
+    (the chain is registry-global, like the manifest), and never
+    grandfathered. Legacy entries before the first stamp carry no
+    receipt and are NOT defects — the chain simply has not reached
+    them; the grandfather ratchet carries their other debt.
+
+    Per entry, in stored order:
+      * stamped entry — the capture's stamp must mirror the entry's,
+        and the receipt must recompute from the capture on disk, the
+        entry's page_hash, and the previous entry's content_hash. A
+        stamped entry whose capture cannot be resolved is skipped:
+        the absence is NO_CAPTURE's fact, judged in check_pages, and a
+        receipt that cannot be recomputed for lack of its capture is
+        not re-flagged here under a second kind.
+      * unstamped entry whose CAPTURE carries a stamp — the mirror
+        was stripped from the registry: CHAIN_BROKEN. The door always
+        mirrors its stamp; a stamped capture beside an unstamped
+        entry cannot arise from any legitimate write.
+      * unstamped, non-exempt entry AFTER the chain has started — a
+        successor link is missing: the door stamps every filing it
+        appends, so an unstamped append after the chain head was
+        written outside the door. CHAIN_BROKEN. (Fixer backfills are
+        exempt by their canonical-reconstruction mark.)
+    Defects are emitted in stored order, so the first CHAIN_BROKEN in
+    a report names the first broken link (SN-4711 step 2).
+    """
+    defects = []
+    entries = registry.get("entries", [])
+    chain_started = False
+    for i, entry in enumerate(entries):
+        if not isinstance(entry, dict):
+            continue
+        ib = entry.get("intelligent_block_id")
+        sn = entry.get("smart_note_id")
+        raw_receipt = entry.get("door_receipt")
+        entry_receipt = raw_receipt if isinstance(raw_receipt, str) \
+            and raw_receipt else None
+        capture = None
+        capture_receipt = None
+        if ib:
+            page = {"ib": ib, "path": entry.get("projection_path") or ""}
+            doc = cap_index.for_page(page, entry)
+            if doc is not None:
+                # CaptureIndex annotates its docs with "_file"; the
+                # receipt's canonical form covers the capture exactly
+                # as it stands on disk, annotation excluded.
+                capture = {k: v for k, v in doc.items() if k != "_file"}
+                cr = capture.get("door_receipt")
+                if isinstance(cr, str) and cr:
+                    capture_receipt = cr
+        if entry_receipt is not None:
+            chain_started = True
+            if capture is None:
+                continue
+            if capture_receipt != entry_receipt:
+                defects.append({
+                    "sn": sn, "ib": ib, "kind": "CHAIN_BROKEN",
+                    "path": str(REGISTRY_REL).replace("\\", "/"),
+                    "missing": f"receipt chain mirror for {sn} — the "
+                               f"capture on disk and the registry entry "
+                               f"disagree on the door stamp (one of them "
+                               f"was edited outside the door)",
+                    "cure": "reconcile capture and entry from the "
+                            "published page and re-file through the "
+                            "door (tools/learning_loop.py publish-note) "
+                            "so a single stamp is minted against the "
+                            "live registry; never hand-edit a stamped "
+                            "capture or entry",
+                    "owner": _OWNER,
+                })
+            elif snv2.door_receipt_for(
+                    capture, entry.get("page_hash") or "",
+                    snv2._door_prev_content_hash(entries[:i])) \
+                    != entry_receipt:
+                prev = entries[i - 1] if i else None
+                prev_name = (prev.get("smart_note_id")
+                             if isinstance(prev, dict) else None) \
+                    or "the genesis (empty registry)"
+                defects.append({
+                    "sn": sn, "ib": ib, "kind": "CHAIN_BROKEN",
+                    "path": str(REGISTRY_REL).replace("\\", "/"),
+                    "missing": f"receipt chain for {sn} — the stamped "
+                               f"door_receipt does not recompute from "
+                               f"the capture on disk, the entry's "
+                               f"page_hash, and the previous entry's "
+                               f"content_hash ({prev_name}); the "
+                               f"capture, the page, or the preceding "
+                               f"entry was edited outside the door",
+                    "cure": "reconcile from the published page and "
+                            "re-file through the door "
+                            "(tools/learning_loop.py publish-note); if "
+                            "the edit was a legitimate cure, the cure "
+                            "lane re-mints the entry through the door — "
+                            "never hand-edit a stamped capture or entry",
+                    "owner": _OWNER,
+                })
+        elif capture_receipt is not None:
+            chain_started = True
+            defects.append({
+                "sn": sn, "ib": ib, "kind": "CHAIN_BROKEN",
+                "path": str(REGISTRY_REL).replace("\\", "/"),
+                "missing": f"receipt chain mirror for {sn} — the "
+                           f"capture on disk carries a door stamp but "
+                           f"the registry entry carries none (the "
+                           f"mirror was stripped outside the door)",
+                "cure": "restore the mirrored stamp by re-filing "
+                        "through the door (tools/learning_loop.py "
+                        "publish-note); if the entry was deliberately "
+                        "retired, the LAW lane records its lifecycle — "
+                        "a stamp is never stripped silently",
+                "owner": _OWNER,
+            })
+        elif chain_started and not _chain_exempt(entry):
+            defects.append({
+                "sn": sn, "ib": ib, "kind": "CHAIN_BROKEN",
+                "path": str(REGISTRY_REL).replace("\\", "/"),
+                "missing": f"receipt chain link for {sn} — the entry "
+                           f"stands after the chain head but carries "
+                           f"no door_receipt (appended outside the "
+                           f"door, which stamps every filing it makes)",
+                "cure": "re-file the note through the door "
+                        "(tools/learning_loop.py publish-note) so its "
+                        "entry is minted against the live registry; a "
+                        "mechanical backfill belongs to the fixer, "
+                        "whose entries carry the "
+                        "canonical-reconstruction mark and are "
+                        "chain-exempt",
+                "owner": _OWNER,
+            })
+    return defects
 
 
 def filing_warnings(root: Path, registry: dict, scoped_pages: list[dict],
@@ -1102,6 +1273,10 @@ def main(argv=None) -> int:
     manifest_defect = check_manifest(snv2, registry)
     if manifest_defect is not None:
         defects.append(manifest_defect)
+    # SN-4711 completion: receipt-chain verification — registry-global
+    # like the manifest, judged on every check run in every mode, and
+    # appended after partitioning so it can never be grandfathered.
+    defects.extend(check_chain(snv2, registry, cap_index))
     # RATCHET_STALE is judged only when this run saw the full corpus
     # (no --ids, no --range): a scoped run cannot tell a cured defect
     # from an out-of-scope one.

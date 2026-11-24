@@ -528,6 +528,231 @@ def test_ratchet_stale_fires_after_cure_until_shrunk(tmp_path):
     assert json.loads(proc.stdout)["defects"] == []
 
 
+# ---------------------------------------------------------------------------
+# SN-4711 checker completion: receipt-chain verification (CHAIN_BROKEN)
+# ---------------------------------------------------------------------------
+
+CHAIN1_REL = ("BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/LESSON/"
+              "SN-9901/IB-SMART-NOTE-20261124-sn9901-chain-one.md")
+CHAIN1_IB = "IB-SMART-NOTE-20261124-sn9901-chain-one"
+CHAIN2_REL = ("BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/LESSON/"
+              "SN-9902/IB-SMART-NOTE-20261124-sn9902-chain-two.md")
+CHAIN2_IB = "IB-SMART-NOTE-20261124-sn9902-chain-two"
+CHAIN3_REL = ("BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/LESSON/"
+              "SN-9903/IB-SMART-NOTE-20261124-sn9903-chain-three.md")
+CHAIN3_IB = "IB-SMART-NOTE-20261124-sn9903-chain-three"
+
+
+def _fixture_snv2(root: Path):
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "smart_note_v2_chain_fixture", root / "tools" / "smart_note_v2.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def _append_entry(root: Path, snv2, entry: dict) -> None:
+    reg_path = root / ".naya" / "memory" / "smart-notes" / "index.json"
+    reg = json.loads(reg_path.read_text(encoding="utf-8"))
+    reg["entries"].append(entry)
+    reg["corpus_manifest_hash"] = snv2._corpus_manifest_hash(reg["entries"])
+    reg_path.write_text(json.dumps(reg, indent=2), encoding="utf-8")
+
+
+def _mint(root: Path, snv2, sn: str, ib: str, rel: str,
+          prev_content_hash: str, stamp: str | None = "DOOR",
+          exempt: bool = False) -> tuple[dict, Path]:
+    """A hash-valid page+capture+entry trio in the door's own shapes.
+    stamp="DOOR" mints the receipt with the writer's own function
+    (single authority); stamp=None appends unstamped; any other value
+    is stamped verbatim (the forgery case). exempt=True marks the
+    entry canonical-reconstruction (the fixer's chain exemption)."""
+    page = write_page(root, rel, DIALECT1)
+    intel = {"title": f"{sn} chain fixture", "intelligent_block_id": ib,
+             "smart_note_id": sn, "projection_path": rel,
+             "essence": "chain fixture essence", "topics": ["System"]}
+    content_hash = snv2._canonical_content_hash(json.dumps(
+        intel, sort_keys=True, separators=(",", ":"), ensure_ascii=False))
+    page_hash = snv2._page_file_hash(page)
+    capture = {"smart_note_id": sn, "intelligence": intel,
+               "schema": "naya.smart-note-capture.v2",
+               "lifecycle_state": "ACTIVE", "file": rel,
+               "page_hash": page_hash, "content_hash": content_hash}
+    entry = {"smart_note_id": sn, "intelligent_block_id": ib,
+             "title": f"{sn} chain fixture", "content_hash": content_hash,
+             "page_hash": page_hash, "projection_path": rel,
+             "capture_file": f".naya/capture/{ib}.json",
+             "lifecycle_state": "ACTIVE", "truth_state": "CANDIDATE",
+             "scope": "PRIVATE", "category": "SYSTEM", "topic": "LESSON",
+             "captured_at": "2026-11-24"}
+    if exempt:
+        entry["provenance"] = {"ingestion": "canonical-reconstruction",
+                               "note": "fixture backfill"}
+    if stamp is not None:
+        # The door sets published_via/door_version BEFORE computing
+        # the receipt — both fields are bound by it (SN-4711 step 1).
+        capture["published_via"] = "publish-note"
+        capture["door_version"] = "1"
+        receipt = snv2.door_receipt_for(capture, page_hash,
+                                        prev_content_hash) \
+            if stamp == "DOOR" else stamp
+        capture["door_receipt"] = receipt
+        entry["published_via"] = "publish-note"
+        entry["door_version"] = "1"
+        entry["door_receipt"] = receipt
+    cap_path = root / ".naya" / "capture" / f"{ib}.json"
+    cap_path.write_text(json.dumps(capture, indent=1, ensure_ascii=False)
+                        + "\n", encoding="utf-8")
+    _append_entry(root, snv2, entry)
+    return entry, cap_path
+
+
+def _chain_defects(root: Path) -> tuple[int, list[dict]]:
+    proc = run_tool(root, "--json")
+    out = json.loads(proc.stdout)
+    return proc.returncode, [d for d in out["defects"]
+                             if d["kind"] == "CHAIN_BROKEN"]
+
+
+def _tail_content_hash(root: Path) -> str:
+    reg = json.loads((root / ".naya" / "memory" / "smart-notes"
+                      / "index.json").read_text(encoding="utf-8"))
+    return reg["entries"][-1]["content_hash"]
+
+
+def test_chain_verifies_genesis_and_successor(tmp_path):
+    """Genesis + successor: in an empty registry the first minted
+    entry chains to the genesis zeros and the second to the first
+    entry's content_hash; both recompute and the run is clean."""
+    root = make_root(tmp_path)
+    snv2 = _fixture_snv2(root)
+    entry1, _ = _mint(root, snv2, "SN-9901", CHAIN1_IB, CHAIN1_REL,
+                      snv2.DOOR_GENESIS_PREV)
+    _mint(root, snv2, "SN-9902", CHAIN2_IB, CHAIN2_REL,
+          entry1["content_hash"])
+    rc, chain = _chain_defects(root)
+    assert rc == 0
+    assert chain == []
+
+
+def test_chain_chains_over_a_legacy_tail(tmp_path):
+    """The live-corpus shape: an unstamped legacy entry (here the
+    fixer's own backfill) stands at the tail; the first door filing
+    chains to ITS content_hash. Verification must use the previous
+    entry as stored, not demand a stamped predecessor."""
+    root = make_root(tmp_path)
+    write_page(root, PAGE_REL, DIALECT1)
+    proc = run_tool(root, "--fix", "--date", "2026-10-21")
+    assert proc.returncode == 0, proc.stdout + proc.stderr
+    snv2 = _fixture_snv2(root)
+    _mint(root, snv2, "SN-9901", CHAIN1_IB, CHAIN1_REL,
+          _tail_content_hash(root))
+    rc, chain = _chain_defects(root)
+    assert rc == 0
+    assert chain == []
+
+
+def test_chain_broken_on_tampered_capture(tmp_path):
+    """Tampering a stamped entry's capture content breaks its receipt:
+    CHAIN_BROKEN fires on exactly that entry (the hash binding breaks
+    too — a co-defect on the same entry, not a second chain break)."""
+    root = make_root(tmp_path)
+    snv2 = _fixture_snv2(root)
+    entry1, cap = _mint(root, snv2, "SN-9901", CHAIN1_IB, CHAIN1_REL,
+                        snv2.DOOR_GENESIS_PREV)
+    _mint(root, snv2, "SN-9902", CHAIN2_IB, CHAIN2_REL,
+          entry1["content_hash"])
+    doc = json.loads(cap.read_text(encoding="utf-8"))
+    doc["intelligence"]["essence"] = "tampered outside the door"
+    cap.write_text(json.dumps(doc, indent=1, ensure_ascii=False) + "\n",
+                   encoding="utf-8")
+    rc, chain = _chain_defects(root)
+    assert rc == 1
+    assert [d["sn"] for d in chain] == ["SN-9901"]
+
+
+def test_chain_broken_on_forged_receipt(tmp_path):
+    """A self-minted entry whose receipt was fabricated (not computed
+    by the door against the live registry) does not recompute:
+    CHAIN_BROKEN on the forged entry only."""
+    root = make_root(tmp_path)
+    snv2 = _fixture_snv2(root)
+    entry1, _ = _mint(root, snv2, "SN-9901", CHAIN1_IB, CHAIN1_REL,
+                      snv2.DOOR_GENESIS_PREV)
+    _mint(root, snv2, "SN-9903", CHAIN3_IB, CHAIN3_REL,
+          entry1["content_hash"], stamp="ab" * 32)
+    rc, chain = _chain_defects(root)
+    assert rc == 1
+    assert [d["sn"] for d in chain] == ["SN-9903"]
+
+
+def test_chain_broken_when_entry_receipt_deleted(tmp_path):
+    """Deleting the receipt from the registry entry while the capture
+    keeps its stamp: the mirror was stripped — CHAIN_BROKEN."""
+    root = make_root(tmp_path)
+    snv2 = _fixture_snv2(root)
+    _mint(root, snv2, "SN-9901", CHAIN1_IB, CHAIN1_REL,
+          snv2.DOOR_GENESIS_PREV)
+    reg_path = root / ".naya" / "memory" / "smart-notes" / "index.json"
+    reg = json.loads(reg_path.read_text(encoding="utf-8"))
+    del reg["entries"][0]["door_receipt"]
+    reg["corpus_manifest_hash"] = snv2._corpus_manifest_hash(reg["entries"])
+    reg_path.write_text(json.dumps(reg, indent=2), encoding="utf-8")
+    rc, chain = _chain_defects(root)
+    assert rc == 1
+    assert [d["sn"] for d in chain] == ["SN-9901"]
+    assert "mirror" in chain[0]["missing"]
+
+
+def test_chain_broken_when_capture_receipt_deleted(tmp_path):
+    """Deleting the receipt from the capture while the entry keeps
+    its stamp: the two mirrors disagree — CHAIN_BROKEN."""
+    root = make_root(tmp_path)
+    snv2 = _fixture_snv2(root)
+    _, cap = _mint(root, snv2, "SN-9901", CHAIN1_IB, CHAIN1_REL,
+                   snv2.DOOR_GENESIS_PREV)
+    doc = json.loads(cap.read_text(encoding="utf-8"))
+    del doc["door_receipt"]
+    cap.write_text(json.dumps(doc, indent=1, ensure_ascii=False) + "\n",
+                   encoding="utf-8")
+    rc, chain = _chain_defects(root)
+    assert rc == 1
+    assert [d["sn"] for d in chain] == ["SN-9901"]
+    assert "mirror" in chain[0]["missing"]
+
+
+def test_chain_broken_on_unstamped_append_after_head(tmp_path):
+    """An unstamped entry appended after the chain head is a missing
+    successor link: the door stamps every filing it appends, so this
+    entry was written outside the door — CHAIN_BROKEN."""
+    root = make_root(tmp_path)
+    snv2 = _fixture_snv2(root)
+    entry1, _ = _mint(root, snv2, "SN-9901", CHAIN1_IB, CHAIN1_REL,
+                      snv2.DOOR_GENESIS_PREV)
+    _mint(root, snv2, "SN-9903", CHAIN3_IB, CHAIN3_REL,
+          entry1["content_hash"], stamp=None)
+    rc, chain = _chain_defects(root)
+    assert rc == 1
+    assert [d["sn"] for d in chain] == ["SN-9903"]
+    assert "link" in chain[0]["missing"]
+
+
+def test_chain_exempt_canonical_reconstruction_append(tmp_path):
+    """A fixer backfill appended after the chain head carries the
+    canonical-reconstruction mark and is chain-exempt by design
+    (SN-4711 step 2) — no CHAIN_BROKEN."""
+    root = make_root(tmp_path)
+    snv2 = _fixture_snv2(root)
+    entry1, _ = _mint(root, snv2, "SN-9901", CHAIN1_IB, CHAIN1_REL,
+                      snv2.DOOR_GENESIS_PREV)
+    _mint(root, snv2, "SN-9903", CHAIN3_IB, CHAIN3_REL,
+          entry1["content_hash"], stamp=None, exempt=True)
+    rc, chain = _chain_defects(root)
+    assert rc == 0
+    assert chain == []
+
+
 @pytest.mark.skipif(shutil.which("git") is None, reason="git unavailable")
 def test_ratchet_grew_fires_on_uncommitted_addition(tmp_path):
     """Adding an allowance is itself a defect: with the ratchet
