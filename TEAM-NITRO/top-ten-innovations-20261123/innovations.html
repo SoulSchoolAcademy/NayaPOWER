@@ -971,6 +971,30 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 #screen-cover .cover-n{width:60px;height:60px;margin-top:0}
 }
 </style>
+<style>
+/* COVER VIDEO AS A FULL 9:16 BOARD (2026-11-24, Shawn's eye — Rubik's Cube):
+   tapping the cover red N must open the NEXT FULL BOARD behind it, not the
+   floating rectangle the shared depth view shows (width min(1080px,100%),
+   max-height 84vh, centred over a dim backdrop, cover visible around it).
+   COVER-ONLY: the cover opener adds .cover-full to #depthView and the
+   shared closeDepth removes it — the shared chapter-depth mechanism is
+   untouched, so every chapter depth view keeps its floating-panel
+   presentation. The board is viewport-filling at every size (the 16:9
+   video inside keeps its own aspect — the BOARD is full, the video is
+   what it is). Back top-left, X top-right, red N in the foot, title +
+   "1 of 1" step — the same depth-view chrome, now filling the viewport
+   with no cover visible around it. The [hidden] override matters:
+   .innov-pop[hidden] must still hide the view, or the ID-scoped
+   display:grid below would win over it. */
+#depthView.cover-full{display:grid;place-items:stretch;padding:0;background:#02030a}
+#depthView.cover-full[hidden]{display:none}
+#depthView.cover-full .innov-pop-card{width:100%;max-width:none;height:100vh;height:100dvh;max-height:none;border-radius:0;border:0;padding:16px 20px 20px;display:flex;flex-direction:column;overflow:hidden}
+#depthView.cover-full .depth-top{position:static;margin:0 0 8px;padding:0}
+#depthView.cover-full .depth-foot{position:static;margin:12px 0 0;padding:0}
+#depthView.cover-full .depth-stage{flex:1 1 auto;min-height:0}
+#depthView.cover-full #depthBody{flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+#depthView.cover-full #depthBody .ib-vid{flex:1 1 auto;min-height:0;height:auto}
+</style>
 </head>
 <body>
 <div class="royal-frame" aria-hidden="true"><div class="rf-et top"></div><div class="rf-es left"></div><div class="rf-es right"></div><div class="rf-rim"></div><div class="rf-corner tl"></div><div class="rf-corner tr"></div><div class="rf-corner bl"></div><div class="rf-corner br"></div><div class="rf-n top"></div></div>
@@ -1816,9 +1840,10 @@ function openDepth(boardIdx){
 }
 /* COVER VIDEO BEHIND THE RED N (first-two-boards fix, 2026-11-24 — Shawn's eye):
    the welcome video no longer plays on the first board. It lives BEHIND the
-   cover red N: tapping #coverN opens it in the depth view (the same inner
-   view every board's N opens, same video branch renderDepth uses), one layer,
-   "1 of 1" — tap the N, Back or X (or outside the card) to close. The flag
+   cover red N: tapping #coverN opens it as a FULL BOARD behind the cover —
+   the same depth view, with .cover-full on #depthView (viewport-filling,
+   no cover visible around it), one layer, "1 of 1" — tap the N, Back or X
+   to close. The flag
    keeps the depth N / Back handlers from walking chapter layers while the
    cover video is open; closeDepth clears it. */
 var COVER_DEPTH = false;
@@ -1827,10 +1852,11 @@ function openCoverVideo(){
   COVER_DEPTH = true;
   document.getElementById('depthN').querySelector('img').src = EMBED.ball;
   document.getElementById('depthTitle').textContent = 'Top Ten Innovations — behind the board';
-  document.getElementById('depthBody').innerHTML = '<div class="ib-vid" style="height:320px">' + vidHTML(COVER_VIDEO_SRC) + '</div>';
+  document.getElementById('depthBody').innerHTML = '<div class="ib-vid">' + vidHTML(COVER_VIDEO_SRC) + '</div>';
   document.getElementById('depthSideL').innerHTML = ''; document.getElementById('depthSideL').hidden = true;
   document.getElementById('depthSideR').innerHTML = ''; document.getElementById('depthSideR').hidden = true;
   document.getElementById('depthStep').textContent = '1 of 1';
+  document.getElementById('depthView').classList.add('cover-full');
   document.getElementById('depthView').hidden = false;
 }
 document.getElementById('coverN').addEventListener('click', function(e){
@@ -1915,7 +1941,7 @@ function renderDepth(){
   var card = document.querySelector('#depthView .innov-pop-card');
   if (card) card.scrollTop = 0;
 }
-function closeDepth(){ COVER_DEPTH = false; document.getElementById('depthView').hidden = true; }
+function closeDepth(){ COVER_DEPTH = false; document.getElementById('depthView').classList.remove('cover-full'); document.getElementById('depthView').hidden = true; }
 document.getElementById('depthN').addEventListener('click', function(){
   if (COVER_DEPTH){ closeDepth(); return; }
   var layers = depthLayers(DEPTH_BOARD);
