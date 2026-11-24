@@ -77991,19 +77991,21 @@
       "title": "The Intelligent Block and Its Frame",
       "content_hash": "d013b50ec863937d1d2dbf776a1e27231df14363e6573584838d4bcbea0aa2a6",
       "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/21/LAW/SN-4590/IB-SMART-NOTE-20261121-sn4590-the-intelligent-block-and-its-frame.md",
-      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "projection_status": "SUPERSEDED",
       "truth_state": "CANDIDATE",
       "scope": "PRIVATE",
       "category": "LAW",
       "topic": "LAW",
       "subtopic": "",
       "captured_at": "2026-11-21",
-      "lifecycle_state": "ACTIVE",
+      "lifecycle_state": "SUPERSEDED",
       "provenance": {
         "ingestion": "canonical-reconstruction",
         "note": "published directly as a BRAIN projection (publishing commit not resolvable from local git history) with no runtime capture and no registry entry — a door write that skipped the same-push capture + registry obligation; capture and entry backfilled mechanically from the published projection by tools/check_door_obligation.py --fix on 2026-11-21 under the House-Fire Law door-obligation cure (Shawn, 2026-10-21); no runtime provenance invented"
       },
-      "page_hash": "89b78e5c4031628c6fa70acaf3999f62450d7ad675858f3a903c2fdc225d2dd9"
+      "page_hash": "89b78e5c4031628c6fa70acaf3999f62450d7ad675858f3a903c2fdc225d2dd9",
+      "supersession_reason": "Content moved to SN-4651 (The Intelligent Block and Its Frame) by the SN-4590 cure (commit cc9e92de, 2026-11-22); the cure deleted the old capture and the old projection page is absent at every tip since, but this registry row stayed ACTIVE, failing the retrieval gate closed (INDEX_CORRUPT:PROJECTION_ABSENT) on every retrieve() call. Row retired by direct landing on main by Naya Resolve (2026-11-24), applying PR #3518's Registry Band Cure 34 disposition (Naya 5) — PR #3518's SN-4590 hunk is superseded by this landing; content preserved as SN-4651; no page bytes invented.",
+      "superseded_by_capture_id": "IB-SMART-NOTE-20261121-sn4651-the-intelligent-block-and-its-frame.json"
     },
     {
       "smart_note_id": "SN-4591",
@@ -80010,5 +80012,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "d80f74f00f322cbf56e4056c7fe40ee7609e6856d824cba6d252196a6d2c3b1a"
+  "corpus_manifest_hash": "939098c24256811c67846befe8e88790b469978d3575064063e323608790dd3a"
 }
