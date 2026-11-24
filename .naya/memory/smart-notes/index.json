@@ -80760,6 +80760,42 @@
         "Knowledge",
         "Multiplication"
       ]
+    },
+    {
+      "smart_note_id": "SN-4737",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4737-the-surface-serves-the-human",
+      "slug": "the-surface-serves-the-human",
+      "title": "The Surface Serves the Human",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4737/IB-SMART-NOTE-20261124-sn4737-the-surface-serves-the-human.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4737/IB-SMART-NOTE-20261124-sn4737-the-surface-serves-the-human.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4737/IB-SMART-NOTE-20261124-sn4737-the-surface-serves-the-human.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4737-the-surface-serves-the-human.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T17:52:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "e8f7350069483add7854fbc6f42f5c958594e7bead5241b0eafde0e2c93df318",
+      "content_hash": "80b0ac7800710cacd65b643c1ce71b0f06ce8fade652c640d2f99babd28b4251",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "db325579506b5da4dc45e6c9f7c3bb2ba3f8580bde176c494dea03b188cca5fb",
+      "one_line": "Shawn's November 17 Hub corrections say one thing from ten angles: the page he sees is for a human — no machine text on it, no gray words, no flat shapes — while the machine's own language rides quietly on the back of every note, where it helps without ever being seen.",
+      "topics": [
+        "Distillation",
+        "Design",
+        "Hub",
+        "Craft",
+        "Honor"
+      ]
     }
   ],
   "sequence_policy": {
@@ -80770,5 +80806,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "ac4f10fd3c4ffef6c5171c23d6987d59abaf9fffe7b6998a167d04c44100ed78"
+  "corpus_manifest_hash": "cd21aa2822c83495f111a4ebecec06a35ec45a9e98acb4f143a701d797b89e7e"
 }
