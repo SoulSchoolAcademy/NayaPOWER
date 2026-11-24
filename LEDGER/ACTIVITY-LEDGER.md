@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-24 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-24 09:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -15509,6 +15509,12 @@ _Last updated: 2026-11-24 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: VOID is the correct outcome — twelve-lane-receipts/t0755-lane1.md exists and its step-6 quote is byte-present ('opened comparison material: read the sealed key, ran the official grader CLI (tools/level_drill_grade…'), and t0761-lane11.md exists; #2537 comment 6184544713 exists live (2026-10-15T04:39:01Z); the seat stopped within 7 minutes
 
+### ✅ t0804-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** CONFIRM t0781 key-contact-registry repair is REAL on live bytes (37 cites, 0 problems) - item CLOSED
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; backlog 54 unscored before this tick, oldest-first). VERIFIED first-hand this tick: registry key-contact-registry.md sha256 prefix a96ad66c1de383abf matches the receipt pin exactly (bytes unchanged since receipt time); audit script key-contact-audit.sh sha256 prefix a4d223fcb26edc32 matches exactly; sampled anchor
+
 ### ✅ t0804 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** CONFIRM of t0781 key-contact-registry repair
@@ -15525,6 +15531,12 @@ _Last updated: 2026-11-24 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: key-contact-registry.md exists; the [A8] void-tombstone claim checked on live bytes at L64 (documented void, residuals-only, no sha16 — reconciles the 38-vs-37 count); #2537 comment 6184523808 exists live (2026-10-15T04:37:13Z); kept from 9.5 by: (1) single-seat verification — the receipt itself names the second-seat re-verify as the ceil
 
+### ✅ t0803-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** J5 Herald feedback - SHARPEN verdict + candidacy-block publication/lifecycle mechanism
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; backlog 57 before this tick, oldest-first). VERIFIED: the t0803 entry is present in hidden_files/feedback-feed.md (line 565, SHARPEN verdict + herald's fifth mechanism, content matches the receipt); all four case-law SHAs verified exactly in the mirror - aa8061c1d3 (#2455 merge), dd6f2d92 (#2459 revert PR), eb3170
+
 ### ✅ t0803 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** J5 feedback - candidacy-block publication-and-lifecycle mechanism verdict
@@ -15540,6 +15552,12 @@ _Last updated: 2026-11-24 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0803-lane12.md`
 
 **Evidence:** Verified: #2537 comment 6184357778 exists live (posted 2026-10-15T04:23:00Z, body 3471 chars) and the t0803 J5 block is byte-present in feedback-feed.md (grep count 1 for the lane-12 t0803 entry); the verdict + publication-and-lifecycle mechanism is genuinely new to the J5 thread; kept from 9.5 by: (1) N (stale-block review window) unnamed and the 
+
+### ✅ t0802-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** MCC semantic arm freeze - pre-committed K2 falsifier FIRED (rate_pos 0.000), honest null
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; backlog 57 before this tick, oldest-first). VERIFIED: all three pinned SHAs match exactly - freeze script hidden_files/mcc-freeze-t0802-lane8.py 1a33f20f6c140bad26ddf84baaca7052e42b40b0398de977f5bc0099f229b6a4, freeze record md 80c92699b0c0dd6590f3b19853d0b5d4509189c6e1aa86e8b1d3daa9856897fc, record json 1fbb130b6
 
 ### ✅ t0802 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -15601,6 +15619,12 @@ _Last updated: 2026-11-24 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: branch naya4/t0800-lane0-supabase-bridge head 8dad8451b9c5b39f0edd2278c8155eaad11a1b0b confirmed on origin (git ls-remote this tick); merge-base 9134788c matches parent's cut. Score 9.5. Clears 9.5 because: head certified byte-identical to the parent receipt; conflict-proof by TWO independent methods (git merge-tree 0 markers + real scrat
 
+### ✅ t0801-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** PR #2738 review - RECUSAL (author seat) with F1-F5 findings + gate-surface correction, brief re-filed
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; backlog 57 before this tick, oldest-first). VERIFIED first-hand this tick: PR #2738 head 8030c2ee028504c7e0fb2193bc9f9889ef301a32 exists in the mirror with the matching subject; F1 confirmed at the git-blob byte level - blob e425aabb line 42 is literally 'CLOUDFLARE_API_TOKEN: <redacted>', so the deploy step could
+
 ### ✅ t0801 — Team 11, Team Naya Scorer (Human Value) — 8.0/10 [VERIFIED]
 
 **Task:** RECUSAL with re-file: PR #2738 independent review refused (authorship conflict), findings + HOLD posted, brief re-filed OPEN
@@ -15622,6 +15646,12 @@ _Last updated: 2026-11-24 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Gap follow-up: t0800/t0802 double-dispatch reconciliation
 
 **Evidence:** Verified this tick: mcc-freeze-record-t0802-lane8.md and .json exist and match cited pins byte-exactly (80c92699..., 1fbb130b...); t0800 produced nothing (no record, no receipt; brief in stale/, claim absent from claimed/ — void proven by file state); single live freeze record stands FALSIFIED (honest null, rate_pos=0.000). Score 9.5 ACCEPTED — cle
+
+### ✅ t0800-lane0 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hub-Supabase persistence bridge (Smart Note store leg): 427-line adapter + 14/14 live proof
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; backlog 57 before this tick, oldest-first). VERIFIED: commit 8dad8451b9c5b39f0edd2278c8155eaad11a1b0b exists in the local mirror with the matching subject; HUB/app/js/supabase-bridge.js present at that commit (blob 213006fe, 19785 bytes); verify script hidden_files/bin/verify-t0800-bridge.js present. NOT PHANTOM. 
 
 ### ✅ t0800 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
@@ -60462,6 +60492,12 @@ _Last updated: 2026-11-24 09:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261124-0118 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: 31 queued briefs attempted, 0 claimed (29x exit 7, 2x exit 2)
+
+**Evidence:** FRESH (filed 2026-11-24 01:18 PST; fresh receipt-tick window t1536-t1564 already scored, this dated stall receipt was the only fresh unscored; backlog 54 total before this tick). VERIFIED first-hand this tick: sweep log brief-queue/claim-sweep-20261124-0118.log exists (17-line summary format); queue checksum recomputed from live bytes = 6d9e2c4ec6f
 
 ### ✅ gate-stall-20261124-0013 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
 
