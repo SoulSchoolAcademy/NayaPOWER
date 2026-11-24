@@ -950,7 +950,7 @@
        to the list inside the frame. */
     var savedScroll = 0;
     function openCard(c){
-      savedScroll = window.scrollY || document.documentElement.scrollTop || 0; /* FIX 2026-11-24: capture BEFORE any display swap — hiding the list clamps scrollY to 0 */
+      if(listView.style.display !== 'none') savedScroll = window.scrollY || document.documentElement.scrollTop || 0; /* FIX2 2026-11-24: guard — capture ONLY when opening FROM THE LIST; re-entry from an already-open card (add-to-category calls openCard while at scroll 0) must not overwrite the saved scroll */
       state.draftFor = c.id;
       cardView.innerHTML = '';
       var wrap = el('div','cx-framewrap');
