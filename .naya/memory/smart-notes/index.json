@@ -80868,6 +80868,42 @@
         "Craft",
         "Knowledge"
       ]
+    },
+    {
+      "smart_note_id": "SN-4740",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4740-every-page-to-ten",
+      "slug": "every-page-to-ten",
+      "title": "Every Page to Ten",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4740/IB-SMART-NOTE-20261124-sn4740-every-page-to-ten.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4740/IB-SMART-NOTE-20261124-sn4740-every-page-to-ten.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4740/IB-SMART-NOTE-20261124-sn4740-every-page-to-ten.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4740-every-page-to-ten.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T17:55:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "c823ac9aa32da9a81ca133bf4e1934f561f5fc60bbe7149fcc5c33a6dc1122f5",
+      "content_hash": "ae2916e83f7e757e01585301123f01020d6b2c090411710fd7d8cb88962c1bec",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "81f695ad8421374dfa8638afbf182e8d9cd67a33521bf1c019b5c143b22afcef",
+      "one_line": "The emblem is the north star every piece of art is held against, and no page is exempt from the climb: the leftover cluster goes, the calendar gets finished and shared, the Dashboard introduces the day — each page cleaned, compared, and scorecarded to ten, not admired at seven.",
+      "topics": [
+        "Distillation",
+        "Design",
+        "Calendar",
+        "Dashboard",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -80878,5 +80914,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "dee3d77a16e6ca5c7a08d66259e83bbef95efff49a63de21ac9847763de6eba6"
+  "corpus_manifest_hash": "c1b097debb14c9b9a9e4113e8a20744c5a9e1cc45b4b12092db20c84c626ec8a"
 }

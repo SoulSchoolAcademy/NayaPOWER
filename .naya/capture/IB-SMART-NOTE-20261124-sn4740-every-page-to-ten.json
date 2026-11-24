@@ -1,0 +1,95 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-4740",
+ "title": "Every Page to Ten",
+ "slug": "every-page-to-ten",
+ "topic": "DESIGN",
+ "category": "DESIGN",
+ "kind": "intelligent-block",
+ "registered_by": "naya-resolve",
+ "directed_by": "Shawn Vibert",
+ "created_at": "2026-11-24T17:55:00Z",
+ "tone": "purple",
+ "icon": "◆",
+ "intelligence": {
+  "essence": "The emblem is the north star every piece of art is held against, and no page is exempt from the climb: the leftover cluster goes, the calendar gets finished and shared, the Dashboard introduces the day — each page cleaned, compared, and scorecarded to ten, not admired at seven.",
+  "human_view": "Every page you use gets the same treatment: clutter from older designs removed, the layout simplified to what matters, and the whole thing polished against the best example we have until it honestly scores ten — including the calendar pages that sat unfinished and the Dashboard, which now opens your whole day.",
+  "child_view": "We have one picture of the prettiest jewel we ever made, and we hold every new drawing up next to it: does it shine like that? If a page has old stickers stuck on it, we peel them off first. Then we keep polishing until it's a ten, not a seven.",
+  "grandma_view": "Some pages were carrying leftovers from before — extra buttons, a stray message, a big quote taking up the banner. He had us strip them back to what matters, finish what was never finished, and check each page against the finest thing we'd made. The calendar especially: it gets done, shared, and made alive, not left in a drawer.",
+  "ai_view": "Operating rules distilled from SN-3205..SN-3214: (1) The emblem (NAYA_ICON.png — purple diamond jewel in a silver winged crown) is the quality bar: every icon, button, star, diamond is held next to it in comparison. (2) The spot is named: the bottom of every Hub post — LOVE/LIKE/stars/SHARE INTEL row + ADD TO THE INTELLIGENCE composer + the ONE INTELLIGENCE foot — is where the ending goes; that format is the network's one format and carries the mission. (3) The cluster goes: leftover button/icon clusters from before the Smart Tabs are removed, stray messages with them; keep the best icons; then scorecard the page to ten. (4) Calendar inner pages: never finished, never shared is undone — the lane owes a finished, shared, dynamic build; double pages kill the double work. (5) Create World is the ruled name, for any topic. (6) Day view restructured: top bar with date/time centered, obsidian inside, alive on hover; the everyday-life section goes. (7) The black car is the whole design language: obsidian body, accents around it, lit dashboard. (8) The Dashboard is the day's introduction — the day in full, stats behind a top button, day-synced. (9) Month view: time+date dead center, the flat diamond pill goes. (10) The Hub banner simplified to four things in order; the big quote and labels come out.",
+  "what_it_means": "Ten is a procedure, not a compliment: remove what predates the current design, compare against the best existing artifact, score honestly, and iterate — applied page by page until the whole surface family is at the bar.",
+  "whats_inside": [
+   "The emblem is the north star for all art — the comparison test (SN-3205)",
+   "The spot and the two things — the post format is the mission (SN-3206)",
+   "The cluster goes — and scorecard the page to ten (SN-3207)",
+   "The calendar inner pages — never finished, never shared, make it dynamic (SN-3208)",
+   "The day, whole: Create World, day-view restructure, the black car, Dashboard as introduction, month-view bar, banner simplified (SN-3209–SN-3214)"
+  ],
+  "topics": [
+   "Distillation",
+   "Design",
+   "Calendar",
+   "Dashboard",
+   "Craft"
+  ]
+ },
+ "page": {
+  "distills": {
+   "batch": 14,
+   "of": 100,
+   "covers": [
+    {
+     "sn": "SN-3205",
+     "title": "The Emblem Is the North Star for All Art"
+    },
+    {
+     "sn": "SN-3206",
+     "title": "The Spot and the Two Things"
+    },
+    {
+     "sn": "SN-3207",
+     "title": "The Cluster Goes — and Scorecard the Page to Ten"
+    },
+    {
+     "sn": "SN-3208",
+     "title": "The Calendar Inner Pages — Never Finished, Never Shared, Make It Dynamic"
+    },
+    {
+     "sn": "SN-3209",
+     "title": "Create World, Any Topic"
+    },
+    {
+     "sn": "SN-3210",
+     "title": "The Day-View Restructure — Obsidian Inside, Alive on Hover"
+    },
+    {
+     "sn": "SN-3211",
+     "title": "The Black Car and the Unfolding Page"
+    },
+    {
+     "sn": "SN-3212",
+     "title": "The Dashboard Is the Day's Introduction — Stats Behind a Top Button, Day-Synced"
+    },
+    {
+     "sn": "SN-3213",
+     "title": "The Month-View Top Bar and the Ten Things"
+    },
+    {
+     "sn": "SN-3214",
+     "title": "The Hub Banner, Simplified"
+    }
+   ]
+  },
+  "machine": "1) Bar: the emblem, by direct comparison. 2) Page procedure: strip leftovers → simplify → scorecard → iterate to 10. 3) Unfinished+unshared = undone, named to its lane. 4) Dashboard = the day's introduction; stats behind a top button. 5) Language: the black car — obsidian center, accents around. 6) Banner: four things, in order, nothing more.",
+  "why_it_matters": "Citizens judge the network page by page, and the weakest page sets the reputation. This group makes excellence a repeatable page procedure instead of a heroic effort — the same climb, every page, until none is left at seven.",
+  "how_it_connects": "Fourth movement of batch 14. It takes SN-4737–4739's standards and gives them a work order per page; the calendar line it opens (unfinished, unscored) is judged honestly in SN-4743 and SN-4745, where the rebuild order lands.",
+  "what_is_in_it_for_you": "The pages you live in stop being a patchwork of generations — each one cleaned, finished, and brought to the same shine, so moving through your world feels like one place, made once, made right.",
+  "the_learning": "From now on, a page is not done at good: leftovers are stripped, the emblem comparison is made, and the score is iterated to ten — and unfinished, unshared work is reported as undone, however busy its lane was."
+ },
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4740/IB-SMART-NOTE-20261124-sn4740-every-page-to-ten.md",
+ "page_hash": "c823ac9aa32da9a81ca133bf4e1934f561f5fc60bbe7149fcc5c33a6dc1122f5",
+ "content_hash": "ae2916e83f7e757e01585301123f01020d6b2c090411710fd7d8cb88962c1bec",
+ "published_via": "publish-note",
+ "door_version": "1",
+ "door_receipt": "81f695ad8421374dfa8638afbf182e8d9cd67a33521bf1c019b5c143b22afcef"
+}
