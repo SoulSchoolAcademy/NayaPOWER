@@ -1,0 +1,95 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-4730",
+ "title": "The Day, Designed Whole",
+ "slug": "the-day-designed-whole",
+ "topic": "DESIGN",
+ "category": "DESIGN",
+ "kind": "intelligent-block",
+ "registered_by": "naya-resolve",
+ "directed_by": "Shawn Vibert",
+ "created_at": "2026-11-24T17:48:00Z",
+ "tone": "purple",
+ "icon": "◆",
+ "intelligence": {
+  "essence": "The day is the citizen's world, designed whole. It opens with what matters most: a notification bar first — inbox, messages, loves, comments, actions — across all three worlds, because a day that opens with anything else hides why you came. The greeting lives in the top bar with the date, warm the way the Hub's good morning is warm; the numbers stand as big blocks across the top; and the day's frequency is a real diamond — a spinning jewel of light, never a flat mark, never faster than twelve seconds a turn. The weekday stands as straight words in the day's color, light embedded in the letters, no button and no pill; all seven weekday names fit whole at phone and desktop width, because a cut-off word is an elegance failure. One headliner says the date once. Inside, the day's color fills the whole room — you are inside the day, not beside it — and the design is discerned, not copied: the reference is a lesson, and the question is always what is most intelligent here. The everyday world is seven simple things, each one tap away.",
+  "human_view": "Your day opens with what's calling for you — messages, loves, replies — warmly greeted, with your numbers big and clear and a small jewel turning slowly to carry the day's color. Nothing is cut off, nothing is said twice, and when you step into a day, the whole room takes on its color so you feel where you are.",
+  "child_view": "Imagine your day as a room painted in its own color, with a shiny diamond slowly spinning over the door. The day's name is written big and whole — never squished — and the first thing you see is who wants to talk to you.",
+  "grandma_view": "The calendar used to squeeze the long day-names until they broke. Now every name fits in full, the date is said once and said beautifully, and the day greets you by name in the morning. Stepping into a day feels like stepping into a room made for it.",
+  "ai_view": "Day-design law distilled from SN-3105..SN-3114: (1) the day menu opens with the notification bar (inbox, IMs, likes, comments, loves, shares, actions) spanning Personal + Business + Space. (2) The greeting sits in the top bar with the date, warm as the Hub reference; numbers render as big blocks across the top. (3) The Hz diamond is a real spinning jewel (≤12s/turn), the frequency made visible — never flat. (4) Month view: all seven weekday names fit whole at both widths; the weekday is a royal object (Marcellus, elevated, day-colored). (5) The weekday renders as straight raised words in the day's color with embedded light — no button, no pill; abbreviations solve fit. (6) One headliner carries date + time, said once, judged at full screen. (7) Discern, don't copy: references are lessons; choose the most intelligent display for this surface. (8) The day's color fills the interior — the inside of a day is a room with an atmosphere. (9) The everyday world = seven simple things, each one tap away. (10) Completed means the whole thing — calendar AND Personal, every part — done in the right way, team locked in.",
+  "what_it_means": "The calendar is not a grid with appointments; it is the citizen's world rendered as days. Every ruling in this decade serves that: attention first (notifications), identity always (the greeting), time made beautiful (the jewel, the fitted words), and immersion (the colored room) — a day you enter, not a table you scan.",
+  "whats_inside": [
+   "The day menu: notification bar on top, doors grouped by color (SN-3105)",
+   "Day view v14: the greeting in the top bar, big number blocks (SN-3106)",
+   "The Hz diamond — a real spinning jewel, never flat (SN-3107)",
+   "Month view weekdays fit whole and royal; the day-view top bar in straight words (SN-3108, SN-3109)",
+   "One headliner; discern, don't copy; the color fills the inside; the everyday world; completed means the whole thing (SN-3110, SN-3111, SN-3112, SN-3113, SN-3114)"
+  ],
+  "topics": [
+   "Distillation",
+   "Design",
+   "Craft",
+   "Knowledge",
+   "Multiplication"
+  ]
+ },
+ "page": {
+  "distills": {
+   "batch": 13,
+   "of": 100,
+   "covers": [
+    {
+     "sn": "SN-3105",
+     "title": "The Day Menu — The Notification Bar on Top, Doors Grouped by Color"
+    },
+    {
+     "sn": "SN-3106",
+     "title": "The Day View v14 — The Greeting in the Top Bar, Big Number Blocks"
+    },
+    {
+     "sn": "SN-3107",
+     "title": "The Hz Diamond — A Real Spinning Jewel, Never Flat"
+    },
+    {
+     "sn": "SN-3108",
+     "title": "The Month View — Weekdays Fit Whole and Royal, Both Arrows Purple, No TODAY Button"
+    },
+    {
+     "sn": "SN-3109",
+     "title": "The Day View Top Bar — Straight Words, Day-Colored Time, Less Glow, Each Day a Mini Hub"
+    },
+    {
+     "sn": "SN-3110",
+     "title": "One Headliner — Say It Once, Say It Elite"
+    },
+    {
+     "sn": "SN-3111",
+     "title": "Discern, Don't Copy — The Bullseye"
+    },
+    {
+     "sn": "SN-3112",
+     "title": "The Day's Color Fills the Inside — Interior Designers of Inner Spaces"
+    },
+    {
+     "sn": "SN-3113",
+     "title": "The Everyday World, the Viral Law, and the Divine Design"
+    },
+    {
+     "sn": "SN-3114",
+     "title": "Today — Calendar and Personal Completed, the Whole Thing, Done Right"
+    }
+   ]
+  },
+  "machine": "1) Day opens on notifications across all three worlds. 2) Greeting + date in the top bar; big number blocks. 3) Frequency = spinning jewel object, period ≥12s. 4) Weekday names never truncate at any width. 5) Weekday = raised words, day color, embedded light; no container. 6) Date/time stated exactly once per view. 7) References inform, never template. 8) Day interior = full color fill. 9) The seven everyday things each ≤1 tap. 10) Completion = whole surface, all parts, right way.",
+  "why_it_matters": "The day view is where a citizen will live most of their NayaNET life. These ten dictations, given in one afternoon over live screenshots, are the difference between a calendar that administers a person and a day that welcomes them — and every one of them is checkable at a glance.",
+  "how_it_connects": "Fourth essence of batch 13, covering the Nov 17 afternoon calendar dictations in filing order. It depends on SN-4729's object law (the diamond and the weekday are objects, not drawings) and feeds the surfaces SN-4732's sweep later settles (day view top stays, rest goes).",
+  "what_is_in_it_for_you": "Your day greets you, shows you who needs you, and wraps you in its own color — with every word whole and every number clear. Planning stops feeling like administration and starts feeling like walking into a room that was made for today.",
+  "the_learning": "From now on, we design the day as a place a person enters — attention first, color throughout, nothing truncated, nothing repeated — instead of a grid a person operates."
+ },
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4730/IB-SMART-NOTE-20261124-sn4730-the-day-designed-whole.md",
+ "page_hash": "09d55e5137a52bf33fccfbc3274108cc8a4cb4aeb9fd2fae3f05e498ef712824",
+ "content_hash": "c847f5bb092286b16cce37143c5c8c43b6d593ad9547662afc5f973dfa3c3723",
+ "published_via": "publish-note",
+ "door_version": "1",
+ "door_receipt": "93d43aa21b7696c366b88b8e100c35c906405efb48d0f8f261003fd91258eb5e"
+}

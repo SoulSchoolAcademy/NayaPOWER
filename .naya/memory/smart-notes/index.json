@@ -80508,6 +80508,42 @@
         "Multiplication",
         "System"
       ]
+    },
+    {
+      "smart_note_id": "SN-4730",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4730-the-day-designed-whole",
+      "slug": "the-day-designed-whole",
+      "title": "The Day, Designed Whole",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4730/IB-SMART-NOTE-20261124-sn4730-the-day-designed-whole.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4730/IB-SMART-NOTE-20261124-sn4730-the-day-designed-whole.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4730/IB-SMART-NOTE-20261124-sn4730-the-day-designed-whole.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4730-the-day-designed-whole.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T17:48:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "09d55e5137a52bf33fccfbc3274108cc8a4cb4aeb9fd2fae3f05e498ef712824",
+      "content_hash": "c847f5bb092286b16cce37143c5c8c43b6d593ad9547662afc5f973dfa3c3723",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "93d43aa21b7696c366b88b8e100c35c906405efb48d0f8f261003fd91258eb5e",
+      "one_line": "The day is the citizen's world, designed whole. It opens with what matters most: a notification bar first — inbox, messages, loves, comments, actions — across all three worlds, because a day that opens with anything else hides why you came. The greeting lives in the top bar with the date, warm the way the Hub's good morning is warm; the numbers stand as big blocks across the top; and the day's frequency is a real diamond — a spinning jewel of light, never a flat mark, never faster than twelve seconds a turn. The weekday stands as straight words in the day's color, light embedded in the letters, no button and no pill; all seven weekday names fit whole at phone and desktop width, because a cut-off word is an elegance failure. One headliner says the date once. Inside, the day's color fills the whole room — you are inside the day, not beside it — and the design is discerned, not copied: the reference is a lesson, and the question is always what is most intelligent here. The everyday world is seven simple things, each one tap away.",
+      "topics": [
+        "Distillation",
+        "Design",
+        "Craft",
+        "Knowledge",
+        "Multiplication"
+      ]
     }
   ],
   "sequence_policy": {
@@ -80518,5 +80554,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "ff0f460a6083cd28f65660909a50d1c18d1a4c40c8424f7a200cd495d7b8a8d3"
+  "corpus_manifest_hash": "27d715350e296a8023c8b35a8a0fea84ece5f2b88d5c821b32bc7dd0a7e60db4"
 }
