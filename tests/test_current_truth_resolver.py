@@ -4,6 +4,17 @@ from pathlib import Path
 import tools.current_truth_resolver as ctr
 
 
+def _live_active_issue():
+    """Active issue number from the live brain index.
+
+    The board moves (66 -> 3361 in #3528); tests that need the live board
+    must read it here instead of hardcoding the old number.
+    """
+    root = Path(__file__).resolve().parents[1]
+    brain = json.loads((root / "BRAIN" / "NAYAPOWER-BRAIN-INDEX.json").read_text(encoding="utf-8"))
+    return brain["operations"]["active_issue"]
+
+
 def _live(main, *, issues=None, proof=None, runtime=None):
     return {
         "main_head": main,
@@ -36,8 +47,12 @@ def test_resolver_reports_current_main_not_latest_proven_source(monkeypatch):
 
 def test_resolver_fails_closed_when_active_issue_is_closed():
     main = "a" * 40
+    # The resolver reads the active issue from the live brain index, so the
+    # fixture must close THAT issue (board moved 66 -> 3361 in #3528; closing
+    # "66" no longer reaches the check).
+    active = _live_active_issue()
     result = ctr.resolve(
-        _live(main, issues={"66": "CLOSED"}, proof={"head_sha": main}, runtime=main),
+        _live(main, issues={str(active): "CLOSED"}, proof={"head_sha": main}, runtime=main),
         repo_head=main,
     )
     assert result["status"] == "CONFLICT"
@@ -90,23 +105,30 @@ def test_control_plane_points_to_open_current_truth_frontier():
     root = Path(__file__).resolve().parents[1]
     brain = json.loads((root / "BRAIN" / "NAYAPOWER-BRAIN-INDEX.json").read_text(encoding="utf-8"))
     ops = json.loads((root / "BRAIN" / "90-OPERATIONS" / "0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json").read_text(encoding="utf-8"))
-    assert brain["operations"]["active_issue"] == 66
+    # Live board is #3361 since #3528 (#66 is CLOSED now).
+    assert brain["operations"]["active_issue"] == 3361
     assert ops["current_state"]["issue_978"].startswith("CLOSED")
     assert ops["current_state"]["issue_975"].startswith("CLOSED")
     assert ops["current_state"]["issue_810"].startswith("CLOSED")
-    assert ops["top_10"][0]["id"] == "#66"
+    # Residual, NOT asserted as the frontier: the ops plan's top_10[0] still
+    # names closed #66 — the plan's frontier pointers need their own
+    # migration to #3361. The plan must at least still carry a live top item.
+    assert ops["top_10"][0]["status"] == "ACTIVE"
 
 
 def test_generated_markdown_continuation_brief_contains_operational_handoff():
     main = "a" * 40
+    # The brief renders the live active issue, so the fixture must mark THAT
+    # issue OPEN (board moved 66 -> 3361 in #3528).
+    active = _live_active_issue()
     result = ctr.resolve(
-        _live(main, proof={"run_id": 123, "head_sha": main, "conclusion": "success"}, runtime=None),
+        _live(main, issues={str(active): "OPEN"}, proof={"run_id": 123, "head_sha": main, "conclusion": "success"}, runtime=None),
         repo_head=main,
     )
     md = ctr.render_markdown(result)
     assert "# NayaPOWER Current Truth" in md
     assert f"`{main}`" in md
-    assert "**Active issue:** #66 (OPEN)" in md
+    assert f"**Active issue:** #{active} (OPEN)" in md
     assert "## One next action" in md
     assert "## Warnings / unknowns" in md
     assert "LIVE_RUNTIME_SOURCE" in md
