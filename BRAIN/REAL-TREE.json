@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-11-23",
-  "receipt_basis_commit": "036760a802d9ed3ad82ea2d6250b575bc324634e",
-  "inventory_file_count": 6060,
+  "generated_at": "2026-11-24",
+  "receipt_basis_commit": "957f40c481f5c46db9c5f627c86c2ef3ce221ab9",
+  "inventory_file_count": 6064,
   "domain_counts": {
     "00-ACTIVATION": 19,
     "00-ARCHITECTURE": 5,
@@ -11,7 +11,7 @@
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 49,
-    "05-MEMORY": 5013,
+    "05-MEMORY": 5017,
     "06-PROOF": 13,
     "07-LEARNING": 9,
     "08-SUCCESSION": 2,
@@ -1625,6 +1625,11 @@
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-11-21-NAYAPOWER-DAILY-INTELLIGENCE-REPORT.md",
       "blob_sha": "7b8aef07821fd3d5323ee4427fc0317743f145d2",
       "size": 34513
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-11-22-LEARNING-EVENT.md",
+      "blob_sha": "2eb03c3db63418eed6f91be2748329429ef0a4a3",
+      "size": 11423
     },
     {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-11-22-NAYAPOWER-DAILY-INTELLIGENCE-REPORT.md",
@@ -19388,8 +19393,8 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3087/IB-SMART-NOTE-20261117-sn3087-the-full.md",
-      "blob_sha": "ed4e3617fc94257668e95339d65c845645d5c619",
-      "size": 9103
+      "blob_sha": "27fd3d7eb24ad53dd8c65143ae0879ac5b167772",
+      "size": 9235
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LAW/SN-3103/IB-SMART-NOTE-20261117-sn3103-everything-is-an-object.md",
@@ -19848,18 +19853,18 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3088/IB-SMART-NOTE-20261117-sn3088-the-discipline-of-nine.md",
-      "blob_sha": "87b51a94f58501775d5a9e966df488cf75b3bcee",
-      "size": 9383
+      "blob_sha": "2a049102520b939fb0a3d5cf197bf001476b06db",
+      "size": 9596
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3089/IB-SMART-NOTE-20261117-sn3089-prove-it-where-it-lives.md",
-      "blob_sha": "a8e5e13b9dfd2857344a201ba8b19c8f4248543e",
-      "size": 9647
+      "blob_sha": "d0de5b67b918e4f119189d5146cfc7e8181d510e",
+      "size": 9876
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/LESSON/SN-3090/IB-SMART-NOTE-20261117-sn3090-the-loop-that-never-idles.md",
-      "blob_sha": "179f3495258c495151a813a9fd9f2161810425ff",
-      "size": 6353
+      "blob_sha": "f6d6fc861abc931bd7f0cf0b81c7a3d752009b63",
+      "size": 6463
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/17/NAVIGATION/SN-3183/IB-SMART-NOTE-20261117-sn3183-a-link-must-land-on-the-view.md",
@@ -25667,6 +25672,21 @@
       "size": 5941
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/LESSON/SN-4713/IB-SMART-NOTE-20261123-sn4713-one-mind-one-canon-one-eye.md",
+      "blob_sha": "768dd75c943731d84a4e43560d303e609703efeb",
+      "size": 5644
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/LESSON/SN-4714/IB-SMART-NOTE-20261123-sn4714-the-loop-is-the-job.md",
+      "blob_sha": "e012e11beed309cbcafcbbe66b1141469e815551",
+      "size": 5488
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/REPORT/SN-4715/IB-SMART-NOTE-20261123-sn4715-daily-intelligence-report-2026-11-23.md",
+      "blob_sha": "79a994b70a57af09b6dc2e239bcef7c29649f999",
+      "size": 14446
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/23/SYSTEM/SN-4700/IB-SMART-NOTE-20261123-sn4700-authority-lives-in-the-human.md",
       "blob_sha": "ffcdb1823bac57239b9a4295ee438f3a61a2320f",
       "size": 6837
@@ -29713,8 +29733,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json",
-      "blob_sha": "512100cc2f42052c77fb1460a5bad9e7804ee49e",
-      "size": 6028
+      "blob_sha": "a933234100904f77b8457e06cdf1b17aea9f0ce5",
+      "size": 6034
     },
     {
       "path": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md",
@@ -30288,8 +30308,8 @@
     },
     {
       "path": "BRAIN/CURRENT-MISSION-STATE.md",
-      "blob_sha": "3198e16589b4f604db669e0dd561d7a591c39472",
-      "size": 3883021
+      "blob_sha": "63bb52a3f2664f475ac9bcf9a200a3d2793ab5a3",
+      "size": 9712753
     },
     {
       "path": "BRAIN/MASTER-MAP.md",
