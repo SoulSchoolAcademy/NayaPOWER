@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-24 03:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-24 03:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16099,6 +16099,12 @@ _Last updated: 2026-11-24 03:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: audit file hidden_files/askworld-log-audit-t0770-lane6.md exists on disk, sha256 0419c7973f77caaa5a21b322dc8259b053ceccea0b4352aa2e8bf9641d0c9ea1 == receipt pin byte-for-byte (11,797 bytes). Receipt documents a read-only audit with all 8 log_query call sites cited by live line, two-direction count re-derivation (json.loads per line 89/89 
 
+### ✅ t0769-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** INFRA packet 2 (body-hash logging) candidate text
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; backlog 80 before this tick, oldest-first). VERIFIED first-hand this tick: packet file hidden_files/infra-packet-2-bodyhash-t0769-lane5.md exists (7,956 bytes, ~7.9 KB as quoted), embeds source comment sha 260d8893, carries CANDIDATE status, the head-pinned/body-drifted mismatch class with decision table, and the 
+
 ### ✅ t0769 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** INFRA packet 2 (body-hash logging) candidate text, closing the t0754 three-packet verdict-instability prevention set
@@ -16123,6 +16129,12 @@ _Last updated: 2026-11-24 03:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: packet file hidden_files/infra-packet-2-bodyhash-t0769-lane5.md byte-exists (7,956 B, matches the 7.9 KB claim); source comment 6167590868 body sha256 byte-matches the packet's embedded claim 260d8893...a592372c exactly (independently re-fetched + hashed); all 4 source quotes probed verbatim in the comment (13/13 probes), the 5th quote ho
 
+### ✅ t0768-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Ranked top-20 unmet-needs analysis from ask-world query log (SMARTBLOCKS hypertune input)
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; backlog 80 before this tick, oldest-first). VERIFIED first-hand this tick: artifacts byte-exist and SHA256 matches the receipt's quoted hashes EXACTLY — retrieval/query-needs-top20-t0768.md f9da2fd548e47655adac0f2dd8f03f53d45681b88aea463a10997f9c965dbbf9 (8,294 bytes) and .jsonl f172d3f965e46575d68edabe79741517b80
+
 ### ✅ t0768 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** Ranked top-20 unmet-needs analysis from live ask-world query log
@@ -16138,6 +16150,12 @@ _Last updated: 2026-11-24 03:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0768-lane2.md`
 
 **Evidence:** Clears 9.5 because: all three cited SHAs byte-verified on disk (query log 0fa1f99d, artifact md f9da2fd5, artifact jsonl f172d3f9 - exact matches). Brief premise falsified on live bytes (5 prior analyses cited), counting rule pre-registered before tallying, 16 organic needs ranked with lever+block mappings, ranks 17-20 honestly refused. Self 3-pass
+
+### ✅ t0767-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE arm (a) independent verdict on Lane 1 MCC hypothesis-change note
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; backlog 80 before this tick, oldest-first). VERIFIED first-hand this tick: verdict file hidden_files/surge-a-verdict-t0767-lane3.md exists and holds the CONFIRM verdict with C1-C4, the root-difference table, and corpse pins re-derived live (d992ad0c, aeffc6fa matching the receipt); reviewed note lane-1/surge-a-hyp
 
 ### ✅ t0767 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
