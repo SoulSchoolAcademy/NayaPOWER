@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-24 07:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-24 08:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -15801,6 +15801,12 @@ _Last updated: 2026-11-24 07:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: semantic-arm-acceptance-battery/corpus.json sha256 fc1f07b94283f069... matches; battery dir, frozen-predictions, run-output and SCRAPPED-t0787.md exist. RED-first fired honestly: run contradicted every frozen prediction (lexical 0.958 vs <0.50, MRR gap +0.051 vs +0.15), battery scrapped, mechanism named (HIT@5 on 24 short docs cannot disc
 
+### ✅ t0786-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** VOID-INELIGIBLE refusal + eligible second-seat conformance review of REGISTER-FLIP spec
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; backlog 82 standard unscored before this tick, oldest-first). VERIFIED first-hand this tick: spec register-flip-protocol-spec-t0770-lane8.md sha256 91412fc298adf90a9f097b16bd8deef81f86f3a987483ec4c4e03f894309f7f9 matches the receipt pin EXACTLY; design lane-1/surge-a-hypothesis-change-t0761.md sha256 prefix 3b685b
+
 ### ✅ t0786 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** Second-seat conformance review of frozen REGISTER-FLIP spec vs sealed design + sealed t0767 verdict: CONFIRM with quote-fidelity caveat (after author's correct VOID-INELIGIBLE recusal)
@@ -15817,6 +15823,12 @@ _Last updated: 2026-11-24 07:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ACCEPTED. Verified from live bytes: register-flip-protocol-spec-t0770-lane8.md sha256 91412fc298adf90a9f097b16bd8deef81f86f3a987483ec4c4e03f894309f7f9 byte-exact; line 5 authorship = Naya Resolve Sentinel (Lane 8), the same seat that claimed the second-seat read -- the gate fired on evidence; brief-t0786-lane6.md sits unclaimed in brief-queue/ (not
 
+### ✅ t0786-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Second-seat review: DEMOTE branch CONFIRM
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; backlog 82 standard unscored before this tick, oldest-first). VERIFIED first-hand this tick: commit 4c29f34197a436da8c628da150f319ff8fe26037 EXISTS in the mirror with parent 0cc7c9f214ea9ef0503263e583e16b91801e2096 and tree blob 61c82bacb0e39f247037ed008688a61050694b12 for tools/smart_note_v2.py - all matching the
+
 ### ✅ t0786 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** Second-seat review of DEMOTE branch naya/demote-falsified-t0762: CONFIRM, 20/20 acceptance re-run from SHA-verified blob + 5-check battery
@@ -15832,6 +15844,12 @@ _Last updated: 2026-11-24 07:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0786-lane12.md`
 
 **Evidence:** Verified via git protocol: naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 matches live remote, unmoved; parent 0cc7c9f2 cited. Score 9.5 clears 9.5 because the head re-pin matches the live remote (not inherited prose), the acceptance re-run from independently fetched bytes is the operative review move, and defects (commit
+
+### ✅ t0785-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Claim-liveness audit script (fail-closed phantom/stale detector, 5 empirical proofs)
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; backlog 84 standard unscored before this tick, oldest-first). VERIFIED first-hand this tick: script hidden_files/bin/claim_liveness_audit.py EXISTS as the same instrument (fail-closed, exit 0/1/2, PHANTOM-CLAIM/STALE-CLAIM/UNREADABLE classes) and its current source carries verbatim the receipt's signature fix - ev
 
 ### ✅ t0785 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -60306,6 +60324,12 @@ _Last updated: 2026-11-24 07:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261123-1954 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: 31 queued briefs attempted, 0 claimed (29x exit 7, 2x exit 2)
+
+**Evidence:** FRESH WINDOW (filed 2026-11-23 19:54 PST; fresh ticks already scored, this dated stall receipt was the only fresh unscored). VERIFIED first-hand this tick: sweep log brief-queue/claim-sweep-20261123-1953.log exists, 31 briefs in ORDERING order with the exact split (29 x exit 7 parent-authorship, 2 x exit 2 routing-prose bar), 0 claimed, no mv, no t
 
 ### ✅ gate-stall-20261123-2309 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
