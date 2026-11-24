@@ -1964,8 +1964,12 @@ var spStep=0;
 function spIntelRow(key){ for(var i=0;i<S.intel.length;i++){ if(S.intel[i].item_key==='citizen:'+key) return S.intel[i]; } return null; }
 function spSaveIntel(key, title, text, sort){
   var body={project_id:PID, item_key:'citizen:'+key, title:title, state:'in-motion', detail:text, sort:sort};
-  return post('/project_intel_items', body).catch(function(){
-    return patch('/project_intel_items?project_id=eq.'+PID+'&item_key=eq.citizen:'+key, {title:title, state:'in-motion', detail:text, sort:sort});
+  var opts={method:'POST', cache:'no-store',
+    headers:{'apikey':ANON,'Authorization':'Bearer '+ANON,'Content-Type':'application/json','Prefer':'return=representation,resolution=merge-duplicates'},
+    body:JSON.stringify(body)};
+  return fetch(SB+'/project_intel_items?on_conflict=project_id,item_key', opts).then(function(r){
+    if(!r.ok) return r.text().then(function(t){ throw new Error('rest '+r.status+' '+t.slice(0,140)); });
+    return r.status===204?null:r.json();
   }).then(function(){ return loadIntelAndFamily(); });
 }
 function spSetStatus(t){ var s=document.getElementById('sp-w-status'); if(s) s.textContent=t||''; }
