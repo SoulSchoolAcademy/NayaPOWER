@@ -895,6 +895,16 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
      and the 73px slots beside it cannot hold the label at the 17px minimum. */
 @media(min-width:901px){
 #screen-cover .pm-main{display:flex}
+/* ORDER FIX (2026-11-23, live re-proof of round 1): the cover's DOM order is art,
+   sideA, sideB (the grid placed them visually via grid-areas), so the bare flex row
+   rendered art | sideA | sideB — the video on the LEFT, flipping the School laptop
+   layout ("visual left, video right", style 1) and the grid's own arrangement
+   (sideA left, art right). flex order restores sideA left, sideB middle, art right:
+   art and sideA keep their grid positions, only sideB moves (left-bottom -> middle),
+   which is the repack itself. */
+#screen-cover .pm-side-a{order:1}
+#screen-cover .pm-side-b{order:2}
+#screen-cover .pm-art{order:3}
 }
 @media(max-width:900px){
 #screen-cover .pm-side-b{position:static}
