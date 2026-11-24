@@ -5,7 +5,7 @@
 .mail-stage{
   position:relative; --ml-blue:#0f52ba; --ml-blue-lt:#0f52ba;
   --ml-ink:#ffffff; --ml-soft:#ffffff;
-  max-width:none; width:100%; box-sizing:border-box; margin:0; padding:10px clamp(16px,4vw,64px) 120px;
+  max-width:none; width:100%; box-sizing:border-box; margin:0; padding:0 clamp(16px,4vw,64px) 120px;
   color:var(--ml-ink);
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,"Segoe UI",sans-serif;
 }
@@ -33,14 +33,14 @@
 }
 
 /* folder rail — each folder owns its color: inbox blue, unread green, sent purple */
-.mail-stage .ml-rail{ display:flex; flex-direction:column; gap:10px;
-  border:1px solid rgba(255,255,255,.08); border-radius:20px; padding:18px;
+.mail-stage .ml-rail{ display:flex; flex-direction:column; gap:8px;
+  border:1px solid rgba(255,255,255,.08); border-radius:20px; padding:12px 18px;
   background:linear-gradient(180deg, rgba(22,26,40,.72), rgba(10,12,20,.62));
   -webkit-backdrop-filter:blur(20px); backdrop-filter:blur(20px);
   box-shadow:0 10px 36px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.06); }
 .mail-stage .ml-folder{ --fc:#0f52ba; --fcl:#0f52ba;
   display:flex; align-items:center; gap:8px;
-  padding:8px 12px; overflow:hidden;box-sizing:border-box;border-radius:14px; width:100%; text-align:left; white-space:nowrap;
+  padding:6px 12px; overflow:hidden;box-sizing:border-box;border-radius:14px; width:100%; text-align:left; white-space:nowrap;
   font-size:17px; font-weight:700; letter-spacing:.02em; line-height:1.25;
   cursor:pointer; font-family:inherit; color:#ffffff;
   background:#050607;
@@ -67,7 +67,7 @@
 .ml-folder.on .ml-badge{ color:#fff; background:#050607; border-color:color-mix(in srgb, var(--fc) 70%, transparent);
   box-shadow:0 0 10px -2px var(--fc), inset 0 1px 0 rgba(255,255,255,.12); text-shadow:0 0 8px var(--fc); }
 /* ===== Quick Access (10-year Smart Mail) ===== */
-.ml-qa-label{ margin:18px 4px 8px; font-size:17px; font-weight:800; letter-spacing:.22em; color:#ffffff; }
+.ml-qa-label{ margin:8px 4px 8px; font-size:17px; font-weight:800; letter-spacing:.06em; color:#ffffff; }
 .ml-qa{ display:flex; flex-direction:column; gap:8px; }
 .ml-qa-item{ --qc:#0e7490; display:flex; align-items:center; gap:8px; width:100%; max-width:100%; box-sizing:border-box; overflow:hidden; padding:11px 14px; border-radius:12px; cursor:pointer; font-family:inherit; font-size:17px; font-weight:800; letter-spacing:.14em; color:#ffffff; background:rgba(255,255,255,.02); border:1px solid rgba(232,234,242,.12); transition:border-color .2s, box-shadow .25s, transform .15s, background .25s; text-align:left; }
 .ml-qa-item:hover{ border-color:var(--qc); box-shadow:0 0 18px -6px var(--qc); transform:translateY(-1px); }
@@ -372,7 +372,7 @@ body{padding:var(--bw,96px)}
    centered brand → Hub. Identical in every room. No dependencies.
    VISUAL LAW: rest = silver-white luminous; hover = ignite identity color.
    ═══════════════════════════════════════════════════════════════ */
-.naya-topbar{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px;padding:calc(10px + env(safe-area-inset-top, 0px)) 16px 10px;background:linear-gradient(180deg,rgba(11,10,16,.96),rgba(11,10,16,.80));border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.naya-topbar{position:sticky;top:var(--bw,96px);z-index:60;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px;padding:calc(10px + env(safe-area-inset-top, 0px)) 16px 10px;background:linear-gradient(180deg,rgba(11,10,16,1),rgba(11,10,16,1));border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 .naya-corner-btn{flex:none;width:44px;height:44px;border-radius:14px;border:1px solid rgba(232,234,242,.42);background:linear-gradient(145deg,rgba(26,20,36,.9),rgba(11,10,16,.9));color:#fff;cursor:pointer;display:grid;place-items:center;padding:0;box-shadow:0 0 16px -6px rgba(255,255,255,.45),0 8px 20px rgba(0,0,0,.6);transition:border-color .15s ease,box-shadow .15s ease;-webkit-tap-highlight-color:transparent}
 .naya-corner-btn:hover{border-color:#6d28d9;box-shadow:0 0 20px -2px #6d28d9,0 0 6px #6d28d9,0 8px 20px rgba(0,0,0,.6)}
 .naya-corner-btn:active{border-color:#6d28d9;box-shadow:0 0 20px -2px #6d28d9,0 0 6px #6d28d9,0 8px 20px rgba(0,0,0,.6);transform:scale(.94)}
@@ -498,7 +498,7 @@ body.naya-drawer-open{overflow:hidden}
 
 </style>
 <style>
-body{padding-top:env(safe-area-inset-top,0px);}
+body{padding-top:calc(var(--bw,96px) + env(safe-area-inset-top,0px));}
 .mail-stage{padding-bottom:calc(120px + env(safe-area-inset-bottom,0px));}
 button,a{-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
 </style>
@@ -2233,21 +2233,21 @@ schRow.appendChild(dtWrap);
    New code, written to the laws. Text 25 / 19 / 17 only. White text only. Deep palette
    only. One light top-left (135deg). Inside is board black #050607 — no glow inside, ever.
    Slow motion only (ambient 120s / 180s; entry .5s; hover .3s). */
-.nm-chrome{padding:16px 0 0;}
-.nm-privacy{text-align:center;font-size:19px;line-height:1.6;color:#ffffff;margin:0 0 16px;}
+.nm-chrome{padding:8px 0 0;}
+.nm-privacy{text-align:center;font-size:19px;line-height:1.6;color:#ffffff;margin:0 0 8px;}
 .nm-privacy b{color:#d4a017;}
-.nm-toggle{display:flex;justify-content:center;gap:0;margin:0 auto 16px;max-width:520px;background:#050607;border:1.5px solid #ffffff;border-radius:999px;padding:8px;box-shadow:0 8px 24px rgba(0,0,0,.5);}
-.nm-toggle-btn{flex:1;background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);border:1.5px solid transparent;border-radius:999px;color:#ffffff;font-size:19px;font-weight:700;font-family:inherit;padding:12px 16px;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;}
+.nm-toggle{display:flex;justify-content:center;gap:0;margin:0 auto 8px;max-width:520px;background:#050607;border:1.5px solid #ffffff;border-radius:999px;padding:6px;box-shadow:0 8px 24px rgba(0,0,0,.5);}
+.nm-toggle-btn{flex:1;background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);border:1.5px solid transparent;border-radius:999px;color:#ffffff;font-size:19px;font-weight:700;font-family:inherit;padding:8px 16px;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;}
 .nm-toggle-btn small{display:block;font-size:17px;font-weight:400;color:#ffffff;}
 .nm-toggle-btn:hover{transform:translateY(-2px);}
 .nm-toggle-btn:active{transform:scale(.97);}
 .nm-toggle-btn[aria-pressed="true"][data-tempo="chat"]{border-color:#8e24aa;box-shadow:0 0 24px -4px rgba(142,36,170,.65),0 8px 24px rgba(0,0,0,.5);}
 .nm-toggle-btn[aria-pressed="true"][data-tempo="mail"]{border-color:#0f52ba;box-shadow:0 0 24px -4px rgba(15,82,186,.65),0 8px 24px rgba(0,0,0,.5);}
-.nm-steps{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin:0 0 16px;}
+.nm-steps{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin:0 0 8px;}
 .nm-step{font-size:17px;color:#ffffff;}
 .nm-step b{color:#d4a017;}
-.nm-orb-row{display:flex;align-items:center;justify-content:center;gap:16px;margin:0 0 16px;}
-.nm-orb{position:relative;flex:none;width:54px;height:54px;border-radius:50%;background:#050607;border:1.5px solid #8e24aa;color:#ffffff;display:grid;place-items:center;font-size:25px;font-weight:700;box-shadow:0 4px 10px rgba(0,0,0,.5);}
+.nm-orb-row{display:flex;align-items:center;justify-content:center;gap:16px;margin:0 0 8px;}
+.nm-orb{position:relative;flex:none;width:48px;height:48px;border-radius:50%;background:#050607;border:1.5px solid #8e24aa;color:#ffffff;display:grid;place-items:center;font-size:25px;font-weight:700;box-shadow:0 4px 10px rgba(0,0,0,.5);}
 .nm-orb::after{content:"";position:absolute;inset:-7px;border-radius:50%;border:1.5px solid #8e24aa;opacity:.55;animation:nm-orbit 120s linear infinite;}
 .nm-orb2{border-color:#d4a017;color:#d4a017;}
 .nm-orb2::after{border-color:#d4a017;animation-duration:180s;animation-direction:reverse;}
@@ -2565,7 +2565,7 @@ function nmMsgViewHtml(){
     h += '<h3>THE FAMILY, UNTIL THE ROSTER LANDS</h3><p class="nm-note">No live members returned for this space. These are the family — the twelve sisters and Shawn — shown as the family, never as members of this space.</p><div id="nmSeedList">';
     (window.PC_RAIL_SEED || []).forEach(function(p){
       var color = nmColorFor(p.alias);
-      h += '<div class="nm-person" data-nm-person="' + esc(p.alias) + '" style="--pc:' + color + '"><span class="nm-orb" style="--cc:' + color + '">' + esc(String(p.alias).charAt(0).toUpperCase()) + '</span><div><div class="nm-person-name">' + esc(nmName(p.alias)) + '</div><div class="nm-person-sub">Family</div><div class="nm-acts"><button type="button" class="nm-act" data-nm-dm="' + esc(p.alias) + '" style="--ac:#0f52ba" aria-label="Message ' + esc(p.alias) + '">✎</button><button type="button" class="nm-act" data-nm-mail="' + esc(p.alias) + '" style="--ac:#d4a017" aria-label="Mail ' + esc(p.alias) + '">✉</button></div></div></div>';
+      h += '<div class="nm-person' + (nmSelectedPerson === p.alias ? ' sel' : '') + '" data-nm-person="' + esc(p.alias) + '" style="--pc:' + color + '"><span class="nm-orb" style="--cc:' + color + '">' + esc(String(p.alias).charAt(0).toUpperCase()) + '</span><div><div class="nm-person-name">' + esc(nmName(p.alias)) + '</div><div class="nm-person-sub">Family</div><div class="nm-acts"><button type="button" class="nm-act" data-nm-dm="' + esc(p.alias) + '" style="--ac:#0f52ba" aria-label="Message ' + esc(p.alias) + '">✎</button><button type="button" class="nm-act" data-nm-mail="' + esc(p.alias) + '" style="--ac:#d4a017" aria-label="Mail ' + esc(p.alias) + '">✉</button></div></div></div>';
     });
     h += '</div>';
   }
@@ -2632,6 +2632,28 @@ function nmRefreshMsgView(){
   view.parentNode.replaceChild(nv, view);
   nmBindMsgView();
 }
+function nmScrollReaderIntoView(){
+  /* After focus() puts the composer on screen, the reader's head (Sophia's
+     name, the orb row) can still sit behind the sticky topbar / frame band —
+     focus scrolls the minimum to reveal the textarea, not the reader. Nudge
+     so the reader top clears the frame edge + sticky topbar + 16px, but never
+     so far that the composer leaves the viewport (long conversation: the
+     composer wins, the reader top stays partly hidden — both cannot fit). */
+  var rd = document.getElementById('nmReader');
+  var ta = document.getElementById('nmMsgBody');
+  var tb = document.querySelector('.naya-topbar');
+  if(!rd) return;
+  var clear = (tb ? tb.getBoundingClientRect().height : 0) + parseFloat(getComputedStyle(document.body).paddingTop || '0') + 16;
+  var y = rd.getBoundingClientRect().top + window.scrollY - clear;
+  if(ta){
+    var comp = ta.closest('.nm-composer') || ta;
+    var bottomDoc = comp.getBoundingClientRect().bottom + window.scrollY;
+    var minY = bottomDoc - window.innerHeight + 8;
+    if(y < minY) y = minY;
+  }
+  if(y < 0) y = 0;
+  window.scrollTo(0, y);
+}
 function nmBindMsgView(){
   var view = document.getElementById('nmMsgView');
   if(!view) return;
@@ -2647,13 +2669,13 @@ function nmBindMsgView(){
     b.addEventListener('click', function(){ nmFilter = b.getAttribute('data-nm-filter'); nmRefreshMsgView(); });
   });
   view.querySelectorAll('[data-nm-dm]').forEach(function(b){
-    b.addEventListener('click', function(ev){ ev.stopPropagation(); nmSelectedPerson = b.getAttribute('data-nm-dm'); nmSelectedConv = null; nmTempo = 'chat'; nmSyncToggle(); nmRefreshMsgView(); var ta = document.getElementById('nmMsgBody'); if(ta) ta.focus(); });
+    b.addEventListener('click', function(ev){ ev.stopPropagation(); nmSelectedPerson = b.getAttribute('data-nm-dm'); nmSelectedConv = null; nmTempo = 'chat'; nmSyncToggle(); nmRefreshMsgView(); var ta = document.getElementById('nmMsgBody'); if(ta) ta.focus(); nmScrollReaderIntoView(); });
   });
   view.querySelectorAll('[data-nm-mail]').forEach(function(b){
-    b.addEventListener('click', function(ev){ ev.stopPropagation(); nmSelectedPerson = b.getAttribute('data-nm-mail'); nmSelectedConv = null; nmTempo = 'mail'; nmSyncToggle(); nmRefreshMsgView(); var ta = document.getElementById('nmMsgBody'); if(ta) ta.focus(); });
+    b.addEventListener('click', function(ev){ ev.stopPropagation(); nmSelectedPerson = b.getAttribute('data-nm-mail'); nmSelectedConv = null; nmTempo = 'mail'; nmSyncToggle(); nmRefreshMsgView(); var ta = document.getElementById('nmMsgBody'); if(ta) ta.focus(); nmScrollReaderIntoView(); });
   });
   view.querySelectorAll('[data-nm-person]').forEach(function(b){
-    b.addEventListener('click', function(){ nmSelectedPerson = b.getAttribute('data-nm-person'); nmSelectedConv = null; nmRefreshMsgView(); });
+    b.addEventListener('click', function(){ nmSelectedPerson = b.getAttribute('data-nm-person'); nmSelectedConv = null; nmRefreshMsgView(); var ta = document.getElementById('nmMsgBody'); if(ta) ta.focus(); nmScrollReaderIntoView(); });
   });
   view.querySelectorAll('[data-nm-conv]').forEach(function(b){
     b.addEventListener('click', function(){
@@ -2661,6 +2683,8 @@ function nmBindMsgView(){
       var c = nmConvs.filter(function(x){ return x.threadId === nmSelectedConv; })[0];
       nmSelectedPerson = c ? c.with : nmSelectedPerson;
       nmRefreshMsgView();
+      var ta = document.getElementById('nmMsgBody'); if(ta) ta.focus();
+      nmScrollReaderIntoView();
     });
   });
   view.querySelectorAll('[data-nm-react]').forEach(function(b){
