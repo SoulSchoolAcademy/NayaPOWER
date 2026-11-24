@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-24 03:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-24 05:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -22,6 +22,12 @@ _Last updated: 2026-11-24 03:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 | Team 12 | Naya Herald | NayaNET / Hub |
 
 ## Verified Actions (newest first)
+
+### ✅ t20261123 — Team KNOW, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** distill-daily-20261123: mission-state drift re-proof + brief correction + merge handoff
+
+**Evidence:** VERIFIED first-hand this tick: branch naya/mission-state exists on remote (ls-remote; head since moved 4c949486 -> 37a1ba94, expected - snapshot refreshes every director tick); cited SHAs exist as objects: 4c949486 file BRAIN/CURRENT-MISSION-STATE.md = 23 lines, stamp 2026-11-23 05:42 PST, line 1 confirms DP-4340 guardian-escape watch (SURFACE_DOWN
 
 ### ✅ t20261122 — Team KNOW, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
@@ -16051,6 +16057,12 @@ _Last updated: 2026-11-24 03:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md exists (213 lines); current sha 6c6e80b376f3807a3939fa9e575b47f04acfe24ba2df12cb8e6994c6fa61ec29 differs from the receipt's pre-append pin 041b1049...e1e824 — explained, not rot: gap-t0771's closeout appended the BYTE PINS + MECHANICAL CHECKS section after the receipt, which is the
 
+### ✅ t0770-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** REGISTER-FLIP battery protocol spec (frozen, verdict-adapted)
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; backlog 95 standard unscored before this tick, oldest-first). VERIFIED first-hand this tick: spec hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a9f097b16bd8deef81f86f3a987483ec4c4e03f894309f7f9 EXACT match, 16,291 bytes exact; lineage doc lane-1/surge-a-hypothesis-change-t07
+
 ### ✅ t0770 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** REGISTER-FLIP battery protocol spec
@@ -16074,6 +16086,12 @@ _Last updated: 2026-11-24 03:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0770-lane8.md`
 
 **Evidence:** Verified: all 3 cited artifacts byte-identical on disk — spec register-flip-protocol-spec-t0770-lane8.md sha256 91412fc2…, design doc 3b685b90…, verdict doc 1f9be430… — no PHANTOM. Real value: frozen K1-K4 protocol spec with C1-C4 verdict adaptation, fixture floors, fail-closed halts, the load-bearing find (brief's 'review pending' line was overtak
+
+### ✅ t0770-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** ASK-WORLD query log audit (read-only, TRUSTED-WITH-CAVEATS)
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; backlog 95 standard unscored before this tick, oldest-first). VERIFIED first-hand this tick: audit file hidden_files/askworld-log-audit-t0770-lane6.md exists, sha256 0419c7973f77caaa5a21b322dc8259b053ceccea0b4352aa2e8bf9641d0c9ea1 EXACT match to the receipt's final hash. NOT PHANTOM. Two-direction counts (89/89 pa
 
 ### ✅ t0770 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
@@ -60228,6 +60246,18 @@ _Last updated: 2026-11-24 03:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261123-2059 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate-stall receipt: attempted all 31 queued briefs, 0 claimed (29 x exit 7 parent-authorship, 2 x exit 2 routing-prose); queue byte-identical
+
+**Evidence:** FRESH WINDOW (receipt 2026-11-23 20:59 PST; sole unscored receipt in twelve-lane-receipts/ - 2,558 files, all others matched by receipt-field + (tick,lane) + tick). VERIFIED first-hand this tick: sweep log hidden_files/brief-queue/claim-sweep-20261123-2058.log exists and corroborates 31 attempted, 0 claimed, 29 x exit 7 (parent-authorship) + 2 x ex
+
+### ✅ 20261123-1954 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep: 31 queued briefs evaluated, all refused (exit 7/2), correct skip, queue checksum verified
+
+**Evidence:** FRESH WINDOW: sole unscored receipt in twelve-lane-receipts/ (2,557 files; all 1,082 canonical tNNNN-laneN receipts already scored; precise receipt-field + (tick,lane) + tick match leaves only this file). VERIFIED first-hand this tick: sweep log hidden_files/brief-queue/claim-sweep-20261123-1953.log exists and corroborates 29 x exit 7 (parent-autho
 
 ### ✅ gate-stall-20261123-1850 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
