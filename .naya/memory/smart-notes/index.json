@@ -80400,6 +80400,42 @@
         "Craft",
         "Knowledge"
       ]
+    },
+    {
+      "smart_note_id": "SN-4727",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4727-the-brief-carries-the-want",
+      "slug": "the-brief-carries-the-want",
+      "title": "The Brief Carries the Want",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/LESSON/SN-4727/IB-SMART-NOTE-20261124-sn4727-the-brief-carries-the-want.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/LESSON/SN-4727/IB-SMART-NOTE-20261124-sn4727-the-brief-carries-the-want.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/LESSON/SN-4727/IB-SMART-NOTE-20261124-sn4727-the-brief-carries-the-want.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4727-the-brief-carries-the-want.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LESSON",
+      "topic": "LESSON",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T17:45:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "450f555fa405a6e1fd9aaca27b0fe5606450d4aef64df50a13e30a05884f5cbd",
+      "content_hash": "f7446898cda28661a71163611d33298f332ab3f96600f80f1c906360d43d6917",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "91c6c9cabdc17a9af999c61912e06e0725b7062cbb232d552ff1e83e8494f850",
+      "one_line": "A round can pass every check and still not be whole — because the brief carried the words and missed the want. The brief is the creation instrument: it must carry the whole understanding, the ultimate want in his voice and the why behind the what, so a seat reading it cold builds it right the first time. Around that law the whole build day stands: never a wall of text, every way in extraordinary, proof taken from the branch's own bytes and never from a cache-busting URL, the page written down as a smart app before it is built, speed guarded by understanding so speed never buys a redo, trust earned with reasons and never declared, and every tap a switch that actually switches. Just right is the only size, and his eye is the test every layer answers to.",
+      "topics": [
+        "Distillation",
+        "Lesson",
+        "Craft",
+        "Honor",
+        "Multiplication"
+      ]
     }
   ],
   "sequence_policy": {
@@ -80410,5 +80446,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "78d30e0b9de5f7233fe939bf5d0ff4170865adf1ba77f5317b5d6029893d1e30"
+  "corpus_manifest_hash": "4cc62ce096018eda2ed73d1091826cd141adf3a0f37f3aff85c095a946a08410"
 }
