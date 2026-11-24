@@ -4318,7 +4318,9 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
            appointments, notes, journal or lists in full — the
            highlights only, their nutshells (the Nutshell IS the human
            note, short — design laws §16). Daily Reports keeps the
-           report (intelHTML); Your Stats still opens Daily Reports. */
+           report (intelHTML). ROUND 8: both doors now navigate to their
+           live rooms pages, and Your Stats goes to the dashboard — see
+           the openDoor intercept and the statsBtn handler. */
         function intelTodayHTML() {
           var k = keyOf(sel);
           var dayNotes = mergedNotesFor(k);
@@ -4535,15 +4537,21 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           renderCategories(apptRows, tl);
           renderNotifBar();
           renderNotifDetail();
-          /* Your Stats (Amendment #3): the button in the top bar lands
-             on the stats view for the day being viewed. The Dashboard
-             (Smart Score Dashboard) is not in this branch, so the
-             landing is the Reports door — the day file's day-synced
-             stats for the selected day. Day-sync is the law: the door
-             renders for sel, whatever day is shown. */
+          /* ROUND 8 (2026-11-23 ~19:15 MST, Shawn's ruling): Your Stats
+             goes to the actual dashboard — "if you hit the stats it's
+             supposed to go to the actual dashboard". Target is the
+             dashboard on its own home, dashboard.nayanet.app/shawn, per
+             the locked URL scheme (dashboard.nayanet.app/<alias>, alias
+             shawn — never /sean). NOT nayanet.app/dashboard — that is
+             the Nova Reyes demo dashboard. NOTE: dashboard.nayanet.app
+             does not resolve yet (no DNS); this wiring is
+             forward-looking and lands when go-live step 2 puts the
+             dashboard live there. Open question: if the dashboard lands
+             on the bare domain instead of /shawn, this target changes
+             to the bare domain with a one-line edit — Shawn's eye
+             decides. */
           var stb = $("statsBtn"); if (stb) stb.addEventListener("click", function () {
-            var door = doorById("reports");
-            if (door) openDoor(door);
+            window.location.assign("https://dashboard.nayanet.app/shawn");
           });
           /* Change cover (§4): any photo they choose becomes the day's
              cover — kept for the citizen, session-safe if storage refuses */
@@ -5411,10 +5419,9 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              booking slides (the flow opens in the Book a time door),
              the Summary slide (no use, no point). The two slide-3
              buttons are the old Summary slide's rows, verbatim — same
-             sumRow calls, same doors, same colours — so both open the
-             existing door path for sel, the day on screen: daily opens
-             intelTodayHTML(), reports opens statsBoardHTML() +
-             intelHTML(). */
+             sumRow calls, same doors, same colours. ROUND 8: both now
+             navigate out to their live rooms pages (see the openDoor
+             intercept) instead of opening the in-page door path. */
           var intelReportsInner = '<div class="sum-list">' +
             sumRow("daily", "#3f51b5", "spark", "Intel Today", "The highlights of the day's intelligence — from your smart notes.", 0, null) +
             sumRow("reports", "#0e7490", "landmark", "Daily Reports", "Your daily intelligence report — the intelligence of the day, for any day.", 0, null) +
@@ -5713,6 +5720,19 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         }
 
         function openDoor(door, newsScope) {
+          /* ROUND 8 (2026-11-23 ~19:15 MST, Shawn's ruling — design is
+             OK, function needs the work; the dashboard and the calendar
+             system need to be aligned): Intel Today and Daily Reports
+             live on the rooms pages now. This intercept owns both doors
+             and navigates out before any door-body rendering, so every
+             entry point (slide-3 sumRow buttons, day-menu tiles, any
+             other data-door trigger) lands on the live rooms page. The
+             in-page branch bodies below stay intact behind this
+             intercept. No day is passed in the URL — the rooms pages do
+             not read a day param; day-scoped deep links are owed on the
+             rooms side, not guessed here. */
+          if (door && door.id === "daily") { window.location.assign("https://nayanet.app/rooms/today"); return; }
+          if (door && door.id === "reports") { window.location.assign("https://nayanet.app/rooms/reports"); return; }
           stopMeet();
           curDoor = door;
           var dc = DAY_COLORS[sel.getDay()];
@@ -5843,6 +5863,10 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
                 openDoor(door);
               });
             });
+          /* ROUND 8 — the two branch bodies below stay intact but are
+             now owned by the openDoor intercept above: tapping either
+             door navigates to its live rooms page instead of rendering
+             here. Nothing was deleted; the intercept returns first. */
           } else if (door.id === "daily") {
             body.innerHTML = '<div class="panel">' + intelTodayHTML() + "</div>";
           } else if (door.id === "reports") {
