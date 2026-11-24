@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-24 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-24 12:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -60626,6 +60626,36 @@ _Last updated: 2026-11-24 11:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261123-1954 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: 31 queued briefs attempted, 0 claimed (receipt: 29x exit 7, 2x exit 2)
+
+**Evidence:** VERIFIED first-hand this tick: sweep log brief-queue/claim-sweep-20261123-1953.log exists (summary-only, no per-brief lines - same pattern as the 0118 log); the 29x7/2x2 split is taken on the receipt's word plus the checksum. Queue holds 31 brief-*.md, 0 brief-tNNNN-*, no mv; queue checksum recomputed from live bytes = 6d9e2c4ec6fff11fb09482178ca94
+
+### ✅ gate-stall-20261123-2203 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: 31 queued briefs attempted, 0 claimed (receipt: 29x exit 7, 2x exit 2)
+
+**Evidence:** VERIFIED first-hand this tick: sweep log brief-queue/claim-sweep-20261123-2203.log exists with per-brief lines for 28 of the 31 briefs (26x exit 7 + 2x exit 2 counted); the 3 (b1) datetime briefs (brief-gap-gate-stall-20261026-2230-lane0, brief-gap-gate-stall-20261111-0500-lane0, brief-gap-lane-scorer-20261114-0150) have NO attempt line in this run
+
+### ✅ gate-stall-20261124-0118 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: 31 queued briefs attempted, 0 claimed (receipt: 29x exit 7, 2x exit 2)
+
+**Evidence:** VERIFIED first-hand this tick: sweep log brief-queue/claim-sweep-20261124-0118.log exists (summary-only, no per-brief lines - same pattern as the 2203/2309 logs); queue holds 31 brief-*.md, 0 brief-tNNNN-*, no mv; queue checksum recomputed from live bytes = 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4, identical to the receipt p
+
+### ✅ gate-stall-20261124-0013 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: 31 queued briefs attempted, 0 claimed (receipt: 29x exit 7, 2x exit 2)
+
+**Evidence:** VERIFIED first-hand this tick: sweep log brief-queue/claim-sweep-20261124-0013.log exists with per-brief ATTEMPT lines for 28 of the 31 briefs (26x exit 7 + 2x exit 2 counted); the 3 (b1) datetime briefs (brief-gap-gate-stall-20261026-2230-lane0, brief-gap-gate-stall-20261111-0500-lane0, brief-gap-lane-scorer-20261114-0150-lane3) have NO attempt li
+
+### ✅ gate-stall-20261123-2309 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: 31 queued briefs attempted, 0 claimed (receipt: 29x exit 7, 2x exit 2)
+
+**Evidence:** VERIFIED first-hand this tick: sweep log brief-queue/claim-sweep-20261123-2309.log exists (summary-only, no per-brief lines - same pattern as the 2203 log); queue holds 31 brief-*.md, 0 brief-tNNNN-*, no mv; queue checksum recomputed from live bytes = 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4, identical to the receipt pin and
 
 ### ✅ gate-stall-20261124-0329 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
