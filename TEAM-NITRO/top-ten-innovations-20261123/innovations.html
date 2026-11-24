@@ -910,6 +910,36 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 #screen-cover .pm-side-b{position:static}
 #screen-cover .pm-side-b .side-actions{position:absolute;top:28px;left:50%;transform:translateX(-50%);z-index:7;margin:0}
 }
+
+/* STEPPED DEPTH (2026-11-23 end-button fix, Shawn's eye): the depth view is
+   no longer a narrow centred column showing everything at once. Each step
+   is ONE piece — one text section or one image slot — in the front's own
+   arrangement: the text in the middle, an image on each side. The card
+   widens to the stage (swap/text popups keep 640px); the top bar (Back
+   left, X right) and the N foot stick so they stay visible and tappable
+   on every step, with a solid background so text never shows through.
+   The step counter is plain white 17px chrome — no new sentences. */
+#depthView .innov-pop-card{width:min(1080px,100%)}
+#depthView .depth-top{position:sticky;top:0;z-index:5;margin:0 -22px 6px;padding:0 22px;background:linear-gradient(135deg,#17171f,#0a0a10)}
+#depthView .depth-foot{position:sticky;bottom:0;z-index:5;margin:18px -22px -20px;padding:12px 22px 20px;background:linear-gradient(135deg,#17171f,#0a0a10)}
+.depth-step{color:#fff;font-family:"Cormorant Garamond",serif;font-size:17px;letter-spacing:.14em;white-space:nowrap}
+.depth-stage{display:flex;gap:16px;align-items:stretch}
+.depth-stage #depthBody{flex:1 1 auto;min-width:0}
+.depth-side{flex:0 0 200px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.depth-side[hidden]{display:none}
+.depth-side .depth-img-slot{margin:0;min-height:120px}
+.depth-side .depth-img-slot img{max-height:180px}
+.depth-side .depth-img-slot span{font-size:17px}
+#depthBody .depth-img-slot{min-height:240px}
+#depthBody .depth-img-slot img{max-height:340px}
+@media(max-width:900px){
+.depth-stage{flex-direction:column}
+.depth-side{flex:1 1 auto;flex-direction:row}
+.depth-side .depth-img-slot{flex:1;min-height:100px}
+.depth-side .depth-img-slot img{max-height:120px}
+#depthBody .depth-img-slot{min-height:180px}
+#depthBody .depth-img-slot img{max-height:240px}
+}
 </style>
 </head>
 <body>
@@ -1429,10 +1459,15 @@ daybarEl().addEventListener('mouseleave', function(){ scheduleFold(); });
   <div class="innov-pop-card">
     <div class="depth-top">
       <button class="depth-back" id="depthBackTop" type="button">← Back</button>
+      <span class="depth-step" id="depthStep" aria-live="polite"></span>
       <button class="depth-x" id="depthClose" type="button" aria-label="Close">×</button>
     </div>
     <div class="b-script" id="depthTitle"></div>
-    <div id="depthBody"></div>
+    <div class="depth-stage" id="depthStage">
+      <div class="depth-side" id="depthSideL" hidden></div>
+      <div id="depthBody"></div>
+      <div class="depth-side" id="depthSideR" hidden></div>
+    </div>
     <div class="depth-foot">
       <button type="button" class="ib-n" id="depthN" aria-label="Go deeper"><img alt="The red N" /></button>
     </div>
@@ -1764,7 +1799,7 @@ function fitPanels(){
     CONTINUED[key] = rest;
     BEHIND[current] = (BEHIND[current] || []).filter(function(L){ return L.cont !== slot; });
     BEHIND[current].push({ kind: 'text', text: rest, cont: slot });
-    marker.setAttribute('data-layer', String(BEHIND[current].length));
+    marker.setAttribute('data-layer', String(depthSteps(current).length + BEHIND[current].length - 1));
   });
 }
 document.getElementById('swapClose').addEventListener('click', closeSwap);
@@ -1772,7 +1807,7 @@ document.getElementById('swapPop').addEventListener('click', function(e){ if (e.
 /* Depth: the N is the end — tap it and go in. Layer 0 is the built-in
    Naya-note presentation; the user's own layers stack further behind. */
 function depthLayers(boardIdx){
-  return [{ kind: 'depth', g: GROUPS[boardIdx] }].concat(BEHIND[boardIdx] || []);
+  return depthSteps(boardIdx).concat(BEHIND[boardIdx] || []);
 }
 function openDepth(boardIdx){
   DEPTH_BOARD = boardIdx; DEPTH_IDX = 0;
@@ -1785,44 +1820,77 @@ function depthSlotHTML(boardIdx, slotIdx){
   if (src) return '<div class="depth-img-slot"><img src="' + src + '" alt="" /></div>';
   return '<button type="button" class="depth-img-slot depth-img-slot--ready" data-board="' + boardIdx + '" aria-label="Depth image ' + (slotIdx + 1) + ' of ' + (DEPTH_IMGS[boardIdx] || []).length + ' — picture on its way, tap to go on to the next chapter"><span>Depth image ' + (slotIdx + 1) + ' of ' + (DEPTH_IMGS[boardIdx] || []).length + ' · ready — picture on its way · tap to go on →</span></button>';
 }
+function depthSteps(boardIdx){
+  /* THE ALTERNATING STORY FLOW (Shawn, 2026-11-23): text → image →
+     text → image, back and forth. One image slot after each section
+     that has one — chapters with four images take slots after
+     sections 1–4 and close with sections 5–6 as text; chapter 2's
+     approved set has FIVE images plus the doorway alternate, so it
+     takes slots after sections 1–6. Chapters with an EMPTY row (1, 4,
+     6) are text-only depth — no slots at all. The front-board image
+     is never reused here — EXCEPT chapter 2's approved set, where four
+     of the five are the same approved files as the front boards,
+     placed in both places on his word (see DEPTH_IMGS). No other
+     board reuses its front image. Slots are wired to
+     DEPTH_IMGS[board]; all are empty/ready until Shawn approves the
+     chapter's images. THE LITERAL LAW + LITERAL REALITY judge every
+     one: literal, 3D ultra-real, obvious at first glance. */
+  /* STEPPED DEPTH (2026-11-23 end-button fix, Shawn's eye): the flow
+     above is now shown ONE step per tap — one text section, then its
+     image slot, then the next section — instead of all sections and
+     all slots dumped in one column. The BEHIND layers stack after
+     these built-in steps, unchanged. */
+  var g = GROUPS[boardIdx];
+  var imgs = DEPTH_IMGS[boardIdx] || [];
+  var steps = [];
+  g.d.forEach(function(sec, k){
+    steps.push({ kind: 'dtext', sec: k });
+    if (k < imgs.length) steps.push({ kind: 'dimg', slot: k });
+  });
+  return steps;
+}
 function renderDepth(){
   var layers = depthLayers(DEPTH_BOARD);
   var L = layers[DEPTH_IDX];
   var g = GROUPS[DEPTH_BOARD];
   var title = document.getElementById('depthTitle');
   var body = document.getElementById('depthBody');
-  if (L.kind === 'depth'){
-    title.textContent = g.t + (g.draft ? ' · DRAFT' : '') + ' — in full';
-    /* THE ALTERNATING STORY FLOW (Shawn, 2026-11-23): text → image →
-       text → image, back and forth. One image slot after each section
-       that has one — chapters with four images take slots after
-       sections 1–4 and close with sections 5–6 as text; chapter 2's
-       approved set has FIVE images plus the doorway alternate, so it
-       takes slots after sections 1–6. Chapters with an EMPTY row (1, 4,
-       6) are text-only depth — no slots at all. The front-board image
-       is never reused here — EXCEPT chapter 2's approved set, where four
-       of the five are the same approved files as the front boards,
-       placed in both places on his word (see DEPTH_IMGS). No other
-       board reuses its front image. Slots are wired to
-       DEPTH_IMGS[board]; all are empty/ready until Shawn approves the
-       chapter's images. THE LITERAL LAW + LITERAL REALITY judge every
-       one: literal, 3D ultra-real, obvious at first glance. */
-    var html = '';
-    g.d.forEach(function(sec, k){
-      html += '<h3 class="depth-h">' + escTx(sec[0]) + '</h3><p>' + escTx(sec[1]) + '</p>';
-      if (k < (DEPTH_IMGS[DEPTH_BOARD] || []).length) html += depthSlotHTML(DEPTH_BOARD, k);
-    });
-    body.innerHTML = html;
+  var sideL = document.getElementById('depthSideL');
+  var sideR = document.getElementById('depthSideR');
+  var stepEl = document.getElementById('depthStep');
+  if (stepEl) stepEl.textContent = (DEPTH_IDX + 1) + ' of ' + layers.length;
+  title.textContent = g.t + (g.draft ? ' · DRAFT' : '');
+  function sideHTML(slotIdx){
+    var imgs = DEPTH_IMGS[DEPTH_BOARD] || [];
+    if (slotIdx < 0 || slotIdx >= imgs.length) return '';
+    return depthSlotHTML(DEPTH_BOARD, slotIdx);
+  }
+  function setSides(a, b){
+    sideL.innerHTML = sideHTML(a); sideL.hidden = !sideL.innerHTML;
+    sideR.innerHTML = sideHTML(b); sideR.hidden = !sideR.innerHTML;
+  }
+  if (L.kind === 'dtext'){
+    var sec = g.d[L.sec];
+    body.innerHTML = '<h3 class="depth-h">' + escTx(sec[0]) + '</h3><p>' + escTx(sec[1]) + '</p>';
+    setSides(L.sec - 1, L.sec);
+  } else if (L.kind === 'dimg'){
+    body.innerHTML = depthSlotHTML(DEPTH_BOARD, L.slot);
+    setSides(L.slot - 1, L.slot + 1);
   } else if (L.kind === 'img'){
     title.textContent = g.t + ' — behind the board';
     body.innerHTML = '<img class="innov-depth-img" src="' + L.src + '" alt="" />';
+    setSides(-1, -1);
   } else if (L.kind === 'video'){
     title.textContent = g.t + ' — behind the board';
     body.innerHTML = '<div class="ib-vid" style="height:320px">' + vidHTML(L.src) + '</div>';
+    setSides(-1, -1);
   } else if (L.kind === 'text'){
     title.textContent = g.t + (L.cont ? ' — continued' : ' — behind the board');
     body.innerHTML = (L.cont ? '<p class="cont-note">Continued from the front — the rest of the text.</p>' : '') + '<p>' + escTx(L.text) + '</p>';
+    setSides(-1, -1);
   }
+  var card = document.querySelector('#depthView .innov-pop-card');
+  if (card) card.scrollTop = 0;
 }
 function closeDepth(){ document.getElementById('depthView').hidden = true; }
 document.getElementById('depthN').addEventListener('click', function(){
@@ -1837,7 +1905,7 @@ document.getElementById('depthBackTop').addEventListener('click', function(){
 document.getElementById('depthClose').addEventListener('click', closeDepth);
 document.getElementById('depthView').addEventListener('click', function(e){ if (e.target === this) closeDepth(); });
 /* ENDS THAT WORK (2026-11-23 full-build round): a ready depth-image frame is a working end — tap it and you go on to the next chapter (portal on the last board). */
-document.getElementById('depthBody').addEventListener('click', function(e){ var b = e.target && e.target.closest ? e.target.closest('.depth-img-slot--ready') : null; if (!b) return; closeDepth(); if (current < TOTAL - 1){ current++; renderSlide(); show('slide'); } else { goToPortal(); } });
+document.getElementById('depthStage').addEventListener('click', function(e){ var b = e.target && e.target.closest ? e.target.closest('.depth-img-slot--ready') : null; if (!b) return; closeDepth(); if (current < TOTAL - 1){ current++; renderSlide(); show('slide'); } else { goToPortal(); } });
 document.addEventListener('click', function(e){
   var t = e.target;
   if (!t || !t.closest) return;
