@@ -80111,6 +80111,42 @@
         "Craft",
         "Multiplication"
       ]
+    },
+    {
+      "smart_note_id": "SN-4719",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4719-personal-decided",
+      "slug": "personal-decided",
+      "title": "Personal, Decided",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4719/IB-SMART-NOTE-20261124-sn4719-personal-decided.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4719/IB-SMART-NOTE-20261124-sn4719-personal-decided.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4719/IB-SMART-NOTE-20261124-sn4719-personal-decided.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4719-personal-decided.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T17:12:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "f6264f33a7c91025d3b35235b34a20a7a9233149d54c1f7e5874e303a745021d",
+      "content_hash": "ac354d9cc6460e341945893f0e9b976fe5b6b78c49f947600da0607c65c70369",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "07d96f367c4214673168aacd9d44b89baeaec7f2d136a5f3e85f11d0c1db4f92",
+      "one_line": "One afternoon settled the Personal page, and the rulings compose into one design: the eight top buttons fit edge to edge, just right — not round two's too big, not round three's too small. Connections is not rebuilt; the proper system already exists as a scrolling mini-messenger, so harvest the room. Personal's bottom is the five icons only — the Hub bar is Hub-only and copying it across was the error. The feed tabs are Personal / Collective / World / Worlds, with Public renamed Collective, and a feed is exactly three things — Naya Notes, Smart Notes, and posts — with Naya Notes as a chip under the tabs, never a tab of its own. The quota wall that had refused writes all morning ended when he bought Workers Paid himself: the store accepts writes again, nothing new to store. Work then ran in Fast Action Mode — he says it, it gets done right away and comes back right away — toward one deadline: Personal complete today, all the way through including membership, because it is the page every other page is patterned on; and the walk's end slide carries a plus button where the Smart Link shows, so a citizen can share their new world out to mobile, Facebook, and email.",
+      "topics": [
+        "Distillation",
+        "Design",
+        "Multiplication",
+        "Craft",
+        "Honor"
+      ]
     }
   ],
   "sequence_policy": {
@@ -80121,5 +80157,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "736bcb89556855aa6ed7f8f9c8a6f452b95fcb3688afc1b77b15fe62ea4b8af5"
+  "corpus_manifest_hash": "73110a64c75e8937f7f06371afa25ec60836f1af46e750e87a318ab434a62939"
 }

@@ -1,0 +1,95 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-4719",
+ "title": "Personal, Decided",
+ "slug": "personal-decided",
+ "topic": "DESIGN",
+ "category": "DESIGN",
+ "kind": "intelligent-block",
+ "registered_by": "naya-resolve",
+ "directed_by": "Shawn Vibert",
+ "created_at": "2026-11-24T17:12:00Z",
+ "tone": "purple",
+ "icon": "◆",
+ "intelligence": {
+  "essence": "One afternoon settled the Personal page, and the rulings compose into one design: the eight top buttons fit edge to edge, just right — not round two's too big, not round three's too small. Connections is not rebuilt; the proper system already exists as a scrolling mini-messenger, so harvest the room. Personal's bottom is the five icons only — the Hub bar is Hub-only and copying it across was the error. The feed tabs are Personal / Collective / World / Worlds, with Public renamed Collective, and a feed is exactly three things — Naya Notes, Smart Notes, and posts — with Naya Notes as a chip under the tabs, never a tab of its own. The quota wall that had refused writes all morning ended when he bought Workers Paid himself: the store accepts writes again, nothing new to store. Work then ran in Fast Action Mode — he says it, it gets done right away and comes back right away — toward one deadline: Personal complete today, all the way through including membership, because it is the page every other page is patterned on; and the walk's end slide carries a plus button where the Smart Link shows, so a citizen can share their new world out to mobile, Facebook, and email.",
+  "human_view": "Personal is the pattern page — the one every other page learns from — and on 2026-11-16 its shape was decided, piece by piece, by his eye: the buttons, the bar, the tabs, what a feed is allowed to contain. This essence keeps those decisions together so no builder ever has to re-litigate them.",
+  "child_view": "This is the page that is most yours, and we decided exactly how it looks: which buttons sit at the top, which five sit at the bottom, and that your feed only ever holds three kinds of things — notes from Naya, smart notes, and posts.",
+  "grandma_view": "Your personal page was finished being argued about in one afternoon. The buttons fit properly, the bottom row is five simple icons, and your feed is kept clean — only three kinds of things ever appear in it.",
+  "ai_view": "Personal-page rulings distilled from SN-2947..SN-2956, all dated 2026-11-16: (1) eight top buttons span the full width edge-to-edge, sized just right (two failed sizes are on record). (2) Connections = harvest the existing proper system: a rectangle mini-messenger, click a person, initial at the side, scroll or search — do not build a new page. (3) Personal bottom bar = five icons only; the Hub bar is Hub-only; nothing above the five. (4) Feed tabs: Personal / Collective / World / Worlds ('Public feed' renamed Collective); remove the red overglow. (5) THE FEED LAW: a feed contains exactly Naya Notes, Smart Notes, and posts; a project is a world you add; one filter row, not two. (6) Naya Notes placement = a chip under the tabs (type chip per the Feed Law refinement). (7) Infrastructure fact: Workers Paid ($5/mo, purchased by Shawn 2026-11-16 15:39Z) removed the write-quota wall. (8) FAST ACTION MODE: continuous back-and-forth; instruction -> done -> back, same round; nothing held. (9) Directive: Personal complete today including the membership area; it is the template page for all other pages. (10) Walk end slide: plus button at the Smart Link position — black/obsidian, white glowing circling orb, white plus — sharing the new world to mobile/Facebook/email.",
+  "what_it_means": "A pattern page cannot be a moving target. These rulings freeze Personal's anatomy so the other eight apps inherit a settled shape instead of nine opinions — and the Feed Law inside it governs every feed in the system, not just this page.",
+  "whats_inside": [
+   "Just right: the eight top buttons, edge to edge (SN-2947)",
+   "Harvest the room: Connections already exists as the proper system; the five only at the bottom (SN-2948, SN-2949)",
+   "Tabs renamed and the Feed Law: a feed is exactly three things (SN-2950, SN-2953)",
+   "Workers Paid is live — the quota wall is gone; Naya Notes is a chip (SN-2951, SN-2952)",
+   "Fast Action Mode, Personal done today, and the walk-end plus button (SN-2954, SN-2955, SN-2956)"
+  ],
+  "topics": [
+   "Distillation",
+   "Design",
+   "Multiplication",
+   "Craft",
+   "Honor"
+  ]
+ },
+ "page": {
+  "distills": {
+   "batch": 12,
+   "of": 100,
+   "covers": [
+    {
+     "sn": "SN-2947",
+     "title": "The Personal Page, Just Right"
+    },
+    {
+     "sn": "SN-2948",
+     "title": "Connections Is the Proper System — Harvest the Room"
+    },
+    {
+     "sn": "SN-2949",
+     "title": "The Five Only — the Hub Bar Is Hub-Only"
+    },
+    {
+     "sn": "SN-2950",
+     "title": "Personal / Collective / World / Worlds"
+    },
+    {
+     "sn": "SN-2951",
+     "title": "Workers Paid Is Live"
+    },
+    {
+     "sn": "SN-2952",
+     "title": "Naya Notes Placement Decided"
+    },
+    {
+     "sn": "SN-2953",
+     "title": "The Feed Law"
+    },
+    {
+     "sn": "SN-2954",
+     "title": "Fast Action Mode"
+    },
+    {
+     "sn": "SN-2955",
+     "title": "Personal Done Today"
+    },
+    {
+     "sn": "SN-2956",
+     "title": "Walk-End Plus Button"
+    }
+   ]
+  },
+  "machine": "1) Personal top: 8 buttons, full width, no side gaps. 2) Connections: reuse the mini-messenger system; new build = defect. 3) Personal bottom: exactly 5 icons; Hub bar never copied. 4) Tabs = Personal/Collective/World/Worlds. 5) Feed contents = {Naya Notes, Smart Notes, posts} only; projects are worlds; one filter row. 6) Naya Notes = chip under tabs. 7) Fast Action Mode: same-round turnaround is the default tempo. 8) Walk end: plus-button share at the Smart Link position.",
+  "why_it_matters": "Personal is the universal app — the template Business, Space, and Membership clone from. Every unsettled pixel here multiplies into every other surface; every settled one does too. This essence is the settlement, in one place.",
+  "how_it_connects": "Third essence of batch 12 (2026-11-16 wave). The Feed Law it carries is cited by SN-2952's placement ruling and binds the Smart Bar packet already in Nitro's hands: bars and feeds are one system. The anatomy it freezes is specified further by SN-4720 (the smart app anatomy dictated the same afternoon).",
+  "what_is_in_it_for_you": "Your page is decided, clean, and fast: five icons, three kinds of feed, buttons that fit — and because it is the pattern, every other page you ever open feels like home.",
+  "the_learning": "From now on, we treat a director's settled ruling as frozen anatomy and build the next surface from it — instead of re-deciding settled shape page by page."
+ },
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4719/IB-SMART-NOTE-20261124-sn4719-personal-decided.md",
+ "page_hash": "f6264f33a7c91025d3b35235b34a20a7a9233149d54c1f7e5874e303a745021d",
+ "content_hash": "ac354d9cc6460e341945893f0e9b976fe5b6b78c49f947600da0607c65c70369",
+ "published_via": "publish-note",
+ "door_version": "1",
+ "door_receipt": "07d96f367c4214673168aacd9d44b89baeaec7f2d136a5f3e85f11d0c1db4f92"
+}
