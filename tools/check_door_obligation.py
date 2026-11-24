@@ -254,14 +254,25 @@ def intelligence_hash(snv2, capture_doc: dict) -> str:
 
 
 class CaptureIndex:
-    """All captures on disk, indexed the way the corpus actually binds
-    them: by intelligence content hash (the audit's binding), by declared
-    projection_path, and by intelligent_block_id. Capture FILENAMES are
-    not identity — re-stamped captures carry a different IB date than the
-    page they belong to (SN-0339/SN-0342 class)."""
+    """All captures on disk, indexed every way the corpus actually binds
+    them. for_page resolves in the Sealed Door precedence (SN-4711):
+    filename stem, top-level intelligent_block_id, top-level file,
+    the registry entry's capture_file, then the intelligence keys
+    (projection_path, intelligent_block_id), with by_hash as the audit's
+    content binding. The filename stem leads because the canonical
+    capture path IS the page's IB (capture_path below); it is not the
+    only key — re-stamped captures carry a different IB date than the
+    page they belong to (SN-0339/SN-0342 class) and are reached through
+    the later keys. Classic captures carry neither intelligence key at
+    all (the SN-4203..4207 class): before this completion they were
+    invisible to for_page and the fixer reported them as false
+    CONFLICTs although they parse and carry intelligence."""
 
     def __init__(self, root: Path, snv2):
         self.by_hash: dict[str, dict] = {}
+        self.by_file_stem: dict[str, dict] = {}
+        self.by_top_ib: dict[str, dict] = {}
+        self.by_top_file: dict[str, dict] = {}
         self.by_projection: dict[str, dict] = {}
         self.by_ib: dict[str, dict] = {}
         cap_dir = root / CAPTURE_REL
@@ -276,6 +287,13 @@ class CaptureIndex:
                 doc = dict(doc)
                 doc["_file"] = p.name
                 self.by_hash[intelligence_hash(snv2, doc)] = doc
+                self.by_file_stem[p.stem] = doc
+                tib = doc.get("intelligent_block_id")
+                if isinstance(tib, str) and tib:
+                    self.by_top_ib[tib] = doc
+                tfile = doc.get("file")
+                if isinstance(tfile, str) and tfile:
+                    self.by_top_file[tfile] = doc
                 intel = doc["intelligence"]
                 pp = intel.get("projection_path")
                 if isinstance(pp, str) and pp:
@@ -284,7 +302,18 @@ class CaptureIndex:
                 if isinstance(cib, str) and cib:
                     self.by_ib[cib] = doc
 
-    def for_page(self, page: dict) -> dict | None:
+    def for_page(self, page: dict, entry: dict | None = None) -> dict | None:
+        found = (self.by_file_stem.get(page["ib"])
+                 or self.by_top_ib.get(page["ib"])
+                 or self.by_top_file.get(page["path"]))
+        if found is not None:
+            return found
+        if entry is not None:
+            cf = entry.get("capture_file")
+            if isinstance(cf, str) and cf:
+                found = self.by_file_stem.get(Path(cf).stem)
+                if found is not None:
+                    return found
         return (self.by_projection.get(page["path"])
                 or self.by_ib.get(page["ib"]))
 
@@ -309,7 +338,7 @@ def check_pages(root: Path, snv2, pages: list[dict], registry: dict,
     for page in pages:
         sn, ib = page["sn"], page["ib"]
         entry = entries.get(ib)
-        capture_doc = cap_index.for_page(page)
+        capture_doc = cap_index.for_page(page, entry)
         if entry is None:
             defects.append({
                 "sn": sn, "ib": ib, "kind": "NO_ENTRY", "path": page["path"],
@@ -317,13 +346,21 @@ def check_pages(root: Path, snv2, pages: list[dict], registry: dict,
                            f"absent from .naya/memory/smart-notes/index.json",
                 "cure": _CURE_LIVE.format(sn=sn), "owner": _OWNER,
             })
-            if capture_doc is None:
-                defects.append({
-                    "sn": sn, "ib": ib, "kind": "NO_CAPTURE", "path": page["path"],
-                    "missing": f"capture for {sn} — page {page['path']} has no "
-                               f"capture record on disk (.naya/capture/)",
-                    "cure": _CURE_LIVE.format(sn=sn), "owner": _OWNER,
-                })
+        # NO_CAPTURE is unconditional (SN-4711 checker completion): a page
+        # whose entry exists but whose capture is gone was previously
+        # silent unless the entry carried a content_hash. A capture that
+        # binds to the entry's content_hash IS a capture record on disk
+        # for this page, so it satisfies the check even when no for_page
+        # key resolves it.
+        if capture_doc is None and not (
+                entry is not None and entry.get("content_hash")
+                and cap_index.with_hash(entry["content_hash"]) is not None):
+            defects.append({
+                "sn": sn, "ib": ib, "kind": "NO_CAPTURE", "path": page["path"],
+                "missing": f"capture for {sn} — page {page['path']} has no "
+                           f"capture record on disk (.naya/capture/)",
+                "cure": _CURE_LIVE.format(sn=sn), "owner": _OWNER,
+            })
         if entry is not None and entry.get("content_hash"):
             # The binding the guards measure: some capture on disk must
             # hash to the entry's content_hash. Hashless legacy entries
@@ -703,7 +740,7 @@ def run_fix(root: Path, snv2, pages: list[dict], registry: dict,
         page["_abs_path"] = str(root / page["path"])
         cap_p = capture_path(root, page["ib"])
         entry = by_ib.get(page["ib"])
-        capture_doc = cap_index.for_page(page)
+        capture_doc = cap_index.for_page(page, entry)
         if capture_doc is None and cap_p.exists():
             actions.append({"sn": page["sn"], "action": "CONFLICT",
                             "detail": "a capture file exists at the canonical "
