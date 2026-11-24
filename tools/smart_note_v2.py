@@ -846,6 +846,67 @@ def classic_projection_path(capture, root=None):
     return base / parts["rel_path"]
 
 
+# ---------------------------------------------------------------------------
+# The Sealed Door — writer-side receipt chain (SN-4711, build step 1).
+#
+# Every note the door mints carries a receipt chained to the previous
+# registry entry, so a filing produced by running the door against the
+# live registry is distinguishable from a hand-assembled one: forging a
+# valid receipt requires running the door, so forgery costs exactly what
+# compliance costs. The three stamp fields live on the capture;
+# door_receipt is mirrored onto the registry entry. Entries registered
+# before the chain started carry no receipt and are NOT retro-stamped —
+# checker-side chain verification and the grandfather ratchet are
+# SN-4711 build steps 2–3, deliberately not implemented here.
+DOOR_PUBLISHED_VIA = "publish-note"
+DOOR_VERSION = "1"
+DOOR_GENESIS_PREV = "0" * 64
+DOOR_FIELDS = ("published_via", "door_version", "door_receipt")
+
+
+def _canonical_json(obj):
+    """The codebase's canonical JSON form (the content_hash serialization:
+    sorted keys, tight separators, no ASCII escaping)."""
+    return json.dumps(obj, sort_keys=True, separators=(",", ":"),
+                      ensure_ascii=False)
+
+
+def door_receipt_for(capture, page_hash, prev_content_hash):
+    """The SN-4711 step-1 receipt: sha256 of the concatenation
+    canon(capture_without_receipt) || page_hash || prev_content_hash,
+    as a hex digest.
+
+    capture_without_receipt is the finalized capture dict minus the
+    door_receipt field itself; published_via and door_version ARE bound
+    by the receipt. prev_content_hash is the content_hash of the last
+    entry in the registry entries array at mint time, or
+    DOOR_GENESIS_PREV when there is no hashed tail to chain to.
+    """
+    without = {k: v for k, v in capture.items() if k != "door_receipt"}
+    payload = _canonical_json(without) + page_hash + prev_content_hash
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def _door_prev_content_hash(entries):
+    """The chain's prev for the next minted entry: the last entry's
+    content_hash, or the genesis zeros when the entries array is empty
+    or its tail carries no content_hash."""
+    if not entries:
+        return DOOR_GENESIS_PREV
+    tail = entries[-1].get("content_hash")
+    return tail if isinstance(tail, str) and tail else DOOR_GENESIS_PREV
+
+
+def _read_registry_entries(registry_path=None):
+    """A plain consistent read of the registry entries: the registry
+    file is only ever replaced atomically inside registry_transaction,
+    so a plain read is never torn. Returns [] when no registry exists."""
+    rp = Path(registry_path) if registry_path else REGISTRY
+    if not rp.exists():
+        return []
+    return json.loads(rp.read_text(encoding="utf-8")).get("entries", [])
+
+
 def _classic_entry(capture, parts, page_hash, content_hash):
     """The corpus-standard registry entry (distillation-batch field set)."""
     intel = parts["intelligence"]
@@ -875,6 +936,13 @@ def _classic_entry(capture, parts, page_hash, content_hash):
     entry["date"] = parts["date"]
     entry["page_hash"] = page_hash
     entry["content_hash"] = content_hash
+    if capture.get("door_receipt"):
+        # SN-4711 step 1: the door stamp, mirrored from the capture.
+        entry["published_via"] = str(
+            capture.get("published_via") or DOOR_PUBLISHED_VIA)
+        entry["door_version"] = str(
+            capture.get("door_version") or DOOR_VERSION)
+        entry["door_receipt"] = str(capture["door_receipt"])
     entry["one_line"] = intel["essence"]
     entry["topics"] = intel["topics"]
     return entry
@@ -901,6 +969,20 @@ def register_classic(capture, page_hash, content_hash, registry_path=None):
             raise SystemExit(
                 "CLASSIC_REGISTRY_IB_ALREADY_REGISTERED_WITH_DIFFERENT_HASHES:"
                 + parts["ib"])
+        if capture.get("door_receipt"):
+            # SN-4711 step 1: re-verify the door stamp against THIS
+            # transaction's fresh read. publish_classic minted the
+            # receipt from a read taken before the capture was written;
+            # if the registry tail moved in between, the stamped prev no
+            # longer recomputes — refuse rather than register a stale
+            # chain link (never stamp against a stale manifest). The
+            # already-placed capture stays unregistered; delete it and
+            # re-run publish-note to mint a fresh stamp.
+            expected = door_receipt_for(
+                capture, page_hash, _door_prev_content_hash(entries))
+            if str(capture["door_receipt"]) != expected:
+                raise SystemExit(
+                    "DOOR_RECEIPT_REGISTRY_MOVED:" + parts["ib"])
         entry = _classic_entry(capture, parts, page_hash, content_hash)
         registry["entries"] = entries + [entry]
         registry["corpus_manifest_hash"] = _corpus_manifest_hash(registry["entries"])
@@ -928,6 +1010,37 @@ def publish_classic(capture, capture_source=None):
     final_capture["file"] = parts["rel_path"]
     final_capture["page_hash"] = page_hash
     final_capture["content_hash"] = content_hash
+    # SN-4711 step 1: mint the receipt-chain stamp. The stamp is minted
+    # ONLY here — any door fields on the caller's capture are discarded
+    # first. prev is read from the registry as it stands now;
+    # register_classic re-verifies the stamp against its transaction's
+    # fresh read and refuses if the tail moved in between.
+    for _field in DOOR_FIELDS:
+        final_capture.pop(_field, None)
+    prior_entries = _read_registry_entries()
+    prior_entry = next((e for e in prior_entries
+                        if e.get("intelligent_block_id") == parts["ib"]),
+                       None)
+    if prior_entry is None:
+        final_capture["published_via"] = DOOR_PUBLISHED_VIA
+        final_capture["door_version"] = DOOR_VERSION
+        final_capture["door_receipt"] = door_receipt_for(
+            final_capture, page_hash, _door_prev_content_hash(prior_entries))
+    elif (prior_entry.get("page_hash") == page_hash
+            and prior_entry.get("content_hash") == content_hash
+            and prior_entry.get("door_receipt")):
+        # Idempotent re-publish of a door-minted note: reuse the stored
+        # stamp so the placed capture bytes — and the returned entry —
+        # are identical to the first publish.
+        final_capture["published_via"] = str(
+            prior_entry.get("published_via") or DOOR_PUBLISHED_VIA)
+        final_capture["door_version"] = str(
+            prior_entry.get("door_version") or DOOR_VERSION)
+        final_capture["door_receipt"] = str(prior_entry["door_receipt"])
+    # Otherwise (a legacy entry with no stamp, or a conflicting
+    # registration register_classic will refuse): stamp nothing, so
+    # every pre-chain behavior — legacy idempotent re-publish included —
+    # is preserved byte-for-byte.
     cap_bytes = (json.dumps(final_capture, indent=1, ensure_ascii=False)
                  + "\n").encode("utf-8")
     cap_dest = ROOT / ".naya" / "capture" / (parts["ib"] + ".json")
