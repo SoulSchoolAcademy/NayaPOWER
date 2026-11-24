@@ -4273,7 +4273,79 @@ a.deck-next{text-decoration:none;text-align:center}
 :root{--purple:#8e24aa;--sapphire:#0f52ba;--emerald:#07925f;--gold:#d4a017;--magenta:#a21caf;--red:#c62828;--orange:#c2410c;--indigo:#3f51b5;--teal:#0e7490;--ink:#f4f2f7;--ease:cubic-bezier(.22,1,.36,1)}
 .intel-board .ib-title{font-family:Marcellus,Georgia,serif}
 </style>
+<style id="naya-stage-fix">
+/* GEAR-FIX 2026-11-24 — Shawn's eye, voice call ~15:10 + ~15:11 + ~15:15 MST.
+   INNOVATIONS FORMAT — stage, harvested from top-ten-innovations/innovations.html
+   (branch top-ten-innovations-20261123, blob 153bc74d, 12,715,274 B):
+     .stage{margin:var(--bw) var(--bw) 14px;height:calc(100dvh - var(--bw) - 14px);display:flex;flex-direction:column}
+     .screen{display:none} .screen.active{display:flex;flex-direction:column;flex:1;min-height:0;animation:fadein .3s ease both}
+     .floatnav forward/back chevron buttons.
+   ADAPTED (named, not silent): Innovations shows ONE .screen at a time. The
+   eye-walk (2026-11-24) requires the Dashboard to SCROLL with below-fold
+   reachable, so stages STACK in normal flow and Forward smooth-scrolls to the
+   next stage instead of hiding the rest. Frame, forward button, one section
+   per stage kept. */
+/* 1a. GEAR OPEN — no box around #page-settings: no background plate, no border, no shadow. Glyph, size, position, handler untouched. */
+#page-settings{background:transparent !important;border:none !important;box-shadow:none !important;outline:none !important;}
+#page-settings:hover{border-color:transparent !important;}
+/* 1b. BOXES GONE — the .intel-board box (2px tone border + tone bar + glow) off the
+   score tile and the gauge ONLY. Both keep their class (padding/layout unchanged);
+   the stage frame is now the only box around them. */
+#os-score-elegant.intel-board,#os-block-gauge.intel-board,
+#os-score-elegant.intel-board:hover,#os-block-gauge.intel-board:hover,
+#os-score-elegant.intel-board:active,#os-block-gauge.intel-board:active,
+#os-score-elegant.intel-board.rv-lit,#os-block-gauge.intel-board.rv-lit{border:none !important;box-shadow:none !important;overflow:visible !important;}
+#os-score-elegant.intel-board::before,#os-block-gauge.intel-board::before{display:none !important;}
+/* 1c. THE STAGE — one section per stage, wrapped in the stage frame (Dashboard's own
+   .intel-board DNA: obsidian panel, tone rim, radius 26, elevation). Tone comes from
+   the section's own --ac. */
+.naya-stage{position:relative;margin:16px auto 28px;width:100%;box-sizing:border-box;scroll-margin-top:76px;
+  border:2px solid color-mix(in srgb, var(--ac,#8e24aa) 55%, #fff 14%);
+  border-radius:26px;padding:28px 24px 24px;background:#050607;
+  box-shadow:inset 0 1px rgba(255,255,255,.18),0 28px 64px rgba(0,0,0,.75),0 0 44px color-mix(in srgb, var(--ac,#8e24aa) 18%, transparent);}
+.naya-stage-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:0 0 8px;}
+.naya-stage-title{font-family:Marcellus,Georgia,serif;font-size:25px;color:#fff;margin:0;}
+.naya-stage-num{font-size:17px;color:#fff;letter-spacing:.14em;white-space:nowrap;}
+.naya-stage-fwd{display:block;margin:20px auto 0;padding:14px 34px;border-radius:999px;cursor:pointer;
+  font-size:17px;font-weight:800;letter-spacing:.05em;color:#fff;font-family:inherit;
+  background:linear-gradient(180deg,#1a1a22 0%,#0a0a0f 45%,#050607 100%);
+  border:2px solid var(--ac,#8e24aa);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 12px 32px rgba(0,0,0,.65),0 0 24px color-mix(in srgb, var(--ac,#8e24aa) 45%, transparent);}
+.naya-stage-fwd:hover{transform:translateY(-2px);}
+.naya-stage-fwd:active{transform:scale(.97);}
+/* 1d. HEADER SINKS AWAY on scroll, returns ~1s after scrolling stops (fade law). */
+.nsb-topstack{transition:transform .45s ease,opacity .45s ease;}
+body.naya-head-sunk .nsb-topstack{transform:translateY(-110%);opacity:0;pointer-events:none;}
+/* 1e. HEADER + BUTTONS — the calendar has NO plus buttons to copy (eye-walk
+   2026-11-24: no '+' in the calendar header at any width), so these are added
+   fresh on the Dashboard header corners. They open the sidebars. */
+.naya-hdr-plus{position:fixed;top:12px;z-index:1200;width:44px;height:44px;border-radius:50%;
+  display:grid;place-items:center;font-size:28px;line-height:1;color:#fff;cursor:pointer;
+  background:linear-gradient(180deg,#1e1e28,#0c0c12);border:1.5px solid rgba(255,255,255,.9);
+  box-shadow:0 4px 16px rgba(0,0,0,.6),0 0 18px rgba(142,36,170,.5);}
+#naya-plus-left{left:12px;}
+#naya-plus-right{right:12px;}
+.naya-hdr-plus:hover{transform:scale(1.08);}
+.naya-hdr-plus:active{transform:scale(.97);}
+/* 1f. PERIOD LABELS FULLY VISIBLE — root cause (measured 2026-11-24, 390px):
+   later !important rules inflate the Day/Week/Month/All pills to 40px/38px-56px
+   (32px/28px-14px at <=900px, 19px/14px-20px at <=640px) while the row keeps
+   width:max-content + max-width:none, so the centred row runs ~430px in a
+   390px viewport: Day cut left, All cut right. The row now fits the viewport. */
+@media (max-width:900px){
+  #os-ld-timepills{max-width:calc(100vw - 24px) !important;gap:6px !important;}
+  .os-ld-timepills button{font-size:17px !important;padding:10px 12px !important;}
+}
+@media (max-width:640px){
+  /* the orb ring is cut by the gauge-box edges at 390px (SAVES/SMART orbs
+     sliced left/right); the constellation scales down so the whole ring fits. */
+  #os-constellation{transform:scale(.84);transform-origin:center top;}
+}
+</style>
 </head><body class="os-bottom-hidden">
+<!-- GEAR-FIX 2026-11-24: header + buttons (fresh — the calendar has none to copy). Left opens the left sidebar, right opens the right sidebar. -->
+<button class="naya-hdr-plus" id="naya-plus-left" type="button" aria-label="Open left sidebar" title="Open sidebar">+</button>
+<button class="naya-hdr-plus" id="naya-plus-right" type="button" aria-label="Open right sidebar" title="Open sidebar">+</button>
 <!-- 2026-11-01 — Shawn: HERO MODE ON. The constellation layout is correct.
      Fixed the exit paths so you are never trapped. -->
 <!-- 2026-11-01 — Viewport Optimization Law: tiny back button restores full view -->
@@ -5785,6 +5857,8 @@ body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
 <!-- 2026-11-07 — PASS 3 (Addenda 3+4): the hero, zoomed to fit the viewport.
      Number at the very top, gauge + orbs below it, PTS/% underneath.
      One viewpoint, nothing else in it. The wrapper is scaled by fitHero(). -->
+<section class="naya-stage" id="naya-stage-1" data-stage="1" style="--ac:#d4a017">
+<div class="naya-stage-head"><h2 class="naya-stage-title">Your Smart Score</h2><span class="naya-stage-num">1 / 6</span></div>
 <div id="os-hero-fit">
 <div class="os-score-elegant" id="os-score-elegant">
   <div class="os-se-val" id="os-se-val"><span class="os-se-num" id="os-se-num"><span class="os-skel-tile">—</span><span class="os-skel-tile">—</span><span class="os-skel-tile">—</span></span></div>
@@ -5848,6 +5922,8 @@ body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
   <button class="os-pts-btn primo" data-mode="money" aria-pressed="false"><span class="os-mode-ico">$</span>MONEY</button>
 </div>
 </div><!-- /os-hero-fit -->
+<button class="naya-stage-fwd" type="button" data-next="naya-stage-2">Next: Ambassador &amp; Smart Link &rarr;</button>
+</section>
 
 <script>
 /* 2026-11-18 DASHBOARD-LANE-FIX3 (§4) — RAIL COUNTS, ONLY FROM PROVEN SOURCES.
@@ -9496,6 +9572,8 @@ html.os-calm .os-sl-graph::after,html.os-calm .os-ld-riverwrap::after,html.os-ca
      was missing (only the CSS + the renderBoards writers existed) — this is
      the panel they fill. Default featured: the ambassador Smart Link; if
      there is no link yet, the world. -->
+<section class="naya-stage" id="naya-stage-2" data-stage="2" style="--ac:#a06bff">
+<div class="naya-stage-head"><h2 class="naya-stage-title">Ambassador &amp; Smart Link</h2><span class="naya-stage-num">2 / 6</span></div>
 <section class="ph-card os-feat-panel" id="os-feat-panel" style="--ac:#a06bff;">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#a06bff">★</span> Ambassador link — the headliner</h3>
 <div class="os-feat-top"><span class="os-feat-marker" id="os-feat-marker"></span><span class="os-feat-name" id="os-feat-name"></span></div>
@@ -9516,12 +9594,16 @@ html.os-calm .os-sl-graph::after,html.os-calm .os-ld-riverwrap::after,html.os-ca
 <div class="ph-actions"><button class="ph-connect" id="os-sl-claim" type="button">Claim your smart link</button></div>
 <div class="os-status" id="os-sl-status"></div>
 </div>
+<button class="naya-stage-fwd" type="button" data-next="naya-stage-3">Next: Smart Links — Live &rarr;</button>
+</section>
 <div class="os-data-area" id="os-data-area">
 <div class="tn-truth-meter tn-truth-m-loading" id="tn-truth-meter" role="status" aria-live="polite"><span class="tn-truth-dot"></span></div>
 <div id="os-score-derive-below" class="os-score-derive"></div>
 <div id="os-score-next-below" class="os-score-next"></div>
 </div>
 <!-- 2026-11-01 — Shawn: Smart Links moved to position 2, right under the Score. This is the showstopper, where the money is made. -->
+<section class="naya-stage" id="naya-stage-3" data-stage="3" style="--ac:#3a5bff">
+<div class="naya-stage-head"><h2 class="naya-stage-title">Smart Links — Live</h2><span class="naya-stage-num">3 / 6</span></div>
 <div class="ph-card os-sl-board os-viewport-card" style="--ac:#3a5bff;"> <!-- HERO FIX 2026-11-09 (m): the shell is sequence position 1 (indigo) — the headliner is 0 (purple), the cards follow at 2+. -->
 <h3><span class="os-jewel os-jewel-h" style="--jc:#3a5bff">🔗</span> Smart Links <span class="os-sl-live"><i></i>LIVE</span></h3>
 <!-- 2026-11-05 — REPORTING PASS 1: the creator moved UP into the featured panel above (same form, same IDs). Stats below show what happens after. Every number labeled, every bar dated. -->
@@ -9557,6 +9639,8 @@ html.os-calm .os-sl-graph::after,html.os-calm .os-ld-riverwrap::after,html.os-ca
 <div id="os-dash-links"><div class="os-skel"></div></div>
 
 </div>
+<button class="naya-stage-fwd" type="button" data-next="naya-stage-4">Next: Your Reports &rarr;</button>
+</section>
 <!-- PASS-4 2026-11-09 — YOUR REPORTS, THE SAME STAT PRESENTATION as every
      other board (title + subtitle + stat row + nutshell + open line). The
      stat row is filled live from the spine by _renderReportsBoard (actions
@@ -9569,6 +9653,8 @@ html.os-calm .os-sl-graph::after,html.os-calm .os-ld-riverwrap::after,html.os-ca
      "why do you have What Naya Does as a board? ... you're mixing up
      conversations") — it stays in the system on the pricing page / Hub,
      not on the Dashboard. -->
+<section class="naya-stage" id="naya-stage-4" data-stage="4" style="--ac:#3fb8ff">
+<div class="naya-stage-head"><h2 class="naya-stage-title">Your Reports</h2><span class="naya-stage-num">4 / 6</span></div>
 <a class="ph-card os-reports-board" data-os-board-open="reports" href="https://nayanet.app/rooms/reports" style="--ac:#3fb8ff;display:block;text-decoration:none;" id="os-reports-board">
 <h3><span class="os-jewel os-jewel-h" style="--jc:#3fb8ff">&#128202;</span> Your Reports</h3>
 <div class="os-sl-gauges" role="group" aria-label="Report stats" id="os-reports-gauges"></div>
@@ -9576,6 +9662,8 @@ html.os-calm .os-sl-graph::after,html.os-calm .os-ld-riverwrap::after,html.os-ca
 <p>Newest first.</p>
 <p class="os-reports-cta">Reports room &rarr;</p>
 </a>
+<button class="naya-stage-fwd" type="button" data-next="naya-stage-5">Next: Running feed &rarr;</button>
+</section>
 <!-- 2026-11-07 — PASS 3 (Addenda 3+4): the running feed — a news report of
      all notifications, everything going on. Below the fold, never above.
      "Open inbox" goes to the real inbox (the page's notification surface). -->
@@ -9585,15 +9673,23 @@ html.os-calm .os-sl-graph::after,html.os-calm .os-ld-riverwrap::after,html.os-ca
 <!-- PASS-7 2026-11-10: the Notifications row lived here, mid-page; it moved
      to the top of #os-dash (first child), top right. The running feed
      section below is untouched — the button still opens it full-screen. -->
+<section class="naya-stage" id="naya-stage-5" data-stage="5" style="--ac:#0f52ba">
+<div class="naya-stage-head"><h2 class="naya-stage-title">Running feed</h2><span class="naya-stage-num">5 / 6</span></div>
 <section class="os-feed-board" id="os-feed-board">
 <h3>Running feed</h3>
 <p class="os-feed-sub"><a href="https://nayanet.app/rooms/mail">Open inbox &rarr;</a></p>
 <div id="os-feed-list"><div class="os-feed-empty">Reading&hellip;</div></div>
 </section>
+<button class="naya-stage-fwd" type="button" data-next="naya-stage-6">Next: NayaNET network stats &rarr;</button>
+</section>
+<section class="naya-stage" id="naya-stage-6" data-stage="6" style="--ac:#3f51b5">
+<div class="naya-stage-head"><h2 class="naya-stage-title">NayaNET network stats</h2><span class="naya-stage-num">6 / 6</span></div>
 <section class="os-world-boards" id="os-world-boards">
 <h3>NayaNET network stats</h3>
 <p class="os-note os-wb-sub">One board per page.</p>
 <div id="os-boards-list"></div>
+</section>
+<button class="naya-stage-fwd" type="button" data-next="naya-stage-1">Back to the top &uarr;</button>
 </section>
 
 <!-- 2026-11-01 — Shawn: THE JOURNEY. Invite → Join → Sale as a visual funnel.
@@ -32550,6 +32646,70 @@ body:has(.os-sales-view.open) #os-b3-hide,body:has(.os-invites-view.open) #os-b3
     function stopPoll(){ window.removeEventListener('wheel',onUserScroll,{passive:true}); window.removeEventListener('touchmove',onUserScroll,{passive:true}); }
     setTimeout(function(){ jump(i); settle(i,Date.now(),function(){ return cancel; },stopPoll,gen); },650);
   });
+})();
+</script>
+<script id="naya-stage-js">
+/* GEAR-FIX 2026-11-24 — stage navigation, header sink, header + buttons. Additive only; every call guarded. */
+(function(){
+  try{
+    /* forward buttons: smooth-scroll to the next stage (last stage: back to top) */
+    document.addEventListener("click", function(ev){
+      var b = ev.target && ev.target.closest ? ev.target.closest(".naya-stage-fwd") : null;
+      if(!b) return;
+      var t = document.getElementById(b.getAttribute("data-next"));
+      if(!t) return;
+      ev.preventDefault();
+      /* behavior:'auto': the page sets body{scroll-snap-type:y}, which cancels
+         smooth scrolling back to the snap point (measured: smooth scrollTo(860)
+         returned to 0; auto scrollIntoView lands at 860 and stays). */
+      t.scrollIntoView({behavior:"auto", block:"start"});
+      try{ t.setAttribute("tabindex","-1"); t.focus({preventScroll:true}); }catch(e){}
+    });
+    /* header sinks away on scroll, returns ~1s after scrolling stops */
+    var sunkTimer = null;
+    function onScroll(){
+      if(window.scrollY > 140) document.body.classList.add("naya-head-sunk");
+      else document.body.classList.remove("naya-head-sunk");
+      if(sunkTimer) clearTimeout(sunkTimer);
+      sunkTimer = setTimeout(function(){ document.body.classList.remove("naya-head-sunk"); }, 1000);
+    }
+    window.addEventListener("scroll", onScroll, {passive:true});
+    /* header + buttons: open the sidebars (existing drawer mechanisms) */
+    function openBackdrop(){
+      var bd = document.querySelector(".dash-backdrop, #dash-backdrop, .backdrop");
+      if(bd && bd.classList) bd.classList.add("open");
+    }
+    function closeBackdrop(){
+      var bd = document.querySelector(".dash-backdrop, #dash-backdrop, .backdrop");
+      if(bd && bd.classList && !document.body.classList.contains("dash-drawer-open") && !document.body.classList.contains("dash-rail-right-open")) bd.classList.remove("open");
+    }
+    var pl = document.getElementById("naya-plus-left");
+    if(pl) pl.addEventListener("click", function(){
+      if(document.body.classList.contains("dash-drawer-open")){
+        if(typeof window._dashCloseDrawer === "function") window._dashCloseDrawer();
+        else document.body.classList.remove("dash-drawer-open");
+        closeBackdrop();
+      } else {
+        if(typeof window._dashOpenDrawer === "function") window._dashOpenDrawer();
+        else { document.body.classList.add("dash-drawer-open"); document.body.classList.remove("dash-rail-collapsed"); }
+        openBackdrop();
+      }
+      if(typeof window._dashSyncPlus === "function"){ try{ window._dashSyncPlus(); }catch(e){} }
+    });
+    var pr = document.getElementById("naya-plus-right");
+    if(pr) pr.addEventListener("click", function(){
+      if(document.body.classList.contains("dash-rail-right-open")){
+        if(typeof window._dashCloseRightRail === "function") window._dashCloseRightRail();
+        else document.body.classList.remove("dash-rail-right-open");
+        closeBackdrop();
+      } else {
+        document.body.classList.add("dash-rail-right-open");
+        document.body.classList.remove("dash-rail-right-collapsed");
+        openBackdrop();
+      }
+      if(typeof window._dashSyncPlus === "function"){ try{ window._dashSyncPlus(); }catch(e){} }
+    });
+  }catch(e){ /* stage JS must never break the page */ }
 })();
 </script>
 </body></html>
