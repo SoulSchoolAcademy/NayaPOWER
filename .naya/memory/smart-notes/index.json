@@ -80075,6 +80075,42 @@
         "Honor",
         "Knowledge"
       ]
+    },
+    {
+      "smart_note_id": "SN-4718",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4718-test-what-is-real",
+      "slug": "test-what-is-real",
+      "title": "Test What Is Real",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SYSTEM/SN-4718/IB-SMART-NOTE-20261124-sn4718-test-what-is-real.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SYSTEM/SN-4718/IB-SMART-NOTE-20261124-sn4718-test-what-is-real.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SYSTEM/SN-4718/IB-SMART-NOTE-20261124-sn4718-test-what-is-real.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4718-test-what-is-real.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "SYSTEM",
+      "topic": "SYSTEM",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T17:11:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "045374bfc91a62abd3e631783541d4a403d1808810de9e6a8a7db9a66084e8c1",
+      "content_hash": "7e7c094c7f6105348c79456b982d2104f50c8011aa56e726a5991b9037f8fe22",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "e828f4e2b94bc88cae473229c981df8b652cb25d622e91f232238a05883a993c",
+      "one_line": "Most failures are failures of the test, not of the thing. A free tier that allows a thousand writes a day is exhausted by two hundred test walks, because every completion writes five times — test traffic counts, so count your writes. An empty list in the VM's Firefox is a probe failure, never a page failure: the browser fired no requests at all. A cache-busting URL proves nothing on a host that ignores it — verify the staged build from the branch's own blob. Around those three cautions sit the day's working rulings: the citizen picks the presentation style, the name stays on the card because phones have no hover, both icon bars align in both directions, My World is the calendar and the picker is only its doorway, a thing's name is its idea (Sharing Chat, not a mishearing), and no coordinator is ever closed before its descendants are checked — a close kills its children, and the 'dead' seat may be alive and waiting.",
+      "topics": [
+        "Distillation",
+        "System",
+        "Knowledge",
+        "Craft",
+        "Multiplication"
+      ]
     }
   ],
   "sequence_policy": {
@@ -80085,5 +80121,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "958e6025b023ed045a4efa15d57799fd9908aefa01435cca26f8be4f1345cf98"
+  "corpus_manifest_hash": "736bcb89556855aa6ed7f8f9c8a6f452b95fcb3688afc1b77b15fe62ea4b8af5"
 }

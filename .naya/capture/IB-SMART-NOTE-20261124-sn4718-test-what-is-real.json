@@ -1,0 +1,95 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-4718",
+ "title": "Test What Is Real",
+ "slug": "test-what-is-real",
+ "topic": "SYSTEM",
+ "category": "SYSTEM",
+ "kind": "intelligent-block",
+ "registered_by": "naya-resolve",
+ "directed_by": "Shawn Vibert",
+ "created_at": "2026-11-24T17:11:00Z",
+ "tone": "purple",
+ "icon": "◆",
+ "intelligence": {
+  "essence": "Most failures are failures of the test, not of the thing. A free tier that allows a thousand writes a day is exhausted by two hundred test walks, because every completion writes five times — test traffic counts, so count your writes. An empty list in the VM's Firefox is a probe failure, never a page failure: the browser fired no requests at all. A cache-busting URL proves nothing on a host that ignores it — verify the staged build from the branch's own blob. Around those three cautions sit the day's working rulings: the citizen picks the presentation style, the name stays on the card because phones have no hover, both icon bars align in both directions, My World is the calendar and the picker is only its doorway, a thing's name is its idea (Sharing Chat, not a mishearing), and no coordinator is ever closed before its descendants are checked — a close kills its children, and the 'dead' seat may be alive and waiting.",
+  "human_view": "Before you blame the thing, check the test. Half the alarms in a building system are the measuring tools lying: the browser that never asked, the link that shows an old copy, the free plan quietly used up by our own practice runs. These notes teach the team to prove what is real before fixing what is not broken.",
+  "child_view": "If your flashlight is broken, the room is not dark — your flashlight is. These notes are about checking the flashlight first.",
+  "grandma_view": "When something looks empty or broken, it may be the window you are looking through, not the room. We learned to check the window, count what our own practice runs cost, and never shut a door on anyone still working behind it.",
+  "ai_view": "Verification discipline distilled from SN-2937..SN-2946: (1) write budgets are system facts — free tier = 1,000 writes/day account-wide, one completion = 5 writes, so ~200 test completions exhaust the tier; count writes before any walk campaign. (2) A zero-request probe result indicts the probe: VM Firefox fired zero Supabase requests in 90s with zero page errors — classify as PROBE_FAILURE, never PAGE_FAILURE. (3) Cache-bust parameters are not evidence on hosts that ignore them; verify staged builds from the branch blob bytes. (4) Presentation style (unfold vs visual vs both) is the citizen's choice at open time. (5) Names stay visible on cards — no hover exists on phones. (6) Shared icon bars align bidirectionally (Hub<->Personal), every click exercised. (7) My World IS the calendar; the picker is a doorway, redesign it rather than entrenching link lists. (8) Names are specifications: a corrected name (Sharing Chat) replaces the mishearing everywhere. (9) Before closing any coordinator, run a descendants-scope check — close kills children; a silent seat may be waiting on its maker.",
+  "what_it_means": "A team that cannot tell a broken probe from a broken product will fix the wrong thing all day. This decade builds the reflex: name the instrument, count the resource, read the bytes — then judge.",
+  "whats_inside": [
+   "The free-tier wall: 1,000 writes a day, five writes per completion, test traffic counts (SN-2937)",
+   "The citizen picks the presentation; the name stays on the card (SN-2938, SN-2939)",
+   "Adopt the new way of thinking; align both icon bars both ways (SN-2940, SN-2941)",
+   "My World is the calendar; Sharing Chat — the name is the idea (SN-2942, SN-2943)",
+   "Check descendants before you close; a Firefox empty list is a probe failure; verify by blob, never by cb (SN-2944, SN-2945, SN-2946)"
+  ],
+  "topics": [
+   "Distillation",
+   "System",
+   "Knowledge",
+   "Craft",
+   "Multiplication"
+  ]
+ },
+ "page": {
+  "distills": {
+   "batch": 12,
+   "of": 100,
+   "covers": [
+    {
+     "sn": "SN-2937",
+     "title": "The Free Tier Wall — Count Your Writes"
+    },
+    {
+     "sn": "SN-2938",
+     "title": "Both Presentations — the Citizen Picks"
+    },
+    {
+     "sn": "SN-2939",
+     "title": "Keep the Name on the Card"
+    },
+    {
+     "sn": "SN-2940",
+     "title": "Adopt It — the New Way of Thinking"
+    },
+    {
+     "sn": "SN-2941",
+     "title": "Align Both Ways"
+    },
+    {
+     "sn": "SN-2942",
+     "title": "My World Is the Calendar"
+    },
+    {
+     "sn": "SN-2943",
+     "title": "Sharing Chat — the Name Is the Idea"
+    },
+    {
+     "sn": "SN-2944",
+     "title": "Check the Descendants Before You Close"
+    },
+    {
+     "sn": "SN-2945",
+     "title": "A Firefox Empty List Is a Probe Failure"
+    },
+    {
+     "sn": "SN-2946",
+     "title": "Verify by Blob, Never by cb"
+    }
+   ]
+  },
+  "machine": "1) Before any test campaign, compute writes = completions x writes-per-completion against the tier budget. 2) Zero requests + zero errors = probe failure; report it as such. 3) Staged-build verification reads the branch blob, never a cache-busted URL. 4) No coordinator close without a descendants-scope liveness check. 5) A corrected name replaces the old one in every surface the same pass.",
+  "why_it_matters": "The 2026-11-16 wave hit all three traps in one day — a quota wall, a silent browser, a lying URL — and each one first looked like a product failure. Filing the distinctions means the next seat never pays the same tuition.",
+  "how_it_connects": "Second of batch 12's five opening essences from the 2026-11-16 wave. Pairs with SN-4717 (presentation craft): that essence governs what the citizen sees; this one governs how the team knows what it sees is true. Feeds the standing proof law — a claim counts only at the surface where it will be used, by a test that could have failed.",
+  "what_is_in_it_for_you": "The system you use is tested honestly: when we say something works, the test itself was checked first — so 'it works' means it works for you, not just on our screen.",
+  "the_learning": "From now on, we classify every failure as thing, probe, or budget before touching the product — instead of repairing products that were never broken."
+ },
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SYSTEM/SN-4718/IB-SMART-NOTE-20261124-sn4718-test-what-is-real.md",
+ "page_hash": "045374bfc91a62abd3e631783541d4a403d1808810de9e6a8a7db9a66084e8c1",
+ "content_hash": "7e7c094c7f6105348c79456b982d2104f50c8011aa56e726a5991b9037f8fe22",
+ "published_via": "publish-note",
+ "door_version": "1",
+ "door_receipt": "e828f4e2b94bc88cae473229c981df8b652cb25d622e91f232238a05883a993c"
+}
