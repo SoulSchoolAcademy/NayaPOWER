@@ -3496,6 +3496,44 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
   .worlds-slide .world-icons{gap:4px!important}
   .worlds-slide .world-cell{padding:8px 2px!important}
 }
+/* ============ ROUND 13 — phone-width frame fit (2026-11-24, the R12 checker verdict: GOES BACK) ============ */
+/* THE FAILURE (measured on the R12 bytes, VM Firefox: 390 frame 2 content
+   366px in a 337px slide, grid +29.3px below the fold at rest; 360 frame 1
+   +38.8px, frame 2 +73.4px — at 360 no scroll position showed the frame
+   whole). Cause is CONTENT HEIGHT, not centering — the auto margins already
+   collapse to 0 on overflow. The fix, the checker's exact prescription,
+   all at <=560px, proven by a live trial injected into the R12 bytes
+   before filing (probe-trial2.py):
+   (a) THE LONG HEADING, ONE STEP DOWN — frame 2's title takes back the
+   R11 subhead treatment it had before promotion (19px, the rule for
+   .worlds-subhead .cat-title): at 25px it wrapped to 3 lines (96px); at
+   19px with tighter tracking it reads on 2 lines (50px). That is the
+   ONLY type-size change in this round, and only on that long title — no
+   label size is touched anywhere (the §2.3 conflict still awaits Shawn's
+   ruling). The headicon beside both worlds heads slims 42px -> 28px with
+   an 8px gap, so frame 1's "YOUR WORLDS" (214.9px nowrap at 25px) fits its
+   one line at 360 (222px of room) instead of wrapping to two (64px ->
+   32px). Layout only, no size on the words.
+   (b) THE LONG ESSENCE, SHORTENED — frame 2's essence packed to 3 lines
+   at 360 ("Smart Mail, Messages and Connections — tap one to see its
+   day."). Reworded to the same voice, same meaning, two short sentences
+   that pack to 2 lines at 360: "Mail, messages, connections. Tap one
+   to see its day." Frame 1's essence already reads 2 lines; untouched.
+   (c) TILE HEIGHT, TRIMMED — icons 52px -> 44px, cell padding 8px -> 4px
+   top/bottom, cell gap 6px -> 4px. Rim, glow, hover lift and press are
+   untouched — the object is the same, only smaller, and only at phone
+   widths; desktop keeps its 64px icons. Arithmetic, measured live: 360
+   frame 2 saves heading 46px + essence 25.5px + tiles ~20px = ~91px
+   against 73.4px owed; 360 frame 1 saves heading 32px + tiles ~20px =
+   ~52px against 38.8px owed. */
+@media(max-width:560px){
+  .worlds-slide .cat-head{gap:8px!important}
+  .worlds-slide .cat-headicon{width:28px!important;height:28px!important}
+  .worlds-slide .cat-headicon svg{width:15px!important;height:15px!important}
+  .worlds-slide[aria-label="Mail, Messages & Connections"] .cat-title{font-size:19px!important;letter-spacing:.06em!important}
+  .worlds-slide .world-cell .world-ico{max-width:44px!important}
+  .worlds-slide .world-cell{padding:4px 2px!important;gap:4px!important}
+}
 </style>
   </head>
   <body>
@@ -5672,7 +5710,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             catSection(CATS[2], journalInner + dayNav("#07925f", false), "record", "Your day, in your words — kept for this day.", "Journal", "#07925f", "orb") +
             /* ROUND 12 item 1 — TWO FRAMES, THREE IN EACH (Shawn 2026-11-23 ~21:03 MST, twice corrected): frame 1 = Personal, Business, World; frame 2 = Smart Mail, Messages, Connections. Two separate catSection calls — two distinct slides, navigable by tap/dots like every other frame — NOT one slide with the second three stacked underneath (that was the R10 merge, and the layout in his screenshot). Same six tiles, same destinations, same counts, same tile code; only the frame split changes. notifRowsA (both frames joined) still feeds the Notifications slide above, untouched. Frame 2's head is the old subhead promoted: "Mail, Messages & Connections", headIcon "mail" as in R9. */
             catSection(CATS[0], notifRowsA1 + dayNav(dc, false), null, "Personal, Business and your world. Tap one to see its day.", "Your Worlds", dc, "orb", "worlds", "worlds-slide") +
-            catSection(CATS[0], notifRowsA2 + dayNav(dc, false), null, "Smart Mail, Messages and Connections — tap one to see its day.", "Mail, Messages & Connections", dc, "orb", "mail", "worlds-slide") +
+            catSection(CATS[0], notifRowsA2 + dayNav(dc, false), null, "Mail, messages, connections. Tap one to see its day.", "Mail, Messages & Connections", dc, "orb", "mail", "worlds-slide") +
             catSection(CATS[0], notifRowsB + dayNav(dc, false), null, "Local, Province and Global — your news hub, each scope its own door.", "News Hub", dc, "hex", null, "news-slide") +
             catSection(CATS[1], timelineTileHTML(dc, tl, apptRows) + dayNav("#3f51b5", false), "appointments", "The day, booked — tap an open hour, 6 AM–9 PM.", "Timeline", "#3f51b5", null, null, "allow-scroll") +
             yourNotesSection(dc) +
