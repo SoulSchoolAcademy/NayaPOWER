@@ -940,6 +940,37 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 #depthBody .depth-img-slot img{max-height:240px}
 }
 </style>
+<style>
+/* FIRST-TWO-BOARDS FIX (2026-11-24, Shawn's eye) — the first board is
+   image · text · image. No video player, no facade, no ticker, no
+   "Let's Go": tap anywhere advances, the red N opens the welcome video
+   behind it. The .promax chrome frame is untouched; the two side images
+   carry the same rim + shadow as the old poster frame. Additive only —
+   every rule is #screen-cover-scoped and rides .cover-thirds (higher
+   specificity than the old cover grid/flex rules), so the slide screen
+   is untouched. */
+#screen-cover .pm-main.cover-thirds{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-areas:none;column-gap:26px;row-gap:16px;align-items:stretch}
+#screen-cover .pm-cover-img{margin:0;min-width:0;position:relative;border-radius:18px;background:#07070a;box-shadow:0 42px 90px rgba(0,0,0,.78),0 12px 28px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.28),0 0 26px rgba(87,182,255,.22),0 0 54px rgba(139,92,246,.12);overflow:hidden}
+#screen-cover .pm-cover-photo{display:block;width:100%;height:100%;object-fit:cover;object-position:center;border-radius:18px}
+#screen-cover .pm-cover-ball{object-fit:contain;background:#07070a}
+#screen-cover .pm-cover-text{min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:16px 8px;text-align:center}
+#screen-cover .pm-cover-text .cover-saying{margin:0}
+#screen-cover .pm-cover-text .pm-cap{justify-content:center;width:100%;padding-top:0}
+#screen-cover .cover-n{cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,filter .18s ease}
+#screen-cover .cover-n:hover{filter:brightness(1.06) saturate(1.15)}
+#screen-cover .cover-n:active{transform:scale(.93);filter:brightness(1.12) saturate(1.2)}
+@media(min-width:901px){
+#screen-cover .pm-main.cover-thirds{min-height:min(64vh,640px)}
+#screen-cover .pm-cover-text .cover-saying{font-size:clamp(28px,2.6vw,40px)}
+}
+@media(max-width:900px){
+#screen-cover .pm-main.cover-thirds{grid-template-columns:1fr;row-gap:12px}
+#screen-cover .pm-cover-img{height:190px}
+#screen-cover .pm-cover-text{padding:8px 8px 4px;gap:10px}
+#screen-cover .pm-cover-text .cover-saying{font-size:24px}
+#screen-cover .cover-n{width:60px;height:60px;margin-top:0}
+}
+</style>
 </head>
 <body>
 <div class="royal-frame" aria-hidden="true"><div class="rf-et top"></div><div class="rf-es left"></div><div class="rf-es right"></div><div class="rf-rim"></div><div class="rf-corner tl"></div><div class="rf-corner tr"></div><div class="rf-corner bl"></div><div class="rf-corner br"></div><div class="rf-n top"></div></div>
@@ -962,51 +993,18 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
         <div class="showcase">
           <section class="promax" id="deck" aria-label="Top Ten Innovations — Naya presents">
             <div class="pm-top"><span class="np-tag">TOP TEN INNOVATIONS</span><span class="deck-status" id="deckStatus">NAYA PRESENTS</span></div>
-            <div class="ticker" id="ticker"><div class="tick-track" id="tickTrack"><span id="tickA">TOP TEN INNOVATIONS &middot; NAYA WINDOWS &middot; NAYA DOOR &middot; SMART TAP &middot; COLLECTIVE CHAIN TECHNOLOGY &middot; SMART VAULT &middot; NAYA CODE &middot; DELETION BY DEFAULT &middot; SMART MATCH &middot; EVERYONE HIRED &middot; THE TEMPLATE</span><span id="tickB" aria-hidden="true">TOP TEN INNOVATIONS &middot; NAYA WINDOWS &middot; NAYA DOOR &middot; SMART TAP &middot; COLLECTIVE CHAIN TECHNOLOGY &middot; SMART VAULT &middot; NAYA CODE &middot; DELETION BY DEFAULT &middot; SMART MATCH &middot; EVERYONE HIRED &middot; THE TEMPLATE</span></div></div>
-            <div class="pm-main">
-              <div class="pm-art">
-                <div class="pm-art-frame" id="videoFrame">
-                  <img class="pm-poster" id="videoPoster" alt="School of Naya how it works - by the end you'll never see the internet the same way again" />
-                  <div class="pm-video-shell" id="videoShell" hidden></div>
-                  <button class="pm-facade" id="videoFacade" type="button" aria-label="Play the welcome video — with sound">
-                    <span class="pm-play-disc" aria-hidden="true">&#9654;</span>
-                    <span class="pm-facade-label">Watch Naya&rsquo;s Welcome<small>Tap to play &mdash; with sound, and her voice on the deck</small></span>
-                  </button>
-                  <button class="swap-btn tool-btn" type="button" data-slot="cover" aria-label="Member tools — change this slot"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5 5l1.8 1.8M17.2 17.2L19 19M19 5l-1.8 1.8M6.8 17.2L5 19"/></svg></button>
-                  
-                  
-                </div>
+            <div class="pm-main cover-thirds">
+              <figure class="pm-cover-img" aria-label="The living vault — your words kept safe">
+                <img class="pm-cover-photo" id="coverImgL" alt="The living vault — amethyst and black marble, your words flowing in and light flowing back out" />
+              </figure>
+              <div class="pm-cover-text">
                 <p class="cover-saying">&ldquo;Ten innovations. One system. Built for you.&rdquo;</p>
-                <img class="cover-n" id="coverN" alt="The red N" />
-                <div class="pm-cap">
-                  <div class="onair"><span class="onair-dot"></span>ON AIR</div>
-                  <div class="hero-eq" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
-                  <div class="station">TOP TEN INNOVATIONS</div>
-                  
-                </div>
+                <img class="cover-n" id="coverN" alt="The red N — tap to watch Naya's welcome" />
+                <div class="pm-cap"><div class="station">TOP TEN INNOVATIONS</div></div>
               </div>
-              <div class="pm-side pm-side-a">
-                <div class="ib-layer"><div class="ib-layer-body">
-                  <button class="swap-btn tool-btn" type="button" data-slot="coverA" aria-label="Member tools — change this slot"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5 5l1.8 1.8M17.2 17.2L19 19M19 5l-1.8 1.8M6.8 17.2L5 19"/></svg></button>
-                  <div class="b-script">What this is <span class="draft-tag">· DRAFT</span></div>
-                  <p>Ten innovations that make NayaNET different — the door you tap, the vault that keeps your words, the chain that links us all, the code that keeps us safe, and the template that builds your whole world.</p>
-                  <div class="ib-n ib-n--small"><img data-ball alt="The red N" /></div>
-                </div></div>
-              </div>
-              <div class="pm-side pm-side-b">
-                <div class="ib-layer"><div class="ib-layer-body">
-                  <button class="swap-btn tool-btn" type="button" data-slot="coverB" aria-label="Member tools — change this slot"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5 5l1.8 1.8M17.2 17.2L19 19M19 5l-1.8 1.8M6.8 17.2L5 19"/></svg></button>
-                  <div class="b-script">How to walk it <span class="draft-tag">· DRAFT</span></div>
-                  <p>Tap anywhere to go forward. Tap the red N to go in — behind every board there is more. Ten boards, one story.</p>
-                </div></div>
-                <div class="orb-wrap jewel">
-                  <img class="n-ball-img" id="jewelN" alt="The red N — a raised glass ball with a gold N" />
-                  <span class="jewel-gloss" aria-hidden="true"></span>
-                </div>
-                <div class="side-actions">
-                  <button class="naya-btn view-btn" id="btnStart"><span class="nb-label">Let&rsquo;s Go</span></button>
-                </div>
-              </div>
+              <figure class="pm-cover-img" aria-label="The red N">
+                <img class="pm-cover-photo pm-cover-ball" id="coverImgR" alt="The red N — a raised glass ball with a gold N" />
+              </figure>
             </div>
           </section>
         </div>
@@ -1293,7 +1291,6 @@ function goToPortal(){
 /* TWO buttons only: Back and Forward. Back steps to the previous
    slide (from the first slide, back to the cover). Forward steps
    to the next slide (from the last slide, on to the portal). */
-document.getElementById('btnStart').addEventListener('click', function(){ current = 0; renderSlide(); show('slide'); });
 document.getElementById('btnForwardCover').addEventListener('click', function(){ current = 0; renderSlide(); show('slide'); });
 document.getElementById('btnBack').addEventListener('click', function(){
   if (current > 0){ current--; renderSlide(); }
@@ -1322,25 +1319,18 @@ document.querySelectorAll('.slide-boards').forEach(function(el){
 });
 
 /* ================= COVER MEDIA (embedded) — TOP TEN INNOVATIONS =================
-   FIX ROUND (checker-3 addendum, 2026-11-23): the opening video is BACK —
-   the School's cover player/facade is restored (4th script block:
-   loadVideo + ONE PLAY PATH + shadow, byte-identical from the School tip
-   except the video ID and title). The video is "School of Naya how it
-   works - by the end you'll never see the internet the same way again"
-   (uchF0A0wIFg), replacing the School's previous welcome video (old ID retired). The cover image
-   stays the board-2 tunnel picture (EMBED.slides[0]) as the poster; the
-   Swap button on it lets a member add a video by URL later. */
-document.getElementById('videoPoster').src = EMBED.slides[0];
+   FIRST-TWO-BOARDS FIX (2026-11-24, Shawn's eye): the first board is
+   image · text · image — no video player on it. The left image is the
+   approved living vault (EMBED.slides[8], innovation-5-A); the right is
+   the official red-N ball art (EMBED.ball, 1600px). The welcome video
+   lives BEHIND the cover red N — tapping #coverN opens it
+   in the depth view (openCoverVideo, additive script). No ticker: it was
+   the player's chrome and goes with the player. The "Let's Go" button is
+   gone too — tap anywhere advances, the red N is the way in. */
+document.getElementById('coverImgL').src = EMBED.slides[8];
+document.getElementById('coverImgR').src = EMBED.ball;
 document.getElementById('coverN').src = EMBED.ball;
-document.getElementById('jewelN').src = EMBED.ball;
 document.querySelectorAll('[data-ball]').forEach(function(im){ im.src = EMBED.ball; });
-function fitTicker(){
-  var tk = document.getElementById('ticker'); if (!tk) return;
-  tk.classList.toggle('scroll', document.getElementById('tickTrack').scrollWidth > tk.clientWidth - 28);
-}
-window.addEventListener('resize', fitTicker, {passive:true});
-fitTicker();
-setTimeout(fitTicker, 800);
 
 barForCover();
 unfoldBar();
@@ -1422,10 +1412,10 @@ daybarEl().addEventListener('mouseleave', function(){ scheduleFold(); });
    that is not on a genuinely interactive element advances to slide 1 (chapter 1),
    exactly like btnStart / btnForwardCover (current = 0; renderSlide(); show('slide')).
    Same guard as the board tap: taps on buttons, links, inputs, audio, video and
-   [data-legal-open] do their own thing — the video facade still plays, the swap
-   buttons still open member tools, « » still navigate, Let's Go still works. The
-   cover red N is not interactive (no handler — proven by tap), so it advances like
-   everything else, as the printed instruction says. The swap popup lives outside
+   [data-legal-open] do their own thing — « » still navigate. The cover red N IS
+   interactive (first-two-boards fix, 2026-11-24): tapping it opens the welcome
+   video behind it in the depth view and stops the tap from advancing; every
+   other cover tap advances to slide 1. The swap popup lives outside
    #screen-cover (under .stage), so cover taps can never hit it. Nothing else is touched. */
 (function(){
   if (typeof renderSlide !== 'function' || typeof show !== 'function' ||
@@ -1824,6 +1814,29 @@ function openDepth(boardIdx){
   renderDepth();
   document.getElementById('depthView').hidden = false;
 }
+/* COVER VIDEO BEHIND THE RED N (first-two-boards fix, 2026-11-24 — Shawn's eye):
+   the welcome video no longer plays on the first board. It lives BEHIND the
+   cover red N: tapping #coverN opens it in the depth view (the same inner
+   view every board's N opens, same video branch renderDepth uses), one layer,
+   "1 of 1" — tap the N, Back or X (or outside the card) to close. The flag
+   keeps the depth N / Back handlers from walking chapter layers while the
+   cover video is open; closeDepth clears it. */
+var COVER_DEPTH = false;
+var COVER_VIDEO_SRC = 'https://www.youtube.com/embed/uchF0A0wIFg?autoplay=1&mute=0&playsinline=1&rel=0&enablejsapi=1';
+function openCoverVideo(){
+  COVER_DEPTH = true;
+  document.getElementById('depthN').querySelector('img').src = EMBED.ball;
+  document.getElementById('depthTitle').textContent = 'Top Ten Innovations — behind the board';
+  document.getElementById('depthBody').innerHTML = '<div class="ib-vid" style="height:320px">' + vidHTML(COVER_VIDEO_SRC) + '</div>';
+  document.getElementById('depthSideL').innerHTML = ''; document.getElementById('depthSideL').hidden = true;
+  document.getElementById('depthSideR').innerHTML = ''; document.getElementById('depthSideR').hidden = true;
+  document.getElementById('depthStep').textContent = '1 of 1';
+  document.getElementById('depthView').hidden = false;
+}
+document.getElementById('coverN').addEventListener('click', function(e){
+  e.stopPropagation();
+  openCoverVideo();
+});
 function depthSlotHTML(boardIdx, slotIdx){
   var src = (DEPTH_IMGS[boardIdx] || [])[slotIdx];
   if (src) return '<div class="depth-img-slot"><img src="' + src + '" alt="" /></div>';
@@ -1902,13 +1915,15 @@ function renderDepth(){
   var card = document.querySelector('#depthView .innov-pop-card');
   if (card) card.scrollTop = 0;
 }
-function closeDepth(){ document.getElementById('depthView').hidden = true; }
+function closeDepth(){ COVER_DEPTH = false; document.getElementById('depthView').hidden = true; }
 document.getElementById('depthN').addEventListener('click', function(){
+  if (COVER_DEPTH){ closeDepth(); return; }
   var layers = depthLayers(DEPTH_BOARD);
   if (DEPTH_IDX < layers.length - 1){ DEPTH_IDX++; renderDepth(); }
   else closeDepth();
 });
 document.getElementById('depthBackTop').addEventListener('click', function(){
+  if (COVER_DEPTH){ closeDepth(); return; }
   if (DEPTH_IDX > 0){ DEPTH_IDX--; renderDepth(); }
   else closeDepth();
 });
@@ -1934,174 +1949,6 @@ document.addEventListener('click', function(e){
   }
 });
 </script>
-<script>
-/* ================= OPENING VIDEO — RESTORED FROM THE SCHOOL TIP =================
-   Fix round, checker-3 addendum, 2026-11-23. The School's cover
-   player/facade, restored byte-identical from the tip base
-   (school-tip-base.html, script 0) EXCEPT the video ID and title:
-   embed uchF0A0wIFg ("School of Naya how it works - by the end
-   you'll never see the internet the same way again"), replacing
-   the School's previous welcome video (old ID retired).
-   Restored: loadVideo + the ONE PLAY PATH sync (ytPost, ytCommand,
-   ytSeek, paintDeckTime, setDeckPlaying, the 500 ms clock, the
-   YouTube state listener, the facade click), the ROUND 7.4 shadow,
-   the deck declarations it reads (deck, deckStatus, dPlay, fmt)
-   and ensureAnalyser (startShadow's dependency).
-   NOT restored, deliberately: the deck controls (dPlay/dBack/dFwd/
-   dStop, deckSeek, tCur/tDur — this build's cover pm-side-a is the
-   two intro text panels, by the settled design) and the audio
-   element + voice orb (no welcomeAudio element, no EMBED.audio
-   asset in this build). Consequences, honestly: the shadow degrades
-   silently by the code's own try/catch (no EMBED.audio to play
-   under the video, so no silent shadow and no orb — there is no orb
-   on this cover); the deck status line stays "NAYA PRESENTS" while
-   playing (setDeckPlaying returns early with no dPlay); the facade
-   label still reads "Watch Naya's Welcome" (the School's label,
-   kept byte-identical — a one-line label update is owed if Shawn
-   wants it to name the new video). the radio station "Watch on
-   YouTube" link is NOT restored — out of scope for this fix.
-   Playback itself is live-only: the VM has no network egress, so
-   the iframe mounts here and plays on the staged link with network. */
-var deck = document.getElementById('deck');
-var deckStatus = document.getElementById('deckStatus');
-var dPlay = document.getElementById('dPlay');
-function fmt(s){ if (!isFinite(s)) s = 0; s = Math.floor(s); return Math.floor(s/60) + ':' + ('0' + (s%60)).slice(-2); }
-var actx = null, analyser = null, freqData = null;
-function ensureAnalyser(){
-  if (actx) { if (actx.state === 'suspended') actx.resume(); return; }
-  try {
-    var AC = window.AudioContext || window.webkitAudioContext;
-    if (!AC) return;
-    actx = new AC();
-    var srcNode = actx.createMediaElementSource(audio);
-    analyser = actx.createAnalyser();
-    analyser.fftSize = 256;
-    freqData = new Uint8Array(analyser.frequencyBinCount);
-    srcNode.connect(analyser);
-    analyser.connect(actx.destination);
-  } catch(e){ actx = null; analyser = null; }
-}
-/* ================= ONE PLAY PATH — THE VIDEO =================
-   One thing plays here: the video. Tap play on the picture, tap
-   play on the deck, or press play on the recording’s bar — every
-   one of them plays the video, with its own sound. Pause on any
-   of them rests the video. The recording never plays ALOUD on its
-   own, so the two can never mix — but it DOES play silently under
-   the video (the round-7.4 shadow, same take as the soundtrack),
-   locked to the picture by a 500 ms re-sync, so the voice orb
-   dances to the real words. The deck’s clock and seek follow the
-   video, and the orb follows the shadow. */
-var videoLoaded = false, videoPlaying = false;
-function loadVideo(){
-  if (videoLoaded) return;
-  videoLoaded = true;
-  var shell = document.getElementById('videoShell');
-  var frame = document.getElementById('videoFrame');
-  if (!shell || !frame) return;
-  var f = document.createElement('iframe');
-  f.src = 'https://www.youtube.com/embed/uchF0A0wIFg?autoplay=1&mute=0&playsinline=1&rel=0&enablejsapi=1';
-  f.title = 'School of Naya how it works - by the end you\'ll never see the internet the same way again';
-  f.allow = 'accelerometer; autoplay; encrypted-media; picture-in-picture; web-share; fullscreen';
-  f.allowFullscreen = true;
-  f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-  shell.appendChild(f);
-  shell.hidden = false;
-  frame.classList.add('playing');
-  startShadow(0); /* ROUND 7.4: the silent shadow starts with the picture — the orb dances to the soundtrack's own take. */
-  setTimeout(function(){ ytPost('addEventListener'); ytPost('unMute'); }, 1200);
-}
-function ytPost(func, args){
-  var f = document.querySelector('#videoShell iframe');
-  if (f && f.contentWindow){
-    try { f.contentWindow.postMessage(JSON.stringify({event:'command', func:func, args:args||[]}), '*'); } catch(e){}
-  }
-}
-function ytCommand(cmd){
-  if (cmd === 'play'){ if (!videoLoaded) loadVideo(); else { ytPost('unMute'); ytPost('playVideo'); startShadow(videoTime); } }
-  if (cmd === 'pause'){ stopShadow(); ytPost('pauseVideo'); }
-}
-var videoTime = 0, videoDur = 0;
-function ytSeek(sec){
-  if (!videoLoaded) return;
-  sec = Math.max(0, videoDur ? Math.min(videoDur - .25, sec) : sec);
-  videoTime = sec;
-  ytPost('seekTo', [sec, true]);
-  if (shadowEl){ try { shadowEl.currentTime = sec; } catch(e){} }
-  paintDeckTime();
-}
-function paintDeckTime(){
-  var tc = document.getElementById('tCur'), td = document.getElementById('tDur'), fl = document.getElementById('deckFill');
-  if (tc) tc.textContent = fmt(videoTime);
-  if (td && videoDur) td.textContent = fmt(videoDur);
-  if (fl) fl.style.width = (videoDur ? (videoTime / videoDur * 100) : 0) + '%';
-}
-function setDeckPlaying(on){
-  if (!deck || !dPlay || !deckStatus) return;
-  deck.classList.toggle('playing', on);
-  if (on){ deckStatus.textContent = 'ON AIR'; deckStatus.classList.add('live'); dPlay.innerHTML = '&#10073;&#10073;'; dPlay.setAttribute('aria-label', 'Pause the welcome video'); }
-  else { deckStatus.textContent = videoTime > .5 ? 'PAUSED' : 'READY'; deckStatus.classList.remove('live'); dPlay.innerHTML = '&#9654;'; dPlay.setAttribute('aria-label', 'Play the welcome video'); }
-}
-setInterval(function(){
-  if (videoPlaying){ videoTime += .5; if (videoDur && videoTime > videoDur) videoTime = videoDur; paintDeckTime();
-    /* ROUND 7.4: keep the silent shadow locked to the picture — the two are the same take, so a drift past 0.35s is a clock slip, not the words. */
-    if (shadowOn && shadowEl && !shadowEl.paused){ var drift = shadowEl.currentTime - videoTime; if (drift > .35 || drift < -.35){ try { shadowEl.currentTime = videoTime; } catch(e){} } }
-  }
-}, 500);
-window.addEventListener('message', function(e){
-  if (typeof e.data !== 'string') return;
-  var d; try { d = JSON.parse(e.data); } catch(err){ return; }
-  if (!d || typeof d !== 'object') return;
-  var info = d.info;
-  if (d.event === 'onStateChange' || d.event === 'infoDelivery' || (info && typeof info.playerState !== 'undefined')){
-    var st = (d.event === 'onStateChange') ? info : (info && info.playerState);
-    if (typeof st === 'number' && st !== -1){ videoPlaying = (st === 1); setDeckPlaying(videoPlaying);
-      /* ROUND 7.4: the player is the clock — its state starts/stops the silent shadow that feeds the orb. State -1 (unstarted) is ignored: the errored player can deliver it late with currentTime 0, which would otherwise unplay a playing session and pin the clock at 0 (round-6 hardening, same cause). */
-      if (st === 1){ if (!shadowOn) startShadow(videoTime); }
-      else if (st === 2 || st === 0){ stopShadow(); if (st === 0){ videoTime = 0; paintDeckTime(); } }
-    }
-    if (info && typeof info.currentTime === 'number' && st !== -1){ videoTime = info.currentTime; paintDeckTime(); }
-    if (info && typeof info.duration === 'number' && info.duration > 0){ videoDur = info.duration; paintDeckTime(); }
-  }
-});
-document.getElementById('videoFacade').addEventListener('click', function(){
-  loadVideo();
-});
-/* ROUND 7.4 — TRUE AMPLITUDE, THE SHADOW: the YouTube video's soundtrack is the SAME recording as the native file (proven in round 6: native 258.15s vs YouTube 258.23s; 100ms-RMS envelope correlation 0.87 at lag 0, every 30s segment 0.85-0.89, sample-level cross-correlation 0.978 at -36ms — same take, no drift; this page's EMBED.audio is byte-identical to round-6 native, sha ce8e018c…). A cross-origin iframe cannot be AnalyserNode'd, so the visual is driven from the native recording played SILENT under the video (one play button drives video + shadow + visual). The silence comes from a GainNode AFTER the analyser — never from the element's volume, which would silence the analyser too. The shadow is a SEPARATE Audio element, not the visible welcomeAudio: that element's play event is hijacked to start the video (it pauses itself), so it can never carry the shadow. PowerCast has no analyser at all (its voiceAmp target is the canned playing?(.3+.7*burstS):.09) — nothing to harvest there, so the real thing is built here, the round-6 way. */
-var shadowEl = null, shadowOn = false, shadowAnalyser = null, syncGain = null, timeData = null;
-function setShadowGain(on){ try { if (syncGain) syncGain.gain.value = on ? 0 : 1; } catch(e){} }
-function startShadow(atSec){
-  ensureAnalyser();
-  if (shadowOn && shadowEl && !shadowEl.paused){ try { if (Math.abs(shadowEl.currentTime - (atSec || 0)) > .35) shadowEl.currentTime = Math.max(0, atSec || 0); } catch(e){} return; }
-  if (!shadowEl){
-    try {
-      shadowEl = new Audio();
-      shadowEl.src = EMBED.audio;
-      shadowEl.preload = 'auto';
-      shadowEl.addEventListener('ended', function(){ shadowOn = false; setShadowGain(false); });
-      var shSrc = actx.createMediaElementSource(shadowEl);
-      shadowAnalyser = actx.createAnalyser();
-      shadowAnalyser.fftSize = 256;
-      shadowAnalyser.smoothingTimeConstant = 0.3; /* syllables, not smear: the default 0.8 irons them flat */
-      timeData = new Uint8Array(shadowAnalyser.fftSize);
-      syncGain = actx.createGain(); syncGain.gain.value = 0;
-      shSrc.connect(shadowAnalyser);
-      shadowAnalyser.connect(syncGain);
-      syncGain.connect(actx.destination);
-    } catch(e){ shadowEl = null; shadowAnalyser = null; syncGain = null; timeData = null; return; }
-  }
-  shadowOn = true;
-  setShadowGain(true);
-  try { shadowEl.currentTime = Math.max(0, atSec || 0); } catch(e){}
-  var pr = null;
-  try { pr = shadowEl.play(); } catch(e){ shadowOn = false; setShadowGain(false); }
-  if (pr && pr.catch) pr.catch(function(){ shadowOn = false; setShadowGain(false); });
-}
-function stopShadow(){
-  if (!shadowOn) return;
-  shadowOn = false;
-  setShadowGain(false);
-  try { if (shadowEl) shadowEl.pause(); } catch(e){}
-}
-</script>
+
 </body>
 </html>
