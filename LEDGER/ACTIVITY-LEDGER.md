@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-24 23:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-24 23:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16951,6 +16951,14 @@ _Last updated: 2026-11-24 23:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 3 cited artifacts byte-identical on disk — spec register-flip-protocol-spec-t0770-lane8.md sha256 91412fc2…, design doc 3b685b90…, verdict doc 1f9be430… — no PHANTOM. Real value: frozen K1-K4 protocol spec with C1-C4 verdict adaptation, fixture floors, fail-closed halts, the load-bearing find (brief's 'review pending' line was overtak
 
+### ✅ t0770 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** Read-only audit of ask-world query-log instrumentation (TRUSTED-WITH-CAVEATS verdict, 10 named gaps)
+
+**Receipt:** `twelve-lane-receipts/t0770-lane6.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED this tick, pin-exact: hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c7973f77caaa5a21b322dc8259b053ceccea0b4352aa2e8bf9641d0c9ea1 FULL 64-char MATCH. NOT PHANTOM. Score 9.5. Clears 9.5 because the audit is byte-closed: two-direction counts exact (89/89 parse, awk+grep match), log
+
 ### ✅ t0770-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** ASK-WORLD query log audit (read-only, TRUSTED-WITH-CAVEATS)
@@ -16980,6 +16988,14 @@ _Last updated: 2026-11-24 23:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0770-lane6.md`
 
 **Evidence:** Verified: audit file hidden_files/askworld-log-audit-t0770-lane6.md exists on disk, sha256 0419c7973f77caaa5a21b322dc8259b053ceccea0b4352aa2e8bf9641d0c9ea1 == receipt pin byte-for-byte (11,797 bytes). Receipt documents a read-only audit with all 8 log_query call sites cited by live line, two-direction count re-derivation (json.loads per line 89/89 
+
+### ✅ t0769 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** INFRA packet 2 (body-hash logging) - CANDIDATE text closing the verdict-instability prevention set
+
+**Receipt:** `twelve-lane-receipts/t0769-lane5.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED in part this tick: hidden_files/infra-packet-2-bodyhash-t0769-lane5.md EXISTS (7,956 bytes), embeds its own pre-edit sha16 ad806408d049e4be, carries the head-pinned/body-drifted mismatch class (4x) and GATE_BLIND exit-contract cross-check (4x). NOT PHANTOM. Pin drift: live sha256 7451021956
 
 ### ✅ t0769-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -17011,6 +17027,14 @@ _Last updated: 2026-11-24 23:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: packet file hidden_files/infra-packet-2-bodyhash-t0769-lane5.md byte-exists (7,956 B, matches the 7.9 KB claim); source comment 6167590868 body sha256 byte-matches the packet's embedded claim 260d8893...a592372c exactly (independently re-fetched + hashed); all 4 source quotes probed verbatim in the comment (13/13 probes), the 5th quote ho
 
+### ✅ t0768 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Ranked top-20 unmet-needs analysis from the live ask-world query log (SMARTBLOCKS tuning target)
+
+**Receipt:** `twelve-lane-receipts/t0768-lane2.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED this tick: hidden_files/retrieval/query-needs-top20-t0768.md sha256 prefix f9da2fd5 MATCHES receipt pin; companion retrieval/query-needs-top20-t0768.jsonl exists (16-row machine file). NOT PHANTOM. The log pin 0fa1f99d... was true at action time (independently re-verified the same day by t0
+
 ### ✅ t0768-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** Ranked top-20 unmet-needs analysis from ask-world query log (SMARTBLOCKS hypertune input)
@@ -17033,6 +17057,14 @@ _Last updated: 2026-11-24 23:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Clears 9.5 because: all three cited SHAs byte-verified on disk (query log 0fa1f99d, artifact md f9da2fd5, artifact jsonl f172d3f9 - exact matches). Brief premise falsified on live bytes (5 prior analyses cited), counting rule pre-registered before tallying, 16 organic needs ranked with lever+block mappings, ranks 17-20 honestly refused. Self 3-pass
 
+### ✅ t0767 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Independent second-seat verdict on SURGE semantic-arm hypothesis-change note (t0761): CONFIRM with 4 conditions
+
+**Receipt:** `twelve-lane-receipts/t0767-lane3.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED in part this tick: hidden_files/surge-a-verdict-t0767-lane3.md EXISTS and carries the load-bearing content (CONFIRM verdict, C1-C4 conditions, reviewer + subject lines) and the reviewed note hidden_files/lane-1/surge-a-hypothesis-change-t0761.md sha256 3b685b90c98f754c6151ba4ce8b7b951fa4a96
+
 ### ✅ t0767-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** SURGE arm (a) independent verdict on Lane 1 MCC hypothesis-change note
@@ -17054,6 +17086,14 @@ _Last updated: 2026-11-24 23:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0767-lane3.md`
 
 **Evidence:** Verified: verdict file hidden_files/surge-a-verdict-t0767-lane3.md exists (7,719 bytes, sha256 1f9be43012c74f99... matches); reviewed note lane-1/surge-a-hypothesis-change-t0761.md full sha256 3b685b90c98f754c6151ba4ce8b7b951fa4a967c8a2746be948f3e0d56173efe exact; corpse pins re-derived live: t0719 d992ad0c + t0743 aeffc6fa both byte-match. Substan
+
+### ✅ t0766 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** Fail-closed violation detector for class-#17 read-before-sign-in admissions
+
+**Receipt:** `twelve-lane-receipts/t0766-lane1.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED this tick, pin-exact: hidden_files/violation-detector-class17.py sha256 085f592e2f4e8152bdc592c0bad6c26f545983ac330a16cf9fc3485fcef62635 FULL 64-char MATCH. NOT PHANTOM. Score 9.5. Clears 9.5 because the detector is a working instrument with live evidence (28 violations across t0747-t0767, 
 
 ### ✅ t0766-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -17104,6 +17144,14 @@ _Last updated: 2026-11-24 23:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0765-lane9.md`
 
 **Evidence:** ARTIFACT-VERIFIED independently by scorer on live bytes: branch naya/lane9/level-drill-keysplit-t0730 exists on remote, head == receipt-claimed SHA a8d01f0cde69722d9eb0b2a08362bb83458ebd9f; tools/level_drill.py at that SHA is the fail-closed shim (AST: 0 module-level constants, 0 defs; import raises RuntimeError with refusal text); tools/level_dril
+
+### ✅ t0765 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** First independent measurement of genuine human-value events from the value ledger (0 verified)
+
+**Receipt:** `twelve-lane-receipts/t0765-lane11.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED this tick, pin-exact: hidden_files/value-ledger.md sha256 230b98135cba12be MATCHES receipt pin; hidden_files/human-value-instrument-v1.md sha256 prefix 321f3f4a MATCHES. NOT PHANTOM. Honest zero: all 6 ledger rows machine-side-only, UNVERIFIED-pending-second-seat, zero meet the named-human 
 
 ### ✅ t0765-lane11 — Team 11, Team Naya Scorer (Human Value) — 8.5/10 [VERIFIED]
 
