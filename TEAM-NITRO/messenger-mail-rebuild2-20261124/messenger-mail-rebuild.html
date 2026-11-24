@@ -1053,7 +1053,12 @@ function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className
       } else if(state.filter==='unread'){
         ts = ts.filter(function(t){ return t.unread; });
       }
+      /* MM-TABS ADAPTER: the Hub smart tabs filter mail threads by topic/cluster (same logic as the Hub feed). */
+      if(window.__mmTabMatch && window.__mmTabNoteForThread){ ts = ts.filter(function(t){ return window.__mmTabMatch(window.__mmTabNoteForThread(t)); }); }
       window.applyListFilter = applyListFilter;
+      /* MM-TABS ADAPTER seams: read the live threads + re-render without the search-focus steal. */
+      window.__mmMailThreads = function(){ return threads; };
+      window.__mmRenderList = renderList;
       function applyListFilter(){ renderList(); var ni=list.querySelector('.ml-search input'); if(ni){ ni.focus(); ni.setSelectionRange(ni.value.length, ni.value.length); } }
       if(state.selecting) list.classList.add('ml-selecting'); else list.classList.remove('ml-selecting');
       var emptyMsgs = {
@@ -1067,7 +1072,7 @@ function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className
       if(!ts.length){
         var empty = el('p','ml-empty','');
         empty.textContent = q ? 'No matches for \u201c'+state.search+'\u201d.'
-          : (emptyMsgs[state.folder]||'All caught up. No threads here.');
+          : (window.__mmTabActiveId && window.__mmTabActiveId() !== 'all' ? 'No ' + (window.__mmTabActiveLabel ? window.__mmTabActiveLabel() : '') + ' mail here.' : (emptyMsgs[state.folder]||'All caught up. No threads here.'));
         list.appendChild(empty);
         return;
       }
@@ -2340,6 +2345,197 @@ schRow.appendChild(dtWrap);
   .nm-space-pick{flex-wrap:nowrap;overflow-x:auto;}
   .ml-filters{flex-wrap:nowrap;overflow-x:auto;}
 }
+
+/* ===== MM-TABS HARVESTED CSS-A — HUB fix2-base.html L1404-1523, blob 15aea4f0 ===== */
+.smart-tabs {
+  display: flex; align-items: center; gap: 10px;
+  overflow-x: auto; scrollbar-width: none;
+  margin: 20px 0 0; padding: 12px 12px 18px; scroll-padding: 0 12px; /* EYE (g): the -6px pull cut the first/last tab labels at both edges — the strip now sits inside its box. */
+  border-bottom: 1px solid var(--line);
+  -webkit-mask-image: linear-gradient(90deg, #000, #000 calc(100% - 28px), transparent);
+  mask-image: linear-gradient(90deg, #000, #000 calc(100% - 28px), transparent);
+}
+.smart-tabs::-webkit-scrollbar { display: none; }
+.smart-tabs { scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+
+.smart-tab { animation: tabIn .4s ease-out backwards; }
+.smart-tab:nth-child(1) { animation-delay: .05s; }
+.smart-tab:nth-child(2) { animation-delay: .1s; }
+.smart-tab:nth-child(3) { animation-delay: .15s; }
+.smart-tab:nth-child(4) { animation-delay: .2s; }
+.smart-tab:nth-child(5) { animation-delay: .25s; }
+.smart-tab:nth-child(6) { animation-delay: .3s; }
+.smart-tab:nth-child(7) { animation-delay: .35s; }
+.smart-tab:nth-child(8) { animation-delay: .4s; }
+@keyframes tabIn { from { opacity: 0; transform: translateY(8px) scale(.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+/* ——— SmartTabs v9 pill language (Naya 4's port) ———
+   Dark pill, bold label, per-tab spectrum color (--tc) that ignites
+   on hover/select. 💜 = purple inset glow, ⭐ = gold inset glow. */
+/* SmartTabs: white light at rest, lights ON (Shawn 2026-10-20) · color
+   ignites on hover; the active tab wears beautiful purple.
+   FIX-5a 2026-11-17 (amendment 3): the Record Law earning — --tc held 8
+   distinct colours the page never rendered, so all tabs read monochrome.
+   Each tab now wears its cluster color AT REST: rim + glow in --tc. */
+.smart-tab {
+  --tc: #8e24aa;
+  flex: 0 0 auto; display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 20px; border-radius: 999px; cursor: pointer; user-select: none;
+  border: 2px solid color-mix(in srgb, var(--tc) 68%, rgba(255,255,255,.35)); background: rgba(0,0,0,.55);
+  color: #fff; font-family: inherit; font-weight: 900; font-size: 17px; letter-spacing: .03em;
+  white-space: nowrap;
+  box-shadow: 0 0 18px color-mix(in srgb, var(--tc) 45%, transparent), inset 0 1px rgba(255,255,255,.18), inset 0 0 0 1px color-mix(in srgb, var(--tc) 30%, transparent);
+  transition: box-shadow .25s, border-color .2s, text-shadow .25s, transform .18s;
+}
+.smart-tab .sn-label { white-space: nowrap; }
+.smart-tab .sn-mark { font-size: 17px; line-height: 1; }
+.smart-tab:hover, .smart-tab:focus-visible {
+  border-color: var(--tc); outline: none; transform: translateY(-2px);
+  box-shadow: 0 0 22px -2px var(--tc), 0 0 0 2px var(--tc) inset;
+  text-shadow: 0 0 10px var(--tc);
+}
+/* Active: beautiful purple ignition (Shawn 2026-10-20) */
+.smart-tab.active {
+  border-color: #8e24aa;
+  box-shadow: 0 0 22px rgba(142,36,170,.55), inset 0 0 0 1.5px rgba(142,36,170,.8), inset 0 1px rgba(255,255,255,.2);
+  text-shadow: 0 0 10px rgba(142,36,170,.9);
+}
+.smart-tab.active:hover {
+  border-color: var(--tc);
+  box-shadow: 0 0 22px -2px var(--tc), 0 0 0 2px var(--tc) inset;
+  text-shadow: 0 0 10px var(--tc);
+}
+.smart-tab .sn-more {
+  /* FIX-5a 2026-11-17 (amendment 3): no dot-only buttons — the ⋯ is a real
+     icon-object: obsidian circle, rim + glow in the tab's own --tc. */
+  border: 1.5px solid color-mix(in srgb, var(--tc,#8e24aa) 70%, rgba(255,255,255,.3));
+  background: linear-gradient(135deg,#17171f,#050607); color: #fff; border-radius: 50%;
+  width: 28px; height: 28px; min-width: 28px; min-height: 28px; padding: 0; display: inline-grid; place-items: center;
+  cursor: pointer; font-size: 17px; line-height: 1; font-family: inherit;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.28), inset 0 -3px 6px rgba(0,0,0,.6), 0 4px 10px rgba(0,0,0,.5), 0 0 12px color-mix(in srgb, var(--tc,#8e24aa) 40%, transparent);
+  transition: border-color .2s, box-shadow .2s, transform .15s;
+}
+.smart-tab .sn-more:hover { background: linear-gradient(135deg,#1f1f2a,#08080d); border-color: color-mix(in srgb, var(--tc,#8e24aa) 90%, #fff); box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 6px rgba(0,0,0,.6), 0 0 18px color-mix(in srgb, var(--tc,#8e24aa) 55%, transparent), 0 4px 10px rgba(0,0,0,.5); transform: translateY(-1px); }
+.smart-tab .sn-more { position: relative; }
+.smart-tab .sn-more::after { content: ''; position: absolute; inset: -9px -12px; }
+.smart-tab.add-tab {
+  border-style: dashed; color: var(--muted);
+  padding: 12px 18px;
+}
+.smart-tab.add-tab:hover {
+  color: #fff; border-color: #fff; box-shadow: none; text-shadow: none;
+  transform: translateY(-2px);
+}
+/* ——— Tab menu + editor popover ——— */
+.tab-menu, .tab-pop {
+  position: fixed; z-index: 1000; display: none;
+  background: linear-gradient(135deg, #121827, #0e1424);
+  border: 1px solid rgba(255,255,255,.18); border-radius: 12px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.5);
+}
+.tab-menu { min-width: 220px; }
+.tab-menu .mi {
+  padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,.08);
+  cursor: pointer; color: #fff; font-weight: 800; font-size: 17px;
+}
+.tab-menu .mi:last-child { border-bottom: none; }
+.tab-menu .mi:hover { background: #050607; box-shadow: inset 2px 0 0 var(--tc,#8e24aa), 0 0 12px -2px var(--tc,#8e24aa); } /* A4: rim-only — never the whole row. */
+.tab-pop { min-width: 300px; padding: 14px; color: #fff; }
+.tab-pop h3 { margin: 0 0 10px; font-size: 17px; }
+.tab-pop .row { display: grid; gap: 6px; margin: 8px 0; }
+.tab-pop label { font-size: 17px; color: var(--muted); display: grid; gap: 4px; }
+.tab-pop input {
+  padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,.2);
+  background: #0a0f1a; color: #e6ecff; font-size: 17px;
+}
+.tab-pop .toggles { display: flex; gap: 8px; margin: 8px 0; flex-wrap: wrap; }
+.tab-pop .tgl {
+  display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px;
+  border-radius: 10px; border: 1px solid rgba(255,255,255,.22);
+  background: rgba(0,0,0,.45); cursor: pointer; color: #fff; font-weight: 800; font-size: 17px;
+}
+.tab-pop .tgl.on {
+  box-shadow: 0 0 0 2px rgba(255,255,255,.3) inset, 0 0 18px rgba(124,77,255,.25);
+}
+.tab-pop .ft { display: flex; gap: 8px; justify-content: flex-end; margin-top: 10px; }
+.tab-pop .btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px;
+  border-radius: 10px; border: 1px solid rgba(255,255,255,.25);
+  background: rgba(0,0,0,.55); color: #fff; cursor: pointer; font-weight: 800; font-size: 17px;
+  box-shadow: inset 0 -3px 6px rgba(0,0,0,.6), 0 4px 10px rgba(0,0,0,.5), 0 8px 18px rgba(0,0,0,.55);
+  transition: transform .18s var(--ease), border-color .18s, box-shadow .18s;
+}
+.tab-pop .btn:hover, .tab-pop .btn:focus-visible { border-color: #8e24aa; box-shadow: inset 0 -3px 6px rgba(0,0,0,.6), 0 0 16px rgba(142,36,170,.55), 0 8px 16px rgba(0,0,0,.5); transform: translateY(-1px); }
+.tab-pop .btn.primary { background: linear-gradient(135deg, #6d28d9, #8e24aa); border-color: transparent; box-shadow: inset 0 -3px 6px rgba(0,0,0,.45), 0 4px 10px rgba(0,0,0,.5), 0 8px 18px rgba(0,0,0,.55), 0 0 18px rgba(142,36,170,.45); }
+.tab-pop .btn.primary:hover, .tab-pop .btn.primary:focus-visible { box-shadow: inset 0 -3px 6px rgba(0,0,0,.45), 0 0 14px -2px rgba(142,36,170,.7), 0 10px 20px rgba(0,0,0,.55); /* EYE-NOTES §3.2 edge-only */ transform: translateY(-1px); }
+/* ===== END MM-TABS HARVESTED CSS-A ===== */
+/* ===== MM-TABS HARVESTED CSS-B — HUB fix2-base.html L2720-2738 (phone tab rules), blob 15aea4f0 ===== */
+@media (max-width: 640px) {
+  .lens-tabs { gap: 8px; }
+  .lens-tab { padding: 11px 6px; font-size: 17px; }
+  .lens-tab b { font-size: 17px; }
+  .smart-tab { font-size: 17px; padding: 7px 13px; }
+  /* Tab editor = true centered modal on phones (Shawn 2026-10-20: it opened
+     off-center and unusable). !important beats the JS placeNear inline styles. */
+  .tab-pop {
+    min-width: 0; max-width: 360px; width: calc(100vw - 32px);
+    left: 50% !important; right: auto; top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 2000;
+  }
+  .tab-menu { z-index: 2000; }
+  .tab-pop input { font-size: 17px; /* no iOS zoom-jump on focus */ }
+  .intel-board { padding: 22px 18px 18px; border-radius: 20px; }
+  .ib-title { font-size: 25px; }
+  .ib-layer-body p { font-size: 17px; }
+}
+/* ===== END MM-TABS HARVESTED CSS-B ===== */
+/* ===== MM-TABS ADAPTER (not harvested) =====
+   Hub vars the harvested rules reference (Hub :root L86/89, same values).
+   Container spacing adapted for this page's D3 budget: the Hub's
+   .smart-tabs margin (20px 0 0) + padding (12px 12px 18px) cost ~99px;
+   compact 0 / 6px 12px keeps the strip above the panes without breaking
+   bar clearance. Every other .smart-tabs declaration is the harvested one. */
+:root{--line:#ffffff18;--muted:#FFFFFF;}
+.smart-tabs{margin:0;padding:6px 12px;}
+#mmTabsHost{min-width:0;}
+/* ===== MM-TABS D3 RECOVERY (adapter spacing trims — the strip is 69px desk / 66px phone;
+   the page's D3 clearances were 1-7px, so the strip must be paid for in spacing.
+   Margins/paddings/gaps only — no sizes, colors, text, or layout change. Budget (measured
+   probe-tabs2): desk chat note -80 (lands 607-689 vs bar 701), phone mail empty -62
+   (lands 586-658 vs bar 661), phone chat note -66 (lands 648-702 — same remainder as
+   pre-tabs, first line visible + dimmed + clear on scroll). */
+.smart-tabs{padding:2px 12px;}
+.nm-chrome{padding-top:0;}
+.nm-privacy{margin-bottom:0;}
+.nm-toggle{padding-top:4px;padding-bottom:4px;}
+.nm-toggle-btn{padding-top:4px;padding-bottom:4px;}
+.nm-icon-row{margin-top:4px;margin-bottom:4px;}
+.nm-steps{margin-bottom:2px;}
+.nm-orb-row{margin-bottom:2px;}
+.nm-pane{padding-top:12px;}
+.nm-pane h2{margin-bottom:8px;}
+.nm-search{padding-top:10px;padding-bottom:10px;margin-bottom:4px;}
+.nm-space-pick{margin-top:4px;margin-bottom:2px;}
+.ml-compose-top{padding-top:6px;padding-bottom:6px;}
+.ml-searchwrap{margin-bottom:0;}
+.ml-filters{margin-bottom:0;}
+.ml-fchip{padding-top:2px;padding-bottom:2px;}
+.ml-rail{padding-top:2px;padding-bottom:2px;}
+.ml-col2{gap:2px;}
+.ml-empty{padding-top:6px;}
+/* ===== MM-TABS D3 RECOVERY pass 3 (probe-tabs3d: phone mail empty 604-676 vs bar 661,
+   15px over — 4b saved 44px, collapsing ate 18px). Buys 22px in spacing only. */
+.smart-tabs{padding:0 12px;}
+.nm-toggle-btn{padding-top:2px;padding-bottom:2px;}
+.ml-compose-top{padding-top:4px;padding-bottom:4px;}
+.ml-fchip{padding-top:1px;padding-bottom:1px;}
+.ml-rail{padding-top:1px;padding-bottom:1px;}
+.ml-col2{gap:0;}
+.ml-empty{padding-top:2px;}
+/* ===== MM-TABS D3 RECOVERY pass 4 (probe-tabs3e: phone mail empty 592-664 vs bar 661,
+   3px over). Buys 4px: list top padding 12px -> 8px. */
+.mail-stage .ml-list{padding-top:8px;}
+/* ===== END MM-TABS ADAPTER CSS ===== */
 </style>
 <script>
 /* ================= REBUILD LAYER — real mail + the tempo dial =================
@@ -2528,7 +2724,10 @@ function nmConvRows(){
     return true;
   });
   list.sort(function(a, b){ return (nmPins[b.threadId] ? 1 : 0) - (nmPins[a.threadId] ? 1 : 0) || (Date.parse(b.lastAt || '') - Date.parse(a.lastAt || '')); });
-  if(!list.length) return '<p class="nm-note">✉ No conversations yet — pick a person, say hello.</p>';
+  /* MM-TABS ADAPTER: the Hub smart tabs filter conversations by topic/cluster (same logic as the Hub feed). */
+  var mmPreTab = list.length;
+  if(window.__mmTabMatch && window.__mmTabNoteForConv){ list = list.filter(function(c){ return window.__mmTabMatch(window.__mmTabNoteForConv(c)); }); }
+  if(!list.length) return (window.__mmTabActiveId && window.__mmTabActiveId() !== 'all' && mmPreTab) ? '<p class="nm-note">✦ No ' + esc(window.__mmTabActiveLabel ? window.__mmTabActiveLabel() : '') + ' conversations here.</p>' : '<p class="nm-note">✉ No conversations yet — pick a person, say hello.</p>';
   var h = '';
   list.forEach(function(c){
     var color = nmColorFor(c.with);
@@ -2815,12 +3014,15 @@ function nmInit(){
     + '<div class="nm-steps"><span class="nm-step"><b>1</b> Pick a person</span><span class="nm-step"><b>2</b> Write it</span><span class="nm-step"><b>3</b> Tap Send</span></div>'
     + '<div class="nm-orb-row"><span class="nm-orb">N</span><span class="nm-orb nm-orb2">◆</span></div>';
   stage.insertBefore(chrome, panes);
+  /* MM-TABS ADAPTER: host for the harvested Hub smart-tabs strip — above both pane sets (chat + mail). */
+  if(!document.getElementById('mmTabsHost')){ var mmHost = document.createElement('div'); mmHost.id = 'mmTabsHost'; stage.insertBefore(mmHost, panes); }
+  if(window.__mmTabsMount) window.__mmTabsMount();
   stage.insertAdjacentHTML('beforeend', nmMsgViewHtml());
   chrome.querySelectorAll('.nm-toggle-btn').forEach(function(b){
     b.addEventListener('click', function(){ nmSetTempo(b.getAttribute('data-tempo')); });
   });
   nmBootData();
-  nmLoadDMs().then(function(){ if(window.__nmActBadgeUpdate) window.__nmActBadgeUpdate(); if(nmTempo === 'chat') nmRefreshMsgView(); });
+  nmLoadDMs().then(function(){ if(window.__nmActBadgeUpdate) window.__nmActBadgeUpdate(); if(nmTempo === 'chat') nmRefreshMsgView(); if(window.__mmTabsMount) window.__mmTabsMount(); });
   nmBindMsgView();
   nmSetTempo(nmTempo); /* sync the initial view to the initial toggle — v2.1 never did, so load showed Mail under a MESSENGER toggle */
   return true;
@@ -2832,6 +3034,7 @@ var __nmTimer = setInterval(function(){
 }, 250);
 window.NayaMsgRebuild = {
   version: '2026-11-24-rebuild2-v3',
+  refresh: nmRefreshMsgView, /* MM-TABS ADAPTER: lets the tabs re-render re-filter the conversations */
   tempo: function(){ return nmTempo; },
   setTempo: nmSetTempo,
   send: sendMessage,
@@ -2839,6 +3042,519 @@ window.NayaMsgRebuild = {
   members: function(){ return nmMembers; },
   convs: function(){ return nmConvs; }
 };
+})();
+</script>
+
+<script>
+/* ================= MM SMART TABS — HARVESTED VERBATIM FROM THE HUB =================
+   Source: HUB/app/index.html, branch hub/intelligent-block-rerender-20261121,
+   blob 15aea4f0 (local: ~/workspace/team-nitro/hub-go-live-20261124/fix2-base.html,
+   7,605,069 B, git blob sha1 15aea4f0795b3a5d135387ee17c7a11ecf06b08b).
+   The harvested bytes below are byte-identical to the Hub source (see
+   hub-tabs-*.txt in this lane + verify-tabs-harvest.py). What is ADAPTER
+   (not harvested) is marked MM-TABS ADAPTER: the IIFE wrapper (the Hub code
+   runs at top level; here it runs scoped so it cannot collide with this
+   file's own el/esc), the toast shim (the Hub toast lives in the Hub shell;
+   here it writes to this page's honest-line element), and the export.
+   All five named functions are in the harvested bytes: Edit (menu + editor
+   dialog), topic dropdown (datalist #tab-topic-vocab from the real
+   vocabulary), purple heart, gold star, auto-organize (INTEL_CLUSTERS +
+   intelClusterOf scorer + smartTabStrip). Nothing invented. */
+window.__mmTabs = (function(){
+/* ===== MM-TABS HARVESTED HELPERS — esc L4175-4179, el L5306-5311 ===== */
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+function el(tag, cls, html) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (html != null) e.innerHTML = html;
+  return e;
+}
+/* ===== END MM-TABS HARVESTED HELPERS ===== */
+/* --- MM-TABS ADAPTER: the Hub declares activeSmartTab at top level (L6256); here it lives in this scope. --- */
+var activeSmartTab = 'all';
+/* --- MM-TABS ADAPTER: toast shim — the harvested block calls toast() once (system-tab Remove guard). The Hub toast lives in the Hub shell; here the message goes to this page's honest-line element. --- */
+function toast(message, second, third, fourth){
+  var note = document.getElementById('nmIconNote');
+  var text = (typeof second === 'string' && second) ? message + ' — ' + second : message;
+  if(note){ note.hidden = false; note.textContent = text; }
+}
+/* ===== MM-TABS HARVESTED JS — HUB fix2-base.html L6760-7079, blob 15aea4f0 ===== */
+  const SMART_TAB_KEY = 'nayanet.feed.smartTabs.v1';
+
+  function readHumanTabs() {
+    try { const t = JSON.parse(localStorage.getItem(SMART_TAB_KEY)); return Array.isArray(t) ? t : []; }
+    catch (e) { return []; }
+  }
+  function writeHumanTabs(t) { try { localStorage.setItem(SMART_TAB_KEY, JSON.stringify(t)); } catch (e) { /* private mode — tabs stay session-only */ } }
+  function topicSlug(s) { return 't-' + String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-'); }
+  /* ——— SmartTabs v9 (Naya 4's port): pro category ribbon ———
+     Per-tab spectrum color, 💜/⭐ priority markers, ⋯ menu per pill
+     (Edit / Heart / Star / Remove), ＋Add with editor dialog,
+     heart-first sort, localStorage persistence, keyboard nav. */
+  /* GEMATRIA COLOUR RULE (Shawn 2026-11-18 ~21:40Z; SN-2914 + GEMATRIA-COLOUR-CODE.md):
+     every smart tab takes its colour from the FIRST LETTER of its topic —
+     same letter, same colour, always. The old hash-of-the-whole-key spectrum
+     is gone: it is what made the tabs come out purple, purple, purple,
+     yellow, orange. 1 red #ff5e6c · 2 orange #ff9a5a · 3 gold #ffbf3d ·
+     4 emerald #2fe89e · 5 cyan #29b6f6 (verified byte-for-byte from the
+     fix-9 digit-5 tile, pricing-round10-fix9.html:925, .ct-reel.d5 — the
+     deck teal #40d3bb is the nearest system cyan, not the tile hex; see
+     maker report) · 6 indigo #6675ff · 7 royal purple #a06bff. */
+  const GEMATRIA_NUM = { A:1, B:2, C:3, D:4, E:5, F:6, G:7, H:6, I:5, J:4, K:3, L:2, M:1, N:1, O:2, P:3, Q:4, R:5, S:6, T:7, U:6, V:5, W:4, X:3, Y:2, Z:1 };
+  const GEMATRIA_COLOR = { 1:'#ff5e6c', 2:'#ff9a5a', 3:'#ffbf3d', 4:'#2fe89e', 5:'#29b6f6', 6:'#6675ff', 7:'#a06bff' };
+  function tabColor(key) {
+    const first = String(key || '').trim().charAt(0).toUpperCase();
+    var DEEP_TAB_COLOR={1:'#c62828',2:'#c2410c',3:'#d4a017',4:'#07925f',5:'#0e7490',6:'#3f51b5',7:'#8e24aa',8:'#6d28d9',9:'#a21caf'};
+    return DEEP_TAB_COLOR[GEMATRIA_NUM[first] || 7];
+  }
+  function sortedTabs(tabs) {
+    return tabs.slice().sort((a, b) =>
+      ((b.heart ? 2 : 0) + (b.star ? 1 : 0)) - ((a.heart ? 2 : 0) + (a.star ? 1 : 0)));
+  }
+  function placeNear(anchor, panel, oy) {
+    oy = oy || 8;
+    const r = anchor.getBoundingClientRect();
+    const W = panel.offsetWidth || 280, H = panel.offsetHeight || 160;
+    panel.style.left = Math.min(window.innerWidth - W - 8, Math.max(8, r.left)) + 'px';
+    panel.style.top = Math.min(window.innerHeight - H - 8, r.bottom + oy) + 'px';
+  }
+
+  /* Shared menu + editor (single instances, reused). */
+  const tabMenu = el('div', 'tab-menu');
+  tabMenu.setAttribute('role', 'menu');
+  tabMenu.setAttribute('aria-hidden', 'true');
+  tabMenu.style.display = 'none';
+  const tabPop = el('div', 'tab-pop');
+  tabPop.setAttribute('role', 'dialog');
+  tabPop.setAttribute('aria-modal', 'true');
+  tabPop.style.display = 'none';
+  let tabMenuTab = null, tabPopCreate = false;
+  function closeTabPanels() {
+    tabMenu.style.display = 'none';
+    tabPop.style.display = 'none';
+    tabMenu.setAttribute('aria-hidden', 'true');
+  }
+  document.addEventListener('click', e => {
+    if (!tabMenu.contains(e.target) && !tabPop.contains(e.target) &&
+        !e.target.closest('.smart-tab')) closeTabPanels();
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeTabPanels(); });
+
+/* Intel Today clusters (2026-11-12, Shawn 23:04Z + 23:10Z) — the six
+     categories the smart tabs auto-organize into. Same keyword lists and
+     same priority order as the worker (hub-worker-intel-today.js): a note
+     scores each cluster by keyword hits in its topics + title + opening
+     text; most hits wins; no hits lands in NayaNET / Naya, the home
+     cluster. Every note lands in exactly one category. */
+  const INTEL_CLUSTERS = [
+    { slug: 'intelligent-internet', label: 'The Intelligent Internet', keys: ['intelligent internet', 'new internet', 'intelligent layer', 'new net', 'intelligent net', 'civilization', 'portal', 'the new net'] },
+    { slug: 'ai-is-hiring', label: 'AI Is Hiring', keys: ['ai is hiring', 'hiring', 'taking jobs', 'jobs', 'get paid', 'earn', 'earning', 'revenue', 'pay your bills', 'pay their bills', 'money to pay'] },
+    { slug: 'nayanet-naya', label: 'NayaNET / Naya', keys: ['she is anaya', 'naya means', 'wise one', 'narzan', 'anaya'] },
+    { slug: 'smart-notes', label: 'Smart Notes / Learn in a Minute', keys: ['learn in a minute', 'learn anything', 'in about a minute', 'intelligent block', 'nutshell', 'smart note'] },
+    { slug: 'private-network', label: 'The Private Network / Your Vault', keys: ['private network', 'your vault', "we don't sell your data", "don't sell your data", 'no ads', 'not reading your mail', "don't read your mail", 'private secure vault', 'privacy', 'deleted by default', 'deletion by default', 'secure vault'] },
+    { slug: 'ambassador', label: 'Ambassador', keys: ['ambassador', 'invite the world', 'paid every wednesday', 'every wednesday', 'invite people', 'affiliate'] }
+  ];
+  function intelClusterOf(note) {
+    const hay = (((note.topics || []).join(' ')) + ' ' + (note.category || '') + ' ' + (note.title || '') + ' ' + String(note.subtitle || '').slice(0, 1200)).toLowerCase();
+    let best = null, bestScore = 0;
+    for (const c of INTEL_CLUSTERS) {
+      let s = 0;
+      for (const k of c.keys) { if (hay.indexOf(k) !== -1) s += (k.length > 12 ? 3 : (k.indexOf(' ') !== -1 ? 2 : 1)); }
+      if (s > bestScore) { bestScore = s; best = c.slug; }
+    }
+    return best || 'nayanet-naya';
+  }
+  function smartTabStrip(lensNotes, allNotes) {
+    const seen = [];
+    allNotes.forEach(n => (n.topics || []).forEach(t => { if (!seen.includes(t)) seen.push(t); }));
+    /* Canonical system-tab order: the onboarding journey. Unknown topics keep first-appearance order after. */
+    const CANON = ['Start Here', 'The Intelligence', 'Your Tools', 'Smart Connect', 'The Ecosystem'];
+    seen.sort((a, b) => {
+      const ia = CANON.indexOf(a), ib = CANON.indexOf(b);
+      if (ia !== -1 && ib !== -1) return ia - ib;
+      if (ia !== -1) return -1;
+      if (ib !== -1) return 1;
+      return 0;
+    });
+    /* System tabs: All + per-topic. Human tabs: stored with v9 shape. */
+    const humanStored = readHumanTabs();
+    /* Migrate old shape (no heart/star) to v9. */
+    humanStored.forEach(h => { if (h.heart === undefined) h.heart = false; if (h.star === undefined) h.star = false; });
+    /* System tab heart/star overrides (stored as kind='system-override'). */
+    const sysOverrides = {};
+    humanStored.forEach(h => { if (h.kind === 'system-override') sysOverrides[h.id] = h; });
+    const sysTabs = [{ id: 'all', label: 'All', topic: null, kind: 'system',
+        heart: !!(sysOverrides['all'] && sysOverrides['all'].heart),
+        star: !!(sysOverrides['all'] && sysOverrides['all'].star) }]
+      .concat(INTEL_CLUSTERS.map(c => ({ id: 'cluster-' + c.slug, label: c.label, topic: null, cluster: c.slug, kind: 'system', heart: false, star: false })))
+      .concat(seen.map(t => {
+        const id = topicSlug(t);
+        const ov = sysOverrides[id];
+        return { id, label: t, topic: t, kind: 'system',
+          heart: !!(ov && ov.heart), star: !!(ov && ov.star) };
+      }));
+    const tabs = sortedTabs(
+      sysTabs.concat(humanStored.filter(h => h.kind !== 'system-override').map(h => ({ id: h.id, label: h.label, topic: h.topic, kind: 'human', heart: h.heart, star: h.star })))
+    );
+    if (!tabs.some(t => t.id === activeSmartTab)) activeSmartTab = 'all';
+
+    const bar = el('div', 'smart-tabs');
+    /* ROUND 10 (item 5a — the checker's traverse arithmetic): the traverse is
+       DEFINED as one end-to-end pass, scrollLeft 0 -> max, and the step is
+       computed from the strip's own live width on every tick, so the pass
+       always takes 120 seconds — the middle of the Laws §1 60-180s ambient
+       band — at any viewport, on any tab count. At the checker's measured
+       1920 geometry (scrollWidth 25,879px, clientWidth 1,268px, pass
+       24,611px) the step is 24,611 x 16 / 120,000 = 3.28px per 16ms tick,
+       i.e. 205px/s, i.e. a 120s pass by construction. The old 1px/50ms
+       (20px/s) made the same pass 1,230s — twelve times the claim and
+       outside the band. It turns back at each end instead of jumping.
+       A hand on the strip pauses it; the citizen's own scroll or tap
+       pauses it for 8 seconds. One interval only — the old one is
+       cleared on every re-render. */
+    try{
+      if(window._stMarquee) clearInterval(window._stMarquee);
+      var _mDir=1, _mPauseUntil=0, _mTraverseMs=120000, _mTickMs=16;
+      bar.addEventListener('pointerenter', function(){ _mPauseUntil=Date.now()+8000; });
+      bar.addEventListener('pointerdown', function(){ _mPauseUntil=Date.now()+8000; });
+      bar.addEventListener('wheel', function(){ _mPauseUntil=Date.now()+8000; }, {passive:true});
+      bar.addEventListener('focusin', function(){ _mPauseUntil=Date.now()+8000; });
+      window._stMarquee=setInterval(function(){
+        if(document.hidden || Date.now()<_mPauseUntil) return;
+        var max=bar.scrollWidth-bar.clientWidth; if(max<=0) return;
+        bar.scrollLeft+=_mDir*(max*_mTickMs/_mTraverseMs);
+        if(bar.scrollLeft>=max) _mDir=-1; else if(bar.scrollLeft<=0) _mDir=1;
+      }, _mTickMs);
+    }catch(e){}
+    /* FIX 2026-11-16 (item A): the old "gentle auto-scroll" interval moved
+       bar.scrollLeft 1px every 30ms at rest, so the strip drifted right
+       after load and after every interaction and the first tab ("All") sat
+       clipped at the left edge — the selected tab never scrolled back into
+       view. The strip is a manual scroller now: it rests at scrollLeft 0
+       with "All" fully in view, and the citizen scrolls it. (The right-end
+       mid-pill clip is the scroller itself, and stays.) */
+    bar.setAttribute('role', 'tablist');
+    bar.setAttribute('aria-label', 'Smart Tabs — filter the feed by topic');
+    const rerender = () => { closeTabPanels(); window.NayaRouter.render(); };
+
+    function openTabMenu(t, anchor) {
+      tabMenuTab = t;
+      tabMenu.innerHTML = '';
+      [['edit', '\u270F\uFE0F Edit'], ['heart', '\uD83D\uDC9C Set Purple Heart'],
+       ['star', '\u2B50 Set Gold Star'], ['remove', '\u2715 Remove']].forEach(([act, label]) => {
+        const mi = el('div', 'mi', '');
+        mi.textContent = label; mi.setAttribute('data-act', act);
+        mi.addEventListener('click', () => tabMenuAction(act));
+        tabMenu.appendChild(mi);
+      });
+      if (!tabMenu.parentNode) document.body.appendChild(tabMenu);
+      tabMenu.style.display = 'block';
+      tabMenu.setAttribute('aria-hidden', 'false');
+      placeNear(anchor, tabMenu, 6);
+    }
+    function tabMenuAction(act) {
+      closeTabPanels();
+      const t = tabMenuTab; if (!t) return;
+      if (t.kind === 'system' && (act === 'remove')) {
+        toast('SYSTEM TAB', 'System tabs stay — they mirror your real topics.', '#8e24aa');
+        return;
+      }
+      const h = readHumanTabs();
+      if (act === 'edit') { openTabEditor(t, false, null); }
+      else if (act === 'heart' || act === 'star') {
+        let x = h.find(x => x.id === t.id);
+        if (!x && t.kind === 'system') {
+          /* System tabs can earn heart/star too — store the override. */
+          x = { id: t.id, label: t.label, topic: t.topic, kind: 'system-override',
+                heart: false, star: false };
+          h.push(x);
+        }
+        if (x) { x.heart = (act === 'heart'); x.star = (act === 'star'); writeHumanTabs(h); rerender(); }
+      }
+      else if (act === 'remove') {
+        writeHumanTabs(h.filter(x => x.id !== t.id));
+        if (activeSmartTab === t.id) activeSmartTab = 'all';
+        rerender();
+      }
+    }
+    function openTabEditor(t, isCreate, anchor) {
+      tabPopCreate = isCreate;
+      tabPop.innerHTML = '';
+      const h3 = el('h3', '', isCreate ? 'Add Tab' : 'Edit Tab');
+      tabPop.appendChild(h3);
+      const row1 = el('div', 'row');
+      const lab1 = document.createElement('label');
+      lab1.innerHTML = 'Label ';
+      const inLabel = document.createElement('input');
+      inLabel.value = t ? t.label : ''; inLabel.placeholder = 'e.g., Design';
+      lab1.appendChild(inLabel); row1.appendChild(lab1); tabPop.appendChild(row1);
+      const row2 = el('div', 'row');
+      const lab2 = document.createElement('label');
+      lab2.innerHTML = 'Topic ';
+      const inTopic = document.createElement('input');
+      inTopic.value = t ? t.topic : ''; inTopic.placeholder = 'Topic to filter';
+      lab2.appendChild(inTopic); row2.appendChild(lab2); tabPop.appendChild(row2);
+      /* Topic suggestions: the real vocabulary — the same source the feed's
+         Smart Tabs and the save-time category picker use — so a human
+         tab's topic can actually match notes. Free text still allowed. */
+      const vocab = [];
+      ((window.NayaFeedIntelligence || {}).notes || []).forEach(n => (n.topics || []).forEach(t => { if (!vocab.includes(t)) vocab.push(t); }));
+      readHumanTabs().forEach(h => { if (h.topic && !vocab.includes(h.topic)) vocab.push(h.topic); });
+      if (vocab.length) {
+        const dl = document.createElement('datalist');
+        dl.id = 'tab-topic-vocab';
+        vocab.forEach(t => { const o = document.createElement('option'); o.value = t; dl.appendChild(o); });
+        inTopic.setAttribute('list', 'tab-topic-vocab');
+        tabPop.appendChild(dl);
+      }
+      const toggles = el('div', 'toggles');
+      const tHeart = el('div', 'tgl' + (t && t.heart ? ' on' : ''), '\uD83D\uDC9C Purple Heart');
+      const tStar = el('div', 'tgl' + (t && t.star ? ' on' : ''), '\u2B50 Gold Star');
+      tHeart.addEventListener('click', () => { tHeart.classList.toggle('on'); if (tHeart.classList.contains('on')) tStar.classList.remove('on'); });
+      tStar.addEventListener('click', () => { tStar.classList.toggle('on'); if (tStar.classList.contains('on')) tHeart.classList.remove('on'); });
+      toggles.append(tHeart, tStar); tabPop.appendChild(toggles);
+      const ft = el('div', 'ft');
+      const cancel = el('button', 'btn', 'Cancel');
+      const save = el('button', 'btn primary', 'Save');
+      cancel.addEventListener('click', closeTabPanels);
+      save.addEventListener('click', () => {
+        const label = inLabel.value.trim() || 'New';
+        const topic = inTopic.value.trim() || label;
+        const heart = tHeart.classList.contains('on'), star = tStar.classList.contains('on');
+        const h = readHumanTabs();
+        if (isCreate) {
+          const nt = { id: 'human-' + Date.now().toString(36), label, topic, heart, star };
+          h.push(nt); writeHumanTabs(h); activeSmartTab = nt.id;
+        } else if (t) {
+          const x = h.find(x => x.id === t.id);
+          if (x) { x.label = label; x.topic = topic; x.heart = heart; x.star = star; writeHumanTabs(h); }
+        }
+        closeTabPanels(); rerender();
+      });
+      ft.append(cancel, save); tabPop.appendChild(ft);
+      if (!tabPop.parentNode) document.body.appendChild(tabPop);
+      tabPop.style.display = 'block';
+      if (anchor) placeNear(anchor, tabPop, 6);
+      else { tabPop.style.left = '50%'; tabPop.style.top = '120px'; tabPop.style.transform = 'translateX(-50%)'; }
+      setTimeout(() => inLabel.focus(), 50);
+    }
+
+    function snPill(t) {
+      const b = el('button', 'smart-tab' + (t.id === activeSmartTab ? ' active' : '') +
+        (t.heart ? ' heart' : '') + (t.star ? ' star' : ''));
+      b.style.setProperty('--tc', tabColor(t.topic || t.label));
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-selected', t.id === activeSmartTab ? 'true' : 'false');
+      b.title = t.kind === 'human' ? 'Your tab · ' + t.topic + ' · saved on this device'
+        : (t.cluster ? 'Category · ' + t.label + ' — Intel Today' : (t.topic ? 'Topic · ' + t.topic : 'The full feed — everything, newest first'));
+      b.innerHTML = '<span class="sn-label">' + esc(t.label) + '</span>' +
+        (t.heart ? '<span class="sn-mark" aria-hidden="true">\uD83D\uDC9C</span>' :
+         t.star ? '<span class="sn-mark" aria-hidden="true">\u2B50</span>' : '');
+      const more = el('button', 'sn-more', '\u22EF');
+      more.type = 'button';
+      more.setAttribute('aria-label', 'Tab options for ' + t.label);
+      more.addEventListener('click', ev => { ev.stopPropagation(); openTabMenu(t, b); });
+      b.appendChild(more);
+      const go = () => { activeSmartTab = t.id; rerender(); };
+      b.addEventListener('click', go);
+      b.addEventListener('contextmenu', ev => { ev.preventDefault(); openTabMenu(t, b); });
+      /* Roving keyboard: arrows move, Home/End jump. */
+      b.addEventListener('keydown', ev => {
+        if (!['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(ev.key)) return;
+        ev.preventDefault();
+        const pills = [...bar.querySelectorAll('.smart-tab')];
+        let n = pills.indexOf(b);
+        if (ev.key === 'ArrowRight') n = Math.min(pills.length - 1, n + 1);
+        else if (ev.key === 'ArrowLeft') n = Math.max(0, n - 1);
+        else if (ev.key === 'Home') n = 0;
+        else n = pills.length - 1;
+        if (pills[n]) pills[n].focus();
+      });
+      return b;
+    }
+
+    tabs.forEach(t => bar.appendChild(snPill(t)));
+    const add = el('button', 'smart-tab add-tab');
+    add.setAttribute('aria-label', 'Add a tab');
+    add.title = 'Add your own tab';
+    add.innerHTML = '<span class="sn-label">\uFF0B Add</span>';
+    add.addEventListener('click', ev => { ev.stopPropagation(); openTabEditor(null, true, add); });
+    bar.appendChild(add);
+    bar.scrollLeft = 0; /* FIX 2026-11-16 (item A): "All" fully in view at rest, after interactions, after reload. */
+    /* AMENDMENT 2026-11-18 (D, Shawn 00:47Z): the tabs must scroll for a
+       mouse too. The overflow rule was already there (overflow-x:auto,
+       L1344) and touch/trackpad swipe already worked — but a desktop
+       wheel scrolls the PAGE vertically, so the row read as static and
+       clipped. A wheel over the strip now moves it sideways (deltaY →
+       scrollLeft), but only while the strip still has room to move that
+       way; at either end the page scrolls as normal. The fade edge and
+       the hidden scrollbar stay — the wheel is what desktop was missing. */
+    bar.addEventListener('wheel', function (ev) {
+      if (!ev.deltaY) return;
+      var max = bar.scrollWidth - bar.clientWidth;
+      if (max <= 0) return;
+      if ((ev.deltaY > 0 && bar.scrollLeft >= max) || (ev.deltaY < 0 && bar.scrollLeft <= 0)) return;
+      ev.preventDefault();
+      bar.scrollLeft = Math.max(0, Math.min(max, bar.scrollLeft + ev.deltaY));
+    }, { passive: false });
+    return { bar, tabs };
+  }
+/* ===== END MM-TABS HARVESTED JS ===== */
+/* --- MM-TABS ADAPTER: export --- */
+return {
+  smartTabStrip: smartTabStrip,
+  intelClusterOf: intelClusterOf,
+  INTEL_CLUSTERS: INTEL_CLUSTERS,
+  tabColor: tabColor,
+  sortedTabs: sortedTabs,
+  readHumanTabs: readHumanTabs,
+  writeHumanTabs: writeHumanTabs,
+  getActiveId: function(){ return activeSmartTab; }
+};
+})();
+</script>
+
+<script>
+/* ================= MM-TABS ADAPTER — wires the harvested Hub smart tabs into Messenger/Mail =================
+   The harvested block (previous script) is the Hub's SmartTabs v9, byte-identical. This adapter is the
+   integration: it feeds the strip Hub-note-shaped items built from OUR conversations + mail threads
+   (title = who/subject, opening text = last message/snippet — the same fields intelClusterOf scores),
+   applies the Hub's own filter logic on tab tap (cluster → intelClusterOf match, topic → topics includes,
+   All → everything), and re-renders strip + lists on every tab action via the Hub's own rerender seam
+   (window.NayaRouter.render). The topic vocabulary for the editor's dropdown comes from the same items
+   via window.NayaFeedIntelligence, the seam the harvested editor already reads. Human tabs persist in
+   localStorage under the Hub's own key (nayanet.feed.smartTabs.v1) — one system, shared with the Hub. */
+(function(){
+  function mmClusterLabel(probe){
+    var T = window.__mmTabs;
+    var slug = T.intelClusterOf(probe);
+    var label = 'NayaNET / Naya';
+    T.INTEL_CLUSTERS.forEach(function(x){ if(x.slug === slug) label = x.label; });
+    return label;
+  }
+  function mmNotes(){
+    var items = [];
+    try {
+      var convs = (window.NayaMsgRebuild && window.NayaMsgRebuild.convs()) || [];
+      convs.forEach(function(cv){
+        var probe = { topics: [], title: String(cv.with || ''), subtitle: String((cv.last && cv.last.body) || '').slice(0, 1200), category: '' };
+        items.push({ id: 'conv-' + cv.threadId, topics: [mmClusterLabel(probe)], title: probe.title, subtitle: probe.subtitle, category: '' });
+      });
+    } catch(e){}
+    try {
+      var threads = (window.__mmMailThreads && window.__mmMailThreads()) || [];
+      threads.forEach(function(t){
+        var probe = { topics: [], title: String(t.subject || ''), subtitle: String(t.snippet || t.body || '').slice(0, 1200), category: '' };
+        items.push({ id: 'mail-' + t.id, topics: [mmClusterLabel(probe)], title: probe.title, subtitle: probe.subtitle, category: '' });
+      });
+    } catch(e){}
+    return items;
+  }
+  function mmActiveTab(){
+    var T = window.__mmTabs;
+    if(!T || !T._lastTabs) return null;
+    var id = T.getActiveId();
+    var found = null;
+    T._lastTabs.forEach(function(t){ if(t.id === id) found = t; });
+    return found;
+  }
+  window.__mmTabActiveId = function(){ var T = window.__mmTabs; return T ? T.getActiveId() : 'all'; };
+  window.__mmTabActiveLabel = function(){ var t = mmActiveTab(); return t ? t.label : ''; };
+  window.__mmTabActive = function(){ return mmActiveTab(); };
+  /* The Hub's own filter logic (Hub L8892): cluster → scorer match, topic → topics includes, All → everything. */
+  window.__mmTabMatch = function(note){
+    var t = mmActiveTab();
+    if(!t || t.id === 'all') return true;
+    if(t.cluster) return window.__mmTabs.intelClusterOf(note) === t.cluster;
+    if(t.topic) return (note.topics || []).indexOf(t.topic) !== -1;
+    return true;
+  };
+  window.__mmTabNoteForConv = function(c){
+    var probe = { topics: [], title: String(c.with || ''), subtitle: String((c.last && c.last.body) || '').slice(0, 1200), category: '' };
+    return { topics: [mmClusterLabel(probe)], title: probe.title, subtitle: probe.subtitle, category: '' };
+  };
+  window.__mmTabNoteForThread = function(t){
+    var probe = { topics: [], title: String(t.subject || ''), subtitle: String(t.snippet || t.body || '').slice(0, 1200), category: '' };
+    return { topics: [mmClusterLabel(probe)], title: probe.title, subtitle: probe.subtitle, category: '' };
+  };
+  /* Our items carry their cluster label as their topic, so the strip would show each cluster twice
+     (cluster tab + topic tab, same label). The Hub never doubles; neither do we — keep the cluster pill. */
+  function mmDedupe(bar, tabs){
+    var clusterLabels = {};
+    tabs.forEach(function(t){ if(t.cluster) clusterLabels[t.label] = 1; });
+    bar.querySelectorAll('.smart-tab').forEach(function(p){
+      var lab = (p.querySelector('.sn-label') || {}).textContent;
+      var ti = p.title || '';
+      if(ti.indexOf('Topic · ') === 0 && clusterLabels[lab]) p.remove();
+    });
+  }
+  /* MM-TABS ADAPTER REPAIR (Hub gap, found by probe — see (1) above). */
+  function mmApplyOverrides(bar, tabs){
+    var T = window.__mmTabs, stored = {};
+    try { T.readHumanTabs().forEach(function(h){ stored[h.id] = h; }); } catch(e){}
+    var any = false;
+    tabs.forEach(function(t){
+      var ov = stored[t.id];
+      if(ov && t.cluster && (ov.heart || ov.star) && (!t.heart || !t.star)){ t.heart = !!ov.heart; t.star = !!ov.star; any = true; }
+    });
+    if(!any) return;
+    var order = T.sortedTabs(tabs);
+    var add = bar.querySelector('.smart-tab.add-tab');
+    var pills = Array.prototype.slice.call(bar.querySelectorAll('.smart-tab:not(.add-tab)'));
+    var used = {};
+    order.forEach(function(t){
+      var prefix = t.cluster ? 'Category · ' : (t.topic ? 'Topic · ' : (t.kind === 'human' ? 'Your tab · ' : ''));
+      var p = null;
+      for(var i = 0; i < pills.length; i++){
+        if(used[i]) continue;
+        var lab = (pills[i].querySelector('.sn-label') || {}).textContent;
+        var ti = pills[i].title || '';
+        if(lab === t.label && (prefix === '' || ti.indexOf(prefix) === 0)){ p = pills[i]; used[i] = 1; break; }
+      }
+      if(!p) return;
+      p.classList.toggle('heart', !!t.heart);
+      p.classList.toggle('star', !!t.star);
+      var mark = p.querySelector('.sn-mark');
+      var want = t.heart ? '\uD83D\uDC9C' : (t.star ? '\u2B50' : null);
+      if(want && !mark){ var sp = document.createElement('span'); sp.className = 'sn-mark'; sp.setAttribute('aria-hidden', 'true'); sp.textContent = want; var more = p.querySelector('.sn-more'); p.insertBefore(sp, more); }
+      else if(!want && mark){ mark.remove(); }
+      else if(want && mark && mark.textContent !== want){ mark.textContent = want; }
+      bar.insertBefore(p, add);
+    });
+  }
+  function mmMount(){
+    var T = window.__mmTabs; if(!T) return;
+    var host = document.getElementById('mmTabsHost'); if(!host) return;
+    try {
+      var items = mmNotes();
+      var out = T.smartTabStrip(items, items);
+      T._lastTabs = out.tabs;
+      mmDedupe(out.bar, out.tabs);
+      mmApplyOverrides(out.bar, out.tabs);
+      host.innerHTML = '';
+      host.appendChild(out.bar);
+      try { window.NayaFeedIntelligence = { notes: items }; } catch(e){}
+    } catch(e){ if(window.console) console.error('mmTabs mount', e); }
+  }
+  window.__mmTabsMount = mmMount;
+  /* The Hub's rerender seam: the harvested strip calls window.NayaRouter.render() on every tab action. */
+  window.NayaRouter = { render: function(){
+    mmMount();
+    var tempo = 'chat';
+    try { tempo = window.NayaMsgRebuild.tempo(); } catch(e){}
+    if(tempo === 'mail'){ try { if(window.__mmRenderList) window.__mmRenderList(); else if(window.applyListFilter) window.applyListFilter(); } catch(e){} }
+    else { try { if(window.NayaMsgRebuild && window.NayaMsgRebuild.refresh) window.NayaMsgRebuild.refresh(); } catch(e){} }
+  }};
+  var tries = 0;
+  var timer = setInterval(function(){
+    tries++;
+    if(document.getElementById('mmTabsHost')){ clearInterval(timer); mmMount(); }
+    else if(tries > 40){ clearInterval(timer); }
+  }, 250);
 })();
 </script>
 
