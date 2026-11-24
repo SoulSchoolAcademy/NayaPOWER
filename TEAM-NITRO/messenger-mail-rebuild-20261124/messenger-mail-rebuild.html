@@ -33,14 +33,14 @@
 }
 
 /* folder rail — each folder owns its color: inbox blue, unread green, sent purple */
-.mail-stage .ml-rail{ display:flex; flex-direction:column; gap:8px;
-  border:1px solid rgba(255,255,255,.08); border-radius:20px; padding:12px 18px;
+.mail-stage .ml-rail{ display:flex; flex-direction:column; gap:6px;
+  border:1px solid rgba(255,255,255,.08); border-radius:20px; padding:8px 18px;
   background:linear-gradient(180deg, rgba(22,26,40,.72), rgba(10,12,20,.62));
   -webkit-backdrop-filter:blur(20px); backdrop-filter:blur(20px);
   box-shadow:0 10px 36px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.06); }
 .mail-stage .ml-folder{ --fc:#0f52ba; --fcl:#0f52ba;
   display:flex; align-items:center; gap:8px;
-  padding:6px 12px; overflow:hidden;box-sizing:border-box;border-radius:14px; width:100%; text-align:left; white-space:nowrap;
+  padding:4px 12px; overflow:hidden;box-sizing:border-box;border-radius:14px; width:100%; text-align:left; white-space:nowrap;
   font-size:17px; font-weight:700; letter-spacing:.02em; line-height:1.25;
   cursor:pointer; font-family:inherit; color:#ffffff;
   background:#050607;
@@ -67,7 +67,7 @@
 .ml-folder.on .ml-badge{ color:#fff; background:#050607; border-color:color-mix(in srgb, var(--fc) 70%, transparent);
   box-shadow:0 0 10px -2px var(--fc), inset 0 1px 0 rgba(255,255,255,.12); text-shadow:0 0 8px var(--fc); }
 /* ===== Quick Access (10-year Smart Mail) ===== */
-.ml-qa-label{ margin:8px 4px 8px; font-size:17px; font-weight:800; letter-spacing:.06em; color:#ffffff; }
+.ml-qa-label{ margin:0 4px 8px; font-size:17px; font-weight:800; letter-spacing:.06em; color:#ffffff; }
 .ml-qa{ display:flex; flex-direction:column; gap:8px; }
 .ml-qa-item{ --qc:#0e7490; display:flex; align-items:center; gap:8px; width:100%; max-width:100%; box-sizing:border-box; overflow:hidden; padding:11px 14px; border-radius:12px; cursor:pointer; font-family:inherit; font-size:17px; font-weight:800; letter-spacing:.14em; color:#ffffff; background:rgba(255,255,255,.02); border:1px solid rgba(232,234,242,.12); transition:border-color .2s, box-shadow .25s, transform .15s, background .25s; text-align:left; }
 .ml-qa-item:hover{ border-color:var(--qc); box-shadow:0 0 18px -6px var(--qc); transform:translateY(-1px); }
@@ -408,7 +408,7 @@ body.naya-drawer-open{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.naya-drawer,.naya-drawer-backdrop{transition:none}}
 
 /* --- Bottom ecosystem bar: fixed quick access to all 12 destinations (mirrors Hub eco-bottombar) --- */
-.eco-bottombar{position:fixed;bottom:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px calc(14px + env(safe-area-inset-bottom, 0px));background:linear-gradient(180deg,transparent,rgba(5,5,8,.92) 30%);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(255,255,255,.08);flex-wrap:wrap}
+.eco-bottombar{position:fixed;bottom:var(--bw,96px);left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:center;gap:10px;padding:8px 20px calc(8px + env(safe-area-inset-bottom, 0px));background:linear-gradient(180deg,transparent,rgba(5,5,8,.92) 30%);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(255,255,255,.08);flex-wrap:wrap}
 .eco-bb-btn{width:46px;height:46px;flex:0 0 46px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:radial-gradient(circle at 35% 30%,#141419,#050607 70%);color:#fff;cursor:pointer;display:grid;place-items:center;text-decoration:none;transition:all .22s cubic-bezier(.16,.84,.22,1);box-shadow:inset 0 1px rgba(255,255,255,.15),0 0 14px rgba(255,255,255,.1),0 4px 10px rgba(0,0,0,.4);position:relative;-webkit-tap-highlight-color:transparent}
 .eco-bb-btn svg{width:20px;height:20px;transition:transform .22s;filter:drop-shadow(0 0 3px rgba(255,255,255,.4))}
 .eco-bb-btn:hover{transform:translateY(-3px) scale(1.08);border-color:var(--eco);box-shadow:inset 0 1px rgba(255,255,255,.2),0 0 24px var(--eco),0 6px 16px rgba(0,0,0,.5)}
@@ -418,7 +418,7 @@ body.naya-drawer-open{overflow:hidden}
 .eco-bb-btn::after{content:attr(data-label);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(4px);white-space:nowrap;font-size:17px;font-weight:800;letter-spacing:.1em;color:#fff;background:rgba(10,10,14,.95);border:1px solid var(--eco);padding:6px 10px;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
 .eco-bb-btn:hover::after{opacity:1;transform:translateX(-50%) translateY(0)}
 .eco-bb-btn:active::after{opacity:1;transform:translateX(-50%) translateY(0)}
-@media (max-width:640px){.eco-bottombar{gap:8px;padding:12px 12px calc(12px + env(safe-area-inset-bottom, 0px))}.eco-bb-btn{width:44px;height:44px;flex:0 0 44px}.eco-bb-btn svg{width:18px;height:18px}}
+@media (max-width:640px){.eco-bottombar{gap:6px;padding:6px 12px calc(6px + env(safe-area-inset-bottom, 0px))}.eco-bb-btn{width:44px;height:44px;flex:0 0 44px}.eco-bb-btn svg{width:18px;height:18px}}
 
 
 </style>
@@ -2234,19 +2234,19 @@ schRow.appendChild(dtWrap);
    only. One light top-left (135deg). Inside is board black #050607 — no glow inside, ever.
    Slow motion only (ambient 120s / 180s; entry .5s; hover .3s). */
 .nm-chrome{padding:8px 0 0;}
-.nm-privacy{text-align:center;font-size:19px;line-height:1.6;color:#ffffff;margin:0 0 8px;}
+.nm-privacy{text-align:center;font-size:19px;line-height:1.6;color:#ffffff;margin:0 0 6px;}
 .nm-privacy b{color:#d4a017;}
-.nm-toggle{display:flex;justify-content:center;gap:0;margin:0 auto 8px;max-width:520px;background:#050607;border:1.5px solid #ffffff;border-radius:999px;padding:6px;box-shadow:0 8px 24px rgba(0,0,0,.5);}
+.nm-toggle{display:flex;justify-content:center;gap:0;margin:0 auto 6px;max-width:520px;background:#050607;border:1.5px solid #ffffff;border-radius:999px;padding:6px;box-shadow:0 8px 24px rgba(0,0,0,.5);}
 .nm-toggle-btn{flex:1;background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);border:1.5px solid transparent;border-radius:999px;color:#ffffff;font-size:19px;font-weight:700;font-family:inherit;padding:8px 16px;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;}
 .nm-toggle-btn small{display:block;font-size:17px;font-weight:400;color:#ffffff;}
 .nm-toggle-btn:hover{transform:translateY(-2px);}
 .nm-toggle-btn:active{transform:scale(.97);}
 .nm-toggle-btn[aria-pressed="true"][data-tempo="chat"]{border-color:#8e24aa;box-shadow:0 0 24px -4px rgba(142,36,170,.65),0 8px 24px rgba(0,0,0,.5);}
 .nm-toggle-btn[aria-pressed="true"][data-tempo="mail"]{border-color:#0f52ba;box-shadow:0 0 24px -4px rgba(15,82,186,.65),0 8px 24px rgba(0,0,0,.5);}
-.nm-steps{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin:0 0 8px;}
+.nm-steps{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin:0 0 6px;}
 .nm-step{font-size:17px;color:#ffffff;}
 .nm-step b{color:#d4a017;}
-.nm-orb-row{display:flex;align-items:center;justify-content:center;gap:16px;margin:0 0 8px;}
+.nm-orb-row{display:flex;align-items:center;justify-content:center;gap:16px;margin:0 0 6px;}
 .nm-orb{position:relative;flex:none;width:48px;height:48px;border-radius:50%;background:#050607;border:1.5px solid #8e24aa;color:#ffffff;display:grid;place-items:center;font-size:25px;font-weight:700;box-shadow:0 4px 10px rgba(0,0,0,.5);}
 .nm-orb::after{content:"";position:absolute;inset:-7px;border-radius:50%;border:1.5px solid #8e24aa;opacity:.55;animation:nm-orbit 120s linear infinite;}
 .nm-orb2{border-color:#d4a017;color:#d4a017;}
@@ -2264,6 +2264,7 @@ schRow.appendChild(dtWrap);
 .royal-frame{border-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO%2Fmessenger-mail-rebuild-20261124%2Fmaster-frame.png&ref=messenger-mail-rebuild-20261124) 300 / var(--bw,96px) / 0 round!important}
 @keyframes nm-orbit{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
 .nm-orb-note{font-size:17px;color:#ffffff;max-width:520px;}
+.nm-reader-head{display:flex;align-items:center;gap:12px;margin:0 0 16px;}
 /* Messenger view — the same three panes as Mail: people | conversations | conversation. */
 .nm-msg{margin:0;}
 .nm-msg-panes{display:grid;grid-template-columns:200px 340px 1fr;gap:24px;min-height:480px;}
@@ -2345,6 +2346,17 @@ schRow.appendChild(dtWrap);
 .nm-space:active{transform:scale(.97);}
 .nm-space[aria-pressed="true"]{border-color:#d4a017;box-shadow:0 0 18px -4px rgba(212,160,23,.6);}
 @media (max-width:900px){.nm-msg-panes{grid-template-columns:1fr;}}
+@media (max-width:640px){
+  /* v2.4: the eco bar now sits INSIDE the stage, so the tap landing must fit
+     the whole reader between the sticky topbar and the bar top. Only air
+     comes out here — no text resized, nothing removed, no copy changed. */
+  .nm-pane{padding:12px;}
+  .nm-pane h2{margin:0 0 8px;}
+  .nm-pane p{margin:4px 0;}
+  .nm-composer{margin-top:8px;padding-top:8px;}
+  .nm-filter{margin:0 0 8px;}
+  .nm-reader-head{margin:0 0 8px;}
+}
 </style>
 <script>
 /* ================= REBUILD LAYER — real mail + the tempo dial =================
@@ -2590,7 +2602,7 @@ function nmReaderHtml(){
   var color = nmColorFor(alias);
   var conv = nmConvs.filter(function(c){ return c.threadId === nmSelectedConv; })[0];
   var h = '<h2>' + esc(nmName(alias)) + '</h2>'
-    + '<div style="display:flex;align-items:center;gap:12px;margin:0 0 16px;"><span class="nm-orb" style="--cc:' + color + '">' + esc(String(alias).charAt(0).toUpperCase()) + '</span>'
+    + '<div class="nm-reader-head"><span class="nm-orb" style="--cc:' + color + '">' + esc(String(alias).charAt(0).toUpperCase()) + '</span>'
     + '<div><div class="nm-person-name">' + esc(nmName(alias)) + '</div><div class="nm-person-sub">' + nmPresence(alias) + '</div></div>'
     + '<button type="button" class="nm-act" data-nm-pin-conv="' + esc(nmSelectedConv || '') + '" style="--ac:#d4a017" aria-label="Pin conversation" title="Pin — for this visit">📌</button></div>'
     + '<div class="nm-filter"><input class="nm-search" id="nmThreadSearch" type="search" placeholder="Search this thread…" aria-label="Search this thread"></div>'
@@ -2643,12 +2655,17 @@ function nmScrollReaderIntoView(){
   var ta = document.getElementById('nmMsgBody');
   var tb = document.querySelector('.naya-topbar');
   if(!rd) return;
-  var clear = (tb ? tb.getBoundingClientRect().height : 0) + parseFloat(getComputedStyle(document.body).paddingTop || '0') + 16;
+  var clear = (tb ? tb.getBoundingClientRect().height : 0) + parseFloat(getComputedStyle(document.body).paddingTop || '0') + 8;
   var y = rd.getBoundingClientRect().top + window.scrollY - clear;
   if(ta){
     var comp = ta.closest('.nm-composer') || ta;
     var bottomDoc = comp.getBoundingClientRect().bottom + window.scrollY;
-    var minY = bottomDoc - window.innerHeight + 8;
+    /* v2.4: the fixed eco bar now sits INSIDE the stage (bottom:var(--bw)),
+       so the composer must clear the BAR top, not just the viewport bottom —
+       otherwise the Send button lands under the bar and cannot be tapped. */
+    var bar = document.querySelector('.eco-bottombar');
+    var barTop = bar ? bar.getBoundingClientRect().top : window.innerHeight;
+    var minY = bottomDoc - barTop + 8;
     if(y < minY) y = minY;
   }
   if(y < 0) y = 0;
