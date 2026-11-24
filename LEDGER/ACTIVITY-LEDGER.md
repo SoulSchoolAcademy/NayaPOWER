@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-24 10:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-24 10:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -15045,6 +15045,12 @@ _Last updated: 2026-11-24 10:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: v1 design spec delivered with M3/M5 rationale and the v2-sheet provenance trail; design-only scope held as briefed. 9.0 not 9.5: the v2 sheet's RECEIPT/EVENT shapes were summarized from the head, not verified — M3/M5 could be contradicted; N (stale-block review window) unnamed; block-index home unspecified. One more pass: verify the shape
 
+### ✅ t0816-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** Ask-world top-20 needs table from the pinned 89-line log copy; pin-first drift caught, append-only proven, falsifier fired
+
+**Evidence:** BACKLOG SWEEP (fresh window empty; backlog 45 unscored before this tick, oldest-first). VERIFIED first-hand this tick: sha256 of the first 89 lines of the LIVE log auto-retrieval/ask-world-queries.jsonl (now 207 lines) re-derives EXACTLY as the pin 0fa1f99d2a4a67eb6feed1331c365b6dceb2674ef4d929ed731bea7543747972 — the append-only proof at the recei
+
 ### ✅ t0816 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Ask-world query log pin-first tally: pinned 89-line copy tallied, top-20 needs table for hypertuner
@@ -15068,6 +15074,12 @@ _Last updated: 2026-11-24 10:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0816-lane11.md`
 
 **Evidence:** Verified: window-4 measurement complete — clean-task rate honestly unreadable (0 of 3 scored, a sample of a sample), request-to-done ~9.5 min on the two receipts with time headers, Shawn's correction time named UNKNOWN, reproduce-first gate passed clean, one instrument defect found en route. 9.0 not 9.5: the clean-task-rate sample and the correctio
+
+### ✅ t0816-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.4/10 [VERIFIED]
+
+**Task:** Phase 2 batch two - three tongues for ranks 6-10 (14 new files on naya-phase2-three-tongues @ a4385a44)
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty after gate-stall-0223 scored this tick; backlog 31 remaining after this score). VERIFIED first-hand this tick: commit a4385a44e818611463eff1ca1cf2620a77c3e05c exists in the mirror, parent cced141c8645a92ae9566ff830db5df0b1a6a8a4 EXACTLY as claimed, message 'Phase 2 batch 2: three tongues for ranks 6-1
 
 ### ✅ t0816 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -15259,6 +15271,12 @@ _Last updated: 2026-11-24 10:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Deliverable verified on disk: hidden_files/phase1-audit-slice-a.md exists, 303 lines (matches receipt), audit pin ba62638704256b012c20e41fe7f53cc3b62b1b44 recorded at action time; extraction machinery bin/phase1a-extract.py + regenerable bin/phase1a-gaps.py present. Honest method: per-doc load-bearing judgments with named reasons, stale clones re-p
 
+### ✅ t0814-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Smart Note communication mode spec v1 (design only): six modes from live bytes, REAL-vs-PROPOSED honesty table
+
+**Evidence:** BACKLOG SWEEP (oldest-first). VERIFIED first-hand this tick: spec hidden_files/smart-note-communication-mode-spec-v1.md sha256 68c87437400638da1df3ca50f770a4984cc9d333f013178d623c408e5e65796c matches the receipt pin EXACTLY. NOT PHANTOM. Score 9.5 - clears 9.5 because the design-only deliverable exists byte-exact as pinned, every mode is derived fr
+
 ### ✅ t0814 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** Smart Note communication mode spec v1 (design only)
@@ -15365,6 +15383,12 @@ _Last updated: 2026-11-24 10:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: t0742 MTC-v1 lineage artifacts exist with Clarity-family authorship (cards/seal/battery files present; receipt header 'Naya Clarity Mason'; cards header confirms t0742 executor) — the gate's firing premise is real; re-filed brief carries the stamped claimability gate. Kept from 9.5 by: the authorship sweep was grep-of-receipt-headers, not
 
+### ✅ t0813-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** Ask-world top-20 needs analysis on the grown 101-row log; reproduce-first vs t0768, global-section-ask class added
+
+**Evidence:** BACKLOG SWEEP (oldest-first). VERIFIED first-hand this tick: needs md surge-askworld-needs-t0813-lane6.md sha256 0959a5522185013f96a007a28e4c0c6532ee457c03f2bee9a99df71522695e90 matches the receipt pin EXACTLY; needs jsonl 47df9094c625b14dc121fc4aa37131eef18a7870771f26c85f4e975bc06ca003 matches EXACTLY. NOT PHANTOM. Score 9.5 - clears 9.5 because b
+
 ### ✅ t0813 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** Ask-world top-20 needs analysis from live query log (SURGE slice c)
@@ -15380,6 +15404,12 @@ _Last updated: 2026-11-24 10:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0813-lane6.md`
 
 **Evidence:** Verified: needs md + jsonl shas byte-exact; my independent count on the analyzed prefix (first 101 rows, kind=='query', exclude seed rows 0-21) = 67 organic — matches the receipt's headline exactly; log has since grown to 111 rows (live log, consistent with the receipt's growth-gating note). Clears 9.5 because: headline (global-section zero-cells f
+
+### ✅ t0813-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** Register-match pre-freeze gate: verbatim lexicon extraction, fail-closed gate, 5/5 self-test on the real t0802 corpus
+
+**Evidence:** BACKLOG SWEEP (oldest-first). VERIFIED first-hand this tick: gate register-match-prefreeze-t0813-lane5.py sha256 38554c12a33ad0f340336610166fe27bcb33b357a8c386e814aa9404692fcc99 matches EXACTLY; lexicon d6c47df5fc72f50f..., probes 4fd00978d12b2926..., pins 18ce909f46cf61c5..., selftest py 8f9020ecdf9db87a... all match the receipt pins; MCC report s
 
 ### ✅ t0813 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -45035,6 +45065,14 @@ _Last updated: 2026-11-24 10:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
 
+### ✅ t-contract-verify — Team 7, Team Naya Scorer (Team Operations) — 9.5/10 [VERIFIED]
+
+**Task:** Judge-lane gate verification: contract_gate.py sign-in/sign-out battery + tamper tripwire at staging tip 82186972
+
+**Receipt:** `twelve-lane-receipts/t-contract-verify-lane7.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window t1553-t1564 already scored, newest gate-stall 0118 already scored last tick). VERIFIED first-hand this tick: staging commit 82186972011c0d09456b30678b79af4ab986688c exists in the mirror; kernel/protocol/contract_gate.py present at that SHA; THE-CONTRACT.md sha256 at that SHA re-derived as 8d4aa499d2af057695
+
 ### ✅ t-converge-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
 **Task:** Factual verification input for canonical contract/oath decision: provenance table pinning every seat's artifacts
@@ -60534,6 +60572,12 @@ _Last updated: 2026-11-24 10:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261124-0223 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: 31 queued briefs claimed attempted, 0 claimed (receipt: 29x exit 7, 2x exit 2)
+
+**Evidence:** FRESH (filed 2026-11-24 02:23 PST; fresh window t1536-t1564 already scored; this dated stall receipt was the only fresh unscored; backlog 32 total before this tick). VERIFIED first-hand this tick: sweep log brief-queue/claim-sweep-20261124-0223.log exists (24,678 B, per-attempt format - better evidence form than the 01:18 summary-only log); queue c
 
 ### ✅ gate-stall-20261124-0118 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
