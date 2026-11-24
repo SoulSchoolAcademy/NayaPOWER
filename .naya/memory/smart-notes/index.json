@@ -80472,6 +80472,42 @@
         "Multiplication",
         "Knowledge"
       ]
+    },
+    {
+      "smart_note_id": "SN-4729",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4729-law-landed-everywhere",
+      "slug": "law-landed-everywhere",
+      "title": "Law, Landed Everywhere",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/LAW/SN-4729/IB-SMART-NOTE-20261124-sn4729-law-landed-everywhere.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/LAW/SN-4729/IB-SMART-NOTE-20261124-sn4729-law-landed-everywhere.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/LAW/SN-4729/IB-SMART-NOTE-20261124-sn4729-law-landed-everywhere.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4729-law-landed-everywhere.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T17:47:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "a735dcdc4bfe3f734aa66cb526eff808d698417487a0d69aee55d8f1fea26a36",
+      "content_hash": "a883123db1e537ebac47b4736d13bd2dbffcc26d436b103af60ae853bed39241",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "153335cb19ac59555f23af6d486dfb9bd857e258edf6f33b1b84d4fb11ec1d08",
+      "one_line": "His word lands, and the system answers the same day. The captain's operating law was made in one sitting: decide the obvious instead of asking, make it the best instead of wondering, act on every word he speaks, and finish — asking, removing, and sending half-done are the same failure, the work never lands. The legal sitting added the maker's half: use what works and never make it new, read it as a reader, do it right the first time in every layer, because his words are the law and the legal pages are the proof. Every control must do its job — a picker that switches nothing is a dead end in menu's clothes. And the law travels: put the laws in the system and give them to every agent, read first and checked after. Every block now ends the same way, carrying the Twin Rank — value in gold, intelligence in emerald — because this is a value-and-intelligence network, and everything on it is an object, even the text.",
+      "topics": [
+        "Distillation",
+        "Law",
+        "Honor",
+        "Multiplication",
+        "System"
+      ]
     }
   ],
   "sequence_policy": {
@@ -80482,5 +80518,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "06c952bff7ef158b4e211e6aabaec2abb6325b193f27cab7791d035e4c004fd4"
+  "corpus_manifest_hash": "ff0f460a6083cd28f65660909a50d1c18d1a4c40c8424f7a200cd495d7b8a8d3"
 }
