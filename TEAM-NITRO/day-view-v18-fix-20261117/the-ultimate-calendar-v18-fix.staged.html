@@ -3457,6 +3457,45 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
   .worlds-slide .world-label{font-size:12px!important;max-width:100%!important}
   .mc-day .mc-wd{font-size:13px!important;letter-spacing:.02em!important;max-width:100%!important}
 }
+/* ============ ROUND 12 — two frames, three in each (2026-11-23 ~21:03 MST, Shawn's words twice corrected) ============ */
+/* (2) THE R9 EMPTY-SPACE TRAP, CURED BY LAYOUT — a three-tile frame in a
+   full-height slide leaves ~180px of slack below its tiles (measured on
+   the R11 bytes: desktop sb-scroll 546px tall, one frame ~214px of
+   content; the slide is flex:1 filling the deck and .sb-scroll pins
+   content to the top with justify-content:flex-start). The slack is split
+   evenly above and below the frame by auto margins on the scroll area's
+   first and last children — when the frame is taller than the area the
+   margins collapse to 0 and the frame scrolls normally from the top, so
+   nothing can clip. justify-content:center would clip the top on
+   overflow; auto margins cannot. */
+.worlds-slide .sb-scroll>.cat-head{margin-top:auto!important}
+.worlds-slide .sb-scroll>.world-icons{margin-bottom:auto!important}
+/* (4a) TIMELINE HEADER TITLE, LETTER SOUP AT PHONE WIDTH — measured on the
+   R11 bytes at 390: the row is 238px wide, .tw takes 96px, Cancel 83px,
+   gaps 24px, so .tt (flex:1) gets 34.9px and every word wraps to its own
+   line (row 385px tall). The title gets its own full-width row: the row
+   wraps, the title takes flex-basis 100% on the line below time + Cancel
+   (space-between keeps Cancel at the right edge, as now), and
+   overflow-wrap:anywhere goes back to normal so words wrap on word
+   boundaries. Desktop untouched: the one-line row keeps working where
+   the tile is wide. */
+@media(max-width:560px){
+  .tile-appt-row{flex-wrap:wrap!important;justify-content:space-between!important}
+  .tile-appt-row .tt{flex:1 1 100%!important;order:3!important;overflow-wrap:normal!important;word-break:normal!important}
+}
+/* (4b) "CONNECTIONS" AT <=390px — measured on the R11 bytes at 360: grid
+   242px, cells 75.3px, label room ~65px, the word 75.3px at 12px, so it
+   breaks mid-word ("Connectio / ns"). Three layout-only trims, all inside
+   the slide, no size touched: the slide's side padding 16px -> 8px (grid
+   242 -> 260), the grid gap 8px -> 4px, the cell side padding 4px -> 2px.
+   Room becomes ~78px at 360 — the word fits whole with room to spare.
+   At 390 the same trims widen the room past the word too. 391px and up,
+   and desktop, are untouched. */
+@media(max-width:390px){
+  #dayScroll .smart-block.worlds-slide{padding-left:8px!important;padding-right:8px!important}
+  .worlds-slide .world-icons{gap:4px!important}
+  .worlds-slide .world-cell{padding:8px 2px!important}
+}
 </style>
   </head>
   <body>
@@ -5588,14 +5627,15 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           var __staleNotif = document.querySelector("#dayScroll > .notif-slide");
           if (__staleNotif) __staleNotif.remove();
           /* FIX11 item 9 — the deck order it named is superseded:
-             ROUND 10 (below) is the current order. (Wisdom + Cover
+             ROUND 12 (below) is the current order. (Wisdom + Cover
              are the static blocks, moved into place below.) */
           /* ROUND 9 — the frame-law slides: the Appointments slide is gone, merged into the Timeline slide (book + timeline, one screen); Your Notes follows the Timeline; the open list's detail follows Smart Lists (only while a list is open). The Journal entries slide, the three booking slides and the Summary slide are gone — their content lives on the Journal slide, in the Book a time door, and in the Intel Today / Daily Reports doors. Each slide is its own frame — overflow moves to the next frame, never scroll inside one. */
           /* ROUND 7 (2026-11-23, Shawn's voice-call rulings ~18:55–
              19:06 MST) — the deck order it named is superseded: ROUND
-             10 (below) is the current order (nine slides; the Mail
-             slide merged into Your Worlds, the Appointments slide into
-             Timeline). Gone: the Journal entries slide
+             12 (below) is the current order (ten slides; the Mail
+             slide split back out of Your Worlds into its own frame,
+             the Appointments slide into Timeline). Gone: the Journal
+             entries slide
              (entries ride the Journal slide, tap in to read), the three
              booking slides (the flow opens in the Book a time door),
              the Summary slide (no use, no point). The two slide-3
@@ -5603,20 +5643,25 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              sumRow calls, same doors, same colours. ROUND 8: both now
              navigate out to their live rooms pages (see the openDoor
              intercept) instead of opening the in-page door path. */
-          /* ROUND 10 (2026-11-23, the render walk's verdict ~19:42 MST)
-             — the deck, new order: 1 Wisdom · 2 Notifications ·
+          /* ROUND 12 (2026-11-23 ~21:03 MST, Shawn's words twice
+             corrected: "two frames, three in each") — the deck, new
+             order: 1 Wisdom · 2 Notifications ·
              3 Intel Today & Daily Reports · 4 Journal · 5 Your Worlds
-             (BOTH frames on the one slide: Personal, Business, World,
-             then Smart Mail, Messages, Connections) · 6 News Hub ·
-             7 Timeline (book + timeline, one screen — the timeline is
-             a drop-down) · 8 Your Notes · 9 Smart Lists (the open
-             list's detail follows it while a list is open). Nine
-             slides: the merge (Mail into Your Worlds) drops the count
-             from ten. The render walk proved dot 7 = News Hub — the
-             walk's Appointments expectation was stale (Appointments
-             merged into Timeline in round 9; no such slide exists).
-             Dots now name their slide (dayDots). "Naya notes" is the
-             new name for the Personal nine, everywhere it shows. */
+             (Personal, Business, World) · 6 Mail, Messages &
+             Connections (Smart Mail, Messages, Connections) ·
+             7 News Hub · 8 Timeline (book + timeline, one screen —
+             the timeline is a drop-down) · 9 Your Notes ·
+             10 Smart Lists (the open list's detail follows it while a
+             list is open). Ten slides: the split undoes the R10 merge
+             (one slide, two grids stacked with a subhead between
+             them — the layout in his screenshot). Dots name their
+             slide (dayDots reads each section's aria-label), so the
+             two Worlds frames are "Go to block 5 of 10: Your Worlds"
+             and "Go to block 6 of 10: Mail, Messages & Connections".
+             R9's second slide hid behind UNNAMED dots ("Go to block N
+             of M", no name) — that trap is gone with the R10 naming.
+             The R9 empty space (~180px below three tiles) is cured by
+             the R12 centering rule, not by re-merging. */
           var intelReportsInner = '<div class="sum-list">' +
             sumRow("daily", "#3f51b5", "spark", "Intel Today", "The highlights of the day's intelligence — from your smart notes.", 0, null) +
             sumRow("reports", "#0e7490", "landmark", "Daily Reports", "Your daily intelligence report — the intelligence of the day, for any day.", 0, null) +
@@ -5625,8 +5670,9 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             catSection(CATS[0], notifCards + dayNav(dc, false), null, "Tap a world — see its notifications.", "", dc, "diamond", null, "notif-slide allow-scroll") +
             catSection(CATS[2], intelReportsInner + dayNav("#3f51b5", false), "record", "Tap either one and your daily Intel pops up.", "Intel Today & Daily Reports", "#3f51b5", "diamond", null, "allow-scroll") +
             catSection(CATS[2], journalInner + dayNav("#07925f", false), "record", "Your day, in your words — kept for this day.", "Journal", "#07925f", "orb") +
-            /* ROUND 10 item 1 — BOTH frames on the one "Your Worlds" slide: frame 1 (Personal, Business, World) then frame 2 (Smart Mail, Messages, Connections) under its own labelled subhead. R9's second slide hid frame 2 behind unnamed dots and left slide 5 with ~180px of empty space below its three tiles; the deck drops from ten slides to nine. notifRowsA (both frames joined) still feeds the Notifications slide above. */
-            catSection(CATS[0], notifRowsA1 + '<div class="cat-head worlds-subhead"><span class="cat-jewel" aria-hidden="true"></span><h2 class="cat-title">Mail, Messages &amp; Connections</h2></div>' + notifRowsA2 + dayNav(dc, false), null, "Personal, Business and your world — then Smart Mail, Messages and Connections. Tap one to see its day.", "Your Worlds", dc, "orb", "worlds", "worlds-slide") +
+            /* ROUND 12 item 1 — TWO FRAMES, THREE IN EACH (Shawn 2026-11-23 ~21:03 MST, twice corrected): frame 1 = Personal, Business, World; frame 2 = Smart Mail, Messages, Connections. Two separate catSection calls — two distinct slides, navigable by tap/dots like every other frame — NOT one slide with the second three stacked underneath (that was the R10 merge, and the layout in his screenshot). Same six tiles, same destinations, same counts, same tile code; only the frame split changes. notifRowsA (both frames joined) still feeds the Notifications slide above, untouched. Frame 2's head is the old subhead promoted: "Mail, Messages & Connections", headIcon "mail" as in R9. */
+            catSection(CATS[0], notifRowsA1 + dayNav(dc, false), null, "Personal, Business and your world. Tap one to see its day.", "Your Worlds", dc, "orb", "worlds", "worlds-slide") +
+            catSection(CATS[0], notifRowsA2 + dayNav(dc, false), null, "Smart Mail, Messages and Connections — tap one to see its day.", "Mail, Messages & Connections", dc, "orb", "mail", "worlds-slide") +
             catSection(CATS[0], notifRowsB + dayNav(dc, false), null, "Local, Province and Global — your news hub, each scope its own door.", "News Hub", dc, "hex", null, "news-slide") +
             catSection(CATS[1], timelineTileHTML(dc, tl, apptRows) + dayNav("#3f51b5", false), "appointments", "The day, booked — tap an open hour, 6 AM–9 PM.", "Timeline", "#3f51b5", null, null, "allow-scroll") +
             yourNotesSection(dc) +
