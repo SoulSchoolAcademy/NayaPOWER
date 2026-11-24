@@ -3327,6 +3327,111 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
   #dayScroll>.cover-change{top:auto!important;bottom:84px!important;left:auto!important;right:16px!important}
   .worlds-slide .world-icons{grid-template-columns:repeat(3,1fr)!important}
 }
+/* ============ ROUND 10 — render-walk verdict + month alignment (2026-11-23 ~19:42 MST) ============ */
+/* (1) YOUR WORLDS, ONE SLIDE — the 760px cap R9 stated but never got:
+   FIX11's #dayScroll .smart-block .sb-scroll>* carries an ID, so it
+   beat R9's two-class rule and the grid ran 1072px wide. This rule
+   carries the ID too, so the cap finally wins — the frame reads as
+   the base .world-icons design intended (760, centred). The top
+   margin drops 24px -> 8px (two grids now share the slide, and the
+   empty space below the tiles was the walk's complaint). The second
+   frame's subhead reuses .cat-head/.cat-title, one step down (19px)
+   so it reads as a frame label under the 25px slide head, never as
+   a second slide head. */
+/* (1, desktop) BOTH FRAMES AT REST — the tiles slim just enough that
+   two frames fit the desktop scroll area (measured: content ~416px
+   in a 452px area): icons 84px -> 64px, cell padding 16px -> 10px.
+   Rim, glow, hover lift and press are untouched — the object is the
+   same, only smaller, and only at desktop widths (the phone rules
+   keep their 52px icons). */
+/* (4) THE 7-DAY STRIP — .mc-day gets min-width:0 so the 1fr tracks
+   can shrink to the box instead of the tiles forcing the grid 431px
+   wide in a 288px box; gap 8px -> 4px, horizontal padding 4px -> 2px.
+   At phone width the strip's digits take the proven month-grid phone
+   size (17px tiles, 1px gap — the same numbers as .grid at 390), so
+   a two-digit date (35px) fits its ~38px column with its weekday
+   label locked above it in the same cell. */
+/* (3) SHORT HEIGHTS ONLY (max-height:480px) — the day header yields
+   so the deck stays reachable. The bar goes one compact row, the
+   headliner loses the 64px side margins that squeeze its three
+   columns into wrapping tall, the orb hides (it was clipped at the
+   right edge anyway), the back button goes icon-only (the phone rule,
+   extended to short heights), and the script + digit tiles take
+   their proven compact sizes (25px script, 20px tiles, 19px digits,
+   17px AM/PM — the phone headliner's own numbers). Nothing here
+   touches a normal-height viewport: the header is not redesigned,
+   it yields. The frame yields with it: at 355px tall the 64px
+   frame margins eat 36% of the height before any content, so
+   --bw drops to 24px (still a visible frame, close to the phone
+   32px) and the screen itself gains the room back. The headliner
+   also drops its single-column stack (the max-width:860px rule)
+   for two columns — date + clock on row one, Your Stats on row
+   two — with the centre stack tightened to a 2px gap. */
+#dayScroll .smart-block.worlds-slide .sb-scroll>.world-icons{max-width:760px!important}
+.worlds-slide .world-icons{margin-top:8px!important}
+.worlds-slide .worlds-subhead{margin:16px 0 4px!important}
+.worlds-slide .worlds-subhead .cat-title{font-size:19px!important}
+@media(min-width:561px){
+  .worlds-slide .world-cell{padding:10px 8px!important}
+  .worlds-slide .world-cell .world-ico{width:64px!important;height:64px!important}
+}
+.mc-days{gap:4px!important}
+.mc-day{min-width:0!important;padding:6px 2px!important}
+@media(max-width:560px){
+  .mc-days .os-mini-num{gap:1px!important}
+  .mc-days .os-mini-tile{width:17px!important}
+  .mc-days .os-mini-tile .cap{height:4px!important}
+  .mc-days .os-mini-tile .rd{height:22px!important;line-height:22px!important;font-size:17px!important}
+}
+/* (2b) TIMELINE — the Book pill is NOT top-right: it renders
+   full-width (1031px in a 1071px tile) because the tile is a flex
+   column, so float:right is ignored and align-items:stretch fills
+   it. R9's "top-right" was bytes-only (float:right present in the
+   markup). Fix: shrink it to its text and pin it to the tile's
+   right end. The drop-down stays full-width by design (R9). */
+.tile-timeline #tlBookBtn{width:auto!important;max-width:max-content!important;align-self:flex-end!important;margin-left:auto!important}
+@media(max-height:480px){
+  :root{--bw:24px!important}
+  #screen-day .daybar{flex-direction:row!important;align-items:center!important;flex-wrap:wrap!important;gap:8px!important;padding:8px 12px!important;margin-bottom:6px!important}
+  #screen-day .dayhead{width:auto!important;flex:1 1 200px!important;min-width:0!important}
+  #screen-day .daybar .sigpiece{display:none!important}
+  #screen-day .daybar>.backbtn.eye{width:46px!important;padding:0!important;gap:0!important;flex:none!important}
+  #screen-day .daybar>.backbtn.eye .btw{display:none!important}
+  #screen-day .official-headliner{margin:0!important;min-height:0!important;padding-bottom:0!important;border-bottom:0!important;gap:6px 10px!important;grid-template-columns:1fr auto!important}
+  #screen-day .hl-center{gap:2px!important}
+  #screen-day .hl-script{font-size:25px!important}
+  #screen-day .official-headliner .os-mini-tile{width:20px!important}
+  #screen-day .official-headliner .os-mini-tile .cap{height:4px!important}
+  #screen-day .official-headliner .os-mini-tile .rd{height:22px!important;line-height:22px!important;font-size:19px!important}
+  #screen-day .official-headliner .os-mini-tile.letter .rd{font-size:17px!important}
+  #screen-day .official-headliner .os-mini-gap{width:6px!important}
+  #screen-day .stats-btn{min-height:36px!important;padding:0 14px!important}
+  /* The slide's own chrome eats the deck next: measured at 573x355
+     the Wisdom slide is 134 tall and its sb-scroll is 0 — the fixed
+     chrome (dots 12+10, nav 62+16, slide padding 20+24) is 144 tall,
+     so the content gets nothing. The banner also carries flex:none
+     (line 2882), so it collapses to its chrome instead of filling
+     the deck. At short heights only: the banner fills the deck, the
+     slide's padding drops to 8px, the dots/nav margins and the nav
+     buttons compact — the content keeps ~90px + its own scroll.
+     The Back pill is absolute (top:14px), so it still floats over
+     the slide's top corner as it does at phone width. */
+  #dayScroll:has(#wisdomBanner.on) #wisdomBanner{flex:1 1 auto!important}
+  #dayScroll .smart-block{padding-top:8px!important;padding-bottom:8px!important}
+  #dayScroll .smart-block .sb-nav{margin-top:4px!important;padding-top:4px!important}
+  #dayScroll .smart-block .sb-dots{margin-top:4px!important}
+  #dayScroll .smart-block .sb-nav .p3-enter{padding:8px 24px!important;min-height:36px!important}
+  #dayScroll .smart-block .sb-nav .daystep-btn{min-height:36px!important}
+  /* The deck itself reserves 32px of top padding for the cover
+     strip (the weekday label floats absolute in it). At short
+     heights that strip is 18% of the deck and the label only
+     repeats the weekday the headliner already shows — and it is
+     already display:none at phone width (line 3221). Hide it and
+     give the strip back to the slide: Wisdom content goes from
+     33px to ~65px, other slides to ~95px, all still scrollable. */
+  #dayScroll{padding-top:0!important}
+  #dayScroll>.cover-strip-label{display:none!important}
+}
 </style>
   </head>
   <body>
@@ -3371,7 +3476,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
      behind the day's slides (item 12/A3): this layer sits behind
      them in the frame, never as its own slide, never behind wisdom.
      Change cover stays reachable, bottom-right, on every slide. -->
-          <div class="day-cover-bg" id="dayCoverBg" aria-hidden="true"><img id="coverImg" src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/thursday_green.jpg&amp;ref=calendar/day-followon-fix12-20261119&amp;cb=db902b7106c4179803408305222306b16c0d9249&amp;t=1795123417" alt=""></div><span class="cover-strip-label" id="coverStripLabel" aria-hidden="true">Thursday</span><button type="button" class="pill cover-change" id="coverChangeBtn" aria-label="Change cover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="9" cy="9.5" r="1.4"/><path d="M4.5 17.5 10 12l3.5 3.5 2.5-2.5 3.5 3.5"/></svg></button><input type="file" id="coverFile" accept="image/*"><div class="cover-chooser" id="coverChooser" hidden role="dialog" aria-label="Choose a cover"><p class="cc-title">Choose a cover</p><div class="cc-grid" id="coverChooserGrid"></div><p class="cc-note">Your choice stays on this day.</p></div><div class="wisdom-banner smart-block" id="wisdomBanner"><button type="button" class="slide-back" data-sb="prev" aria-label="Back">&#8249; Back</button>
+          <div class="day-cover-bg" id="dayCoverBg" aria-hidden="true"><img id="coverImg" src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/thursday_green.jpg&amp;ref=calendar/day-followon-fix12-20261119&amp;cb=db902b7106c4179803408305222306b16c0d9249&amp;t=1795123417" alt=""></div><span class="cover-strip-label" id="coverStripLabel" aria-hidden="true">Thursday</span><button type="button" class="pill cover-change" id="coverChangeBtn" aria-label="Change cover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="9" cy="9.5" r="1.4"/><path d="M4.5 17.5 10 12l3.5 3.5 2.5-2.5 3.5 3.5"/></svg></button><input type="file" id="coverFile" accept="image/*"><div class="cover-chooser" id="coverChooser" hidden role="dialog" aria-label="Choose a cover"><p class="cc-title">Choose a cover</p><div class="cc-grid" id="coverChooserGrid"></div><p class="cc-note">Your choice stays on this day.</p></div><div class="wisdom-banner smart-block" id="wisdomBanner" aria-label="Wisdom"><button type="button" class="slide-back" data-sb="prev" aria-label="Back">&#8249; Back</button>
             <div class="wq-label">Wisdom of the day</div>
             <div class="greet-row"><span class="greet-layout"><span class="avatar-jewel" aria-hidden="true">S</span><span class="greet-hello" id="greetHello"></span></span></div><blockquote id="wisdomQuote"></blockquote><div class="dayteach" id="dayTeach"></div><div class="sb-nav"><div class="nav-left"></div><button type="button" class="p3-enter letter-next deck-next" data-sb="next" style="--tone:var(--dc,#3fb8ff)">Keep reading ◆</button><div class="nav-right"></div></div><div class="wq-store">Naya wisdom — from the Naya store</div><div class="sb-dots"></div>
           </div>
@@ -5145,7 +5250,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             var el = b.querySelector(".sb-dots"); if (!el) return;
             if (el.childElementCount !== blocks.length) {
               el.innerHTML = "";
-              for (var i = 0; i < blocks.length; i++) { var d = document.createElement("button"); d.type = "button"; d.setAttribute("aria-label", "Go to block " + (i + 1) + " of " + blocks.length); d.setAttribute("data-dot", i); el.appendChild(d); }
+              for (var i = 0; i < blocks.length; i++) { var d = document.createElement("button"); d.type = "button"; var nm = (blocks[i].getAttribute("aria-label") || "Wisdom").split(" — ")[0]; d.setAttribute("aria-label", "Go to block " + (i + 1) + " of " + blocks.length + ": " + nm); d.setAttribute("data-dot", i); el.appendChild(d); }
             }
             Array.prototype.forEach.call(el.children, function (d, i) { d.classList.toggle("lit", i === dayBlock); });
           });
@@ -5457,23 +5562,15 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              survive a day step. */
           var __staleNotif = document.querySelector("#dayScroll > .notif-slide");
           if (__staleNotif) __staleNotif.remove();
-          /* FIX11 item 9 — the deck in his order: 1 Notifications ·
-             2 Wisdom of the Day · 3 Cover · 4 Journal · 5 Your Worlds ·
-             6 News · 7 Appointments · 8 Your Notes · 9 Smart Lists.
-             (Wisdom + Cover are the static blocks, moved into place
-             below.) The summary/record slide's slot was NOT named — it
-             is not guessed: it keeps its place directly after
-             Appointments, where it stands today. Smart Lists stands
-             directly after Summary; Your Notes closes the deck (the
-             Smart Notes slide is gone — smart notes no longer display
-             on the calendar day, 2026-11-20). */
+          /* FIX11 item 9 — the deck order it named is superseded:
+             ROUND 10 (below) is the current order. (Wisdom + Cover
+             are the static blocks, moved into place below.) */
           /* ROUND 9 — the frame-law slides: the Appointments slide is gone, merged into the Timeline slide (book + timeline, one screen); Your Notes follows the Timeline; the open list's detail follows Smart Lists (only while a list is open). The Journal entries slide, the three booking slides and the Summary slide are gone — their content lives on the Journal slide, in the Book a time door, and in the Intel Today / Daily Reports doors. Each slide is its own frame — overflow moves to the next frame, never scroll inside one. */
           /* ROUND 7 (2026-11-23, Shawn's voice-call rulings ~18:55–
-             19:06 MST) — the deck, new order: 1 Wisdom · 2 Notifica-
-             tions · 3 Intel Today & Daily Reports · 4 Journal · 5 Your
-             Worlds · 6 News Hub · 7 Appointments · 8 Timeline · 9 Your
-             Notes · 10 Smart Lists (the open list's detail follows it
-             while a list is open). Gone: the Journal entries slide
+             19:06 MST) — the deck order it named is superseded: ROUND
+             10 (below) is the current order (nine slides; the Mail
+             slide merged into Your Worlds, the Appointments slide into
+             Timeline). Gone: the Journal entries slide
              (entries ride the Journal slide, tap in to read), the three
              booking slides (the flow opens in the Book a time door),
              the Summary slide (no use, no point). The two slide-3
@@ -5481,15 +5578,19 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              sumRow calls, same doors, same colours. ROUND 8: both now
              navigate out to their live rooms pages (see the openDoor
              intercept) instead of opening the in-page door path. */
-          /* ROUND 9 (2026-11-23, Shawn's voice-call walk-through ~19:23–
-             19:26 MST) — the deck, new order: 1 Wisdom · 2 Notifica-
-             tions · 3 Intel Today & Daily Reports · 4 Journal · 5 Your
-             Worlds · 6 Mail, Messages & Connections · 7 News Hub ·
-             8 Timeline (book + timeline, one screen — the timeline is
-             a drop-down) · 9 Your Notes · 10 Smart Lists (the open
-             list's detail follows it while a list is open). Still ten
-             slides: the merge (Appointments into Timeline) and the
-             split (Your Worlds in two) cancel out. "Naya notes" is the
+          /* ROUND 10 (2026-11-23, the render walk's verdict ~19:42 MST)
+             — the deck, new order: 1 Wisdom · 2 Notifications ·
+             3 Intel Today & Daily Reports · 4 Journal · 5 Your Worlds
+             (BOTH frames on the one slide: Personal, Business, World,
+             then Smart Mail, Messages, Connections) · 6 News Hub ·
+             7 Timeline (book + timeline, one screen — the timeline is
+             a drop-down) · 8 Your Notes · 9 Smart Lists (the open
+             list's detail follows it while a list is open). Nine
+             slides: the merge (Mail into Your Worlds) drops the count
+             from ten. The render walk proved dot 7 = News Hub — the
+             walk's Appointments expectation was stale (Appointments
+             merged into Timeline in round 9; no such slide exists).
+             Dots now name their slide (dayDots). "Naya notes" is the
              new name for the Personal nine, everywhere it shows. */
           var intelReportsInner = '<div class="sum-list">' +
             sumRow("daily", "#3f51b5", "spark", "Intel Today", "The highlights of the day's intelligence — from your smart notes.", 0, null) +
@@ -5499,8 +5600,8 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             catSection(CATS[0], notifCards + dayNav(dc, false), null, "Tap a world — see its notifications.", "", dc, "diamond", null, "notif-slide allow-scroll") +
             catSection(CATS[2], intelReportsInner + dayNav("#3f51b5", false), "record", "Tap either one and your daily Intel pops up.", "Intel Today & Daily Reports", "#3f51b5", "diamond", null, "allow-scroll") +
             catSection(CATS[2], journalInner + dayNav("#07925f", false), "record", "Your day, in your words — kept for this day.", "Journal", "#07925f", "orb") +
-            catSection(CATS[0], notifRowsA1 + dayNav(dc, false), null, "Personal, Business and your world — tap one to see its day.", "Your Worlds", dc, "orb", "worlds", "worlds-slide") +
-            catSection(CATS[0], notifRowsA2 + dayNav(dc, false), null, "Smart Mail, Messages and Connections — tap one to see its day.", "Mail, Messages & Connections", dc, "orb", "mail", "worlds-slide") +
+            /* ROUND 10 item 1 — BOTH frames on the one "Your Worlds" slide: frame 1 (Personal, Business, World) then frame 2 (Smart Mail, Messages, Connections) under its own labelled subhead. R9's second slide hid frame 2 behind unnamed dots and left slide 5 with ~180px of empty space below its three tiles; the deck drops from ten slides to nine. notifRowsA (both frames joined) still feeds the Notifications slide above. */
+            catSection(CATS[0], notifRowsA1 + '<div class="cat-head worlds-subhead"><span class="cat-jewel" aria-hidden="true"></span><h2 class="cat-title">Mail, Messages &amp; Connections</h2></div>' + notifRowsA2 + dayNav(dc, false), null, "Personal, Business and your world — then Smart Mail, Messages and Connections. Tap one to see its day.", "Your Worlds", dc, "orb", "worlds", "worlds-slide") +
             catSection(CATS[0], notifRowsB + dayNav(dc, false), null, "Local, Province and Global — your news hub, each scope its own door.", "News Hub", dc, "hex", null, "news-slide") +
             catSection(CATS[1], timelineTileHTML(dc, tl, apptRows) + dayNav("#3f51b5", false), "appointments", "The day, booked — tap an open hour, 6 AM–9 PM.", "Timeline", "#3f51b5", null, null, "allow-scroll") +
             yourNotesSection(dc) +
@@ -6123,7 +6224,6 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             __mc.time = first;
             __mc.timePage = Math.floor(times.indexOf(first) / 6);
             mcRenderCal(); mcRenderTime(); mcRenderForm();
-            gotoSlideByLabel("What is it?");
           } else {
             /* FIX9F item 5 — never call a past hour "full": it has
                passed (the minimum-notice rule), it is not booked out. */
@@ -6135,7 +6235,6 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
               : "That hour is full — here are the next open times.";
             __mc.timePage = 0;
             mcRenderCal(); mcRenderTime(); mcRenderForm();
-            gotoSlideByLabel("What is it?");
           }
         }
         if (!window.__tlSlotWired) {
@@ -6394,7 +6493,6 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             __mc.edit = { time: c.time, title: c.title, who: c.who || "" };
             __mc.day = c.day; __mc.time = c.time; __mc.kind = c.kind; __mc.dur = c.dur || 30; __mc.confirmed = null; __mc.refused = null;
             mcRenderCal(); mcRenderTime(); mcRenderForm();
-            gotoSlideByLabel("Book a time");
           });
           var dn = $("r2Done");
           if (dn) dn.addEventListener("click", function () { __mc.confirmed = null; openDay(sel); gotoSlideByLabel("Timeline"); });
@@ -6440,7 +6538,6 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
               __mc.day = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
               __mc.time = null; __mc.edit = null; __mc.timePage = 0; __mc.refused = null;
               mcRenderCal(); mcRenderTime(); mcRenderForm();
-              gotoSlideByLabel("Pick a time");
               return;
             }
             var kd = t.closest(".r2-kind");
@@ -6452,7 +6549,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
               mcRenderCal(); mcRenderTime(); return;
             }
             var tp = t.closest(".mc-time");
-            if (tp) { __mc.time = tp.getAttribute("data-mc-time"); __mc.refused = null; mcRenderCal(); mcRenderTime(); mcRenderForm(); gotoSlideByLabel("What is it?"); return; }
+            if (tp) { __mc.time = tp.getAttribute("data-mc-time"); __mc.refused = null; mcRenderCal(); mcRenderTime(); mcRenderForm(); return; }
             if (t.closest("#mcBook")) { ev.preventDefault(); mcBook(); return; }
             var cx = t.closest(".mc-cancel");
             if (cx) { ev.preventDefault(); mcCancelIdx(parseInt(cx.getAttribute("data-mc-i"), 10)); return; }
