@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-24 20:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-24 21:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -13085,6 +13085,12 @@ _Last updated: 2026-11-24 20:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: t0903-lane10-askworld.md exists; the brief's hard constraint honored — did NOT rebuild a hole closed ~2 min earlier, ran fresh byte verification instead: check exit 0 (50/50 rows valid), independent raw read 191 rows 0 marker-less, writer-code read (stamp inside log_query write path), tree-wide contamination grep exit 1 (no reader touches
 
+### ✅ t0944-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** First application of lift-stamp spec v1: all 29 queued gap briefs classified, ledger written, 5 self-falsifiers fired on final bytes
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: hidden_files/lift-application-ledger-20261019.jsonl sha256 180a9280ffcdecd7d63f01bdbcef35a55abb9e1b24a86e85cacc92d6f689ee25 == receipt pin EXACTLY (re-pinned post pass-2 upgrade). NOT PHANTOM. Score 9.0. Why not 9.5: ledger hash verified, but no individual row's parent
+
 ### ✅ t0944 — Team 10, Team Naya Scorer (Brain Index) — 9.3/10 [VERIFIED]
 
 **Task:** First application of lift-stamp spec v1: classify 29 queued gap briefs into ledger
@@ -13273,6 +13279,12 @@ _Last updated: 2026-11-24 20:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Byte-pinned provenance (declaration->consumption->setters->trust boundary) with 6 named gaps + 1 honest UNKNOWN; candidate wired-caller spec with test plan, verifier checklist, rollback story. Verified: docs exist at hidden_files/lane-3/t942/, branch naya/three-decision-consolidate @ 3f1cdfa6 exists locally with SHA matching receipt, base == tip 1b
 
+### ✅ t0942-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Lift-stamp contract spec v1 (inert by design): 6 RED-first falsifiers, 28-row bar inventory, pre-mortem t0903
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: hidden_files/lift-stamp-contract-spec-20261019.md sha256 0fef6b5cff12f133ead2fd025e1fdb46a80aa6c31822151ced255552ca13f8f1 == receipt pin EXACTLY. NOT PHANTOM. Score 9.0. Why not 9.5: falsifiers file sha 44e4b0e8... not re-verified this tick; single-seat ceiling - no in
+
 ### ✅ t0942 — Team 10, Team Naya Scorer (Brain Index) — 9.3/10 [VERIFIED]
 
 **Task:** Design lift-stamp contract spec v1 (no machinery, no stamps)
@@ -13288,6 +13300,12 @@ _Last updated: 2026-11-24 20:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0942-lane10.md`
 
 **Evidence:** Verified: spec lift-stamp-contract-spec-20261019.md (14668B, sha256 0fef6b5c... matches pin) + falsifiers file (4407B, 44e4b0e... matches pin) both on disk; all 6 falsifiers fired against final spec; 3 honest passes (9.2 -> 9.5 -> confirmed), gaps named not hidden. Clears 9.5 because the brief's spec-only authority was honored in full with first-ha
+
+### ✅ t0940-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Brain-index drift recurrence #16: bisected 3 compounding introducers, re-cut heal on live tip 56dedc70, --check exit 0, 13/13 tests, PR-open package drafted
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: heal commit 34e8e84814bb2d1ffb434fa1f4d787d9e47b4e6f exists as a commit object in the local mirror; parent tip 56dedc70a64170f4433e95ac0def56f3e6142186 exists; PR-open package hidden_files/lane-10/pr-open-package-t0940/ exists on disk (draft-pr-body.md + scorecard.md).
 
 ### ✅ t0940 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -13904,6 +13922,12 @@ _Last updated: 2026-11-24 20:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t912-lane11.md`
 
 **Evidence:** Full design (6 metrics, auditable methods, anti-gaming) + baseline computed from all 4 existing receipts; gaps declared UNKNOWN, never invented; exact SHAs/paths; commit-incident owned and fully repaired same tick. Deductions: baseline small-n by circumstance; M1/M5/M6 UNKNOWN (board-thread scanner + human baseline still to do); receipt timestamp s
+
+### ✅ t0909-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.3/10 [VERIFIED]
+
+**Task:** Brain-index trigger file list: 6 introducers re-derived on live bytes at tip 061243817, enforcement hook contract named, board post #2765 REST-verified
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window had only the gate-stall receipt). VERIFIED first-hand this tick: deliverable hidden_files/brain-index-trigger-file-list-t0909.md exists on disk, sha256 acdfa3a86238eac2fb6192c56ec632bec5b3d055ff9ac7db5619cc9799b7d199 == receipt pin exactly. NOT PHANTOM. Score 9.3. Why not 9.5: single-seat ceiling - no secon
 
 ### ✅ t0909 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
@@ -14835,6 +14859,12 @@ _Last updated: 2026-11-24 20:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Artifacts verified by the scorer on live bytes before scoring: (1) branch naya/three-decision-consolidate exists on the remote, head SHA 8346681cd52600e08fba3bcbb8b86a3258eaf056 == receipt's cited head, exact match; (2) live tip f424f5b971f46d45ea0bd8ea070f69985973c3a2 == receipt's cited tip, exact match; (3) fetched that SHA over the git protocol:
 
+### ✅ t0845-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** TF-IDF cosine second arm + runner --arm refactor, falsifier block byte-pinned, GREEN selftest 6/6, tfidf verdict KILLED the pin
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: hidden_files/arms/tfidf-cos-t0845/arm.py sha256 0c544e5e132a87e9bd780b4bbcabadafbd50f7a0bdae8ae8de7902ee7c0ab1a2 == receipt pin EXACTLY. run_pilot12_battery.py sha now d957847c... vs pinned dc228b5f... - file edited by later work after Oct 18 (drift, not phantom; the n
+
 ### ✅ t0845 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** Battery arm now swappable: --arm refactor, TF-IDF arm, GREEN selftest 6/6
@@ -14856,6 +14886,12 @@ _Last updated: 2026-11-24 20:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Battery arm-swap machinery: second arm built, runner refactored, falsifier block pinned
 
 **Evidence:** Verified: sha256 of hidden_files/run_pilot12_battery.py (dc228b5fb586389d...), hidden_files/arms/tfidf-cos-t0845/arm.py (0c544e5e132a87e9...), and sealed v2-pilot-12q/pilot12_verdict.json (ebeef7378b656c8f...) all match the receipt's claimed hashes byte-exact; files present in the goal workspace (receipt honestly names the push done-item unfulfilla
+
+### ✅ t0842-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.3/10 [VERIFIED]
+
+**Task:** Longtext probe: 24 long docs blinded, F-A/F-C fired, elaboration-lengthening regime FALSIFIED per pre-reg, sealed + pushed
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: commit 22564d9765c7b514a86d857043080e3ad6e16fb2 exists as a commit object in the local mirror, and git ls-tree at that commit lists all 5 probe files (PREREG.md, probe_docs.json + .sha256, probe_verdict.json + .sha256) under verification/t0842-longtext-probe/. NOT PHAN
 
 ### ✅ t0842 — Team 12, Team Naya Scorer (NayaNET / Hub) — 8.5/10 [VERIFIED]
 
@@ -15074,6 +15110,12 @@ _Last updated: 2026-11-24 20:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0823-lane6.md`
 
 **Evidence:** Verified: branch naya/lane9/level-drill-keysplit-t0730 @ a8d01f0cde69722d9eb0b2a08362bb83458ebd9f via git ls-remote (matches the action-time pin); sealed answers JSON SHA == 2e2bae4ce278dc05247f0787093b976727469676b04e3ddb251efb01818f3c77. Clears 9.5 because the blindness proof ran at the exact pinned head, the RED differential is documented (probe
+
+### ✅ t0822-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** HV instrument re-run on window t1062-t0822: determinism byte-identical, window-scoping fix holds, HV3 re-affirmed PROVEN-UNMEASURABLE, 4 edge rows reclassified AGREE x4
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: board-thread-snapshot.json exists on disk (114999 bytes, 2026-10-15 05:11) and grep -c correction_pairs = 0, matching the receipt; bin/hv_measure.py exists. NOT PHANTOM. Score 9.0. Why not 9.5: the determinism run SHA 3eec4057... was not re-derived this tick (instrumen
 
 ### ✅ t0822 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -54765,6 +54807,12 @@ _Last updated: 2026-11-24 20:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
 
+### ✅ gap-scorer-20261015-0630-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up scorer-20261015-0630: E1 run-1 retention machinery (registry + checker + protocol) + corrected t0555 verdict posted to live board
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: registry hidden_files/auto-retrieval/seal-run-registry.json exists, t0555 MISSING-GRANDFATHERED, pins match receipt exactly (seal 34ae19f1..., instrument 5bf6823d..., results ef6a7272...); checker hidden_files/bin/check-seal-run-registry.py exits 0 with 'REGISTRY-GREEN
+
 ### ✅ gap-scorer-20261014-2340-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 8.5/10 [VERIFIED]
 
 **Task:** Gap refusal branch: independent-eyes review hand-off (parent t0814-lane12)
@@ -61768,6 +61816,12 @@ _Last updated: 2026-11-24 20:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261124-1244 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 20261124-1244: 31 queued briefs script-attempted, all refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose), 0 claimed, queue untouched
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: live queue holds exactly 31 brief-*.md files and its sha256-of-sha256sum checksum re-derives EXACTLY as 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4 (run from inside brief-queue/) - byte-identical to the checksum pinned in the 11:38 receipt, so the queue is untouched and no mv occurre
 
 ### ✅ distill-daily-20261124 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
