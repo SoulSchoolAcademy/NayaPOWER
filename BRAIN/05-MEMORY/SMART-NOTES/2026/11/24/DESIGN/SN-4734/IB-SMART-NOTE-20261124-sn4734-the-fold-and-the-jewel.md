@@ -1,0 +1,51 @@
+# The Fold and the Jewel
+
+SN-4734 · DESIGN / DISTILLATION
+
+**Created:** 2026-11-24T17:52:00Z
+
+## IN A NUTSHELL
+
+The interface breathes. Every page folds: the Hub's welcome greets you — good afternoon, the time, a quote — and then folds up and hides away, because a welcome is not a page; the bottom bar folds the moment you scroll and returns only at the very bottom, when you are done reading and ready to go somewhere else; and every page is optimized for the fold, which means optimized for the citizen's viewpoint, not the builder's. The tiles keep their white middle and their numbers pop — an obsidian badge with the white number in it. Pictures are real objects with their own deep color as their light; a white-glow wash over black is forbidden wherever it appears, because it flattens the picture and kills the text. Depth is total: nothing flat, not even a little — a part that reads a little flat goes back. The emblem is the original, taken verbatim, never redrawn, standing in every corner on an angle in the official places. And value is counted plainly: one star, one point; like and love stay at one; the feed's bottom row shows everything at a glance, ten gold stars, no dropdown hiding the choice.
+
+## HUMAN
+
+The pages make room for you. Greetings step aside once you've arrived, the navigation bar slips away while you read and comes back exactly when you're finished, and everything you look at has real depth — like objects on a table, not stickers on a screen. The emblem you chose stands in the corners, untouched, because the original was already right.
+
+## CHILD
+
+Imagine a book that tidies itself while you read: the cover page folds away, the bookmarks hide until you reach the end, and all the pictures are chunky and real like toys, never flat like stickers. The special badge is the real badge, copied exactly, never traced badly.
+
+## GRANDMA
+
+Nothing crowds you. The welcome says hello and then gets out of the way; the menu bar hides while you read and returns when you're done. Pictures have proper depth and their own warm light — no milky glare washing them out. It all feels calm and deliberate.
+
+## NAYA
+
+Fold-and-depth rules distilled from SN-3145..SN-3154: (1) the morning orbit icons are the icon standard — clear, prominent, easy to understand; a named artifact, again. (2) The Hub welcome (greeting + time + quote) folds away after arrival; the resting state is flush: search, worlds, categories, no explainer text. (3) The bottom bar folds the moment scrolling starts and returns only at the very bottom — same on every page. (4) The white middle stays (radial white core + glyph in the tile's color); count badges are obsidian with white numbers; Smart Mail sits flush to the top. (5) The ten-star block bottom is one row, no dropdown; ten gold stars; love and like are not separate scales. (6) Optimize for the fold on every page = optimize for the citizen's viewpoint. (7) No white-glow wash over black, ever; each picture is a real object lit by its own deep color. (8) Nothing flat, not even a little — every part, every text; depth is alive. (9) The emblem is the original (NAYA_ICON.png), placed verbatim, never redrawn, in every corner on an angle in official areas. (10) Star-rating points: one point per star, max ten; like = 1, love = 1.
+
+## MACHINE
+
+1) Welcomes are transient: greet, fold, hide. 2) Bars fold on scroll-start; return only at scroll-bottom. 3) White radial middle is a constant across tile generations. 4) Badges: obsidian pill, white numeral. 5) Ratings UI: single row, ten stars, no dropdown. 6) Every page is designed from the citizen's viewpoint (the fold test). 7) White-glow overlays on dark images are forbidden. 8) Depth audit covers text as well as tiles. 9) Emblem = source file placement, never a redraw. 10) Points: star 1, like 1, love 1; star cap 10.
+
+Distills (Batch 13, 10 of 100): SN-3145 The Morning Orbit Icons Are the Standard · SN-3146 The Hub Welcome Folds Away · SN-3147 The Bar Returns Only at the Very Bottom · SN-3148 The White Middle, the Numbers That Pop, and Smart Mail Flush to the Top · SN-3149 The Ten-Star Block Bottom — His Yes · SN-3150 Optimize for the Fold — Optimize for Their Viewpoint · SN-3151 The Bridge Pictures — No White Glow Over Black · SN-3152 Everything Needs Depth — Nothing Flat, Not Even a Little · SN-3153 The Official Emblem — The Original, in Every Corner on an Angle · SN-3154 Star-Rating Points — One Point per Star
+
+## WHAT IT ALL MEANS
+
+Two courtesies define this decade: motion courtesy (the interface withdraws what you no longer need, at the moment you stop needing it) and material courtesy (everything you see is a real, deep, honestly-lit object, and the symbols of the house are originals, not copies). Together they are what 'alive' means on a NayaNET page.
+
+## WHY IT MATTERS
+
+Static interfaces tax attention constantly — every stale greeting and ever-present bar is a small withdrawal. The fold returns that attention, and the depth law is why the return feels luxurious rather than merely tidy. This is the decade where 'visual bliss' stops being an adjective and becomes a mechanism.
+
+## HOW IT CONNECTS
+
+Eighth essence of batch 13. It refines SN-4733's bar and icon standards with their motion behavior, and its emblem rulings are completed by SN-4735, where the most beautiful render is chosen and the emblem goes elegantly throughout NayaNET.
+
+## WHAT IS IN IT FOR YOU
+
+Reading feels restful: the page clears itself around what you're doing, everything looks rich and real, and the house emblem stands where it should — the same original, every time, like a seal on a letter.
+
+## THE LEARNING
+
+From now on, we design the motion as carefully as the layout — what folds, when it returns, what stays flush — instead of shipping beautiful stills that crowd the citizen while they read.

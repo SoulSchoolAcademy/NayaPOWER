@@ -80652,6 +80652,42 @@
         "Honor",
         "Knowledge"
       ]
+    },
+    {
+      "smart_note_id": "SN-4734",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4734-the-fold-and-the-jewel",
+      "slug": "the-fold-and-the-jewel",
+      "title": "The Fold and the Jewel",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4734/IB-SMART-NOTE-20261124-sn4734-the-fold-and-the-jewel.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4734/IB-SMART-NOTE-20261124-sn4734-the-fold-and-the-jewel.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4734/IB-SMART-NOTE-20261124-sn4734-the-fold-and-the-jewel.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4734-the-fold-and-the-jewel.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T17:52:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "db26838be007e9defcfe1f82310c0be79391eca5d57142b3b9df65d26cf63aa1",
+      "content_hash": "d50d88bb1759ba3ed8e08701d3340782aa1f77f6e46101f3f0f63765f26ea92b",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "bb94bfdd14b7346040e5dd6be8b57cef810ffb6b70364be231d94e8ad8ab3b37",
+      "one_line": "The interface breathes. Every page folds: the Hub's welcome greets you — good afternoon, the time, a quote — and then folds up and hides away, because a welcome is not a page; the bottom bar folds the moment you scroll and returns only at the very bottom, when you are done reading and ready to go somewhere else; and every page is optimized for the fold, which means optimized for the citizen's viewpoint, not the builder's. The tiles keep their white middle and their numbers pop — an obsidian badge with the white number in it. Pictures are real objects with their own deep color as their light; a white-glow wash over black is forbidden wherever it appears, because it flattens the picture and kills the text. Depth is total: nothing flat, not even a little — a part that reads a little flat goes back. The emblem is the original, taken verbatim, never redrawn, standing in every corner on an angle in the official places. And value is counted plainly: one star, one point; like and love stay at one; the feed's bottom row shows everything at a glance, ten gold stars, no dropdown hiding the choice.",
+      "topics": [
+        "Distillation",
+        "Design",
+        "Craft",
+        "Honor",
+        "Knowledge"
+      ]
     }
   ],
   "sequence_policy": {
@@ -80662,5 +80698,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "857a279766442c59ca77974abea352230ac483d852c7186b9c4cee35a079e638"
+  "corpus_manifest_hash": "abe132474f62cb7495da6af9f9c840f907c6f9c8f6c4c73f02d8abfbdb562da1"
 }
