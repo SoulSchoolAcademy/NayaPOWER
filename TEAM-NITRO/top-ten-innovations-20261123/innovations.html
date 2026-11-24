@@ -17,7 +17,7 @@
      round 8 deleted the three School-only N-shrink rules, so the N is
      the About 80px desktop / 60px phone; nothing was re-drawn.
      ORDER SETTLED (his word ~12:24 MST: window, door, tap): 1 Naya
-     Windows (DRAFT text, no images — the Windows pictures must show the
+     Windows (working text, no images — the Windows pictures must show the
      actual Naya interface inside the window) · 2 Naya Door · 3 Smart Tap
      · 4 Collective Chain Technology · 5 Smart Vault · 6 Naya Code
      ("speed code" UNCONFIRMED — do not guess) · 7 Deletion by default ·
@@ -29,7 +29,7 @@
      round, checker-3 addendum 2026-11-23: uchF0A0wIFg, see COVER MEDIA);
      EMBED.portraits verified in place (12 entries, 2 unique JPEGs,
      sha256 88331e11… — the tip base carries them; nothing restored,
-     nothing moved); cover intro marked DRAFT (maker-written, not
+     nothing moved); cover intro marked as working text (maker-written, not
      Shawn's words); depth alternates text → image slot → text → image
      slot, slots wired to DEPTH_IMGS (all ten chapters filled, completion round 2026-11-23; the front image is never reused in depth
      except chapter 2's approved set, by explicit approval);
@@ -98,7 +98,7 @@
      DEPTH_IMGS[board] 0-based, so the row had to go).
      Chapter-8/9 Cloudflare fill (2026-11-23, post-process on the built file: ch8 slot 4 = Nayavation 64 chat-with-Alex; ch9 slots 2-3 = Nayavation 69 percentages-only + Nayavation 68 earnings $3,750; all three via Cloudflare links, nothing re-embedded).
      Ends fix (2026-11-23 full-build round: the four ch5 depth "ready" frames are now working ends — a real button with press-in feel, tap goes on to the next chapter; the red N now presses in (.93) and springs back on every board and in depth; D2 padding untouched; frame verified vs School round-7 tip 02da2bcd, style blocks 0/1/3 byte-identical).
-     Board text is DRAFT until Shawn says word perfect. -->
+     Board text is working text until Shawn says word perfect. -->
 <!-- THE SCHOOL OF NAYA — CLONE, ROUND 1, 2026-11-22 (One-Build Law).
      CLONE, DON'T REBUILD: every byte of structure, flow, frame, CSS and JS
      below is the filed twelve-elements model page (22,725,266 B,
@@ -763,11 +763,11 @@
    inside the slide frame. (3) Image boards. (4) Swap / Add-behind
    buttons — the School's button language: obsidian pill, white word,
    one deep color as rim + glow. (5) Swap popup + depth viewer.
-   (6) DRAFT working marker on the cover intro. (7) Depth image slots —
+   (6) Working-text marker on the cover intro. (7) Depth image slots —
    ready frames for the chapter images (alternating story flow), never
    a broken image, never a dead player. (8) D2 FIX — the + Behind / Swap
    pills sat ON the board titles on the odd boards and clipped the cover
-   DRAFT text: every text panel gets top padding 56px (actions-row height
+   working text: every text panel gets top padding 56px (actions-row height
    36px + top offset 10px + gap 10px), so the title starts clear of the
    row. (9) TEXT SIZES — one step up from the RENDERED base sizes
    (measured on the live School tip: body 20px at 390, 21px at 1920;
@@ -1079,6 +1079,50 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 .depth-thirds .ib-layer.ib-img:has(.ib-vid){height:auto;min-height:280px}
 }
 </style>
+<style>
+/* FIX2 — OUTER FRAME SYMMETRY (2026-11-24, eye-verdict fix round 2).
+   Defect, proven by cloud-browser repro ace0dd53 (1919x998) and in-VM
+   repro-fix2.py (1920x999, 1882x962, 1885x969, 390x844): the royal
+   frame's bottom inset is 14px while the top and sides are var(--bw)
+   (64px desktop, 44px <=1024px, 16px phone), so the bottom band reads
+   cut off ~50px short of symmetric — stage top gap 64, bottom gap 14,
+   docScrollH == viewport height, and scrolling reveals nothing because
+   .royal-frame is position:fixed. The white showcase frame itself fits;
+   the board (cover, front, depth) already fits whole at all three
+   desktop sizes with 111-112px slack — the frame asymmetry IS the
+   cutoff. Fix, additive only (block 0 untouched; identical selectors,
+   later wins by source order): rim + ::after + .stage all take
+   var(--bw) on every side, so the stage is symmetric in the fold and
+   the boards, flex:1 inside it, scale with the viewport height.
+   Phone: --bw is 16px, so the stage shortens 2px (14 -> 16 bottom);
+   phone depth stack keeps scrolling by the leg-2 design. */
+.royal-frame::after{inset:var(--bw)}
+.royal-frame .rf-rim{inset:var(--bw)}
+.stage{margin:var(--bw);height:calc(100vh - 2*var(--bw));height:calc(100dvh - 2*var(--bw))}
+</style>
+<style>
+/* FIX2B — PER-THIRD LEVELS + DEPTH SWAP (2026-11-24, eye-verdict fix round 2 pickup).
+   Per-third chrome: a tiny '< L' badge (top-left, that third's level, tap =
+   that third one level back) and a tiny swap button (top-right, always
+   visible in depth — depth is the maker's view; the front boards keep their
+   member gate). Text panels get the 52px top padding the front boards
+   already have, so the chrome never sits on the heading. L3 text runs one
+   size smaller so the full text + Deeper line still fits whole on one
+   board; anything still too long is split behind the N by fitDepthText.
+   Captions are light on the obsidian panel. Video sits in a 9:16 box. */
+.depth-thirds .ib-layer:not(.ib-img) .ib-layer-body{padding-top:52px}
+.third-tool{position:absolute;top:10px;right:10px;z-index:6;width:28px;height:28px;min-height:28px;padding:0;display:grid;place-items:center;border-radius:50%;cursor:pointer;background:linear-gradient(135deg,#0b0c10,#050607);border:1.5px solid #8e24aa;box-shadow:0 6px 18px rgba(0,0,0,.55),0 0 14px rgba(142,36,170,.35)}
+.third-tool svg{display:block}
+.third-tool:active{transform:scale(.93)}
+.third-lvl{position:absolute;top:10px;left:10px;z-index:6;min-height:26px;padding:2px 10px;border-radius:999px;cursor:pointer;background:linear-gradient(135deg,#0b0c10,#050607);border:1.5px solid #c9a227;color:#fff;font-family:"Cormorant Garamond",serif;font-size:15px;font-weight:700;letter-spacing:.04em;box-shadow:0 6px 18px rgba(0,0,0,.55)}
+.third-lvl:active{transform:scale(.93)}
+.depth-thirds .ib-layer-body .third-cap{font-family:"Cormorant Garamond",serif;font-size:17px;line-height:1.35;color:#e8e2f5;text-align:center;padding:8px 4px 0}
+.depth-thirds .ib-layer-body .third-cap.third-deeper{font-style:italic;color:#cfc8e8}
+.depth-thirds .ib-layer.lvl3 .ib-layer-body p{font-size:clamp(18px,1.3vw,21px)}
+.depth-thirds .ib-vid.third-vid{flex:1 1 auto;min-height:0;width:auto;max-width:100%;aspect-ratio:9/16;margin:0 auto}
+#depthBody .ib-layer-body p{cursor:text}
+#swapPop,#textPop{z-index:60} /* FIX2C: popups above the depth overlay (z 50) so their buttons can be clicked from depth */
+</style>
 </head>
 <body>
 <div class="royal-frame" aria-hidden="true"><div class="rf-et top"></div><div class="rf-es left"></div><div class="rf-es right"></div><div class="rf-rim"></div><div class="rf-corner tl"></div><div class="rf-corner tr"></div><div class="rf-corner bl"></div><div class="rf-corner br"></div><div class="rf-n top"></div></div>
@@ -1102,8 +1146,8 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
           <section class="promax" id="deck" aria-label="Top Ten Innovations — Naya presents">
             <div class="pm-top"><span class="np-tag">TOP TEN INNOVATIONS</span><span class="deck-status" id="deckStatus">NAYA PRESENTS</span></div>
             <div class="pm-main cover-thirds">
-              <figure class="pm-cover-img" aria-label="Sharing wealth — the ninth innovation">
-                <img class="pm-cover-photo" id="coverImgL" alt="Sharing wealth — everyone hired" />
+              <figure class="pm-cover-img" aria-label="Naya Windows — the first innovation">
+                <img class="pm-cover-photo" id="coverImgL" alt="Naya Windows — you see through one window to the next" />
               </figure>
               <div class="pm-cover-text">
                 <p class="cover-saying">&ldquo;Ten innovations. One system. Built for you.&rdquo;</p>
@@ -1258,7 +1302,7 @@ function vidHTML(src){
   return '<video controls playsinline preload="metadata" src="' + src + '" style="width:100%;height:100%;object-fit:contain;background:#000"></video>';
 }
 function escTx(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-/* EYE-VERDICT FIX (2026-11-24): no DRAFT marker anywhere visible — draftTag renders nothing. */
+/* EYE-VERDICT FIX (2026-11-24): no working-text marker anywhere visible — draftTag renders nothing. */
 function draftTag(g){ return ''; }
 function textPanelFor(g, txt, slot){
   return '<div class="ib-layer"><div class="ib-layer-body">'
@@ -1398,7 +1442,11 @@ function renderSlide(){
   var frameAdd = document.querySelector('.slide-frame > .add-btn[data-slot="C"]');
   if (frameSwap) frameSwap.style.display = tc.hidden ? '' : 'none';
   if (frameAdd) frameAdd.style.display = tc.hidden ? '' : 'none';
-  if (typeof fitPanels === 'function') requestAnimationFrame(fitPanels);
+  /* FIX2F (2026-11-24): fit SYNCHRONOUSLY first — the layout must be
+     final before first paint, or the N moves under a tap when the delayed
+     rAF truncates the text (ch10 N tap landed on layer 12). The rAF stays
+     for the boot render (slide not .active yet); fitPanels is idempotent. */
+  if (typeof fitPanels === 'function'){ fitPanels(); requestAnimationFrame(fitPanels); }
   barForSlide();
 }
 function goToPortal(){
@@ -1449,11 +1497,12 @@ document.querySelectorAll('.slide-boards').forEach(function(el){
    innovation's front board) is the landing; the cover stays in the DOM,
    hidden, its presentation kept correct. */
 /* COVER IMAGES — CAPTAIN'S PICK: the two cover srcs are these two named
-   assignments and nothing else. The captain picks the two images; until his
-   pick arrives the CURRENT images stay: left is EMBED.slides[8]
-   (innovation-9 sharing-wealth), right is the red-N ball. Swap the two
-   lines below when the pick lands — no other edit. */
-var COVER_IMG_LEFT = EMBED.slides[8];
+   assignments and nothing else. The captain's pick LANDED 2026-11-24 (Shawn's word via the captain:
+   the red N for the beginning — the see-through N image,
+   approved/innovation-1-A-see-through.webp, byte-identical to
+   EMBED.slides[12], sha256 79b25260…, 768x1360, ~9:16): left is
+   EMBED.slides[12] (innovation-1 see-through), right is the red-N ball. */
+var COVER_IMG_LEFT = EMBED.slides[12];
 var COVER_IMG_RIGHT = EMBED.ball;
 document.getElementById('coverImgL').src = COVER_IMG_LEFT;
 document.getElementById('coverImgR').src = COVER_IMG_RIGHT;
@@ -1691,7 +1740,8 @@ function videoEmbed(url){
   return null;
 }
 function openSwap(slot, mode){
-  if (!window.NayaMember || !NayaMember.isSignedIn()) return;
+  var isDepthSlot = /^D[012]$/.test(slot);
+  if (!isDepthSlot && (!window.NayaMember || !NayaMember.isSignedIn())) return;
   SWAP.mode = mode; SWAP.slot = slot; SWAP.el = null;
   var kind = slotKind(slot);
   document.getElementById('swapTitle').textContent = mode === 'add' ? 'Add behind this board' : 'Swap this slot';
@@ -1713,7 +1763,11 @@ function openSwap(slot, mode){
     }
     SWAP.el = p;
     var cur = '';
-    if (p) cur = p.textContent;
+    if (isDepthSlot){
+      var di = parseInt(slot.slice(1), 10);
+      var dd = applyDepthSwap(depthThirdsFor(DEPTH_BOARD, depthLayers(DEPTH_BOARD)[DEPTH_IDX])[di], di);
+      cur = (dd && dd.kind === 'text') ? dd.txt : '';
+    } else if (p) cur = p.textContent;
     else if (slot === 'A' || slot === 'B' || slot === 'C'){
       var rt = RUNTIME_TXT[current + '-' + slot];
       if (rt !== undefined) cur = rt;
@@ -1741,7 +1795,12 @@ function openSwap(slot, mode){
 function closeSwap(){ document.getElementById('swapPop').hidden = true; }
 function applyImageSwap(dataUrl){
   var slot = SWAP.slot;
-  if (SWAP.mode === 'add'){ BEHIND[current] = BEHIND[current] || []; BEHIND[current].push({ kind: 'img', src: dataUrl }); closeSwap(); return; }
+  if (/^D[012]$/.test(slot)){
+    if (SWAP.mode === 'add'){ BEHIND[DEPTH_BOARD] = BEHIND[DEPTH_BOARD] || []; BEHIND[DEPTH_BOARD].push({ kind: 'img', src: dataUrl }); saveDepthStore(); closeSwap(); return; }
+    DEPTH_SWAP[depthSwapKey(parseInt(slot.slice(1), 10))] = { kind: 'img', src: dataUrl };
+    saveDepthStore(); renderDepth(); closeSwap(); return;
+  }
+  if (SWAP.mode === 'add'){ BEHIND[current] = BEHIND[current] || []; BEHIND[current].push({ kind: 'img', src: dataUrl }); saveDepthStore(); closeSwap(); return; }
   if (slot === 'cover'){
     var poster = document.getElementById('videoPoster');
     if (coverVidEl){ coverVidEl.remove(); coverVidEl = null; }
@@ -1755,11 +1814,16 @@ function applyImageSwap(dataUrl){
   delete RUNTIME_VID[current + '-' + slot];
   delete RUNTIME_TXT[current + '-' + slot];
   RUNTIME_IMG[current + '-' + slot] = dataUrl;
-  renderSlide(); closeSwap();
+  saveDepthStore(); renderSlide(); closeSwap();
 }
 function applyVideoSwap(embed){
   var slot = SWAP.slot;
-  if (SWAP.mode === 'add'){ BEHIND[current] = BEHIND[current] || []; BEHIND[current].push({ kind: 'video', src: embed }); closeSwap(); return; }
+  if (/^D[012]$/.test(slot)){
+    if (SWAP.mode === 'add'){ BEHIND[DEPTH_BOARD] = BEHIND[DEPTH_BOARD] || []; BEHIND[DEPTH_BOARD].push({ kind: 'video', src: embed }); saveDepthStore(); closeSwap(); return; }
+    DEPTH_SWAP[depthSwapKey(parseInt(slot.slice(1), 10))] = { kind: 'video', src: embed };
+    saveDepthStore(); renderDepth(); closeSwap(); return;
+  }
+  if (SWAP.mode === 'add'){ BEHIND[current] = BEHIND[current] || []; BEHIND[current].push({ kind: 'video', src: embed }); saveDepthStore(); closeSwap(); return; }
   if (slot === 'cover'){
     var frame = document.getElementById('videoFrame');
     var poster = document.getElementById('videoPoster');
@@ -1781,11 +1845,16 @@ function applyVideoSwap(embed){
   delete RUNTIME_IMG[current + '-' + slot];
   delete RUNTIME_TXT[current + '-' + slot];
   RUNTIME_VID[current + '-' + slot] = embed;
-  renderSlide(); closeSwap();
+  saveDepthStore(); renderSlide(); closeSwap();
 }
 function applyTextSwap(text){
   var slot = SWAP.slot;
-  if (SWAP.mode === 'add'){ BEHIND[current] = BEHIND[current] || []; BEHIND[current].push({ kind: 'text', text: text }); closeSwap(); return; }
+  if (/^D[012]$/.test(slot)){
+    if (SWAP.mode === 'add'){ BEHIND[DEPTH_BOARD] = BEHIND[DEPTH_BOARD] || []; BEHIND[DEPTH_BOARD].push({ kind: 'text', text: text }); saveDepthStore(); closeSwap(); return; }
+    DEPTH_SWAP[depthSwapKey(parseInt(slot.slice(1), 10))] = { kind: 'text', text: text };
+    saveDepthStore(); renderDepth(); closeSwap(); return;
+  }
+  if (SWAP.mode === 'add'){ BEHIND[current] = BEHIND[current] || []; BEHIND[current].push({ kind: 'text', text: text }); saveDepthStore(); closeSwap(); return; }
   if (slot === 'coverA' || slot === 'coverB'){
     if (SWAP.el) SWAP.el.textContent = text;
     closeSwap(); return;
@@ -1793,7 +1862,7 @@ function applyTextSwap(text){
   delete RUNTIME_IMG[current + '-' + slot];
   delete RUNTIME_VID[current + '-' + slot];
   RUNTIME_TXT[current + '-' + slot] = text;
-  renderSlide(); closeSwap();
+  saveDepthStore(); renderSlide(); closeSwap();
 }
 document.getElementById('swapFile').addEventListener('change', function(){
   var f = this.files && this.files[0];
@@ -1842,10 +1911,15 @@ document.getElementById('textSave').addEventListener('click', function(){
   var text = document.getElementById('textEdit').value;
   var slot = TEXTEDIT.slot;
   if (slot){
-    delete RUNTIME_IMG[current + '-' + slot];
-    delete RUNTIME_VID[current + '-' + slot];
-    RUNTIME_TXT[current + '-' + slot] = text;
-    renderSlide();
+    if (/^D[012]$/.test(slot)){
+      DEPTH_SWAP[depthSwapKey(parseInt(slot.slice(1), 10))] = { kind: 'text', text: text };
+      saveDepthStore(); renderDepth();
+    } else {
+      delete RUNTIME_IMG[current + '-' + slot];
+      delete RUNTIME_VID[current + '-' + slot];
+      RUNTIME_TXT[current + '-' + slot] = text;
+      saveDepthStore(); renderSlide();
+    }
   }
   closeTextEditor();
 });
@@ -1863,7 +1937,7 @@ document.getElementById('textPop').addEventListener('click', function(e){ if (e.
    text — the split is display-only, re-derived on every render, and a
    text edited back to fitting length drops its continuation. */
 function openDepthAt(boardIdx, layerIdx){
-  DEPTH_BOARD = boardIdx; DEPTH_IDX = layerIdx;
+  DEPTH_BOARD = boardIdx; DEPTH_IDX = layerIdx; THIRD_LVL = [1, 1, 1];
   document.getElementById('depthN').querySelector('img').src = EMBED.ball;
   renderDepth();
   document.getElementById('depthView').classList.add('cover-full');
@@ -1937,7 +2011,7 @@ function depthLayers(boardIdx){
   return depthSteps(boardIdx).concat(BEHIND[boardIdx] || []);
 }
 function openDepth(boardIdx){
-  DEPTH_BOARD = boardIdx; DEPTH_IDX = 0;
+  DEPTH_BOARD = boardIdx; DEPTH_IDX = 0; THIRD_LVL = [1, 1, 1];
   document.getElementById('depthN').querySelector('img').src = EMBED.ball;
   renderDepth();
   document.getElementById('depthView').classList.add('cover-full');
@@ -1987,8 +2061,201 @@ function depthSteps(boardIdx){
   });
   return steps;
 }
+
+/* FIX2B — PER-THIRD INDEPENDENT LEVELS + DEPTH SWAP (2026-11-24).
+   THIRD_LVL[i] is third i's own level 1-2-3; a whole-board step change
+   resets all three to 1 (see setDepthStep / openDepth / openDepthAt).
+   DEPTH_SWAP is keyed board-step-third: the swap belongs to the slot the
+   owner sees on that step, so going back a step and forward again finds
+   it where it was left. DEPTH_FULL holds the full text of each text third
+   for the fit-first split; DEPTH_CONT holds the split-off remainders.
+   STORE: localStorage, key below — the only store this static build has.
+   It holds depth swaps AND the front boards' RUNTIME_* + BEHIND, saved on
+   every swap/edit and loaded before the first render. A swap survives a
+   reload in the same browser; it does not travel to another browser (no
+   server backend in this static build). */
+var THIRD_LVL = [1, 1, 1];
+var DEPTH_SWAP = {};
+var DEPTH_FULL = {};
+var DEPTH_CONT = {};
+var DEPTH_STORE_KEY = 'naya-innovations-fix2-v1';
+function saveDepthStore(){
+  try { localStorage.setItem(DEPTH_STORE_KEY, JSON.stringify({depth: DEPTH_SWAP, img: RUNTIME_IMG, vid: RUNTIME_VID, txt: RUNTIME_TXT, behind: BEHIND})); } catch (e) {}
+}
+function loadDepthStore(){
+  try {
+    var raw = localStorage.getItem(DEPTH_STORE_KEY);
+    if (!raw) return;
+    var o = JSON.parse(raw);
+    if (o && typeof o === 'object'){
+      if (o.depth) DEPTH_SWAP = o.depth;
+      if (o.img) RUNTIME_IMG = o.img;
+      if (o.vid) RUNTIME_VID = o.vid;
+      if (o.txt) RUNTIME_TXT = o.txt;
+      if (o.behind) BEHIND = o.behind;
+    }
+  } catch (e) {}
+}
+function firstSentence(t){
+  var s = String(t || '').trim();
+  var m = s.match(/^[^.!?]+[.!?]/);
+  if (m) return m[0];
+  return s.slice(0, 120).replace(/\s+\S*$/, '') + '…';
+}
+function deeperLine(board, sec, noDeeper){
+  var g = GROUPS[board];
+  if (!noDeeper && sec !== undefined && sec !== null && sec + 1 < g.d.length) return firstSentence(g.d[sec + 1][1]);
+  return 'Tap the red N to go on to the next innovation.';
+}
+function setDepthStep(idx){ DEPTH_IDX = idx; THIRD_LVL = [1, 1, 1]; renderDepth(); }
+function depthSwapKey(third){ return DEPTH_BOARD + '-' + DEPTH_IDX + '-' + third; }
+function depthThirdsFor(boardIdx, L){
+  var g = GROUPS[boardIdx];
+  function depthImg(k){ var im = DEPTH_IMGS[boardIdx] || []; return (k >= 0 && k < im.length) ? im[k] : null; }
+  function frontImg(){ return EMBED.slides[g.img]; }
+  function imgD(src, label, near){ return {kind: 'img', src: src, label: label, near: near}; }
+  function txtD(sec){
+    sec = Math.max(0, Math.min(sec, g.d.length - 1));
+    return {kind: 'text', head: g.d[sec][0], txt: g.d[sec][1], sec: sec};
+  }
+  function imgLabel(k){ return g.t + ' · picture ' + (k + 1) + ' of ' + (DEPTH_IMGS[boardIdx] || []).length; }
+  if (L.kind === 'dtext'){
+    var sec = g.d[L.sec];
+    var near = firstSentence(sec[1]);
+    return [imgD(depthImg(L.sec - 1) || frontImg(), (depthImg(L.sec - 1) ? imgLabel(L.sec - 1) : g.t + ' · front board'), near),
+            txtD(L.sec),
+            imgD(depthImg(L.sec) || frontImg(), (depthImg(L.sec) ? imgLabel(L.sec) : g.t + ' · front board'), near)];
+  } else if (L.kind === 'dimg'){
+    var lt = g.d[L.slot], rtSec = (g.d[L.slot + 1] ? L.slot + 1 : L.slot - 1);
+    return [txtD(L.slot), imgD(depthImg(L.slot), imgLabel(L.slot), firstSentence(lt[1])), txtD(rtSec)];
+  } else if (L.kind === 'img'){
+    return [txtD(0), imgD(L.src, g.t + ' · behind the board', firstSentence(g.d[0][1])), txtD(1)];
+  } else if (L.kind === 'video'){
+    return [txtD(0), {kind: 'video', src: L.src, label: 'Video · behind the board', near: firstSentence(g.d[0][1])}, txtD(1)];
+  } else if (L.kind === 'text'){
+    return [imgD(frontImg(), g.t + ' · front board', firstSentence(L.text)),
+            {kind: 'text', head: (L.cont ? 'Continued' : g.t), txt: L.text, sec: 0, noDeeper: !!L.cont},
+            imgD(depthImg(0) || frontImg(), (depthImg(0) ? imgLabel(0) : g.t + ' · front board'), firstSentence(L.text))];
+  }
+  return [txtD(0), imgD(frontImg(), g.t + ' · front board', ''), txtD(1)];
+}
+function applyDepthSwap(d, i){
+  var sw = DEPTH_SWAP[depthSwapKey(i)];
+  if (!sw) return d;
+  if (sw.kind === 'img') return {kind: 'img', src: sw.src, label: (d.label || GROUPS[DEPTH_BOARD].t) + ' · swapped', near: d.near || ''};
+  if (sw.kind === 'video') return {kind: 'video', src: sw.src, label: 'Video', near: d.near || ''};
+  return {kind: 'text', head: d.head || GROUPS[DEPTH_BOARD].t, txt: sw.text, sec: (d.sec !== undefined ? d.sec : 0), noDeeper: d.noDeeper};
+}
+function thirdChrome(i, lvl){
+  return '<button class="third-lvl" type="button" data-third="' + i + '" aria-label="Third ' + (i + 1) + ', level ' + lvl + ' of 3 — tap to go back one level">‹ L' + lvl + '</button>'
+    + '<button class="swap-btn third-tool" type="button" data-slot="D' + i + '" aria-label="Change this slot — text, image or video">' + "<svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\" fill=\"none\" stroke=\"#fff\" stroke-width=\"2\" stroke-linecap=\"round\"><circle cx=\"12\" cy=\"12\" r=\"3.2\"/><path d=\"M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5 5l1.8 1.8M17.2 17.2L19 19M19 5l-1.8 1.8M6.8 17.2L5 19\"/></svg>" + '</button>';
+}
+function thirdPanelHTML(d, lvl, i){
+  var chrome = thirdChrome(i, lvl);
+  if (d.kind === 'text'){
+    var shown = d.txt, deeper = '';
+    if (lvl === 1){ shown = firstSentence(d.txt); }
+    else if (lvl === 3){ deeper = '<p class="third-deeper">Deeper — ' + escTx(deeperLine(DEPTH_BOARD, d.sec, d.noDeeper)) + '</p>'; }
+    return '<div class="ib-layer lvl' + lvl + '" data-third="' + i + '"><div class="ib-layer-body">' + chrome
+      + '<div class="b-script">' + escTx(d.head) + '</div><p>' + escTx(shown) + '</p>' + deeper + '</div></div>';
+  }
+  if (d.kind === 'video'){
+    var cap = lvl >= 2 ? '<div class="third-cap">Video — plays right here</div>' : '';
+    var deep = lvl >= 3 ? '<div class="third-cap third-deeper">Deeper — ' + escTx(d.near || '') + '</div>' : '';
+    return '<div class="ib-layer ib-img lvl' + lvl + '" data-third="' + i + '"><div class="ib-layer-body">' + chrome
+      + '<div class="ib-vid third-vid">' + vidHTML(d.src) + '</div>' + cap + deep + '</div></div>';
+  }
+  var cap2 = lvl >= 2 ? '<div class="third-cap">' + escTx(d.label || '') + '</div>' : '';
+  var deep2 = lvl >= 3 ? '<div class="third-cap third-deeper">Deeper — ' + escTx(d.near || '') + '</div>' : '';
+  return '<div class="ib-layer ib-img lvl' + lvl + '" data-third="' + i + '"><div class="ib-layer-body">' + chrome
+    + '<img class="ib-img-el" src="' + d.src + '" alt="" />' + cap2 + deep2 + '</div></div>';
+}
+/* OVERFLOW-BEHIND, DEPTH TWIN OF fitPanels (front): after every depth
+   render, a level-2/3 text third longer than its panel is fit first (the
+   longest word-prefix that fits) and the rest goes on a continuation
+   layer behind the N with a "…more behind the N →" marker — never scroll,
+   never clip. Level 1 is the first sentence only, so it never splits.
+   DEPTH_SWAP keeps the FULL text; the split is display-only and is
+   re-derived on every render, so editing back to a fitting length drops
+   the continuation. */
+function fitDepthText(){
+  var panels = document.querySelectorAll('#depthBody .depth-thirds .ib-layer');
+  panels.forEach(function(panel){
+    var b = panel.querySelector('.ib-layer-body');
+    if (!b) return;
+    var p = b.querySelector('p');
+    if (!p) return;
+    var i = parseInt(panel.getAttribute('data-third'), 10);
+    var lvl = THIRD_LVL[i] || 1;
+    if (lvl === 1) return;
+    var key = depthSwapKey(i);
+    var full = DEPTH_FULL[key];
+    if (full === undefined) full = p.textContent;
+    var marker = b.querySelector('.more-behind');
+    p.textContent = full;
+    if (marker) marker.remove();
+    marker = null;
+    if (b.scrollHeight <= b.clientHeight + 1){
+      /* FIX2E: never remove the cont layer currently being viewed — it IS
+         this board. Only drop the continuation when this third's text
+         fits on a DIFFERENT layer. */
+      var curLayer = depthLayers(DEPTH_BOARD)[DEPTH_IDX];
+      var viewingThisCont = !!(curLayer && curLayer.kind === 'text' && curLayer.cont === 'D' + i);
+      if (!viewingThisCont && DEPTH_CONT[key] !== undefined){
+        delete DEPTH_CONT[key];
+        BEHIND[DEPTH_BOARD] = (BEHIND[DEPTH_BOARD] || []).filter(function(L2){ return L2.cont !== 'D' + i; });
+      }
+      return;
+    }
+    var words = String(full).split(/\s+/);
+    var lo = 0, hi = words.length, best = 0;
+    while (lo <= hi){
+      var mid = Math.floor((lo + hi) / 2);
+      p.textContent = words.slice(0, mid).join(' ');
+      if (b.scrollHeight <= b.clientHeight + 1){ best = mid; lo = mid + 1; } else hi = mid - 1;
+    }
+    if (best < 1) best = 1;
+    var rest = words.slice(best).join(' ');
+    if (!rest){ p.textContent = full; return; }
+    p.textContent = words.slice(0, best).join(' ');
+    marker = document.createElement('button');
+    marker.type = 'button';
+    marker.className = 'more-behind';
+    marker.textContent = '… more behind the N →';
+    b.appendChild(marker);
+    if (b.scrollHeight > b.clientHeight + 1){
+      while (best > 1 && b.scrollHeight > b.clientHeight + 1){
+        best--;
+        p.textContent = words.slice(0, best).join(' ');
+        rest = words.slice(best).join(' ');
+      }
+      if (!rest){ marker.remove(); p.textContent = full; return; }
+    }
+    DEPTH_CONT[key] = rest;
+    BEHIND[DEPTH_BOARD] = (BEHIND[DEPTH_BOARD] || []).filter(function(L2){ return L2.cont !== 'D' + i; });
+    BEHIND[DEPTH_BOARD].push({ kind: 'text', text: rest, cont: 'D' + i });
+    marker.setAttribute('data-layer', String(depthSteps(DEPTH_BOARD).length + BEHIND[DEPTH_BOARD].length - 1));
+    var stepEl2 = document.getElementById('depthStep');
+    if (stepEl2) stepEl2.textContent = (DEPTH_IDX + 1) + ' of ' + depthLayers(DEPTH_BOARD).length;
+  });
+}
+function openDepthTextEditor(pe, third){
+  var key = depthSwapKey(third);
+  var cur = DEPTH_FULL[key];
+  if (cur === undefined){
+    var dd = applyDepthSwap(depthThirdsFor(DEPTH_BOARD, depthLayers(DEPTH_BOARD)[DEPTH_IDX])[third], third);
+    cur = (dd && dd.kind === 'text') ? dd.txt : '';
+  }
+  TEXTEDIT.slot = 'D' + third; TEXTEDIT.el = pe; TEXTEDIT.depth = true;
+  document.getElementById('textEdit').value = cur;
+  document.getElementById('textPop').hidden = false;
+  document.getElementById('textEdit').focus();
+}
 function renderDepth(){
   var layers = depthLayers(DEPTH_BOARD);
+  /* FIX2E: the stack can shrink under the viewed index (a continuation
+     layer dropping out) — clamp, never read past the end. */
+  if (DEPTH_IDX >= layers.length) DEPTH_IDX = Math.max(0, layers.length - 1);
   var L = layers[DEPTH_IDX];
   var g = GROUPS[DEPTH_BOARD];
   var title = document.getElementById('depthTitle');
@@ -2002,31 +2269,24 @@ function renderDepth(){
      the front board's own thirds, same formatting — image · text · image on
      text layers, text · image · text on image layers. The old 200px side
      rails are retired: both sides hide and all three thirds render inside
-     #depthBody. No DRAFT anywhere (title is the chapter title, plain). */
+     #depthBody. No working-text marker anywhere (title is the chapter title, plain). */
   sideL.innerHTML = ''; sideL.hidden = true;
   sideR.innerHTML = ''; sideR.hidden = true;
   function imgPanel(src){ return '<div class="ib-layer ib-img"><div class="ib-layer-body"><img class="ib-img-el" src="' + src + '" alt="" /></div></div>'; }
   function textPanel(head, txt){ return '<div class="ib-layer"><div class="ib-layer-body"><div class="b-script">' + escTx(head) + '</div><p>' + escTx(txt) + '</p></div></div>'; }
   function frontImg(){ return EMBED.slides[g.img]; }
   function depthImg(k){ var im = DEPTH_IMGS[DEPTH_BOARD] || []; return (k >= 0 && k < im.length) ? im[k] : null; }
-  var html = '';
-  if (L.kind === 'dtext'){
-    var sec = g.d[L.sec];
-    html = imgPanel(depthImg(L.sec - 1) || frontImg()) + textPanel(sec[0], sec[1]) + imgPanel(depthImg(L.sec) || frontImg());
-  } else if (L.kind === 'dimg'){
-    var lt = g.d[L.slot], rt = g.d[L.slot + 1] || g.d[L.slot - 1];
-    html = textPanel(lt[0], lt[1]) + imgPanel(depthImg(L.slot)) + textPanel(rt[0], rt[1]);
-  } else if (L.kind === 'img'){
-    title.textContent = g.t + ' — behind the board';
-    html = textPanel(g.d[0][0], g.d[0][1]) + imgPanel(L.src) + textPanel(g.d[1][0], g.d[1][1]);
-  } else if (L.kind === 'video'){
-    title.textContent = g.t + ' — behind the board';
-    html = textPanel(g.d[0][0], g.d[0][1]) + '<div class="ib-layer ib-img"><div class="ib-layer-body"><div class="ib-vid">' + vidHTML(L.src) + '</div></div></div>' + textPanel(g.d[1][0], g.d[1][1]);
-  } else if (L.kind === 'text'){
-    title.textContent = g.t + (L.cont ? ' — continued' : ' — behind the board');
-    html = imgPanel(frontImg()) + textPanel(L.cont ? 'Continued' : g.t, L.text) + imgPanel(depthImg(0) || frontImg());
-  }
+  /* FIX2B: the three thirds render from descriptors, each at its OWN
+     level (THIRD_LVL[i]) with its own swap applied — the whole-board
+     img/text/img pattern above is superseded. Titles for behind layers
+     are kept exactly as before. */
+  if (L.kind === 'img' || L.kind === 'video') title.textContent = g.t + ' — behind the board';
+  else if (L.kind === 'text') title.textContent = g.t + (L.cont ? ' — continued' : ' — behind the board');
+  var thirds = depthThirdsFor(DEPTH_BOARD, L).map(function(d, i){ return applyDepthSwap(d, i); });
+  thirds.forEach(function(d, i){ if (d.kind === 'text') DEPTH_FULL[depthSwapKey(i)] = d.txt; });
+  var html = thirds.map(function(d, i){ return thirdPanelHTML(d, THIRD_LVL[i] || 1, i); }).join('');
   body.innerHTML = '<div class="depth-thirds">' + html + '</div>';
+  fitDepthText();
   var card = document.querySelector('#depthView .innov-pop-card');
   if (card) card.scrollTop = 0;
 }
@@ -2041,18 +2301,46 @@ function advanceBoard(){
 }
 document.getElementById('depthN').addEventListener('click', function(){
   var layers = depthLayers(DEPTH_BOARD);
-  if (DEPTH_IDX < layers.length - 1){ DEPTH_IDX++; renderDepth(); }
+  if (DEPTH_IDX < layers.length - 1){ setDepthStep(DEPTH_IDX + 1); }
   else advanceBoard();
 });
 document.getElementById('depthBackTop').addEventListener('click', function(){
   /* INDEPENDENT BACK (2026-11-24): back on THIS board moves only this board
      one level back — never all boards, never another chapter. At level 1 it
      closes to this chapter's front. */
-  if (DEPTH_IDX > 0){ DEPTH_IDX--; renderDepth(); }
+  if (DEPTH_IDX > 0){ setDepthStep(DEPTH_IDX - 1); }
   else closeDepth();
 });
 document.getElementById('depthClose').addEventListener('click', closeDepth);
 document.getElementById('depthView').addEventListener('click', function(e){ if (e.target === this) closeDepth(); });
+/* FIX2B — PER-THIRD TAPS (2026-11-24): inside the depth thirds, a tap
+   belongs to ONE third only. Tap the panel (not a button, link, video or
+   the paragraph text) = that third one level deeper (1->2->3->1). Tap the
+   paragraph text = edit that text in place. Tap the '< L' badge = that
+   third one level back. Tap the tiny swap button = the swap popup for
+   that third (text, image or video). Tap "…more behind the N →" = open
+   the continuation layer. None of these ever moves another third or the
+   whole board — the whole-board step still moves only on the red N, the
+   global Back, or a tap on the card outside the thirds. */
+document.getElementById('depthBody').addEventListener('click', function(e){
+  var t = e.target;
+  if (!t || !t.closest) return;
+  var panel = t.closest('.depth-thirds .ib-layer');
+  if (!panel) return;
+  var i = parseInt(panel.getAttribute('data-third'), 10);
+  var lv = t.closest('.third-lvl');
+  if (lv){ if (THIRD_LVL[i] > 1){ THIRD_LVL[i]--; renderDepth(); } return; }
+  var sw = t.closest('.swap-btn');
+  if (sw){ openSwap(sw.getAttribute('data-slot'), 'swap'); return; }
+  var mb = t.closest('.more-behind');
+  if (mb){ openDepthAt(DEPTH_BOARD, parseInt(mb.getAttribute('data-layer'), 10)); return; }
+  if (t.closest('button, a, iframe, video, .ib-vid, input, select, textarea')) return;
+  var pe = t.closest('.ib-layer-body p');
+  if (pe){ openDepthTextEditor(pe, i); return; }
+  THIRD_LVL[i] = (THIRD_LVL[i] % 3) + 1;
+  renderDepth();
+});
+
 /* ENDS THAT WORK (2026-11-23 full-build round): a ready depth-image frame is a working end — tap it and you go on to the next chapter (portal on the last board). */
 document.getElementById('depthStage').addEventListener('click', function(e){ var b = e.target && e.target.closest ? e.target.closest('.depth-img-slot--ready') : null; if (!b) return; closeDepth(); if (current < TOTAL - 1){ current++; renderSlide(); show('slide'); } else { goToPortal(); } });
 /* TAP THE BOARD = NEXT LAYER (chapter-depth full-board round, 2026-11-24 —
@@ -2068,8 +2356,9 @@ document.querySelector('#depthView .innov-pop-card').addEventListener('click', f
   var t = e.target;
   if (!t || !t.closest) return;
   if (t.closest('button, a, iframe, video, .ib-vid, input, select, textarea, .depth-img-slot--ready')) return;
+  if (t.closest('.depth-thirds')) return;
   var layers = depthLayers(DEPTH_BOARD);
-  if (DEPTH_IDX < layers.length - 1){ DEPTH_IDX++; renderDepth(); }
+  if (DEPTH_IDX < layers.length - 1){ setDepthStep(DEPTH_IDX + 1); }
   else advanceBoard();
 });
 document.addEventListener('click', function(e){
@@ -2093,6 +2382,7 @@ document.addEventListener('click', function(e){
 /* EYE-VERDICT FIX (2026-11-24, Shawn's flow ruling): LEVEL 1 IS THE LANDING.
    There is no separate cover in front of level 1 — the page lands on the
    first innovation's front board (chapter 1, image · text · image). */
+loadDepthStore();
 current = 0; renderSlide(); show('slide');
 </script>
 
