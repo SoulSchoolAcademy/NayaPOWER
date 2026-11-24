@@ -2535,6 +2535,40 @@ schRow.appendChild(dtWrap);
 /* ===== MM-TABS D3 RECOVERY pass 4 (probe-tabs3e: phone mail empty 592-664 vs bar 661,
    3px over). Buys 4px: list top padding 12px -> 8px. */
 .mail-stage .ml-list{padding-top:8px;}
+/* ===== FIX5 (2026-11-24) — D3 clearances + send-error pad. Spacing/layout only;
+   no text, no color, no size change to any glyph or label. ===== */
+/* (FIX5-1) Phone chat: the steps were a wrapped two-row block (92px) and the PEOPLE
+   note's line 2 sat 40px under the bar (646-701 vs bar 661, Firefox). The steps are
+   now ONE horizontal scroll row — the page's own rail pattern (.nm-space-pick /
+   .ml-filters already scroll-row at <=640px) — so all three steps stay, none hidden,
+   none removed; step 3 peeks as the scroll affordance, one swipe away. Saves ~48px;
+   step chips lose 2px vertical padding on phone only (8->6px, saves ~4px).
+   Expected: note ~594-649 vs bar 661, clears ~12px. */
+@media (max-width:640px){
+  .nm-steps{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;scrollbar-width:none;}
+  .nm-steps::-webkit-scrollbar{display:none;}
+  .nm-step{flex:none;padding-top:6px;padding-bottom:6px;}
+  /* (FIX5-1b) Send-error board tail: after Send the 236px board's bottom sat at 769
+     vs bar 661. +112px bottom pad provides the scroll room; nmSendCurrent scrolls by
+     exactly the overlap (+8px) after the board renders, since the scroll position is
+     set by the person-tap focus scroll, not by max scroll. */
+  .nm-msg{padding-bottom:208px;}
+  /* (FIX5-2b) Phone mail: the list empty text cleared by 1px (588-660 vs bar 661).
+     List gap 8->4 (two gaps, -8px) + list top pad 8->4 (-4px) + empty top pad 12->0
+     (-12px) buys ~24px. */
+  .mail-stage .ml-list{gap:4px;padding-top:4px;}
+  .mail-stage .ml-empty{padding-top:0;}
+}
+/* (FIX5-2) Desktop mail: SPACES QA name sat 697-718 vs bar 701 (17px under). The rail
+   col widens 224->244px so SMART LISTS fits one line (-21px); rail gap 4->2 (-14px
+   across 7 gaps), QA gap 6->4 (-4px), QA label margin-bottom 4->2 (-2px).
+   Expected: SPACES name ~677 vs bar 701, clears ~24px. Desktop only (>=761px). */
+@media (min-width:761px){
+  .mail-stage .ml-panes{grid-template-columns:244px 340px 1fr;}
+  .mail-stage .ml-rail{gap:2px;}
+  .ml-qa{gap:4px;}
+  .ml-qa-label{margin-bottom:2px;}
+}
 /* ===== END MM-TABS ADAPTER CSS ===== */
 </style>
 <script>
@@ -2922,7 +2956,15 @@ function nmSendCurrent(){
   if(sendBtn) sendBtn.disabled = true;
   sendMessage(kind, alias, '', body, NM_ME).then(function(res){
     if(sendBtn) sendBtn.disabled = false;
-    if(statusEl) statusEl.innerHTML = statusHtml(res);
+    if(statusEl){ statusEl.innerHTML = statusHtml(res);
+      /* FIX5-1b: the result board is ~236px tall and its tail sat under the fixed bar
+         (bottom 769 vs bar 669) because the scroll position is set by the person-tap
+         focus scroll, not by max scroll — bottom padding alone cannot move it. Bring
+         the whole board above the bar by exactly the overlap + 8px; no scroll when
+         it already clears (desktop). The 208px .nm-msg pad provides the room. */
+      try { var board = statusEl.querySelector('.nm-status'); var bar = document.querySelector('.nm-onebar');
+        if(board && bar){ var need = Math.ceil(board.getBoundingClientRect().bottom - (bar.getBoundingClientRect().top - 8));
+          if(need > 0) window.scrollBy(0, need); } } catch(e){} }
     if(res.ok){ bodyEl.value = ''; nmLoadDMs().then(function(){ nmRefreshMsgView(); }); }
   });
 }
@@ -3507,7 +3549,7 @@ return {
     var pills = Array.prototype.slice.call(bar.querySelectorAll('.smart-tab:not(.add-tab)'));
     var used = {};
     order.forEach(function(t){
-      var prefix = t.cluster ? 'Category · ' : (t.topic ? 'Topic · ' : (t.kind === 'human' ? 'Your tab · ' : ''));
+      var prefix = t.kind === 'human' ? 'Your tab · ' : (t.cluster ? 'Category · ' : (t.topic ? 'Topic · ' : '')); /* FIX5-3: human tabs carry a topic (the editor defaults topic to the label), so topic-first computed 'Topic · ' while the harvested snPill titles human tabs 'Your tab · …' — the match failed, the human pill never moved, and heart/star could never sort first. Kind first; harvested bytes untouched. */
       var p = null;
       for(var i = 0; i < pills.length; i++){
         if(used[i]) continue;
