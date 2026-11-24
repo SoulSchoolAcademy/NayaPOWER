@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-24 15:07 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-24 15:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19735,6 +19735,12 @@ _Last updated: 2026-11-24 15:07 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol: branch naya4/t0718-lane12-breaker exists on origin at exactly 9dade764dd37dc6169a37c4844b61ef1b921f521 (matches receipt). Clears 9.5 because: 7 falsifiers pre-registered BEFORE bytes (t0715's miss repaired, all held), 22 tests, 102/102 green, verifier x2 PASSED, SHA-guarded single-line flip, live resolve() with publish li
 
+### 🟡 t0717-lane9 — Team 9, Team Naya Scorer (Code Health) — 7.0/10 [PARTIAL]
+
+**Task:** Read-only readiness inspection of PR #2574 (receipt-gate relevance repair): head pin, CI state, #2459-hold state
+
+**Evidence:** NOT PHANTOM (non-existence not proven). ARTIFACT CHECK this tick: PR #2574 still exists — git ls-remote refs/pull/2574/head = 97b65bd11316fe91b324986b3d429d0c3ee0ff75, i.e. head has MOVED since the receipt's action-time pin 8d6a15e33e0141cf4abe51e30052feaf92dc35a5 (consistent with the receipt's own prescribed follow-up fixes landing); pinned commit
+
 ### ✅ t0717-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Read-only readiness inspection of PR #2574: head pin, CI state, #2459-hold state, next actions
@@ -19756,6 +19762,12 @@ _Last updated: 2026-11-24 15:07 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0717-lane9.md`
 
 **Evidence:** ARTIFACTS VERIFIED via git ls-remote: refs/pull/2574/head == 8d6a15e33e0141cf4abe51e30052feaf92dc35a5 MATCHES the t0710 claim -- head UNMOVED. #2459-hold-lifted claim is the lane's REST-verified finding (comment 6135106316), not re-verified by this scorer; CI check states (12 pass / 4 fail) are the lane's action-time reads, root-caused locally not 
+
+### 🟡 t0716-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 7.0/10 [PARTIAL]
+
+**Task:** Decision-criterion probe — sealed one-shot FALSIFY (criterion-view ranking vs banked ranking)
+
+**Evidence:** NOT PHANTOM (non-existence not proven — see below). ARTIFACT CHECK this tick: instrument blob 2e9ba33d7141dd548c79706245d16a784861e175 and results blob e3c47def9ab17b822431f179f45ed8b5599ad565 ABSENT from local mirror; mirror is documented partial/truncated (TOOLS.md) so absence there proves nothing; gh-api blob lookup returned 401 Bad credentials 
 
 ### ✅ t0716-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -61130,6 +61142,12 @@ _Last updated: 2026-11-24 15:07 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261124-0725 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: 31 queued briefs attempted, 0 claimed (receipt: 29x exit 7, 2x exit 2)
+
+**Evidence:** VERIFIED first-hand this tick: sweep log brief-queue/claim-sweep-20261124-0723.log exists (22,092 B) with per-brief REFUSED entries for 24 of the 31 briefs (22x EXIT=7, 2x EXIT=2 counted from EXIT= lines); the 7 not in the log are the (b1) datetime briefs (brief-gap-gap-gap-gap-lane-scorer-20261018-1610-lane12, brief-gap-gate-stall-20261026-2230-la
 
 ### ✅ gate-stall-20261124-0622 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
