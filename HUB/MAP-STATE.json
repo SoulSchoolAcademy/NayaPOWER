@@ -1,17 +1,42 @@
 {
  "spec_version": 1,
- "compiled_at": "2026-11-24T00:16:04Z",
+ "compiled_at": "2026-11-24T01:16:17Z",
  "compiled_by": "puzzle-compiler v1",
  "measurements": {
   "supabase": {
    "tables": {
-    "_error": "HTTP 502: error code: 502"
+    "nayanet_intelligent_blocks": {
+     "rows": 209,
+     "measured": true
+    },
+    "smart_note_events": {
+     "rows": 52,
+     "measured": true
+    },
+    "smart_note_receipts": {
+     "rows": 47,
+     "measured": true
+    },
+    "smart_note_artifacts": {
+     "rows": 188,
+     "measured": true
+    },
+    "nayanet_smart_ledger": {
+     "rows": 437,
+     "measured": true
+    },
+    "members": {
+     "rows": 7502,
+     "measured": true
+    }
    },
    "probes": {
     "reports_table": {
-     "exists": null,
-     "matches": [],
-     "error": "HTTP 502: error code: 502"
+     "exists": true,
+     "matches": [
+      "hub_daily_intelligence_reports",
+      "hub_daily_intelligence_reports_backup_20261022"
+     ]
     },
     "mail_table": {
      "exists": true,
@@ -179,9 +204,9 @@
   }
  },
  "journey": [
-  "missing",
   "working",
-  "missing",
+  "working",
+  "working",
   "missing",
   "missing",
   "missing",
@@ -244,7 +269,7 @@
   }
  ],
  "unknowns": {
-  "reports_table": "unmeasured",
+  "reports_table": "resolved: exists",
   "mail_table": "resolved: exists",
   "spaces_table": "resolved: exists",
   "projection_landed": "open: no IB file in repo",
@@ -252,7 +277,8 @@
   "capture_inbox": "open: no capture_inbox table \u2014 build order #1"
  },
  "changes_since_last": [
-  "journey step 1: working \u2192 missing",
-  "journey step 3: working \u2192 missing"
+  "journey step 1: missing \u2192 working",
+  "journey step 3: missing \u2192 working",
+  "unknown resolved: reports_table \u2192 resolved: exists"
  ]
 }
