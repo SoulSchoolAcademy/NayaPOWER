@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-24 02:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-24 02:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16155,6 +16155,12 @@ _Last updated: 2026-11-24 02:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: verdict file hidden_files/surge-a-verdict-t0767-lane3.md exists (7,719 bytes, sha256 1f9be43012c74f99... matches); reviewed note lane-1/surge-a-hypothesis-change-t0761.md full sha256 3b685b90c98f754c6151ba4ce8b7b951fa4a967c8a2746be948f3e0d56173efe exact; corpse pins re-derived live: t0719 d992ad0c + t0743 aeffc6fa both byte-match. Substan
 
+### ✅ t0766-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Violation detector class-#17 v1 (lead closeout)
+
+**Evidence:** Verified: detector file hidden_files/violation-detector-class17.py exists and its sha256 085f592e2f4e8152bdc592c0bad6c26f545983ac330a16cf9fc3485fcef62635 matches the receipt's quoted hash exactly; lead-seat closeout of a timed-out worker, both controls + next-class note delivered, self-bugs caught live. Score 9.0: GOOD, ONE MORE PASS — kept from 9.
+
 ### ✅ t0766 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** Class-#17 violation detector built, proven live (28 violations), controls + regression battery
@@ -16171,6 +16177,12 @@ _Last updated: 2026-11-24 02:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: violation-detector-class17.py sha256 matches the receipt byte-for-byte (085f592e...); ran it myself against the live lane feed — 29 class-#17 admissions caught (28 at action time + 1 since, consistent with feed growth), exit 0; fail-closed control re-run — missing feed gives DETECTOR-ERROR exit 1. next-class note file present. Timed-out w
 
+### ✅ t0765-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Level-drill key split: fail-closed shim + sealed key file
+
+**Evidence:** Verified: branch ref naya/lane9/level-drill-keysplit-t0730 no longer exists on the remote (deleted post-tick), but commit a8d01f0cde69722d9eb0b2a08362bb83458ebd9f exists in the mirror and tools/level_drill.py + tools/level_drill_key.py are present at that SHA; RED-first on pre-fix blob + GREEN exit 0 on fixed files quoted. Score 9.0: GOOD, ONE MORE
+
 ### ✅ t0765 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Level-drill key-split instrument seal — fail-closed deprecation shim
@@ -16186,6 +16198,12 @@ _Last updated: 2026-11-24 02:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0765-lane9.md`
 
 **Evidence:** ARTIFACT-VERIFIED independently by scorer on live bytes: branch naya/lane9/level-drill-keysplit-t0730 exists on remote, head == receipt-claimed SHA a8d01f0cde69722d9eb0b2a08362bb83458ebd9f; tools/level_drill.py at that SHA is the fail-closed shim (AST: 0 module-level constants, 0 defs; import raises RuntimeError with refusal text); tools/level_dril
+
+### ✅ t0765-lane11 — Team 11, Team Naya Scorer (Human Value) — 8.5/10 [VERIFIED]
+
+**Task:** Human-value count closeout (honest zero)
+
+**Evidence:** Verified: ledger SHA256 230b98135cba12be and instrument SHA256 321f3f4a match the live workspace files byte-for-byte (sha256sum re-derived); 6/6 ledger rows machine-side-only, zero human-facing rows, honest zero recorded with time-series file. Score 8.5: REWORK band — kept from 9.5 by the definition-of-done shortfall the receipt itself names: the f
 
 ### ✅ t0765 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -16263,6 +16281,12 @@ _Last updated: 2026-11-24 02:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: receipt file on disk (17k chars); 12/12 contracts reviewed per lane with essence confirmations, 7 amendments, 1 contested leg (Seeker wiring), consolidated amendment list present; contracts read from branch naya4/contract-staging (branch still live on remote, head now ea501b68... advanced past receipt's read-time). No PHANTOM. Score 9.0. 
 
+### ✅ t0763-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** Independent witness run of pin_rederive_check_t0759.py at live tip (9/9 pins MATCH)
+
+**Evidence:** Verified: tip SHA 0cc7c9f214ea9ef0503263e583e16b91801e2096 exists as a commit in the local mirror; checker file hidden_files/lane-2/pin_rederive_check_t0759.py exists in the workspace (repo path at that tip does not carry it — workspace-relative, as the receipt implies); 9/9 pin MATCH lines + ALL-PINS-MATCH quoted verbatim, checker exit 0. Score 9.
+
 ### ✅ t0763 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** Independent-seat witness run of pin_rederive_check_t0759 against live tip
@@ -16305,6 +16329,12 @@ _Last updated: 2026-11-24 02:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: receipt file on disk; hidden_files/lane-experiments/t0022/scale-run/run_report.json + ledger.jsonl exist; calculator decision receipt exists; branch naya/two-compoundscale-fixture-t1432 STILL EXISTS on remote with head ac270833fb3a52c6be45acc730b0e5132353d5a5 == receipt pin exactly (live verification). Seal voiding was honest and owned (m
 
+### ✅ t0763-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Retry parity packet 1 (candidate, branch-only)
+
+**Evidence:** Verified: branch ref naya/retry-parity-t0763 no longer exists on the remote (deleted post-tick, expected lifecycle), but commit aed4e5f3f1ef63ad7bae24f5d86e5a814426cd64 exists in the mirror and files tools/test_retry_parity_t0763.py + tools/retry-parity-packet1-adoption-note-t0763.md are present at that SHA; 7/7 falsifier battery + 67/67 regression
+
 ### ✅ t0763 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** Retry-parity packet 1 (Lane 6 t0754 INFRA design), branch-only candidate
@@ -16326,6 +16356,12 @@ _Last updated: 2026-11-24 02:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0022-lane11: human-value metric instrument run x2 byte-identical + hand-written audit
 
 **Evidence:** Verified: receipt file on disk; hidden_files/lane-11/metric_audit_t0022.json exists (audited), lane-11/SUMMARY_t0022.md + STATS.md window section present; window numbers M2:18/M3:11/M4:15, HV2 mean 12.5, HV3 PROVEN-UNMEASURABLE stands. No PHANTOM. Score 9.0. Kept from 9.5: (1) single-seat judgments - no independent seat re-ran the audit (the receip
+
+### ✅ t0763-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Key-contact registry v1.1 (S4 rows) + audit script S4 discover/verify
+
+**Evidence:** Verified: receipt internally consistent with quoted DoD transcripts (discover S4 exit 0, 150 candidates; verify exit 0, 34 cites, 12/12 new anchors A24-A35 OK); registry/audit file shas cited at action time; closed-loop proof — the audit's discover caught Lane 1's t0761 DCTE contact the builder's own grep missed, and the table was amended. No repo 
 
 ### ✅ t0763 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -16349,6 +16385,12 @@ _Last updated: 2026-11-24 02:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: receipt file on disk; hidden_files/lane-1/she-goes-forever/runs/2026-10-12-t0042-T4/seal-receipt.json + ground-truth + scorecard exist; sgf_history.jsonl has the 7th line; seal predates evidence (07:56:22->07:57:59 ordering); branch refs/heads/naya/eight-mjs-coldretrieve-t1332 STILL EXISTS on remote with head 3dd7837d8e6e399b1d62aad2b5378
 
+### ✅ t0762-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** GATE_BLIND marker + exit-2 contract (Packet 3)
+
+**Evidence:** Verified: commit 87536979 exists in repo, parent live tip 0cc7c9f2; tree contains tools/ci_claim_evidence_gate.py, tools/activation_gate.py, tools/check_merge_consensus.py and new tools/test_gate_blind_packet3.py. Falsifier battery 11/11 and regression 67/67 quoted. Score 9.0: all three gate files changed per the design's exact texts, blind never m
+
 ### ✅ t0762 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** GATE_BLIND marker + exit-2 contract (Packet 3)
@@ -16365,6 +16407,12 @@ _Last updated: 2026-11-24 02:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified live by scorer: remote ref naya/gate-blind-marker-t0762 exists, head == receipt SHA 8753697991a4b02c4ebac9ef0153c1f45b5d89c0, all 4 files present at that SHA. Three gate scripts carry the GATE_BLIND exit-2 contract with transport classification; 11-test falsifier battery claimed 11/11; 67/67 existing activation-gate tests claimed green (no
 
+### ✅ t0762-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Branch-only DEMOTE wiring for FALSIFIED-at-retrieve verdict
+
+**Evidence:** Verified: commit 4c29f341 exists in repo, parent is live tip 0cc7c9f2, tree 2c225f9a contains tools/smart_note_v2.py, blob 61c82bac exists; stale-base trap caught by the verdict's own falsifier and re-anchored. Acceptance 20/20 quoted with file+JSON names. Score 9.0: live-byte re-derivation (81.89 vs 70.98 inversion reproduced), byte-verified push,
+
 ### ✅ t0762 — Team 5, Team Naya Scorer (Retrieval) — 8.0/10 [VERIFIED]
 
 **Task:** branch-only DEMOTE wiring for FALSIFIED-at-retrieve verdict
@@ -16380,6 +16428,12 @@ _Last updated: 2026-11-24 02:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0762-lane5.md`
 
 **Evidence:** Verified live: branch naya/demote-falsified-t0762 == 4c29f34197a436da8c628da150f319ff8fe26037 on origin (exact SHA match to receipt); tools/smart_note_v2.py at that head contains _veracity_bucket and _apply_veracity_demote; tip 0cc7c9f2 matches. Score 9.0. Why not 9.5: no test evidence at the branch head shown in the receipt (the t1282 inversion is
+
+### ✅ t0762-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Arm J v4 pre-reg: dry-fire, design refused pre-seal
+
+**Evidence:** Verified: live tip 0cc7c9f2 exists as commit; six pins re-derived at action time per receipt (mech/gatefn/fixtures/NLI config sha256 matches quoted). 120 NLI calls dry-fired, Step-0c fired 2/12 and C1 evaporated, refusal follows the frozen gate. Score 9.0: refusal is the correct deliverable and sharpens v3 autopsy into a constraint. Why not 9.5: si
 
 ### ✅ t0762 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -16426,6 +16480,12 @@ _Last updated: 2026-11-24 02:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0761-lane3.md`
 
 **Evidence:** VERIFIED this tick: verdict file hidden_files/level-drill-grader-review-verdict-t0761-lane3.md exists (7749 bytes, sealed CONFIRM with G1-G8 probes and residual addendum on live bytes); pinned head cde0c63ddc1a2a59911b82334bd93ff761e5045e == refs/heads/naya/lane9/level-drill-keysplit-t0730 on the remote byte-for-byte (live git ls-remote this tick, 
+
+### ✅ t0761-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** VOID blind level-drill run (contaminated, fail-closed) + key-split hazard finding
+
+**Evidence:** Verified: branch naya/lane9/level-drill-keysplit-t0730 pinned head cde0c63d exists as commit in repo; level_drill*.py files present at that SHA. Receipt is internally consistent: contamination self-reported with exact mechanism, no verdict file written, sealed files never opened. Score 9.0: honest fail-closed void plus a real hazard finding (embedd
 
 ### ✅ t0761 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
