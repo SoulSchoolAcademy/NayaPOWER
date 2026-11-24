@@ -80219,6 +80219,42 @@
         "Multiplication",
         "Knowledge"
       ]
+    },
+    {
+      "smart_note_id": "SN-4722",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4722-every-layer-great",
+      "slug": "every-layer-great",
+      "title": "Every Layer Great",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/VISION/SN-4722/IB-SMART-NOTE-20261124-sn4722-every-layer-great.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/VISION/SN-4722/IB-SMART-NOTE-20261124-sn4722-every-layer-great.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/VISION/SN-4722/IB-SMART-NOTE-20261124-sn4722-every-layer-great.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4722-every-layer-great.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "VISION",
+      "topic": "VISION",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T17:15:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "a2286bf4c4d4dc474fad78d4b4ece3a1692734dddb7f3ae1211be8053a305c73",
+      "content_hash": "92c150da55a0f848c0d9ed25e1235a470f99f2b0cda0f3141f841ce9a893da16",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "2abbb68783cf9788df8089a55d18522b539552c6bc75c4db9a05e27cc0aefc1a",
+      "one_line": "One page is going to change the world — everybody's world, on their smartphone, all their data in one secure place — and it can only do that if the whole thing is great: not only good but great, the most elite, ten-star, professional presentation and intelligence at every layer, because it is one ultimate project, not a pile of parts. The Hub is its center — the home, the main page — and from there the flow runs to Personal, Business, or Space, with each area's notifications showing as you move. Mail is one mail that always knows its world: open it from a page and you see that world's mail first. The letter reads centered — her picture in the direct center, the text in a centered column, the orb below. Two working rules guard the standard: use what works and never make it new — if a working version exists, there is no new version; and read everything as a reader, top to bottom, the way he reads it, because mechanical checks do not prove the experience and a page can tick every box and still be broken. The legal pages get the same honor as the pretty ones — done professionally or not at all — and his own words are the base they are checked against, never the other way round. No summaries, no prototypes: we are professionals, and we do it right the first time so he never has to put the right stuff in again and again.",
+      "topics": [
+        "Distillation",
+        "Vision",
+        "Honor",
+        "Craft",
+        "Multiplication"
+      ]
     }
   ],
   "sequence_policy": {
@@ -80229,5 +80265,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "000aa502c326eb18c74fe146fb6d100d506eb3f9e07f5dc2c60621f29d8b4621"
+  "corpus_manifest_hash": "568f8bdf76d3104bd527bbc4cc9c52f08cc5218b4898ca0bb432acfcf79da981"
 }
