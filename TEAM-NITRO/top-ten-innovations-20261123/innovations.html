@@ -803,7 +803,7 @@
 #slideVideo[hidden]{display:none}
 #slideVideo iframe,#slideVideo video{width:100%;height:100%;border:0;border-radius:14px;display:block}
 .slide-boards .ib-layer.ib-img .ib-layer-body{padding:12px 12px 16px}
-.ib-img-el{flex:1;min-height:0;width:100%;object-fit:cover;border-radius:14px;display:block}
+.ib-img-el{flex:1;min-height:0;width:100%;object-fit:contain;background:#07070a;border-radius:14px;display:block}
 .ib-vid{flex:1;min-height:0;width:100%}
 .ib-vid iframe,.ib-vid video{width:100%;height:100%;border:0;border-radius:14px;display:block}
 button.ib-n{background:none;border:0;padding:0;cursor:pointer}
@@ -951,7 +951,7 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
    is untouched. */
 #screen-cover .pm-main.cover-thirds{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-areas:none;column-gap:26px;row-gap:16px;align-items:stretch}
 #screen-cover .pm-cover-img{margin:0;min-width:0;position:relative;border-radius:18px;background:#07070a;box-shadow:0 42px 90px rgba(0,0,0,.78),0 12px 28px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.28),0 0 26px rgba(87,182,255,.22),0 0 54px rgba(139,92,246,.12);overflow:hidden}
-#screen-cover .pm-cover-photo{display:block;width:100%;height:100%;object-fit:cover;object-position:center;border-radius:18px}
+#screen-cover .pm-cover-photo{display:block;width:100%;height:100%;object-fit:contain;object-position:center;background:#07070a;border-radius:18px}
 #screen-cover .pm-cover-ball{object-fit:contain;background:#07070a}
 #screen-cover .pm-cover-text{min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:16px 8px;text-align:center}
 #screen-cover .pm-cover-text .cover-saying{margin:0}
@@ -978,8 +978,8 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
    max-height 84vh, centred over a dim backdrop, the front board visible
    around it). The cover video got the full board first (cover round);
    this round extends the SAME class to chapter depth — no second mechanism,
-   no second overlay, no second class system. The cover opener, openDepth
-   AND openDepthAt all add .cover-full to #depthView and the shared
+   no second overlay, no second class system. openDepth
+   AND openDepthAt add .cover-full to #depthView and the shared
    closeDepth removes it, so every behind-N board opens viewport-filling
    with nothing of the front board visible around it, and every close
    starts the next open clean. The board is viewport-filling at every size
@@ -1003,6 +1003,59 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 #depthView.cover-full #depthBody .ib-vid{flex:1 1 auto;min-height:0;height:auto}
 #depthView.cover-full #depthN:active{transform:scale(.93)}
 </style>
+<style>
+/* EYE-VERDICT FIX (2026-11-24, Shawn's eye) — style block 8, additive only.
+   (a) COVER: the N is a SMALL seal at the bottom of the middle column
+   (40px desktop, 34px phone), never a big image in the middle.
+   (b) COVER FIT-PERFECT on phone: the promax fills the panel and the two
+   image rows share what is left (minmax(0,1fr)) — whole images, nothing
+   below the fold.
+   (c) DEPTH THIRDS: every depth layer is the front board's own three
+   columns (1fr 1fr 1fr, same panels); phone stacks them.
+   (d) TEXT COLUMNS READ WHOLE: the text block centres vertically as a
+   group and the N seals it from directly below — no more lines dropped
+   at the top with a void under them. Image panels keep their pinned
+   bottom N exactly as before. */
+#screen-cover .pm-cover-text .cover-n{width:40px;height:40px;margin-top:auto;margin-left:auto;margin-right:auto;margin-bottom:0}
+#screen-cover .pm-cover-text .cover-n:hover{filter:brightness(1.06) saturate(1.15)}
+#screen-cover .pm-cover-text .cover-n:active{transform:scale(.93);filter:brightness(1.12) saturate(1.2)}
+.depth-thirds{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;align-items:stretch;flex:1;min-height:0}
+.depth-thirds .ib-layer{min-width:0}
+.depth-thirds .ib-layer-body{justify-content:center}
+.depth-thirds .ib-layer.ib-img .ib-layer-body{padding:12px}
+.depth-thirds .ib-img-el{background:#07070a}
+#screen-slide #slideTextCenter .ib-layer-body{justify-content:center}
+#screen-slide #slideTextCenter .ib-n{margin:24px auto 0}
+#screen-slide #slideTextCenter .ib-n:active{transform:scale(.93)}
+#screen-slide .slide-boards .ib-layer:not(.ib-img) .ib-layer-body{justify-content:center}
+#screen-slide .slide-boards .ib-layer:not(.ib-img) .ib-n{position:static;transform:none;margin:24px auto 0}
+#screen-slide .slide-boards .ib-layer:not(.ib-img) .ib-n:active{transform:scale(.93)}
+#screen-slide .slide-boards .ib-layer-body p{font-size:clamp(22px,1.6vw,26px)}
+@media(max-width:900px){
+#screen-cover .promax{flex:1 1 auto;min-height:0}
+#screen-cover .pm-main.cover-thirds{flex:1 1 auto;min-height:0;grid-template-rows:minmax(0,1fr) auto minmax(0,1fr)}
+#screen-cover .pm-main.cover-thirds .pm-cover-img{height:auto;min-height:0}
+#screen-cover .pm-cover-img{min-height:0}
+#screen-cover .pm-cover-text .cover-n{width:34px;height:34px}
+.depth-thirds{grid-template-columns:1fr}
+.depth-thirds .ib-layer.ib-img{min-height:220px}
+}
+</style>
+
+<style>
+/* EYE-VERDICT FIX, PASS 2 (2026-11-24): COVER FIT-PERFECT.
+   The cover's height chain was broken: .panel-body is display:block, so the
+   showcase / promax / grid flex:1s were inert and the grid sized to content
+   (desktop images 94px below the fold; phone right image 612px below, N seal
+   27px below). Making the cover's panel-body a flex column makes the whole
+   chain definite — the grid fills the visible panel exactly, images contain
+   whole inside it, nothing below the fold. */
+#screen-cover .panel-body{display:flex;flex-direction:column}
+#screen-cover .promax{flex:1 1 auto;min-height:0}
+@media(max-width:900px){
+#screen-cover .showcase{flex:1 1 auto;min-height:0}
+}
+</style>
 </head>
 <body>
 <div class="royal-frame" aria-hidden="true"><div class="rf-et top"></div><div class="rf-es left"></div><div class="rf-es right"></div><div class="rf-rim"></div><div class="rf-corner tl"></div><div class="rf-corner tr"></div><div class="rf-corner bl"></div><div class="rf-corner br"></div><div class="rf-n top"></div></div>
@@ -1020,19 +1073,19 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
     </header>
 
     <!-- ======= COVER — the PowerCast PROMAX player ======= -->
-    <section class="screen active" id="screen-cover">
+    <section class="screen" id="screen-cover">
       <div class="panel-body">
         <div class="showcase">
           <section class="promax" id="deck" aria-label="Top Ten Innovations — Naya presents">
             <div class="pm-top"><span class="np-tag">TOP TEN INNOVATIONS</span><span class="deck-status" id="deckStatus">NAYA PRESENTS</span></div>
             <div class="pm-main cover-thirds">
-              <figure class="pm-cover-img" aria-label="The living vault — your words kept safe">
-                <img class="pm-cover-photo" id="coverImgL" alt="The living vault — amethyst and black marble, your words flowing in and light flowing back out" />
+              <figure class="pm-cover-img" aria-label="Sharing wealth — the ninth innovation">
+                <img class="pm-cover-photo" id="coverImgL" alt="Sharing wealth — everyone hired" />
               </figure>
               <div class="pm-cover-text">
                 <p class="cover-saying">&ldquo;Ten innovations. One system. Built for you.&rdquo;</p>
-                <img class="cover-n" id="coverN" alt="The red N — tap to watch Naya's welcome" />
                 <div class="pm-cap"><div class="station">TOP TEN INNOVATIONS</div></div>
+                <img class="cover-n" id="coverN" alt="The red N — tap to go to the next board" />
               </div>
               <figure class="pm-cover-img" aria-label="The red N">
                 <img class="pm-cover-photo pm-cover-ball" id="coverImgR" alt="The red N — a raised glass ball with a gold N" />
@@ -1048,7 +1101,7 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
     </section>
 
     <!-- ======= THREE 9:16 BOARDS — text board (Board A) · image · text board (Board B) ======= -->
-    <section class="screen" id="screen-slide">
+    <section class="screen active" id="screen-slide">
       <div class="panel-body">
         <div class="showcase">
           <section class="promax slide-deck intel-board" aria-label="Slide showcase">
@@ -1182,7 +1235,8 @@ function vidHTML(src){
   return '<video controls playsinline preload="metadata" src="' + src + '" style="width:100%;height:100%;object-fit:contain;background:#000"></video>';
 }
 function escTx(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-function draftTag(g){ return g.draft ? ' <span class="draft-tag">· DRAFT</span>' : ''; }
+/* EYE-VERDICT FIX (2026-11-24): no DRAFT marker anywhere visible — draftTag renders nothing. */
+function draftTag(g){ return ''; }
 function textPanelFor(g, txt, slot){
   return '<div class="ib-layer"><div class="ib-layer-body">'
     + '<button class="swap-btn tool-btn" type="button" data-slot="' + slot + '" aria-label="Member tools — change this slot"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5 5l1.8 1.8M17.2 17.2L19 19M19 5l-1.8 1.8M6.8 17.2L5 19"/></svg></button>'
@@ -1233,7 +1287,16 @@ function slideSrc(boardIdx, slot){
   var ov = RUNTIME_IMG[boardIdx + '-' + slot];
   if (ov) return ov;
   var g = GROUPS[boardIdx];
-  if (slot === 'B'){ if (g.img2 === undefined || g.img2 === null) return null; return EMBED.slides[g.img2]; }
+  if (slot === 'B'){
+    if (g.img2 !== undefined && g.img2 !== null) return EMBED.slides[g.img2];
+    /* EYE-VERDICT FIX (2026-11-24): a front B image slot with no img2 takes
+       the chapter's own first depth image (approved, same chapter, already
+       in the file) — never an invented image. Chapter 1 is the ONE
+       exception: its B stays empty for Shawn's real Hub-feed screenshot. */
+    if (boardIdx === 0) return null;
+    var di = (typeof DEPTH_IMGS !== 'undefined' && DEPTH_IMGS[boardIdx]) ? DEPTH_IMGS[boardIdx][0] : null;
+    return di || null;
+  }
   if (g.img === undefined || g.img === null) return null;
   return EMBED.slides[g.img];
 }
@@ -1321,12 +1384,13 @@ function goToPortal(){
   document.body.appendChild(a); a.click(); a.remove();
 }
 /* TWO buttons only: Back and Forward. Back steps to the previous
-   slide (from the first slide, back to the cover). Forward steps
+   slide (from the first slide, back STAYS on level 1 — there is no cover
+   behind it any more, eye-verdict fix 2026-11-24). Forward steps
    to the next slide (from the last slide, on to the portal). */
 document.getElementById('btnForwardCover').addEventListener('click', function(){ current = 0; renderSlide(); show('slide'); });
 document.getElementById('btnBack').addEventListener('click', function(){
   if (current > 0){ current--; renderSlide(); }
-  else { show('cover'); }
+  else { /* LEVEL 1 IS THE FIRST BOARD — no cover behind it; stay. */ }
 });
 document.getElementById('btnForward').addEventListener('click', function(){
   if (current < TOTAL - 1){ current++; renderSlide(); }
@@ -1351,16 +1415,25 @@ document.querySelectorAll('.slide-boards').forEach(function(el){
 });
 
 /* ================= COVER MEDIA (embedded) — TOP TEN INNOVATIONS =================
-   FIRST-TWO-BOARDS FIX (2026-11-24, Shawn's eye): the first board is
-   image · text · image — no video player on it. The left image is the
-   approved living vault (EMBED.slides[8], innovation-5-A); the right is
-   the official red-N ball art (EMBED.ball, 1600px). The welcome video
-   lives BEHIND the cover red N — tapping #coverN opens it
-   in the depth view (openCoverVideo, additive script). No ticker: it was
-   the player's chrome and goes with the player. The "Let's Go" button is
-   gone too — tap anywhere advances, the red N is the way in. */
-document.getElementById('coverImgL').src = EMBED.slides[8];
-document.getElementById('coverImgR').src = EMBED.ball;
+   EYE-VERDICT FIX (2026-11-24, Shawn's eye): the first board is
+   image · text · image — no video player on it, and the welcome video has
+   NO home behind the red N any more (openCoverVideo removed — a tap on the
+   N goes to the next board behind, never to a video). The N is a SMALL seal
+   at the bottom of the middle column, never a big image in the middle.
+   No ticker: it was the player's chrome and goes with the player. The
+   "Let's Go" button is gone too — tap anywhere advances, the red N is the
+   way in. The cover itself is no longer the landing: level 1 (the first
+   innovation's front board) is the landing; the cover stays in the DOM,
+   hidden, its presentation kept correct. */
+/* COVER IMAGES — CAPTAIN'S PICK: the two cover srcs are these two named
+   assignments and nothing else. The captain picks the two images; until his
+   pick arrives the CURRENT images stay: left is EMBED.slides[8]
+   (innovation-9 sharing-wealth), right is the red-N ball. Swap the two
+   lines below when the pick lands — no other edit. */
+var COVER_IMG_LEFT = EMBED.slides[8];
+var COVER_IMG_RIGHT = EMBED.ball;
+document.getElementById('coverImgL').src = COVER_IMG_LEFT;
+document.getElementById('coverImgR').src = COVER_IMG_RIGHT;
 document.getElementById('coverN').src = EMBED.ball;
 document.querySelectorAll('[data-ball]').forEach(function(im){ im.src = EMBED.ball; });
 
@@ -1417,15 +1490,14 @@ daybarEl().addEventListener('mouseleave', function(){ scheduleFold(); });
     panel.scrollTop = panel.scrollTop + (er.top - pr.top);
   }
   function advanceFromTap(){
+    /* EYE-VERDICT FIX (2026-11-24, Shawn's flow ruling): tap the board and
+       you go to the NEXT BOARD BEHIND — the chapter's depth, level 2 — the
+       same as tapping the N. The old tap-step cycle (highlight third 1, 2,
+       3, then jump to the next chapter) is gone: it sent level 3 to some
+       OTHER board (the next chapter's front) instead of the board behind.
+       tapStep stays 0 so the first third keeps its bright rim. */
     if (!screens.slide || !screens.slide.classList.contains('active')) return;
-    if (tapStep < 2){
-      setTapStep(tapStep + 1);
-      scrollStepIntoView(stepTargets()[tapStep]);
-    } else {
-      setTapStep(0);
-      if (current < TOTAL - 1){ current++; renderSlide(); show('slide'); }
-      else { goToPortal(); }
-    }
+    if (typeof openDepth === 'function') openDepth(current);
   }
   main.addEventListener('click', function(e){
     var t = e.target;
@@ -1848,30 +1920,14 @@ function openDepth(boardIdx){
   document.getElementById('depthView').classList.add('cover-full');
   document.getElementById('depthView').hidden = false;
 }
-/* COVER VIDEO BEHIND THE RED N (first-two-boards fix, 2026-11-24 — Shawn's eye):
-   the welcome video no longer plays on the first board. It lives BEHIND the
-   cover red N: tapping #coverN opens it as a FULL BOARD behind the cover —
-   the same depth view, with .cover-full on #depthView (viewport-filling,
-   no cover visible around it), one layer, "1 of 1" — tap the N, Back or X
-   to close. The flag
-   keeps the depth N / Back handlers from walking chapter layers while the
-   cover video is open; closeDepth clears it. */
-var COVER_DEPTH = false;
-var COVER_VIDEO_SRC = 'https://www.youtube.com/embed/uchF0A0wIFg?autoplay=1&mute=0&playsinline=1&rel=0&enablejsapi=1';
-function openCoverVideo(){
-  COVER_DEPTH = true;
-  document.getElementById('depthN').querySelector('img').src = EMBED.ball;
-  document.getElementById('depthTitle').textContent = 'Top Ten Innovations — behind the board';
-  document.getElementById('depthBody').innerHTML = '<div class="ib-vid">' + vidHTML(COVER_VIDEO_SRC) + '</div>';
-  document.getElementById('depthSideL').innerHTML = ''; document.getElementById('depthSideL').hidden = true;
-  document.getElementById('depthSideR').innerHTML = ''; document.getElementById('depthSideR').hidden = true;
-  document.getElementById('depthStep').textContent = '1 of 1';
-  document.getElementById('depthView').classList.add('cover-full');
-  document.getElementById('depthView').hidden = false;
-}
+/* EYE-VERDICT FIX (2026-11-24, Shawn's eye): the cover red N goes to the
+   NEXT BOARD BEHIND — chapter 1 front, level 1 — never to a video. The
+   welcome video has no home behind the N any more (openCoverVideo and its
+   COVER_DEPTH flag are removed outright); a tap on the N is the same as
+   tapping forward. */
 document.getElementById('coverN').addEventListener('click', function(e){
   e.stopPropagation();
-  openCoverVideo();
+  current = 0; renderSlide(); show('slide');
 });
 function depthSlotHTML(boardIdx, slotIdx){
   var src = (DEPTH_IMGS[boardIdx] || [])[slotIdx];
@@ -1918,48 +1974,57 @@ function renderDepth(){
   var sideR = document.getElementById('depthSideR');
   var stepEl = document.getElementById('depthStep');
   if (stepEl) stepEl.textContent = (DEPTH_IDX + 1) + ' of ' + layers.length;
-  title.textContent = g.t + (g.draft ? ' · DRAFT' : '');
-  function sideHTML(slotIdx){
-    var imgs = DEPTH_IMGS[DEPTH_BOARD] || [];
-    if (slotIdx < 0 || slotIdx >= imgs.length) return '';
-    return depthSlotHTML(DEPTH_BOARD, slotIdx);
-  }
-  function setSides(a, b){
-    sideL.innerHTML = sideHTML(a); sideL.hidden = !sideL.innerHTML;
-    sideR.innerHTML = sideHTML(b); sideR.hidden = !sideR.innerHTML;
-  }
+  title.textContent = g.t;
+  /* EVERY DEPTH LAYER IS A THREE-COLUMN BOARD (eye-verdict fix, 2026-11-24):
+     the front board's own thirds, same formatting — image · text · image on
+     text layers, text · image · text on image layers. The old 200px side
+     rails are retired: both sides hide and all three thirds render inside
+     #depthBody. No DRAFT anywhere (title is the chapter title, plain). */
+  sideL.innerHTML = ''; sideL.hidden = true;
+  sideR.innerHTML = ''; sideR.hidden = true;
+  function imgPanel(src){ return '<div class="ib-layer ib-img"><div class="ib-layer-body"><img class="ib-img-el" src="' + src + '" alt="" /></div></div>'; }
+  function textPanel(head, txt){ return '<div class="ib-layer"><div class="ib-layer-body"><div class="b-script">' + escTx(head) + '</div><p>' + escTx(txt) + '</p></div></div>'; }
+  function frontImg(){ return EMBED.slides[g.img]; }
+  function depthImg(k){ var im = DEPTH_IMGS[DEPTH_BOARD] || []; return (k >= 0 && k < im.length) ? im[k] : null; }
+  var html = '';
   if (L.kind === 'dtext'){
     var sec = g.d[L.sec];
-    body.innerHTML = '<h3 class="depth-h">' + escTx(sec[0]) + '</h3><p>' + escTx(sec[1]) + '</p>';
-    setSides(L.sec - 1, L.sec);
+    html = imgPanel(depthImg(L.sec - 1) || frontImg()) + textPanel(sec[0], sec[1]) + imgPanel(depthImg(L.sec) || frontImg());
   } else if (L.kind === 'dimg'){
-    body.innerHTML = depthSlotHTML(DEPTH_BOARD, L.slot);
-    setSides(L.slot - 1, L.slot + 1);
+    var lt = g.d[L.slot], rt = g.d[L.slot + 1] || g.d[L.slot - 1];
+    html = textPanel(lt[0], lt[1]) + imgPanel(depthImg(L.slot)) + textPanel(rt[0], rt[1]);
   } else if (L.kind === 'img'){
     title.textContent = g.t + ' — behind the board';
-    body.innerHTML = '<img class="innov-depth-img" src="' + L.src + '" alt="" />';
-    setSides(-1, -1);
+    html = textPanel(g.d[0][0], g.d[0][1]) + imgPanel(L.src) + textPanel(g.d[1][0], g.d[1][1]);
   } else if (L.kind === 'video'){
     title.textContent = g.t + ' — behind the board';
-    body.innerHTML = '<div class="ib-vid">' + vidHTML(L.src) + '</div>';
-    setSides(-1, -1);
+    html = textPanel(g.d[0][0], g.d[0][1]) + '<div class="ib-layer ib-img"><div class="ib-layer-body"><div class="ib-vid">' + vidHTML(L.src) + '</div></div></div>' + textPanel(g.d[1][0], g.d[1][1]);
   } else if (L.kind === 'text'){
     title.textContent = g.t + (L.cont ? ' — continued' : ' — behind the board');
-    body.innerHTML = (L.cont ? '<p class="cont-note">Continued from the front — the rest of the text.</p>' : '') + '<p>' + escTx(L.text) + '</p>';
-    setSides(-1, -1);
+    html = imgPanel(frontImg()) + textPanel(L.cont ? 'Continued' : g.t, L.text) + imgPanel(depthImg(0) || frontImg());
   }
+  body.innerHTML = '<div class="depth-thirds">' + html + '</div>';
   var card = document.querySelector('#depthView .innov-pop-card');
   if (card) card.scrollTop = 0;
 }
-function closeDepth(){ COVER_DEPTH = false; document.getElementById('depthView').classList.remove('cover-full'); document.getElementById('depthView').hidden = true; }
+function closeDepth(){ document.getElementById('depthView').classList.remove('cover-full'); document.getElementById('depthView').hidden = true; }
+/* EYE-VERDICT FIX (2026-11-24, Shawn's flow ruling): the next board behind is
+   the NEXT chapter's front (or the portal after the last chapter) — the tap
+   chain never bounces back to this chapter's front. */
+function advanceBoard(){
+  closeDepth();
+  if (DEPTH_BOARD < TOTAL - 1){ current = DEPTH_BOARD + 1; renderSlide(); show('slide'); }
+  else { goToPortal(); }
+}
 document.getElementById('depthN').addEventListener('click', function(){
-  if (COVER_DEPTH){ closeDepth(); return; }
   var layers = depthLayers(DEPTH_BOARD);
   if (DEPTH_IDX < layers.length - 1){ DEPTH_IDX++; renderDepth(); }
-  else closeDepth();
+  else advanceBoard();
 });
 document.getElementById('depthBackTop').addEventListener('click', function(){
-  if (COVER_DEPTH){ closeDepth(); return; }
+  /* INDEPENDENT BACK (2026-11-24): back on THIS board moves only this board
+     one level back — never all boards, never another chapter. At level 1 it
+     closes to this chapter's front. */
   if (DEPTH_IDX > 0){ DEPTH_IDX--; renderDepth(); }
   else closeDepth();
 });
@@ -1968,23 +2033,21 @@ document.getElementById('depthView').addEventListener('click', function(e){ if (
 /* ENDS THAT WORK (2026-11-23 full-build round): a ready depth-image frame is a working end — tap it and you go on to the next chapter (portal on the last board). */
 document.getElementById('depthStage').addEventListener('click', function(e){ var b = e.target && e.target.closest ? e.target.closest('.depth-img-slot--ready') : null; if (!b) return; closeDepth(); if (current < TOTAL - 1){ current++; renderSlide(); show('slide'); } else { goToPortal(); } });
 /* TAP THE BOARD = NEXT LAYER (chapter-depth full-board round, 2026-11-24 —
-   Shawn's Rubik's Cube rule, 07:02 call): tapping the N OR tapping the
-   board goes to the next full board behind it. This mirrors the depthN
-   handler exactly — same step order, same close on the last layer — and
-   never fires for the things that already have their own tap: Back / X /
-   N (buttons), ready depth-image frames (their own end-button handler
-   above, which closes to the next chapter), the video box (the player
-   keeps its own taps), links and form controls. The cover video board
-   has no next layer, so COVER_DEPTH returns early and its N / Back / X
-   keep closing it. */
+   Shawn's Rubik's Cube rule, 07:02 call; eye-verdict fix: the last layer
+   advances to the next chapter's front, same as the depth N). Tapping the N
+   OR tapping the board goes to the next full board behind it. This mirrors
+   the depthN handler exactly — same step order, same advance on the last
+   layer — and never fires for the things that already have their own tap:
+   Back / X / N (buttons), ready depth-image frames (their own end-button
+   handler above, which closes to the next chapter), the video box (the
+   player keeps its own taps), links and form controls. */
 document.querySelector('#depthView .innov-pop-card').addEventListener('click', function(e){
-  if (COVER_DEPTH) return;
   var t = e.target;
   if (!t || !t.closest) return;
   if (t.closest('button, a, iframe, video, .ib-vid, input, select, textarea, .depth-img-slot--ready')) return;
   var layers = depthLayers(DEPTH_BOARD);
   if (DEPTH_IDX < layers.length - 1){ DEPTH_IDX++; renderDepth(); }
-  else closeDepth();
+  else advanceBoard();
 });
 document.addEventListener('click', function(e){
   var t = e.target;
@@ -2003,6 +2066,11 @@ document.addEventListener('click', function(e){
     if (pe){ openTextEditor(pe); return; }
   }
 });
+
+/* EYE-VERDICT FIX (2026-11-24, Shawn's flow ruling): LEVEL 1 IS THE LANDING.
+   There is no separate cover in front of level 1 — the page lands on the
+   first innovation's front board (chapter 1, image · text · image). */
+current = 0; renderSlide(); show('slide');
 </script>
 
 </body>
