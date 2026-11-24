@@ -60,3 +60,5 @@ I build only from his real material — harvested code, measured anatomy, canoni
 5. Authority lives in the artifact's fields or it does not exist — no relay hands over a decision, an ownership, or a verdict.
 6. Nothing is called done until the person it is for can see it working at the real address — his eye on a real screen has the last word, and a ten from that eye freezes the surface.
 7. Everyone who claims a name receives a world as a gift; the paid line sits once, on the engine — and no brick is claimed laid before it is.
+
+Distills SN-3075, SN-3076, SN-3077, SN-3078, SN-3079, SN-3080, SN-3081, SN-3082, SN-3083, SN-3084 (one essence from 10 notes — nine of them first-order essences of Batches 3 and 4; a second-level distillation for those nine).

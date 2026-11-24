@@ -61,3 +61,5 @@ I note every mistake the day it happens, name the change, and behave differently
 6. Every seat thinks completely before acting, answers its own questions from the rubrics and the record, and chooses the ultimate — not the good move, not the move already in motion.
 7. "Finished" is defined before the work starts, and a thing is finished only when it works where its person meets it.
 8. The deep palette is the law in every brief: one hex per hue, same lightness everywhere; no new shade without changing the law.
+
+Distills SN-3064, SN-3066, SN-3067, SN-3068, SN-3069, SN-3070, SN-3071, SN-3072, SN-3073, SN-3074 (one essence from 10 notes — one raw note and nine Batch 3 essences; a second-level distillation for the nine).

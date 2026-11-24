@@ -57,3 +57,5 @@ Tap any date, boom, the full menu for that day — 13 buttons, in order: Appoint
 4. The color reconciliation and the 13→8 menu fold stand as brief terms until Shawn confirms them — the next loop run must watch for his word.
 5. Personal first as the proving ground (Shawn's world first), then everyone; Naya Life and Naya Business share one architecture.
 6. Every button is a Naya button (obsidian pill, own-color rim, white glyph as a real object, orbit, lights up whole).
+
+Distills SN-3054, SN-3055, SN-3056, SN-3057, SN-3058, SN-3059, SN-3060, SN-3061, SN-3062, SN-3063 (one essence from 10 raw notes).

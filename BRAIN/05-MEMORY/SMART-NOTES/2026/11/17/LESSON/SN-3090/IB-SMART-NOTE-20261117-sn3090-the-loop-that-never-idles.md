@@ -50,3 +50,5 @@ I run the loop every day and never let it idle: activate and declare, get curren
 3. One honest record: every item carries its true state, and every act of work ends as a visible state change with proof.
 4. Re-verify at the instant you act — never act on a stale check.
 5. Distill ten into one, every day — the daily distillation is part of the loop, not an extra.
+
+Distills SN-3085, SN-3086 (one essence from 2 notes — both Batch 4 essences; a second-level distillation).
