@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-24 09:32 UTC_
+_Last updated: 2026-11-24 10:02 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 10405
-- ✅ Verified (8+): 10299
+- **Total scored actions:** 10412
+- ✅ Verified (8+): 10306
 - 🟡 Partial (5–7): 95
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 7
@@ -15,17 +15,17 @@ _Last updated: 2026-11-24 09:32 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 692 | 9.1 | 9.6 |
-| Team 2 | Naya Sage | 687 | 8.9 | 9.5 |
-| Team 3 | Naya Judge | 633 | 9.0 | 10 |
+| Team 1 | Naya Verity | 693 | 9.1 | 9.6 |
+| Team 2 | Naya Sage | 688 | 8.9 | 9.5 |
+| Team 3 | Naya Judge | 634 | 9.0 | 10 |
 | Team 4 | Naya Mason | 615 | 9.1 | 9.6 |
-| Team 5 | Naya Seeker | 749 | 9.0 | 9.6 |
+| Team 5 | Naya Seeker | 750 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 444 | 9.0 | 9.6 |
-| Team 7 | Naya Conductor | 594 | 8.9 | 10 |
+| Team 7 | Naya Conductor | 595 | 8.9 | 10 |
 | Team 8 | Naya Sentinel | 629 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 752 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 753 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 1021 | 9.1 | 9.7 |
-| Team 11 | Naya Heart | 705 | 9.0 | 9.6 |
+| Team 11 | Naya Heart | 706 | 9.0 | 9.6 |
 | Team 12 | Naya Herald | 547 | 9.1 | 9.5 |
 
 ## Learning velocity
@@ -3868,12 +3868,19 @@ _Last updated: 2026-11-24 09:32 UTC_
 - **t0804:** 2 actions, avg 9.0/10
 - **t0804-lane6:** 1 actions, avg 9.5/10
 - **t0805:** 2 actions, avg 9.0/10
+- **t0805-lane5:** 1 actions, avg 9.5/10
 - **t0806:** 2 actions, avg 9.0/10
+- **t0806-lane7:** 1 actions, avg 9.0/10
 - **t0807:** 2 actions, avg 9.0/10
+- **t0807-lane9:** 1 actions, avg 9.0/10
 - **t0808:** 2 actions, avg 9.0/10
+- **t0808-lane11:** 1 actions, avg 9.5/10
 - **t0809:** 2 actions, avg 9.2/10
+- **t0809-lane3:** 1 actions, avg 9.5/10
 - **t0810:** 2 actions, avg 9.0/10
+- **t0810-lane1:** 1 actions, avg 9.0/10
 - **t0812:** 2 actions, avg 9.2/10
+- **t0812-lane2:** 1 actions, avg 9.5/10
 - **t0813:** 10 actions, avg 9.1/10
 - **t0813-lane8:** 1 actions, avg 9.0/10
 - **t0813-lane8-reclaim:** 6 actions, avg 8.8/10
