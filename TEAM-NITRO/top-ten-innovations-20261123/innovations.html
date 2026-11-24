@@ -1123,6 +1123,75 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 #depthBody .ib-layer-body p{cursor:text}
 #swapPop,#textPop{z-index:60} /* FIX2C: popups above the depth overlay (z 50) so their buttons can be clicked from depth */
 </style>
+<style>
+/* FIX3-EYE (2026-11-24, eye-verdict fix round 3) — F2 poster-first video
+   (all sizes) + F1 phone whole-fit (max-width:900px only). Desktop layout
+   is untouched: the phone rules below only re-size the two stacked stacks
+   that scroll on phone, and the poster rules only change when the player
+   loads. */
+.ib-vid .vid-poster{position:relative;width:100%;height:100%;min-height:120px;padding:0;border:0;cursor:pointer;background:#07070a;border-radius:14px;overflow:hidden;display:block}
+.ib-vid .vid-poster img{width:100%;height:100%;object-fit:cover;display:block}
+.ib-vid .vid-poster .vid-poster-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:rgba(200,0,0,.92);color:#fff;font-size:22px;line-height:56px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 18px rgba(255,45,70,.45)}
+.ib-vid .vid-poster .vid-poster-label{position:absolute;left:0;right:0;bottom:0;padding:18px 6px 8px;font-size:15px;line-height:1.3;color:#fff;text-align:center;background:linear-gradient(transparent,rgba(0,0,0,.85))}
+@media(max-width:900px){
+/* F1 — DEPTH: the stacked thirds stop being content-height (LEG2) and
+   become three equal rows of the body's definite height, so every board
+   fits whole in the 844px fold at every level vector. fitDepthText then
+   splits over-long L2/L3 text behind the N instead of growing the row. */
+#depthView.cover-full #depthBody{overflow:hidden}
+#depthView.cover-full .depth-thirds{flex:1 1 auto;height:100%;grid-template-columns:1fr;grid-template-rows:1fr 1fr 1fr;gap:8px}
+.depth-thirds .ib-layer{min-height:0;height:auto}
+.depth-thirds .ib-layer.ib-img:has(.ib-img-el){height:auto;min-height:0}
+.depth-thirds .ib-layer.ib-img:has(.ib-vid){height:auto;min-height:0}
+.depth-thirds .ib-layer:not(.ib-img) .ib-layer-body{padding-top:44px}
+#depthBody .depth-thirds .ib-layer-body .b-script{font-size:22px}
+#depthBody .depth-thirds .ib-layer-body p{font-size:17px;line-height:1.35}
+.depth-thirds .ib-layer.lvl3 .ib-layer-body p{font-size:17px}
+.depth-thirds .ib-layer-body .third-cap{font-size:17px}
+/* F1 — FRONT: the three slots stop being min-height 9:16 boards stacked
+   in a scrolling panel and become three equal rows of the panel's
+   definite height (626px with the daybar up, more once it folds). The
+   front N shrinks to 44px on phone and the text-board padding reserve
+   shrinks with it; fitPanels splits the rest of the text behind the N. */
+#screen-slide{display:flex;flex-direction:column}
+#screen-slide .panel-body{flex:1 1 auto;min-height:0;height:auto;display:flex;flex-direction:column;overflow:hidden}
+#screen-slide .showcase{flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+#screen-slide .promax{flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+#slideMain{flex:1 1 auto !important;min-height:0;height:auto;flex-direction:column;gap:8px}
+#slideMain>*{flex:1 1 0;min-height:0}
+#screen-slide .slide-boards{flex:1 1 0;min-height:0 !important;height:auto;width:100%}
+#screen-slide .pm-art{flex:1 1 0;min-height:0;display:flex;flex-direction:column}
+#screen-slide .pm-art-frame{flex:1 1 auto;min-height:0}
+#screen-slide .pm-cap{flex:none;padding-top:4px}
+#screen-slide .ib-n{width:44px;height:44px}
+#screen-slide .ib-n img{width:44px;height:44px}
+#screen-slide .slide-boards .ib-layer-body{padding:8px 16px 70px}
+#screen-slide .slide-boards .ib-layer:not(.ib-img) .ib-layer-body{padding-top:40px;padding-bottom:12px}
+#screen-slide #slideTextCenter .ib-layer-body{padding-top:40px;padding-bottom:12px}
+#screen-slide .slide-boards .ib-layer:not(.ib-img) .ib-n{margin:12px auto 0}
+#screen-slide #slideTextCenter .ib-n{margin:12px auto 0}
+#screen-slide #slideVideo{height:100%}
+#screen-slide #slideVideo .ib-vid{height:100%}
+/* F1 — FRONT TEXT CHROME, SECOND PASS (measured on fix3-eye smoke):
+   the centre text panel's body is only ~151px tall and its fixed chrome
+   alone (heading 28 + N 44 + "more behind" marker 44 + paddings) needed
+   ~220px, so fitPanels could show one word and still overflowed by 56px.
+   Shrink the chrome so a heading + 1-2 lines of 22px text + the N +
+   the marker fit whole: marker 44 -> ~25 tall, N 44 -> 40px, heading
+   28 -> 22px, padding-top 40 -> 32, cap 36 -> ~24. The rest of the text
+   still flows behind the N, as designed. Phone only. */
+#screen-slide .ib-layer-body .b-script{font-size:22px;margin-top:4px}
+#screen-slide .ib-layer-body p{margin-top:6px}
+#screen-slide .slide-boards .ib-layer:not(.ib-img) .ib-layer-body{padding-top:24px}
+#screen-slide #slideTextCenter .ib-layer-body{padding-top:24px}
+#screen-slide .ib-n{width:40px;height:40px;min-height:0}
+#screen-slide .ib-n img{width:40px;height:40px}
+#screen-slide .slide-boards .ib-layer:not(.ib-img) .ib-n{margin:6px auto 0}
+#screen-slide #slideTextCenter .ib-n{margin:6px auto 0}
+#screen-slide .pm-cap{display:none} /* F1: the 'NAYA PRESENTS' cap under the centre frame costs 26px on phone; hiding it on the phone slide only gives that height to the frame, where the text panel needs it. Cover's cap is untouched. */
+#screen-slide .more-behind,#depthBody .more-behind{min-height:0;padding:2px 10px;margin-top:6px}
+}
+</style>
 </head>
 <body>
 <div class="royal-frame" aria-hidden="true"><div class="rf-et top"></div><div class="rf-es left"></div><div class="rf-es right"></div><div class="rf-rim"></div><div class="rf-corner tl"></div><div class="rf-corner tr"></div><div class="rf-corner bl"></div><div class="rf-corner br"></div><div class="rf-n top"></div></div>
@@ -1297,8 +1366,44 @@ var RUNTIME_IMG = {};
 var RUNTIME_VID = {};
 var RUNTIME_TXT = {};
 var BEHIND = {};
+/* FIX3-EYE - F2 poster-first video (2026-11-24). An embed URL used to
+   return its iframe at once, so the YouTube player's internal assets
+   loaded (and threw console errors in VM Firefox) the moment a video
+   swap landed. Now it returns a poster: the YouTube thumbnail where one
+   exists (onerror drops a failed thumbnail silently to the dark panel),
+   a red play disc and a tap-to-play label, in the same 9:16 box. The
+   iframe is built ONLY when the citizen taps the poster (loadVidPoster,
+   autoplay=1) - no player, no player assets, no console noise until
+   then. Direct media files still play in a <video> tag, unchanged. */
+function vidPosterHTML(src){
+  var yt = src.match(/youtube-nocookie\.com\/embed\/([A-Za-z0-9_-]{6,})/);
+  var thumb = yt ? 'https://i.ytimg.com/vi/' + yt[1] + '/hqdefault.jpg' : '';
+  var label = yt ? 'YouTube video — tap to play' : 'Video — tap to play';
+  return '<button type="button" class="vid-poster" data-embed="' + src + '" aria-label="Play video">'
+    + (thumb ? '<img src="' + thumb + '" alt="" loading="lazy" onerror="this.remove()" />' : '')
+    + '<span class="vid-poster-play" aria-hidden="true">▶</span>'
+    + '<span class="vid-poster-label">' + label + '</span></button>';
+}
+function loadVidPoster(btn){
+  var src = btn.getAttribute('data-embed');
+  if (!src) return;
+  var box = btn.parentNode;
+  if (!box) return;
+  var f = document.createElement('iframe');
+  f.src = src + (src.indexOf('?') >= 0 ? '&autoplay=1' : '?autoplay=1');
+  f.title = 'Video';
+  f.allow = 'accelerometer; autoplay; encrypted-media; picture-in-picture; web-share; fullscreen';
+  f.allowFullscreen = true;
+  f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+  box.innerHTML = '';
+  box.appendChild(f);
+}
+document.addEventListener('click', function(e){
+  var b = e.target && e.target.closest ? e.target.closest('.vid-poster') : null;
+  if (b) loadVidPoster(b);
+});
 function vidHTML(src){
-  if (/(\/embed\/|plugins\/video\.php)/.test(src)) return '<iframe src="' + src + '" title="Video" allow="accelerometer; autoplay; encrypted-media; picture-in-picture; web-share; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';
+  if (/(\/embed\/|plugins\/video\.php)/.test(src)) return vidPosterHTML(src);
   return '<video controls playsinline preload="metadata" src="' + src + '" style="width:100%;height:100%;object-fit:contain;background:#000"></video>';
 }
 function escTx(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
@@ -2187,10 +2292,19 @@ function fitDepthText(){
     if (!p) return;
     var i = parseInt(panel.getAttribute('data-third'), 10);
     var lvl = THIRD_LVL[i] || 1;
-    if (lvl === 1) return;
     var key = depthSwapKey(i);
     var full = DEPTH_FULL[key];
     if (full === undefined) full = p.textContent;
+    /* FIX3-EYE — F1 backstop: level 1 used to never split ("first sentence
+       only, so it never splits") — true at desktop heights, false in a
+       ~210px phone row, where the worst L1 first sentence needs 246px
+       (ch6, probe-fix3-steps). On overflow only, level 1 now splits its
+       FIRST SENTENCE the same way (the remainder goes on a continuation
+       layer behind the N); when it fits, the early return below leaves
+       the first-sentence display exactly as before. Desktop L1 panels
+       are ~746px tall and never overflow, so desktop behaviour is
+       unchanged. */
+    if (lvl === 1) full = firstSentence(full);
     var marker = b.querySelector('.more-behind');
     p.textContent = full;
     if (marker) marker.remove();
