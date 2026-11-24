@@ -1,9 +1,89 @@
 {
   "contract": "room-feed/v1",
   "room": "today",
-  "emitted_at": "2026-11-23T12:57:57.803317-08:00",
+  "emitted_at": "2026-11-23T21:14:22.486215-08:00",
   "source_ref": "engine-job:hub-feeds-emitter-t0479",
   "items": [
+    {
+      "id": "idx-aa62f583-e446-4410-800b-a31be96a039e",
+      "title": "The Value Loop — The Whole Point of What We're Doing",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-11-23 22:40:42.524793+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-30018d11-6d87-4f40-ba73-09322aebe340",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-11-23 22:40:41.997893+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-e2fb3f16-3a51-4238-b311-bac497cd74e7",
+      "title": "The Sealed Door: Writer-Side Enforcement for Smart Note Filing",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-11-23 22:27:27.582297+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-7b0436a9-5203-49b4-a3c1-6e050fe50aa3",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-11-23 22:27:27.049467+00"
+        }
+      ]
+    },
     {
       "id": "idx-f4c9c165-23b4-4f5d-9076-d5f69a3818f3",
       "title": "One Mind, One Living System",
@@ -201,86 +281,6 @@
           "color": "#FFFFFF",
           "tier": "primary",
           "body": "REFERENCE · status VERIFIED · event 2026-11-20 12:20:37.902835+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-c67781b2-6db2-41e7-b003-6856ba77b4e0",
-      "title": "Naya runtime flow lesson",
-      "topics": [
-        "INTELLIGENT_BLOCK"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-11-20 12:15:42.428979+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-eb43a32a-6552-4dd3-8113-cf496971beba",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-11-20 12:15:41.919488+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-b128cca3-c755-4ed2-8c8b-d4eab2df4d05",
-      "title": "Naya runtime flow lesson",
-      "topics": [
-        "INTELLIGENT_BLOCK"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-11-20 00:47:59.114325+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-20659efc-1fdb-4292-b367-f3a3fd01cd12",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-11-20 00:47:58.615893+00"
         }
       ]
     },
