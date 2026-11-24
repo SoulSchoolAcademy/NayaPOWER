@@ -650,8 +650,8 @@ body:before{display:none;}
 /* TOP-MENU ROUND 2026-11-23 — the 12 tooltip: his exact words "12 Elements of Naya".
    White Marcellus 17 on board black #050607, rim in the dot's own color; the light
    lives OUTSIDE only. Shows on hover, keyboard focus, and first tap (touch, .tip-on). */
-.eco-dot .eco-tip{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(4px);white-space:nowrap;background:#050607;border:1.5px solid var(--eco-c,#8e24aa);color:#ffffff;font-family:Marcellus,Georgia,serif;font-size:17px;line-height:1.2;padding:8px 14px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease;box-shadow:0 4px 14px rgba(0,0,0,.55),0 0 12px var(--eco-c,#8e24aa);z-index:9}
-.eco-dot:hover .eco-tip,.eco-dot:focus-visible .eco-tip,.eco-dot.tip-on .eco-tip{opacity:1;transform:translateX(-50%) translateY(0)}
+.eco-dot .eco-tip{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(calc(-50% + var(--tip-x,0px))) translateY(4px);white-space:nowrap;background:#050607;border:1.5px solid var(--eco-c,#8e24aa);color:#ffffff;font-family:Marcellus,Georgia,serif;font-size:17px;line-height:1.2;padding:8px 14px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease;box-shadow:0 4px 14px rgba(0,0,0,.55),0 0 12px var(--eco-c,#8e24aa);z-index:9}
+.eco-dot:hover .eco-tip,.eco-dot:focus-visible .eco-tip,.eco-dot.tip-on .eco-tip{opacity:1;transform:translateX(calc(-50% + var(--tip-x,0px))) translateY(0)}
 .eco-dot:hover svg text{stroke:none !important}
 @media (max-width:640px){
   /* v5 — phone: the centered 9-dot nav (334px at 30px dots) overlaps the
@@ -3110,11 +3110,77 @@ body.fp-stage-on.fp-dialed #fpNextBtn:active,body.fp-stage-on.fp-dialed #fpNextB
      runs the exact prior Home behaviour. */
   var navDots=document.querySelector('nav.eco-inline');
   var ecoDots=navDots?navDots.querySelectorAll('.eco-dot'):[];
+  /* TIP CLAMP (2026-11-24 fix): a centred tip can run past the viewport
+     edge on a narrow phone (rightmost dot: Life with Naya ran 246->408 at
+     390px). General clamp, not a per-dot nudge: shift the pill by exactly
+     its overflow, keeping an 8px margin inside the viewport on both sides.
+     It is a PURE function of quantities no transition can move, because
+     measuring the rendered rect mid-transition is what broke the first two
+     attempts (on this VM transitions advance in bursts, and the
+     mouseenter + focusin + click calls each read a frozen interpolated
+     box, so the shift random-walked and reset to 0): the dot's centre x
+     from its rect (invariant under its own scale-about-centre), the tip's
+     offsetWidth (layout, unscaled), and the dot's hover scale read once
+     from the live .eco-dot:hover stylesheet rule (the tip is the dot's
+     child, so its rendered width is offsetWidth x that scale — 138 x 1.18
+     = 163 on Life). The --tip-x value itself lives in the tip's local
+     space, so the shift is divided by the scale before it is set. A tip
+     that already fits gets shift 0 — byte-for-byte the old position, no
+     other dot moves. Recomputed on resize and when webfonts settle, since
+     either can change the widths. */
+  var ecoTipScale=0;
+  function ecoTipScaleOf(){
+    if(ecoTipScale){return ecoTipScale;}
+    ecoTipScale=1;
+    try{
+      var sheets=document.styleSheets;
+      for(var i=0;i<sheets.length;i++){
+        var rules=null;
+        try{rules=sheets[i].cssRules;}catch(e){continue;}
+        if(!rules){continue;}
+        for(var j=0;j<rules.length;j++){
+          var r=rules[j];
+          if(r.selectorText&&r.selectorText.indexOf('.eco-dot:hover')!==-1){
+            var mm=/scale\(\s*([\d.]+)\s*\)/.exec(r.style.transform||'');
+            if(mm){ecoTipScale=parseFloat(mm[1]);return ecoTipScale;}
+          }
+        }
+      }
+    }catch(err){}
+    return ecoTipScale;
+  }
+  function clampEcoTip(dot){
+    var tip=dot.querySelector('.eco-tip');
+    if(!tip){return;}
+    var s=ecoTipScaleOf();
+    var dr=dot.getBoundingClientRect();
+    var cx=dr.left+dr.width/2;
+    var half=tip.offsetWidth*s/2;
+    var m=8,shift=0;
+    if(cx+half>window.innerWidth-m){shift=(window.innerWidth-m-(cx+half))/s;}
+    else if(cx-half<m){shift=(m-(cx-half))/s;}
+    dot.style.setProperty('--tip-x',shift?Math.round(shift)+'px':'0px');
+  }
+  Array.prototype.forEach.call(ecoDots,function(dot){
+    dot.addEventListener('mouseenter',function(){clampEcoTip(dot);});
+    dot.addEventListener('focusin',function(){clampEcoTip(dot);});
+  });
+  window.addEventListener('resize',function(){
+    Array.prototype.forEach.call(ecoDots,function(dot){
+      if(dot.classList.contains('tip-on')){clampEcoTip(dot);}
+    });
+  });
+  if(document.fonts&&document.fonts.ready){
+    document.fonts.ready.then(function(){
+      Array.prototype.forEach.call(ecoDots,function(dot){clampEcoTip(dot);});
+    });
+  }
   Array.prototype.forEach.call(ecoDots,function(dot){
     dot.addEventListener('click',function(e){
       if(window.matchMedia&&window.matchMedia('(pointer:coarse)').matches&&!dot.classList.contains('tip-on')){
         e.preventDefault();
         e.stopImmediatePropagation();
+        clampEcoTip(dot);
         dot.classList.add('tip-on');
         setTimeout(function(){dot.classList.remove('tip-on');},2600);
       }
