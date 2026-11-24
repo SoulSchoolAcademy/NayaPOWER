@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-24 21:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-24 21:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16965,6 +16965,12 @@ _Last updated: 2026-11-24 21:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0765-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
+**Task:** Level-drill key-split instrument seal: legacy tools/level_drill.py replaced with fail-closed refusal shim, RED-first exit 1 / GREEN exit 0
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: commit a8d01f0cde69722d9eb0b2a08362bb83458ebd9f exists as a commit object in the local mirror. Branch ref naya/lane9/level-drill-keysplit-t0730 no longer on remote (ls-remote empty) - normal lifecycle, commit object persists. NOT PHANTOM. Score 9.0. Why not 9.5: no ind
+
+### ✅ t0765-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
 **Task:** Level-drill key split: fail-closed shim + sealed key file
 
 **Evidence:** Verified: branch ref naya/lane9/level-drill-keysplit-t0730 no longer exists on the remote (deleted post-tick), but commit a8d01f0cde69722d9eb0b2a08362bb83458ebd9f exists in the mirror and tools/level_drill.py + tools/level_drill_key.py are present at that SHA; RED-first on pre-fix blob + GREEN exit 0 on fixed files quoted. Score 9.0: GOOD, ONE MORE
@@ -17067,6 +17073,12 @@ _Last updated: 2026-11-24 21:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: receipt file on disk (17k chars); 12/12 contracts reviewed per lane with essence confirmations, 7 amendments, 1 contested leg (Seeker wiring), consolidated amendment list present; contracts read from branch naya4/contract-staging (branch still live on remote, head now ea501b68... advanced past receipt's read-time). No PHANTOM. Score 9.0. 
 
+### ✅ t0763-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Independent-seat witness run of pin_rederive_check_t0759.py at live tip 0cc7c9f2: 9/9 pins MATCH, exit 0
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: checker lane-2/pin_rederive_check_t0759.py exists on disk; tip commit 0cc7c9f214ea9ef0503263e583e16b91801e2096 exists as a commit object in the local mirror. NOT PHANTOM. Score 9.0. Why not 9.5: single witness seat, single run - no cross-seat replication of the witness
+
 ### ✅ t0763-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
 
 **Task:** Independent witness run of pin_rederive_check_t0759.py at live tip (9/9 pins MATCH)
@@ -17117,6 +17129,12 @@ _Last updated: 2026-11-24 21:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0763-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
+**Task:** Retry-parity packet 1 (INFRA design t0754): claim+delivery gates get consensus retry policy, 7/7 + 67/67 green, branch-only
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: commit aed4e5f3f1ef63ad7bae24f5d86e5a814426cd64 survives as a commit object in the local mirror; tools/ci_claim_evidence_gate.py sha bab247d136ac3c23d0868b6b9a6b7f1ca8e3a8ca977856adfac9bdb8046dc4af and tools/test_retry_parity_t0763.py sha 2fc1d24f28d57cae3b9682b86aff20
+
+### ✅ t0763-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
 **Task:** Retry parity packet 1 (candidate, branch-only)
 
 **Evidence:** Verified: branch ref naya/retry-parity-t0763 no longer exists on the remote (deleted post-tick, expected lifecycle), but commit aed4e5f3f1ef63ad7bae24f5d86e5a814426cd64 exists in the mirror and files tools/test_retry_parity_t0763.py + tools/retry-parity-packet1-adoption-note-t0763.md are present at that SHA; 7/7 falsifier battery + 67/67 regression
@@ -17142,6 +17160,12 @@ _Last updated: 2026-11-24 21:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0022-lane11: human-value metric instrument run x2 byte-identical + hand-written audit
 
 **Evidence:** Verified: receipt file on disk; hidden_files/lane-11/metric_audit_t0022.json exists (audited), lane-11/SUMMARY_t0022.md + STATS.md window section present; window numbers M2:18/M3:11/M4:15, HV2 mean 12.5, HV3 PROVEN-UNMEASURABLE stands. No PHANTOM. Score 9.0. Kept from 9.5: (1) single-seat judgments - no independent seat re-ran the audit (the receip
+
+### ✅ t0763-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Key-contact registry v1.1: S4a/S4b rows built, audit script extended (discover S4 + quote-presence verify), 34 cites exit 0
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED first-hand this tick: key-contact-audit.sh sha256 a4d223fcb26edc32c2959e6dc545dc087dbdacba57712180edb49f1248827f6b == receipt pin EXACTLY. Registry sha drifted (a96ad66c now vs 520f4f08 pinned) - later append-only edits, expected drift, not phantom. NOT PHANTOM. Score 9.0. Why not 9.5: sing
 
 ### ✅ t0763-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
@@ -17173,6 +17197,12 @@ _Last updated: 2026-11-24 21:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0762-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
+**Task:** GATE_BLIND marker + exit-2 contract on 3 gate scripts + 11-test falsifier battery
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED: commit 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 exists on GitHub with matching message, parent 0cc7c9f2 = claimed live tip, tree = exactly the 4 claimed files (branch ref since deleted, commit object persists — normal lifecycle, not phantom). Score 9.0. Why not 9.5: no independent second-s
+
+### ✅ t0762-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
 **Task:** GATE_BLIND marker + exit-2 contract (Packet 3)
 
 **Evidence:** Verified: commit 87536979 exists in repo, parent live tip 0cc7c9f2; tree contains tools/ci_claim_evidence_gate.py, tools/activation_gate.py, tools/check_merge_consensus.py and new tools/test_gate_blind_packet3.py. Falsifier battery 11/11 and regression 67/67 quoted. Score 9.0: all three gate files changed per the design's exact texts, blind never m
@@ -17192,6 +17222,12 @@ _Last updated: 2026-11-24 21:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0762-lane8.md`
 
 **Evidence:** Verified live by scorer: remote ref naya/gate-blind-marker-t0762 exists, head == receipt SHA 8753697991a4b02c4ebac9ef0153c1f45b5d89c0, all 4 files present at that SHA. Three gate scripts carry the GATE_BLIND exit-2 contract with transport classification; 11-test falsifier battery claimed 11/11; 67/67 existing activation-gate tests claimed green (no
+
+### ✅ t0762-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Branch-only DEMOTE wiring for FALSIFIED lessons at retrieve (veracity bucket + sort, 20/20 acceptance)
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED: commit 4c29f34197a436da8c628da150f319ff8fe26037 exists on GitHub with matching message, parent 0cc7c9f2 = claimed live tip, tree = single file tools/smart_note_v2.py as claimed (branch ref since deleted, commit object persists — normal lifecycle, not phantom). Score 9.0. Why not 9.5: indep
 
 ### ✅ t0762-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
