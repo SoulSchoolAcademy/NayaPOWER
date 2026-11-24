@@ -1,0 +1,95 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-4738",
+ "title": "Extraordinary, All the Way Through",
+ "slug": "extraordinary-all-the-way-through",
+ "topic": "DESIGN",
+ "category": "DESIGN",
+ "kind": "intelligent-block",
+ "registered_by": "naya-resolve",
+ "directed_by": "Shawn Vibert",
+ "created_at": "2026-11-24T17:53:00Z",
+ "tone": "purple",
+ "icon": "◆",
+ "intelligence": {
+  "essence": "One evening of Shawn's eye set the bar for every visible thing: the Personal bar tiles are the model, harvested verbatim, the feed pills are already the standard — and extraordinary is not the exception anywhere. It is the bar for every icon, pill, profile, and post, and the whole system breathes.",
+  "human_view": "The best-looking pieces you already approved become the mold for everything else: the same beautiful tiles everywhere, light that circles an icon when you hover instead of washing over it, a purple heart as the signature you recognize, and pages that feel gently alive rather than frozen.",
+  "child_view": "When we find the prettiest building block, we don't draw a new one for every toy — we use that exact block everywhere, so everything matches and everything is beautiful. And the heart that means love here is purple, like a jewel, not red like everyone else's.",
+  "grandma_view": "He showed us the tiles he loved and said: these, exactly these, everywhere. No redrawing, no close-enough copies. The same care goes to the little things — the pills on the feed were already perfect, so we keep them just as they are — and the whole place should feel like it breathes, slowly and calmly.",
+  "ai_view": "Operating rules distilled from SN-3185..SN-3194: (1) The Personal whole-page bottom-bar tiles are the one icon set, harvested byte-for-byte for Dashboard, Hub, Personal, everywhere. (2) Hover: light goes around the icon only — the moving orbit light returns — never glow over or in the middle. (3) The menu control is a toggle with three states — sidebar OR messenger OR neither, never both. (4) The Intelligent Block is the universal posting format for all images, posts, intelligence, in every feed; renovate to ultimate without wrecking its great parts. (5) LOVE's heart is a purple jewel heart — the network's signature; the red heart is superseded. (6) Every icon everywhere is extraordinary: real, raised, deep, crisp at any zoom. (7) The system breathes: slow gentle motion, alive on hover, press in/out — living intelligence. (8) The feed pills (COLLECTIVE/PERSONAL/ACTIVITY) are triple-A plus — keep verbatim as the standard. (9) Zero gray flat icons anywhere; a checker names every survivor. (10) The connection profile is a full elite page, not a popup.",
+  "what_it_means": "Quality multiplies by copying the proven, not by inventing per page: one harvested set, one posting format, one signature — and the standard applies to the smallest pill with the same force as the largest page.",
+  "whats_inside": [
+   "The Personal bar tiles are the model — harvest verbatim, one icon set everywhere (SN-3185)",
+   "Hover law: light around, never over — the moving light comes back (SN-3186)",
+   "The connection profile: the elite contact card as a full page (SN-3187)",
+   "The menu toggle — sidebar or messenger or neither, three states (SN-3188)",
+   "One format, one signature, one bar: the Block universal, the purple heart, all icons extraordinary, the system breathing, pills triple-A plus, no gray flat icons (SN-3189–SN-3194)"
+  ],
+  "topics": [
+   "Distillation",
+   "Design",
+   "Icons",
+   "Craft",
+   "Multiplication"
+  ]
+ },
+ "page": {
+  "distills": {
+   "batch": 14,
+   "of": 100,
+   "covers": [
+    {
+     "sn": "SN-3185",
+     "title": "The Personal Bar Tiles Are the Model"
+    },
+    {
+     "sn": "SN-3186",
+     "title": "Hover: Light Around, Never Glow Over — The Moving Light Comes Back"
+    },
+    {
+     "sn": "SN-3187",
+     "title": "The Connection Profile — The Elite Contact Card as a Full Page"
+    },
+    {
+     "sn": "SN-3188",
+     "title": "The Menu Toggle — Sidebar or Messenger or Neither"
+    },
+    {
+     "sn": "SN-3189",
+     "title": "The Intelligent Block Is the Universal Posting Format"
+    },
+    {
+     "sn": "SN-3190",
+     "title": "The Purple Heart Is the Signature"
+    },
+    {
+     "sn": "SN-3191",
+     "title": "All Icons Extraordinary, All the Way Through"
+    },
+    {
+     "sn": "SN-3192",
+     "title": "The System Breathes — Living Intelligence"
+    },
+    {
+     "sn": "SN-3193",
+     "title": "The Pills Are Triple-A Plus"
+    },
+    {
+     "sn": "SN-3194",
+     "title": "No Gray Flat Icons Anywhere"
+    }
+   ]
+  },
+  "machine": "1) Icon set = Personal bar tiles, verbatim, everywhere. 2) Hover light: around only; orbit light restored. 3) Toggle states: sidebar XOR messenger XOR neither. 4) Posting format: the Intelligent Block, universal. 5) Signature: purple jewel heart. 6) Bar: extraordinary for every icon; pills kept verbatim; zero gray-flat survivors.",
+  "why_it_matters": "This group is the harvest doctrine applied to design: the network stops paying the redesign cost on every page, and a citizen moving between apps meets one familiar, beautiful set of objects — recognition itself becomes a feature.",
+  "how_it_connects": "Second movement of batch 14 (SN-3175–SN-3274). It builds on SN-4737's surface contract — once the face is clean, this group sets what the face is made of — and it is the standard the Inspector sweeps in SN-4744 enforce.",
+  "what_is_in_it_for_you": "Everywhere you go in your world, the same beautiful objects greet you — nothing to relearn, nothing jarringly different, and a purple heart you'll know on sight.",
+  "the_learning": "From now on, when a surface passes his eye it becomes the mold — harvested byte-for-byte and held against all others — instead of each lane redesigning from its own taste."
+ },
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4738/IB-SMART-NOTE-20261124-sn4738-extraordinary-all-the-way-through.md",
+ "page_hash": "5fc17585e9d5390f53aa23f25f004ca9af9fd2fedaa8e225f99aaf2d3d6ffe1e",
+ "content_hash": "2a004b7e1f25bbf5efebc91c44c95cc36a27d195c74ce3b276d90c7baae3414a",
+ "published_via": "publish-note",
+ "door_version": "1",
+ "door_receipt": "5ee76b74882be223a28ed50899f2a721144fed645782390fd8f3b1dd9c6bd37b"
+}

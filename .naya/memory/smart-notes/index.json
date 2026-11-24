@@ -80796,6 +80796,42 @@
         "Craft",
         "Honor"
       ]
+    },
+    {
+      "smart_note_id": "SN-4738",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4738-extraordinary-all-the-way-through",
+      "slug": "extraordinary-all-the-way-through",
+      "title": "Extraordinary, All the Way Through",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4738/IB-SMART-NOTE-20261124-sn4738-extraordinary-all-the-way-through.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4738/IB-SMART-NOTE-20261124-sn4738-extraordinary-all-the-way-through.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4738/IB-SMART-NOTE-20261124-sn4738-extraordinary-all-the-way-through.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4738-extraordinary-all-the-way-through.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T17:53:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "5fc17585e9d5390f53aa23f25f004ca9af9fd2fedaa8e225f99aaf2d3d6ffe1e",
+      "content_hash": "2a004b7e1f25bbf5efebc91c44c95cc36a27d195c74ce3b276d90c7baae3414a",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "5ee76b74882be223a28ed50899f2a721144fed645782390fd8f3b1dd9c6bd37b",
+      "one_line": "One evening of Shawn's eye set the bar for every visible thing: the Personal bar tiles are the model, harvested verbatim, the feed pills are already the standard — and extraordinary is not the exception anywhere. It is the bar for every icon, pill, profile, and post, and the whole system breathes.",
+      "topics": [
+        "Distillation",
+        "Design",
+        "Icons",
+        "Craft",
+        "Multiplication"
+      ]
     }
   ],
   "sequence_policy": {
@@ -80806,5 +80842,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "cd21aa2822c83495f111a4ebecec06a35ec45a9e98acb4f143a701d797b89e7e"
+  "corpus_manifest_hash": "b72dd5c0654feb925a4853349e1f1e7a5c3b565f7212e17a46fb6adf76620a00"
 }
