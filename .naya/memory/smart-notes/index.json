@@ -80940,6 +80940,42 @@
         "Privacy",
         "Knowledge"
       ]
+    },
+    {
+      "smart_note_id": "SN-4742",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4742-he-has-to-see-it",
+      "slug": "he-has-to-see-it",
+      "title": "He Has to See It",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4742/IB-SMART-NOTE-20261124-sn4742-he-has-to-see-it.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4742/IB-SMART-NOTE-20261124-sn4742-he-has-to-see-it.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4742/IB-SMART-NOTE-20261124-sn4742-he-has-to-see-it.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4742-he-has-to-see-it.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T17:57:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "d20794dcc60686e2d235ac7b66532ab01a8382df14338188efc5410da5394bfb",
+      "content_hash": "31a42912c97d29a8cc8d8956bd8223885b001221b72494108fcfab7526deeafd",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "b78c1731456d3974a0333aac51b9802ddb15c20e30929d6932c7e64f3968b509",
+      "one_line": "Nothing counts as landed until it is on his screen, in place, working — the gate behind the pedestal, the library, the agreement page, and the language itself. His eye is the final compile, the day's teaching must be countable, and the words he already gave are build instructions, not questions to re-ask.",
+      "topics": [
+        "Distillation",
+        "Design",
+        "Delivery",
+        "Honor",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -80950,5 +80986,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "3f698caaf0b75f68b344fe59607d53f5c43ceee7cd5cccbb0872d6bdf362e398"
+  "corpus_manifest_hash": "584b25d5bbdfbd970349dc89542d015cdff3d5c52a4de5b80a15e8fd57da5091"
 }
