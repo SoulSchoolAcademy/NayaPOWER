@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-24 08:42 UTC_
+_Last updated: 2026-11-24 09:02 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 10393
-- ✅ Verified (8+): 10287
+- **Total scored actions:** 10399
+- ✅ Verified (8+): 10293
 - 🟡 Partial (5–7): 95
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 7
@@ -15,18 +15,18 @@ _Last updated: 2026-11-24 08:42 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 691 | 9.1 | 9.6 |
-| Team 2 | Naya Sage | 686 | 8.9 | 9.5 |
+| Team 1 | Naya Verity | 692 | 9.1 | 9.6 |
+| Team 2 | Naya Sage | 687 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 633 | 9.0 | 10 |
 | Team 4 | Naya Mason | 615 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 749 | 9.0 | 9.6 |
-| Team 6 | Naya Heir | 442 | 9.0 | 9.6 |
+| Team 6 | Naya Heir | 443 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 594 | 8.9 | 10 |
 | Team 8 | Naya Sentinel | 628 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 751 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 752 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 1021 | 9.1 | 9.7 |
-| Team 11 | Naya Heart | 703 | 9.0 | 9.6 |
-| Team 12 | Naya Herald | 545 | 9.1 | 9.5 |
+| Team 11 | Naya Heart | 704 | 9.0 | 9.6 |
+| Team 12 | Naya Herald | 546 | 9.1 | 9.5 |
 
 ## Learning velocity
 
@@ -3847,12 +3847,18 @@ _Last updated: 2026-11-24 08:42 UTC_
 - **t0793:** 2 actions, avg 9.2/10
 - **t0793-lane3:** 1 actions, avg 9.5/10
 - **t0796:** 2 actions, avg 9.2/10
+- **t0796-lane1:** 1 actions, avg 9.5/10
 - **t0797:** 6 actions, avg 9.2/10
+- **t0797-lane11:** 1 actions, avg 9.5/10
+- **t0797-lane6:** 1 actions, avg 9.0/10
 - **t0798:** 12 actions, avg 9.0/10
+- **t0798-lane12:** 1 actions, avg 9.0/10
+- **t0798-lane9:** 1 actions, avg 9.0/10
 - **t0800:** 3 actions, avg 9.3/10
 - **t0801:** 2 actions, avg 8.0/10
 - **t0802-lane12:** 1 actions, avg 9.5/10
 - **t0802:** 6 actions, avg 9.1/10
+- **t0802-lane2:** 1 actions, avg 9.0/10
 - **t0803:** 2 actions, avg 9.0/10
 - **t0804:** 2 actions, avg 9.0/10
 - **t0805:** 2 actions, avg 9.0/10
