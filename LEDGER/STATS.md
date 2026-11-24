@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-24 17:13 UTC_
+_Last updated: 2026-11-24 17:32 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 10537
-- ✅ Verified (8+): 10422
+- **Total scored actions:** 10542
+- ✅ Verified (8+): 10427
 - 🟡 Partial (5–7): 104
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 7
@@ -19,9 +19,9 @@ _Last updated: 2026-11-24 17:13 UTC_
 | Team 2 | Naya Sage | 696 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 643 | 9.0 | 10 |
 | Team 4 | Naya Mason | 623 | 9.1 | 9.6 |
-| Team 5 | Naya Seeker | 762 | 9.0 | 9.6 |
-| Team 6 | Naya Heir | 450 | 9.0 | 9.6 |
-| Team 7 | Naya Conductor | 601 | 8.9 | 10 |
+| Team 5 | Naya Seeker | 764 | 9.0 | 9.6 |
+| Team 6 | Naya Heir | 451 | 9.0 | 9.6 |
+| Team 7 | Naya Conductor | 602 | 8.9 | 10 |
 | Team 8 | Naya Sentinel | 637 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 762 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 1030 | 9.1 | 9.7 |
@@ -1444,6 +1444,7 @@ _Last updated: 2026-11-24 17:13 UTC_
 - **gate-stall-20261124-0725:** 1 actions, avg 9.0/10
 - **distill-daily-20261124-lane0:** 1 actions, avg 9.0/10
 - **gate-stall-20261124-0828:** 1 actions, avg 9.0/10
+- **gate-stall-20261124-0928:** 1 actions, avg 9.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -3665,7 +3666,7 @@ _Last updated: 2026-11-24 17:13 UTC_
 - **t0721:** 7 actions, avg 8.8/10
 - **t0721-lane1:** 1 actions, avg 9.5/10
 - **t0721-lane5:** 1 actions, avg 9.5/10
-- **t0722:** 8 actions, avg 9.1/10
+- **t0722:** 9 actions, avg 9.1/10
 - **t0722-lane12-intelligence-today:** 1 actions, avg 9.5/10
 - **t0722-lane12:** 1 actions, avg 9.0/10
 - **t0722-lane5:** 1 actions, avg 9.0/10
@@ -3675,11 +3676,11 @@ _Last updated: 2026-11-24 17:13 UTC_
 - **t0724:** 8 actions, avg 9.0/10
 - **t0724-lane2:** 1 actions, avg 9.0/10
 - **t0724-lane9:** 1 actions, avg 9.5/10
-- **t0725:** 10 actions, avg 9.1/10
+- **t0725:** 12 actions, avg 9.1/10
 - **t0725-lane3:** 1 actions, avg 9.0/10
 - **t0725-lane5:** 1 actions, avg 9.0/10
 - **t0725-lane7:** 1 actions, avg 9.5/10
-- **t0726:** 3 actions, avg 9.2/10
+- **t0726:** 4 actions, avg 9.2/10
 - **t0726-lane6:** 1 actions, avg 9.0/10
 - **t0727:** 5 actions, avg 9.2/10
 - **t0727-lane1:** 1 actions, avg 9.0/10
