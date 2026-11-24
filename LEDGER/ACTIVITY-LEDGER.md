@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-24 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-24 18:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -15087,6 +15087,14 @@ _Last updated: 2026-11-24 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: brief-queue exists (35 briefs now, 30 at run time), parent stall receipt 0715 exists on disk with its precision finding (quoted lines byte-verified above in the 0715 score); the 2 newly added prose self-bars are accounted. No GitHub artifacts cited (bookkeeping receipt, artifact check vacuous — no PHANTOM). Score 8.0/10, agrees with recei
 
+### ✅ t0818 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Live-bytes sweep: any EXECUTED §8 acceptance probe on FP-001/FP-002/FP-003; verdict on Lane 6 claim
+
+**Receipt:** `twelve-lane-receipts/t0818-lane3.md`
+
+**Evidence:** VERIFIED this tick: all 6 load-bearing receipt SHAs re-derived live and MATCH pins (t0556 375790b7df43..., t0549 517ee454..., t0634 037e5322..., t0605 b7a82fec..., t0573 f6a4bea0..., t0699 6ca22d8a...); lane-experiments/t0556/outbox/ and scorer/ are EMPTY on disk - no execution output exists. 12-row candidate-disposition table is falsifiable row by
+
 ### ✅ t0818 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** Live-bytes sweep for executed section-8 acceptance probes on FP-001/002/003; verdict CONFIRMED
@@ -15102,6 +15110,14 @@ _Last updated: 2026-11-24 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0818-lane3.md`
 
 **Evidence:** Strong analytic work: all 791 receipts swept, 12 candidates disposed individually with byte-quoted evidence, 6 load-bearing SHAs re-derived live, t0556 outbox/scorer confirmed empty on disk, FP+§8-as-section-number disambiguated, SGF/CTA correctly excluded as different instruments, honest timeline nuance recorded (frozen pre-reg now sealed — claim 
+
+### ✅ t0818 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Candidacy-block index home + N + machine consult door (design receipt, not adoption)
+
+**Receipt:** `twelve-lane-receipts/t0818-lane10.md`
+
+**Evidence:** VERIFIED this tick: index sha d3e1b234... MATCHES pin; design doc 732c921a... MATCHES; consult script b375bb9d... MATCHES; calibration commits exist in the mirror with matching messages (aa8061c1 = PR #2455 merge, b86eba89 = receipt gate #2399); --selftest re-run live this tick: exit 0, 4 consult controls + write-validation pass, and the write-refu
 
 ### ✅ t0818 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -16018,6 +16034,14 @@ _Last updated: 2026-11-24 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Gap follow-up: t0800/t0802 double-dispatch reconciliation
 
 **Evidence:** Verified this tick: mcc-freeze-record-t0802-lane8.md and .json exist and match cited pins byte-exactly (80c92699..., 1fbb130b...); t0800 produced nothing (no record, no receipt; brief in stale/, claim absent from claimed/ — void proven by file state); single live freeze record stands FALSIFIED (honest null, rate_pos=0.000). Score 9.5 ACCEPTED — cle
+
+### ✅ t0800 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hub<->Supabase persistence bridge - Smart Note flow store leg (bottleneck #1, leg 3)
+
+**Receipt:** `twelve-lane-receipts/t0800-lane0.md`
+
+**Evidence:** VERIFIED this tick: commit 8dad8451b9c5b39f0edd2278c8155eaad11a1b0b exists in the repo mirror with matching message ('t0800 lane0: Hub<->Supabase persistence bridge'); HUB/app/js/supabase-bridge.js present at that SHA (426 lines, receipt says 427 - one-line count difference, likely trailing-newline counting) and HUB/app/index.html present; verify g
 
 ### ✅ t0800-lane0 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
@@ -18585,6 +18609,14 @@ _Last updated: 2026-11-24 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0735 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
+**Task:** REPAIR ONLY, PR #2738 - F1 falsified at byte level, PR body refreshed to match bytes
+
+**Receipt:** `twelve-lane-receipts/t0735-lane0.md`
+
+**Evidence:** VERIFIED this tick: commit 8030c2ee028504c7e0fb2193bc9f9889ef301a32 exists in the repo mirror with matching message ('INFRA: strip stale approval comments...'); blob e425aabb6515e8e63dc2aafdf48ef2456cbd9e94 is .github/workflows/deploy-hub-cloudflare.yml at that head; blob content sha256 8e73a73113544db27fa7ddec712c3b41001ff8cb6b3a7e6e8a047503802dbb
+
+### ✅ t0735 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
 **Task:** REPAIR ONLY, PR #2738 (F1 falsified, PR body refreshed)
 
 **Receipt:** `twelve-lane-receipts/t0735-lane0.md`
@@ -18963,6 +18995,14 @@ _Last updated: 2026-11-24 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: pre-reg SHA discipline (seal committed before battery); 8 §1 pins re-derived at action time incl. origin HEAD 92329c5795... via git ls-remote; P-tip MATCH, P-log append-only drift documented-not-blocking; §7 verdict mechanical (trap rate 0, positive controls 0/3 -> FALSIFY, 'instrument too quiet not too noisy'). Score 9.0: why not 9.5 = s
 
+### ✅ t0731 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Independent second-seat design review of W5 corpus-stamping migration plan CANDIDATE - verdict ADOPT-CONDITIONAL, F1: visible 18 not 24
+
+**Receipt:** `twelve-lane-receipts/t0731-lane12.md`
+
+**Evidence:** VERIFIED this tick: live tip 92329c57 exists in the repo mirror (commit); corpus blob 81786549 re-derived live - 631 entries, 0 stamped, publication_scope 588 MISSING / 26 PUBLIC_DERIVED_VIEW / 16 PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST / 1 PRIVATE, byte-exact vs the receipt's §1 table; gate blob aae7b3d7 re-derived live - L40 PUBLIC_PUBLICAT
+
 ### ✅ t0731-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** Plan-doc audit: 18/24 public-seam visible-count falsification (section 4 gate / D6)
@@ -19130,6 +19170,14 @@ _Last updated: 2026-11-24 18:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0729-lane2.md`
 
 **Evidence:** Verified: head re-pinned via PR API == 97b65bd11316fe91b324986b3d429d0c3ee0ff75 == batched git ls-remote (no inheritance); branch naya/lane9/receipt-relevance-t0710 head matches; worktree at pinned head; 4 hostile rows refused with exact fragments; fail-closed row exit 1; ran the suite the builder didn't (5/5 PASS); CI at pinned head: receipt-gate/
+
+### ✅ t0729 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Independent end-to-end verification of breaker #8 feature.contacts (already-built hypothesis attacked, not rebuilt)
+
+**Receipt:** `twelve-lane-receipts/t0729-lane12.md`
+
+**Evidence:** VERIFIED this tick: head commit 0e1bfe5819f2b0490be823db7a46e2e2c0b3fd4c exists in the repo mirror with matching message ('Contacts breaker built (t0727 Lane 12): module + 24 tests + registry flip'); parent ca3c80b7 exists; blob 65216f0a exists at 13,563 bytes, matching the receipt pin; feature_contacts.py / registry.json / resolver.py / test files
 
 ### ✅ t0729 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
