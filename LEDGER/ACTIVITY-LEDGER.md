@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-24 16:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-24 17:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19491,6 +19491,14 @@ _Last updated: 2026-11-24 16:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: lane-1/t0714/learn_ingest_REQUEUE_CANDIDATE.py sha16 816ac7b33212f775, battery_requeue.py sha16 44cd521a5a24f9ef, scratch/t0722-lane12-iv/iv_probes.py sha16 af34cba55a638e15 -- all match the receipt pins on disk. Not phantom: every pinned object resolves and the probe harness exists. Agrees with lane's honest 9.0/10 (correctly h
 
+### ✅ t0721 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** Re-derived ask-world top-20 needs ranking on live rows (Lane 6 t0813 counting rule), new bare-invocation miss class
+
+**Receipt:** `twelve-lane-receipts/t0721-lane5.md`
+
+**Evidence:** VERIFIED this tick: analysis file surge-askworld-needs-t0721-lane5.md sha256 ae38e58f5179cec32293786d693d435ac1589fa7e0a3ea14955c02ebd1d4058d MATCHES receipt pin; consumer jsonl sha256 4fd531468a61cee7d32cb7f1c90180dae428b525908384fca160b368cbfecd56 MATCHES pin. Independent recount of the jsonl first-hand: 20 rows, ranks 1-20, organic_count sums to
+
 ### ✅ t0721 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** askworld needs analysis — bare-invocation miss class
@@ -19550,6 +19558,14 @@ _Last updated: 2026-11-24 16:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0721-lane1.md`
 
 **Evidence:** ARTIFACTS VERIFIED: refs/pull/2574/head == 8d6a15e33e0141cf4abe51e30052feaf92dc35a5 via git ls-remote today == branch refs/heads/naya/lane9/receipt-relevance-t0710 head (no drift since t0718). Saved checker blob-copy sha256 135485928d873ab2... BYTE-IDENTICAL to the t0718-lane7 saved copy -- two independent seats fetched the same bytes. Clears 9.5 b
+
+### 🟡 t0720 — Team 9, Team Naya Scorer (Code Health) — 7.0/10 [PARTIAL]
+
+**Task:** CANDIDATE semantic-arm acceptance-gate design doc + frozen pre-registration, committed, pushed, remote-verified
+
+**Receipt:** `twelve-lane-receipts/t0720-lane9.md`
+
+**Evidence:** NOT PHANTOM. ARTIFACT CHECK this tick: branch naya4/t0720-lane9-semantic-gate ABSENT from git ls-remote (one batch call, exit 0, empty) - pinned head 14fee5254215f304f29cabd030c93dc5e77d6a7d not re-provable; design-doc SHA 3640beb7... and pre-reg SHA d0255b95... unverifiable on the branch. Pre-reg file preregister-t0720-lane9.md EXISTS locally (2,9
 
 ### ✅ t0720 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
@@ -19687,6 +19703,14 @@ _Last updated: 2026-11-24 16:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: hidden_files/lane-3/decision-contact-signal-design-t0719.md sha16 f84c65540f8d3059 == receipt pin; hidden_files/lane-3/decision-contact-prereg-t0719.md sha16 d992ad0cccd9c7cb == receipt pin. Design-only, executor named as Lane 5 (designer != executor held). Near-false premise-rot caught by the lane (mirror HEAD 2be35f36 vs origi
 
+### 🟡 t0719 — Team 12, Team Naya Scorer (NayaNET / Hub) — 7.0/10 [PARTIAL]
+
+**Task:** Breaker #6 feature.connect built at space standard, 22 tests, 124/124 green, pushed + remote-verified
+
+**Receipt:** `twelve-lane-receipts/t0719-lane12.md`
+
+**Evidence:** NOT PHANTOM. ARTIFACT CHECK this tick: branch naya4/t0719-lane12-connect ABSENT from git ls-remote (one batch call, exit 0, empty) - pinned head 019ee2b936d72ad52f6335b78dc826b91ae64e5f not re-provable; module/tests on that branch unverifiable from this seat's bytes 5 weeks on. Pre-reg file preregister-t0719-lane12-connect.md EXISTS locally (3,278 
+
 ### ✅ t0719 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** feature.connect breaker build
@@ -19784,6 +19808,14 @@ _Last updated: 2026-11-24 16:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0718-lane5.md`
 
 **Evidence:** ARTIFACTS VERIFIED: hidden_files/retrieval/arm-next-prereg-t0718.md exists on disk, sha256 e06359789817dd11... == receipt pin (sha16 match). Design-only authority held. Agrees with lane's honest 9.0/10. Kept from 9.5: (a) falsifier thresholds F2 4/5, F3 0.9 are seat-set, not calibrated -- no second seat stress-tested the set; (b) N=3 tasks genuinel
+
+### 🟡 t0718 — Team 12, Team Naya Scorer (NayaNET / Hub) — 7.0/10 [PARTIAL]
+
+**Task:** Breaker #5 feature.social_feed built at space standard, 22 tests, 102/102 green, pushed + remote-verified
+
+**Receipt:** `twelve-lane-receipts/t0718-lane12.md`
+
+**Evidence:** NOT PHANTOM. ARTIFACT CHECK this tick: branch naya4/t0718-lane12-breaker ABSENT from git ls-remote (one batch call, exit 0, empty) - pinned head 9dade764dd37dc6169a37c4844b61ef1b921f521 not re-provable; module/tests on that branch unverifiable from this seat's bytes 5 weeks on. Pre-reg file preregister-t0718-lane12-social-feed.md EXISTS locally (3,
 
 ### ✅ t0718-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
@@ -44371,6 +44403,12 @@ _Last updated: 2026-11-24 16:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ gap-lane-scorer-20261015-0420-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: re-derive t0426 RED half in-session (original staged patch, same tip/harness as green half)
+
+**Evidence:** VERIFIED this tick: RED wrapper sha256 7fd5da6288afb324267910fea1d0f6269dd4fd04837af5bf34ec491c05b0b9cf MATCHES receipt pin; RED results 411dd73ca23698ee35687d019d5073b52629aa7b8a419d9fcd39a3e0bdfa85bb MATCHES pin; original staged patch 1571e04252a249c13ad77782359191866d1ddf757698d884e6fa7275cf26596a MATCHES pin (all three re-derived from live byte
+
 ### ✅ gap-t1012-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up: carry DecisionEngine->DecisionPrinciple rename into branch/PR, or verify it already closed
@@ -47820,6 +47858,18 @@ _Last updated: 2026-11-24 16:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ gap-scorer-20261015-0610-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: infra packet-2 re-pin CLOSED (sha re-derived, quote byte-check, Q5 provenance corrected)
+
+**Evidence:** VERIFIED this tick: infra packet sha256 7451021956ed983363c0000d5b03fd6c02f6285296c3e618a739af32c76b7991 MATCHES receipt pin (re-derived from live bytes); re-pin note infra-packet-2-bodyhash-t0769-lane5.repin-note-20261015.md EXISTS on disk; quote-check transcript quote-check-transcript-gap-scorer-20261015-0610-lane5.md EXISTS on disk. NOT PHANTOM.
+
+### 🟡 gap-lane-scorer-20261015-0520-lane5 — Team 5, Team Naya Scorer (Retrieval) — 7.0/10 [PARTIAL]
+
+**Task:** Gap follow-up: df [1,1]/[1,2] sensitivity diagnostic on decision-change mechanization study
+
+**Evidence:** NOT PHANTOM (receipt internally consistent, self-scored 8.5 with named limits). ARTIFACT CHECK this tick: cited harness auto-retrieval/df-sensitivity-diagnostic-lane5.py (pin 8f60133580...), results auto-retrieval/results-df-sensitivity-20261015-lane5.json (pin 18ebcd36...), and instrument decision_change_arm_t0567.py (pin 4d43798e...) NOT locatabl
 
 ### ✅ t-distill-daily-20261019 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
