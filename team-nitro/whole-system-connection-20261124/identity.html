@@ -1143,6 +1143,11 @@
    already-claimed message goes GREEN, bigger, unmissable, fits whole in the
    viewport; This-is-me is the way back in — never a dead end. */
 #hubNote.fp-taken-green{color:#2fe89e !important;font-size:19px !important;font-weight:800;text-align:center}
+/* WHOLE-SYSTEM CONNECTION 2026-11-24 v2 (items 61/70): "already claimed"
+   goes GREEN + bigger + unmissable. The base rule kept it silver-white
+   at 14.08px — the fail. The green note below already carries the
+   detail; this line is the unmissable headline. */
+.alias-status[data-state="taken"]{color:#2fe89e !important;font-size:19px !important;font-weight:800 !important;text-shadow:0 0 14px rgba(47,232,158,.35)}
 .fp-this-is-me{display:inline-block;margin-top:10px;padding:12px 22px;border-radius:999px;border:1.5px solid rgba(47,232,158,.65);background:radial-gradient(circle at 50% 0%,#0b2e21,#05060a);color:#fff;font:inherit;font-size:17px;font-weight:800;cursor:pointer}
 .fp-this-is-me:active{transform:translateY(1px) scale(.94);filter:brightness(.72)}
 </style>
@@ -1671,6 +1676,10 @@ function clearPendingRoute() {
               + '&alias=' + encodeURIComponent(finalAlias);
           });
           note.appendChild(_tim);
+          /* WHOLE-SYSTEM CONNECTION 2026-11-24 v2 (items 61/70): the green
+             note + "This is me" sat below the fold (y950 on a 900 viewport).
+             Bring them into view the moment they appear. */
+          try { note.scrollIntoView({block:'center'}); } catch(e){}
           return;
         }
         var createdAt = (result && result.createdAt) || new Date().toISOString();

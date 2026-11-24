@@ -227,3 +227,291 @@ harmonization (N7 — do not harmonize without his word).
 - **Not proven:** anything by render. The checker must walk it as Shawn —
   land on nayanet.app, name in, certificate, 15 questions presenting — at phone
   width first, with real clicks. His eye is the final gate.
+
+---
+
+# MAKER REPORT — v2 (fix round, staged, NOT live)
+
+**Maker:** fix maker v2 · **Date:** 2026-11-24 · **Parent:** `fafd172c` (branch tip at
+filing; verify at file time) · **Checker verdict addressed:** `checker/CHECKER-VERDICT.md`
+(overall FAIL — 3 FAIL, 15 PARTIAL, design-laws §G FAIL on 9 numbered breaks).
+
+**Status: STAGED, not live. Nothing here has been deployed. A fresh checker
+re-verifies; the coordinator decides the deploy. This report goes to the parent
+orchestrator, NOT to Shawn.**
+
+**Filed: commit TBD (filled in the follow-up report-only commit, same pattern as
+v1's `fafd172c`).**
+
+## v2 staged files
+
+| File | Size | SHA-256 | v1 size/sha |
+|---|---|---|---|
+| `welcome-staged.html` (portal) | 1,189,401 B | `e620725722f7…` | 1,186,194 B, `55eb1b1e522c…` |
+| `agreement.html` | 22,953,906 B | `2c88513f9011…` | 22,950,575 B, `1a72623524ea…` |
+| `identity.html` | 310,386 B | `1b721d5ccb84…` | 309,681 B, `edb926dd3ea7…` |
+| `welcome-redirect.html` | 1,047 B | `49cfeb004d90…` (unchanged) | 1,047 B, `49cfeb004d90…` |
+
+Build scripts (one source of truth each, re-runnable from the v1 files in
+`maker/`): `edit-portal-v2.py` + `edit-portal-v2b.py` (portal), `edit-agreement-v2.py` +
+`edit-agreement-v2b.py` (agreement), `edit-identity-v2.py` (identity). Probes:
+`probe-v2-portal.py`, `probe-v2-agreement.py`, `probe-v2-identity.py`,
+`probe-v2-disc.py`, `probe-v2-decknav.py`, `probe-v2-cover.py`, `probe-v2-audio.py`
+(local mirror `http://127.0.0.1:8898/`, Playwright Firefox; identity via Chromium
+through the localhost forwarder `http://127.0.0.1:18080`, because Firefox in
+this VM fires no Supabase reads).
+
+## What v2 fixed (each proven by render with real clicks, not by bytes)
+
+1. **Phone portal front door — check A / §G.1 (was FAIL).** The v1 deed
+   sentence sat inside `.content`, which at 390px grew to 403px tall inside a
+   288px circle and spilled the input above the ring. v2 moves the deed
+   sentence + reader out of `.content` into `.stage` (below the 248px circle)
+   at ≤480px only, by a runtime move script (desktop untouched). Render at
+   390×844: `#userName` rect 104,311 182×43, hit=SELF, real click focuses it,
+   typed "Shawn"; `#presence` "NAYA WELCOMES YOU" visible (two centred lines),
+   hit=SELF; `#fpDeedSentence` whole, 15,466 360×163, hit=SELF, bottom 629 ≤
+   844 (the 4px scrollHeight excess is line-height rounding — every glyph
+   visible in the screenshot); `#fpDeedInfo` ⓘ 26×26 hit=SELF, opens the
+   reader ("1 of 12", rect 535–732, in view); Enter button hit=SELF. Desktop:
+   input SELF, deed inside the core (440–602 vs core 235–670). Screenshot
+   `/tmp/wsc-v2/phone-portal-v2.png`.
+2. **Walk comes into view — item 65 (was PARTIAL).** Root cause: the author
+   `display:flex` on `.fp-login` beat the UA `[hidden]` rule, so the login
+   stayed laid out and the walk sat below the fold. v2 adds
+   `.fp-login[hidden]{display:none}` and `scrollIntoView` on walk load and on
+   finish. Render: desktop 1280×900 `?walk=1` → scrollY 0, login display
+   none, Q1 [84,117], walk top 0; phone 390×844 → Q1 [84,117]; end-slide
+   buttons in view both widths (world y371 / pricing y370 desktop; world y410
+   / pricing y397 phone); "Welcome home." ×1 on the end slide (duplicated
+   heading removed — the completion line already says it).
+3. **Agreement load error + dead Close — item 53 / §G.4 (was FAIL).** The
+   appended init block attached `fpFinalClose` before the reader div existed.
+   v2 wires it guarded (`wireFinalClose()`, `__fpWired` flag) on
+   DOMContentLoaded and inside `openFinal()`. Render: zero page errors on
+   plain, `?view=deck` and `?view=letter` loads; all 8 final-board links open
+   their verbatim answers (Our Vow 2,628 chars; The Deal 517; Our Promise 483;
+   The Governance 344; Our Constitution 13,255; Our Laws 3,281; Our Rules 290;
+   Our Oath 1,090) and Close hides the reader for every one — **8/8 open+close**.
+4. **"I agree" exists and sinks — item 11 (was FAIL).** New `.fp-agree-btn`
+   (obsidian pill, green rim, min-height 64px) at the deck end (after the Oath
+   link) and at the letter end (appears in `.letter-controls` when the last
+   beat lands, hidden again on reset). Held-press by real mouse:
+   `matrix(0.94, 0, 0, 0.94, 0, 1)` + `brightness(0.72)` for BOTH. Click-through:
+   N ball holds, then in-place navigation to
+   `https://nayanet.app/?from=agreement#userName` with `#userName` focused
+   (deck and letter both proven). Play disc: held-press `matrix(0.94, 0, 0,
+   0.94, 0, 0)` + `brightness(0.72)` — v2b also pauses the idle `enterPulse`
+   animation while pressed, because the running animation composites with the
+   press transform and made the held value non-deterministic (0.94 one run,
+   0.993 mid-pulse the next). This also proves item 28's letter-end bridge,
+   which the checker left UNPROVEN (28: PARTIAL → DONE).
+5. **Portal button label — item 37 (was FAIL).** Visible `#fpEnterDeal` now
+   reads "Read the agreement ◆" (long label ×0, case-sensitive count; short
+   label ×6). Render phone + desktop.
+6. **Taken message — items 61, 70 (were PARTIAL).** `#aliasStatus` "already
+   claimed" is now green `rgb(47,232,158)`, 19px, weight 800; the green
+   `#hubNote` + "This is me" button scroll into view when they appear
+   (`scrollIntoView({block:'center'})`). Render (Chromium, live registry read
+   of the existing `shawn` row): desktop 1280×900 — status green 19px 800
+   hit=SELF in view; hubNote y728 h121 (bottom 849 ≤ 900); This-is-me y797
+   h52 (bottom 849 ≤ 900); phone 390×844 — hubNote y606 h151 (bottom 757 ≤
+   844), This-is-me y704 h52 (bottom 756 ≤ 844). Click "This is me" →
+   `/?walk=1&name=Shawn&alias=shawn` (local mirror). No new test identities
+   created; the checker's two registry rows (cert_no 860, 861) untouched —
+   deletion is Shawn's hand. This also fixes item 62's phone ⓘ (PARTIAL →
+   DONE — see fix 1).
+7. **Choice footer fit — item 22: DONE by coordinator restatement, no build.**
+   The choice block fits one screen without scroll at 390/635 (checker-proven);
+   the 12-link legal footer below the fold at 1280×900 is normal footer
+   behaviour. Footer unchanged.
+8. **Items 48/50 — PROVE, not rebuild: render evidence in hand, items stay
+   PARTIAL.** The choice screen stays the merge-law shape (settled by #3453 +
+   N4). The video-left / audio-right arrangement EXISTS on the agreement
+   cover screen (`#screen-cover`, reached by Back from deck slide 1):
+   `.pm-art` (video) 671×630 @103,270 vs `.pm-side` (audio) 377×613 @800,270 —
+   video left, audio right, both opacity 1, visible; `#videoFacade` 671×377
+   with the welcome poster + play button; `#welcomeAudio` 335×40 @821,648;
+   voice orb `#voice` 207×207; YouTube link `a06pPpxRil4`. Screenshot
+   `/tmp/wsc-v2/agree-cover-desk-2.png` (8s settle — the first shot at 1.2s
+   caught the poster before paint). Items stay PARTIAL: the frame order is
+   proven present on the cover screen, not on the choice screen, and the
+   coordinator settles whether the merge-law shape supersedes the frame order.
+9. **Item 7 (amplitude) — FLAGGED: no real-audio path is demonstrable in this
+   round.** v2 added `play`/`pause`/`ended` listeners that set `audioPlaying`
+   from the real `#welcomeAudio` element — the wiring is correct, but the path
+   cannot fire, by the page's own design: the one-play-path rule attaches
+   `audio.addEventListener('play', function(){ audio.pause(); ytCommand('play'); })`
+   — pressing play on the audio bar immediately pauses the audio and plays
+   the YouTube video instead. Demonstrated live: direct `audio.play()` resolves
+   yet `paused` stays true, `currentTime` 0.00, `audioPlaying` false, analyser
+   present but `freqSum48` 0; real mouse clicks on the native play button do
+   the same. The analyser is wired only to the audio element, and the only
+   media that actually plays is the cross-origin YouTube iframe, which cannot
+   feed a Web Audio analyser. Making it live would require either letting the
+   audio element actually play (breaking the one-play-path law — a design
+   decision, not a maker fix) or rewiring the analyser to the video
+   (impossible cross-origin). The synthetic branch stays, flagged. No
+   DONE-in-bytes claimed.
+10. **Tidies (same pass):** "Welcome home." duplication removed (end slide
+    ×1); "New user? Create a new account — click here" no longer clips on the
+    circle edge on desktop (deed hidden while the returning view shows,
+    reshown on "New user?" click; returning line rect 477,523 325×31 inside
+    core 235–670, hit=SELF); daybar title whole at 390px ("The Collective
+    Agreement", white-space normal, scrollW = clientW = 312, h24, no
+    ellipsis); choice pills equal on desktop (280×64 both, was 253 vs 241 at
+    48px) — item 38 PARTIAL → DONE, and item 15's phone truncation
+    (DONE-in-bytes → DONE).
+
+## Design-laws §G re-check (v2, in writing)
+
+§G.1 phone front door — FIXED by render (fix 1). §G.2 walk whole — FIXED by
+render (fix 2). §G.3 taken message — FIXED by render (fix 6: green 19px 800,
+in view both widths). §G.4 Close dead — FIXED by render (fix 3: 8/8, zero
+errors). §G.5 play disc sink — FIXED by render (fix 4: .94 + dim, deterministic
+after v2b). §G.6 no reachable agree — FIXED by render (fix 4: deck + letter
+agree .94 + click-through to the live portal name box). §G.7 clipped/duplicated
+text — FIXED by render (fix 10). §G.8 v31 text boards on phone (item 78) —
+UNCHANGED, still HELD pending parent authorization (artifact file untouched).
+§G.9 pills width/min-height — FIXED by render (280×64 both). Honest note: the
+phone presence "NAYA WELCOMES YOU" wraps to two centred lines at 15px inside
+the 248px circle (visible, hittable, reads cleanly — screenshot) rather than
+one line; and several pre-existing small sizes (presence 15px, deed 17px)
+remain below the §2.3 17px floor for body text — the fix required visibility,
+not a redesign of the base sizes.
+
+## Regressions re-verified on the final files
+
+- Slide 11 byte-identical: `SLIDES[10]` x-field sha256
+  `33b0590cfb9f811a…` (same method as v1/v2 asserts). `.intel-board`
+  occurrences 6, unchanged. `welcome-staged` ×0 in the agreement; `of 27` ×0.
+- All 9 script blocks pass `node --check` on the final files (portal 6,
+  agreement 2 including the 21,600,745 B EMBED block, identity 1).
+- Redirect `welcome-redirect.html` unchanged (sha `49cfeb004d90…`).
+
+## Per-item status, v2 (all 78 — checker's statuses carried forward, v2 changes noted)
+
+V2 moves 11 items to DONE (3 FAIL + 7 PARTIAL + 1 DONE-in-bytes) and 1 WAITING
+to FLAGGED. Counts: DONE 43 · DONE-in-bytes 9 · DONE-by-construction 1 ·
+DONE/JUDGED 1 · PARTIAL 8 · FAIL 0 · WAITING 8 · FLAGGED 1 · BLOCKED 3 · NOTED 3 ·
+N/A 1 = 78. (Checker headline was DONE 30 · DONE-in-bytes 13 · PARTIAL 15 ·
+FAIL 3 · WAITING 9 · BLOCKED 3 · NOTED 3 · N/A 1 · DONE/JUDGED 1; the v2 deltas
+above are computed from the verdict table rows.)
+
+| # | v2 | Note |
+|---|---|---|
+| 1 | WAITING | Shawn's word owed. Untouched. |
+| 2 | WAITING | Shawn's word owed (U4). Untouched. |
+| 3 | WAITING | Dictation U1 unfinished. Slide 11 byte-identical (`33b0590cfb9f811a`). |
+| 4 | DONE-in-bytes | As checker. |
+| 5 | BLOCKED | Needs the real Smart Calendar image; none in this round. |
+| 6 | WAITING | Captain's decision (player placement). Untouched. |
+| 7 | FLAGGED | No real-audio path demonstrable (see fix 9). Synthetic branch stays. |
+| 8 | NOTED | As checker. |
+| 9 | NOTED | As checker. |
+| 10 | DONE | As checker. |
+| 11 | DONE | Deck + letter agree .94 + dim + click-through; play disc .94 + dim (fix 4). |
+| 12 | DONE | As checker. |
+| 13 | DONE | As checker. |
+| 14 | DONE | As checker. |
+| 15 | DONE | Daybar title whole at 390px (fix 10). |
+| 16 | DONE | As checker. |
+| 17 | DONE | As checker. |
+| 18 | DONE | As checker. |
+| 19 | DONE | As checker. |
+| 20 | DONE | As checker. |
+| 21 | DONE-in-bytes | As checker. |
+| 22 | DONE | By coordinator restatement, no build (fix 7). |
+| 23 | DONE-in-bytes | As checker. |
+| 24 | PARTIAL | As checker (distillation not done; hard line on official text). |
+| 25 | PARTIAL | As checker (read-back voice BLOCKED on item 34). |
+| 26 | DONE-in-bytes | As checker. |
+| 27 | DONE | As checker. |
+| 28 | DONE | Letter-end bridge proven: agree visible, .94 press, N hold, live portal `#userName` focused (fix 4). |
+| 29 | DONE | As checker. |
+| 30 | DONE-in-bytes | As checker. |
+| 31 | N/A | As checker. |
+| 32 | DONE | As checker. |
+| 33 | WAITING | OFFICIAL vs v3 — Shawn's hand; never harmonize (N7). |
+| 34 | BLOCKED | Voice at the END; no recording exists. |
+| 35 | WAITING | Shawn's hand — §4.11/C9 wording. |
+| 36 | WAITING | Trigger not met. |
+| 37 | DONE | Visible button "Read the agreement ◆"; long label ×0 (fix 5). |
+| 38 | DONE | Pills 280×64 both on desktop (fix 10). |
+| 39 | DONE | As checker. |
+| 40 | DONE | As checker. |
+| 41 | DONE-by-construction | As checker. |
+| 42 | DONE | As checker. |
+| 43 | DONE | As checker. |
+| 44 | DONE | As checker. |
+| 45 | PARTIAL | As checker (read-back BLOCKED on item 34). |
+| 46 | DONE-in-bytes | As checker. |
+| 47 | DONE/JUDGED | As checker. |
+| 48 | PARTIAL | Render evidence: video-left/audio-right on the cover screen (fix 8). Choice screen stays merge-law shape; coordinator settles. |
+| 49 | DONE | As checker. |
+| 50 | PARTIAL | Same as 48 (fix 8). |
+| 51 | PARTIAL | As checker (Hub/Academy source comparison not re-proven). |
+| 52 | DONE | As checker. |
+| 53 | DONE | Zero errors on 3 loads; final reader Close 8/8 (fix 3). |
+| 54 | DONE-in-bytes | As checker. |
+| 55 | DONE-in-bytes | As checker. |
+| 56 | DONE | As checker. |
+| 57 | DONE | As checker. |
+| 58 | DONE | As checker. |
+| 59 | DONE | As checker. |
+| 60 | DONE | As checker. |
+| 61 | DONE | Taken message green 19px 800, in view both widths (fix 6). |
+| 62 | DONE | Phone ⓘ SELF-hittable, reader opens "1 of 12" in view (fix 1). |
+| 63 | DONE-in-bytes | As checker. |
+| 64 | PARTIAL | As checker (walk-certificate issuance live still unproven from staging). |
+| 65 | DONE | Q1 + end buttons in view on load, both widths (fix 2). |
+| 66 | DONE | As checker. |
+| 67 | DONE | As checker. |
+| 68 | DONE | As checker. |
+| 69 | DONE | As checker. |
+| 70 | DONE | Green note + "This is me" in view both widths; click → `/?walk=1&name=Shawn&alias=shawn` (fix 6). |
+| 71 | DONE | As checker. |
+| 72 | DONE | As checker. |
+| 73 | WAITING | Ambassador Terms text — Shawn's hand. |
+| 74 | DONE | Boards/frame untouched — `.intel-board` 6, slide 11 hash verified. |
+| 75 | NOTED | As checker. |
+| 76 | BLOCKED | Read-back audio — same as item 34. |
+| 77 | DONE | As checker. |
+| 78 | PARTIAL | HELD pending parent authorization — artifact file untouched; phone fit still FAILs per the checker's §F re-run (slides 10/15/28 empty, 32 overflow); retitle still unlanded. |
+
+## Still HELD / WAITING / BLOCKED (v2)
+
+- **HELD:** item 78 (retitle repair needs `artifact.inspect` with
+  `repair_authorized:true` — parent authorization, not the maker's).
+- **WAITING:** items 1, 2, 3/U1, 6, 33, 35, 36, 73 — decisions/dictations owed;
+  nothing invented.
+- **BLOCKED:** items 5, 34, 76 — sources that don't exist in this round.
+- **FLAGGED:** item 7 — real-audio path not demonstrable (see fix 9); the
+  coordinator decides whether the one-play-path law changes.
+- **PARTIAL remaining:** 24, 25, 45, 48, 50, 51, 64, 78 (see table).
+- **UNFOUND U1–U6** stay unfound. N7: payout timing not harmonized. Official
+  sentence + ⓘ text not reworded (captain's draft awaiting his tap). D1 walk
+  file untouched. Live workers/URLs untouched. School/howitworks untouched.
+
+## Verification done by the maker (v2)
+
+- Portal probe (`probe-v2-portal.py`, Firefox, local mirror): phone 390×844 +
+  desktop 1280×900 + returning + walk both widths — all controls SELF,
+  real clicks + typing, screenshots `/tmp/wsc-v2/phone-portal-v2.png`,
+  `desk-portal-v2.png`, `desk-portal-returning-v2.png`,
+  `walk-end-desk-v2.png`, `walk-end-phone-v2.png`.
+- Agreement probe (`probe-v2-agreement.py` + `probe-v2-disc.py`,
+  `probe-v2-decknav.py`, `probe-v2-cover.py`, `probe-v2-audio.py`): 3 loads
+  zero errors; pills 280×64; disc + both agree buttons .94 + dim by held
+  press; final reader 8/8; deck + letter click-throughs to the live portal
+  with `#userName` focused; daybar title whole at 390px; cover frame
+  video-left/audio-right with screenshot `agree-cover-desk-2.png`; item 7
+  proven undemonstrable (direct `play()` resolves yet stays paused).
+- Identity probe (`probe-v2-identity.py`, Chromium via forwarder, live
+  registry): taken state green 19px 800 + note/button in view at both widths;
+  "This is me" click-through; zero page errors.
+- All script blocks pass `node --check` on the final files (9 blocks).
+- **Not proven by render:** the walkthrough-15 certificate issuance from
+  staging (live worker + device identity — provable only live, after deploy,
+  as the checker recorded under item 64); anything on Shawn's own screen.
+  His eye is the final gate.

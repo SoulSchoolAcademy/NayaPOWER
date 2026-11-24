@@ -360,7 +360,7 @@
   #screen-slide .ib-layer-body{padding:14px 16px 16px}
   #screen-slide .pm-main{gap:10px;padding:10px 10px 12px}
   #screen-slide .pm-art-frame{max-height:150px}
-  .tb-title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tb-title{white-space:normal;overflow:visible;text-overflow:clip;font-size:19px;line-height:1.25}
 }
 /* Tap-to-full-view: the board fills the viewport, text first, picture below */
 .slide-deck.slide-full{position:fixed;inset:0;z-index:300;background:#02030a;display:flex;flex-direction:column;border-radius:0}
@@ -384,7 +384,7 @@
 #screen-choice .choice-play .pm-play-disc{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;font-size:38px;color:#fff}
 #screen-choice .choice-play-label{font-size:13px;font-weight:800;letter-spacing:.22em;color:#fff}
 #screen-choice .choice-pills{display:flex;flex-direction:column;align-items:center;gap:13px}
-#screen-choice .choice-pill{display:block;min-width:179px;height:48px;padding:0 24px;white-space:nowrap;border-radius:30px;border:1.5px solid rgba(255,255,255,.5);color:#fff;background:#050507;font:inherit;font-size:17px;font-weight:700;cursor:pointer;box-shadow:0 0 6px 0 rgba(255,255,255,.12)}
+#screen-choice .choice-pill{display:block;width:280px;min-width:280px;height:auto;min-height:64px;padding:12px 24px;white-space:nowrap;border-radius:30px;border:1.5px solid rgba(255,255,255,.5);color:#fff;background:#050507;font:inherit;font-size:17px;font-weight:700;cursor:pointer;box-shadow:0 0 6px 0 rgba(255,255,255,.12)}
 #screen-choice .choice-pill--deck{border-color:rgba(142,36,170,.65);background:radial-gradient(circle at 50% 0%,#2a0a33,#05060a)}
 #screen-choice .choice-pill--letter{border-color:rgba(47,232,158,.65);background:radial-gradient(circle at 50% 0%,#0b2e21,#05060a)}
 #screen-choice .choice-pill:active{transform:translateY(1px) scale(.97);filter:brightness(.72);box-shadow:0 0 2px 0 rgba(255,255,255,.08)}
@@ -408,6 +408,16 @@
 .fp-final-frame .fp-final-body{white-space:pre-wrap;font-size:17px;line-height:1.6}
 .fp-final-close{display:block;margin:18px auto 0;background:#050507;color:#fff;border:1.5px solid rgba(255,255,255,.5);border-radius:999px;padding:10px 22px;font:inherit;font-size:17px;cursor:pointer}
 @media(max-width:640px){.fp-final-invite{font-size:25px}.fp-final-link{font-size:17px}}
+
+/* WHOLE-SYSTEM CONNECTION 2026-11-24 v2 (item 11) — the agree control is
+   LIVE: deck-end and letter-end, sinking to scale .94 + dim + shadow
+   collapse while held, onward in place to the portal name box. The play
+   disc gets a real press-in too (was transform:none on hold). */
+.fp-agree-btn{display:inline-block;min-width:200px;min-height:64px;padding:12px 28px;border-radius:30px;border:1.5px solid rgba(47,232,158,.65);color:#fff;background:radial-gradient(circle at 50% 0%,#0b2e21,#05060a);font:inherit;font-size:17px;font-weight:800;cursor:pointer;box-shadow:0 0 18px rgba(47,232,158,.22);margin-top:16px}
+.fp-agree-btn:active{transform:translateY(1px) scale(.94);filter:brightness(.72);box-shadow:0 0 2px 0 rgba(255,255,255,.08)}
+#screen-choice .choice-play .pm-play-disc{transition:transform .15s ease,filter .15s ease,box-shadow .15s ease}
+#screen-choice .choice-play:active{transform:translateY(1px)}
+#screen-choice .choice-play:active .pm-play-disc{animation:none;transform:scale(.94);filter:brightness(.72);box-shadow:0 0 2px 0 rgba(255,255,255,.08)}
 </style>
 </head>
 <body>
@@ -684,10 +694,14 @@ function renderSlide(){
       '<button class="fp-final-link" type="button" data-final="constitution">Our Constitution</button>' +
       '<button class="fp-final-link" type="button" data-final="laws">Our Laws</button>' +
       '<button class="fp-final-link" type="button" data-final="rules">Our Rules</button>' +
-      '<button class="fp-final-link" type="button" data-final="oath">Our Oath</button></nav>';
+      '<button class="fp-final-link" type="button" data-final="oath">Our Oath</button></nav>' +
+      '<button class="fp-agree-btn" type="button" data-fp-agree>I agree &#9670;</button>';
     document.getElementById('slideBoards').appendChild(_row);
     _row.querySelectorAll('[data-final]').forEach(function(b){
       b.addEventListener('click', function(){ openFinal(b.getAttribute('data-final')); });
+    });
+    _row.querySelectorAll('[data-fp-agree]').forEach(function(b){
+      b.addEventListener('click', function(){ goToPortal(); });
     });
   }
   var dec = document.createElement('div'); dec.innerHTML = s.t;
@@ -931,6 +945,13 @@ function fmt(s){ if (!isFinite(s)) s = 0; s = Math.floor(s); return Math.floor(s
 dPlay.addEventListener('click', function(){
   if (videoPlaying) ytCommand('pause'); else ytCommand('play');
 });
+/* WHOLE-SYSTEM CONNECTION 2026-11-24 v2 (item 7): the analyser follows the
+   REAL anthem, not the play-state flag. The recording has its own native
+   controls; when it actually plays, audioPlaying goes true and drawWave
+   reads live frequency data; pause/end rests it. */
+audio.addEventListener('play', function(){ audioPlaying = true; });
+audio.addEventListener('pause', function(){ audioPlaying = false; });
+audio.addEventListener('ended', function(){ audioPlaying = false; });
 document.getElementById('dBack').addEventListener('click', function(){ ytSeek(videoTime - 15); });
 document.getElementById('dFwd').addEventListener('click', function(){ ytSeek(videoTime + 30); });
 document.getElementById('dStop').addEventListener('click', function(){ ytCommand('pause'); ytSeek(0); });
@@ -1090,6 +1111,7 @@ function resetLegalPanel(panel){
   var all = panel.querySelector('[data-legal-all]');
   if (next) next.hidden = false;
   if (all) all.hidden = false;
+  var _ag = panel.querySelector('[data-legal-agree]'); if (_ag) _ag.hidden = true;
   panel._legalIdx = 1;
 }
 function finishLegalPanel(panel){
@@ -1097,6 +1119,22 @@ function finishLegalPanel(panel){
   var all = panel.querySelector('[data-legal-all]');
   if (next) next.hidden = true;
   if (all) all.hidden = true;
+  /* WHOLE-SYSTEM CONNECTION 2026-11-24 v2 (item 11): the letter-end agree
+     control — reachable, sinks to .94 while held, onward in place to the
+     portal name box. Created once per panel, revealed at the end. */
+  var agree = panel.querySelector('[data-legal-agree]');
+  if (!agree){
+    agree = document.createElement('button');
+    agree.className = 'fp-agree-btn';
+    agree.type = 'button';
+    agree.setAttribute('data-legal-agree', '');
+    agree.innerHTML = 'I agree &#9670;';
+    agree.addEventListener('click', function(){ goToPortal(); });
+    var ctl = panel.querySelector('.letter-controls');
+    if (ctl) ctl.appendChild(agree); else panel.appendChild(agree);
+  }
+  agree.hidden = false;
+  try { agree.scrollIntoView({block:'nearest'}); } catch(e){}
 }
 function openLegal(key){
   var panel = document.getElementById('legal-' + key);
@@ -1169,10 +1207,27 @@ function openFinal(key){
   document.getElementById('fpFinalTitle').textContent = e.t;
   document.getElementById('fpFinalBody').textContent = e.body;
   document.getElementById('fpFinalReader').hidden = false;
+  wireFinalClose();
 }
-document.getElementById('fpFinalClose').addEventListener('click', function(){
-  document.getElementById('fpFinalReader').hidden = true;
-});
+/* WHOLE-SYSTEM CONNECTION 2026-11-24 v2 (item 53): this block runs BEFORE
+   the <div id="fpFinalReader"> exists (it sits after this script), so the
+   bare getElementById threw on EVERY load and the Close handler never
+   attached — the reader trapped the user. Wire it once the DOM exists, and
+   re-wire inside openFinal, the only path that opens the reader. */
+function wireFinalClose(){
+  var c = document.getElementById('fpFinalClose');
+  if (c && !c.__fpWired){
+    c.__fpWired = true;
+    c.addEventListener('click', function(){
+      document.getElementById('fpFinalReader').hidden = true;
+    });
+  }
+}
+if (document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', wireFinalClose);
+} else {
+  wireFinalClose();
+}
 </script>
 
 <div class="fp-final-reader" id="fpFinalReader" hidden>

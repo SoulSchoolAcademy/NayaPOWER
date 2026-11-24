@@ -2079,6 +2079,22 @@ body.fp-stage-on.fp-dialed #fpNextBtn:active,body.fp-stage-on.fp-dialed #fpNextB
    would narrow the text column D3 was measured in and risks wrapping
    the title/kicker at 390. D3 measures 10-12px clear, 0 overlap. */
 </style>
+
+<style>
+/* WHOLE-SYSTEM CONNECTION 2026-11-24 v2 (fix 1 — phone front door): at 390px
+   the deed sentence (268px tall) overflowed the 288px circle and pushed the
+   name box above it, where the portal ring covered it (hit=DIV.portal).
+   Below 480px the portal shrinks so presence + form fit the circle, and the
+   deed sentence + reader sit UNDER the portal in the stage flow (moved by
+   the script below) — whole, unclipped, tappable. Desktop is untouched. */
+@media(max-width:480px){
+  .portal{width:min(72vw,248px);height:min(72vw,248px)}
+  .presence{font-size:15px;letter-spacing:.06em}
+  .stage{flex-direction:column}
+  #fpDeedSentence{max-width:360px;margin:10px auto 0}
+  #fpDeedReader{max-width:360px;margin:10px auto 0}
+}
+</style>
 </head>
 <body>
 <div class="fp-login">
@@ -2173,7 +2189,51 @@ body.fp-stage-on.fp-dialed #fpNextBtn:active,body.fp-stage-on.fp-dialed #fpNextB
   back.addEventListener('click', function(){ show(idx - 1); });
 })();
 </script>
-          <div class="returning" id="returningView" hidden>
+          
+<script>
+/* WHOLE-SYSTEM CONNECTION 2026-11-24 v2 (fix 1): at phone width the deed
+   sentence + reader move OUT of the circle to sit under the portal, in the
+   stage flow — whole, unclipped, tappable. Desktop keeps them in the
+   circle. Listeners attached by the deed script survive the move (same
+   elements, new parent). Resize moves them back when the viewport widens. */
+(function(){
+  var stage = document.querySelector('.stage');
+  var portal = document.querySelector('.portal');
+  var content = document.querySelector('.content');
+  var sentence = document.getElementById('fpDeedSentence');
+  var reader = document.getElementById('fpDeedReader');
+  /* v2b: `returning` is NOT required here — this script sits BEFORE the
+     <div id="returningView"> in the document, so at parse time it is null
+     and the old guard returned early, leaving the deed in the circle. The
+     narrow path never needs it; the widen path looks it up lazily. */
+  if (!stage || !portal || !content || !sentence || !reader) return;
+  function place(){
+    var narrow = window.matchMedia('(max-width:480px)').matches;
+    if (narrow){
+      if (sentence.parentElement !== stage){
+        stage.insertBefore(sentence, portal.nextSibling);
+        stage.insertBefore(reader, sentence.nextSibling);
+      }
+    } else {
+      var returning = document.getElementById('returningView');
+      if (returning && sentence.parentElement !== content){
+        content.insertBefore(sentence, returning);
+        content.insertBefore(reader, returning);
+      }
+    }
+  }
+  place();
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', place);
+  }
+  try {
+    var mq = window.matchMedia('(max-width:480px)');
+    if (mq.addEventListener) mq.addEventListener('change', place);
+    else if (mq.addListener) mq.addListener(place);
+  } catch(e){}
+})();
+</script>
+<div class="returning" id="returningView" hidden>
             <p class="returning-greet" id="returningGreet" hidden></p>
 <style>
 .returning-greet{color:#2fe89e;font-size:19px;font-weight:800;text-align:center;margin:0 0 10px}
@@ -2204,7 +2264,7 @@ body.fp-stage-on.fp-dialed #fpNextBtn:active,body.fp-stage-on.fp-dialed #fpNextB
 
 </main>
 
-  <footer class="botbar">Create. Connect. Grow with us.<button class="fp-enter-deal" id="fpEnterDeal" type="button">Read the collective agreement &#9670;</button></footer>
+  <footer class="botbar">Create. Connect. Grow with us.<button class="fp-enter-deal" id="fpEnterDeal" type="button">Read the agreement &#9670;</button></footer>
 </div><!-- /fp-login -->
 <!-- WHOLE-SYSTEM CONNECTION 2026-11-24 (items 65/67) — the walkthrough lives
      HERE, on the portal. Land on nayanet.app -> name in -> certificate ->
@@ -2222,7 +2282,6 @@ body.fp-stage-on.fp-dialed #fpNextBtn:active,body.fp-stage-on.fp-dialed #fpNextB
       <button class="fp-walk-enter" id="fpWalkEnter" type="button">Enter</button>
     </div>
     <div id="fpWalkEnd" hidden>
-      <h1 class="fp-walk-q">Welcome home.</h1>
       <p class="fp-walk-endline">Your own personal branded Smart Link</p>
       <p class="fp-walk-linkrow"><span class="fp-walk-link" id="fpWalkLink"></span> <button class="fp-walk-copy" id="fpWalkCopy" type="button">Copy</button></p>
       <p class="fp-walk-endline">Your answers are saved on this device. Your world is ready &mdash; go see it, then choose your plan.</p>
@@ -2237,6 +2296,7 @@ body.fp-stage-on.fp-dialed #fpNextBtn:active,body.fp-stage-on.fp-dialed #fpNextB
 /* WHOLE-SYSTEM CONNECTION 2026-11-24 (items 65/67) — the walk view: one
    question per screen, obsidian + white, the portal's own button language. */
 #fpWalk{display:block;max-width:720px;margin:0 auto;padding:48px 20px 64px;text-align:center;color:#fff}
+.fp-login[hidden]{display:none} /* WHOLE-SYSTEM CONNECTION v2 (item 65): the author display:flex beat the [hidden] rule, so the login stayed up and the walk sat below the fold. */
 #fpWalk[hidden]{display:none}
 .fp-walk-kicker{font-size:15px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#fff;margin:0 0 14px}
 .fp-walk-q{font-family:Marcellus,Georgia,serif;font-size:25px;line-height:1.3;color:#fff;margin:0 0 10px}
@@ -2344,6 +2404,7 @@ body.fp-stage-on.fp-dialed #fpNextBtn:active,body.fp-stage-on.fp-dialed #fpNextB
       enterBtn.hidden = true;
       document.querySelector('.fp-walk-hint').hidden = true;
       endEl.hidden = false;
+      try { walk.scrollIntoView({block:'start'}); } catch(e){}
     }
     try {
       var to = setTimeout(finish, 3000);
@@ -2369,6 +2430,8 @@ body.fp-stage-on.fp-dialed #fpNextBtn:active,body.fp-stage-on.fp-dialed #fpNextB
     window.location.href = PRICING_URL;
   });
   render();
+  /* WHOLE-SYSTEM CONNECTION v2 (item 65): the walk must PRESENT on load — Q1 fully in view. */
+  try { walk.scrollIntoView({block:'start'}); } catch(e){}
 })();
 </script>
 <div id="fpStageBarT" hidden>
@@ -3244,6 +3307,8 @@ function fpJumpToPersonal(alias, fallbackName){
   var fresh=document.getElementById('newAccountLine');
   if(!form||!view||!jump||!fresh){return;}
   form.hidden=true; view.hidden=false;
+  var _deed=document.getElementById('fpDeedSentence'); if(_deed) _deed.hidden=true;
+  var _dr=document.getElementById('fpDeedReader'); if(_dr) _dr.hidden=true;
   var _greet=document.getElementById('returningGreet');
   if(_greet && name){ _greet.textContent='Welcome back, '+name+'.'; _greet.hidden=false; }
   jump.addEventListener('click',function(){
@@ -3253,6 +3318,7 @@ function fpJumpToPersonal(alias, fallbackName){
   if(_tim){ _tim.addEventListener('click',function(){ window.location.href='/identity.html'; }); }
   fresh.addEventListener('click',function(){
     view.hidden=true; form.hidden=false;
+    var _deed2=document.getElementById('fpDeedSentence'); if(_deed2) _deed2.hidden=false;
     var n=document.getElementById('userName'); if(n){n.focus();}
   });
   /* NEW-ACCOUNT FIX (Shawn 22:36Z, 2026-11-12): every identity claimed
@@ -4216,7 +4282,7 @@ function fpJumpToPersonal(alias, fallbackName){
      /* EYE FOLLOW-ON F1 (2026-11-17) - no 'bridge' auto-restore here:
         a plain load must never auto-land on the bridge (State B).
         The choice (State A) is what the citizen enters through the
-        login's 'Read the collective agreement' button. PORTAL-ROOT-FIRST
+        login's 'Read the agreement' button. PORTAL-ROOT-FIRST
         (2026-11-22): ?stage=bridge no longer opens the bridge on load —
         the portal loads first, always; the stage opens only on a tap. */
   }catch(e){}
