@@ -5415,8 +5415,26 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              Smart Notes slide is gone — smart notes no longer display
              on the calendar day, 2026-11-20). */
           /* FIX9F2 item 1 — the frame-law slides: Journal entries follows Journal; Timeline follows Appointments; Book a time + Pick a time + What is it? follow Timeline (only while the booking flow is open; FIX9F4: Step 3 is its own slide now); the open list's detail follows Smart Lists (only while a list is open). Each is its own frame — overflow moves to the next frame, never scroll inside one. */
+          /* ROUND 6 (2026-11-23, Shawn's voice-call ruling ~18:44 MST) —
+             the deck gains a slide at 3: Intel Today + Daily Reports.
+             New order: 1 Wisdom · 2 Notifications · 3 Intel Today &
+             Daily Reports · 4 Journal · 5 Journal entries · 6 Your
+             Worlds · 7 News Hub · 8 Appointments · 9 Timeline ·
+             10 Summary · 11 Smart Lists · 12 Your Notes. Journal
+             moves from 3 to 4; everything after shifts by one. The
+             two buttons are the Summary slide's own rows, verbatim —
+             same sumRow calls, same doors, same colours — so both
+             open the existing door path for sel, the day on screen:
+             daily opens intelTodayHTML(), reports opens
+             statsBoardHTML() + intelHTML(). Leave room after slide 3:
+             more slides were coming when he was cut off. */
+          var intelReportsInner = '<div class="sum-list">' +
+            sumRow("daily", "#3f51b5", "spark", "Intel Today", "The day itself — every appointment, note, journal entry and list, in full.", 0, null) +
+            sumRow("reports", "#0e7490", "landmark", "Daily Reports", "The day's report — appointments, notes, journal and lists, counted.", 0, null) +
+            "</div>";
           wrap.innerHTML =
             catSection(CATS[0], notifCards + dayNav(dc, false), null, "Tap a world — see its notifications.", "", dc, "diamond", null, "notif-slide allow-scroll") +
+            catSection(CATS[2], intelReportsInner + dayNav("#3f51b5", false), "record", "Tap either one and your daily Intel pops up.", "Intel Today & Daily Reports", "#3f51b5", "diamond", null, "allow-scroll") +
             catSection(CATS[2], journalInner + dayNav("#07925f", false), "record", "Your day, in your words — kept for this day.", "Journal", "#07925f", "orb") +
             catSection(CATS[2], journalEntriesHTML() + dayNav("#07925f", false), "record", "Every entry for this day, in order.", "Journal entries", "#07925f", "orb") +
             catSection(CATS[0], notifRowsA + dayNav(dc, false), null, "Six worlds, one day — tap one to see its day.", "Your Worlds", dc, "orb", "worlds", "worlds-slide") +
