@@ -397,6 +397,147 @@ textarea.gr-input{resize:vertical;min-height:110px;line-height:1.55;}
 .sp-w-saved b{color:#d4a017}
 #sp-walk .frame-title{font-size:25px}
 @media (max-width:480px){.sp-tip{top:96px}}
+/* HUB SMART TABS v9 — harvested VERBATIM from Naya_Smart_Hub_Design.html (see T10). */
+.smart-tabs {
+  display: flex; align-items: center; gap: 10px;
+  overflow-x: auto; scrollbar-width: none;
+  margin: 20px -6px 0; padding: 12px 6px 18px;
+  border-bottom: 1px solid var(--line);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 28px, #000 calc(100% - 28px), transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 28px, #000 calc(100% - 28px), transparent);
+}
+.smart-tabs::-webkit-scrollbar { display: none; }
+/* ——— SmartTabs v9 pill language (Naya 4's port) ———
+   Dark pill, bold label, per-tab spectrum color (--tc) that ignites
+   on hover/select. 💜 = purple inset glow, ⭐ = gold inset glow. */
+/* SmartTabs: white light idle (visible borders) · color ignites on hover only */
+.smart-tab {
+  --tc: #9d75ff;
+  flex: 0 0 auto; display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 20px; border-radius: 999px; cursor: pointer; user-select: none;
+  border: 2px solid rgba(255,255,255,.35); background: rgba(0,0,0,.55);
+  color: #fff; font-family: inherit; font-weight: 900; font-size: 13px; letter-spacing: .03em;
+  white-space: nowrap;
+  box-shadow: 0 0 14px rgba(255,255,255,.12), inset 0 1px rgba(255,255,255,.1);
+  transition: box-shadow .25s, border-color .2s, text-shadow .25s, transform .18s;
+}
+.smart-tab .sn-label { white-space: nowrap; }
+.smart-tab .sn-mark { font-size: 14px; line-height: 1; }
+.smart-tab:hover, .smart-tab:focus-visible {
+  border-color: var(--tc); outline: none; transform: translateY(-2px);
+  box-shadow: 0 0 22px -2px var(--tc), 0 0 0 2px var(--tc) inset;
+  text-shadow: 0 0 10px var(--tc);
+}
+/* Active: subtle white indicator only — color comes on hover (Shawn 2026-10-03) */
+.smart-tab.active {
+  border-color: rgba(255,255,255,.6);
+  box-shadow: 0 0 16px rgba(255,255,255,.18), inset 0 1px rgba(255,255,255,.15);
+}
+.smart-tab.active:hover {
+  border-color: var(--tc);
+  box-shadow: 0 0 22px -2px var(--tc), 0 0 0 2px var(--tc) inset;
+  text-shadow: 0 0 10px var(--tc);
+}
+.smart-tab .sn-more {
+  border: 0; background: rgba(255,255,255,.1); color: #fff; border-radius: 8px;
+  padding: 3px 9px; cursor: pointer; font-size: 13px; line-height: 1.5; font-family: inherit;
+  transition: background .2s;
+}
+.smart-tab .sn-more:hover { background: rgba(255,255,255,.22); }
+.smart-tab.add-tab {
+  border-style: dashed; color: var(--muted);
+  padding: 12px 18px;
+}
+.smart-tab.add-tab:hover {
+  color: #fff; border-color: #fff; box-shadow: none; text-shadow: none;
+  transform: translateY(-2px);
+}
+/* ——— Tab menu + editor popover ——— */
+.tab-menu, .tab-pop {
+  position: fixed; z-index: 1000; display: none;
+  background: linear-gradient(180deg, #121827, #0e1424);
+  border: 1px solid rgba(255,255,255,.18); border-radius: 12px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.5);
+}
+.tab-menu { min-width: 220px; }
+.tab-menu .mi {
+  padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,.08);
+  cursor: pointer; color: #fff; font-weight: 800; font-size: 13px;
+}
+.tab-menu .mi:last-child { border-bottom: none; }
+.tab-menu .mi:hover { background: rgba(255,255,255,.06); }
+.tab-pop { min-width: 300px; padding: 14px; color: #fff; }
+.tab-pop h3 { margin: 0 0 10px; font-size: 15px; }
+.tab-pop .row { display: grid; gap: 6px; margin: 8px 0; }
+.tab-pop label { font-size: 12px; color: var(--muted); display: grid; gap: 4px; }
+.tab-pop input {
+  padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,.2);
+  background: #0a0f1a; color: #e6ecff; font-size: 13px;
+}
+.tab-pop .toggles { display: flex; gap: 8px; margin: 8px 0; flex-wrap: wrap; }
+.tab-pop .tgl {
+  display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px;
+  border-radius: 10px; border: 1px solid rgba(255,255,255,.22);
+  background: rgba(0,0,0,.45); cursor: pointer; color: #fff; font-weight: 800; font-size: 13px;
+}
+.tab-pop .tgl.on {
+  box-shadow: 0 0 0 2px rgba(255,255,255,.3) inset, 0 0 18px rgba(124,77,255,.25);
+}
+.tab-pop .ft { display: flex; gap: 8px; justify-content: flex-end; margin-top: 10px; }
+.tab-pop .btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px;
+  border-radius: 10px; border: 1px solid rgba(255,255,255,.25);
+  background: rgba(0,0,0,.55); color: #fff; cursor: pointer; font-weight: 800; font-size: 13px;
+}
+.tab-pop .btn.primary { background: linear-gradient(135deg, #6F3DFF, #9D7BFF); border-color: transparent; }
+
+
+/* ——— Tab manager popover: add / retarget / delete your tabs ——— */
+.tab-pop {
+  position: fixed; z-index: 80; min-width: 270px; max-width: 330px;
+  background: var(--bg-elev); border: 1px solid var(--line); border-radius: 14px;
+  box-shadow: 0 18px 48px #000000c0; padding: 14px;
+}
+.tab-pop-title {
+  display: block; font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--muted); margin: 12px 0 8px;
+}
+.tab-pop-title:first-child { margin-top: 0; }
+.tab-pop-list { display: flex; flex-direction: column; gap: 6px; }
+.tab-pop-note { color: var(--muted); font-size: 14px; line-height: 1.55; margin: 0 0 6px; }
+.tab-pop-add {
+  appearance: none; border: 1px solid var(--line); border-radius: 10px;
+  background: var(--bg-raise); color: var(--ink); cursor: pointer;
+  font-size: 15px; text-align: left; padding: 9px 12px;
+}
+.tab-pop-add:hover { border-color: var(--purple); color: #fff; }
+.tab-pop-row { display: flex; align-items: center; gap: 8px; }
+.tab-pop-name { flex: 1 1 auto; color: var(--ink); font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tab-pop-row select {
+  background: var(--bg-raise); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 8px;
+  font-size: 14px; padding: 7px 8px; max-width: 128px;
+}
+.tab-pop-del {
+  appearance: none; border: 1px solid var(--line); border-radius: 8px;
+  background: transparent; color: var(--muted); cursor: pointer;
+  font-size: 16px; line-height: 1; padding: 6px 10px;
+}
+.tab-pop-del:hover { color: var(--red); border-color: var(--red); }
+@media (max-width: 640px){
+  .smart-tab { font-size: 15px; padding: 7px 13px; }
+  .tab-pop { min-width: 0; left: 8px !important; right: 8px; max-width: none; }
+}
+/* Scoped vars (Hub :root values, verbatim) so the harvested popover renders as on the Hub. */
+#sp-walk{--bg-elev:#171B25;--line:#ffffff18;--muted:#AAB2BF;--purple:#9d75ff;--red:#ff5a6e;--bg-raise:#12151D;--ink:#F5F7FB;--bg-card:#171B25}
+/* §10 X — rides on the v9 base, same pill language as the harvested .sn-more. */
+.smart-tab .sn-x{border:0;background:rgba(255,255,255,.1);color:#fff;border-radius:8px;padding:3px 9px;cursor:pointer;font-size:13px;line-height:1.5;font-family:inherit;transition:background .2s}
+.smart-tab .sn-x:hover{background:rgba(255,255,255,.28)}
+.sp-kind-more{font-size:17px;color:#fff;line-height:1.55;margin:16px 0 0}
+.sp-kind-more b{color:#d4a017}
+.sp-tpl-head{font-size:17px;font-weight:800;letter-spacing:.06em;color:#fff;margin:22px 0 8px}
+.sp-kind-hint{font-size:17px;color:#fff;line-height:1.5;margin:12px 0}
+.sp-kind-hint b{color:#d4a017}
 </style>
 
 <body>
@@ -481,7 +622,7 @@ textarea.gr-input{resize:vertical;min-height:110px;line-height:1.55;}
         <div class="pj-members" id="pj-hero-members" style="justify-content:center;margin-top:14px;"></div>
       </div>
     </section>
-    <div style="text-align:center;margin:0 0 16px;"><button type="button" class="gr-btn" id="sp-walk-open">WALK THIS PROJECT →</button><p class="gr-note" style="margin-top:10px;">One framed block at a time — click Next through them. Walking it IS the project intelligence.</p></div>
+    <div style="text-align:center;margin:0 0 16px;"><button type="button" class="gr-btn" id="sp-walk-open">WALK THIS PROJECT →</button><p class="gr-note" style="margin-top:10px;">One framed block at a time — pick your kind, then click Next through them. Walking it IS the project intelligence.</p></div>
 
     <section class="gr-board" style="--sc:#a06bff">
       <div class="gr-board-cover">
@@ -650,7 +791,7 @@ textarea.gr-input{resize:vertical;min-height:110px;line-height:1.55;}
     <div class="sp-stage">
       <div class="frame-topbar">
         <div class="frame-icon" id="sp-w-glyph" aria-hidden="true">◆</div>
-        <div class="frame-head"><span class="frame-kind" id="sp-w-kind">STEP 1 OF 7</span><div class="frame-title" id="sp-w-title">Mission</div></div>
+        <div class="frame-head"><span class="frame-kind" id="sp-w-kind">STEP 1 OF 8</span><div class="frame-title" id="sp-w-title">Kind</div></div>
         <button type="button" class="sp-i" id="sp-w-info" aria-label="About this step">i</button>
       </div>
       <div class="frame-scroll"><div id="sp-w-body"></div><p class="gr-status" id="sp-w-status" aria-live="polite"></p></div>
@@ -1284,7 +1425,7 @@ var INTEL_GROUPS=[
   ['queued','QUEUED','#ffbf3d']
 ];
 function splitIntel(rows){
-  S.intel=[]; S.production=null; S.prodTrend=[]; S.prodAging=[]; S.prodLoops=[]; S.intelStamp='';
+  S.intel=[]; S.production=null; S.prodTrend=[]; S.prodAging=[]; S.prodLoops=[]; S.intelStamp=''; S.spKind=''; S.spDismissed=[];
   rows.forEach(function(r){
     if(r.item_key==='production:stamp'){ S.intelStamp=r.detail||r.updated_at||''; return; }
     if(r.item_key==='production:today'){ try{ S.production=JSON.parse(r.detail); }catch(e){} return; }
@@ -1292,6 +1433,8 @@ function splitIntel(rows){
     if(r.item_key.indexOf('production:aging:')===0){ try{ var a=JSON.parse(r.detail); S.prodAging.push({title:r.title, days:a.days_still}); }catch(e){} return; }
     if(r.item_key.indexOf('production:loop:')===0){ try{ var l=JSON.parse(r.detail); S.prodLoops.push({loop:l.loop||r.title, runs:l.runs_24h}); }catch(e){} return; }
     if(r.item_key.indexOf('production:')===0) return;
+    if(r.item_key==='citizen:kind'){ S.spKind=r.detail||''; return; }
+    if(r.item_key==='citizen:dismissed-kinds'){ try{ S.spDismissed=JSON.parse(r.detail)||[]; }catch(e){ S.spDismissed=[]; } return; }
     S.intel.push(r);
   });
 }
@@ -1952,6 +2095,7 @@ if(subBtn) subBtn.addEventListener('click', function(){
 /* One framed block at a time, inside the harvested frame. Walking the
    blocks and entering the intelligence IS the project intelligence. */
 var SP_WALK=[
+  {key:'kind', glyph:'◈', color:'#6675ff', kind:'KIND', title:'What kind of project is this?', tip:'Pick the kind that fits — tap its smart note and the template loads: the questions change to fit your kind. Dismiss a kind with its ×; tap its template note below to bring it back.', q:'', ph:''},
   {key:'mission', glyph:'◆', color:'#8e24aa', kind:'MISSION', title:'What is this project for?', tip:'Your mission is the one line you come back to. Write it in your own words — Naya keeps it at the top of the project, so every part of the page knows what it is for.', q:'Write the mission in one line — what is this project for?', ph:'e.g. Learn the guitar well enough to play for my family'},
   {key:'goal', glyph:'●', color:'#0f52ba', kind:'GOAL', title:'What does done look like?', tip:'A goal you can see is a goal you can reach. Name the finish line — one clear picture of done — and the project counts everything toward it.', q:'What does done look like? Name the finish line.', ph:'e.g. Play three songs all the way through'},
   {key:'vision', glyph:'✦', color:'#07925f', kind:'VISION', title:'What does it look like alive?', tip:'The vision is the picture in your head when it is working. Hold that picture here — it is what the project is growing into.', q:'What does it look like when this project is alive?', ph:'e.g. Music in the house every evening'},
@@ -1960,6 +2104,227 @@ var SP_WALK=[
   {key:'people', glyph:'●', color:'#c62828', kind:'CONNECTIONS', title:'Who is in it with you?', tip:'People come from your Connections, kept on this device. Tap a name and they join the project — the project hub shows everyone who is working on it with you.', q:'Tap the people who are in this project with you.', ph:''},
   {key:'note', glyph:'✎', color:'#a21caf', kind:'NOTES', title:'Your notes on it', tip:'Your notes live once, in their own home, and gather here. Write one now and it files into this project — and stays yours.', q:'Write a note for this project.', ph:'Anything you want to keep about it…'}
 ];
+var SP_TEMPLATES=[{"id":"learning","label":"Learning","title":"Learning Something New","sn":4842,"status":"live","mission_q":"What do you want to learn — and why this, why now?","goal_q":"What will 'I can do it' look like — the first real proof?","vision_q":"When this is part of your life, what does a normal day look like?","links_hint":"Your course, your teacher's page, the videos and books you're learning from.","notes_hint":"Every lesson, every practice log, every 'aha' — file them here.","people_hint":"Your teacher, your practice partner, anyone learning beside you."},{"id":"business","label":"Business","title":"Starting a Business","sn":4843,"status":"live","mission_q":"What problem does this business solve — and for whom?","goal_q":"What is the first sale, the first customer, the first proof it works?","vision_q":"When this business is real and running, what does it give you and them?","links_hint":"Your idea notes, competitor pages, the tools you'll use.","notes_hint":"Every idea, every customer conversation, every number.","people_hint":"Your first customers, your mentors, your partners."},{"id":"app","label":"App","title":"Building an App","sn":4844,"status":"live","mission_q":"What will this app, website, or product DO for the person using it?","goal_q":"What is the first working version — the smallest thing that proves it?","vision_q":"When people use it every day, what changes for them?","links_hint":"The apps that inspire you, your designs, your docs.","notes_hint":"Every feature idea, every bug, every test with a real user.","people_hint":"Your users, your testers, anyone building with you."},{"id":"health","label":"Health","title":"Health and Fitness","sn":4845,"status":"live","mission_q":"What does healthy mean for you — and why now?","goal_q":"What is the first finish line you can see — a race, a weight, a habit kept 30 days?","vision_q":"When your body feels like yours again, what does a normal week look like?","links_hint":"Your training plan, your recipes, your race page.","notes_hint":"Every workout, every meal, every weigh-in — the log is the proof.","people_hint":"Your training partner, your coach, your race-day crowd."},{"id":"money","label":"Money","title":"Money","sn":4846,"status":"live","mission_q":"What does money need to DO for you first — get out of debt, save, earn?","goal_q":"What is the first number that proves it — debt gone, savings kept, first dollar earned online?","vision_q":"When money stops being the worry, what does your life look like?","links_hint":"Your budget, your bank, the ways you earn online.","notes_hint":"Every dollar in and out, every bill beaten, every save kept.","people_hint":"Your accountability partner, your mentor, anyone earning beside you."},{"id":"book","label":"Book","title":"Writing a Book","sn":4847,"status":"live","mission_q":"What do you need to say — and who needs to hear it?","goal_q":"What is the first finished piece — a chapter, a lesson, a first draft?","vision_q":"When your book or course is out in the world, who does it help and how?","links_hint":"Your outline, your research, the books that taught you.","notes_hint":"Every chapter draft, every idea, every reader's note.","people_hint":"Your readers, your editor, anyone who believes in the book."},{"id":"family","label":"Family & Home","title":"Family and Home","sn":4848,"status":"live","mission_q":"What are we making — a move, a home, a wedding, a trip — and why does it matter?","goal_q":"What is the first thing done — the date set, the room finished, the tickets booked?","vision_q":"When it's done and we're living in it, what does the day feel like?","links_hint":"The listings, the venues, the plans and prices.","notes_hint":"Every decision, every date, every cost — one place the whole family can see.","people_hint":"Everyone involved — family, the movers, the planners, the guests."},{"id":"career","label":"Career","title":"Career","sn":4849,"status":"live","mission_q":"What work do you want to be doing — and why that work?","goal_q":"What is the first proof — the application sent, the interview, the portfolio piece?","vision_q":"When you're doing the work you want, what does your week look like?","links_hint":"The job posts, the companies, your portfolio pieces.","notes_hint":"Every application, every interview, every lesson from each one.","people_hint":"Your references, your mentors, the people who open doors."},{"id":"community","label":"Community","title":"A Community","sn":4850,"status":"live","mission_q":"Who is this community for — and what brings them together?","goal_q":"What is the first gathering — the first members, the first room full?","vision_q":"When this community is alive on its own, what do people get from belonging?","links_hint":"Your group page, your channel, the places members gather.","notes_hint":"Every gathering, every member story, every idea for the next one.","people_hint":"Your first members, your helpers, your loudest fans."},{"id":"cause","label":"Cause","title":"A Cause","sn":4851,"status":"live","mission_q":"What needs to change — and who does it hurt right now?","goal_q":"What is the first help delivered — the first person helped, the first dollar raised?","vision_q":"When this cause has done its work, what is different in the world?","links_hint":"The charities, the facts, the places to give and help.","notes_hint":"Every person helped, every dollar raised, every story that proves it.","people_hint":"The people you help, the volunteers, the donors."}];
+var SP_BACKLOG=[{"id":"travel","label":"travel","status":"backlog","order":10},{"id":"cooking","label":"cooking","status":"backlog","order":11},{"id":"music","label":"music","status":"backlog","order":12},{"id":"art","label":"art","status":"backlog","order":13},{"id":"photography","label":"photography","status":"backlog","order":14},{"id":"gardening","label":"gardening","status":"backlog","order":15},{"id":"a-podcast","label":"a podcast","status":"backlog","order":16},{"id":"learning-to-code","label":"learning to code","status":"backlog","order":17},{"id":"a-side-hustle","label":"a side hustle","status":"backlog","order":18},{"id":"planning-an-event","label":"planning an event","status":"backlog","order":19},{"id":"a-sports-team","label":"a sports team","status":"backlog","order":20},{"id":"a-startup","label":"a startup","status":"backlog","order":21},{"id":"real-estate","label":"real estate","status":"backlog","order":22},{"id":"teaching-a-course","label":"teaching a course","status":"backlog","order":23},{"id":"a-personal-brand","label":"a personal brand","status":"backlog","order":24},{"id":"a-non-profit","label":"a non-profit","status":"backlog","order":25},{"id":"a-research-project","label":"a research project","status":"backlog","order":26},{"id":"a-hobby","label":"a hobby","status":"backlog","order":27},{"id":"a-daily-habit-system","label":"a daily habit system","status":"backlog","order":28},{"id":"a-family-legacy","label":"a family legacy","status":"backlog","order":29},{"id":"a-home-business","label":"a home business","status":"backlog","order":30},{"id":"a-youtube-channel","label":"a YouTube channel","status":"backlog","order":31},{"id":"a-garden","label":"a garden","status":"backlog","order":32},{"id":"a-dream-trip","label":"a dream trip","status":"backlog","order":33},{"id":"a-personal-transformation","label":"a personal transformation","status":"backlog","order":34}];
+var activeSmartTab=null; // the Hub v9 active tab id (kind-<id>); the pick step reads it
+function esc(x){return String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+  const SMART_TAB_KEY = 'nayanet.smart-projects.kindTabs.v1'; // SP: scoped key
+
+  function readHumanTabs() {
+    try { const t = JSON.parse(localStorage.getItem(SMART_TAB_KEY)); return Array.isArray(t) ? t : []; }
+    catch (e) { return []; }
+  }
+  function writeHumanTabs(t) { try { localStorage.setItem(SMART_TAB_KEY, JSON.stringify(t)); } catch (e) { /* private mode — tabs stay session-only */ } }
+  function topicSlug(s) { return 't-' + String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-'); }
+  /* ——— SmartTabs v9 (Naya 4's port): pro category ribbon ———
+     Per-tab spectrum color, 💜/⭐ priority markers, ⋯ menu per pill
+     (Edit / Heart / Star / Remove), ＋Add with editor dialog,
+     heart-first sort, localStorage persistence, keyboard nav. */
+  const SPECTRUM = ['#9d75ff','#6675ff','#55b9ee','#4fd6c4','#55e39a','#b8ee57',
+    '#f1d75a','#d4a017','#ff9a5a','#ff7a3c','#ff5e6c','#d86cff'];
+  function tabColor(key) {
+    let h = 0; const s = String(key || '');
+    for (let i = 0; i < s.length; i++) h = ((h * 31) + s.charCodeAt(i)) | 0;
+    return SPECTRUM[Math.abs(h) % SPECTRUM.length];
+  }
+  function sortedTabs(tabs) {
+    return tabs.slice().sort((a, b) =>
+      ((b.heart ? 2 : 0) + (b.star ? 1 : 0)) - ((a.heart ? 2 : 0) + (a.star ? 1 : 0)));
+  }
+  function placeNear(anchor, panel, oy) {
+    oy = oy || 8;
+    const r = anchor.getBoundingClientRect();
+    const W = panel.offsetWidth || 280, H = panel.offsetHeight || 160;
+    panel.style.left = Math.min(window.innerWidth - W - 8, Math.max(8, r.left)) + 'px';
+    panel.style.top = Math.min(window.innerHeight - H - 8, r.bottom + oy) + 'px';
+  }
+
+  /* Shared menu + editor (single instances, reused). */
+  const tabMenu = el('div', 'tab-menu');
+  tabMenu.setAttribute('role', 'menu');
+  tabMenu.setAttribute('aria-hidden', 'true');
+  tabMenu.style.display = 'none';
+  const tabPop = el('div', 'tab-pop');
+  tabPop.setAttribute('role', 'dialog');
+  tabPop.setAttribute('aria-modal', 'true');
+  tabPop.style.display = 'none';
+  let tabMenuTab = null, tabPopCreate = false;
+  function closeTabPanels() {
+    tabMenu.style.display = 'none';
+    tabPop.style.display = 'none';
+    tabMenu.setAttribute('aria-hidden', 'true');
+  }
+  document.addEventListener('click', e => {
+    if (!tabMenu.contains(e.target) && !tabPop.contains(e.target) &&
+        !e.target.closest('.smart-tab')) closeTabPanels();
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeTabPanels(); });
+
+  function smartTabStrip(lensNotes, allNotes) {
+    /* SP ADAPTATION (§11): the tabs are the template kinds (data), not feed-note topics.
+       The pill/menu/editor/sort/persistence machinery below is the Hub v9, verbatim. */
+    const humanStored = readHumanTabs();
+    /* Migrate old shape (no heart/star) to v9. */
+    humanStored.forEach(h => { if (h.heart === undefined) h.heart = false; if (h.star === undefined) h.star = false; });
+    /* System tab heart/star/label overrides (stored as kind='system-override'). */
+    const sysOverrides = {};
+    humanStored.forEach(h => { if (h.kind === 'system-override') sysOverrides[h.id] = h; });
+    const kindTabs = SP_TEMPLATES.filter(function(k){ return k.status === 'live'; }).filter(function(k){ return spDismissedIds().indexOf(k.id) === -1; }).map(function(k){
+      var ov = sysOverrides['kind-' + k.id];
+      return { id: 'kind-' + k.id, label: ov ? ov.label : k.label, topic: ov ? ov.topic : k.label, kind: 'system',
+        heart: !!(ov && ov.heart), star: !!(ov && ov.star), kindId: k.id };
+    });
+    const tabs = sortedTabs(kindTabs);
+    if (!tabs.some(t => t.id === activeSmartTab)) activeSmartTab = 'all';
+
+    const bar = el('div', 'smart-tabs');
+    bar.setAttribute('role', 'tablist');
+    bar.setAttribute('aria-label', 'Smart Tabs — filter the feed by topic');
+    const rerender = () => { closeTabPanels(); spRenderKindStrip(); }; // SP: re-render is the pick step
+
+    function openTabMenu(t, anchor) {
+      tabMenuTab = t;
+      tabMenu.innerHTML = '';
+      [['edit', '\u270F\uFE0F Edit'], ['heart', '\uD83D\uDC9C Set Purple Heart'],
+       ['star', '\u2B50 Set Gold Star'], ['remove', '\u2715 Remove']].forEach(([act, label]) => {
+        const mi = el('div', 'mi', '');
+        mi.textContent = label; mi.setAttribute('data-act', act);
+        mi.addEventListener('click', () => tabMenuAction(act));
+        tabMenu.appendChild(mi);
+      });
+      if (!tabMenu.parentNode) (document.getElementById('sp-walk') || document.body).appendChild(tabMenu); // SP: inside the walk
+      tabMenu.style.display = 'block';
+      tabMenu.setAttribute('aria-hidden', 'false');
+      placeNear(anchor, tabMenu, 6);
+    }
+    function tabMenuAction(act) {
+      closeTabPanels();
+      const t = tabMenuTab; if (!t) return;
+      /* SP ADAPTATION (§10): Remove dismisses the kind to the project record. */
+      if (act === 'remove') { closeTabPanels(); spDismissKind(t.id); return; }
+      const h = readHumanTabs();
+      if (act === 'edit') { openTabEditor(t, false, null); }
+      else if (act === 'heart' || act === 'star') {
+        let x = h.find(x => x.id === t.id);
+        if (!x && t.kind === 'system') {
+          /* System tabs can earn heart/star too — store the override. */
+          x = { id: t.id, label: t.label, topic: t.topic, kind: 'system-override',
+                heart: false, star: false };
+          h.push(x);
+        }
+        if (x) { x.heart = (act === 'heart'); x.star = (act === 'star'); writeHumanTabs(h); rerender(); }
+      }
+      else if (act === 'remove') {
+        writeHumanTabs(h.filter(x => x.id !== t.id));
+        if (activeSmartTab === t.id) activeSmartTab = 'all';
+        rerender();
+      }
+    }
+    function openTabEditor(t, isCreate, anchor) {
+      tabPopCreate = isCreate;
+      tabPop.innerHTML = '';
+      const h3 = el('h3', '', isCreate ? 'Add Tab' : 'Edit Tab');
+      tabPop.appendChild(h3);
+      const row1 = el('div', 'row');
+      const lab1 = document.createElement('label');
+      lab1.innerHTML = 'Label ';
+      const inLabel = document.createElement('input');
+      inLabel.value = t ? t.label : ''; inLabel.placeholder = 'e.g., Design';
+      lab1.appendChild(inLabel); row1.appendChild(lab1); tabPop.appendChild(row1);
+      const row2 = el('div', 'row');
+      const lab2 = document.createElement('label');
+      lab2.innerHTML = 'Topic ';
+      const inTopic = document.createElement('input');
+      inTopic.value = t ? t.topic : ''; inTopic.placeholder = 'Topic to filter';
+      lab2.appendChild(inTopic); row2.appendChild(lab2); tabPop.appendChild(row2);
+      const toggles = el('div', 'toggles');
+      const tHeart = el('div', 'tgl' + (t && t.heart ? ' on' : ''), '\uD83D\uDC9C Purple Heart');
+      const tStar = el('div', 'tgl' + (t && t.star ? ' on' : ''), '\u2B50 Gold Star');
+      tHeart.addEventListener('click', () => { tHeart.classList.toggle('on'); if (tHeart.classList.contains('on')) tStar.classList.remove('on'); });
+      tStar.addEventListener('click', () => { tStar.classList.toggle('on'); if (tStar.classList.contains('on')) tHeart.classList.remove('on'); });
+      toggles.append(tHeart, tStar); tabPop.appendChild(toggles);
+      const ft = el('div', 'ft');
+      const cancel = el('button', 'btn', 'Cancel');
+      const save = el('button', 'btn primary', 'Save');
+      cancel.addEventListener('click', closeTabPanels);
+      save.addEventListener('click', () => {
+        const label = inLabel.value.trim() || 'New';
+        const topic = inTopic.value.trim() || label;
+        const heart = tHeart.classList.contains('on'), star = tStar.classList.contains('on');
+        const h = readHumanTabs();
+        if (isCreate) {
+          const nt = { id: 'human-' + Date.now().toString(36), label, topic, heart, star };
+          h.push(nt); writeHumanTabs(h); activeSmartTab = nt.id;
+        } else if (t) {
+          const x = h.find(x => x.id === t.id);
+          if (x) { x.label = label; x.topic = topic; x.heart = heart; x.star = star; writeHumanTabs(h); }
+          else if (t.kind === 'system') { h.push({ id: t.id, label: label, topic: topic, kind: 'system-override', heart: heart, star: star }); writeHumanTabs(h); }
+        }
+        closeTabPanels(); rerender();
+      });
+      ft.append(cancel, save); tabPop.appendChild(ft);
+      if (!tabPop.parentNode) (document.getElementById('sp-walk') || document.body).appendChild(tabPop); // SP: inside the walk
+      tabPop.style.display = 'block';
+      if (anchor) placeNear(anchor, tabPop, 6);
+      else { tabPop.style.left = '50%'; tabPop.style.top = '120px'; tabPop.style.transform = 'translateX(-50%)'; }
+      setTimeout(() => inLabel.focus(), 50);
+    }
+
+    function snPill(t) {
+      const b = el('button', 'smart-tab' + (t.id === activeSmartTab ? ' active' : '') +
+        (t.heart ? ' heart' : '') + (t.star ? ' star' : ''));
+      b.style.setProperty('--tc', tabColor(t.topic || t.label));
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-selected', t.id === activeSmartTab ? 'true' : 'false');
+      b.title = t.kind === 'human' ? 'Your tab · ' + t.topic + ' · saved on this device'
+        : (t.topic ? 'Topic · ' + t.topic : 'The full feed — everything, newest first');
+      b.innerHTML = '<span class="sn-label">' + esc(t.label) + '</span>' +
+        (t.heart ? '<span class="sn-mark" aria-hidden="true">\uD83D\uDC9C</span>' :
+         t.star ? '<span class="sn-mark" aria-hidden="true">\u2B50</span>' : '');
+      const more = el('button', 'sn-more', '\u22EF');
+      more.type = 'button';
+      more.setAttribute('aria-label', 'Tab options for ' + t.label);
+      more.addEventListener('click', ev => { ev.stopPropagation(); openTabMenu(t, b); });
+      b.appendChild(more);
+      /* §10 X rides on top of the v9 base: every tab carries a small ×; tap dismisses the kind (project record). */
+      const xBtn = el('button', 'sn-x', '×');
+      xBtn.type = 'button';
+      xBtn.setAttribute('aria-label', 'Dismiss tab ' + t.label);
+      xBtn.addEventListener('click', ev => { ev.stopPropagation(); closeTabPanels(); spDismissKind(t.id); });
+      b.appendChild(xBtn);
+      const go = () => { activeSmartTab = t.id; rerender(); };
+      b.addEventListener('click', go);
+      b.addEventListener('contextmenu', ev => { ev.preventDefault(); openTabMenu(t, b); });
+      /* Roving keyboard: arrows move, Home/End jump. */
+      b.addEventListener('keydown', ev => {
+        if (!['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(ev.key)) return;
+        ev.preventDefault();
+        const pills = [...bar.querySelectorAll('.smart-tab')];
+        let n = pills.indexOf(b);
+        if (ev.key === 'ArrowRight') n = Math.min(pills.length - 1, n + 1);
+        else if (ev.key === 'ArrowLeft') n = Math.max(0, n - 1);
+        else if (ev.key === 'Home') n = 0;
+        else n = pills.length - 1;
+        if (pills[n]) pills[n].focus();
+      });
+      return b;
+    }
+
+    tabs.forEach(t => bar.appendChild(snPill(t)));
+    /* SP ADAPTATION (§9): no ＋Add — a custom tab would have no template to load. */
+    return { bar, tabs };
+  }
+/* ── kind state: the active template + dismissed kinds, stored with the project record ── */
+function spKindById(id){ for(var i=0;i<SP_TEMPLATES.length;i++){ if(SP_TEMPLATES[i].id===id) return SP_TEMPLATES[i]; } return null; }
+function spActiveKindId(){ var t=activeSmartTab||''; if(t.indexOf('kind-')===0) return t.slice(5); return S.spKind||''; }
+function spActiveKind(){ return spKindById(spActiveKindId()); }
+function spDismissedIds(){ return (S.spDismissed||[]).slice(); }
+function spSaveKind(kindId){ S.spKind=kindId||''; return spSaveIntel('kind','Kind',kindId||'',0); }
+function spSaveDismissed(list){ S.spDismissed=list.slice(); return spSaveIntel('dismissed-kinds','Dismissed kinds',JSON.stringify(list),99); }
+function spLoadKind(kindId){ var k=spKindById(kindId); if(!k) return; var d=spDismissedIds(); var ix=d.indexOf(kindId); if(ix!==-1){ d.splice(ix,1); spSaveDismissed(d); } activeSmartTab='kind-'+kindId; if((S.spKind||'')!==kindId) spSaveKind(kindId); spSetStatus(k.title+' template loaded — the questions fit this kind now.'); if(spStep===0) spRenderStep(); }
+function spDismissKind(tabId){ var kindId=(tabId||'').indexOf('kind-')===0?tabId.slice(5):tabId; if(!kindId) return; var d=spDismissedIds(); if(d.indexOf(kindId)===-1){ d.push(kindId); spSaveDismissed(d); } if(spActiveKindId()===kindId){ activeSmartTab=null; spSaveKind(''); } spSetStatus('Tab dismissed — its template smart note is still there; tap it to bring the tab back.'); if(spStep===0) spRenderStep(); }
+function spRenderKindStrip(){ if(document.getElementById('sp-walk').hidden) return; if(spStep===0) spRenderStep(); }
+function spStepQ(st){ var k=spActiveKind(); if(!k) return {title:st.title, q:st.q}; if(st.key==='mission') return {title:k.mission_q, q:k.mission_q}; if(st.key==='goal') return {title:k.goal_q, q:k.goal_q}; if(st.key==='vision') return {title:k.vision_q, q:k.vision_q}; return {title:st.title, q:st.q}; }
 var spStep=0;
 function spIntelRow(key){ for(var i=0;i<S.intel.length;i++){ if(S.intel[i].item_key==='citizen:'+key) return S.intel[i]; } return null; }
 function spSaveIntel(key, title, text, sort){
@@ -1984,7 +2349,7 @@ function spSavedLine(html){ var p=el('div','sp-w-saved'); p.innerHTML=html; retu
 function spRenderStep(){
   var st=SP_WALK[spStep];
   document.getElementById('sp-w-kind').textContent='STEP '+(spStep+1)+' OF '+SP_WALK.length+' · '+st.kind;
-  document.getElementById('sp-w-title').textContent=st.title;
+  document.getElementById('sp-w-title').textContent=spStepQ(st).title;
   var g=document.getElementById('sp-w-glyph'); g.textContent=st.glyph; g.style.setProperty('--tone', st.color);
   document.getElementById('sp-w-kind').style.color=st.color;
   var dots=document.getElementById('sp-w-dots'); dots.innerHTML='';
@@ -1994,10 +2359,32 @@ function spRenderStep(){
   document.getElementById('sp-w-tip').hidden=true;
   spSetStatus('');
   var body=document.getElementById('sp-w-body'); body.innerHTML='';
-  if(st.key==='mission'||st.key==='goal'||st.key==='vision'){
+  if(st.key==='kind'){
+    if(!activeSmartTab && S.spKind) activeSmartTab='kind-'+S.spKind;
+    var k0=spActiveKind();
+    if(k0) body.appendChild(spSavedLine('Template loaded: <b>'+k0.title+' (SN-'+k0.sn+')</b> — the questions ahead fit this kind.'));
+    else body.appendChild(spSavedLine('Pick the kind that fits this project — tap its smart note and the template loads.'));
+    var strip=smartTabStrip([], []);
+    body.appendChild(strip.bar);
+    var actId=spActiveKindId();
+    if(actId && (S.spKind||'')!==actId){ spSaveKind(actId); }
+    body.appendChild(el('div','sp-tpl-head','TEMPLATE SMART NOTES — TAP ONE TO LOAD IT'));
+    SP_TEMPLATES.forEach(function(k){
+      var r2=el('div','pj-row');
+      var tag2=el('span','pj-kindtag','SN-'+k.sn); tag2.style.setProperty('--jc', '#d4a017'); r2.appendChild(tag2);
+      var m2=el('div','pj-row-main'); m2.appendChild(el('div','pj-row-t', k.title)); m2.appendChild(el('div','pj-row-s', 'Mission · goal · vision · links · notes · people — pre-loaded questions for this kind.')); r2.appendChild(m2);
+      if(spDismissedIds().indexOf(k.id)!==-1){ var back2=el('span','pj-kindtag','BRING BACK'); back2.style.setProperty('--jc','#2fe89e'); r2.appendChild(back2); }
+      r2.style.cursor='pointer';
+      r2.addEventListener('click', function(){ spLoadKind(k.id); });
+      body.appendChild(r2);
+    });
+    var more=el('div','sp-kind-more');
+    more.innerHTML='More kinds coming (<b>25</b>): '+SP_BACKLOG.map(function(k){ return k.label; }).join(' · ')+'.';
+    body.appendChild(more);
+  } else if(st.key==='mission'||st.key==='goal'||st.key==='vision'){
     var row=spIntelRow(st.key);
     if(row&&row.detail) body.appendChild(spSavedLine('Saved in this project: <b>'+row.detail.replace(/</g,'&lt;')+'</b>'));
-    body.appendChild(spField(st.q, 'sp-w-in', st.ph, row?row.detail:'', false));
+    body.appendChild(spField(spStepQ(st).q, 'sp-w-in', st.ph, row?row.detail:'', false));
   } else if(st.key==='links'){
     body.appendChild(spField(st.q, 'sp-w-url', st.ph, '', false));
     body.appendChild(spField('Call it… (optional)', 'sp-w-url-label', 'A name for this link', '', false));
@@ -2043,17 +2430,24 @@ function spRenderStep(){
     body.appendChild(spField('Title', 'sp-w-n-title', 'A short title', '', false));
     body.appendChild(spField(st.q, 'sp-w-n-text', st.ph, '', true));
   }
+  var kH=spActiveKind();
+  if(kH && st.key!=='kind' && st.key!=='mission' && st.key!=='goal' && st.key!=='vision'){
+    var hint=st.key==='links'?kH.links_hint:st.key==='smartnote'?kH.notes_hint:st.key==='people'?kH.people_hint:kH.notes_hint;
+    var hl=el('div','sp-kind-hint'); hl.innerHTML='For a <b>'+kH.title+'</b> project: '+hint.replace(/</g,'&lt;');
+    body.insertBefore(hl, body.firstChild);
+  }
   var first=body.querySelector('input,textarea'); if(first) first.focus();
 }
 function spNext(){
   var st=SP_WALK[spStep];
   var done=function(){ if(spStep>=SP_WALK.length-1){ spClose(); } else { spStep++; spRenderStep(); } };
   var fail=function(){ spSetStatus('That did not save — check your connection and try again.'); };
+  if(st.key==='kind'){ done(); return; }
   if(st.key==='mission'||st.key==='goal'||st.key==='vision'){
     var v=(document.getElementById('sp-w-in').value||'').trim();
     if(!v){ done(); return; }
     spSetStatus('Saving…');
-    spSaveIntel(st.key, st.title.replace(/\?$/,''), v, spStep+1).then(function(){ spSetStatus('Saved.'); done(); }).catch(fail);
+    spSaveIntel(st.key, spStepQ(st).title.replace(/\?$/,''), v, spStep+1).then(function(){ spSetStatus('Saved.'); done(); }).catch(fail);
   } else if(st.key==='links'){
     var u=(document.getElementById('sp-w-url').value||'').trim();
     var lab=(document.getElementById('sp-w-url-label').value||'').trim();
