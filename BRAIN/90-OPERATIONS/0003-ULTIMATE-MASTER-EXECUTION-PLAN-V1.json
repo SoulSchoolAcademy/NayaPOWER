@@ -9,7 +9,7 @@
   "current_main_resolution": "READ_LIVE_GITHUB_AT_EXECUTION_TIME",
   "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT THROUGH DURABLE, APPLICABLE, CAUSALLY VERIFIED, SUCCESSOR-REUSABLE INTELLIGENCE.",
   "current_state": {
-    "issue_66": "OPEN_CURRENT_CONTROL_PLANE_FRONTIER",
+    "issue_3361": "OPEN_CURRENT_CONTROL_PLANE_FRONTIER",
     "graph_v2": "RATIFIED_SOURCE_INTEGRATED_SELECTOR_V2_MERGED",
     "decision_value_calculus_v2_1": "RATIFIED_EXECUTABLE_SOURCE_CI_VERIFIED_GRAPH_BOUND_ALL_NINE_NODES",
     "nine_node_binding_registry": "9_OF_9_STRUCTURALLY_BOUND_WITH_PERSISTED_TRANSITIONS_AND_PROOF_BOUNDARIES",
@@ -33,7 +33,7 @@
   "top_10": [
     {
       "rank": 1,
-      "id": "#66",
+      "id": "#3361",
       "action": "Rerun Current Truth Resolver after this projection-only reconciliation and require operational projection freshness CURRENT; preserve remaining runtime unknowns honestly.",
       "status": "ACTIVE"
     },
@@ -85,7 +85,7 @@
   ],
   "next_action": {
     "type": "RECONCILE_THEN_EXPLICIT_DEPLOY",
-    "issue": 66,
+    "issue": 3361,
     "instruction": "Rerun Current Truth Resolver after this projection-only reconciliation. If projection freshness is CURRENT and exact current main remains stable, the next consequential boundary is explicit Human Director DEPLOY for that exact SHA through the existing governed workflow; do not weaken the protected-path gate. After parity, execute Graph V2 + Decision Value live proof in dependency order."
   }
 }
