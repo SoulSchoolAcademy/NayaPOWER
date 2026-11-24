@@ -2558,6 +2558,21 @@ schRow.appendChild(dtWrap);
      (-12px) buys ~24px. */
   .mail-stage .ml-list{gap:4px;padding-top:4px;}
   .mail-stage .ml-empty{padding-top:0;}
+  /* (FIX6) Phone conversation width: on a 390px viewport the panes blew to 644px
+     (composer #nmMsgBody 61-679, status board .nm-status -19-599, document
+     scrollWidth 692 vs innerWidth 390) because the single-column grid track (1fr)
+     could not shrink below the panes' automatic min-content size (grid items
+     default min-width:auto). minmax(0,1fr) + min-width:0 lets the track fit the
+     294px stage; the composer (width:100%) follows. The board's long code tokens
+     (public.smart_mail_threads) wrap instead of forcing the board wide; message
+     bubbles and conversation previews wrap too. The .nm-space-pick scroll row is
+     intentional and stays contained inside its pane. Desktop untouched. */
+  .nm-msg-panes{grid-template-columns:minmax(0,1fr);}
+  .nm-pane{min-width:0;}
+  .nm-area{max-width:100%;}
+  .nm-status{overflow-wrap:anywhere;}
+  .nm-status code{overflow-wrap:anywhere;word-break:break-word;}
+  .nm-bubble p,.nm-conv-prev{overflow-wrap:anywhere;}
 }
 /* (FIX5-2) Desktop mail: SPACES QA name sat 697-718 vs bar 701 (17px under). The rail
    col widens 224->244px so SMART LISTS fits one line (-21px); rail gap 4->2 (-14px
