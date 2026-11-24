@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-24 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-24 07:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -15848,6 +15848,12 @@ _Last updated: 2026-11-24 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0785-lane8.md`
 
 **Evidence:** ACCEPTED. Verified from live bytes: bin/claim_liveness_audit.py sha256 4dcee9f0e4adefee81267e1156870e887bf26778f590a306ad2935b664a6f2a3 byte-exact (231 lines, stdlib only); live run this tick: AUDIT-CLEAN (2 claim(s) checked, 0 violations) exit 0, matching the receipt's proof #1 verbatim; claimed/ currently holds 2 claims, consistent with the clean
+
+### ✅ t0783-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
+
+**Task:** retrieval-auth gate wiring-prep (PARTIAL)
+
+**Evidence:** BACKLOG SWEEP (fresh window held only the gate-stall receipt; backlog 104 standard unscored before this tick, oldest-first). VERIFIED first-hand this tick: wiring patch sha256 1571e04252a249c13ad77782359191866d1ddf757698d884e6fa7275cf26596a matches the receipt pin exactly; battery sha256 prefix 810d30c2e9978b63 matches the receipt pin; candidate co
 
 ### ✅ t0783 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
 
@@ -60300,6 +60306,12 @@ _Last updated: 2026-11-24 07:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261123-2309 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: 31 queued briefs attempted, 0 claimed (29x exit 7, 2x exit 2)
+
+**Evidence:** FRESH WINDOW (receipt filed this tick). VERIFIED first-hand this tick: brief-queue holds 31 unclaimed brief-*.md; queue checksum 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4 re-derived inside brief-queue/ matches the receipt pin exactly and equals the 22:03 receipt's checksum (queue byte-identical); claim-sweep-20261123-2309.log
 
 ### ✅ gate-stall-20261123-2203 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
