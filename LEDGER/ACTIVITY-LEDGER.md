@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-24 22:44 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-24 23:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -6525,6 +6525,12 @@ _Last updated: 2026-11-24 22:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1420-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
+**Task:** Retrieval-auth gate migration prep: fresh-clone re-derivation, 25/25 suite pass, 2 premise drifts found, READY verdict
+
+**Evidence:** FRESH WINDOW. VERIFIED: prep doc sha256 6b010d57... == receipt pin; doc exists at hidden_files/retrieval-auth-gate-migration-prep-t1420.md; investigation-only (no branch/PR/merge claimed, nothing to ls-remote); two premise drifts documented with live line pins (spec §4.1 stale line, CLI-driven drill needs caller flag); READY (prep) vs BLOCKED-on-wo
+
+### ✅ t1420-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
 **Task:** Retrieval-auth gate migration prep: re-derive t942 candidate on fresh clone, byte-pinned wiring packet
 
 **Evidence:** VERIFIED this tick on live bytes: hidden_files/retrieval-auth-gate-migration-prep-t1420.md sha256 6b010d57... MATCHES receipt. NOT PHANTOM. Two real premise drifts documented (stale spec 4.1 line pin; CLI-driven drill needing a caller flag); verdict keeps READY (prep) and BLOCKED-on-word (wire) distinct. Repo pins and 25/25 suite pass taken on the 
@@ -6542,6 +6548,12 @@ _Last updated: 2026-11-24 22:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1420-lane2.md`
 
 **Evidence:** VERIFIED: retrieval-auth-gate-migration-prep-t1420.md sha256 6b010d57 (match); doc carries exact wiring action, fail-closed discipline, gate; two genuine premise drifts found (stale spec §4.1 line pin; CLI-driven drill needs caller flag). No wiring/PR/merge — correctly read-only. Score 9.4. Kept from 9.5: the 25/25 suite pass and the two blob pins 
+
+### ✅ t1418-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE slice (a): H-done-entailment semantic arm, pre-registered, clears t0532 battery (P1 2/3, P2#1), HOLDS-OPEN vs TF-IDF control
+
+**Evidence:** FRESH WINDOW. VERIFIED: arm sha256 fb82ca54... == receipt pin; predictions dc43d5d6... == pin; results 4d6ccbe6... == pin; all three artifacts byte-exact on disk; pre-reg mtime precedes results; battery CLEAR (P1 2/3, P2#1, P5 deterministic) is the first semantic arm to clear it; honest HOLDS-OPEN verdict (TF-IDF still wins 3/3 human #1s). Score 9.
 
 ### ✅ t1418-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -13429,6 +13441,12 @@ _Last updated: 2026-11-24 22:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Created lane-journals/ + template per spec; seeded 9 evidenced lanes (all <=26 lines, grounded in t892-t922 receipts/scores); Lane 9 journal names the t902 phantom as named failure mode; Lane 6 honestly unseeded (no evidence, no invention); brief template verified spec-aligned, no edit needed; adoption notice on #2175 (comment 6114826631, link not 
 
+### ✅ t0932-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** 28/28 queued gap briefs ALL-BARRED byte-verified (18 exit-7 parent-authorship, 7 stamped CLAIMABILITY GATE exit-2, 3 seat-line exit-2), stamp spec documenting-vs-lifting, corroborated by independent 20:55 stall receipt
+
+**Evidence:** BACKLOG SWEEP (oldest-first). VERIFIED first-hand this tick: hidden_files/t0932-dryrun/ exists with exactly 28 .out files; hidden_files/t0932-dryrun/handread.txt exists; stamp tool hidden_files/bin/stamp-claimability-gate.py sha256 prefix 5ca09974a7eddaff == receipt pin prefix EXACTLY; the receipt carries a dated CORRECTION striking its future-date
+
 ### ✅ t0932 — Team 10, Team Naya Scorer (Brain Index) — 8.0/10 [VERIFIED]
 
 **Task:** gap-brief claimability assessment (dry-runs + hand-pinned validation)
@@ -13495,6 +13513,12 @@ _Last updated: 2026-11-24 22:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified (backlog, 2026-10-14 bytes): feed-distillation-watermark.json exists (554 advanced to 6171649742 per receipt); feed-distillation-554.md exists (~8.7KB); all three enforcement scripts exist on disk (bin/audit_gate_exit_codes.py, bin/audit_ratification_claims.py, bin/audit_schema_coverage.py). The receipt's 3-pass scorecard (fetch+triage -> 
 
+### ✅ t0925-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Mechanized 34h queue cross-check: hidden_files/bin/queue-cross-check.py reproduces t0924 hand audit exactly (61/61 full-chain identical set), live run 67/58/6/0/3/0/30/(c)0
+
+**Evidence:** BACKLOG SWEEP (oldest-first). VERIFIED first-hand this tick: hidden_files/bin/queue-cross-check.py exists on disk (the standing instrument); receipt corpus now 2,574 files (was 1,409 at the run - growth consistent); the two t0924 phantom briefs still in done/ corroborate the validation anchor's durable facts. NOT PHANTOM. Score 9.0. Why not 9.5: th
+
 ### ✅ t0925 — Team 10, Team Naya Scorer (Brain Index) — 9.4/10 [VERIFIED]
 
 **Task:** gap: post t982 receipt-gate evidence PR-side on PR #2385
@@ -13522,6 +13546,12 @@ _Last updated: 2026-11-24 22:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Gate-stall sweep: full ORDERING pass over 30 queue briefs, 0 claimable (Clarity-barred)
 
 **Evidence:** Verified: parent stall receipt 0819 exists on disk; brief-queue exists (35 files now, 30 at run time per receipt); stall-cap honored (64 min since 0819). No GitHub artifacts cited (bookkeeping receipt, artifact check vacuous — no branch/SHA claimed, so no PHANTOM). Score 7.5/10, agrees with receipt's honest self-score. Why not 9.5: zero executed wo
+
+### ✅ t0924-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** 34h lane-feed cross-check: 70 briefs left brief-queue, 61 full claim->sign-in->receipt chain, 7 partials resolved, 2 no-evidence dispatcher-swept briefs named, 5 instrument findings
+
+**Evidence:** BACKLOG SWEEP (oldest-first). VERIFIED first-hand this tick: both no-evidence briefs still sit in brief-queue/done/ on disk (brief-gap-t0845-lane12.md, brief-gap-t0849-lane3.md) - the phantom class persists exactly as named; receipt corpus has grown 1,407 -> 2,574 files since the run, consistent with continued operation; the receipt carries a dated
 
 ### ✅ t0924 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -13705,6 +13735,12 @@ _Last updated: 2026-11-24 22:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** EXPERIMENT_PASSES on Lane 3's load-bearing premise (retired DecisionEngine had zero production call sites): seal-before-run hash recorded, treatment 0 production imports/refs over 489 .py files via git archive, control detected 5 import/3 reference sites in value_calculus (detector not zero-blind), adversarial 3/3 wrong claims rejected incl. plante
 
+### ✅ t0921-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Writer-side origin attribution for ask-world demand instrument: 8/8 call sites stamp --origin, world-missing path fixed, template tune-in wired to pass --origin brief-driven, 22-invocation sandbox matrix 20/20
+
+**Evidence:** BACKLOG SWEEP (oldest-first). VERIFIED first-hand this tick: sandbox kit hidden_files/lane-10/origin-sandbox-t0921-lane10/ exists (build-and-run.py, tally.py, sandbox-run-report.json, stage2-logs, sandbox-logs, SHA256SUMS, README); the caller-side template wiring PERSISTS on live bytes - lane-agent-brief-template.md line 125 still runs ask-world.py
+
 ### ✅ t0921 — Team 10, Team Naya Scorer (Brain Index) — 9.3/10 [VERIFIED]
 
 **Task:** SB-D2 writer-side origin markers: writer fix + template caller fix + 20/20 matrix
@@ -13720,6 +13756,12 @@ _Last updated: 2026-11-24 22:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0921-lane10.md`
 
 **Evidence:** Verified: board comment 6275238503 live on #2765 (19:15:45Z); sandbox kit origin-sandbox-t0921-lane10/ present; live instrument on disk has the single --origin parse before the world.json load (line 162 comment cites t0921) with 8 origin=origin call sites; live log verified identical before/after (139 rows, no contamination). Measured before buildi
+
+### ✅ t0919-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** FALSE-POSITIVE-FREE verdict for gate #2385: 5 CI-green tips swept verbatim (4 RED true positives on byte-genuine drift, 1 GREEN true negative), 0 MISFIREs, kit with re-derivation README
+
+**Evidence:** BACKLOG SWEEP (oldest-first). VERIFIED first-hand this tick: kit hidden_files/lane-10/check-run-t0919-lane10/ exists (pin-ci.py, run-sweep.py, ci-status.jsonl, failure-dates.txt, sweep-results.json, tip-1..5 check logs + verdicts, README, SHA256SUMS); README sha256 prefix 0842eb5e == receipt pin prefix EXACTLY; sweep-results.json sha256 prefix a33e
 
 ### ✅ t0919 — Team 10, Team Naya Scorer (Brain Index) — 9.3/10 [VERIFIED]
 
@@ -13737,6 +13779,12 @@ _Last updated: 2026-11-24 22:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: board comment 6274828701 live on #2765 (18:54:36Z); evidence kit check-run-t0919-lane10/ present (pin-ci.py, ci-status.jsonl across 11 SHAs, per-tip check.logs + verdict.json, SHA256SUMS); read-only authority honored (no commit/push); tip re-pinned at end of run. CI-green criterion (byte-exact check-runs, zero fail/cancelled) stated pre-s
 
+### ✅ t0917-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Gate candidate .github/workflows/brain-index-freshness.yml authored (GREEN/RED/MISFIRE taxonomy), branch naya/ten-brainindex-gate-candidate-t0917 @ 2461c7e40, 4-case verbatim dry-run + real runner RED, board post #2765
+
+**Evidence:** BACKLOG SWEEP (oldest-first). VERIFIED first-hand this tick: candidate commit 2461c7e405e61aaeeaf7bcdf39f9d205674d5d25 exists as a commit object in the local mirror with parent == pinned tip 061243817; the workflow file at that commit sha256 f05b1b83752b8b69ed68ddfce0a1ba4bacabd88742b2ef30bc78130d3a292b90 == receipt pin EXACTLY; kit hidden_files/la
+
 ### ✅ t0917 — Team 10, Team Naya Scorer (Brain Index) — 9.3/10 [VERIFIED]
 
 **Task:** Brain-index freshness gate candidate authored, 4-case dry-run, real runner RED
@@ -13753,6 +13801,12 @@ _Last updated: 2026-11-24 22:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: branch naya/ten-brainindex-gate-candidate-t0917 exists on remote at exactly 2461c7e405e61aaeeaf7bcdf39f9d205674d5d25 (git protocol byte-match); workflow file present at that branch (5815 bytes); dry-run kit present with SHA256SUMS whose yml hash f05b1b8375 matches the receipt's claimed file hash; board comment 6274223019 live on #2765 (18
 
+### ✅ t0914-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Introducer bisect (7a6a79951 clean -> 5b6bb9298 DRIFT, recurrence #16) + heal re-cut/re-stamp/push naya/ten-brainindex-heal-t0914 @ 188c0ef5f, --check exit 0 on two checkouts, board post #2765
+
+**Evidence:** BACKLOG SWEEP (oldest-first). VERIFIED first-hand this tick: heal commit 188c0ef5f3c87c1867eb45fae15017f4c4886dd2 exists as a commit object in the local mirror with parent == pinned tip 061243817 (rev-parse confirmed); introducer 5b6bb92986d916b36a52cb29293e27bd966cfb4b, clean 7a6a79951, tip^ 9bbe0c8da, compounding 25ddcf2cf and f424f5b97 all exist
+
 ### ✅ t0914 — Team 10, Team Naya Scorer (Brain Index) — 9.3/10 [VERIFIED]
 
 **Task:** Brain-index heal re-cut and re-stamped at live tip, branch pushed
@@ -13768,6 +13822,12 @@ _Last updated: 2026-11-24 22:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0914-lane10.md`
 
 **Evidence:** VERIFIED: branch naya/ten-brainindex-heal-t0914 on origin @ 188c0ef5f3c87c1867eb45fae15017f4c4886dd2 (ls-remote exact SHA match); old branch naya/ten-brainindex-heal-t1292 absent (adaptation claim true); tip 061243817 unchanged. Score 9.5: introducer 5b6bb9298 pinned via bisect, heal green on two independent checkouts, premise-rot caught and disclo
+
+### ✅ t0913-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Brain-index freshness verdict at tip 061243817: --check exit 1 DRIFT, delta byte-pinned (1329->1332, +3 IB-000035/036/037), F1 commit vs T1 state verdict, board post #2765
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty - all receipts from last 12 ticks already scored). VERIFIED first-hand this tick: tip commit 061243817d891e466827c0887cc1aee2e3d63804 exists as a commit object in the local mirror; kit hidden_files/lane-10/check-run-t0913-lane10/ complete (stdout, stderr, README); check-stdout sha256 6bde08f067bdd4444
 
 ### ✅ t0913 — Team 10, Team Naya Scorer (Brain Index) — 9.3/10 [VERIFIED]
 
@@ -61918,6 +61978,84 @@ _Last updated: 2026-11-24 22:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261124-1244 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 20261124-1244: 31 queued briefs script-attempted, all refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose), 0 claimed, queue untouched
+
+**Evidence:** FRESH WINDOW (today). VERIFIED: receipt file exists; all 14 of today's gate-stall receipts contain the 31-queued pattern; spot-read 0013/1033/1244 confirm identical queue (31 unclaimed briefs, no brief-tNNNN-*), identical refusal split (29x exit 7 parent-authorship, 2x exit 2), 0 claimed, queue untouched, sweep log referenced. Score 9.0. Why not 9.
+
+### ✅ gate-stall-20261124-1138 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 20261124-1138: 31 queued briefs script-attempted, all refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose), 0 claimed, queue untouched
+
+**Evidence:** FRESH WINDOW (today). VERIFIED: receipt file exists; all 14 of today's gate-stall receipts contain the 31-queued pattern; spot-read 0013/1033/1244 confirm identical queue (31 unclaimed briefs, no brief-tNNNN-*), identical refusal split (29x exit 7 parent-authorship, 2x exit 2), 0 claimed, queue untouched, sweep log referenced. Score 9.0. Why not 9.
+
+### ✅ gate-stall-20261124-1033 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 20261124-1033: 31 queued briefs script-attempted, all refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose), 0 claimed, queue untouched
+
+**Evidence:** FRESH WINDOW (today). VERIFIED: receipt file exists; all 14 of today's gate-stall receipts contain the 31-queued pattern; spot-read 0013/1033/1244 confirm identical queue (31 unclaimed briefs, no brief-tNNNN-*), identical refusal split (29x exit 7 parent-authorship, 2x exit 2), 0 claimed, queue untouched, sweep log referenced. Score 9.0. Why not 9.
+
+### ✅ gate-stall-20261124-0928 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 20261124-0928: 31 queued briefs script-attempted, all refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose), 0 claimed, queue untouched
+
+**Evidence:** FRESH WINDOW (today). VERIFIED: receipt file exists; all 14 of today's gate-stall receipts contain the 31-queued pattern; spot-read 0013/1033/1244 confirm identical queue (31 unclaimed briefs, no brief-tNNNN-*), identical refusal split (29x exit 7 parent-authorship, 2x exit 2), 0 claimed, queue untouched, sweep log referenced. Score 9.0. Why not 9.
+
+### ✅ gate-stall-20261124-0828 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 20261124-0828: 31 queued briefs script-attempted, all refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose), 0 claimed, queue untouched
+
+**Evidence:** FRESH WINDOW (today). VERIFIED: receipt file exists; all 14 of today's gate-stall receipts contain the 31-queued pattern; spot-read 0013/1033/1244 confirm identical queue (31 unclaimed briefs, no brief-tNNNN-*), identical refusal split (29x exit 7 parent-authorship, 2x exit 2), 0 claimed, queue untouched, sweep log referenced. Score 9.0. Why not 9.
+
+### ✅ gate-stall-20261124-0725 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 20261124-0725: 31 queued briefs script-attempted, all refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose), 0 claimed, queue untouched
+
+**Evidence:** FRESH WINDOW (today). VERIFIED: receipt file exists; all 14 of today's gate-stall receipts contain the 31-queued pattern; spot-read 0013/1033/1244 confirm identical queue (31 unclaimed briefs, no brief-tNNNN-*), identical refusal split (29x exit 7 parent-authorship, 2x exit 2), 0 claimed, queue untouched, sweep log referenced. Score 9.0. Why not 9.
+
+### ✅ gate-stall-20261124-0622 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 20261124-0622: 31 queued briefs script-attempted, all refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose), 0 claimed, queue untouched
+
+**Evidence:** FRESH WINDOW (today). VERIFIED: receipt file exists; all 14 of today's gate-stall receipts contain the 31-queued pattern; spot-read 0013/1033/1244 confirm identical queue (31 unclaimed briefs, no brief-tNNNN-*), identical refusal split (29x exit 7 parent-authorship, 2x exit 2), 0 claimed, queue untouched, sweep log referenced. Score 9.0. Why not 9.
+
+### ✅ gate-stall-20261124-0434 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 20261124-0434: 31 queued briefs script-attempted, all refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose), 0 claimed, queue untouched
+
+**Evidence:** FRESH WINDOW (today). VERIFIED: receipt file exists; all 14 of today's gate-stall receipts contain the 31-queued pattern; spot-read 0013/1033/1244 confirm identical queue (31 unclaimed briefs, no brief-tNNNN-*), identical refusal split (29x exit 7 parent-authorship, 2x exit 2), 0 claimed, queue untouched, sweep log referenced. Score 9.0. Why not 9.
+
+### ✅ gate-stall-20261124-0329 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 20261124-0329: 31 queued briefs script-attempted, all refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose), 0 claimed, queue untouched
+
+**Evidence:** FRESH WINDOW (today). VERIFIED: receipt file exists; all 14 of today's gate-stall receipts contain the 31-queued pattern; spot-read 0013/1033/1244 confirm identical queue (31 unclaimed briefs, no brief-tNNNN-*), identical refusal split (29x exit 7 parent-authorship, 2x exit 2), 0 claimed, queue untouched, sweep log referenced. Score 9.0. Why not 9.
+
+### ✅ gate-stall-20261124-0223 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 20261124-0223: 31 queued briefs script-attempted, all refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose), 0 claimed, queue untouched
+
+**Evidence:** FRESH WINDOW (today). VERIFIED: receipt file exists; all 14 of today's gate-stall receipts contain the 31-queued pattern; spot-read 0013/1033/1244 confirm identical queue (31 unclaimed briefs, no brief-tNNNN-*), identical refusal split (29x exit 7 parent-authorship, 2x exit 2), 0 claimed, queue untouched, sweep log referenced. Score 9.0. Why not 9.
+
+### ✅ gate-stall-20261124-0118 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 20261124-0118: 31 queued briefs script-attempted, all refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose), 0 claimed, queue untouched
+
+**Evidence:** FRESH WINDOW (today). VERIFIED: receipt file exists; all 14 of today's gate-stall receipts contain the 31-queued pattern; spot-read 0013/1033/1244 confirm identical queue (31 unclaimed briefs, no brief-tNNNN-*), identical refusal split (29x exit 7 parent-authorship, 2x exit 2), 0 claimed, queue untouched, sweep log referenced. Score 9.0. Why not 9.
+
+### ✅ gate-stall-20261124-0013 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 20261124-0013: 31 queued briefs script-attempted, all refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose), 0 claimed, queue untouched
+
+**Evidence:** FRESH WINDOW (today). VERIFIED: receipt file exists; all 14 of today's gate-stall receipts contain the 31-queued pattern; spot-read 0013/1033/1244 confirm identical queue (31 unclaimed briefs, no brief-tNNNN-*), identical refusal split (29x exit 7 parent-authorship, 2x exit 2), 0 claimed, queue untouched, sweep log referenced. Score 9.0. Why not 9.
+
+### ✅ gate-stall-20261124-1454 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 20261124-1454: 31 queued briefs script-attempted, all refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose), 0 claimed, queue untouched
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: live queue holds exactly 31 brief-*.md files and its sha256-of-sha256sum checksum re-derives EXACTLY as 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4, matching the receipt and the 13:51 receipt; the 13:51 receipt records the identical 29x exit 7 / 2x exit 2 split and 31-brief count; bo
 
 ### ✅ gate-stall-20261124-1351 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
