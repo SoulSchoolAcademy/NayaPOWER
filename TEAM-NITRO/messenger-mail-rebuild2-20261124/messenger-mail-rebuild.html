@@ -2303,8 +2303,11 @@ schRow.appendChild(dtWrap);
 .nm-toggle-btn:active,.nm-btn:active,.nm-mic:active,.nm-act:active,.nm-person:active,.nm-conv:active,.nm-bubble:active,.nm-react:active,.nm-keep:active,.nm-chip:active,.nm-space:active,.ml-thread:active,.ml-folder:active,.ml-qa-item:active{transform:scale(.97);transition:transform .1s ease;}
 .nm-toggle-btn[data-tempo="chat"]:hover{background:linear-gradient(135deg,rgba(142,36,170,.28) 0%,#050607 50%,rgba(142,36,170,.28) 100%);box-shadow:0 0 24px -4px rgba(142,36,170,.65),0 8px 24px rgba(0,0,0,.5);}
 .nm-toggle-btn[data-tempo="mail"]:hover{background:linear-gradient(135deg,rgba(15,82,186,.28) 0%,#050607 50%,rgba(15,82,186,.28) 100%);box-shadow:0 0 24px -4px rgba(15,82,186,.65),0 8px 24px rgba(0,0,0,.5);}
-/* ONE bottom bar (§3.2) — ADD · MAIL · ACTIVITY · WORLDS · ECOSYSTEM, one bar, everywhere. */
-.nm-onebar{position:fixed;bottom:var(--bw,96px);left:0;right:0;z-index:50;display:flex;align-items:flex-end;justify-content:center;gap:16px;padding:8px 16px calc(8px + env(safe-area-inset-bottom,0px));background:linear-gradient(180deg,transparent,rgba(5,5,8,.92) 30%);border-top:1px solid rgba(255,255,255,.08);box-sizing:border-box;max-width:100%;}
+/* ONE bottom bar (§3.2) — ADD · MAIL · ACTIVITY · WORLDS · ECOSYSTEM, one bar, everywhere.
+   Inset by var(--bw): the bar lives INSIDE the frame's inner stage — the
+   harvested frame's side bands (z-60) paint OVER anything at left:0/right:0,
+   and on phone they ate the ADD "+" and the ECOSYSTEM tail. */
+.nm-onebar{position:fixed;bottom:var(--bw,96px);left:var(--bw,96px);right:var(--bw,96px);z-index:50;display:flex;align-items:flex-end;justify-content:center;gap:16px;padding:8px 16px calc(8px + env(safe-area-inset-bottom,0px));background:linear-gradient(180deg,transparent,rgba(5,5,8,.92) 30%);border-top:1px solid rgba(255,255,255,.08);box-sizing:border-box;max-width:100%;}
 .nm-onebar-btn{display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:none;padding:0;cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent;touch-action:manipulation;flex:none;min-width:0;}
 .nm-onebar-btn .nm-ob-circ{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);border:1.5px solid var(--bc,#8e24aa);color:#ffffff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.12);transition:transform .3s ease,box-shadow .3s ease;}
 .nm-onebar-btn .nm-ob-circ svg{width:24px;height:24px;}
@@ -2312,7 +2315,7 @@ schRow.appendChild(dtWrap);
 .nm-onebar-btn .nm-ob-lab{font-size:17px;font-weight:700;letter-spacing:.08em;color:#ffffff;text-shadow:0 1px 2px rgba(0,0,0,.8);}
 .nm-onebar-btn:hover .nm-ob-circ{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.6),0 0 24px -4px var(--bc,#8e24aa),0 10px 26px rgba(0,0,0,.55);}
 .nm-onebar-btn:active .nm-ob-circ{transform:scale(.97);transition:transform .1s ease;}
-@media (max-width:640px){.nm-onebar{gap:6px;padding:8px 8px calc(8px + env(safe-area-inset-bottom,0px));}.nm-onebar-btn .nm-ob-circ{width:44px;height:44px;}.nm-onebar-btn .nm-ob-circ svg{width:20px;height:20px;}.nm-onebar-btn .nm-ob-circ span{font-size:19px;}.nm-onebar-btn .nm-ob-lab{letter-spacing:0;white-space:nowrap;}.nm-icon{width:42px;height:42px;}.nm-icon::after{inset:-4px;}.nm-icon svg{width:20px;height:20px;}.nm-icon-row{gap:4px;flex-wrap:nowrap;}}
+@media (max-width:640px){.nm-onebar{gap:12px;padding:8px 8px calc(8px + env(safe-area-inset-bottom,0px));}.nm-onebar-btn .nm-ob-circ{width:48px;height:48px;}.nm-onebar-btn .nm-ob-circ svg{width:20px;height:20px;}.nm-onebar-btn .nm-ob-circ span{font-size:19px;}.nm-onebar-btn .nm-ob-lab{display:none;}.nm-icon{width:42px;height:42px;}.nm-icon::after{inset:-4px;}.nm-icon svg{width:20px;height:20px;}.nm-icon-row{gap:4px;flex-wrap:nowrap;}}
 @media (max-width:900px){.nm-msg-panes{grid-template-columns:1fr;}}
 @media (max-width:640px){
   /* rebuild2: the ONE bar sits INSIDE the stage, so the tap landing must fit
