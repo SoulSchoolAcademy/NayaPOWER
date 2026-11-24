@@ -1,0 +1,95 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-4736",
+ "title": "One Family, Taken Verbatim",
+ "slug": "one-family-taken-verbatim",
+ "topic": "DESIGN",
+ "category": "DESIGN",
+ "kind": "intelligent-block",
+ "registered_by": "naya-resolve",
+ "directed_by": "Shawn Vibert",
+ "created_at": "2026-11-24T17:54:00Z",
+ "tone": "purple",
+ "icon": "◆",
+ "intelligence": {
+  "essence": "The last word on icons is a family resemblance, taken from his pictures, not invented per page. A count must be true — seven identical '4 online' pills cannot be real, so fix the count or remove the claim — and a control must do what it says. Contacts are not a list but Smart Links on Smart Tabs: one click organizes, a star or a love files a favorite. The sidebar icons are the round icons from his images, verbatim — black circles, colored rim, sharp white icon — and the bar tiles are real objects of one family with the orbs above them, bubble included; flat pretty boxes fail even when the color is right. Then the pictures overruled the prose: dark middle, white icon, colored rim and glow — the white middle is out, superseded by the look itself. One icon set, one sidebar, one look on every page: the row is a square button that lights up, with the round icon living inside it, elevated, and the label visible beside it. The batch closes where the system began — the agreement: the right URL, the shorter word-perfect letter, and the merge into one page, the root page as base, its two buttons beneath the play button, no scroll.",
+  "human_view": "Every page now wears the same family of icons — the exact ones from the pictures you chose — so your hands learn one language and never relearn it. Numbers you see are true numbers. And the agreement you sign is one page, at the right address, in the shorter perfected letter — the front door made whole.",
+  "child_view": "All the buttons are cousins — you can tell they're from the same family because they look alike, and they were copied carefully from the pictures, not made up new each time. And nobody writes a fake number like '4 friends online' on every row — numbers have to be true.",
+  "grandma_view": "The same familiar round icons sit inside their square buttons on every page, with their names beside them — no new style to learn on each screen. Counts mean what they say. And the big promise you sign lives on one tidy page, not two competing ones.",
+  "ai_view": "Icon-family and closing law distilled from SN-3165..SN-3174: (1) a count must be true — identical repeated counts are fake; fix or remove the claim; a control must do what it says (a chat pill is not a mail filter). (2) Contacts present as Smart Links on Smart Tabs; one click organizes/edits; star/love files a favorite. (3) Sidebar icons = the round icons from his images, harvested verbatim: black circle, colored rim, sharp white glyph. (4) Bar tiles are real objects, one family with the gauge/metric orbs; the bubble is part of the object; flat fails regardless of color. (5) The look is the pictures: dark middle, white icon, colored rim + glow, elevated, rounded — this SUPERSEDES the white-middle ruling; when pictures and prose conflict, the pictures rule. (6) One icon set, one sidebar, one look and feel on every page — no per-page invention. (7) The sidebar icons must be circles exactly like his (the Hub's rounded squares are wrong in the center, right in the glow). (8) The sidebar row: square elevated button (the frame, lights up) + round icon inside (elevated) + visible label. (9) The agreement page: the right URL (/agreement), the shorter letter, word-perfect text, voice after. (10) The merge: one agreement page — root as base (four corner emblems, title, welcome, big play button), the two buttons (Begin the visual story / Read the Collective Agreement) moved beneath the play button, no scroll.",
+  "what_it_means": "Consistency is a form of honesty: one family of objects, copied faithfully from the source he chose, means the citizen's learning compounds instead of resetting. And the decade's arc — from a fake count to the merged agreement — is the same arc at every scale: what is shown must be true, and what is one thing must be one page.",
+  "whats_inside": [
+   "The 'four online' buttons are no good — a count must be true, a control must do what it says (SN-3165)",
+   "Contacts are Smart Links on Smart Tabs (SN-3166)",
+   "Sidebar icons are the round icons + pills — harvested, not redesigned (SN-3167)",
+   "The bar tiles are real objects, one family; the look is the pictures — dark middle, white icon (SN-3168, SN-3169)",
+   "One icon set, one sidebar, one look; the row — round icon inside the square button; the agreement at the right URL; the merge into one page (SN-3170, SN-3171, SN-3172, SN-3173, SN-3174)"
+  ],
+  "topics": [
+   "Distillation",
+   "Design",
+   "Craft",
+   "Knowledge",
+   "Multiplication"
+  ]
+ },
+ "page": {
+  "distills": {
+   "batch": 13,
+   "of": 100,
+   "covers": [
+    {
+     "sn": "SN-3165",
+     "title": "The \"Four Online\" Buttons Are No Good"
+    },
+    {
+     "sn": "SN-3166",
+     "title": "Contacts Are Smart Links on Smart Tabs"
+    },
+    {
+     "sn": "SN-3167",
+     "title": "Sidebar Icons Are the Round Icons + Pills"
+    },
+    {
+     "sn": "SN-3168",
+     "title": "The Bar Tiles Are Real Objects, One Family"
+    },
+    {
+     "sn": "SN-3169",
+     "title": "The Look Is the Pictures — Dark Middle, White Icon"
+    },
+    {
+     "sn": "SN-3170",
+     "title": "One Icon Set, One Sidebar, One Look — Every Page"
+    },
+    {
+     "sn": "SN-3171",
+     "title": "The Hub Sidebar Icons Are Squares, Not Circles"
+    },
+    {
+     "sn": "SN-3172",
+     "title": "The Sidebar Row — Round Icon Inside the Square Button, With the Label"
+    },
+    {
+     "sn": "SN-3173",
+     "title": "The Agreement Page — The Right URL, the Shorter Letter, the Word-Perfect Text, the Voice After"
+    },
+    {
+     "sn": "SN-3174",
+     "title": "The Merge — One Agreement Page"
+    }
+   ]
+  },
+  "machine": "1) Repeated identical counts are presumed fake until proven measured. 2) Labels must match behavior; mismatch is a defect in the label or the behavior — one of them changes. 3) Contact UI = Smart Link presentation on Smart Tabs. 4) Icon sources are his images; verbatim harvest, no redraw. 5) Tiles audited as objects (depth, family, bubble), not as colored boxes. 6) Picture-over-prose precedence when a ruling is superseded by the look. 7) Sidebar construction is fixed: square button frame + round icon + label. 8) One agreement page; duplicates merge to the root base. 9) Agreement text standard: shorter, word-perfect, at /agreement. 10) Supersessions are recorded in the open (white middle out), never silently edited.",
+  "why_it_matters": "This closing group is why the network can scale its surfaces without scaling its confusion: the icon family, the truth-in-counts rule, and the one-page agreement are all the same commitment — the citizen meets one true thing, once, everywhere. It also models honest supersession: a ruling (white middle) was replaced by a better-seen truth, in the open.",
+  "how_it_connects": "Tenth essence of batch 13, completing coverage of SN-3027–SN-3174 (with the two DIR day-notes excluded to their own lane). Its agreement merge points back to SN-4728's front-page agreement and forward to the citizen deed's eventual filing — one page, one promise.",
+  "what_is_in_it_for_you": "One visual family to learn, numbers you can trust, contacts that act like the rest of the system — and a single, clean agreement page where your membership begins. Nothing competes with itself, and nothing pretends.",
+  "the_learning": "From now on, new surfaces inherit the family and the sources verbatim — instead of re-drawing icons, re-wording labels, or duplicating pages — and when the look itself overrules an earlier ruling, we record the supersession in the open."
+ },
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4736/IB-SMART-NOTE-20261124-sn4736-one-family-taken-verbatim.md",
+ "page_hash": "015ec8a3fe4372bcb13b2b80f232a8bc26a3156fa0f13123bd04ffd927d14284",
+ "content_hash": "60919d82ee1ff7e718eb210a316d2d88ea26b92e8ed271ab2eb8e5dd7111e665",
+ "published_via": "publish-note",
+ "door_version": "1",
+ "door_receipt": "770774170d72100a9d6c06b16b99efb3d7a31695a31906b72c72063dba1b3391"
+}

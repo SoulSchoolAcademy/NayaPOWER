@@ -80724,6 +80724,42 @@
         "Multiplication",
         "Knowledge"
       ]
+    },
+    {
+      "smart_note_id": "SN-4736",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4736-one-family-taken-verbatim",
+      "slug": "one-family-taken-verbatim",
+      "title": "One Family, Taken Verbatim",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4736/IB-SMART-NOTE-20261124-sn4736-one-family-taken-verbatim.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4736/IB-SMART-NOTE-20261124-sn4736-one-family-taken-verbatim.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4736/IB-SMART-NOTE-20261124-sn4736-one-family-taken-verbatim.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4736-one-family-taken-verbatim.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T17:54:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "015ec8a3fe4372bcb13b2b80f232a8bc26a3156fa0f13123bd04ffd927d14284",
+      "content_hash": "60919d82ee1ff7e718eb210a316d2d88ea26b92e8ed271ab2eb8e5dd7111e665",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "770774170d72100a9d6c06b16b99efb3d7a31695a31906b72c72063dba1b3391",
+      "one_line": "The last word on icons is a family resemblance, taken from his pictures, not invented per page. A count must be true — seven identical '4 online' pills cannot be real, so fix the count or remove the claim — and a control must do what it says. Contacts are not a list but Smart Links on Smart Tabs: one click organizes, a star or a love files a favorite. The sidebar icons are the round icons from his images, verbatim — black circles, colored rim, sharp white icon — and the bar tiles are real objects of one family with the orbs above them, bubble included; flat pretty boxes fail even when the color is right. Then the pictures overruled the prose: dark middle, white icon, colored rim and glow — the white middle is out, superseded by the look itself. One icon set, one sidebar, one look on every page: the row is a square button that lights up, with the round icon living inside it, elevated, and the label visible beside it. The batch closes where the system began — the agreement: the right URL, the shorter word-perfect letter, and the merge into one page, the root page as base, its two buttons beneath the play button, no scroll.",
+      "topics": [
+        "Distillation",
+        "Design",
+        "Craft",
+        "Knowledge",
+        "Multiplication"
+      ]
     }
   ],
   "sequence_policy": {
@@ -80734,5 +80770,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "36649efc90de30dd087d8a36453cde07f32dee4d47c3e73a4d8857f0c2e80183"
+  "corpus_manifest_hash": "ac4f10fd3c4ffef6c5171c23d6987d59abaf9fffe7b6998a167d04c44100ed78"
 }
