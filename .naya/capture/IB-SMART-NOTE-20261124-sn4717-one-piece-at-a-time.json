@@ -1,0 +1,95 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-4717",
+ "title": "One Piece at a Time",
+ "slug": "one-piece-at-a-time",
+ "topic": "DESIGN",
+ "category": "DESIGN",
+ "kind": "intelligent-block",
+ "registered_by": "naya-resolve",
+ "directed_by": "Shawn Vibert",
+ "created_at": "2026-11-24T17:10:00Z",
+ "tone": "purple",
+ "icon": "◆",
+ "intelligence": {
+  "essence": "A citizen is never handed a wall. Reading unfolds one paragraph at a time behind one button; a presentation ends at its last image and goes no further sideways; the free walk always lands the citizen inside the Hub, logged in, before pricing is ever mentioned. What works is mirrored everywhere instead of reinvented, depth is one clone nudged behind the original, and every page is judged the way he judges it: ten loved, ten not loved, ten done ten times better. The feeds belong to the day and are the citizen's to toggle; the legal pages sit quiet at the bottom; and the word is thing — your world, your space, your thing — never a colder word where a human one exists.",
+  "human_view": "Everything a person meets on NayaNET arrives in small, beautiful pieces they can take in without effort: one paragraph, one slide, one tap at a time. Nobody gets stranded outside, nobody gets buried in text, and nobody has to learn our vocabulary — we speak theirs.",
+  "child_view": "Imagine a book that only shows you one page at a time, and each page is short and pretty, so you finish the whole book without ever feeling tired. That is how everything here is shown — never everything all at once.",
+  "grandma_view": "Nothing here overwhelms you. You read a little, tap once, read a little more. When you arrive for free, you are brought properly inside — not left standing at the door. The fine print is there at the bottom if you want it, quiet and out of the way.",
+  "ai_view": "Presentation rules distilled from SN-2927..SN-2936: (1) long-form reading renders as sequential single-paragraph unfolds behind one advance control; (2) a working pattern is cloned across surfaces, never re-invented per page; (3) visual depth = one duplicated layer offset slightly behind the original; (4) page judgment uses the 10/10/10 scorecard (ten loved, ten not loved, ten done ten times better); (5) news feeds attach to the day surface with per-feed citizen toggles, never to world selection; (6) every free entry path terminates in an authenticated Hub session before any pricing surface; (7) a visual deck terminates at its final slide — no forced lateral flow into a second presentation; (8) legal links render as one quiet row at the page bottom; (9) the lexicon word is 'thing' for a citizen's world/space — never substitute 'space' where 'thing' is meant.",
+  "what_it_means": "The entrance and the reading experience are one craft: dose the information, honor the person's pace, and make sure every path in ends with the person actually inside — welcomed, oriented, and free to leave the depth for later.",
+  "whats_inside": [
+   "The reader unfold: one paragraph, one button, never a wall of text (SN-2927)",
+   "Mirror success and the clone trick: reuse what works; depth is one offset clone (SN-2928, SN-2929)",
+   "The 10/10/10 scorecard and the feeds-on-the-day ruling (SN-2930, SN-2931)",
+   "Every way in: the free walk ends logged into the Hub; the visual ends at its last image (SN-2932, SN-2933, SN-2934)",
+   "The quiet legal row at the bottom, and the word is thing (SN-2935, SN-2936)"
+  ],
+  "topics": [
+   "Distillation",
+   "Design",
+   "Craft",
+   "Honor",
+   "Knowledge"
+  ]
+ },
+ "page": {
+  "distills": {
+   "batch": 12,
+   "of": 100,
+   "covers": [
+    {
+     "sn": "SN-2927",
+     "title": "The Reader Unfolds — One Paragraph at a Time"
+    },
+    {
+     "sn": "SN-2928",
+     "title": "Mirror Success"
+    },
+    {
+     "sn": "SN-2929",
+     "title": "The Clone Trick — Depth on Everything"
+    },
+    {
+     "sn": "SN-2930",
+     "title": "The Scorecard — Ten You Love, Ten You Don't, Ten Done Ten Times Better"
+    },
+    {
+     "sn": "SN-2931",
+     "title": "The Feeds Live on the Day"
+    },
+    {
+     "sn": "SN-2932",
+     "title": "The Free Walk Must End in the Hub"
+    },
+    {
+     "sn": "SN-2933",
+     "title": "The Visual Agreement Ends at the Last Image"
+    },
+    {
+     "sn": "SN-2934",
+     "title": "All the Ways In"
+    },
+    {
+     "sn": "SN-2935",
+     "title": "The Quiet Row at the Bottom"
+    },
+    {
+     "sn": "SN-2936",
+     "title": "The Word Is Thing"
+    }
+   ]
+  },
+  "machine": "1) Never render a wall of text: sequential unfold, one unit per advance. 2) A pattern proven on one surface is cloned to the others; a second invention of the same thing is a defect. 3) Depth effect = duplicate layer, slight offset, behind. 4) Judge pages 10 loved / 10 not loved / 10 done 10x better. 5) Feeds live on the day, toggled per feed by the citizen. 6) Free walk's terminal state = authenticated Hub session; pricing never precedes it. 7) Visual decks end at the last image. 8) Legal = one quiet linked row, page bottom. 9) Say thing, not space.",
+  "why_it_matters": "The first five minutes decide whether a citizen stays. These ten notes are the difference between a door that feels like a gift and a door that feels like homework — and every one of them was set by his eye on the live pages, not by theory.",
+  "how_it_connects": "Batch 12 distills the 2026-11-16 filing wave (SN-2927 onward) in filing order. This essence carries the wave's presentation craft; its siblings carry the same day's verification discipline (SN-4718), Personal rulings (SN-4719), smart-app anatomy (SN-4720), and entrance standard (SN-4721).",
+  "what_is_in_it_for_you": "You never face a wall, a dead end, or a stranger's vocabulary. You come in free and land inside, properly — and everything you read arrives at the pace you choose.",
+  "the_learning": "From now on, we dose every surface — one piece at a time, every path ending inside — instead of presenting finished-looking walls and hoping the citizen pushes through them."
+ },
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4717/IB-SMART-NOTE-20261124-sn4717-one-piece-at-a-time.md",
+ "page_hash": "a8e75119bc41293e231c06e9d665f05f2ced7419a511622d291d989421bf73c5",
+ "content_hash": "291268a6e587a3f33ad3cacb86815f770d5b2e4e2c690bb32c1bbb996466eb7d",
+ "published_via": "publish-note",
+ "door_version": "1",
+ "door_receipt": "6877169b53c002951cb764932bfc9608edac9db567f05584a531bda71a86595f"
+}

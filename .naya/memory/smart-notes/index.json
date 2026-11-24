@@ -80039,6 +80039,42 @@
         "lesson",
         "governance"
       ]
+    },
+    {
+      "smart_note_id": "SN-4717",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4717-one-piece-at-a-time",
+      "slug": "one-piece-at-a-time",
+      "title": "One Piece at a Time",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4717/IB-SMART-NOTE-20261124-sn4717-one-piece-at-a-time.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4717/IB-SMART-NOTE-20261124-sn4717-one-piece-at-a-time.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/DESIGN/SN-4717/IB-SMART-NOTE-20261124-sn4717-one-piece-at-a-time.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4717-one-piece-at-a-time.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "DESIGN",
+      "topic": "DESIGN",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T17:10:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "a8e75119bc41293e231c06e9d665f05f2ced7419a511622d291d989421bf73c5",
+      "content_hash": "291268a6e587a3f33ad3cacb86815f770d5b2e4e2c690bb32c1bbb996466eb7d",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "6877169b53c002951cb764932bfc9608edac9db567f05584a531bda71a86595f",
+      "one_line": "A citizen is never handed a wall. Reading unfolds one paragraph at a time behind one button; a presentation ends at its last image and goes no further sideways; the free walk always lands the citizen inside the Hub, logged in, before pricing is ever mentioned. What works is mirrored everywhere instead of reinvented, depth is one clone nudged behind the original, and every page is judged the way he judges it: ten loved, ten not loved, ten done ten times better. The feeds belong to the day and are the citizen's to toggle; the legal pages sit quiet at the bottom; and the word is thing — your world, your space, your thing — never a colder word where a human one exists.",
+      "topics": [
+        "Distillation",
+        "Design",
+        "Craft",
+        "Honor",
+        "Knowledge"
+      ]
     }
   ],
   "sequence_policy": {
@@ -80049,5 +80085,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "24261b2ed6bb1ba8f49659331b0f9c2858db7cdee30b1ac86239e66b55f73011"
+  "corpus_manifest_hash": "958e6025b023ed045a4efa15d57799fd9908aefa01435cca26f8be4f1345cf98"
 }
