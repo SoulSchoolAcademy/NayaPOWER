@@ -3286,6 +3286,47 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
 @media(max-width:560px){
   .tile-timeline{padding-top:8px!important;padding-bottom:8px!important}
 }
+/* ============ ROUND 9 — calendar day follow-on (2026-11-23 ~19:23–19:26 MST, Shawn's voice-call walk-through) ============ */
+/* (1) BOOK + TIMELINE, ONE SCREEN — the timeline is a drop-down. The
+   toggle is a .pill in the tile's own colour (--dc is the day colour,
+   set inline on the tile): white 17px label + white chevron glyph,
+   hover lift + active scale .97 from .pill itself. The body hides
+   behind the hidden attribute when folded ([hidden] is pinned here
+   so it wins over any display rule). */
+/* (3) YOUR WORLDS, TWO FRAMES — three tiles a frame now, so the
+   six-column worlds grid goes three-across (same 760px cap as the
+   base .world-icons grid); three-across at phone width too, winning
+   over the 2-column phone rule by later position. */
+/* (6) CHANGE COVER, TINY ICON — the pill becomes a 32px obsidian
+   circle, rim in the day's own colour (var(--dc), set on #dayScroll
+   by openDay; deep purple #8e24aa fallback), white photo glyph
+   (harvested verbatim from ICONS.post) as a real object, hover lift,
+   active scale .97. No text — the 17px floor does not apply; the
+   name rides on aria-label. Position rules are untouched except the
+   phone float (see the media block below): the FIX18 visibility
+   rule still hides it on every slide but Wisdom / Worlds / Your
+   Notes, and the static-flow forms on Wisdom and Worlds keep their
+   bottom-right-in-flow seat. */
+.tile-timeline .tl-drop{width:100%!important;justify-content:center!important;font-size:17px!important;margin:12px 0 8px!important}
+.tile-timeline .tl-drop .tl-chev{font-size:17px!important;line-height:1!important}
+.tile-timeline .r2-tlbody[hidden]{display:none!important}
+.worlds-slide .world-icons{grid-template-columns:repeat(3,1fr)!important;max-width:760px!important}
+#dayScroll>.cover-change{width:32px!important;height:32px!important;min-height:32px!important;padding:0!important;border-radius:50%!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;border:1.5px solid var(--dc,#8e24aa)!important;background:linear-gradient(135deg,#232330 0%,#0b0b12 55%,#050507 100%)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),0 0 14px color-mix(in srgb,var(--dc,#8e24aa) 40%,transparent),0 8px 18px rgba(0,0,0,.6)!important}
+#dayScroll>.cover-change svg{width:18px!important;height:18px!important;color:#fff!important}
+#dayScroll>.cover-change:hover{transform:translateY(-2px)!important;filter:brightness(1.22)!important}
+#dayScroll>.cover-change:active{transform:scale(.97)!important}
+@media(max-width:560px){
+  /* ROUND 9 (6) — the tiny icon rides bottom-right at phone width too
+     (Shawn's word: bottom-right corner), replacing FIX17's top:40px
+     float for the pill. FIX18 still hides it on every slide but
+     Wisdom / Worlds / Your Notes, so the FIX17 collision slides never
+     show it; the one phone floating slide (Your Notes) bottom-right
+     spot is unmeasured — the render walk must confirm it clears the
+     note list. The Wisdom/Worlds static-flow rules outrank this by
+     specificity and keep their seats. */
+  #dayScroll>.cover-change{top:auto!important;bottom:84px!important;left:auto!important;right:16px!important}
+  .worlds-slide .world-icons{grid-template-columns:repeat(3,1fr)!important}
+}
 </style>
   </head>
   <body>
@@ -3330,7 +3371,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
      behind the day's slides (item 12/A3): this layer sits behind
      them in the frame, never as its own slide, never behind wisdom.
      Change cover stays reachable, bottom-right, on every slide. -->
-          <div class="day-cover-bg" id="dayCoverBg" aria-hidden="true"><img id="coverImg" src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/thursday_green.jpg&amp;ref=calendar/day-followon-fix12-20261119&amp;cb=db902b7106c4179803408305222306b16c0d9249&amp;t=1795123417" alt=""></div><span class="cover-strip-label" id="coverStripLabel" aria-hidden="true">Thursday</span><button type="button" class="pill cover-change" id="coverChangeBtn">Change cover</button><input type="file" id="coverFile" accept="image/*"><div class="cover-chooser" id="coverChooser" hidden role="dialog" aria-label="Choose a cover"><p class="cc-title">Choose a cover</p><div class="cc-grid" id="coverChooserGrid"></div><p class="cc-note">Your choice stays on this day.</p></div><div class="wisdom-banner smart-block" id="wisdomBanner"><button type="button" class="slide-back" data-sb="prev" aria-label="Back">&#8249; Back</button>
+          <div class="day-cover-bg" id="dayCoverBg" aria-hidden="true"><img id="coverImg" src="https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/day-view-v18-fix-20261117/thursday_green.jpg&amp;ref=calendar/day-followon-fix12-20261119&amp;cb=db902b7106c4179803408305222306b16c0d9249&amp;t=1795123417" alt=""></div><span class="cover-strip-label" id="coverStripLabel" aria-hidden="true">Thursday</span><button type="button" class="pill cover-change" id="coverChangeBtn" aria-label="Change cover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="9" cy="9.5" r="1.4"/><path d="M4.5 17.5 10 12l3.5 3.5 2.5-2.5 3.5 3.5"/></svg></button><input type="file" id="coverFile" accept="image/*"><div class="cover-chooser" id="coverChooser" hidden role="dialog" aria-label="Choose a cover"><p class="cc-title">Choose a cover</p><div class="cc-grid" id="coverChooserGrid"></div><p class="cc-note">Your choice stays on this day.</p></div><div class="wisdom-banner smart-block" id="wisdomBanner"><button type="button" class="slide-back" data-sb="prev" aria-label="Back">&#8249; Back</button>
             <div class="wq-label">Wisdom of the day</div>
             <div class="greet-row"><span class="greet-layout"><span class="avatar-jewel" aria-hidden="true">S</span><span class="greet-hello" id="greetHello"></span></span></div><blockquote id="wisdomQuote"></blockquote><div class="dayteach" id="dayTeach"></div><div class="sb-nav"><div class="nav-left"></div><button type="button" class="p3-enter letter-next deck-next" data-sb="next" style="--tone:var(--dc,#3fb8ff)">Keep reading ◆</button><div class="nav-right"></div></div><div class="wq-store">Naya wisdom — from the Naya store</div><div class="sb-dots"></div>
           </div>
@@ -4429,7 +4470,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              on today's screen: the notification menu closes on the walk */
           openScopeId = null; openRowId = null;
           unfolded = { appointments: false, record: false };
-          __tlPage = 0; /* FIX9F item 1 — a fresh day opens on the morning half of the timeline. */
+          __tlPage = 0; __tlDropOpen = true; /* FIX9F item 1 — a fresh day opens on the morning half of the timeline. ROUND 9 — and with the timeline dropped down. */
           __bookOpen = false; __journalPage = 0; __slPage = 0; /* FIX9F2 item 1 — a fresh day opens with the booking flow closed and the pagers on page one (the open list itself survives the day step — same list, new day). */
           /* The month on screen follows the day on screen — back
              returns to the month holding this day */
@@ -4710,19 +4751,19 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         }
         /* FIX9F item 7 — the picker offers the citizen's real lists:
            the five Smart Lists first (the writable ones live; the
-           others say plainly why they cannot take the item — Nine
-           Notes is read-only, Worlds is not connected yet, and a list
+           others say plainly why they cannot take the item — Naya
+           notes is read-only, Worlds is not connected yet, and a list
            takes only its own kind), then the lists they made. */
         var SMART_LIST_CHOICES = [
           { id: "sl:yours", label: "Your Notes", kinds: ["note"] },
           { id: "sl:smart", label: "Smart Notes", kinds: ["note"] },
           { id: "sl:contacts", label: "Contacts", kinds: ["contact"] },
-          { id: "sl:nine", label: "Nine Notes", kinds: [] },
+          { id: "sl:nine", label: "Naya notes", kinds: [] },
           { id: "sl:worlds", label: "Your Worlds", kinds: [] }
         ];
         function smartChoiceLabel(c, kind) {
           if (c.kinds.indexOf(kind) !== -1) return c.label;
-          if (c.id === "sl:nine") return "Nine Notes — read only";
+          if (c.id === "sl:nine") return "Naya notes — read only";
           if (c.id === "sl:worlds") return "Your Worlds — not connected yet";
           return c.label + (kind === "note" ? " — people only" : " — notes only");
         }
@@ -4768,13 +4809,13 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         /* FIX9F item 2 — yourNotesByDay() is gone: the global by-day archive
            was the walk's failure (the same list on every day). The day's own
            notes come from mergedNotesFor(keyOf(sel)) now, in place. */
-        /* One list's items, for the open list in the frame. Nine Notes
+        /* One list's items, for the open list in the frame. Naya notes
            is the settled nine; Smart Notes is the day's saved Smart
            notes; Contacts and Worlds have no data in this file yet —
            honest empty states, never invented people or worlds. */
         /* FIX9F2 item 1 — the open list is its OWN slide now (see renderCategories): the rows stay on the Smart Lists slide, the items move to the next frame and page 5 to a frame. slMeta names the slide — label, colour and essence, harvested from the row definitions below. */
         function slMeta(listId) {
-          var map = { nine: ["Nine Notes", "#c2410c", "The nine that tell the whole story — in order."], smart: ["Smart Notes", "#d4a017", "Your saved Smart notes for this day."], contacts: ["Contacts", "#a21caf", "Your people — matched by what you share."], worlds: ["Worlds", "#8e24aa", "Every world you belong to."], yours: ["Your Notes", "#0f52ba", "Your own notes, kept by day."] };
+          var map = { nine: ["Naya notes", "#c2410c", "The Naya notes that tell the whole story — in order."], smart: ["Smart Notes", "#d4a017", "Your saved Smart notes for this day."], contacts: ["Contacts", "#a21caf", "Your people — matched by what you share."], worlds: ["Worlds", "#8e24aa", "Every world you belong to."], yours: ["Your Notes", "#0f52ba", "Your own notes, kept by day."] };
           if (map[listId]) return { label: map[listId][0], dc: map[listId][1], essence: map[listId][2] };
           if (listId && listId.indexOf("mine:") === 0) {
             var L = null; mylists.forEach(function (x) { if (x.id === listId.slice(5)) L = x; });
@@ -4936,6 +4977,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
            the day-scroll never scrolls — scrollTop stays 0. */
         var dayBlock = 0;
         var __tlPage = 0; /* FIX9F item 1 — the timeline pages 6+5+5 slots a frame (FIX9F3: 6+6+4 left the group buttons half-clipped at 1920x999 — Morning keeps its six, Midday and Evening take five). */
+        var __tlDropOpen = true; /* ROUND 9 item 1 — the timeline is a drop-down: true = dropped down (open). A fresh day opens dropped down (openDay resets it, next to __tlPage). */
         var __bookOpen = false; /* ROUND 7 — __bookOpen means the booking flow is open in the Book a time door now (no booking slides in the deck). */
         var __journalPage = 0; /* ROUND 7 — journal entries ride on the Journal slide now, 4 to a frame; tap one to read it in the journal door. */
         var __journalOpenIdx = null; /* ROUND 7 — the entry tapped on the Journal slide (or a note row), read inward in the journal door. */
@@ -5297,23 +5339,35 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
               '<span class="world-label">' + label + '</span>' + (why ? '<span class="world-why">' + why + '</span>' : '') + "</span>";
           }
           function worldCount(scopeId) { var r = scopeRealCount(scopeId); return r === null ? 0 : r; }
-          var notifRowsA = '<div class="world-icons">' +
-            /* FIX14 item 2 — no real count source exists in this file for
-               these five (scopeRealCount returns null for work/worlds;
-               mail/messages/connections are literal 0 and their doors
-               say "not connected yet — no number to show"), so the badges
-               come OFF (null renders no badge element and no count in
-               the label), exactly as FIX13 did for news. Personal keeps
-               worldCount("personal") — a real count, the length of the
-               day's own notes store (mergedNotesFor), 0 only when the
-               day truly has no notes. */
+          /* ROUND 9 item 4 (2026-11-23 ~19:24 MST) — real notifications,
+             re-checked scope by scope against the device stores:
+             Personal keeps worldCount("personal") — a real count, the
+             length of the day's own notes store (mergedNotesFor), 0 only
+             when the day truly has no notes. Business feed and Your world
+             have no separate store in this file (scopeRealCount returns
+             null for work/worlds, as in the notif bar), so no number is
+             shown — never an invented one. Smart Mail, Messages and
+             Connections have no live feed on this page (their doors say
+             "not connected yet — no number to show"), so their badges
+             stay off too. The live-feed wiring that would give all five
+             real counts is owed, not faked here. */
+          /* ROUND 9 item 3 (2026-11-23 ~19:24 MST) — Your Worlds, split
+             in two frames: frame 1 = Personal, Business, World; frame 2
+             = Smart Mail, Messages, Connections. Same tiles, same
+             destinations, same order within each frame. notifRowsA stays
+             as the two frames joined, so notifInner below still reads
+             the whole section. */
+          var notifRowsA1 = '<div class="world-icons">' +
             worldIcon("personal", "#07925f", "user", "Personal feed", null, worldCount("personal"), "Your private world.") +
             worldIcon("work", "#0f52ba", "briefcase", "Business feed", null, null, "Your work world.") +
             worldIcon("world", "#8e24aa", "world", "Your world", null, null, "Worlds you belong to.") +
+            "</div>";
+          var notifRowsA2 = '<div class="world-icons">' +
             worldIcon("mail", "#d4a017", "mail", "Smart Mail", null, null, "Mail that waits for you.") +
             worldIcon("messages", "#c2410c", "chat", "Messages", null, null, "Talk right now.") +
             worldIcon("connections", "#a21caf", "people", "Connections", null, null, "Your people.") +
             "</div>";
+          var notifRowsA = notifRowsA1 + notifRowsA2;
           /* NEWS ONLY (§8): local, provincial, global. Weather lives in
              the bottom-left bar; horoscope has its own space (its door,
              reached from the notifications block above). */
@@ -5344,7 +5398,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              share — with the living timeline of the day. */
           /* SUMMARY REWORK (2026-11-20) — the summary is three big
              labeled icons, in his order: Your Journal, Daily Reports,
-             Intel Today. Smart Notes and Nine Notes are out — they
+             Intel Today. Smart Notes and Naya notes are out — they
              live in the Smart Lists frame now, not on the summary.
              NO Posts. Each opens that day's entry (doors for
              journal/reports/Intel Today). FIX11 item 8 — the journal
@@ -5358,7 +5412,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              the lists area, in the same framed format as the rest of
              the page — five lists, then the citizen's own lists,
              each opening in place to show its
-             items. Nine Notes is the Personal nine, verbatim from the
+             items. Naya notes is the Personal nine, verbatim from the
              settled nine; Smart Notes is the day's saved Smart notes;
              Your Notes is the citizen's own notes, listed by day;
              Contacts and Worlds have no data in this file yet, so they
@@ -5370,7 +5424,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           var smartListsInner = '<div class="sum-list sl-frame">' +
             slRow("yours", "#0f52ba", "book", "Your Notes", "Your own notes, kept by day.", yoursCount) +
             slRow("smart", "#d4a017", "note", "Smart Notes", "Your saved Smart notes for this day.", smartCount) +
-            slRow("nine", "#c2410c", "star", "Nine Notes", "The nine that tell the whole story — in order.", NINE_NOTES.length) +
+            slRow("nine", "#c2410c", "star", "Naya notes", "The Naya notes that tell the whole story — in order.", NINE_NOTES.length) +
             slRow("contacts", "#a21caf", "people", "Contacts", "Your people — matched by what you share.", contactsCount) +
             slRow("worlds", "#8e24aa", "world", "Worlds", "Every world you belong to.", null) +
             mylists.map(function (L, i) { return slRow("mine:" + L.id, ["#0f52ba", "#07925f", "#d4a017", "#c2410c", "#c62828", "#a21caf", "#8e24aa"][i % 7], "list", escapeHTML(L.name), "Your list — " + L.items.length + (L.items.length === 1 ? " item." : " items."), L.items.length); }).join("") +
@@ -5383,16 +5437,21 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              it is gone (the agreement's button hides itself the same
              way). A fresh day opens folded again (openDay resets) */
           /* V3 SPLITS (rule 3, checker §3): notifications in three — the
-             cards, rows 1–6, rows 7–11; appointments in two (tile /
-             timeline), the timeline in two more at ≤740px; the record
-             stands. Each part is its own Smart Block with its own nav. */
-          /* ONE SCREEN (§9): the appointments tile and the full 6 AM–9 PM
-             timeline stand on ONE block — no more split timeline, no
-             second screen. The block scrolls within itself only when
+             cards, rows 1–6, rows 7–11; appointments + timeline in one
+             (ROUND 9 — the Timeline slide: booked tiles + the timeline
+             as a drop-down), the timeline in two more at ≤740px; the
+             record stands. Each part is its own Smart Block with its
+             own nav. */
+          /* ONE SCREEN (§9) — ROUND 9: the appointments tile and the full
+             6 AM–9 PM timeline stand on ONE slide, the Timeline slide —
+             no more split timeline, no second screen, no separate
+             booking screen. The timeline itself is a drop-down below
+             the booked tiles: tap it to fold it away, tap again to
+             drop it down. The slide scrolls within itself only when
              the viewport is too short (the V4 notif-detail precedent).
              "Notifications" is said ONCE — in the bar's own head, not
-             in a section head above it. "Appointments" is said ONCE —
-             in the tile, not in a section head above it. */
+             in a section head above it. "Timeline" is said ONCE — in the
+             slide head, never doubled in the tile. */
           /* FIX9 item 12 — a moved notif slide from the last render
              is removed before the fresh render, so no stale copy can
              survive a day step. */
@@ -5408,7 +5467,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              directly after Summary; Your Notes closes the deck (the
              Smart Notes slide is gone — smart notes no longer display
              on the calendar day, 2026-11-20). */
-          /* ROUND 7 — the frame-law slides: Timeline follows Appointments; Your Notes follows the Timeline; the open list's detail follows Smart Lists (only while a list is open). The Journal entries slide, the three booking slides and the Summary slide are gone — their content lives on the Journal slide, in the Book a time door, and in the Intel Today / Daily Reports doors. Each slide is its own frame — overflow moves to the next frame, never scroll inside one. */
+          /* ROUND 9 — the frame-law slides: the Appointments slide is gone, merged into the Timeline slide (book + timeline, one screen); Your Notes follows the Timeline; the open list's detail follows Smart Lists (only while a list is open). The Journal entries slide, the three booking slides and the Summary slide are gone — their content lives on the Journal slide, in the Book a time door, and in the Intel Today / Daily Reports doors. Each slide is its own frame — overflow moves to the next frame, never scroll inside one. */
           /* ROUND 7 (2026-11-23, Shawn's voice-call rulings ~18:55–
              19:06 MST) — the deck, new order: 1 Wisdom · 2 Notifica-
              tions · 3 Intel Today & Daily Reports · 4 Journal · 5 Your
@@ -5422,6 +5481,16 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              sumRow calls, same doors, same colours. ROUND 8: both now
              navigate out to their live rooms pages (see the openDoor
              intercept) instead of opening the in-page door path. */
+          /* ROUND 9 (2026-11-23, Shawn's voice-call walk-through ~19:23–
+             19:26 MST) — the deck, new order: 1 Wisdom · 2 Notifica-
+             tions · 3 Intel Today & Daily Reports · 4 Journal · 5 Your
+             Worlds · 6 Mail, Messages & Connections · 7 News Hub ·
+             8 Timeline (book + timeline, one screen — the timeline is
+             a drop-down) · 9 Your Notes · 10 Smart Lists (the open
+             list's detail follows it while a list is open). Still ten
+             slides: the merge (Appointments into Timeline) and the
+             split (Your Worlds in two) cancel out. "Naya notes" is the
+             new name for the Personal nine, everywhere it shows. */
           var intelReportsInner = '<div class="sum-list">' +
             sumRow("daily", "#3f51b5", "spark", "Intel Today", "The highlights of the day's intelligence — from your smart notes.", 0, null) +
             sumRow("reports", "#0e7490", "landmark", "Daily Reports", "Your daily intelligence report — the intelligence of the day, for any day.", 0, null) +
@@ -5430,12 +5499,12 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             catSection(CATS[0], notifCards + dayNav(dc, false), null, "Tap a world — see its notifications.", "", dc, "diamond", null, "notif-slide allow-scroll") +
             catSection(CATS[2], intelReportsInner + dayNav("#3f51b5", false), "record", "Tap either one and your daily Intel pops up.", "Intel Today & Daily Reports", "#3f51b5", "diamond", null, "allow-scroll") +
             catSection(CATS[2], journalInner + dayNav("#07925f", false), "record", "Your day, in your words — kept for this day.", "Journal", "#07925f", "orb") +
-            catSection(CATS[0], notifRowsA + dayNav(dc, false), null, "Six worlds, one day — tap one to see its day.", "Your Worlds", dc, "orb", "worlds", "worlds-slide") +
+            catSection(CATS[0], notifRowsA1 + dayNav(dc, false), null, "Personal, Business and your world — tap one to see its day.", "Your Worlds", dc, "orb", "worlds", "worlds-slide") +
+            catSection(CATS[0], notifRowsA2 + dayNav(dc, false), null, "Smart Mail, Messages and Connections — tap one to see its day.", "Mail, Messages & Connections", dc, "orb", "mail", "worlds-slide") +
             catSection(CATS[0], notifRowsB + dayNav(dc, false), null, "Local, Province and Global — your news hub, each scope its own door.", "News Hub", dc, "hex", null, "news-slide") +
-            catSection(CATS[1], eliteApptsHTML(dc, apptRows) + dayNav("#8e24aa", false), "appointments", "The day, booked — what is on, and a time to book.", "Appointments", "#8e24aa", null, null, "allow-scroll") +
-            catSection(CATS[1], timelineTileHTML(dc, tl) + dayNav("#3f51b5", false), "appointments", "Tap an open hour, 6 AM–9 PM.", "Timeline", "#3f51b5", null, null, "allow-scroll") +
+            catSection(CATS[1], timelineTileHTML(dc, tl, apptRows) + dayNav("#3f51b5", false), "appointments", "The day, booked — tap an open hour, 6 AM–9 PM.", "Timeline", "#3f51b5", null, null, "allow-scroll") +
             yourNotesSection(dc) +
-            catSection(CATS[2], smartListsInner + dayNav("#c62828", false), "record", "Your notes first — then the nine notes, contacts and worlds.", "Smart Lists", "#c62828", "diamond", null, "allow-scroll") +
+            catSection(CATS[2], smartListsInner + dayNav("#c62828", false), "record", "Your notes first — then the Naya notes, contacts and worlds.", "Smart Lists", "#c62828", "diamond", null, "allow-scroll") +
             (openListId ? catSection(CATS[2], slDetailHTML() + dayNav("#c62828", false), "record", slMeta(openListId).essence, slMeta(openListId).label, slMeta(openListId).dc, "diamond", null, "allow-scroll") : "");
           /* FIX9 item 12 — NOTIFICATIONS FIRST (dot 0, the opening
              view), wisdom second, chamber next as the day's home;
@@ -6040,11 +6109,11 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
            re-rendered every day): a tap on a booked slot's Join button
            keeps its own room — everything else on the slot books it. */
         function openBookFor(timeHHMM) {
-          /* ROUND2 item 2 — a timeline slot books on the Appointments slide, not in the door: the door
+          /* ROUND2 item 2 — a timeline slot books on the Timeline slide, not in the door: the door
              keeps its own book form for the day-menu path. The slot's hour pre-picks its first open time. */
           if (!sel) return;
           openDay(sel);
-          gotoSlideByLabel("Appointments");
+          gotoSlideByLabel("Timeline");
           mcOpen(sel, false);
           var h = parseInt(String(timeHHMM).split(":")[0], 10);
           var times = mcFreeTimes(sel, __mc.dur);
@@ -6328,7 +6397,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             gotoSlideByLabel("Book a time");
           });
           var dn = $("r2Done");
-          if (dn) dn.addEventListener("click", function () { __mc.confirmed = null; openDay(sel); gotoSlideByLabel("Appointments"); });
+          if (dn) dn.addEventListener("click", function () { __mc.confirmed = null; openDay(sel); gotoSlideByLabel("Timeline"); });
         }
         function mcCancelIdx(idx) {
           if (!sel) return;
@@ -6343,28 +6412,27 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           renderMonth();
           openDay(sel);
         }
-        /* FIX9F2 item 1 — the timeline tile, harvested whole from eliteApptsHTML: it is the Timeline slide's content now, so the Appointments slide holds only the booked tiles + the Book a time pill. */
-        function timelineTileHTML(dc, tl) {
+        /* ROUND 9 item 1 (2026-11-23 ~19:23 MST) — book + timeline, ONE screen: the Appointments slide is gone, merged into this tile. The tile holds the day's booked tiles (eliteApptsHTML, book pill hidden — the tile's own top-right #tlBookBtn is the one Book button) and the timeline as a drop-down below them: the toggle drops the 6 AM–9 PM timeline down, tap again folds it away. Open on a fresh day (__tlDropOpen resets in openDay); the Morning / Midday / Evening pager rides inside the drop-down, unchanged. No standalone booking screen; the button opens the book flow inward (the door). */
+        function timelineTileHTML(dc, tl, apptRows) {
           /* FIX9F4 item 2 — the tile heading is one line now: the full date ("Timeline · Friday, November 21", ~590 px of text in a 322 px tile) wrapped two to three lines and pushed Morning past the frame. The slide head already says Timeline, so the tile carries the short date — the same 3-letter weekday + short month the day strip uses. */
           var label = sel ? WEEKDAYS[sel.getDay()].slice(0, 3) + ", " + MONTHS[sel.getMonth()].slice(0, 3) + " " + sel.getDate() : "";
-          /* ROUND 7 (2026-11-23 ~18:57 MST) — one page: the Timeline with
-             the Book Appointment button top-right. No standalone booking
-             page; the button opens the book flow inward (the door). */
-          return tl ? '<div class="tile tile-timeline" style="--dc:' + dc + ';--tc:#3f51b5"><button type="button" class="elite-bookpill" id="tlBookBtn" style="float:right" aria-expanded="false">Book appointment</button><h3><span class="dotc" style="--tc:#3f51b5"></span>' + label + '</h3><div class="r2-tlbody">' + tl + "</div></div>" : "";
+          var dropOpen = (typeof __tlDropOpen !== "boolean") ? true : __tlDropOpen;
+          return tl ? '<div class="tile tile-timeline" style="--dc:' + dc + ';--tc:#3f51b5"><button type="button" class="elite-bookpill" id="tlBookBtn" style="float:right" aria-expanded="false">Book appointment</button><h3><span class="dotc" style="--tc:#3f51b5"></span>' + label + '</h3>' + eliteApptsHTML(dc, apptRows, true) + '<button type="button" class="pill tl-drop" id="tlDropBtn" aria-expanded="' + dropOpen + '" aria-controls="tlDropBody">Timeline · 6 AM–9 PM <span class="tl-chev" aria-hidden="true">' + (dropOpen ? "▾" : "▸") + '</span></button><div class="r2-tlbody" id="tlDropBody"' + (dropOpen ? "" : " hidden") + '>' + tl + "</div></div>" : "";
         }
-        function eliteApptsHTML(dc, apptRows) {
+        function eliteApptsHTML(dc, apptRows, hideBook) {
           /* ROUND2 item 2 (FIX9F2 item 1 — the timeline moved out): the slide at rest presents booking as a real thing: the day's booked tiles and ONE doorway pill. The full 6 AM–9 PM timeline is its own slide now (timelineTileHTML, same .tile-timeline pattern, harvested from this tile); the booking calendar + time + form are their own three slides (FIX9F4). The second bare button (Smart Meet) is gone — Smart Meet is a kind inside Step 1 now. */
-          /* FIX9F2 item 1 — this slide holds only the booked tiles + the Book a time pill now: the timeline is its own slide, and the booking flow opens in the Book a time door (ROUND 7). */
+          /* ROUND 9 item 1 — the booked tiles ride the Timeline slide now (the Appointments slide is gone, merged here): hideBook drops the second Book button, because the Timeline tile's own top-right #tlBookBtn is the one Book button. The .elite-appts wrapper stays, so the in-place tile refill below still lands on .elite-appts .elite-tiles. */
           return '<div class="elite-appts">' +
             '<div class="elite-tiles" role="list" aria-label="Appointments for this day">' + apptRows + "</div>" +
-            '<div class="elite-book"><button type="button" class="elite-bookpill" id="tileBookBtn" aria-expanded="false">Book a time</button></div>' +
+            (hideBook ? "" : '<div class="elite-book"><button type="button" class="elite-bookpill" id="tileBookBtn" aria-expanded="false">Book a time</button></div>') +
             "</div>";
         }
         if (!window.__mcWired) {
           window.__mcWired = true;
           document.addEventListener("click", function (ev) {
             var t = ev.target;
-            if (t.closest("#tileBookBtn") || t.closest("#tlBookBtn")) { ev.preventDefault(); if (__bookOpen) { __bookOpen = false; __mc.confirmed = null; __mc.refused = null; renderCategories(lastApptRows, lastTl); renderNotifBar(); renderNotifDetail(); if (!gotoSlideByLabel("Appointments")) dayShow(dayBlock); } else { mcOpen(sel, false); } return; }
+            if (t.closest("#tileBookBtn") || t.closest("#tlBookBtn")) { ev.preventDefault(); if (__bookOpen) { __bookOpen = false; __mc.confirmed = null; __mc.refused = null; renderCategories(lastApptRows, lastTl); renderNotifBar(); renderNotifDetail(); if (!gotoSlideByLabel("Timeline")) dayShow(dayBlock); } else { mcOpen(sel, false); } return; }
+            if (t.closest("#tlDropBtn")) { ev.preventDefault(); __tlDropOpen = !__tlDropOpen; renderCategories(lastApptRows, lastTl); renderNotifBar(); renderNotifDetail(); dayShow(dayBlock); return; }
             var day = t.closest(".mc-day");
             if (day) {
               if (day.getAttribute("aria-disabled") === "true") return;
