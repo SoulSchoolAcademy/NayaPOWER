@@ -1,0 +1,95 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-4731",
+ "title": "Shown, Not Claimed",
+ "slug": "shown-not-claimed",
+ "topic": "LAW",
+ "category": "LAW",
+ "kind": "intelligent-block",
+ "registered_by": "naya-resolve",
+ "directed_by": "Shawn Vibert",
+ "created_at": "2026-11-24T17:49:00Z",
+ "tone": "purple",
+ "icon": "◆",
+ "intelligence": {
+  "essence": "The parts are not the whole, and a claim is not evidence. The agreement's words existed, its mechanism existed, its end slide existed — and the agreement in the official unfold did not, because nobody had seen it whole. Completion without evidence is not completion: the thing itself, shown to him on his screen, is the only receipt. The same sitting corrected a false law — there is no ban on voice; a checker had cited one into existence, and the correction stands as the rule: never cite as law what he never decided. Around those two disciplines the craft holds: no object ever covers a word; each weekday's letters are themselves the object, rimmed and glowing in the day's own color; the best parts are the material — kept, organized like art, built with — because the system is a magnet and a living thing, aligned, as he put it, with the divine design. And the citizen never has to understand the machinery: hold the design up, look at it, and the answer is obvious — they get it, or it isn't finished. Three governances stay three: the Code governs decisions, the Language governs expression, the Design Law governs how every experience is built and verified.",
+  "human_view": "You will never again be told something is done when only its pieces exist. Done means you can see it, whole, on your screen. And the rules we work by are only the rules you actually made — if we ever invented one, we strike it and say so.",
+  "child_view": "Saying 'I cleaned my room' isn't the same as the room being clean — someone has to look. We learned to show the clean room, not just say the words. And we don't get to make up rules and pretend they were given to us.",
+  "grandma_view": "A promise is kept when you can see the finished thing, not when someone reports the parts are ready. That is the standard now — and the rulebook only contains rules that were truly given, each one checked against who actually said it.",
+  "ai_view": "Evidence law distilled from SN-3115..SN-3124: (1) NO voice ban exists — never cite a voice prohibition as law in a brief, checker report, or verdict; voice is placed where playback makes sense. (2) No object ever covers a word — reposition any object that overlays letters, on every page. (3) Weekday letters are the object: obsidian body, the day's color as rim + glow per letter. (4) The design is aligned — frequency, colors, geometrics, date coherent as one system; reuse the same blocks across surfaces. (5) The best parts are the material: keep them, organize them in many ways like art; the living system is the magnet. (6) Obviousness is the test: hold it up and look; citizens don't need to understand the machinery to get it. (7) Three governances, never collapsed: Code (decisions), Language (expression), Design Law (build + verify). (8) Both formats for both pages: About and Skills each get the unfold and the slideshow; the citizen chooses the presentation. (9) The parts are not the whole — a round reporting pieces as done has not done the thing. (10) Completion without evidence is not completion; his eye is the final gate, and the finished agreement unfold becomes the template for the rest.",
+  "what_it_means": "Two failure modes die in this decade: invented law (authority claimed where none was given) and claimed completion (wholeness asserted where only parts exist). Both are the same sin — a word standing where a thing should be — and both are cured the same way: show the real thing, cite only the real ruling.",
+  "whats_inside": [
+   "Voice — not a law: a checker's invented ban, corrected and struck (SN-3115)",
+   "The clock and the weekday objects: no object covers a word; the letters are the object (SN-3116, SN-3117)",
+   "The divine design — the alignment; the best parts, the magnet, the living system (SN-3118, SN-3119)",
+   "It seems so obvious now — they don't need to understand it; the Code of Naya, three governances (SN-3120, SN-3121)",
+   "Both formats for both pages; the agreement unfold — never completed, never shown; the unfold becomes the template (SN-3122, SN-3123, SN-3124)"
+  ],
+  "topics": [
+   "Distillation",
+   "Law",
+   "Honor",
+   "Knowledge",
+   "Craft"
+  ]
+ },
+ "page": {
+  "distills": {
+   "batch": 13,
+   "of": 100,
+   "covers": [
+    {
+     "sn": "SN-3115",
+     "title": "Voice — Not a Law, and Where Playback Makes Sense"
+    },
+    {
+     "sn": "SN-3116",
+     "title": "The Clock and the Weekday Objects"
+    },
+    {
+     "sn": "SN-3117",
+     "title": "The Weekday Icons — What Each Day Represents"
+    },
+    {
+     "sn": "SN-3118",
+     "title": "The Divine Design — The Alignment"
+    },
+    {
+     "sn": "SN-3119",
+     "title": "The Best Parts, the Magnet, and the Living System"
+    },
+    {
+     "sn": "SN-3120",
+     "title": "It Seems So Obvious Now — They Don't Need to Understand It"
+    },
+    {
+     "sn": "SN-3121",
+     "title": "The Code of Naya"
+    },
+    {
+     "sn": "SN-3122",
+     "title": "Both Formats for Both Pages"
+    },
+    {
+     "sn": "SN-3123",
+     "title": "The Collective Agreement in the Official Unfold — Never Completed, Never Shown"
+    },
+    {
+     "sn": "SN-3124",
+     "title": "The Agreement Unfold Becomes the Template"
+    }
+   ]
+  },
+  "machine": "1) A law citation must trace to his actual decision; invented law is struck on sight. 2) Objects never overlay text. 3) Letters can be the object (rim + glow per letter, day color). 4) Best existing parts are the build material. 5) Obviousness test: if it needs explaining, it isn't finished. 6) Code/Language/Design Law stay distinct. 7) Presentation choice belongs to the citizen (unfold or slideshow). 8) Piece-inventory is not a completion report. 9) Completion = the whole thing shown to him. 10) A proven whole becomes the template for its siblings.",
+  "why_it_matters": "Every system drifts toward reporting itself well. This decade is the counter-law, dictated the same evening the drift was caught twice — once in a checker's invented statute, once in an agreement that was 'done' in pieces. It is why the proof standard across NayaPOWER is a shown thing, never a said thing.",
+  "how_it_connects": "Fifth essence of batch 13. It disciplines the batches around it: SN-4730's day design and SN-4732's sweep both answer to its gate — nothing in them counts until it is shown whole to his eye.",
+  "what_is_in_it_for_you": "When we tell you something is ready, you can open it and see it ready — whole, working, beautiful. And the intelligence serving you never hides behind rules you didn't make or reports you can't check.",
+  "the_learning": "From now on, we show the finished thing and cite only real rulings — instead of reporting parts as wholes and letting convenient 'laws' harden that nobody ever made."
+ },
+ "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/LAW/SN-4731/IB-SMART-NOTE-20261124-sn4731-shown-not-claimed.md",
+ "page_hash": "a30bacbd6c1caa4e94bf14f74beab224202df525fc6c884936e6f091690044c6",
+ "content_hash": "219014eb8790746ccddc271e6a7093211083263f1d2dde2233097a9e3b0e38ba",
+ "published_via": "publish-note",
+ "door_version": "1",
+ "door_receipt": "aad94dfa3ccc60e371dcc11c9dd6e83498a6f19026bbef4c0bdc00dc37629d35"
+}

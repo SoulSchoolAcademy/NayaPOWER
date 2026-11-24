@@ -80544,6 +80544,42 @@
         "Knowledge",
         "Multiplication"
       ]
+    },
+    {
+      "smart_note_id": "SN-4731",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4731-shown-not-claimed",
+      "slug": "shown-not-claimed",
+      "title": "Shown, Not Claimed",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/LAW/SN-4731/IB-SMART-NOTE-20261124-sn4731-shown-not-claimed.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/LAW/SN-4731/IB-SMART-NOTE-20261124-sn4731-shown-not-claimed.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/LAW/SN-4731/IB-SMART-NOTE-20261124-sn4731-shown-not-claimed.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4731-shown-not-claimed.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "LAW",
+      "topic": "LAW",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T17:49:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "a30bacbd6c1caa4e94bf14f74beab224202df525fc6c884936e6f091690044c6",
+      "content_hash": "219014eb8790746ccddc271e6a7093211083263f1d2dde2233097a9e3b0e38ba",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "aad94dfa3ccc60e371dcc11c9dd6e83498a6f19026bbef4c0bdc00dc37629d35",
+      "one_line": "The parts are not the whole, and a claim is not evidence. The agreement's words existed, its mechanism existed, its end slide existed — and the agreement in the official unfold did not, because nobody had seen it whole. Completion without evidence is not completion: the thing itself, shown to him on his screen, is the only receipt. The same sitting corrected a false law — there is no ban on voice; a checker had cited one into existence, and the correction stands as the rule: never cite as law what he never decided. Around those two disciplines the craft holds: no object ever covers a word; each weekday's letters are themselves the object, rimmed and glowing in the day's own color; the best parts are the material — kept, organized like art, built with — because the system is a magnet and a living thing, aligned, as he put it, with the divine design. And the citizen never has to understand the machinery: hold the design up, look at it, and the answer is obvious — they get it, or it isn't finished. Three governances stay three: the Code governs decisions, the Language governs expression, the Design Law governs how every experience is built and verified.",
+      "topics": [
+        "Distillation",
+        "Law",
+        "Honor",
+        "Knowledge",
+        "Craft"
+      ]
     }
   ],
   "sequence_policy": {
@@ -80554,5 +80590,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "27d715350e296a8023c8b35a8a0fea84ece5f2b88d5c821b32bc7dd0a7e60db4"
+  "corpus_manifest_hash": "84092a69f5b90120b9354f278b5023b1769534732affea32a95bd7c7af68e7ce"
 }
