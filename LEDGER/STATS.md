@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-24 17:32 UTC_
+_Last updated: 2026-11-24 18:02 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 10542
-- ✅ Verified (8+): 10427
+- **Total scored actions:** 10561
+- ✅ Verified (8+): 10446
 - 🟡 Partial (5–7): 104
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 7
@@ -15,18 +15,18 @@ _Last updated: 2026-11-24 17:32 UTC_
 
 | Team | Agent | Actions | Avg score | Best |
 |------|-------|---------|-----------|------|
-| Team 1 | Naya Verity | 701 | 9.1 | 9.6 |
-| Team 2 | Naya Sage | 696 | 8.9 | 9.5 |
-| Team 3 | Naya Judge | 643 | 9.0 | 10 |
-| Team 4 | Naya Mason | 623 | 9.1 | 9.6 |
+| Team 1 | Naya Verity | 702 | 9.1 | 9.6 |
+| Team 2 | Naya Sage | 699 | 8.9 | 9.5 |
+| Team 3 | Naya Judge | 646 | 9.0 | 10 |
+| Team 4 | Naya Mason | 628 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 764 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 451 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 602 | 8.9 | 10 |
 | Team 8 | Naya Sentinel | 637 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 762 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 1030 | 9.1 | 9.7 |
-| Team 11 | Naya Heart | 716 | 9.1 | 9.6 |
-| Team 12 | Naya Herald | 557 | 9.1 | 9.5 |
+| Team 9 | Naya Smith | 763 | 9.0 | 9.5 |
+| Team 10 | Naya Librarian | 1033 | 9.1 | 9.7 |
+| Team 11 | Naya Heart | 718 | 9.1 | 9.6 |
+| Team 12 | Naya Herald | 558 | 9.1 | 9.5 |
 
 ## Learning velocity
 
@@ -3682,16 +3682,16 @@ _Last updated: 2026-11-24 17:32 UTC_
 - **t0725-lane7:** 1 actions, avg 9.5/10
 - **t0726:** 4 actions, avg 9.2/10
 - **t0726-lane6:** 1 actions, avg 9.0/10
-- **t0727:** 5 actions, avg 9.2/10
+- **t0727:** 7 actions, avg 9.2/10
 - **t0727-lane1:** 1 actions, avg 9.0/10
 - **t0727-lane12:** 1 actions, avg 9.5/10
-- **t0728:** 7 actions, avg 9.2/10
+- **t0728:** 9 actions, avg 9.2/10
 - **t0728-lane10:** 1 actions, avg 9.5/10
 - **t0728-lane4:** 1 actions, avg 9.0/10
 - **t0729-lane12:** 1 actions, avg 9.5/10
-- **t0729:** 5 actions, avg 9.2/10
+- **t0729:** 6 actions, avg 9.2/10
 - **t0729-lane2:** 1 actions, avg 9.5/10
-- **t0730:** 8 actions, avg 8.9/10
+- **t0730:** 10 actions, avg 9.1/10
 - **t0730-lane3:** 1 actions, avg 9.5/10
 - **t0730-lane9:** 1 actions, avg 9.5/10
 - **t0731:** 12 actions, avg 9.1/10
@@ -4280,18 +4280,18 @@ _Last updated: 2026-11-24 17:32 UTC_
 - **t1418-lane3:** 2 actions, avg 9.2/10
 - **t1420:** 1 actions, avg 9.4/10
 - **t1420-lane2:** 2 actions, avg 9.2/10
-- **t1421:** 1 actions, avg 9.0/10
+- **t1421:** 2 actions, avg 9.0/10
 - **t1421-lane4:** 2 actions, avg 9.2/10
-- **t1422:** 34 actions, avg 8.8/10
+- **t1422:** 35 actions, avg 8.9/10
 - **t1422-lane11:** 2 actions, avg 9.2/10
 - **t1422-lane4:** 1 actions, avg 9.0/10
 - **t1422-lane7:** 1 actions, avg 8.5/10
 - **t1422-lane9:** 1 actions, avg 9.0/10
-- **t1423:** 2 actions, avg 9.5/10
+- **t1423:** 3 actions, avg 9.5/10
 - **t1423-lane3:** 1 actions, avg 9.5/10
-- **t1425:** 2 actions, avg 9.5/10
+- **t1425:** 3 actions, avg 9.5/10
 - **t1425-lane11:** 1 actions, avg 9.5/10
-- **t1426:** 2 actions, avg 9.5/10
+- **t1426:** 3 actions, avg 9.5/10
 - **t1426-lane4:** 1 actions, avg 9.5/10
 - **t1432:** 67 actions, avg 9.0/10
 - **t1432-lane10:** 1 actions, avg 9.0/10
@@ -4303,19 +4303,19 @@ _Last updated: 2026-11-24 17:32 UTC_
 - **t1442-lane8:** 2 actions, avg 9.0/10
 - **t1442-lane9:** 2 actions, avg 9.0/10
 - **t1443:** 6 actions, avg 9.0/10
-- **t1449:** 2 actions, avg 8.8/10
+- **t1449:** 3 actions, avg 8.8/10
 - **t1449-lane2:** 1 actions, avg 9.0/10
-- **t1450:** 2 actions, avg 9.5/10
+- **t1450:** 3 actions, avg 9.5/10
 - **t1450-lane10:** 1 actions, avg 9.0/10
-- **t1452:** 2 actions, avg 9.5/10
+- **t1452:** 3 actions, avg 9.5/10
 - **t1452-lane3:** 1 actions, avg 9.0/10
-- **t1453:** 2 actions, avg 9.5/10
+- **t1453:** 3 actions, avg 9.3/10
 - **t1453-lane4:** 1 actions, avg 9.0/10
-- **t1454:** 1 actions, avg 9.0/10
+- **t1454:** 2 actions, avg 9.2/10
 - **t1454-lane10:** 1 actions, avg 9.0/10
-- **t1455:** 1 actions, avg 9.5/10
+- **t1455:** 2 actions, avg 9.2/10
 - **t1455-lane2:** 1 actions, avg 9.0/10
-- **t1456:** 1 actions, avg 9.5/10
+- **t1456:** 2 actions, avg 9.5/10
 - **t1456-lane4:** 1 actions, avg 9.5/10
 - **t1457:** 2 actions, avg 9.5/10
 - **t1457-lane3:** 1 actions, avg 9.5/10
