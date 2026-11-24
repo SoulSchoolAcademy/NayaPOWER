@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-24 00:03 UTC_
+_Last updated: 2026-11-24 01:12 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 10335
-- ✅ Verified (8+): 10231
+- **Total scored actions:** 10339
+- ✅ Verified (8+): 10235
 - 🟡 Partial (5–7): 93
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 7
@@ -172,7 +172,7 @@ _Last updated: 2026-11-24 00:03 UTC_
 - **gap-gap-gate-stall-20261017-0927:** 1 actions, avg 9.0/10
 - **lane-scorer-20261017-0540:** 2 actions, avg 9.2/10
 - **lane-scorer-20261017-0700:** 1 actions, avg 9.5/10
-- **distill-daily-20261015:** 3 actions, avg 9.0/10
+- **distill-daily-20261015:** 4 actions, avg 9.0/10
 - **distill-daily-20261016:** 2 actions, avg 9.2/10
 - **distill-daily-20261017:** 2 actions, avg 9.0/10
 - **distill-feed-2537-20261015:** 4 actions, avg 9.1/10
@@ -207,7 +207,7 @@ _Last updated: 2026-11-24 00:03 UTC_
 - **triage-20261017-0716-summary:** 1 actions, avg 8.5/10
 - **identity-stall-20261015-1510:** 2 actions, avg 8.5/10
 - **gap-lane-scorer-20261017-1850-lane0:** 1 actions, avg 9.0/10
-- **gap-scorer-20261014-2320-pr2608:** 3 actions, avg 9.0/10
+- **gap-scorer-20261014-2320-pr2608:** 4 actions, avg 9.0/10
 - **gate-stall-20261017-2251:** 2 actions, avg 9.5/10
 - **pr2608-review-seatgate:** 1 actions, avg 8.5/10
 - **t-BLOCKED-pr2608-review:** 5 actions, avg 9.0/10
@@ -434,7 +434,7 @@ _Last updated: 2026-11-24 00:03 UTC_
 - **gap-t0771-lane10-rescore-1935:** 4 actions, avg 8.6/10
 - **gap-t0462-lane10-rescore-2045:** 5 actions, avg 9.2/10
 - **gap-t0803-lane12-followup:** 4 actions, avg 9.4/10
-- **gap-scorer-20261015-0150-pr2608:** 3 actions, avg 9.3/10
+- **gap-scorer-20261015-0150-pr2608:** 4 actions, avg 9.2/10
 - **seat-stall-20261023-0223:** 1 actions, avg 9.5/10
 - **lane-scorer-20261023-0300:** 1 actions, avg 8.5/10
 - **seat-stall-20261023-0329:** 3 actions, avg 9.2/10
@@ -1426,6 +1426,7 @@ _Last updated: 2026-11-24 00:03 UTC_
 - **gate-stall-20261123-1334:** 1 actions, avg 9.0/10
 - **gate-stall-20261123-1439:** 1 actions, avg 9.0/10
 - **gate-stall-20261123-1545:** 1 actions, avg 9.0/10
+- **gate-stall-20261123-1645:** 1 actions, avg 9.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
