@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-24 16:05 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-24 16:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -19333,6 +19333,14 @@ _Last updated: 2026-11-24 16:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED (git protocol): remote HEAD 92329c5795ef8a50d02adf94ee6c91c313c26daf == receipt tip == shared-state main_tip (no premise rot); refs/pull/2403/head e654f16e8a... == receipt pin; merge commit 993975d55 exists with parents [bc22abbcd, e654f16e8a] and 'Merge PR #2403' message -- the receipt's refutation of the t0715 packet's 'no PR, 
 
+### 🟡 t0723 — Team 4, Team Naya Scorer (Intelligent Blocks) — 7.0/10 [PARTIAL]
+
+**Task:** W5 corpus-stamping migration plan CANDIDATE (design only) — measured corpus, 24-of-631 visibility table
+
+**Receipt:** `twelve-lane-receipts/t0723-lane4.md`
+
+**Evidence:** NOT PHANTOM. ARTIFACT CHECK this tick: design doc hidden_files/lane-4/w5-stamping-plan-candidate-t0723.md EXISTS but sha256 85907fc6248351c37992c984469477ca526a53effd3717205902b624588b438b != receipt pin ab44bda44407a3d312f20e29c9e2769078a1da7c05e9027aafc915c29961fae6 — file changed after the receipt, so the exact doc as scored is not re-provable. 
+
 ### ✅ t0723-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** W5 corpus-stamping migration plan (CANDIDATE design)
@@ -19362,6 +19370,14 @@ _Last updated: 2026-11-24 16:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0723-lane4.md`
 
 **Evidence:** ARTIFACTS VERIFIED: tip pin 92329c5795ef8a50d02adf94ee6c91c313c26daf == shared-state main_tip (no premise rot); corpus blob 817865493df46eaa3da4255afbf8a40a71f494e3 at tip == 631 entries with ZERO retrieval_authorized -- the design's load-bearing measurement re-derives byte-exact via git cat-file; design doc hidden_files/lane-4/w5-stamping-plan-can
+
+### ✅ t0723 — Team 10, Team Naya Scorer (Brain Index) — 8.0/10 [VERIFIED]
+
+**Task:** BLIND level-drill run (PR #2568) — voided on key-embedding defect, board defect report
+
+**Receipt:** `twelve-lane-receipts/t0723-lane10.md`
+
+**Evidence:** NOT PHANTOM. ARTIFACT CHECK this tick: void notice hidden_files/lane-10/level-drill-blind-run-t0723.md EXISTS (no sha pinned in receipt, existence verified). Score 8.0. Why not 9.5: PR #2568 head 21f089d56f151fe46c85b5073f61921e0201d2a6 no longer re-provable from this seat's bytes (month-old, head moved), so the 11-occurrence key-embedding count an
 
 ### ✅ t0723-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -19414,6 +19430,14 @@ _Last updated: 2026-11-24 16:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** semantic acceptance battery v4 build + cold run
 
 **Evidence:** Verified: origin branch naya4/t0722-lane5-semantic-battery head 98c023a879522206f194d8a926a4f8276085909d byte-matches (git ls-remote this tick); corpus/query seals as receipted. Score 9.0. Why not 9.5: (1) F1-F6 never evaluated on acceptance (run correctly STOPPED at calibration by the frozen conflict clause); (2) F4 degenerate-floor and F6 byte-id
+
+### ✅ t0722 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Independent second-seat verification of t0714 requeue-loop CANDIDATE — 40 probes, 2 disagreements
+
+**Receipt:** `twelve-lane-receipts/t0722-lane12.md`
+
+**Evidence:** VERIFIED this tick: candidate sha256 816ac7b33212f775c786b44313668236db9874faa61a9619264fdc6f06c0921b MATCHES receipt pin; probe harness scratch/t0722-lane12-iv/iv_probes.py sha256 af34cba55a638e152cb58edad8906d077c7e289ed1d96a7cc3dc7076dfdddf42 MATCHES; battery file present. Score 9.0 GOOD ONE MORE PASS. Why not 9.5: single seat/single machine ind
 
 ### ✅ t0722-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -19488,6 +19512,14 @@ _Last updated: 2026-11-24 16:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** ask-world top-20 needs re-derivation
 
 **Evidence:** Verified: files exist — surge-askworld-needs-t0721-lane5.md sha256 ae38e58f5179cec32293786d693d435ac1589fa7e0a3ea14955c02ebd1d4058d (byte-match) and the .jsonl 4fd531468a61cee7d32cb7f1c90180dae428b525908384fca160b368cbfecd56 (byte-match); recount-independent, deltas recomputed against t0813's own jsonl bytes. Score 9.5. Clears 9.5 because: log pinn
+
+### 🟡 t0721 — Team 1, Team Naya Scorer (Verification & Proof) — 7.0/10 [PARTIAL]
+
+**Task:** Independent scorecard #1 of 2 on PR #2574 (receipt-gate repair) — 7-case battery + RED-first + 2 findings
+
+**Receipt:** `twelve-lane-receipts/t0721-lane1.md`
+
+**Evidence:** NOT PHANTOM. ARTIFACT CHECK this tick: branch naya/lane9/receipt-relevance-t0710 absent from git ls-remote (merged/deleted since Oct 14); PR #2574 head moved from receipt pin 8d6a15e33e0141cf4abe51e30052feaf92dc35a5 — same head-move precedent as t0717-lane9/t0718-lane7. Score 7.0. Why not 9.5: the scorecard's subject (PR at pinned head) is not re-p
 
 ### ✅ t0721-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
@@ -61182,6 +61214,12 @@ _Last updated: 2026-11-24 16:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261124-0828 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: 31 queued briefs attempted, 0 claimed (29x exit 7, 2x exit 2)
+
+**Evidence:** VERIFIED this tick: sweep log brief-queue/claim-sweep-20261124-0828.log exists (3,363 B) with per-brief lines counted first-hand: 29x [7] parent-authorship + 2x [2] routing-prose bar = 31 attempted, 0 claimed, matching the receipt; live queue checksum recomputed = 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4, identical to the re
 
 ### ✅ distill-daily-20261124-lane0 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
