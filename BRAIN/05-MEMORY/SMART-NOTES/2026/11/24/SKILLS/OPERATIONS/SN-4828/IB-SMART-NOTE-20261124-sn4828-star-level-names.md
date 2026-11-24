@@ -17,11 +17,11 @@ Imagine levels in a game, but instead of boring numbers, each level has a beauti
 
 ## Grandma
 
-There are ten levels, and each one is a star with a name that says how far along you are: Starting Star, Emerging Star, Advancing Star, Pro Star, Five Star, Superstar, Serious Star, Mega Star, Naya Star, and at the very top, Ultimate Star. Say your star name, and anyone hearing it knows your standing at once.
+There are ten levels, and each one is a star with a name that says how far along you are: Starting Star, Emerging Star, Advancing Star, Pro Star, Five Star, Superstar, Serious Star, Mega Star, Ultimate Star, and at the very top, Ten Star. Say your star name, and anyone hearing it knows your standing at once.
 
 ## What It Means
 
-Every level is called a star — the name IS the level. 1 Starting Star · 2 Emerging Star · 3 Advancing Star · 4 Pro Star · 5 Five Star · 6 Superstar · 7 Serious Star · 8 Mega Star · 9 Naya Star · 10 Ultimate Star. No number alone, no chart beside it — the name carries the whole meaning.
+Every level is called a star — the name IS the level. 1 Starting Star · 2 Emerging Star · 3 Advancing Star · 4 Pro Star · 5 Five Star · 6 Superstar · 7 Serious Star · 8 Mega Star · 9 Ultimate Star · 10 Ten Star. No number alone, no chart beside it — the name carries the whole meaning.
 
 ## Why It Matters
 
