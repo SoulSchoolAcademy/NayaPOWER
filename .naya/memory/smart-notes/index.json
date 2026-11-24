@@ -80255,6 +80255,42 @@
         "Craft",
         "Multiplication"
       ]
+    },
+    {
+      "smart_note_id": "SN-4723",
+      "intelligent_block_id": "IB-SMART-NOTE-20261124-sn4723-plain-words-his-word",
+      "slug": "plain-words-his-word",
+      "title": "Plain Words, His Word",
+      "file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/GOVERNANCE/SN-4723/IB-SMART-NOTE-20261124-sn4723-plain-words-his-word.md",
+      "projection_file": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/GOVERNANCE/SN-4723/IB-SMART-NOTE-20261124-sn4723-plain-words-his-word.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/GOVERNANCE/SN-4723/IB-SMART-NOTE-20261124-sn4723-plain-words-his-word.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "capture_file": ".naya/capture/IB-SMART-NOTE-20261124-sn4723-plain-words-his-word.json",
+      "kind": "intelligent-block",
+      "status": "canonical",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "category": "GOVERNANCE",
+      "topic": "GOVERNANCE",
+      "captured_at": "2026-11-24",
+      "lifecycle_state": "ACTIVE",
+      "registered_by": "naya-resolve",
+      "registered_at": "2026-11-24T17:16:00Z",
+      "directed_by": "Shawn Vibert",
+      "date": "2026-11-24",
+      "page_hash": "4364309db60eb469d61181d688dc0b58a6b121ffaf1b0031139ec981904d6ba8",
+      "content_hash": "70cb9df147e25ea0f88e6eeaa99c63e00f20e913c5a2f2224d9d297d68945dce",
+      "published_via": "publish-note",
+      "door_version": "1",
+      "door_receipt": "728fcf3fbd583908b3a24f55eda751411f0a0e7008dae34090943088336480ee",
+      "one_line": "The law is written the way everything else is presented: as the unfolding — one elevated board to the next, three boards at a time and then a button, because three smaller boards beat one big one and are easier to take in. He makes the words perfect; Naya outputs them properly, for all legal pages. There is one email for every legal contact, and the email is the contact — never claim a registered agent we do not have. When his word meets a conflict, his word resolves it: 'authorized purposes' meant nothing to him, so it is gone, and the never-read law stands worded plain — nobody reads your mail or your messages, not Naya, not us, not anyone. Trust is earned the same way: the agreement entrance scored 7.5 out of 10 because it told people they could trust us instead of giving them reasons to — stop declaring trust and start supplying evidence. Inside the team the same plainness governs: when a recommendation is clearly better, the captain decides and does it — 'Begin the visual story' is not a question, it is the answer; if something makes it ten times better, the question answers itself. Everything he speaks is an instruction to act — 'cool' is not an answer; done, proven, shown is. The language itself settled the same evening: no longer spaces — worlds, everywhere, because a space is a room and a world is the whole thing. And the aim of all of it: optimize for finishing and producing value.",
+      "topics": [
+        "Distillation",
+        "Governance",
+        "Honor",
+        "Knowledge",
+        "Multiplication"
+      ]
     }
   ],
   "sequence_policy": {
@@ -80265,5 +80301,5 @@
     "counter_role": "advisory",
     "allocation_authority": "tools/smart_note_v2.py:_allocate_from_registry via tools/sn_claims.py (claim-before-author, anchored on the sn-claims branch); next_sequence is display-only and must never be read as the next number"
   },
-  "corpus_manifest_hash": "568f8bdf76d3104bd527bbc4cc9c52f08cc5218b4898ca0bb432acfcf79da981"
+  "corpus_manifest_hash": "202f94f6718ac9756f1ee7286e847b2dbf7641168a9f55d023a7b34d84cf60fe"
 }
