@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-24 22:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-24 22:35 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -12617,6 +12617,12 @@ _Last updated: 2026-11-24 22:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Re-pinned head first (eedd9540f — moved since t932), verified all three repair commits + base feature at head, classified 15 check-runs on exact head (9 success, 4 failing: 2 pre-existing-on-base, 2 governance-holds), local gate suite 15/15, PR diff = 4 files only. DISPATCHER VERIFIED: refs/pull/2385/head == eedd9540f (byte match to receipt). Hones
 
+### ✅ t0981-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Brain-index freshness re-proof at newest tip (4th consecutive run, tip unchanged) + since=-bounded board-state re-verification, no duplicate posted
+
+**Evidence:** BACKLOG SWEEP (oldest-first). VERIFIED first-hand this tick: kit hidden_files/lane-10/check-run-t0981-lane10/ exists (README + dump-drift-t0981.py + diffs/); all 10 diff/kit files byte-identical to t0978's via cmp this tick, exactly as the receipt claims; tip 6129980c9 exists as commit object in local mirror. NOT PHANTOM. Score 9.0. Why not 9.5: fo
+
 ### ✅ t981 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
 **Task:** t0981-lane10 brain-index freshness re-proof at live tip + board-comment state check
@@ -12630,6 +12636,12 @@ _Last updated: 2026-11-24 22:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0981-lane10.md`
 
 **Evidence:** VERIFIED: kit exists at hidden_files/lane-10/check-run-t0981-lane10/ (diffs 47/31/20 lines matching claimed signature; summary.json + have/want pairs present); live ls-remote HEAD still = 6129980c9453d48866aa110a227cf08df83b08df (pin current, tip unchanged); board comment 6283199121 on #2765 exists (created 2026-10-20T04:12:31Z), names tip 6129980c
+
+### ✅ t0978-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Brain-index freshness re-proof at newest tip + step-0 board check: verdict comment already rendered, no duplicate posted, premise-rot recorded
+
+**Evidence:** BACKLOG SWEEP (oldest-first). VERIFIED first-hand this tick: kit hidden_files/lane-10/check-run-t0978-lane10/ exists (README + dump-drift-t0978.py + diffs/); all 10 diff/kit files byte-identical to t0970's via cmp this tick, exactly as the receipt claims; tip 6129980c9 exists as commit object in local mirror with matching timestamp. NOT PHANTOM. Sc
 
 ### ✅ t978 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
@@ -12799,6 +12811,12 @@ _Last updated: 2026-11-24 22:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Two genuine cold dry runs (normal + adversarial) of the SGF daily acceptance harness, seal-before-run, blinded scorers (10.0 normal, 9.0 adversarial), correct adversarial refutation ('bytes win'). DISPATCHER VERIFIED: hidden_files/lane-1/she-goes-forever/ has spec/runner/claim-manifest/2 populated dry-run dirs/history 2 lines; remote head e654f16e8
 
+### ✅ t0970-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Brain-index freshness re-proof at newest live tip: DRIFT exit 1, exact diff, 4 mechanism pins re-derived live, board post filed
+
+**Evidence:** BACKLOG SWEEP (oldest-first). VERIFIED first-hand this tick: kit hidden_files/lane-10/check-run-t0970-lane10/ exists (README + dump-drift-t0970.py + diffs/); tip 6129980c9 exists as commit object in local mirror; t0970's diff files are byte-identical to t0978's and t0981's independently generated sets (cmp clean on all 10 files in both comparisons 
+
 ### ✅ t0970 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
 **Task:** Fresh byte-pinned freshness verdict at newest live tip after runtime restart
@@ -12830,6 +12848,12 @@ _Last updated: 2026-11-24 22:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0970-lane10.md`
 
 **Evidence:** VERIFIED: kit hidden_files/lane-10/check-run-t0970-lane10/ exists (README documenting the clone-restart pivot + ls-files footgun, fresh dump-drift-t0970.py, diffs/ byte-identical 47/31/20 line counts vs t0964's, byte-present); nothing inherited from t0964 without a live-byte re-check (all 4 mechanism pins re-derived this run); board post on #2765 c
+
+### ✅ t0964-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Coach's-note second pass: exact DRIFT diff at newest tip (4 entries, blob SHAs), duplicated page path named, mechanism pins re-verified (timing, not generator skew)
+
+**Evidence:** BACKLOG SWEEP (oldest-first). VERIFIED first-hand this tick: kit hidden_files/lane-10/check-run-t0964-lane10/ exists (README + dump-drift-t0964.py + diffs/ with have/want/diff + summary.json for all 3 index files); tip 6129980c9453d48866aa110a227cf08df83b08df exists as commit object in local mirror with timestamp 2026-10-20 00:21:40 UTC matching th
 
 ### ✅ t0964 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
@@ -12863,6 +12887,12 @@ _Last updated: 2026-11-24 22:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: kit hidden_files/lane-10/check-run-t0964-lane10/ exists (README + fresh dump-drift-t0964.py + diffs/ with have/want/diff + summary.json, byte-present); the 4 blob SHAs are independently re-corroborable via git rev-parse (they match t0970/t0978's corroboration); inherited harness slug-collision caught pre-claim and fixed, disclosed in the 
 
+### ✅ t0960-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Root-cause classification of 6 newest mainline tips RED on core CI: single cause (brain-index DRIFT at 1a1c22d32), fail-closed cascade, fix routed
+
+**Evidence:** BACKLOG SWEEP (oldest-first). VERIFIED first-hand this tick: kit hidden_files/lane-10/check-run-t0960-lane10/ exists (README + fetch-job-log.py + 12 raw job logs); the claimed first failing line is present VERBATIM in 6129980c9-test-job118382487165.log ('FAILED tests/test_brain_index_freshness.py::test_passes_on_fresh_tree - AssertionError: DRIFT..
+
 ### ✅ t0960 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** 6-tip RED CI classification + single root cause (brain-index DRIFT)
@@ -12894,6 +12924,12 @@ _Last updated: 2026-11-24 22:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0960-lane10.md`
 
 **Evidence:** VERIFIED: kit hidden_files/lane-10/check-run-t0960-lane10/ exists (README + fetch-job-log.py + 12 raw job logs, byte-present); receipt quotes the first failing log line per tip with run/job IDs. Score 9.0 GOOD, ONE MORE PASS. Why not 9.5: (1) exact DRIFT diff bytes not extracted; (2) duplicated page path not named; (3) no second-seat eyes; (4) drif
+
+### ✅ t0955-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Brain-index --check FALSE-POSITIVE-FREE verdict across 5 verifiably-green mainline tips (byte-pinned, kit with 5 check runs)
+
+**Evidence:** BACKLOG SWEEP (oldest-first). VERIFIED first-hand this tick: kit hidden_files/lane-10/check-run-t0955-lane10/ exists (README + 5x check-stdout/stderr); 7a6a79951-check-stdout.txt sha256 b95d8c7b867c2415996c5c7fad376cc6d441bbc6c48d5c8b66e3bf21a9370a60 == receipt pin EXACTLY; tip 7a6a79951 exists as commit object in local mirror. NOT PHANTOM. Score 9
 
 ### ✅ t0955 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -13074,6 +13110,12 @@ _Last updated: 2026-11-24 22:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t952-lane1.md`
 
 **Evidence:** Full seal-before-run four-way experiment on pinned bytes: RED confirmed on unwired seam (unauthorized ACTIVE seed/stale-cache/tampered flag pass through), treatment 25/25 reproduced, 10/10 novel adversarial probes fail-closed, blinded scorer supports all arm verdicts (treatment 5/10 on evidence quality), cold successor returned independent evidence
+
+### ✅ t0948-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** SB-D2 writer-side origin markers re-dispatch: ALREADY DONE at t0903, re-verified on fresh live bytes (check exit 0, 50/50 valid, SHA match, contamination grep)
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty - ticks 1553-1564 all scored). VERIFIED first-hand this tick: bin/check-origin-markers.py sha256 2c4776c2230bfe7b583c2636b2aa89fa22354a3c69565299305ceb50f90d435d == receipt pin EXACTLY; bin/ask-world.py sha256 2139f493ab23fa8e8ebe1271f13a674625f30e01f145bb631ab03f32b1132cbb == receipt pin EXACTLY; fre
 
 ### ✅ t0948 — Team 10, Team Naya Scorer (Brain Index) — 9.3/10 [VERIFIED]
 
@@ -46309,6 +46351,12 @@ _Last updated: 2026-11-24 22:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
 
+### ✅ gap-scorer-20261015-0650-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up scorer-20261015-0650: real CLASS-CHANGE RED on VM migration (9D25->9D64) + 30-trial re-anchor, band (1.549,1.471,1.414), successor fingerprint doc
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty - all receipts from last 12 ticks already scored). VERIFIED first-hand this tick: re-anchor record auto-retrieval/cold-drill-reanchor-record-gap0650-20261015.json sha256 4708c62ab7af6559... == receipt pin EXACTLY; class-change record 2bd439df68617452... == receipt pin EXACTLY; pre-reanchor backup 1604
+
 ### ✅ t-contract-verify — Team 7, Team Naya Scorer (Team Operations) — 9.5/10 [VERIFIED]
 
 **Task:** Judge-lane gate verification: contract_gate.py sign-in/sign-out battery + tamper tripwire at staging tip 82186972
@@ -57528,6 +57576,12 @@ _Last updated: 2026-11-24 22:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ gap-scorer-20261015-0650-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up scorer-20261015-0650: FP-003 a5 pin-equality leg - seal 9f5e1cc0, live re-pin PASS, one-byte tamper DISQUALIFIED; structural §8 legs named with proof
+
+**Evidence:** BACKLOG SWEEP (oldest-first). VERIFIED first-hand this tick: pre-reg hidden_files/lane-10/fp003-a5-pin-prereg-20261015.json sha256 8fe344f4e764aee7... == receipt pin EXACTLY; instrument fp003-pin-equality-probe.py 2f31185f56f01c9a... == receipt pin EXACTLY; both files exist on disk. NOT PHANTOM. Score 9.0. Why not 9.5: the real §8 cold-successor ru
 
 ### ✅ gap-scorer-20261015-0330-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
