@@ -13,6 +13,11 @@ window._dashD = window._dashD || { noteTimes: [], postTimes: [], msgTimes: [], i
 window._dashLinkT = window._dashLinkT || { c: 0, j: 0 };
 window._dashClickDayMap = window._dashClickDayMap || {};
 window._osSpine = window._osSpine || { score: null, clicks: 0, joins: 0, updatedAt: null, loading: true };
+/* FIX-1 2026-11-24: the hero paints from the last settled spine at once.
+   Repeat loads show the real cached score immediately (refreshed when the
+   fresh fetch lands); a first-ever load shows neutral dashes, never a fake
+   value and never a loading word. Cache older than 24h is ignored. */
+(function(){ try{ var _c = JSON.parse(localStorage.getItem('naya_dash_spine_v1') || 'null'); if (_c && typeof _c.score === 'number' && isFinite(_c.score) && _c.savedAt && (Date.now() - _c.savedAt) < 86400000) { window._osSpine = { score: _c.score, clicks: _c.clicks || 0, joins: _c.joins || 0, deltas: _c.deltas || {}, updatedAt: _c.updatedAt || null, loading: false, cached: true }; } }catch(e){} })();
 /* ═══ FIX PASS ROUND 6 (2026-11-15) — ONE SOURCE FOR THE MODE ═══
    Root cause of the eye's desync: the mode lived in three places that
    could disagree — window._dashMode (read by every render), the pill
@@ -67,10 +72,10 @@ window._osSetDashMode = function(mode, persist){
 };
 /* The orb's spoken label, from the SAME display rule as its number
    (window._osOrbDisplay) — so the aria can never name a different mode
-   than the orb shows. act is 'Show in gauge.' / 'Open detail.'. */
+   than the orb shows. act is 'Open detail.' (every tap opens the drill since FIX-1 2026-11-24). */
 window._osOrbAria = function(key, label, pts, isCount, act){
   var lbl = label || key;
-  var a = act || 'Show in gauge.';
+  var a = act || 'Open detail.';
   var spc = (typeof window._osSpc === 'function') ? window._osSpc : function(n){ return String(n); };
   var mode = (typeof window._dashMode === 'string') ? window._dashMode : 'pts';
   var od = null;
@@ -5773,7 +5778,7 @@ body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
      One viewpoint, nothing else in it. The wrapper is scaled by fitHero(). -->
 <div id="os-hero-fit">
 <div class="os-score-elegant" id="os-score-elegant">
-  <div class="os-se-val" id="os-se-val"><span class="os-se-num" id="os-se-num"><span class="os-skel-tile">4</span><span class="os-skel-tile">4</span><span class="os-skel-tile">%</span></span></div>
+  <div class="os-se-val" id="os-se-val"><span class="os-se-num" id="os-se-num"><span class="os-skel-tile">—</span><span class="os-skel-tile">—</span><span class="os-skel-tile">—</span></span></div>
   <div class="os-se-cap" id="os-se-cap">TOTAL SCORE</div>
   <div class="os-hero-updated" id="os-hero-updated"></div>
   <div class="platter big"></div>
@@ -15969,6 +15974,8 @@ init();
         osGuard('links',function(){renderLinks(out[3], out[4], linkErr.v, out[5]);});
         /* v5 T1.1: ONE LEDGER SPINE — every section reads one computed state */
         window._osSpine=osBuildSpine(d);
+        /* FIX-1 2026-11-24: persist the settled spine for the next load's hero. */
+        try{ var _sp = window._osSpine; if (_sp && typeof _sp.score === 'number' && isFinite(_sp.score)) { localStorage.setItem('naya_dash_spine_v1', JSON.stringify({ score: _sp.score, clicks: _sp.clicks || 0, joins: _sp.joins || 0, deltas: _sp.deltas || {}, updatedAt: _sp.updatedAt || null, savedAt: Date.now() })); } }catch(e){}
         /* NINAYA: refresh the instruments on every spine rebuild. */
         try{ if(window.TN_VOICE) TN_VOICE.render(); }catch(_){}
         try{ if(window.TN_ROOMS) TN_ROOMS.init(); }catch(_){}
@@ -20216,9 +20223,13 @@ function ldOpenNode(key, noFocus){
   /* 2026-11-07 — CLOSER (Addition 2, Shawn 16:26Z): the FIRST click on an orb shows that
      orb's number in the gauge; a SECOND click on the same orb opens its detail (the drill
      below). The gauge is the answer to "what's this orb's number" — the drill is the deeper look. */
-  var _showing = !!(window._featuredMetric && window._featuredMetric.key === key);
-  if (!_showing && typeof window._setFeaturedMetric === 'function' && window._setFeaturedMetric(key)) return;
-  /* already showing this orb (or the metric couldn't be set) — open its detail */
+  /* FIX-1 2026-11-24: ONE human tap opens the drill. The feature-first
+     two-tap (first tap featured the metric, second opened the drill) read
+     as broken in two independent seats — a real tap must open the drill.
+     The metric is still featured on the same tap, so the gauge behind the
+     drill shows it and the post-close state is unchanged. */
+  if (typeof window._setFeaturedMetric === 'function') { try { window._setFeaturedMetric(key); } catch (e) {} }
+  /* feature it on the same tap (or the metric couldn't be set) — then open its detail */
   var _drill = {sales:salesViewOpen, invs:invitesViewOpen, saves:savesViewOpen, likes:likesViewOpen, posts:creationsViewOpen, shares:sharesViewOpen, comments:commentsViewOpen, notes:notesViewOpen, joins:joinsViewOpen}[key];
   if (_drill){
     try{ if (typeof window._closeOpenDrill === 'function') window._closeOpenDrill(); }catch(e){}
@@ -21533,7 +21544,7 @@ window.ldLayoutNodes = ldLayoutNodes;
            honest skeleton. */
         var _c = (typeof window._featuredCenter === 'function') ? window._featuredCenter(v.center) : v.center;
         if (typeof window._osTilesSet === 'function'){ window._osTilesSet((window._osSpine && (window._osSpine.loading || window._osSpine.stale)) ? null : ((typeof _c === 'number' && isFinite(_c)) ? _c : null)); }
-        else if ((window._osSpine && (window._osSpine.loading || window._osSpine.stale)) || !(typeof v.center === 'number' && isFinite(v.center))) bigVal.innerHTML = '<span class="os-skel-tile">4</span><span class="os-skel-tile">4</span><span class="os-skel-tile">%</span>';
+        else if ((window._osSpine && (window._osSpine.loading || window._osSpine.stale)) || !(typeof v.center === 'number' && isFinite(v.center))) bigVal.innerHTML = '<span class="os-skel-tile">—</span><span class="os-skel-tile">—</span><span class="os-skel-tile">—</span>';
         else bigVal.textContent = _fmt(v.center);
       }
       /* HERO CLEANUP 2026-11-14 (Part 3): the caption under the tiles
@@ -22523,7 +22534,7 @@ function loadPointsBoard(_t){
          Count-only orbs (Clicks/Joins on a featured link) say the count
          word — never "points". Points orbs say "points". */
       var _isCount = (typeof window._featuredCountOnly === 'function') && window._featuredCountOnly(node.key);
-      var _alAct = (window._featuredMetric && window._featuredMetric.key===node.key) ? 'Open detail.' : 'Show in gauge.';
+      var _alAct = 'Open detail.';
       /* FIX PASS ROUND 6: the spoken label comes from the same display rule
          as the number (_osOrbAria over _osOrbDisplay) — a % orb never again
          announces points, a $ orb never again announces points. */
@@ -22749,7 +22760,7 @@ function loadPointsBoard(_t){
                168px white em-dash for the whole ledger load. Loading or
                stale: re-assert the skeleton (the dark loading face). Loaded:
                the spaced number is the only text ever written. */
-            if (window._osSpine && (window._osSpine.loading || window._osSpine.stale)) bigVal.innerHTML = '<span class="os-skel-tile">4</span><span class="os-skel-tile">4</span><span class="os-skel-tile">%</span>';
+            if (window._osSpine && (window._osSpine.loading || window._osSpine.stale)) bigVal.innerHTML = '<span class="os-skel-tile">—</span><span class="os-skel-tile">—</span><span class="os-skel-tile">—</span>';
             else bigVal.textContent = window._osSpc(Math.round(displayTotal));
           }
         }
@@ -22931,7 +22942,7 @@ function loadPointsBoard(_t){
             var co = (typeof window._featuredCountOnly === 'function') && window._featuredCountOnly(k);
             var lblEl = node.querySelector('.os-ld-lbl');
             var lb = (lblEl && lblEl.childNodes && lblEl.childNodes[0] && lblEl.childNodes[0].textContent) ? lblEl.childNodes[0].textContent.trim() : k;
-            var ac = (window._featuredMetric && window._featuredMetric.key===k) ? 'Open detail.' : 'Show in gauge.';
+            var ac = 'Open detail.';
             if (typeof window._osOrbAria === 'function'){ try{ node.setAttribute('aria-label', window._osOrbAria(k, lb || k, p2, co, ac)); }catch(e){} }
           });
           }
@@ -22963,7 +22974,7 @@ function loadPointsBoard(_t){
             /* PASS 3: the big number is the tile number now (the $ tile follows the mode inside _osTilesSet). */
             if (typeof window._osTilesSet === 'function'){ var _c3 = (typeof window._featuredCenter === 'function') ? window._featuredCenter(total) : ((window._osSpine && typeof window._osSpine.score === 'number' && isFinite(window._osSpine.score)) ? window._osSpine.score : total); window._osTilesSet((window._osSpine && (window._osSpine.loading || window._osSpine.stale)) ? null : ((typeof _c3 === 'number' && isFinite(_c3)) ? _c3 : null)); }
             /* FIX PASS 4 (fail 10): no bare "—" — skeleton while loading, the spaced number when loaded. */
-            else if (window._osSpine && (window._osSpine.loading || window._osSpine.stale)) bigVal.innerHTML = '<span class="os-skel-tile">4</span><span class="os-skel-tile">4</span><span class="os-skel-tile">%</span>';
+            else if (window._osSpine && (window._osSpine.loading || window._osSpine.stale)) bigVal.innerHTML = '<span class="os-skel-tile">—</span><span class="os-skel-tile">—</span><span class="os-skel-tile">—</span>';
             else bigVal.textContent = window._osSpc(((typeof window._featuredCenter === 'function') ? window._featuredCenter(total) : ((window._osSpine && typeof window._osSpine.score === 'number' && isFinite(window._osSpine.score)) ? window._osSpine.score : total)));
           }
           /* PASS 1 v7 (2026-11-05) — a PTS/% flip re-reads the live ledger; the derivation under the number re-renders with it. */
@@ -26705,7 +26716,7 @@ else init();
         setCap('');
         root.setAttribute('aria-label', 'Score gauge — quiet, no score yet');
       } else {
-        setCap('Reading…');
+        setCap('');
         root.setAttribute('aria-label', 'Score gauge — reading your actions');
       }
     }
@@ -27926,7 +27937,7 @@ window._repaintOrbMinis = function(box){
       S.target = null; S.revealed = false; S.start = null; S.reels = [];
       TARGET = 0;
       el.classList.remove('landed');
-      el.innerHTML = '<span class="os-skel-tile">4</span><span class="os-skel-tile">4</span><span class="os-skel-tile">%</span>';
+      el.innerHTML = '<span class="os-skel-tile">—</span><span class="os-skel-tile">—</span><span class="os-skel-tile">—</span>';
       return;
     }
     value = Math.round(value);
@@ -32338,6 +32349,112 @@ body{padding-bottom:170px !important;}
 #os-bottom3 [data-notif="plus"] .notif-tile::after,
 #os-bottom3 [data-notif="business"] .notif-tile::after,
 #os-bottom3 [data-notif="ecosystem"] .notif-tile::after{display:none !important;}
+</style>
+<style id="os-fix1-20261124">
+/* FIX ROUND 1 — 2026-11-24 (checker FAIL on the filed update build).
+   Four findings + the overlay cluster. Every rule is scoped to the drill
+   views / the hero cap / the EPC line it names; the closed dashboard is
+   untouched. Sizes are measured, not guessed — see FIX-REPORT.md. */
+/* (1) CHART SWITCH — the 17px ::after labels fit their buttons.
+   Measured (loaded page font, post-landing): the ::after text "Big Number"
+   is 107.167px wide at 17px (getComputedStyle ::after width) — the 108px
+   button (106px content, border-box) still overflowed by 1px on all ten
+   switchers. Buttons 64px -> 112px (110px content, 2.8px slack; 4x112 +
+   3x8 gap + 20 padding = 492px, inside the 560px smartlink stage and the
+   600px sales stage). At <=768px the four buttons wrap 2x2 (explicit width
+   256px = 2x112 + 8 + 20 + 4 slack — without it the shrink-to-fit
+   container collapsed to one 156px column, four rows); the switcher drops
+   to bottom:-136px with 144px of stage margin below it. */
+.os-chart-switch button{width:112px !important;flex:none !important;box-sizing:border-box !important;}
+@media (max-width:768px){
+  .os-chart-switch{flex-wrap:wrap !important;width:256px !important;max-width:96vw !important;}
+  #os-sales-switch,#os-invites-switch,#os-notes-switch,#os-likes-switch,#os-creations-switch,#os-shares-switch,#os-saves-switch,#os-joins-switch,#os-comments-switch{bottom:-136px !important;}
+  [role="dialog"] [class$="-stage"]{margin-bottom:144px !important;}
+  .os-smartlink-view{padding-bottom:170px !important;}
+  [role="dialog"] [class$="-pills"] button{letter-spacing:.02em !important;flex:none !important;}
+}
+@media (max-width:900px){
+  /* Pills one row at 390px: the generic pills kept their 10px gap (the 6px
+     gap was smartlink-only), so All wrapped even after the tracking fix
+     (total 379 vs 366 available). Gap 4px + padding 8px 6px: total ~335px. */
+  [role="dialog"] [class$="-pills"]{gap:4px !important;}
+  [role="dialog"] [class$="-pills"] button{letter-spacing:.02em !important;padding:8px 6px !important;flex:none !important;}
+}
+/* (1b) EPC — the .28em tracking made the label ~440px in a 362px box at
+   390px; .12em wraps it cleanly ("EARNINGS PER CLICK — NOT" / "COUNTED
+   YET"). The ▲ that covered "OT" is #os-b3-hide, hidden while a drill is
+   open (rule 4). */
+@media (max-width:640px){
+  .os-smartlink-total-l{letter-spacing:.12em !important;}
+}
+/* (2) DRILL ORBS — the tick ring (inset:-7px) overflowed every orb by 7px;
+   it now rides the disc edge. Labels: NAMED EXCEPTION E-ORB-LBL — 17px
+   cannot fit ("CONVERSIONS" ~122px uppercase vs 76-96px orbs); 12px desktop,
+   10px at <=768px, 8px on 64px orbs (max-height:560px). Numbers stay 24px
+   (16px smartlink at <=640px, untouched). Icons shrink at phone size so the
+   stack fits the orb. */
+[role="dialog"] .os-ld-node .os-ld-ticks{inset:0 !important;}
+/* The tick ring SPINS (orbVortex 48s). Its painted pixels are a circle that
+   never leaves the disc — but its transformed bounding box grows with the
+   rotation angle, so the orb's scrollWidth oscillated 88 -> 106 -> 94 over
+   12s at 390px (124 at 45 deg). In the drill the ring stands still (the
+   vortex keeps spinning, the orb stays alive); the hero orbs keep spinning. */
+[role="dialog"] .os-ld-node .os-ld-ticks{animation:none !important;}
+/* The VORTEX also spins (orbVortexRev 60s) and its bounding box grows the
+   same way: at 112px orbs it measured 112 -> 115 over 6s (peaking ~119 at
+   45 deg). It is inset 14px (84px in a 112 orb); inset 17px (78px) keeps
+   the spin and its 45-deg box (110.3px) inside every orb size (112/96/88/
+   64). The ring sits 3px further in — invisible at a glance. */
+[role="dialog"] .os-ld-node .os-ld-vortex{inset:17px !important;}
+/* Smart Link drill orbs (96px): Clicks + Conversions overflowed 4px high —
+   their numbers are 32px digit tiles (the orb-size tiles of the A/B-star
+   law) in a column 103px tall in a 96px orb. The jewel shrinks 32px -> 24px
+   (margin-top 8px -> 4px); the column drops to ~90px and the tile fits. */
+.os-smartlink-view .os-ld-node .os-ld-icon{font-size:24px !important;margin-top:4px !important;}
+[role="dialog"] .os-ld-node .os-ld-lbl{font-size:12px !important;letter-spacing:.02em !important;}
+/* NOTE: the <=768px label/icon rules MUST come after the 12px rule above
+   (same specificity, both !important — later wins). They were first written
+   in the section-1 media block, where the 12px rule below overrode them. */
+@media (max-width:768px){
+  [role="dialog"] .os-ld-node .os-ld-lbl{font-size:10px !important;}
+  [role="dialog"] .os-ld-node .os-ld-icon{font-size:16px !important;margin-top:4px !important;}
+}
+@media (max-height:560px){
+  [role="dialog"] .os-ld-node .os-ld-lbl{font-size:8px !important;}
+  /* 64px orbs: the column (number 26.4 + label 10 + icon 16 + margins/gaps)
+     is 68.4px tall in a 64px orb — the number rides 2.2px over the top.
+     The jewel goes at this size; number + label are the read. */
+  [role="dialog"] .os-ld-node .os-ld-icon{display:none !important;}
+}
+/* (3) OVERLAY — root cause: .intel-board.rv-lit{opacity:1} (0,2,0) beats
+   .os-smartlink-view{opacity:0} (0,1,0), so the reveal system painted all
+   ten drill views opaque from load while .open was false. A closed drill
+   view now paints nothing; the hero is visible at load. */
+.os-sales-view:not(.open),.os-invites-view:not(.open),.os-shares-view:not(.open),.os-joins-view:not(.open),.os-notes-view:not(.open),.os-comments-view:not(.open),.os-likes-view:not(.open),.os-creations-view:not(.open),.os-saves-view:not(.open),.os-smartlink-view:not(.open){opacity:0 !important;visibility:hidden !important;}
+/* (4) The bottom-bar corner control (#os-b3-hide) floats at the viewport
+   bottom-right over the EPC total while a drill is open; it controls a bar
+   that sits behind the drill anyway, so it hides while any drill is open. */
+body:has(.os-sales-view.open) #os-b3-hide,body:has(.os-invites-view.open) #os-b3-hide,body:has(.os-shares-view.open) #os-b3-hide,body:has(.os-joins-view.open) #os-b3-hide,body:has(.os-notes-view.open) #os-b3-hide,body:has(.os-comments-view.open) #os-b3-hide,body:has(.os-likes-view.open) #os-b3-hide,body:has(.os-creations-view.open) #os-b3-hide,body:has(.os-saves-view.open) #os-b3-hide,body:has(.os-smartlink-view.open) #os-b3-hide{display:none !important;}
+/* (5) DRILL X — the later top-right move (L30990: right:96px) put all ten
+   drill X buttons under the visible right rail at 1440px (measured: X at
+   x1286, elementFromPoint returned ASIDE.rail.right; the click never reached
+   the button — the X closed at 390px, where the rail is off-screen, and never
+   at 1440px). Follow-up 10 already restored the SMARTLINK X to top centre
+   ("the later top-right moves were the regression"); the other nine were
+   left behind. This extends that restore to all ten, verbatim in shape
+   (top centre, z-index 10003), including the hover rule so the centering
+   survives hover (the L30991 hover rule would otherwise replace the
+   translateX(-50%) with translateY(-2px) and jump the X 28px right). */
+#os-sales-view .os-sales-x,#os-invites-view .os-invites-x,#os-shares-view .os-shares-x,#os-joins-view .os-joins-x,#os-notes-view .os-notes-x,#os-comments-view .os-comments-x,#os-likes-view .os-likes-x,#os-creations-view .os-creations-x,#os-saves-view .os-saves-x,#os-smartlink-view .os-smartlink-x{left:50% !important;right:auto !important;top:24px !important;transform:translateX(-50%) !important;z-index:10003 !important;pointer-events:auto !important;}
+#os-sales-view .os-sales-x:hover,#os-invites-view .os-invites-x:hover,#os-shares-view .os-shares-x:hover,#os-joins-view .os-joins-x:hover,#os-notes-view .os-notes-x:hover,#os-comments-view .os-comments-x:hover,#os-likes-view .os-likes-x:hover,#os-creations-view .os-creations-x:hover,#os-saves-view .os-saves-x:hover,#os-smartlink-view .os-smartlink-x:hover{transform:translateX(-50%) !important;}
+/* (6) RAIL MOTTO — the privacy motto is a pinned footer at the bottom of the
+   left rail (one instance in the page, three lines of text, never
+   interactive). Its 172px box sits over the scrollable nav's bottom rows, so
+   at 390px the Calendar door — 9th of 13, below the nav's visible window
+   until the nav is scrolled — takes its taps on the motto instead of the
+   button (elementFromPoint at the door's centre returned DIV.private).
+   The motto must never eat a tap. */
+.rail.left .private{pointer-events:none !important;}
 </style>
 <script id="os-followup15-20261119">
 /* FOLLOW-UP 15 - settings-panel card jumps. The four new panel buttons
