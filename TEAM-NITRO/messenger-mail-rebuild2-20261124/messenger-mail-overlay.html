@@ -1007,8 +1007,8 @@ function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className
       var sw = el('div','ml-searchwrap');
       var sbox = el('div','ml-search');
       var sico = el('span','',''); sico.innerHTML='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>'; sico.style.display='flex'; sico.style.flex='none'; sbox.appendChild(sico);
-      var sin = el('input',''); sin.type='text'; sin.placeholder='Search mail...'; sin.value=state.search||'';
-      sin.setAttribute('aria-label','Search mail');
+      var sin = el('input',''); sin.type='text'; sin.placeholder='Search people…'; sin.value=state.search||'';
+      sin.setAttribute('aria-label','Search people');
       var sx = el('button','ml-search-x'+(state.search?' show':''),'\u00d7'); sx.type='button';
       sx.setAttribute('aria-label','Clear search');
       sx.addEventListener('click', function(){ state.search=''; renderList(); });
@@ -1047,9 +1047,9 @@ function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className
       var q = (state.search||'').toLowerCase().trim();
       if(q){
         ts = ts.filter(function(t){
-          return (t.subject||'').toLowerCase().indexOf(q)>-1 ||
-                 (t.body||'').toLowerCase().indexOf(q)>-1 ||
-                 partyName(t.from,'person').toLowerCase().indexOf(q)>-1;
+          return partyName(t.from,'person').toLowerCase().indexOf(q)>-1 ||
+                 String(t.from||'').toLowerCase().indexOf(q)>-1 ||
+                 String(t.to||'').toLowerCase().indexOf(q)>-1;
         });
       }
       if(state.filter==='notes'){
@@ -3121,7 +3121,7 @@ function nmConvRows(){
   var list = nmConvs.filter(function(c){
     if(nmFilter === 'living' && c.last && c.last.tempo === 'mail') return false;
     if(nmFilter === 'kept' && !(nmStars[c.threadId])) return false;
-    if(q && (String(c.with).toLowerCase().indexOf(q) === -1 && String((c.last && c.last.body) || '').toLowerCase().indexOf(q) === -1)) return false;
+    if(q && String(c.with).toLowerCase().indexOf(q) === -1) return false;
     return true;
   });
   list.sort(function(a, b){ return (nmPins[b.threadId] ? 1 : 0) - (nmPins[a.threadId] ? 1 : 0) || (Date.parse(b.lastAt || '') - Date.parse(a.lastAt || '')); });
@@ -3137,7 +3137,7 @@ function nmConvRows(){
       + '<span class="nm-orb" data-jewel="sender" style="--cc:' + color + '">' + esc(String(c.with).charAt(0).toUpperCase()) + '</span>'
       + '<div><div class="nm-conv-subj">' + (nmPins[c.threadId] ? '<span class="nm-pin-jewel" aria-hidden="true"></span> ' : '') + esc(nmName(c.with)) + (c.demo ? ' <span class="nm-sample-chip">SAMPLE</span>' : '') + '</div>'
       + '<div class="nm-conv-prev">' + esc(String((c.last && c.last.body) || '').slice(0, 80)) + '</div>'
-      + '<div class="nm-conv-prev">' + nmTimeAgo(c.lastAt) + ' · <span class="nm-type-jewel" data-jewel="type-' + (tempo === 'mail' ? 'mail' : tempo === 'post' ? 'post' : 'chat') + '"></span><span class="nm-tempo' + (tempo === 'mail' ? ' mail' : '') + '">' + (tempo === 'mail' ? 'MAIL · kept' : tempo === 'post' ? 'POST · feed' : 'CHAT · living') + '</span>' + (c.unread ? ' · <b>' + c.unread + ' new</b>' : '') + '</div>'
+      + '<div class="nm-conv-prev">' + nmTimeAgo(c.lastAt) + ' · <span class="nm-type-jewel" data-jewel="type-' + (tempo === 'mail' ? 'mail' : tempo === 'post' ? 'post' : 'chat') + '"></span>' + (c.unread ? ' · <b>' + c.unread + ' new</b>' : '') + '</div>'
       + '<div class="nm-acts"><button type="button" class="nm-act" data-jewel="chat" data-nm-dm="' + esc(c.with) + '" style="--ac:#0f52ba" aria-label="Message ' + esc(c.with) + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.5 0-3-.4-4.2-1L3 20l1-5.3A8.5 8.5 0 1 1 21 11.5z"/></svg></button>'
       + '<button type="button" class="nm-act" data-jewel="mail" data-nm-mail="' + esc(c.with) + '" style="--ac:#d4a017" aria-label="Mail ' + esc(c.with) + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></button></div></div></div>';
   });
@@ -3188,7 +3188,7 @@ function nmMessagesHtml(conv){
   var id = conv.threadId;
   var reacts = nmReacts[id] || {};
   var h = '<div class="nm-bubble ' + (mine ? 'mine' : 'theirs') + '" data-nm-msg="' + esc(id) + '">'
-    + '<div class="nm-bubble-meta"><span class="nm-type-jewel" data-jewel="type-' + (tempo === 'mail' ? 'mail' : tempo === 'post' ? 'post' : 'chat') + '"></span><span class="nm-tempo' + (tempo === 'mail' ? ' mail' : '') + '">' + (tempo === 'mail' ? 'MAIL · kept' : tempo === 'post' ? 'POST · feed' : 'CHAT · living') + '</span>'
+    + '<div class="nm-bubble-meta"><span class="nm-type-jewel" data-jewel="type-' + (tempo === 'mail' ? 'mail' : tempo === 'post' ? 'post' : 'chat') + '"></span>'
     + '<span>' + nmTimeAgo(conv.lastAt) + '</span>'
     + (mine ? ('<span>' + (conv.last.read_at ? 'Seen' : 'Sent') + '</span>') : '') + '</div>'
     + '<p>' + esc(conv.last.body || '') + '</p>'
@@ -6001,11 +6001,10 @@ else boot();
   /* (9) Post conversations / post bubbles are not chat — tag them, CSS hides them. */
   function tagPosts(){
     $all('.nm-conv').forEach(function(c){
-      if((c.textContent||'').indexOf('POST · feed') !== -1) c.setAttribute('data-ov-post', '1');
+      if(c.querySelector('.nm-type-jewel[data-jewel="type-post"]')) c.setAttribute('data-ov-post', '1');
     });
     $all('.nm-bubble').forEach(function(b){
-      var t = $('.nm-tempo', b);
-      if(t && txt(t) === 'POST · feed') b.setAttribute('data-ov-post', '1');
+      if(b.querySelector('.nm-type-jewel[data-jewel="type-post"]')) b.setAttribute('data-ov-post', '1');
     });
   }
   /* (10) Action balls into the send bar — CLONES, because nmRefreshMsgView
@@ -6126,4 +6125,119 @@ else boot();
   .nm-composer .nm-area{padding-top:8px !important;padding-bottom:8px !important;}
 }
 </style>
+<style id="ov-obsidian-20261125">
+/* ===== 30. OBSIDIAN CLEANUP 2026-11-25 — Shawn's eye, voice call ~11:4x-12:2x MST + top-bar cleanup ~12:26 MST =====
+   D5: the CHAT · living / MAIL · kept chips are removed from the conversation
+   cards and the message bubbles in the render templates (minimal JS edits
+   above) — nothing replaces them; the toggle says Messenger / Mail.
+   D6: the three-button top bar moves INTO the header band (.naya-topbar):
+   the band node (#ovSecondRow) is moved by the script below, so exactly ONE
+   set of Contacts / Smart Lists / Compose exists, sitting in the top band
+   between the two corner + buttons; the brand label node is removed with it.
+   OBSIDIAN BUTTON LAW (his words, supersedes any colored treatment):
+   every button is an obsidian black pill; color lives ONLY as rim light or
+   as a colored icon inside — no pink, no red, no colored fills anywhere.
+   ALIGNMENT LAW: every row on one grid, even spacing, like the Hub. */
+/* --- D6: the header band becomes the three-button top bar --- */
+.naya-topbar{display:grid !important;grid-template-columns:56px minmax(0,1fr) 56px !important;align-items:center !important;gap:12px !important;}
+.naya-topbar .naya-brand{display:none !important;}
+.naya-topbar .naya-corner-btn{align-self:center !important;justify-self:center !important;}
+/* The band, moved into the header: no board of its own — the header IS the
+   board now. Three equal pills, one grid, even spacing, both widths. This
+   rule sits LAST, so it beats the eye-fix CUT 2 phone rule that made the
+   band a single column (same specificity, later wins). */
+#ovSecondRow{background:transparent !important;border:0 !important;box-shadow:none !important;padding:0 !important;margin:0 !important;min-width:0 !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;gap:12px !important;}
+#ovSecondRow>*{min-height:64px !important;}
+#ovSecondRow .ml-qa-item, #ovSecondRow .ml-compose-top{min-height:64px !important;}
+/* The Smart Lists dropdown follows the band out of the header (moved by the
+   script) — it drops below the top bar, never inside it. */
+#ovSlDropdown{margin-top:12px !important;}
+/* --- OBSIDIAN BUTTON LAW: colored fills back to obsidian, rim + glow only --- */
+/* GO TO THE HUB (left drawer): was a solid purple fill — obsidian now, purple rim + glow. */
+.nm-side-hub{background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%) !important;border-color:#8e24aa !important;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.55), inset 0 -6px 14px rgba(0,0,0,.55), 0 0 26px -2px rgba(142,36,170,.9), 0 10px 24px rgba(0,0,0,.6) !important;}
+/* TO pick buttons (compose sheet): pressed was a solid purple fill — obsidian now, purple rim + glow. */
+.mlx-to-pick[aria-pressed="true"]{background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%) !important;border-color:#8e24aa !important;
+  box-shadow:0 0 14px -4px rgba(142,36,170,.85), 0 6px 14px rgba(0,0,0,.5) !important;}
+/* Filter chips (mail list): .on was a blue wash — obsidian now, sapphire rim + glow. */
+.ml-fchip.on{background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%) !important;border-color:rgba(15,82,186,.75) !important;}
+/* Compose-sheet mode tabs: .on was a color wash — obsidian now, own rim (inbox/instant
+   already done by eye-fix2; post re-asserted here although hidden). */
+.mail-stage .ml-mode[data-mode="inbox"].on,.mail-stage .ml-mode[data-mode="instant"].on,.mail-stage .ml-mode[data-mode="post"].on{
+  background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%) !important;}
+/* Smart-tabs popup primary button: was a purple gradient fill — obsidian now, purple rim. */
+.tab-pop .btn.primary{background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%) !important;border-color:#8e24aa !important;}
+/* Toggle pressed + dial .on: re-asserted obsidian (their color washes were
+   already beaten by §27/§28; this keeps them obsidian whatever the order). */
+.nm-toggle-btn[aria-pressed="true"][data-tempo="chat"],.nm-toggle-btn[aria-pressed="true"][data-tempo="mail"]{background:transparent !important;border-color:transparent !important;}
+.nm-dial-btn.on{background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%) !important;}
+/* --- Drawer section kickers: one read 16px black-on-black ("ROOMS", invisible
+   in the left drawer) — the law is 17px white. --- */
+.naya-drawer-kicker{font-size:17px !important;color:#ffffff !important;}
+/* --- Privacy line: out of the interface entirely (node removed by the script; belt-and-braces). --- */
+.naya-drawer-privacy{display:none !important;}
+/* --- Phone: the three top-bar pills stay 81px tall, orb on top, name below,
+   one grid, even spacing. The count badge has no room at this width — the
+   counts live in the lists themselves. Three 17px labels cannot fit
+   3-across beside the two + buttons in 390px (57px pills clip "CONTACTS"),
+   so on phone the top bar is two rows: the + buttons on the first row, the
+   three pills spanning the full width on the second — same grid, aligned,
+   never overlapping, labels whole. --- */
+@media (max-width:640px){
+  .naya-topbar{grid-template-columns:52px minmax(0,1fr) 52px !important;grid-template-rows:auto auto !important;gap:8px !important;padding:8px 10px !important;}
+  .naya-topbar .naya-corner-btn:first-child{grid-column:1 !important;grid-row:1 !important;justify-self:start !important;}
+  .naya-topbar .naya-corner-btn:last-child{grid-column:3 !important;grid-row:1 !important;justify-self:end !important;}
+  #ovSecondRow{grid-column:1 / -1 !important;grid-row:2 !important;gap:8px !important;}
+  #ovSecondRow .ml-qa-item, #ovSecondRow .ml-compose-top{flex-direction:column !important;justify-content:center !important;align-items:center !important;
+    gap:4px !important;padding:6px 4px !important;text-align:center !important;min-height:81px !important;}
+  #ovSecondRow .ml-qa-item .ml-qicon, #ovSecondRow .ml-compose-top .ov-compose-orb{width:20px !important;height:20px !important;}
+  #ovSecondRow .ml-qa-item .ml-qicon svg{width:12px !important;height:12px !important;}
+  #ovSecondRow .ml-qa-item .ml-qname{font-size:17px !important;letter-spacing:.02em !important;white-space:normal !important;line-height:1.2 !important;text-align:center !important;}
+  #ovSecondRow .ml-qa-item .ml-qcount{display:none !important;}
+  #ovSecondRow .ml-compose-top .ov-compose-orb{font-size:18px !important;}
+  #ovSecondRow .ml-compose-top .ov-compose-label{font-size:17px !important;white-space:normal !important;line-height:1.2 !important;}
+}
+</style>
+<script id="ov-obsidian-20261125">
+/* ===== 30. OBSIDIAN CLEANUP — behaviour layer (runs last) =====
+   (D6) Move the three-button band INTO the header band: #ovSecondRow is
+   moved (not rebuilt) into .naya-topbar between the two corner + buttons,
+   so exactly one set of Contacts / Smart Lists / Compose exists, in the top
+   band. The brand label node goes with the move (the label is gone, per the
+   ruling — the Hub link lives in the drawers). The Smart Lists dropdown is
+   re-parented out of the header to sit below it. moveSecondRow() (eye-fix)
+   only ever re-appends nodes INTO the band, never moves the band, so the
+   band stays in the header. (Privacy) The privacy line node is removed. */
+(function(){
+  function $(s, r){ return (r||document).querySelector(s); }
+  function $all(s, r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); }
+  function moveBandIntoTopbar(){
+    var top = $('.naya-topbar'), band = $('#ovSecondRow');
+    if(!top || !band) return false;
+    var brand = $('.naya-brand', top);
+    if(brand && brand.parentNode) brand.parentNode.removeChild(brand);
+    var corners = $all('.naya-corner-btn', top);
+    var right = corners[corners.length - 1];
+    if(band.parentNode !== top || (right && band.nextSibling !== right)){
+      if(right) top.insertBefore(band, right); else top.appendChild(band);
+    }
+    var dd = $('#ovSlDropdown');
+    if(dd && dd.parentNode === top && top.parentNode) top.parentNode.insertBefore(dd, top.nextSibling);
+    return true;
+  }
+  function removePrivacy(){
+    var done = false;
+    $all('.naya-drawer-privacy').forEach(function(el){ if(el.parentNode){ el.parentNode.removeChild(el); done = true; } });
+    return done;
+  }
+  function pass(){
+    try{ moveBandIntoTopbar(); }catch(e){}
+    try{ removePrivacy(); }catch(e){}
+  }
+  pass();
+  setInterval(pass, 800);
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', pass);
+})();
+</script>
 </body></html>
