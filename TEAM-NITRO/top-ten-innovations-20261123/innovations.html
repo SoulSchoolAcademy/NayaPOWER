@@ -1399,6 +1399,61 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
   #slideMain.end-mode #slideBoardsB .end-actions{margin-top:8px}
 }
 </style>
+<style>
+/* FIX9 — EYE-VERDICT FIX ROUND 9 (2026-11-25). The fix8 checker verdict:
+   end ball settles at the TOP at 390 (centre y149, bottom third empty
+   black); the briefed y422 with the full 200px ball + 321px text board
+   is arithmetically impossible in the 610px phone panel. Captain's
+   scope call: SMALLER BALL + CHAPTERS COLLAPSED BEHIND A TAP.
+   (a) Ball 200px -> 120px, seal 40px -> 32px (the front text-panel N
+   is 32px — the precedent), ball board min-height 259px -> 192px
+   (content-sized: body padding 36 + ball 120 + seal 32, seal margin 0),
+   the slack moves ABOVE the ball board as margin-top on .pm-art so
+   the ball settles as the middle centrepiece above the text. The
+   margin-top is the tuning knob (linear: +1px margin = +1px centre);
+   the collapsed total is kept at exactly 610 so nothing overflows
+   and no slack sits below the text board. The ball rendering is
+   untouched (harvested EMBED.ball, white ring + 14s diamond dot).
+   (c) The ten chapter titles inside END_TEXT collapse behind one
+   "Chapters" control: the titles live in a span that is hidden by
+   default at phone and shown when the board carries
+   .end-chapters-open; at desktop (>900px) the span shows by default
+   and hides only with .end-chapters-closed (pure-CSS defaults, so
+   a resize across the breakpoint can never strand the wrong state).
+   The full END_TEXT wording is unchanged — the paragraph's
+   textContent is still byte-identical END_TEXT in both states (the
+   span is display:none, never removed). The control is a real Naya
+   button: obsidian pill, rim + glow in its own deep gold #d4a017
+   (never the violet of Begin again, never the secondary's pale rim),
+   white word, lifts whole on hover like every .naya-btn. Phone-only
+   compacting (32px Chapters button, 44px action buttons, tight
+   padding) is what buys the ball its middle: every pixel saved in
+   the text board is a pixel the ball can sit lower. Desktop layout
+   otherwise unchanged (full-size buttons, full-size ball, chapters
+   expanded by default). D2 untouched: the fitPanels() END_MODE
+   guard stays exactly as fix8 wrote it. */
+#slideMain.end-mode .end-chapters{display:none}
+#slideMain.end-mode .end-chapters-btn{--nb-accent:#d4a017;--nb-accent-rgb:212,160,23;align-self:center;margin-top:8px}
+@media(min-width:901px){
+  #slideMain.end-mode .end-chapters{display:inline}
+  #slideMain.end-mode.end-chapters-closed .end-chapters{display:none}
+}
+@media(max-width:900px){
+  #slideMain.end-mode.end-chapters-open .end-chapters{display:inline}
+  #slideMain.end-mode{padding-top:8px !important;padding-bottom:8px !important}
+  #slideMain.end-mode .pm-art{flex:none !important;min-height:192px !important;margin-top:185px}
+  #slideMain.end-mode.end-chapters-open .pm-art{margin-top:75px}
+  #slideMain.end-mode .end-ball .ib-img-el{height:120px !important}
+  #slideMain.end-mode .end-ball .ib-n{width:32px !important;height:32px !important;margin-top:0 !important;margin-bottom:0 !important}
+  #slideMain.end-mode .end-ball .ib-n img{width:32px !important;height:32px !important}
+  #slideMain.end-mode #slideBoardsB{min-height:0 !important}
+  #slideMain.end-mode #slideBoardsB .ib-layer-body{padding-top:6px !important;padding-bottom:6px !important}
+  #slideMain.end-mode #slideBoardsB .b-script{margin-top:0 !important}
+  #slideMain.end-mode #slideBoardsB .ib-layer-body p{margin-top:0;margin-bottom:0}
+  #slideMain.end-mode .end-chapters-btn{height:32px;min-height:32px;padding:0 20px}
+  #slideMain.end-mode .end-actions button{height:40px;min-height:40px}
+}
+</style>
 </head>
 <body>
 <div class="royal-frame" aria-hidden="true"><div class="rf-et top"></div><div class="rf-es left"></div><div class="rf-es right"></div><div class="rf-rim"></div><div class="rf-corner tl"></div><div class="rf-corner tr"></div><div class="rf-corner bl"></div><div class="rf-corner br"></div><div class="rf-n top"></div></div>
@@ -1690,7 +1745,7 @@ function slideSrc(boardIdx, slot){
    or text (RUNTIME_* overrides); the swap control offers all three. */
 function renderSlide(){
   if (typeof END_MODE !== 'undefined') END_MODE = false; /* FIX5E: a normal slide render leaves the end board */
-  var __fix8sm = document.getElementById('slideMain'); if (__fix8sm) __fix8sm.classList.remove('end-mode'); var __fix8ss = document.getElementById('screen-slide'); if (__fix8ss) __fix8ss.classList.remove('end-mode'); /* FIX8: leaving the end board restores the squeezed-thirds phone layout */
+  var __fix8sm = document.getElementById('slideMain'); if (__fix8sm) __fix8sm.classList.remove('end-mode'); if (__fix8sm) { __fix8sm.classList.remove('end-chapters-open'); __fix8sm.classList.remove('end-chapters-closed'); } /* FIX9: the chapters toggle state leaves with the end board */ var __fix8ss = document.getElementById('screen-slide'); if (__fix8ss) __fix8ss.classList.remove('end-mode'); /* FIX8: leaving the end board restores the squeezed-thirds phone layout */
   var g = GROUPS[current];
   var odd = (current % 2 === 0);
   var img = document.getElementById('slideImg');
@@ -1836,7 +1891,8 @@ function renderEnd(){
   var img = document.getElementById('slideImg'); img.style.display = 'none'; img.removeAttribute('src');
   document.getElementById('slideBg').style.backgroundImage = 'none';
   document.getElementById('slideBoardsA').innerHTML = endImgBoard(EMBED.slides[12], 'The red N on its pedestal');
-  document.getElementById('slideBoardsB').innerHTML = '<div class="ib-layer"><div class="ib-layer-body">' + '<button class="fs-btn" type="button" aria-label="View full screen"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>' + '<div class="b-script">What comes next</div><p>' + END_TEXT + '</p><div class="end-actions"><button class="naya-btn" id="endBegin" type="button">Begin again</button><button class="naya-btn naya-btn--secondary" id="endBack" type="button">Back to The template</button></div></div></div>'; /* FIX8: the end text panel moves to B — the ball takes the middle (see R5) */
+  var __fix9parts = END_TEXT.split(' — '); /* FIX9: the ten titles split from END_TEXT itself — one source of truth, never a retyped copy */
+  document.getElementById('slideBoardsB').innerHTML = '<div class="ib-layer"><div class="ib-layer-body">' + '<button class="fs-btn" type="button" aria-label="View full screen"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>' + '<div class="b-script">What comes next</div><p>' + __fix9parts[0] + ' — <span class="end-chapters" id="endChaptersList">' + __fix9parts[1] + '</span></p><button class="naya-btn end-chapters-btn" id="endChapters" type="button" aria-expanded="false" aria-controls="endChaptersList">Chapters ▾</button><div class="end-actions"><button class="naya-btn" id="endBegin" type="button">Begin again</button><button class="naya-btn naya-btn--secondary" id="endBack" type="button">Back to The template</button></div></div></div>'; /* FIX8: the end text panel moves to B — the ball takes the middle (see R5) */
   document.getElementById('slideMain').classList.add('end-mode'); /* FIX8: end-board phone layout — scroll, one board at a time */
   document.getElementById('screen-slide').classList.add('end-mode');
   var __fix8sw = document.querySelector('.slide-frame > .swap-btn[data-slot="C"]'); if (__fix8sw) __fix8sw.style.display = 'none'; /* FIX8: the centre ball is not a swappable slide slot */
@@ -1845,6 +1901,25 @@ function renderEnd(){
   document.getElementById('slideTextCenter').hidden = false;
   document.getElementById('endBegin').addEventListener('click', beginAgain);
   document.getElementById('endBack').addEventListener('click', function(){ END_MODE = false; current = TOTAL - 1; renderSlide(); });
+  document.getElementById('endChapters').addEventListener('click', toggleEndChapters); /* FIX9 */
+  var __fix9sm = document.getElementById('slideMain'); __fix9sm.classList.remove('end-chapters-open'); __fix9sm.classList.remove('end-chapters-closed'); syncEndChapters(); /* FIX9: default state — collapsed at phone, expanded at desktop (CSS); the toggle only ever adds one class */
+}
+function endChaptersOpen(){ /* FIX9: the effective chapters state — CSS default per width, one toggle class */
+  var sm = document.getElementById('slideMain');
+  if (window.innerWidth > 900) return !sm.classList.contains('end-chapters-closed');
+  return sm.classList.contains('end-chapters-open');
+}
+function syncEndChapters(){ /* FIX9: button label + aria follow the effective state */
+  var b = document.getElementById('endChapters'); if (!b) return;
+  var open = endChaptersOpen();
+  b.setAttribute('aria-expanded', open ? 'true' : 'false');
+  b.textContent = open ? 'Chapters ▴' : 'Chapters ▾';
+}
+function toggleEndChapters(){ /* FIX9: one tap flips the one class for this width */
+  var sm = document.getElementById('slideMain');
+  if (window.innerWidth > 900) sm.classList.toggle('end-chapters-closed');
+  else sm.classList.toggle('end-chapters-open');
+  syncEndChapters();
 }
 function showEnd(){ renderEnd(); show('slide'); }
 function beginAgain(){ END_MODE = false; current = 0; renderSlide(); show('slide'); }
