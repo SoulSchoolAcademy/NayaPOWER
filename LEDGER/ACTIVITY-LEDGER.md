@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 12:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 12:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -49109,6 +49109,12 @@ _Last updated: 2026-11-25 12:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ gap-lane-scorer-20261015-2310-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Re-derive WINMINE patterns from remaining 18 nine-point-five receipts; bias-half audit
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: sample of 5 cited receipt sha256 12-hex prefixes all match live files exactly (t1042 1e62e7152595, t1232 f942eeec1452, t0102 271e8e2f1059, t0122 8c2a863cae18, t0142 1506a319012e); the 3 receipts claimed missing (t0262-lane9, t0577-lane1, t1462-lane10) are confirmed absent on disk; winmine
+
 ### ✅ gap-t0722 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
 **Task:** v2 semantic-battery corpus (fixed distractor rule) - built, frozen, run cold; F7 fired, corpus BROKEN per conflict clause
@@ -61121,6 +61127,18 @@ _Last updated: 2026-11-25 12:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
 
+### ✅ gap-lane-scorer-20261015-2320-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** SHA-citation repair on the t2300 receipt
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: both artifacts exist and git hash-object returns exactly the repaired SHAs (results ab8fc43fb978..., driver 685260e197e8...); the dated correction note is present in the parent receipt gap-lane-scorer-20261015-2300-lane1.md with the corrected values. NOT PHANTOM. Score 9.5 — clears 9.5 be
+
+### ✅ gap-lane-scorer-20261015-2300-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** P12 length/style control: 5 corpora x 72 pairs, confound confirmed as surface style
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: both cited artifacts exist and git hash-object returns exactly the receipt's corrected SHAs (results ab8fc43fb978..., driver 685260e197e8...); the 2026-10-19 correction note in the receipt names the original wrong SHAs and the re-derived values, and the repair is corroborated by the sibli
+
 ### ✅ gap-scorer-20261014-1940-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** gap follow-up: close 3 Template v2 specified-not-built items (control cites real material, full seal, rubric_blind)
@@ -62706,6 +62724,24 @@ _Last updated: 2026-11-25 12:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261016-0430 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: 24/24 briefs unclaimable by Clarity seat, zero claims
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); its 24-brief set matches the sibling 04:23 receipt brief-for-brief; the no-refile tripwire (brief-gap-lane-scorer-20261015-0530-lane6, verdict t0431-lane6) is consistent across all three 04:21/04:23/04:30 receipts. Score 9.0. Why not 9.5: the class attributio
+
+### ✅ gate-stall-20261016-0423 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: 24/24 briefs unclaimable by Clarity seat, zero claims
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); its 24-brief set matches the sibling 04:30 receipt brief-for-brief (8 explicit gates + 15 exit-7 + 1 exit-6 vs 6 + 17 + 1 — same briefs, two classed differently). Score 9.0. Why not 9.5: the class attribution for brief-gap-gap-1530-lane4 and brief-gap-t0544-l
+
+### ✅ gate-stall-20261016-0421 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** gate stall: 23/23 briefs unclaimable by Clarity seat, zero claims
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); its brief classes cross-match the sibling 04:23 and 04:30 receipts except on count. Score 8.5. Why not 9.5: the receipt counts 23 briefs while the 04:23 and 04:30 receipts 2 and 9 minutes later both count 24, and it never accounts for the missing 24th brief (
 
 ### ✅ gate-stall-20261016-0057 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
