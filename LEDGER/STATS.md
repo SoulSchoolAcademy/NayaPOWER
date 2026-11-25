@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-25 09:33 UTC_
+_Last updated: 2026-11-25 10:01 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 10783
-- ✅ Verified (8+): 10668
+- **Total scored actions:** 10788
+- ✅ Verified (8+): 10673
 - 🟡 Partial (5–7): 104
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 7
@@ -54,12 +54,12 @@ _Last updated: 2026-11-25 09:33 UTC_
 - **gate-stall-20261015-1921:** 2 actions, avg 9.0/10
 - **gate-stall-20261015-1930:** 2 actions, avg 9.0/10
 - **gate-stall-20261016-0238:** 2 actions, avg 9.0/10
-- **gate-stall-20261015-2000:** 1 actions, avg 9.0/10
+- **gate-stall-20261015-2000:** 2 actions, avg 8.8/10
 - **gate-stall-20261015-1946:** 2 actions, avg 8.8/10
 - **gate-stall-20261015-1943:** 2 actions, avg 9.1/10
-- **gate-stall-20261015-2012:** 1 actions, avg 9.0/10
+- **gate-stall-20261015-2012:** 2 actions, avg 9.0/10
 - **2026-10-15T20:40:35-07:00:** 4 actions, avg 8.9/10
-- **gate-stall-20261015-2021:** 1 actions, avg 9.0/10
+- **gate-stall-20261015-2021:** 2 actions, avg 8.8/10
 - **gate-stall-20261015-2036:** 1 actions, avg 8.5/10
 - **gate-stall-20261015-2041:** 1 actions, avg 8.5/10
 - **gate-stall-20261015-2048:** 1 actions, avg 8.5/10
@@ -71,7 +71,7 @@ _Last updated: 2026-11-25 09:33 UTC_
 - **gate-stall-20261015-2351:** 1 actions, avg 9.0/10
 - **gate-stall-20261016-0648:** 1 actions, avg 9.5/10
 - **gate-stall-20261015-2343:** 1 actions, avg 9.0/10
-- **seat-stall-20261015-2339:** 2 actions, avg 9.2/10
+- **seat-stall-20261015-2339:** 3 actions, avg 9.2/10
 - **gate-stall-20261015-2347:** 1 actions, avg 9.5/10
 - **gate-stall-20261015-2303:** 1 actions, avg 9.0/10
 - **gate-stall-20261015-2256:** 1 actions, avg 9.0/10
@@ -1459,6 +1459,7 @@ _Last updated: 2026-11-25 09:33 UTC_
 - **gate-stall-20261124-2224:** 1 actions, avg 9.0/10
 - **gate-stall-20261124-2323:** 1 actions, avg 9.0/10
 - **gate-stall-20261125-0028:** 1 actions, avg 9.0/10
+- **gate-stall-20261125-0134:** 1 actions, avg 8.5/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
