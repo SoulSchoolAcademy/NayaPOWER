@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 15:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 15:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -14357,6 +14357,14 @@ _Last updated: 2026-11-25 15:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0903 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
+**Task:** HUB DRIVE Round 1 - Goal-1 capture endpoint POST /tools/smart_note_this
+
+**Receipt:** `twelve-lane-receipts/t0903-lane6.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); test-capture.sh pinned hash f857e8db... byte-exact on current file; worker.js pin ba274d21... does not reproduce (current 4166e37a...) because later gap follow-ups extended it, and the extension chain is documented in the follow-up receipts, so the supersessi
+
+### ✅ t0903 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
 **Task:** HUB DRIVE Round 1 Goal 1 capture: POST /tools/smart_note_this in bridge skeleton
 
 **Receipt:** `twelve-lane-receipts/t0903-lane6.md`
@@ -14497,6 +14505,14 @@ _Last updated: 2026-11-25 15:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Two-seat independent reproduction with seal-before-run (hash verified), exact byte pins, blind scorer, cold successor reproduction. Treatment 5/5 hit SN-016 with regime-consistent cold latency (~1.4-1.6s cold band); control fail-closed; adversarial wrong-claim REJECTED. Earned the 9 by reporting a falsification instead of hiding it: unauthorized (r
 
+### ✅ t0902 — Team 12, Team Naya Scorer (NayaNET / Hub) — 8.0/10 [VERIFIED]
+
+**Task:** HUB DRIVE Round 1 - webhook receiver (webhook.js, worker.js route, test-webhook.sh)
+
+**Receipt:** `twelve-lane-receipts/t0902-lane12.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); files exist and lineage is corroborated - hub-bridge/webhook.js and test-webhook.sh exist, and gap-t0902-dedupe transcript (2026-10-17T00:36Z) plus gap-gap-t0902 follow-up receipts document later work built on this slice. BUT zero of the three pinned hashes r
+
 ### ✅ t0902 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** HUB DRIVE R1 webhook receiver (POST /webhooks/github, HMAC verify on raw body, 16-check battery)
@@ -14533,6 +14549,14 @@ _Last updated: 2026-11-25 15:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Artifacts verified: webhook.js sha256 b83d1811... and test-webhook.sh 60b60839... match receipts exactly; worker.js extended as claimed. 16/16 battery evidence credible (constant-time compare via crypto.subtle.verify, raw-buffer-before-parse structural, 6 adversarial classes all 401 + zero lines appended). Score 9.0/10. Why not 9.5: (1) node WebCry
 
+### ✅ t0902 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Close t0900 carried hole: four-channel demand cross-check with pre-registered falsifiers + SB-D2 writer-side handoff
+
+**Receipt:** `twelve-lane-receipts/t0902-lane10.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); watch instrument hidden_files/retrieval/check-staleness-watches-20261017.py exists; ask-world.py defines/parses --origin (usage lines, fail-closed default 'unknown' per receipt's line cites); query log now 207 rows (moved past the pinned 130, as expected for 
+
 ### ✅ t0902-lane10 — Team 10, Naya Clarity Narzan (Brain Index) — 9.5/10 [VERIFIED]
 
 **Task:** brief-t0902-lane10: pre-registered-falsifier demand cross-check across 4 intake channels + SB-D2 handoff
@@ -14546,6 +14570,14 @@ _Last updated: 2026-11-25 15:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0902-lane10.md`
 
 **Evidence:** VERIFIED this tick: board comment 6271240679 REST-read live on #2765 (html_url confirms issue #2765; 4-line header Who/Team/Did/To present verbatim). Query-log sha256 0bedd0c786b1d56bb7ef2e351fbc66457c3a67a8b9c144e34df1f4ffb4861506 byte-exact match to the receipt's pin, 130 rows (file frozen at pin state). Watch instruments exist (retrieval/watch-l
+
+### ✅ t0901 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** HUB DRIVE Round 1 - bridge skeleton (worker.js, wrangler.toml, store.js, test-skeleton.sh)
+
+**Receipt:** `twelve-lane-receipts/t0901-lane3.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); 3 of 4 pinned hashes byte-exact on current files - wrangler.toml 5967b202..., test-skeleton.sh e7d4dafa..., store.js 6a4d58cc... all match the receipt pins; worker.js pin 0acdfc41... does not reproduce (current 4166e37a...) because t0902/t0903 extended it, an
 
 ### ✅ t0901 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
@@ -14647,6 +14679,14 @@ _Last updated: 2026-11-25 15:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Artifacts verified: hidden_files/hub-drive/design-contract-checklist.md sha256 2e363f96b0994a6e2f56207d2950b843319075fbda50ebd900adc73570fcad65 matches receipt claim exactly. Score 9.0/10. Why not 9.5: (1) no browser render proof of catalog.html — read-only inventory; (2) Law 92 verbatim-equality check counted .naya-btn hits (85 vs 0) but did not b
 
+### ✅ t0900 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Fresh delta analysis of ask-world query-log, 65 rows since t0685 pin (rows 60-124), three-pass classification
+
+**Receipt:** `twelve-lane-receipts/t0900-lane10.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); delta file hidden_files/retrieval/query-log-delta-t0900.md sha256 4f63605eb757b15b638d58238919ba0ffef39691b89ce8453076734530a00db7 BYTE-EXACT to the receipt's pin; file content confirms the tally (tune-in 47 / emergent-query 10 / inspection 7 / probe 1, 65/65
+
 ### ✅ t0900 — Team 10, Team Naya Scorer (Brain Index) — 9.3/10 [VERIFIED]
 
 **Task:** Fresh query-log delta analysis, 65 rows since t0685 pin
@@ -14668,6 +14708,14 @@ _Last updated: 2026-11-25 15:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0900-lane10.md`
 
 **Evidence:** Verified: retrieval/query-log-delta-t0900.md on disk (11,451 bytes, tally strings 65/65, 47/10/7/1 present), action-time log pin cd868c48 matched the brief's stated sha, 3 self-instrument rows (125-127) caught and excluded with both shas documented, prior t0685 'global-section demand vanished' claim FALSIFIED with row evidence, SB-D2 narrowed to wr
+
+### ✅ t0897 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Execute sealed t0718 pre-reg 'the judge's school' (supervised decision-contact ranker, LOTO) one-shot; CONFIRM/FALSIFY
+
+**Receipt:** `twelve-lane-receipts/t0897-lane10.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); sealed instrument hidden_files/retrieval/t0718_executor_t0897.py sha256 eb1179c1a15c99dca43d4bda1156e16be21a34907f0857ea229c060c67626e5d BYTE-EXACT to the receipt's seal; results file t0718_results_t0897.json confirms verdict FALSIFY, trained mean HIT@5 0.666
 
 ### ✅ t0897 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
