@@ -184,7 +184,10 @@ body{color:#fff;-webkit-text-size-adjust:100%;}
    17px text untouched, 390/desktop untouched. */
 @media (max-width:360px){
   .today-chrome{gap:6px;padding:6px 8px;}
-  .chrome-act{padding:8px 8px;}
+  /* (0,2,0) beats the base .chrome-act (0,1,0) regardless of order — the
+     first version of this rule lost to the base rule at line 194, which
+     sits AFTER the media query; the tighter padding never applied. */
+  .today-chrome .chrome-act{padding:8px 8px;}
 }
 /* FRAMED ROLLOUT: the daily-report list — titles + SNs from the live table. */
 .report-list{margin:12px 0 0;padding:0;list-style:none;text-align:left;}
