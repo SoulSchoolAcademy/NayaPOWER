@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 11:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 12:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -62706,6 +62706,36 @@ _Last updated: 2026-11-25 11:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261016-0057 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: 26 briefs unclaimable + 1 stale retire, zero claims
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); the stale retire is byte-corroborated - brief-queue/done/brief-gap-scorer-20261016-0050-lane9.md + .stale-note.txt exist, note timestamped 2026-10-16 07:57 UTC matching the run, reason 'parent gap scorer-20261014-1905-lane9 CLOSED in gap-followup-seen.json' v
+
+### ✅ gate-stall-20261016-0052 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** gate stall: 25 briefs unclaimable by Clarity seat, zero claims
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); its gate attributions match the sibling 00:29/00:42/00:57 receipts (2 stamped gates, 16 parent-authorship, 1 no-refile, 5 eligibility bars). Score 8.5. Why not 9.5: the receipt counts 25 briefs while the 00:29, 00:42 and 00:57 receipts all count 26, and it ne
+
+### ✅ gate-stall-20261016-0042 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: 26/26 briefs unclaimable by Clarity seat, zero claims
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); same 26 briefs and same gate classes as the 00:29 receipt 13 min earlier (12 stamped non-Clarity gates + 14 exit-7/no-refile refusals), cross-consistent; parent receipt gap-scorer-20261014-1905-lane9.md exists. Score 9.0. Why not 9.5: a repeat sweep 13 min af
+
+### ✅ gate-stall-20261016-0029 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: 26/26 briefs unclaimable by Clarity seat, zero claims
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); its 26 named briefs cross-match the 00:42/00:52/00:57 same-morning receipts gate-for-gate; parent receipt twelve-lane-receipts/gap-scorer-20261014-1905-lane9.md exists; the series' stale-retire artifact brief-queue/done/brief-gap-scorer-20261016-0050-lane9.md
+
+### ✅ gate-stall-20261125-0339 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: 31/31 unclaimable by Clarity seat, zero claims
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: sweep log brief-queue/claim-sweep-20261125-0339.log exists (31 attempt lines, 29x exit 7 + 2x exit 2, the two exit-2 briefs t0547-lane1-lane1 and t0172-lane1-lane1 match the receipt's names); queue holds 31 brief-*.md and its checksum 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4 match
 
 ### ✅ gap-gap-gate-stall-20261016-0009-lane0 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
 
