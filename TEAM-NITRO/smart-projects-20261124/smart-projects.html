@@ -597,6 +597,11 @@ body > .naya-frame, body > .frame-light{z-index:-1}
 .sp-kind-q{font-size:17px;color:#fff;line-height:1.5;margin:10px 0}
 .sp-kind-q b{color:#ffbf3d}
 .sp-kind-hint{font-size:17px;color:#fff;line-height:1.5;margin:8px 0}
+/* v6b2 — the sub-project crumb (#pj-crumb) carries hidden but the base
+   .pj-back display rule overrides the UA [hidden] display:none, so an
+   empty pill renders beside ALL PROJECTS on every hub. A crumb with
+   hidden set is hidden; removing hidden (sub-project view) shows it. */
+.pj-back[hidden]{display:none}
 </style>
 <style id="sp-v5-css">
 /* SMART PROJECTS v5 — questions board, mini-block notes, project search. New CSS only; 17px minimum, white text, deep colors. */
@@ -3141,7 +3146,7 @@ function spShowKind(kindId){
   prev.appendChild(el('div','sp-kind-hint','Links for this kind: '+k.links_hint));
   prev.appendChild(el('div','sp-kind-hint','Notes for this kind: '+k.notes_hint));
   prev.appendChild(el('div','sp-kind-hint','People for this kind: '+k.people_hint));
-  var use=el('button','gr-btn','USE THIS KIND — PUT ITS QUESTIONS IN THE FORM BELOW'); use.type='button'; use.style.marginTop='12px';
+  var use=el('button','gr-btn','USE THIS KIND'); use.type='button'; use.style.marginTop='12px';
   use.addEventListener('click', function(){ spUseKind(k.id); });
   prev.appendChild(use);
 }
