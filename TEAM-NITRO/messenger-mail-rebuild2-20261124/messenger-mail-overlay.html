@@ -4538,6 +4538,21 @@ html{scroll-padding-top:130px;}
   radial-gradient(130% 130% at 30% 20%, #2b2b35 0%, #0d0d12 55%, #050607 100%);}
 .nm-icon::before{content:"";position:absolute;top:9px;left:11px;width:16px;height:11px;border-radius:50%;background:radial-gradient(closest-side, rgba(255,255,255,.9), rgba(255,255,255,0));transform:rotate(-24deg);pointer-events:none;}
 
+/* --- 15. ICON-SIZE FIX (2026-11-25 09:30) ---
+   The icons failed because they were TINY — a big circle, black
+   space, then a tiny inner mark you cannot read. Fix: the glyph
+   itself is BIG — it fills the ball. Seven action icons: the white
+   glyph goes from ~50% of the ball to ~77% (46px glyph in a 60px
+   ball desktop, 34px in a 44px ball on phone). Corner plus buttons:
+   the + goes from 30px to 38px in the 48px ball (36px in the 44px
+   phone ball). The ball IS the icon; the white mark is big and
+   evident inside it, no dead black space around a tiny mark. */
+.nm-icon{width:60px;height:60px;}
+.nm-icon svg{width:46px;height:46px;}
+@media (max-width:640px){.nm-icon{width:44px;height:44px;}.nm-icon svg{width:34px;height:34px;}}
+.nm-plus-glyph{font-size:38px;}
+@media (max-width:640px){.nm-plus-glyph{font-size:36px;}}
+
 </style>
 <script id="ov-script">
 /* ===== OVERLAY ROUND — behavior (2026-11-25) =====
