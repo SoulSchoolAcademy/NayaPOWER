@@ -2106,13 +2106,12 @@ var todoInp=document.getElementById('pj-todo-text');
 if(todoInp) todoInp.addEventListener('keydown', function(ev){ if(ev.key==='Enter') addTodo(); });
 var delBtn=document.getElementById('pj-delete');
 if(delBtn) delBtn.addEventListener('click', function(){
-  if(!delBtn.dataset.armed){
-    delBtn.dataset.armed='1'; delBtn.classList.add('armed');
-    delBtn.textContent='TAP AGAIN TO DELETE THIS PROJECT';
-    delBtn._piArmTimer=setTimeout(function(){ delBtn.dataset.armed=''; delBtn.classList.remove('armed'); delBtn.textContent='DELETE THIS PROJECT'; }, 3000);
+  if(!piIsDeleteArmed(PID)){
+    piArmDelete(delBtn,PID,'TAP AGAIN TO DELETE THIS PROJECT');
     return;
   }
-  clearTimeout(delBtn._piArmTimer);
+  clearTimeout(PI.deleteArmTimers[PID]);
+  delete PI.deleteArmed[PID];
   delBtn.disabled=true; delBtn.textContent='DELETING…';
   piDeleteProjectById(PID).then(function(){ location.href=spUrl(''); })
     .catch(function(e){
@@ -2557,7 +2556,7 @@ var PI_STATES=[
 function piStateByVal(v){ for(var i=0;i<PI_STATES.length;i++){ if(PI_STATES[i].v===v) return PI_STATES[i]; } return PI_STATES[0]; }
 function piKindById(id){ for(var i=0;i<PI_KINDS.length;i++){ if(PI_KINDS[i].id===id) return PI_KINDS[i]; } return null; }
 function piKindTitle(id){ var k=piKindById(id); return k?k.title:id; }
-var PI={mine:[],shared:[],stats:{},query:'',kindFilter:'',expanded:{}};
+var PI={mine:[],shared:[],stats:{},query:'',kindFilter:'',expanded:{},deleteArmed:{},deleteArmTimers:{}};
 function piRenderKinds(){
   var wrap=document.getElementById('pi-kinds'); if(!wrap) return; wrap.innerHTML='';
   var q=(PI.query||'').toLowerCase();
@@ -2752,6 +2751,32 @@ function piDeleteRetry(label, fn){
   }
   return run();
 }
+/* ── DELETE ARM — the armed state lives in PI.deleteArmed (page state),
+   not on the button node: piRenderAll rebuilds the home blocks, and a
+   rebuilt button loses a dataset flag. The confirm tap can also land
+   0.8–2.3 s after the arm tap while the page settles (measured in
+   diag3-race2) — against the old 3 s fuse, so the confirm re-armed a
+   fresh node (or landed after the fuse) and the chain never started:
+   no [PI delete] log, button back at DELETE, project intact. The chain
+   itself was proven sound every time it started. piBlock re-renders the
+   button armed from PI state, and the fuse is 10 s so a slow second tap
+   still confirms. */
+function piDeleteArmMs(){ return 10000; }
+function piIsDeleteArmed(pid){ var t=PI.deleteArmed[pid]; return !!(t && (Date.now()-t)<piDeleteArmMs()); }
+function piArmDelete(btn,pid,armedText){
+  PI.deleteArmed[pid]=Date.now();
+  clearTimeout(PI.deleteArmTimers[pid]);
+  btn.dataset.armed='1'; btn.classList.add('armed'); btn.textContent=armedText;
+  PI.deleteArmTimers[pid]=setTimeout(function(){ piDisarmDelete(pid); }, piDeleteArmMs());
+}
+function piDisarmDelete(pid){
+  delete PI.deleteArmed[pid];
+  clearTimeout(PI.deleteArmTimers[pid]);
+  var b=document.querySelector('[data-pid="'+pid+'"] .pi-del');
+  if(b){ b.dataset.armed=''; b.classList.remove('armed'); b.textContent='DELETE'; }
+  var pv=document.getElementById('pj-delete');
+  if(pv && PID===pid){ pv.dataset.armed=''; pv.classList.remove('armed'); pv.textContent='DELETE THIS PROJECT'; }
+}
 function piDeleteProjectById(pid){
   return piDeleteRetry('read the project links', function(){
     return get('/object_links?a_kind=eq.project&a_id=eq.'+pid+'&select=b_kind,b_id,b_label');
@@ -2771,12 +2796,12 @@ function piDeleteProjectById(pid){
     .then(function(){ return piDeleteRetry('delete the project', function(){ return del('/projects?id=eq.'+pid); }); });
 }
 function piDeleteProject(p,btn){
-  if(!btn.dataset.armed){
-    btn.dataset.armed='1'; btn.classList.add('armed'); btn.textContent='TAP AGAIN TO DELETE';
-    btn._piArmTimer=setTimeout(function(){ btn.dataset.armed=''; btn.classList.remove('armed'); btn.textContent='DELETE'; },3000);
+  if(!piIsDeleteArmed(p.id)){
+    piArmDelete(btn,p.id,'TAP AGAIN TO DELETE');
     return;
   }
-  clearTimeout(btn._piArmTimer);
+  clearTimeout(PI.deleteArmTimers[p.id]);
+  delete PI.deleteArmed[p.id];
   btn.disabled=true; btn.textContent='DELETING…';
   piDeleteProjectById(p.id).then(function(){
     PI.mine=PI.mine.filter(function(x){ return x.id!==p.id; });
@@ -2855,6 +2880,7 @@ function piBlock(p,idx,owned){
   open.href=PI_SP_URL+'&p='+p.id; acts.appendChild(open);
   if(owned){
     var delB=el('button','gr-btn ghost pi-del','DELETE'); delB.type='button';
+    if(piIsDeleteArmed(p.id)){ delB.dataset.armed='1'; delB.classList.add('armed'); delB.textContent='TAP AGAIN TO DELETE'; }
     delB.addEventListener('click',function(){ piDeleteProject(p,delB); });
     acts.appendChild(delB);
   }
