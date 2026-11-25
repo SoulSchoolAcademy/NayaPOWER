@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 14:06 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 14:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -49117,6 +49117,14 @@ _Last updated: 2026-11-25 14:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ gap-lane-scorer-20261016-1340 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: Q15-class lexical-penalty hybrid arm H1/H2 + two-channel ablation (parent gap-lane-scorer-20261016-0940-lane5)
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261016-1340-lane5.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); all 8 artifacts in hidden_files/lane-5/gap-lane-scorer-20261016-1340/ byte-exact by sha256 - PRE-REGISTRATION.md 18e09f05..., HYPOTHESIS-CHANGE.md 0e917ea6..., PRE-REGISTRATION-v2.md a5cb1843..., hybrid-arm.py dab4021b..., hybrid-arm-v2.py b5a36ae2..., semant
+
 ### ✅ gap-lane-scorer-20261016-0940 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** gap follow-up: tau held-out re-validation + Q15 mechanism root cause
@@ -62764,12 +62772,6 @@ _Last updated: 2026-11-25 14:06 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
-
-### ✅ gate-stall-20261125-0543 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
-
-**Task:** gate stall: 31/31 unclaimable by Clarity seat, zero claims
-
-**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); brief-queue/ holds 31 brief-*.md, names exactly matching the receipt's 31, and the sha256 of the sha256sum list recomputes to 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4 - byte-identical to the receipt's claim and to the 04:39 receipt, so the queue is un
 
 ### ✅ distill-daily-20261125 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
