@@ -50,13 +50,13 @@
      chapter page (chapter-01-naya-code.html ... chapter-12-smart-app-factory.html, same
      directory). Element 2 already reads Naya Wisdom at this tip; no rename was needed.
      Nothing else on this page changed: words verbatim, images untouched, the last
-     forward still goes on to the portal (nayanet.app). -->
-<!-- FIX, 2026-11-22: the deck ends at the portal in the SAME TAB — the index forward
-     (goToPortal) and chapter 12 Next / last red N all go to nayanet.app in the same
-     tab; no new-tab exit remains in the deck flow. The footer jump list is ungrouped:
-     all 12 elements have their own button (new legal pages legal-wisdom and
-     legal-business, split verbatim from legal-terms / legal-privacy). Nothing else
-     changed: words, images, frames and CSS untouched. -->
+     forward past the last slide returns to the cover, inside the deck. -->
+<!-- FIX, 2026-11-24 (footer fix round): the deck ends INSIDE itself — forward past
+     slide 12 returns to the cover; the deck never leaves for the portal. The footer
+     holds ONE entry (NayaNET) opening a links screen with all twelve element links
+     (new legal pages legal-wisdom and legal-business, split verbatim from
+     legal-terms / legal-privacy, unchanged). Nothing else changed: words, images,
+     frames and CSS untouched. -->
 <html lang="en">
 <head>
 <meta charset="utf-8" />
@@ -279,6 +279,22 @@
   .legalbar .fp-legal-links{display:flex;flex-wrap:wrap;justify-content:center;gap:0 16px;max-width:1100px;margin:0 auto}
   .legalbar .fp-legal-link{background:none;border:0;color:#dfe3ee;font:inherit;font-size:12px;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:3px 2px;min-height:30px}
   .legalbar .fp-legal-link:hover{color:#fff}
+
+/* ============ NAYANET LINKS SCREEN (footer fix, 2026-11-24) ============ */
+/* The footer holds ONE entry: a real Naya pill button (harvested .naya-btn),
+   royal purple rim + glow, white word at 17. The links screen reuses the
+   legal screen's own showcase/title/intro shapes, restated here so no
+   existing rule is touched. List buttons cycle the spectrum in order,
+   never the same color twice in a row. */
+.legalbar .fp-nayanet-btn{--nb-accent:#8e24aa;--nb-accent-rgb:142,36,170;font-size:17px;min-height:52px;padding:0 36px;text-transform:none}
+#screen-legal-links .legal-showcase{display:block;height:auto;max-width:860px}
+#screen-legal-links .letter-steplabel{text-align:center;font-size:17px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#fff;margin:0 0 12px}
+#screen-legal-links .deal-title{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:34px;line-height:1.2;color:#fff;text-align:center;margin:6px 0 4px}
+#screen-legal-links .fp-legal-intro{text-align:center;color:#fff;font-size:17px;line-height:1.6;margin:2px auto 4px;max-width:640px}
+#screen-legal-links .fp-legal-links{display:flex;flex-direction:column;align-items:center;gap:16px;max-width:560px;margin:24px auto 8px}
+#screen-legal-links .naya-btn{width:100%;max-width:420px;font-size:17px;text-transform:none}
+#screen-legal-links .legal-links-backrow{display:flex;justify-content:flex-start;margin-bottom:8px}
+#screen-legal-links .legal-links-back{width:auto;min-width:0;height:48px;padding:0 22px;font-size:17px}
 
   /* ============ LEGAL PAGES ============ */
   #screen-legal{--purple:#a06bff;--sapphire:#3fb8ff;--emerald:#2fe89e;--teal:#2fd4c4;--ease:cubic-bezier(.16,.84,.22,1)}
@@ -503,11 +519,24 @@
       </div>
     </section>
 
+    <!-- ======= NAYANET — the twelve element links, behind one entry (footer fix, 2026-11-24) ======= -->
+    <section class="screen" id="screen-legal-links">
+      <div class="panel-body">
+        <div class="showcase legal-showcase">
+          <div class="legal-links-backrow"><button class="naya-btn naya-btn--secondary legal-links-back" type="button" id="btnLegalLinksBack">&#8249; Back</button></div>
+          <p class="letter-steplabel">NayaNET &middot; The Twelve Elements</p>
+          <h2 class="deal-title">NayaNET</h2>
+          <p class="fp-legal-intro">The Twelve Elements &mdash; all twelve, in one place. Tap one to open it.</p>
+          <nav class="fp-legal-links" aria-label="The Twelve Elements — NayaNET links"><button class="naya-btn" type="button" data-legal-open="terms" style="--nb-accent:#8e24aa;--nb-accent-rgb:142,36,170">Naya Code</button><button class="naya-btn" type="button" data-legal-open="wisdom" style="--nb-accent:#0f52ba;--nb-accent-rgb:15,82,186">Naya Wisdom</button><button class="naya-btn" type="button" data-legal-open="privacy" style="--nb-accent:#07925f;--nb-accent-rgb:7,146,95">Naya Home</button><button class="naya-btn" type="button" data-legal-open="business" style="--nb-accent:#d4a017;--nb-accent-rgb:212,160,23">Naya Business</button><button class="naya-btn" type="button" data-legal-open="cookies" style="--nb-accent:#c2410c;--nb-accent-rgb:194,65,12">Naya Worlds</button><button class="naya-btn" type="button" data-legal-open="refunds" style="--nb-accent:#c62828;--nb-accent-rgb:198,40,40">Naya Hub</button><button class="naya-btn" type="button" data-legal-open="acceptable" style="--nb-accent:#a21caf;--nb-accent-rgb:162,28,175">Smart Notes</button><button class="naya-btn" type="button" data-legal-open="guidelines" style="--nb-accent:#3f51b5;--nb-accent-rgb:63,81,181">Smart Match</button><button class="naya-btn" type="button" data-legal-open="copyright" style="--nb-accent:#0e7490;--nb-accent-rgb:14,116,144">Smart Mail</button><button class="naya-btn" type="button" data-legal-open="ambassador" style="--nb-accent:#6d28d9;--nb-accent-rgb:109,40,217">Smart Calendar</button><button class="naya-btn" type="button" data-legal-open="membership" style="--nb-accent:#8e24aa;--nb-accent-rgb:142,36,170">Smart Value</button><button class="naya-btn" type="button" data-legal-open="young" style="--nb-accent:#0f52ba;--nb-accent-rgb:15,82,186">Smart App Factory</button></nav>
+        </div>
+      </div>
+    </section>
+
   </div>
 </div>
 
 <footer class="legalbar" id="legalBar">
-  <nav class="fp-legal-links" aria-label="Legal pages"><button class="fp-legal-link" type="button" data-legal-open="terms">Naya Code</button><button class="fp-legal-link" type="button" data-legal-open="wisdom">Naya Wisdom</button><button class="fp-legal-link" type="button" data-legal-open="privacy">Naya Home</button><button class="fp-legal-link" type="button" data-legal-open="business">Naya Business</button><button class="fp-legal-link" type="button" data-legal-open="cookies">Naya Worlds</button><button class="fp-legal-link" type="button" data-legal-open="refunds">Naya Hub</button><button class="fp-legal-link" type="button" data-legal-open="acceptable">Smart Notes</button><button class="fp-legal-link" type="button" data-legal-open="guidelines">Smart Match</button><button class="fp-legal-link" type="button" data-legal-open="copyright">Smart Mail</button><button class="fp-legal-link" type="button" data-legal-open="ambassador">Smart Calendar</button><button class="fp-legal-link" type="button" data-legal-open="membership">Smart Value</button><button class="fp-legal-link" type="button" data-legal-open="young">Smart App Factory</button></nav>
+  <nav class="fp-legal-links" aria-label="The Twelve Elements — NayaNET links"><button class="naya-btn fp-nayanet-btn" type="button" id="btnNayaNet">NayaNET</button></nav>
 </footer>
 
 <script>
@@ -566,7 +595,7 @@ document.addEventListener('error', function(e){
   }
 }, true);
 var current = 0;
-var screens = { cover: document.getElementById('screen-cover'), slide: document.getElementById('screen-slide'), legal: document.getElementById('screen-legal') };
+var screens = { cover: document.getElementById('screen-cover'), slide: document.getElementById('screen-slide'), legal: document.getElementById('screen-legal'), legalLinks: document.getElementById('screen-legal-links') };
 
 function pad(n){ return (n<10?'0':'')+n; }
 function portraitSlot(src, idx){
@@ -668,12 +697,12 @@ window.addEventListener('resize', function(){
   clearTimeout(nResizeTimer);
   nResizeTimer = setTimeout(placeSlideN, 180);
 });
-/* FIX, 2026-11-22 — the deck ends at the portal in the SAME TAB (walk verdict):
-   no new tab, no stranded deck tab. */
-function goToPortal(){ location.href = 'https://nayanet.app'; }
+/* FIX, 2026-11-24 — the deck ends INSIDE itself (footer fix round):
+   forward past the last slide returns to the cover; the deck never
+   leaves for the portal. Slides 1-12 forward/back unchanged. */
 /* TWO buttons only: Back and Forward. Back steps to the previous
    slide (from the first slide, back to the cover). Forward steps
-   to the next slide (from the last slide, on to the portal). */
+   to the next slide (from the last slide, back to the cover). */
 document.getElementById('btnStart').addEventListener('click', function(){ current = 0; renderSlide(); show('slide'); });
 document.getElementById('btnForwardCover').addEventListener('click', function(){ current = 0; renderSlide(); show('slide'); });
 document.getElementById('btnBack').addEventListener('click', function(){
@@ -684,7 +713,7 @@ document.getElementById('btnBack').addEventListener('click', function(){
 document.getElementById('btnForward').addEventListener('click', function(){
   if (current < TOTAL - 1){ current++; renderSlide(); }
   else if (NAV_MODE !== 'index'){ location.href = NEXT_PAGE; }
-  else { goToPortal(); }
+  else { current = 0; show('cover'); }
 });
 document.addEventListener('keydown', function(e){
   if (!screens.slide.classList.contains('active')) return;
@@ -1047,6 +1076,17 @@ function openLegal(key){
 document.querySelectorAll('[data-legal-open]').forEach(function(btn){
   btn.addEventListener('click', function(){ openLegal(btn.getAttribute('data-legal-open')); });
 });
+/* NAYANET ENTRY (footer fix, 2026-11-24) — the footer holds one entry;
+   it opens the links screen in the page's own screen system. Back from
+   the links screen returns to the cover (the footer view). A legal page
+   opened from the links screen remembers it: openLegal keeps lastScreen
+   as 'legalLinks', so Close returns to the links screen. */
+document.getElementById('btnNayaNet').addEventListener('click', function(){
+  show('legalLinks');
+  setBar('NayaNET', logoSlot(), portraitSlot(PORTRAITS[0], 0));
+  resetPanelScroll('legalLinks');
+});
+document.getElementById('btnLegalLinksBack').addEventListener('click', function(){ show('cover'); });
 document.querySelectorAll('.fp-legal-page').forEach(function(panel){
   var beats = Array.prototype.slice.call(panel.querySelectorAll('[data-legal-beat]'));
   var dots = Array.prototype.slice.call(panel.querySelectorAll('.ldot'));
