@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-25 08:32 UTC_
+_Last updated: 2026-11-25 09:11 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 10777
-- ✅ Verified (8+): 10662
+- **Total scored actions:** 10781
+- ✅ Verified (8+): 10666
 - 🟡 Partial (5–7): 104
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 7
@@ -51,12 +51,12 @@ _Last updated: 2026-11-25 08:32 UTC_
 - **gate-stall-20261015-1843:** 2 actions, avg 9.0/10
 - **gate-stall-20261015-1907:** 2 actions, avg 9.0/10
 - **gate-stall-20261015-1911:** 2 actions, avg 9.0/10
-- **gate-stall-20261015-1921:** 1 actions, avg 9.0/10
-- **gate-stall-20261015-1930:** 1 actions, avg 9.0/10
+- **gate-stall-20261015-1921:** 2 actions, avg 9.0/10
+- **gate-stall-20261015-1930:** 2 actions, avg 9.0/10
 - **gate-stall-20261016-0238:** 1 actions, avg 9.0/10
 - **gate-stall-20261015-2000:** 1 actions, avg 9.0/10
 - **gate-stall-20261015-1946:** 1 actions, avg 9.0/10
-- **gate-stall-20261015-1943:** 1 actions, avg 9.2/10
+- **gate-stall-20261015-1943:** 2 actions, avg 9.1/10
 - **gate-stall-20261015-2012:** 1 actions, avg 9.0/10
 - **2026-10-15T20:40:35-07:00:** 4 actions, avg 8.9/10
 - **gate-stall-20261015-2021:** 1 actions, avg 9.0/10
@@ -1458,6 +1458,7 @@ _Last updated: 2026-11-25 08:32 UTC_
 - **gate-stall-20261124-2118:** 1 actions, avg 9.0/10
 - **gate-stall-20261124-2224:** 1 actions, avg 9.0/10
 - **gate-stall-20261124-2323:** 1 actions, avg 9.0/10
+- **gate-stall-20261125-0028:** 1 actions, avg 9.0/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
