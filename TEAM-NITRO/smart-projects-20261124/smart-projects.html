@@ -548,6 +548,12 @@ textarea.gr-input{resize:vertical;min-height:110px;line-height:1.55;}
 .sp-kind-hint b{color:#d4a017}
 </style>
 
+<style id="sp-v6-css">
+/* SMART PROJECTS v6 — landing boards. New CSS only; 17px minimum, white text, deep colors. */
+.sp-home-states{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.sp-home-state{font-size:17px;font-weight:800;letter-spacing:.06em;padding:8px 14px;border-radius:999px;border:1.5px solid var(--jc,#fff);color:#fff;background:#050607}
+.sp-home-legend{font-size:17px;color:#fff;line-height:1.5;margin:12px 0}
+</style>
 <style id="sp-v5-css">
 /* SMART PROJECTS v5 — questions board, mini-block notes, project search. New CSS only; 17px minimum, white text, deep colors. */
 .sp-search{margin:0 0 16px;display:flex;gap:10px;align-items:center}
@@ -576,6 +582,8 @@ textarea.gr-input{resize:vertical;min-height:110px;line-height:1.55;}
 .sp-nv-empty{color:#fff;opacity:.85}
 </style>
 <body>
+  <div class="naya-frame" aria-hidden="true"></div>
+  <div class="frame-light" aria-hidden="true"></div>
 <div class="gr-stage" id="top">
 
   <!-- ════ HOME — your projects ════ -->
@@ -589,6 +597,36 @@ textarea.gr-input{resize:vertical;min-height:110px;line-height:1.55;}
       </div>
     </section>
 
+    <section class="gr-board" style="--sc:#8e24aa">
+      <div class="gr-board-cover">
+        <div class="gr-board-num" aria-hidden="true"></div>
+        <h2>The 14 Questions</h2>
+        <p class="gr-board-sub">The minimum viable intelligence interface for NayaNET itself — from the filed Daily Project Intelligence Report, SN-4710, 2026-11-23. Answer them here, before you create anything. Your answers are kept on this device and file into your project the moment you create it. Unanswered stays honestly unanswered — never filled in for you.</p>
+      </div>
+      <div class="gr-board-body">
+        <p class="gr-note" id="sp-home-q-count" style="margin-top:4px;">0 of 14 answered — the rest are honestly unanswered, never filled in for you.</p>
+        <div id="sp-home-questions"><div class="gr-empty">Reading the questions…</div></div>
+        <p class="gr-status" id="sp-home-q-status" aria-live="polite"></p>
+      </div>
+    </section>
+    <section class="gr-board" style="--sc:#2fe89e">
+      <div class="gr-board-cover">
+        <div class="gr-board-num" aria-hidden="true"></div>
+        <h2>Project intelligence — see it working</h2>
+        <p class="gr-board-sub">Mini-block notes, in intelligent-block format, with the project’s own five states. Your filed notes show here; make one below and it lives on this device until you create a project — then it files into that project.</p>
+      </div>
+      <div class="gr-board-body">
+        <p class="sp-home-legend">The five states every mini-block note carries:</p>
+        <div class="sp-home-states" id="sp-home-states"></div>
+        <div id="sp-home-mininotes"><div class="gr-empty">Reading your mini-block notes…</div></div>
+        <h3 style="font-size:17px;font-weight:900;color:#fff;margin:22px 0 6px;">Make a mini-block note — right here, before any project</h3>
+        <div class="sp-w-field"><label for="sp-home-nut">Nutshell — the note in one line</label><input class="gr-input" id="sp-home-nut" type="text" maxlength="200" placeholder="e.g. The guitar needs new strings"></div>
+        <div class="sp-w-field"><label for="sp-home-body">What it means — the note itself</label><textarea class="gr-input" id="sp-home-body" rows="4" maxlength="4000" placeholder="Write the note…"></textarea></div>
+        <div class="sp-w-field"><label>State — the project’s own states</label><div id="sp-home-states-pick"></div></div>
+        <button type="button" class="gr-btn" id="sp-home-note-save">SAVE NOTE</button>
+        <p class="gr-status" id="sp-home-note-status" aria-live="polite"></p>
+      </div>
+    </section>
     <section class="gr-board" style="--sc:#a06bff">
       <div class="gr-board-cover">
         <div class="gr-board-num" aria-hidden="true"></div>
@@ -1438,7 +1476,7 @@ if(createBtn) createBtn.addEventListener('click', function(){
       }).then(function(){ return p; });
     }).then(function(){ return p; });
   }).then(function(p){
-    location.href=spUrl(p.id);
+    try{ return spFileHomeToProject(p).then(function(){ location.href=spUrl(p.id); }).catch(function(){ location.href=spUrl(p.id); }); }catch(e){ location.href=spUrl(p.id); }
   }).catch(function(e){
     createBtn.disabled=false; st.textContent='That did not save — check your connection and try again.';
   });
@@ -2754,9 +2792,209 @@ document.getElementById('sp-nv-edit').addEventListener('click', function(){
   });
 });
 
+/* ═══ SMART PROJECTS v6 — the landing shows the finished build ═══ */
+/* Frame: the landing carries the walk's own harvested .naya-frame +
+   .frame-light (see HOME_FRAME_HTML — the same two lines the walk has).
+   Questions: the same SP_QUESTIONS (verbatim SN-4710) as the hub board,
+   rendered on the landing. Answers + mini-note drafts are held on this
+   device (localStorage) and filed into the project on create — never
+   filled in for the citizen, never faked, and the hub flow is untouched. */
+var SP_HOME_Q_KEY='nayanet.smart-projects.home-answers.v1';
+var SP_HOME_NOTES_KEY='nayanet.smart-projects.home-notes.v1';
+var SP_HOME_NOTE_STATE='in-motion';
+var SP_HOME_VIEW_DRAFT=null; var SP_HOME_LIVE=[]; var SP_HOME_LIVE_STATES={};
+function spHomeRead(key){ try{ var raw=localStorage.getItem(key); var v=raw?JSON.parse(raw):null; return v&&typeof v==='object'?v:{}; }catch(e){ return {}; } }
+function spHomeAnswers(){ return spHomeRead(SP_HOME_Q_KEY); }
+function spSaveHomeAnswers(a){ try{ localStorage.setItem(SP_HOME_Q_KEY, JSON.stringify(a)); }catch(e){} }
+function spHomeNotes(){ try{ var raw=localStorage.getItem(SP_HOME_NOTES_KEY); var v=raw?JSON.parse(raw):null; return Array.isArray(v)?v:[]; }catch(e){ return []; } }
+function spSaveHomeNotes(list){ try{ localStorage.setItem(SP_HOME_NOTES_KEY, JSON.stringify(list)); }catch(e){} }
+function spSetHomeQStatus(t){ var s=document.getElementById('sp-home-q-status'); if(s) s.textContent=t||''; }
+function spRenderHomeQuestions(){
+  var wrap=document.getElementById('sp-home-questions'); if(!wrap) return;
+  var saved=spHomeAnswers(); var answered=0;
+  SP_QUESTIONS.forEach(function(q){ if((saved[spQKey(q.n)]||'').trim()) answered++; });
+  var head=document.getElementById('sp-home-q-count');
+  if(head) head.textContent=answered+' of 14 answered — the rest are honestly unanswered, never filled in for you.';
+  wrap.innerHTML='';
+  SP_QUESTIONS.forEach(function(q){
+    var key=spQKey(q.n); var ans=saved[key]||'';
+    var box=el('div','sp-qblock');
+    box.appendChild(el('span','sp-jewel','◆'));
+    var main=el('div','pj-row-main');
+    main.appendChild(el('div','pj-row-t', q.n+'. '+q.q));
+    var chip=el('div','sp-qchip'); chip.textContent=ans?'ANSWERED ✓':'NOT ANSWERED YET'; chip.style.color=ans?'#2fe89e':'#ffbf3d'; main.appendChild(chip);
+    if(ans) main.appendChild(el('div','pj-row-s', ans));
+    var ta=document.createElement('textarea'); ta.className='gr-input sp-qta'; ta.rows=2; ta.maxLength=4000;
+    ta.placeholder='Answer in your own words…'; ta.value=ans; ta.setAttribute('aria-label','Answer to question '+q.n+' before creating a project'); main.appendChild(ta);
+    var b=el('button','gr-btn','SAVE ANSWER'); b.type='button'; b.style.marginTop='10px';
+    b.addEventListener('click', function(){
+      var v=ta.value.trim(); if(!v){ spSetHomeQStatus('Write the answer first.'); return; }
+      var a=spHomeAnswers(); a[key]=v; spSaveHomeAnswers(a);
+      spSetHomeQStatus('Saved on this device — question '+q.n+' files into your project the moment you create it.');
+      spRenderHomeQuestions();
+    });
+    main.appendChild(b); box.appendChild(main); wrap.appendChild(box);
+  });
+}
+function spHomeStateChip(st){
+  var g=null; INTEL_GROUPS.forEach(function(x){ if(x[0]===st) g=x; });
+  var chip=el('span','pj-kindtag', g?g[1]:String(st||'in-motion').toUpperCase());
+  chip.style.setProperty('--jc', g?g[2]:'#3fb8ff'); return chip;
+}
+function spHomeMiniCard(title, st, sub, onOpen){
+  var card=el('div','sp-mininote');
+  card.appendChild(el('span','sp-jewel','✎'));
+  var main=el('div','pj-row-main');
+  main.appendChild(el('div','pj-row-t', title));
+  main.appendChild(spHomeStateChip(st));
+  main.appendChild(el('div','pj-row-s', sub));
+  card.appendChild(main);
+  card.addEventListener('click', onOpen);
+  return card;
+}
+function spRenderHomeMinis(){
+  var wrap=document.getElementById('sp-home-mininotes'); if(!wrap) return;
+  var legend=document.getElementById('sp-home-states');
+  if(legend && !legend.children.length){
+    INTEL_GROUPS.forEach(function(g){ var c=el('span','sp-home-state', g[1]); c.style.setProperty('--jc', g[2]); legend.appendChild(c); });
+  }
+  wrap.innerHTML='';
+  var drafts=spHomeNotes();
+  if(!drafts.length && !SP_HOME_LIVE.length){
+    wrap.appendChild(el('div','gr-empty','No mini-block notes yet — make one below. It shows here in intelligent-block format, with its state, the moment you save it.'));
+    return;
+  }
+  drafts.forEach(function(d, i){
+    wrap.appendChild(spHomeMiniCard('[Project] '+d.nut, d.state||'in-motion', 'Kept on this device — files into your project when you create it. Tap to open the full note.', function(){ spOpenHomeNoteView(i, null); }));
+  });
+  SP_HOME_LIVE.forEach(function(n){
+    var st=SP_HOME_LIVE_STATES[n.id]||'in-motion';
+    wrap.appendChild(spHomeMiniCard(n.title||'Note', st, 'Filed mini-block note — tap to open the full note.', function(){ spOpenHomeNoteView(null, n); }));
+  });
+}
+/* The citizen's own filed mini-block notes, read back live: naya_notes they
+   own whose title starts with '[' (the mini-block label), with their states
+   from the citizen:note-state:<id> rows. Failure-tolerant: if the read
+   fails, the board still shows drafts + the composer. */
+function spLoadHomeLiveNotes(){
+  get('/naya_notes?owner_alias=eq.'+enc(ME)+'&title=like.%5B%25&order=created_at.desc&limit=20').then(function(rows){
+    SP_HOME_LIVE=rows||[];
+    return get('/project_intel_items?item_key=like.citizen%3Anote-state%3A%25&select=item_key,state&limit=200').then(function(srows){
+      (srows||[]).forEach(function(r){ var id=(r.item_key||'').replace('citizen:note-state:',''); if(id) SP_HOME_LIVE_STATES[id]=r.state||'in-motion'; });
+    }).catch(function(){ return null; });
+  }).catch(function(){ SP_HOME_LIVE=[]; }).then(function(){ spRenderHomeMinis(); });
+}
+function spSaveHomeNote(){
+  var nut=(document.getElementById('sp-home-nut').value||'').trim();
+  var body=(document.getElementById('sp-home-body').value||'').trim();
+  var st=document.getElementById('sp-home-note-status');
+  if(!nut){ st.textContent='Write the nutshell first — one line.'; return; }
+  if(!body){ st.textContent='Write the note itself.'; return; }
+  var list=spHomeNotes();
+  list.push({nut:nut, body:body, state:SP_HOME_NOTE_STATE||'in-motion', t:Date.now()});
+  spSaveHomeNotes(list);
+  document.getElementById('sp-home-nut').value='';
+  document.getElementById('sp-home-body').value='';
+  st.textContent='Note saved on this device — it files into your project the moment you create it.';
+  spRenderHomeMinis();
+}
+function spOpenHomeNoteView(draftIdx, liveNote){
+  var isDraft=draftIdx!==null && draftIdx!==undefined;
+  var d=isDraft?spHomeNotes()[draftIdx]:null;
+  var title=isDraft?('[Project] '+(d?d.nut:'')):(liveNote.title||'Note');
+  var nut=isDraft?(d?d.nut:''):(title||'').replace(/^\[[^\]]+\]\s*/,'')||title;
+  var body=isDraft?(d?d.body:''):(liveNote.body||'');
+  var cur=isDraft?(d?d.state:'in-motion'):(SP_HOME_LIVE_STATES[liveNote.id]||'in-motion');
+  SP_HOME_VIEW_DRAFT=isDraft?draftIdx:null;
+  /* 'home-draft' is not a Supabase id: the hub viewer's EDIT handler fetches
+     it, finds nothing and returns — the landing EDIT below does the work. */
+  SP_NOTE_VIEW_ID=isDraft?'home-draft':(liveNote?liveNote.id:null);
+  document.getElementById('sp-nv-title').textContent=title;
+  document.getElementById('sp-nv-nutshell').textContent=nut;
+  document.getElementById('sp-nv-body').textContent=body;
+  document.getElementById('sp-nv-status').textContent='';
+  var statesWrap=document.getElementById('sp-nv-states');
+  if(isDraft){
+    spStateButtons(statesWrap, cur, function(s){
+      var list=spHomeNotes(); var dd=list[draftIdx]; if(!dd) return;
+      dd.state=s; spSaveHomeNotes(list); spRenderHomeMinis();
+      document.getElementById('sp-nv-status').textContent='State set — '+s+'.';
+    });
+  } else {
+    statesWrap.innerHTML=''; statesWrap.appendChild(spHomeStateChip(cur));
+    var hint=el('div','pj-row-s','States change on the note’s own project hub.'); statesWrap.appendChild(hint);
+  }
+  document.getElementById('sp-note-view').hidden=false; document.body.style.overflow='hidden';
+}
+/* File the landing's held answers + draft notes into a just-created project.
+   Same rows as the hub flow (citizen:q01..q14 intel rows; naya_note +
+   object_link + citizen:note-state row). Per-item: a failure leaves that
+   item held on the device — never silently dropped. */
+function spPostIntelFor(pid, key, title, text, sort, state){
+  var body={project_id:pid, item_key:'citizen:'+key, title:title, state:state||'in-motion', detail:text, sort:sort};
+  var opts={method:'POST', cache:'no-store',
+    headers:{'apikey':ANON,'Authorization':'Bearer '+ANON,'Content-Type':'application/json','Prefer':'return=representation,resolution=merge-duplicates'},
+    body:JSON.stringify(body)};
+  return fetch(SB+'/project_intel_items?on_conflict=project_id,item_key', opts).then(function(r){
+    if(!r.ok) return r.text().then(function(t){ throw new Error('rest '+r.status+' '+t.slice(0,140)); });
+    return r.status===204?null:r.json();
+  });
+}
+function spFileHomeToProject(p){
+  var chain=Promise.resolve();
+  var answers=spHomeAnswers();
+  SP_QUESTIONS.forEach(function(q){
+    var v=(answers[spQKey(q.n)]||'').trim(); if(!v) return;
+    chain=chain.then(function(){
+      return spPostIntelFor(p.id, 'q'+('0'+q.n).slice(-2), 'Q'+q.n+' — '+q.q, v, 10+q.n).then(function(){
+        var a=spHomeAnswers(); delete a[spQKey(q.n)]; spSaveHomeAnswers(a);
+      }).catch(function(){ return null; });
+    });
+  });
+  spHomeNotes().forEach(function(d){
+    chain=chain.then(function(){
+      var title='[Project] '+d.nut;
+      return post('/naya_notes', {owner_alias:ME, title:title, body:d.body}).then(function(rows){
+        var n=rows[0];
+        return post('/object_links', {owner_alias:ME, a_kind:'project', a_id:p.id, b_kind:'naya_note', b_id:n.id, b_label:title}).then(function(){
+          if(d.state && d.state!=='in-motion'){
+            return spPostIntelFor(p.id, 'note-state:'+n.id, 'Note state', d.nut, 90, d.state).catch(function(){ return null; });
+          }
+          return null;
+        }).then(function(){
+          var ds=spHomeNotes(); var ix=-1;
+          ds.forEach(function(x, i){ if(x.t===d.t && x.nut===d.nut) ix=i; });
+          if(ix!==-1){ ds.splice(ix,1); spSaveHomeNotes(ds); }
+        });
+      }).catch(function(){ return null; });
+    });
+  });
+  return chain;
+}
+function spRenderHome(){
+  spRenderHomeQuestions();
+  spStateButtons(document.getElementById('sp-home-states-pick'), SP_HOME_NOTE_STATE, function(s){ SP_HOME_NOTE_STATE=s; });
+  spRenderHomeMinis();
+  spLoadHomeLiveNotes();
+  var sv=document.getElementById('sp-home-note-save');
+  if(sv && !sv.dataset.bound){ sv.dataset.bound='1'; sv.addEventListener('click', spSaveHomeNote); }
+}
+document.getElementById('sp-nv-edit').addEventListener('click', function(){
+  if(SP_HOME_VIEW_DRAFT===null || SP_HOME_VIEW_DRAFT===undefined) return;
+  var list=spHomeNotes(); var d=list[SP_HOME_VIEW_DRAFT]; if(!d) return;
+  list.splice(SP_HOME_VIEW_DRAFT,1); spSaveHomeNotes(list);
+  document.getElementById('sp-home-nut').value=d.nut||'';
+  document.getElementById('sp-home-body').value=d.body||'';
+  SP_HOME_NOTE_STATE=d.state||'in-motion';
+  spStateButtons(document.getElementById('sp-home-states-pick'), SP_HOME_NOTE_STATE, function(s){ SP_HOME_NOTE_STATE=s; });
+  SP_HOME_VIEW_DRAFT=null; spCloseNoteView(); spRenderHomeMinis();
+  document.getElementById('sp-home-note-status').textContent='Editing your note — save it again when it reads right.';
+  var b=document.getElementById('sp-home-mininotes'); if(b) b.scrollIntoView({behavior:'smooth', block:'center'});
+});
+
 /* ═══════════ ROUTE ═══════════ */
 if(PID){ homeEl.hidden=true; projEl.hidden=false; loadProject(); }
-else { loadHome(); spDeepLink(); }
+else { loadHome(); spRenderHome(); spDeepLink(); }
 })();
 </script>
 
