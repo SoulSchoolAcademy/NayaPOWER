@@ -548,6 +548,12 @@ textarea.gr-input{resize:vertical;min-height:110px;line-height:1.55;}
 .sp-kind-hint b{color:#d4a017}
 </style>
 
+<style id="sp-v6fix-css">
+/* SMART PROJECTS v6 fix round — F1 delete status (17px, white, visible) + F4 desktop hub hero. */
+#pj-delete-status{font-size:17px;color:#fff}
+/* F4 — desktop-landscape only, hub-scoped: lift the WALK row clear of the frame's bottom ornament band. */
+@media (min-width:1024px) and (min-aspect-ratio:1/1){#pj-project .gr-hero-cover{padding:16px 24px 12px}#pj-project .gr-hero{margin-bottom:10px}#pj-motto:empty{display:none}#pj-hero-members:empty{display:none}}
+</style>
 <style id="sp-v6-css">
 /* SMART PROJECTS v6 — landing boards. New CSS only; 17px minimum, white text, deep colors. */
 .sp-home-states{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
@@ -916,6 +922,7 @@ body > .naya-frame, body > .frame-light{z-index:-1}
         <p class="gr-status" id="pj-people-status" aria-live="polite"></p>
         <div id="pj-owner-danger" style="margin-top:26px;">
           <button type="button" class="gr-btn ghost pj-danger" id="pj-delete">DELETE THIS PROJECT</button>
+          <p class="gr-status" id="pj-delete-status" aria-live="polite"></p>
           <p class="gr-note" style="margin-top:10px;">Deleting a project removes the project, its own lists and its gatherings. Your notes and Smart Links themselves are never deleted — they live in their own homes.</p>
         </div>
       </div>
@@ -2244,14 +2251,20 @@ if(todoBtn) todoBtn.addEventListener('click', addTodo);
 var todoInp=document.getElementById('pj-todo-text');
 if(todoInp) todoInp.addEventListener('keydown', function(ev){ if(ev.key==='Enter') addTodo(); });
 var delBtn=document.getElementById('pj-delete');
+var delStatus=document.getElementById('pj-delete-status');
+var delTimer=null;
+function delDisarm(){ delBtn.dataset.armed=''; delBtn.classList.remove('armed'); delBtn.textContent='DELETE THIS PROJECT'; }
 if(delBtn) delBtn.addEventListener('click', function(){
   if(!delBtn.dataset.armed){
     delBtn.dataset.armed='1'; delBtn.classList.add('armed');
     delBtn.textContent='TAP AGAIN TO DELETE THIS PROJECT';
-    setTimeout(function(){ delBtn.dataset.armed=''; delBtn.classList.remove('armed'); delBtn.textContent='DELETE THIS PROJECT'; }, 3000);
+    if(delStatus) delStatus.textContent='';
+    delTimer=setTimeout(delDisarm, 3000);
     return;
   }
+  if(delTimer){ clearTimeout(delTimer); delTimer=null; }
   delBtn.disabled=true; delBtn.textContent='DELETING…';
+  if(delStatus) delStatus.textContent='Deleting this project…';
   var listIds=S.listOrder.map(function(l){ return l.id; });
   var chain=Promise.resolve();
   listIds.forEach(function(id){
@@ -2261,7 +2274,17 @@ if(delBtn) delBtn.addEventListener('click', function(){
   chain.then(function(){ return del('/object_links?a_kind=eq.project&a_id=eq.'+PID); })
     .then(function(){ return del('/projects?id=eq.'+PID); })
     .then(function(){ location.href=spUrl(''); })
-    .catch(function(){ delBtn.disabled=false; delBtn.textContent='DELETE THIS PROJECT'; });
+    .catch(function(){
+      /* F1 — surface it, offer the retry: the button stays armed on the
+         retry wording, so one more tap re-attempts the whole chain, and
+         the status says so in plain words. After 10s the button disarms
+         back to the two-tap flow, but the message stays until the next tap. */
+      delBtn.disabled=false;
+      delBtn.dataset.armed='1'; delBtn.classList.add('armed');
+      delBtn.textContent='TRY THE DELETE AGAIN';
+      if(delStatus) delStatus.textContent='That did not delete — check your connection and try again.';
+      delTimer=setTimeout(delDisarm, 10000);
+    });
 });
 
 var hl=document.getElementById('pj-home-link'); if(hl) hl.href=spUrl('');
@@ -2869,7 +2892,7 @@ document.getElementById('sp-nv-edit').addEventListener('click', function(){
 var SP_HOME_Q_KEY='nayanet.smart-projects.home-answers.v1';
 var SP_HOME_NOTES_KEY='nayanet.smart-projects.home-notes.v1';
 var SP_HOME_NOTE_STATE='in-motion';
-var SP_HOME_VIEW_DRAFT=null; var SP_HOME_LIVE=[]; var SP_HOME_LIVE_STATES={};
+var SP_HOME_VIEW_DRAFT=null; var SP_HOME_LIVE=[]; var SP_HOME_LIVE_STATES={}; var SP_HOME_LIVE_STATES_OK=false;
 function spHomeRead(key){ try{ var raw=localStorage.getItem(key); var v=raw?JSON.parse(raw):null; return v&&typeof v==='object'?v:{}; }catch(e){ return {}; } }
 function spHomeAnswers(){ return spHomeRead(SP_HOME_Q_KEY); }
 function spSaveHomeAnswers(a){ try{ localStorage.setItem(SP_HOME_Q_KEY, JSON.stringify(a)); }catch(e){} }
@@ -2904,6 +2927,10 @@ function spRenderHomeQuestions(){
   });
 }
 function spHomeStateChip(st){
+  if(st===null || st===undefined){
+    var chip0=el('span','pj-kindtag','STATE NOT READ YET');
+    chip0.style.setProperty('--jc','#ffbf3d'); return chip0;
+  }
   var g=null; INTEL_GROUPS.forEach(function(x){ if(x[0]===st) g=x; });
   var chip=el('span','pj-kindtag', g?g[1]:String(st||'in-motion').toUpperCase());
   chip.style.setProperty('--jc', g?g[2]:'#3fb8ff'); return chip;
@@ -2935,7 +2962,7 @@ function spRenderHomeMinis(){
     wrap.appendChild(spHomeMiniCard('[Project] '+d.nut, d.state||'in-motion', 'Kept on this device — files into your project when you create it. Tap to open the full note.', function(){ spOpenHomeNoteView(i, null); }));
   });
   SP_HOME_LIVE.forEach(function(n){
-    var st=SP_HOME_LIVE_STATES[n.id]||'in-motion';
+    var st=SP_HOME_LIVE_STATES_OK?(SP_HOME_LIVE_STATES[n.id]||'in-motion'):null;
     wrap.appendChild(spHomeMiniCard(n.title||'Note', st, 'Filed mini-block note — tap to open the full note.', function(){ spOpenHomeNoteView(null, n); }));
   });
 }
@@ -2944,11 +2971,23 @@ function spRenderHomeMinis(){
    from the citizen:note-state:<id> rows. Failure-tolerant: if the read
    fails, the board still shows drafts + the composer. */
 function spLoadHomeLiveNotes(){
+  function loadStates(){
+    return get('/project_intel_items?item_key=like.citizen%3Anote-state%3A%25&select=item_key,state&limit=200').then(function(srows){
+      SP_HOME_LIVE_STATES={};
+      (srows||[]).forEach(function(r){ var id=(r.item_key||'').replace('citizen:note-state:',''); if(id) SP_HOME_LIVE_STATES[id]=r.state||'in-motion'; });
+      SP_HOME_LIVE_STATES_OK=true;
+    });
+  }
   get('/naya_notes?owner_alias=eq.'+enc(ME)+'&title=like.%5B%25&order=created_at.desc&limit=20').then(function(rows){
     SP_HOME_LIVE=rows||[];
-    return get('/project_intel_items?item_key=like.citizen%3Anote-state%3A%25&select=item_key,state&limit=200').then(function(srows){
-      (srows||[]).forEach(function(r){ var id=(r.item_key||'').replace('citizen:note-state:',''); if(id) SP_HOME_LIVE_STATES[id]=r.state||'in-motion'; });
-    }).catch(function(){ return null; });
+    /* F3 — the state-rows read is the same transient class as the page's
+       other Supabase drops: when it failed, the old code swallowed it and
+       every filed note silently read IN MOTION — a filed BLOCKED note
+       showed as moving. Retry once, and if it still fails, say so: the
+       cards render with STATE NOT READ YET, never a guessed state. */
+    return loadStates().catch(function(){
+      return new Promise(function(res){ setTimeout(res, 1200); }).then(loadStates);
+    }).catch(function(){ SP_HOME_LIVE_STATES_OK=false; });
   }).catch(function(){ SP_HOME_LIVE=[]; }).then(function(){ spRenderHomeMinis(); });
 }
 function spSaveHomeNote(){
@@ -2971,7 +3010,7 @@ function spOpenHomeNoteView(draftIdx, liveNote){
   var title=isDraft?('[Project] '+(d?d.nut:'')):(liveNote.title||'Note');
   var nut=isDraft?(d?d.nut:''):(title||'').replace(/^\[[^\]]+\]\s*/,'')||title;
   var body=isDraft?(d?d.body:''):(liveNote.body||'');
-  var cur=isDraft?(d?d.state:'in-motion'):(SP_HOME_LIVE_STATES[liveNote.id]||'in-motion');
+  var cur=isDraft?(d?d.state:'in-motion'):((SP_HOME_LIVE_STATES_OK&&SP_HOME_LIVE_STATES[liveNote.id])||null);
   SP_HOME_VIEW_DRAFT=isDraft?draftIdx:null;
   /* Drafts have no Supabase id: SP_NOTE_VIEW_ID stays null, so the hub
      viewer's EDIT handler returns early (its get() on a non-UUID id
@@ -2982,6 +3021,7 @@ function spOpenHomeNoteView(draftIdx, liveNote){
   document.getElementById('sp-nv-nutshell').textContent=nut;
   document.getElementById('sp-nv-body').textContent=body;
   document.getElementById('sp-nv-status').textContent='';
+  if(!isDraft && liveNote && !SP_HOME_LIVE_STATES_OK) document.getElementById('sp-nv-status').textContent='Its state could not be read — check your connection, then close this note and open it again.';
   var statesWrap=document.getElementById('sp-nv-states');
   if(isDraft){
     spStateButtons(statesWrap, cur, function(s){
