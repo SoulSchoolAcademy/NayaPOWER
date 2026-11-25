@@ -353,7 +353,7 @@
    96px desktop / 64px tablet / 32px phone). Obsidian first; purple = rim
    light + accent only, never a wash. */
 :root{--bw:96px}
-.royal-frame{position:fixed;inset:0;z-index:60;pointer-events:none;border:var(--bw,96px) solid transparent;border-image:url(master-frame.png) 300 / var(--bw,96px) / 0 round!important}
+.royal-frame{position:fixed;inset:0;z-index:60;pointer-events:none;border:var(--bw,96px) solid transparent;border-image:url(https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO%2Fmessenger-mail-rebuild2-20261124%2Fmaster-frame.png&ref=messenger-mail-rebuild2-20261124-sidebar-options) 300 / var(--bw,96px) / 0 round!important}
 body{padding:var(--bw,96px)}
 @media(max-width:1024px){:root{--bw:64px}.royal-frame{border-image-slice:340 300 340 300!important}}
 @media(max-width:560px){:root{--bw:32px}.royal-frame{border-image-slice:300!important}}
@@ -1427,7 +1427,28 @@ function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className
         }
         chipRow.style.display = any?'flex':'none';
       }
+      sel.id = 'mlToSel';
       sel.addEventListener('change', renderToChips);
+      /* ROUND 15 (D4): push-button-simple recipient pick — one real button
+         per recipient; each toggles its <option> and the chips stay the record. */
+      var toPickRow = el('div','mlx-to-picks');
+      toPickRow.setAttribute('aria-label','Pick recipients — tap to add or remove');
+      function syncToPicks(){
+        Array.prototype.forEach.call(toPickRow.children, function(b){
+          var o = sel.querySelector('option[value="' + b.getAttribute('data-to-val') + '"]');
+          b.setAttribute('aria-pressed', o && o.selected ? 'true' : 'false');
+        });
+      }
+      Array.prototype.forEach.call(sel.options, function(o){
+        var b = el('button','mlx-to-pick', o.textContent);
+        b.type = 'button';
+        b.setAttribute('data-to-val', o.value);
+        b.setAttribute('aria-pressed', o.selected ? 'true' : 'false');
+        b.addEventListener('click', function(ev){ ev.preventDefault(); o.selected = !o.selected; sel.dispatchEvent(new Event('change', {bubbles:true})); syncToPicks(); });
+        toPickRow.appendChild(b);
+      });
+      sel.addEventListener('change', syncToPicks);
+      card.appendChild(toPickRow);
 
       /* --- smart post: space + preview (only in post mode) --- */
       var postWrap = el('div','ml-postwrap'); postWrap.style.display='none';
@@ -1805,10 +1826,10 @@ schRow.appendChild(dtWrap);
         var subject=sjIn.value.trim(), body=bdIn.value.trim();
         if(listening){ try{ rec.stop(); }catch(e){} listening=false; }
         if(composeMode!=='instant' && !subject){
-          err.textContent='Give it a subject first.'; err.style.display='block'; return;
+          err.textContent='Give it a subject first.'; err.style.display='block'; showToast('Give it a subject first.'); try{ err.scrollIntoView({block:'nearest'}); }catch(e){} return;
         }
         if(!body){
-          err.textContent='The message needs words before sending.'; err.style.display='block'; return;
+          err.textContent='The message needs words before sending.'; err.style.display='block'; showToast('The message needs words before sending.'); try{ err.scrollIntoView({block:'nearest'}); }catch(e){} return;
         }
         var isPost = (composeMode==='post');
         var toIds=[], toKind='person';
@@ -1822,12 +1843,12 @@ schRow.appendChild(dtWrap);
             }
           }
           if(!toIds.length){
-            err.textContent='Pick at least one recipient.'; err.style.display='block'; return;
+            err.textContent='Pick at least one recipient.'; err.style.display='block'; showToast('Pick at least one recipient.'); try{ err.scrollIntoView({block:'nearest'}); }catch(e){} return;
           }
         }
         var schedMs = (schedMode==='later') ? schedAt : null;
         if(schedMode==='later' && !schedMs){
-          err.textContent='Pick a date and time for the scheduled send.'; err.style.display='block'; return;
+          err.textContent='Pick a date and time for the scheduled send.'; err.style.display='block'; showToast('Pick a date and time for the scheduled send.'); try{ err.scrollIntoView({block:'nearest'}); }catch(e){} return;
         }
         var atIds = Object.keys(attached).filter(function(k){return attached[k];});
         var aliasName = (aliases.filter(function(a){return a.id===aliasSel.value;})[0]||{}).name || me;
@@ -1883,8 +1904,12 @@ schRow.appendChild(dtWrap);
           var ok = results.filter(function(r){ return r && r.ok; });
           var fail = results.filter(function(r){ return r && !r.ok; })[0];
           if(fail){
-            if(typeof overlay !== 'undefined' && overlay){ overlay.insertAdjacentHTML('beforeend', window.__nmStatusHtml(fail)); }
-            showToast('Not sent — see the note in the composer.');
+            /* ROUND 15 (D4): keep the message as a draft, close the composer,
+               and say the real state in the toast — not sent, nothing delivered. */
+            threads.unshift({ id:'draft-'+Date.now().toString(36), from:me, to:firstTo || '', toKind:firstKind || 'person', toLabel:toLabel || '(no recipients)', mode:composeMode, subject:nmSubj, snippet:body.slice(0,120), body:body, ts:Date.now(), status:'draft', unread:false, demo:false });
+            state.folder = 'drafts';
+            closeCompose(); renderRail(); renderList(); renderRead();
+            showToast('Not sent — saved as a draft. Live send is not connected in this preview, so nothing was delivered.');
             return;
           }
           var first = ok[0];
@@ -4833,6 +4858,128 @@ html{scroll-padding-top:130px;}
   .ov-second-row .ml-qa-item .ml-qcount{margin-left:0;}
   .ov-second-row .ml-compose-top{flex-direction:column;gap:8px;padding:14px 8px;min-height:112px;}
   .ov-second-row .ml-compose-top .ov-compose-orb{width:34px;height:34px;font-size:22px;}
+}
+
+/* --- 22. ROUND 15 — CHECKER-14 FIX PASS (2026-11-25 ~11:00, four defects + three notes) ---
+   D1: phone scroll 0 showed chrome only (search y849, first conv y903).
+   The height is found by tightening, never by deleting: the demo note
+   (82px of three lines), the tabs, the band tiles, the stage padding,
+   the gaps — the tabs stay 20px, the second row stays 2x2.
+   D2: the fixed dock (93px) covered the bottom of the panes at scroll 0
+   (desktop: conv preview 726, thread meta 736, reacts 816, DRAFTS 815,
+   all behind dock top 711). The same tightening lifts the content
+   above the dock, AND every scrollable pane gets bottom padding >=
+   dock height + margin so its last line can scroll clear of the dock.
+   D3: desktop All never restored — the pill's own "···" button (hit
+   area expanded 12px by its ::after) covered the pill's centre, so a
+   centre click opened the tab menu instead of activating All. The
+   "···" moves to the pill's right end (absolute), out of the click
+   path; the menu itself is unchanged and still opens from the "···".
+   D4: SEND NOW with empty fields showed only an inline error far below
+   the modal fold (no toast, nothing visible) — validation failures
+   now toast as well. The modal is compressed so the MESSAGE field's
+   top is visible at open. The TO listbox gets real tap-to-pick
+   buttons (see transform T18). Toasts wrap instead of clipping.
+   N1: phone folder strip clipped UNREAD mid-word (190px folders in a
+   horizontal scroller) — on phone the strip wraps 2-across with the
+   icon over the name, so every label reads whole at scroll 0. */
+
+/* --- D1 + D2: tighten the rail header (both widths) --- */
+/* The demo note is three lines of 17px (82px). Smaller, tighter, still
+   the same words — it is a note, not a paragraph. */
+.nm-pane.nm-rail .nm-demo-note{font-size:15px;line-height:1.45;margin:0 0 8px;}
+.nm-pane h2{margin:0 0 8px;}
+.nm-pane{padding-top:12px;}
+.nm-search{margin-bottom:4px;}
+/* Thread bubbles keep their air, a little less of it, so the reacts
+   row below them lifts above the dock. */
+.nm-bubble{padding:16px;margin-bottom:14px;}
+.nm-msg-panes{padding-top:8px;}
+
+/* --- D1: phone — tabs, band, stage (the height lives here) --- */
+@media (max-width:640px){
+  .mail-stage{padding-top:12px;}
+  #mmTabsHost{margin-bottom:10px;}
+  #mmTabsHost .smart-tabs{padding:4px 2px 8px;gap:8px;}
+  #mmTabsHost .smart-tab{padding:10px 14px;min-height:48px;font-size:20px;}
+  #mmTabsHost .smart-tab .sn-label{font-size:20px;}
+  #mmTabsHost .smart-tab .sn-mark{font-size:20px;}
+  /* The band: tiles go from 149/127px to ~84px — smaller orb, one-line
+     name, tighter padding/gap. Still 2x2, still orb-on-top, still the
+     same four destinations in the same order. */
+  .ov-second-row{gap:8px;padding:10px;margin-bottom:12px;}
+  .ov-second-row .ml-qa-item{padding:10px 8px;min-height:76px;gap:6px;font-size:15px;}
+  .ov-second-row .ml-qa-item .ml-qicon{width:28px;height:28px;}
+  .ov-second-row .ml-qa-item .ml-qicon svg{width:16px;height:16px;}
+  .ov-second-row .ml-qa-item .ml-qname{font-size:15px;white-space:nowrap;}
+  .ov-second-row .ml-qa-item .ml-qcount{font-size:15px;}
+  .ov-second-row .ml-compose-top{padding:10px 8px;min-height:76px;gap:6px;font-size:15px;}
+  .ov-second-row .ml-compose-top .ov-compose-orb{width:28px;height:28px;font-size:20px;}
+  .nm-msg{margin-top:0;}
+}
+
+/* --- D2: desktop — tabs + band a touch tighter, folders shorter --- */
+@media (min-width:641px){
+  #mmTabsHost{margin-bottom:10px;}
+  #mmTabsHost .smart-tabs{padding:4px 12px 8px;}
+  #mmTabsHost .smart-tab{padding:12px 22px;min-height:56px;}
+  .ov-second-row{padding:10px 16px;margin-bottom:14px;}
+  .ov-second-row .ml-qa-item,.ov-second-row .ml-compose-top{min-height:56px;padding:10px 16px;}
+  /* Mail folders: 66px -> ~52px each (padding 14 -> 8, icon stays
+     32px). Six folders save ~84px, so DRAFTS clears the dock. */
+  .mail-stage .ml-folder{padding:8px 18px;min-height:52px;}
+  .nm-msg{margin-top:0;}
+}
+
+/* --- D2: bottom padding on every scrollable pane --- */
+/* Mail list + read panes are real inner scrollers (overflow-y:auto):
+   the padding lets the last line scroll up clear of the fixed dock.
+   The chat rail + thread panes are page-scrolled, but the same
+   padding gives their last lines clearance at max page scroll. */
+.mail-stage .ml-list{padding-bottom:140px;}
+.mail-stage .ml-read{padding-bottom:200px;}
+.nm-msg-panes .nm-pane{padding-bottom:120px;}
+
+/* --- D3: the "···" button leaves the pill's centre (desktop) --- */
+/* .smart-tab is already position:relative (harvested). The "···" goes
+   absolute at the pill's right end, its hit-expanding ::after shrunk
+   to the button itself, and the label gets room so its text never
+   sits under the button. A centre click now lands on the label and
+   activates the tab; the "···" still opens its menu from the edge. */
+#mmTabsHost .smart-tab .sn-more{position:absolute;right:8px;top:50%;transform:translateY(-50%);margin:0;}
+#mmTabsHost .smart-tab .sn-more::after{inset:0;}
+#mmTabsHost .smart-tab .sn-label{padding-right:30px;}
+
+/* --- D4: the composer compresses so MESSAGE is visible at open --- */
+.ml-modal.mlx .ml-field{margin-bottom:10px;}
+.ml-modal.mlx .mlx-top{margin-bottom:12px;}
+.ml-modal.mlx .ml-modes{margin-bottom:10px;}
+.ml-modal.mlx textarea.mlx-body{height:150px;min-height:120px;}
+.ml-modal.mlx select[name="to"]{height:110px;}
+@media (max-width:640px){
+  .ml-modal.mlx{padding:16px;}
+  .ml-modal.mlx textarea.mlx-body{height:120px;min-height:96px;}
+  .ml-modal.mlx select[name="to"]{height:84px;}
+}
+/* TO pick row: one real tap-to-pick button per recipient. The native
+   multi-select stays (select_option still works on #mlToSel); the
+   buttons are the push-button-simple path that always works. */
+.mlx-to-picks{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 4px;}
+.mlx-to-pick{padding:8px 14px;border-radius:999px;border:1.5px solid rgba(255,255,255,.4);background:#050607;color:#ffffff;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;box-shadow:0 6px 14px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.14);}
+.mlx-to-pick:hover{border-color:#ffffff;transform:translateY(-2px);}
+.mlx-to-pick:active{transform:scale(.97);}
+.mlx-to-pick[aria-pressed="true"]{border-color:#ffffff;background:radial-gradient(130% 130% at 30% 20%, #b04fd0 0%, #8e24aa 50%, #4a1257 100%);box-shadow:0 0 14px -4px rgba(142,36,170,.85), 0 6px 14px rgba(0,0,0,.5);}
+/* Toasts wrap: the honest failure line is long, and white-space:nowrap
+   clipped it off both edges on phone. */
+.ml-toast-wrap{max-width:92vw;}
+.ml-toast{white-space:normal;text-align:center;max-width:92vw;}
+
+/* --- N1: phone folder strip wraps instead of clipping mid-word --- */
+@media (max-width:760px){
+  .mail-stage .ml-rail{flex-wrap:wrap;overflow-x:visible;gap:8px;}
+  .mail-stage .ml-folder{flex:1 0 calc(50% - 4px);min-width:0;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:10px 8px;font-size:15px;text-align:center;min-height:0;}
+  .mail-stage .ml-folder .ml-fname{white-space:normal;line-height:1.25;text-align:center;}
+  .mail-stage .ml-folder .ml-badge{margin-left:0;}
 }
 
 </style>
