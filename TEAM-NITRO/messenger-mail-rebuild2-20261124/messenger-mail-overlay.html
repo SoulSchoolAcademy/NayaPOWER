@@ -4121,18 +4121,6 @@ return {
 })();
 </script>
 
-<nav class="nm-onebar" aria-label="Naya — Add, Mail, Activity, Worlds, Ecosystem, Connect">
-  <div class="nm-onebar-row">
-  <button type="button" class="nm-onebar-btn" data-nm-bar="add" style="--bc:#8e24aa" aria-label="Add — create a post, a world, a note" title="Add — create a post, a world, a note"><span class="nm-ob-circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span><span class="nm-ob-lab">ADD</span></button>
-  <button type="button" class="nm-onebar-btn" data-nm-bar="mail" style="--bc:#0f52ba" aria-label="Mail" title="Mail"><span class="nm-ob-circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span class="nm-ob-lab">MAIL</span></button>
-  <button type="button" class="nm-onebar-btn" data-nm-bar="activity" style="--bc:#07925f" aria-label="Activity — conversations" title="Activity — conversations"><span class="nm-ob-circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="nm-ob-badge" id="nmActBadge" hidden></span></span><span class="nm-ob-lab">ACTIVITY</span></button>
-  </div>
-  <div class="nm-onebar-row">
-  <button type="button" class="nm-onebar-btn" data-nm-bar="worlds" style="--bc:#d4a017" aria-label="Worlds — spaces" title="Worlds — spaces"><span class="nm-ob-circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg></span><span class="nm-ob-lab">WORLDS</span></button>
-  <button type="button" class="nm-onebar-btn" data-nm-bar="ecosystem" style="--bc:#c2410c" aria-label="Ecosystem — the Hub" title="Ecosystem — the Hub"><span class="nm-ob-circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span><span class="nm-ob-lab">ECOSYSTEM</span></button>
-  <button type="button" class="nm-onebar-btn" data-nm-bar="connect" style="--bc:#c62828" aria-label="Connect — Connections page" title="Connect — Connections page"><span class="nm-ob-circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19.5c.7-3.4 2.9-5.2 5.5-5.2s4.8 1.8 5.5 5.2"/><circle cx="17" cy="9" r="2.7"/><path d="M16.2 14.6c2.5-.2 4.1 1.4 4.6 3.9"/></svg></span><span class="nm-ob-lab">CONNECT</span></button>
-  </div>
-</nav>
 <script>
 /* REBUILD2 wiring — icon row + ONE bar. Delegated: the chrome is built by nmInit. */
 (function(){
@@ -4486,6 +4474,47 @@ html{scroll-padding-top:130px;}
 .hub-rail-nav a{border-radius:999px;border:2px solid var(--nc, #8e24aa);box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 6px 16px rgba(0,0,0,.5), 0 0 14px -6px var(--nc, #8e24aa);}
 .hub-rail-nav a:hover{border-color:#ffffff;}
 
+/* --- 13. MESSENGER TALK-THROUGH (2026-11-25 09:26, SUPERSEDES 09:17/09:18) ---
+   The Messenger image (2d91e855) is RETRACTED as ground truth — it
+   is a negative example, not the target. The real instructions:
+   (1) Privacy out (already). (2) THE BOTTOM ICON BAR GOES — the
+   ADD/MAIL/ACTIVITY/WORLDS/ECOSYSTEM/CONNECT bar is removed from
+   this viewer entirely; the transform deletes the <nav> from the
+   source, and this rule is belt-and-braces. (3) THE TOGGLE LIVES IN
+   THE BOTTOM AREA — a slim fixed dock holding ONLY the toggle: wide
+   pill (aaa_1), red-N effect (raised, gloss, real object), high
+   contrast purple/blue halves. Everything else moves up. (4) ICONS
+   INSTANTLY READABLE — rebuilt in overlay.js as bold white glyphs
+   on raised obsidian balls. (5) ICON ROW AT THE VERY TOP — first
+   child of the chrome, under the header. (6) SMART TABS — N effect,
+   LESS GLOW, ULTRA-CLEAR TEXT: outer glow removed, top gloss
+   stronger, text 19px/800 pure white with a crisp shadow. */
+.nm-onebar{display:none !important;}
+/* Bottom dock: only the toggle lives here. */
+.nm-toggle-dock{position:fixed;left:var(--bw,96px);right:var(--bw,96px);bottom:var(--bw,96px);z-index:50;display:flex;justify-content:center;pointer-events:none;}
+.nm-toggle-dock .nm-toggle{pointer-events:auto;margin:0;flex:0 1 460px;max-width:460px;padding:6px;border:2px solid #ffffff;box-shadow:inset 0 2px 0 rgba(255,255,255,.45), inset 0 -10px 20px rgba(0,0,0,.8), 0 16px 36px rgba(0,0,0,.7), 0 0 24px -6px rgba(255,255,255,.35);}
+.nm-toggle-dock .nm-toggle-btn{padding:10px 16px;font-size:19px;}
+.nm-toggle-dock .nm-toggle-btn small{display:block;}
+.nm-toggle-dock .nm-toggle[data-tempo="mail"]::after{left:calc(50%);border-color:#0f52ba;box-shadow:0 10px 24px rgba(0,0,0,.75), 0 0 28px -4px rgba(15,82,186,.75), inset 0 1px 0 rgba(255,255,255,.2);}
+/* The bar is gone, so the stage needs less clearance and the plus
+   menu rides just above the dock (its inline bottom is beaten by
+   the !important rule — the dock top sits ~160px up on desktop). */
+.mail-stage{padding-bottom:calc(150px + env(safe-area-inset-bottom,0px));}
+.nm-plus-menu{bottom:180px !important;}
+.nm-ov-toast{bottom:180px;}
+/* Icons, rebuilt: bigger bolder white glyphs on raised obsidian
+   balls (the SVG swap itself is in overlay.js). */
+.nm-icon{border-width:2px;}
+.nm-icon svg{width:32px;height:32px;}
+@media (max-width:640px){.nm-icon{width:44px;height:44px;}.nm-icon svg{width:24px;height:24px;}}
+/* Smart tabs: N effect, LESS glow, ULTRA-CLEAR text. The outer glow
+   (0 0 14px -6px own-color) is gone — inset gloss + drop shadow
+   only. Text 19px, weight 800, pure white, one crisp shadow. */
+.smart-tab{background:radial-gradient(130% 130% at 30% 18%, rgba(255,255,255,.16) 0%, #2b2b35 28%, #0d0d12 55%, #050607 100%);border-width:2px;box-shadow:inset 0 2px 0 rgba(255,255,255,.5), inset 0 -8px 16px rgba(0,0,0,.7), 0 10px 22px rgba(0,0,0,.6);}
+.smart-tab:hover{box-shadow:inset 0 2px 0 rgba(255,255,255,.55), inset 0 -8px 16px rgba(0,0,0,.7), 0 14px 26px rgba(0,0,0,.65);}
+.smart-tab[aria-selected="true"]{box-shadow:inset 0 2px 0 rgba(255,255,255,.5), inset 0 -8px 16px rgba(0,0,0,.7), 0 10px 22px rgba(0,0,0,.6);outline:2px solid rgba(255,255,255,.85);outline-offset:2px;}
+.smart-tab b{font-size:19px;font-weight:800;color:#ffffff;text-shadow:0 1px 2px rgba(0,0,0,.9);}
+
 </style>
 <script id="ov-script">
 /* ===== OVERLAY ROUND — behavior (2026-11-25) =====
@@ -4603,9 +4632,7 @@ function buildLeftDrawer(){
     b.style.setProperty('--pc', d[1]); b.textContent = d[2];
     b.addEventListener('click', function(){
       closeSides();
-      var add = $('[data-nm-bar="add"]');
-      if(!add){ toast('Create is on the bottom bar.'); return; }
-      add.click();
+      openPlusMenuViaTrigger();
       setTimeout(function(){
         var item = $('.nm-plus-menu [data-plus="' + d[0] + '"]');
         if(item) item.click();
@@ -4875,20 +4902,16 @@ function removeSmartLinksRow(){
   if(sl && sl.parentNode) sl.parentNode.removeChild(sl);
 }
 
-/* ---------- TOGGLE IN THE BOTTOM ICON BAR (2026-11-25 09:18) ----------
-   SUPERSEDES the 09:15 "right in the top bar" move: the big
-   Messenger/Mail toggle goes IN the bottom icon bar, in the icon
-   area at the bottom, toggling back and forth there. Move the SAME
-   .nm-toggle node into .nm-onebar as its first child — its own row
-   above the six orbs, so the orb row stays exactly the Hub's bar.
-   The node's click handlers travel with it (nmSetTempo never
-   rebuilds the chrome — it only flips display + aria-pressed — so
-   no second toggle can resurrect, and the top bar keeps no toggle).
+/* ---------- TOGGLE IN THE BOTTOM AREA (2026-11-25 09:26) ----------
+   SUPERSEDES the 09:18 bottom-bar move: the icon bar is GONE, and
+   the big Messenger/Mail toggle lives alone in a slim fixed dock in
+   the bottom area — wide pill, red-N effect, raised, elegant, high
+   contrast. Move the SAME .nm-toggle node into a new .nm-toggle-dock
+   (handlers travel with it; nmSetTempo never rebuilds the chrome).
    The sliding ::after indicator is driven by the toggle's own
    data-tempo (v14's .mail-stage[data-tempo] selector no longer
    matches once the node leaves the stage), synced on every click
-   and by an aria-pressed observer for programmatic tempo changes
-   (bottom-bar MAIL/ACTIVITY taps). The chrome builds on a 250ms
+   and by an aria-pressed observer. The chrome builds on a 250ms
    interval, so the move polls until the toggle exists. */
 function syncToggleTempo(){
   var tog = $('.nm-toggle');
@@ -4896,11 +4919,18 @@ function syncToggleTempo(){
   var on = $('.nm-toggle-btn[aria-pressed="true"]', tog);
   if(on) tog.setAttribute('data-tempo', on.getAttribute('data-tempo'));
 }
-function moveToggleIntoBottomBar(){
-  var bar = $('.nm-onebar');
+function moveToggleIntoDock(){
   var tog = $('.nm-toggle');
-  if(bar && tog && tog.parentNode !== bar){
-    bar.insertBefore(tog, bar.firstChild);
+  if(!tog) return false;
+  var dock = $('.nm-toggle-dock');
+  if(!dock){
+    dock = document.createElement('div');
+    dock.className = 'nm-toggle-dock';
+    dock.setAttribute('aria-label', 'Messenger or Mail');
+    document.body.appendChild(dock);
+  }
+  if(tog.parentNode !== dock){
+    dock.appendChild(tog);
     tog.classList.add('nm-toggle-in-bar');
     syncToggleTempo();
     $all('.nm-toggle-btn', tog).forEach(function(b){
@@ -4910,16 +4940,77 @@ function moveToggleIntoBottomBar(){
       var mo = new MutationObserver(function(){ syncToggleTempo(); });
       mo.observe(tog, {attributes:true, subtree:true, attributeFilter:['aria-pressed']});
     }
-    return true;
   }
-  return !!(bar && tog);
+  return true;
 }
 function pollToggleMove(){
   var tries = 0;
   var iv = setInterval(function(){
     tries++;
-    if(moveToggleIntoBottomBar() || tries > 40){ clearInterval(iv); }
+    if(moveToggleIntoDock() || tries > 40){ clearInterval(iv); }
   }, 250);
+}
+
+/* ---------- ICON ROW: REBUILT + VERY TOP (2026-11-25 09:26) ----------
+   The 7 jewel icons were thin 1.8-stroke line glyphs you could not
+   read at a glance. Rebuilt as bold WHITE icons (2.6 stroke, bigger,
+   literal shapes — envelope, speech bubble with message lines, mic,
+   video camera, magnifier, pencil, filled paper plane) on the same
+   raised obsidian balls. The row moves to the VERY TOP of the viewer:
+   first child of the chrome, directly under the header. */
+var OV_ICON_SVGS = {
+  mail: '<svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>',
+  chat: '<svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5c-4.9 0-8.5 3.4-8.5 7.8 0 2.5 1.2 4.7 3.1 6.1L6 20.5l3.4-1.5c.8.2 1.7.3 2.6.3 4.9 0 8.5-3.4 8.5-7.8S16.9 3.5 12 3.5z"/><path d="M8 10.5h8M8 13.5h5"/></svg>',
+  voice: '<svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2.5" width="6" height="11.5" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3.5M8.5 21.5h7"/></svg>',
+  video: '<svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5.5" width="13.5" height="13" rx="2.5"/><path d="M15.5 10.5 22 6.5v11l-6.5-4"/></svg>',
+  search: '<svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4.5 4.5"/></svg>',
+  compose: '<svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4.5a2.4 2.4 0 0 1 3.4 3.4L8.5 17.3 4 18.5l1.2-4.5z"/><path d="M12.5 6.5l3.5 3.5"/></svg>',
+  send: '<svg viewBox="0 0 24 24" fill="#ffffff" stroke="none"><path d="M21.8 2.2 3.3 9.4c-.9.4-.9 1.6 0 2l7.6 3 3 7.6c.4.9 1.6.9 2 .1l7-18.5c.4-1-.5-1.8-1.1-1.4z"/><path d="M21.8 2.2 11 13" stroke="#050607" stroke-width="1.6" stroke-linecap="round"/></svg>'
+};
+function rebuildIcons(){
+  var done = 0;
+  $all('.nm-icon').forEach(function(btn){
+    var k = btn.getAttribute('data-nm-icon');
+    var svg = OV_ICON_SVGS[k];
+    if(!svg || btn.__ovIconDone) return;
+    btn.innerHTML = svg;
+    btn.__ovIconDone = true;
+    done++;
+  });
+  return done;
+}
+function moveIconRowToTop(){
+  var row = $('.nm-icon-row');
+  if(!row) return false;
+  var chrome = row.parentNode;
+  if(chrome && chrome.firstChild !== row) chrome.insertBefore(row, chrome.firstChild);
+  rebuildIcons();
+  return true;
+}
+function pollChromeMoves(){
+  var tries = 0;
+  var iv = setInterval(function(){
+    tries++;
+    if(moveIconRowToTop() || tries > 40){ clearInterval(iv); }
+  }, 250);
+}
+
+/* ---------- PLUS MENU WITHOUT THE BAR (2026-11-25 09:26) ----------
+   The bottom bar is gone, so the sidebar Create flow can no longer
+   click [data-nm-bar="add"]. The v14 plus menu still opens from the
+   same delegated document handler: dispatch one real bubbling click
+   on a temporary in-DOM trigger carrying data-nm-bar="add" — the
+   exact code path the bar button used — then remove the trigger.
+   The menu itself positions from its own fallback (bar null). */
+function openPlusMenuViaTrigger(){
+  var trig = document.createElement('button');
+  trig.type = 'button';
+  trig.setAttribute('data-nm-bar', 'add');
+  trig.setAttribute('aria-hidden', 'true');
+  trig.style.cssText = 'position:fixed;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;';
+  document.body.appendChild(trig);
+  trig.dispatchEvent(new MouseEvent('click', {bubbles:true, cancelable:true}));
+  trig.remove();
 }
 
 /* ---------- boot ---------- */
@@ -4929,6 +5020,7 @@ function boot(){
   buildRightRail();
   removeSmartLinksRow();
   pollToggleMove();
+  pollChromeMoves();
   /* Mail-relevant tabs: override BEFORE the strip mounts (the adapter
      mounts on a 250ms interval), then remount so the strip is built
      from the mail clusters on the first paint. */
