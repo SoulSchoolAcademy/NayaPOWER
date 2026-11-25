@@ -2098,6 +2098,19 @@ body.fp-stage-on.fp-dialed #fpNextBtn:active,body.fp-stage-on.fp-dialed #fpNextB
      overflow:hidden cuts the New-user line. With the returning view
      shown, the phone portal grows to 312px so the stack fits. */
   body.fp-returning .portal{width:min(80vw,312px);height:min(80vw,312px)}
+  /* PORTAL LOGIN MOBILE FIX 2026-11-24 (round 2) — fix 3's wider portal
+     un-wrapped #presence into a ~200px single line, but at its height the
+     circle's chord is only ~172px, so the ring sliced the final U
+     ("NAYA WELCOMES YO"). Let it wrap to two lines in the returning view,
+     exactly as v2 / the fresh view do (max-width 170px: dot + "NAYA
+     WELCOMES" on line 1, "YOU" on line 2) — and take the extra line's
+     height back out of the returning stack's own margins and gaps, so
+     the stack keeps fix 3's fit (New-user line spare) instead of growing
+     past it. Returning view only, phone only; fresh view and desktop
+     untouched. */
+  body.fp-returning .presence{max-width:170px;margin:0 auto 2px;line-height:1.25}
+  body.fp-returning .returning{margin-top:0;gap:5px}
+  body.fp-returning .returning-greet{margin-bottom:4px}
 }
 </style>
 <script>/* PORTAL LOGIN MOBILE FIX 2026-11-24 (fix 1) — lock the page before
