@@ -1316,6 +1316,50 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
  #depthBody .ib-layer-body p .d-sent + .d-sent{margin-top:12px}
 }
 </style>
+<style>
+/* FIX7F — see the block comment above the FIX7F reps in apply-fix7.cjs. */
+@keyframes fx7f-spin{to{transform:rotate(360deg)}}
+.fs-btn{position:absolute;top:8px;right:8px;z-index:5;width:34px;height:34px;min-height:34px;padding:0;flex:none;display:grid;place-items:center;border-radius:50%;cursor:pointer;border:2px solid rgba(255,255,255,.85);background:linear-gradient(135deg,#17171f,#050607);box-shadow:0 6px 16px rgba(0,0,0,.6),0 0 12px rgba(255,255,255,.18);transition:transform .18s ease,filter .18s ease}
+.fs-btn:hover{filter:brightness(1.15);transform:scale(1.06)}
+.fs-btn:active{transform:scale(.92)}
+.fs-btn svg{display:block}
+/* Continuation shells (.cont-ph) are zero-height, visibility:hidden placeholders
+   — their FS button is invisible and unreachable, and its 34px box was the
+   only thing making the shell read scroll-overflow 18 (prove7 rerun on the
+   FIX7F bytes: 34 overflow thirds, all cont-ph shells, all ov 18). Hide it
+   so the shell measures clean; nothing visible changes. */
+.cont-ph .fs-btn{display:none!important}
+/* When the centre slot shows TEXT, its own layer carries the button — the
+   frame's button hides so the board never shows two (found on my own
+   prove read-back, diag7f: Ch1 front showed 4 visible buttons). */
+.pm-art-frame #slideTextCenter:not([hidden]) ~ .fs-btn{display:none}
+#fsView .innov-pop-card{width:min(940px,100%);max-height:92vh}
+.fs-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.fs-title{color:#fff;font-family:"Cormorant Garamond",serif;font-size:19px;font-weight:700}
+.fs-img{width:100%;max-height:calc(92vh - 140px);object-fit:contain;border-radius:14px;display:block;background:#000}
+.fs-vid iframe,.fs-vid video{width:100%;aspect-ratio:16/9;border:0;border-radius:14px;display:block;background:#000}
+#fsView .fs-head{font-size:26px;margin-bottom:14px}
+#fsView .fs-para{font-size:20px;line-height:1.55;color:#f4efe3;font-family:"Cormorant Garamond",serif;margin:0 0 16px}
+@media(max-width:900px){
+ #depthBody .cont-full .ib-layer-body p{font-size:19px;line-height:1.5}
+}
+/* WHITE LIGHT ON EVERY N — less pink, more white light (H). */
+.ib-n img{box-shadow:0 0 0 2px rgba(255,255,255,.55),0 10px 20px rgba(0,0,0,.6),0 0 18px rgba(255,255,255,.45),0 0 42px rgba(255,255,255,.18)}
+.cover-n{box-shadow:0 0 0 2px rgba(255,255,255,.55),0 12px 24px rgba(0,0,0,.6),0 0 22px rgba(255,255,255,.5),0 0 48px rgba(255,255,255,.2)}
+.depth-thirds .ib-layer-body .depth-seal img{box-shadow:0 0 0 2px rgba(255,255,255,.55),0 10px 20px rgba(0,0,0,.6),0 0 18px rgba(255,255,255,.45),0 0 42px rgba(255,255,255,.18)}
+/* END BALL — white rim + glow, thin white orbit ring, slow-orbiting white diamond dot. */
+.end-ball .ib-layer-body .ib-img-el{border-radius:50%;box-shadow:0 0 0 2px rgba(255,255,255,.55),0 10px 24px rgba(0,0,0,.65),0 0 28px rgba(255,255,255,.5),0 0 70px rgba(255,255,255,.22)}
+.end-ball .ib-layer-body::after{content:"";position:absolute;top:18px;left:24px;right:24px;aspect-ratio:1/1;border-radius:50%;border:1.5px solid rgba(255,255,255,.5);box-shadow:0 0 18px rgba(255,255,255,.35),inset 0 0 18px rgba(255,255,255,.18);pointer-events:none}
+.end-ball .ib-layer-body::before{content:"";position:absolute;top:18px;left:24px;right:24px;aspect-ratio:1/1;border-radius:50%;background:radial-gradient(circle at 50% 0%,rgba(255,255,255,.95) 0 4px,rgba(255,255,255,.5) 4px 6px,transparent 7px),radial-gradient(circle at 50% 100%,rgba(255,255,255,.7) 0 3px,transparent 4px);animation:fx7f-spin 14s linear infinite;pointer-events:none}
+/* COVER BIG BALL — same white light, orbit ring + orbiting diamond. The
+   ring box is height:100% + aspect 1, centred by auto margins (no
+   transform, so the spin animation cannot fight it). No box-shadow on the
+   ball img itself: its element box is rectangular (contain), the glow
+   would be elliptical — the ring + dot carry the light. */
+#screen-cover .pm-cover-img[aria-label="The red N"]{position:relative}
+#screen-cover .pm-cover-img[aria-label="The red N"]::after{content:"";position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;height:100%;aspect-ratio:1/1;border-radius:50%;border:1.5px solid rgba(255,255,255,.5);box-shadow:0 0 18px rgba(255,255,255,.35),inset 0 0 18px rgba(255,255,255,.18);pointer-events:none}
+#screen-cover .pm-cover-img[aria-label="The red N"]::before{content:"";position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;height:100%;aspect-ratio:1/1;border-radius:50%;background:radial-gradient(circle at 50% 0%,rgba(255,255,255,.95) 0 4px,rgba(255,255,255,.5) 4px 6px,transparent 7px),radial-gradient(circle at 50% 100%,rgba(255,255,255,.7) 0 3px,transparent 4px);animation:fx7f-spin 14s linear infinite;pointer-events:none}
+</style>
 </head>
 <body>
 <div class="royal-frame" aria-hidden="true"><div class="rf-et top"></div><div class="rf-es left"></div><div class="rf-es right"></div><div class="rf-rim"></div><div class="rf-corner tl"></div><div class="rf-corner tr"></div><div class="rf-corner bl"></div><div class="rf-corner br"></div><div class="rf-n top"></div></div>
@@ -1376,6 +1420,7 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
                   <span class="v1-tag" id="slideV1Tag" hidden>v1 PLACEHOLDER</span>
                   <button class="swap-btn tool-btn" type="button" data-slot="C" aria-label="Member tools — change this slot"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5 5l1.8 1.8M17.2 17.2L19 19M19 5l-1.8 1.8M6.8 17.2L5 19"/></svg></button>
                   <button class="add-btn" type="button" data-slot="C">+ Behind</button>
+                  <button class="fs-btn" type="button" aria-label="View full screen"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
                 </div>
                 <div class="pm-cap">
                   <div class="onair"><span class="onair-dot"></span>NAYA PRESENTS</div>
@@ -1537,6 +1582,7 @@ function textPanelFor(g, txt, slot){
   return '<div class="ib-layer"><div class="ib-layer-body">'
     + '<button class="swap-btn tool-btn" type="button" data-slot="' + slot + '" aria-label="Member tools — change this slot"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5 5l1.8 1.8M17.2 17.2L19 19M19 5l-1.8 1.8M6.8 17.2L5 19"/></svg></button>'
     + '<button class="add-btn" type="button" data-slot="' + slot + '">+ Behind</button>'
+    + '<button class="fs-btn" type="button" aria-label="View full screen"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>'
     + '<div class="b-script">' + g.t + draftTag(g) + '</div>'
     + '<p>' + txt + '</p>'
     + '<button type="button" class="ib-n ib-n--small" aria-label="Go in — the full presentation behind this board"><img src="' + EMBED.ball + '" alt="The red N" /></button>'
@@ -1567,6 +1613,7 @@ function imgBoardFor(src, alt, slot, boardIdx){
   return '<div class="ib-layer ib-img fx7-cover"><div class="ib-layer-body">'
     + '<button class="swap-btn tool-btn" type="button" data-slot="' + slot + '" aria-label="Member tools — change this slot"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5 5l1.8 1.8M17.2 17.2L19 19M19 5l-1.8 1.8M6.8 17.2L5 19"/></svg></button>'
     + '<button class="add-btn" type="button" data-slot="' + slot + '">+ Behind</button>'
+    + '<button class="fs-btn" type="button" aria-label="View full screen"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>'
     + (isV1Img ? '<span class="v1-tag">v1 PLACEHOLDER</span>' : '')
     + media
     + '<button type="button" class="ib-n ib-n--small" aria-label="Go in — the full presentation behind this board"><img src="' + EMBED.ball + '" alt="The red N" /></button>'
@@ -1735,7 +1782,9 @@ document.addEventListener('keydown', function(e){
 var END_MODE = false;
 var END_TEXT = 'Begin. You have the ten — Naya Windows, Naya Door, Smart Tap, Collective Chain Technology, Smart Vault, Naya Code, Deletion by default, Smart Match, Everyone hired, The template.';
 function endImgBoard(src, alt){
-  return '<div class="ib-layer ib-img"><div class="ib-layer-body">'
+  var ballCls = (src === EMBED.ball) ? ' end-ball' : '';
+  return '<div class="ib-layer ib-img' + ballCls + '"><div class="ib-layer-body">'
+    + '<button class="fs-btn" type="button" aria-label="View full screen"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>'
     + '<img class="ib-img-el" src="' + src + '" alt="' + alt + '" />'
     + '<button type="button" class="ib-n ib-n--small" data-end="begin" aria-label="Begin again — back to Naya Windows"><img src="' + EMBED.ball + '" alt="The red N" /></button>'
     + '</div></div>';
@@ -1748,7 +1797,7 @@ function renderEnd(){
   document.getElementById('slideBg').style.backgroundImage = 'none';
   document.getElementById('slideBoardsA').innerHTML = endImgBoard(EMBED.slides[12], 'The red N on its pedestal');
   document.getElementById('slideBoardsB').innerHTML = endImgBoard(EMBED.ball, 'The red N');
-  document.getElementById('slideTextCenter').innerHTML = '<div class="ib-layer"><div class="ib-layer-body"><div class="b-script">What comes next</div><p>' + END_TEXT + '</p><div class="end-actions"><button class="naya-btn" id="endBegin" type="button">Begin again</button><button class="naya-btn naya-btn--secondary" id="endBack" type="button">Back to The template</button></div></div></div>';
+  document.getElementById('slideTextCenter').innerHTML = '<div class="ib-layer"><div class="ib-layer-body">' + '<button class="fs-btn" type="button" aria-label="View full screen"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>' + '<div class="b-script">What comes next</div><p>' + END_TEXT + '</p><div class="end-actions"><button class="naya-btn" id="endBegin" type="button">Begin again</button><button class="naya-btn naya-btn--secondary" id="endBack" type="button">Back to The template</button></div></div></div>';
   document.getElementById('slideTextCenter').hidden = false;
   document.getElementById('endBegin').addEventListener('click', beginAgain);
   document.getElementById('endBack').addEventListener('click', function(){ END_MODE = false; current = TOTAL - 1; renderSlide(); });
@@ -2622,7 +2671,8 @@ function thirdChrome(i, lvl){
      appears at Levels 2 and 3, where back has somewhere to go. */
   var back = (lvl > 1) ? '<button class="third-lvl" type="button" data-third="' + i + '" aria-label="Third ' + (i + 1) + ', level ' + lvl + ' of 3 — tap to go back one level">‹ L' + lvl + '</button>' : '';
   return back
-    + '<button class="swap-btn third-tool" type="button" data-slot="D' + i + '" aria-label="Change this slot — text, image or video">' + "<svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\" fill=\"none\" stroke=\"#fff\" stroke-width=\"2\" stroke-linecap=\"round\"><circle cx=\"12\" cy=\"12\" r=\"3.2\"/><path d=\"M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5 5l1.8 1.8M17.2 17.2L19 19M19 5l-1.8 1.8M6.8 17.2L5 19\"/></svg>" + '</button>';
+    + '<button class="swap-btn third-tool" type="button" data-slot="D' + i + '" aria-label="Change this slot — text, image or video">' + "<svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\" fill=\"none\" stroke=\"#fff\" stroke-width=\"2\" stroke-linecap=\"round\"><circle cx=\"12\" cy=\"12\" r=\"3.2\"/><path d=\"M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5 5l1.8 1.8M17.2 17.2L19 19M19 5l-1.8 1.8M6.8 17.2L5 19\"/></svg>" + '</button>'
+    + '<button class="fs-btn" type="button" aria-label="View full screen"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>';
 }
 function thirdPanelHTML(d, lvl, i){
   var chrome = thirdChrome(i, lvl);
@@ -2885,6 +2935,8 @@ document.getElementById('depthBody').addEventListener('click', function(e){
   if (sw){ openSwap(sw.getAttribute('data-slot'), 'swap'); return; }
   var mb = t.closest('.more-behind');
   if (mb){ openDepthAt(DEPTH_BOARD, parseInt(mb.getAttribute('data-layer'), 10)); return; }
+  var sealEl = t.closest('.depth-seal');
+  if (sealEl){ var dn = document.getElementById('depthN'); if (dn) dn.click(); return; }
   if (t.closest('button, a, iframe, video, .ib-vid, input, select, textarea')) return;
   var pe = t.closest('.ib-layer-body p');
   if (pe){
@@ -2946,5 +2998,105 @@ loadDepthStore();
 current = 0; renderSlide(); show('cover');
 </script>
 
+<script>
+/* FIX7F — FULL SCREEN (D)(7). Harvested overlay: .innov-pop + .innov-pop-card
+   (the depth view's own pattern) and the .depth-x close button. */
+(function(){
+  if (document.getElementById('fsView')) return;
+  var ov = document.createElement('div');
+  ov.id = 'fsView'; ov.className = 'innov-pop'; ov.hidden = true;
+  ov.innerHTML = '<div class="innov-pop-card fs-card" role="dialog" aria-modal="true" aria-label="Full screen view">'
+    + '<div class="fs-top"><span class="fs-title" id="fsTitle">Full screen</span>'
+    + '<button id="fsClose" class="depth-x" type="button" aria-label="Close full screen — back to where you were">\u00d7</button></div>'
+    + '<div class="fs-body" id="fsBody"></div></div>';
+  document.body.appendChild(ov);
+  var fsBody = document.getElementById('fsBody');
+  var fsTitle = document.getElementById('fsTitle');
+  function esc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  /* (C) SPLIT INTO 2-3 PARAGRAPHS: 5+ sentences -> 3 groups, 3-4 -> 2, 1-2 -> 1. */
+  function fsParas(text){
+    var parts = String(text || '').match(/[^.!?]+(?:[.!?]|$)/g) || [String(text || '')];
+    parts = parts.map(function(x){ return x.trim(); }).filter(Boolean);
+    if (!parts.length) return '';
+    var n = parts.length >= 5 ? 3 : (parts.length >= 3 ? 2 : 1);
+    var per = Math.ceil(parts.length / n), groups = [];
+    for (var i = 0; i < parts.length; i += per) groups.push(parts.slice(i, i + per).join(' '));
+    return groups.map(function(g){ return '<p class="fs-para">' + esc(g) + '</p>'; }).join('');
+  }
+  function openFS(kind, title, payload){
+    fsTitle.textContent = title || 'Full screen';
+    if (kind === 'img') fsBody.innerHTML = '<img class="fs-img" src="' + esc(payload) + '" alt="" />';
+    else if (kind === 'video') fsBody.innerHTML = '<div class="fs-vid">' + payload + '</div>';
+    else fsBody.innerHTML = '<div class="b-script fs-head">' + esc(title || '') + '</div>' + fsParas(payload);
+    ov.hidden = false;
+  }
+  function closeFS(){ ov.hidden = true; }
+  document.getElementById('fsClose').addEventListener('click', closeFS);
+  ov.addEventListener('click', function(e){ if (e.target === ov) closeFS(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !ov.hidden) closeFS(); });
+  document.addEventListener('click', function(e){
+    var btn = e.target && e.target.closest ? e.target.closest('.fs-btn') : null;
+    if (!btn) return;
+    var title = '', kind = '', payload = '';
+    var layer = btn.closest('.ib-layer');
+    var inDepth = !!btn.closest('#depthBody');
+    if (inDepth){
+      title = (document.getElementById('depthTitle') || {}).textContent || '';
+      var ti = layer ? parseInt(layer.getAttribute('data-third'), 10) : NaN;
+      var imgEl = layer ? layer.querySelector('.ib-img-el') : null;
+      var vidEl = layer ? (layer.querySelector('iframe') || layer.querySelector('[data-embed]')) : null;
+      if (imgEl){ kind = 'img'; payload = imgEl.getAttribute('src') || ''; }
+      else if (vidEl){ kind = 'video'; var em = vidEl.getAttribute('src') || vidEl.getAttribute('data-embed') || ''; payload = (typeof vidHTML === 'function') ? vidHTML(em) : '<iframe src="' + esc(em) + '"></iframe>'; }
+      else {
+        kind = 'text';
+        var full = '';
+        try { var k = (typeof depthSwapKey === 'function') ? depthSwapKey(ti) : null; if (k && window.DEPTH_FULL) full = window.DEPTH_FULL[k] || ''; } catch(err){}
+        if (!full){
+          try { var dd = applyDepthSwap(depthThirdsFor(DEPTH_BOARD, depthLayers(DEPTH_BOARD)[DEPTH_IDX])[ti], ti); if (dd && dd.txt) full = dd.txt; } catch(err2){}
+        }
+        if (!full && layer){ var pp = layer.querySelector('p'); if (pp) full = pp.textContent; }
+        payload = full;
+      }
+    } else if (layer){
+      var slotEl = layer.querySelector('[data-slot]');
+      var slot = slotEl ? slotEl.getAttribute('data-slot') : '';
+      var g = (typeof GROUPS !== 'undefined') ? GROUPS[(typeof current !== 'undefined') ? current : 0] : null;
+      title = (typeof END_MODE !== 'undefined' && END_MODE) ? 'What comes next' : (g ? g.t : '');
+      var img2 = layer.querySelector('.ib-img-el');
+      var vid2 = layer.querySelector('iframe') || layer.querySelector('[data-embed]');
+      if (img2){ kind = 'img'; payload = img2.getAttribute('src') || ''; }
+      else if (vid2){ kind = 'video'; var em2 = vid2.getAttribute('src') || vid2.getAttribute('data-embed') || ''; payload = (typeof vidHTML === 'function') ? vidHTML(em2) : '<iframe src="' + esc(em2) + '"></iframe>'; }
+      else {
+        kind = 'text';
+        var key = (typeof current !== 'undefined' ? current : 0) + '-' + slot;
+        var rt = (typeof RUNTIME_TXT !== 'undefined') ? RUNTIME_TXT[key] : undefined;
+        if (rt !== undefined) payload = rt;
+        else if (g) payload = (slot === 'B') ? (g.b || g.a) : g.a;
+        else { var pp2 = layer.querySelector('p'); payload = pp2 ? pp2.textContent : ''; }
+      }
+    } else {
+      var tc = document.getElementById('slideTextCenter');
+      var sv = document.getElementById('slideVideo');
+      var si = document.getElementById('slideImg');
+      var gg = (typeof GROUPS !== 'undefined') ? GROUPS[(typeof current !== 'undefined') ? current : 0] : null;
+      if (tc && !tc.hidden){
+        kind = 'text';
+        title = (typeof END_MODE !== 'undefined' && END_MODE) ? 'What comes next' : (gg ? gg.t : '');
+        if (typeof END_MODE !== 'undefined' && END_MODE) payload = (typeof END_TEXT !== 'undefined') ? END_TEXT : '';
+        else { var k2 = (typeof current !== 'undefined' ? current : 0) + '-C'; var rt2 = (typeof RUNTIME_TXT !== 'undefined') ? RUNTIME_TXT[k2] : undefined; payload = (rt2 !== undefined) ? rt2 : (gg ? gg.a : ''); }
+      } else if (sv && !sv.hidden){
+        kind = 'video'; title = gg ? gg.t : '';
+        var vf = sv.querySelector('iframe'); var em3 = vf ? (vf.getAttribute('src') || '') : '';
+        payload = (typeof vidHTML === 'function' && em3) ? vidHTML(em3) : (vf ? vf.outerHTML : '');
+      } else {
+        kind = 'img'; title = gg ? gg.t : '';
+        payload = si ? (si.getAttribute('src') || '') : '';
+      }
+    }
+    if (!kind) return;
+    openFS(kind, title, payload);
+  });
+})();
+</script>
 </body>
 </html>
