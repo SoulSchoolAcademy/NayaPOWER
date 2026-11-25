@@ -5,7 +5,59 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Jewel Icon Set — NayaNET</title>
 <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="jewel-icons.css">
+<style>
+/* jewel-icons.css — NayaNET custom jewel icon set, 2026-11-24
+   Consumption contract (see USAGE.md):
+   - Every icon is a standalone SVG: obsidian disc, silver bezel, white glyph
+     as a real object, its OWN deep colour as rim + halo + crown jewel.
+   - The orbit ring inside each full icon spins slowly on its own (60–180s,
+     alternating direction per icon, set inline in the SVG). No page CSS
+     needed for the orbit.
+   - The page only adds the touch: lift + ignite on hover, depress on press.
+   - One light, top-left, always. Deep palette only. Text 25 / 19 / 17. */
+
+.jwl {
+  --c: #8e24aa; /* the icon's own deep colour — set per use */
+  display: inline-block;
+  line-height: 0;
+  border-radius: 50%;
+  transition: transform .3s ease, filter .3s ease;
+  filter: drop-shadow(4px 6px 10px rgba(0, 0, 0, .6));
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.jwl img, .jwl svg { display: block; border-radius: 50%; }
+
+/* Hover: the WHOLE thing lifts and lights in its own colour. */
+.jwl:hover, .jwl:focus-visible {
+  transform: translateY(-4px) scale(1.04);
+  filter: drop-shadow(5px 9px 14px rgba(0, 0, 0, .65))
+          drop-shadow(0 0 16px var(--c));
+  outline: none;
+}
+/* Press: it depresses, scale 0.97, light shifts across it. */
+.jwl:active { transform: translateY(-1px) scale(.97); transition-duration: .1s; }
+
+/* Sizes — master art is 96; small variants are 48 and stay crisp to 16px. */
+.jwl-96 img, .jwl-96 svg { width: 96px; height: 96px; }
+.jwl-72 img, .jwl-72 svg { width: 72px; height: 72px; }
+.jwl-64 img, .jwl-64 svg { width: 64px; height: 64px; }
+.jwl-48 img, .jwl-48 svg { width: 48px; height: 48px; }
+.jwl-32 img, .jwl-32 svg { width: 32px; height: 32px; }
+.jwl-24 img, .jwl-24 svg { width: 24px; height: 24px; }
+.jwl-20 img, .jwl-20 svg { width: 20px; height: 20px; }
+.jwl-16 img, .jwl-16 svg { width: 16px; height: 16px; }
+
+/* In-message jewels: no lift on hover inside a bubble — they are the
+   message's own jewellery, not buttons. They keep their slow orbit. */
+.jwl-inmsg { cursor: default; filter: drop-shadow(2px 3px 5px rgba(0, 0, 0, .55)); }
+.jwl-inmsg:hover { transform: none; filter: drop-shadow(2px 3px 5px rgba(0, 0, 0, .55)); }
+.jwl-inmsg:active { transform: none; }
+
+/* A row of reaction jewels under a message. */
+.jwl-reactions { display: flex; gap: 8px; align-items: center; }
+
+</style>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { background: #050607; }
@@ -67,9 +119,19 @@
   @media (max-width: 480px) {
     body { padding: 24px 12px 48px; }
     .grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-    .bar { gap: 8px; padding: 16px 8px; }
+    /* Phone bar: one row, six jewels, no wrap. The labels hide here — and
+       only here. Measured with real Marcellus at 17px: ECOSYSTEM is 101px
+       wide and ACTIVITY 80px, against a 62px cell pitch at 390px, so six
+       17px labels cannot sit in one row without touching; shrinking them
+       would break laws §2.3 (no text under 17). The names still read in
+       the lede above the bar, in order, and the labels return on desktop. */
+    .bar { gap: 6px; padding: 16px 6px; flex-wrap: nowrap; }
+    .bar .cell { flex: 1 1 0; min-width: 0; }
+    .bar .jwl-64 img, .bar .jwl-64 svg { width: 44px; height: 44px; }
+    .bar .lbl { display: none; }
   }
 </style>
+<!-- Staged showcase: self-contained — all icons + jewel-icons.css inlined (the proof host serves one ?file= URL; relative refs 400 there). Edit showcase-template.html, then re-run: node build-showcase-inline.mjs. -->
 </head>
 <body>
 
@@ -81,98 +143,2046 @@ Obsidian inside. White glyph as a real object. The icon&rsquo;s own deep colour 
 <h2><span class="n">1.</span> The Core Set — Messaging</h2>
 <p class="lede">Twelve jewels for Messenger and Mail. Tap one — it lifts, lights in its own colour, and presses like a real thing.</p>
 <div class="grid">
-  <div class="tile" style="--c:#0f52ba"><span class="jwl jwl-96" style="--c:#0f52ba"><img src="icons/core/mail.svg" alt="Mail jewel"></span><div class="nm">Mail</div><div class="hx">Sapphire #0f52ba</div><div class="use">Smart Mail</div></div>
-  <div class="tile" style="--c:#8e24aa"><span class="jwl jwl-96" style="--c:#8e24aa"><img src="icons/core/chat.svg" alt="Chat jewel"></span><div class="nm">Chat</div><div class="hx">Royal purple #8e24aa</div><div class="use">Instant Messenger</div></div>
-  <div class="tile" style="--c:#07925f"><span class="jwl jwl-96" style="--c:#07925f"><img src="icons/core/audio.svg" alt="Audio jewel"></span><div class="nm">Audio</div><div class="hx">Emerald #07925f</div><div class="use">Voice note &amp; call</div></div>
-  <div class="tile" style="--c:#d4a017"><span class="jwl jwl-96" style="--c:#d4a017"><img src="icons/core/video.svg" alt="Video jewel"></span><div class="nm">Video</div><div class="hx">Deep gold #d4a017</div><div class="use">Smart Meet</div></div>
-  <div class="tile" style="--c:#c2410c"><span class="jwl jwl-96" style="--c:#c2410c"><img src="icons/core/search.svg" alt="Search jewel"></span><div class="nm">Search</div><div class="hx">Burnt orange #c2410c</div><div class="use">Find mail &amp; people</div></div>
-  <div class="tile" style="--c:#c62828"><span class="jwl jwl-96" style="--c:#c62828"><img src="icons/core/compose.svg" alt="Compose jewel"></span><div class="nm">Compose</div><div class="hx">Ruby #c62828</div><div class="use">Write a letter</div></div>
-  <div class="tile" style="--c:#a21caf"><span class="jwl jwl-96" style="--c:#a21caf"><img src="icons/core/send.svg" alt="Send jewel"></span><div class="nm">Send</div><div class="hx">Magenta #a21caf</div><div class="use">Send it</div></div>
-  <div class="tile" style="--c:#3f51b5"><span class="jwl jwl-96" style="--c:#3f51b5"><img src="icons/core/plus.svg" alt="Add jewel"></span><div class="nm">Add</div><div class="hx">Indigo #3f51b5</div><div class="use">Create anything</div></div>
-  <div class="tile" style="--c:#0e7490"><span class="jwl jwl-96" style="--c:#0e7490"><img src="icons/core/contacts.svg" alt="Contacts jewel"></span><div class="nm">Contacts</div><div class="hx">Cyan #0e7490</div><div class="use">Your people</div></div>
-  <div class="tile" style="--c:#6d28d9"><span class="jwl jwl-96" style="--c:#6d28d9"><img src="icons/core/lists.svg" alt="Lists jewel"></span><div class="nm">Lists</div><div class="hx">Violet #6d28d9</div><div class="use">Smart Lists</div></div>
-  <div class="tile" style="--c:#8e24aa"><span class="jwl jwl-96" style="--c:#8e24aa"><img src="icons/core/spaces.svg" alt="Spaces jewel"></span><div class="nm">Spaces</div><div class="hx">Royal purple #8e24aa</div><div class="use">Your worlds</div></div>
-  <div class="tile" style="--c:#0f52ba"><span class="jwl jwl-96" style="--c:#0f52ba"><img src="icons/core/settings.svg" alt="Settings jewel"></span><div class="nm">Settings</div><div class="hx">Sapphire #0f52ba</div><div class="use">How it works</div></div>
+  <div class="tile" style="--c:#0f52ba"><span class="jwl jwl-96" style="--c:#0f52ba"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Mail — NayaNET jewel icon">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="jmail-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="jmail-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="jmail-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="jmail-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#9fbae3"/><stop offset="45%" stop-color="#0f52ba"/><stop offset="100%" stop-color="#082d66"/>
+</linearGradient>
+<radialGradient id="jmail-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#0f52ba" stop-opacity=".5"/><stop offset="62%" stop-color="#0f52ba" stop-opacity=".16"/><stop offset="100%" stop-color="#0f52ba" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#jmail-halo)"/>
+<g class="jwl-orbit" style="animation-duration:120s;animation-direction:normal">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#0f52ba" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#jmail-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#jmail-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#0f52ba" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#jmail-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#jmail-gem)" stroke="url(#jmail-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<g transform="translate(25.3,25.6) scale(2)" fill="none" stroke="#000000" stroke-opacity=".5" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M3 7l9 6 9-6"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="url(#jmail-glyph)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M3 7l9 6 9-6"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="#ffffff" stroke-opacity=".9" stroke-width="1.09" stroke-linecap="round"><path d="M7.5 5.5l1.6-1.1"/></g>
+</svg></span><div class="nm">Mail</div><div class="hx">Sapphire #0f52ba</div><div class="use">Smart Mail</div></div>
+  <div class="tile" style="--c:#8e24aa"><span class="jwl jwl-96" style="--c:#8e24aa"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Chat — NayaNET jewel icon">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="jchat-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="jchat-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="jchat-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="jchat-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#d2a7dd"/><stop offset="45%" stop-color="#8e24aa"/><stop offset="100%" stop-color="#4e145e"/>
+</linearGradient>
+<radialGradient id="jchat-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#8e24aa" stop-opacity=".5"/><stop offset="62%" stop-color="#8e24aa" stop-opacity=".16"/><stop offset="100%" stop-color="#8e24aa" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#jchat-halo)"/>
+<g class="jwl-orbit" style="animation-duration:75s;animation-direction:reverse">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#8e24aa" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#jchat-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#jchat-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#8e24aa" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#jchat-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#jchat-gem)" stroke="url(#jchat-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<g transform="translate(25.3,25.6) scale(2)" fill="none" stroke="#000000" stroke-opacity=".5" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="url(#jchat-glyph)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="#ffffff" stroke-opacity=".9" stroke-width="1.09" stroke-linecap="round"><path d="M7.5 5.5l1.6-1.1"/></g>
+</svg></span><div class="nm">Chat</div><div class="hx">Royal purple #8e24aa</div><div class="use">Instant Messenger</div></div>
+  <div class="tile" style="--c:#07925f"><span class="jwl jwl-96" style="--c:#07925f"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Audio — NayaNET jewel icon">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="jaudio-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="jaudio-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="jaudio-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="jaudio-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#9cd3bf"/><stop offset="45%" stop-color="#07925f"/><stop offset="100%" stop-color="#045034"/>
+</linearGradient>
+<radialGradient id="jaudio-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#07925f" stop-opacity=".5"/><stop offset="62%" stop-color="#07925f" stop-opacity=".16"/><stop offset="100%" stop-color="#07925f" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#jaudio-halo)"/>
+<g class="jwl-orbit" style="animation-duration:150s;animation-direction:normal">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#07925f" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#jaudio-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#jaudio-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#07925f" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#jaudio-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#jaudio-gem)" stroke="url(#jaudio-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<g transform="translate(25.3,25.6) scale(2)" fill="none" stroke="#000000" stroke-opacity=".5" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v4"/><path d="M8 23h8"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="url(#jaudio-glyph)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v4"/><path d="M8 23h8"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="#ffffff" stroke-opacity=".9" stroke-width="1.09" stroke-linecap="round"><path d="M7.5 5.5l1.6-1.1"/></g>
+</svg></span><div class="nm">Audio</div><div class="hx">Emerald #07925f</div><div class="use">Voice note &amp; call</div></div>
+  <div class="tile" style="--c:#d4a017"><span class="jwl jwl-96" style="--c:#d4a017"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Video — NayaNET jewel icon">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="jvideo-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="jvideo-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="jvideo-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="jvideo-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#eed9a2"/><stop offset="45%" stop-color="#d4a017"/><stop offset="100%" stop-color="#75580d"/>
+</linearGradient>
+<radialGradient id="jvideo-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#d4a017" stop-opacity=".5"/><stop offset="62%" stop-color="#d4a017" stop-opacity=".16"/><stop offset="100%" stop-color="#d4a017" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#jvideo-halo)"/>
+<g class="jwl-orbit" style="animation-duration:90s;animation-direction:reverse">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#d4a017" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#jvideo-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#jvideo-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#d4a017" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#jvideo-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#jvideo-gem)" stroke="url(#jvideo-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<g transform="translate(25.3,25.6) scale(2)" fill="none" stroke="#000000" stroke-opacity=".5" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="url(#jvideo-glyph)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="#ffffff" stroke-opacity=".9" stroke-width="1.09" stroke-linecap="round"><path d="M7.5 5.5l1.6-1.1"/></g>
+</svg></span><div class="nm">Video</div><div class="hx">Deep gold #d4a017</div><div class="use">Smart Meet</div></div>
+  <div class="tile" style="--c:#c2410c"><span class="jwl jwl-96" style="--c:#c2410c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Search — NayaNET jewel icon">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="jsearch-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="jsearch-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="jsearch-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="jsearch-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#e7b39e"/><stop offset="45%" stop-color="#c2410c"/><stop offset="100%" stop-color="#6b2407"/>
+</linearGradient>
+<radialGradient id="jsearch-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#c2410c" stop-opacity=".5"/><stop offset="62%" stop-color="#c2410c" stop-opacity=".16"/><stop offset="100%" stop-color="#c2410c" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#jsearch-halo)"/>
+<g class="jwl-orbit" style="animation-duration:180s;animation-direction:normal">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#c2410c" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#jsearch-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#jsearch-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#c2410c" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#jsearch-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#jsearch-gem)" stroke="url(#jsearch-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<g transform="translate(25.3,25.6) scale(2)" fill="none" stroke="#000000" stroke-opacity=".5" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="url(#jsearch-glyph)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="#ffffff" stroke-opacity=".9" stroke-width="1.09" stroke-linecap="round"><path d="M7.5 5.5l1.6-1.1"/></g>
+</svg></span><div class="nm">Search</div><div class="hx">Burnt orange #c2410c</div><div class="use">Find mail &amp; people</div></div>
+  <div class="tile" style="--c:#c62828"><span class="jwl jwl-96" style="--c:#c62828"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Compose — NayaNET jewel icon">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="jcompose-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="jcompose-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="jcompose-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="jcompose-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#e8a9a9"/><stop offset="45%" stop-color="#c62828"/><stop offset="100%" stop-color="#6d1616"/>
+</linearGradient>
+<radialGradient id="jcompose-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#c62828" stop-opacity=".5"/><stop offset="62%" stop-color="#c62828" stop-opacity=".16"/><stop offset="100%" stop-color="#c62828" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#jcompose-halo)"/>
+<g class="jwl-orbit" style="animation-duration:60s;animation-direction:reverse">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#c62828" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#jcompose-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#jcompose-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#c62828" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#jcompose-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#jcompose-gem)" stroke="url(#jcompose-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<g transform="translate(25.3,25.6) scale(2)" fill="none" stroke="#000000" stroke-opacity=".5" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="url(#jcompose-glyph)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="#ffffff" stroke-opacity=".9" stroke-width="1.09" stroke-linecap="round"><path d="M7.5 5.5l1.6-1.1"/></g>
+</svg></span><div class="nm">Compose</div><div class="hx">Ruby #c62828</div><div class="use">Write a letter</div></div>
+  <div class="tile" style="--c:#a21caf"><span class="jwl jwl-96" style="--c:#a21caf"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Send — NayaNET jewel icon">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="jsend-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="jsend-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="jsend-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="jsend-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#daa4df"/><stop offset="45%" stop-color="#a21caf"/><stop offset="100%" stop-color="#590f60"/>
+</linearGradient>
+<radialGradient id="jsend-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#a21caf" stop-opacity=".5"/><stop offset="62%" stop-color="#a21caf" stop-opacity=".16"/><stop offset="100%" stop-color="#a21caf" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#jsend-halo)"/>
+<g class="jwl-orbit" style="animation-duration:135s;animation-direction:normal">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#a21caf" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#jsend-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#jsend-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#a21caf" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#jsend-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#jsend-gem)" stroke="url(#jsend-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<g transform="translate(25.3,25.6) scale(2)" fill="none" stroke="#000000" stroke-opacity=".5" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 22-7z"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="url(#jsend-glyph)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 22-7z"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="#ffffff" stroke-opacity=".9" stroke-width="1.09" stroke-linecap="round"><path d="M7.5 5.5l1.6-1.1"/></g>
+</svg></span><div class="nm">Send</div><div class="hx">Magenta #a21caf</div><div class="use">Send it</div></div>
+  <div class="tile" style="--c:#3f51b5"><span class="jwl jwl-96" style="--c:#3f51b5"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Add — NayaNET jewel icon">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="jplus-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="jplus-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="jplus-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="jplus-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#b2b9e1"/><stop offset="45%" stop-color="#3f51b5"/><stop offset="100%" stop-color="#232d64"/>
+</linearGradient>
+<radialGradient id="jplus-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#3f51b5" stop-opacity=".5"/><stop offset="62%" stop-color="#3f51b5" stop-opacity=".16"/><stop offset="100%" stop-color="#3f51b5" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#jplus-halo)"/>
+<g class="jwl-orbit" style="animation-duration:105s;animation-direction:reverse">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#3f51b5" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#jplus-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#jplus-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#3f51b5" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#jplus-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#jplus-gem)" stroke="url(#jplus-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<g transform="translate(25.3,25.6) scale(2)" fill="none" stroke="#000000" stroke-opacity=".5" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="url(#jplus-glyph)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="#ffffff" stroke-opacity=".9" stroke-width="1.09" stroke-linecap="round"><path d="M7.5 5.5l1.6-1.1"/></g>
+</svg></span><div class="nm">Add</div><div class="hx">Indigo #3f51b5</div><div class="use">Create anything</div></div>
+  <div class="tile" style="--c:#0e7490"><span class="jwl jwl-96" style="--c:#0e7490"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Contacts — NayaNET jewel icon">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="jcontacts-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="jcontacts-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="jcontacts-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="jcontacts-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#9fc7d3"/><stop offset="45%" stop-color="#0e7490"/><stop offset="100%" stop-color="#08404f"/>
+</linearGradient>
+<radialGradient id="jcontacts-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#0e7490" stop-opacity=".5"/><stop offset="62%" stop-color="#0e7490" stop-opacity=".16"/><stop offset="100%" stop-color="#0e7490" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#jcontacts-halo)"/>
+<g class="jwl-orbit" style="animation-duration:165s;animation-direction:normal">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#0e7490" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#jcontacts-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#jcontacts-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#0e7490" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#jcontacts-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#jcontacts-gem)" stroke="url(#jcontacts-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<g transform="translate(25.3,25.6) scale(2)" fill="none" stroke="#000000" stroke-opacity=".5" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="url(#jcontacts-glyph)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="#ffffff" stroke-opacity=".9" stroke-width="1.09" stroke-linecap="round"><path d="M7.5 5.5l1.6-1.1"/></g>
+</svg></span><div class="nm">Contacts</div><div class="hx">Cyan #0e7490</div><div class="use">Your people</div></div>
+  <div class="tile" style="--c:#6d28d9"><span class="jwl jwl-96" style="--c:#6d28d9"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Lists — NayaNET jewel icon">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="jlists-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="jlists-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="jlists-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="jlists-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#c5a9f0"/><stop offset="45%" stop-color="#6d28d9"/><stop offset="100%" stop-color="#3c1677"/>
+</linearGradient>
+<radialGradient id="jlists-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#6d28d9" stop-opacity=".5"/><stop offset="62%" stop-color="#6d28d9" stop-opacity=".16"/><stop offset="100%" stop-color="#6d28d9" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#jlists-halo)"/>
+<g class="jwl-orbit" style="animation-duration:70s;animation-direction:reverse">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#6d28d9" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#jlists-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#jlists-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#6d28d9" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#jlists-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#jlists-gem)" stroke="url(#jlists-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<g transform="translate(25.3,25.6) scale(2)" fill="none" stroke="#000000" stroke-opacity=".5" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="url(#jlists-glyph)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="#ffffff" stroke-opacity=".9" stroke-width="1.09" stroke-linecap="round"><path d="M7.5 5.5l1.6-1.1"/></g>
+</svg></span><div class="nm">Lists</div><div class="hx">Violet #6d28d9</div><div class="use">Smart Lists</div></div>
+  <div class="tile" style="--c:#8e24aa"><span class="jwl jwl-96" style="--c:#8e24aa"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Spaces — NayaNET jewel icon">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="jspaces-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="jspaces-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="jspaces-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="jspaces-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#d2a7dd"/><stop offset="45%" stop-color="#8e24aa"/><stop offset="100%" stop-color="#4e145e"/>
+</linearGradient>
+<radialGradient id="jspaces-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#8e24aa" stop-opacity=".5"/><stop offset="62%" stop-color="#8e24aa" stop-opacity=".16"/><stop offset="100%" stop-color="#8e24aa" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#jspaces-halo)"/>
+<g class="jwl-orbit" style="animation-duration:120s;animation-direction:normal">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#8e24aa" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#jspaces-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#jspaces-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#8e24aa" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#jspaces-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#jspaces-gem)" stroke="url(#jspaces-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<g transform="translate(25.3,25.6) scale(2)" fill="none" stroke="#000000" stroke-opacity=".5" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="url(#jspaces-glyph)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="#ffffff" stroke-opacity=".9" stroke-width="1.09" stroke-linecap="round"><path d="M7.5 5.5l1.6-1.1"/></g>
+</svg></span><div class="nm">Spaces</div><div class="hx">Royal purple #8e24aa</div><div class="use">Your worlds</div></div>
+  <div class="tile" style="--c:#0f52ba"><span class="jwl jwl-96" style="--c:#0f52ba"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Settings — NayaNET jewel icon">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="jsettings-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="jsettings-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="jsettings-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="jsettings-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#9fbae3"/><stop offset="45%" stop-color="#0f52ba"/><stop offset="100%" stop-color="#082d66"/>
+</linearGradient>
+<radialGradient id="jsettings-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#0f52ba" stop-opacity=".5"/><stop offset="62%" stop-color="#0f52ba" stop-opacity=".16"/><stop offset="100%" stop-color="#0f52ba" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#jsettings-halo)"/>
+<g class="jwl-orbit" style="animation-duration:85s;animation-direction:reverse">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#0f52ba" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#jsettings-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#jsettings-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#0f52ba" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#jsettings-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#jsettings-gem)" stroke="url(#jsettings-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<g transform="translate(25.3,25.6) scale(2)" fill="none" stroke="#000000" stroke-opacity=".5" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="url(#jsettings-glyph)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="#ffffff" stroke-opacity=".9" stroke-width="1.09" stroke-linecap="round"><path d="M7.5 5.5l1.6-1.1"/></g>
+</svg></span><div class="nm">Settings</div><div class="hx">Sapphire #0f52ba</div><div class="use">How it works</div></div>
 </div>
 
 <h2><span class="n">2.</span> The Bottom Bar — As It Sits</h2>
 <p class="lede">ADD purple · MAIL blue · ACTIVITY green · WORLDS gold · ECOSYSTEM orange · CONNECT red. Never the same colour twice in a row.</p>
 <div class="bar">
-  <div class="cell"><span class="jwl jwl-64" style="--c:#8e24aa"><img src="icons/core/plus.svg" alt="Add"></span><div class="lbl">ADD</div></div>
-  <div class="cell"><span class="jwl jwl-64" style="--c:#0f52ba"><img src="icons/core/mail.svg" alt="Mail"></span><div class="lbl">MAIL</div></div>
-  <div class="cell"><span class="jwl jwl-64" style="--c:#07925f"><img src="icons/presentation/bar-activity.svg" alt="Activity"></span><div class="lbl">ACTIVITY</div></div>
-  <div class="cell"><span class="jwl jwl-64" style="--c:#d4a017"><img src="icons/core/spaces.svg" alt="Worlds"></span><div class="lbl">WORLDS</div></div>
-  <div class="cell"><span class="jwl jwl-64" style="--c:#c2410c"><img src="icons/presentation/bar-ecosystem.svg" alt="Ecosystem"></span><div class="lbl">ECOSYSTEM</div></div>
-  <div class="cell"><span class="jwl jwl-64" style="--c:#c62828"><img src="icons/presentation/bar-connect.svg" alt="Connect"></span><div class="lbl">CONNECT</div></div>
+  <div class="cell"><span class="jwl jwl-64" style="--c:#8e24aa"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Add — NayaNET jewel icon">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="jbaradd-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="jbaradd-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="jbaradd-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="jbaradd-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#d2a7dd"/><stop offset="45%" stop-color="#8e24aa"/><stop offset="100%" stop-color="#4e145e"/>
+</linearGradient>
+<radialGradient id="jbaradd-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#8e24aa" stop-opacity=".5"/><stop offset="62%" stop-color="#8e24aa" stop-opacity=".16"/><stop offset="100%" stop-color="#8e24aa" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#jbaradd-halo)"/>
+<g class="jwl-orbit" style="animation-duration:95s;animation-direction:normal">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#8e24aa" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#jbaradd-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#jbaradd-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#8e24aa" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#jbaradd-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#jbaradd-gem)" stroke="url(#jbaradd-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<g transform="translate(25.3,25.6) scale(2)" fill="none" stroke="#000000" stroke-opacity=".5" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="url(#jbaradd-glyph)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="#ffffff" stroke-opacity=".9" stroke-width="1.09" stroke-linecap="round"><path d="M7.5 5.5l1.6-1.1"/></g>
+</svg></span><div class="lbl">ADD</div></div>
+  <div class="cell"><span class="jwl jwl-64" style="--c:#0f52ba"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Mail — NayaNET jewel icon">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="jmail-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="jmail-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="jmail-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="jmail-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#9fbae3"/><stop offset="45%" stop-color="#0f52ba"/><stop offset="100%" stop-color="#082d66"/>
+</linearGradient>
+<radialGradient id="jmail-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#0f52ba" stop-opacity=".5"/><stop offset="62%" stop-color="#0f52ba" stop-opacity=".16"/><stop offset="100%" stop-color="#0f52ba" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#jmail-halo)"/>
+<g class="jwl-orbit" style="animation-duration:120s;animation-direction:normal">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#0f52ba" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#jmail-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#jmail-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#0f52ba" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#jmail-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#jmail-gem)" stroke="url(#jmail-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<g transform="translate(25.3,25.6) scale(2)" fill="none" stroke="#000000" stroke-opacity=".5" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M3 7l9 6 9-6"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="url(#jmail-glyph)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M3 7l9 6 9-6"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="#ffffff" stroke-opacity=".9" stroke-width="1.09" stroke-linecap="round"><path d="M7.5 5.5l1.6-1.1"/></g>
+</svg></span><div class="lbl">MAIL</div></div>
+  <div class="cell"><span class="jwl jwl-64" style="--c:#07925f"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Activity — NayaNET jewel icon">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="jbaractivity-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="jbaractivity-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="jbaractivity-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="jbaractivity-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#9cd3bf"/><stop offset="45%" stop-color="#07925f"/><stop offset="100%" stop-color="#045034"/>
+</linearGradient>
+<radialGradient id="jbaractivity-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#07925f" stop-opacity=".5"/><stop offset="62%" stop-color="#07925f" stop-opacity=".16"/><stop offset="100%" stop-color="#07925f" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#jbaractivity-halo)"/>
+<g class="jwl-orbit" style="animation-duration:95s;animation-direction:normal">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#07925f" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#jbaractivity-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#jbaractivity-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#07925f" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#jbaractivity-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#jbaractivity-gem)" stroke="url(#jbaractivity-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<g transform="translate(25.3,25.6) scale(2)" fill="none" stroke="#000000" stroke-opacity=".5" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="url(#jbaractivity-glyph)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="#ffffff" stroke-opacity=".9" stroke-width="1.09" stroke-linecap="round"><path d="M7.5 5.5l1.6-1.1"/></g>
+</svg></span><div class="lbl">ACTIVITY</div></div>
+  <div class="cell"><span class="jwl jwl-64" style="--c:#d4a017"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Worlds — NayaNET jewel icon">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="jbarworlds-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="jbarworlds-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="jbarworlds-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="jbarworlds-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#eed9a2"/><stop offset="45%" stop-color="#d4a017"/><stop offset="100%" stop-color="#75580d"/>
+</linearGradient>
+<radialGradient id="jbarworlds-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#d4a017" stop-opacity=".5"/><stop offset="62%" stop-color="#d4a017" stop-opacity=".16"/><stop offset="100%" stop-color="#d4a017" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#jbarworlds-halo)"/>
+<g class="jwl-orbit" style="animation-duration:95s;animation-direction:normal">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#d4a017" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#jbarworlds-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#jbarworlds-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#d4a017" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#jbarworlds-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#jbarworlds-gem)" stroke="url(#jbarworlds-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<g transform="translate(25.3,25.6) scale(2)" fill="none" stroke="#000000" stroke-opacity=".5" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="url(#jbarworlds-glyph)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="#ffffff" stroke-opacity=".9" stroke-width="1.09" stroke-linecap="round"><path d="M7.5 5.5l1.6-1.1"/></g>
+</svg></span><div class="lbl">WORLDS</div></div>
+  <div class="cell"><span class="jwl jwl-64" style="--c:#c2410c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Ecosystem — NayaNET jewel icon">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="jbarecosystem-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="jbarecosystem-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="jbarecosystem-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="jbarecosystem-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#e7b39e"/><stop offset="45%" stop-color="#c2410c"/><stop offset="100%" stop-color="#6b2407"/>
+</linearGradient>
+<radialGradient id="jbarecosystem-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#c2410c" stop-opacity=".5"/><stop offset="62%" stop-color="#c2410c" stop-opacity=".16"/><stop offset="100%" stop-color="#c2410c" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#jbarecosystem-halo)"/>
+<g class="jwl-orbit" style="animation-duration:95s;animation-direction:normal">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#c2410c" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#jbarecosystem-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#jbarecosystem-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#c2410c" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#jbarecosystem-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#jbarecosystem-gem)" stroke="url(#jbarecosystem-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<g transform="translate(25.3,25.6) scale(2)" fill="none" stroke="#000000" stroke-opacity=".5" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="url(#jbarecosystem-glyph)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="#ffffff" stroke-opacity=".9" stroke-width="1.09" stroke-linecap="round"><path d="M7.5 5.5l1.6-1.1"/></g>
+</svg></span><div class="lbl">ECOSYSTEM</div></div>
+  <div class="cell"><span class="jwl jwl-64" style="--c:#c62828"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Connect — NayaNET jewel icon">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="jbarconnect-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="jbarconnect-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="jbarconnect-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="jbarconnect-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#e8a9a9"/><stop offset="45%" stop-color="#c62828"/><stop offset="100%" stop-color="#6d1616"/>
+</linearGradient>
+<radialGradient id="jbarconnect-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#c62828" stop-opacity=".5"/><stop offset="62%" stop-color="#c62828" stop-opacity=".16"/><stop offset="100%" stop-color="#c62828" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#jbarconnect-halo)"/>
+<g class="jwl-orbit" style="animation-duration:95s;animation-direction:normal">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#c62828" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#jbarconnect-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#jbarconnect-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#c62828" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#jbarconnect-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#jbarconnect-gem)" stroke="url(#jbarconnect-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<g transform="translate(25.3,25.6) scale(2)" fill="none" stroke="#000000" stroke-opacity=".5" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="url(#jbarconnect-glyph)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="#ffffff" stroke-opacity=".9" stroke-width="1.09" stroke-linecap="round"><path d="M7.5 5.5l1.6-1.1"/></g>
+</svg></span><div class="lbl">CONNECT</div></div>
 </div>
 
 <h2><span class="n">3.</span> In The Message — Ours Before A Word Is Read</h2>
 <p class="lede">The sender mark, the message-type jewels and the reaction jewels ride inside the message itself. Small-size legibility is the test: crisp and real at 16–24px.</p>
 <div class="thread">
   <div class="msg">
-    <span class="jwl jwl-inmsg jwl-48" style="--c:#8e24aa"><img src="icons/presentation/naya-mark.svg" alt="Naya mark"></span>
+    <span class="jwl jwl-inmsg jwl-48" style="--c:#8e24aa"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Naya mark — NayaNET jewel icon">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="jnayamark-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="jnayamark-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="jnayamark-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="jnayamark-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#d2a7dd"/><stop offset="45%" stop-color="#8e24aa"/><stop offset="100%" stop-color="#4e145e"/>
+</linearGradient>
+<radialGradient id="jnayamark-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#8e24aa" stop-opacity=".5"/><stop offset="62%" stop-color="#8e24aa" stop-opacity=".16"/><stop offset="100%" stop-color="#8e24aa" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#jnayamark-halo)"/>
+<g class="jwl-orbit" style="animation-duration:120s"><circle cx="48" cy="48" r="44" fill="none" stroke="#8e24aa" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/><circle cx="48" cy="4" r="2.8" fill="url(#jnayamark-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/></g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#jnayamark-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#8e24aa" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#jnayamark-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#jnayamark-gem)" stroke="url(#jnayamark-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<g transform="translate(24,24) scale(2)">
+<polygon points="12,1.5 22.5,12 12,22.5 1.5,12" fill="url(#jnayamark-gem)" stroke="url(#jnayamark-silver)" stroke-width="1.1" stroke-linejoin="round"/>
+<path d="M12 1.5L12 22.5M1.5 12L22.5 12M12 1.5L6.5 17.5M12 1.5L17.5 17.5" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".8"/>
+<circle cx="9" cy="8" r="1" fill="#ffffff"/>
+</g>
+</svg></span>
     <div class="bubble">
-      <div class="who"><span class="jwl jwl-inmsg jwl-20" style="--c:#8e24aa"><img src="icons/presentation/type-chat-sm.svg" alt="Chat"></span> Naya · Instant Messenger</div>
+      <div class="who"><span class="jwl jwl-inmsg jwl-20" style="--c:#8e24aa"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Message type — Chat — NayaNET jewel icon, small">
+<defs>
+<radialGradient id="stypechat-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="stypechat-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="stypechat-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="stypechat-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#d2a7dd"/><stop offset="45%" stop-color="#8e24aa"/><stop offset="100%" stop-color="#4e145e"/>
+</linearGradient>
+<radialGradient id="stypechat-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#8e24aa" stop-opacity=".5"/><stop offset="62%" stop-color="#8e24aa" stop-opacity=".16"/><stop offset="100%" stop-color="#8e24aa" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="24" cy="24" r="23" fill="url(#stypechat-halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#stypechat-disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#8e24aa" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+<g>
+<polygon points="24,1.5 27,4.5 24,7.5 21,4.5" fill="url(#stypechat-gem)" stroke="url(#stypechat-silver)" stroke-width="1"/>
+<path d="M24 1.5L24 7.5M21 4.5L27 4.5M24 1.5L22.35 5.85M24 1.5L25.65 5.85" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="23.16" cy="3.6" r="0.48" fill="#ffffff"/>
+</g>
+<g transform="translate(12.6,13) scale(0.95)" fill="none" stroke="#000000" stroke-opacity=".5" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></g>
+<g transform="translate(12,12) scale(0.95)" fill="none" stroke="url(#stypechat-glyph)" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></g>
+</svg></span> Naya · Instant Messenger</div>
       <div class="txt">Your world is ready. Tap in and see it.</div>
       <div class="reacts jwl-reactions">
-        <span class="jwl jwl-inmsg jwl-24" style="--c:#c62828"><img src="icons/presentation/react-heart-sm.svg" alt="Heart"></span>
-        <span class="jwl jwl-inmsg jwl-24" style="--c:#d4a017"><img src="icons/presentation/react-star-sm.svg" alt="Star"></span>
-        <span class="jwl jwl-inmsg jwl-24" style="--c:#6d28d9"><img src="icons/presentation/react-sparkle-sm.svg" alt="Sparkle"></span>
+        <span class="jwl jwl-inmsg jwl-24" style="--c:#c62828"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Reaction — Heart — NayaNET jewel icon, small">
+<defs>
+<radialGradient id="sreactheart-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="sreactheart-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="sreactheart-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="sreactheart-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#e8a9a9"/><stop offset="45%" stop-color="#c62828"/><stop offset="100%" stop-color="#6d1616"/>
+</linearGradient>
+<radialGradient id="sreactheart-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#c62828" stop-opacity=".5"/><stop offset="62%" stop-color="#c62828" stop-opacity=".16"/><stop offset="100%" stop-color="#c62828" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="24" cy="24" r="23" fill="url(#sreactheart-halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#sreactheart-disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#c62828" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+<g>
+<polygon points="24,1.5 27,4.5 24,7.5 21,4.5" fill="url(#sreactheart-gem)" stroke="url(#sreactheart-silver)" stroke-width="1"/>
+<path d="M24 1.5L24 7.5M21 4.5L27 4.5M24 1.5L22.35 5.85M24 1.5L25.65 5.85" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="23.16" cy="3.6" r="0.48" fill="#ffffff"/>
+</g>
+<g transform="translate(12.6,13) scale(0.95)" fill="#000000" fill-opacity=".45"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></g>
+<g transform="translate(12,12) scale(0.95)" fill="url(#sreactheart-glyph)" stroke="url(#sreactheart-silver)" stroke-width="0.4" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></g>
+</svg></span>
+        <span class="jwl jwl-inmsg jwl-24" style="--c:#d4a017"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Reaction — Star — NayaNET jewel icon, small">
+<defs>
+<radialGradient id="sreactstar-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="sreactstar-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="sreactstar-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="sreactstar-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#eed9a2"/><stop offset="45%" stop-color="#d4a017"/><stop offset="100%" stop-color="#75580d"/>
+</linearGradient>
+<radialGradient id="sreactstar-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#d4a017" stop-opacity=".5"/><stop offset="62%" stop-color="#d4a017" stop-opacity=".16"/><stop offset="100%" stop-color="#d4a017" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="24" cy="24" r="23" fill="url(#sreactstar-halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#sreactstar-disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#d4a017" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+<g>
+<polygon points="24,1.5 27,4.5 24,7.5 21,4.5" fill="url(#sreactstar-gem)" stroke="url(#sreactstar-silver)" stroke-width="1"/>
+<path d="M24 1.5L24 7.5M21 4.5L27 4.5M24 1.5L22.35 5.85M24 1.5L25.65 5.85" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="23.16" cy="3.6" r="0.48" fill="#ffffff"/>
+</g>
+<g transform="translate(12.6,13) scale(0.95)" fill="#000000" fill-opacity=".45"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></g>
+<g transform="translate(12,12) scale(0.95)" fill="url(#sreactstar-glyph)" stroke="url(#sreactstar-silver)" stroke-width="0.4" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></g>
+</svg></span>
+        <span class="jwl jwl-inmsg jwl-24" style="--c:#6d28d9"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Reaction — Sparkle — NayaNET jewel icon, small">
+<defs>
+<radialGradient id="sreactsparkle-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="sreactsparkle-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="sreactsparkle-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="sreactsparkle-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#c5a9f0"/><stop offset="45%" stop-color="#6d28d9"/><stop offset="100%" stop-color="#3c1677"/>
+</linearGradient>
+<radialGradient id="sreactsparkle-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#6d28d9" stop-opacity=".5"/><stop offset="62%" stop-color="#6d28d9" stop-opacity=".16"/><stop offset="100%" stop-color="#6d28d9" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="24" cy="24" r="23" fill="url(#sreactsparkle-halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#sreactsparkle-disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#6d28d9" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+<g>
+<polygon points="24,1.5 27,4.5 24,7.5 21,4.5" fill="url(#sreactsparkle-gem)" stroke="url(#sreactsparkle-silver)" stroke-width="1"/>
+<path d="M24 1.5L24 7.5M21 4.5L27 4.5M24 1.5L22.35 5.85M24 1.5L25.65 5.85" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="23.16" cy="3.6" r="0.48" fill="#ffffff"/>
+</g>
+<g transform="translate(12.6,13) scale(0.95)" fill="#000000" fill-opacity=".45"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z"/></g>
+<g transform="translate(12,12) scale(0.95)" fill="url(#sreactsparkle-glyph)" stroke="url(#sreactsparkle-silver)" stroke-width="0.4" stroke-linejoin="round"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z"/></g>
+</svg></span>
       </div>
     </div>
   </div>
   <div class="msg">
-    <span class="jwl jwl-inmsg jwl-48" style="--c:#d4a017"><img src="icons/presentation/type-mail.svg" alt="Mail"></span>
+    <span class="jwl jwl-inmsg jwl-48" style="--c:#d4a017"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Message type — Mail — NayaNET jewel icon">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="jtypemail-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="jtypemail-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="jtypemail-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="jtypemail-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#eed9a2"/><stop offset="45%" stop-color="#d4a017"/><stop offset="100%" stop-color="#75580d"/>
+</linearGradient>
+<radialGradient id="jtypemail-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#d4a017" stop-opacity=".5"/><stop offset="62%" stop-color="#d4a017" stop-opacity=".16"/><stop offset="100%" stop-color="#d4a017" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#jtypemail-halo)"/>
+<g class="jwl-orbit" style="animation-duration:120s;animation-direction:normal">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#d4a017" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#jtypemail-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#jtypemail-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#d4a017" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#jtypemail-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#jtypemail-gem)" stroke="url(#jtypemail-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<g transform="translate(25.3,25.6) scale(2)" fill="none" stroke="#000000" stroke-opacity=".5" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M3 7l9 6 9-6"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="url(#jtypemail-glyph)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M3 7l9 6 9-6"/></g>
+<g transform="translate(24,24) scale(2)" fill="none" stroke="#ffffff" stroke-opacity=".9" stroke-width="1.09" stroke-linecap="round"><path d="M7.5 5.5l1.6-1.1"/></g>
+</svg></span>
     <div class="bubble">
-      <div class="who"><span class="jwl jwl-inmsg jwl-20" style="--c:#d4a017"><img src="icons/presentation/type-mail-sm.svg" alt="Mail"></span> Smart Mail · from Naya</div>
+      <div class="who"><span class="jwl jwl-inmsg jwl-20" style="--c:#d4a017"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Message type — Mail — NayaNET jewel icon, small">
+<defs>
+<radialGradient id="stypemail-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="stypemail-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="stypemail-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="stypemail-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#eed9a2"/><stop offset="45%" stop-color="#d4a017"/><stop offset="100%" stop-color="#75580d"/>
+</linearGradient>
+<radialGradient id="stypemail-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#d4a017" stop-opacity=".5"/><stop offset="62%" stop-color="#d4a017" stop-opacity=".16"/><stop offset="100%" stop-color="#d4a017" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="24" cy="24" r="23" fill="url(#stypemail-halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#stypemail-disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#d4a017" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+<g>
+<polygon points="24,1.5 27,4.5 24,7.5 21,4.5" fill="url(#stypemail-gem)" stroke="url(#stypemail-silver)" stroke-width="1"/>
+<path d="M24 1.5L24 7.5M21 4.5L27 4.5M24 1.5L22.35 5.85M24 1.5L25.65 5.85" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="23.16" cy="3.6" r="0.48" fill="#ffffff"/>
+</g>
+<g transform="translate(12.6,13) scale(0.95)" fill="none" stroke="#000000" stroke-opacity=".5" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M3 7l9 6 9-6"/></g>
+<g transform="translate(12,12) scale(0.95)" fill="none" stroke="url(#stypemail-glyph)" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M3 7l9 6 9-6"/></g>
+</svg></span> Smart Mail · from Naya</div>
       <div class="txt">A letter arrived for you — sealed, private, yours alone.</div>
       <div class="reacts jwl-reactions">
-        <span class="jwl jwl-inmsg jwl-24" style="--c:#c62828"><img src="icons/presentation/react-heart-sm.svg" alt="Heart"></span>
+        <span class="jwl jwl-inmsg jwl-24" style="--c:#c62828"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Reaction — Heart — NayaNET jewel icon, small">
+<defs>
+<radialGradient id="sreactheart-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="sreactheart-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="sreactheart-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="sreactheart-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#e8a9a9"/><stop offset="45%" stop-color="#c62828"/><stop offset="100%" stop-color="#6d1616"/>
+</linearGradient>
+<radialGradient id="sreactheart-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#c62828" stop-opacity=".5"/><stop offset="62%" stop-color="#c62828" stop-opacity=".16"/><stop offset="100%" stop-color="#c62828" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="24" cy="24" r="23" fill="url(#sreactheart-halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#sreactheart-disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#c62828" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+<g>
+<polygon points="24,1.5 27,4.5 24,7.5 21,4.5" fill="url(#sreactheart-gem)" stroke="url(#sreactheart-silver)" stroke-width="1"/>
+<path d="M24 1.5L24 7.5M21 4.5L27 4.5M24 1.5L22.35 5.85M24 1.5L25.65 5.85" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="23.16" cy="3.6" r="0.48" fill="#ffffff"/>
+</g>
+<g transform="translate(12.6,13) scale(0.95)" fill="#000000" fill-opacity=".45"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></g>
+<g transform="translate(12,12) scale(0.95)" fill="url(#sreactheart-glyph)" stroke="url(#sreactheart-silver)" stroke-width="0.4" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></g>
+</svg></span>
       </div>
     </div>
   </div>
   <div class="msg">
-    <span class="jwl jwl-inmsg jwl-48" style="--c:#6d28d9"><img src="icons/presentation/type-post.svg" alt="Post"></span>
+    <span class="jwl jwl-inmsg jwl-48" style="--c:#6d28d9"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Message type — Post — NayaNET jewel icon">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="jtypepost-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="jtypepost-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="jtypepost-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="jtypepost-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#c5a9f0"/><stop offset="45%" stop-color="#6d28d9"/><stop offset="100%" stop-color="#3c1677"/>
+</linearGradient>
+<radialGradient id="jtypepost-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#6d28d9" stop-opacity=".5"/><stop offset="62%" stop-color="#6d28d9" stop-opacity=".16"/><stop offset="100%" stop-color="#6d28d9" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#jtypepost-halo)"/>
+<g class="jwl-orbit" style="animation-duration:120s;animation-direction:normal">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#6d28d9" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#jtypepost-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#jtypepost-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#6d28d9" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#jtypepost-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#jtypepost-gem)" stroke="url(#jtypepost-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<g transform="translate(25.3,25.6) scale(2)" fill="#000000" fill-opacity=".45"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z"/></g>
+<g transform="translate(24,24) scale(2)" fill="url(#jtypepost-glyph)" stroke="url(#jtypepost-silver)" stroke-width="0.70" stroke-linejoin="round"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z"/></g>
+<g transform="translate(24,24) scale(2)" fill="#ffffff" fill-opacity=".85"><circle cx="8.2" cy="7.4" r="1.1"/></g>
+</svg></span>
     <div class="bubble">
-      <div class="who"><span class="jwl jwl-inmsg jwl-20" style="--c:#6d28d9"><img src="icons/presentation/type-post-sm.svg" alt="Post"></span> A post · on the Hub</div>
+      <div class="who"><span class="jwl jwl-inmsg jwl-20" style="--c:#6d28d9"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Message type — Post — NayaNET jewel icon, small">
+<defs>
+<radialGradient id="stypepost-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="stypepost-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="stypepost-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="stypepost-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#c5a9f0"/><stop offset="45%" stop-color="#6d28d9"/><stop offset="100%" stop-color="#3c1677"/>
+</linearGradient>
+<radialGradient id="stypepost-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#6d28d9" stop-opacity=".5"/><stop offset="62%" stop-color="#6d28d9" stop-opacity=".16"/><stop offset="100%" stop-color="#6d28d9" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="24" cy="24" r="23" fill="url(#stypepost-halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#stypepost-disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#6d28d9" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+<g>
+<polygon points="24,1.5 27,4.5 24,7.5 21,4.5" fill="url(#stypepost-gem)" stroke="url(#stypepost-silver)" stroke-width="1"/>
+<path d="M24 1.5L24 7.5M21 4.5L27 4.5M24 1.5L22.35 5.85M24 1.5L25.65 5.85" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="23.16" cy="3.6" r="0.48" fill="#ffffff"/>
+</g>
+<g transform="translate(12.6,13) scale(0.95)" fill="#000000" fill-opacity=".45"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z"/></g>
+<g transform="translate(12,12) scale(0.95)" fill="url(#stypepost-glyph)" stroke="url(#stypepost-silver)" stroke-width="0.4" stroke-linejoin="round"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z"/></g>
+</svg></span> A post · on the Hub</div>
       <div class="txt">Wisdom worth keeping. Save it and it stays in your vault.</div>
       <div class="reacts jwl-reactions">
-        <span class="jwl jwl-inmsg jwl-24" style="--c:#d4a017"><img src="icons/presentation/react-star-sm.svg" alt="Star"></span>
-        <span class="jwl jwl-inmsg jwl-24" style="--c:#6d28d9"><img src="icons/presentation/react-sparkle-sm.svg" alt="Sparkle"></span>
+        <span class="jwl jwl-inmsg jwl-24" style="--c:#d4a017"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Reaction — Star — NayaNET jewel icon, small">
+<defs>
+<radialGradient id="sreactstar-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="sreactstar-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="sreactstar-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="sreactstar-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#eed9a2"/><stop offset="45%" stop-color="#d4a017"/><stop offset="100%" stop-color="#75580d"/>
+</linearGradient>
+<radialGradient id="sreactstar-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#d4a017" stop-opacity=".5"/><stop offset="62%" stop-color="#d4a017" stop-opacity=".16"/><stop offset="100%" stop-color="#d4a017" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="24" cy="24" r="23" fill="url(#sreactstar-halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#sreactstar-disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#d4a017" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+<g>
+<polygon points="24,1.5 27,4.5 24,7.5 21,4.5" fill="url(#sreactstar-gem)" stroke="url(#sreactstar-silver)" stroke-width="1"/>
+<path d="M24 1.5L24 7.5M21 4.5L27 4.5M24 1.5L22.35 5.85M24 1.5L25.65 5.85" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="23.16" cy="3.6" r="0.48" fill="#ffffff"/>
+</g>
+<g transform="translate(12.6,13) scale(0.95)" fill="#000000" fill-opacity=".45"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></g>
+<g transform="translate(12,12) scale(0.95)" fill="url(#sreactstar-glyph)" stroke="url(#sreactstar-silver)" stroke-width="0.4" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></g>
+</svg></span>
+        <span class="jwl jwl-inmsg jwl-24" style="--c:#6d28d9"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Reaction — Sparkle — NayaNET jewel icon, small">
+<defs>
+<radialGradient id="sreactsparkle-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="sreactsparkle-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="sreactsparkle-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="sreactsparkle-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#c5a9f0"/><stop offset="45%" stop-color="#6d28d9"/><stop offset="100%" stop-color="#3c1677"/>
+</linearGradient>
+<radialGradient id="sreactsparkle-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#6d28d9" stop-opacity=".5"/><stop offset="62%" stop-color="#6d28d9" stop-opacity=".16"/><stop offset="100%" stop-color="#6d28d9" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="24" cy="24" r="23" fill="url(#sreactsparkle-halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#sreactsparkle-disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#6d28d9" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+<g>
+<polygon points="24,1.5 27,4.5 24,7.5 21,4.5" fill="url(#sreactsparkle-gem)" stroke="url(#sreactsparkle-silver)" stroke-width="1"/>
+<path d="M24 1.5L24 7.5M21 4.5L27 4.5M24 1.5L22.35 5.85M24 1.5L25.65 5.85" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="23.16" cy="3.6" r="0.48" fill="#ffffff"/>
+</g>
+<g transform="translate(12.6,13) scale(0.95)" fill="#000000" fill-opacity=".45"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z"/></g>
+<g transform="translate(12,12) scale(0.95)" fill="url(#sreactsparkle-glyph)" stroke="url(#sreactsparkle-silver)" stroke-width="0.4" stroke-linejoin="round"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z"/></g>
+</svg></span>
       </div>
     </div>
   </div>
 </div>
 <p class="lede" style="margin-top:24px">The small sizes, side by side — 16, 20, 24, 32 and 48. The test is 16: if it reads at 16, it reads anywhere.</p>
 <div class="ladder">
-  <div class="sz"><span class="jwl jwl-inmsg jwl-16" style="--c:#8e24aa"><img src="icons/presentation/type-chat-sm.svg" alt="Chat 16"></span><span>16</span></div>
-  <div class="sz"><span class="jwl jwl-inmsg jwl-20" style="--c:#8e24aa"><img src="icons/presentation/type-chat-sm.svg" alt="Chat 20"></span><span>20</span></div>
-  <div class="sz"><span class="jwl jwl-inmsg jwl-24" style="--c:#8e24aa"><img src="icons/presentation/type-chat-sm.svg" alt="Chat 24"></span><span>24</span></div>
-  <div class="sz"><span class="jwl jwl-inmsg jwl-32" style="--c:#8e24aa"><img src="icons/presentation/type-chat-sm.svg" alt="Chat 32"></span><span>32</span></div>
-  <div class="sz"><span class="jwl jwl-inmsg jwl-48" style="--c:#8e24aa"><img src="icons/presentation/type-chat-sm.svg" alt="Chat 48"></span><span>48</span></div>
+  <div class="sz"><span class="jwl jwl-inmsg jwl-16" style="--c:#8e24aa"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Message type — Chat — NayaNET jewel icon, small">
+<defs>
+<radialGradient id="stypechat-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="stypechat-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="stypechat-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="stypechat-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#d2a7dd"/><stop offset="45%" stop-color="#8e24aa"/><stop offset="100%" stop-color="#4e145e"/>
+</linearGradient>
+<radialGradient id="stypechat-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#8e24aa" stop-opacity=".5"/><stop offset="62%" stop-color="#8e24aa" stop-opacity=".16"/><stop offset="100%" stop-color="#8e24aa" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="24" cy="24" r="23" fill="url(#stypechat-halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#stypechat-disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#8e24aa" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+<g>
+<polygon points="24,1.5 27,4.5 24,7.5 21,4.5" fill="url(#stypechat-gem)" stroke="url(#stypechat-silver)" stroke-width="1"/>
+<path d="M24 1.5L24 7.5M21 4.5L27 4.5M24 1.5L22.35 5.85M24 1.5L25.65 5.85" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="23.16" cy="3.6" r="0.48" fill="#ffffff"/>
+</g>
+<g transform="translate(12.6,13) scale(0.95)" fill="none" stroke="#000000" stroke-opacity=".5" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></g>
+<g transform="translate(12,12) scale(0.95)" fill="none" stroke="url(#stypechat-glyph)" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></g>
+</svg></span><span>16</span></div>
+  <div class="sz"><span class="jwl jwl-inmsg jwl-20" style="--c:#8e24aa"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Message type — Chat — NayaNET jewel icon, small">
+<defs>
+<radialGradient id="stypechat-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="stypechat-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="stypechat-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="stypechat-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#d2a7dd"/><stop offset="45%" stop-color="#8e24aa"/><stop offset="100%" stop-color="#4e145e"/>
+</linearGradient>
+<radialGradient id="stypechat-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#8e24aa" stop-opacity=".5"/><stop offset="62%" stop-color="#8e24aa" stop-opacity=".16"/><stop offset="100%" stop-color="#8e24aa" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="24" cy="24" r="23" fill="url(#stypechat-halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#stypechat-disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#8e24aa" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+<g>
+<polygon points="24,1.5 27,4.5 24,7.5 21,4.5" fill="url(#stypechat-gem)" stroke="url(#stypechat-silver)" stroke-width="1"/>
+<path d="M24 1.5L24 7.5M21 4.5L27 4.5M24 1.5L22.35 5.85M24 1.5L25.65 5.85" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="23.16" cy="3.6" r="0.48" fill="#ffffff"/>
+</g>
+<g transform="translate(12.6,13) scale(0.95)" fill="none" stroke="#000000" stroke-opacity=".5" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></g>
+<g transform="translate(12,12) scale(0.95)" fill="none" stroke="url(#stypechat-glyph)" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></g>
+</svg></span><span>20</span></div>
+  <div class="sz"><span class="jwl jwl-inmsg jwl-24" style="--c:#8e24aa"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Message type — Chat — NayaNET jewel icon, small">
+<defs>
+<radialGradient id="stypechat-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="stypechat-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="stypechat-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="stypechat-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#d2a7dd"/><stop offset="45%" stop-color="#8e24aa"/><stop offset="100%" stop-color="#4e145e"/>
+</linearGradient>
+<radialGradient id="stypechat-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#8e24aa" stop-opacity=".5"/><stop offset="62%" stop-color="#8e24aa" stop-opacity=".16"/><stop offset="100%" stop-color="#8e24aa" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="24" cy="24" r="23" fill="url(#stypechat-halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#stypechat-disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#8e24aa" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+<g>
+<polygon points="24,1.5 27,4.5 24,7.5 21,4.5" fill="url(#stypechat-gem)" stroke="url(#stypechat-silver)" stroke-width="1"/>
+<path d="M24 1.5L24 7.5M21 4.5L27 4.5M24 1.5L22.35 5.85M24 1.5L25.65 5.85" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="23.16" cy="3.6" r="0.48" fill="#ffffff"/>
+</g>
+<g transform="translate(12.6,13) scale(0.95)" fill="none" stroke="#000000" stroke-opacity=".5" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></g>
+<g transform="translate(12,12) scale(0.95)" fill="none" stroke="url(#stypechat-glyph)" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></g>
+</svg></span><span>24</span></div>
+  <div class="sz"><span class="jwl jwl-inmsg jwl-32" style="--c:#8e24aa"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Message type — Chat — NayaNET jewel icon, small">
+<defs>
+<radialGradient id="stypechat-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="stypechat-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="stypechat-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="stypechat-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#d2a7dd"/><stop offset="45%" stop-color="#8e24aa"/><stop offset="100%" stop-color="#4e145e"/>
+</linearGradient>
+<radialGradient id="stypechat-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#8e24aa" stop-opacity=".5"/><stop offset="62%" stop-color="#8e24aa" stop-opacity=".16"/><stop offset="100%" stop-color="#8e24aa" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="24" cy="24" r="23" fill="url(#stypechat-halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#stypechat-disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#8e24aa" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+<g>
+<polygon points="24,1.5 27,4.5 24,7.5 21,4.5" fill="url(#stypechat-gem)" stroke="url(#stypechat-silver)" stroke-width="1"/>
+<path d="M24 1.5L24 7.5M21 4.5L27 4.5M24 1.5L22.35 5.85M24 1.5L25.65 5.85" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="23.16" cy="3.6" r="0.48" fill="#ffffff"/>
+</g>
+<g transform="translate(12.6,13) scale(0.95)" fill="none" stroke="#000000" stroke-opacity=".5" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></g>
+<g transform="translate(12,12) scale(0.95)" fill="none" stroke="url(#stypechat-glyph)" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></g>
+</svg></span><span>32</span></div>
+  <div class="sz"><span class="jwl jwl-inmsg jwl-48" style="--c:#8e24aa"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Message type — Chat — NayaNET jewel icon, small">
+<defs>
+<radialGradient id="stypechat-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="stypechat-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="stypechat-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="stypechat-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#d2a7dd"/><stop offset="45%" stop-color="#8e24aa"/><stop offset="100%" stop-color="#4e145e"/>
+</linearGradient>
+<radialGradient id="stypechat-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#8e24aa" stop-opacity=".5"/><stop offset="62%" stop-color="#8e24aa" stop-opacity=".16"/><stop offset="100%" stop-color="#8e24aa" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="24" cy="24" r="23" fill="url(#stypechat-halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#stypechat-disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#8e24aa" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+<g>
+<polygon points="24,1.5 27,4.5 24,7.5 21,4.5" fill="url(#stypechat-gem)" stroke="url(#stypechat-silver)" stroke-width="1"/>
+<path d="M24 1.5L24 7.5M21 4.5L27 4.5M24 1.5L22.35 5.85M24 1.5L25.65 5.85" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="23.16" cy="3.6" r="0.48" fill="#ffffff"/>
+</g>
+<g transform="translate(12.6,13) scale(0.95)" fill="none" stroke="#000000" stroke-opacity=".5" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></g>
+<g transform="translate(12,12) scale(0.95)" fill="none" stroke="url(#stypechat-glyph)" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></g>
+</svg></span><span>48</span></div>
 </div>
 
 <h2><span class="n">4.</span> The Emoji Set — Faces, Hearts, Stars</h2>
-<p class="lede">Reactions and messages, all as jewels, all unmistakably ours. Faceted gem orbs — never flat, never a picture of a face.</p>
+<p class="lede">Reactions and messages, all as jewels, all unmistakably ours. The same construction as the core set — obsidian disc, silver bezel, crown jewel, slow orbit — with the face as the white glyph. Never flat, never a picture of a face.</p>
 <div class="grid">
-  <div class="tile" style="--c:#d4a017"><span class="jwl jwl-64" style="--c:#d4a017"><img src="icons/emoji/smile.svg" alt="Smile"></span><div class="nm">Smile</div></div>
-  <div class="tile" style="--c:#c2410c"><span class="jwl jwl-64" style="--c:#c2410c"><img src="icons/emoji/laugh.svg" alt="Laugh"></span><div class="nm">Laugh</div></div>
-  <div class="tile" style="--c:#c62828"><span class="jwl jwl-64" style="--c:#c62828"><img src="icons/emoji/love.svg" alt="Love"></span><div class="nm">Love</div></div>
-  <div class="tile" style="--c:#8e24aa"><span class="jwl jwl-64" style="--c:#8e24aa"><img src="icons/emoji/wow.svg" alt="Wow"></span><div class="nm">Wow</div></div>
-  <div class="tile" style="--c:#0f52ba"><span class="jwl jwl-64" style="--c:#0f52ba"><img src="icons/emoji/think.svg" alt="Think"></span><div class="nm">Think</div></div>
-  <div class="tile" style="--c:#0e7490"><span class="jwl jwl-64" style="--c:#0e7490"><img src="icons/emoji/cool.svg" alt="Cool"></span><div class="nm">Cool</div></div>
-  <div class="tile" style="--c:#3f51b5"><span class="jwl jwl-64" style="--c:#3f51b5"><img src="icons/emoji/sad.svg" alt="Sad"></span><div class="nm">Sad</div></div>
-  <div class="tile" style="--c:#a21caf"><span class="jwl jwl-64" style="--c:#a21caf"><img src="icons/emoji/party.svg" alt="Party"></span><div class="nm">Party</div></div>
-  <div class="tile" style="--c:#07925f"><span class="jwl jwl-64" style="--c:#07925f"><img src="icons/emoji/peace.svg" alt="Peace"></span><div class="nm">Peace</div></div>
-  <div class="tile" style="--c:#c2410c"><span class="jwl jwl-64" style="--c:#c2410c"><img src="icons/emoji/fire.svg" alt="Fire"></span><div class="nm">Fire</div></div>
-  <div class="tile" style="--c:#6d28d9"><span class="jwl jwl-64" style="--c:#6d28d9"><img src="icons/emoji/thumbs-up.svg" alt="Thumbs up"></span><div class="nm">Thumbs up</div></div>
-  <div class="tile" style="--c:#d4a017"><span class="jwl jwl-64" style="--c:#d4a017"><img src="icons/emoji/star.svg" alt="Star"></span><div class="nm">Star</div></div>
+  <div class="tile" style="--c:#d4a017"><span class="jwl jwl-64" style="--c:#d4a017"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Smile — NayaNET jewel emoji">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="esmile-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="esmile-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="esmile-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="esmile-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#eed9a2"/><stop offset="45%" stop-color="#d4a017"/><stop offset="100%" stop-color="#75580d"/>
+</linearGradient>
+<radialGradient id="esmile-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#d4a017" stop-opacity=".5"/><stop offset="62%" stop-color="#d4a017" stop-opacity=".16"/><stop offset="100%" stop-color="#d4a017" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#esmile-halo)"/>
+<g class="jwl-orbit" style="animation-duration:65s;animation-direction:normal">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#d4a017" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#esmile-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#esmile-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#d4a017" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#esmile-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#esmile-gem)" stroke="url(#esmile-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<path d="M36 56Q48 68 60 56" fill="none" stroke="#000000" stroke-opacity=".4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.2,1.6)"/>
+<path d="M36 56Q48 68 60 56" fill="none" stroke="url(#esmile-glyph)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="36" cy="42" r="3.4" fill="url(#esmile-glyph)"/><circle cx="60" cy="42" r="3.4" fill="url(#esmile-glyph)"/>
+</svg></span><div class="nm">Smile</div></div>
+  <div class="tile" style="--c:#c2410c"><span class="jwl jwl-64" style="--c:#c2410c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Laugh — NayaNET jewel emoji">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="elaugh-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="elaugh-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="elaugh-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="elaugh-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#e7b39e"/><stop offset="45%" stop-color="#c2410c"/><stop offset="100%" stop-color="#6b2407"/>
+</linearGradient>
+<radialGradient id="elaugh-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#c2410c" stop-opacity=".5"/><stop offset="62%" stop-color="#c2410c" stop-opacity=".16"/><stop offset="100%" stop-color="#c2410c" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#elaugh-halo)"/>
+<g class="jwl-orbit" style="animation-duration:75s;animation-direction:reverse">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#c2410c" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#elaugh-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#elaugh-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#c2410c" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#elaugh-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#elaugh-gem)" stroke="url(#elaugh-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<path d="M31 44Q36 37 41 44M55 44Q60 37 65 44" fill="none" stroke="#000000" stroke-opacity=".4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.2,1.6)"/>
+<path d="M31 44Q36 37 41 44M55 44Q60 37 65 44" fill="none" stroke="url(#elaugh-glyph)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M35 53Q48 72 61 53Q48 61 35 53Z" fill="#000000" fill-opacity=".4" transform="translate(1.2,1.6)"/>
+<path d="M35 53Q48 72 61 53Q48 61 35 53Z" fill="url(#elaugh-glyph)"/>
+</svg></span><div class="nm">Laugh</div></div>
+  <div class="tile" style="--c:#c62828"><span class="jwl jwl-64" style="--c:#c62828"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Love — NayaNET jewel emoji">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="elove-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="elove-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="elove-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="elove-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#e8a9a9"/><stop offset="45%" stop-color="#c62828"/><stop offset="100%" stop-color="#6d1616"/>
+</linearGradient>
+<radialGradient id="elove-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#c62828" stop-opacity=".5"/><stop offset="62%" stop-color="#c62828" stop-opacity=".16"/><stop offset="100%" stop-color="#c62828" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#elove-halo)"/>
+<g class="jwl-orbit" style="animation-duration:85s;animation-direction:normal">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#c62828" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#elove-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#elove-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#c62828" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#elove-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#elove-gem)" stroke="url(#elove-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<g transform="translate(36,40) scale(1)"><path d="M0 3.2C-1.8 1-4.5 1.4-5.4 3.4-6.2 5.2-5 7.4 0 11c5-3.6 6.2-5.8 5.4-7.6C4.5 1.4 1.8 1 0 3.2z" fill="url(#elove-glyph)"/></g><g transform="translate(60,40) scale(1)"><path d="M0 3.2C-1.8 1-4.5 1.4-5.4 3.4-6.2 5.2-5 7.4 0 11c5-3.6 6.2-5.8 5.4-7.6C4.5 1.4 1.8 1 0 3.2z" fill="url(#elove-glyph)"/></g><path d="M36 56Q48 68 60 56" fill="none" stroke="#000000" stroke-opacity=".4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.2,1.6)"/>
+<path d="M36 56Q48 68 60 56" fill="none" stroke="url(#elove-glyph)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></span><div class="nm">Love</div></div>
+  <div class="tile" style="--c:#8e24aa"><span class="jwl jwl-64" style="--c:#8e24aa"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Wow — NayaNET jewel emoji">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="ewow-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="ewow-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="ewow-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="ewow-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#d2a7dd"/><stop offset="45%" stop-color="#8e24aa"/><stop offset="100%" stop-color="#4e145e"/>
+</linearGradient>
+<radialGradient id="ewow-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#8e24aa" stop-opacity=".5"/><stop offset="62%" stop-color="#8e24aa" stop-opacity=".16"/><stop offset="100%" stop-color="#8e24aa" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#ewow-halo)"/>
+<g class="jwl-orbit" style="animation-duration:95s;animation-direction:reverse">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#8e24aa" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#ewow-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#ewow-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#8e24aa" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#ewow-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#ewow-gem)" stroke="url(#ewow-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<circle cx="36" cy="42" r="3.6" fill="url(#ewow-glyph)"/><circle cx="60" cy="42" r="3.6" fill="url(#ewow-glyph)"/><ellipse cx="49.2" cy="60.6" rx="5.5" ry="7" fill="#000000" fill-opacity=".4"/><ellipse cx="48" cy="59" rx="5.5" ry="7" fill="url(#ewow-glyph)"/>
+</svg></span><div class="nm">Wow</div></div>
+  <div class="tile" style="--c:#0f52ba"><span class="jwl jwl-64" style="--c:#0f52ba"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Think — NayaNET jewel emoji">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="ethink-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="ethink-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="ethink-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="ethink-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#9fbae3"/><stop offset="45%" stop-color="#0f52ba"/><stop offset="100%" stop-color="#082d66"/>
+</linearGradient>
+<radialGradient id="ethink-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#0f52ba" stop-opacity=".5"/><stop offset="62%" stop-color="#0f52ba" stop-opacity=".16"/><stop offset="100%" stop-color="#0f52ba" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#ethink-halo)"/>
+<g class="jwl-orbit" style="animation-duration:105s;animation-direction:normal">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#0f52ba" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#ethink-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#ethink-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#0f52ba" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#ethink-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#ethink-gem)" stroke="url(#ethink-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<circle cx="36" cy="42" r="3.4" fill="url(#ethink-glyph)"/><circle cx="60" cy="42" r="3.4" fill="url(#ethink-glyph)"/><path d="M40 62H56" fill="none" stroke="#000000" stroke-opacity=".4" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.2,1.6)"/>
+<path d="M40 62H56" fill="none" stroke="url(#ethink-glyph)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="63" cy="32" r="2" fill="url(#ethink-glyph)"/><circle cx="68" cy="26" r="2.6" fill="none" stroke="url(#ethink-glyph)" stroke-width="2"/>
+</svg></span><div class="nm">Think</div></div>
+  <div class="tile" style="--c:#0e7490"><span class="jwl jwl-64" style="--c:#0e7490"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Cool — NayaNET jewel emoji">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="ecool-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="ecool-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="ecool-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="ecool-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#9fc7d3"/><stop offset="45%" stop-color="#0e7490"/><stop offset="100%" stop-color="#08404f"/>
+</linearGradient>
+<radialGradient id="ecool-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#0e7490" stop-opacity=".5"/><stop offset="62%" stop-color="#0e7490" stop-opacity=".16"/><stop offset="100%" stop-color="#0e7490" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#ecool-halo)"/>
+<g class="jwl-orbit" style="animation-duration:115s;animation-direction:reverse">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#0e7490" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#ecool-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#ecool-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#0e7490" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#ecool-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#ecool-gem)" stroke="url(#ecool-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<path d="M28 38h14a4 4 0 0 1 4 4v3a4 4 0 0 1-4 4H32a4 4 0 0 1-4-4v-3a4 4 0 0 1 0-4zM54 38h14a4 4 0 0 1 4 4v3a4 4 0 0 1-4 4H58a4 4 0 0 1-4-4v-3a4 4 0 0 1 0-4z" fill="#000000" fill-opacity=".4" transform="translate(1.2,1.6)"/>
+<path d="M28 38h14a4 4 0 0 1 4 4v3a4 4 0 0 1-4 4H32a4 4 0 0 1-4-4v-3a4 4 0 0 1 0-4zM54 38h14a4 4 0 0 1 4 4v3a4 4 0 0 1-4 4H58a4 4 0 0 1-4-4v-3a4 4 0 0 1 0-4z" fill="url(#ecool-glyph)"/><path d="M42 42H54" fill="none" stroke="#000000" stroke-opacity=".4" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.2,1.6)"/>
+<path d="M42 42H54" fill="none" stroke="url(#ecool-glyph)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 58Q48 66 58 58" fill="none" stroke="#000000" stroke-opacity=".4" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.2,1.6)"/>
+<path d="M38 58Q48 66 58 58" fill="none" stroke="url(#ecool-glyph)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></span><div class="nm">Cool</div></div>
+  <div class="tile" style="--c:#3f51b5"><span class="jwl jwl-64" style="--c:#3f51b5"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Sad — NayaNET jewel emoji">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="esad-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="esad-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="esad-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="esad-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#b2b9e1"/><stop offset="45%" stop-color="#3f51b5"/><stop offset="100%" stop-color="#232d64"/>
+</linearGradient>
+<radialGradient id="esad-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#3f51b5" stop-opacity=".5"/><stop offset="62%" stop-color="#3f51b5" stop-opacity=".16"/><stop offset="100%" stop-color="#3f51b5" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#esad-halo)"/>
+<g class="jwl-orbit" style="animation-duration:125s;animation-direction:normal">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#3f51b5" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#esad-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#esad-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#3f51b5" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#esad-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#esad-gem)" stroke="url(#esad-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<circle cx="36" cy="42" r="3.4" fill="url(#esad-glyph)"/><circle cx="60" cy="42" r="3.4" fill="url(#esad-glyph)"/><path d="M36 64Q48 56 60 64" fill="none" stroke="#000000" stroke-opacity=".4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.2,1.6)"/>
+<path d="M36 64Q48 56 60 64" fill="none" stroke="url(#esad-glyph)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></span><div class="nm">Sad</div></div>
+  <div class="tile" style="--c:#a21caf"><span class="jwl jwl-64" style="--c:#a21caf"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Party — NayaNET jewel emoji">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="eparty-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="eparty-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="eparty-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="eparty-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#daa4df"/><stop offset="45%" stop-color="#a21caf"/><stop offset="100%" stop-color="#590f60"/>
+</linearGradient>
+<radialGradient id="eparty-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#a21caf" stop-opacity=".5"/><stop offset="62%" stop-color="#a21caf" stop-opacity=".16"/><stop offset="100%" stop-color="#a21caf" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#eparty-halo)"/>
+<g class="jwl-orbit" style="animation-duration:135s;animation-direction:reverse">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#a21caf" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#eparty-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#eparty-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#a21caf" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#eparty-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#eparty-gem)" stroke="url(#eparty-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<path d="M48 22l9 14H39z" fill="#000000" fill-opacity=".4" transform="translate(1.2,1.6)"/>
+<path d="M48 22l9 14H39z" fill="url(#eparty-glyph)"/><circle cx="48" cy="19" r="2.2" fill="url(#eparty-glyph)"/><path d="M31 46Q36 39 41 46M55 46Q60 39 65 46" fill="none" stroke="#000000" stroke-opacity=".4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.2,1.6)"/>
+<path d="M31 46Q36 39 41 46M55 46Q60 39 65 46" fill="none" stroke="url(#eparty-glyph)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M36 56Q48 68 60 56" fill="none" stroke="#000000" stroke-opacity=".4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.2,1.6)"/>
+<path d="M36 56Q48 68 60 56" fill="none" stroke="url(#eparty-glyph)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></span><div class="nm">Party</div></div>
+  <div class="tile" style="--c:#07925f"><span class="jwl jwl-64" style="--c:#07925f"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Peace — NayaNET jewel emoji">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="epeace-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="epeace-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="epeace-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="epeace-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#9cd3bf"/><stop offset="45%" stop-color="#07925f"/><stop offset="100%" stop-color="#045034"/>
+</linearGradient>
+<radialGradient id="epeace-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#07925f" stop-opacity=".5"/><stop offset="62%" stop-color="#07925f" stop-opacity=".16"/><stop offset="100%" stop-color="#07925f" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#epeace-halo)"/>
+<g class="jwl-orbit" style="animation-duration:145s;animation-direction:normal">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#07925f" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#epeace-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#epeace-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#07925f" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#epeace-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#epeace-gem)" stroke="url(#epeace-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<path d="M31 42Q36 47 41 42M55 42Q60 47 65 42" fill="none" stroke="#000000" stroke-opacity=".4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.2,1.6)"/>
+<path d="M31 42Q36 47 41 42M55 42Q60 47 65 42" fill="none" stroke="url(#epeace-glyph)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 57Q48 64 58 57" fill="none" stroke="#000000" stroke-opacity=".4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.2,1.6)"/>
+<path d="M38 57Q48 64 58 57" fill="none" stroke="url(#epeace-glyph)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="48" cy="22" rx="11" ry="3.2" fill="none" stroke="url(#epeace-glyph)" stroke-width="2.4"/>
+</svg></span><div class="nm">Peace</div></div>
+  <div class="tile" style="--c:#c2410c"><span class="jwl jwl-64" style="--c:#c2410c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Fire — NayaNET jewel emoji">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="efire-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="efire-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="efire-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="efire-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#e7b39e"/><stop offset="45%" stop-color="#c2410c"/><stop offset="100%" stop-color="#6b2407"/>
+</linearGradient>
+<radialGradient id="efire-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#c2410c" stop-opacity=".5"/><stop offset="62%" stop-color="#c2410c" stop-opacity=".16"/><stop offset="100%" stop-color="#c2410c" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#efire-halo)"/>
+<g class="jwl-orbit" style="animation-duration:155s;animation-direction:reverse">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#c2410c" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#efire-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#efire-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#c2410c" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#efire-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#efire-gem)" stroke="url(#efire-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<g transform="translate(25.5,26) scale(1.9)"><path d="M12 23c-4.97 0-9-3.58-9-8 0-2.52 1.13-4.77 2.91-6.36.33 1.2.82 2.35 1.45 3.36C8.6 9.9 10.5 6 12 2c.5 2.5 1.5 4.5 3 6 .4-1 1-2 1.5-3C17.5 7 21 10 21 15c0 4.42-4.03 8-9 8z" fill="url(#efire-glyph)"/></g>
+</svg></span><div class="nm">Fire</div></div>
+  <div class="tile" style="--c:#6d28d9"><span class="jwl jwl-64" style="--c:#6d28d9"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Thumbs up — NayaNET jewel emoji">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="ethumbsup-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="ethumbsup-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="ethumbsup-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="ethumbsup-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#c5a9f0"/><stop offset="45%" stop-color="#6d28d9"/><stop offset="100%" stop-color="#3c1677"/>
+</linearGradient>
+<radialGradient id="ethumbsup-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#6d28d9" stop-opacity=".5"/><stop offset="62%" stop-color="#6d28d9" stop-opacity=".16"/><stop offset="100%" stop-color="#6d28d9" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#ethumbsup-halo)"/>
+<g class="jwl-orbit" style="animation-duration:165s;animation-direction:normal">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#6d28d9" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#ethumbsup-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#ethumbsup-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#6d28d9" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#ethumbsup-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#ethumbsup-gem)" stroke="url(#ethumbsup-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<g transform="translate(25,27) scale(1.9)" fill="url(#ethumbsup-glyph)" stroke="url(#ethumbsup-silver)" stroke-width=".5" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></g>
+</svg></span><div class="nm">Thumbs up</div></div>
+  <div class="tile" style="--c:#d4a017"><span class="jwl jwl-64" style="--c:#d4a017"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Star — NayaNET jewel emoji">
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+<defs>
+<radialGradient id="estar-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="estar-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="estar-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="estar-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#eed9a2"/><stop offset="45%" stop-color="#d4a017"/><stop offset="100%" stop-color="#75580d"/>
+</linearGradient>
+<radialGradient id="estar-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#d4a017" stop-opacity=".5"/><stop offset="62%" stop-color="#d4a017" stop-opacity=".16"/><stop offset="100%" stop-color="#d4a017" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#estar-halo)"/>
+<g class="jwl-orbit" style="animation-duration:175s;animation-direction:reverse">
+<circle cx="48" cy="48" r="44" fill="none" stroke="#d4a017" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#estar-gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#estar-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="#d4a017" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#estar-disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+<g>
+<polygon points="48,4 54,10 48,16 42,10" fill="url(#estar-gem)" stroke="url(#estar-silver)" stroke-width="1"/>
+<path d="M48 4L48 16M42 10L54 10M48 4L44.7 12.7M48 4L51.3 12.7" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="46.32" cy="8.2" r="0.96" fill="#ffffff"/>
+</g>
+<g transform="translate(26,26) scale(1.85)" fill="url(#estar-glyph)" stroke="url(#estar-silver)" stroke-width=".6" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></g>
+</svg></span><div class="nm">Star</div></div>
+</div>
+<p class="lede" style="margin-top:24px">At reaction size — the small variants at 24px. The face still reads: eyes, mouth, crown.</p>
+<div class="ladder">
+  <div class="sz"><span class="jwl jwl-inmsg jwl-24" style="--c:#d4a017"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Smile — NayaNET jewel emoji, small">
+<defs>
+<radialGradient id="fsmile-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="fsmile-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="fsmile-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="fsmile-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#eed9a2"/><stop offset="45%" stop-color="#d4a017"/><stop offset="100%" stop-color="#75580d"/>
+</linearGradient>
+<radialGradient id="fsmile-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#d4a017" stop-opacity=".5"/><stop offset="62%" stop-color="#d4a017" stop-opacity=".16"/><stop offset="100%" stop-color="#d4a017" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="24" cy="24" r="23" fill="url(#fsmile-halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#fsmile-disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#d4a017" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+<g>
+<polygon points="24,1.5 27,4.5 24,7.5 21,4.5" fill="url(#fsmile-gem)" stroke="url(#fsmile-silver)" stroke-width="1"/>
+<path d="M24 1.5L24 7.5M21 4.5L27 4.5M24 1.5L22.35 5.85M24 1.5L25.65 5.85" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="23.16" cy="3.6" r="0.48" fill="#ffffff"/>
+</g>
+<g transform="translate(24,24) scale(0.5) translate(-48,-48)"><path d="M36 56Q48 68 60 56" fill="none" stroke="#000000" stroke-opacity=".4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.2,1.6)"/>
+<path d="M36 56Q48 68 60 56" fill="none" stroke="url(#fsmile-glyph)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="36" cy="42" r="3.4" fill="url(#fsmile-glyph)"/><circle cx="60" cy="42" r="3.4" fill="url(#fsmile-glyph)"/></g>
+</svg></span><span>Smile</span></div>
+  <div class="sz"><span class="jwl jwl-inmsg jwl-24" style="--c:#c2410c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Laugh — NayaNET jewel emoji, small">
+<defs>
+<radialGradient id="flaugh-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="flaugh-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="flaugh-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="flaugh-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#e7b39e"/><stop offset="45%" stop-color="#c2410c"/><stop offset="100%" stop-color="#6b2407"/>
+</linearGradient>
+<radialGradient id="flaugh-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#c2410c" stop-opacity=".5"/><stop offset="62%" stop-color="#c2410c" stop-opacity=".16"/><stop offset="100%" stop-color="#c2410c" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="24" cy="24" r="23" fill="url(#flaugh-halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#flaugh-disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#c2410c" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+<g>
+<polygon points="24,1.5 27,4.5 24,7.5 21,4.5" fill="url(#flaugh-gem)" stroke="url(#flaugh-silver)" stroke-width="1"/>
+<path d="M24 1.5L24 7.5M21 4.5L27 4.5M24 1.5L22.35 5.85M24 1.5L25.65 5.85" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="23.16" cy="3.6" r="0.48" fill="#ffffff"/>
+</g>
+<g transform="translate(24,24) scale(0.5) translate(-48,-48)"><path d="M31 44Q36 37 41 44M55 44Q60 37 65 44" fill="none" stroke="#000000" stroke-opacity=".4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.2,1.6)"/>
+<path d="M31 44Q36 37 41 44M55 44Q60 37 65 44" fill="none" stroke="url(#flaugh-glyph)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M35 53Q48 72 61 53Q48 61 35 53Z" fill="#000000" fill-opacity=".4" transform="translate(1.2,1.6)"/>
+<path d="M35 53Q48 72 61 53Q48 61 35 53Z" fill="url(#flaugh-glyph)"/></g>
+</svg></span><span>Laugh</span></div>
+  <div class="sz"><span class="jwl jwl-inmsg jwl-24" style="--c:#c62828"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Love — NayaNET jewel emoji, small">
+<defs>
+<radialGradient id="flove-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="flove-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="flove-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="flove-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#e8a9a9"/><stop offset="45%" stop-color="#c62828"/><stop offset="100%" stop-color="#6d1616"/>
+</linearGradient>
+<radialGradient id="flove-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#c62828" stop-opacity=".5"/><stop offset="62%" stop-color="#c62828" stop-opacity=".16"/><stop offset="100%" stop-color="#c62828" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="24" cy="24" r="23" fill="url(#flove-halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#flove-disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#c62828" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+<g>
+<polygon points="24,1.5 27,4.5 24,7.5 21,4.5" fill="url(#flove-gem)" stroke="url(#flove-silver)" stroke-width="1"/>
+<path d="M24 1.5L24 7.5M21 4.5L27 4.5M24 1.5L22.35 5.85M24 1.5L25.65 5.85" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="23.16" cy="3.6" r="0.48" fill="#ffffff"/>
+</g>
+<g transform="translate(24,24) scale(0.5) translate(-48,-48)"><g transform="translate(36,40) scale(1)"><path d="M0 3.2C-1.8 1-4.5 1.4-5.4 3.4-6.2 5.2-5 7.4 0 11c5-3.6 6.2-5.8 5.4-7.6C4.5 1.4 1.8 1 0 3.2z" fill="url(#flove-glyph)"/></g><g transform="translate(60,40) scale(1)"><path d="M0 3.2C-1.8 1-4.5 1.4-5.4 3.4-6.2 5.2-5 7.4 0 11c5-3.6 6.2-5.8 5.4-7.6C4.5 1.4 1.8 1 0 3.2z" fill="url(#flove-glyph)"/></g><path d="M36 56Q48 68 60 56" fill="none" stroke="#000000" stroke-opacity=".4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.2,1.6)"/>
+<path d="M36 56Q48 68 60 56" fill="none" stroke="url(#flove-glyph)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+</svg></span><span>Love</span></div>
+  <div class="sz"><span class="jwl jwl-inmsg jwl-24" style="--c:#8e24aa"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Wow — NayaNET jewel emoji, small">
+<defs>
+<radialGradient id="fwow-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="fwow-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="fwow-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="fwow-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#d2a7dd"/><stop offset="45%" stop-color="#8e24aa"/><stop offset="100%" stop-color="#4e145e"/>
+</linearGradient>
+<radialGradient id="fwow-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#8e24aa" stop-opacity=".5"/><stop offset="62%" stop-color="#8e24aa" stop-opacity=".16"/><stop offset="100%" stop-color="#8e24aa" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="24" cy="24" r="23" fill="url(#fwow-halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#fwow-disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#8e24aa" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+<g>
+<polygon points="24,1.5 27,4.5 24,7.5 21,4.5" fill="url(#fwow-gem)" stroke="url(#fwow-silver)" stroke-width="1"/>
+<path d="M24 1.5L24 7.5M21 4.5L27 4.5M24 1.5L22.35 5.85M24 1.5L25.65 5.85" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="23.16" cy="3.6" r="0.48" fill="#ffffff"/>
+</g>
+<g transform="translate(24,24) scale(0.5) translate(-48,-48)"><circle cx="36" cy="42" r="3.6" fill="url(#fwow-glyph)"/><circle cx="60" cy="42" r="3.6" fill="url(#fwow-glyph)"/><ellipse cx="49.2" cy="60.6" rx="5.5" ry="7" fill="#000000" fill-opacity=".4"/><ellipse cx="48" cy="59" rx="5.5" ry="7" fill="url(#fwow-glyph)"/></g>
+</svg></span><span>Wow</span></div>
+  <div class="sz"><span class="jwl jwl-inmsg jwl-24" style="--c:#0f52ba"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Think — NayaNET jewel emoji, small">
+<defs>
+<radialGradient id="fthink-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="fthink-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="fthink-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="fthink-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#9fbae3"/><stop offset="45%" stop-color="#0f52ba"/><stop offset="100%" stop-color="#082d66"/>
+</linearGradient>
+<radialGradient id="fthink-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#0f52ba" stop-opacity=".5"/><stop offset="62%" stop-color="#0f52ba" stop-opacity=".16"/><stop offset="100%" stop-color="#0f52ba" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="24" cy="24" r="23" fill="url(#fthink-halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#fthink-disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#0f52ba" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+<g>
+<polygon points="24,1.5 27,4.5 24,7.5 21,4.5" fill="url(#fthink-gem)" stroke="url(#fthink-silver)" stroke-width="1"/>
+<path d="M24 1.5L24 7.5M21 4.5L27 4.5M24 1.5L22.35 5.85M24 1.5L25.65 5.85" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="23.16" cy="3.6" r="0.48" fill="#ffffff"/>
+</g>
+<g transform="translate(24,24) scale(0.5) translate(-48,-48)"><circle cx="36" cy="42" r="3.4" fill="url(#fthink-glyph)"/><circle cx="60" cy="42" r="3.4" fill="url(#fthink-glyph)"/><path d="M40 62H56" fill="none" stroke="#000000" stroke-opacity=".4" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.2,1.6)"/>
+<path d="M40 62H56" fill="none" stroke="url(#fthink-glyph)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="63" cy="32" r="2" fill="url(#fthink-glyph)"/><circle cx="68" cy="26" r="2.6" fill="none" stroke="url(#fthink-glyph)" stroke-width="2"/></g>
+</svg></span><span>Think</span></div>
+  <div class="sz"><span class="jwl jwl-inmsg jwl-24" style="--c:#0e7490"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Cool — NayaNET jewel emoji, small">
+<defs>
+<radialGradient id="fcool-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="fcool-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="fcool-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="fcool-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#9fc7d3"/><stop offset="45%" stop-color="#0e7490"/><stop offset="100%" stop-color="#08404f"/>
+</linearGradient>
+<radialGradient id="fcool-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#0e7490" stop-opacity=".5"/><stop offset="62%" stop-color="#0e7490" stop-opacity=".16"/><stop offset="100%" stop-color="#0e7490" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="24" cy="24" r="23" fill="url(#fcool-halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#fcool-disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#0e7490" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+<g>
+<polygon points="24,1.5 27,4.5 24,7.5 21,4.5" fill="url(#fcool-gem)" stroke="url(#fcool-silver)" stroke-width="1"/>
+<path d="M24 1.5L24 7.5M21 4.5L27 4.5M24 1.5L22.35 5.85M24 1.5L25.65 5.85" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="23.16" cy="3.6" r="0.48" fill="#ffffff"/>
+</g>
+<g transform="translate(24,24) scale(0.5) translate(-48,-48)"><path d="M28 38h14a4 4 0 0 1 4 4v3a4 4 0 0 1-4 4H32a4 4 0 0 1-4-4v-3a4 4 0 0 1 0-4zM54 38h14a4 4 0 0 1 4 4v3a4 4 0 0 1-4 4H58a4 4 0 0 1-4-4v-3a4 4 0 0 1 0-4z" fill="#000000" fill-opacity=".4" transform="translate(1.2,1.6)"/>
+<path d="M28 38h14a4 4 0 0 1 4 4v3a4 4 0 0 1-4 4H32a4 4 0 0 1-4-4v-3a4 4 0 0 1 0-4zM54 38h14a4 4 0 0 1 4 4v3a4 4 0 0 1-4 4H58a4 4 0 0 1-4-4v-3a4 4 0 0 1 0-4z" fill="url(#fcool-glyph)"/><path d="M42 42H54" fill="none" stroke="#000000" stroke-opacity=".4" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.2,1.6)"/>
+<path d="M42 42H54" fill="none" stroke="url(#fcool-glyph)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 58Q48 66 58 58" fill="none" stroke="#000000" stroke-opacity=".4" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.2,1.6)"/>
+<path d="M38 58Q48 66 58 58" fill="none" stroke="url(#fcool-glyph)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+</svg></span><span>Cool</span></div>
+  <div class="sz"><span class="jwl jwl-inmsg jwl-24" style="--c:#3f51b5"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Sad — NayaNET jewel emoji, small">
+<defs>
+<radialGradient id="fsad-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="fsad-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="fsad-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="fsad-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#b2b9e1"/><stop offset="45%" stop-color="#3f51b5"/><stop offset="100%" stop-color="#232d64"/>
+</linearGradient>
+<radialGradient id="fsad-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#3f51b5" stop-opacity=".5"/><stop offset="62%" stop-color="#3f51b5" stop-opacity=".16"/><stop offset="100%" stop-color="#3f51b5" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="24" cy="24" r="23" fill="url(#fsad-halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#fsad-disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#3f51b5" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+<g>
+<polygon points="24,1.5 27,4.5 24,7.5 21,4.5" fill="url(#fsad-gem)" stroke="url(#fsad-silver)" stroke-width="1"/>
+<path d="M24 1.5L24 7.5M21 4.5L27 4.5M24 1.5L22.35 5.85M24 1.5L25.65 5.85" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="23.16" cy="3.6" r="0.48" fill="#ffffff"/>
+</g>
+<g transform="translate(24,24) scale(0.5) translate(-48,-48)"><circle cx="36" cy="42" r="3.4" fill="url(#fsad-glyph)"/><circle cx="60" cy="42" r="3.4" fill="url(#fsad-glyph)"/><path d="M36 64Q48 56 60 64" fill="none" stroke="#000000" stroke-opacity=".4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.2,1.6)"/>
+<path d="M36 64Q48 56 60 64" fill="none" stroke="url(#fsad-glyph)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+</svg></span><span>Sad</span></div>
+  <div class="sz"><span class="jwl jwl-inmsg jwl-24" style="--c:#a21caf"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Party — NayaNET jewel emoji, small">
+<defs>
+<radialGradient id="fparty-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="fparty-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="fparty-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="fparty-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#daa4df"/><stop offset="45%" stop-color="#a21caf"/><stop offset="100%" stop-color="#590f60"/>
+</linearGradient>
+<radialGradient id="fparty-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#a21caf" stop-opacity=".5"/><stop offset="62%" stop-color="#a21caf" stop-opacity=".16"/><stop offset="100%" stop-color="#a21caf" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="24" cy="24" r="23" fill="url(#fparty-halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#fparty-disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#a21caf" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+<g>
+<polygon points="24,1.5 27,4.5 24,7.5 21,4.5" fill="url(#fparty-gem)" stroke="url(#fparty-silver)" stroke-width="1"/>
+<path d="M24 1.5L24 7.5M21 4.5L27 4.5M24 1.5L22.35 5.85M24 1.5L25.65 5.85" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="23.16" cy="3.6" r="0.48" fill="#ffffff"/>
+</g>
+<g transform="translate(24,24) scale(0.5) translate(-48,-48)"><path d="M48 22l9 14H39z" fill="#000000" fill-opacity=".4" transform="translate(1.2,1.6)"/>
+<path d="M48 22l9 14H39z" fill="url(#fparty-glyph)"/><circle cx="48" cy="19" r="2.2" fill="url(#fparty-glyph)"/><path d="M31 46Q36 39 41 46M55 46Q60 39 65 46" fill="none" stroke="#000000" stroke-opacity=".4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.2,1.6)"/>
+<path d="M31 46Q36 39 41 46M55 46Q60 39 65 46" fill="none" stroke="url(#fparty-glyph)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M36 56Q48 68 60 56" fill="none" stroke="#000000" stroke-opacity=".4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.2,1.6)"/>
+<path d="M36 56Q48 68 60 56" fill="none" stroke="url(#fparty-glyph)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+</svg></span><span>Party</span></div>
+  <div class="sz"><span class="jwl jwl-inmsg jwl-24" style="--c:#07925f"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Peace — NayaNET jewel emoji, small">
+<defs>
+<radialGradient id="fpeace-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="fpeace-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="fpeace-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="fpeace-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#9cd3bf"/><stop offset="45%" stop-color="#07925f"/><stop offset="100%" stop-color="#045034"/>
+</linearGradient>
+<radialGradient id="fpeace-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#07925f" stop-opacity=".5"/><stop offset="62%" stop-color="#07925f" stop-opacity=".16"/><stop offset="100%" stop-color="#07925f" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="24" cy="24" r="23" fill="url(#fpeace-halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#fpeace-disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#07925f" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+<g>
+<polygon points="24,1.5 27,4.5 24,7.5 21,4.5" fill="url(#fpeace-gem)" stroke="url(#fpeace-silver)" stroke-width="1"/>
+<path d="M24 1.5L24 7.5M21 4.5L27 4.5M24 1.5L22.35 5.85M24 1.5L25.65 5.85" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="23.16" cy="3.6" r="0.48" fill="#ffffff"/>
+</g>
+<g transform="translate(24,24) scale(0.5) translate(-48,-48)"><path d="M31 42Q36 47 41 42M55 42Q60 47 65 42" fill="none" stroke="#000000" stroke-opacity=".4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.2,1.6)"/>
+<path d="M31 42Q36 47 41 42M55 42Q60 47 65 42" fill="none" stroke="url(#fpeace-glyph)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 57Q48 64 58 57" fill="none" stroke="#000000" stroke-opacity=".4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.2,1.6)"/>
+<path d="M38 57Q48 64 58 57" fill="none" stroke="url(#fpeace-glyph)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="48" cy="22" rx="11" ry="3.2" fill="none" stroke="url(#fpeace-glyph)" stroke-width="2.4"/></g>
+</svg></span><span>Peace</span></div>
+  <div class="sz"><span class="jwl jwl-inmsg jwl-24" style="--c:#c2410c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Fire — NayaNET jewel emoji, small">
+<defs>
+<radialGradient id="ffire-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="ffire-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="ffire-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="ffire-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#e7b39e"/><stop offset="45%" stop-color="#c2410c"/><stop offset="100%" stop-color="#6b2407"/>
+</linearGradient>
+<radialGradient id="ffire-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#c2410c" stop-opacity=".5"/><stop offset="62%" stop-color="#c2410c" stop-opacity=".16"/><stop offset="100%" stop-color="#c2410c" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="24" cy="24" r="23" fill="url(#ffire-halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#ffire-disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#c2410c" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+<g>
+<polygon points="24,1.5 27,4.5 24,7.5 21,4.5" fill="url(#ffire-gem)" stroke="url(#ffire-silver)" stroke-width="1"/>
+<path d="M24 1.5L24 7.5M21 4.5L27 4.5M24 1.5L22.35 5.85M24 1.5L25.65 5.85" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="23.16" cy="3.6" r="0.48" fill="#ffffff"/>
+</g>
+<g transform="translate(24,24) scale(0.5) translate(-48,-48)"><g transform="translate(25.5,26) scale(1.9)"><path d="M12 23c-4.97 0-9-3.58-9-8 0-2.52 1.13-4.77 2.91-6.36.33 1.2.82 2.35 1.45 3.36C8.6 9.9 10.5 6 12 2c.5 2.5 1.5 4.5 3 6 .4-1 1-2 1.5-3C17.5 7 21 10 21 15c0 4.42-4.03 8-9 8z" fill="url(#ffire-glyph)"/></g></g>
+</svg></span><span>Fire</span></div>
+  <div class="sz"><span class="jwl jwl-inmsg jwl-24" style="--c:#6d28d9"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Thumbs up — NayaNET jewel emoji, small">
+<defs>
+<radialGradient id="fthumbsup-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="fthumbsup-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="fthumbsup-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="fthumbsup-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#c5a9f0"/><stop offset="45%" stop-color="#6d28d9"/><stop offset="100%" stop-color="#3c1677"/>
+</linearGradient>
+<radialGradient id="fthumbsup-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#6d28d9" stop-opacity=".5"/><stop offset="62%" stop-color="#6d28d9" stop-opacity=".16"/><stop offset="100%" stop-color="#6d28d9" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="24" cy="24" r="23" fill="url(#fthumbsup-halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#fthumbsup-disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#6d28d9" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+<g>
+<polygon points="24,1.5 27,4.5 24,7.5 21,4.5" fill="url(#fthumbsup-gem)" stroke="url(#fthumbsup-silver)" stroke-width="1"/>
+<path d="M24 1.5L24 7.5M21 4.5L27 4.5M24 1.5L22.35 5.85M24 1.5L25.65 5.85" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="23.16" cy="3.6" r="0.48" fill="#ffffff"/>
+</g>
+<g transform="translate(24,24) scale(0.5) translate(-48,-48)"><g transform="translate(25,27) scale(1.9)" fill="url(#fthumbsup-glyph)" stroke="url(#fthumbsup-silver)" stroke-width=".5" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></g></g>
+</svg></span><span>Thumbs up</span></div>
+  <div class="sz"><span class="jwl jwl-inmsg jwl-24" style="--c:#d4a017"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Star — NayaNET jewel emoji, small">
+<defs>
+<radialGradient id="fstar-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="fstar-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="fstar-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="fstar-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#eed9a2"/><stop offset="45%" stop-color="#d4a017"/><stop offset="100%" stop-color="#75580d"/>
+</linearGradient>
+<radialGradient id="fstar-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#d4a017" stop-opacity=".5"/><stop offset="62%" stop-color="#d4a017" stop-opacity=".16"/><stop offset="100%" stop-color="#d4a017" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="24" cy="24" r="23" fill="url(#fstar-halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#fstar-disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#d4a017" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+<g>
+<polygon points="24,1.5 27,4.5 24,7.5 21,4.5" fill="url(#fstar-gem)" stroke="url(#fstar-silver)" stroke-width="1"/>
+<path d="M24 1.5L24 7.5M21 4.5L27 4.5M24 1.5L22.35 5.85M24 1.5L25.65 5.85" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="23.16" cy="3.6" r="0.48" fill="#ffffff"/>
+</g>
+<g transform="translate(24,24) scale(0.5) translate(-48,-48)"><g transform="translate(26,26) scale(1.85)" fill="url(#fstar-glyph)" stroke="url(#fstar-silver)" stroke-width=".6" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></g></g>
+</svg></span><span>Star</span></div>
 </div>
 
 <h2><span class="n">5.</span> How To Use Them</h2>
-<p class="how">Take the SVG file and use it as an image — <code>&lt;img src="icons/core/mail.svg"&gt;</code> — or inline it. Wrap it in <code>.jwl</code> from <code>jewel-icons.css</code> and set <code>--c</code> to the icon&rsquo;s own deep colour for the hover light. Full icons are 96px art, crisp from 24 to 96. Small <code>-sm</code> icons are 48px art, crisp from 16 to 48 — those are the ones that ride inside message bubbles. The full usage spec is <code>USAGE.md</code> in this same folder.</p>
+<p class="how">Take the SVG file and use it as an image — <code>&lt;img src="icons/core/mail.svg"&gt;</code> — or inline it. Wrap it in <code>.jwl</code> from <code>jewel-icons.css</code> and set <code>--c</code> to the icon&rsquo;s own deep colour for the hover light. Full icons are 96px art, crisp from 24 to 96. Small <code>-sm</code> icons are 48px art, crisp from 16 to 48 — those are the ones that ride inside message bubbles. Emoji have <code>-sm</code> variants too, for reaction rows at 16–24px — the same construction, the face scaled half into the disc. The full usage spec is <code>USAGE.md</code> in this same folder.</p>
 
-<p class="foot">The Jewel Icon Set · Maker round 2026-11-24 · 41 icons · nothing live.<br>
+<p class="foot">The Jewel Icon Set · Maker round 2026-11-24 · 55 icons · nothing live.<br>
 Law check: board black inside, no glow inside · one light top-left · deep palette only · never the same colour twice in a row · text 25 / 19 / 17 · white text only.</p>
 
 </body>

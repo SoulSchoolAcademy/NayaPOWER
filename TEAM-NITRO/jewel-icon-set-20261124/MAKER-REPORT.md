@@ -201,13 +201,11 @@ with real renders.
 
 - Branch: `jewel-icon-set-20261124` (from main
   `879a7fdcccea3e77ea24949a99de27fe07518116`)
-- Commit: `1ce9043a5b9410aaa32fe3c2fce549e788c32d8c`
-- Tree: `7912a4017181757dfdfa550bde883927ae1b43b9`
-- Files: 45 (41 icons + showcase + css + USAGE + generator),
-  166,540 B; 45/45 blobs, 0 mismatches
-- Showcase: blob `b43eb9aacccc22e8b7bd3c617a08f12f60c9dcfa`, 15,304 B,
-  sha256 `ebca43abdb885969b7191f9765131e3e4855c8ad96a26b93ce7f4758da503c0b`
-- Staged link: https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/jewel-icon-set-20261124/showcase.html&ref=1ce9043a5b9410aaa32fe3c2fce549e788c32d8c&cb=b43eb9aacccc22e8b7bd3c617a08f12f60c9dcfa&t=1795050000
+- Commit: `1ce9043a5b9410aaa32fe3c2fce549e788c32d8c` (45 files)
+- Second commit (maker report): `2d60190d20f65747e775eb006d1b54805f2038f4`
+  — **branch tip**; the filed `MAKER-REPORT.md` names only the first
+  commit (this local copy is the corrected one)
+- Staged link (branch tip): https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO/jewel-icon-set-20261124/showcase.html&ref=2d60190d20f65747e775eb006d1b54805f2038f4&cb=b43eb9aacccc22e8b7bd3c617a08f12f60c9dcfa&t=1795050600
 - Staged bytes: sha256 `ebca43ab…` — identical to the filed blob
 - Local copy: `jewel-icon-set-20261124/maker/` (whole lane)
 - No PR, no merge, no live deploy, no message to Shawn.

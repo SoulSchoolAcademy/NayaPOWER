@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Peace — NayaNET jewel emoji, small">
+<defs>
+<radialGradient id="fpeace-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="fpeace-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="fpeace-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="fpeace-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#9cd3bf"/><stop offset="45%" stop-color="#07925f"/><stop offset="100%" stop-color="#045034"/>
+</linearGradient>
+<radialGradient id="fpeace-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#07925f" stop-opacity=".5"/><stop offset="62%" stop-color="#07925f" stop-opacity=".16"/><stop offset="100%" stop-color="#07925f" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="24" cy="24" r="23" fill="url(#fpeace-halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#fpeace-disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#07925f" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+<g>
+<polygon points="24,1.5 27,4.5 24,7.5 21,4.5" fill="url(#fpeace-gem)" stroke="url(#fpeace-silver)" stroke-width="1"/>
+<path d="M24 1.5L24 7.5M21 4.5L27 4.5M24 1.5L22.35 5.85M24 1.5L25.65 5.85" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="23.16" cy="3.6" r="0.48" fill="#ffffff"/>
+</g>
+<g transform="translate(24,24) scale(0.5) translate(-48,-48)"><path d="M31 42Q36 47 41 42M55 42Q60 47 65 42" fill="none" stroke="#000000" stroke-opacity=".4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.2,1.6)"/>
+<path d="M31 42Q36 47 41 42M55 42Q60 47 65 42" fill="none" stroke="url(#fpeace-glyph)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 57Q48 64 58 57" fill="none" stroke="#000000" stroke-opacity=".4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.2,1.6)"/>
+<path d="M38 57Q48 64 58 57" fill="none" stroke="url(#fpeace-glyph)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="48" cy="22" rx="11" ry="3.2" fill="none" stroke="url(#fpeace-glyph)" stroke-width="2.4"/></g>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Party — NayaNET jewel emoji, small">
+<defs>
+<radialGradient id="fparty-disc" cx="35%" cy="28%" r="78%">
+<stop offset="0%" stop-color="#26262e"/><stop offset="45%" stop-color="#0b0b0f"/><stop offset="100%" stop-color="#050607"/>
+</radialGradient>
+<linearGradient id="fparty-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="fparty-glyph" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="55%" stop-color="#eef0f2"/><stop offset="100%" stop-color="#c2c6cd"/>
+</linearGradient>
+<linearGradient id="fparty-gem" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#daa4df"/><stop offset="45%" stop-color="#a21caf"/><stop offset="100%" stop-color="#590f60"/>
+</linearGradient>
+<radialGradient id="fparty-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#a21caf" stop-opacity=".5"/><stop offset="62%" stop-color="#a21caf" stop-opacity=".16"/><stop offset="100%" stop-color="#a21caf" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="24" cy="24" r="23" fill="url(#fparty-halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#fparty-disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#a21caf" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+<g>
+<polygon points="24,1.5 27,4.5 24,7.5 21,4.5" fill="url(#fparty-gem)" stroke="url(#fparty-silver)" stroke-width="1"/>
+<path d="M24 1.5L24 7.5M21 4.5L27 4.5M24 1.5L22.35 5.85M24 1.5L25.65 5.85" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width=".7"/>
+<circle cx="23.16" cy="3.6" r="0.48" fill="#ffffff"/>
+</g>
+<g transform="translate(24,24) scale(0.5) translate(-48,-48)"><path d="M48 22l9 14H39z" fill="#000000" fill-opacity=".4" transform="translate(1.2,1.6)"/>
+<path d="M48 22l9 14H39z" fill="url(#fparty-glyph)"/><circle cx="48" cy="19" r="2.2" fill="url(#fparty-glyph)"/><path d="M31 46Q36 39 41 46M55 46Q60 39 65 46" fill="none" stroke="#000000" stroke-opacity=".4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.2,1.6)"/>
+<path d="M31 46Q36 39 41 46M55 46Q60 39 65 46" fill="none" stroke="url(#fparty-glyph)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M36 56Q48 68 60 56" fill="none" stroke="#000000" stroke-opacity=".4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.2,1.6)"/>
+<path d="M36 56Q48 68 60 56" fill="none" stroke="url(#fparty-glyph)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+</svg>

@@ -1,10 +1,15 @@
 // build-jewel-icons.mjs — NayaNET custom jewel icon set, maker round 2026-11-24
-// Generates every SVG in icons/ from one construction, so all 40 speak one language.
+// Fix round 2026-11-24 (checker GOES BACK): emoji brought into the ONE
+// construction, bar variants baked, think bubble moved inside the disc,
+// wow mouth enlarged, emoji -sm variants added. Generates every SVG in
+// icons/ from one construction, so all 55 speak one language.
 // Construction (Design Laws §4, Real Object Law): obsidian disc (board black inside,
 // no glow inside) · silver bezel (the emblem's silver frame, 135° metal) · white
 // glyph as a real object (shadow copy down-right + metal-white body + top-left
 // specular) · the icon's OWN deep colour as rim + outside halo + crown jewel
 // (a faceted diamond set at 12 o'clock, the emblem's crown jewel) · slow orbit ring.
+// Emoji faces ARE the white glyph on that same obsidian disc — no second
+// construction, no coloured fill inside (laws §4 / §3 + §12.8).
 // One light, top-left, always. Deep palette only. No flat fills of colour.
 import { writeFileSync, mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -142,65 +147,84 @@ ${glyphEl}
 `;
 }
 
-// ---------- EMOJI: faceted gem orb with a white face ----------
-function emojiIcon(name, label, color, face) {
+// ---------- EMOJI: the ONE construction, faces as the white glyph ----------
+// Identical anatomy to fullIcon: obsidian disc (board black inside, no glow
+// inside) · silver bezel · own-colour rim + halo + crown jewel at 12 o'clock ·
+// slow orbit ring. The face is the white glyph — a real object with a dark
+// cast copy down-right and a top-left specular, in the glyph gradient.
+// (Fix round: the first round's gem-orb fill was a second construction —
+// coloured fill inside, no orbit, no crown — contradicting laws §4 / §3 +
+// §12.8. That construction is gone; every emoji is built here now.)
+function emojiIcon(name, label, color, face, orbitDur, ccw) {
   const p = "e" + name.replace(/[^a-z0-9]/gi, "") + "-";
   const c = color;
-  // Facet spokes from the gem centre to the rim, every 45°, light top-left.
-  let spokes = "";
-  for (let k = 0; k < 8; k++) {
-    const a = (k * Math.PI) / 4 - Math.PI / 2;
-    const x = (48 + 36 * Math.cos(a)).toFixed(1), y = (48 + 36 * Math.sin(a)).toFixed(1);
-    spokes += `<path d="M48 48L${x} ${y}" stroke="#ffffff" stroke-opacity="${k === 6 || k === 7 ? 0.34 : 0.16}" stroke-width="1"/>`;
-  }
+  const dir = ccw ? "reverse" : "normal";
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="${label} — NayaNET jewel emoji">
-<defs>
-<radialGradient id="${p}gemorb" cx="35%" cy="28%" r="80%">
-<stop offset="0%" stop-color="${light(c, 0.62)}"/><stop offset="45%" stop-color="${c}"/><stop offset="100%" stop-color="${dark(c, 0.5)}"/>
-</radialGradient>
-<linearGradient id="${p}silver" x1="0" y1="0" x2="1" y2="1">
-<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
-</linearGradient>
-<linearGradient id="${p}face" x1="0" y1="0" x2="1" y2="1">
-<stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#d5d8dd"/>
-</linearGradient>
-<radialGradient id="${p}halo" cx="50%" cy="50%" r="50%">
-<stop offset="0%" stop-color="${c}" stop-opacity=".5"/><stop offset="62%" stop-color="${c}" stop-opacity=".16"/><stop offset="100%" stop-color="${c}" stop-opacity="0"/>
-</radialGradient>
-</defs>
+<style>.jwl-orbit{transform-box:view-box;transform-origin:center;animation:jwl-spin linear infinite}@keyframes jwl-spin{to{transform:rotate(360deg)}}</style>
+${defs(p, c)}
 <circle cx="48" cy="48" r="47" fill="url(#${p}halo)"/>
+<g class="jwl-orbit" style="animation-duration:${orbitDur}s;animation-direction:${dir}">
+<circle cx="48" cy="48" r="44" fill="none" stroke="${c}" stroke-opacity=".5" stroke-width="1" stroke-dasharray="0.5 7" stroke-linecap="round"/>
+<circle cx="48" cy="4" r="2.8" fill="url(#${p}gem)" stroke="#ffffff" stroke-opacity=".8" stroke-width=".7"/>
+</g>
 <circle cx="48" cy="48" r="38" fill="none" stroke="url(#${p}silver)" stroke-width="3"/>
-<circle cx="48" cy="48" r="35.5" fill="url(#${p}gemorb)"/>
-${spokes}
-<polygon points="48,26 66,42 60,64 36,64 30,42" fill="none" stroke="#ffffff" stroke-opacity=".28" stroke-width="1"/>
-<path d="M34 32l4-4M62 32l-4-4" stroke="#ffffff" stroke-opacity=".9" stroke-width="2" stroke-linecap="round"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="${c}" stroke-opacity=".85" stroke-width="1.1"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#${p}disc)"/>
+<circle cx="48" cy="48" r="35.5" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width=".8"/>
+${crownJewel(p, c, 48, 10, 6)}
 ${face(p)}
 </svg>
 `;
 }
 
+// ---------- EMOJI SMALL: 48x48, for 16–24px reaction rows ----------
+// Same frame as smallIcon (obsidian disc, own-colour rim, crown jewel, no
+// orbit — crisp at small sizes), the face scaled half into the disc.
+function emojiSmallIcon(name, label, color, face) {
+  const p = "f" + name.replace(/[^a-z0-9]/gi, "") + "-";
+  const c = color;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="${label} — NayaNET jewel emoji, small">
+${defs(p, c)}
+<circle cx="24" cy="24" r="23" fill="url(#${p}halo)"/>
+<circle cx="24" cy="24" r="21" fill="url(#${p}disc)"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="${c}" stroke-width="2"/>
+<circle cx="24" cy="24" r="21" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width=".7"/>
+${crownJewel(p, c, 24, 4.5, 3)}
+<g transform="translate(24,24) scale(0.5) translate(-48,-48)">${face(p)}</g>
+</svg>
+`;
+}
+
 // Faces: white features with a dark cast copy down-right, stroke-width 3.
+// Every feature sits inside the disc (r=35.5 about 48,48): the farthest
+// point is the think outer bubble at (68,26) r=2.6 — centre distance 29.7,
+// outer edge 32.3, clear of the disc edge and the bezel. (Fix round: the
+// old outer bubble at (74,23) r=3.2 sat ON the bezel as a stray ring.)
 function faceStroke(p, d, w = 3) {
   return `<path d="${d}" fill="none" stroke="#000000" stroke-opacity=".4" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" transform="translate(1.2,1.6)"/>
-<path d="${d}" fill="none" stroke="url(#${p}face)" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"/>`;
+<path d="${d}" fill="none" stroke="url(#${p}glyph)" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"/>`;
 }
 function faceFill(p, d) {
   return `<path d="${d}" fill="#000000" fill-opacity=".4" transform="translate(1.2,1.6)"/>
-<path d="${d}" fill="url(#${p}face)"/>`;
+<path d="${d}" fill="url(#${p}glyph)"/>`;
 }
 const FACES = {
-  smile: (p) => faceStroke(p, "M36 56Q48 68 60 56") + `<circle cx="36" cy="42" r="3.4" fill="url(#${p}face)"/><circle cx="60" cy="42" r="3.4" fill="url(#${p}face)"/>`,
+  smile: (p) => faceStroke(p, "M36 56Q48 68 60 56") + `<circle cx="36" cy="42" r="3.4" fill="url(#${p}glyph)"/><circle cx="60" cy="42" r="3.4" fill="url(#${p}glyph)"/>`,
   laugh: (p) => faceStroke(p, "M31 44Q36 37 41 44M55 44Q60 37 65 44") + faceFill(p, "M35 53Q48 72 61 53Q48 61 35 53Z"),
   love: (p) => {
-    const h = (cx, cy, s) => `<g transform="translate(${cx},${cy}) scale(${s})"><path d="M0 3.2C-1.8 1-4.5 1.4-5.4 3.4-6.2 5.2-5 7.4 0 11c5-3.6 6.2-5.8 5.4-7.6C4.5 1.4 1.8 1 0 3.2z" fill="url(#${p}face)"/></g>`;
+    const h = (cx, cy, s) => `<g transform="translate(${cx},${cy}) scale(${s})"><path d="M0 3.2C-1.8 1-4.5 1.4-5.4 3.4-6.2 5.2-5 7.4 0 11c5-3.6 6.2-5.8 5.4-7.6C4.5 1.4 1.8 1 0 3.2z" fill="url(#${p}glyph)"/></g>`;
     return h(36, 40, 1) + h(60, 40, 1) + faceStroke(p, "M36 56Q48 68 60 56");
   },
-  wow: (p) => `<circle cx="36" cy="42" r="3.6" fill="url(#${p}face)"/><circle cx="60" cy="42" r="3.6" fill="url(#${p}face)"/>` + faceFill(p, "M48 55.5a4.8 4.8 0 1 0 .01 0Z"),
-  think: (p) => `<circle cx="36" cy="42" r="3.4" fill="url(#${p}face)"/><circle cx="60" cy="42" r="3.4" fill="url(#${p}face)"/>` + faceStroke(p, "M40 62H56", 2.6) + `<circle cx="68" cy="30" r="2.4" fill="url(#${p}face)"/><circle cx="74" cy="23" r="3.2" fill="none" stroke="url(#${p}face)" stroke-width="2"/>`,
+  // Wow mouth: an open oval (rx 5.5, ry 7), not the old r=4.8 dot — the dot
+  // was a speck at 16px. (Fix round follow-on.)
+  wow: (p) => `<circle cx="36" cy="42" r="3.6" fill="url(#${p}glyph)"/><circle cx="60" cy="42" r="3.6" fill="url(#${p}glyph)"/>` + `<ellipse cx="49.2" cy="60.6" rx="5.5" ry="7" fill="#000000" fill-opacity=".4"/><ellipse cx="48" cy="59" rx="5.5" ry="7" fill="url(#${p}glyph)"/>`,
+  think: (p) => `<circle cx="36" cy="42" r="3.4" fill="url(#${p}glyph)"/><circle cx="60" cy="42" r="3.4" fill="url(#${p}glyph)"/>` + faceStroke(p, "M40 62H56", 2.6) + `<circle cx="63" cy="32" r="2" fill="url(#${p}glyph)"/><circle cx="68" cy="26" r="2.6" fill="none" stroke="url(#${p}glyph)" stroke-width="2"/>`,
   cool: (p) => faceFill(p, "M28 38h14a4 4 0 0 1 4 4v3a4 4 0 0 1-4 4H32a4 4 0 0 1-4-4v-3a4 4 0 0 1 0-4zM54 38h14a4 4 0 0 1 4 4v3a4 4 0 0 1-4 4H58a4 4 0 0 1-4-4v-3a4 4 0 0 1 0-4z") + faceStroke(p, "M42 42H54", 2.6) + faceStroke(p, "M38 58Q48 66 58 58", 2.6),
-  sad: (p) => `<circle cx="36" cy="42" r="3.4" fill="url(#${p}face)"/><circle cx="60" cy="42" r="3.4" fill="url(#${p}face)"/>` + faceStroke(p, "M36 64Q48 56 60 64"),
-  party: (p) => faceFill(p, "M48 12l9 16H39z") + `<circle cx="48" cy="11" r="2.6" fill="url(#${p}face)"/>` + faceStroke(p, "M31 46Q36 39 41 46M55 46Q60 39 65 46") + faceStroke(p, "M36 56Q48 68 60 56"),
-  peace: (p) => faceStroke(p, "M31 42Q36 47 41 42M55 42Q60 47 65 42") + faceStroke(p, "M38 57Q48 64 58 57") + `<ellipse cx="48" cy="22" rx="11" ry="3.2" fill="none" stroke="url(#${p}face)" stroke-width="2.4"/>`,
+  sad: (p) => `<circle cx="36" cy="42" r="3.4" fill="url(#${p}glyph)"/><circle cx="60" cy="42" r="3.4" fill="url(#${p}glyph)"/>` + faceStroke(p, "M36 64Q48 56 60 64"),
+  // Party hat pulled inside the disc (apex 22, clear of the crown jewel
+  // at y 4–16) — the old apex at y 12 sat on the disc edge under the crown.
+  party: (p) => faceFill(p, "M48 22l9 14H39z") + `<circle cx="48" cy="19" r="2.2" fill="url(#${p}glyph)"/>` + faceStroke(p, "M31 46Q36 39 41 46M55 46Q60 39 65 46") + faceStroke(p, "M36 56Q48 68 60 56"),
+  peace: (p) => faceStroke(p, "M31 42Q36 47 41 42M55 42Q60 47 65 42") + faceStroke(p, "M38 57Q48 64 58 57") + `<ellipse cx="48" cy="22" rx="11" ry="3.2" fill="none" stroke="url(#${p}glyph)" stroke-width="2.4"/>`,
 };
 
 // ---------- the sets ----------
@@ -231,11 +255,18 @@ const PRESENT = [
   ["react-star", "Reaction — Star", "#d4a017", "star"],
   ["react-sparkle", "Reaction — Sparkle", "#6d28d9", "sparkle"],
 ];
-// Bottom-bar extras for the showcase bar demo (the five + CONNECT):
+// Bottom-bar extras for the showcase bar demo (the five + CONNECT).
+// bar-add / bar-worlds are BAKED variants for the fixed bottom-bar colour
+// flow (laws §3.2): ADD must render royal purple #8e24aa and WORLDS deep
+// gold #d4a017. The core plus (indigo) and spaces (purple) keep their own
+// spectrum slots — a --c wrapper cannot recolour a baked SVG, so the bar
+// gets its own files. (Fix round, checker item 2.)
 const BAR = [
   ["bar-activity", "Activity", "#07925f", "activity"],
   ["bar-ecosystem", "Ecosystem", "#c2410c", "ecosystem"],
   ["bar-connect", "Connect", "#c62828", "contacts"],
+  ["bar-add", "Add", "#8e24aa", "plus"],
+  ["bar-worlds", "Worlds", "#d4a017", "spaces"],
 ];
 const EMOJI = [
   ["smile", "Smile", "#d4a017", "smile"],
@@ -302,21 +333,27 @@ ${diamondGlyph(p, color)}
   const sm = smallIcon(slug, label, color, glyphName);
   report.push([`presentation/${slug}-sm.svg`, write(`presentation/${slug}-sm.svg`, sm)]); n++;
 }
+let ei = 0;
 for (const [slug, label, color, kind] of EMOJI) {
-  let svg;
+  // Glyph emojis: the glyph itself, faceted in white, on the obsidian disc.
+  // faceFn takes the id prefix as its argument, like FACES — the -sm file
+  // uses a different prefix, so the gradient ids must follow the caller.
+  let faceFn;
   if (kind === "flame" || kind === "thumbs" || kind === "star") {
-    // Glyph emojis: the glyph itself, faceted in its colour, on the gem orb.
-    const p = "e" + slug.replace(/[^a-z0-9]/gi, "") + "-";
-    const g = kind === "flame"
-      ? `<g transform="translate(25.5,26) scale(1.9)"><path d="${G.flame.match(/d="([^"]+)"/)[1]}" fill="url(#${p}face)"/></g>`
+    faceFn = (pp) => kind === "flame"
+      ? `<g transform="translate(25.5,26) scale(1.9)"><path d="${G.flame.match(/d="([^"]+)"/)[1]}" fill="url(#${pp}glyph)"/></g>`
       : kind === "thumbs"
-        ? `<g transform="translate(25,27) scale(1.9)" fill="url(#${p}face)" stroke="url(#${p}silver)" stroke-width=".5" stroke-linejoin="round">${G.thumbs}</g>`
-        : `<g transform="translate(26,26) scale(1.85)" fill="url(#${p}face)" stroke="url(#${p}silver)" stroke-width=".6" stroke-linejoin="round">${G.star}</g>`;
-    svg = emojiIcon(slug, label, color, () => g);
+        ? `<g transform="translate(25,27) scale(1.9)" fill="url(#${pp}glyph)" stroke="url(#${pp}silver)" stroke-width=".5" stroke-linejoin="round">${G.thumbs}</g>`
+        : `<g transform="translate(26,26) scale(1.85)" fill="url(#${pp}glyph)" stroke="url(#${pp}silver)" stroke-width=".6" stroke-linejoin="round">${G.star}</g>`;
   } else {
-    svg = emojiIcon(slug, label, color, FACES[kind]);
+    faceFn = FACES[kind];
   }
+  // Orbit 65–175s, alternating direction, same range as the core set.
+  const svg = emojiIcon(slug, label, color, faceFn, 65 + ei * 10, ei % 2 === 1);
   report.push([`emoji/${slug}.svg`, write(`emoji/${slug}.svg`, svg)]); n++;
+  const sm = emojiSmallIcon(slug, label, color, faceFn);
+  report.push([`emoji/${slug}-sm.svg`, write(`emoji/${slug}-sm.svg`, sm)]); n++;
+  ei++;
 }
 
 console.log(`icons written: ${n}`);
