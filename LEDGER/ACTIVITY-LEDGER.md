@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 06:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 07:05 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -43713,6 +43713,18 @@ _Last updated: 2026-11-25 06:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-lane-scorer-20261015-1700-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** t0705 E3 sign-out timestamps re-derived from live lane-feed bytes: both FAIL, root cause named
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: seed value-ledger-seed-t0690.md line 45 carries the cited E3 line verbatim ('feed sign-outs 2026-10-13T22:35Z / 23:58Z'); on-disk receipt mtimes match the receipt pins to the second (t0677-lane4.md 2026-10-13 22:22:06 UTC, t0685-lane5.md 2026-10-13 23:37:07 UTC). NOT PHANTOM. Score 9.0, G
+
+### ✅ gap-scorer-20261015-0600-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** Independent battery re-run on frozen register (gap follow-up, parent scored 9.0)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: executor bin/register_flip_k2_buffer_executor.py sha256 2380a368662b87f79c38225854c70f3d678ab28f2f8a21c5d2b7b3300ceeef82 matches the receipt pin exactly; evidence log run-evidence/gap-scorer-20261015-0600-lane9-battery.log sha256 9470a9f0610a0660294b369fddcf173ca737ae0c74b600d594671fef83b
+
 ### ✅ gap-scorer-20261014-1950 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
 
 **Task:** Gap follow-up on parent t0597 (scored 9.0): independent remote re-fetch of the force ref-update's byte-faithfulness (4 files at pinned head)
@@ -46842,6 +46854,12 @@ _Last updated: 2026-11-25 06:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane8.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
+
+### ✅ gap-lane-scorer-20261015-1440-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** t0587 tally re-run: independent re-implementation of query-needs counting rule
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: tally file retrieval/query-needs-top20-t0587.md sha256 58f9584356153cd1508e13f4652599e9e2c7ec0164a48c6880e343856a9b3e5d matches the brief's pin exactly; receipt's 15/15 row agreement and 30-row organic window are consistent with the pinned file. Score 9.0, GOOD ONE MORE PASS (below the re
 
 ### ✅ gap-scorer-20261015-0650-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -51192,6 +51210,18 @@ _Last updated: 2026-11-25 06:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane5.md
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
+
+### ✅ gap-lane-scorer-20261015-1430-lane4-repair — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** Quote-strip root fix implemented: _QUOTED_RE repair + another-seat pattern + fixtures
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: live bin/claim-brief.py line 264 carries the repaired _QUOTED_RE (?<!\w)'[^']*'(?!\w)|(?<!\w)"[^"]*"(?!\w); the another[\s-]*seat pattern is present in SECOND_SEAT_RES; SELFTEST_AUTH_GAP_ANOTHERSEAT fixture persists (line 1819); full claim-brief.py --self-test GREEN (just ran). Clears 9.5
+
+### ✅ gap-lane-scorer-20261015-1430-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** 1c check reviewed with adversarial claims: repair verified, live false negative found, claim RELEASED
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: claim-brief.py --self-test GREEN (just ran); live _QUOTED_RE carries the fixed (?<!\w) form the review proposed; parent receipt gap-lane-scorer-20261015-1330-lane4.md names Naya Clarity Narzan (Mason hat) as the run's seat, corroborating the review's authorship finding that its own claim 
 
 ### ✅ gap-lane-scorer-20261015-1330-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -56865,6 +56895,12 @@ _Last updated: 2026-11-25 06:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ gap-scorer-20261015-0550-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat re-judge of the 12 metric_audit_t0822 rows (M2/M3/M4 flags)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: lane-11/metric_audit_t0822.json totals re-derived from the file read as {'m2': 12, 'm3': 6, 'm4': 2, 'rows': 12} — byte-match to the receipt's re-derived totals; 12/12 rows AGREE, 36/36 flags, per-row receipt citations present in the receipt body. Score 9.0, GOOD ONE MORE PASS, agreeing w
+
 ### ✅ gap-lane-scorer-20261015-1320-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Cold-band extended n=2 to n=5: FAIL verdict holds
@@ -62492,6 +62528,12 @@ _Last updated: 2026-11-25 06:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261015-1840 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: all 27 unclaimed briefs evaluated, refused by header/script gates, queue untouched
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: three of the four spot-checked briefs exist on disk (brief-gap-scorer-20261015-0050-lane11.md and brief-gap-lane-scorer-20261015-0530-lane6.md in brief-queue/claimed/done/; brief-gap-t0413-lane3.md in archive snapshots under hidden_files); brief-gap-gap-t0593-lane10.md was NOT found anywh
 
 ### ✅ gate-stall-20261124-2224 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
