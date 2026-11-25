@@ -16,7 +16,7 @@
   modified 2026-11-25T23:03:10Z. KV binding `WELCOME_ASSETS` live (verified via API).
   `/agreement` 302 → live `https://nayanet.app/agreement` (unchanged route).
 - **Branch:** `portal-frontpage-fix-20261125` (new, from main), repo SoulSchoolAcademy/NayaPOWER.
-  Code commit: `2bc3b1b0d4581ebf2fef85431e0958989ccad801` · head (with this report): `HEAD_COMMIT_SHA`.
+  Code commit: `2bc3b1b0d4581ebf2fef85431e0958989ccad801` · head (with this report): `ea5d4d19c601850267bab6d0ab10d17ee8ac99c3`.
   Blobs (verified via git blob API): `portal.html` (1,904,285 B) ·
   `identity.html` + `identity-consolidated.html` (313,224 B, sha `57bdd387…`) ·
   `worker-consolidated.js` (2,239,196 B, sha `ba354daf…`).
