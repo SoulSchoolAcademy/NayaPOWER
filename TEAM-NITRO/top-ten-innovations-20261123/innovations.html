@@ -1253,6 +1253,69 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
  #screen-slide .more-behind{margin-top:4px}
 }
 </style>
+<style>
+/* FIX7 — EYE-VERDICT FIX ROUND 7 (2026-11-25, Shawn's phone walk).
+   (1) PHOTOS READ AS REAL PICTURES ON PHONE: the 9:16 front/depth photos
+   rendered as ~61px slivers under contain (measured live at true 390x844:
+   Ch1 front image content 61x109 inside a 284x109 box; depth 102x183 in
+   322x183) — on his phone they read as missing pictures. Phone only,
+   .ib-img-el becomes cover, so the photo fills its panel width; desktop
+   keeps contain (whole, nothing cut — his laptop is perfect). Front image
+   boards carry the fx7-cover class (the end board is excluded: its square
+   red-N ball would slice under cover); depth image panels are all
+   .ib-img-el inside #depthBody.
+   (2) THE END ON EVERY DEPTH BOARD: depth text/image/video panels had no
+   N seal below the text (measured: 30/30 thirds at Ch1 L111 + full walk,
+   zero seals) while every front panel carries one. The same red-N ball
+   (EMBED.ball), same ring + glow as the front N, 32px like the front
+   text-panel N, sits right below the text as the staple. Rendered as a
+   span (not a button) so a tap on it advances the third exactly like a
+   tap on the board; the end board's centre keeps its Begin/Back buttons
+   as its end (named in the maker report).
+   (5) SENTENCE BREATHING ROOM: depth text renders in sentence groups of
+   two per .d-sent span, with 12px between groups, via depthSetShown — the
+   fit measures WITH the spacing in place, so overflow stays 0.
+   (FIX7E: the per-sentence try is reverted — see below; the comment above
+   was stale after the revert and is corrected here.)
+   FIX7D (found on my own prove read-back, prove7c): grouping TWO sentences
+   per span meant the 12px gap NEVER rendered on phone — the fit keeps at
+   most ~12 words (1-2 short sentences) per panel, so no panel in the whole
+   book reached 2 spans (20/20 panels, max 1 span). FIX7E reverts the
+   per-sentence try: one sentence per span made it WORSE on phone — the fit
+   trimmed every 2-sentence panel to 1 sentence to pay for the 12px gap
+   (20/20 panels 0 spans, median words 7->6), so the gap still never
+   rendered and words were lost. Pairs stay: they keep the most words, and
+   the gap renders wherever a panel holds 2+ groups — desktop depth boards,
+   where the fitted paragraph is long (prove7d). The block+margin rules
+   stay BASE (all widths) for that reason. Phone CSS values unchanged.
+   (6) HEADING 24px ON PHONE, front + depth (was 22px — his "what it is"
+   heading); body already 19px front / 17px depth, untouched. Nothing
+   below 17px anywhere in this block.
+   FIX7B (found on my own prove read-back): the seal span MUST be sized
+   at every width — the phone-only rules left the seal img at its natural
+   1600px on desktop, blowing the depth panels out by ~500px. The 32px
+   sizing is therefore a BASE rule (all widths); the phone query only
+   shrinks it to 28px with a 2px top margin — the floor relief: at phone
+   the fixed costs (heading 24 + 1-word paragraph + seal + marker +
+   padding) run 215px against a 207px row, so the seal gives back 12px
+   (4px size + 8px margin) and the floor fits at 203px.
+   FIX7C (found on my own prove read-back): the floor still ran 209px against a 207px row (2px over, 33 thirds) — the paragraph’s own 10px top+bottom margins are the fattest remaining cost, so the last shave comes from the two gaps around the seal/marker instead: the seal’s top margin 2px -> 0 (the paragraph’s 10px bottom margin is still the visible gap) and the depth marker’s top margin 6px -> 2px. Floor lands at 203px, 4px of slack. */
+.depth-thirds .ib-layer-body .depth-seal{display:block;width:32px;height:32px;margin:10px auto 0;flex:none}
+.depth-thirds .ib-layer-body .depth-seal img{width:32px;height:32px;display:block;border-radius:50%;object-fit:cover;filter:brightness(.95) saturate(1.08);box-shadow:0 0 0 2px rgba(255,255,255,.22),0 10px 20px rgba(0,0,0,.6),0 0 18px rgba(255,45,70,.30)}
+#depthBody .ib-layer-body p .d-sent{display:block}
+#depthBody .ib-layer-body p .d-sent + .d-sent{margin-top:12px}
+@media(max-width:900px){
+ #screen-slide .ib-layer.fx7-cover .ib-img-el{object-fit:cover}
+ #depthBody .ib-img-el{object-fit:cover}
+ #screen-slide .ib-layer-body .b-script{font-size:24px}
+ #depthBody .depth-thirds .ib-layer-body .b-script{font-size:24px}
+ .depth-thirds .ib-layer-body .depth-seal{width:28px;height:28px;margin-top:0}
+ #depthBody .more-behind{margin-top:2px}
+ .depth-thirds .ib-layer-body .depth-seal img{width:28px;height:28px}
+ #depthBody .ib-layer-body p .d-sent{display:block} /* base: desktop depth paragraphs are long; the gap must show there too */
+ #depthBody .ib-layer-body p .d-sent + .d-sent{margin-top:12px}
+}
+</style>
 </head>
 <body>
 <div class="royal-frame" aria-hidden="true"><div class="rf-et top"></div><div class="rf-es left"></div><div class="rf-es right"></div><div class="rf-rim"></div><div class="rf-corner tl"></div><div class="rf-corner tr"></div><div class="rf-corner bl"></div><div class="rf-corner br"></div><div class="rf-n top"></div></div>
@@ -1501,7 +1564,7 @@ function imgBoardFor(src, alt, slot, boardIdx){
   var vid = RUNTIME_VID[key];
   var media = vid ? '<div class="ib-vid">' + vidHTML(vid) + '</div>' : (src ? '<img class="ib-img-el" src="' + src + '" alt="' + alt + '" />' : '');
   var isV1Img = boardIdx !== 3 && !vid && src && V1_SLIDES.indexOf(EMBED.slides.indexOf(src)) !== -1;
-  return '<div class="ib-layer ib-img"><div class="ib-layer-body">'
+  return '<div class="ib-layer ib-img fx7-cover"><div class="ib-layer-body">'
     + '<button class="swap-btn tool-btn" type="button" data-slot="' + slot + '" aria-label="Member tools — change this slot"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5 5l1.8 1.8M17.2 17.2L19 19M19 5l-1.8 1.8M6.8 17.2L5 19"/></svg></button>'
     + '<button class="add-btn" type="button" data-slot="' + slot + '">+ Behind</button>'
     + (isV1Img ? '<span class="v1-tag">v1 PLACEHOLDER</span>' : '')
@@ -2563,23 +2626,24 @@ function thirdChrome(i, lvl){
 }
 function thirdPanelHTML(d, lvl, i){
   var chrome = thirdChrome(i, lvl);
+  var seal = '<span class="depth-seal" aria-hidden="true"><img src="' + EMBED.ball + '" alt="" /></span>';
   if (d.kind === 'text'){
     var shown = d.txt, deeper = '';
     if (lvl === 1){ shown = firstSentence(d.txt); }
     else if (lvl === 3){ deeper = '<p class="third-deeper">Deeper — ' + escTx(deeperLine(DEPTH_BOARD, d.sec, d.noDeeper)) + '</p>'; }
     return '<div class="ib-layer lvl' + lvl + '" data-third="' + i + '"><div class="ib-layer-body">' + chrome
-      + '<div class="b-script">' + escTx(d.head) + '</div><p>' + escTx(shown) + '</p>' + deeper + '</div></div>';
+      + '<div class="b-script">' + escTx(d.head) + '</div><p>' + escTx(shown) + '</p>' + deeper + seal + '</div></div>';
   }
   if (d.kind === 'video'){
     var cap = lvl >= 2 ? '<div class="third-cap">Video — plays right here</div>' : '';
     var deep = lvl >= 3 ? '<div class="third-cap third-deeper">Deeper — ' + escTx(d.near || '') + '</div>' : '';
     return '<div class="ib-layer ib-img lvl' + lvl + '" data-third="' + i + '"><div class="ib-layer-body">' + chrome
-      + '<div class="ib-vid third-vid">' + vidHTML(d.src) + '</div>' + cap + deep + '</div></div>';
+      + '<div class="ib-vid third-vid">' + vidHTML(d.src) + '</div>' + cap + deep + seal + '</div></div>';
   }
   var cap2 = lvl >= 2 ? '<div class="third-cap">' + escTx(d.label || '') + '</div>' : '';
   var deep2 = lvl >= 3 ? '<div class="third-cap third-deeper">Deeper — ' + escTx(d.near || '') + '</div>' : '';
   return '<div class="ib-layer ib-img lvl' + lvl + '" data-third="' + i + '"><div class="ib-layer-body">' + chrome
-    + '<img class="ib-img-el" src="' + d.src + '" alt="" />' + cap2 + deep2 + '</div></div>';
+    + '<img class="ib-img-el" src="' + d.src + '" alt="" />' + cap2 + deep2 + seal + '</div></div>';
 }
 /* OVERFLOW-BEHIND, DEPTH TWIN OF fitPanels (front): after every depth
    render, a level-2/3 text third longer than its panel is fit first (the
@@ -2589,6 +2653,22 @@ function thirdPanelHTML(d, lvl, i){
    DEPTH_SWAP keeps the FULL text; the split is display-only and is
    re-derived on every render, so editing back to a fitting length drops
    the continuation. */
+/* FIX7 — SENTENCE BREATHING ROOM (Shawn's phone walk, 2026-11-25):
+   depth text renders in groups of two sentences with 12px between
+   groups (.d-sent, phone only). depthSetShown is the ONLY writer of the
+   depth paragraph: it keeps p.textContent identical to the input (each
+   group span carries a trailing space except the last), so the binary
+   search, firstSentence, DEPTH_FULL and the continuation text all read
+   back exactly what was put in — and the fit measures WITH the spacing
+   in place. One sentence (L1) stays plain text, exactly as before. */
+function depthSetShown(p, text){
+  var parts = String(text || '').match(/[^.!?]+(?:[.!?]|$)/g) || [String(text || '')];
+  parts = parts.map(function(s){ return s.trim(); }).filter(Boolean);
+  if (parts.length <= 1){ p.textContent = text; return; }
+  var groups = [];
+  for (var gi = 0; gi < parts.length; gi += 2) groups.push(parts.slice(gi, gi + 2).join(' '));
+  p.innerHTML = groups.map(function(g, idx){ return '<span class="d-sent">' + escTx(g) + (idx < groups.length - 1 ? ' ' : '') + '</span>'; }).join('');
+}
 function fitDepthText(){
   var panels = document.querySelectorAll('#depthBody .depth-thirds .ib-layer');
   panels.forEach(function(panel){
@@ -2612,7 +2692,7 @@ function fitDepthText(){
        unchanged. */
     if (lvl === 1) full = firstSentence(full);
     var marker = b.querySelector('.more-behind');
-    p.textContent = full;
+    depthSetShown(p, full);
     if (marker) marker.remove();
     marker = null;
     if (b.scrollHeight <= b.clientHeight + 1){
@@ -2647,13 +2727,13 @@ function fitDepthText(){
       var lo = 0, hi = words.length; best = 0;
       while (lo <= hi){
         var mid = Math.floor((lo + hi) / 2);
-        p.textContent = words.slice(0, mid).join(' ');
+        depthSetShown(p, words.slice(0, mid).join(' '));
         if (b.scrollHeight <= b.clientHeight + 1){ best = mid; lo = mid + 1; } else hi = mid - 1;
       }
       if (best < 1) best = 1;
       rest = words.slice(best).join(' ');
-      if (!rest && !movedDeeper){ p.textContent = full; return; }
-      p.textContent = words.slice(0, best).join(' ');
+      if (!rest && !movedDeeper){ depthSetShown(p, full); return; }
+      depthSetShown(p, words.slice(0, best).join(' '));
       marker = document.createElement('button');
       marker.type = 'button';
       marker.className = 'more-behind';
@@ -2662,10 +2742,10 @@ function fitDepthText(){
       if (b.scrollHeight > b.clientHeight + 1){
         while (best > 1 && b.scrollHeight > b.clientHeight + 1){
           best--;
-          p.textContent = words.slice(0, best).join(' ');
+          depthSetShown(p, words.slice(0, best).join(' '));
           rest = words.slice(best).join(' ');
         }
-        if (!rest && !movedDeeper){ marker.remove(); p.textContent = full; return; }
+        if (!rest && !movedDeeper){ marker.remove(); depthSetShown(p, full); return; }
       }
       if (b.scrollHeight <= b.clientHeight + 1) break;
       var deep = b.querySelector('.third-deeper');
@@ -2673,7 +2753,7 @@ function fitDepthText(){
       movedDeeper = deep.textContent.trim();
       deep.remove();
       if (marker){ marker.remove(); marker = null; }
-      p.textContent = full;
+      depthSetShown(p, full);
     }
     if (movedDeeper) rest = (rest ? rest + ' ' : '') + movedDeeper;
     DEPTH_CONT[key] = rest;
