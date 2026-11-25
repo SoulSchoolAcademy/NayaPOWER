@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-25 12:32 UTC_
+_Last updated: 2026-11-25 13:04 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 10840
-- ✅ Verified (8+): 10725
+- **Total scored actions:** 10850
+- ✅ Verified (8+): 10735
 - 🟡 Partial (5–7): 104
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 7
@@ -19,7 +19,7 @@ _Last updated: 2026-11-25 12:32 UTC_
 | Team 2 | Naya Sage | 710 | 8.9 | 9.5 |
 | Team 3 | Naya Judge | 664 | 9.0 | 10 |
 | Team 4 | Naya Mason | 639 | 9.1 | 9.6 |
-| Team 5 | Naya Seeker | 780 | 9.0 | 9.6 |
+| Team 5 | Naya Seeker | 781 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 460 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 610 | 9.0 | 10 |
 | Team 8 | Naya Sentinel | 646 | 9.0 | 9.5 |
@@ -131,8 +131,8 @@ _Last updated: 2026-11-25 12:32 UTC_
 - **gate-stall-20261016-1527:** 1 actions, avg 9.0/10
 - **gate-stall-20261016-2355:** 2 actions, avg 9.2/10
 - **gate-stall-20261016-1728:** 2 actions, avg 9.0/10
-- **gap-lane-scorer-20261016-0530:** 1 actions, avg 9.5/10
-- **gap-lane-scorer-20261016-0540:** 1 actions, avg 9.5/10
+- **gap-lane-scorer-20261016-0530:** 2 actions, avg 9.5/10
+- **gap-lane-scorer-20261016-0540:** 2 actions, avg 9.2/10
 - **gap-lane-scorer-20261016-0610:** 1 actions, avg 9.5/10
 - **gap-lane-scorer-20261016-0650:** 1 actions, avg 9.0/10
 - **gate-stall-20261016-1748:** 1 actions, avg 9.0/10
@@ -183,7 +183,7 @@ _Last updated: 2026-11-25 12:32 UTC_
 - **gap-gap-20261017-0823:** 1 actions, avg 9.2/10
 - **gap-gap-gate-stall-20261016-0009:** 1 actions, avg 9.4/10
 - **gap-gate-stall-20261016-0009:** 1 actions, avg 9.0/10
-- **gap-gate-stall-20261016-1037:** 1 actions, avg 9.4/10
+- **gap-gate-stall-20261016-1037:** 2 actions, avg 9.4/10
 - **lane-scorer-20261017-0730:** 13 actions, avg 9.0/10
 - **lane-scorer-20261017-0740:** 3 actions, avg 8.8/10
 - **lane-scorer-20261017-0750:** 2 actions, avg 8.8/10
@@ -369,16 +369,16 @@ _Last updated: 2026-11-25 12:32 UTC_
 - **gate-stall-20261016-0457:** 1 actions, avg 9.0/10
 - **gate-stall-20261016-0503:** 1 actions, avg 9.0/10
 - **gate-stall-20261016-0536:** 1 actions, avg 9.0/10
-- **gate-stall-20261016-0606:** 1 actions, avg 9.0/10
-- **gate-stall-20261016-0607:** 1 actions, avg 9.0/10
-- **gate-stall-20261016-0617:** 1 actions, avg 9.0/10
+- **gate-stall-20261016-0606:** 2 actions, avg 9.0/10
+- **gate-stall-20261016-0607:** 2 actions, avg 8.5/10
+- **gate-stall-20261016-0617:** 2 actions, avg 9.0/10
 - **gate-stall-20261016-0631:** 1 actions, avg 9.0/10
 - **gate-stall-20261016-0841:** 1 actions, avg 9.0/10
 - **gate-stall-20261016-0912:** 1 actions, avg 9.0/10
 - **gate-stall-20261016-1008-lane0:** 1 actions, avg 9.0/10
 - **gate-stall-20261016-1100:** 1 actions, avg 9.0/10
-- **gate-stall-20261016-1138:** 1 actions, avg 9.0/10
-- **gate-stall-20261016-1142:** 1 actions, avg 9.0/10
+- **gate-stall-20261016-1138:** 2 actions, avg 8.8/10
+- **gate-stall-20261016-1142:** 2 actions, avg 9.0/10
 - **gate-stall-20261016-1225:** 1 actions, avg 9.0/10
 - **gate-stall-20261016-1955:** 1 actions, avg 9.0/10
 - **gate-stall-20261017-1239:** 1 actions, avg 9.0/10
@@ -1462,6 +1462,7 @@ _Last updated: 2026-11-25 12:32 UTC_
 - **gate-stall-20261125-0134:** 1 actions, avg 8.5/10
 - **gate-stall-20261125-0238:** 1 actions, avg 9.0/10
 - **gate-stall-20261125-0339:** 1 actions, avg 9.0/10
+- **gate-stall-20261125-0439:** 1 actions, avg 8.5/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -2331,7 +2332,7 @@ _Last updated: 2026-11-25 12:32 UTC_
 - **gap-lane-scorer-20261016-0940-lane5:** 1 actions, avg 9.0/10
 - **gap-t0907-lane5:** 1 actions, avg 9.0/10
 - **gap-gap-lane-scorer-20261016-0940-lane5:** 1 actions, avg 9.0/10
-- **gap-lane-scorer-20261016-0550:** 1 actions, avg 8.5/10
+- **gap-lane-scorer-20261016-0550:** 2 actions, avg 8.8/10
 - **gap-lane-scorer-20261016-0940:** 1 actions, avg 9.0/10
 - **gap-gap-gap-lane-scorer-20261016-0940:** 1 actions, avg 9.0/10
 - **gap-gap-lane-scorer-20261016-0940:** 1 actions, avg 8.5/10
