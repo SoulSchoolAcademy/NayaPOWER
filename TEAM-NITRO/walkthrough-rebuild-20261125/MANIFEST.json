@@ -1,0 +1,247 @@
+{
+  "source": "~/workspace/naya-abstract-library/shawns-set-mapping.md",
+  "note": "Shawn's own images. Swap by file replacement: replace the media-library file and re-file the matching WebP under the same img/<key>.webp name; the walk picks it up. The generated about-questions/ set is the FALLBACK library only.",
+  "about_status": "HELD OPEN — Shawn needs FIVE MORE images for About (2026-11-25 ~14:00 MST). The About image list is NOT final and NOT locked. The walkthrough takes ten About questions today; the image list is data-driven (window.__RB_STEPS, one imgs[] array per step) so new images slot in by filing img/about-extra-<n>.webp and adding its key to the step's imgs[] — no rebuild of the frame, no hard-coded count. Reserved slots: about-extra-1..5. When the five arrive with their mapping, swap them in then.",
+  "cover": {
+    "file": "image/78/78e365d4f0dc78edca56bd781394b788a5f7323ebcf329f51362e3e9fd3cb21c.jpg",
+    "img": "cover.webp",
+    "used_as": "walkthrough cover frame (door step + end flank)"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "key": "motto",
+      "question": "\"What's your motto in a nutshell?\"",
+      "section": "About",
+      "label": "Your motto",
+      "rim": "#8e24aa",
+      "images": [
+        {
+          "slot": "left",
+          "webp": "motto-left.webp",
+          "source_file": "image/b2/b2b2989477b274113d3e5528e411903cf4897f2a8a890f00ae0accdc4093562c.jpg"
+        },
+        {
+          "slot": "right",
+          "webp": "motto-right.webp",
+          "source_file": "image/42/421271c5d9b9b03fdde711c4f2d2b77e66dac5db263c628676008c1a931b9520.jpg"
+        }
+      ]
+    },
+    {
+      "step": 2,
+      "key": "vision",
+      "question": "\"What's your vision in a nutshell?\"",
+      "section": "About",
+      "label": "Your vision",
+      "rim": "#0f52ba",
+      "images": [
+        {
+          "slot": "only",
+          "webp": "vision.webp",
+          "source_file": "image/c9/c9448189300116133ea7edec8e137e9e17ede146a22fe9cde90bfc2bd660df17.jpg"
+        }
+      ]
+    },
+    {
+      "step": 3,
+      "key": "goal",
+      "question": "\"What's your goal in a nutshell?\"",
+      "section": "About",
+      "label": "Your goal",
+      "rim": "#07925f",
+      "images": [
+        {
+          "slot": "only",
+          "webp": "goal.webp",
+          "source_file": "image/8c/8c623d2592c24334f02bd56bb4269366ef9dcf9f409f711fcf3eab9239821c73.jpg"
+        }
+      ]
+    },
+    {
+      "step": 4,
+      "key": "mission",
+      "question": "\"What's your mission in a nutshell?\"",
+      "section": "About",
+      "label": "Your mission",
+      "rim": "#d4a017",
+      "images": [
+        {
+          "slot": "only",
+          "webp": "mission.webp",
+          "source_file": "image/3b/3b39fc1a411b02429139d9b7591e516ee42bee0258831fc984a1839cc0ed1e99.jpg"
+        }
+      ]
+    },
+    {
+      "step": 5,
+      "key": "love",
+      "question": "\"What do you love in a nutshell?\"",
+      "section": "About",
+      "label": "What you love",
+      "rim": "#c2410c",
+      "images": [
+        {
+          "slot": "only",
+          "webp": "love.webp",
+          "source_file": "image/cc/ccb93d5dcf0634b43d6220d5d596ffba21863601228058c4ebae9b1d3de234ee.jpg"
+        }
+      ]
+    },
+    {
+      "step": 6,
+      "key": "dont",
+      "question": "\"What don't you love in a nutshell?\"",
+      "section": "About",
+      "label": "What you don't love",
+      "rim": "#c62828",
+      "images": [
+        {
+          "slot": "only",
+          "webp": "dont.webp",
+          "source_file": "image/c1/c1670a5dfbdefb3e3f6292e5ea3ad8f28a5da77f63c3c4640f5a22929b6bfc3d.jpg"
+        }
+      ]
+    },
+    {
+      "step": 7,
+      "key": "thing",
+      "question": "\"What's your thing in a nutshell?\"",
+      "section": "About",
+      "label": "Your thing",
+      "rim": "#a21caf",
+      "images": [
+        {
+          "slot": "only",
+          "webp": "thing.webp",
+          "source_file": "image/81/81e7d509144344ba94f244f437b61257713d5202527ce07efebbd6770166e7f6.jpg"
+        }
+      ]
+    },
+    {
+      "step": 8,
+      "key": "values",
+      "question": "\"What are your values in a nutshell?\"",
+      "section": "About",
+      "label": "Your values",
+      "rim": "#3f51b5",
+      "images": [
+        {
+          "slot": "only",
+          "webp": "values.webp",
+          "source_file": "image/76/76adf2f753a7d9c755ac587d90c4175d0657a50c5095e5d91b37795e430b4df5.jpg"
+        }
+      ]
+    },
+    {
+      "step": 9,
+      "key": "laws",
+      "question": "\"What do you stand for in a nutshell?\"",
+      "section": "About",
+      "label": "What you stand for",
+      "rim": "#0e7490",
+      "images": [
+        {
+          "slot": "only",
+          "webp": "standfor.webp",
+          "source_file": "image/ff/ffca923e3a6720a59a4bbcafdb85f76bef9c993b673194a564fd83c5d901c51a.jpg"
+        }
+      ]
+    },
+    {
+      "step": 10,
+      "key": "declaration",
+      "question": "\"What is your promise in a nutshell?\"",
+      "section": "About",
+      "label": "Your promise",
+      "rim": "#6d28d9",
+      "images": [
+        {
+          "slot": "only",
+          "webp": "promise.webp",
+          "source_file": "image/43/43b33467015f360c812e7a9ecbda57f6bb67993684e7eadda92b4d8c43513a25.jpg"
+        }
+      ]
+    },
+    {
+      "step": 11,
+      "key": "offer",
+      "question": "\"What do you offer in a nutshell?\"",
+      "section": "Skills",
+      "label": "What you offer",
+      "rim": "#8e24aa",
+      "images": [
+        {
+          "slot": "left",
+          "webp": "offer-left.webp",
+          "source_file": "image/03/03461e2f8f76d75fe5e413d17e30257bcf8637f7aece49d5dfdcf1a1ec8d55ac.jpg"
+        },
+        {
+          "slot": "right",
+          "webp": "offer-right.webp",
+          "source_file": "image/c1/c18c7fd489ac31a229f75f96572b8d2bd5b148795b906ac2fe8f2c6cca804f73.jpg"
+        }
+      ]
+    },
+    {
+      "step": 12,
+      "key": "help",
+      "question": "\"How does it help in a nutshell?\"",
+      "section": "Skills",
+      "label": "How it helps",
+      "rim": "#0f52ba",
+      "images": [
+        {
+          "slot": "only",
+          "webp": "help.webp",
+          "source_file": "image/53/53b463bd491e5591170831a46eb600f132610d801fe53b4825a07662305f3db7.jpg"
+        }
+      ]
+    },
+    {
+      "step": 13,
+      "key": "moment",
+      "question": "\"Tell us about a moment you've done it — in a nutshell.\"",
+      "section": "Skills",
+      "label": "A moment you've done it",
+      "rim": "#07925f",
+      "images": [
+        {
+          "slot": "only",
+          "webp": "moment.webp",
+          "source_file": "image/4e/4ea4d24b33a52c0a16eacaf963b3dcc3644b7cca4c4e5702ff6b6aa1891adea7.jpg"
+        }
+      ]
+    },
+    {
+      "step": 14,
+      "key": "howwork",
+      "question": "\"How do you work in a nutshell?\"",
+      "section": "Skills",
+      "label": "How you work",
+      "rim": "#d4a017",
+      "images": [
+        {
+          "slot": "only",
+          "webp": "howwork.webp",
+          "source_file": "image/1d/1d7f4055a188d292d9acf0079380a9e5a9acfce3cc37888552046c83bb25200e.jpg"
+        }
+      ]
+    },
+    {
+      "step": 15,
+      "key": "start",
+      "question": "\"How do people start with you in a nutshell?\"",
+      "section": "Skills",
+      "label": "How people start with you",
+      "rim": "#c2410c",
+      "images": [
+        {
+          "slot": "only",
+          "webp": "start.webp",
+          "source_file": "image/67/674b88db82feff3a935603320a338b13627bbc04ebd101666639ad88a3f0a242.jpg"
+        }
+      ]
+    }
+  ]
+}
