@@ -1186,7 +1186,8 @@ body > .naya-frame, body > .frame-light{z-index:-1}
 .sp-dd-empty{font-size:17px;color:#fff;padding:16px;text-align:center}
 .sp-file-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.1)}
 .sp-file-row .pj-row-main{flex:1 1 auto;min-width:0}
-.sp-file-row a.gr-btn{flex:0 0 auto;width:auto;white-space:nowrap}
+.sp-file-row .pj-row-t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sp-file-row .pj-row-main a.gr-btn{display:inline-block;margin-top:8px}
 .sp-file-thumb{width:64px;height:64px;flex:0 0 64px;border-radius:14px;object-fit:cover;border:2px solid #a21caf;background:#050607;box-shadow:0 4px 12px rgba(0,0,0,.5)}
 .sp-file-ic{width:64px;height:64px;flex:0 0 64px;border-radius:14px;display:grid;place-items:center;font-size:25px;font-weight:900;color:#fff;border:2px solid var(--dc,#0e7490);background:#050607}
 .sp-vault-group{font-size:19px;font-weight:900;color:#fff;margin:24px 0 8px}
@@ -3444,6 +3445,7 @@ function spCollectFiles(){
   S.images=S.files.filter(function(f){ return f.kind==='image'; });
   spRenderFiles(); spRenderImages(); spRenderVault();
 }
+function spFileSize(n){ if(n<1024) return n+' B'; if(n<1048576) return Math.round(n/1024)+' KB'; return (n/1048576).toFixed(1)+' MB'; }
 function spFileRow(f){
   var row=el('div','sp-file-row');
   if(f.kind==='image' && f.dataUrl){
@@ -3457,12 +3459,12 @@ function spFileRow(f){
   var main=el('div','pj-row-main');
   main.appendChild(el('div','pj-row-t', f.name));
   main.appendChild(el('div','pj-row-s',
-    (f.size?Math.round(f.size/1024)+' KB · ':'') +
+    (f.size?spFileSize(f.size)+' · ':'') +
     (f.dataUrl?'Saved on this device — tap to open.':'Saved in the project record — add it again on this device to open it.')));
   row.appendChild(main);
   if(f.dataUrl){
     var o=el('a','gr-btn small','OPEN'); o.href=f.dataUrl; o.target='_blank'; o.rel='noopener';
-    o.style.textDecoration='none'; row.appendChild(o);
+    o.style.textDecoration='none'; main.appendChild(o);
   }
   if(isOwner()){
     var x=el('button','pj-x','✕'); x.type='button'; x.setAttribute('aria-label','Remove file');
