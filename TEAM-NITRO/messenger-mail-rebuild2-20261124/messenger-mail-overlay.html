@@ -3548,8 +3548,8 @@ function nmInit(){
   chrome.className = 'nm-chrome';
   chrome.id = 'nmChrome';
   chrome.innerHTML = '<div class="nm-toggle" role="tablist" aria-label="Tempo — Messenger or Mail">'
-    + '<button type="button" class="nm-toggle-btn" role="tab" data-tempo="chat" aria-pressed="true">MESSENGER<small>Chat — living</small></button>'
-    + '<button type="button" class="nm-toggle-btn" role="tab" data-tempo="mail" aria-pressed="false">MAIL<small>Mail — kept</small></button></div>'
+    + '<button type="button" class="nm-toggle-btn" role="tab" data-tempo="chat" aria-pressed="true">MESSENGER</button>'
+    + '<button type="button" class="nm-toggle-btn" role="tab" data-tempo="mail" aria-pressed="false">MAIL</button></div>'
     + '<div class="nm-icon-row" role="toolbar" aria-label="Message tools">'
     + '<button type="button" class="nm-icon" data-nm-icon="mail" data-jewel="mail" style="--ic:#8e24aa" aria-label="Mail" title="Mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></button>'
     + '<button type="button" class="nm-icon" data-nm-icon="chat" data-jewel="chat" style="--ic:#0f52ba" aria-label="Messenger" title="Messenger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.5 0-3-.4-4.2-1L3 20l1-5.3A8.5 8.5 0 1 1 21 11.5z"/></svg></button>'
@@ -4360,12 +4360,12 @@ html{scroll-padding-top:130px;}
 /* --- 8. EVERY PILL ITS OWN DEEP COLOR, RESTRAINED GLOW (2026-11-25 09:04) --- */
 /* Messenger dial: each mode its own color at rest AND lit, glow restrained.
    DIAL COLORS (2026-11-25 09:32, his order): Chat = magenta, Mail = purple, Post = blue. */
-.nm-dial-btn[data-nm-sendmode="chat"]{--mc:#d63384;}
+.nm-dial-btn[data-nm-sendmode="chat"]{--mc:#8e24aa;}
 .nm-dial-btn[data-nm-sendmode="mail"]{--mc:#8e24aa;}
 .nm-dial-btn[data-nm-sendmode="post"]{--mc:#0f52ba;}
-.nm-dial-btn[data-nm-sendmode="chat"].on{background:linear-gradient(135deg,rgba(214,51,132,.30) 0%,#050607 50%,rgba(214,51,132,.30) 100%);}
-.nm-dial-btn[data-nm-sendmode="mail"].on{background:linear-gradient(135deg,rgba(142,36,170,.30) 0%,#050607 50%,rgba(142,36,170,.30) 100%);}
-.nm-dial-btn[data-nm-sendmode="post"].on{background:linear-gradient(135deg,rgba(15,82,186,.30) 0%,#050607 50%,rgba(15,82,186,.30) 100%);}
+.nm-dial-btn[data-nm-sendmode="chat"].on{background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);}
+.nm-dial-btn[data-nm-sendmode="mail"].on{background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);}
+.nm-dial-btn[data-nm-sendmode="post"].on{background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);}
 .nm-dial-btn{border-color:var(--mc, rgba(255,255,255,.25));box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -6px 12px rgba(0,0,0,.6), 0 8px 18px rgba(0,0,0,.55), 0 0 12px -6px var(--mc, rgba(255,255,255,.3));}
 .nm-dial-btn[data-nm-sendmode="chat"].on,.nm-dial-btn[data-nm-sendmode="mail"].on,.nm-dial-btn[data-nm-sendmode="post"].on{border-color:var(--mc);box-shadow:inset 0 2px 0 rgba(255,255,255,.35), inset 0 -6px 12px rgba(0,0,0,.55), 0 8px 18px rgba(0,0,0,.55), 0 0 16px -4px var(--mc);}
 /* Compose dial (mail stage): rest-state rims per mode, lit glow restrained. */
@@ -4435,7 +4435,7 @@ html{scroll-padding-top:130px;}
   .ml-compose-top::after{animation:none;}
 }
 /* COMPOSE — the the red N effect effect: red ball, white ring, gloss obsidian. */
-.ml-compose-top{position:relative;background:radial-gradient(130% 130% at 30% 20%, #f87171 0%, #dc2626 38%, #991b1b 72%, #450a0a 100%);border:2px solid #ffffff;box-shadow:inset 0 2px 0 rgba(255,255,255,.55), inset 0 -8px 16px rgba(0,0,0,.6), 0 0 26px -4px rgba(220,38,38,.85), 0 0 12px rgba(255,255,255,.3), 0 14px 30px rgba(0,0,0,.65);}
+.ml-compose-top{position:relative;background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);border:2px solid #ffffff;box-shadow:inset 0 2px 0 rgba(255,255,255,.55), inset 0 -8px 16px rgba(0,0,0,.6), 0 0 26px -4px rgba(220,38,38,.85), 0 0 12px rgba(255,255,255,.3), 0 14px 30px rgba(0,0,0,.65);}
 .ml-compose-top:hover{transform:translateY(-2px);box-shadow:inset 0 2px 0 rgba(255,255,255,.6), inset 0 -8px 16px rgba(0,0,0,.6), 0 0 32px -4px rgba(220,38,38,.95), 0 0 16px rgba(255,255,255,.35), 0 18px 36px rgba(0,0,0,.7);}
 .ml-compose-top .ml-plus{font-size:25px;text-shadow:0 2px 8px rgba(0,0,0,.9), 0 0 14px rgba(255,255,255,.7);}
 .ml-compose-top::after{content:"";position:absolute;inset:-8px;border-radius:999px;border:1.5px solid rgba(255,255,255,.55);opacity:.6;pointer-events:none;animation:nm-orbit 120s linear infinite;}
@@ -4835,7 +4835,7 @@ html{scroll-padding-top:130px;}
   font-size:19px;font-weight:800;letter-spacing:.04em;text-shadow:0 1px 2px rgba(0,0,0,.9);}
 .ov-second-row .ml-compose-top .ov-compose-orb{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;
   font-size:24px;font-weight:800;line-height:1;color:#ffffff;
-  background:radial-gradient(130% 130% at 30% 22%, #fca5a5 0%, #dc2626 45%, #7f1d1d 100%);
+  background:radial-gradient(130% 130% at 30% 22%, #2b2b35 0%, #0d0d12 55%, #050607 100%);
   border:2px solid #ffffff;
   box-shadow:inset 0 2px 0 rgba(255,255,255,.6), inset 0 -6px 12px rgba(0,0,0,.6), 0 0 14px -2px rgba(255,255,255,.5);}
 .ov-second-row .ml-compose-top .ov-compose-label{white-space:nowrap;}
@@ -5792,5 +5792,228 @@ if(document.readyState === 'loading') document.addEventListener('DOMContentLoade
 else boot();
 })();
 
+</script>
+
+<style id="ov-eye-fix-20261125">
+/* ===== 27. EYE FIX 2026-11-25 — Shawn's eye, voice call ~11:4x-12:2x MST =====
+   (1) OBSIDIAN BUTTON LAW — his ruling ~12:21 MST, SUPERSEDES the dial's
+   magenta/purple/blue fills: NO colored buttons anywhere. Buttons are ALWAYS
+   obsidian black; color ONLY as light/glow around the edge, or a colored icon
+   inside. (2) Toggle centered alone in the dock, elevated, real — no subtitles.
+   (4) Tab colors elegant + together. (5) Inbox/Unread + folders spaced.
+   (6) One grid, same height, even spacing. (7) Top bar: 3 buttons only —
+   Contacts, Smart Lists, Compose; NO Spaces button; no "Naya Smart Mail" label.
+   (8) Smart tabs live INSIDE Smart Lists as a dropdown. (9) Chat is chat only —
+   no post feed, no duplicate Compose/Send up top, one Compose, one send.
+   (10) Mail / instant message / voice note / video call live in the SAME bar
+   as send, aligned with the person you are talking to. */
+/* (1) Pressed toggle: NO solid fill — obsidian, the sliding ::after pill behind
+   it carries the rim + glow. This kills the magenta/purple fills. */
+.nm-toggle-btn[aria-pressed="true"]{background:transparent !important;border-color:transparent !important;}
+.nm-toggle-btn small{display:none !important;}
+.nm-toggle::after{background:linear-gradient(135deg,#23232e 0%,#050607 50%,#23232e 100%) !important;}
+/* (1)(2) Toggle alone, centered, BIG and lifted in the dock. */
+.nm-toggle-dock{justify-content:center !important;}
+.nm-toggle-dock .nm-toggle{flex:0 1 520px !important;max-width:520px !important;padding:8px !important;
+  box-shadow:0 20px 44px rgba(0,0,0,.8),0 0 32px -6px rgba(255,255,255,.30),inset 0 2px 0 rgba(255,255,255,.45),inset 0 -10px 20px rgba(0,0,0,.8) !important;}
+.nm-toggle-dock .nm-toggle-btn{padding:14px 16px !important;font-size:19px !important;line-height:1.2 !important;
+  background:transparent !important;min-height:56px !important;}
+/* (1) Dial: obsidian always; Post mode is gone from chat (9). */
+.nm-dial-btn{background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%) !important;}
+.nm-dial-btn.on{background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%) !important;}
+.nm-dial-btn[data-nm-sendmode="post"]{display:none !important;}
+.mail-stage .ml-mode[data-mode="post"]{display:none !important;}
+/* (1)(7) Compose: obsidian pill, sapphire rim + glow only. Orb obsidian. */
+#ovSecondRow .ml-compose-top{background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%) !important;
+  border-color:#0f52ba !important;box-shadow:0 12px 34px -8px rgba(0,0,0,.6),0 0 24px -4px rgba(15,82,186,.65),inset 0 1px 0 rgba(255,255,255,.12) !important;}
+.ov-second-row .ml-compose-top .ov-compose-orb{background:radial-gradient(130% 130% at 30% 22%,#2b2b35 0%,#0d0d12 55%,#050607 100%) !important;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.6),inset 0 -6px 12px rgba(0,0,0,.6),0 0 14px -2px rgba(255,255,255,.5) !important;}
+/* (6)(7) The band: ONE grid, THREE buttons, same height, even spacing. */
+#ovSecondRow{grid-template-columns:repeat(3,minmax(0,1fr)) !important;gap:16px !important;padding:16px !important;}
+#ovSecondRow>*{min-height:64px !important;}
+#ovSecondRow .ml-qa-item[data-ov-spaces]{display:none !important;}
+@media (max-width:640px){#ovSecondRow{grid-template-columns:repeat(3,minmax(0,1fr)) !important;gap:10px !important;padding:12px !important;}
+  #ovSecondRow>*{min-height:58px !important;}}
+/* (4) Tab colors — elegant deep jewels that go together, spectrum order, no red,
+   no pink, no bright clash. (The strip itself is hidden by (8); these keep any
+   re-rendered tab honest, and the dropdown items mirror them.) */
+#mmTabsHost .smart-tab:nth-child(1){border-color:#8e24aa !important;}
+#mmTabsHost .smart-tab:nth-child(2){border-color:#0f52ba !important;}
+#mmTabsHost .smart-tab:nth-child(3){border-color:#07925f !important;}
+#mmTabsHost .smart-tab:nth-child(4){border-color:#d4a017 !important;}
+#mmTabsHost .smart-tab:nth-child(5){border-color:#6d28d9 !important;}
+#mmTabsHost .smart-tab:nth-child(6){border-color:#c2410c !important;}
+/* (8) The smart tabs do NOT sit out in the open. */
+#mmTabsHost{display:none !important;}
+/* (5) Inbox / Unread chips and folder buttons: breathing room, no collisions. */
+.ml-filters{gap:16px !important;}
+.ml-fchip{padding:8px 20px !important;}
+.mail-stage .ml-folder{margin-bottom:12px !important;min-height:56px !important;}
+/* (9) No post feed inside chat: post conversations + post bubbles never show. */
+.nm-conv[data-ov-post]{display:none !important;}
+.nm-bubble[data-ov-post]{display:none !important;}
+/* (9) The top icon row is gone — its search/compose/send duplicated the real
+   controls; its four action icons live in the send bar instead (see script). */
+.nm-icon-row{display:none !important;}
+/* (10) The send bar: action balls + send, one row, one height, aligned. */
+.nm-sendrow{display:flex !important;gap:12px !important;align-items:center !important;flex-wrap:nowrap !important;}
+.nm-sendrow .nm-icon{width:44px !important;height:44px !important;flex:none !important;}
+.nm-sendrow .nm-icon svg{width:24px !important;height:24px !important;}
+.nm-sendrow .nm-icon::after{inset:-5px !important;}
+.nm-sendrow .nm-mic{width:44px !important;height:44px !important;flex:none !important;}
+.nm-sendrow #nmMsgSend{flex:none !important;margin-left:auto !important;min-height:48px !important;}
+/* (8) Smart Lists dropdown — the smart tabs as organized lists, inside Smart Lists. */
+.ov-sl-dropdown{margin:0 0 20px;padding:16px;border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,0) 30%),#050607;
+  border:1.5px solid rgba(255,255,255,.16);box-shadow:0 14px 34px rgba(0,0,0,.6);}
+.ov-sl-dropdown[hidden]{display:none !important;}
+.ov-sl-title{font-size:17px;letter-spacing:.24em;font-weight:800;color:#ffffff;margin:0 0 12px;}
+.ov-sl-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
+@media (max-width:640px){.ov-sl-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+.ov-sl-item{display:flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:12px 16px;
+  border-radius:999px;background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);
+  border:2px solid var(--tc,#8e24aa);color:#ffffff;font-size:19px;font-weight:800;font-family:inherit;cursor:pointer;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.3),inset 0 -6px 12px rgba(0,0,0,.6),0 8px 18px rgba(0,0,0,.55),0 0 14px -6px var(--tc,#8e24aa);}
+.ov-sl-item:hover{transform:translateY(-2px);}
+.ov-sl-item:active{transform:scale(.97);}
+.ov-sl-item.on{box-shadow:inset 0 2px 0 rgba(255,255,255,.35),inset 0 -6px 12px rgba(0,0,0,.55),0 8px 18px rgba(0,0,0,.55),0 0 20px -4px var(--tc,#8e24aa);}
+.ov-sl-item .ov-sl-dot{width:12px;height:12px;border-radius:50%;background:var(--tc,#8e24aa);flex:none;
+  box-shadow:0 0 10px var(--tc,#8e24aa);}
+</style>
+<script>
+/* ===== 27. EYE FIX 2026-11-25 — behaviour layer (runs last, re-applies on an
+   interval because the rail rebuilds QA nodes and nmRefreshMsgView rebuilds
+   the reader; clones, never rebuilds — handlers travel via document delegation). */
+(function(){
+  var PALETTE = {'New':'#8e24aa','All':'#0f52ba','Posts':'#07925f','Letters':'#d4a017','Chats':'#6d28d9','+ Add':'#c2410c'};
+  function $(s, r){ return (r||document).querySelector(s); }
+  function $all(s, r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); }
+  function txt(el){ return (el.textContent||'').trim(); }
+  /* (7) Forget the "Naya Smart Mail" label in the header. */
+  function hideBrand(){
+    var top = $('.naya-topbar'); if(!top) return;
+    $all('span,div', top).forEach(function(el){
+      if(el.children.length === 0) return;
+      if((el.textContent||'').indexOf('SMART MAIL') !== -1 && el.closest('.naya-topbar') === top){
+        if(el.className && String(el.className).indexOf('brand') !== -1) el.style.display = 'none';
+      }
+    });
+    /* Fallback: any direct topbar child whose text is exactly the label. */
+    Array.prototype.forEach.call(top.children, function(el){
+      if(txt(el).indexOf('SMART MAIL') !== -1 && (el.textContent||'').length < 40) el.style.display = 'none';
+    });
+  }
+  /* (7) Spaces lives inside Smart Lists now — tag its band button so CSS hides it. */
+  function tagSpaces(){
+    $all('#ovSecondRow .ml-qa-item').forEach(function(it){
+      if(txt(it).indexOf('SPACES') === 0) it.setAttribute('data-ov-spaces', '1');
+    });
+  }
+  /* (8) Smart Lists dropdown: the smart tabs as organized lists + Worlds. */
+  function tabLabels(){
+    return $all('#mmTabsHost .smart-tab').map(function(t){
+      var l = t.querySelector('.sn-label') || t; return txt(l);
+    }).filter(function(l){ return l; });
+  }
+  function ensureDropdown(){
+    var band = $('#ovSecondRow'); if(!band) return null;
+    var dd = $('#ovSlDropdown');
+    if(!dd){
+      dd = document.createElement('section');
+      dd.id = 'ovSlDropdown'; dd.className = 'ov-sl-dropdown'; dd.hidden = true;
+      dd.setAttribute('aria-label', 'Smart lists');
+      dd.innerHTML = '<p class="ov-sl-title">SMART LISTS</p><div class="ov-sl-grid"></div>';
+      band.parentNode.insertBefore(dd, band.nextSibling);
+    }
+    var labels = tabLabels();
+    var grid = $('.ov-sl-grid', dd);
+    var key = labels.join('|');
+    if(dd.__ovKey !== key){
+      dd.__ovKey = key; grid.innerHTML = '';
+      labels.forEach(function(lb){
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'ov-sl-item'; b.setAttribute('data-ov-list', lb);
+        b.style.setProperty('--tc', PALETTE[lb] || '#8e24aa');
+        b.innerHTML = '<span class="ov-sl-dot" aria-hidden="true"></span><span>' + lb.replace(/</g,'&lt;') + '</span>';
+        b.addEventListener('click', function(){
+          var pills = $all('#mmTabsHost .smart-tab');
+          for(var i = 0; i < pills.length; i++){
+            var l = pills[i].querySelector('.sn-label') || pills[i];
+            if(txt(l) === lb){ pills[i].click(); break; }
+          }
+          $all('.ov-sl-item', grid).forEach(function(x){ x.classList.toggle('on', x === b); });
+          dd.hidden = true;
+        });
+        grid.appendChild(b);
+      });
+      var w = document.createElement('button');
+      w.type = 'button'; w.className = 'ov-sl-item'; w.setAttribute('data-ov-list', 'Worlds');
+      w.style.setProperty('--tc', '#d4a017');
+      w.innerHTML = '<span class="ov-sl-dot" aria-hidden="true"></span><span>Worlds</span>';
+      w.addEventListener('click', function(){
+        var sp = null;
+        $all('.ml-qa-item').forEach(function(it){ if(txt(it).indexOf('SPACES') === 0) sp = it; });
+        if(sp) sp.click();
+        dd.hidden = true;
+      });
+      grid.appendChild(w);
+    }
+    return dd;
+  }
+  function wireSmartLists(){
+    var sl = null;
+    $all('#ovSecondRow .ml-qa-item').forEach(function(it){
+      if(txt(it).indexOf('SMART LISTS') === 0) sl = it;
+    });
+    if(sl && !sl.__ovSlWired){
+      sl.__ovSlWired = true;
+      sl.addEventListener('click', function(){
+        var dd = ensureDropdown(); if(dd) dd.hidden = !dd.hidden;
+      });
+    }
+  }
+  /* (9) Post conversations / post bubbles are not chat — tag them, CSS hides them. */
+  function tagPosts(){
+    $all('.nm-conv').forEach(function(c){
+      if((c.textContent||'').indexOf('POST · feed') !== -1) c.setAttribute('data-ov-post', '1');
+    });
+    $all('.nm-bubble').forEach(function(b){
+      var t = $('.nm-tempo', b);
+      if(t && txt(t) === 'POST · feed') b.setAttribute('data-ov-post', '1');
+    });
+  }
+  /* (10) Action balls into the send bar — CLONES, because nmRefreshMsgView
+     rebuilds #nmMsgView and would destroy moved nodes. The document-level
+     [data-nm-icon] delegated handler fires on clones exactly as on originals. */
+  function moveActions(){
+    var row = $('.nm-sendrow'); if(!row) return;
+    ['mail', 'chat', 'video'].forEach(function(k){
+      if($('.nm-icon[data-nm-icon="' + k + '"].ov-send-act', row)) return;
+      var orig = $('.nm-icon-row .nm-icon[data-nm-icon="' + k + '"]') ||
+                 $('.nm-icon[data-nm-icon="' + k + '"]');
+      if(!orig) return;
+      var c = orig.cloneNode(true);
+      c.classList.add('ov-send-act');
+      c.setAttribute('aria-label', orig.getAttribute('aria-label') || k);
+      row.insertBefore(c, row.firstChild);
+    });
+    /* Inserted video, then chat, then mail before firstChild, so the bar
+       reads mail, instant message, video — then the voice-note mic, then send. */
+    var order = ['video', 'chat', 'mail'];
+    order.forEach(function(k){
+      var el = $('.nm-icon[data-nm-icon="' + k + '"].ov-send-act', row);
+      if(el) row.insertBefore(el, row.firstChild);
+    });
+  }
+  function pass(){
+    try{ hideBrand(); }catch(e){}
+    try{ tagSpaces(); }catch(e){}
+    try{ ensureDropdown(); wireSmartLists(); }catch(e){}
+    try{ tagPosts(); }catch(e){}
+    try{ moveActions(); }catch(e){}
+  }
+  pass();
+  setInterval(pass, 800);
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', pass);
+})();
 </script>
 </body></html>
