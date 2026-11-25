@@ -627,6 +627,13 @@ textarea.gr-input{resize:vertical;min-height:110px;line-height:1.55;}
    full question ran 4 lines. No text, no colors, no new elements. */
 @media (max-width:480px){
   #sp-walk .frame-title{font-size:19px}
+  /* GUARD — the shorter topbar pulls the scroll viewport up: with the
+     frame-geo margin-top (36px) the scroll top landed at 200-203.7, inside
+     the top band (ends 210), and the body label printed across the emblem.
+     56px holds the scroll top at >=220 on every step (10px clear of the
+     band), whatever the topbar height. Cost: phone scroll viewport
+     ~332-336px (frame-geo 339px); the walk still scrolls. */
+  #sp-walk .frame-scroll{margin-top:56px}
 }
 </style>
 <style id="sp-v6-css">
