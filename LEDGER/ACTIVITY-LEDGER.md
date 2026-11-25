@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 14:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 15:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -14602,6 +14602,14 @@ _Last updated: 2026-11-25 14:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0901-lane3.md`
 
 **Evidence:** Artifacts verified: worker.js/worker-chain final sha ba274d21... matches t0903-chain tip; t0901-cited files (worker.js 0acdfc41 at claim time, wrangler.toml 5967b202, store.js 6a4d58cc, test-skeleton.sh e7d4dafa) all exist at exact cited SHAs. Live JWT chain proven (install 172205253, permissions contents:write/issues:write/pull_requests:write reco
+
+### ✅ t0900 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** HUB DRIVE Round 1 - design-contract completion checklist (inventory of naya4/design-system-v1)
+
+**Receipt:** `twelve-lane-receipts/t0900-lane5.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); pinned commit e403c27e692c495d0dfdf840ad9a983fe11382f8 exists as a commit object in the mirror; HUB/design-system/ at that commit holds exactly the enumerated tree (5 top files + 9 workshop sources under library/{buttons,jewels,blocks,showcase}/ = 14 files); 
 
 ### ✅ t0900 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -52877,6 +52885,14 @@ _Last updated: 2026-11-25 14:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
 
+### ✅ gap-lane-scorer-20261016-1300 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up: durable F2/F3 re-derivation artifacts + seam-contract harness (parent t1172-lane3)
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261016-1300-lane3.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); both artifacts byte-exact by sha256 - rederive-f2f3.py f9124afa... and transcript-20261016T2047Z.log 949ce80b... match the receipt pins; repo HEAD ba62638704256b012c20e41fe7f53cc3b62b1b44 exists as a commit in the local mirror and both pinned blobs match at t
+
 ### ✅ gap-lane-scorer-20261015-1410-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
 **Task:** Anti-theater re-selection extended to all 15 cells
@@ -62772,6 +62788,18 @@ _Last updated: 2026-11-25 14:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### 🟡 gate-stall-20261125-0654 — Team 0, Team Naya Scorer (?) — 7.5/10 [PARTIAL]
+
+**Task:** gate stall: 31/31 unclaimable by Clarity seat, zero claims
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); queue checksum recomputes to 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4 - byte-identical to the receipt's claim and to the 05:43 receipt, 31 briefs still queued, no mv; prior receipt mtime 13:52:49 UTC, this receipt 14:54:48 UTC (61m59s, outside the 60-
+
+### ✅ gate-stall-20261125-0543 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
+
+**Task:** gate stall: 31/31 unclaimable by Clarity seat, zero claims
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); brief-queue/ holds 31 brief-*.md, names exactly matching the receipt's 31, and the sha256 of the sha256sum list recomputes to 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4 - byte-identical to the receipt's claim and to the 04:39 receipt, so the queue is un
 
 ### ✅ distill-daily-20261125 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
