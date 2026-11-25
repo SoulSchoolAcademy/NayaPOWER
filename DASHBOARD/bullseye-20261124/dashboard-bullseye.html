@@ -15822,7 +15822,7 @@ init();
         if (tc>0){
           var _rate=Math.round(tj/tc*100);
           var _color=_rate>=10?'#2fe89e':(_rate>0?'#ffbf3d':'#ff5e6c');
-          _conv.innerHTML='<span style="color:'+_color+'">'+(tj/tc*100).toFixed(1)+'%</span>&nbsp;<span>of clicks became joins</span>' + (_rate===0 ? '&nbsp;<span class="os-sl-leak">— the leak is here</span>' : '');
+          _conv.innerHTML='<span style="color:'+_color+'">'+(tj/tc*100).toFixed(1)+'%</span><span> of clicks became joins</span>' + (_rate===0 ? '<span class="os-sl-leak"> — the leak is here</span>' : '');
         } else {
           _conv.textContent='Share your link to start the funnel';
         }
@@ -32767,4 +32767,32 @@ body:has(.os-sales-view.open) #os-b3-hide,body:has(.os-invites-view.open) #os-b3
   }catch(e){ /* stage JS must never break the page */ }
 })();
 </script>
+<style id="eye-fix-20261124">
+/* EYE-FIX 2026-11-24  captain's eye walk, desktop 1920, browser task 20:31-20:37 MST. */
+/* (D1) THE STICKY + COVERED THE RIGHT-RAIL HEADING. At >=1440px the right rail is
+   docked (position:sticky;top:0) with padding-top:56px, and its document top is 64px,
+   so once scrolled the sticky head rides to y58  inside the fixed eco-plus band
+   y60-108 (48px at top:60)  and the + covers the O of YOUR / the A of NAYANET
+   ("Y[O]UR WORLDS &", "N[O]YANET"; EFP at x1601-1633 returned BUTTON#os-eco-plus).
+   The rail now docks 58px down (top:58px): the stuck head sits at y116, 8px clear of
+   the plus, and at scroll 0 the head is unchanged (y122  the rail only sticks after
+   6px of scroll, so nothing jumps). The + buttons do not move, keep their size,
+   position and taps; the header-sink behaviour is untouched; the left rail is
+   untouched (its brand letters are clear at every scroll  probe base-dash-1920).
+   Scoped to min-width:1440px, so the <1440px fixed drawers are untouched. */
+@media (min-width:1440px){
+  .dash-shell .rail.right{top:58px!important;}
+}
+/* (D3) STAGE 5 RUNNING FEED SHOWS ITS FEED. #os-feed-board is display:none in normal
+   view and only appears as a full-screen overlay (body.os-feed-open), so Stage 5 read
+   as a bare heading + Next button. _osRenderFeed already writes the honest no-data
+   line ("No updates yet  your first action lights the feed.") or the real rows when
+   the ledger lands  it was rendered but invisible. The board now shows inline in the
+   stage; the overlay mode is untouched (this rule does not apply under .os-feed-open).
+   Inline, the board's duplicate h3 (the stage head already says Running feed) and its
+   floating full-screen X stay hidden; both return in the overlay. */
+body:not(.os-feed-open) #naya-stage-5 #os-feed-board{display:block;}
+body:not(.os-feed-open) #naya-stage-5 #os-feed-board h3{display:none;}
+body:not(.os-feed-open) #os-feed-board .os-feed-x{display:none!important;}
+</style>
 </body></html>
