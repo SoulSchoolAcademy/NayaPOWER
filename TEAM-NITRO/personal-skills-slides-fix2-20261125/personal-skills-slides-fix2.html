@@ -27502,10 +27502,18 @@ function wallCard(j, iso, pid, idx){
        above the Smart Skills header (defect 4). Guarded: it only moves the
        page while slides mode is actually on. */
     window.__osSkillsSlidesSettle = function(){ try{ var sec=document.querySelector('[data-os-view="skills"]'); if(!sec || !sec.classList.contains('of-slides-mode')) return; var y=sec.getBoundingClientRect().top + window.scrollY; window.scrollTo(0, Math.max(0, Math.round(y))); }catch(e){} };
+    /* FIX2b 2026-11-25 (defect 4, scroll-anchoring): the settle lands the section
+       top at 0, but the Hub feed above it changes height after the landing and
+       Chrome's scroll anchoring moves the viewport (spy-proven: 0 -> +158 with
+       no scroll call, docH 8438 -> 7566). So re-assert the section top once a
+       second for 10s after the mode opens. Stops early on any user input
+       (wheel / touch / pointer / key); only scrolls when the drift is over
+       4px; a second landing inside the window does not stack another loop. */
+    window.__osSkillsSlidesLand = function(){ try{ var _now=Date.now(); if (window.__osSkillsSlidesLanding && (_now-window.__osSkillsSlidesLanding) < 10000) return; window.__osSkillsSlidesLanding=_now; var _n=0; var _stop=function(){ _n=99; try{ window.removeEventListener('wheel', _stop, true); window.removeEventListener('touchstart', _stop, true); window.removeEventListener('pointerdown', _stop, true); window.removeEventListener('keydown', _stop, true); }catch(e){} }; window.addEventListener('wheel', _stop, true); window.addEventListener('touchstart', _stop, true); window.addEventListener('pointerdown', _stop, true); window.addEventListener('keydown', _stop, true); (function _tick(){ if (_n>=10) { _stop(); return; } _n++; try{ var sec=document.querySelector('[data-os-view="skills"]'); if (sec && sec.classList.contains('of-slides-mode')) { var _top=sec.getBoundingClientRect().top; if (_top > 4 || _top < -4) window.__osSkillsSlidesSettle(); } }catch(e){} setTimeout(_tick, 1000); })(); }catch(e){} };
     /* FIX2 2026-11-25 (defect 1): a hash change to #skills/slides with the page
        already loaded opens the slideshow - no reload needed. Only this exact
        hash acts; bare #skills and every other hash behave exactly as before. */
-    window.addEventListener('hashchange', function(){ try{ if ((location.hash||'')!=='#skills/slides') return; window.__osBootSkillsSlides=true; var _sv=window.osShowView||window.showView; if (typeof _sv==='function') _sv('skills', true); var _t=0; (function _h(){ try{ if (window.__osSkillsSetMode) { window.__osSkillsSetMode('slides'); setTimeout(function(){ try{ window.__osSkillsSlidesSettle(); }catch(e){} }, 120); setTimeout(function(){ try{ window.__osSkillsSlidesSettle(); }catch(e){} }, 900); return; } }catch(e){} if (++_t < 20) setTimeout(_h, 250); })(); }catch(e){} });
+    window.addEventListener('hashchange', function(){ try{ if ((location.hash||'')!=='#skills/slides') return; window.__osBootSkillsSlides=true; var _sv=window.osShowView||window.showView; if (typeof _sv==='function') _sv('skills', true); var _t=0; (function _h(){ try{ if (window.__osSkillsSetMode) { window.__osSkillsSetMode('slides'); setTimeout(function(){ try{ window.__osSkillsSlidesSettle(); }catch(e){} }, 120); window.__osSkillsSlidesLand(); return; } }catch(e){} if (++_t < 20) setTimeout(_h, 250); })(); }catch(e){} });
     (function(){
       if (hashView==='home' && (hashSec==='composer' || hashSec==='post' || hashSec==='naya' || hashSec==='smart')) {
         var kind = (hashSec==='post' || hashSec==='naya' || hashSec==='smart') ? hashSec : 'naya';
@@ -27514,7 +27522,7 @@ function wallCard(j, iso, pid, idx){
         setTimeout(function(){ try{ var a=document.getElementById('about'); if (a) a.scrollIntoView({behavior:'smooth', block:'start'}); }catch(e){} }, 350);
       } else if (_isSkillsSlides) {
         setTimeout(function(){ try{ var s=document.querySelector('[data-os-view="skills"]'); if (s) s.scrollIntoView({behavior:'auto', block:'start'}); }catch(e){} }, 350);
-        var _tries2=0; (function _openSkillsSlides(){ try{ if (window.__osSkillsSetMode) { window.__osSkillsSetMode('slides'); setTimeout(function(){ try{ window.__osSkillsSlidesSettle(); }catch(e){} }, 120); setTimeout(function(){ try{ window.__osSkillsSlidesSettle(); }catch(e){} }, 900); return; } }catch(e){} if (++_tries2 < 20) setTimeout(_openSkillsSlides, 250); })(); /* __osSkillsSetMode is defined in a later script than this boot block, so retry until it exists (max ~5s) instead of firing once and missing - same shape as the composer retry above. FIX2 2026-11-25: the settle scrolls re-assert the Skills section top after the mode opens (instant, not smooth). */
+        var _tries2=0; (function _openSkillsSlides(){ try{ if (window.__osSkillsSetMode) { window.__osSkillsSetMode('slides'); setTimeout(function(){ try{ window.__osSkillsSlidesSettle(); }catch(e){} }, 120); window.__osSkillsSlidesLand(); return; } }catch(e){} if (++_tries2 < 20) setTimeout(_openSkillsSlides, 250); })(); /* __osSkillsSetMode is defined in a later script than this boot block, so retry until it exists (max ~5s) instead of firing once and missing - same shape as the composer retry above. FIX2 2026-11-25: the settle scrolls re-assert the Skills section top after the mode opens (instant, not smooth). */
       }
     })();
   })();
@@ -48939,7 +48947,7 @@ renderSkillChips();
    (the "intro card") and a later look caught slide 1, The Login Skill.
    Slide 1 is The Login Skill on every arrival now; the F1 retry stays as
    an idempotent fallback. scroll=false here; the F1 settle scrolls land it. */
-if (window.__osBootSkillsSlides) { setMode('skills', 'slides', false); setTimeout(function(){ try{ window.__osSkillsSlidesSettle(); }catch(e){} }, 120); setTimeout(function(){ try{ window.__osSkillsSlidesSettle(); }catch(e){} }, 900); }
+if (window.__osBootSkillsSlides) { setMode('skills', 'slides', false); setTimeout(function(){ try{ window.__osSkillsSlidesSettle(); }catch(e){} }, 120); window.__osSkillsSlidesLand(); }
 })();
 </script>
 
