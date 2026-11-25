@@ -1663,7 +1663,7 @@ function loadIntelAndFamily(){
     splitIntel(res[0]||[]);
     S.children=res[1]||[];
     S.parent=(res[2]&&res[2][0])||null;
-    renderIntel(); renderProduction(); renderChildren(); renderCrumb(); renderQuestions();
+    renderIntel(); renderProduction(); renderChildren(); renderCrumb(); spRenderQuestions();
     refreshNumbersOnly(); loadActivity();
     if(!S.children.length) return;
     var ids=S.children.map(function(c){ return c.id; });
