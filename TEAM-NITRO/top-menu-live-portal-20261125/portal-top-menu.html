@@ -608,7 +608,6 @@ body:before{display:none;}
   border-bottom:1px solid rgba(168,85,247,.35);
   z-index:20;
 }
-.eco-inline{
   /* v-topmenu 2026-11-25 — THE FINAL NINE. Obsidian balls, white glyphs,
    white light at rest; on hover each lights in its own deep colour
    (the proper spectrum). Flowing energy around each ball AND inside.
@@ -680,7 +679,7 @@ body:before{display:none;}
 .eco-item:hover .eco-ball::before{animation-duration:18s;}
 .eco-item:active .eco-ball{transform:scale(.97);}
 .eco-label{
-  max-width:78px;
+  max-width:128px;
   font-size:17px;
   line-height:1.15;
   font-weight:800;
@@ -692,18 +691,27 @@ body:before{display:none;}
 }
 .eco-item:hover .eco-label{color:var(--eco-c,#fff);}
 @media (max-width:640px){
-  /* phone: the nine wrap 5 + 4 so every label stays readable — no
-     mid-word breaks, no clipped orb. Labels 12px here (law §2.3
-     deviation, named in the maker report: nine labels cannot fit
-     390px at 17px; the user's own example image uses labels ~1/3
-     of orb size). Desktop keeps 17px. */
+  /* phone: the nine wrap 3 + 3 + 3 at 17px per law §2.3 — MEASURED, not
+     guessed (fix round 2026-11-25). A 5 + 4 wrap at 17px cannot fit 390px:
+     "Innovations" is 119px wide at 17px in a 64px box on a 70px pitch, so
+     neighbouring labels overlap by up to 37px (Innovations/12 Elements),
+     31px (Powercast/Academy); desktop shows the same at 17px (127px word
+     in a 78px box, overlaps up to 26px). Even the old 12px labels overlapped
+     4–5.5px on 5 + 4. At a 122px pitch every label fits on one line
+     (widest word 119px at .02em → ~115px at 0 letter-spacing), so the menu
+     stays 17px AND readable. No mid-word breaks, no clipped orb. */
   .topbar{padding:10px 8px 8px;}
-  .eco-inline{flex-wrap:wrap;gap:10px 6px;max-width:360px;}
-  .eco-item{flex:0 0 64px;gap:6px;}
+  .eco-inline{flex-wrap:wrap;gap:10px 4px;max-width:374px;}
+  .eco-item{flex:0 0 122px;gap:6px;}
   .eco-ball{width:34px;height:34px;min-width:34px;}
   .eco-ball svg{width:16px !important;height:16px !important;}
   .eco-ball::before{inset:-4px;}
-  .eco-label{font-size:12px;max-width:64px;letter-spacing:.02em;}
+  .eco-label{font-size:17px;max-width:122px;letter-spacing:0;}
+}
+/* Narrower desktop: the widened 17px labels (widest word 127px) need
+   ~900px for one row; below 1240px the row wraps instead of overflowing. */
+@media (max-width:1240px) and (min-width:641px){
+  .eco-inline{flex-wrap:wrap;max-width:100%;}
 }
 @media (prefers-reduced-motion:reduce){
   .eco-ball::before,.eco-ball::after{animation:none;}
