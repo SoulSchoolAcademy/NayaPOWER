@@ -564,7 +564,7 @@ textarea.gr-input{resize:vertical;min-height:110px;line-height:1.55;}
 #sp-walk .frame-scroll{overflow-x:hidden}
 #sp-w-body .smart-tabs{flex-wrap:wrap;overflow:visible;margin:20px 0 0;padding:12px 0 18px;-webkit-mask-image:none;mask-image:none}
 #sp-w-body .smart-tab{flex:0 1 auto;min-width:0}
-@media (max-width:480px){#sp-walk .sp-stage{--fin-l:44px;--fin-r:44px}}
+@media (max-width:480px){#sp-walk .sp-stage{--fin-l:36px;--fin-r:36px}}
 /* D3 — the upload panel: a visible in-page upload UI. The file input is a real,
    rendered control (never display:none), so a tap opens the native picker in every
    engine; the panel itself is the visible fallback the eye can see. */
@@ -575,7 +575,7 @@ textarea.gr-input{resize:vertical;min-height:110px;line-height:1.55;}
 .sp-up-note{font-size:17px;color:#fff;line-height:1.5;margin:0 0 12px}
 .sp-up-note b{color:#d4a017}
 .sp-file-input-vis{display:block;width:100%;box-sizing:border-box;font-size:17px;color:#fff;margin:0 0 12px}
-.sp-file-input-vis::file-selector-button{font-family:inherit;font-size:17px;font-weight:800;color:#fff;background:#050607;border:2px solid #0e7490;border-radius:999px;padding:12px 20px;cursor:pointer;margin-right:12px}
+.sp-file-input-vis::file-selector-button{display:block;width:100%;box-sizing:border-box;text-align:center;margin:0 0 8px;font-family:inherit;font-size:17px;font-weight:800;color:#fff;background:#050607;border:2px solid #0e7490;border-radius:999px;padding:12px 20px;cursor:pointer}
 .sp-up-img .sp-file-input-vis::file-selector-button{border-color:#a21caf}
 .sp-file-input-vis::file-selector-button:hover{box-shadow:0 0 18px -2px #0e7490}
 .sp-up-img .sp-file-input-vis::file-selector-button:hover{box-shadow:0 0 18px -2px #a21caf}
