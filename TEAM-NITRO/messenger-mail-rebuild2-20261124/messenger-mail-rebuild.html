@@ -1994,10 +1994,18 @@ schRow.appendChild(dtWrap);
   window.NayaRooms = window.NayaRooms || {};
   window.NayaRooms.smartMail = SmartMail;
 /* ===== REAL MAIL — live reads, no demo data (REBUILD 2026-11-24) =====
-   The demo sample data is gone. Threads, spaces and members come from
-   Supabase now. If a live read fails, the room opens honestly empty — nothing
-   is invented to fill it. */
+   The demo sample data is gone from the LIVE path. Threads, spaces and
+   members come from Supabase now. If a live read fails, the room opens
+   honestly empty — nothing is invented to fill it.
+   V12 — STAGED SAMPLE DATA (eye defect 2): the STAGED proof-host build must
+   show the message-type + reaction jewels, so when the live reads come back
+   EMPTY and this file is running on the staged proof host (or localhost, or
+   ?demo=1), __nmDemoMode seeds clearly-labelled SAMPLE threads. Never on the
+   live site, never when real threads exist, never presented as live — every
+   seeded thread carries demo:true and renders a SAMPLE/DEMO chip. Real send
+   still waits on the his-hand INSERT policy; nothing here fakes a send. */
 (function(){
+  window.__nmDemoMode = (function(){ try{ var h = location.hostname || ''; var q = location.search || ''; return q.indexOf('demo=1') > -1 || h.indexOf('naya-proof-host') > -1 || h === 'localhost' || h === '127.0.0.1'; }catch(e){ return false; } })();
   var SB_URL = 'https://dahisasgpfvziswqvmvm.supabase.co';
   var SB_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhaGlzYXNncGZ2emlzd3F2bXZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc2MjM3ODgsImV4cCI6MjEwMzE5OTc4OH0.zX2r3T23sKebUMBdNg-4Noxos8JFOHaK2rRwqAVXU_s';
   function nmBootHeaders(){ return { 'apikey': SB_ANON, 'Authorization': 'Bearer ' + SB_ANON }; }
@@ -2020,10 +2028,20 @@ schRow.appendChild(dtWrap);
     Promise.all([spacesP, membersP, threadsP]).then(function(parts){
       var spaces = (parts[0]||[]).map(function(sp){ return { name:sp.name, alias:sp.alias, id:sp.alias, desc:sp.description || '' }; });
       var members = parts[1] || [];
+      if(window.__nmDemoMode && !members.length){ members = [{space_alias:'space-hub-builders',member_alias:'shawn',role:'director',joined_at:'2026-10-16T00:00:00Z'},{space_alias:'space-hub-builders',member_alias:'naya4',role:'builder',joined_at:'2026-10-16T00:00:00Z'}]; }
       var threads = (parts[2]||[]).map(function(row){
         var other = (row.from_alias === 'naya4') ? row.to_alias : row.from_alias;
         return { id:row.id, from:row.from_alias, to:row.to_alias, toKind:'person', toLabel:other, subject:row.subject || '(no subject)', snippet:row.preview || '', body:row.preview || '', ts:Date.parse(row.updated_at || row.created_at) || Date.now(), unread:false, demo:false };
       });
+      /* V12 — STAGED SAMPLE DATA (eye defect 2): two kept letters, demo:true
+         (MailAdapter marks seeded content demo unless explicitly real, and
+         renders the DEMO chip). Only when the live read came back empty. */
+      if(window.__nmDemoMode && !threads.length){
+        threads = [
+          { id:'sample-mail-1', from:'shawn', to:'naya4', toKind:'person', toLabel:'shawn', subject:'Welcome to the new Messenger', snippet:'A kept letter for the record, signed and filed.', body:'A kept letter for the record, signed and filed.', ts:Date.parse('2026-11-24T19:10:00Z'), unread:false, demo:true },
+          { id:'sample-mail-2', from:'naya4', to:'shawn', toKind:'person', toLabel:'shawn', subject:'A post for the feed, out in the open', snippet:'A post for the feed, out in the open.', body:'A post for the feed, out in the open.', ts:Date.parse('2026-11-24T19:20:00Z'), unread:false, demo:true }
+        ];
+      }
       var contacts = [];
       var seen = {};
       members.forEach(function(m){
@@ -2188,6 +2206,12 @@ function nmApplyJewels(){
     b.addEventListener('click', function(){
       closeDrawers();
       if (r[0] === ACTIVE) { window.scrollTo({top:0, behavior:'smooth'}); return; }
+      /* V12 — SMART FEED (HUB) STAYS IN-APP (eye defect 4): 'index.html' used to
+         navigate the tab away to the proof host's usage page, dropping
+         ?file= and &ref=. The Smart Feed IS this page — its tabs + conversations
+         — so the room opens the full feed here, in-page, and the staged state
+         (and URL) survives. */
+      if (r[0] === 'feed') { if(window.nmActivateTabByLabel) window.nmActivateTabByLabel('All'); window.scrollTo({top:0, behavior:'smooth'}); return; }
       location.href = r[2];
     });
     leftDrawer.appendChild(b);
@@ -2785,6 +2809,76 @@ function nmApplyJewels(){
 .nm-type-jewel .nj-img{width:16px;height:16px;}
 .nm-react .nj-img{width:18px;height:18px;}
 @media (max-width:640px){.nm-icon .nj-img{width:20px;height:20px;}}
+/* ===== LOOK12 — Messenger + Mail eye round (v12, 2026-11-24) =====
+   Eye defects 1/3/6. Harvested SVGs untouched; the PAGE presentation around
+   them does the work. D1 bottom bar bytes untouched (no re-slotting) — only
+   a CSS-only lift/press on its circles, in this block, so the bar's own code
+   stays byte-for-byte. Frame block untouched. */
+/* (1) Jewels READ as jewels: bigger art inside the button, thicker own-colour
+   rim + halo on the slotted button, a VISIBLE satellite sweeping the orbit
+   ring (24s — the Playbook active band, never under 12s; the SVG's own slow
+   orbit is untouched), jewel touch contract hover -4px/1.04, press 0.97. */
+.nm-icon .nj-img{width:32px;height:32px;}
+@media (max-width:640px){.nm-icon .nj-img{width:24px;height:24px;}}
+.nm-icon{box-shadow:0 12px 28px rgba(0,0,0,.65),0 0 24px -6px var(--ic,#0f52ba),inset 0 1px 0 rgba(255,255,255,.14);}
+.nm-icon::after{border:1.5px solid var(--ic,#0f52ba);opacity:.55;padding:2px;background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,rgba(255,255,255,.95) 320deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;animation:nm-orbit 24s linear infinite;}
+.nm-icon:nth-child(even)::after{animation-duration:36s;animation-direction:reverse;}
+.nm-icon:hover{transform:translateY(-4px) scale(1.04);box-shadow:0 8px 24px rgba(0,0,0,.6),0 0 32px -4px var(--ic,#0f52ba),0 14px 30px rgba(0,0,0,.55);}
+.nm-icon:active{transform:scale(.97);}
+/* Rail circles (D1 bar): CSS-only lift + a visible orbit satellite. The bar's
+   own bytes are untouched; this block only styles its circles from outside. */
+.nm-onebar-btn .nm-ob-circ{box-shadow:0 8px 24px rgba(0,0,0,.6),0 0 22px -6px var(--bc,#8e24aa),inset 0 1px 0 rgba(255,255,255,.12);}
+.nm-onebar-btn .nm-ob-circ::after{content:"";position:absolute;inset:-6px;border-radius:50%;padding:2px;background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,rgba(255,255,255,.95) 320deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;animation:nm-orbit 24s linear infinite;pointer-events:none;}
+.nm-onebar-btn:hover .nm-ob-circ{transform:translateY(-4px) scale(1.04);box-shadow:0 8px 24px rgba(0,0,0,.6),0 0 32px -4px var(--bc,#8e24aa),0 14px 30px rgba(0,0,0,.55);}
+/* Bigger in-message jewels: reactions 24px (the set's own reaction-row size),
+   type jewels 20px, mic/send 24px, corner + 24px, per-person acts 20px. */
+.nm-react .nj-img{width:24px;height:24px;}
+.nm-type-jewel .nj-img{width:20px;height:20px;}
+.nm-mic .nj-img{width:24px;height:24px;}
+#nmMsgSend .nj-img{width:24px;height:24px;}
+.naya-corner-btn .nj-img{width:24px;height:24px;}
+.nm-act .nj-img{width:20px;height:20px;}
+/* Per-person Message/Mail buttons + mail folder icons: jewel-medallion discs
+   around the glyph (CSS only — the SVGs themselves are untouched). */
+.nm-act{box-shadow:0 2px 8px rgba(0,0,0,.4),0 0 16px -2px var(--ac,#0f52ba),inset 0 1px 0 rgba(255,255,255,.14);}
+.mail-stage .ml-folder .ml-ficon{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);border:1.5px solid var(--fc,#0f52ba);box-shadow:0 6px 16px rgba(0,0,0,.55),0 0 14px -4px var(--fc,#0f52ba),inset 0 1px 0 rgba(255,255,255,.14);color:#ffffff;}
+.mail-stage .ml-folder .ml-ficon svg{width:18px;height:18px;}
+/* Pin: a jewel medallion, never a flat emoji. White pin (head + stem) on an
+   obsidian disc with a gold rim, drawn in CSS — no new SVG art. */
+.nm-pin-jewel{display:inline-block;width:22px;height:22px;border-radius:50%;vertical-align:middle;flex:none;background:radial-gradient(circle at 35% 30%,#2a2a33 0%,#050607 60%);border:1.5px solid #d4a017;box-shadow:0 0 12px -2px rgba(212,160,23,.8),0 4px 10px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.25);position:relative;}
+.nm-pin-jewel::before{content:"";position:absolute;left:50%;top:3px;width:7px;height:7px;margin-left:-3.5px;border-radius:50%;background:#ffffff;box-shadow:0 0 6px rgba(255,255,255,.8);}
+.nm-pin-jewel::after{content:"";position:absolute;left:50%;top:10px;width:2px;height:8px;margin-left:-1px;background:#ffffff;transform:rotate(12deg);transform-origin:top center;border-radius:1px;box-shadow:0 0 4px rgba(255,255,255,.6);}
+/* SAMPLE chip + demo note: white, 17px, never gray. */
+.nm-sample-chip{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;border:1.5px solid #d4a017;color:#ffffff;background:#050607;font-size:17px;font-weight:800;letter-spacing:.12em;vertical-align:middle;box-shadow:0 0 12px -2px rgba(212,160,23,.7);}
+.nm-demo-note{color:#ffffff;font-size:17px;text-align:center;}
+/* (3) SMART LINKS row: white, relevant, moving — the same beam as the tabs. */
+.nm-smartlinks{margin:12px 0 4px;padding:0 12px;display:flex;flex-direction:row;align-items:center;gap:12px;min-width:0;}
+.nm-smartlinks-kicker{flex:none;font-size:17px;font-weight:800;letter-spacing:.2em;color:#ffffff;text-shadow:0 1px 3px rgba(0,0,0,.8);}
+.nm-smartlinks-row{display:flex;flex:1 1 auto;min-width:0;gap:12px;overflow-x:auto;scrollbar-width:none;padding:4px 2px 8px;-webkit-overflow-scrolling:touch;}
+.nm-smartlinks-row::-webkit-scrollbar{display:none;}
+.nm-smartlink{position:relative;flex:none;background:linear-gradient(135deg,#1e1e26 0%,#050607 50%,#1e1e26 100%);border:2px solid rgba(255,255,255,.85);border-radius:999px;color:#ffffff;font-family:inherit;font-size:17px;font-weight:700;padding:7px 16px;cursor:pointer;white-space:nowrap;box-shadow:0 10px 26px rgba(0,0,0,.55),0 0 20px -6px rgba(255,255,255,.5),inset 0 1px 0 rgba(255,255,255,.18);text-shadow:0 1px 3px rgba(0,0,0,.8);}
+.nm-smartlink::after{content:"";position:absolute;inset:-5px;border-radius:999px;padding:2px;background:conic-gradient(from 0deg,transparent 0deg,transparent 240deg,rgba(255,255,255,.55) 300deg,rgba(255,255,255,.95) 330deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;animation:tabFlow 120s linear infinite;pointer-events:none;}
+.nm-smartlink:nth-child(even)::after{animation-duration:180s;animation-direction:reverse;}
+.nm-smartlink:hover{transform:translateY(-2px);border-color:#ffffff;box-shadow:0 0 26px -2px rgba(255,255,255,.75),0 0 0 2px rgba(255,255,255,.85) inset;}
+.nm-smartlink:active{transform:scale(.97);}
+.nm-smartlink.on{border-color:#ffffff;box-shadow:0 0 26px rgba(255,255,255,.6),inset 0 0 0 1.5px rgba(255,255,255,.9),inset 0 1px rgba(255,255,255,.25);}
+/* (6) The tabFlow beam, softened: the hard 270-320deg white wedge read as a
+   thin diagonal scratch across the pills. Wider, softer arc — same 120/180s
+   motion, no more scratch. */
+.smart-tab::after{background:conic-gradient(from 0deg,transparent 0deg,transparent 240deg,rgba(255,255,255,.55) 300deg,rgba(255,255,255,.95) 330deg,transparent 360deg);}
+/* (6) Bottom clearance: the last conversation card must scroll clear of the
+   fixed bottom rail instead of parking half under it. */
+@media (max-width:640px){
+  .nm-rail{padding-bottom:120px;}
+  /* Compose dialog: trim the phone chrome so SEND NOW fits the viewport. */
+  .mail-stage .ml-modal{max-height:88vh;max-height:88dvh;padding:20px;}
+  .mail-stage .ml-modal textarea.ml-input{min-height:80px;}
+}
+/* SEND NOW stays put (eye defect 6): the schedule section is the dialog's
+   last child, so a sticky foot on it rides the bottom of the dialog while the
+   form scrolls above it — SEND NOW (and Schedule/Cancel) is never below the
+   fold, phone or desktop. */
+.ml-modal.mlx > .mlx-schedsec{position:sticky;bottom:0;z-index:2;background:linear-gradient(180deg,rgba(16,19,30,0) 0%,rgba(16,19,30,.97) 28%,rgba(16,19,30,.97) 100%);padding-top:16px;margin-bottom:0;}
 </style>
 <script>
 /* ================= REBUILD LAYER — real mail + the tempo dial =================
@@ -2937,10 +3031,22 @@ function nmBootData(){
 function nmLoadDMs(){
   return restGet('/rest/v1/messenger_messages?select=id,thread_id,from_alias,to_alias,body,sent_at,read_at&order=sent_at.desc&limit=200').then(function(rows){
     var byThread = {};
+    /* V12 — STAGED SAMPLE DATA (eye defect 2): same gate as nmBoot. When the
+       live read comes back empty on the staged host, seed the three fixed
+       sample threads (chat/mail/post — the shape the v11 stub harness proved)
+       so the type + reaction jewels have something to attach to. demo:true
+       rides onto each conv and renders a SAMPLE chip. */
+    if(window.__nmDemoMode && !(rows || []).length){
+      rows = [
+        {id:'m1',thread_id:'t-chat',from_alias:'shawn',to_alias:'naya4',body:'Quick hello — AI is hiring, and the new internet needs builders.',sent_at:'2026-11-24T19:00:00Z',read_at:null,tempo:'chat',demo:true},
+        {id:'m2',thread_id:'t-mail',from_alias:'naya4',to_alias:'shawn',body:'A kept letter for the record, signed and filed — your vault stays private, deleted by default.',sent_at:'2026-11-24T19:10:00Z',read_at:'2026-11-24T19:11:00Z',tempo:'mail',demo:true},
+        {id:'m3',thread_id:'t-post',from_alias:'shawn',to_alias:'naya4',body:'A post for the feed, out in the open — the intelligent internet, the new net, a civilization of builders.',sent_at:'2026-11-24T19:20:00Z',read_at:null,tempo:'post',demo:true}
+      ];
+    }
     (rows || []).forEach(function(r){
       var other = (r.from_alias === NM_ME) ? r.to_alias : r.from_alias;
       if(!other) return;
-      if(!byThread[r.thread_id]) byThread[r.thread_id] = { threadId:r.thread_id, with:other, last:r, count:0, unread:0, lastAt:r.sent_at };
+      if(!byThread[r.thread_id]) byThread[r.thread_id] = { threadId:r.thread_id, with:other, last:r, count:0, unread:0, lastAt:r.sent_at, demo: !!r.demo };
       byThread[r.thread_id].count++;
       if(r.sent_at > byThread[r.thread_id].lastAt) { byThread[r.thread_id].lastAt = r.sent_at; byThread[r.thread_id].last = r; }
       if(r.to_alias === NM_ME && !r.read_at) byThread[r.thread_id].unread++;
@@ -2961,8 +3067,8 @@ function nmMemberRows(){
     h += '<div class="nm-person' + (nmSelectedPerson === alias ? ' sel' : '') + '" data-nm-person="' + esc(alias) + '" style="--pc:' + color + '">'
       + '<span class="nm-orb" data-jewel="sender" style="--cc:' + color + '">' + esc(String(alias).charAt(0).toUpperCase()) + '</span>'
       + '<div><div class="nm-person-name">' + esc(nmName(alias)) + '</div><div class="nm-person-sub">' + nmPresence(alias) + ' · ' + esc(m.role || 'member') + '</div>'
-      + '<div class="nm-acts"><button type="button" class="nm-act" data-nm-dm="' + esc(alias) + '" style="--ac:#0f52ba" aria-label="Message ' + esc(alias) + '">✎</button>'
-      + '<button type="button" class="nm-act" data-nm-mail="' + esc(alias) + '" style="--ac:#d4a017" aria-label="Mail ' + esc(alias) + '">✉</button></div></div></div>';
+      + '<div class="nm-acts"><button type="button" class="nm-act" data-jewel="chat" data-nm-dm="' + esc(alias) + '" style="--ac:#0f52ba" aria-label="Message ' + esc(alias) + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.5 0-3-.4-4.2-1L3 20l1-5.3A8.5 8.5 0 1 1 21 11.5z"/></svg></button>'
+      + '<button type="button" class="nm-act" data-jewel="mail" data-nm-mail="' + esc(alias) + '" style="--ac:#d4a017" aria-label="Mail ' + esc(alias) + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></button></div></div></div>';
   });
   return h;
 }
@@ -2985,7 +3091,7 @@ function nmConvRows(){
     var tempo = (c.last && c.last.tempo) || 'chat';
     h += '<div class="nm-conv' + (nmSelectedConv === c.threadId ? ' sel' : '') + (c.unread ? ' unread' : '') + '" data-nm-conv="' + esc(c.threadId) + '">'
       + '<span class="nm-orb" data-jewel="sender" style="--cc:' + color + '">' + esc(String(c.with).charAt(0).toUpperCase()) + '</span>'
-      + '<div><div class="nm-conv-subj">' + (nmPins[c.threadId] ? '📌 ' : '') + esc(nmName(c.with)) + '</div>'
+      + '<div><div class="nm-conv-subj">' + (nmPins[c.threadId] ? '<span class="nm-pin-jewel" aria-hidden="true"></span> ' : '') + esc(nmName(c.with)) + (c.demo ? ' <span class="nm-sample-chip">SAMPLE</span>' : '') + '</div>'
       + '<div class="nm-conv-prev">' + esc(String((c.last && c.last.body) || '').slice(0, 80)) + '</div>'
       + '<div class="nm-conv-prev">' + nmTimeAgo(c.lastAt) + ' · <span class="nm-type-jewel" data-jewel="type-' + (tempo === 'mail' ? 'mail' : tempo === 'post' ? 'post' : 'chat') + '"></span><span class="nm-tempo' + (tempo === 'mail' ? ' mail' : '') + '">' + (tempo === 'mail' ? 'MAIL · kept' : tempo === 'post' ? 'POST · feed' : 'CHAT · living') + '</span>' + (c.unread ? ' · <b>' + c.unread + ' new</b>' : '') + '</div></div></div>';
   });
@@ -2997,7 +3103,7 @@ function nmMsgViewHtml(){
      nmRefreshMsgView re-parsed it, so the Messenger view could never be
      seen — the toggle un-hid it and the refresh re-hid it in the same call.) */
   var h = '<section class="nm-msg" id="nmMsgView"><div class="nm-msg-panes">';
-  h += '<div class="nm-pane nm-rail"><h2>CONVERSATIONS</h2>'     + '<input class="nm-search" id="nmSearch" type="search" placeholder="Search anyone…" aria-label="Search anyone" value="' + esc(nmSearch) + '">';
+  h += '<div class="nm-pane nm-rail"><h2>CONVERSATIONS</h2>' + (nmConvs.some(function(c){ return c.demo; }) ? '<p class="nm-note nm-demo-note">&#9670; SAMPLE DATA — demo threads for this staged preview, not live conversations.</p>' : '') + '<input class="nm-search" id="nmSearch" type="search" placeholder="Search anyone…" aria-label="Search anyone" value="' + esc(nmSearch) + '">';
    h += '<div id="nmConvList">' + nmConvRows() + '</div></div>';
   h += '<div class="nm-pane"><div id="nmReader">' + nmReaderHtml() + '</div></div>';
   h += '</div></section>';
@@ -3014,7 +3120,8 @@ function nmReaderHtml(){
   var h = '<h2>' + esc(nmName(alias)) + '</h2>'
     + '<div class="nm-reader-head"><span class="nm-orb" data-jewel="sender" style="--cc:' + color + '">' + esc(String(alias).charAt(0).toUpperCase()) + '</span>'
     + '<div><div class="nm-person-name">' + esc(nmName(alias)) + '</div><div class="nm-person-sub">' + nmPresence(alias) + '</div></div>'
-    + '<button type="button" class="nm-act" data-nm-pin-conv="' + esc(nmSelectedConv || '') + '" style="--ac:#d4a017" aria-label="Pin conversation" title="Pin — for this visit">📌</button></div>'
+    + '<button type="button" class="nm-act" data-nm-pin-conv="' + esc(nmSelectedConv || '') + '" style="--ac:#d4a017" aria-label="Pin conversation" title="Pin — for this visit"><span class="nm-pin-jewel" aria-hidden="true"></span></button></div>'
+    + (conv && conv.demo ? '<p class="nm-note nm-demo-note">&#9670; SAMPLE thread — demo data for this staged preview, not a live conversation.</p>' : '')
     + '<div class="nm-filter"><input class="nm-search" id="nmThreadSearch" type="search" placeholder="Search this thread…" aria-label="Search this thread"></div>'
     + '<div class="nm-msg-list" id="nmMsgList">' + nmMessagesHtml(conv) + '</div>'
     + '<div class="nm-composer"><label style="font-size:17px;color:#ffffff;display:block;margin:0 0 8px;">' + ((nmSendMode || nmTempo) === 'chat' ? 'Sending as CHAT.' : (nmSendMode || nmTempo) === 'mail' ? 'Sending as MAIL.' : 'Sending as POST.') + '</label>'
@@ -3391,6 +3498,36 @@ function nmInit(){
   stage.insertBefore(chrome, panes); if(window.nmApplyJewels) window.nmApplyJewels();
   /* MM-TABS ADAPTER: host for the harvested Hub smart-tabs strip — above both pane sets (chat + mail). */
   if(!document.getElementById('mmTabsHost')){ var mmHost = document.createElement('div'); mmHost.id = 'mmTabsHost'; stage.insertBefore(mmHost, panes); }
+  /* V12 — SMART LINKS ROW (eye defect 3): the tabs ARE the links in the page's
+     own language, but no "Smart Link" text ever rendered and no links row
+     showed in Messenger/Mail mode. This row says SMART LINKS out loud: one
+     white, moving pill per Intel cluster + All, each a real link that
+     activates its smart tab in-page (the tab filters the conversations below).
+     Never a destination that leaves the staged app. */
+  window.nmActivateTabByLabel = function(label){
+    var pills = document.querySelectorAll('#mmTabsHost .smart-tab');
+    for(var i = 0; i < pills.length; i++){ var l = pills[i].querySelector('.sn-label'); if(l && l.textContent.trim() === label){ pills[i].click(); return true; } }
+    return false;
+  };
+  if(!document.getElementById('nmSmartLinks')){
+    var sl = document.createElement('div'); sl.id = 'nmSmartLinks'; sl.className = 'nm-smartlinks';
+    var FLOW12 = ['#8e24aa','#0f52ba','#07925f','#d4a017','#c2410c','#c62828'];
+    var labels = ['All'];
+    try { var T12 = window.__mmTabs; if(T12 && T12.INTEL_CLUSTERS) T12.INTEL_CLUSTERS.forEach(function(c){ labels.push(c.label); }); } catch(e){}
+    if(labels.length === 1){ labels = labels.concat(['The Intelligent Internet','AI Is Hiring','NayaNET / Naya','Smart Notes / Learn in a Minute','The Private Network / Your Vault','Ambassador']); }
+    var slH = '<span class="nm-smartlinks-kicker">SMART LINKS</span><span class="nm-smartlinks-row">';
+    labels.forEach(function(lb, i){ slH += '<button type="button" class="nm-smartlink' + (i === 0 ? ' on' : '') + '" data-nm-smartlink="' + lb.replace(/"/g, '&quot;') + '" style="--tc:' + FLOW12[i % FLOW12.length] + '">' + lb + '</button>'; });
+    slH += '</span>';
+    sl.innerHTML = slH;
+    sl.addEventListener('click', function(ev){
+      var b = ev.target.closest ? ev.target.closest('.nm-smartlink') : null;
+      if(!b) return;
+      sl.querySelectorAll('.nm-smartlink').forEach(function(x){ x.classList.remove('on'); });
+      b.classList.add('on');
+      window.nmActivateTabByLabel(b.getAttribute('data-nm-smartlink'));
+    });
+    stage.insertBefore(sl, panes);
+  }
   /* FIX7-3 rooms: one in-frame room panel, built once, hidden until opened. */
   if(!document.getElementById('nmRoom')){
     var roomEl = document.createElement('section'); roomEl.id = 'nmRoom'; roomEl.hidden = true;
@@ -3410,7 +3547,7 @@ function nmInit(){
     b.addEventListener('click', function(){ nmSetTempo(b.getAttribute('data-tempo')); });
   });
   nmBootData();
-  nmLoadDMs().then(function(){ if(window.__nmActBadgeUpdate) window.__nmActBadgeUpdate(); if(nmTempo === 'chat') nmRefreshMsgView(); if(window.__mmTabsMount) window.__mmTabsMount(); });
+  nmLoadDMs().then(function(){ if(window.__nmActBadgeUpdate) window.__nmActBadgeUpdate(); if(window.__nmDemoMode && nmConvs.length && !nmSelectedConv && !nmSelectedPerson){ nmSelectedConv = nmConvs[0].threadId; } if(nmTempo === 'chat') nmRefreshMsgView(); if(window.__mmTabsMount) window.__mmTabsMount(); });
   nmBindMsgView();
   nmSetTempo(nmTempo); /* sync the initial view to the initial toggle — v2.1 never did, so load showed Mail under a MESSENGER toggle */
   return true;
