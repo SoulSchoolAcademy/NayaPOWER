@@ -53263,7 +53263,7 @@ body.fr-settings-open #settings>.ph-actions{
 /* The pager nav (reuses the .fr-sub-btn / .fr-sub-label language). */
 body.fr-settings-open #settings #frFramePager{
   display:flex;align-items:center;justify-content:space-between;gap:12px;
-  padding:8px;background:#050607;border:1.5px solid rgba(255,255,255,.25);
+  padding:4px 8px;background:#050607;border:1.5px solid rgba(255,255,255,.25);
   border-radius:16px;box-sizing:border-box}
 body.fr-settings-open #settings #frFramePager[hidden]{display:none}
 body.fr-settings-open #settings #frFramePager .fr-sub-btn{
@@ -53370,7 +53370,10 @@ body.fr-settings-open #settings .pc-dm-top,
 body.fr-settings-open #settings .pc-dm-private,
 body.fr-settings-open #settings .pc-dm-qsub,
 body.fr-settings-open #settings .pc-dm-eye-note{display:none!important}
-body.fr-settings-open #settings #pc-demo-card h3{display:flex;align-items:center;gap:12px}
+body.fr-settings-open #settings #pc-demo-card h3{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+/* ROUND 2b: the heading's base margin-bottom is 12px — 6px is enough
+   between the heading and its question, and the 6px saved (with the
+   pager's 8px) brings the pin-riding question page inside the frame. */
 body.fr-settings-open #settings .fr-info-btn{
   flex:0 0 auto;width:44px;height:44px;border-radius:50%;margin-left:auto;
   border:2px solid rgba(255,255,255,.9);background:#050607;color:#fff;
@@ -53449,6 +53452,48 @@ body.fr-settings-open #settings .fr-set-tabs .smart-tab .sn-mark svg{
   width:18px;height:18px;display:block}
 body.fr-settings-open #settings .fr-set-tabs .smart-tab .sn-label{font-size:17px}
 
+/* --- 8. ROUND 2, D1 — the 17px minimum, every visible text ------------- */
+/* The v8 holes, measured live on the render (checker D1): .ph-msg buttons
+   and links sit at base 14px (line 1982-1983) and no mode rule covered
+   them outside .ph-actions; .os-info-btn sits at base 15px. The third
+   hole — the Preferences sign-in paragraph — carries an INLINE
+   14px style (base line 24214), which no stylesheet rule can
+   beat; mode.js fixSmallText() bumps inline sizes instead (see mode.js).
+   The sweep also catches anything else that inherits a small size (e.g.
+   the "My World" span, which matches no font-size rule at all). */
+body.fr-settings-open #settings .ph-msg{font-size:17px}
+body.fr-settings-open #settings .os-info-btn{font-size:17px}
+
+/* --- 9. ROUND 2, D3 — desktop column fits inside the frame ------------- */
+/* At 1280x800 the stage column ran 68px past the frame's padded bottom
+   (Close 720-772 vs the rim's inner edge at 704): the fixed chrome is
+   taller on desktop than the 608px content area allows — 96px pads,
+   50px tabs, 57px pager, a 72px two-line "Back to Settings" row, 52px
+   Close. The question group itself is a 371px atomic unit, so the chrome
+   has to give, never the content. Desktop only (min-width:1025px) — the
+   phone column already fits and does not move. Savings: back row one
+   line (~26px), pager/tabs/actions padding (~20px), question switch one
+   line at 760px wide (~30px inside the card). The frFit retry limit is
+   fixed in mode.js to the frame inner bottom (was the viewport bottom).
+   ROUND 2b: after that first pass the desktop Q1 Close still sat 10px
+   past the rim (670-714 vs 704) — the atomic group (371) exceeds the
+   desktop avail (361) by exactly that 10px, so the chrome gives 20px
+   more: demo-card padding 14->10, question nav margin 8->4, back row
+   padding 8->6, Close padding 8->6. */
+@media(min-width:1025px){
+  body.fr-settings-open #settings #frFramePager{padding:4px 8px}
+  body.fr-settings-open #settings #frFramePager .fr-sub-btn{padding:6px 14px}
+  body.fr-settings-open #settings .fr-set-tabs .smart-tab{padding:6px 14px}
+  body.fr-settings-open #settings>#ps-back-profile{padding:6px 16px}
+  body.fr-settings-open #settings>#ps-back-profile .os-setrow-main{
+    flex-direction:row;align-items:center;gap:10px}
+  body.fr-settings-open #settings>.ph-actions .ph-msg{padding:6px 16px}
+  body.fr-settings-open #settings #pc-demo-card{padding:10px 14px}
+  body.fr-settings-open #settings #pc-demo-card .pc-dm-nav{margin:4px 0 2px}
+  body.fr-settings-open #settings .pc-dm-switch{flex-wrap:nowrap}
+  body.fr-settings-open #settings .pc-dm-switch-state{flex:0 0 auto}
+}
+
   </style>
   <script>
 /* ============================================================================
@@ -53482,11 +53527,35 @@ body.fr-settings-open #settings .fr-set-tabs .smart-tab .sn-label{font-size:17px
    - Observer safety: the observer only reacts when the FILE's own state
      changes (screen / tab / sub-page label). My own class writes never
      change that signature, so no observer loop.
+   - ROUND 2 (2026-11-24, checker GOES BACK): D1 — the 17px minimum is
+     enforced on the live render (fixSmallText), covering inline styles
+     and inherited sizes no stylesheet rule can reach. D2 — the pager
+     page is the user's across question changes (preserve + verify the
+     question group is on the landing page); only a new screen/tab/label
+     resets to page 0. D3 — the fit limit is the frame's padded bottom,
+     not the viewport bottom. D4 — the literal landing hash is restored
+     and scrollY is held at 0 while the stage is open.
    ========================================================================== */
 (function () {
   'use strict';
   var settings = document.getElementById('settings');
   if (!settings) return;
+
+  /* ROUND 2 (D4): the literal hash settings opened from, and the scroll
+     guard. bootHash is read at parse time — this script runs before the
+     base boot code, so it still holds the landing hash after the base
+     strips it (the #settings landing ends with hash ''). */
+  var bootHash = location.hash || '';
+  var openHash = null;
+  var scrollGuardOn = false;
+  function forceTop() { try { window.scrollTo(0, 0); } catch (e) {} }
+  function onModeScroll() {
+    if (document.body.classList.contains('fr-settings-open') && Math.round(window.scrollY) !== 0) forceTop();
+  }
+  function restoreHash() {
+    if (!openHash) return;
+    try { if (location.hash !== openHash) history.replaceState(null, '', openHash); } catch (e) {}
+  }
 
   /* The frame-round's tab map, harvested verbatim (same values, same
      classification): NAMES + ACCENTS + tabOf. The ACCENTS are the chakra
@@ -53676,7 +53745,7 @@ body.fr-settings-open #settings .fr-set-tabs .smart-tab .sn-label{font-size:17px
      slice of a card's leaf units. The pager walks the list; the label is
      "Part X of Y". A card that fits is one page; a card that does not is
      split into as many pages as its leaf units need. */
-  var pagerState = { key: '', page: 0, pages: 0, list: null };
+  var pagerState = { parts: null, page: 0, pages: 0, list: null, budget: null, avail: 0 };
   var lastSig = '';
   function ensurePager() {
     if (pager) return pager;
@@ -53735,7 +53804,7 @@ body.fr-settings-open #settings .fr-set-tabs .smart-tab .sn-label{font-size:17px
   }
   function clearPages() {
     unhideAll();
-    pagerState = { key: '', page: 0, pages: 0, list: null };
+    pagerState = { parts: null, page: 0, pages: 0, list: null, budget: null, avail: 0 };
     if (pager) pager.hidden = true;
   }
   function fileSig() {
@@ -53748,6 +53817,41 @@ body.fr-settings-open #settings .fr-set-tabs .smart-tab .sn-label{font-size:17px
     var c = document.getElementById('pc-demo-count');
     if (c) cnt = c.textContent || '';
     return (settings.getAttribute('data-ps-screen') || 'home') + '|' + currentTab() + '|' + label + '|' + cnt;
+  }
+  function fileSigParts() {
+    var sig = fileSig().split('|');
+    return { screen: sig[0] || '', tab: sig[1] || '', label: sig[2] || '', cnt: sig[3] || '' };
+  }
+  /* ROUND 2 (D2): which page of a packed list holds the question group
+     (the demo body + its nav, one atomic unit)? -1 when the question
+     flow is not in the list. */
+  function demoGroupPage(list) {
+    var body = document.getElementById('pc-demo-body');
+    if (!body) return -1;
+    for (var i = 0; i < list.length; i++) {
+      var p = list[i];
+      if (p.units) {
+        for (var j = 0; j < p.units.length; j++) {
+          if (p.units[j].els.indexOf(body) !== -1) return i;
+        }
+      } else if (p.card && p.card.id === 'pc-demo-card') return i;
+    }
+    return -1;
+  }
+  function settlePage(list, qChanged) {
+    /* ROUND 2b: after a (re-)pack, land on the right page. A question
+       change lands on the question group — the question must be visible
+       on the landing page. Otherwise the page INDEX is preserved: each
+       pager tap advances exactly one page, never skips, never goes back.
+       (Restoring by content anchor was tried and removed: when a retry
+       re-pack moves a boundary, the anchor follows its unit onto the
+       next page and one tap skips a page whole.) */
+    if (qChanged) {
+      var qi = demoGroupPage(list);
+      if (qi !== -1) { pagerState.page = qi; return; }
+    }
+    if (pagerState.page >= list.length) pagerState.page = list.length - 1;
+    if (pagerState.page < 0) pagerState.page = 0;
   }
   /* Leaf units: the smallest splittable blocks of a card. A child taller
      than the budget is expanded into its own children (recursively); a
@@ -53804,7 +53908,7 @@ body.fr-settings-open #settings .fr-set-tabs .smart-tab .sn-label{font-size:17px
     var el = u.els[0];
     return (el.tagName + '.' + (el.className || '').toString().slice(0, 30) + ':' + u.h);
   }
-  function frFit() {
+  function frFitInner() {
     if (!document.body.classList.contains('fr-settings-open')) return;
     try {
       var pg = ensurePager();
@@ -53812,16 +53916,41 @@ body.fr-settings-open #settings .fr-set-tabs .smart-tab .sn-label{font-size:17px
          visible state (all unhide/measure/re-hide in one task — no paint
          between, so no flash). */
       unhideAll();
+      /* ROUND 2b: bump small text BEFORE measuring. The sweep used to run
+         only after the fit, so each pager page bumped its own small text
+         when first shown — heights grew fit by fit, the page list flipped
+         between counts (tab 3: 2 pages, then 3; tab 5: 6, then 8), and a
+         pager Next could never land (the list shrank under it and the
+         clamp pulled the page back). With every visible text at 17px
+         before the first measurement, the packing is stable from the
+         first fit. The wrapper still sweeps after the fit as a backstop. */
+      fixSmallText();
       var cards = visibleCards();
       if (!cards.length) { clearPages(); window.__frFitDebug = { mode: '', pages: 0, reason: 'no cards' }; return; }
-      var key = fileSig() + '|' + cards.map(function (c) { return c.id || c.className; }).join(',');
-      if (key !== pagerState.key) pagerState = { key: key, page: 0, pages: 0, list: null };
+      /* ROUND 2 (D2): the pager page is the USER's, not the fit's. A
+         question change only changes the count part of the signature —
+         resetting to page 0 there stranded the user on the heading page
+         on every single "Next ›" tap (v8). So: a new screen/tab/label
+         resets to page 0 (new area); a count-only change PRESERVES the
+         page (clamped, never reset); and a question change additionally
+         verifies the question group is on the landing page — if the
+         re-pack moved it, jump to the page that holds it. */
+      var sigParts = fileSigParts();
+      var prevParts = pagerState.parts;
+      var sameArea = !!prevParts && prevParts.screen === sigParts.screen && prevParts.tab === sigParts.tab && prevParts.label === sigParts.label;
+      var qChanged = !!prevParts && sameArea && prevParts.cnt !== '' && sigParts.cnt !== '' && prevParts.cnt !== sigParts.cnt;
+      if (!sameArea) { pagerState.page = 0; pagerState.budget = null; pagerState.avail = 0; }
+      pagerState.parts = sigParts;
       lastSig = fileSig();
       /* The budget is STRUCTURAL — the sum of the settled chrome heights —
          never the card's live top, which moves while the fadeUp animation
          runs. Heights are stable under the animation; positions are not. */
       var cs = getComputedStyle(settings);
       var padT = parseFloat(cs.paddingTop) || 0, padB = parseFloat(cs.paddingBottom) || 0;
+      /* ROUND 2 (D3): the frame's padded content bottom — the rim's inner
+         edge. The old retry limit (viewport bottom - 4) let the desktop
+         column run 68px past the rim and still pass. */
+      var frameBottom = window.innerHeight - padB;
       var belowH = 0;
       settings.querySelectorAll(':scope > #ps-back-profile, :scope > .ph-actions').forEach(function (el) {
         if (getComputedStyle(el).display !== 'none') belowH += el.getBoundingClientRect().height + 8;
@@ -53837,11 +53966,32 @@ body.fr-settings-open #settings .fr-set-tabs .smart-tab .sn-label{font-size:17px
       var total = 0;
       cards.forEach(function (c) { total += c.getBoundingClientRect().height + 8; });
       var avail0 = window.innerHeight - padT - padB - aboveH(false) - belowH - 8;
-      if (total <= avail0) { clearPages(); window.__frFitDebug = { mode: '', pages: 0, avail: Math.round(avail0), total: Math.round(total), reason: 'fits' }; return; }
+      /* The budget says it fits — verify against the RENDERED column,
+         not just the packing: measured heights run short when margins
+         stop collapsing between hidden siblings (desktop cold home
+         packed 467 but rendered 512). The pager is hidden for the
+         measurement, since the fits path hides it; if it still runs past
+         the frame, fall through to paging instead of passing. */
+      if (total <= avail0) {
+        pg.hidden = true;
+        if (renderedBottom() <= frameBottom) { clearPages(); window.__frFitDebug = { mode: '', pages: 0, avail: Math.round(avail0), total: Math.round(total), reason: 'fits' }; return; }
+      }
       /* Paging is needed, so the pager will be shown — budget with it in. */
       pg.hidden = false;
       var avail = window.innerHeight - padT - padB - aboveH(true) - belowH - 8;
+      /* ROUND 2b: the budget cache. A retry shrinks the budget to fix a
+         measurement gap; without remembering it, the next fit rebuilds
+         from the full budget and the list oscillates between two splits
+         — the same page index shows different content fit by fit. The
+         cached budget makes the fit idempotent: the next fit starts
+         where the last one settled. Reset on a new area, or when the
+         viewport's avail moved a lot (resize/rotate). A cached budget
+         can only over-split (safe), never overflow. */
       var budget = avail - 8;
+      if (pagerState.budget != null && pagerState.avail) {
+        if (Math.abs(avail - pagerState.avail) > 40) pagerState.budget = null;
+        else budget = Math.min(budget, pagerState.budget);
+      }
       /* buildList: pack the visible cards into the unified page list at a
          given budget. Returns {list, over} (over = atomic units taller
          than the budget, named, never silently clipped). */
@@ -53855,6 +54005,22 @@ body.fr-settings-open #settings .fr-set-tabs .smart-tab .sn-label{font-size:17px
           units.forEach(function (u) { if (u.h > bd) ovr.push(describeUnit(u)); });
           var pin = null, pinH = 0;
           if (units.length && units[0].h <= 80) { pin = units[0]; pinH = units[0].h; }
+          /* ROUND 2b: the demo question's heading (pin) rides with its
+             question group whenever the VIEWPORT holds them — the packing
+             budget is a retry-shrunk artifact, and letting it strand the
+             heading (and its i-button) on its own page over a few px
+             broke the i-button on Q1 (pin+group 483 vs a budget cached
+             at ~481, while the viewport holds 509). The test is the
+             viewport (avail), not the budget — on desktop the viewport
+             cannot hold them, so the split stands there. */
+          var demoBody = document.getElementById('pc-demo-body');
+          function pinRides(unit) {
+            if (!pin) return false;
+            var hh = unit.h;
+            if (pinH + hh + 8 <= bd) return true;
+            if (card.id === 'pc-demo-card' && demoBody && unit.els.indexOf(demoBody) !== -1) return pinH + hh + 8 <= avail;
+            return false;
+          }
           var cur = pin ? [pin] : [];
           var used = pinH;
           var startIx = pin ? 1 : 0;
@@ -53871,11 +54037,11 @@ body.fr-settings-open #settings .fr-set-tabs .smart-tab .sn-label{font-size:17px
               for (var cIx = 0; cIx < cur.length; cIx++) if (cur[cIx] !== pin) { hasContent = true; break; }
               if (hasContent) {
                 lst.push({ card: card, units: cur });
-                if (pin && pinH + h + 8 <= bd) { cur = [pin, units[j]]; used = pinH + h + 8; }
+                if (pinRides(units[j])) { cur = [pin, units[j]]; used = pinH + h + 8; }
                 else { cur = [units[j]]; used = h; }
               } else if (cur.length) {
-                lst.push({ card: card, units: cur });
-                cur = [units[j]]; used = h;
+                if (pinRides(units[j])) { cur.push(units[j]); used += h + 8; }
+                else { lst.push({ card: card, units: cur }); cur = [units[j]]; used = h; }
               } else {
                 cur.push(units[j]); used += h + 8;
               }
@@ -53906,11 +54072,12 @@ body.fr-settings-open #settings .fr-set-tabs .smart-tab .sn-label{font-size:17px
       pagerState.list = list;
       /* Preserve the user's page across re-runs (a re-run fires on every
          click, including the pager's own Next — resetting to 0 here would
-         undo the tap). Clamp only. */
-      if (pagerState.page >= list.length) pagerState.page = 0;
+         undo the tap). A question change lands on the question group;
+         otherwise the page index is preserved. */
+      settlePage(list, qChanged);
       applyPage();
       var rb = renderedBottom(), attempts = 0;
-      var limit = window.innerHeight - 4;
+      var limit = frameBottom;
       while (rb > limit && attempts < 2) {
         var curPage = list[pagerState.page];
         if (!curPage || !curPage.units || curPage.units.length < 2) break;
@@ -53919,8 +54086,7 @@ body.fr-settings-open #settings .fr-set-tabs .smart-tab .sn-label{font-size:17px
            taller than the budget) — shrinking the budget would only
            fragment the list. Retry only on a measurement error: the
            packing says the page fits, but the render disagrees. */
-        var cardTop = 0;
-        cards.forEach(function (c) { if (getComputedStyle(c).display !== 'none') cardTop = c.getBoundingClientRect().top; });
+        var cardTop = curPage.card ? curPage.card.getBoundingClientRect().top : 0;
         var packed = 32;
         curPage.units.forEach(function (u) { packed += u.h + 8; });
         packed -= 8;
@@ -53934,12 +54100,21 @@ body.fr-settings-open #settings .fr-set-tabs .smart-tab .sn-label{font-size:17px
         list = built.list; over = built.over;
         pagerState.pages = list.length;
         pagerState.list = list;
-        if (pagerState.page >= list.length) pagerState.page = 0;
+        settlePage(list, qChanged);
         applyPage();
         rb = renderedBottom();
         attempts++;
       }
-      window.__frFitDebug = { mode: 'pages', pages: list.length, page: pagerState.page, avail: Math.round(avail), total: Math.round(total), over: over, renderedBottom: rb, attempts: attempts };
+      /* ROUND 2b: the re-pack may have moved the question group — settle
+         on the final list too. */
+      settlePage(list, qChanged);
+      applyPage();
+      rb = renderedBottom();
+      /* ROUND 2b: remember the settled budget (see above) so the next
+         fit rebuilds the same list. */
+      pagerState.budget = budget;
+      pagerState.avail = avail;
+      window.__frFitDebug = { mode: 'pages', pages: list.length, page: pagerState.page, avail: Math.round(avail), budget: Math.round(budget), total: Math.round(total), over: over, renderedBottom: rb, attempts: attempts };
     } catch (err) {
       /* Escape hatch: never silently clip. Show everything, allow scroll. */
       try {
@@ -53950,6 +54125,44 @@ body.fr-settings-open #settings .fr-set-tabs .smart-tab .sn-label{font-size:17px
       window.__frFitDebug = { mode: 'ERROR', error: String(err && err.message || err) };
       if (window.console && console.error) console.error('[frFit] ', err);
     }
+  }
+  /* ROUND 2 (D1) — fixSmallText: the 17px minimum, enforced on the live
+     render. Stylesheet rules cannot beat an inline style (the Preferences
+     sign-in paragraph carries an inline 14px style) and cannot cover
+     text that inherits a small size from a parent (the "My World" span
+     matches no font-size rule at all). So after every fit — which runs on
+     every state change — walk the visible text nodes and bump any parent
+     whose COMPUTED size is under 17px to 17px inline. Only raises, never
+     lowers: an element already 17px+ is untouched, and hidden elements
+     are skipped (they get fixed when their page is shown and the next
+     fit runs). */
+  function fixSmallText() {
+    try {
+      var sec = document.getElementById('settings');
+      if (!sec || typeof document.createTreeWalker !== 'function') return;
+      var walker = document.createTreeWalker(sec, NodeFilter.SHOW_TEXT, null);
+      var seen = new Set();
+      var node;
+      while ((node = walker.nextNode())) {
+        var t = node.nodeValue;
+        if (!t || !t.trim()) continue;
+        var el = node.parentElement;
+        if (!el || seen.has(el)) continue;
+        seen.add(el);
+        if (el.closest('.royal-frame')) continue;
+        var pop = el.closest('.fr-info-pop');
+        if (pop && pop.hidden) continue;
+        var cs = getComputedStyle(el);
+        if (cs.display === 'none' || cs.visibility === 'hidden') continue;
+        var r = el.getBoundingClientRect();
+        if (r.width === 0 || r.height === 0) continue;
+        if (parseFloat(cs.fontSize) < 17) el.style.fontSize = '17px';
+      }
+    } catch (e) {}
+  }
+  function frFit() {
+    if (!document.body.classList.contains('fr-settings-open')) return;
+    try { frFitInner(); } finally { fixSmallText(); }
   }
   /* scheduleFit: the quick run (60ms) plus a settle confirm (550ms, past
      the .5s fadeUp animation) — the confirm re-measures the settled
@@ -53967,7 +54180,20 @@ body.fr-settings-open #settings .fr-set-tabs .smart-tab .sn-label{font-size:17px
   function enterMode() {
     if (document.body.classList.contains('fr-settings-open')) return;
     document.body.classList.add('fr-settings-open');
-    try { window.scrollTo(0, 0); } catch (e) {}
+    /* ROUND 2 (D4): the window must sit at scrollY 0 while the fixed
+       stage is open — the #/hub/settings landing left it at 909 (a
+       one-time scroll ~3s after load; a manual scrollTo(0,0) sticks, so
+       the guard only has to re-assert). Instant scroll now, a capture
+       scroll listener while open, re-asserts past the late jump, and the
+       literal landing hash put back at once. */
+    forceTop();
+    restoreHash();
+    if (!scrollGuardOn) { window.addEventListener('scroll', onModeScroll, true); scrollGuardOn = true; }
+    [300, 1200, 3000].forEach(function (ms) {
+      setTimeout(function () {
+        if (document.body.classList.contains('fr-settings-open')) { forceTop(); restoreHash(); }
+      }, ms);
+    });
     buildTabs();
     paintRows();
     buildCardInfo();
@@ -53976,6 +54202,7 @@ body.fr-settings-open #settings .fr-set-tabs .smart-tab .sn-label{font-size:17px
   }
   function exitMode() {
     document.body.classList.remove('fr-settings-open');
+    openHash = null;
     if (pop) pop.hidden = true;
     clearPages();
     settings.style.overflowY = '';
@@ -53989,7 +54216,7 @@ body.fr-settings-open #settings .fr-set-tabs .smart-tab .sn-label{font-size:17px
     else if (!mode && document.body.classList.contains('fr-settings-open')) exitMode();
     else if (mode) {
       var sig = fileSig();
-      if (sig !== lastSig) { lastSig = sig; pagerState.key = ''; scheduleFit(); }
+      if (sig !== lastSig) { lastSig = sig; scheduleFit(); }
     }
   });
   obs.observe(settings, { attributes: true, attributeFilter: ['class', 'data-ps-screen'], subtree: true });
@@ -53998,10 +54225,16 @@ body.fr-settings-open #settings .fr-set-tabs .smart-tab .sn-label{font-size:17px
   function hubSettings() {
     try {
       if ((location.hash || '').indexOf('#/hub/settings') === 0) {
+        /* ROUND 2 (D4): showView pushStates '#settings', losing the
+           literal '#/hub/settings'. Remember it and put it back — with
+           replaceState, so no hashchange fires and the Hub room stays
+           put underneath. */
+        openHash = location.hash;
         if (!settings.classList.contains('on')) {
           if (typeof window.osShowView === 'function') window.osShowView('settings');
           else if (typeof window.showView === 'function') window.showView('settings');
         }
+        setTimeout(restoreHash, 60);
       }
     } catch (e) {}
   }
@@ -54009,6 +54242,11 @@ body.fr-settings-open #settings .fr-set-tabs .smart-tab .sn-label{font-size:17px
 
   /* ---------------- boot ------------------------------------------------- */
   function boot() {
+    /* ROUND 2 (D4): the literal landing hash, remembered from bootHash
+       (captured at parse time, before the base boot code strips it —
+       the #settings landing ends with hash ''). Only used if settings
+       opens from that landing. */
+    if (bootHash === '#settings' || bootHash.indexOf('#/hub/settings') === 0) openHash = bootHash;
     buildTabs();
     paintRows();
     buildCardInfo();
