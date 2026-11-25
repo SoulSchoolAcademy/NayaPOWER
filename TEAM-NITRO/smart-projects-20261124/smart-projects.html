@@ -540,6 +540,32 @@ textarea.gr-input{resize:vertical;min-height:110px;line-height:1.55;}
 .sp-kind-hint b{color:#d4a017}
 </style>
 
+<style id="sp-v5-css">
+/* SMART PROJECTS v5 — questions board, mini-block notes, project search. New CSS only; 17px minimum, white text, deep colors. */
+.sp-search{margin:0 0 16px;display:flex;gap:10px;align-items:center}
+.sp-search input{flex:1;min-height:52px;font-size:17px}
+.sp-search-count{font-size:17px;color:#fff;line-height:1.5;margin:0 0 16px}
+.sp-qblock{display:flex;gap:12px;align-items:flex-start;padding:16px;border:1.5px solid rgba(255,255,255,.22);border-radius:16px;margin:12px 0;background:linear-gradient(135deg,#17171f,#07070b);box-shadow:0 10px 24px rgba(0,0,0,.45)}
+.sp-qblock:hover{border-color:#8e24aa;box-shadow:0 0 20px -4px #8e24aa,0 10px 24px rgba(0,0,0,.45)}
+.sp-jewel{flex:none;font-size:19px;color:#d4a017;line-height:1.5}
+.sp-qchip{font-size:17px;font-weight:800;letter-spacing:.06em;margin:8px 0}
+.sp-qta{width:100%;box-sizing:border-box;font-size:17px;line-height:1.5;padding:14px;margin-top:10px}
+.sp-mininote{display:flex;gap:12px;align-items:flex-start;padding:16px;border:1.5px solid rgba(255,255,255,.22);border-radius:16px;margin:12px 0;background:linear-gradient(135deg,#17171f,#07070b);box-shadow:0 10px 24px rgba(0,0,0,.45);cursor:pointer}
+.sp-mininote:hover{border-color:#2fe89e;box-shadow:0 0 20px -4px #2fe89e,0 10px 24px rgba(0,0,0,.45)}
+.sp-note-overlay{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.72);display:grid;place-items:center;padding:20px;box-sizing:border-box;overflow:auto}
+.sp-note-card{width:100%;max-width:560px;background:linear-gradient(135deg,#1b1b24,#07070b);border:1.5px solid #8e24aa;border-radius:20px;padding:22px;box-shadow:0 0 28px -4px #8e24aa,0 20px 48px rgba(0,0,0,.65);box-sizing:border-box}
+.sp-note-card h3{margin:0 0 8px;font-size:19px;color:#fff;font-family:Marcellus,Georgia,serif}
+.sp-note-card p{font-size:17px;color:#fff;line-height:1.5}
+.sp-note-card .sp-w-field label{font-size:17px}
+.sp-note-card textarea.gr-input{font-size:17px;line-height:1.5;padding:14px}
+.sp-statebtn{font-size:17px;line-height:1.5;padding:8px 14px;border-radius:999px;border:1.5px solid rgba(255,255,255,.35);background:#050607;color:#fff;cursor:pointer;margin:0 6px 6px 0;font-family:inherit}
+.sp-statebtn.on{border-color:#fff;box-shadow:0 0 14px rgba(255,255,255,.35)}
+.sp-statebtn:hover{border-color:#8e24aa}
+.sp-nv-sec{margin:16px 0}
+.sp-nv-sec h4{margin:0 0 6px;font-size:19px;color:#fff;font-family:Marcellus,Georgia,serif}
+.sp-nv-sec p{margin:0;font-size:17px;color:#fff;line-height:1.5}
+.sp-nv-empty{color:#fff;opacity:.85}
+</style>
 <body>
 <div class="gr-stage" id="top">
 
@@ -636,6 +662,10 @@ textarea.gr-input{resize:vertical;min-height:110px;line-height:1.55;}
       </div>
     </section>
 
+    <div class="sp-search">
+      <input class="gr-input" id="sp-search" type="search" maxlength="200" placeholder="Search this project — intelligence, questions, notes, links…" aria-label="Search this project">
+    </div>
+    <p class="sp-search-count" id="sp-search-count">Search this project, not the internet — it only ever searches what is in this project.</p>
     <section class="gr-board" style="--sc:#3fb8ff">
       <div class="gr-board-cover">
         <div class="gr-board-num" aria-hidden="true"></div>
@@ -649,6 +679,18 @@ textarea.gr-input{resize:vertical;min-height:110px;line-height:1.55;}
       </div>
     </section>
 
+    <section class="gr-board" style="--sc:#8e24aa">
+      <div class="gr-board-cover">
+        <div class="gr-board-num" aria-hidden="true"></div>
+        <h2>The 14 Questions</h2>
+        <p class="gr-board-sub">The minimum viable intelligence interface for NayaNET itself — from the filed Daily Project Intelligence Report, SN-4710, 2026-11-23. Answer them in your own words, one at a time. Unanswered stays honestly unanswered — never filled in for you.</p>
+      </div>
+      <div class="gr-board-body">
+        <p class="gr-note" id="sp-q-count" style="margin-top:4px;">0 of 14 answered — the rest are honestly unanswered, never filled in for you.</p>
+        <div id="sp-questions"><div class="gr-empty">Reading the questions…</div></div>
+        <p class="gr-status" id="sp-q-status" aria-live="polite"></p>
+      </div>
+    </section>
     <section class="gr-board" style="--sc:#2fe89e">
       <div class="gr-board-cover">
         <div class="gr-board-num" aria-hidden="true"></div>
@@ -705,6 +747,8 @@ textarea.gr-input{resize:vertical;min-height:110px;line-height:1.55;}
       </div>
       <div class="gr-board-body">
         <div id="pj-notes"><div class="gr-empty">Reading the notes…</div></div>
+        <h3 style="font-size:17px;font-weight:900;color:#fff;margin:22px 0 6px;">Mini-block notes — tap one to open the full note</h3>
+        <div id="sp-mininotes"><div class="gr-empty">Reading the mini-block notes…</div></div>
         <h3 style="font-size:17px;font-weight:900;color:#fff;margin:22px 0 6px;">File one of your notes</h3>
         <div id="pj-note-picker"><div class="gr-empty">Reading your notes…</div></div>
         <p class="gr-status" id="pj-notes-status" aria-live="polite"></p>
@@ -806,7 +850,34 @@ textarea.gr-input{resize:vertical;min-height:110px;line-height:1.55;}
       <div class="sp-tip" id="sp-w-tip" hidden><h3 id="sp-w-tip-t"></h3><p id="sp-w-tip-b"></p><button type="button" class="gr-btn" id="sp-w-tip-x">GOT IT</button></div>
     </div>
   </div>
+
+  <div id="sp-note-comp" class="sp-note-overlay" hidden>
+    <div class="sp-note-card" role="dialog" aria-label="Make a note">
+      <h3 id="sp-nc-title">Make a note</h3>
+      <p id="sp-nc-block">On this board</p>
+      <div class="sp-w-field"><label for="sp-nc-nutshell">Nutshell — the note in one line</label><input class="gr-input" id="sp-nc-nutshell" type="text" maxlength="200" placeholder="e.g. The guitar needs new strings"></div>
+      <div class="sp-w-field"><label for="sp-nc-body">What it means — the note itself</label><textarea class="gr-input" id="sp-nc-body" rows="4" maxlength="4000" placeholder="Write the note…"></textarea></div>
+      <div class="sp-w-field"><label>State — the project’s own states</label><div id="sp-nc-states"></div></div>
+      <p class="gr-status" id="sp-nc-status" aria-live="polite"></p>
+      <div class="frame-btnrow"><button type="button" class="gr-btn" id="sp-nc-save">SAVE NOTE</button><button type="button" class="gr-btn ghost" id="sp-nc-cancel">CANCEL</button></div>
+    </div>
   </div>
+  <div id="sp-note-view" class="sp-note-overlay" hidden>
+    <div class="sp-note-card" role="dialog" aria-label="Note">
+      <h3 id="sp-nv-title">Note</h3>
+      <div class="sp-nv-sec"><h4>Nutshell</h4><p id="sp-nv-nutshell"></p></div>
+      <div class="sp-nv-sec"><h4>What It Means</h4><p id="sp-nv-body"></p></div>
+      <div class="sp-nv-sec"><h4>Child</h4><p class="sp-nv-empty">Not filled yet — this note was written as a nutshell and a note. Edit it to add the plain-words version.</p></div>
+      <div class="sp-nv-sec"><h4>Grandma</h4><p class="sp-nv-empty">Not filled yet — edit the note to add it in grandma’s words.</p></div>
+      <div class="sp-nv-sec"><h4>Why It Matters</h4><p class="sp-nv-empty">Not filled yet — edit the note to say why it matters.</p></div>
+      <div class="sp-nv-sec"><h4>How It Connects</h4><p class="sp-nv-empty">Not filled yet — edit the note to say what it connects to.</p></div>
+      <div class="sp-nv-sec"><h4>How to Apply</h4><p class="sp-nv-empty">Not filled yet — edit the note to say what to do with it.</p></div>
+      <div class="sp-nv-sec"><h4>What’s In It For You</h4><p class="sp-nv-empty">Not filled yet — edit the note to say what you get from it.</p></div>
+      <div class="sp-nv-sec"><h4>State — the project’s own states</h4><div id="sp-nv-states"></div></div>
+      <p class="gr-status" id="sp-nv-status" aria-live="polite"></p>
+      <div class="frame-btnrow"><button type="button" class="gr-btn" id="sp-nv-edit">EDIT THIS NOTE</button><button type="button" class="gr-btn ghost" id="sp-nv-close">CLOSE</button></div>
+    </div>
+  </div>  </div>
 
 <!-- NayaNET install strip — every Naya page installs like an app -->
 <style>
@@ -1425,7 +1496,7 @@ var INTEL_GROUPS=[
   ['queued','QUEUED','#ffbf3d']
 ];
 function splitIntel(rows){
-  S.intel=[]; S.production=null; S.prodTrend=[]; S.prodAging=[]; S.prodLoops=[]; S.intelStamp=''; S.spKind=''; S.spDismissed=[];
+  S.intel=[]; S.production=null; S.prodTrend=[]; S.prodAging=[]; S.prodLoops=[]; S.intelStamp=''; S.spKind=''; S.spDismissed=[]; S.spQuestions={}; S.spNoteStates={};
   rows.forEach(function(r){
     if(r.item_key==='production:stamp'){ S.intelStamp=r.detail||r.updated_at||''; return; }
     if(r.item_key==='production:today'){ try{ S.production=JSON.parse(r.detail); }catch(e){} return; }
@@ -1433,6 +1504,8 @@ function splitIntel(rows){
     if(r.item_key.indexOf('production:aging:')===0){ try{ var a=JSON.parse(r.detail); S.prodAging.push({title:r.title, days:a.days_still}); }catch(e){} return; }
     if(r.item_key.indexOf('production:loop:')===0){ try{ var l=JSON.parse(r.detail); S.prodLoops.push({loop:l.loop||r.title, runs:l.runs_24h}); }catch(e){} return; }
     if(r.item_key.indexOf('production:')===0) return;
+    if(r.item_key.indexOf('citizen:q')===0){ S.spQuestions[r.item_key]=r.detail||''; return; }
+    if(r.item_key.indexOf('citizen:note-state:')===0){ S.spNoteStates[r.item_key.replace('citizen:note-state:','')]=r.state||'in-motion'; return; }
     if(r.item_key==='citizen:kind'){ S.spKind=r.detail||''; return; }
     if(r.item_key==='citizen:dismissed-kinds'){ try{ S.spDismissed=JSON.parse(r.detail)||[]; }catch(e){ S.spDismissed=[]; } return; }
     S.intel.push(r);
@@ -1590,7 +1663,7 @@ function loadIntelAndFamily(){
     splitIntel(res[0]||[]);
     S.children=res[1]||[];
     S.parent=(res[2]&&res[2][0])||null;
-    renderIntel(); renderProduction(); renderChildren(); renderCrumb();
+    renderIntel(); renderProduction(); renderChildren(); renderCrumb(); renderQuestions();
     refreshNumbersOnly(); loadActivity();
     if(!S.children.length) return;
     var ids=S.children.map(function(c){ return c.id; });
@@ -2104,8 +2177,8 @@ var SP_WALK=[
   {key:'people', glyph:'●', color:'#c62828', kind:'CONNECTIONS', title:'Who is in it with you?', tip:'People come from your Connections, kept on this device. Tap a name and they join the project — the project hub shows everyone who is working on it with you.', q:'Tap the people who are in this project with you.', ph:''},
   {key:'note', glyph:'✎', color:'#a21caf', kind:'NOTES', title:'Your notes on it', tip:'Your notes live once, in their own home, and gather here. Write one now and it files into this project — and stays yours.', q:'Write a note for this project.', ph:'Anything you want to keep about it…'}
 ];
-var SP_TEMPLATES=[{"id":"learning","label":"Learning","title":"Learning Something New","sn":4842,"status":"live","mission_q":"What do you want to learn — and why this, why now?","goal_q":"What will 'I can do it' look like — the first real proof?","vision_q":"When this is part of your life, what does a normal day look like?","links_hint":"Your course, your teacher's page, the videos and books you're learning from.","notes_hint":"Every lesson, every practice log, every 'aha' — file them here.","people_hint":"Your teacher, your practice partner, anyone learning beside you."},{"id":"business","label":"Business","title":"Starting a Business","sn":4843,"status":"live","mission_q":"What problem does this business solve — and for whom?","goal_q":"What is the first sale, the first customer, the first proof it works?","vision_q":"When this business is real and running, what does it give you and them?","links_hint":"Your idea notes, competitor pages, the tools you'll use.","notes_hint":"Every idea, every customer conversation, every number.","people_hint":"Your first customers, your mentors, your partners."},{"id":"app","label":"App","title":"Building an App","sn":4844,"status":"live","mission_q":"What will this app, website, or product DO for the person using it?","goal_q":"What is the first working version — the smallest thing that proves it?","vision_q":"When people use it every day, what changes for them?","links_hint":"The apps that inspire you, your designs, your docs.","notes_hint":"Every feature idea, every bug, every test with a real user.","people_hint":"Your users, your testers, anyone building with you."},{"id":"health","label":"Health","title":"Health and Fitness","sn":4845,"status":"live","mission_q":"What does healthy mean for you — and why now?","goal_q":"What is the first finish line you can see — a race, a weight, a habit kept 30 days?","vision_q":"When your body feels like yours again, what does a normal week look like?","links_hint":"Your training plan, your recipes, your race page.","notes_hint":"Every workout, every meal, every weigh-in — the log is the proof.","people_hint":"Your training partner, your coach, your race-day crowd."},{"id":"money","label":"Money","title":"Money","sn":4846,"status":"live","mission_q":"What does money need to DO for you first — get out of debt, save, earn?","goal_q":"What is the first number that proves it — debt gone, savings kept, first dollar earned online?","vision_q":"When money stops being the worry, what does your life look like?","links_hint":"Your budget, your bank, the ways you earn online.","notes_hint":"Every dollar in and out, every bill beaten, every save kept.","people_hint":"Your accountability partner, your mentor, anyone earning beside you."},{"id":"book","label":"Book","title":"Writing a Book","sn":4847,"status":"live","mission_q":"What do you need to say — and who needs to hear it?","goal_q":"What is the first finished piece — a chapter, a lesson, a first draft?","vision_q":"When your book or course is out in the world, who does it help and how?","links_hint":"Your outline, your research, the books that taught you.","notes_hint":"Every chapter draft, every idea, every reader's note.","people_hint":"Your readers, your editor, anyone who believes in the book."},{"id":"family","label":"Family & Home","title":"Family and Home","sn":4848,"status":"live","mission_q":"What are we making — a move, a home, a wedding, a trip — and why does it matter?","goal_q":"What is the first thing done — the date set, the room finished, the tickets booked?","vision_q":"When it's done and we're living in it, what does the day feel like?","links_hint":"The listings, the venues, the plans and prices.","notes_hint":"Every decision, every date, every cost — one place the whole family can see.","people_hint":"Everyone involved — family, the movers, the planners, the guests."},{"id":"career","label":"Career","title":"Career","sn":4849,"status":"live","mission_q":"What work do you want to be doing — and why that work?","goal_q":"What is the first proof — the application sent, the interview, the portfolio piece?","vision_q":"When you're doing the work you want, what does your week look like?","links_hint":"The job posts, the companies, your portfolio pieces.","notes_hint":"Every application, every interview, every lesson from each one.","people_hint":"Your references, your mentors, the people who open doors."},{"id":"community","label":"Community","title":"A Community","sn":4850,"status":"live","mission_q":"Who is this community for — and what brings them together?","goal_q":"What is the first gathering — the first members, the first room full?","vision_q":"When this community is alive on its own, what do people get from belonging?","links_hint":"Your group page, your channel, the places members gather.","notes_hint":"Every gathering, every member story, every idea for the next one.","people_hint":"Your first members, your helpers, your loudest fans."},{"id":"cause","label":"Cause","title":"A Cause","sn":4851,"status":"live","mission_q":"What needs to change — and who does it hurt right now?","goal_q":"What is the first help delivered — the first person helped, the first dollar raised?","vision_q":"When this cause has done its work, what is different in the world?","links_hint":"The charities, the facts, the places to give and help.","notes_hint":"Every person helped, every dollar raised, every story that proves it.","people_hint":"The people you help, the volunteers, the donors."}];
-var SP_BACKLOG=[{"id":"travel","label":"travel","status":"backlog","order":10},{"id":"cooking","label":"cooking","status":"backlog","order":11},{"id":"music","label":"music","status":"backlog","order":12},{"id":"art","label":"art","status":"backlog","order":13},{"id":"photography","label":"photography","status":"backlog","order":14},{"id":"gardening","label":"gardening","status":"backlog","order":15},{"id":"a-podcast","label":"a podcast","status":"backlog","order":16},{"id":"learning-to-code","label":"learning to code","status":"backlog","order":17},{"id":"a-side-hustle","label":"a side hustle","status":"backlog","order":18},{"id":"planning-an-event","label":"planning an event","status":"backlog","order":19},{"id":"a-sports-team","label":"a sports team","status":"backlog","order":20},{"id":"a-startup","label":"a startup","status":"backlog","order":21},{"id":"real-estate","label":"real estate","status":"backlog","order":22},{"id":"teaching-a-course","label":"teaching a course","status":"backlog","order":23},{"id":"a-personal-brand","label":"a personal brand","status":"backlog","order":24},{"id":"a-non-profit","label":"a non-profit","status":"backlog","order":25},{"id":"a-research-project","label":"a research project","status":"backlog","order":26},{"id":"a-hobby","label":"a hobby","status":"backlog","order":27},{"id":"a-daily-habit-system","label":"a daily habit system","status":"backlog","order":28},{"id":"a-family-legacy","label":"a family legacy","status":"backlog","order":29},{"id":"a-home-business","label":"a home business","status":"backlog","order":30},{"id":"a-youtube-channel","label":"a YouTube channel","status":"backlog","order":31},{"id":"a-garden","label":"a garden","status":"backlog","order":32},{"id":"a-dream-trip","label":"a dream trip","status":"backlog","order":33},{"id":"a-personal-transformation","label":"a personal transformation","status":"backlog","order":34}];
+var SP_TEMPLATES=[{"id":"learning","label":"Learning","title":"Learning Something New","sn":4842,"status":"live","mission_q":"What do you want to learn — and why this, why now?","goal_q":"What will 'I can do it' look like — the first real proof?","vision_q":"When this is part of your life, what does a normal day look like?","links_hint":"Your course, your teacher's page, the videos and books you're learning from.","notes_hint":"Every lesson, every practice log, every 'aha' — file them here.","people_hint":"Your teacher, your practice partner, anyone learning beside you."},{"id":"business","label":"Business","title":"Starting a Business","sn":4843,"status":"live","mission_q":"What problem does this business solve — and for whom?","goal_q":"What is the first sale, the first customer, the first proof it works?","vision_q":"When this business is real and running, what does it give you and them?","links_hint":"Your idea notes, competitor pages, the tools you'll use.","notes_hint":"Every idea, every customer conversation, every number.","people_hint":"Your first customers, your mentors, your partners."},{"id":"app","label":"App","title":"Building an App","sn":4844,"status":"live","mission_q":"What will this app, website, or product DO for the person using it?","goal_q":"What is the first working version — the smallest thing that proves it?","vision_q":"When people use it every day, what changes for them?","links_hint":"The apps that inspire you, your designs, your docs.","notes_hint":"Every feature idea, every bug, every test with a real user.","people_hint":"Your users, your testers, anyone building with you."},{"id":"health","label":"Health","title":"Health and Fitness","sn":4845,"status":"live","mission_q":"What does healthy mean for you — and why now?","goal_q":"What is the first finish line you can see — a race, a weight, a habit kept 30 days?","vision_q":"When your body feels like yours again, what does a normal week look like?","links_hint":"Your training plan, your recipes, your race page.","notes_hint":"Every workout, every meal, every weigh-in — the log is the proof.","people_hint":"Your training partner, your coach, your race-day crowd."},{"id":"money","label":"Money","title":"Money","sn":4846,"status":"live","mission_q":"What does money need to DO for you first — get out of debt, save, earn?","goal_q":"What is the first number that proves it — debt gone, savings kept, first dollar earned online?","vision_q":"When money stops being the worry, what does your life look like?","links_hint":"Your budget, your bank, the ways you earn online.","notes_hint":"Every dollar in and out, every bill beaten, every save kept.","people_hint":"Your accountability partner, your mentor, anyone earning beside you."},{"id":"book","label":"Book","title":"Writing a Book","sn":4847,"status":"live","mission_q":"What do you need to say — and who needs to hear it?","goal_q":"What is the first finished piece — a chapter, a lesson, a first draft?","vision_q":"When your book or course is out in the world, who does it help and how?","links_hint":"Your outline, your research, the books that taught you.","notes_hint":"Every chapter draft, every idea, every reader's note.","people_hint":"Your readers, your editor, anyone who believes in the book."},{"id":"family","label":"Family & Home","title":"Family and Home","sn":4848,"status":"live","mission_q":"What are we making — a move, a home, a wedding, a trip — and why does it matter?","goal_q":"What is the first thing done — the date set, the room finished, the tickets booked?","vision_q":"When it's done and we're living in it, what does the day feel like?","links_hint":"The listings, the venues, the plans and prices.","notes_hint":"Every decision, every date, every cost — one place the whole family can see.","people_hint":"Everyone involved — family, the movers, the planners, the guests."},{"id":"career","label":"Career","title":"Career","sn":4849,"status":"live","mission_q":"What work do you want to be doing — and why that work?","goal_q":"What is the first proof — the application sent, the interview, the portfolio piece?","vision_q":"When you're doing the work you want, what does your week look like?","links_hint":"The job posts, the companies, your portfolio pieces.","notes_hint":"Every application, every interview, every lesson from each one.","people_hint":"Your references, your mentors, the people who open doors."},{"id":"community","label":"Community","title":"A Community","sn":4850,"status":"live","mission_q":"Who is this community for — and what brings them together?","goal_q":"What is the first gathering — the first members, the first room full?","vision_q":"When this community is alive on its own, what do people get from belonging?","links_hint":"Your group page, your channel, the places members gather.","notes_hint":"Every gathering, every member story, every idea for the next one.","people_hint":"Your first members, your helpers, your loudest fans."},{"id":"cause","label":"Cause","title":"A Cause","sn":4851,"status":"live","mission_q":"What needs to change — and who does it hurt right now?","goal_q":"What is the first help delivered — the first person helped, the first dollar raised?","vision_q":"When this cause has done its work, what is different in the world?","links_hint":"The charities, the facts, the places to give and help.","notes_hint":"Every person helped, every dollar raised, every story that proves it.","people_hint":"The people you help, the volunteers, the donors."},{"id":"travel","label":"Travel","title":"Travel","sn":4867,"status":"live","mission_q":"Where do you want to go — and why this trip, why now?","goal_q":"What does a trip well done look like — booked, packed, gone?","vision_q":"When you are there, what does a perfect day look like?","links_hint":"Flights, stays, maps, guides — everything for the trip in one place.","notes_hint":"Every plan, packing list, and memory from the road — file them here.","people_hint":"Who is travelling with you, and who is waiting at home?"},{"id":"cooking","label":"Cooking","title":"Cooking","sn":4868,"status":"live","mission_q":"What do you want to cook — and who are you cooking it for?","goal_q":"What is the first dish you will make all the way through, from scratch?","vision_q":"When cooking is part of your week, what does dinner look like?","links_hint":"Recipes, videos, shops — the food you are learning, filed here.","notes_hint":"Every recipe tried, every tweak, every \"that worked\" — file them here.","people_hint":"Who eats with you, and who taught you the first dish?"},{"id":"music","label":"Music","title":"Music","sn":4869,"status":"live","mission_q":"What music do you want to make — and why this, why now?","goal_q":"What is the first song you will play or finish all the way through?","vision_q":"When music is part of your life, what does a normal week sound like?","links_hint":"Songs, lessons, chords, recordings — your music, filed here.","notes_hint":"Every practice, every song learned, every recording — file them here.","people_hint":"Your teacher, your band, anyone who plays beside you."},{"id":"art","label":"Art","title":"Art","sn":4870,"status":"live","mission_q":"What do you want to make — and what do you want it to say?","goal_q":"What is the first finished piece you will hold in your hands?","vision_q":"When making art is part of your life, what does your week look like?","links_hint":"References, tutorials, galleries, suppliers — your art, filed here.","notes_hint":"Every sketch, every study, every finished piece — file them here.","people_hint":"Who sees your work first, and who makes beside you?"},{"id":"photography","label":"Photography","title":"Photography","sn":4871,"status":"live","mission_q":"What do you want to see — and to keep — with your camera?","goal_q":"What is the first set of photographs you will be proud to show?","vision_q":"When photography is part of your life, what do you go out looking for?","links_hint":"Guides, settings, locations, gear — your photography, filed here.","notes_hint":"Every shoot, every keeper, every lesson about light — file them here.","people_hint":"Who is in front of your lens, and who shoots beside you?"},{"id":"gardening","label":"Gardening","title":"Gardening","sn":4872,"status":"live","mission_q":"What do you want to grow — and why this garden, why now?","goal_q":"What is the first thing you will pick and eat from your own garden?","vision_q":"When the garden is growing, what does a morning in it look like?","links_hint":"Seed guides, planting calendars, suppliers — your garden, filed here.","notes_hint":"Every sowing, every sprout, every harvest — file them here.","people_hint":"Who digs beside you, and who eats what you grow?"},{"id":"podcast","label":"A Podcast","title":"A Podcast","sn":4873,"status":"live","mission_q":"What do you want to say — and who needs to hear it?","goal_q":"What does your first finished episode sound like, start to finish?","vision_q":"When the show is running, what does a recording week look like?","links_hint":"Mics, hosting, show notes, guests — your podcast, filed here.","notes_hint":"Every episode plan, every recording, every listener note — file them here.","people_hint":"Your co-host, your guests, your first listeners."},{"id":"learning-to-code","label":"Learning to Code","title":"Learning to Code","sn":4874,"status":"live","mission_q":"What do you want to build with code — and why this, why now?","goal_q":"What is the first working thing you will build and show someone?","vision_q":"When coding is part of your life, what are you building on a normal day?","links_hint":"Courses, docs, repos, tutorials — your coding, filed here.","notes_hint":"Every lesson, every bug beaten, every working build — file them here.","people_hint":"Your mentor, your study partner, anyone building beside you."},{"id":"side-hustle","label":"A Side Hustle","title":"A Side Hustle","sn":4875,"status":"live","mission_q":"What will you sell — and who will pay for it, and why?","goal_q":"What does the first real sale look like — money in, from a stranger?","vision_q":"When the hustle is working, what does a normal week look like?","links_hint":"Your shop, your listings, your prices — your hustle, filed here.","notes_hint":"Every sale, every customer note, every lesson about price — file them here.","people_hint":"Your first customers, and anyone helping you sell."},{"id":"planning-an-event","label":"Planning an Event","title":"Planning an Event","sn":4876,"status":"live","mission_q":"What is this event for — and what should people feel when they leave?","goal_q":"What does done look like — the date set, the room ready, the people there?","vision_q":"When the day arrives, what does the best moment of it look like?","links_hint":"Venue, invites, suppliers, the run sheet — your event, filed here.","notes_hint":"Every decision, every booking, every detail — file them here.","people_hint":"Who is helping, who is coming, who is speaking?"},{"id":"sports-team","label":"A Sports Team","title":"A Sports Team","sn":4877,"status":"live","mission_q":"What is this team for — winning, fitness, friendship, or all three?","goal_q":"What does a season well played look like — the first win, the last game?","vision_q":"When the team is running, what does a match day look like?","links_hint":"Fixtures, training plans, kit, the league page — your team, filed here.","notes_hint":"Every match, every training, every result — file them here.","people_hint":"Your players, your coach, your supporters."},{"id":"startup","label":"A Startup","title":"A Startup","sn":4878,"status":"live","mission_q":"What problem are you solving — and for whom, exactly?","goal_q":"What does the first real proof look like — a customer, a sale, a yes?","vision_q":"When this is a real business, what does a normal day look like?","links_hint":"Your pitch, your numbers, your competitors — your startup, filed here.","notes_hint":"Every customer conversation, every pivot, every proof — file them here.","people_hint":"Your co-founder, your first customers, your mentors."},{"id":"real-estate","label":"Real Estate","title":"Real Estate","sn":4879,"status":"live","mission_q":"What are you buying, selling, or building — and why this property?","goal_q":"What does done look like — keys in hand, sold, or rented?","vision_q":"When the deal is done, what does the place look like, lived in?","links_hint":"Listings, agents, lenders, the numbers — your property, filed here.","notes_hint":"Every viewing, every offer, every number — file them here.","people_hint":"Your agent, your lender, anyone moving with you."},{"id":"teaching-a-course","label":"Teaching a Course","title":"Teaching a Course","sn":4880,"status":"live","mission_q":"What will your students be able to do when your course is done?","goal_q":"What does the first finished lesson look like — taught, watched, understood?","vision_q":"When the course is running, what does a teaching week look like?","links_hint":"Your outline, your lessons, your platform — your course, filed here.","notes_hint":"Every lesson, every student question, every improvement — file them here.","people_hint":"Your first students, and anyone teaching beside you."},{"id":"personal-brand","label":"A Personal Brand","title":"A Personal Brand","sn":4881,"status":"live","mission_q":"What do you want to be known for — in one line?","goal_q":"What is the first proof — a post, a page, a talk — that shows it?","vision_q":"When people know your name, what do they come to you for?","links_hint":"Your pages, your posts, your talks — your brand, filed here.","notes_hint":"Every post, every talk, every kind word — file them here.","people_hint":"Who follows you, who shares you, who opens doors for you?"}];
+var SP_BACKLOG=[{"id":"a-non-profit","label":"a non-profit","status":"backlog","order":25},{"id":"a-research-project","label":"a research project","status":"backlog","order":26},{"id":"a-hobby","label":"a hobby","status":"backlog","order":27},{"id":"a-daily-habit-system","label":"a daily habit system","status":"backlog","order":28},{"id":"a-family-legacy","label":"a family legacy","status":"backlog","order":29},{"id":"a-home-business","label":"a home business","status":"backlog","order":30},{"id":"a-youtube-channel","label":"a YouTube channel","status":"backlog","order":31},{"id":"a-garden","label":"a garden","status":"backlog","order":32},{"id":"a-dream-trip","label":"a dream trip","status":"backlog","order":33},{"id":"a-personal-transformation","label":"a personal transformation","status":"backlog","order":34}];
 var activeSmartTab=null; // the Hub v9 active tab id (kind-<id>); the pick step reads it
 function esc(x){return String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
   const SMART_TAB_KEY = 'nayanet.smart-projects.kindTabs.v1'; // SP: scoped key
@@ -2327,8 +2400,8 @@ function spRenderKindStrip(){ if(document.getElementById('sp-walk').hidden) retu
 function spStepQ(st){ var k=spActiveKind(); if(!k) return {title:st.title, q:st.q}; if(st.key==='mission') return {title:k.mission_q, q:k.mission_q}; if(st.key==='goal') return {title:k.goal_q, q:k.goal_q}; if(st.key==='vision') return {title:k.vision_q, q:k.vision_q}; return {title:st.title, q:st.q}; }
 var spStep=0;
 function spIntelRow(key){ for(var i=0;i<S.intel.length;i++){ if(S.intel[i].item_key==='citizen:'+key) return S.intel[i]; } return null; }
-function spSaveIntel(key, title, text, sort){
-  var body={project_id:PID, item_key:'citizen:'+key, title:title, state:'in-motion', detail:text, sort:sort};
+function spSaveIntel(key, title, text, sort, state){
+  var body={project_id:PID, item_key:'citizen:'+key, title:title, state:state||'in-motion', detail:text, sort:sort};
   var opts={method:'POST', cache:'no-store',
     headers:{'apikey':ANON,'Authorization':'Bearer '+ANON,'Content-Type':'application/json','Prefer':'return=representation,resolution=merge-duplicates'},
     body:JSON.stringify(body)};
@@ -2379,7 +2452,7 @@ function spRenderStep(){
       body.appendChild(r2);
     });
     var more=el('div','sp-kind-more');
-    more.innerHTML='More kinds coming (<b>25</b>): '+SP_BACKLOG.map(function(k){ return k.label; }).join(' · ')+'.';
+    more.innerHTML='More kinds coming (<b>'+SP_BACKLOG.length+'</b>): '+SP_BACKLOG.map(function(k){ return k.label; }).join(' · ')+'.';
     body.appendChild(more);
   } else if(st.key==='mission'||st.key==='goal'||st.key==='vision'){
     var row=spIntelRow(st.key);
@@ -2487,9 +2560,194 @@ document.getElementById('sp-w-info').addEventListener('click', function(){
 });
 document.getElementById('sp-w-tip-x').addEventListener('click', function(){ document.getElementById('sp-w-tip').hidden=true; });
 
+/* ═══ SMART PROJECTS v5 — the 14 questions, mini-block notes, project search, deep link ═══ */
+var SP_QUESTIONS=[{"n":1,"q":"WHO are we?"},{"n":2,"q":"WHAT are we building?"},{"n":3,"q":"WHY are we building it?"},{"n":4,"q":"WHAT does success mean?"},{"n":5,"q":"WHAT is true right now?"},{"n":6,"q":"WHAT has already been proven?"},{"n":7,"q":"WHAT is unknown?"},{"n":8,"q":"WHAT authority exists?"},{"n":9,"q":"WHAT happened previously?"},{"n":10,"q":"WHAT did we learn?"},{"n":11,"q":"WHAT should happen next?"},{"n":12,"q":"HOW do I prove it?"},{"n":13,"q":"WHERE do I record it?"},{"n":14,"q":"HOW does Team Naya continue?"}];
+/* B2 — the 14 questions, verbatim from SN-4710 (Daily Project Intelligence Report 2026-11-23,
+   TEAM-NITRO/DAILY-PROJECT-INTEL-REPORT-20261123.md, 'THE 14 QUESTIONS'); cross-checked against
+   the live old PI page, which feeds the same filed report live from GitHub. Answers save as
+   citizen:q01..q14 rows in project_intel_items (filtered out of the intel board, like kind rows). */
+function spQKey(n){ return 'citizen:q'+('0'+n).slice(-2); }
+function spSetQStatus(t){ var s=document.getElementById('sp-q-status'); if(s) s.textContent=t||''; }
+function spRenderQuestions(){
+  var wrap=document.getElementById('sp-questions'); if(!wrap) return;
+  var saved=(S.spQuestions||{}); var answered=0;
+  SP_QUESTIONS.forEach(function(q){ if(saved[spQKey(q.n)]) answered++; });
+  var head=document.getElementById('sp-q-count');
+  if(head) head.textContent=answered+' of 14 answered — the rest are honestly unanswered, never filled in for you.';
+  wrap.innerHTML='';
+  SP_QUESTIONS.forEach(function(q){
+    var key=spQKey(q.n); var ans=saved[key]||'';
+    var box=el('div','sp-qblock');
+    box.appendChild(el('span','sp-jewel','◆'));
+    var main=el('div','pj-row-main');
+    main.appendChild(el('div','pj-row-t', q.n+'. '+q.q));
+    var chip=el('div','sp-qchip'); chip.textContent=ans?'ANSWERED ✓':'NOT ANSWERED YET'; chip.style.color=ans?'#2fe89e':'#ffbf3d'; main.appendChild(chip);
+    if(ans) main.appendChild(el('div','pj-row-s', ans));
+    var ta=document.createElement('textarea'); ta.className='gr-input sp-qta'; ta.rows=2; ta.maxLength=4000;
+    ta.placeholder='Answer in your own words…'; ta.value=ans; ta.setAttribute('aria-label','Answer to question '+q.n); main.appendChild(ta);
+    var b=el('button','gr-btn','SAVE ANSWER'); b.type='button'; b.style.marginTop='10px';
+    b.addEventListener('click', function(){
+      var v=ta.value.trim(); if(!v){ spSetQStatus('Write the answer first.'); return; }
+      spSetQStatus('Saving…');
+      spSaveIntel('q'+('0'+q.n).slice(-2), 'Q'+q.n+' — '+q.q, v, 10+q.n).then(function(){ spSetQStatus('Saved — question '+q.n+' answered.'); }).catch(function(){ spSetQStatus('That did not save — try again.'); });
+    });
+    main.appendChild(b); box.appendChild(main); wrap.appendChild(box);
+  });
+  spAddNoteButtons(); spRenderMiniNotes(); spSearchInit();
+}
+/* B3 — mini intelligent blocks: note-taking inside every hub board. A note is a naya_note
+   (anon INSERT works) filed to the project by object_link, with its block in the label and
+   its state in a citizen:note-state:<id> intel row — the PI record's own five states
+   (INTEL_GROUPS: needs-his-hands, done-proven, in-motion, blocked, queued), never invented. */
+var SP_NOTE_STATE='in-motion'; var SP_NOTE_EDIT_ID=null; var SP_NOTE_BLOCK='Project'; var SP_NOTE_VIEW_ID=null;
+function spStateButtons(wrap, current, onPick){
+  wrap.innerHTML='';
+  INTEL_GROUPS.forEach(function(g){
+    var b=el('button','sp-statebtn'+(g[0]===current?' on':''), g[1]); b.type='button';
+    b.style.setProperty('--jc', g[2]); b.style.borderColor=g[0]===current?g[2]:'';
+    b.addEventListener('click', function(){ onPick(g[0]); spStateButtons(wrap, g[0], onPick); });
+    wrap.appendChild(b);
+  });
+}
+function spOpenNoteComposer(block, editId, preTitle, preBody, preState){
+  SP_NOTE_BLOCK=block||'Project'; SP_NOTE_EDIT_ID=editId||null; SP_NOTE_STATE=preState||'in-motion';
+  document.getElementById('sp-nc-title').textContent=editId?'Edit this note':'Make a note';
+  document.getElementById('sp-nc-block').textContent='On the '+SP_NOTE_BLOCK+' board — it saves to this project, and shows in the project notes, in one place.';
+  document.getElementById('sp-nc-nutshell').value=preTitle||'';
+  document.getElementById('sp-nc-body').value=preBody||'';
+  document.getElementById('sp-nc-status').textContent='';
+  spStateButtons(document.getElementById('sp-nc-states'), SP_NOTE_STATE, function(s){ SP_NOTE_STATE=s; });
+  document.getElementById('sp-note-comp').hidden=false; document.body.style.overflow='hidden';
+  document.getElementById('sp-nc-nutshell').focus();
+}
+function spCloseNoteComposer(){ document.getElementById('sp-note-comp').hidden=true; document.body.style.overflow=''; }
+function spSaveNote(){
+  var nut=(document.getElementById('sp-nc-nutshell').value||'').trim();
+  var body=(document.getElementById('sp-nc-body').value||'').trim();
+  var st=document.getElementById('sp-nc-status');
+  if(!nut){ st.textContent='Write the nutshell first — one line.'; return; }
+  if(!body){ st.textContent='Write the note itself.'; return; }
+  st.textContent='Saving…';
+  var title='['+SP_NOTE_BLOCK+'] '+nut;
+  function afterNote(id){
+    var chain=Promise.resolve();
+    if(SP_NOTE_STATE && SP_NOTE_STATE!=='in-motion'){
+      chain=chain.then(function(){ return spSaveIntelState('note-state:'+id, 'Note state', nut, 90, SP_NOTE_STATE); });
+    }
+    return chain.then(function(){ st.textContent='Note saved to this project.'; spCloseNoteComposer(); loadIntelAndFamily(); renderNotes(); renderNotePicker(); loadActivity(); });
+  }
+  if(SP_NOTE_EDIT_ID){
+    patch('/naya_notes?id=eq.'+SP_NOTE_EDIT_ID, {title:title, body:body}).then(function(){ return afterNote(SP_NOTE_EDIT_ID); }).catch(function(){ st.textContent='That did not save — try again.'; });
+  } else {
+    post('/naya_notes', {owner_alias:S.project.owner_alias, title:title, body:body}).then(function(rows){
+      var n=rows[0];
+      return post('/object_links', {owner_alias:S.project.owner_alias, a_kind:'project', a_id:PID, b_kind:'naya_note', b_id:n.id, b_label:title}).then(function(orows){
+        S.links.push(orows[0]); collectFiled(); return afterNote(n.id);
+      });
+    }).catch(function(){ st.textContent='That did not save — try again.'; });
+  }
+}
+function spSaveIntelState(key, title, text, sort, state){
+  var body={project_id:PID, item_key:'citizen:'+key, title:title, state:state, detail:text, sort:sort};
+  var opts={method:'POST', cache:'no-store',
+    headers:{'apikey':ANON,'Authorization':'Bearer '+ANON,'Content-Type':'application/json','Prefer':'return=representation,resolution=merge-duplicates'},
+    body:JSON.stringify(body)};
+  return fetch(SB+'/project_intel_items?on_conflict=project_id,item_key', opts).then(function(r){
+    if(!r.ok) return r.text().then(function(t){ throw new Error('rest '+r.status+' '+t.slice(0,140)); });
+    return r.status===204?null:r.json();
+  }).then(function(){ return loadIntelAndFamily(); });
+}
+function spRenderMiniNotes(){
+  var wrap=document.getElementById('sp-mininotes'); if(!wrap) return;
+  wrap.innerHTML='';
+  var notes=(S.notesFiled||[]).filter(function(l){ return l.b_kind==='naya_note'; });
+  if(!notes.length){ wrap.appendChild(el('div','gr-empty','No mini-block notes yet — tap + MAKE A NOTE on any board above.')); return; }
+  notes.forEach(function(l){
+    var card=el('div','sp-mininote');
+    card.appendChild(el('span','sp-jewel','✎'));
+    var main=el('div','pj-row-main');
+    main.appendChild(el('div','pj-row-t', l.b_label||'Note'));
+    var st=(S.spNoteStates||{})[l.b_id]||'in-motion'; var g=null;
+    INTEL_GROUPS.forEach(function(x){ if(x[0]===st) g=x; });
+    var chip=el('span','pj-kindtag', g?g[1]:st.toUpperCase()); chip.style.setProperty('--jc', g?g[2]:'#3fb8ff'); main.appendChild(chip);
+    main.appendChild(el('div','pj-row-s','Tap to open the full note.'));
+    card.appendChild(main);
+    card.addEventListener('click', function(){ spOpenNoteView(l.b_id, l.b_label||'Note'); });
+    wrap.appendChild(card);
+  });
+}
+function spOpenNoteView(id, title){
+  get('/naya_notes?id=eq.'+id+'&select=id,title,body,owner_alias').then(function(rows){
+    var n=rows&&rows[0]; if(!n){ document.getElementById('sp-nv-status').textContent='That note could not be read back.'; return; }
+    SP_NOTE_VIEW_ID=id;
+    document.getElementById('sp-nv-title').textContent=n.title||title;
+    document.getElementById('sp-nv-nutshell').textContent=(n.title||'').replace(/^\[[^\]]+\]\s*/,'')||n.title||'';
+    document.getElementById('sp-nv-body').textContent=n.body||'';
+    document.getElementById('sp-nv-status').textContent='';
+    var cur=(S.spNoteStates||{})[id]||'in-motion';
+    spStateButtons(document.getElementById('sp-nv-states'), cur, function(s){
+      spSaveIntelState('note-state:'+id, 'Note state', (n.title||'').replace(/^\[[^\]]+\]\s*/,''), 90, s).then(function(){ document.getElementById('sp-nv-status').textContent='State set — '+s+'.'; }).catch(function(){ document.getElementById('sp-nv-status').textContent='That did not save — try again.'; });
+    });
+    document.getElementById('sp-note-view').hidden=false; document.body.style.overflow='hidden';
+  }).catch(function(){ document.getElementById('sp-nv-status').textContent='That note could not be read back.'; });
+}
+function spCloseNoteView(){ document.getElementById('sp-note-view').hidden=true; document.body.style.overflow=''; }
+function spAddNoteButtons(){
+  var boards=document.querySelectorAll('#pj-project section.gr-board .gr-board-body');
+  boards.forEach(function(body){
+    if(body.querySelector('.sp-note-btn')) return;
+    var sec=body.closest('section'); var h2=sec?sec.querySelector('h2'):null;
+    var block=h2?h2.textContent.trim():'Project';
+    var b=el('button','gr-btn ghost sp-note-btn','+ MAKE A NOTE ON THIS BOARD'); b.type='button'; b.style.margin='10px 0 14px';
+    b.addEventListener('click', function(){ spOpenNoteComposer(block, null); });
+    body.insertBefore(b, body.firstChild);
+  });
+}
+/* B6 — project search (harvested from the old PI's search bar idea, in-project only: it never
+   searches the internet and never leaves this project). Honest numbers: the count line says
+   exactly how many of the project's rows match. */
+function spSearchInit(){
+  var inp=document.getElementById('sp-search'); if(!inp||inp.dataset.bound) return; inp.dataset.bound='1';
+  inp.addEventListener('input', function(){
+    var q=inp.value.trim().toLowerCase();
+    var rows=document.querySelectorAll('#pj-project .pj-row, #pj-project .sp-qblock, #pj-project .sp-mininote');
+    var shown=0, total=rows.length;
+    rows.forEach(function(r){ var hit=!q||(r.textContent||'').toLowerCase().indexOf(q)!==-1; r.style.display=hit?'':'none'; if(hit) shown++; });
+    var c=document.getElementById('sp-search-count');
+    if(c) c.textContent=q?(shown+' of '+total+' shown for \u201c'+inp.value.trim()+'\u201d'):(total+' items in this project — type to search them.');
+  });
+}
+/* B4 — four-create deep link: ?new=project opens the create walk immediately (the create form,
+   focused, on the staged page). A project created that way lands on its hub as a TRACKED mini
+   intelligent block: its mission/goal/vision, its 14 questions, its mini-block notes and its
+   state all live on the one hub, in one place. The Hub plus menu itself belongs to the Hub round. */
+function spDeepLink(){
+  try{
+    var u=new URLSearchParams(location.search);
+    if(u.get('new')!=='project') return;
+    var home=document.getElementById('pj-home'); if(!home||home.hidden) return;
+    var f=document.getElementById('pj-new-name'); if(!f) return;
+    f.scrollIntoView({behavior:'smooth', block:'center'}); f.focus();
+    var s=document.getElementById('pj-create-status');
+    if(s) s.textContent='Create your project — name it, then walk it. Its 14 questions, notes and tracking all live on its hub.';
+  }catch(e){}
+}
+document.getElementById('sp-nc-save').addEventListener('click', spSaveNote);
+document.getElementById('sp-nc-cancel').addEventListener('click', spCloseNoteComposer);
+document.getElementById('sp-nv-close').addEventListener('click', spCloseNoteView);
+document.getElementById('sp-nv-edit').addEventListener('click', function(){
+  var id=SP_NOTE_VIEW_ID; if(!id) return;
+  get('/naya_notes?id=eq.'+id+'&select=id,title,body').then(function(rows){
+    var n=rows&&rows[0]; if(!n) return;
+    var block=(n.title||'').match(/^\[([^\]]+)\]/);
+    spCloseNoteView();
+    spOpenNoteComposer(block?block[1]:'Project', id, (n.title||'').replace(/^\[[^\]]+\]\s*/,''), n.body||'', (S.spNoteStates||{})[id]||'in-motion');
+  });
+});
+
 /* ═══════════ ROUTE ═══════════ */
 if(PID){ homeEl.hidden=true; projEl.hidden=false; loadProject(); }
-else { loadHome(); }
+else { loadHome(); spDeepLink(); }
 })();
 </script>
 
