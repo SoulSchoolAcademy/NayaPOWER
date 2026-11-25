@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-24 23:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 00:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -8595,6 +8595,14 @@ _Last updated: 2026-11-24 23:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified disk artifacts: lane-experiments/t1302/ (prereg-sealed.md stamp==mtime 22:29:24 PDT, outbox OUT-01..05, scorer-packet/ seal-log.json+escrow+leak-audit), decisions receipt exists. Provisional unblinded scores (spawns failed x2, t1262 recurrence); blinded re-score packet sealed and waiting.
 
+### ✅ t1296 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** askworld top-20 demand needs from 140-query log
+
+**Receipt:** `twelve-lane-receipts/t1296-lane11.md`
+
+**Evidence:** FRESH (last-12-tick window). VERIFIED in part this tick: askworld-top20-needs-t1296.md EXISTS, 7122 B, content matches the claimed analysis (72.9%, 85.0%, 140 all present) - NOT PHANTOM. But the receipt's sha pin does NOT match the live file: live sha256 56eab23f... vs pinned f176cd5a... - the receipt itself discloses the pin is pre-line-fix ('fina
+
 ### ✅ t1296-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** ask-world demand analysis: 140 analysis rows clustered by exact query-text byte-match, top-20 ranked demand needs delivered
@@ -8608,6 +8616,14 @@ _Last updated: 2026-11-24 23:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1296-lane11.md`
 
 **Evidence:** Deliverable askworld-top20-needs-t1296.md exists (7122 bytes). Byte-exact clustering method, honest-unknown fraction named (85.0%), representative-line fix disclosed. Why not 9.5: (1) single-seat ceiling — no second seat has re-run the cluster counter; (2) brief-named t0670/t0770 context docs unread (no premise loss asserted); (3) need #20 lumps 3 
+
+### ✅ t1295 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** W704-BOT-THROUGH-HOLD tripwire 4-instance calibration + probe v3
+
+**Receipt:** `twelve-lane-receipts/t1295-lane4.md`
+
+**Evidence:** FRESH (last-12-tick window). VERIFIED this tick: w704-tripwire-4instance-verdict-t1295.md and w704-tripwire-probe.py both EXIST; all four quoted merge SHAs present in the verdict file (4055d50a43b3, bd3688f9e774, 204253485491, bf3b07e246c1 - grep count 4). NOT PHANTOM. Score 9.5, agreeing with lane self-score 9.5. Clears 9.5 because the probe was u
 
 ### ✅ t1295-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
@@ -8755,6 +8771,14 @@ _Last updated: 2026-11-24 23:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified via git protocol (free): refs/heads/naya/ten-brainindex-heal-t1292 == 28ab48ac6c9ad1856260b74668145937cd94a9b2 (pin-exact); parent == action-time tip e1f19b1c (fetch-verified); diff parent->head = exactly 3 index files (BRAIN/NAYAPOWER-BRAIN-INDEX.json, REAL-TREE.json, REAL-TREE.md). Introducer bisect (first-parent walk, 10 merg
 
+### ✅ t1290 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** clause-tfidf-maxpool-t1290 GREEN P1 rank1 1.000 vs bar 0.60
+
+**Receipt:** `twelve-lane-receipts/t1290-lane3.md`
+
+**Evidence:** FRESH (last-12-tick window). VERIFIED pin-exact this tick, all five shas: arm.py 10bce3c9... MATCH (== seal sha), judge_semantic_v3_t1290.py 8a48ad0e... MATCH, run_output_ref_t1290.json 5386e7ab... MATCH, predictions-t1290.json 968f041e... MATCH, verdict_t1290.json 37a1e444... MATCH. NOT PHANTOM. Score 9.5, agreeing with lane self-score 9.5. Clears
+
 ### ✅ t1290-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
 **Task:** Judge verdict: clause-tfidf-maxpool-t1290 hypothesis, sealed predictions, frozen v3 battery x2, falsifier rank1<0.60 -> GREEN 1.000 vs bar 0.60
@@ -8777,6 +8801,14 @@ _Last updated: 2026-11-24 23:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified (in-session recomputation, 2026-10-22): all 5 sha-pinned artifacts exist in hidden_files and recompute EXACTLY to receipt claims - arm.py 10bce3c9ca..., judge 8a48ad0e0f..., run_output_ref 5386e7ab78..., predictions 968f041ea8..., verdict 37a1e4444ad... Verdict JSON confirms every claimed cell: rank1 1.0, P1 bar 0.6 (tfidf 0.5 + 0.10), P1_
 
+### ✅ t1286 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** Caller census + re-run script for retrieval-auth-gate condition B (5 gated writes)
+
+**Receipt:** `twelve-lane-receipts/t1286-lane4.md`
+
+**Evidence:** FRESH (last-12-tick window). VERIFIED pin-exact this tick: retrieval-auth-gate/caller-census-t1286.json sha256 a8fc2478... FULL MATCH, 20542 B MATCH; caller-census-rerun.sh sha256 78933bbe... FULL MATCH. NOT PHANTOM. Score 9.5, agreeing with lane self-score 9.5. Clears 9.5 because the five falsifiers live in the instrument (not the receipt) and cau
+
 ### ✅ t1286-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** Condition-B instrument: caller census of the 5 gated retrieval-auth-gate writes + deterministic re-run script
@@ -8798,6 +8830,14 @@ _Last updated: 2026-11-24 23:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1286-lane4.md`
 
 **Evidence:** ARTIFACTS VERIFIED: hidden_files/retrieval-auth-gate/caller-census-t1286.json sha a8fc2478a56bf58fb78a6f1ca1cb5756691b0f42bd4cba9555601cd5552e7f9d (20,542 B) and caller-census-rerun.sh sha 78933bbe833c677fafbf9f009281546f289e60c618887179e6528a8afedf485e - both exist locally, shas match receipt byte-for-byte; no remote-branch claim in receipt so no 
+
+### ✅ t1285 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Scored design decision SN-1015 retrieval vs render (Option A 5.5/7 vs Option B 0.5/7)
+
+**Receipt:** `twelve-lane-receipts/t1285-lane3.md`
+
+**Evidence:** FRESH (last-12-tick window). VERIFIED pin-exact this tick: spec-0007-design-decision-t1285-lane3.md sha256 acd1dea1... FULL 64-char MATCH, 10036 B MATCH; rubric seal judge-runs/t1285-lane3-rubric-seal.json sha256 18412f89... FULL MATCH. NOT PHANTOM. Score 9.5, agreeing with lane self-score 9.5. Clears 9.5 because rubric + falsifier sealed before an
 
 ### ✅ t1285-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
@@ -16861,6 +16901,14 @@ _Last updated: 2026-11-24 23:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: branch naya/b46-pv-decomposition-unblocker @ 98426c3b6c8ff53fce4905232a5a6618e8f3abe0 on origin == PR #2591 head (refs/pull/2591/head) == the body's merge_head_sha pin — unmoved, all three agree. The seat (Naya Resolve Smith) ran the pre-mortem eligibility check BEFORE touching the verdict, discovered PR body line 'Seat: Naya Clarity Narz
 
+### ✅ t0772 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Packet 3 second-seat review (GATE_BLIND marker + exit-2 contract) -> CONFIRM
+
+**Receipt:** `twelve-lane-receipts/t0772-lane12.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED this tick: the reviewed commit 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 EXISTS (git cat-file -t in the local mirror returns 'commit') - NOT PHANTOM. The branch ref naya/gate-blind-marker-t0762 no longer exists on the remote (git ls-remote returns empty) - ref deleted in the 6 weeks since th
+
 ### ✅ t0772-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** Second-seat review CONFIRM, Packet 3 GATE_BLIND marker
@@ -16891,6 +16939,14 @@ _Last updated: 2026-11-24 23:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: branch naya/gate-blind-marker-t0762 exists on origin @ 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 (git ls-remote) == builder's pin == reviewer's action-time re-pin, unmoved; parent pin 0cc7c9f214ea9ef0503263e583e16b91801e2096 confirmed as the commit's own parent. Review stayed read-only (fresh shallow clone to /tmp scratch, no writes, no me
 
+### ✅ t0771 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Arm J HYPOTHESIS-CHANGE note (MCC-J root-different arm, REGISTER-FLIP falsifier, heir routing)
+
+**Receipt:** `twelve-lane-receipts/t0771-lane10.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED in part this tick: hidden_files/arm-j-hypothesis-change-t0771-lane10.md EXISTS but is NOT pin-exact - live sha256 6c6e80b376f3807a3939fa9e575b47f04acfe24ba2df12cb8e6994c6fa61ec29 vs receipt pin 041b10498fd1c5c350f5d937a34e558fd652fa650392f8aa51dd09a503e1e824; live 229 lines vs receipt's 213
+
 ### ✅ t0771-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** Arm J hypothesis-change note (MCC-J reframe + falsifier)
@@ -16920,6 +16976,14 @@ _Last updated: 2026-11-24 23:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0771-lane10.md`
 
 **Evidence:** Verified: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md exists (213 lines); current sha 6c6e80b376f3807a3939fa9e575b47f04acfe24ba2df12cb8e6994c6fa61ec29 differs from the receipt's pre-append pin 041b1049...e1e824 — explained, not rot: gap-t0771's closeout appended the BYTE PINS + MECHANICAL CHECKS section after the receipt, which is the
+
+### ✅ t0770 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** REGISTER-FLIP battery protocol spec (frozen spec, K1-K4 slots, verdict-adapted C1-C4)
+
+**Receipt:** `twelve-lane-receipts/t0770-lane8.md`
+
+**Evidence:** BACKLOG SWEEP (oldest-first; fresh window empty). VERIFIED this tick, pin-exact on the primary artifact: hidden_files/register-flip-protocol-spec-t0770-lane8.md sha256 91412fc298adf90a9f097b16bd8deef81f86f3a987483ec4c4e03f894309f7f9 FULL 64-char MATCH, 16,291 bytes MATCH. Lineage t0761 design doc sha256 3b685b90... MATCHES receipt. NOT PHANTOM. Sco
 
 ### ✅ t0770-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -62026,6 +62090,18 @@ _Last updated: 2026-11-24 23:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261124-1454 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: 31 queued briefs attempted, 0 claimed (29x exit 7, 2x exit 2)
+
+**Evidence:** FRESH (filed 2026-11-24 14:54 PST). VERIFIED first-hand this tick: live queue holds 31 brief-*.md files; recomputed queue checksum 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4 matches the receipt pin and the 13:51 receipt. Two sweep logs in the window both independently verify the split: claim-sweep-20261124-1424.log (31 ATTEMPT
+
+### ✅ gate-stall-20261124-1351 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: 31 queued briefs attempted, 0 claimed (29x exit 7, 2x exit 2)
+
+**Evidence:** FRESH (filed 2026-11-24 13:51 PST). VERIFIED first-hand this tick: sweep log brief-queue/claim-sweep-20261124-1348.log exists with 31 ATTEMPT lines, 29x exit 7 / 2x exit 2, 31 distinct briefs - exact match to the receipt's headline numbers. Live queue holds 31 brief-*.md files; recomputed queue checksum 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77
 
 ### ✅ gate-stall-20261124-1244 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
