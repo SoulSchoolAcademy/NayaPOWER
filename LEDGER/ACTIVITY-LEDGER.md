@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 13:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 13:41 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -45635,6 +45635,14 @@ _Last updated: 2026-11-25 13:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ gap-lane-scorer-20261016-0750 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up: re-derive the exit-code semantics behind the two morning reds on PR #2683 from gate source bytes
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261016-0750-lane8.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); repo commit 83806f4d0e335b223ba2f849fd19a7a7915fdcc6 exists in the local mirror and both pinned file SHAs match byte-for-byte at that commit - tools/activation_gate.py deae88981b833f4aca4713b5d0b58270379db987e362f7374ab6c95135ecf9f3 and tools/ci_claim_evidenc
+
 ### ✅ gap-scorer-20261015-0620-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up: spec-vs-candidate byte cross-check for the t0568 veracity verdict (R1-R4 re-derived against candidate bytes)
@@ -49108,6 +49116,14 @@ _Last updated: 2026-11-25 13:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ gap-lane-scorer-20261016-0940 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: tau held-out re-validation + Q15 mechanism root cause
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261016-0940-lane5.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); pinned auto-retrieval/semantic-arm-t0553-results.json dual rows re-derived exactly - split-1 train min 0.365597 -> tau 0.36, test 0/10 filtered, recall@1 0.90 / recall@3 1.00, test min 0.391947; split-2 odd-train min 0.392864 -> tau 0.39 with Q10 (0.365597) t
 
 ### ✅ gap-lane-scorer-20261016-0550 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -55622,6 +55638,22 @@ _Last updated: 2026-11-25 13:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0768-lane2.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
+
+### ✅ gap-lane-scorer-20261016-0821 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.3/10 [VERIFIED]
+
+**Task:** gap follow-up: --gate-check filing-contract mode for claimer-directed prose bars (t0562 class)
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261016-0821-lane12.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); stamper present at hidden_files/bin/stamp-claimability-gate.py carrying CLAIMER_DEONTICS/gate_check (14 matches), --self-test PASS lines, window parity asserted _WINDOW=25 == claim-brief.py GATE_WINDOW_LINES=25; current sha256 5ca09974... differs from the rec
+
+### ✅ gap-lane-scorer-20261016-0740 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.3/10 [VERIFIED]
+
+**Task:** gap follow-up: close the gate-window mismatch - claim-brief.py read 10 lines, lane-brief body mandates 25
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261016-0740-lane12.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); the fix persists in current bytes - bin/claim-brief.py line 207 GATE_WINDOW_LINES = 25 carrying the receipt's own comment, bin/stamp-claimability-gate.py line 64 _WINDOW = 25 with parity comment; claim-brief.py --self-test run this tick: GREEN, exit 0. Curren
 
 ### ✅ gap-lane-scorer-20261015-1210-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -62732,6 +62764,20 @@ _Last updated: 2026-11-25 13:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261016-0631 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** gate stall: 23 queued briefs gate-blocked for Clarity seat, no work executed
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); it is a stall record, no artifacts to verify. Score 8.5, REWORK. Why not 9.5: the 23-brief count is consistent with the sibling record (0606's 22 + the 0617 gap brief filed ~06:17Z, corroborated by the 0610 receipt's orphan note) but the receipt pins no per-b
+
+### ✅ gap-lane-scorer-20261016-0610 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up: re-run the 11 scripted claim attempts from gate-stall-20261016-0606 and pin the transcript
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261016-0610-lane0.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); pinned transcript hidden_files/gap-gap-gate-stall-20261016-0633-transcript.log exists, sha256 b14f7f485fa9ff77e0e416838e0cb222519565c19bf47b100fd2ac7ee189197e matches the receipt's full pin exactly; transcript body read end-to-end: 10x EXIT 7 + 1x EXIT 6, eac
 
 ### ✅ gate-stall-20261016-0607 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
 
