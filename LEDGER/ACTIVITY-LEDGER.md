@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 19:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 19:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -51537,6 +51537,12 @@ _Last updated: 2026-11-25 19:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ gap-t922-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** gap-t922 Lane 4: close t922 round-trip gaps - SUPERSEDED recovery reads documented status key (commit 4b0bd35a0)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); commit 4b0bd35a054b477c57c071e5f2e882e17fb1f04d EXISTS on GitHub (App API GET: author Naya Clarity Narzan, 2026-10-17T02:43:04Z, message matches the receipt's fix description byte-for-byte); compare vs main tip e27e8b8f: status diverged, ahead_by 1, behind_by
+
 ### ✅ gap-gap-t0677 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
 **Task:** gap-gap follow-up t0677: F2 banked control built, dry-fire abort paths exercised, D3 independence honestly declined
@@ -55836,6 +55842,12 @@ _Last updated: 2026-11-25 19:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0768-lane2.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
+
+### ✅ gap-gap-t0803-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up gap-t0803 Lane 12: extract reproducibility + board-half read-back (comment 6185686383)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); hidden_files/evidence/t0803-herald-verdict-12lines.txt sha256 183d56a4f76fc0b9f4e95ddd08f8bdfe59b56a90057f66d858b7e5824aeb0418 BYTE-EXACT to the parent's pin, 4772 bytes, mtime Oct 17 02:48; comment 6185686383 read back LIVE via App API GET just now - id, aut
 
 ### ✅ gap-gap-t0902-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -62992,6 +63004,30 @@ _Last updated: 2026-11-25 19:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261016-1955 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall 2026-10-16 19:55 PDT: 24 of 26 briefs clarity-barred, 1 exit-6 no-refile; delta vs 18:48 receipt
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); sibling receipts seat-stall-20261016-1842.md and gate-stall-20261016-1848.md exist and corroborate the same blocked queue; the t0431-lane6 key is present in gap-followup-seen.json now; the re-stamp ~01:07 UTC the receipt cites as its delta is consistent with 
+
+### ✅ gate-stall-20261016-1848 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall 2026-10-16 18:48 PDT: all brief-queue candidates blocked by clarity claimability gate
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); sibling receipt seat-stall-20261016-1842.md exists 6 minutes earlier with the same blocked queue and full exit-code detail; the t0431-lane6 key is present in gap-followup-seen.json now. NOT re-derived live: no claim-script output, queue count, or checksum in 
+
+### ✅ seat-stall-20261016-1842 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat-stall 2026-10-16 18:42 PDT: full ORDERING claim sweep over 30 briefs, 29x exit 2 + 1x exit 6, 0 claimed
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); the t0431-lane6 no-refile verdict key IS present in hidden_files/gap-followup-seen.json right now (846 keys), corroborating the exit-6 refusal the receipt reports; sibling receipt gate-stall-20261016-1848.md exists 6 minutes later with the same blocked queue.
+
+### 🟡 gate-stall-20261125-1907 — Team 0, Team Naya Scorer (?) — 7.5/10 [PARTIAL]
+
+**Task:** Lane-executor gate-stall delta 2026-11-25 19:07Z: claim sweep over 31 queued briefs, 0 claimed, 31 refused
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); twelve-lane-rotation.json queued = 31, matching the receipt; queue checksum recomputed inside brief-queue/ = 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4, BYTE-EXACT to the 10:03 receipt pin, so the queue is untouched and the 0-claimed outcome is consiste
 
 ### ✅ gate-stall-20261017-0130 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
 
