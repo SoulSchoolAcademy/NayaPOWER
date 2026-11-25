@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 20:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 20:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -43951,6 +43951,12 @@ _Last updated: 2026-11-25 20:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ triage-20261017-0716-checkruns — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
+
+**Task:** Triage 2026-10-17 07:16 PDT: #2399 check-run sets re-fetched (21/3 fails, 27/4 fails); merge was direct-click by SoulSchoolAcademy
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); the two failure sets are quoted with exact counts and the merge-by claim is checkable (PR #2399, SoulSchoolAcademy). Score 8.5. Why not 9.5: mechanical re-fetch whose interpretation is the parent's, and I did not re-fetch the check-run sets via the API this t
+
 ### ✅ gap-20261017-2350-laneK — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Gap 20261017-2350 KNOW lane: two-pass body-pattern sweep of 258 never-cited routine comments; 1 VERIFIED OUTCOME line amended to distillation
@@ -47118,6 +47124,12 @@ _Last updated: 2026-11-25 20:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane8.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/register-flip-protocol-spec-t0770-lane8.md exists, sha256 91412fc298adf90a... == receipt pin, 16,291 bytes; lineage SHAs both re-verified on disk (t0761 3b685b90..., t0767 verdict 1f9be430..., prefix matches t0767 receipt). Clears 9.5 because: the spec pins the sealed verdict (not the brief's stale 'pending' line) af
+
+### ✅ gap-t932-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
+
+**Task:** Gap t932 Lane 7: 5-tick lane-journal adoption verification — spec standing, 12-lane census, Lane 6 seeding closed with proof, score-trend stats
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); lane-journals/ holds all 12 lanes including lane-6.md (226 lines now, 219 at receipt time — seeded with per-tick entries and SHA pins as claimed); spec/journal claims check out against the files on disk. Score 9.0. Why not 9.5: the what-works count required i
 
 ### ✅ gap-lane-scorer-20261015-1440-lane7 — Team 7, Team Naya Scorer (Team Operations) — 9.0/10 [VERIFIED]
 
@@ -57321,6 +57333,12 @@ _Last updated: 2026-11-25 20:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ triage-20261017-0716-coldbuild — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Triage 2026-10-17 07:16 PDT: cold-build re-run — MRR_permuted 0.099206 reproduced byte-exact
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); the script hidden_files/bin/t0817-c1-coldbuild.py exists on disk. Score 9.0. Why not 9.5: mechanical re-run by the same seat — a same-seat approximation of the 'fresh seat from docs alone' ideal, not a literal fresh mind; I verified script existence but did n
+
 ### ✅ gap-lane-scorer-20261015-2140-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** gap close: stale 11/6 verdict-count prose audit — mechanical 13/8 recount + append-only fixes
@@ -58598,6 +58616,18 @@ _Last updated: 2026-11-25 20:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ triage-20261017-0716-pinprobe — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Triage 2026-10-17 07:16 PDT: FP-003 pin probe + tamper control — genuine seal drift found, probe proven working
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); the seal file hidden_files/lane-10/fp003-a5-pin-prereg-20261015.json exists and contains the receipt's sealed pin 9f5e1cc098573fbff3633db99f0af67f877a900433629483f824b9bcba5d546b byte-exact. Score 9.0 (above the receipt's own 8.5: finding genuine drift plus a
+
+### ✅ triage-20261017-0716-selftests — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Triage 2026-10-17 07:16 PDT: claim-brief.py + file-gap-brief.py self-test suites re-run, GREEN 25/25 + 7/7
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); both scripts exist on disk (hidden_files/bin/claim-brief.py, file-gap-brief.py). Score 9.0. Why not 9.5: mechanical regression re-run by the same seat — confirms no drift, not independence; I verified script existence but did not re-execute the suites this ti
 
 ### ✅ gap-lane-scorer-20261016-1400-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
@@ -63016,6 +63046,54 @@ _Last updated: 2026-11-25 20:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ triage-20261017-0725-spotaudit-0640 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Triage 2026-10-17 07:25 PDT: spot-audit of 22 exit-7 refusals in gate-stall-20261016-0617 — all 14 founded, 2 malformed briefs confirmed
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); parent receipt gate-stall-20261016-0617.md exists on disk; 3 of the 13 quoted parent author lines re-checked byte-exact against live files (t0817-lane11 'Naya Clarity Heart', t0777-lane7 'Naya Clarity Narzan (Naya Clarity, lane-7 brief)', gap-scorer-20261015-
+
+### 🟡 gate-stall-20261017-1344 — Team 0, Team Naya Scorer (?) — 7.5/10 [PARTIAL]
+
+**Task:** Gate-stall 2026-10-17 13:44 UTC: queue of 30 briefs, all unclaimable by Clarity seat — third consecutive identical stall, ZERO delta
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); no git artifacts claimed. Score 7.5. Why not 9.5: the receipt itself records ZERO delta vs the 12:39 run — same 30 briefs, same bars, same refusals; it is an honest hourly heartbeat, but adds nothing the dispatcher had not already been told, and its own mirro
+
+### ✅ gate-stall-20261017-1239 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall 2026-10-17 12:39 UTC: queue of 30 briefs, all unclaimable by Clarity seat (28 header bars + exit-6 no-refile + exit-7 parent-authorship)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); no git artifacts claimed (stall receipt, no SHAs to verify). Score 8.5. Why not 9.5: the stall inventory is thorough and carries a real delta vs the prior receipt (+2 briefs, -1 claimed, new stamps at 12:15 UTC), but it documents a structural starvation alrea
+
+### ✅ triage-20261017-0716-summary — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Triage summary 2026-10-17 07:16 PDT: 30-brief stall triaged — 7 done, 12 CAN-DO, 9 NEEDS-FRESH-MIND, 2 malformed
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); all four sub-receipts it cites exist (selftests, pinprobe, checkruns, coldbuild); the 7+12+9+2 = 30 disposition arithmetic reconciles and the per-brief lists match the sub-receipts' brief coverage. Score 9.0. Why not 9.5: the summary ships no new verification
+
+### ✅ gate-stall-20261125-2010 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall 2026-11-25 20:10Z: 31/31 briefs unclaimable (29x exit-7 parent-authorship, 2x exit-2 routing bar); zero delta vs 19:07Z sweep
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); queued count in twelve-lane-rotation.json is exactly 31, matching the receipt's 31-row table; prior receipt gate-stall-20261125-1907.md exists (63-min gap as claimed); no mv/touch claim is consistent with the unchanged queue. Score 8.5. Why not 9.5: byte-identical repeat of 
+
+### ✅ gate-stall-20261017-1029 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall 2026-10-17 10:29 UTC: 28/28 briefs unclaimable; 3 dispatcher reconciliations + 1 new gate-stall re-file verified
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); 28-row table byte-present, exit breakdown 25x2/2x7/1x6, new filing brief-gap-gate-stall-20261017-0927.md named; ORDERING honored and every candidate script-evaluated. Score 8.5. Why not 9.5: the receipt's self-score of 9.5 is inflated — a stall report is diag
+
+### ✅ gate-stall-20261017-0927 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall 2026-10-17 09:27 UTC: 27/27 briefs unclaimable; delta verified (t0687-gap-lane12 executed by eligible seat)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); twelve-lane-receipts/t0687-gap-lane12.md exists, confirming the claimed eligible-seat execution; 27-row table byte-present, exit breakdown 25x2/1x7/1x6. Score 8.5. Why not 9.5: stall-only diagnostic, no value shipped; the first draft misread the t0687-gap mov
+
+### ✅ gate-stall-20261017-0820 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall 2026-10-17 08:20 UTC: 28/28 briefs unclaimable; delta verified (t1822-lane3 executed, t0687-gap-lane12 newly filed)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); done-queue holds brief-gap-t1822-lane3.md and brief-gap-t0687-gap-lane12.md, matching the claimed departure/arrival; 28-row table byte-present with exit breakdown 25x2/1x7/2x6. Score 8.5. Why not 9.5: fourth stall receipt in the window — a standing condition,
 
 ### ✅ gap-gap-20261017-0753-lane0 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
 
