@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 07:05 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 07:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -48999,6 +48999,18 @@ _Last updated: 2026-11-25 07:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ gap-gap-gap-t-distill-chain-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** Amended feed-distillation-554.md with the two load-bearing review essence lines (5953414793, 5914610501)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: hidden_files/feed-distillation-554.md sha256 335a226db1c40bca6997d7c06d03faf36097ef3905b545e1dd0539b81b6a5be3 is a byte-match to the receipt's pin; line count 54 (51 -> 54, exactly +3 as claimed); both IDs 5953414793 and 5914610501 present on 2 lines each (provenance note + lesson line) i
+
+### ✅ gap-t-distill-chain-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Cold-successor spot-check of #554 distillation: falsified parent's '28 full-reads covered the load-bearing posts' claim (2 ratifications dropped)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: hidden_files/feed-distillation-554.md still carries the proof chain — the two ratification IDs this receipt names as dropped (5915469993 D1 Graph V2 ratification, 5982524938 Smart Note key names ratification) are present ONLY via the '**Amendment 2026-10-15** (gap-gap-t-distill-chain-lane
+
 ### ✅ gap-t1230-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
 
 **Task:** Gap follow-up: LEDGER-0001/E1 evidence-linkage correction - VERIFIED-CLOSED by refusal of duplicate row
@@ -62528,6 +62540,18 @@ _Last updated: 2026-11-25 07:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261124-2323 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: all 31 unclaimed briefs evaluated, refused by header/script gates, queue untouched
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: brief-queue/ holds exactly 31 brief-*.md files and the queue checksum sha256(sha256sum list) = 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4, a byte-match to the receipt's pin and to the prior 22:24 receipt's checksum - queue byte-identical, no mv occurred. bin/claim-brief.py exists. S
+
+### ✅ gate-stall-20261015-1907 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: all 27 unclaimed briefs evaluated, refused by header/script gates, queue untouched
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: the 27-item inventory reconciles exactly (8 header-gated + 18 exit-7 parent-authorship + 1 exit-6 no-refile = 27); spot-checked briefs exist on disk — brief-gap-lane-scorer-20261015-0530-lane6.md and brief-gap-scorer-20261015-0050-lane11.md in brief-queue/claimed/done/, brief-gap-t0413-la
 
 ### ✅ gate-stall-20261015-1840 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
