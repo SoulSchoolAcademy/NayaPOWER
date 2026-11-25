@@ -554,21 +554,28 @@ textarea.gr-input{resize:vertical;min-height:110px;line-height:1.55;}
 .sp-home-state{font-size:17px;font-weight:800;letter-spacing:.06em;padding:8px 14px;border-radius:999px;border:1.5px solid var(--jc,#fff);color:#fff;background:#050607}
 .sp-home-legend{font-size:17px;color:#fff;line-height:1.5;margin:12px 0}
 /* v6b — THE WHOLE PAGE LIVES INSIDE THE FRAME (his direction, ~19:57 MST:
-   "wrap the whole thing in frame and make it make sense"). The walk's own
-   pattern, applied to the page stage: the content layer sits ABOVE the
-   frame (z-65, as .sp-stage does over the walk frame) with fin padding
-   matching the frame's opening, so the frame FRAMES the page instead of
-   hiding it. Before this, the landing/hub had no layer above z-60 and no
-   fin padding — the opaque frame painted over the whole page (desktop:
-   everything hidden; phone: topbar and hero hidden). The topbar and the
-   bottom eco bar are body-level chrome that also sat at/below z-60, so
-   they ride up to 65 too. Drawers (70), walk (70), note overlays (80)
-   and toast (120) were already above 60 and are untouched. */
-.gr-stage{z-index:65;--fin-t:88px;--fin-b:88px;--fin-l:30px;--fin-r:30px;padding:var(--fin-t) var(--fin-r) var(--fin-b) var(--fin-l)}
+   "wrap the whole thing in frame and make it make sense"). The frame goes
+   BEHIND the page — never above it. The walk's stage sits above its frame
+   (z-65) because the walk is a fixed, non-scrolling stage; the page stage
+   must NOT copy that: giving .gr-stage a z-index creates a stacking
+   context that traps the walk (z-70) and the note overlays (z-80) BELOW
+   body-level chrome — proven by the v6b browser run, where the eco bar
+   painted over the note viewer's EDIT button and the walk would have
+   lost its top and bottom to the topbar and eco bar. So instead the
+   landing frame drops to z-index -1 (body > scope: the walk's frame is
+   inside #sp-walk, never a body child, so it is untouched) and the body
+   background goes transparent, letting the frame show through the fin
+   margins against the html canvas (#060608, unchanged). The stage keeps
+   the walk's fin padding so the frame's opening is where the content
+   sits. Every other z-index stays exactly as the harvest left it:
+   frame -1 < eco bar 50 < topbar 60 < stage content < walk 70 < note
+   overlays 80 < toast 120. Nothing can ever paint the frame over the
+   page again, and a failed load still shows the page's own state. */
+.gr-stage{--fin-t:88px;--fin-b:88px;--fin-l:30px;--fin-r:30px;padding:var(--fin-t) var(--fin-r) var(--fin-b) var(--fin-l)}
 @media (min-width:1024px) and (min-aspect-ratio:1/1){.gr-stage{--fin-t:220px;--fin-b:200px;--fin-l:170px;--fin-r:170px}}
 @media (min-aspect-ratio:1/1) and (max-height:700px){.gr-stage{--fin-t:120px;--fin-b:120px;--fin-l:100px;--fin-r:100px}}
-.naya-topbar{z-index:65}
-.eco-bottombar{z-index:65}
+body{background:transparent}
+body > .naya-frame, body > .frame-light{z-index:-1}
 /* v6b — the frame label (his direction, ~19:53 MST: "let's try to put in
    the label"). A plate at the top of the stage, in the walk's frame-topbar
    language, saying what this view is: on the landing, the system itself;
