@@ -4718,6 +4718,43 @@ html{scroll-padding-top:130px;}
 .mail-stage .ml-folder .ml-fname, .mail-stage .ml-qa-item, .smart-tab b, .nm-side-hub, .nm-side-create{
   font-family:var(--mm-font-ui);}
 
+/* --- 20. THE ASK NAYA READING STANDARD (2026-11-25 09:45) --- */
+/* Ground truth: the Ask Naya Smart Factory answer (nayanet.app/hub#/hub/ask).
+   "It's not what you say, it's how you say it." Every reading surface —
+   mail read pane, thread view, post board — is judged against it:
+   elegant serif, generous spacing, rhythm, a kicker, a diamond divider,
+   colored fact rows. High-level outputs, never basic flat text. */
+/* The kicker — small caps, letterspaced, Inter. Centered over a lead,
+   left-aligned over the spoken close. */
+.ov-kicker{font-family:var(--mm-font-ui);font-size:13px;font-weight:700;letter-spacing:.28em;color:#ffffff;text-align:center;margin:8px 0 20px;}
+.ov-kicker.left{text-align:left;margin:26px 0 16px;}
+/* The lead — the first paragraph, large Newsreader, centered, generous leading. */
+.ov-lead{font-family:var(--mm-font-ms);font-weight:500;font-size:24px;line-height:1.65;letter-spacing:.01em;color:#ffffff;text-align:center;margin:0 0 8px;}
+/* The diamond divider — one quiet diamond, centered. */
+.ov-diamond{text-align:center;color:rgba(255,255,255,.55);font-size:20px;line-height:1;margin:26px 0;}
+/* The fact rows — one row per point, own-color dot + rim + restrained glow,
+   purple / blue / green / gold, in the screenshot's order. */
+.ov-facts{display:flex;flex-direction:column;gap:14px;margin:8px 0 6px;}
+.ov-fact{display:flex;align-items:center;gap:14px;border:1.5px solid var(--fc,#8e24aa);border-radius:14px;padding:16px 20px;
+  background:linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,0) 40%), #050607;
+  box-shadow:0 8px 20px rgba(0,0,0,.5), 0 0 16px -6px var(--fc,#8e24aa), inset 0 1px 0 rgba(255,255,255,.08);
+  font-family:var(--mm-font-ms);font-weight:500;font-size:18px;line-height:1.55;color:#ffffff;}
+.ov-fact .ov-dot{width:10px;height:10px;min-width:10px;border-radius:50%;background:var(--fc,#8e24aa);box-shadow:0 0 12px var(--fc,#8e24aa);}
+/* The spoken close — Newsreader, generous leading, breathing room. */
+.ov-spoken{font-family:var(--mm-font-ms);font-weight:500;font-size:19px;line-height:1.75;letter-spacing:.01em;color:#ffffff;margin:0;}
+.ov-sign{font-family:var(--mm-font-ms);font-weight:500;font-size:19px;line-height:1.6;color:#ffffff;margin:18px 0 0;}
+/* The same rhythm on EVERY reading surface, not just the welcome letter:
+   paragraphs breathe, the first paragraph leads. */
+.mail-stage .ml-read-body p{margin:0 0 22px;}
+.mail-stage .ml-read-body p:last-child{margin-bottom:0;}
+.nm-bubble p{margin:0 0 14px;}
+.nm-bubble p:last-child{margin-bottom:0;}
+/* Phone: the lead steps down so it never crowds the pane. */
+@media (max-width: 640px){
+  .ov-lead{font-size:21px;}
+  .ov-fact{padding:14px 16px;font-size:17px;}
+}
+
 </style>
 <script id="ov-script">
 /* ===== OVERLAY ROUND — behavior (2026-11-25) =====
@@ -5135,6 +5172,53 @@ function watchReactions(){
     mo.observe(document.body, {childList:true, subtree:true});
   }
 }
+/* THE ASK NAYA READING STANDARD (09:45) — the welcome letter is rebuilt in
+   the Ask Naya answer's shape: kicker, centered lead, diamond divider,
+   four colored fact rows (purple/blue/green/gold, the screenshot's order),
+   "NAYA · AS SHE SPEAKS", spoken close. Every word comes from the letter
+   itself — the bullets distill its own paragraphs, nothing is invented.
+   Other letters keep v14's rendering; the §20 rhythm (serif, spacing)
+   still governs them. Re-applies on every renderRead (the check is
+   stateless: no .ov-kicker present means not yet enhanced). */
+var OV_WELCOME_SUBJ = 'Welcome to the new Messenger';
+var OV_FACTS = [
+  ['#8e24aa', 'One place, two speeds — a quick chat, or a proper letter'],
+  ['#0f52ba', 'Write to anyone in your world from the compose button'],
+  ['#07925f', 'Your letters stay yours — saved in your vault when you save them, and never passed around'],
+  ['#d4a017', 'Both live here, side by side — and both find the same people']
+];
+function askNayaRead(){
+  if(!document.body) return;
+  var stage = $('.mail-stage');
+  if(!stage || stage.getAttribute('data-tempo') !== 'mail') return;
+  var subj = $('.ml-read-subj');
+  if(!subj || (subj.textContent || '').trim() !== OV_WELCOME_SUBJ) return;
+  var body = $('.ml-read-body');
+  if(!body || body.querySelector('.ov-kicker')) return;
+  var paras = $all('p', body).map(function(p){ return (p.textContent || '').trim(); }).filter(Boolean);
+  if(paras.length < 4) return;
+  var lead = paras[0];
+  var spoken = paras[3];
+  var sign = paras.length > 4 ? paras[4] : '— Naya';
+  var html = '<div class="ov-kicker">NAYA · FROM THE BANK</div>'
+    + '<p class="ov-lead">' + esc(lead) + '</p>'
+    + '<div class="ov-diamond" aria-hidden="true">◆</div>'
+    + '<div class="ov-facts">' + OV_FACTS.map(function(f){
+        return '<div class="ov-fact" style="--fc:' + f[0] + '"><span class="ov-dot" aria-hidden="true"></span><span>' + esc(f[1]) + '</span></div>';
+      }).join('') + '</div>'
+    + '<div class="ov-kicker left">NAYA · AS SHE SPEAKS</div>'
+    + '<p class="ov-spoken">' + esc(spoken) + '</p>'
+    + '<p class="ov-sign">' + esc(sign) + '</p>';
+  body.innerHTML = html;
+}
+function watchRead(){
+  askNayaRead();
+  if(window.MutationObserver && !document.body.__ovReadWatched){
+    document.body.__ovReadWatched = true;
+    var mo = new MutationObserver(function(){ askNayaRead(); });
+    mo.observe(document.body, {childList:true, subtree:true});
+  }
+}
 function removeSmartLinksRow(){
   var sl = document.getElementById('nmSmartLinks');
   if(sl && sl.parentNode) sl.parentNode.removeChild(sl);
@@ -5265,9 +5349,15 @@ function boot(){
   if(applyMailClusters() && window.__mmTabsMount){ try { window.__mmTabsMount(); } catch(e){} }
   watchTabs();
   watchReactions();
+  watchRead();
+  /* The tab strip can remount late (font load) and orphan the observer on
+     the old #mmTabsHost — the round-9 probe caught Hub pills back on
+     desktop at scroll 0. Re-run the watch on an interval: watchTabs is
+     idempotent per host, and it removes Hub pills on every pass. */
+  setInterval(watchTabs, 2000);
   pauseMarqueeOnTap();
   trimTabText();
-  setTimeout(function(){ removeSmartLinksRow(); if(applyMailClusters() && window.__mmTabsMount){ try { window.__mmTabsMount(); } catch(e){} } watchTabs(); watchReactions(); }, 1500);
+  setTimeout(function(){ removeSmartLinksRow(); if(applyMailClusters() && window.__mmTabsMount){ try { window.__mmTabsMount(); } catch(e){} } watchTabs(); watchReactions(); watchRead(); }, 1500);
   setTimeout(trimTabText, 3000);
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape' && document.body.hasAttribute('data-naya-drawer')) closeSides();
