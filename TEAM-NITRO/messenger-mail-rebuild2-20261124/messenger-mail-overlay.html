@@ -5466,7 +5466,10 @@ function moveSecondRow(){
   var c = $('.ml-compose-top');
   if(c){
     rebuildComposeButton();
-    if(c.parentNode !== band) band.appendChild(c);
+    /* Always re-append: appendChild moves an in-band node to the end,
+       so Compose stays LAST even after a rail rebuild swaps the fresh
+       QA nodes in ahead of it (probe 13 caught it first). */
+    band.appendChild(c);
   }
   return band.children.length >= 4;
 }
