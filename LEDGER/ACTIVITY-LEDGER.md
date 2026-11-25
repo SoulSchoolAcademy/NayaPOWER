@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 08:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 09:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -62652,6 +62652,30 @@ _Last updated: 2026-11-25 08:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261015-1943 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: 27 queued briefs evaluated, 0 claimable by Clarity seat; root cause named (queue saturated with second-seat follow-ups)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists; per-brief table lists 27 rows reconciling to the outcome (exit 7 / exit 2 / exit 6 classes); the inventory matches the 19:21 and 19:30 sibling receipts brief-for-brief except brief-gap-gap-t0600-lane1.md, present at 19:30 and absent here with no explanation in the receipt.
+
+### ✅ gate-stall-20261015-1930 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: 28 queued briefs evaluated, 0 claimable by Clarity seat (19 exit-7, 7 exit-2 stamped, 1 exit-6 no-refile, 1 different-model seat-block)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists; inventory reconciles (19+7+1+1 = 28); the 28th brief vs the 19:21 receipt (brief-gap-gap-t0600-lane1.md) is explained as a new arrival between runs, and its parent receipt gap-gap-t0600-lane1.md exists; the 19 exit-7 / 7 exit-2 / 1 exit-6 split matches the 19:21 receipt's 
+
+### ✅ gate-stall-20261015-1921 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: 27 queued briefs evaluated, 0 claimable by Clarity seat (9 gate-stamped, 1 embedded demand, 16 exit-7 parent-authorship, 1 no-refile)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists and is internally consistent (27 = 9+1+16+1); claim-brief.py exists (187,852 bytes, executable); named parent receipts gap-t0593-lane10.md, t0431-lane6.md, gap-gap-t0600-lane1.md exist in twelve-lane-receipts/; ~/memory/2026-10-15.md carries 26 'gate stall' mentions, corrob
+
+### ✅ gate-stall-20261125-0028 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: 31 queued briefs attempted, all refused (29 x exit 7 parent-authorship, 2 x exit 2 staleness/routing), queue untouched
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: brief-queue/ holds exactly 31 brief-*.md files, and the sha256 of the sha256sum list recomputes to 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4 - byte-identical to the receipt's claim and to the 23:23 receipt, so the queue is untouched and the stall is real, not asserted. NOT PHANTOM.
 
 ### ✅ gap-t0800 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
