@@ -4458,6 +4458,34 @@ html{scroll-padding-top:130px;}
 .nm-ov-toast{bottom:280px;}
 .mail-stage{padding-bottom:calc(200px + env(safe-area-inset-bottom,0px));}
 
+/* --- 12. PILL COMPOSITION — FOURTH INSIDE FIRST (2026-11-25 09:21) ---
+   The side buttons are built like aaa_1 (wide obsidian pill, glowing
+   rim in its own color) with aaa_11111's circular orb INSIDE at the
+   LEFT — orb glow color aligned to the pill's rim color. Rounded-
+   square icons (aaa_2 / aaa_icons_bar) stay the style for standalone
+   square icon buttons only — no square icon ever goes inside a pill.
+   On this page there is no standalone square icon button to restyle
+   (corner pluses are round by his word; rail action buttons are
+   already circular orbs; the bottom bar is the Hub's, untouched). */
+.mail-stage .ml-folder{border-radius:999px;border:2px solid var(--fc);box-shadow:inset 0 1px 0 rgba(255,255,255,.1), 0 8px 18px rgba(0,0,0,.5), 0 0 16px -6px var(--fc);}
+.mail-stage .ml-folder.on{text-shadow:none;}
+.mail-stage .ml-folder.on .ml-badge{text-shadow:none;}
+/* Quick Access rows (CONTACTS / SMART LISTS / SPACES): same pill,
+   orb icon at the left, color aligned to the rim. */
+.mail-stage .ml-qa-item{border-radius:999px;border:2px solid var(--qc);padding:8px 14px;box-shadow:inset 0 1px 0 rgba(255,255,255,.1), 0 8px 18px rgba(0,0,0,.5), 0 0 14px -6px var(--qc);}
+.mail-stage .ml-qa-item .ml-qicon{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;flex:none;background:radial-gradient(130% 130% at 30% 22%, #2b2b35 0%, #0d0d12 55%, #050607 100%);border:1.5px solid var(--qc);color:#ffffff;box-shadow:inset 0 2px 0 rgba(255,255,255,.4), inset 0 -6px 12px rgba(0,0,0,.7), 0 6px 16px rgba(0,0,0,.55), 0 0 14px -6px var(--qc);}
+.mail-stage .ml-qa-item .ml-qicon svg{width:18px;height:18px;}
+/* Left sidebar: DM rows and room links become wide obsidian pills,
+   orb at the left, rim + glow in the row's own color. */
+.nm-side-dm{border-radius:999px;border:2px solid #8e24aa;box-shadow:inset 0 1px 0 rgba(255,255,255,.14), 0 6px 16px rgba(0,0,0,.5), 0 0 14px -6px #8e24aa;}
+.naya-drawer-left .naya-drawer-btn{border-radius:999px;border:2px solid var(--nc, #8e24aa);box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 8px 18px rgba(0,0,0,.5), 0 0 14px -6px var(--nc, #8e24aa);}
+.nm-side-create .nm-plus-item{border:2px solid var(--pc);box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 8px 24px rgba(0,0,0,.5), 0 0 14px -6px var(--pc);}
+/* Right rail worlds nav: wide obsidian pill, jewel-disc orb at the
+   left, rim + glow in the item's own color (labels/colors/hrefs
+   stay verbatim from the Hub harvest). */
+.hub-rail-nav a{border-radius:999px;border:2px solid var(--nc, #8e24aa);box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 6px 16px rgba(0,0,0,.5), 0 0 14px -6px var(--nc, #8e24aa);}
+.hub-rail-nav a:hover{border-color:#ffffff;}
+
 </style>
 <script id="ov-script">
 /* ===== OVERLAY ROUND — behavior (2026-11-25) =====
