@@ -3602,7 +3602,8 @@ function spPlusPick(which){
   if(which==='project'){
     if(menu) menu.hidden=true;
     if(typeof PID!=='undefined' && PID){
-      location.href=location.href.split('?')[0].split('#')[0]+'?new=project';
+      var u=new URL(location.href); u.searchParams.delete('p'); u.searchParams.set('new','project');
+      location.href=u.toString();
       return;
     }
     var dd=document.getElementById('sp-kind-dd');
