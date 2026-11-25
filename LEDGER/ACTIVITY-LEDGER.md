@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 01:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 02:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -62186,6 +62186,12 @@ _Last updated: 2026-11-25 01:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261124-1806 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall receipt 18:06 PST: attempted all 31 queued briefs via claim-brief.py, 0 claimed, queue untouched; (b1)/(b5) ordering deviation closed
+
+**Evidence:** FRESH (filed 2026-11-24 18:06 PST). VERIFIED first-hand this tick: live queue holds exactly 31 brief-*.md files; recomputed sha256-of-sha256sum checksum 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4 matches the receipt pin exactly and matches the 17:01 receipt (queue byte-identical across the hour); rotation queued count also 31;
 
 ### ✅ gate-stall-20261124-1701 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
