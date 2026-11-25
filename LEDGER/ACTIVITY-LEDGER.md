@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 22:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 22:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -48549,6 +48549,12 @@ _Last updated: 2026-11-25 22:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
 
+### ✅ gap-20261017-1600-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up 2026-10-17 (Lane 6 Seeker): machine-register the two t0797 staleness watches (lane_1_quiet, sb_n4_fifth_row) - executable predicate instrument + standing_watches entries
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); instrument hidden_files/retrieval/check-staleness-watches-20261017.py exists and RAN live this tick, exit 0 - both watches now FIRE on the live log (watch_1 new_organic=42, lane1=0, last_lane1=2026-10-14 22:20:16 PDT matching the receipt exactly; watch_2 empt
+
 ### ✅ gap-t1516-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
 
 **Task:** Design-doc SHA correction (59-char truncation located: dropped ec363 at index 41) + D-numbering crosswalk (prereg D1-D4 = design D0/D1/Delta/Attribution)
@@ -55891,6 +55897,12 @@ _Last updated: 2026-11-25 22:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
 
+### ✅ gap-20261017-1540-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up 2026-10-17 (Lane 12 Herald): close t0704 Smart Mail push gap - branch naya4/t0704-lane12-smart-mail resolves on origin at parent SHA b88792361be09b33795277f94bb83772f8f0ed97
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); commit object b88792361be09b33795277f94bb83772f8f0ed97 exists in the local mirror (git cat-file -t -> commit), so the work was real and durable. BUT the branch ref is NO LONGER on origin: git ls-remote refs/heads/naya4/t0704-lane12-smart-mail returned empty t
+
 ### ✅ gap-gap-t0803-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
 **Task:** Gap follow-up gap-t0803 Lane 12: extract reproducibility + board-half read-back (comment 6185686383)
@@ -63094,6 +63106,12 @@ _Last updated: 2026-11-25 22:02 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261125-2219 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall 2026-11-25 14:19 PST: claim sweep over 31 queued briefs, 0 claimed, 31 refused (29x exit-7 parent-authorship, 2x exit-2 routing bar); fourth consecutive hourly sweep with an unchanged queue/refusal pattern, ZERO delta
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); queue holds 31 brief-*.md files and twelve-lane-rotation.json queued = 31, matching the receipt; cited sweep log brief-queue/claim-sweep-20261125-1418.log EXISTS (12,658 B) and names all 31 briefs (25 per-brief attempt blocks: 23 exit=7 + 2 exit=2, plus 6 named in the b1/b2 
 
 ### ✅ gap-lane-scorer-20261017-1045-lane0 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
