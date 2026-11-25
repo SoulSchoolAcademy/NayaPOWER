@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 17:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 17:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -14205,6 +14205,14 @@ _Last updated: 2026-11-25 17:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0907 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
+**Task:** HUB DRIVE block catalog merge: 457 canonical NAYA-XXX-NNN blocks + use-case index + coverage, PR #2713
+
+**Receipt:** `twelve-lane-receipts/t0907-lane5.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); at the receipt's own commit f72ee966c4a (2026-10-16 22:54:21 UTC, 't0907: block catalog - 457 canonical NAYA-XXX-NNN blocks') ALL THREE pins are BYTE-EXACT: block-catalog.json sha256 602f220cef1b8bbe54df63f653fc5d285802dcacb6268b1ab018e2af37236439 with 457 re
+
+### ✅ t0907 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
 **Task:** Merge fragments into canonical block catalog, PR #2713 opened (not merged)
 
 **Receipt:** `twelve-lane-receipts/t0907-lane5.md`
@@ -14238,6 +14246,14 @@ _Last updated: 2026-11-25 17:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0907-lane5.md`
 
 **Evidence:** Verified: remote branch naya4/hubdrive-block-catalog exists, head f72ee966c4ad757bbbffffa90c545544ba72650a; PR #2713 open (state=open, head=branch head, base=naya4/design-system-v1, merged_at=null -- merge gate honored); all 3 files present at branch head; block-catalog.json sha256 602f220cef1b8bbe54df63f653fc5d285802dcacb6268b1ab018e2af37236439 ex
+
+### ✅ t0906 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** HUB DRIVE block catalog extraction B (5 large design-language files)
+
+**Receipt:** `twelve-lane-receipts/t0906-lane5.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); fragment catalog-frag-b.json sha256 a08f0b80a68b1c6781da63a5eb3a473c61673e81164267a28bd1474a8ebe807c BYTE-EXACT to the receipt pin; JSON parses, 220 records, every record non-empty html + css_classes; category counts BYTE-EXACT (BTN 74, CRD 59, JWL 24, UNCAT 
 
 ### ✅ t0906 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
@@ -14296,6 +14312,14 @@ _Last updated: 2026-11-25 17:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** brief-t0906-lane10: bisect brain-index drift 45-commit window, date flip, verify re-stamp
 
 **Evidence:** VERIFIED: origin/main head via git ls-remote still 1a1c22d32191b8e6ae90db1be58118ad0e33b7b0 (matches receipt's two tip pins); flip commit 0460d2009e621037cffef5372aa02093e14bbc71 exists with commit msg 'RETRIEVAL: re-pin original grader bytes on live tip'; generator blob 41daba756288530a00f2542bff525c2d6438a35c == HEAD:tools/regenerate_brain_index.
+
+### ✅ t0905 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** HUB DRIVE block catalog extraction A (6 smaller design-language showcases)
+
+**Receipt:** `twelve-lane-receipts/t0905-lane5.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); fragment catalog-frag-a.json sha256 d0c3998e0be90f8d4a36879d10c16d91c5657c952841923b7e0bda25d45506b9 BYTE-EXACT to the receipt pin; JSON parses, 276 records, every record carries {temp_id, source_file, demo_name, demo_num, category, tags, html, css_classes, n
 
 ### ✅ t0905 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
@@ -62896,6 +62920,30 @@ _Last updated: 2026-11-25 17:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261016-2230 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
+
+**Task:** gate stall: 27/27 briefs unclaimable by Clarity seat, zero claims
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); bin/claim-brief.py exists; sampled parent receipts exist (t0562-lane12.md, gate-stall-20261016-0617.md). Full 27-brief table in ORDERING order with per-brief block reasons (explicit gates + script exit 7 x26 + exit 120 x1), plus the structural-imbalance analy
+
+### ✅ gate-stall-20261016-1728 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
+
+**Task:** gate stall: 29/29 briefs unclaimable by Clarity seat, zero claims
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); bin/claim-brief.py exists; the same parent receipts sampled for the 1527 stall exist; the 0530-lane6 brief is no longer queued; queue now holds 31 briefs. The run evaluates all 29 briefs in ORDERING order with a per-brief skip reason and respects the exit-6 n
+
+### ✅ gate-stall-20261016-1527 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** gate stall: 26/26 briefs unclaimable by Clarity seat, zero claims
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); bin/claim-brief.py exists; 5 sampled parent receipts named in the evidence section all exist (t0532-lane2, t0407-lane8, gap-scorer-20261015-0200-lane1, gate-stall-20261016-0617, gap-scorer-20261015-0000-lane10); the 0530-lane6 brief is no longer in brief-queu
+
+### 🟡 gate-stall-20261125-0900 — Team 0, Team Naya Scorer (?) — 7.5/10 [PARTIAL]
+
+**Task:** gate stall: 31/31 unclaimable by Clarity seat, zero claims
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); queue holds 31 brief-*.md and the sha256 of the sha256sum list recomputed inside brief-queue/ is 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4 - byte-identical to the receipt claim and to the 07:55 receipt, so the queue is untouched and the 0-claimed outco
 
 ### ✅ gate-stall-20261016-0106 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
 
