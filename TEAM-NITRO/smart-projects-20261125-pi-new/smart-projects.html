@@ -588,6 +588,36 @@ textarea.gr-input{resize:vertical;min-height:110px;line-height:1.55;}
   .sp-file-row>a.gr-btn{flex:1 1 100%;text-align:center;box-sizing:border-box;margin-top:8px}
 }
 </style>
+<style id="sp-framegeo-css">
+/* SMART PROJECTS FRAME-GEOMETRY 20261125 — the walk's scroll area and foot clear
+   the frame's fixed ornament bands. Geometry only: margins, paddings (fins),
+   one flex row. No text, no colors, no new elements, no behaviour change.
+   Band positions measured from master-frame.png (1672x941) + live rects — see
+   MAKER-REPORT-FRAME-GEO.md §1. Phone bands: top-copy bottom 163-210, bottom-copy
+   top 624-671. Desktop bands (contain 1280x720 @40): top 40-192, bottom 615-730. */
+@media (max-width:480px){
+  /* Scroll top 181.5 -> ~217.5: the first line of walk content starts BELOW the
+     top copy's bottom band (ends 210), so no scrolling line ever crosses it. */
+  #sp-walk .frame-scroll{margin-top:36px}
+  /* Lift the whole foot: --fin-b 88 -> 100px. BACK/NEXT end 612, 12px clear of
+     the bottom-copy top band (starts 624). */
+  #sp-walk .sp-stage{--fin-b:100px}
+  /* BACK/NEXT share one row (they wrapped because .gr-btn is width:100% under
+     640px) — the foot is one row shorter, matching the desktop layout. */
+  #sp-walk .frame-foot .frame-btnrow .gr-btn{flex:1 1 0;min-width:0;width:auto;padding-left:10px;padding-right:10px}
+  /* The dots drop BELOW the bottom band (680-692, 9px clear of 671): the band
+     shows in the gap between the nav row and the dots, as the frame's own
+     divider, with no text on it. DONE follows at 704-744, clear of the
+     bottom band (788). */
+  #sp-walk .sp-dots{margin-top:56px}
+}
+@media (min-width:1024px) and (min-aspect-ratio:1/1){
+  /* Fins matched to the real bands: topbar top 196 (4px clear of the top band's
+     bottom edge 192); footTop 472, DONE ends 604 (11px clear of the bottom
+     band's centre top edge 615). Scroll viewport 166 -> ~198px. */
+  #sp-walk .sp-stage{--fin-t:196px;--fin-b:192px}
+}
+</style>
 <style id="sp-v6-css">
 /* SMART PROJECTS v6 — landing boards. New CSS only; 17px minimum, white text, deep colors. */
 .sp-home-states{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
