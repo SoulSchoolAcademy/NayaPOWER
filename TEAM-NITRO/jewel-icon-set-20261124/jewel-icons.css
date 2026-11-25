@@ -1,0 +1,50 @@
+/* jewel-icons.css — NayaNET custom jewel icon set, 2026-11-24
+   Consumption contract (see USAGE.md):
+   - Every icon is a standalone SVG: obsidian disc, silver bezel, white glyph
+     as a real object, its OWN deep colour as rim + halo + crown jewel.
+   - The orbit ring inside each full icon spins slowly on its own (60–180s,
+     alternating direction per icon, set inline in the SVG). No page CSS
+     needed for the orbit.
+   - The page only adds the touch: lift + ignite on hover, depress on press.
+   - One light, top-left, always. Deep palette only. Text 25 / 19 / 17. */
+
+.jwl {
+  --c: #8e24aa; /* the icon's own deep colour — set per use */
+  display: inline-block;
+  line-height: 0;
+  border-radius: 50%;
+  transition: transform .3s ease, filter .3s ease;
+  filter: drop-shadow(4px 6px 10px rgba(0, 0, 0, .6));
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.jwl img, .jwl svg { display: block; border-radius: 50%; }
+
+/* Hover: the WHOLE thing lifts and lights in its own colour. */
+.jwl:hover, .jwl:focus-visible {
+  transform: translateY(-4px) scale(1.04);
+  filter: drop-shadow(5px 9px 14px rgba(0, 0, 0, .65))
+          drop-shadow(0 0 16px var(--c));
+  outline: none;
+}
+/* Press: it depresses, scale 0.97, light shifts across it. */
+.jwl:active { transform: translateY(-1px) scale(.97); transition-duration: .1s; }
+
+/* Sizes — master art is 96; small variants are 48 and stay crisp to 16px. */
+.jwl-96 img, .jwl-96 svg { width: 96px; height: 96px; }
+.jwl-72 img, .jwl-72 svg { width: 72px; height: 72px; }
+.jwl-64 img, .jwl-64 svg { width: 64px; height: 64px; }
+.jwl-48 img, .jwl-48 svg { width: 48px; height: 48px; }
+.jwl-32 img, .jwl-32 svg { width: 32px; height: 32px; }
+.jwl-24 img, .jwl-24 svg { width: 24px; height: 24px; }
+.jwl-20 img, .jwl-20 svg { width: 20px; height: 20px; }
+.jwl-16 img, .jwl-16 svg { width: 16px; height: 16px; }
+
+/* In-message jewels: no lift on hover inside a bubble — they are the
+   message's own jewellery, not buttons. They keep their slow orbit. */
+.jwl-inmsg { cursor: default; filter: drop-shadow(2px 3px 5px rgba(0, 0, 0, .55)); }
+.jwl-inmsg:hover { transform: none; filter: drop-shadow(2px 3px 5px rgba(0, 0, 0, .55)); }
+.jwl-inmsg:active { transform: none; }
+
+/* A row of reaction jewels under a message. */
+.jwl-reactions { display: flex; gap: 8px; align-items: center; }

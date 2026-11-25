@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Jewel Icon Set — NayaNET</title>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="jewel-icons.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: #050607; }
+  body {
+    background: #050607; color: #fff;
+    font-family: 'Marcellus', Georgia, 'Times New Roman', serif;
+    padding: 32px 16px 64px; max-width: 1064px; margin: 0 auto;
+  }
+  h1 { font-size: 25px; font-weight: 400; letter-spacing: .02em; text-align: center; }
+  h1 .gold { color: #d4a017; }
+  .sub { font-size: 19px; text-align: center; margin-top: 16px; line-height: 1.5; }
+  .note { font-size: 17px; text-align: center; margin-top: 8px; line-height: 1.5; }
+  h2 { font-size: 25px; font-weight: 400; margin: 48px 0 8px; }
+  h2 .n { color: #d4a017; }
+  .lede { font-size: 19px; line-height: 1.5; margin-bottom: 24px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 24px; }
+  .tile {
+    background: linear-gradient(135deg, #1e1e26 0%, #0a0a0f 50%, #1e1e26 100%);
+    border: 1.5px solid rgba(255,255,255,.9); border-radius: 18px;
+    padding: 24px 8px 16px; text-align: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,.5);
+    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  }
+  .tile:hover { transform: translateY(-4px); border-color: var(--c); box-shadow: 0 12px 28px rgba(0,0,0,.6), 0 0 22px var(--c); }
+  .tile:active { transform: scale(.97); transition-duration: .1s; }
+  .tile .nm { font-size: 19px; margin-top: 16px; }
+  .tile .hx { font-size: 17px; margin-top: 8px; color: #fff; }
+  .tile .use { font-size: 17px; margin-top: 8px; line-height: 1.4; }
+  /* The bottom bar — the five + CONNECT, as they sit on every page. */
+  .bar {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    background: linear-gradient(135deg, #1e1e26 0%, #0a0a0f 50%, #1e1e26 100%);
+    border: 1.5px solid rgba(255,255,255,.9); border-radius: 18px;
+    padding: 24px 16px; box-shadow: 0 8px 24px rgba(0,0,0,.5);
+  }
+  .bar .cell { text-align: center; }
+  .bar .lbl { font-size: 17px; margin-top: 8px; }
+  /* The message thread — a message must read as ours before a word is read. */
+  .thread {
+    background: linear-gradient(135deg, #1e1e26 0%, #0a0a0f 50%, #1e1e26 100%);
+    border: 1.5px solid rgba(255,255,255,.9); border-radius: 18px;
+    padding: 24px; box-shadow: 0 8px 24px rgba(0,0,0,.5);
+  }
+  .msg { display: flex; gap: 16px; margin-bottom: 24px; align-items: flex-start; }
+  .msg:last-child { margin-bottom: 0; }
+  .bubble {
+    background: #0b0b0f; border: 1.5px solid rgba(255,255,255,.25);
+    border-radius: 18px; padding: 16px 16px 12px; flex: 1;
+  }
+  .bubble .who { font-size: 17px; display: flex; align-items: center; gap: 8px; }
+  .bubble .txt { font-size: 19px; margin-top: 8px; line-height: 1.5; }
+  .bubble .reacts { margin-top: 12px; }
+  .ladder { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; margin-top: 24px; }
+  .ladder .sz { text-align: center; }
+  .ladder .sz span { display: block; font-size: 17px; margin-top: 8px; }
+  .how { font-size: 19px; line-height: 1.6; }
+  .how code { font-family: ui-monospace, monospace; font-size: 17px; background: #1e1e26; padding: 2px 6px; border-radius: 6px; }
+  .foot { font-size: 17px; text-align: center; margin-top: 48px; line-height: 1.6; }
+  @media (max-width: 480px) {
+    body { padding: 24px 12px 48px; }
+    .grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .bar { gap: 8px; padding: 16px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<h1>The Jewel Icon Set <span class="gold">— NayaNET</span></h1>
+<p class="sub">Our own custom icons, unique to NayaNET. Every one a real jewel.</p>
+<p class="note">Judged against the emblem — the purple diamond jewel in a silver winged crown frame.<br>
+Obsidian inside. White glyph as a real object. The icon&rsquo;s own deep colour as rim, halo and crown jewel. One light, top-left, always.</p>
+
+<h2><span class="n">1.</span> The Core Set — Messaging</h2>
+<p class="lede">Twelve jewels for Messenger and Mail. Tap one — it lifts, lights in its own colour, and presses like a real thing.</p>
+<div class="grid">
+  <div class="tile" style="--c:#0f52ba"><span class="jwl jwl-96" style="--c:#0f52ba"><img src="icons/core/mail.svg" alt="Mail jewel"></span><div class="nm">Mail</div><div class="hx">Sapphire #0f52ba</div><div class="use">Smart Mail</div></div>
+  <div class="tile" style="--c:#8e24aa"><span class="jwl jwl-96" style="--c:#8e24aa"><img src="icons/core/chat.svg" alt="Chat jewel"></span><div class="nm">Chat</div><div class="hx">Royal purple #8e24aa</div><div class="use">Instant Messenger</div></div>
+  <div class="tile" style="--c:#07925f"><span class="jwl jwl-96" style="--c:#07925f"><img src="icons/core/audio.svg" alt="Audio jewel"></span><div class="nm">Audio</div><div class="hx">Emerald #07925f</div><div class="use">Voice note &amp; call</div></div>
+  <div class="tile" style="--c:#d4a017"><span class="jwl jwl-96" style="--c:#d4a017"><img src="icons/core/video.svg" alt="Video jewel"></span><div class="nm">Video</div><div class="hx">Deep gold #d4a017</div><div class="use">Smart Meet</div></div>
+  <div class="tile" style="--c:#c2410c"><span class="jwl jwl-96" style="--c:#c2410c"><img src="icons/core/search.svg" alt="Search jewel"></span><div class="nm">Search</div><div class="hx">Burnt orange #c2410c</div><div class="use">Find mail &amp; people</div></div>
+  <div class="tile" style="--c:#c62828"><span class="jwl jwl-96" style="--c:#c62828"><img src="icons/core/compose.svg" alt="Compose jewel"></span><div class="nm">Compose</div><div class="hx">Ruby #c62828</div><div class="use">Write a letter</div></div>
+  <div class="tile" style="--c:#a21caf"><span class="jwl jwl-96" style="--c:#a21caf"><img src="icons/core/send.svg" alt="Send jewel"></span><div class="nm">Send</div><div class="hx">Magenta #a21caf</div><div class="use">Send it</div></div>
+  <div class="tile" style="--c:#3f51b5"><span class="jwl jwl-96" style="--c:#3f51b5"><img src="icons/core/plus.svg" alt="Add jewel"></span><div class="nm">Add</div><div class="hx">Indigo #3f51b5</div><div class="use">Create anything</div></div>
+  <div class="tile" style="--c:#0e7490"><span class="jwl jwl-96" style="--c:#0e7490"><img src="icons/core/contacts.svg" alt="Contacts jewel"></span><div class="nm">Contacts</div><div class="hx">Cyan #0e7490</div><div class="use">Your people</div></div>
+  <div class="tile" style="--c:#6d28d9"><span class="jwl jwl-96" style="--c:#6d28d9"><img src="icons/core/lists.svg" alt="Lists jewel"></span><div class="nm">Lists</div><div class="hx">Violet #6d28d9</div><div class="use">Smart Lists</div></div>
+  <div class="tile" style="--c:#8e24aa"><span class="jwl jwl-96" style="--c:#8e24aa"><img src="icons/core/spaces.svg" alt="Spaces jewel"></span><div class="nm">Spaces</div><div class="hx">Royal purple #8e24aa</div><div class="use">Your worlds</div></div>
+  <div class="tile" style="--c:#0f52ba"><span class="jwl jwl-96" style="--c:#0f52ba"><img src="icons/core/settings.svg" alt="Settings jewel"></span><div class="nm">Settings</div><div class="hx">Sapphire #0f52ba</div><div class="use">How it works</div></div>
+</div>
+
+<h2><span class="n">2.</span> The Bottom Bar — As It Sits</h2>
+<p class="lede">ADD purple · MAIL blue · ACTIVITY green · WORLDS gold · ECOSYSTEM orange · CONNECT red. Never the same colour twice in a row.</p>
+<div class="bar">
+  <div class="cell"><span class="jwl jwl-64" style="--c:#8e24aa"><img src="icons/core/plus.svg" alt="Add"></span><div class="lbl">ADD</div></div>
+  <div class="cell"><span class="jwl jwl-64" style="--c:#0f52ba"><img src="icons/core/mail.svg" alt="Mail"></span><div class="lbl">MAIL</div></div>
+  <div class="cell"><span class="jwl jwl-64" style="--c:#07925f"><img src="icons/presentation/bar-activity.svg" alt="Activity"></span><div class="lbl">ACTIVITY</div></div>
+  <div class="cell"><span class="jwl jwl-64" style="--c:#d4a017"><img src="icons/core/spaces.svg" alt="Worlds"></span><div class="lbl">WORLDS</div></div>
+  <div class="cell"><span class="jwl jwl-64" style="--c:#c2410c"><img src="icons/presentation/bar-ecosystem.svg" alt="Ecosystem"></span><div class="lbl">ECOSYSTEM</div></div>
+  <div class="cell"><span class="jwl jwl-64" style="--c:#c62828"><img src="icons/presentation/bar-connect.svg" alt="Connect"></span><div class="lbl">CONNECT</div></div>
+</div>
+
+<h2><span class="n">3.</span> In The Message — Ours Before A Word Is Read</h2>
+<p class="lede">The sender mark, the message-type jewels and the reaction jewels ride inside the message itself. Small-size legibility is the test: crisp and real at 16–24px.</p>
+<div class="thread">
+  <div class="msg">
+    <span class="jwl jwl-inmsg jwl-48" style="--c:#8e24aa"><img src="icons/presentation/naya-mark.svg" alt="Naya mark"></span>
+    <div class="bubble">
+      <div class="who"><span class="jwl jwl-inmsg jwl-20" style="--c:#8e24aa"><img src="icons/presentation/type-chat-sm.svg" alt="Chat"></span> Naya · Instant Messenger</div>
+      <div class="txt">Your world is ready. Tap in and see it.</div>
+      <div class="reacts jwl-reactions">
+        <span class="jwl jwl-inmsg jwl-24" style="--c:#c62828"><img src="icons/presentation/react-heart-sm.svg" alt="Heart"></span>
+        <span class="jwl jwl-inmsg jwl-24" style="--c:#d4a017"><img src="icons/presentation/react-star-sm.svg" alt="Star"></span>
+        <span class="jwl jwl-inmsg jwl-24" style="--c:#6d28d9"><img src="icons/presentation/react-sparkle-sm.svg" alt="Sparkle"></span>
+      </div>
+    </div>
+  </div>
+  <div class="msg">
+    <span class="jwl jwl-inmsg jwl-48" style="--c:#d4a017"><img src="icons/presentation/type-mail.svg" alt="Mail"></span>
+    <div class="bubble">
+      <div class="who"><span class="jwl jwl-inmsg jwl-20" style="--c:#d4a017"><img src="icons/presentation/type-mail-sm.svg" alt="Mail"></span> Smart Mail · from Naya</div>
+      <div class="txt">A letter arrived for you — sealed, private, yours alone.</div>
+      <div class="reacts jwl-reactions">
+        <span class="jwl jwl-inmsg jwl-24" style="--c:#c62828"><img src="icons/presentation/react-heart-sm.svg" alt="Heart"></span>
+      </div>
+    </div>
+  </div>
+  <div class="msg">
+    <span class="jwl jwl-inmsg jwl-48" style="--c:#6d28d9"><img src="icons/presentation/type-post.svg" alt="Post"></span>
+    <div class="bubble">
+      <div class="who"><span class="jwl jwl-inmsg jwl-20" style="--c:#6d28d9"><img src="icons/presentation/type-post-sm.svg" alt="Post"></span> A post · on the Hub</div>
+      <div class="txt">Wisdom worth keeping. Save it and it stays in your vault.</div>
+      <div class="reacts jwl-reactions">
+        <span class="jwl jwl-inmsg jwl-24" style="--c:#d4a017"><img src="icons/presentation/react-star-sm.svg" alt="Star"></span>
+        <span class="jwl jwl-inmsg jwl-24" style="--c:#6d28d9"><img src="icons/presentation/react-sparkle-sm.svg" alt="Sparkle"></span>
+      </div>
+    </div>
+  </div>
+</div>
+<p class="lede" style="margin-top:24px">The small sizes, side by side — 16, 20, 24, 32 and 48. The test is 16: if it reads at 16, it reads anywhere.</p>
+<div class="ladder">
+  <div class="sz"><span class="jwl jwl-inmsg jwl-16" style="--c:#8e24aa"><img src="icons/presentation/type-chat-sm.svg" alt="Chat 16"></span><span>16</span></div>
+  <div class="sz"><span class="jwl jwl-inmsg jwl-20" style="--c:#8e24aa"><img src="icons/presentation/type-chat-sm.svg" alt="Chat 20"></span><span>20</span></div>
+  <div class="sz"><span class="jwl jwl-inmsg jwl-24" style="--c:#8e24aa"><img src="icons/presentation/type-chat-sm.svg" alt="Chat 24"></span><span>24</span></div>
+  <div class="sz"><span class="jwl jwl-inmsg jwl-32" style="--c:#8e24aa"><img src="icons/presentation/type-chat-sm.svg" alt="Chat 32"></span><span>32</span></div>
+  <div class="sz"><span class="jwl jwl-inmsg jwl-48" style="--c:#8e24aa"><img src="icons/presentation/type-chat-sm.svg" alt="Chat 48"></span><span>48</span></div>
+</div>
+
+<h2><span class="n">4.</span> The Emoji Set — Faces, Hearts, Stars</h2>
+<p class="lede">Reactions and messages, all as jewels, all unmistakably ours. Faceted gem orbs — never flat, never a picture of a face.</p>
+<div class="grid">
+  <div class="tile" style="--c:#d4a017"><span class="jwl jwl-64" style="--c:#d4a017"><img src="icons/emoji/smile.svg" alt="Smile"></span><div class="nm">Smile</div></div>
+  <div class="tile" style="--c:#c2410c"><span class="jwl jwl-64" style="--c:#c2410c"><img src="icons/emoji/laugh.svg" alt="Laugh"></span><div class="nm">Laugh</div></div>
+  <div class="tile" style="--c:#c62828"><span class="jwl jwl-64" style="--c:#c62828"><img src="icons/emoji/love.svg" alt="Love"></span><div class="nm">Love</div></div>
+  <div class="tile" style="--c:#8e24aa"><span class="jwl jwl-64" style="--c:#8e24aa"><img src="icons/emoji/wow.svg" alt="Wow"></span><div class="nm">Wow</div></div>
+  <div class="tile" style="--c:#0f52ba"><span class="jwl jwl-64" style="--c:#0f52ba"><img src="icons/emoji/think.svg" alt="Think"></span><div class="nm">Think</div></div>
+  <div class="tile" style="--c:#0e7490"><span class="jwl jwl-64" style="--c:#0e7490"><img src="icons/emoji/cool.svg" alt="Cool"></span><div class="nm">Cool</div></div>
+  <div class="tile" style="--c:#3f51b5"><span class="jwl jwl-64" style="--c:#3f51b5"><img src="icons/emoji/sad.svg" alt="Sad"></span><div class="nm">Sad</div></div>
+  <div class="tile" style="--c:#a21caf"><span class="jwl jwl-64" style="--c:#a21caf"><img src="icons/emoji/party.svg" alt="Party"></span><div class="nm">Party</div></div>
+  <div class="tile" style="--c:#07925f"><span class="jwl jwl-64" style="--c:#07925f"><img src="icons/emoji/peace.svg" alt="Peace"></span><div class="nm">Peace</div></div>
+  <div class="tile" style="--c:#c2410c"><span class="jwl jwl-64" style="--c:#c2410c"><img src="icons/emoji/fire.svg" alt="Fire"></span><div class="nm">Fire</div></div>
+  <div class="tile" style="--c:#6d28d9"><span class="jwl jwl-64" style="--c:#6d28d9"><img src="icons/emoji/thumbs-up.svg" alt="Thumbs up"></span><div class="nm">Thumbs up</div></div>
+  <div class="tile" style="--c:#d4a017"><span class="jwl jwl-64" style="--c:#d4a017"><img src="icons/emoji/star.svg" alt="Star"></span><div class="nm">Star</div></div>
+</div>
+
+<h2><span class="n">5.</span> How To Use Them</h2>
+<p class="how">Take the SVG file and use it as an image — <code>&lt;img src="icons/core/mail.svg"&gt;</code> — or inline it. Wrap it in <code>.jwl</code> from <code>jewel-icons.css</code> and set <code>--c</code> to the icon&rsquo;s own deep colour for the hover light. Full icons are 96px art, crisp from 24 to 96. Small <code>-sm</code> icons are 48px art, crisp from 16 to 48 — those are the ones that ride inside message bubbles. The full usage spec is <code>USAGE.md</code> in this same folder.</p>
+
+<p class="foot">The Jewel Icon Set · Maker round 2026-11-24 · 41 icons · nothing live.<br>
+Law check: board black inside, no glow inside · one light top-left · deep palette only · never the same colour twice in a row · text 25 / 19 / 17 · white text only.</p>
+
+</body>
+</html>

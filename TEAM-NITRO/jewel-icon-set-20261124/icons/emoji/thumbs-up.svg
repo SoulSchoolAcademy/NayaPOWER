@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Thumbs up — NayaNET jewel emoji">
+<defs>
+<radialGradient id="ethumbsup-gemorb" cx="35%" cy="28%" r="80%">
+<stop offset="0%" stop-color="#c8adf1"/><stop offset="45%" stop-color="#6d28d9"/><stop offset="100%" stop-color="#37146d"/>
+</radialGradient>
+<linearGradient id="ethumbsup-silver" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#f2f3f5"/><stop offset="30%" stop-color="#b9bdc7"/><stop offset="50%" stop-color="#7d818c"/><stop offset="70%" stop-color="#a9adb8"/><stop offset="100%" stop-color="#d7d9de"/>
+</linearGradient>
+<linearGradient id="ethumbsup-face" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#d5d8dd"/>
+</linearGradient>
+<radialGradient id="ethumbsup-halo" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#6d28d9" stop-opacity=".5"/><stop offset="62%" stop-color="#6d28d9" stop-opacity=".16"/><stop offset="100%" stop-color="#6d28d9" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="48" cy="48" r="47" fill="url(#ethumbsup-halo)"/>
+<circle cx="48" cy="48" r="38" fill="none" stroke="url(#ethumbsup-silver)" stroke-width="3"/>
+<circle cx="48" cy="48" r="35.5" fill="url(#ethumbsup-gemorb)"/>
+<path d="M48 48L48.0 12.0" stroke="#ffffff" stroke-opacity="0.16" stroke-width="1"/><path d="M48 48L73.5 22.5" stroke="#ffffff" stroke-opacity="0.16" stroke-width="1"/><path d="M48 48L84.0 48.0" stroke="#ffffff" stroke-opacity="0.16" stroke-width="1"/><path d="M48 48L73.5 73.5" stroke="#ffffff" stroke-opacity="0.16" stroke-width="1"/><path d="M48 48L48.0 84.0" stroke="#ffffff" stroke-opacity="0.16" stroke-width="1"/><path d="M48 48L22.5 73.5" stroke="#ffffff" stroke-opacity="0.16" stroke-width="1"/><path d="M48 48L12.0 48.0" stroke="#ffffff" stroke-opacity="0.34" stroke-width="1"/><path d="M48 48L22.5 22.5" stroke="#ffffff" stroke-opacity="0.34" stroke-width="1"/>
+<polygon points="48,26 66,42 60,64 36,64 30,42" fill="none" stroke="#ffffff" stroke-opacity=".28" stroke-width="1"/>
+<path d="M34 32l4-4M62 32l-4-4" stroke="#ffffff" stroke-opacity=".9" stroke-width="2" stroke-linecap="round"/>
+<g transform="translate(25,27) scale(1.9)" fill="url(#ethumbsup-face)" stroke="url(#ethumbsup-silver)" stroke-width=".5" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></g>
+</svg>
