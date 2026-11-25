@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-25 15:03 UTC_
+_Last updated: 2026-11-25 15:31 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 10862
-- ✅ Verified (8+): 10746
+- **Total scored actions:** 10868
+- ✅ Verified (8+): 10752
 - 🟡 Partial (5–7): 105
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 7
@@ -17,16 +17,16 @@ _Last updated: 2026-11-25 15:03 UTC_
 |------|-------|---------|-----------|------|
 | Team 1 | Naya Verity | 717 | 9.1 | 9.6 |
 | Team 2 | Naya Sage | 710 | 8.9 | 9.5 |
-| Team 3 | Naya Judge | 665 | 9.0 | 10 |
+| Team 3 | Naya Judge | 666 | 9.0 | 10 |
 | Team 4 | Naya Mason | 639 | 9.1 | 9.6 |
 | Team 5 | Naya Seeker | 784 | 9.0 | 9.6 |
-| Team 6 | Naya Heir | 460 | 9.0 | 9.6 |
+| Team 6 | Naya Heir | 461 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 610 | 9.0 | 10 |
 | Team 8 | Naya Sentinel | 647 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 775 | 9.0 | 9.5 |
-| Team 10 | Naya Librarian | 1065 | 9.1 | 9.7 |
+| Team 10 | Naya Librarian | 1068 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 735 | 9.1 | 9.6 |
-| Team 12 | Naya Herald | 579 | 9.1 | 9.5 |
+| Team 12 | Naya Herald | 580 | 9.1 | 9.5 |
 
 ## Learning velocity
 
@@ -3987,20 +3987,20 @@ _Last updated: 2026-11-25 15:03 UTC_
 - **t0895:** 2 actions, avg 9.2/10
 - **t895:** 1 actions, avg 9.3/10
 - **t0895-lane3:** 1 actions, avg 9.3/10
-- **t0897:** 2 actions, avg 9.2/10
+- **t0897:** 3 actions, avg 9.3/10
 - **t0897-lane10:** 1 actions, avg 9.0/10
-- **t0900:** 6 actions, avg 9.1/10
+- **t0900:** 7 actions, avg 9.2/10
 - **t0900-lane10:** 1 actions, avg 9.5/10
 - **t0900-lane5:** 2 actions, avg 9.0/10
-- **t0901:** 4 actions, avg 9.1/10
+- **t0901:** 5 actions, avg 9.1/10
 - **t0901-lane3:** 2 actions, avg 9.0/10
 - **t0901-lane3-judge:** 2 actions, avg 9.5/10
-- **t0902:** 6 actions, avg 9.1/10
+- **t0902:** 8 actions, avg 8.9/10
 - **t0902-lane10:** 1 actions, avg 9.5/10
 - **t0902-lane12:** 2 actions, avg 9.1/10
 - **t902:** 6 actions, avg 7.5/10
 - **t902-lane5:** 1 actions, avg 9.0/10
-- **t0903:** 6 actions, avg 9.2/10
+- **t0903:** 7 actions, avg 9.1/10
 - **t0903-lane10:** 1 actions, avg 9.5/10
 - **t0903-lane10-askworld:** 2 actions, avg 9.5/10
 - **t0903-lane6:** 2 actions, avg 9.0/10
