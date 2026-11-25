@@ -1,7 +1,14 @@
 {
   "source": "~/workspace/naya-abstract-library/shawns-set-mapping.md",
   "note": "Shawn's own images. Swap by file replacement: replace the media-library file and re-file the matching WebP under the same img/<key>.webp name; the walk picks it up. The generated about-questions/ set is the FALLBACK library only.",
-  "about_status": "HELD OPEN — Shawn needs FIVE MORE images for About (2026-11-25 ~14:00 MST). The About image list is NOT final and NOT locked. The walkthrough takes ten About questions today; the image list is data-driven (window.__RB_STEPS, one imgs[] array per step) so new images slot in by filing img/about-extra-<n>.webp and adding its key to the step's imgs[] — no rebuild of the frame, no hard-coded count. Reserved slots: about-extra-1..5. When the five arrive with their mapping, swap them in then.",
+  "about_status": "HELD OPEN — Shawn needs FIVE MORE images for About (2026-11-25 ~14:00 MST). The About image list is NOT final and NOT locked. The walkthrough takes ten About questions today; the image list is data-driven (window.__RB_STEPS, one imgs[] array per step) so new images slot in by filing img/about-extra-<n>.webp and adding its key to the step's imgs[] — no rebuild of the frame, no hard-coded count. Reserved slots: about-extra-1..5. When the five arrive with their mapping, swap them in then. The slots also live in the walk's code (window.__RB_ABOUT_EXTRA, fix round 2026-11-25).",
+  "about_extra_slots": [
+    "about-extra-1",
+    "about-extra-2",
+    "about-extra-3",
+    "about-extra-4",
+    "about-extra-5"
+  ],
   "cover": {
     "file": "image/78/78e365d4f0dc78edca56bd781394b788a5f7323ebcf329f51362e3e9fd3cb21c.jpg",
     "img": "cover.webp",
