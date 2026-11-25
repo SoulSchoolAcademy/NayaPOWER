@@ -3481,6 +3481,18 @@ body.dash-rail-right-open .cal-rails .rail.right{transform:none!important;opacit
   .monthname{font-size:19px!important;letter-spacing:.06em!important;}
 }
 </style>
+<style id="eye-fix-20261124-cal">
+/* EYE-FIX 2026-11-24 (D4)  the + covered the left-rail heading with the drawer open.
+   #cal-plus-left/right are fixed at (bw+12, bw+12) and never moved on open, so the +
+   landed on the rail content at that corner: at 1440 the "Where you go" label (EFP
+   x118-142 returned BUTTON#cal-plus-left), at 390/500 the brand small's start, at 500
+   the right head's tail. On open the + now docks to its drawer's inside edge, centred
+   on the edge line at top:60  the Dashboard's own edge-dock height. Drawer width is
+   min(340px,86vw); the button is 44px, so -22px centres it. Closed-state corners,
+   drawers, Stats, the 5-row month and the R2 390 title/date fix are untouched. */
+body.dash-drawer-open #cal-plus-left{left:calc(min(340px,86vw) - 22px)!important;top:60px!important;}
+body.dash-rail-right-open #cal-plus-right{right:calc(min(340px,86vw) - 22px)!important;top:60px!important;}
+</style>
 
   </head>
   <body>
