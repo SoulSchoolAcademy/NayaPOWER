@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 02:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 03:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16715,6 +16715,14 @@ _Last updated: 2026-11-25 02:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/retrieval-auth-gate-wiring-t0783-lane4.patch 1571e042..., equivalence battery 810d30c2..., HOLD manifest cf3c791c... all byte-exact on disk; pin-format confusion resolved with both hash forms recorded. Score 8.5 REWORK because the EQ1-EQ4 pre/post equivalence battery is named with a harness spec but NOT run - a named-but-unru
 
+### ✅ t0782 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** SURGE semantic-arm MCC pre-reg (C1-C4 bound pre-freeze)
+
+**Receipt:** `twelve-lane-receipts/t0782-lane5.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: hidden_files/surge-semantic-arm-prereg-t0782-lane5.md exists, sha256 32b69a91f0eb2a20fcbd22b7b71f8de553b27e91e2b4e501403179da0efb5418 matches the receipt pin exactly, 11,011 bytes as stated. NOT PHANTOM. Score 9.5, clears 9.5 because: all four conditions C1-C4 bound pre-freeze with pins r
+
 ### ✅ t0782-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
 
 **Task:** SURGE semantic-arm MCC pre-reg (C1-C4 bound pre-freeze)
@@ -16766,6 +16774,14 @@ _Last updated: 2026-11-25 02:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0780-lane3.md`
 
 **Evidence:** GOOD, ONE MORE PASS. Verified from receipt evidence: verdict sealed at hidden_files/surge-a-verdict-t0780-lane3.md sha256 0e5c56ba...; note SHA 3b685b90... re-derived at action time (prefix matches brief); corpse verdicts re-derived from live receipt bytes in pass 2 (t0731-lane5 FALSIFIED, t0743-lane2 FROZEN-NOT-VIABLE — first-hand, not inherited);
+
+### ✅ t0780 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** second-seat review of the DEMOTE verdict (t0762-lane5 wiring, t0758 verdict)
+
+**Receipt:** `twelve-lane-receipts/t0780-lane1.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: hidden_files/demote-second-review-t0780-lane1.md sha256 b5840fc14fd284f135312a88316c659cd27f0fdede9ca6b327b02ba77f4ccf4d matches the receipt pin exactly; re-run script exists on disk; commit 4c29f34197a436da8c628da150f319ff8fe26037 exists in nayapower-mirror.git with parent 0cc7c9f214ea9e
 
 ### ✅ t0780-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
@@ -20898,6 +20914,14 @@ _Last updated: 2026-11-25 02:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0713-lane11.md`
 
 **Evidence:** ARTIFACTS VERIFIED: verdict doc sha256 8c1a980e753bb9878de8b8c7d66fa13a1827902a555af47619594a55ae648ee2 MATCHES claim; live tip 92329c57 matches. Board comment IDs / REST timestamps not re-verified this tick (2 git ls-remote + 9 sha256 = cheap path). Kept from 9.5: (a) same-run, lane-executor family -- lesson author and both decision lanes are one 
+
+### ✅ t0712 — Team 9, Team Naya Scorer (Code Health) — 9.2/10 [VERIFIED]
+
+**Task:** gap-t0712: v3 battery vs three real builds (lexical, TF-IDF, semantic arm)
+
+**Receipt:** `twelve-lane-receipts/t0712-lane9.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: lane9-gapt0712-realbuild/probe_v3_realbuild.py and realbuild_probe.json both exist; raw JSON confirms the receipt's table (lexical-t0412 rank1 0.0417, MRR 0.1076, hit5 0.2083); arms/ holds lexical-t0412, tfidf-t0412 and semantic-t0426; preregister-gap-t0712-lane9.md exists. NOT PHANTOM. S
 
 ### ✅ t0712-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
 
@@ -28031,6 +28055,14 @@ _Last updated: 2026-11-25 02:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: prereg-t0601-entailment.md, t0601_entailment_arm.py, results-t0601-entailment.json all present; results sha256 4d52a16b... matches receipt prefix; seal mtime precedes results. Score 8.0 (REWORK): Arm E BLOCKED_DEPENDENCY (no torch/transformers, /tmp full) — the pre-registered contingency fired honestly so this is frozen-not-wasted, and th
 
+### ✅ t0601 — Team 11, Team Naya Scorer (Human Value) — 9.2/10 [VERIFIED]
+
+**Task:** gap-t0601: second-seat cold-drill re-run on new tip (n=5 clean cold trials)
+
+**Receipt:** `twelve-lane-receipts/t0601-lane11.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: lane-11/cold_drill_t0692.py sha256 prefix 12891fac9aecd9f5 matches the receipt pin; cold_drill_t0692_filelist.json prefix bd8e1130214c165a matches and holds 608 entries; trial JSONs t0692_cold_1..6 and t0692_warm_1..2 all exist on disk. NOT PHANTOM. Score 9.2, GOOD ONE MORE PASS, agreeing
+
 ### ✅ t0601-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Cold-retrieve drill re-run with page-cache isolation (FADV_DONTNEED + mincore); verdict FAIL cold 1.28-1.30s vs 0.5s bar, first honest cold-band observation
@@ -28136,6 +28168,22 @@ _Last updated: 2026-11-25 02:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0600-lane6.md`
 
 **Evidence:** Verified: module blob sha 83ed0448b7e3d2c3 and gate/prereg/driver files sha-match receipt pins exactly; results JSON has verdict CONDITIONAL + 0-surprises/defects-confirmed fields matching the claimed CONFIRM. Score 9.5: genuine harness independence (own driver, own pre-reg cd76af18eb5b82b2 frozen before first module import, remote-extracted module
+
+### ✅ t0600 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
+
+**Task:** gap-t0600: blinded second-seat E4 rating of 9 raw winners + E1-E3 caveat verdict
+
+**Receipt:** `twelve-lane-receipts/t0600-lane1.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: pin bdfb5868a1ef00874fb8dbeb42e2fa46133e53ad is a commit in nayapower-mirror.git (2 parents, PR #2503 merge, 2026-10-12) - corpus tip is real, not a cited ghost; scratch-t0600-lane1/results-t0600-lane1.json and prereg-t0600.json both exist on disk. NOT PHANTOM. Score 9.5, clears 9.5 becau
+
+### ✅ t0600 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** gap-gap-t0600: pin re-verification (G1) + different-model re-rating (G2, declined)
+
+**Receipt:** `twelve-lane-receipts/t0600-lane1.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: pin bdfb5868a1ef00874fb8dbeb42e2fa46133e53ad is a commit in nayapower-mirror.git with exactly 2 parents (e8b4868ce, d58b6202), subject 'Merge pull request #2503 from SoulSchoolAcademy/naya5/ib-owners-naya', date 2026-10-12 21:55:39 -0700 - PR #2503 merge commit confirmed exactly as the pa
 
 ### ✅ t0600-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
@@ -28590,6 +28638,14 @@ _Last updated: 2026-11-25 02:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0594-lane6.md`
 
 **Evidence:** Verified: hidden_files/retrieval/injection-seam-v0.2-results.json sha256 f64261cab7e3bbdec15f5c9088d2c601dfbd8a6906d66e4d4bea4089cb982113 == receipt pin byte-exact; preregistration file exists; v0.1 prototype sha + matcher sha recorded inside the results JSON. Kept from 9.5: (1) judgments are single-seat (mine) — the t0588 blind-second-seat hole ca
+
+### ✅ t0593 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
+
+**Task:** gap-gap-t0593: stale sub-gap (a) + genre-selection arm (dry-fire kill, root cause)
+
+**Receipt:** `twelve-lane-receipts/t0593-lane4.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED pin-exact this tick: auto-retrieval/arm_adaptive_t0603.py sha16 c661cbc7586893fb == receipt seal; sealed-prereg-adaptive-t0603.md 791b374c078c9816; results-t0603-adaptive.json fe130034a6c7ae19; prereg-genreselect-gap0593b-DRYFIRE-KILLED.md exists. Staleness of (a) proven from live bytes (arm built t0603, pre-r
 
 ### ✅ t0593-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
 
