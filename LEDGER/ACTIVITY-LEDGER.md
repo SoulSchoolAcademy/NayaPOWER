@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 03:43 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 04:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16505,6 +16505,14 @@ _Last updated: 2026-11-25 03:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: branch naya/scratch-t0796-identity-proof exists on remote at the exact claimed SHA d3813117bce4a8126b6465e31e8a277575fc2bc7; shallow fetch + git cat-file on the raw commit object confirms author AND committer lines are 'Naya Clarity Verity <naya4@nayapower.local>' — byte-verified on live objects, not script text; score 9.5 clears the bar 
 
+### ✅ t0793 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Decision-engine check inventory: competing engine's 4 unique checks, zero production call sites
+
+**Receipt:** `twelve-lane-receipts/t0793-lane3.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: tip ba62638704256b012c20e41fe7f53cc3b62b1b44 exists in nayapower-mirror.git; git ls-tree at that tip shows kernel/decision_principle.py blob 0ff5e650... and kernel/value_calculus.py blob fc07ed2a... exactly as pinned; git grep ENGINE_VERSION at the tip returns exactly the two engine defin
+
 ### ✅ t0793-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
 **Task:** Decision-engine check inventory: 4 UNIQUE checks, zero production call sites
@@ -16527,6 +16535,14 @@ _Last updated: 2026-11-25 03:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: receipt file + hidden_files/decision-engine-check-inventory-t0793-lane3.md (6053 bytes) exist; blob SHAs byte-confirmed against the pinned tip: kernel/decision_principle.py = 0ff5e65045d2563136aebcfd05253cba5fa0acba and kernel/value_calculus.py = fc07ed2ae8c916be5c2e95cb8f4cf059968db100, both at commit ba62638704256b012c20e41fe7f53cc3b62b
 
+### ✅ t0792 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Drift-verification Stage 1: drift detector vs 5 green main tips, zero false positives
+
+**Receipt:** `twelve-lane-receipts/t0792-lane10.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: all 5 pinned tip commits exist as commit objects in nayapower-mirror.git (ba626387, c13f260f, cbd073f4, 0cc7c9f2, 7bb30402); tools/regenerate_brain_index.py exists at tip ba626387 (blob 41daba75...); tip ba626387 commit date 2026-10-14 22:04:47Z. NOT PHANTOM. Score 9.5, clears 9.5 because
+
 ### ✅ t0792-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
 **Task:** Drift-verification Stage 1: detector vs 5 green main tips, zero false positives
@@ -16548,6 +16564,14 @@ _Last updated: 2026-11-25 03:43 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0792-lane10.md`
 
 **Evidence:** Verified: receipt file twelve-lane-receipts/t0792-lane10.md exists; pinned tip ba62638704256b012c20e41fe7f53cc3b62b1b44 is a live git commit object; the receipt's evidence is self-consistent (5 full SHAs, per-tip CI byte-cites, detector --check exit 0 verbatim). Caveat: the claimed lane-feed sign-in (~20:16 PDT) is not yet in lane-feed.md (latest e
+
+### ✅ t0791 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** HV observatory window 3 measured + reproduce-first gate caught and fixed in_window always-include bug
+
+**Receipt:** `twelve-lane-receipts/t0791-lane11.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: bin/hv_measure.py exists and carries the t0791 in_window root fix verbatim (lines 131-139, non-tick filenames excluded from tick windows, still included in full-corpus runs); lane-11/metric_audit_t0791.json exists with window t1162-t0791, exactly 18 sampled rows, totals M2 17/M3 2/M4 3, c
 
 ### ✅ t0791-lane11 — Team 11, Team Naya Scorer (Human Value) — 8.5/10 [VERIFIED]
 
