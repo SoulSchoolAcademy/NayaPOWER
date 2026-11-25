@@ -4728,8 +4728,9 @@ html{scroll-padding-top:130px;}
    left-aligned over the spoken close. */
 .ov-kicker{font-family:var(--mm-font-ui);font-size:13px;font-weight:700;letter-spacing:.28em;color:#ffffff;text-align:center;margin:8px 0 20px;}
 .ov-kicker.left{text-align:left;margin:26px 0 16px;}
-/* The lead — the first paragraph, large Newsreader, centered, generous leading. */
-.ov-lead{font-family:var(--mm-font-ms);font-weight:500;font-size:24px;line-height:1.65;letter-spacing:.01em;color:#ffffff;text-align:center;margin:0 0 8px;}
+/* The lead — the first paragraph, large Newsreader, centered, generous leading.
+   Qualified past §19's `.ml-read-body p` rule (0,2,1) so the size holds. */
+.mail-stage .ml-read-body p.ov-lead{font-family:var(--mm-font-ms);font-weight:500;font-size:24px;line-height:1.65;letter-spacing:.01em;color:#ffffff;text-align:center;margin:0 0 8px;}
 /* The diamond divider — one quiet diamond, centered. */
 .ov-diamond{text-align:center;color:rgba(255,255,255,.55);font-size:20px;line-height:1;margin:26px 0;}
 /* The fact rows — one row per point, own-color dot + rim + restrained glow,
@@ -4741,8 +4742,8 @@ html{scroll-padding-top:130px;}
   font-family:var(--mm-font-ms);font-weight:500;font-size:18px;line-height:1.55;color:#ffffff;}
 .ov-fact .ov-dot{width:10px;height:10px;min-width:10px;border-radius:50%;background:var(--fc,#8e24aa);box-shadow:0 0 12px var(--fc,#8e24aa);}
 /* The spoken close — Newsreader, generous leading, breathing room. */
-.ov-spoken{font-family:var(--mm-font-ms);font-weight:500;font-size:19px;line-height:1.75;letter-spacing:.01em;color:#ffffff;margin:0;}
-.ov-sign{font-family:var(--mm-font-ms);font-weight:500;font-size:19px;line-height:1.6;color:#ffffff;margin:18px 0 0;}
+.mail-stage .ml-read-body p.ov-spoken{font-family:var(--mm-font-ms);font-weight:500;font-size:19px;line-height:1.75;letter-spacing:.01em;color:#ffffff;margin:0;}
+.mail-stage .ml-read-body p.ov-sign{font-family:var(--mm-font-ms);font-weight:500;font-size:19px;line-height:1.6;color:#ffffff;margin:18px 0 0;}
 /* The same rhythm on EVERY reading surface, not just the welcome letter:
    paragraphs breathe, the first paragraph leads. */
 .mail-stage .ml-read-body p{margin:0 0 22px;}
@@ -4751,7 +4752,7 @@ html{scroll-padding-top:130px;}
 .nm-bubble p:last-child{margin-bottom:0;}
 /* Phone: the lead steps down so it never crowds the pane. */
 @media (max-width: 640px){
-  .ov-lead{font-size:21px;}
+  .mail-stage .ml-read-body p.ov-lead{font-size:21px;}
   .ov-fact{padding:14px 16px;font-size:17px;}
 }
 
@@ -5240,6 +5241,11 @@ function syncToggleTempo(){
   if(!tog) return;
   var on = $('.nm-toggle-btn[aria-pressed="true"]', tog);
   if(on) tog.setAttribute('data-tempo', on.getAttribute('data-tempo'));
+  /* A tempo switch re-shows the read pane; the enhancement must land with
+     it, not on the next 1s poll tick (the round-11 phone probe caught the
+     pane still plain 1200ms after the tap). Run now + after renderRead. */
+  askNayaRead();
+  setTimeout(askNayaRead, 350);
 }
 function moveToggleIntoDock(){
   var tog = $('.nm-toggle');
