@@ -6016,4 +6016,63 @@ else boot();
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', pass);
 })();
 </script>
+
+<style id="ov-eye-fix2-20261125">
+/* ===== 28. EYE FIX CUT 2 — checker-16 defects on commit 1 ===== */
+/* D1: phone band — one column, full-width pills, labels never clip. */
+@media (max-width:640px){
+  #ovSecondRow{grid-template-columns:1fr !important;gap:12px !important;padding:14px !important;}
+  #ovSecondRow>*{min-height:56px !important;}
+}
+/* D3: the composer clears the fixed dock at scroll 0 (desktop) and scrolls
+   clear on phone. Thread-search goes (item 9: search is for contacts and
+   lists only — the list search stays); the 'Sending as …' label is redundant
+   with the dial; the textarea shortens. */
+#nmMsgView .nm-filter{display:none !important;}
+.nm-composer>label{display:none !important;}
+.nm-area{min-height:56px !important;}
+.nm-msg{padding-bottom:160px !important;}
+/* D4: phone send bar wraps — action balls + mic on row one, Send full-width
+   on row two. Still one bar, everything visible and tappable. */
+@media (max-width:640px){
+  .nm-sendrow{flex-wrap:wrap !important;}
+  .nm-sendrow #nmMsgSend{flex:1 1 100% !important;margin-left:0 !important;margin-top:4px !important;}
+}
+</style>
+<script>
+/* ===== 28b. EYE FIX CUT 2 — D2: the empty 'No lists yet' drawer must not
+   open over the Smart Lists dropdown. While the dropdown is open, hide that
+   drawer (it holds nothing — 'No lists yet'); the dropdown IS the lists UI now. */
+(function(){
+  function drawerFor(){
+    var els = Array.prototype.slice.call(document.querySelectorAll('*')).filter(function(e){
+      return e.children.length < 4 && (e.textContent||'').trim() === 'No lists yet';
+    });
+    if(!els.length) return null;
+    var el = els[0], p = el;
+    for(var i = 0; i < 4 && p; i++){
+      var cls = (p.className||'').toString();
+      var pos = p.style ? p.style.position : '';
+      try{ pos = pos || getComputedStyle(p).position; }catch(e){}
+      if(/drawer|panel|lists|side|rail/i.test(cls) || pos === 'fixed' || pos === 'absolute') return p;
+      p = p.parentElement;
+    }
+    return el.parentElement || el;
+  }
+  function pass(){
+    try{
+      var dd = document.getElementById('ovSlDropdown');
+      if(!dd || dd.hidden) return;
+      var d = drawerFor();
+      if(d && d.style.display !== 'none'){
+        /* Prefer the drawer's own close control; hiding is the backstop. */
+        var x = d.querySelector ? d.querySelector('[aria-label*="lose" i], [aria-label*="Close" i]') : null;
+        if(x && !x.__ovClicked){ x.__ovClicked = true; x.click(); }
+        if(d.getBoundingClientRect().height > 0) d.style.display = 'none';
+      }
+    }catch(e){}
+  }
+  setInterval(pass, 500);
+})();
+</script>
 </body></html>
