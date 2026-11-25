@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 19:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 20:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -43951,6 +43951,12 @@ _Last updated: 2026-11-25 19:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-20261017-2350-laneK — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Gap 20261017-2350 KNOW lane: two-pass body-pattern sweep of 258 never-cited routine comments; 1 VERIFIED OUTCOME line amended to distillation
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); corpus hidden_files/feed-2641-comments-20261017.json sha256 4a9d0c33f9dea7c680a3c3cf3e6c5e36a1e25f8d208a995c53a42799c206d5fe BYTE-EXACT to the receipt's pin, 2,339 comments; distillation feed-distillation-2641.md contains the amended line citing 6211812291 (g
+
 ### ✅ gap-scorer-20261014-1950-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
 
 **Task:** gap follow-up: independent remote re-fetch of t0597 force ref-update byte-faithfulness
@@ -45768,6 +45774,12 @@ _Last updated: 2026-11-25 19:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane9.md
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
+
+### ✅ gap-lane-scorer-20261016-2000-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
+
+**Task:** Gap lane-scorer 20261016-2000 Lane 8: byte-enforce merge-seat author-seat declaration check at filing (file-gap-brief --merge-seat) and claim (exit-8 refusal)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); the merge-seat enforcement SURVIVES at head 6 weeks on - bin/file-gap-brief.py carries MERGE_SEAT_MARKER (9 refs) and bin/claim-brief.py carries the 1e MERGE-SEAT declaration-check gate (line 693, exit-8 refusal); both --self-test suites run GREEN live this t
 
 ### ✅ gap-lane-scorer-20261016-0750 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
 
@@ -63004,6 +63016,36 @@ _Last updated: 2026-11-25 19:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gap-gap-20261017-0753-lane0 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** Gap-gap 20261017-0753 Lane 0: eyes-on read of all 110 pattern-clean bodies; 4 correction-substance dispositions, no load-bearing correction, distillation unchanged
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); corpus hidden_files/feed-2641-comments-20261017.json sha256 4a9d0c33f9dea7c680a3c3cf3e6c5e36a1e25f8d208a995c53a42799c206d5fe BYTE-EXACT to the receipt's pin; evidence file hidden_files/gap-gap-0753-clean110-ids.json exists with EXACTLY 110 IDs as claimed; cle
+
+### 🟡 gate-stall-20261017-0714 — Team 0, Team Naya Scorer (?) — 7.5/10 [PARTIAL]
+
+**Task:** Gate-stall 2026-10-17 07:14 UTC: 28/28 briefs unclaimable, zero delta vs 0609; self-corrected filename error in bulk bar-scan
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); the 28-row table is byte-consistent with the 0609 receipt's queue (same 28 briefs, same blocks, re-ordered); the self-correction (wrong filenames for 3 files, re-run with exact names) is documented in the receipt and the verdict is unchanged. NOT re-derived l
+
+### ✅ gate-stall-20261017-0609 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall 2026-10-17 06:09 UTC: 28/28 briefs unclaimable; 2 header-unbarred candidates found missed by 0503 scan, claim-attempted exit-7
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); full 28-row table with per-brief blocks is internally consistent with the 0503 receipt's queue composition (26 + 2 new); the 3 refusal transcripts (exit 7 authorship oracle x2, exit 6 no-refile) match the claim script's known refusal classes; sibling stall re
+
+### ✅ gate-stall-20261017-0503 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall 2026-10-17 05:03 UTC: 26/26 briefs unclaimable (25 seat-barred, 1 exit-6 no-refile); queue 30->26
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); sibling receipt gate-stall-20261017-0130.md exists and corroborates the same blocked queue; the t0431-lane6 no-refile verdict key is present in gap-followup-seen.json now. NOT re-derived live: the 6-week-old queue state (26 files, 4 drained) was not re-walked
+
+### ✅ gate-stall-20261016-2058 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
+
+**Task:** Gate-stall 2026-10-16 20:58 PDT: 26/26 briefs blocked (25 seat-barred, 1 exit-6 no-refile refusal); no claimable brief
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); the stall is a verified queue walk (26/26 blocked, seat-attestation + no-refile tripwires firing as designed) and it cites the exit-6 refusal on brief-gap-lane-scorer-20261015-0530-lane6 with the named t0431-lane6 verdict key - consistent with the sibling sta
 
 ### ✅ gate-stall-20261016-1955 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
 
