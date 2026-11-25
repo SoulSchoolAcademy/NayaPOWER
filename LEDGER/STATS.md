@@ -1,12 +1,12 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-25 19:32 UTC_
+_Last updated: 2026-11-25 20:03 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 10913
-- ✅ Verified (8+): 10794
-- 🟡 Partial (5–7): 108
+- **Total scored actions:** 10920
+- ✅ Verified (8+): 10800
+- 🟡 Partial (5–7): 109
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 7
 - **Verification rate:** 99% of actions fully verified
@@ -22,8 +22,8 @@ _Last updated: 2026-11-25 19:32 UTC_
 | Team 5 | Naya Seeker | 793 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 462 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 612 | 9.0 | 10 |
-| Team 8 | Naya Sentinel | 647 | 9.0 | 9.5 |
-| Team 9 | Naya Smith | 775 | 9.0 | 9.5 |
+| Team 8 | Naya Sentinel | 648 | 9.0 | 9.5 |
+| Team 9 | Naya Smith | 776 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 1070 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 735 | 9.1 | 9.6 |
 | Team 12 | Naya Herald | 584 | 9.1 | 9.5 |
@@ -146,19 +146,19 @@ _Last updated: 2026-11-25 19:32 UTC_
 - **pr2608-review:** 5 actions, avg 8.6/10
 - **lane-scorer-20261016-2000:** 27 actions, avg 9.1/10
 - **lane-scorer-20261016-2110:** 1 actions, avg 9.0/10
-- **gate-stall-20261016-2058:** 1 actions, avg 8.0/10
-- **gate-stall-20261017-0503:** 1 actions, avg 8.0/10
-- **gate-stall-20261017-0609:** 1 actions, avg 8.0/10
+- **gate-stall-20261016-2058:** 2 actions, avg 8.0/10
+- **gate-stall-20261017-0503:** 2 actions, avg 8.2/10
+- **gate-stall-20261017-0609:** 2 actions, avg 8.2/10
 - **20261017-0714:** 1 actions, avg 9.0/10
 - **20261017-0045:** 1 actions, avg 8.5/10
 - **20261017-0714-gap:** 1 actions, avg 9.0/10
 - **gap-20261017-0045-clarity:** 2 actions, avg 8.5/10
 - **gap-20261017-0714-lane0:** 2 actions, avg 8.2/10
-- **gate-stall-20261017-0714:** 2 actions, avg 7.2/10
-- **gap-20261017-2350-laneK:** 1 actions, avg 9.0/10
+- **gate-stall-20261017-0714:** 3 actions, avg 7.3/10
+- **gap-20261017-2350-laneK:** 2 actions, avg 9.0/10
 - **distill-feed-2641-20261017:** 2 actions, avg 8.8/10
 - **gap-20261017-0753-lane0:** 2 actions, avg 9.2/10
-- **gap-gap-20261017-0753-lane0:** 1 actions, avg 9.3/10
+- **gap-gap-20261017-0753-lane0:** 2 actions, avg 9.4/10
 - **gate-stall-20261017-0820:** 1 actions, avg 8.0/10
 - **gap-gap-20261017-0823-lane0:** 1 actions, avg 9.2/10
 - **lane-scorer-20261017-0210:** 4 actions, avg 8.9/10
@@ -2538,7 +2538,7 @@ _Last updated: 2026-11-25 19:32 UTC_
 - **gap-lane-scorer-20261016-0750:** 2 actions, avg 9.5/10
 - **gap-t1442-lane8:** 1 actions, avg 9.0/10
 - **gap-gap-t1442-lane8:** 1 actions, avg 9.5/10
-- **gap-lane-scorer-20261016-2000-lane8:** 1 actions, avg 9.5/10
+- **gap-lane-scorer-20261016-2000-lane8:** 2 actions, avg 9.5/10
 - **gap-lane-scorer-20261015-0340:** 1 actions, avg 9.0/10
 - **gap-lane-scorer-20261016-2000:** 1 actions, avg 9.4/10
 - **gap-scorer-20261014-2330:** 1 actions, avg 9.0/10
