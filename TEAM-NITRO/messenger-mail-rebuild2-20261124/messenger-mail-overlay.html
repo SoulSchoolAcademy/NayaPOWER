@@ -5039,6 +5039,33 @@ html{scroll-padding-top:130px;}
   .nm-bubble{padding:14px;}
 }
 
+/* --- 24. ROUND 15c — the checker-14 fix pass, third cut (2026-11-25 ~11:35) ---
+   The c16 probe left exactly two measurements short, both by single
+   digits: phone search bottom 728 (dock top 719) with the first conv
+   top at 730, and desktop reacts top 719 (dock top 711). This cut takes
+   the last ~30px on phone from the band tiles' stacked content (the
+   count badge's padding and the orb, never the name or the font) plus
+   the last chrome margins, and the last ~15px on desktop from the
+   thread pane's note, search and bubble padding. No font moves, no
+   element is deleted, the tabs stay 20px/21px. */
+@media (max-width:640px){
+  .mail-stage{padding-top:0;}
+  #mmTabsHost{margin-bottom:4px;}
+  #mmTabsHost .smart-tab{min-height:34px;}
+  .nm-pane h2{margin:0 0 4px;}
+  .nm-pane.nm-rail .nm-demo-note,.nm-msg-panes .nm-pane:not(.nm-rail) .nm-demo-note{margin:0 0 4px;}
+  .ov-second-row .ml-qa-item .ml-qicon{width:22px;height:22px;}
+  .ov-second-row .ml-qa-item .ml-qicon svg{width:13px;height:13px;}
+  .ov-second-row .ml-qa-item .ml-qname{line-height:1.2;}
+  .ov-second-row .ml-qa-item .ml-qcount{font-size:13px;line-height:1.3;padding:1px 8px;}
+  .ov-second-row .ml-compose-top .ov-compose-orb{width:22px;height:22px;}
+}
+@media (min-width:641px){
+  .nm-msg-panes .nm-pane:not(.nm-rail) .nm-demo-note{font-size:14px;margin:6px 0 4px;}
+  .nm-msg-panes .nm-pane:not(.nm-rail) .nm-search input{height:44px;}
+  .nm-bubble{padding:12px;}
+}
+
 </style>
 <script id="ov-script">
 /* ===== OVERLAY ROUND — behavior (2026-11-25) =====
