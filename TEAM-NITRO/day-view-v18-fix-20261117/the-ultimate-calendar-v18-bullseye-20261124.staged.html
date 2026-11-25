@@ -3492,6 +3492,14 @@ body.dash-rail-right-open .cal-rails .rail.right{transform:none!important;opacit
    drawers, Stats, the 5-row month and the R2 390 title/date fix are untouched. */
 body.dash-drawer-open #cal-plus-left{left:calc(min(340px,86vw) - 22px)!important;top:60px!important;}
 body.dash-rail-right-open #cal-plus-right{right:calc(min(340px,86vw) - 22px)!important;top:60px!important;}
+/* EYE-FIX 2026-11-24 (D4b)  at 390px the docked left + [313,60,44,44] lands on the
+   right +'s closed corner [302,44,44,44]: the two 44px circles overlap and the right
+   + (later in the DOM) sat on top, so tapping the left + to close its drawer hit the
+   right + instead. The open drawer's + now stacks above the other (1300 over 1200),
+   so the visible top + is always the one that closes the open drawer. Inert at
+   1440/500, where the two + never meet. */
+body.dash-drawer-open #cal-plus-left{z-index:1300!important;}
+body.dash-rail-right-open #cal-plus-right{z-index:1300!important;}
 </style>
 
   </head>
