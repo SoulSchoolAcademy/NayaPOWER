@@ -2366,7 +2366,7 @@ function esc(x){return String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&l
       xBtn.setAttribute('aria-label', 'Dismiss tab ' + t.label);
       xBtn.addEventListener('click', ev => { ev.stopPropagation(); closeTabPanels(); spDismissKind(t.id); });
       b.appendChild(xBtn);
-      const go = () => { activeSmartTab = t.id; rerender(); };
+      const go = () => { activeSmartTab = t.id; if(t.kindId) spLoadKind(t.kindId); else rerender(); }; // SP v5: tab tap loads its template
       b.addEventListener('click', go);
       b.addEventListener('contextmenu', ev => { ev.preventDefault(); openTabMenu(t, b); });
       /* Roving keyboard: arrows move, Home/End jump. */
