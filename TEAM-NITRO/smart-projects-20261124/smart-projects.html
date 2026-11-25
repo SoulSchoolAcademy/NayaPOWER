@@ -533,6 +533,14 @@ textarea.gr-input{resize:vertical;min-height:110px;line-height:1.55;}
 /* §10 X — rides on the v9 base, same pill language as the harvested .sn-more. */
 .smart-tab .sn-x{border:0;background:rgba(255,255,255,.1);color:#fff;border-radius:8px;padding:3px 9px;cursor:pointer;font-size:17px;line-height:1.5;font-family:inherit;transition:background .2s}
 .smart-tab .sn-x:hover{background:rgba(255,255,255,.28)}
+/* SP v5 Adaptation 10 — the pill face must load the template: with the ⋯ and ×
+   riding after a short label, the pill CENTRE fell on the ⋯ button, so a tap on
+   the middle of the pill opened the menu instead of loading the kind. A 170px
+   floor + a growing label puts the centre on the label (or the pill gap), so a
+   tap on the pill loads its template; ⋯ and × keep their own corners. */
+.smart-tab{min-width:170px}
+.smart-tab .sn-label{flex:1 1 auto;text-align:left}
+.smart-tab .sn-more,.smart-tab .sn-x{flex:0 0 auto}
 .sp-kind-more{font-size:17px;color:#fff;line-height:1.55;margin:16px 0 0}
 .sp-kind-more b{color:#d4a017}
 .sp-tpl-head{font-size:17px;font-weight:800;letter-spacing:.06em;color:#fff;margin:22px 0 8px}
