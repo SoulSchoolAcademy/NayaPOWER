@@ -48174,7 +48174,7 @@ renderGrid();
 /* NEW — in slideshow mode a skill shows its why in full (the bespoke deck
    did the same); the collapse button rests. */
 .of-slides-mode .sa-skill-why{display:block}
-.of-slides-mode .sa-skill-more{display:none}
+.of-slides-mode .sa-skill-more{display:none} /* FIX2c 2026-11-25 (defect 4): in slideshow mode only one beat shows, so the Skills section is shorter than a desktop viewport and the page cannot scroll far enough to bring its top to the viewport top (spy-proven shortfall 138px at 1919x998, 0 on phone). A full viewport of height in slides mode, so its top can always reach 0. */ [data-os-view="skills"].of-slides-mode{min-height:100vh}
 /* NEW — the Library view (item 6): organized notes + categories. */
 .of-library[hidden]{display:none}
 .of-lib-sub{font-size:15px;line-height:1.6;color:#fff;margin:4px 0 14px}
