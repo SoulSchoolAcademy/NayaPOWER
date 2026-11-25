@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 22:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 23:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -49292,6 +49292,18 @@ _Last updated: 2026-11-25 22:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ gap-lane-scorer-20261017-1800-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.3/10 [VERIFIED]
+
+**Task:** Gap follow-up 2026-10-17 (Lane 5 Seeker): bounded full-content feeder scan closing the parent's timed-out-grep bound (16,907 files, exactly 2 hits)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); all 5 named artifacts exist - bin/feed_smart_notes.py, bin/verify_feed_page.py, feed-highwater.json, smart-note-feed-queue.jsonl (1.4MB), smart-note-feed.html; both content-hit files match the receipt's feeder patterns on a re-grep of bin/ this tick. The 'exa
+
+### ✅ gap-lane-scorer-20261017-1740-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.2/10 [VERIFIED]
+
+**Task:** Gap follow-up 2026-10-17 (Lane 5 Seeker): re-run VERACITY_GUARD content sweep at real-corpus scale (632 entries, seal-before-run, 28 cells)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); all 6 evidence files in hidden_files/lane5-gap1740-realcorpus/ exist with Oct 18 01:37-01:38 UTC mtimes, consistent with the 01:27 sign-in; seal.json pins byte-match the receipt exactly (baseline_head 95db1417..., candidate_head 287555ba..., script prefixes 9
 
 ### ✅ gap-lane-scorer-20261017-1040-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
