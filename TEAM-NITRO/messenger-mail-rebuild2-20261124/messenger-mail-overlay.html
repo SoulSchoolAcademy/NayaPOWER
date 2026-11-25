@@ -2109,6 +2109,7 @@ function nmApplyJewels(){
     if(el.querySelector('img.nj-img')) return;
     if(el.classList && el.classList.contains('nm-orb')) return; /* T11: DM avatars keep their initials — never a jewel symbol */
     if(el.classList && el.classList.contains('nm-react')) return; /* T12: reactions keep their readable glyphs — never a jewel image */
+    if(el.classList && el.classList.contains('nm-icon')) return; /* T14: action icons keep their white readable SVGs — never a jewel image */
     var name = el.getAttribute('data-jewel');
     var file = J.files[name];
     if(name === 'react'){
@@ -4832,7 +4833,13 @@ function buildLeftDrawer(){
     var b = document.createElement('button');
     b.type = 'button'; b.className = 'nm-plus-item'; b.setAttribute('data-plus', d[0]);
     b.style.setProperty('--pc', d[1]); b.textContent = d[2];
-    b.addEventListener('click', function(){
+    b.addEventListener('click', function(ev){
+      /* Stop the click here: v14's document-level closer (line ~4176) shuts
+         the plus menu for any click outside .nm-plus-menu / [data-nm-bar="add"].
+         Without this, the same click that opens the menu via the trigger
+         bubbles to document and closes it again in the same tick (the menu
+         never appears — caught by the round-8 probe). */
+      if(ev) ev.stopPropagation();
       closeSides();
       openPlusMenuViaTrigger();
       setTimeout(function(){
