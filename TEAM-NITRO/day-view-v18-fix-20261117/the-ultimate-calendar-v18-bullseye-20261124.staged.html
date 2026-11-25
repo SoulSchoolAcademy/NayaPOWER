@@ -3464,6 +3464,23 @@ body.dash-rail-right-open .cal-rails .rail.right{transform:none!important;opacit
 .monthbar,.daybar,.doorbar{padding-left:56px!important;padding-right:56px!important;}
 .os-backdrop{z-index:950!important;}
 </style>
+<style id="cal-fix-390">
+/* CAL-FIX 2026-11-24  checker §D(c): at 390px the + buttons covered the
+   month title ("NOVEMBER 202") and the padded-in arrows sat on the date
+   pill. Two moves: (1) at <=560px the header bars start 64px below the
+   screen top, under the + buttons, and their side padding returns to the
+   r8 phone geometry; (2) at <=440px the title takes the 19px sub-headline
+   step of the §2.3 scale (25/19/17  never under 17px). */
+@media (max-width:560px){
+  .monthbar,.daybar,.doorbar{margin-top:64px!important;}
+  .monthbar{padding-left:4px!important;padding-right:4px!important;}
+  .daybar{padding-left:18px!important;padding-right:18px!important;}
+  .doorbar{padding-left:4px!important;padding-right:4px!important;}
+}
+@media (max-width:440px){
+  .monthname{font-size:19px!important;letter-spacing:.06em!important;}
+}
+</style>
 
   </head>
   <body>
