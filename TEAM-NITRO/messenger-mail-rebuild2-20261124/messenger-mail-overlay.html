@@ -5066,6 +5066,34 @@ html{scroll-padding-top:130px;}
   .nm-bubble{padding:12px;}
 }
 
+/* --- 25. ROUND 15d — the checker-14 fix pass, fourth cut (2026-11-25 ~11:45) ---
+   The c17 probe moved nothing on phone and only 4px on desktop, and the
+   diagnostic showed why: the "+ Add" tab pill carries 16px padding from
+   a harvested phone rule (65px tall while its siblings are 40px), so it
+   alone sets the tabs host's third row; and the band tiles render 93px
+   because their stacked content (24px orb + 17px name + 24px count
+   badge + 16px padding + gaps) exceeds the 84px min-height. This cut
+   forces the Add pill to the same 6px padding as its siblings (the
+   !important beats the harvested rule), compresses the tile stack to
+   fit the 84px min-height, and lifts the desktop thread stack with
+   explicit heights on the note, the thread search input and the pane
+   padding so the reacts row clears the dock. No font moves, nothing
+   deleted, tabs stay 20px/21px. */
+@media (max-width:640px){
+  #mmTabsHost .smart-tab{padding:6px 12px!important;min-height:34px!important;}
+  .ov-second-row .ml-qa-item{padding:6px;gap:3px;}
+  .ov-second-row .ml-qa-item .ml-qicon{width:20px;height:20px;}
+  .ov-second-row .ml-qa-item .ml-qicon svg{width:12px;height:12px;}
+  .ov-second-row .ml-qa-item .ml-qcount{line-height:1.2;}
+  .ov-second-row .ml-compose-top{padding:6px;}
+  .ov-second-row .ml-compose-top .ov-compose-orb{width:20px;height:20px;}
+}
+@media (min-width:641px){
+  .nm-msg-panes .nm-pane:not(.nm-rail){padding-top:4px;}
+  .nm-msg-panes .nm-pane:not(.nm-rail) .nm-demo-note{font-size:14px!important;line-height:1.4;margin:4px 0!important;}
+  .nm-msg-panes .nm-pane:not(.nm-rail) .nm-search input{height:44px!important;padding:8px 14px!important;box-sizing:border-box!important;}
+}
+
 </style>
 <script id="ov-script">
 /* ===== OVERLAY ROUND — behavior (2026-11-25) =====
