@@ -4362,6 +4362,21 @@ html{scroll-padding-top:130px;}
 .nm-onebar-btn:hover .nm-ob-circ{box-shadow:0 8px 24px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.12), 0 0 16px -4px var(--bc, rgba(255,255,255,.4));}
 /* Compose button: sapphire, restrained. */
 .ml-compose-top{box-shadow:inset 0 2px 0 rgba(255,255,255,.35), 0 10px 22px rgba(0,0,0,.6), 0 0 14px -6px #0f52ba;}
+/* --- 9. MAIL FOLDERS (2026-11-25 09:12, from his screenshot) ---
+   The folder icon is already a 32px orb in v14's later rule — but the
+   box was only 3px of padding around it, so the orb + its glow oversized
+   the box. His lean: the outside box a little bigger. Box grows to
+   12px padding (56px tall); the 32px orb now sits inside with clearance
+   for its glow. Icons stay 32px.
+   Active folder: NO color fill inside, NO colored text — text and box
+   stay white; the highlight is a WHITE RING AROUND the outside of the
+   box (outline + restrained own-color outer glow), never a fill. */
+.mail-stage .ml-folder{padding:12px 16px;min-height:56px;border-radius:16px;}
+.mail-stage .ml-folder .ml-ficon{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(130% 130% at 30% 22%, #2b2b35 0%, #0d0d12 55%, #050607 100%);border:1.5px solid var(--fc, #0f52ba);color:#ffffff;box-shadow:inset 0 2px 0 rgba(255,255,255,.4), inset 0 -6px 12px rgba(0,0,0,.7), 0 6px 16px rgba(0,0,0,.55), 0 0 14px -6px var(--fc, #0f52ba);}
+.mail-stage .ml-folder .ml-ficon svg{width:18px;height:18px;}
+.mail-stage .ml-folder.on{color:#ffffff;text-shadow:0 1px 3px rgba(0,0,0,.8);background:#050607;border-color:var(--fc);outline:2px solid #ffffff;outline-offset:3px;box-shadow:inset 0 1px 0 rgba(255,255,255,.1), 0 8px 18px rgba(0,0,0,.55), 0 0 16px -6px var(--fc);}
+.mail-stage .ml-folder.on .ml-fname{color:#ffffff;}
+.mail-stage .ml-folder.on .ml-badge{color:#ffffff;background:#050607;text-shadow:0 1px 3px rgba(0,0,0,.8);}
 /* Toast for honest status lines (audio/video/not-yet routes). */
 .nm-ov-toast{position:fixed;left:50%;bottom:180px;transform:translateX(-50%);z-index:2000;max-width:86vw;padding:14px 20px;border-radius:999px;border:1.5px solid #ffffff;background:#050607;color:#ffffff;font-size:17px;text-align:center;box-shadow:0 0 24px -4px rgba(255,255,255,.6), 0 16px 40px rgba(0,0,0,.65);}
 
@@ -4685,6 +4700,42 @@ function ovClusterOf(probe){
   if(/\bpost\b|feed/i.test(hay)) return 'posts';
   return 'chats';
 }
+/* The strip's CLUSTER pills are hard-wired to the Hub list inside the
+   harvested module's closure (smartTabStrip reads its own const, not
+   the exposed T.INTEL_CLUSTERS) — the override above changes the
+   classifier, the topic labels, and the filter, but NOT the cluster
+   pills. So the six Hub cluster pills are removed from the DOM after
+   every mount; the mail tabs that remain are the topic pills (All +
+   Chats / Letters / Posts + Add). If the removed pill was the active
+   one, the filter resets to All first. */
+var HUB_TAB_LABELS = ['The Intelligent Internet', 'AI Is Hiring', 'NayaNET / Naya', 'Smart Notes / Learn in a Minute', 'The Private Network / Your Vault', 'Ambassador'];
+function tabLabelOf(tab){
+  var el = tab.querySelector('.sn-label') || tab.querySelector('b');
+  return ((el && el.textContent) || '').trim();
+}
+function removeHubTabs(){
+  var removedActive = false;
+  $all('#mmTabsHost .smart-tab').forEach(function(tab){
+    if(HUB_TAB_LABELS.indexOf(tabLabelOf(tab)) > -1){
+      if(tab.getAttribute('aria-selected') === 'true') removedActive = true;
+      if(tab.parentNode) tab.parentNode.removeChild(tab);
+    }
+  });
+  if(removedActive && window.nmActivateTabByLabel){ try { window.nmActivateTabByLabel('All'); } catch(e){} }
+}
+/* The strip auto-traverses (120s marquee, window._stMarquee). A moving
+   strip under the finger makes real taps miss — a locator tap on 'All'
+   proved it (active stayed on Posts; the same tap by API and by DOM
+   click both land). Pause the marquee the moment a pointer goes down
+   on the strip, so the tap lands where the eye aimed. Motion resumes
+   on the next remount (every tab tap rebuilds the strip). */
+function pauseMarqueeOnTap(){
+  document.addEventListener('pointerdown', function(e){
+    if(e.target && e.target.closest && e.target.closest('#mmTabsHost')){
+      try { if(window._stMarquee) clearInterval(window._stMarquee); } catch(err){}
+    }
+  }, true);
+}
 function applyMailClusters(){
   var T = window.__mmTabs;
   if(!T) return false;
@@ -4705,10 +4756,11 @@ function applyTabColors(){
 }
 function watchTabs(){
   applyTabColors();
+  removeHubTabs();
   var host = $('#mmTabsHost');
   if(host && window.MutationObserver && !host.__ovWatched){
     host.__ovWatched = true;
-    var mo = new MutationObserver(function(){ applyTabColors(); trimTabText(); });
+    var mo = new MutationObserver(function(){ applyTabColors(); removeHubTabs(); trimTabText(); });
     mo.observe(host, {childList:true, subtree:true});
   }
 }
@@ -4728,6 +4780,7 @@ function boot(){
      from the mail clusters on the first paint. */
   if(applyMailClusters() && window.__mmTabsMount){ try { window.__mmTabsMount(); } catch(e){} }
   watchTabs();
+  pauseMarqueeOnTap();
   trimTabText();
   setTimeout(function(){ removeSmartLinksRow(); if(applyMailClusters() && window.__mmTabsMount){ try { window.__mmTabsMount(); } catch(e){} } watchTabs(); }, 1500);
   setTimeout(trimTabText, 3000);
