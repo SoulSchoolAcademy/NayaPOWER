@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 09:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -62652,6 +62652,36 @@ _Last updated: 2026-11-25 09:33 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261015-2021 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** gate stall: 28 queued briefs, 0 claimed (incl. script fail-open on gap-gap-t0677 caught and declined by seat judgment)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists; claim-brief.py exists (187,852 bytes); named parent gap-t0677-lane4.md exists and its title matches the receipt's verbatim quote (Clarity-authored second-seat re-execution, VOID verdict) - the fail-open catch is corroborated; prior receipt gate-stall-20261016-0238.md exist
+
+### ✅ gate-stall-20261015-2012 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: 27 queued briefs, 0 claimed (7 stamped gate + 18 parent-authorship + 1 no-refile + 1 own seat-line bar)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists; claim-brief.py exists (187,852 bytes); named parent receipts gap-t0593-lane10.md and t0431-lane6.md exist; inventory is internally consistent (7+18+1+1=27; exit-2 total 8, exit-7 18, exit-6 1) and cross-corroborates the 20:00 receipt's table (8/18/1), implicitly correcting
+
+### ✅ gate-stall-20261015-2000 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** gate stall: 27 queued briefs, 0 claimed (stamped seat gate / parent-authorship / no-refile)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists; claim-brief.py exists (187,852 bytes); named parent receipts gap-t0593-lane10.md and t0431-lane6.md exist in twelve-lane-receipts/; the Oct-15 queue state no longer exists so the 27 verdicts cannot be re-run, only cross-checked. NOT PHANTOM. Score 8.5, REWORK, below the re
+
+### ✅ seat-stall-20261015-2339 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** seat stall: 26 queued briefs, 0 claimed (8 exit-2 stamped gate, 17 exit-7 parent-authorship, 1 exit-6 no-refile)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists and is internally consistent (8+17+1=26); claim-brief.py exists; named parent receipts t0413-lane3.md and t0431-lane6.md exist in twelve-lane-receipts/. NOT PHANTOM. Score 9.0, GOOD ONE MORE PASS, below the receipt's self-score 10. Why not 9.5: the stall itself was still op
+
+### ✅ gate-stall-20261125-0134 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** gate stall: 31 queued briefs, 0 claimed (29 exit-7 parent-authorship, 2 exit-2 routing-prose)
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt exists; sweep log hidden_files/brief-queue/claim-sweep-20261125-0133.log exists (8,707 bytes, ends ALL REFUSED); queue still holds 31 brief-*.md and twelve-lane-rotation.json queued=31; queue checksum 6d9e2c4e...20ad4 matches the 00:28 receipt, so the queue is byte-identical and untouched - the s
 
 ### ✅ gate-stall-20261015-1946 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
 
