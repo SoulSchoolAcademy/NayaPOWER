@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 00:44 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 01:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16737,6 +16737,14 @@ _Last updated: 2026-11-25 00:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/surge-semantic-arm-prereg-t0782-lane5.md sha256 32b69a91... byte-exact; auto-retrieval/t0432_fingerprint.py 4ab5f359... matches the t0759 pin; both machine-law gate families recorded against the t0767 verdict file with the premise-falsification named (gates already run), not hidden. Score 9.5 clears 9.5 because every pin was 
 
+### ✅ t0780 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Second-seat review: seal CONFIRM or NEEDS_WORK on Lane 1 SURGE-(a) MCC hypothesis-change note
+
+**Receipt:** `twelve-lane-receipts/t0780-lane3.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED pin-exact this tick: hidden_files/surge-a-verdict-t0780-lane3.md SHA256 0e5c56bab7a97477e6c9d815973334a0ce137a087f3996f16518bc1264078eb2 FULL MATCH; note lane-1/surge-a-hypothesis-change-t0761.md 3b685b90c98f754c6151ba4ce8b7b951fa4a967c8a2746be948f3e0d56173efe FULL MATCH; corpse receipts re-derived from live b
+
 ### ✅ t0780-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** Second-seat review of SURGE-(a) MCC hypothesis-change note (CONFIRM with C1-C3)
@@ -16781,6 +16789,14 @@ _Last updated: 2026-11-25 00:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/demote-second-review-t0780-lane1.md b5840fc1... byte-exact; lane-8/verdict-falsified-at-retrieve-t0758.md sha16 48f873518109fc1f matches; branch head 4c29f341 matches live remote. Independent 21/21 arithmetic re-derivation (zero deltas) and 27-check acceptance re-run from live git objects close the owed t0769 second-seat-revi
 
+### ✅ t0779 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Design human-outcome collection channel spec (answer to t0765 honest zero)
+
+**Receipt:** `twelve-lane-receipts/t0779-lane11.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED pin-exact this tick: hidden_files/human-outcome-channel-v1-t0779-lane11.md SHA256 6eada75d93c388dbdcac7fefd95cae5e6a91470fb9e7a8c5c9aa519e28ecf5bc FULL MATCH; human-value-instrument-v1.md 321f3f4a... FULL MATCH; value-ledger.md 230b9813... FULL MATCH. All 4 spec sections present per receipt; census of 6 machin
+
 ### ✅ t0779-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Human-outcome collection channel spec v1 (answer to t0765 honest zero)
@@ -16810,6 +16826,14 @@ _Last updated: 2026-11-25 00:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0779-lane11.md`
 
 **Evidence:** GOOD, ONE MORE PASS. Verified: spec file hidden_files/human-outcome-channel-v1-t0779-lane11.md on disk, sha256 prefix 6eada75d93c388db matches receipt pin; instrument/ledger SHAs re-derived this tick; 6-row census re-verified (0 human-facing); board comments 6181389172 + amendment 6181413151 on #2537; 3-pass self-scorecard with ten-thing accounting
+
+### ✅ t0778 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Reconcile #2599 NOW priorities against live bytes + design mechanical claim-vs-checks gate
+
+**Receipt:** `twelve-lane-receipts/t0778-lane10.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED in part this tick: issue #2599 exists ([TEAM NAYA] NOW — live priorities) but its current body (253,483 chars) no longer contains the RECONCILIATION/LIMITS sections — the living document has been rewritten many times since 2026-10-14 (11,235 chars at patch time), which is its documented lifecycle, not falsific
 
 ### ✅ t0778-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -62162,6 +62186,12 @@ _Last updated: 2026-11-25 00:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261124-1701 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall receipt 17:01 PST: attempted all 31 queued briefs via claim-brief.py, 0 claimed, queue untouched
+
+**Evidence:** VERIFIED first-hand: queue holds exactly 31 brief-*.md files; sha256-of-sha256sum checksum 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4 matches the receipt's claim exactly and matches the 16:00 receipt's checksum (queue byte-identical across the hour); 16:00 receipt exists with identical 29x exit-7 / 2x exit-2 split; both exit-2
 
 ### ✅ gate-stall-20261124-1600 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
