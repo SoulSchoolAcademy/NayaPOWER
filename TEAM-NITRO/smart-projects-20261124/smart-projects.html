@@ -553,6 +553,43 @@ textarea.gr-input{resize:vertical;min-height:110px;line-height:1.55;}
 .sp-home-states{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
 .sp-home-state{font-size:17px;font-weight:800;letter-spacing:.06em;padding:8px 14px;border-radius:999px;border:1.5px solid var(--jc,#fff);color:#fff;background:#050607}
 .sp-home-legend{font-size:17px;color:#fff;line-height:1.5;margin:12px 0}
+/* v6b — THE WHOLE PAGE LIVES INSIDE THE FRAME (his direction, ~19:57 MST:
+   "wrap the whole thing in frame and make it make sense"). The walk's own
+   pattern, applied to the page stage: the content layer sits ABOVE the
+   frame (z-65, as .sp-stage does over the walk frame) with fin padding
+   matching the frame's opening, so the frame FRAMES the page instead of
+   hiding it. Before this, the landing/hub had no layer above z-60 and no
+   fin padding — the opaque frame painted over the whole page (desktop:
+   everything hidden; phone: topbar and hero hidden). The topbar and the
+   bottom eco bar are body-level chrome that also sat at/below z-60, so
+   they ride up to 65 too. Drawers (70), walk (70), note overlays (80)
+   and toast (120) were already above 60 and are untouched. */
+.gr-stage{z-index:65;--fin-t:88px;--fin-b:88px;--fin-l:30px;--fin-r:30px;padding:var(--fin-t) var(--fin-r) var(--fin-b) var(--fin-l)}
+@media (min-width:1024px) and (min-aspect-ratio:1/1){.gr-stage{--fin-t:220px;--fin-b:200px;--fin-l:170px;--fin-r:170px}}
+@media (min-aspect-ratio:1/1) and (max-height:700px){.gr-stage{--fin-t:120px;--fin-b:120px;--fin-l:100px;--fin-r:100px}}
+.naya-topbar{z-index:65}
+.eco-bottombar{z-index:65}
+/* v6b — the frame label (his direction, ~19:53 MST: "let's try to put in
+   the label"). A plate at the top of the stage, in the walk's frame-topbar
+   language, saying what this view is: on the landing, the system itself;
+   on a hub, the project's name, its kind, and how many of the 14
+   questions are answered. Never empty, never black: if the project fails
+   to load, the hub's own "That project is not here" state shows inside
+   the frame, and the label says so. */
+.sp-frame-label{display:flex;align-items:center;gap:12px;margin:2px 0 16px;padding:12px 16px;border:1px solid rgba(255,255,255,.16);border-radius:14px;background:rgba(5,5,7,.72)}
+.sp-fl-jewel{font-size:25px;line-height:1;color:#a06bff}
+.sp-fl-kind{display:block;font-size:17px;font-weight:800;letter-spacing:.14em;color:#ffbf3d}
+.sp-fl-title{font-family:Marcellus,Georgia,serif;font-size:25px;line-height:1.15;color:#fff}
+/* v6b — per-kind template board: the 25 kinds, each carrying its own
+   questions (SP_TEMPLATES mission_q / goal_q / vision_q, already in the
+   build for the walk). Pick a kind and its questions are there,
+   pre-filled as the template — the questions, never answers. */
+.sp-kind-chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.sp-kind-chip{font-size:17px;font-weight:800;color:#fff;background:#0d0c15;border:1.5px solid rgba(255,255,255,.25);border-radius:999px;padding:8px 14px;cursor:pointer}
+.sp-kind-chip[aria-pressed="true"]{border-color:#a06bff;background:#1b1030}
+.sp-kind-q{font-size:17px;color:#fff;line-height:1.5;margin:10px 0}
+.sp-kind-q b{color:#ffbf3d}
+.sp-kind-hint{font-size:17px;color:#fff;line-height:1.5;margin:8px 0}
 </style>
 <style id="sp-v5-css">
 /* SMART PROJECTS v5 — questions board, mini-block notes, project search. New CSS only; 17px minimum, white text, deep colors. */
@@ -585,6 +622,11 @@ textarea.gr-input{resize:vertical;min-height:110px;line-height:1.55;}
   <div class="naya-frame" aria-hidden="true"></div>
   <div class="frame-light" aria-hidden="true"></div>
 <div class="gr-stage" id="top">
+  <div class="sp-frame-label" id="sp-frame-label">
+    <span class="sp-fl-jewel" aria-hidden="true">◆</span>
+    <span><span class="sp-fl-kind" id="sp-fl-kind">SMART PROJECTS · PROJECT INTELLIGENCE</span>
+    <span class="sp-fl-title" id="sp-fl-title">Your projects — the whole system in one frame</span></span>
+  </div>
 
   <!-- ════ HOME — your projects ════ -->
   <div id="pj-home">
@@ -625,6 +667,18 @@ textarea.gr-input{resize:vertical;min-height:110px;line-height:1.55;}
         <div class="sp-w-field"><label>State — the project’s own states</label><div id="sp-home-states-pick"></div></div>
         <button type="button" class="gr-btn" id="sp-home-note-save">SAVE NOTE</button>
         <p class="gr-status" id="sp-home-note-status" aria-live="polite"></p>
+      </div>
+    </section>
+    <section class="gr-board" style="--sc:#ffbf3d">
+      <div class="gr-board-cover">
+        <div class="gr-board-num" aria-hidden="true"></div>
+        <h2>Pick your kind — the template does the thinking</h2>
+        <p class="gr-board-sub">Twenty-five kinds of project, each with its own questions already written for that kind — not the same questions all the way through. Pick one and its questions appear here, ready to answer; tap USE THIS KIND and they sit in the form below, waiting for your words. The questions are pre-filled. The answers are always yours.</p>
+      </div>
+      <div class="gr-board-body">
+        <div class="sp-kind-chips" id="sp-kind-chips"><div class="gr-empty">Reading the kinds…</div></div>
+        <div id="sp-kind-preview"><div class="gr-empty">Pick a kind above — its three questions, and where its links, notes and people live, appear here.</div></div>
+        <p class="gr-status" id="sp-kind-status" aria-live="polite"></p>
       </div>
     </section>
     <section class="gr-board" style="--sc:#a06bff">
@@ -2972,6 +3026,17 @@ function spFileHomeToProject(p){
       }).catch(function(){ return null; });
     });
   });
+  /* v6b — the kind picked on the landing files with the project, the same
+     citizen:kind row spSaveKind writes (spPostIntelFor keeps the shape).
+     A failure leaves the pick held on the device — never silently dropped. */
+  var homeKind=spHomeKind();
+  if(homeKind){
+    chain=chain.then(function(){
+      return spPostIntelFor(p.id, 'kind', 'Kind', homeKind, 0).then(function(){
+        try{ localStorage.removeItem(SP_HOME_KIND_KEY); }catch(e){}
+      }).catch(function(){ return null; });
+    });
+  }
   return chain;
 }
 function spRenderHome(){
@@ -2979,6 +3044,8 @@ function spRenderHome(){
   spStateButtons(document.getElementById('sp-home-states-pick'), SP_HOME_NOTE_STATE, function(s){ SP_HOME_NOTE_STATE=s; });
   spRenderHomeMinis();
   spLoadHomeLiveNotes();
+  spRenderKindBoard();
+  spUpdateFrameLabel();
   var sv=document.getElementById('sp-home-note-save');
   if(sv && !sv.dataset.bound){ sv.dataset.bound='1'; sv.addEventListener('click', spSaveHomeNote); }
 }
@@ -3003,6 +3070,94 @@ document.getElementById('sp-nv-edit').addEventListener('click', function(){
   document.getElementById('sp-home-note-status').textContent='Editing your note — save it again when it reads right.';
   var b=document.getElementById('sp-home-mininotes'); if(b) b.scrollIntoView({behavior:'smooth', block:'center'});
 });
+/* ═══ v6b — the frame label + the per-kind template board ═══ */
+var SP_HOME_KIND_KEY='nayanet.smart-projects.home-kind.v1';
+function spHomeKind(){ try{ return localStorage.getItem(SP_HOME_KIND_KEY)||''; }catch(e){ return ''; } }
+function spSaveHomeKind(id){ try{ if(id) localStorage.setItem(SP_HOME_KIND_KEY, id); else localStorage.removeItem(SP_HOME_KIND_KEY); }catch(e){} }
+/* The label on the frame (his direction: "let's try to put in the label").
+   Hub: the project's name, its kind, and its honest 14-question count.
+   Hub still loading: says so. Hub failed to load: after 6s the label says
+   the project is not here — the frame never renders empty and black, and
+   the page's own error state shows inside it. Landing: the system itself. */
+function spUpdateFrameLabel(){
+  var kindEl=document.getElementById('sp-fl-kind'); var titleEl=document.getElementById('sp-fl-title');
+  if(!kindEl || !titleEl) return;
+  if(S && S.project){
+    var name=(document.getElementById('pj-name') && document.getElementById('pj-name').textContent.trim()) || S.project.name || 'Project';
+    var k=spActiveKind();
+    var q=(document.getElementById('sp-q-count') && document.getElementById('sp-q-count').textContent.trim()) || '';
+    var qm=q.match(/^(\d+) of 14/);
+    kindEl.textContent='PROJECT HUB · ' + (k ? k.title.toUpperCase() : 'NO KIND PICKED YET');
+    titleEl.textContent=name + ' — Project Hub' + (qm ? ' · ' + qm[1] + ' of 14 questions answered' : '');
+  } else if(typeof PID!=='undefined' && PID){
+    kindEl.textContent='PROJECT HUB · OPENING THIS PROJECT…';
+    titleEl.textContent='Reading the project — its name, its questions, its tracking.';
+  } else {
+    kindEl.textContent='SMART PROJECTS · PROJECT INTELLIGENCE';
+    titleEl.textContent='Your projects — the whole system in one frame';
+  }
+}
+var _spRenderHeaderOrig=renderHeader;
+renderHeader=function(){ _spRenderHeaderOrig(); spUpdateFrameLabel(); };
+var _spRenderQuestionsOrig=spRenderQuestions;
+spRenderQuestions=function(){ _spRenderQuestionsOrig(); spUpdateFrameLabel(); };
+var _spLoadKindOrig=spLoadKind;
+spLoadKind=function(id){ _spLoadKindOrig(id); spUpdateFrameLabel(); };
+if(typeof PID!=='undefined' && PID){ setTimeout(function(){ if(S && S.project) return; var k2=document.getElementById('sp-fl-kind'); var t2=document.getElementById('sp-fl-title'); if(k2) k2.textContent='PROJECT HUB · NOT HERE'; if(t2) t2.textContent='That project is not here — it may have been deleted. Go back to all projects.'; }, 6000); }
+/* Per-kind templates: the 25 kinds in SP_TEMPLATES each carry their own
+   mission_q / goal_q / vision_q plus links, notes and people hints — the
+   walk already swaps them in (spStepQ). Here they are EVIDENT on the
+   landing, before any create: pick a kind, its questions are there. USE
+   THIS KIND puts the kind's three questions into the create form as the
+   questions to answer (placeholders — never answers) and files the kind
+   with the project on create (see spFileHomeToProject). */
+function spRenderKindBoard(){
+  var chips=document.getElementById('sp-kind-chips'); if(!chips) return;
+  chips.innerHTML='';
+  var picked=spHomeKind();
+  SP_TEMPLATES.forEach(function(k){
+    if(k.status!=='live') return;
+    var b=el('button','sp-kind-chip', k.label); b.type='button';
+    b.setAttribute('aria-pressed', picked===k.id ? 'true' : 'false');
+    b.addEventListener('click', function(){ spPickKind(k.id); });
+    chips.appendChild(b);
+  });
+  if(picked && spKindById(picked)){ spShowKind(picked); spUseKind(picked, true); }
+}
+function spShowKind(kindId){
+  var k=spKindById(kindId); var prev=document.getElementById('sp-kind-preview'); if(!k || !prev) return;
+  prev.innerHTML='';
+  var t=el('div','sp-kind-q',''); t.innerHTML='<b>'+k.title+'</b> — template note SN-'+k.sn+'. Its questions, ready to answer:'; prev.appendChild(t);
+  [['Mission', k.mission_q], ['Goal', k.goal_q], ['Vision', k.vision_q]].forEach(function(pair){
+    var row=el('div','sp-kind-q',''); row.innerHTML='<b>'+pair[0]+' — </b>'+pair[1]; prev.appendChild(row);
+  });
+  prev.appendChild(el('div','sp-kind-hint','Links for this kind: '+k.links_hint));
+  prev.appendChild(el('div','sp-kind-hint','Notes for this kind: '+k.notes_hint));
+  prev.appendChild(el('div','sp-kind-hint','People for this kind: '+k.people_hint));
+  var use=el('button','gr-btn','USE THIS KIND — PUT ITS QUESTIONS IN THE FORM BELOW'); use.type='button'; use.style.marginTop='12px';
+  use.addEventListener('click', function(){ spUseKind(k.id); });
+  prev.appendChild(use);
+}
+function spPickKind(kindId){
+  spSaveHomeKind(kindId);
+  spRenderKindBoard();
+  var st=document.getElementById('sp-kind-status');
+  var k=spKindById(kindId);
+  if(st && k) st.textContent=k.title+' template — its questions are below. Tap USE THIS KIND to put them in the form.';
+}
+function spUseKind(kindId, quiet){
+  var k=spKindById(kindId); if(!k) return;
+  spSaveHomeKind(kindId);
+  var m=document.getElementById('pj-new-mission'); if(m) m.placeholder=k.mission_q;
+  var g=document.getElementById('pj-new-goal'); if(g) g.placeholder=k.goal_q;
+  var v=document.getElementById('pj-new-vision'); if(v) v.placeholder=k.vision_q;
+  if(quiet) return;
+  var st=document.getElementById('sp-kind-status');
+  if(st) st.textContent=k.title+' template chosen — its Mission, Goal and Vision questions are in the form below, waiting for your words. They file into the project when you create it.';
+  var f=document.getElementById('pj-new-name');
+  if(f) f.scrollIntoView({behavior:'smooth', block:'center'});
+}
+spUpdateFrameLabel();
 
 /* ═══════════ ROUTE ═══════════ */
 if(PID){ homeEl.hidden=true; projEl.hidden=false; loadProject(); }
