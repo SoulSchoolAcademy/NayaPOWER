@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 05:51 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -51193,6 +51193,12 @@ _Last updated: 2026-11-25 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: surge/stamping-decisions-t0580b.md sha256 ee7fc4439e527665 matches the receipt byte-exact (both files + generator present on disk). Real verified value: premise-rot check first, field names falsified against live smart_note_v2.py bytes at pin e8b4868c, deterministic generator ran twice cmp-clean, 631 mechanical rows with honest c
 
+### ✅ gap-lane-scorer-20261015-1330-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.0/10 [VERIFIED]
+
+**Task:** Claim released (parent-authorship); brief gated + claim-brief.py fresh-eyes root fix
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: bin/claim-brief.py carries the fresh-eyes repair (32 'fresh' hits) and SELFTEST_AUTH_GAP_FRESHEYES fixture (2 occurrences); the full --self-test suite reports GREEN on the current file. Score 9.0. Why not 9.5: the G1 verification itself was correctly NOT done by this seat — the gap stays 
+
 ### ✅ gap-t0598 — Team 4, Team Naya Scorer (Intelligent Blocks) — 8.5/10 [VERIFIED]
 
 **Task:** gap: stale-no-execution — brief task already closed by t0603, retire with byte proof
@@ -52656,6 +52662,12 @@ _Last updated: 2026-11-25 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ gap-lane-scorer-20261015-1410-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Anti-theater re-selection extended to all 15 cells
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: retrieval/reselect-t1410-lane3.py sha256 c256d1ee5bdd31236284ca44afaf383a2c90624cdca6775e25573133cba59041 matches the receipt pin; output retrieval/overlap-cells-reselect-t1410-lane3.md exists. Clears 9.5 because: all 15 cells re-selected from the sealed rule's prose with an independent i
 
 ### ✅ gap-lane-scorer-20261015-0350 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
@@ -54168,6 +54180,12 @@ _Last updated: 2026-11-25 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0581b-lane3.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
+
+### ✅ gap-scorer-20261015-1350-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
+
+**Task:** Pin t0815-shape gated-gap self-test case in claim-brief.py
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: SELFTEST_GATEDGAP present in bin/claim-brief.py (4 occurrences) and the full --self-test suite reports GREEN on the current file (lift + main suites). Score 9.0. Why not 9.5: the fixture pins only the closed-parent below-line-1 title path; the open-parent claim-proceeds path for the same 
 
 ### ✅ gap-scorer-20261015-0400-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
@@ -56834,6 +56852,12 @@ _Last updated: 2026-11-25 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0772-lane12.md
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
+
+### ✅ gap-lane-scorer-20261015-1320-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Cold-band extended n=2 to n=5: FAIL verdict holds
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: lane-11/cold_drill_t0601.py sha256 9f5942d771e14e5acbc3a7ab6a31c61bc0aefe9e8c3efa009cd95772ee51cd1c matches the parent pin EXACTLY; the four new trial JSONs (t0601_cold_cold_3/4/5, t0601_warm_warm_4) exist in lane-11/cold_drill_t0601_out/ alongside the parent's five. Score 9.0. Why not 9.
 
 ### ✅ gap-scorer-20261015-0620-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -60876,6 +60900,12 @@ _Last updated: 2026-11-25 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0771-lane10.md
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
+
+### ✅ gap-lane-scorer-20261015-1220-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** Pin t0541 retrieval-hitrate measurement JSON (gap follow-up)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: retrieval/retrieval-hitrate-t0541.py sha256 df4962208a446efece415c452c2362e30998031109573dca7eb31efb32e3d75f matches the t0541 pin byte-exact; pinned measurement retrieval-hitrate-t0541-measurement-20261015-1220-lane1.json sha256 10cd5503273eff9fa769eb2b664bc1703883b343c2a9de3daaa38440156
 
 ### ✅ gap-scorer-20261015-0720-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.5/10 [VERIFIED]
 
