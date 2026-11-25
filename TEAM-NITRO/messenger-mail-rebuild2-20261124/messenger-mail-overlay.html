@@ -4756,6 +4756,85 @@ html{scroll-padding-top:130px;}
   .ov-fact{padding:14px 16px;font-size:17px;}
 }
 
+/* --- 21. ROUND 13 — BIGGER SMART TABS, SECOND ROW, BEAUTIFUL COMPOSE (2026-11-25 ~09:15-09:16, his words) ---
+   (1) SMART TABS NOT FORGOTTEN — THERE IS ROOM: the tab buttons get
+   BIGGER (21px label, taller pill, wider padding) and the content
+   below moves down a little (host margin + band margin) to make the
+   room. The label is .sn-label, not <b> — §13's `.smart-tab b` rule
+   never matched anything, so the labels were still 17px. This rule
+   targets the real elements. Desktop keeps one row (room to spare);
+   on phone the strip WRAPS to two rows instead of scrolling with a
+   faded, clipped edge — every pill fully visible, nothing swiped
+   away. The per-tab "···" affordance hides on phone only (it is
+   what made the row un-fittable); it stays on desktop.
+   (2) SECOND ROW: Contacts / Smart Lists / Spaces move out of the
+   mail rail into a deliberate band directly under the tabs (built
+   by overlay.js, #ovSecondRow) — a genuinely different row from
+   the tabs: navigation destinations, not filters, each its own
+   rich color, orb at the left, wide obsidian pills on a lit board.
+   (3) COMPOSE joins that band as a proper red N effect pill: one
+   clean word, a white-ringed red orb for the +, no letterspaced
+   shout, no mess of text. */
+#mmTabsHost{margin-bottom:16px;}
+#mmTabsHost .smart-tabs{padding:8px 12px 12px;}
+#mmTabsHost .smart-tab{font-size:21px;padding:16px 24px;min-height:64px;gap:12px;}
+#mmTabsHost .smart-tab .sn-label{font-size:21px;font-weight:800;color:#ffffff;text-shadow:0 1px 2px rgba(0,0,0,.9);letter-spacing:.02em;}
+#mmTabsHost .smart-tab .sn-mark{font-size:21px;}
+#mmTabsHost .smart-tab.add-tab{padding:16px 24px;}
+/* The second-row band: a lit obsidian board, same language as §17. */
+.ov-second-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:stretch;
+  margin:0 0 20px;padding:14px 16px;border-radius:20px;
+  background:linear-gradient(180deg, rgba(255,255,255,.05) 0%, rgba(255,255,255,0) 30%), #050607;
+  border:1.5px solid rgba(255,255,255,.16);
+  box-shadow:0 14px 34px rgba(0,0,0,.6), 0 0 26px -8px rgba(142,36,170,.40), inset 0 1px 0 rgba(255,255,255,.12);}
+/* QA destinations inside the band: wide obsidian pills, orb at the
+   left, rim + restrained glow in their own rich color, count at the
+   right edge. Letter-spacing tightened (.14em -> .06em) so SMART
+   LISTS sits on one line in its pill. */
+.ov-second-row .ml-qa-item{width:auto;min-width:0;flex:none;margin:0;padding:12px 16px;min-height:64px;
+  display:flex;align-items:center;justify-content:flex-start;gap:12px;
+  font-size:19px;font-weight:800;letter-spacing:.06em;
+  border-radius:999px;border:2px solid var(--qc);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.1), 0 8px 18px rgba(0,0,0,.5), 0 0 14px -6px var(--qc);}
+.ov-second-row .ml-qa-item .ml-qicon{width:36px;height:36px;}
+.ov-second-row .ml-qa-item .ml-qicon svg{width:20px;height:20px;}
+.ov-second-row .ml-qa-item .ml-qname{font-size:19px;letter-spacing:.06em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ov-second-row .ml-qa-item .ml-qcount{margin-left:auto;font-size:17px;}
+/* Compose inside the band: a proper red N effect pill. One clean
+   word ("Compose"), the + in its own white-ringed red orb, no
+   letterspaced shout. overflow:visible so the §10 orbit ring shows
+   (the base rule's overflow:hidden clipped it). */
+.ov-second-row .ml-compose-top{width:auto;min-width:0;margin:0;flex:none;overflow:visible;
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  padding:12px 20px;min-height:64px;
+  font-size:19px;font-weight:800;letter-spacing:.04em;text-shadow:0 1px 2px rgba(0,0,0,.9);}
+.ov-second-row .ml-compose-top .ov-compose-orb{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;
+  font-size:24px;font-weight:800;line-height:1;color:#ffffff;
+  background:radial-gradient(130% 130% at 30% 22%, #fca5a5 0%, #dc2626 45%, #7f1d1d 100%);
+  border:2px solid #ffffff;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.6), inset 0 -6px 12px rgba(0,0,0,.6), 0 0 14px -2px rgba(255,255,255,.5);}
+.ov-second-row .ml-compose-top .ov-compose-label{white-space:nowrap;}
+/* Phone: tabs wrap to two rows, every pill fully visible; the band
+   becomes 2×2 deliberate tiles — orb on top, name centered below,
+   so no label ever clips or crowds at 390px. */
+@media (max-width: 640px){
+  #mmTabsHost{margin-bottom:14px;}
+  #mmTabsHost .smart-tabs{flex-wrap:wrap;overflow-x:visible;overflow-y:visible;
+    -webkit-mask-image:none;mask-image:none;padding:8px 2px 12px;gap:10px;}
+  #mmTabsHost .smart-tab{flex:1 1 auto;justify-content:center;padding:14px 14px;min-height:58px;font-size:20px;}
+  #mmTabsHost .smart-tab .sn-label{font-size:20px;}
+  #mmTabsHost .smart-tab .sn-mark{font-size:20px;}
+  #mmTabsHost .smart-tab .sn-more{display:none;}
+  .ov-second-row{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:12px;margin-bottom:18px;}
+  .ov-second-row .ml-qa-item{flex-direction:column;justify-content:center;align-items:center;gap:8px;
+    padding:14px 8px;min-height:112px;font-size:17px;letter-spacing:.04em;text-align:center;}
+  .ov-second-row .ml-qa-item .ml-qicon{width:34px;height:34px;}
+  .ov-second-row .ml-qa-item .ml-qname{font-size:17px;letter-spacing:.04em;white-space:normal;line-height:1.25;text-align:center;}
+  .ov-second-row .ml-qa-item .ml-qcount{margin-left:0;}
+  .ov-second-row .ml-compose-top{flex-direction:column;gap:8px;padding:14px 8px;min-height:112px;}
+  .ov-second-row .ml-compose-top .ov-compose-orb{width:34px;height:34px;font-size:22px;}
+}
+
 </style>
 <script id="ov-script">
 /* ===== OVERLAY ROUND — behavior (2026-11-25) =====
@@ -5341,6 +5420,57 @@ function openPlusMenuViaTrigger(){
   trig.remove();
 }
 
+/* ---------- ROUND 13: SECOND ROW + BEAUTIFUL COMPOSE (2026-11-25 ~09:15-09:16) ----------
+   Contacts / Smart Lists / Spaces move OUT of the mail rail into a
+   deliberate second row directly under the smart tabs, and the
+   Compose button moves with them — the compose-area buttons composed
+   with the second row, Compose itself a proper red N effect pill.
+   The band (#ovSecondRow) sits between #mmTabsHost and .ml-panes,
+   so it is visible in BOTH tempos (chat and mail): the destinations
+   are global navigation, and Compose opens its modal from either.
+   The nodes keep their v14 listeners (appendChild moves, never
+   rebuilds), so QA panels and the composer open exactly as before.
+   renderRail() rebuilds the rail on every folder click, recreating
+   fresh QA nodes inside it — the mover re-runs on an interval and
+   after folder clicks, swaps the fresh nodes in, and drops the stale
+   band copies, so the band never duplicates and the rail never keeps
+   a second copy. The QUICK ACCESS label has no section left to label
+   once QA leaves the rail, so it goes with the move. */
+function rebuildComposeButton(){
+  var c = $('.ml-compose-top');
+  if(!c || c.__ovComposed) return;
+  c.__ovComposed = true;
+  c.innerHTML = '<span class="ov-compose-orb" aria-hidden="true">+</span><span class="ov-compose-label">Compose</span>';
+}
+function moveSecondRow(){
+  var host = $('#mmTabsHost');
+  if(!host || !host.parentNode) return false;
+  var band = $('#ovSecondRow');
+  if(!band){
+    band = document.createElement('section');
+    band.className = 'ov-second-row';
+    band.id = 'ovSecondRow';
+    band.setAttribute('aria-label', 'Contacts, smart lists, spaces and compose');
+    host.parentNode.insertBefore(band, host.nextSibling);
+  }
+  /* Fresh QA nodes recreated in the rail replace the band's stale copies. */
+  var fresh = $all('.ml-qa-item').filter(function(it){ return it.parentNode !== band; });
+  if(fresh.length){
+    $all('#ovSecondRow .ml-qa-item').forEach(function(it){ if(it.parentNode) it.parentNode.removeChild(it); });
+    fresh.forEach(function(it){ band.appendChild(it); });
+  }
+  var lab = $('.ml-qa-label');
+  if(lab && lab.parentNode) lab.parentNode.removeChild(lab);
+  var qw = $('.ml-qa');
+  if(qw && !qw.children.length && qw.parentNode) qw.parentNode.removeChild(qw);
+  var c = $('.ml-compose-top');
+  if(c){
+    rebuildComposeButton();
+    if(c.parentNode !== band) band.appendChild(c);
+  }
+  return band.children.length >= 4;
+}
+
 /* ---------- boot ---------- */
 function boot(){
   wirePlusButtons();
@@ -5356,6 +5486,14 @@ function boot(){
   watchTabs();
   watchReactions();
   watchRead();
+  moveSecondRow();
+  /* The rail rebuilds on every folder click and recreates the QA nodes
+     inside it — re-run the second-row move on an interval and after
+     folder clicks, so the band never goes stale and never duplicates. */
+  setInterval(moveSecondRow, 1500);
+  document.addEventListener('click', function(e){
+    if(e.target && e.target.closest && e.target.closest('.ml-folder')) setTimeout(moveSecondRow, 150);
+  });
   /* The tab strip can remount late (font load) and orphan the observer on
      the old #mmTabsHost — the round-9 probe caught Hub pills back on
      desktop at scroll 0. Re-run the watch on an interval: watchTabs is
@@ -5367,7 +5505,7 @@ function boot(){
   setInterval(askNayaRead, 1000);
   pauseMarqueeOnTap();
   trimTabText();
-  setTimeout(function(){ removeSmartLinksRow(); if(applyMailClusters() && window.__mmTabsMount){ try { window.__mmTabsMount(); } catch(e){} } watchTabs(); watchReactions(); watchRead(); }, 1500);
+  setTimeout(function(){ removeSmartLinksRow(); if(applyMailClusters() && window.__mmTabsMount){ try { window.__mmTabsMount(); } catch(e){} } watchTabs(); watchReactions(); watchRead(); moveSecondRow(); }, 1500);
   setTimeout(trimTabText, 3000);
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape' && document.body.hasAttribute('data-naya-drawer')) closeSides();
