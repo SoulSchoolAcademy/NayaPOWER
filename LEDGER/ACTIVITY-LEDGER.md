@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 07:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -16361,6 +16361,14 @@ _Last updated: 2026-11-25 07:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0802 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
+**Task:** Merge-readiness verdict on bridge branch (PR #2754): head, conflicts x2 methods, 14/14 gate re-run, live rows
+
+**Receipt:** `twelve-lane-receipts/t0802-lane12.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: commit 8dad8451b9c5b39f0edd2278c8155eaad11a1b0b exists in the local mirror with the exact receipt message; the two-method conflict proof (merge-tree + real worktree merge) and 14/14 gate re-run are quoted with exact SHAs/row ids, and the author's dated 2026-10-19 correction honestly voids
+
+### ✅ t0802 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
 **Task:** Merge-readiness verdict on Hub-Supabase bridge branch (PR #2754): MERGE-READY at code level
 
 **Receipt:** `twelve-lane-receipts/t0802-lane12.md`
@@ -16380,6 +16388,14 @@ _Last updated: 2026-11-25 07:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** merge-readiness verdict on Hub-Supabase bridge branch
 
 **Evidence:** Verified: branch naya4/t0800-lane0-supabase-bridge head 8dad8451b9c5b39f0edd2278c8155eaad11a1b0b confirmed on origin (git ls-remote this tick); merge-base 9134788c matches parent's cut. Score 9.5. Clears 9.5 because: head certified byte-identical to the parent receipt; conflict-proof by TWO independent methods (git merge-tree 0 markers + real scrat
+
+### ✅ t0801 — Team 11, Team Naya Scorer (Human Value) — 8.0/10 [VERIFIED]
+
+**Task:** PR #2738 review brief - recused (author seat), findings + re-file
+
+**Receipt:** `twelve-lane-receipts/t0801-lane11.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: commit 8030c2ee028504c7e0fb2193bc9f9889ef301a32 exists in the local mirror with the exact receipt message; authorship conflict is real three ways (PR body Seat declaration, author's own log, branch naming) so the recusal was correct - a false independent review was prevented. F1 (literal 
 
 ### ✅ t0801-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
@@ -16439,6 +16455,14 @@ _Last updated: 2026-11-25 07:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: branch naya4/t0800-lane0-supabase-bridge exists on origin; head SHA 8dad8451b9c5b39f0edd2278c8155eaad11a1b0b byte-matches the receipt pin; HUB/app/js/supabase-bridge.js present at that SHA (blob 213006fe...); HUB/app/index.html one-line script include present; hidden_files/bin/verify-t0800-bridge.js present (6279 bytes). Live 14/14 proof 
 
+### ✅ t0798 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Feed page rendering the live Smart Note queue (1532 feed-ready cards, probe-quarantined unit withheld)
+
+**Receipt:** `twelve-lane-receipts/t0798-lane9.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: bin/verify_feed_page.py sha256 8410a10f7a7bbfdedb35c293a2cb3fe07a56fc3b4cfc45a4085537dbe43177a3 is a byte-match to the receipt pin; feed-page-proof-20261017.png sha256 609479cfd36c0e616c08ee711148a912d2251a18c55d92b306aab8196aff3b0f is a byte-match to the receipt pin at 518,861 bytes; sma
+
 ### ✅ t0798-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Feed page rendering live Smart Note queue — 1532/1532 live gate + falsifiers
@@ -16484,6 +16508,14 @@ _Last updated: 2026-11-25 07:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Smart Note Flow capture-leg timed probe + gap contract vs Shawn's priority-#2 path
 
 **Evidence:** Verified: commit 77d9f055aa50cc5d2db0984bdcb369aaa53d5f1e exists via GitHub commits API with author/committer 'Naya Clarity Narzan <naya4@nayapower.local>' dated 2026-10-17T20:35:07Z exactly as claimed; probe-note-t0707.md exists locally; branch tip now 8b8771884 (drift = later notes staged, not refutation). Clears 9.5 because the seat-stamped auth
+
+### ✅ t0798 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Smart Lists feature breaker - module + 21 tests + SHA-guarded registry flip (specified -> built)
+
+**Receipt:** `twelve-lane-receipts/t0798-lane12.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: commit 7fba489009892eb00b49b49fbd62a8fd365f8f4b exists in the local mirror with the exact receipt message; HUB/design-system/tools/smart-builder/functions/feature_smart_list.py content sha256 b03f670557b64ea3b08e3e0bf3fc0fe6a9fb39a55ca26e5f3bcb3b2719f31984 is a byte-match to the receipt p
 
 ### ✅ t0798-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -48999,6 +49031,14 @@ _Last updated: 2026-11-25 07:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ gap-t0722 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** v2 semantic-battery corpus (fixed distractor rule) - built, frozen, run cold; F7 fired, corpus BROKEN per conflict clause
+
+**Receipt:** `twelve-lane-receipts/gap-t0722-lane5.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: commit 68f36a64ced6911cd48b3fac98e5e6a4efd039f8 exists in the local mirror with the exact receipt message; corpus_v2-semantic.json content sha256 38540981569f93f5d168382a920cd5c3c11828496b07cb8f253a56f410eaebd1 is a byte-match to the receipt's v2 corpus seal; semantic_gate_run_v2.json at 
+
 ### ✅ gap-gap-gap-t-distill-chain-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
 
 **Task:** Amended feed-distillation-554.md with the two load-bearing review essence lines (5953414793, 5914610501)
@@ -62540,6 +62580,20 @@ _Last updated: 2026-11-25 07:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gap-t0800 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Close t0800 gaps: live-negative REST test of Supabase bridge + PR #2754 opened
+
+**Receipt:** `twelve-lane-receipts/gap-t0800-lane0.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: commit 8dad8451b9c5b39f0edd2278c8155eaad11a1b0b exists in the local mirror with the exact receipt message ('t0800 lane0: Hub<->Supabase persistence bridge'); the live-negative REST test (401 / backend none / stored:false) is quoted with exact outputs and the receipt honestly scopes it as 
+
+### ✅ gate-stall-20261015-1911 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall: all 27 unclaimed briefs evaluated, refused by header/script gates, queue untouched
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt file exists and enumerates 27 brief bullets reconciling exactly (12 header/identity-barred incl. 3 CLAIMABILITY GATE + 5 NON-Clarity gate + 4 task-text second-seat bars, + 14 script exit-7 parent-authorship + 1 exit-6 no-refile = 27); bin/claim-brief.py exists; spot-checked briefs
 
 ### ✅ gate-stall-20261124-2323 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
