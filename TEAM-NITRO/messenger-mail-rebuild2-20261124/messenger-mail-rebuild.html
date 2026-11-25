@@ -3072,7 +3072,12 @@ function nmOpenRoom(kind){
   if(panes) panes.style.display = 'none';
   if(view) view.hidden = true;
   room.hidden = false;
-  room.scrollIntoView({block:'start'});
+  /* FIX7-3b: scrollIntoView({block:'start'}) puts the panel top at the viewport
+     top, under the sticky topbar + frame band — the VIDEO ROOM title hid there
+     on phone. Clear them the way nmScrollReaderIntoView does. */
+  try { var tb7 = document.querySelector('.naya-topbar');
+    var clear7 = (tb7 ? tb7.getBoundingClientRect().height : 0) + parseFloat(getComputedStyle(document.body).paddingTop || '0') + 8;
+    window.scrollTo(0, Math.max(0, room.getBoundingClientRect().top + window.scrollY - clear7)); } catch(e){ room.scrollIntoView({block:'start'}); }
   var state = document.getElementById('nmRoomState');
   if(state) state.textContent = 'Opening…';
   if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
