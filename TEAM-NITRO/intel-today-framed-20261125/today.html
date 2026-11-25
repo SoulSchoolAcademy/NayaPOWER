@@ -177,6 +177,15 @@ body{color:#fff;-webkit-text-size-adjust:100%;}
    Indigo #3f51b5 is the Calendar's own Intel Today row colour (staged
    calendar line 5692, sumRow "daily"). */
 .chrome-plus.chrome-cal{border-color:#3f51b5;box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 -3px 6px rgba(0,0,0,.6),0 4px 10px rgba(0,0,0,.55),0 0 12px -2px rgba(63,81,181,.55);margin-right:auto;}
+/* FRAMED ROLLOUT, 320px edge (maker's own eye — the added tile pushed the
+   chrome row 32px past its content box at 320px, half-cutting the calendar
+   tile at the board's left edge; 320px is outside the 390/desktop gate, but
+   a cut tile is a cut tile): below 360px only, tighter gaps + padding —
+   17px text untouched, 390/desktop untouched. */
+@media (max-width:360px){
+  .today-chrome{gap:6px;padding:6px 8px;}
+  .chrome-act{padding:8px 8px;}
+}
 /* FRAMED ROLLOUT: the daily-report list — titles + SNs from the live table. */
 .report-list{margin:12px 0 0;padding:0;list-style:none;text-align:left;}
 .report-list li{font-size:17px;line-height:1.5;color:#fff;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.12);}
