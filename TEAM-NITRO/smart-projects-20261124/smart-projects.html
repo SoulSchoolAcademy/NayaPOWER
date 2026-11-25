@@ -2907,9 +2907,11 @@ function spOpenHomeNoteView(draftIdx, liveNote){
   var body=isDraft?(d?d.body:''):(liveNote.body||'');
   var cur=isDraft?(d?d.state:'in-motion'):(SP_HOME_LIVE_STATES[liveNote.id]||'in-motion');
   SP_HOME_VIEW_DRAFT=isDraft?draftIdx:null;
-  /* 'home-draft' is not a Supabase id: the hub viewer's EDIT handler fetches
-     it, finds nothing and returns — the landing EDIT below does the work. */
-  SP_NOTE_VIEW_ID=isDraft?'home-draft':(liveNote?liveNote.id:null);
+  /* Drafts have no Supabase id: SP_NOTE_VIEW_ID stays null, so the hub
+     viewer's EDIT handler returns early (its get() on a non-UUID id
+     would 400 — 'home-draft' did exactly that, 22P02). The landing EDIT
+     below does the work, keyed off SP_HOME_VIEW_DRAFT. */
+  SP_NOTE_VIEW_ID=isDraft?null:(liveNote?liveNote.id:null);
   document.getElementById('sp-nv-title').textContent=title;
   document.getElementById('sp-nv-nutshell').textContent=nut;
   document.getElementById('sp-nv-body').textContent=body;
@@ -2980,6 +2982,15 @@ function spRenderHome(){
   var sv=document.getElementById('sp-home-note-save');
   if(sv && !sv.dataset.bound){ sv.dataset.bound='1'; sv.addEventListener('click', spSaveHomeNote); }
 }
+/* v6 fix — the hub mini-note reload race (latent v5, exposed by the v6
+   reload check): spRenderMiniNotes runs only from spRenderQuestions, which
+   runs only from the intel load — but S.notesFiled arrives with the LINKS
+   load (collectFiled). When the intel load wins the race, the mini list
+   renders empty and nothing re-renders it when the links land. Re-render
+   the mini list whenever the notes board renders; the render is
+   idempotent (innerHTML rebuilt), and the hub composer flow is untouched. */
+var _spRenderNotesOrig=renderNotes;
+renderNotes=function(){ _spRenderNotesOrig(); spRenderMiniNotes(); };
 document.getElementById('sp-nv-edit').addEventListener('click', function(){
   if(SP_HOME_VIEW_DRAFT===null || SP_HOME_VIEW_DRAFT===undefined) return;
   var list=spHomeNotes(); var d=list[SP_HOME_VIEW_DRAFT]; if(!d) return;
