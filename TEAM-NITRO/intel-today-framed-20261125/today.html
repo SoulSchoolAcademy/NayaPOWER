@@ -744,8 +744,13 @@ function renderReport(){
   inner.appendChild(el('h3','b-script','Daily report'));
   var meta=el('p','ib-meta','');
   var mb=el('b','','Day '+k+' of 6');var mt=document.createElement('span');
-  mt.textContent=' \u00B7 '+catLabelOf(daySetCat)+' \u00B7 '+notes.length+' skills today \u00B7 '+cum+' of '+allSkills.length+' skills so far';
+  mt.textContent=' \u00B7 '+catLabelOf(daySetCat)+' \u00B7 '+notes.length+' skills today';
   meta.appendChild(mb);meta.appendChild(mt);inner.appendChild(meta);
+  /* Two meta lines, not one: the single line wrapped mid-phrase ("SKILLS
+     SO / FAR" on Nov 28) — the cumulative count gets its own line. */
+  var meta2=el('p','ib-meta','');
+  meta2.appendChild(el('b','',cum+' of '+allSkills.length+' skills so far'));
+  inner.appendChild(meta2);
   var ul=el('ul','report-list','');
   notes.forEach(function(n){
     var li=el('li','','');
