@@ -4982,6 +4982,63 @@ html{scroll-padding-top:130px;}
   .mail-stage .ml-folder .ml-badge{margin-left:0;}
 }
 
+/* --- 23. ROUND 15b — the checker-14 fix pass, second cut (2026-11-25 ~11:20) ---
+   The c15 probe proved D3/D4/N1/N2/N3 fixed, but D1/D2 were still short:
+   phone search y767 (behind the dock pill) and desktop reacts y764.
+   The first cut saved ~82px on phone / ~65px on desktop; this cut finds
+   the rest in what the first cut left: the tab pills' HEIGHT (the font
+   stays 20px phone / 21px desktop — only padding and min-height shrink,
+   so the tabs stay bigger), the band tiles' stacked content (orb 24,
+   name 14, count 13 on phone), the demo note on EVERY pane (the thread
+   pane's note was still 17px/82px on phone), the conv preview's airy
+   30.6px line-height (18px text on a 30.6px line was the card's bulk),
+   and the chrome gaps. Nothing is deleted, no font goes back to 17px,
+   the second row stays 2x2 with orb on top, the icon row and brand are
+   untouched. Desktop only: the conv cards get a 64px gutter so the
+   second card's preview never sits half-hidden behind the dock at
+   scroll 0 — the first card's named lines clear the dock AND the second
+   card's preview stays below the fold. */
+
+/* --- Chrome: tabs shorter, band tighter, stage tighter (both widths) --- */
+.nm-pane{padding-top:8px;}
+.nm-pane h2{margin:0 0 6px;}
+.nm-pane.nm-rail .nm-demo-note,.nm-msg-panes .nm-pane:not(.nm-rail) .nm-demo-note{font-size:14px;line-height:1.45;margin:0 0 6px;}
+.nm-search{margin-bottom:2px;}
+.nm-msg-panes{padding-top:4px;}
+.mail-stage{margin-top:0;}
+@media (max-width:640px){
+  .mail-stage{padding-top:4px;}
+  #mmTabsHost{margin-bottom:6px;}
+  #mmTabsHost .smart-tabs{padding:2px 2px 6px;gap:6px;}
+  #mmTabsHost .smart-tab{padding:6px 12px;min-height:36px;}
+  .ov-second-row{gap:6px;padding:8px;margin-bottom:8px;}
+  .ov-second-row .ml-qa-item{padding:8px 6px;min-height:84px;gap:4px;font-size:14px;}
+  .ov-second-row .ml-qa-item .ml-qicon{width:24px;height:24px;}
+  .ov-second-row .ml-qa-item .ml-qicon svg{width:14px;height:14px;}
+  .ov-second-row .ml-qa-item .ml-qname{font-size:14px;}
+  .ov-second-row .ml-qa-item .ml-qcount{font-size:13px;}
+  .ov-second-row .ml-compose-top{padding:8px 6px;min-height:84px;gap:4px;font-size:14px;}
+  .ov-second-row .ml-compose-top .ov-compose-orb{width:24px;height:24px;font-size:18px;}
+  .nm-conv{padding-top:12px;}
+}
+@media (min-width:641px){
+  #mmTabsHost{margin-bottom:6px;}
+  #mmTabsHost .smart-tab{padding:10px 20px;min-height:48px;}
+  .ov-second-row{padding:8px 16px;margin-bottom:8px;}
+  .ov-second-row .ml-qa-item,.ov-second-row .ml-compose-top{min-height:52px;padding:6px 14px;}
+  /* Mail folders: a little more clearance for DRAFTS (was exactly 711). */
+  .mail-stage .ml-folder{padding:6px 18px;}
+  /* Conv card: the preview's 30.6px line-height was the card's bulk.
+     17px on a 22px line keeps every word, loses the air, and lifts the
+     meta / jewel / tempo lines above the dock. */
+  .nm-conv{padding-top:12px;}
+  .nm-conv-prev{font-size:17px;line-height:22px;}
+  /* Second card's preview stays below the fold at scroll 0. */
+  .nm-conv{margin-bottom:64px;}
+  /* Thread bubble: a touch less padding, for the reacts row. */
+  .nm-bubble{padding:14px;}
+}
+
 </style>
 <script id="ov-script">
 /* ===== OVERLAY ROUND — behavior (2026-11-25) =====
