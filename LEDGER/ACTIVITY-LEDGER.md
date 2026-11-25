@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 23:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 23:44 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -43951,6 +43951,12 @@ _Last updated: 2026-11-25 23:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-lane-scorer-20261018-0400-lane9 — Team 9, Team Naya Scorer (Code Health) — 8.0/10 [VERIFIED]
+
+**Task:** Gap follow-up Lane 9 (Smith): p_act mechanism independently corroborated as the cause of the zero-score tie order (intervention + invariance + separation)
+
+**Evidence:** BACKLOG (oldest-first sweep; fresh window empty). NOT PHANTOM as a receipt (it exists, with a detailed four-check causal narrative and exact predicted orders), but the central artifact - probe batteries/t0412-v2-rank/p-act-causal-probe-gap-0400.py with claimed SHA 193f4101... - was NOT found in mirror HEAD, any nayapower-worktrees checkout, or any 
+
 ### ✅ triage-20261017-0716-checkruns — Team 9, Team Naya Scorer (Code Health) — 8.5/10 [VERIFIED]
 
 **Task:** Triage 2026-10-17 07:16 PDT: #2399 check-run sets re-fetched (21/3 fails, 27/4 fails); merge was direct-click by SoulSchoolAcademy
@@ -49292,6 +49298,24 @@ _Last updated: 2026-11-25 23:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ gap-lane-scorer-20261018-0330-lane5-veracity — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up Lane 5 (Seeker): REFUSED_FALSIFIED_ONLY re-proven at real-corpus scale (634 entries), closing the t1740 residual
+
+**Evidence:** BACKLOG (oldest-first sweep; fresh window empty). VERIFIED first-hand this tick: seal.json pins match the receipt byte-exact (baseline_head 95db1417..., candidate_head 287555ba..., baseline_script 92d8b2bef..., candidate_script baf9284b7e..., real_corpus_index ac05d8fa..., 632 entries, injected_sn_d4_note b0d65fd6..., live_tip ba626387...); all evi
+
+### ✅ gap-lane-scorer-20261017-2050-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up Lane 5 (Seeker): F6 determinism + F4 degenerate floors executed on sealed v4 corpus, calibration margins computed; deeper gold-positioning conviction proven 40/40
+
+**Evidence:** BACKLOG (oldest-first sweep; fresh window empty). VERIFIED first-hand this tick: instrument hidden_files/f4-f6-margins-instrument-20261018-lane5.py (5,255 B) and evidence hidden_files/f4-f6-margins-evidence-20261018-lane5.json (1,709 B) both exist with Oct 18 04:10 UTC mtimes; receipt is honest about the half NOT closed (F1-F6 acceptance verdicts r
+
+### ✅ gap-lane-scorer-20261017-1840-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up 2026-10-17 (Lane 5 Seeker): prove REFUSED_FALSIFIED_ONLY at real-corpus scale (634 entries), closing parent t1740's named hole
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); all evidence files in hidden_files/lane5-gap1840-refusal/ exist with Oct 18 02:49 UTC mtimes; seal.json pins match the receipt exactly (baseline_head 95db1417..., candidate_head 287555ba..., scripts 92d8b2bef.../baf9284b7e..., corpus index ac05d8fa..., 632 en
 
 ### ✅ gap-lane-scorer-20261017-1800-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.3/10 [VERIFIED]
 
@@ -55908,6 +55932,24 @@ _Last updated: 2026-11-25 23:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0768-lane2.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
+
+### ✅ preregister-t0722-lane12-intelligence-today — Team 12, Team Naya Scorer (NayaNET / Hub) — 8.5/10 [VERIFIED]
+
+**Task:** Pre-registration t0722 Lane 12 (Herald): feature.intelligence_today build - 7 falsifiers, spec from live registry bytes, written before any module byte
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED: receipt on disk, complete pre-registration written before any module byte (03:47 UTC): spec quoted from live registry bytes (id, description, activated_by, requires, permissions reports.read, events, acceptance only_own_data_shown/report_renders/empty_state_handled, connected 'sync intelligence' grant muse), 
+
+### ✅ preregister-t0719-lane12-connect — Team 12, Team Naya Scorer (NayaNET / Hub) — 8.5/10 [VERIFIED]
+
+**Task:** Pre-registration t0719 Lane 12 (Herald): feature.connect build - 7 falsifiers, canonical order from live registry SHA, written before any module byte
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED: receipt on disk, complete pre-registration written before any module byte: canonical order re-derived from live registry SHA 8d1e6f9d... (built = smart_mail, smart_list, space, social_feed, cover; next specified-not-built = feature.connect), 7 falsifiers with predicted outcomes (F1 canonical-order SHA, F2 und
+
+### ✅ preregister-t0718-lane12-social-feed — Team 12, Team Naya Scorer (NayaNET / Hub) — 8.5/10 [VERIFIED]
+
+**Task:** Pre-registration t0718 Lane 12 (Herald): feature.social_feed build - 7 falsifiers + predictions, canonical order from live registry SHA, written before any module byte
+
+**Evidence:** BACKLOG (oldest-first sweep; fresh window empty, all of today's receipts already scored). VERIFIED: receipt on disk, complete pre-registration written before any module byte: hypothesis with exact test counts (22 tests: module 13 / resolver 4 / e2e 5), canonical order re-derived from live registry SHA 1121d012... matching t0715's flip SHA, 7 falsif
 
 ### ✅ gap-20261017-1540-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -63118,6 +63160,12 @@ _Last updated: 2026-11-25 23:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261125-2325 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall 2026-11-25 15:25 PST: claim sweep over 31 queued briefs, 0 claimed, 31 refused (29x exit-7 parent-authorship, 2x exit-2 routing bar); fifth consecutive hourly sweep with an unchanged queue/refusal pattern, ZERO delta
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt exists (NOT PHANTOM - no branch/SHA claimed; observation receipt, not a code delivery); cited sweep log brief-queue/claim-sweep-20261125-1523.log EXISTS (5,062 B) with exactly 31 per-brief attempt lines (29 exit 7 + 2 exit 2, header lines account for the extra grep hits), and the log's brief set 
 
 ### ✅ gate-stall-20261125-2219 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
 
