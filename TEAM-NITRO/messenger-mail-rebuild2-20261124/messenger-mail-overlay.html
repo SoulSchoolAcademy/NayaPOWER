@@ -4508,7 +4508,7 @@ html{scroll-padding-top:130px;}
    menu rides just above the dock (its inline bottom is beaten by
    the !important rule — the dock top sits ~160px up on desktop). */
 .mail-stage{padding-bottom:calc(150px + env(safe-area-inset-bottom,0px));}
-.nm-plus-menu{bottom:180px !important;}
+.nm-plus-menu{bottom:200px !important;}
 .nm-ov-toast{bottom:180px;}
 /* Icons, rebuilt: bigger bolder white glyphs on raised obsidian
    balls (the SVG swap itself is in overlay.js). */
@@ -5355,6 +5355,10 @@ function boot(){
      desktop at scroll 0. Re-run the watch on an interval: watchTabs is
      idempotent per host, and it removes Hub pills on every pass. */
   setInterval(watchTabs, 2000);
+  /* Same reason for the read enhancement: the tempo switch shows the
+     already-built read pane without mutating it, so the body observer
+     never fires after boot (boot runs in chat tempo). Poll it. */
+  setInterval(askNayaRead, 1000);
   pauseMarqueeOnTap();
   trimTabText();
   setTimeout(function(){ removeSmartLinksRow(); if(applyMailClusters() && window.__mmTabsMount){ try { window.__mmTabsMount(); } catch(e){} } watchTabs(); watchReactions(); watchRead(); }, 1500);
