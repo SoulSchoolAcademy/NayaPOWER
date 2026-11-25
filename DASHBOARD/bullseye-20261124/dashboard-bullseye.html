@@ -5275,8 +5275,8 @@ html.os-calm
 .os-dash-plugins .os-src-how{order:5;flex:1 1 100%;margin:0}
 </style>
 <div id="os-chrome">
-  <button class="rooms-plus" id="os-rooms-plus" type="button" aria-label="Open room navigation" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
-  <button class="eco-plus" id="os-eco-plus" type="button" aria-label="Show right sidebar" aria-haspopup="true" aria-expanded="false" title="Your worlds and NayaNET"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+  
+  
   <div class="os-backdrop" id="os-backdrop"></div>
   <!-- 2026-11-18 CLUSTER-FOLLOWON (§4): the hidden-by-default
     #os-drawer is GONE — replaced by the visible Hub rails (see
@@ -11282,8 +11282,8 @@ NF.register(UNIT, {
 /* FOLLOW-ON 7 2026-11-19 - these three helpers live inside this IIFE, so the tail re-bind (os-followup6) cannot see them and its handlers throw on click. Export the three names; nothing else changes. */
 window._dashIsDesktop=_dashIsDesktop; window._dashSyncPlus=_dashSyncPlus; window._dashCloseRightRail=_dashCloseRightRail;
   function closePlus(){ _dashCloseDrawer(); _dashCloseRightRail(); ecoMenu.classList.remove('open'); /* 2026-11-18 CLUSTER-FIX2 (§C1): no ecoBtn aria touch here — ecoBtn's aria-expanded is owned by _dashSyncPlus for the RIGHT RAIL (it runs inside both rail closers); the menu carries no aria-expanded of its own. */ }
-  roomsBtn.addEventListener('click', function(e){ e.stopPropagation(); if(!_dashIsDesktop()){ var l=document.body.classList.contains('dash-drawer-open'), r=document.body.classList.contains('dash-rail-right-open'); if(l||r){ closePlus(); } else { _dashOpenDrawer(); } } else if(document.body.classList.contains('dash-rail-right-collapsed')){ _dashOpenRightRail(); } else if(document.body.classList.contains('dash-rail-right-open')){ _dashCloseRightRail(); } else { document.body.classList.toggle('dash-rail-collapsed'); var c=document.body.classList.contains('dash-rail-collapsed'); try{ localStorage.setItem('naya.rail-collapsed',c?'1':'0'); }catch(_){} _dashSyncPlus(); } });
-  ecoBtn.addEventListener('click', function(e){ e.stopPropagation(); if(!_dashIsDesktop()){ var r2=document.body.classList.contains('dash-rail-right-open'); if(r2){ _dashCloseRightRail(); } else { _dashCloseDrawer(); _dashOpenRightRail(); } } else { document.body.classList.toggle('dash-rail-right-collapsed'); if(document.body.classList.contains('dash-rail-right-collapsed')) document.body.classList.remove('dash-rail-right-open'); _dashSyncPlus(); } });
+  if(roomsBtn)roomsBtn.addEventListener('click', function(e){ e.stopPropagation(); if(!_dashIsDesktop()){ var l=document.body.classList.contains('dash-drawer-open'), r=document.body.classList.contains('dash-rail-right-open'); if(l||r){ closePlus(); } else { _dashOpenDrawer(); } } else if(document.body.classList.contains('dash-rail-right-collapsed')){ _dashOpenRightRail(); } else if(document.body.classList.contains('dash-rail-right-open')){ _dashCloseRightRail(); } else { document.body.classList.toggle('dash-rail-collapsed'); var c=document.body.classList.contains('dash-rail-collapsed'); try{ localStorage.setItem('naya.rail-collapsed',c?'1':'0'); }catch(_){} _dashSyncPlus(); } });
+  if(ecoBtn)ecoBtn.addEventListener('click', function(e){ e.stopPropagation(); if(!_dashIsDesktop()){ var r2=document.body.classList.contains('dash-rail-right-open'); if(r2){ _dashCloseRightRail(); } else { _dashCloseDrawer(); _dashOpenRightRail(); } } else { document.body.classList.toggle('dash-rail-right-collapsed'); if(document.body.classList.contains('dash-rail-right-collapsed')) document.body.classList.remove('dash-rail-right-open'); _dashSyncPlus(); } });
   /* Rail closers: the X buttons, the group expanders, and the rail links
      (a rail link closes its drawer, Hub behavior). */
   (function(){
@@ -30895,7 +30895,7 @@ body.viewport-focus #viewport-back{
 <div class="fc-plusitem" role="menuitem" data-hub-plus="post-space" data-hub-href="https://nayanet.app/space#home/post" style="--mc:#d4a017"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12L4 7.5M12 12v9"/></svg></span>Post to Space</div>
 <div class="fc-plusitem" role="menuitem" data-hub-plus="post-hub" data-hub-post-composer="hub" style="--mc:#c2189b"><span class="fc-pi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(-20 12 12)"/><circle cx="19.5" cy="8.5" r="1.6" fill="currentColor" stroke="none"/></svg></span>Post to Hub</div>
 </div>
-<nav id="os-bottom3" class="os-bottom3 notif-six notif-bar" aria-label="Dashboard"><div class="notif-row"><a class="notif-seg" data-notif="plus" style="--nc:#8e24aa" href="https://nayanet.app/personal" aria-label="ADD — open" title="ADD"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ADD</span></a><a class="notif-seg" data-notif="mail" style="--nc:#0f52ba" href="https://nayanet.app/rooms/mail" aria-label="MAIL — open" title="MAIL"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">MAIL</span></a><a class="notif-seg" data-notif="activity" style="--nc:#07925f" href="https://nayanet.app/#/hub/feed-activity" aria-label="ACTIVITY — open" title="ACTIVITY"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ACTIVITY</span></a><a class="notif-seg" data-notif="spaces" style="--nc:#d4a017" href="https://nayanet.app/space" aria-label="WORLDS — open" title="WORLDS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">WORLDS</span></a><a class="notif-seg" data-notif="eco" style="--nc:#c2410c" href="https://nayanet.app/#/hub" aria-label="ECOSYSTEM — open" title="ECOSYSTEM"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ECOSYSTEM</span></a><a class="notif-seg" data-notif="plusR" style="--nc:#c62828" href="https://nayanet.app/rooms/connections" aria-label="CONNECT — open" title="CONNECT"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19.5c.7-3.4 2.9-5.2 5.5-5.2s4.8 1.8 5.5 5.2"/><circle cx="17" cy="9" r="2.7"/><path d="M16.2 14.6c2.5-.2 4.1 1.4 4.6 3.9"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">CONNECT</span></a></div></nav>
+<nav id="os-bottom3" class="os-bottom3 notif-six notif-bar" aria-label="Dashboard"><div class="notif-row"><a class="notif-seg" data-notif="plus" style="--nc:#8e24aa" href="https://nayanet.app/personal" aria-label="ADD — open" title="ADD"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ADD</span></a><a class="notif-seg" data-notif="mail" style="--nc:#0f52ba" href="https://nayanet.app/rooms/mail" aria-label="MAIL — open" title="MAIL"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">MAIL</span></a><a class="notif-seg" data-notif="activity" style="--nc:#07925f" href="https://nayanet.app/#/hub/feed-activity" aria-label="ACTIVITY — open" title="ACTIVITY"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ACTIVITY</span></a><a class="notif-seg" data-notif="spaces" style="--nc:#d4a017" href="https://nayanet.app/#/hub/spaces" aria-label="WORLDS — open" title="WORLDS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">WORLDS</span></a><a class="notif-seg" data-notif="eco" style="--nc:#c2410c" href="https://nayanet.app/#/hub" aria-label="ECOSYSTEM — open" title="ECOSYSTEM"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ECOSYSTEM</span></a><a class="notif-seg" data-notif="plusR" style="--nc:#c62828" href="https://nayanet.app/rooms/connections" aria-label="CONNECT — open" title="CONNECT"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19.5c.7-3.4 2.9-5.2 5.5-5.2s4.8 1.8 5.5 5.2"/><circle cx="17" cy="9" r="2.7"/><path d="M16.2 14.6c2.5-.2 4.1 1.4 4.6 3.9"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">CONNECT</span></a></div></nav>
 <script>
 /* RENDER FIX 2026-11-21 — ADD opens the "Which feed?" post flow (Eleven Laws law 4; Personal R5 menu harvested above). ADD never navigates to /personal while this script runs; the anchor href stays as Personal's own static fallback. Rows: Personal/Business/Space go to their harvested data-hub-href; Hub goes to the Hub composer (hub#home/post — the direct parallel of the three harvested hrefs, named in MAKER-REPORT.md). */
 (function(){
@@ -31026,7 +31026,7 @@ body.viewport-focus #viewport-back{
   var mail = document.querySelector('[data-notif="mail"]');
   if (mail) mail.addEventListener('click', function(){ window.location.href = 'https://nayanet.app/rooms/mail'; });
   var act = document.querySelector('[data-notif="activity"]');
-  if (act) act.addEventListener('click', function(e){ if(e && e.preventDefault) e.preventDefault(); openFeed(); });
+  if (act) act.addEventListener('click', function(e){ if(e && e.preventDefault) e.preventDefault(); window.location.href='https://nayanet.app/#/hub/feed-activity'; });
   /* PASS-9 2026-11-10 — TAP ONE TO SEE MORE. The notifications list is the
      only home notifications have now (the top pill is gone). Tapping a row
      opens its detail — the full date and time, then the event's own text —
@@ -31047,10 +31047,11 @@ body.viewport-focus #viewport-back{
     det.textContent = (when ? when + ' — ' : '') + txt;
     row.appendChild(det); row.classList.add('open');
   });
-  var add = document.querySelector('[data-notif="plus"]');
-  if (add) add.addEventListener('click', function(e){ if(e && e.preventDefault) e.preventDefault(); try{ if (window.osShowView) window.osShowView('home'); }catch(e){} var c=document.getElementById('os-post-body'); if (c){ try{ c.scrollIntoView({behavior:'smooth', block:'center'}); }catch(e){} try{ c.focus({preventScroll:true}); }catch(e){ try{ c.focus(); }catch(_){} } } });
+  /* INNER-FRAMES 2026-11-25 (B1): the old second ADD handler is REMOVED  it fought the
+     Which-feed menu handler (Eleven Laws law 4: ADD = "Which feed?" -> Personal / Business /
+     Space / Hub, then the post). The menu handler above stays the single ADD behaviour. */
   var worlds = document.querySelector('[data-notif="spaces"]');
-  if (worlds) worlds.addEventListener('click', function(){ window.location.href='https://nayanet.app/#/hub/spaces'; });
+  if (worlds) worlds.addEventListener('click', function(e){ if(e && e.preventDefault) e.preventDefault(); window.location.href='https://nayanet.app/#/hub/spaces'; });
   /* FIX-4 2026-11-17: the ECO tile MUST stopPropagation — without it the
      tile's own click bubbles to the document-level eco-menu closer, which
      sees the just-opened menu and a target outside it and closes it in the
@@ -32795,4 +32796,72 @@ body:not(.os-feed-open) #naya-stage-5 #os-feed-board{display:block;}
 body:not(.os-feed-open) #naya-stage-5 #os-feed-board h3{display:none;}
 body:not(.os-feed-open) #os-feed-board .os-feed-x{display:none!important;}
 </style>
+<style id="inner-frames-20261125">
+/* INNER-FRAMES 2026-11-25  Shawn's eye, voice call 2026-11-25 ~15:55 MST:
+   "You're supposed to be able to see all the stats in its own like frame just
+   like in Calendar, just like all the stages, just like innovation. So it's
+   wrapped in a frame. Each one of them."
+   FRAME (harvested verbatim from Innovations fix8  see frame-harvest-proof.txt):
+   .inner: border:1px solid rgba(255,255,255,.75);
+           box-shadow:0 0 0 1px rgba(0,0,0,.9),0 0 34px rgba(255,255,255,.35),inset 0 0 70px rgba(255,255,255,.06);
+           background:#02030a;
+   .rf-rim: border:3px solid #ffffff; border-radius:4px;
+           box-shadow:0 0 24px rgba(255,255,255,.55);
+   The rim's 3px white border is the visible frame edge; the .inner glow terms
+   ride with it. Every stats board below gets this ONE frame  the stages
+   themselves, every ph-card, the feed board, the world/found boards, the
+   stat cards, the hero, and all eleven drill stages. Nothing moved, nothing
+   hidden, nothing dropped: only the frame treatment is added. */
+.naya-stage,
+.ph-card,
+.os-feed-board,
+.os-world-board,
+.os-found-board,
+.stat-card,
+.os-hero-updated,
+.os-sales-stage,
+.os-invites-stage,
+.os-shares-stage,
+.os-joins-stage,
+.os-notes-stage,
+.os-comments-stage,
+.os-likes-stage,
+.os-creations-stage,
+.os-saves-stage,
+.os-smartlink-stage,
+.os-comp-stage{
+  border:3px solid #ffffff;
+  border-radius:4px;
+  box-shadow:0 0 24px rgba(255,255,255,.55),0 0 0 1px rgba(0,0,0,.9),0 0 34px rgba(255,255,255,.35),inset 0 0 70px rgba(255,255,255,.06);
+  background:#02030a;
+}
+/* (P) ONE PLUS, CLEAN IN ITS CORNER (voice call ~15:58 + ~16:00 MST). The legacy
+   pair is gone (see the markup removal); the single control per corner is
+   #naya-plus-left / #naya-plus-right. It sat at top:12px  ON the royal
+   frame's top ornate strip, stopping the top edge. It now sits just inside
+   the frame, below the top strip, so the frame top reads whole and clean.
+   Look unchanged (44px obsidian ball, white ring, big +); destinations
+   unchanged (left -> Hub messages sidebar, right -> Hub right rail). */
+#naya-plus-left,#naya-plus-right{top:calc(var(--bw,64px) + 12px)!important;}
+</style>
+<script id="inner-frames-20261125-js">
+/* INNER-FRAMES 2026-11-25 (S): the existing .naya-stage-fwd button per stage IS
+   the next-frame button (one per stage  no second Next was added). On Forward
+   click the sidebars close (both rails collapse, any open drawer closes) so
+   the next frame presents screen-output-only; the plus buttons reopen them.
+   The Forward landing is scrollIntoView (element-relative), so collapsing
+   the rails cannot misland it. Runs last, after the page scripts. */
+(function(){
+  var fwds=document.querySelectorAll(".naya-stage-fwd");
+  for(var i=0;i<fwds.length;i++){
+    fwds[i].addEventListener("click",function(){
+      document.body.classList.add("dash-rail-collapsed");
+      document.body.classList.add("dash-rail-right-collapsed");
+      document.body.classList.remove("dash-drawer-open");
+      document.body.classList.remove("dash-rail-right-open");
+      if(typeof window._dashSyncPlus==="function"){try{window._dashSyncPlus();}catch(e){}}
+    });
+  }
+})();
+</script>
 </body></html>
