@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 05:51 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 06:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -54181,6 +54181,12 @@ _Last updated: 2026-11-25 05:51 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/merge-receipts/pr-2501-retroactive-receipt.md exists; merge SHAs in the receipt match shared-state merge_watch_2501 (e8b4868ce402c2945a8990b1a5ddc69979b880fd) on git-protocol bytes. Different-seat re-derivation of #2501 done right: true 2-parent merge confirmed, head tree == merge tree, regex battery executed against
 
+### ✅ gap-lane-scorer-20261015-1420-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** Open-parent gated-gap sibling fixture + case in claim-brief.py
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: SELFTEST_GATEDGAP_OPEN fixture and gatedgapopen case persist in the live bin/claim-brief.py (2 hits each); full --self-test GREEN 46/46 cases plus sign-in, parent-authorship and lift suites green. Clears 9.5 because: the pin persists in the live file, the suite runs green, and the receipt
+
 ### ✅ gap-scorer-20261015-1350-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.0/10 [VERIFIED]
 
 **Task:** Pin t0815-shape gated-gap self-test case in claim-brief.py
@@ -55426,6 +55432,12 @@ _Last updated: 2026-11-25 05:51 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0768-lane2.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
+
+### ✅ gap-lane-scorer-20261015-1210-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Close citation gap: t0555 corrected verdict board post (comment ID + byte quote)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: parent receipt gap-scorer-20261015-0630-lane12.md exists and now carries comment ID 6200160386 (the in-place amendment the gap's hole #3 routed); the gap receipt cites the same ID with byte-verified quote and body sha256 12a08bc17d29887c21ca12c1022a98aa8e740f58911c63c42d4d5af3be633bb7. Li
 
 ### ✅ gap-scorer-20261015-0650-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -62480,6 +62492,12 @@ _Last updated: 2026-11-25 05:51 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261124-2224 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall receipt 22:24 PST: attempted all 31 queued briefs via claim-brief.py, 0 claimed, queue untouched
+
+**Evidence:** FRESH (filed 2026-11-24 22:24 PST, ~6 min before this tick). VERIFIED first-hand this tick: live queue holds exactly 31 brief-*.md files; recomputed sha256-of-sha256sum checksum 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4 matches the receipt pin exactly and matches the 21:18 receipt (queue byte-identical across the hour); the c
 
 ### ✅ gate-stall-20261124-2118 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
