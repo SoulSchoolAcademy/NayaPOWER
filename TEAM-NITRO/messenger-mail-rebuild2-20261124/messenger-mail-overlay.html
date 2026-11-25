@@ -6110,4 +6110,20 @@ else boot();
 .nm-dial-btn[data-nm-sendmode="mail"]{--mc:#0f52ba !important;border-color:#0f52ba !important;}
 .nm-dial-btn[data-nm-sendmode="mail"].on{border-color:#0f52ba !important;}
 </style>
+<style id="ov-eye-fix2-20261125-cut2">
+/* ===== 29. EYE FIX 2, CUT 2 — checker cut 1 findings on commit 1 =====
+   Root cause of both shortfalls: the BASE already carries a LATER style
+   block with the same id (ov-eye-fix2-20261125, the eye-fix round's own
+   "EYE FIX CUT 2" at old line 6047). Its #ovSecondRow>*{min-height:56px
+   !important} beat §28's 81px rule on order (same specificity), and its
+   .nm-area{min-height:56px} meant the textarea was already 88px, not the
+   120px §28 assumed — so the D3 lift was 16px, not 32px. These rules use
+   HIGHER specificity AND sit last, so they win on both counts. */
+@media (max-width:640px){
+  #ovSecondRow .ml-qa-item, #ovSecondRow .ml-compose-top{min-height:81px !important;}
+}
+@media (min-width:641px){
+  .nm-composer .nm-area{padding-top:8px !important;padding-bottom:8px !important;}
+}
+</style>
 </body></html>
