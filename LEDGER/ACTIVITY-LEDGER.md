@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 09:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 09:33 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -62652,6 +62652,18 @@ _Last updated: 2026-11-25 09:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261015-1946 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** gate stall: 0 briefs claimed; contradiction found (0530 brief vs t0431-lane6 no-refile verdict) routed to dispatcher
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists; named parent receipts gap-t0593-lane10.md, t0817-lane12.md, gap-t0560-lane9.md, t0426-lane2.md, gap-t0402-lane7.md, t0461-lane5.md, t0407-lane8.md all exist in twelve-lane-receipts/; claim-brief.py exists (187,852 bytes). No branch/SHA - file-based stall documentation. NOT
+
+### ✅ gate-stall-20261016-0238 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: 27 queued briefs attempted, 0 claimable by Clarity seat (18 exit-7 parent-authorship, 8 exit-2 stamped gates, 1 exit-6 no-refile), queue untouched
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt's block table has exactly 27 rows reconciling 18 exit-7 + 8 exit-2 + 1 exit-6 = 27; named parent receipts gap-t0593-lane10.md, t0817-lane12.md, gap-t0560-lane9.md, t0426-lane2.md, gap-t0402-lane7.md, t0461-lane5.md, t0407-lane8.md all exist in twelve-lane-receipts/; claim-brief.py
 
 ### ✅ gate-stall-20261015-1943 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
