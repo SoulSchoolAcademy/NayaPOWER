@@ -2265,6 +2265,28 @@ schRow.appendChild(dtWrap);
 .nm-btn.gold{border-color:#d4a017;box-shadow:0 8px 24px rgba(0,0,0,.5),0 0 18px -6px rgba(212,160,23,.45);}
 .nm-btn.green{border-color:#07925f;box-shadow:0 8px 24px rgba(0,0,0,.5),0 0 18px -6px rgba(7,146,95,.45);}
 .nm-btn.purple{border-color:#8e24aa;box-shadow:0 8px 24px rgba(0,0,0,.5),0 0 18px -6px rgba(142,36,170,.45);}
+.nm-btn.violet{border-color:#6d28d9;box-shadow:0 8px 24px rgba(0,0,0,.5),0 0 18px -6px rgba(109,40,217,.45);}
+/* FIX7-2 thread DIAL — one thread per person, Chat / Mail / Post. Same pill
+   language as the toggle: obsidian, 17px white, own-color rim when on. */
+.nm-dial{display:flex;gap:8px;margin:0 0 8px;}
+.nm-dial-btn{flex:1;background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);border:1.5px solid rgba(255,255,255,.25);border-radius:999px;color:#ffffff;font-size:17px;font-weight:700;font-family:inherit;padding:8px 0;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.5);transition:transform .3s ease,box-shadow .3s ease;}
+.nm-dial-btn:hover{transform:translateY(-2px);}
+.nm-dial-btn:active{transform:scale(.97);transition:transform .1s ease;}
+.nm-dial-btn[data-nm-sendmode="chat"].on{border-color:#8e24aa;box-shadow:0 0 24px -4px rgba(142,36,170,.65),0 8px 24px rgba(0,0,0,.5);background:linear-gradient(135deg,rgba(142,36,170,.28) 0%,#050607 50%,rgba(142,36,170,.28) 100%);}
+.nm-dial-btn[data-nm-sendmode="mail"].on{border-color:#0f52ba;box-shadow:0 0 24px -4px rgba(15,82,186,.65),0 8px 24px rgba(0,0,0,.5);background:linear-gradient(135deg,rgba(15,82,186,.28) 0%,#050607 50%,rgba(15,82,186,.28) 100%);}
+.nm-dial-btn[data-nm-sendmode="post"].on{border-color:#6d28d9;box-shadow:0 0 24px -4px rgba(109,40,217,.65),0 8px 24px rgba(0,0,0,.5);background:linear-gradient(135deg,rgba(109,40,217,.28) 0%,#050607 50%,rgba(109,40,217,.28) 100%);}
+/* FIX7-3 rooms — one in-frame room panel, built once in nmInit, hidden until
+   opened from a contact. Audio rim emerald, video rim gold. */
+#nmRoom{background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);border:1.5px solid #07925f;border-radius:22px;padding:16px;margin:0 0 16px;box-shadow:0 16px 48px rgba(0,0,0,.6);}
+#nmRoom[data-kind="video"]{border-color:#d4a017;}
+#nmRoom h2{color:#ffffff;font-size:25px;margin:0 0 8px;}
+#nmRoomVideo{display:none;width:100%;border-radius:14px;background:#000;margin:8px 0;}
+.nm-room-meter{height:8px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;margin:8px 0;}
+.nm-room-meter span{display:block;height:100%;width:0;background:#07925f;border-radius:999px;}
+#nmRoom[data-kind="video"] .nm-room-meter span{background:#d4a017;}
+.nm-room-end{display:inline-block;background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);border:1.5px solid #c62828;border-radius:999px;color:#ffffff;font-size:19px;font-weight:700;font-family:inherit;padding:12px 24px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.5);}
+.nm-room-end:hover{transform:translateY(-2px);}
+.nm-room-end:active{transform:scale(.97);transition:transform .1s ease;}
 .nm-mic{width:48px;height:48px;border-radius:50%;background:#050607;border:1.5px solid #07925f;color:#ffffff;font-size:19px;cursor:pointer;display:grid;place-items:center;box-shadow:0 2px 8px rgba(0,0,0,.4),0 0 16px -2px rgba(7,146,95,.55);transition:transform .3s ease,box-shadow .3s ease;}
 .nm-mic:hover{transform:translateY(-2px);}
 .nm-mic:active{transform:scale(.97);}
@@ -2315,7 +2337,7 @@ schRow.appendChild(dtWrap);
    frame's side bands (z-60) paint OVER anything at left:0/right:0.
    Phone: six 17px labels sum 449px > 326px inner stage, so the phone bar is
    two rows of three (row1 190px, row2 290px); desktop is one row of six. */
-.nm-onebar{position:fixed;bottom:var(--bw,96px);left:var(--bw,96px);right:var(--bw,96px);z-index:50;display:flex;align-items:flex-end;justify-content:center;gap:16px;padding:8px 16px calc(8px + env(safe-area-inset-bottom,0px));background:linear-gradient(180deg,transparent,rgba(5,5,8,.92) 30%);border-top:1px solid rgba(255,255,255,.08);box-sizing:border-box;max-width:100%;}
+.nm-onebar{position:fixed;bottom:var(--bw,96px);left:var(--bw,96px);right:var(--bw,96px);z-index:50;display:flex;align-items:flex-end;justify-content:center;gap:16px;padding:8px 16px calc(8px + env(safe-area-inset-bottom,0px));background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);border-top:1px solid rgba(255,255,255,.08);/* FIX7-1 bar opaque — below-fold text no longer ghosts through the fade */box-sizing:border-box;max-width:100%;}
 .nm-onebar-row{display:contents;}
 .nm-onebar-btn{display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:none;padding:0;cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent;touch-action:manipulation;flex:none;min-width:0;}
 .nm-onebar-btn .nm-ob-circ{position:relative;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);border:1.5px solid var(--bc,#8e24aa);color:#ffffff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.12);transition:transform .3s ease,box-shadow .3s ease;}
@@ -2686,6 +2708,8 @@ window.__nmStatusHtml = statusHtml;
 
 /* ================= The chrome + the Messenger view ================= */
 var nmTempo = 'chat'; /* the dial: 'chat' (Messenger) or 'mail' (Mail) */
+var nmSendMode = null; /* FIX7-2 thread dial: 'chat' | 'mail' | 'post'; null = follows nmTempo */
+var nmRoom = { kind:null, stream:null, raf:0, ac:null }; /* FIX7-3 room runtime */
 var nmSpace = 'space-hub-builders';
 var nmMembers = [];
 var nmSpaces = [];
@@ -2829,10 +2853,14 @@ function nmReaderHtml(){
     + '<button type="button" class="nm-act" data-nm-pin-conv="' + esc(nmSelectedConv || '') + '" style="--ac:#d4a017" aria-label="Pin conversation" title="Pin — for this visit">📌</button></div>'
     + '<div class="nm-filter"><input class="nm-search" id="nmThreadSearch" type="search" placeholder="Search this thread…" aria-label="Search this thread"></div>'
     + '<div class="nm-msg-list" id="nmMsgList">' + nmMessagesHtml(conv) + '</div>'
-    + '<div class="nm-composer"><label style="font-size:17px;color:#ffffff;display:block;margin:0 0 8px;">' + (nmTempo === 'chat' ? 'Sending as CHAT.' : 'Sending as MAIL.') + '</label>'
-    + '<textarea class="nm-area" id="nmMsgBody" placeholder="' + (nmTempo === 'chat' ? 'Message ' + esc(nmName(alias)) + '…' : 'Write to ' + esc(nmName(alias)) + ' — a letter, kept.') + '" aria-label="Write to ' + esc(alias) + '"></textarea>'
+    + '<div class="nm-composer"><label style="font-size:17px;color:#ffffff;display:block;margin:0 0 8px;">' + ((nmSendMode || nmTempo) === 'chat' ? 'Sending as CHAT.' : (nmSendMode || nmTempo) === 'mail' ? 'Sending as MAIL.' : 'Sending as POST.') + '</label>'
+    + '<div class="nm-dial" role="tablist" aria-label="Send as — Chat, Mail, or Post">'
+    + '<button type="button" class="nm-dial-btn' + (((nmSendMode || nmTempo) === 'chat') ? ' on' : '') + '" data-nm-sendmode="chat" role="tab" aria-pressed="' + (((nmSendMode || nmTempo) === 'chat') ? 'true' : 'false') + '">Chat</button>'
+    + '<button type="button" class="nm-dial-btn' + (((nmSendMode || nmTempo) === 'mail') ? ' on' : '') + '" data-nm-sendmode="mail" role="tab" aria-pressed="' + (((nmSendMode || nmTempo) === 'mail') ? 'true' : 'false') + '">Mail</button>'
+    + '<button type="button" class="nm-dial-btn' + (((nmSendMode || nmTempo) === 'post') ? ' on' : '') + '" data-nm-sendmode="post" role="tab" aria-pressed="' + (((nmSendMode || nmTempo) === 'post') ? 'true' : 'false') + '">Post</button></div>'
+    + '<textarea class="nm-area" id="nmMsgBody" placeholder="' + ((nmSendMode || nmTempo) === 'chat' ? 'Message ' + esc(nmName(alias)) + '…' : (nmSendMode || nmTempo) === 'mail' ? 'Write to ' + esc(nmName(alias)) + ' — a letter, kept.' : 'Write a post for the feed…') + '" aria-label="Write to ' + esc(alias) + '"></textarea>'
     + '<div class="nm-sendrow"><button type="button" class="nm-mic" id="nmMic" aria-label="Voice note" title="Voice note — record, transcribe, send the words">🎙</button>'
-    + '<button type="button" class="nm-btn' + (nmTempo === 'mail' ? ' gold' : ' purple') + '" id="nmMsgSend">Send ' + (nmTempo === 'chat' ? 'message' : 'mail') + '</button>'
+    + '<button type="button" class="nm-btn' + ((nmSendMode || nmTempo) === 'mail' ? ' gold' : (nmSendMode || nmTempo) === 'post' ? ' violet' : ' purple') + '" id="nmMsgSend">' + ((nmSendMode || nmTempo) === 'chat' ? 'Send message' : (nmSendMode || nmTempo) === 'mail' ? 'Send mail' : 'Post it') + '</button>'
     + '<span class="nm-note" id="nmVoiceNote"></span></div><div id="nmMsgStatus"></div></div>';
   return h;
 }
@@ -2959,6 +2987,124 @@ function nmBindMsgView(){
   if(send) send.addEventListener('click', function(){ nmSendCurrent(); });
   var mic = view.querySelector('#nmMic');
   if(mic) mic.addEventListener('click', function(){ nmVoiceNote(mic); });
+  /* FIX7-2 thread dial: switches the thread's mode in place — no refresh, so
+     typed text is never lost. */
+  view.querySelectorAll('[data-nm-sendmode]').forEach(function(b){
+    b.addEventListener('click', function(){ nmSetSendMode(b.getAttribute('data-nm-sendmode')); });
+  });
+}
+/* FIX7-2 thread dial — in-place sync, typed text preserved. */
+function nmSyncSendDial(){
+  var mode = nmSendMode || nmTempo;
+  var comp = document.querySelector('.nm-composer'); if(!comp) return;
+  var label = comp.querySelector('label');
+  if(label) label.textContent = mode === 'chat' ? 'Sending as CHAT.' : mode === 'mail' ? 'Sending as MAIL.' : 'Sending as POST.';
+  var body = document.getElementById('nmMsgBody');
+  if(body){ var nm = nmSelectedPerson ? nmName(nmSelectedPerson) : 'them';
+    body.placeholder = mode === 'chat' ? 'Message ' + nm + '…' : mode === 'mail' ? 'Write to ' + nm + ' — a letter, kept.' : 'Write a post for the feed…'; }
+  var send = document.getElementById('nmMsgSend');
+  if(send){ send.textContent = mode === 'chat' ? 'Send message' : mode === 'mail' ? 'Send mail' : 'Post it';
+    send.className = 'nm-btn' + (mode === 'mail' ? ' gold' : mode === 'post' ? ' violet' : ' purple'); }
+  comp.querySelectorAll('[data-nm-sendmode]').forEach(function(b){
+    var on = b.getAttribute('data-nm-sendmode') === mode;
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    b.classList.toggle('on', on);
+  });
+}
+function nmSetSendMode(m){
+  if(m !== 'chat' && m !== 'mail' && m !== 'post') return;
+  nmSendMode = m; nmSyncSendDial();
+}
+/* FIX7-2 Post from the thread: the post composer opens in SMART POST mode
+   with the thread's words carried into its body; the citizen picks the space,
+   then posts. Nothing is sent from the thread itself. */
+function nmOpenPost(alias, body){
+  var noteEl = document.getElementById('nmIconNote');
+  nmSetTempo('mail');
+  setTimeout(function(){
+    var c = document.querySelector('.ml-compose-top');
+    if(c) c.click();
+    setTimeout(function(){
+      var m = document.querySelector('.ml-mode[data-mode="post"]');
+      if(m) m.click();
+      setTimeout(function(){
+        var bd = document.querySelector('.mlx-body');
+        if(bd && body){ bd.value = body; bd.dispatchEvent(new Event('input', {bubbles:true})); }
+        if(noteEl){ noteEl.hidden = false; noteEl.textContent = 'Post composer open — your words carried over. Pick the space, then post.'; }
+      }, 250);
+    }, 250);
+  }, 250);
+}
+/* FIX7-3 rooms — in the frame, from a contact. Local mic/camera only: the
+   peer joins when they open the room; no peer connection exists yet, and the
+   room says so honestly instead of faking a call. */
+function nmRoomStop(){
+  try{ if(nmRoom.raf) cancelAnimationFrame(nmRoom.raf); }catch(e){}
+  nmRoom.raf = 0;
+  try{ if(nmRoom.stream) nmRoom.stream.getTracks().forEach(function(t){ t.stop(); }); }catch(e){}
+  nmRoom.stream = null;
+  try{ if(nmRoom.ac) nmRoom.ac.close(); }catch(e){}
+  nmRoom.ac = null;
+  var v = document.getElementById('nmRoomVideo');
+  if(v){ try{ v.srcObject = null; }catch(e){} }
+  var m = document.getElementById('nmRoomMeter');
+  if(m) m.style.width = '0';
+}
+function nmOpenRoom(kind){
+  var person = nmSelectedPerson;
+  var noteEl = document.getElementById('nmIconNote');
+  if(!person){ if(noteEl){ noteEl.hidden = false; noteEl.textContent = 'Pick a person first — rooms open from a contact.'; } return false; }
+  nmRoomStop();
+  nmRoom.kind = kind;
+  var room = document.getElementById('nmRoom'); if(!room) return false;
+  room.setAttribute('data-kind', kind);
+  var title = document.getElementById('nmRoomTitle'); if(title) title.textContent = (kind === 'video') ? 'VIDEO ROOM' : 'AUDIO ROOM';
+  var nm2 = document.getElementById('nmRoomName'); if(nm2) nm2.textContent = nmName(person);
+  var orb = document.getElementById('nmRoomOrb'); if(orb){ orb.textContent = String(person).charAt(0).toUpperCase(); orb.style.setProperty('--cc', nmColorFor(person)); }
+  var note = document.getElementById('nmRoomNote');
+  if(note) note.textContent = (kind === 'video')
+    ? 'Your camera is live on this device. ' + nmName(person) + ' joins when they open the room — the call itself is not connected yet.'
+    : 'Your mic is live on this device. ' + nmName(person) + ' joins when they open the room — the call itself is not connected yet.';
+  var video = document.getElementById('nmRoomVideo');
+  if(video){ video.style.display = (kind === 'video') ? 'block' : 'none'; }
+  var panes = document.querySelector('.mail-stage .ml-panes');
+  var view = document.getElementById('nmMsgView');
+  if(panes) panes.style.display = 'none';
+  if(view) view.hidden = true;
+  room.hidden = false;
+  room.scrollIntoView({block:'start'});
+  var state = document.getElementById('nmRoomState');
+  if(state) state.textContent = 'Opening…';
+  if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
+    if(state) state.textContent = 'Mic/camera not available here — type instead.';
+    return true;
+  }
+  var cons = (kind === 'video') ? {video:true, audio:true} : {audio:true};
+  navigator.mediaDevices.getUserMedia(cons).then(function(stream){
+    nmRoom.stream = stream;
+    if(kind === 'video' && video){ try{ video.srcObject = stream; video.play(); }catch(e){} }
+    if(kind === 'audio'){
+      try{
+        var AC = window.AudioContext || window.webkitAudioContext;
+        var ac = new AC(); nmRoom.ac = ac;
+        var src = ac.createMediaStreamSource(stream);
+        var an = ac.createAnalyser(); an.fftSize = 256; src.connect(an);
+        var data = new Uint8Array(an.frequencyBinCount);
+        var meter = document.getElementById('nmRoomMeter');
+        var tick = function(){ an.getByteTimeDomainData(data); var peak = 0; for(var i=0;i<data.length;i++){ var v = Math.abs(data[i]-128)/128; if(v>peak) peak=v; } if(meter) meter.style.width = Math.round(Math.min(1, peak*2.2)*100) + '%'; nmRoom.raf = requestAnimationFrame(tick); };
+        tick();
+      }catch(e){}
+    }
+    if(state) state.textContent = (kind === 'video') ? 'Live — camera on' : 'Live — mic on';
+  }, function(){
+    if(state) state.textContent = 'Mic/camera not available here — type instead.';
+  });
+  return true;
+}
+function nmCloseRoom(){
+  nmRoomStop();
+  var room = document.getElementById('nmRoom'); if(room) room.hidden = true;
+  nmSetTempo(nmTempo);
 }
 function nmSendCurrent(){
   var alias = nmSelectedPerson;
@@ -2966,8 +3112,10 @@ function nmSendCurrent(){
   var statusEl = document.getElementById('nmMsgStatus');
   var sendBtn = document.getElementById('nmMsgSend');
   if(!alias || !bodyEl) return;
-  var kind = (nmTempo === 'chat') ? 'dm' : 'mail';
   var body = bodyEl.value;
+  var smode = nmSendMode || nmTempo;
+  if(smode === 'post'){ nmOpenPost(alias, body); return; }
+  var kind = (smode === 'chat') ? 'dm' : 'mail';
   if(sendBtn) sendBtn.disabled = true;
   sendMessage(kind, alias, '', body, NM_ME).then(function(res){
     if(sendBtn) sendBtn.disabled = false;
@@ -3037,6 +3185,7 @@ function nmSyncToggle(){
 }
 function nmSetTempo(tempo){
   nmTempo = (tempo === 'mail') ? 'mail' : 'chat';
+  nmSendMode = null; /* FIX7-2: the view dial governs again until the thread dial is tapped */
   nmSyncToggle();
   var st = document.querySelector('.mail-stage'); if(st) st.setAttribute('data-tempo', nmTempo);
   var panes = document.querySelector('.mail-stage .ml-panes');
@@ -3073,6 +3222,19 @@ function nmInit(){
   stage.insertBefore(chrome, panes);
   /* MM-TABS ADAPTER: host for the harvested Hub smart-tabs strip — above both pane sets (chat + mail). */
   if(!document.getElementById('mmTabsHost')){ var mmHost = document.createElement('div'); mmHost.id = 'mmTabsHost'; stage.insertBefore(mmHost, panes); }
+  /* FIX7-3 rooms: one in-frame room panel, built once, hidden until opened. */
+  if(!document.getElementById('nmRoom')){
+    var roomEl = document.createElement('section'); roomEl.id = 'nmRoom'; roomEl.hidden = true;
+    roomEl.innerHTML = '<h2 id="nmRoomTitle">AUDIO ROOM</h2>'
+      + '<div class="nm-room-head"><span class="nm-orb" id="nmRoomOrb">?</span><div><div class="nm-person-name" id="nmRoomName"></div><div class="nm-person-sub" id="nmRoomState">Opening…</div></div></div>'
+      + '<video id="nmRoomVideo" playsinline muted autoplay></video>'
+      + '<div class="nm-room-meter"><span id="nmRoomMeter"></span></div>'
+      + '<p class="nm-note" id="nmRoomNote"></p>'
+      + '<button type="button" class="nm-room-end" id="nmRoomEnd">End room</button>';
+    stage.insertBefore(roomEl, panes);
+    var endBtn = roomEl.querySelector('#nmRoomEnd');
+    if(endBtn) endBtn.addEventListener('click', function(){ nmCloseRoom(); });
+  }
   if(window.__mmTabsMount) window.__mmTabsMount();
   stage.insertAdjacentHTML('beforeend', nmMsgViewHtml());
   chrome.querySelectorAll('.nm-toggle-btn').forEach(function(b){
@@ -3094,6 +3256,7 @@ window.NayaMsgRebuild = {
   refresh: nmRefreshMsgView, /* MM-TABS ADAPTER: lets the tabs re-render re-filter the conversations */
   tempo: function(){ return nmTempo; },
   setTempo: nmSetTempo,
+  openRoom: nmOpenRoom, closeRoom: nmCloseRoom, setSendMode: nmSetSendMode, sendMode: function(){ return nmSendMode || nmTempo; },
   send: sendMessage,
   loadDMs: nmLoadDMs,
   members: function(){ return nmMembers; },
@@ -3675,8 +3838,8 @@ return {
       var k = ic.getAttribute('data-nm-icon'); note(null);
       if(k === 'mail'){ tempo('mail'); }
       else if(k === 'chat'){ tempo('chat'); }
-      else if(k === 'voice'){ var mic = document.getElementById('nmMic'); if(mic){ mic.click(); } else { note('Pick a person first — the mic lives in the composer.'); } }
-      else if(k === 'video'){ note('Video calls — not live yet.'); }
+      else if(k === 'voice'){ if(window.NayaMsgRebuild && window.NayaMsgRebuild.openRoom) window.NayaMsgRebuild.openRoom('audio'); }
+      else if(k === 'video'){ if(window.NayaMsgRebuild && window.NayaMsgRebuild.openRoom) window.NayaMsgRebuild.openRoom('video'); }
       else if(k === 'search'){ if(!focusEl(document.getElementById('nmSearch'))) note('Pick a person first — search lives with the people.'); }
       else if(k === 'compose'){ if(!focusEl(document.getElementById('nmMsgBody'))) focusEl(document.getElementById('nmSearch')); }
       else if(k === 'send'){ var s = document.getElementById('nmMsgSend'); if(s){ s.click(); } else { note('Pick a person first — then write, then send.'); } }
