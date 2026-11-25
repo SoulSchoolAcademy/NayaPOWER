@@ -3209,11 +3209,48 @@ function nmScrollReaderIntoView(){
   if(y < 0) y = 0;
   window.scrollTo(0, y);
 }
+/* LOOK14 — search re-render re-bind. The search handler replaces
+   #nmConvList innerHTML with fresh rows, so the directly-bound conv-row
+   and per-person act-button handlers die with the old elements — and
+   clearing the search does not revive them; only a full refresh (which
+   rebuilds the whole view and re-binds) did. This helper binds exactly
+   the rail-list handlers (conv rows, per-person Message/Mail act
+   buttons, member rows) on the CURRENT list elements. Called from
+   nmBindMsgView (fresh view) and from the search handler (fresh rows).
+   The search input listener itself is bound once in nmBindMsgView and
+   is never re-bound here, so no listener is duplicated and no keystroke
+   double-fires. */
+function nmBindConvRows(){
+  var lists = [];
+  var cl = document.getElementById('nmConvList'); if(cl) lists.push(cl);
+  var pl = document.getElementById('nmPeopleList'); if(pl) lists.push(pl);
+  lists.forEach(function(list){
+    list.querySelectorAll('[data-nm-dm]').forEach(function(b){
+      b.addEventListener('click', function(ev){ ev.stopPropagation(); nmSelectedPerson = b.getAttribute('data-nm-dm'); nmSelectedConv = null; nmTempo = 'chat'; nmSyncToggle(); nmRefreshMsgView(); var ta = document.getElementById('nmMsgBody'); if(ta) ta.focus(); nmScrollReaderIntoView(); });
+    });
+    list.querySelectorAll('[data-nm-mail]').forEach(function(b){
+      b.addEventListener('click', function(ev){ ev.stopPropagation(); nmSelectedPerson = b.getAttribute('data-nm-mail'); nmSelectedConv = null; nmTempo = 'mail'; nmSyncToggle(); nmRefreshMsgView(); var ta = document.getElementById('nmMsgBody'); if(ta) ta.focus(); nmScrollReaderIntoView(); });
+    });
+    list.querySelectorAll('[data-nm-person]').forEach(function(b){
+      b.addEventListener('click', function(){ nmSelectedPerson = b.getAttribute('data-nm-person'); nmSelectedConv = null; nmRefreshMsgView(); var ta = document.getElementById('nmMsgBody'); if(ta) ta.focus(); nmScrollReaderIntoView(); });
+    });
+    list.querySelectorAll('[data-nm-conv]').forEach(function(b){
+      b.addEventListener('click', function(){
+        nmSelectedConv = b.getAttribute('data-nm-conv');
+        var c = nmConvs.filter(function(x){ return x.threadId === nmSelectedConv; })[0];
+        nmSelectedPerson = c ? c.with : nmSelectedPerson;
+        nmRefreshMsgView();
+        var ta = document.getElementById('nmMsgBody'); if(ta) ta.focus();
+        nmScrollReaderIntoView();
+      });
+    });
+  });
+}
 function nmBindMsgView(){
   var view = document.getElementById('nmMsgView');
   if(!view) return;
   var s = view.querySelector('#nmSearch');
-  if(s) s.addEventListener('input', function(){ nmSearch = s.value; var pl = document.getElementById('nmPeopleList'); if(pl) pl.innerHTML = nmMemberRows(); var cl = document.getElementById('nmConvList'); if(cl) cl.innerHTML = nmConvRows(); if(window.nmApplyJewels) window.nmApplyJewels(); });
+  if(s) s.addEventListener('input', function(){ nmSearch = s.value; var pl = document.getElementById('nmPeopleList'); if(pl) pl.innerHTML = nmMemberRows(); var cl = document.getElementById('nmConvList'); if(cl) cl.innerHTML = nmConvRows(); if(window.nmApplyJewels) window.nmApplyJewels(); nmBindConvRows(); });
   view.querySelectorAll('[data-nm-space]').forEach(function(b){
     b.addEventListener('click', function(){
       nmSpace = b.getAttribute('data-nm-space');
@@ -3223,25 +3260,7 @@ function nmBindMsgView(){
   view.querySelectorAll('[data-nm-filter]').forEach(function(b){
     b.addEventListener('click', function(){ nmFilter = b.getAttribute('data-nm-filter'); nmRefreshMsgView(); });
   });
-  view.querySelectorAll('[data-nm-dm]').forEach(function(b){
-    b.addEventListener('click', function(ev){ ev.stopPropagation(); nmSelectedPerson = b.getAttribute('data-nm-dm'); nmSelectedConv = null; nmTempo = 'chat'; nmSyncToggle(); nmRefreshMsgView(); var ta = document.getElementById('nmMsgBody'); if(ta) ta.focus(); nmScrollReaderIntoView(); });
-  });
-  view.querySelectorAll('[data-nm-mail]').forEach(function(b){
-    b.addEventListener('click', function(ev){ ev.stopPropagation(); nmSelectedPerson = b.getAttribute('data-nm-mail'); nmSelectedConv = null; nmTempo = 'mail'; nmSyncToggle(); nmRefreshMsgView(); var ta = document.getElementById('nmMsgBody'); if(ta) ta.focus(); nmScrollReaderIntoView(); });
-  });
-  view.querySelectorAll('[data-nm-person]').forEach(function(b){
-    b.addEventListener('click', function(){ nmSelectedPerson = b.getAttribute('data-nm-person'); nmSelectedConv = null; nmRefreshMsgView(); var ta = document.getElementById('nmMsgBody'); if(ta) ta.focus(); nmScrollReaderIntoView(); });
-  });
-  view.querySelectorAll('[data-nm-conv]').forEach(function(b){
-    b.addEventListener('click', function(){
-      nmSelectedConv = b.getAttribute('data-nm-conv');
-      var c = nmConvs.filter(function(x){ return x.threadId === nmSelectedConv; })[0];
-      nmSelectedPerson = c ? c.with : nmSelectedPerson;
-      nmRefreshMsgView();
-      var ta = document.getElementById('nmMsgBody'); if(ta) ta.focus();
-      nmScrollReaderIntoView();
-    });
-  });
+  nmBindConvRows();
   view.querySelectorAll('[data-nm-react]').forEach(function(b){
     b.addEventListener('click', function(){
       var id = b.getAttribute('data-nm-msgid'), r = b.getAttribute('data-nm-react');
