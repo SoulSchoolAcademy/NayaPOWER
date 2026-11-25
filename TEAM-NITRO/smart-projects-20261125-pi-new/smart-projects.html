@@ -3528,7 +3528,7 @@ function spFileRow(f){
         collectFiled(); refreshNumbersOnly(); loadActivity();
       });
     });
-    row.appendChild(x);
+    var _o=row.querySelector('a.gr-btn'); if(_o) row.insertBefore(x,_o); else row.appendChild(x); /* PI-FIX D3 r5: the remove X rides line 1 with the icon + name — OPEN takes line 2 alone. */
   }
   return row;
 }
