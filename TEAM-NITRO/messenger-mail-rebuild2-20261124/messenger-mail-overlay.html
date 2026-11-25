@@ -5879,12 +5879,39 @@ else boot();
 .ov-sl-item .ov-sl-dot{width:12px;height:12px;border-radius:50%;background:var(--tc,#8e24aa);flex:none;
   box-shadow:0 0 10px var(--tc,#8e24aa);}
 </style>
+<style id="ov-eye-fix2-20261125">
+/* ===== 28. EYE FIX 2 2026-11-25 — captain's eye GOES BACK, four seat-fixable
+   defects (EYE-VERDICT.md, eye-fix-20261125). D5/D6 are the captain's design
+   call and are NOT touched here. Harvested base only; nothing else moves. */
+/* D1 — SEND NOW was a blue-filled button (Obsidian Button Law). Obsidian
+   pill like Compose: obsidian gradient, sapphire rim + glow, white text.
+   Same treatment for the compose sheet's INBOX/INSTANT mode tabs, which
+   read green/blue-filled (eye D1 note): obsidian with their own rim. */
+.ml-btn.mlx-send{background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%) !important;
+  border-color:var(--ml-blue) !important;
+  box-shadow:0 0 32px -6px var(--ml-blue), inset 0 1px 0 rgba(255,255,255,.18) !important;}
+.mail-stage .ml-mode[data-mode="inbox"].on{background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%) !important;}
+.mail-stage .ml-mode[data-mode="instant"].on{background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%) !important;}
+/* D2 — phone top band: Compose rendered 57px against CONTACTS/SMART LISTS
+   81px (stacked content beats the 58px min-height). All three 81px. */
+@media (max-width:640px){
+  #ovSecondRow>*{min-height:81px !important;}
+}
+/* D3 — desktop 1280 scroll 0: Send bottom 679 vs dock top 672 (7px under).
+   Tighten the composer stack above the send row by 32px (composer
+   padding/margin 20->12, textarea 120->104) so the send row clears the
+   dock with margin at 1280. Desktop only; phone untouched. */
+@media (min-width:641px){
+  .nm-composer{padding-top:12px !important;padding-bottom:12px !important;margin-top:12px !important;}
+  .nm-area{min-height:104px !important;}
+}
+</style>
 <script>
 /* ===== 27. EYE FIX 2026-11-25 — behaviour layer (runs last, re-applies on an
    interval because the rail rebuilds QA nodes and nmRefreshMsgView rebuilds
    the reader; clones, never rebuilds — handlers travel via document delegation). */
 (function(){
-  var PALETTE = {'New':'#8e24aa','All':'#0f52ba','Posts':'#07925f','Letters':'#d4a017','Chats':'#6d28d9','+ Add':'#c2410c'};
+  var PALETTE = {'New':'#8e24aa','All':'#0f52ba','Posts':'#07925f','Letters':'#d4a017','Chats':'#6d28d9','+ Add':'#c2410c','＋ Add':'#c2410c'};
   function $(s, r){ return (r||document).querySelector(s); }
   function $all(s, r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); }
   function txt(el){ return (el.textContent||'').trim(); }
@@ -5932,7 +5959,7 @@ else boot();
       labels.forEach(function(lb){
         var b = document.createElement('button');
         b.type = 'button'; b.className = 'ov-sl-item'; b.setAttribute('data-ov-list', lb);
-        b.style.setProperty('--tc', PALETTE[lb] || '#8e24aa');
+        b.style.setProperty('--tc', PALETTE[lb] || PALETTE[lb.replace(/＋/g,'+')] || '#8e24aa');
         b.innerHTML = '<span class="ov-sl-dot" aria-hidden="true"></span><span>' + lb.replace(/</g,'&lt;') + '</span>';
         b.addEventListener('click', function(){
           var pills = $all('#mmTabsHost .smart-tab');
@@ -5947,7 +5974,7 @@ else boot();
       });
       var w = document.createElement('button');
       w.type = 'button'; w.className = 'ov-sl-item'; w.setAttribute('data-ov-list', 'Worlds');
-      w.style.setProperty('--tc', '#d4a017');
+      w.style.setProperty('--tc', '#0e7490');
       w.innerHTML = '<span class="ov-sl-dot" aria-hidden="true"></span><span>Worlds</span>';
       w.addEventListener('click', function(){
         var sp = null;
