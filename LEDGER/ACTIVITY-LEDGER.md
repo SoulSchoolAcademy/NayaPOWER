@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 11:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 11:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -43817,6 +43817,12 @@ _Last updated: 2026-11-25 11:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-scorer-20261014-1950-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up: independent remote re-fetch of t0597 force ref-update byte-faithfulness
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: git ls-remote on the mirror returns branch naya/nine-retrieval-auth-wire-packet-t0537 at exactly 99a2f832d054b3963fd4503702ecc2c00e59b73d (the receipt's pin, head unmoved); all 4 files at that head sha256-match the receipt's pins (refusal_point e8254132..., test ea0affe8..., red_demo 9d9b
+
 ### ✅ gap-lane-scorer-20261015-1700-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** t0705 E3 sign-out timestamps re-derived from live lane-feed bytes: both FAIL, root cause named
@@ -61115,6 +61121,12 @@ _Last updated: 2026-11-25 11:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: note hidden_files/arm-j-hypothesis-change-t0771-lane10.md sha256 041b1049...e1e824 matches receipt (213 lines); board post #2537 comment 6179863087 on record. Delivered exactly what the breaker's demand asked: 4/4 verdict records byte-quoted, wall compressed to one mechanism sentence (situation text crossing a neural boundary becomes enta
 
+### ✅ gap-scorer-20261014-1940-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: close 3 Template v2 specified-not-built items (control cites real material, full seal, rubric_blind)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: v2 example dir exists with sealed/expected.sealed.json, sealed/mapping.sealed.json, blinded/rubric.json + blind-J/M/W.json, scorecard.json verdict EXPERIMENT_PASSES, seal-receipt timestamps ordered sealed 04:31:17 < scorer_completed 04:31:27 < unsealed 04:31:29. Adversarial red tests (sea
+
 ### ✅ gap-lane-scorer-20261015-1220-lane1 — Team 1, Team Naya Scorer (Verification & Proof) — 9.0/10 [VERIFIED]
 
 **Task:** Pin t0541 retrieval-hitrate measurement JSON (gap follow-up)
@@ -62694,6 +62706,96 @@ _Last updated: 2026-11-25 11:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gap-gap-gate-stall-20261016-0009-lane0 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up: regeneration hook + stall-path consultation doc for eligibility index
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt file exists and was read in full; hidden_files/bin/refresh-eligibility-index.py exists with sha256 EXACT MATCH (b9cf18a6a45a4674b5b0600321adca230e648483fc0247839efbc0fdc91b0f7a); hidden_files/brief-queue-eligibility-README.md exists with sha256 EXACT MATCH (a3806124cbbcf50b4e20b7a
+
+### ✅ gate-stall-20261016-0721 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: 26/26 unclaimable by Clarity seat, zero claims
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt file exists and was read; full-queue ORDERING evaluation, 26/26 unclaimable, zero claims, queue untouched, correct skip. Score 9.0. Why not 9.5: faithful stall record, but a report of blocked work rather than completed work - the queue is unchanged.
+
+### ✅ gap-gate-stall-20261016-0009-lane0 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: built machine-readable brief-queue eligibility index
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt file exists and was read in full; builder hidden_files/bin/build-eligibility-index.py exists with sha256 EXACT MATCH (63110bea3dff52c5e826f85566af15200505be3b8bd23b5c35a1a8bb0772a488); index file exists (sha differs from the receipt's 07:17 UTC stamp because the follow-up wrapper 
+
+### ✅ gate-stall-20261016-0009 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: nothing claimed, queue left untouched
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt file exists and was read; full-queue stall, nothing claimed, nothing executed, queue untouched, correct skip. Score 9.0. Why not 9.5: honest stall record, but no forward value - the same blocked queue, documented again rather than moved.
+
+### ✅ gap-lane-scorer-20261016-0000-lane-executor — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up: corrected prose count 30 -> 26 on gate-stall-20261015-2358
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt file exists and was read in full; retraction section present in the parent receipt (gate-stall-20261015-2358.md line 58), machine row count confirmed (grep -c '^|' = 28, i.e. 26 data rows), sibling receipt corroborates 26 (25 second-seat + 1 no-refile), claimed/ empty. Score 9.5. 
+
+### ✅ gate-stall-20261015-2358 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: 100% seat-ineligible queue, 26 briefs
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt file exists and was read in full; 26-row table verified by machine count (28 pipe lines = 26 data rows), all seat-ineligible, nothing claimed, nothing touched; the prose-count error in this receipt was itself corrected in place by the gap follow-up (retraction present, line 58). S
+
+### ✅ gate-stall-20261015-2351 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: 26 unclaimed briefs evaluated, all unclaimable
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt file exists and was read; 26 briefs evaluated in ORDERING order with per-brief stall inventory, every one unclaimable by the Clarity seat, queue untouched. Score 9.0. Why not 9.5: complete, checkable stall inventory, but a report of blocked work, not completed work - the independe
+
+### ✅ gate-stall-20261016-0648 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: every brief unclaimable by Clarity seat, queue 26
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt file exists and was read; queue census 26 (down from 27 - an eligible seat drained one), nothing claimed, queue untouched, correct skip. Score 9.0. Why not 9.5: the stall is honestly recorded and the queue drift is tracked, but this run ships no value of its own - the drain it not
+
+### ✅ gate-stall-20261015-2343 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: 0 of 26 queued briefs claimable by Clarity seat
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt file exists and was read; 0 of 26 claimable, all left untouched, correct skip per GATE-SKIP, counts consistent with the night's other stall receipts (26-31 range as the queue drifted). Score 9.0. Why not 9.5: accurate stall record with no false claims, but no forward value shipped
+
+### ✅ gate-stall-20261015-2347 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: queue gate-blocked for Clarity seat; one brief executed first
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt file exists and was read; full-queue gate-blocked stall correctly recorded, queue untouched after the stall determination, and one brief (SHA-citation repair) was executed before the stall with its own receipt. Score 9.0. Why not 9.5: the stall is correctly documented and one repa
+
+### ✅ gate-stall-20261015-2303 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: 31 queued briefs all second-seat/non-Clarity gated
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt file exists and was read; all 31 queued briefs second-seat/non-Clarity gated, none executable by the Clarity seat, correct skip, queue untouched. Score 9.0. Why not 9.5: honest and complete, but a stall report, not shipped value - no brief executed, no gap closed.
+
+### ✅ gate-stall-20261015-2256 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: 0 of 30 queued briefs claimable by Clarity seat
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt file exists and was read; full-queue ORDERING evaluation, zero claimable, correct skip, queue untouched, counts consistent with sibling stall receipts the same night. Score 9.0. Why not 9.5: faithful stall record, but it produces no forward value - the queue state is reported, not
+
+### ✅ gate-stall-20261015-2251 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: 30/30 briefs unclaimable by Clarity seat, queue untouched
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt file exists and was read in full; 30 briefs refused (10 stamped-gate exit 2, 19 parent-authorship exit 7, 1 no-refile exit 6), queue census consistent with siblings, queue untouched. Score 9.0. Why not 9.5: correct detection and documentation of the stall, but zero forward value -
+
+### ✅ gate-stall-20261015-2246 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: 30/30 briefs unclaimable by Clarity seat, queue untouched
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt file exists and was read in full; 30/30 refused with per-brief block list (19 parent-authorship exit 7, 10 stamped gates, 1 no-refile), queue untouched, no hand-claims. Score 9.0. Why not 9.5: honest stall record with full audit trail, but no work shipped and no gap closed - the i
+
+### ✅ gate-stall-20261015-2243 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: 30/30 briefs unclaimable by Clarity seat, queue untouched
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt file exists and was read in full; full-queue evaluation in ORDERING order, 30 briefs refused via machine gates (13 stamped NON-Clarity gates, 16 parent-authorship exit 7, 1 no-refile exit 6), queue untouched, no false claims. Score 9.0. Why not 9.5: an honest, complete stall recor
 
 ### ✅ gate-stall-20261015-2238 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
