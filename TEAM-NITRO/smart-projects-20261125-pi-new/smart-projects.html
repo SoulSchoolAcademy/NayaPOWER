@@ -554,6 +554,39 @@ textarea.gr-input{resize:vertical;min-height:110px;line-height:1.55;}
 /* F4 — desktop-landscape only, hub-scoped: lift the WALK row clear of the frame's bottom ornament band. */
 @media (min-width:1024px) and (min-aspect-ratio:1/1){#pj-project .gr-hero-cover{padding:16px 24px 12px}#pj-project .gr-hero{margin-bottom:10px}#pj-motto:empty{display:none}#pj-hero-members:empty{display:none}}
 </style>
+<style id="sp-pifix-css">
+/* SMART PROJECTS PI-FIX 20261125 — D1 + D3. New CSS only; 17px minimum, white text, deep colors. */
+/* D1 — WALK step 1 (kind): the kind tabs WRAP inside the frame instead of running
+   off its right edge; the walk scroller never scrolls sideways, so there is no
+   permanent horizontal scrollbar; at phone width the stage fins clear the frame's
+   ornate side borders with room, so no heading letter hides behind them. The
+   harvested .smart-tabs base is untouched — this scope is the walk step only. */
+#sp-walk .frame-scroll{overflow-x:hidden}
+#sp-w-body .smart-tabs{flex-wrap:wrap;overflow:visible;margin:20px 0 0;padding:12px 0 18px;-webkit-mask-image:none;mask-image:none}
+#sp-w-body .smart-tab{flex:0 1 auto;min-width:0}
+@media (max-width:480px){#sp-walk .sp-stage{--fin-l:44px;--fin-r:44px}}
+/* D3 — the upload panel: a visible in-page upload UI. The file input is a real,
+   rendered control (never display:none), so a tap opens the native picker in every
+   engine; the panel itself is the visible fallback the eye can see. */
+.sp-upload-panel{margin-top:12px;padding:16px;border:1.5px solid #0e7490;border-radius:16px;background:linear-gradient(135deg,#17171f,#07070b);box-shadow:0 10px 24px rgba(0,0,0,.45)}
+.sp-upload-panel.sp-up-img{border-color:#a21caf}
+.sp-upload-panel[hidden]{display:none}
+.sp-up-title{font-size:17px;font-weight:800;color:#fff;margin:0 0 8px}
+.sp-up-note{font-size:17px;color:#fff;line-height:1.5;margin:0 0 12px}
+.sp-up-note b{color:#d4a017}
+.sp-file-input-vis{display:block;width:100%;box-sizing:border-box;font-size:17px;color:#fff;margin:0 0 12px}
+.sp-file-input-vis::file-selector-button{font-family:inherit;font-size:17px;font-weight:800;color:#fff;background:#050607;border:2px solid #0e7490;border-radius:999px;padding:12px 20px;cursor:pointer;margin-right:12px}
+.sp-up-img .sp-file-input-vis::file-selector-button{border-color:#a21caf}
+.sp-file-input-vis::file-selector-button:hover{box-shadow:0 0 18px -2px #0e7490}
+.sp-up-img .sp-file-input-vis::file-selector-button:hover{box-shadow:0 0 18px -2px #a21caf}
+/* D3 — file rows: one-line names + honest sizes are already in the base; OPEN rides
+   the row (see spFileRow) so that at phone width it runs the full width of its row. */
+.sp-file-row>a.gr-btn{flex:0 0 auto;white-space:nowrap}
+@media (max-width:640px){
+  .sp-file-row{flex-wrap:wrap}
+  .sp-file-row>a.gr-btn{flex:1 1 100%;text-align:center;box-sizing:border-box;margin-top:8px}
+}
+</style>
 <style id="sp-v6-css">
 /* SMART PROJECTS v6 — landing boards. New CSS only; 17px minimum, white text, deep colors. */
 .sp-home-states{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
@@ -910,8 +943,13 @@ body > .naya-frame, body > .frame-light{z-index:-1}
       <div class="gr-board-body">
         <div id="pj-files"><div class="gr-empty">No files here yet — add the first one below.</div></div>
         <div class="pj-addrow">
-          <input type="file" id="pj-file-input" hidden>
           <button type="button" class="gr-btn" id="pj-file-btn">ADD A FILE</button>
+        </div>
+        <div class="sp-upload-panel" id="pj-file-panel" hidden>
+          <p class="sp-up-title">Add a file to this project</p>
+          <p class="sp-up-note">Choose a file — it stays <b>on this device</b> (up to 2 MB). Its name is filed under this project; its bytes are never sent to Supabase.</p>
+          <input type="file" id="pj-file-input" class="sp-file-input-vis" aria-label="Choose a file">
+          <button type="button" class="gr-btn ghost" id="pj-file-cancel">CANCEL</button>
         </div>
         <p class="gr-status" id="pj-files-status" aria-live="polite"></p>
       </div>
@@ -926,8 +964,13 @@ body > .naya-frame, body > .frame-light{z-index:-1}
       <div class="gr-board-body">
         <div id="pj-images"><div class="gr-empty">No images here yet — add the first one below.</div></div>
         <div class="pj-addrow">
-          <input type="file" id="pj-image-input" accept="image/*" hidden>
           <button type="button" class="gr-btn" id="pj-image-btn">ADD AN IMAGE</button>
+        </div>
+        <div class="sp-upload-panel sp-up-img" id="pj-image-panel" hidden>
+          <p class="sp-up-title">Add an image to this project</p>
+          <p class="sp-up-note">Choose a picture — it stays <b>on this device</b> (up to 2 MB). Its name is filed under this project; its bytes are never sent to Supabase.</p>
+          <input type="file" id="pj-image-input" accept="image/*" class="sp-file-input-vis" aria-label="Choose an image">
+          <button type="button" class="gr-btn ghost" id="pj-image-cancel">CANCEL</button>
         </div>
         <p class="gr-status" id="pj-images-status" aria-live="polite"></p>
       </div>
@@ -3287,9 +3330,24 @@ function spShowKind(kindId){
   use.addEventListener('click', function(){ spUseKind(k.id); });
   prev.appendChild(use);
 }
+/* PI-FIX D2 — ONE source of truth for the chosen kind. Every selector on the first
+   screen — the big dropdown button, its status line, the quick-pick chips — is
+   written here, and only here. Chip, dropdown and keyboard picks all flow through
+   spPickKind, so all three agree, every time. */
+function spSyncKindUI(kindId){
+  var k=spKindById(kindId); if(!k) return;
+  var lab=document.getElementById('sp-dd-picked');
+  if(lab) lab.textContent=k.label+' — '+k.title;
+  var st=document.getElementById('sp-dd-status');
+  if(st) st.textContent=k.title+' template — its questions are in the form below. Name the project, then walk it.';
+  document.querySelectorAll('#sp-kind-chips .sp-kind-chip').forEach(function(c){
+    c.setAttribute('aria-pressed', c.textContent.trim()===k.label ? 'true' : 'false');
+  });
+}
 function spPickKind(kindId){
   spSaveHomeKind(kindId);
   spRenderKindBoard();
+  spSyncKindUI(kindId);
   var st=document.getElementById('sp-kind-status');
   var k=spKindById(kindId);
   if(st && k) st.textContent=k.title+' template — its questions are below. Tap USE THIS KIND to put them in the form.';
@@ -3372,10 +3430,8 @@ function spDdClosePanel(refocus){
 function spDdPick(kindId){
   var k=spKindById(kindId); if(!k) return;
   spPickKind(kindId); spShowKind(kindId); spUseKind(kindId, true);
-  var lab=document.getElementById('sp-dd-picked');
-  if(lab) lab.textContent=k.label+' — '+k.title;
-  var st=document.getElementById('sp-dd-status');
-  if(st) st.textContent=k.title+' template — its questions are in the form below. Name the project, then walk it.';
+  /* PI-FIX D2: the dropdown label + status are written by spSyncKindUI inside
+     spPickKind — one source of truth, no second writer. */
   spDdClosePanel(false);
 }
 function spDdFilter(q){
@@ -3394,11 +3450,7 @@ function spDdFilter(q){
   var btn=document.getElementById('sp-dd-btn'); if(!btn) return;
   spDdBuild();
   var picked=spHomeKind();
-  if(picked && spKindById(picked)){
-    var k=spKindById(picked);
-    var lab=document.getElementById('sp-dd-picked');
-    if(lab) lab.textContent=k.label+' — '+k.title;
-  }
+  if(picked && spKindById(picked)) spSyncKindUI(picked); /* PI-FIX D2: one writer for the label. */
   btn.addEventListener('click', function(){
     if(spDdOpen) spDdClosePanel(false); else spDdOpenPanel(true);
   });
@@ -3464,7 +3516,7 @@ function spFileRow(f){
   row.appendChild(main);
   if(f.dataUrl){
     var o=el('a','gr-btn small','OPEN'); o.href=f.dataUrl; o.target='_blank'; o.rel='noopener';
-    o.style.textDecoration='none'; main.appendChild(o);
+    o.style.textDecoration='none'; row.appendChild(o); /* PI-FIX D3: OPEN rides the row, not the name column — at phone width it runs full-width (see sp-pifix-css). */
   }
   if(isOwner()){
     var x=el('button','pj-x','✕'); x.type='button'; x.setAttribute('aria-label','Remove file');
@@ -3514,22 +3566,31 @@ function spUploadFile(file, isImage, statusEl){
   rd.readAsDataURL(file);
 }
 (function spFileInit(){
-  var fb=document.getElementById('pj-file-btn'), fi=document.getElementById('pj-file-input');
-  if(fb && fi){
-    fb.addEventListener('click', function(){ fi.click(); });
-    fi.addEventListener('change', function(){
-      spUploadFile(fi.files[0], false, document.getElementById('pj-files-status'));
-      fi.value='';
+  /* PI-FIX D3 — ADD A FILE / ADD AN IMAGE open a VISIBLE in-page upload panel AND
+     attempt the native picker. The input is a real rendered control (never
+     display:none), so the picker opens in every engine; where no native picker can
+     show (a headless/cloud eye), the panel itself is the upload UI the eye can see —
+     choose a file there and it uploads the same way. Bytes stay device-local, 2 MB
+     cap, as the panel says plainly. */
+  function spWireUpload(btnId, inputId, panelId, cancelId, isImage, statusId){
+    var btn=document.getElementById(btnId), inp=document.getElementById(inputId),
+        panel=document.getElementById(panelId), cancel=document.getElementById(cancelId);
+    if(!btn || !inp) return;
+    btn.addEventListener('click', function(){
+      if(panel) panel.hidden=false;
+      var st=document.getElementById(statusId);
+      if(st) st.textContent='Choose a file below — the picker opens when you tap it.';
+      try{ inp.click(); }catch(e){}
     });
-  }
-  var ib=document.getElementById('pj-image-btn'), ii=document.getElementById('pj-image-input');
-  if(ib && ii){
-    ib.addEventListener('click', function(){ ii.click(); });
-    ii.addEventListener('change', function(){
-      spUploadFile(ii.files[0], true, document.getElementById('pj-images-status'));
-      ii.value='';
+    inp.addEventListener('change', function(){
+      if(panel) panel.hidden=true;
+      spUploadFile(inp.files[0], isImage, document.getElementById(statusId));
+      inp.value='';
     });
+    if(cancel) cancel.addEventListener('click', function(){ if(panel) panel.hidden=true; btn.focus(); });
   }
+  spWireUpload('pj-file-btn','pj-file-input','pj-file-panel','pj-file-cancel',false,'pj-files-status');
+  spWireUpload('pj-image-btn','pj-image-input','pj-image-panel','pj-image-cancel',true,'pj-images-status');
 })();
 /* ——— (c) the Specialty Vault — everything under this project, in one place ——— */
 function spRenderVault(){
