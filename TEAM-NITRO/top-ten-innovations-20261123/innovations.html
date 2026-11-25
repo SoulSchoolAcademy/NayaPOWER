@@ -1366,29 +1366,37 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
    contents — the ball board moves into the middle slot (#slideTextCenter),
    the "What comes next" text panel moves to B. Ball first, text below, at
    both widths; the ball itself is untouched (harvested EMBED.ball, white
-   ring + 14s diamond dot, tap advances). At phone the end board scrolls
-   one board at a time (the phone pattern) so each board gets its full
-   height instead of the squeezed 191px thirds — the scroll is end-board
-   only (the .end-mode class, set by renderEnd, cleared by renderSlide).
+   ring + 14s diamond dot, tap advances). At phone the end board FITS with
+   no scroll and no clip (FIX8b): the pedestal (A) is hidden on the phone
+   end board only, the ball board is 259px with the ball image capped at
+   200px, and the text board is min-height 320px (content ≈310px) — ball
+   board + text board + gaps ≈ 598px fits the ~608px stage, so the ball, the
+   heading, the full END_TEXT and both buttons are all visible on arrival.
+   The scroll layout (FIX8a, min-heights 280/340/380) is superseded: it
+   put the ball centre at y≈592 and the buttons below the fold at 390.
    (D2) END-CENTRE FLIP: fitPanels() had no END_MODE guard — every re-fit
    trigger (daybar max-height transitionend, fonts.ready/loadingdone,
    resize) rewrote the end centre with GROUPS[current].a (Ch10's text)
    while END_MODE stayed true. fitPanels now returns at once while
-   END_MODE. The end text panel also gets its full height at phone (B
-   min-height 380px) and its paragraph at the 17px floor, so the designed
-   END_TEXT (unchanged — the ten titles in their settled order) fits whole
-   with both buttons and zero clip. Desktop: no layout change (the tall
-   desktop body already fits); only the swap. */
+   END_MODE. The end text panel also gets its full height at phone and its
+   paragraph at the 17px floor, so the designed END_TEXT (unchanged — the
+   ten titles in their settled order) fits whole with both buttons and zero
+   clip. Desktop: no layout change (the tall desktop body already fits);
+   only the swap. */
 #slideMain.end-mode #slideBoardsB .ib-layer-body{padding-top:18px;padding-bottom:12px}
 @media(max-width:900px){
   #screen-slide.end-mode .panel-body{overflow-y:auto}
   #screen-slide.end-mode .showcase,#screen-slide.end-mode .promax,#slideMain.end-mode{flex:none !important;height:auto}
-  #slideMain.end-mode #slideBoardsA{min-height:280px !important}
-  #slideMain.end-mode .pm-art{min-height:340px}
+  /* FIX8b: no-scroll phone fit — A (pedestal) hidden on the phone end board so the ball is first on arrival; ball board 270 with the image capped at 200; text board min-height 320 (content ≈310) with its layer/body width-locked to the board so the paragraph wraps and the buttons stack (flex:none on the layer blew the width to max-content 1540px — one unwrapped line, heading and buttons off-board right). */
+  #slideMain.end-mode #slideBoardsA{display:none !important}
+  #slideMain.end-mode .pm-art{min-height:259px}
   #slideMain.end-mode .pm-art-frame{aspect-ratio:auto}
-  #slideMain.end-mode #slideBoardsB{min-height:380px !important}
-  #slideMain.end-mode #slideBoardsB .ib-layer-body{padding-top:10px;padding-bottom:12px}
-  #slideMain.end-mode #slideBoardsB .ib-layer-body p{font-size:17px;line-height:1.35;margin-top:4px;margin-bottom:4px}
+  #slideMain.end-mode .end-ball .ib-img-el{flex:none !important;height:200px;width:auto;max-width:100%;margin:0 auto}
+  #slideMain.end-mode #slideBoardsB{flex:none !important;min-height:320px}
+  #slideMain.end-mode #slideBoardsB .ib-layer{flex:1 1 auto !important;min-width:0 !important;width:100% !important;height:auto}
+  #slideMain.end-mode #slideBoardsB .ib-layer-body{flex:1 1 auto !important;min-width:0 !important;width:100% !important;height:auto;padding-top:10px;padding-bottom:12px}
+  #slideMain.end-mode #slideBoardsB .ib-layer-body p{width:100%;font-size:17px;line-height:1.3;margin-top:4px;margin-bottom:4px}
+  #slideMain.end-mode #slideBoardsB .end-actions{margin-top:8px}
 }
 </style>
 </head>
