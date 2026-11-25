@@ -380,7 +380,7 @@ body.af-deck-on #deckBody .ib-nutshell p{font-size:19px!important;line-height:1.
 .rb-addmenu{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
 .rb-addmenu[hidden]{display:none!important}
 .rb-extra{width:100%;background:#050607;border:2px solid var(--rc,#8e24aa);border-radius:20px;padding:16px;box-shadow:8px 10px 24px rgba(0,0,0,.75)}
-.rb-extra img,.rb-extra video{width:100%;border-radius:14px;display:block;background:#050607}
+.rb-extra img,.rb-extra video,.rb-extra audio{width:100%;border-radius:14px;display:block;background:#050607}
 .rb-extra textarea{width:100%;box-sizing:border-box;background:#050607;color:#ffffff;border:1.5px solid var(--rc,#8e24aa);border-radius:14px;padding:16px;font-size:17px;line-height:1.6;font-family:inherit;resize:vertical}
 .rb-extra .rb-x{float:right;font-size:17px;color:#ffffff;background:#050607;border:1.5px solid var(--rc,#8e24aa);border-radius:999px;padding:2px 10px;cursor:pointer}
 
@@ -401,10 +401,32 @@ body.af-deck-on #deckBody .ib-nutshell p{font-size:19px!important;line-height:1.
 .rb-fs img{max-width:94vw;max-height:82vh;object-fit:contain;border-radius:20px;border:2px solid #8e24aa;box-shadow:0 0 48px rgba(142,36,170,.5)}
 .rb-fs-cap{font-size:17px;color:#ffffff;font-family:Marcellus,Georgia,serif;text-align:center;max-width:560px;line-height:1.6}
 
-/* phone: stack — question, image, centred input, block; mirror image hides */
-@media (max-width:900px){
+/* DESKTOP THIRDS NEED ROOM (D1 fix, 2026-11-25): the spine caps
+   .p3-main at 640px, so thirds 1fr minmax(0,560px) 1fr squeezed the side
+   images to ~14px slivers at 1280 (render-proven). Above 1100px the steps
+   that carry a thirds frame widen their main column, so the side images
+   render ~184px wide at 1280 with the 560px centre intact. Scoped with
+   :has(.rb-thirds) — the door and end steps keep their own widths, and the
+   Next pill, cert (680 cap) and choices (680 cap) inside main are untouched
+   except for the wider line-box they already fill. */
+@media (min-width:1101px){
+  .p3-step:has(.rb-thirds)>.p3-main{max-width:none!important}
+}
+
+/* phone: stack — question, image, centred input, block.
+   TWO-IMAGE steps (Q1 motto, Q11 offer) keep BOTH images on screen at
+   phone width: a two-up mini row above the centred input (D1 fix,
+   2026-11-25). Single-image steps still hide the mirrored right cell.
+   The stack runs to 1100px: between 901–1100px the spine's 640px main
+   would squeeze thirds the same way, so those widths stack too. */
+@media (max-width:1100px){
   .rb-thirds{grid-template-columns:minmax(0,1fr);row-gap:16px}
-  .rb-cell-r{display:none!important}
+  .rb-one .rb-cell-r{display:none!important}
+  .rb-two{grid-template-columns:1fr 1fr}
+  .rb-two .rb-cell-l{grid-column:1;grid-row:1}
+  .rb-two .rb-cell-r{grid-column:2;grid-row:1;display:flex!important}
+  .rb-two .rb-center{grid-column:1/-1;grid-row:2}
+  .rb-two .rb-img{height:200px;max-height:200px}
   .rb-img{min-height:0;height:300px;max-height:300px}
   .rb-seal{height:34px}
   .rb-seal svg{width:34px;height:34px}
@@ -1339,6 +1361,7 @@ function renderEnd(){
 <script>
 window.__RB_IMG = {"cover":"https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO%2Fwalkthrough-rebuild-20261125%2Fimg%2Fcover.webp&ref=walkthrough-rebuild-20261125&cb=32a6ed99d2ac0f5653c44315092daf628bbbf3da","motto-left":"https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO%2Fwalkthrough-rebuild-20261125%2Fimg%2Fmotto-left.webp&ref=walkthrough-rebuild-20261125&cb=d4cf01ec6d9902b50100ef3c5d15473d6be5e85c","motto-right":"https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO%2Fwalkthrough-rebuild-20261125%2Fimg%2Fmotto-right.webp&ref=walkthrough-rebuild-20261125&cb=7390d00ee72ce01edb2b553eea5a639046657b26","vision":"https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO%2Fwalkthrough-rebuild-20261125%2Fimg%2Fvision.webp&ref=walkthrough-rebuild-20261125&cb=1c4215bb0ca983d5e47ed1ddcc637aa63ad418ff","goal":"https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO%2Fwalkthrough-rebuild-20261125%2Fimg%2Fgoal.webp&ref=walkthrough-rebuild-20261125&cb=c0d027bf91ffa54003e4f5bdd59214c7c0922517","mission":"https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO%2Fwalkthrough-rebuild-20261125%2Fimg%2Fmission.webp&ref=walkthrough-rebuild-20261125&cb=9178baf9fa88ff1e9ebffa473bfe6f88b2f81ef6","love":"https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO%2Fwalkthrough-rebuild-20261125%2Fimg%2Flove.webp&ref=walkthrough-rebuild-20261125&cb=b4089e452fddecc3f9d9dbd2313840fce2852617","dont":"https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO%2Fwalkthrough-rebuild-20261125%2Fimg%2Fdont.webp&ref=walkthrough-rebuild-20261125&cb=f98164cba0505725b3d04d8672ae880c924e0741","thing":"https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO%2Fwalkthrough-rebuild-20261125%2Fimg%2Fthing.webp&ref=walkthrough-rebuild-20261125&cb=338ff777efacbd5b5e4c36c9c697eb2abfcd3b72","values":"https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO%2Fwalkthrough-rebuild-20261125%2Fimg%2Fvalues.webp&ref=walkthrough-rebuild-20261125&cb=42cc39f12609eb5cc72a33e63ff8c8f872a4d7cc","standfor":"https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO%2Fwalkthrough-rebuild-20261125%2Fimg%2Fstandfor.webp&ref=walkthrough-rebuild-20261125&cb=769be72fda6c1c9c74e13e99b087f51b16a289af","promise":"https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO%2Fwalkthrough-rebuild-20261125%2Fimg%2Fpromise.webp&ref=walkthrough-rebuild-20261125&cb=e4bc8fe7143339fd38c0d7b1a23cede06ef95721","offer-left":"https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO%2Fwalkthrough-rebuild-20261125%2Fimg%2Foffer-left.webp&ref=walkthrough-rebuild-20261125&cb=8ea37460d758366472c4742a23dd4e1f831057d8","offer-right":"https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO%2Fwalkthrough-rebuild-20261125%2Fimg%2Foffer-right.webp&ref=walkthrough-rebuild-20261125&cb=21c2ccef334be6c49a6e6b277c7ee41e85f76d77","help":"https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO%2Fwalkthrough-rebuild-20261125%2Fimg%2Fhelp.webp&ref=walkthrough-rebuild-20261125&cb=f12c681a758bd091777f737339d87b976e4f199d","moment":"https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO%2Fwalkthrough-rebuild-20261125%2Fimg%2Fmoment.webp&ref=walkthrough-rebuild-20261125&cb=72cb49e72c06d164e23cfaff60116ea5e5928641","howwork":"https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO%2Fwalkthrough-rebuild-20261125%2Fimg%2Fhowwork.webp&ref=walkthrough-rebuild-20261125&cb=8c0e4e0222dec2f5d00c058e81ffa5353b55e348","start":"https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO%2Fwalkthrough-rebuild-20261125%2Fimg%2Fstart.webp&ref=walkthrough-rebuild-20261125&cb=0aec791d68b009c74b1f70df0df8a6a1807f9761"};
 window.__RB_STEPS = [{"n":1,"key":"motto","label":"Your motto","section":"About","imgs":["motto-left","motto-right"],"rim":"#8e24aa"},{"n":2,"key":"vision","label":"Your vision","section":"About","imgs":["vision"],"rim":"#0f52ba"},{"n":3,"key":"goal","label":"Your goal","section":"About","imgs":["goal"],"rim":"#07925f"},{"n":4,"key":"mission","label":"Your mission","section":"About","imgs":["mission"],"rim":"#d4a017"},{"n":5,"key":"love","label":"What you love","section":"About","imgs":["love"],"rim":"#c2410c"},{"n":6,"key":"dont","label":"What you don't love","section":"About","imgs":["dont"],"rim":"#c62828"},{"n":7,"key":"thing","label":"Your thing","section":"About","imgs":["thing"],"rim":"#a21caf"},{"n":8,"key":"values","label":"Your values","section":"About","imgs":["values"],"rim":"#3f51b5"},{"n":9,"key":"laws","label":"What you stand for","section":"About","imgs":["standfor"],"rim":"#0e7490"},{"n":10,"key":"declaration","label":"Your promise","section":"About","imgs":["promise"],"rim":"#6d28d9"},{"n":11,"key":"offer","label":"What you offer","section":"Skills","imgs":["offer-left","offer-right"],"rim":"#8e24aa"},{"n":12,"key":"help","label":"How it helps","section":"Skills","imgs":["help"],"rim":"#0f52ba"},{"n":13,"key":"moment","label":"A moment you've done it","section":"Skills","imgs":["moment"],"rim":"#07925f"},{"n":14,"key":"howwork","label":"How you work","section":"Skills","imgs":["howwork"],"rim":"#d4a017"},{"n":15,"key":"start","label":"How people start with you","section":"Skills","imgs":["start"],"rim":"#c2410c"}];
+window.__RB_ABOUT_EXTRA = ["about-extra-1","about-extra-2","about-extra-3","about-extra-4","about-extra-5"];
 window.__RB_COVER = "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO%2Fwalkthrough-rebuild-20261125%2Fimg%2Fcover.webp&ref=walkthrough-rebuild-20261125&cb=32a6ed99d2ac0f5653c44315092daf628bbbf3da";
 </script>
 <script>
@@ -1352,6 +1375,14 @@ window.__RB_COVER = "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NI
   var IMG = window.__RB_IMG;
   var STEPS = window.__RB_STEPS;
   var COVER = window.__RB_COVER;
+  /* ABOUT HELD OPEN — reserved slots for the five more About images Shawn
+     needs (about-extra-1..5). They live in the walk's CODE here, not just
+     in MANIFEST.json prose: when a slot's WebP is filed as
+     img/about-extra-<n>.webp, its key joins a step's imgs[] in
+     window.__RB_STEPS and the frame renders it — no frame rebuild, no
+     hard-coded count. Until then the slots are reserved, never rendered. */
+  var ABOUT_EXTRA = window.__RB_ABOUT_EXTRA || [];
+  window.__rbAboutExtra = ABOUT_EXTRA;
   if (!IMG || !STEPS) return;
 
   function el(tag, cls, text) {
@@ -1415,8 +1446,12 @@ window.__RB_COVER = "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NI
     var second = st.imgs[1] ? IMG[st.imgs[1]] : first;
     var lastTapped = 0; /* 0 = left/first, 1 = right/second */
 
-    /* the thirds: image | CENTRED input + live block | image */
+    /* the thirds: image | CENTRED input + live block | image.
+       D1 fix: two-image steps carry .rb-two so BOTH images stay visible
+       at phone width (two-up mini row above the input); one-image steps
+       carry .rb-one and the mirrored right cell hides, as before. */
     var frame = el('div', 'rb-thirds');
+    frame.classList.add(st.imgs[1] ? 'rb-two' : 'rb-one');
     var left = el('div', 'rb-cell rb-cell-l');
     var limg = el('img', 'rb-img'); limg.src = first; limg.alt = st.label;
     left.appendChild(limg);
@@ -1477,7 +1512,7 @@ window.__RB_COVER = "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NI
     /* add-a-block menu: image, text or video */
     var menu = el('div', 'rb-addmenu');
     menu.hidden = true;
-    ['Image', 'Text', 'Video'].forEach(function (kind) {
+    ['Image', 'Text', 'Video', 'Audio'].forEach(function (kind) {
       var b = el('button', 'rb-tool', kind);
       b.type = 'button';
       b.addEventListener('click', function () { addExtra(kind); menu.hidden = true; });
@@ -1534,17 +1569,17 @@ window.__RB_COVER = "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NI
         if (saved && saved.text) t2.value = saved.text;
         t2.addEventListener('input', saveExtras);
         box.appendChild(t2);
-      } else if (kind === 'Image' || kind === 'Video') {
+      } else if (kind === 'Image' || kind === 'Video' || kind === 'Audio') {
         var fi = document.createElement('input');
-        fi.type = 'file'; fi.accept = kind === 'Image' ? 'image/*' : 'video/*';
+        fi.type = 'file'; fi.accept = kind === 'Image' ? 'image/*' : kind === 'Audio' ? 'audio/*' : 'video/*';
         fi.style.display = 'none';
         document.body.appendChild(fi);
-        if (kind === 'Video') {
+        if (kind === 'Video' || kind === 'Audio') {
           var vurl = null;
-          try { vurl = window.prompt('Paste a video link — YouTube, or a direct video file link. Leave it empty to upload a video file instead:'); } catch (e) {}
+          try { vurl = window.prompt(kind === 'Audio' ? 'Paste an audio link — a direct audio file link. Leave it empty to upload an audio file instead:' : 'Paste a video link — YouTube, or a direct video file link. Leave it empty to upload a video file instead:'); } catch (e) {}
           if (vurl && vurl.trim()) {
-            attachVideoUrl(vurl.trim());
-            box.setAttribute('data-kind', 'Video');
+            if (kind === 'Audio') attachAudioUrl(vurl.trim()); else attachVideoUrl(vurl.trim());
+            box.setAttribute('data-kind', kind);
             extras.appendChild(box);
             saveExtras();
             return box;
@@ -1559,6 +1594,14 @@ window.__RB_COVER = "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NI
             rd.onload = function () { attachMedia(rd.result); saveExtras(); };
             rd.readAsDataURL(f);
           });
+        }
+        function attachAudioUrl(u) {
+          /* AUDIO rides the same board as video: same obsidian board, same
+             rim in the step's colour, same play treatment (native controls
+             in the board — the membership audio slot, in this format). */
+          var a = document.createElement('audio');
+          a.src = u; a.controls = true; a.preload = 'metadata';
+          box.appendChild(a);
         }
         function attachVideoUrl(u) {
           var yt = u.match(/(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{6,})/);
@@ -1576,9 +1619,10 @@ window.__RB_COVER = "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NI
           }
         }
         function attachMedia(src) {
-          var m = kind === 'Image' ? el('img') : document.createElement('video');
+          var m = kind === 'Image' ? el('img') : kind === 'Audio' ? document.createElement('audio') : document.createElement('video');
           m.src = src;
           if (kind === 'Video') { m.controls = true; m.playsInline = true; }
+          if (kind === 'Audio') { m.controls = true; m.preload = 'metadata'; }
           m.addEventListener('click', function () { if (kind === 'Image') openFs(src, st.label + ' — tap anywhere to close.'); });
           box.appendChild(m);
           box.setAttribute('data-src', src.slice(0, 0));
@@ -1628,7 +1672,11 @@ window.__RB_COVER = "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NI
       var rbEnd = el('div', 'rb-end');
       rbEnd.appendChild(el('div', 'rb-ball'));
       rbEnd.appendChild(el('h2', 'rb-end-title', 'Your profile is ready.'));
-      rbEnd.appendChild(el('p', 'rb-end-text', 'Your profile is ready — change any image, add text or video, pull from social or our library, add more boards. Your answers are saved in your Smart Vault, and your Personal page is built from them.'));
+      /* body copy is DISTINCT from the heading — no repeated line (O1 fix):
+         the heading says it is ready; the body says what to do next.
+         Plain words, per the universal-creator law: it is YOURS to make
+         your own — these images sit in as the example while you fill it out. */
+      rbEnd.appendChild(el('p', 'rb-end-text', 'Your profile is yours to make your own — change any image, add text or video, pull from social or our library, add more boards. Your answers are saved in your Smart Vault, and your Personal page is built from them.'));
       var eseal = el('div', 'rb-seal');
       eseal.innerHTML = sealSVG();
       rbEnd.appendChild(eseal);
