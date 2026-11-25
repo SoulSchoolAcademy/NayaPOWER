@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 21:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 21:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -45781,6 +45781,12 @@ _Last updated: 2026-11-25 21:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ gap-lane-scorer-20261017-1040-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up 2026-10-17 10:40 PDT (Lane 8 Sentinel): retrieval-auth-gate packet amendment — 9 unlisted seam sites verified, tree-wide sweep re-run
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); amendment file hidden_files/retrieval-auth-gate-migration-packet-gap-lane-scorer-20261017-1040-lane8-amendment.md exists on disk. Score 9.0. Why not 9.5: I did not re-fetch the branch pin e654f16e8a49e9a26309fd852695a0bef202673d or re-run the 467-file sweep t
+
 ### ✅ gap-lane-scorer-20261016-2000-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.5/10 [VERIFIED]
 
 **Task:** Gap lane-scorer 20261016-2000 Lane 8: byte-enforce merge-seat author-seat declaration check at filing (file-gap-brief --merge-seat) and claim (exit-8 refusal)
@@ -49274,6 +49280,12 @@ _Last updated: 2026-11-25 21:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ gap-lane-scorer-20261017-1040-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up 2026-10-17 10:40 PDT (Lane 5 Seeker): injection census on t0679/t0682 batches, measurement-by-credential weak-slot verdict
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); hidden_files/lesson-injection-log.jsonl and lessons.jsonl exist on disk; cited receipts twelve-lane-receipts/t0679-lane10.md and t0682-lane10-brainindex.md exist on disk. Score 9.0. Why not 9.5: I did not re-derive the census counts or re-read the log and bri
 
 ### ✅ gap-gap-t0907-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -53064,6 +53076,12 @@ _Last updated: 2026-11-25 21:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ gap-lane-scorer-20261017-1045-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up 2026-10-17 10:45 PDT (Lane 3 Decision): durable falsifier pre-registration + live-log count re-run on pinned bytes + feed-path/format hole filed
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); falsifier file hidden_files/lane-exp/falsifiers-gap-lane-scorer-20261017-1045-lane3.md exists with sha256 7b9126ae... matching the receipt's full-64 SHA exactly; claim transcript exists with matching SHA 0de0f1d7...; classifier pin adf32c33... matches the par
 
 ### ✅ gap-gap-gap-t0901-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -58617,6 +58635,12 @@ _Last updated: 2026-11-25 21:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
 
+### ✅ gap-lane-scorer-20261017-1045-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up 2026-10-17 10:45 PDT (Lane 10 Librarian): feed-path + feed-format hole closed - FEED repointed, 7-format parser, load_feed() merge, 23-case self-test
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); classifier hidden_files/bin/classify_demand_rows.py sha16 44410eb5... matches the receipt's stated post-fix pin exactly; ran --self-test live this tick: ALL PASS (12 parser regression cases + 11 taxonomy cases). Clears 9.5 because the fix is live-verified on 
+
 ### ✅ triage-20261017-0716-pinprobe — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** Triage 2026-10-17 07:16 PDT: FP-003 pin probe + tamper control — genuine seal drift found, probe proven working
@@ -63046,6 +63070,96 @@ _Last updated: 2026-11-25 21:04 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gap-lane-scorer-20261017-1045-lane0 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up 2026-10-17 10:45 PDT (Lane 0): 1723 stall snapshot re-verified + machine CLAIMABILITY headers stamped on prose-only-barred briefs + claim transcripts preserved
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); claim transcript hidden_files/claim-transcript-lane-executor-20261017-1758.md exists with sha256 0de0f1d7... matching the receipt's full-64 SHA exactly. The stamped brief file is absent from brief-queue/ now, but that is queue churn (briefs are claimed/dequeu
+
+### ✅ gate-stall-20261017-1723 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
+
+**Task:** Gate-stall 2026-10-17 10:22 PDT: queue of 13 briefs, all unclaimable by Clarity seat — queue shrank 30 -> 13, drain by other seats measured
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); no git artifacts claimed (stall receipt, no SHAs to verify). Score 8.0. Why not 9.5: still a stall receipt — no work product, no Clarity-eligible execution; above the 7.5 repeat-stall line because it measured a real delta (queue 30 -> 13, drain by other seats
+
+### ✅ gap-lane-scorer-20261017-0900-lane0 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up 2026-10-17 09:00 PDT: re-verify gate-stall-20261017-1449 stand-down recommendation against live queue bytes
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); parent receipt gate-stall-20261017-1449.md exists on disk; falsifier receipt twelve-lane-receipts/t0679-lane10.md exists on disk. Score 9.0. Why not 9.5: I did not re-run the name-by-name 30-brief snapshot diff or confirm the board comment this tick, so the 1
+
+### 🟡 gate-stall-20261017-1449 — Team 0, Team Naya Scorer (?) — 7.5/10 [PARTIAL]
+
+**Task:** Gate-stall 2026-10-17 07:48 PDT: queue of 30 briefs, all unclaimable by Clarity seat — fourth consecutive identical stall
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); no git artifacts claimed (stall receipt, no SHAs to verify). Score 7.5. Why not 9.5: the receipt itself records ZERO delta vs gate-stall-20261017-1344 — same 30 briefs, same 28 header bars, same 2 script refusals; its stand-down recommendation was drawn from 
+
+### 🟡 gate-stall-20261125-2114 — Team 0, Team Naya Scorer (?) — 7.5/10 [PARTIAL]
+
+**Task:** Gate-stall 2026-11-25 13:14 PST: queue of 31 briefs, all unclaimable by Clarity seat — second consecutive byte-identical hour, ZERO delta
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); no git artifacts claimed (stall receipt, no SHAs to verify). Score 7.5. Why not 9.5: the receipt itself records ZERO delta vs the 12:08 PST sweep — same 31 briefs, same 29x exit-7 / 2x exit-2 split; an honest hourly heartbeat that adds nothing the dispatcher had not already 
+
+### ✅ weekly-distill-20261108-librarian-heir — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Weekly distillation 20261108 (Librarian/Heir): essence distillation + standing-claim verification, 5 essences re-verified
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); essences file distill-weekly/essences-20261108.md exists on disk. Score 9.0. Why not 9.5: I did not re-derive the citation counts or re-clone the notes branch this tick, so the SN citation tallies and tip SHAs rest on the receipt's run; window-added counts ar
+
+### ✅ weekly-distill-20261101-librarian-heir — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Weekly distillation 20261101 (Librarian/Heir): essence distillation + standing-claim verification, 5 essences filed
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); essences file distill-weekly/essences-20261101.md exists on disk. Score 9.0. Why not 9.5: I did not re-derive the citation counts or re-clone the notes branch this tick, so the SN citation tallies and tip SHAs rest on the receipt's run; window-added counts ar
+
+### ✅ gap-gate-stall-20261018-0845-laneexecutor — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gap follow-up 2026-10-18 08:45 UTC (lane-executor): gate-stall re-confirmation — 21/21 unclaimable, one race-dropped brief documented
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); parent gate-stall-20261018-0845.md exists on disk. Score 8.5. Why not 9.5: thorough re-evaluation, but a re-confirmation of an already-established stall with no new work product beyond the verdict; one brief's bar (0635) rests on prior-run evidence after a mi
+
+### ✅ gap-20261018-0850-laneexecutor — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up 2026-10-18 08:50 UTC (lane-executor): matcher-fix verified closed, brief resting place closed, cold-retrieve verification still owed
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); parent receipt gap-t0828-lane5-verify-recusal.md exists on disk; bin/claim-brief.py exists. Score 9.0. Why not 9.5: gap closed 2/3 — the cold-retrieve 1.78s verification stays owed to another seat; the t0834 repair's attribution rests on code comments only (n
+
+### ✅ triage-20261017-1444-eqprobe-fullcorpus — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Triage 2026-10-17 14:44 UTC: EQ probe on full 632-entry corpus — wiring-hunk holds; headline: wiring today = total retrieval blackout
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); parent receipt t0407-lane8.md exists on disk. Score 9.0. Why not 9.5: I did not re-execute the full-corpus probe this tick, so the 4/4 battery-2 verdicts and the 632/632 blackout finding rest on the receipt's run; EQ3 vacuous on the real corpus (no survivors)
+
+### ✅ triage-20261017-1434-redgreen-battery — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Triage 2026-10-17 14:34 UTC: RED/GREEN battery re-run on level_drill seal — CONFIRM, no drift
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); parent receipt t0777-lane7.md exists on disk. Score 9.0. Why not 9.5: I did not re-execute the RED/GREEN probe this tick (branch head has long since moved), so the pin/blob SHAs and both verdicts rest on the receipt's run; same-seat re-run, second-seat gap un
+
+### ✅ triage-20261017-0750-deontics-1330-1420 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Triage 2026-10-17 07:50 PDT: deontic pattern review + recus* precision — 3 false positives found with exact bytes
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); bin/stamp-claimability-gate.py exists on disk. Score 9.0. Why not 9.5: I did not re-run the stamper self-test or re-scan the 30 queue briefs this tick, so the 3 false positives rest on the receipt's scan; the tightening is proposed, not applied (dispatcher de
+
+### ✅ triage-20261017-0745-diary-battery-0140 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Triage 2026-10-17 07:45 PDT: diary_intake.py RED-first battery re-run — purge dead, fail-closed refusal intact
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); bin/diary_intake.py exists on disk. Score 9.0. Why not 9.5: I did not re-execute the battery this tick, so the RED-1/RED-2 and 7 GREEN probes rest on the receipt's run; the exit-code contract drift (0 vs expected 2) is noted but unresolved; same-seat re-run. 
+
+### ✅ triage-20261017-0740-attribution-0530 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Triage 2026-10-17 07:40 PDT: t0550/t0573 Lane 10 operator attribution byte-check — confirmed unresolvable
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); parent receipts t0550-lane10.md and t0573-lane10.md exist on disk. Score 9.0. Why not 9.5: I did not re-fetch the #2175 comments via REST this tick, so the SoulSchoolAcademy/no-seat-token finding rests on the receipt's API read; the gap stays open by the byte
+
+### ✅ triage-20261017-0735-adversarial-0550 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Triage 2026-10-17 07:35 PDT: adversarial review of claim-brief.py 1c parent-authorship check — 4 probes + 25/25 self-test
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); bin/claim-brief.py exists on disk. Score 9.0. Why not 9.5: I did not re-run the 4 adversarial probes or the 25/25 self-test this tick, so the GREEN verdict rests on the receipt's run; same-seat review; the co-authorship fail-open hole found is named but unfix
 
 ### ✅ triage-20261017-0725-spotaudit-0640 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
