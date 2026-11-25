@@ -2287,6 +2287,26 @@ schRow.appendChild(dtWrap);
 .nm-room-end{display:inline-block;background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);border:1.5px solid #c62828;border-radius:999px;color:#ffffff;font-size:19px;font-weight:700;font-family:inherit;padding:12px 24px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.5);}
 .nm-room-end:hover{transform:translateY(-2px);}
 .nm-room-end:active{transform:scale(.97);transition:transform .1s ease;}
+/* FIX9: phone video room — the camera preview takes its full intrinsic height,
+   and a 4:3 preview (195px at 260 wide) makes the room taller than the band
+   between the sticky topbar and the fixed bottom bar, so the End button's
+   bottom 11px hid under the bar at rest (checker: End 632-680 vs bar 669).
+   Scrolling down cannot fix it — the band is 544px and the room is ~564px,
+   so the title would slide under the topbar instead. Shrink the room,
+   phone video-kind only: cap the preview at 120px (object-fit cover, so any
+   camera aspect fits) and tighten the video room's vertical rhythm
+   (top padding stays 16px so the title keeps its v8 25px topbar clearance,
+   bottom padding 16->8px, 8->4px video/meter margins, title margin 8->4px).
+   Audio room (no video) and desktop untouched; the End button itself is
+   not restyled, relabelled, or moved. Firefox renders the room taller
+   (35px title, 53px End) with its bar top 8px higher, so the cap is set
+   for its worst case too — a Firefox WITH a camera, not just headless. */
+@media (max-width:480px){
+#nmRoom[data-kind="video"]{padding-top:16px;padding-bottom:8px;}
+#nmRoom[data-kind="video"] h2{margin-bottom:4px;}
+#nmRoom[data-kind="video"] #nmRoomVideo{max-height:120px;object-fit:cover;margin:4px 0;}
+#nmRoom[data-kind="video"] .nm-room-meter{margin:4px 0;}
+}
 .nm-mic{width:48px;height:48px;border-radius:50%;background:#050607;border:1.5px solid #07925f;color:#ffffff;font-size:19px;cursor:pointer;display:grid;place-items:center;box-shadow:0 2px 8px rgba(0,0,0,.4),0 0 16px -2px rgba(7,146,95,.55);transition:transform .3s ease,box-shadow .3s ease;}
 .nm-mic:hover{transform:translateY(-2px);}
 .nm-mic:active{transform:scale(.97);}
