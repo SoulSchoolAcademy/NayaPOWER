@@ -2879,6 +2879,19 @@ function nmApplyJewels(){
    form scrolls above it — SEND NOW (and Schedule/Cancel) is never below the
    fold, phone or desktop. */
 .ml-modal.mlx > .mlx-schedsec{position:sticky;bottom:0;z-index:2;background:linear-gradient(180deg,rgba(16,19,30,0) 0%,rgba(16,19,30,.97) 28%,rgba(16,19,30,.97) 100%);padding-top:16px;margin-bottom:0;}
+
+/* ===== LOOK13 — Messenger + Mail fix round (v13, 2026-11-24) =====
+   (2) The tabFlow beam, narrowed to a rim satellite: v12's wider 240-330deg
+   arc still read in the checker's crops as a thin diagonal white streak
+   crossing the pills. The beam is now a short (22deg) faint (peak .45)
+   arc that sits ON the rim like an orbit satellite — no line crosses the
+   pill face. Same tabFlow 120s/180s motion; the tabs still move. Applied
+   to the smart tabs AND the Smart Links row, which carry the same beam. */
+.smart-tab::after{background:conic-gradient(from 0deg,transparent 0deg,transparent 308deg,rgba(255,255,255,.30) 316deg,rgba(255,255,255,.45) 322deg,transparent 330deg);}
+.nm-smartlink::after{background:conic-gradient(from 0deg,transparent 0deg,transparent 308deg,rgba(255,255,255,.30) 316deg,rgba(255,255,255,.45) 322deg,transparent 330deg);}
+/* (3) Per-person Message/Mail jewels live on the conversation rows: the
+   .nm-acts row sits under the tempo line, same 44px medallion buttons as
+   the member rows, same --ac colours (chat sapphire, mail gold). */
 </style>
 <script>
 /* ================= REBUILD LAYER — real mail + the tempo dial =================
@@ -3093,7 +3106,9 @@ function nmConvRows(){
       + '<span class="nm-orb" data-jewel="sender" style="--cc:' + color + '">' + esc(String(c.with).charAt(0).toUpperCase()) + '</span>'
       + '<div><div class="nm-conv-subj">' + (nmPins[c.threadId] ? '<span class="nm-pin-jewel" aria-hidden="true"></span> ' : '') + esc(nmName(c.with)) + (c.demo ? ' <span class="nm-sample-chip">SAMPLE</span>' : '') + '</div>'
       + '<div class="nm-conv-prev">' + esc(String((c.last && c.last.body) || '').slice(0, 80)) + '</div>'
-      + '<div class="nm-conv-prev">' + nmTimeAgo(c.lastAt) + ' · <span class="nm-type-jewel" data-jewel="type-' + (tempo === 'mail' ? 'mail' : tempo === 'post' ? 'post' : 'chat') + '"></span><span class="nm-tempo' + (tempo === 'mail' ? ' mail' : '') + '">' + (tempo === 'mail' ? 'MAIL · kept' : tempo === 'post' ? 'POST · feed' : 'CHAT · living') + '</span>' + (c.unread ? ' · <b>' + c.unread + ' new</b>' : '') + '</div></div></div>';
+      + '<div class="nm-conv-prev">' + nmTimeAgo(c.lastAt) + ' · <span class="nm-type-jewel" data-jewel="type-' + (tempo === 'mail' ? 'mail' : tempo === 'post' ? 'post' : 'chat') + '"></span><span class="nm-tempo' + (tempo === 'mail' ? ' mail' : '') + '">' + (tempo === 'mail' ? 'MAIL · kept' : tempo === 'post' ? 'POST · feed' : 'CHAT · living') + '</span>' + (c.unread ? ' · <b>' + c.unread + ' new</b>' : '') + '</div>'
+      + '<div class="nm-acts"><button type="button" class="nm-act" data-jewel="chat" data-nm-dm="' + esc(c.with) + '" style="--ac:#0f52ba" aria-label="Message ' + esc(c.with) + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.5 0-3-.4-4.2-1L3 20l1-5.3A8.5 8.5 0 1 1 21 11.5z"/></svg></button>'
+      + '<button type="button" class="nm-act" data-jewel="mail" data-nm-mail="' + esc(c.with) + '" style="--ac:#d4a017" aria-label="Mail ' + esc(c.with) + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></button></div></div></div>';
   });
   return h;
 }
@@ -3388,7 +3403,8 @@ function nmSendCurrent(){
   var bodyEl = document.getElementById('nmMsgBody');
   var statusEl = document.getElementById('nmMsgStatus');
   var sendBtn = document.getElementById('nmMsgSend');
-  if(!alias || !bodyEl) return;
+  if(!bodyEl) return;
+  if(!alias){ if(statusEl) statusEl.innerHTML = '<div class="nm-status gate"><p><b>Pick a person first \u2014 tap a conversation, then send.</b></p><p>Nothing was written; nothing was faked.</p></div>'; return; }
   var body = bodyEl.value;
   var smode = nmSendMode || nmTempo;
   if(smode === 'post'){ nmOpenPost(alias, body); return; }
@@ -3547,7 +3563,7 @@ function nmInit(){
     b.addEventListener('click', function(){ nmSetTempo(b.getAttribute('data-tempo')); });
   });
   nmBootData();
-  nmLoadDMs().then(function(){ if(window.__nmActBadgeUpdate) window.__nmActBadgeUpdate(); if(window.__nmDemoMode && nmConvs.length && !nmSelectedConv && !nmSelectedPerson){ nmSelectedConv = nmConvs[0].threadId; } if(nmTempo === 'chat') nmRefreshMsgView(); if(window.__mmTabsMount) window.__mmTabsMount(); });
+  nmLoadDMs().then(function(){ if(window.__nmActBadgeUpdate) window.__nmActBadgeUpdate(); if(window.__nmDemoMode && nmConvs.length && !nmSelectedConv && !nmSelectedPerson){ nmSelectedConv = nmConvs[0].threadId; nmSelectedPerson = nmConvs[0].with; } if(nmTempo === 'chat') nmRefreshMsgView(); if(window.__mmTabsMount) window.__mmTabsMount(); });
   nmBindMsgView();
   nmSetTempo(nmTempo); /* sync the initial view to the initial toggle — v2.1 never did, so load showed Mail under a MESSENGER toggle */
   return true;
