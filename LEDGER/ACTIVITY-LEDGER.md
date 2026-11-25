@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 08:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -9673,6 +9673,14 @@ _Last updated: 2026-11-25 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Dispatcher verified all artifacts on disk: CTA-PROTOCOL.md, COLD-BRIEF.md, RUBRIC.md, ground-truth.key.json, runs/t1242/{seal-receipt,successor,scorer}, B-TO-C-AUTHORIZATION-REQUEST.md. Honest mechanics: pre-registration + sealed rubric predating run, blinded scorer, honesty gate (phantom caught, drift detected) matching sealed ground truth. No pro
 
+### ✅ t1242 — Team 10, Team Naya Scorer (Brain Index) — 8.0/10 [VERIFIED]
+
+**Task:** Brain-index freshness verification-first tick - tip CLEAN, PR #2431 closed as superseded, stale heal branches deleted
+
+**Receipt:** `twelve-lane-receipts/t1242-lane10.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). PARTIALLY VERIFIED first-hand this tick: both stale heal branch refs (naya/ten-brainindex-heal-t1032, naya/ten-brainindex-heal-t1222) return EMPTY from git ls-remote, consistent with the receipt's deletion claim; main has moved past the pinned tip d998cac4 (now f855b417), consistent with the receipt's history. NOT VERI
+
 ### ✅ t1242 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
 **Task:** Brain-index heal verification; redundant PR #2431 closed
@@ -13911,6 +13919,14 @@ _Last updated: 2026-11-25 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t912 — Team 8, Team Naya Scorer (Governance & Safety) — 8.5/10 [VERIFIED]
 
+**Task:** Retrieval authorization seam verdict - spec 0007, retrieval-side gate (Option A)
+
+**Receipt:** `twelve-lane-receipts/t912-lane8.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: the deliverable spec file EXISTS at the exact path in the worktree (BRAIN/00-SPEC/0007-RETRIEVAL-AUTHORIZATION-GATE-SPEC-V1.md) and its content matches the receipt's claims - Option A retrieval-side gate verdict, retrieve() read-path gap vs render() projection gate (lines 453-458), CANDID
+
+### ✅ t912 — Team 8, Team Naya Scorer (Governance & Safety) — 8.5/10 [VERIFIED]
+
 **Task:** Retrieval authorization seam verdict (follow-up to Lane 5 t902 falsification)
 
 **Receipt:** `twelve-lane-receipts/t912-lane8.md`
@@ -14034,6 +14050,14 @@ _Last updated: 2026-11-25 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t912-lane3.md`
 
 **Evidence:** AST inventory proves competitor had zero production call sites; ported the one genuine gap (forbidden_scope disqualification before authority logic) + tell-truth gate into canonical value-calculus; retired 627-line module; governance check now passes; 313 tests green; honest non-ports documented. Deductions: judgment-call mappings not yet cross-sea
+
+### ✅ t912 — Team 11, Team Naya Scorer (Human Value) — 8.0/10 [VERIFIED]
+
+**Task:** Human-value observatory design + first baseline (M1-M6 methods, baseline from 4 receipts)
+
+**Receipt:** `twelve-lane-receipts/t912-lane11.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt is internally consistent with exact SHAs (head ba6f35b653d8a67532f2f38fa303b43e80d68ddd, parent 235a61f0), file sizes, and an honestly owned + repaired commit incident (387-file sweep, soft-reset, re-commit, index restored). NOT VERIFIED: the commit/branch pin - branch naya/eleven
 
 ### ✅ t912 — Team 11, Team Naya Scorer (Human Value) — 8.5/10 [VERIFIED]
 
@@ -15159,6 +15183,14 @@ _Last updated: 2026-11-25 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0831 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
+**Task:** t0797 staleness watches as two machine checks on the live ask-world log
+
+**Receipt:** `twelve-lane-receipts/t0831-lane5.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: retrieval/watch-lane_1_quiet exists and is executable (3,380 bytes); the receipt's counting rule (organic = kind=='query' at query-position >= 21, seed burst 0-20) is quoted from the spec's own tally-t0797.py and matches the receipt's line-map citations. NOT PHANTOM. Score 9.0, GOOD ONE M
+
+### ✅ t0831 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
 **Task:** t0797 staleness watches: watch-lane_1_quiet + watch-sb-n4-5th-row machine checks
 
 **Receipt:** `twelve-lane-receipts/t0831-lane5.md`
@@ -15178,6 +15210,14 @@ _Last updated: 2026-11-25 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** Encode t0797 staleness watches as machine checks (watch-lane_1_quiet, watch-sb-n4-5th-row)
 
 **Evidence:** Verified: both scripts exist in hidden_files/retrieval/ with spec-exact thresholds (10 organic rows; 5th organic empty row), 5/5 exit-code matrix proven on live + synthetic logs (fire AND quiet branches), cold-shell byte-matching diffs clean, 2 spec-pointer lines landed, live sha recorded. Clears 9.5 because the work is byte-proven on both branches
+
+### ✅ t0829 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Machine twin of dispatcher lesson hand-matching + pre-registered bar (verdict HONEST-STOP)
+
+**Receipt:** `twelve-lane-receipts/t0829-lane5.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: bin/lesson-inject.py (5,532 bytes) and bin/lesson-inject-backtest.py (4,237 bytes) both exist in hidden_files; the receipt's numbers are internally consistent (170 live log rows vs the brief's 167, explained as 3 rows logged after filing; 4/5 HIT@3, 0.80 recovered vs the pre-registered ba
 
 ### ✅ t0829 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -15203,6 +15243,14 @@ _Last updated: 2026-11-25 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0828 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
+**Task:** Records audit: cold-retrieve verification chain (verdict OWED)
+
+**Receipt:** `twelve-lane-receipts/t0828-lane5.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: twelve-lanes.md L75 still carries '- [ ] Independent seat verification of cold retrieve (1.78s claim)' unchecked, corroborating the audit's central claim that the to-do is OPEN; the receipt discloses its own contact (t0902-lane12.md, different subject) and bounds it out. No branch/SHA - a
+
+### ✅ t0828 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
 **Task:** Records audit: cold-retrieve verification chain, verdict OWED (independence, not truth)
 
 **Receipt:** `twelve-lane-receipts/t0828-lane5.md`
@@ -15225,6 +15273,14 @@ _Last updated: 2026-11-25 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t0827 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
+**Task:** Breaker #11 feature.community built end-to-end (module + 22 tests + registry flip)
+
+**Receipt:** `twelve-lane-receipts/t0827-lane12.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: commit 8cb1f4a35025c6a464a15b2306ed9cc01226dfe0 exists in the local mirror with the exact receipt message ('Community breaker built (t0827 Lane 12): module + 22 tests + registry flip'); parent chain head eefb77cca99ae666a5b21a694919f888f6ea3f40 resolves, matching the #10 receipt pin exact
+
+### ✅ t0827 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
 **Task:** Breaker #11 feature.community built end-to-end (module, 22 tests, registry flip, push, smoke, verifier)
 
 **Receipt:** `twelve-lane-receipts/t0827-lane12.md`
@@ -15244,6 +15300,14 @@ _Last updated: 2026-11-25 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0827-lane12.md`
 
 **Evidence:** VERIFIED via git protocol: branch naya4/t0827-lane12-community exists on origin at exactly 8cb1f4a35025c6a464a15b2306ed9cc01226dfe0 (matches receipt; parent eefb77cca == #10 tip, PIN-matched, no drift). Clears 9.5 because: 13 falsifiers frozen pre-run (all 13 held; 5 pre-flip REDs were the fail-closed gate working), 22 tests (two first-draft test b
+
+### ✅ t0824 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Breaker #10 feature.smart_bars built end-to-end (module + 20 tests + registry flip)
+
+**Receipt:** `twelve-lane-receipts/t0824-lane12.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: commit eefb77cca99ae666a5b21a694919f888f6ea3f40 exists in the local mirror with the exact receipt message ('Smart Bars breaker built (t0824 Lane 12): module + 20 tests + registry flip'); base 92501373b333ae8693e923c518d86228aecca43d also resolves. NOT PHANTOM. Score 9.0, GOOD ONE MORE PAS
 
 ### ✅ t0824 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
@@ -16036,6 +16100,14 @@ _Last updated: 2026-11-25 08:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t0813-lane5.md`
 
 **Evidence:** Verified: all 5 files byte-exact by sha256 (gate 38554c12a3..., lexicon d6c47df5..., probes 4fd00978..., pins 18ce909f..., selftest 8f9020ec...); self-test log exists showing 5/5 PASS with exact outcomes (MCC-positive exit 1 REGISTER_MISMATCH 21/24 process-principle; healthy exit 0; 3 fail-closed paths). Clears 9.5 because: real gate artifact verif
+
+### ✅ t0812 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
+
+**Task:** Cross-seat proof of t0796 seat-identity repair (real second seat, dangling commit)
+
+**Receipt:** `twelve-lane-receipts/t0812-lane2.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: dangling commit 909536d4995e2639aa7a8d03dd5e8b08456d8bb4 exists in the local mirror with the exact receipt message; proof script hidden_files/proof_identity_t0812.py exists (3,835 bytes). NOT PHANTOM. Remote ref check n/a by design - the receipt declares NO ref created (dangling variant),
 
 ### ✅ t0812-lane2 — Team 2, Team Naya Scorer (Learning Pipeline) — 9.5/10 [VERIFIED]
 
