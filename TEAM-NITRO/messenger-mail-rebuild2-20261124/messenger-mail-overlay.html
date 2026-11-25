@@ -2107,6 +2107,8 @@ function nmApplyJewels(){
   var done = false;
   Array.prototype.forEach.call(document.querySelectorAll('[data-jewel]'), function(el){
     if(el.querySelector('img.nj-img')) return;
+    if(el.classList && el.classList.contains('nm-orb')) return; /* T11: DM avatars keep their initials — never a jewel symbol */
+    if(el.classList && el.classList.contains('nm-react')) return; /* T12: reactions keep their readable glyphs — never a jewel image */
     var name = el.getAttribute('data-jewel');
     var file = J.files[name];
     if(name === 'react'){
@@ -3138,7 +3140,7 @@ function nmReaderHtml(){
   var h = '<h2>' + esc(nmName(alias)) + '</h2>'
     + '<div class="nm-reader-head"><span class="nm-orb" data-jewel="sender" style="--cc:' + color + '">' + esc(String(alias).charAt(0).toUpperCase()) + '</span>'
     + '<div><div class="nm-person-name">' + esc(nmName(alias)) + '</div><div class="nm-person-sub">' + nmPresence(alias) + '</div></div>'
-    + '<button type="button" class="nm-act" data-nm-pin-conv="' + esc(nmSelectedConv || '') + '" style="--ac:#d4a017" aria-label="Pin conversation" title="Pin — for this visit"><span class="nm-pin-jewel" aria-hidden="true"></span></button></div>'
+    + '<button type="button" class="nm-act" data-nm-pin-conv="' + esc(nmSelectedConv || '') + '" style="--ac:#d4a017" aria-label="Pin conversation" title="Pin this conversation to the top — for this visit"><span class="nm-pin-jewel" aria-hidden="true"></span></button></div>'
     + (conv && conv.demo ? '<p class="nm-note nm-demo-note">&#9670; SAMPLE thread — demo data for this staged preview, not a live conversation.</p>' : '')
     + '<div class="nm-filter"><input class="nm-search" id="nmThreadSearch" type="search" placeholder="Search this thread…" aria-label="Search this thread"></div>'
     + '<div class="nm-msg-list" id="nmMsgList">' + nmMessagesHtml(conv) + '</div>'
@@ -4190,6 +4192,7 @@ return {
 </script>
 
 <style id="ov-style">
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Marcellus&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap");
 /* ===== OVERLAY ROUND (2026-11-25) — appended last so it wins ties =====
    Sources: Hub live bytes 2026-11-25 (nayanet.app/hub, 25,962,666 B):
    - Hub plus = bottom-bar ADD medallion (data-notif="plus", --nc #8e24aa,
@@ -4232,7 +4235,7 @@ button:focus-visible{outline:2px solid #ffffff;outline-offset:2px;}
 /* Keep buttons that already define their own hover/press (higher
    specificity) exactly as they are — this rule only lifts the rest. */
 
-/* --- 3. THE TOGGLE — red-N treatment: two elevated lit balls, high contrast --- */
+/* --- 3. THE TOGGLE — the red N effect treatment: two elevated lit balls, high contrast --- */
 .nm-toggle{background:#050607;border:1.5px solid #ffffff;box-shadow:inset 0 2px 0 rgba(255,255,255,.28), inset 0 -8px 16px rgba(0,0,0,.7), 0 12px 28px rgba(0,0,0,.65), 0 0 20px -6px rgba(255,255,255,.35);}
 .nm-toggle-btn{background:radial-gradient(130% 130% at 30% 20%, #26262e 0%, #0b0b10 48%, #050607 100%);box-shadow:inset 0 2px 0 rgba(255,255,255,.35), inset 0 -6px 14px rgba(0,0,0,.7), 0 8px 20px rgba(0,0,0,.6);}
 .nm-toggle-btn[aria-pressed="true"][data-tempo="chat"]{background:radial-gradient(130% 130% at 30% 20%, #b04fd0 0%, #8e24aa 45%, #4a1257 100%);border-color:#ffffff;box-shadow:inset 0 2px 0 rgba(255,255,255,.6), inset 0 -6px 14px rgba(0,0,0,.55), 0 0 18px -4px rgba(142,36,170,.85), 0 0 10px rgba(255,255,255,.35), 0 12px 26px rgba(0,0,0,.65);}
@@ -4329,10 +4332,14 @@ html{scroll-padding-top:130px;}
    belt-and-braces: it can never show. */
 .nm-smartlinks{display:none !important;}
 /* --- 8. EVERY PILL ITS OWN DEEP COLOR, RESTRAINED GLOW (2026-11-25 09:04) --- */
-/* Messenger dial: each mode its own color at rest AND lit, glow restrained. */
-.nm-dial-btn[data-nm-sendmode="chat"]{--mc:#8e24aa;}
-.nm-dial-btn[data-nm-sendmode="mail"]{--mc:#0f52ba;}
-.nm-dial-btn[data-nm-sendmode="post"]{--mc:#d4a017;}
+/* Messenger dial: each mode its own color at rest AND lit, glow restrained.
+   DIAL COLORS (2026-11-25 09:32, his order): Chat = magenta, Mail = purple, Post = blue. */
+.nm-dial-btn[data-nm-sendmode="chat"]{--mc:#d63384;}
+.nm-dial-btn[data-nm-sendmode="mail"]{--mc:#8e24aa;}
+.nm-dial-btn[data-nm-sendmode="post"]{--mc:#0f52ba;}
+.nm-dial-btn[data-nm-sendmode="chat"].on{background:linear-gradient(135deg,rgba(214,51,132,.30) 0%,#050607 50%,rgba(214,51,132,.30) 100%);}
+.nm-dial-btn[data-nm-sendmode="mail"].on{background:linear-gradient(135deg,rgba(142,36,170,.30) 0%,#050607 50%,rgba(142,36,170,.30) 100%);}
+.nm-dial-btn[data-nm-sendmode="post"].on{background:linear-gradient(135deg,rgba(15,82,186,.30) 0%,#050607 50%,rgba(15,82,186,.30) 100%);}
 .nm-dial-btn{border-color:var(--mc, rgba(255,255,255,.25));box-shadow:inset 0 2px 0 rgba(255,255,255,.3), inset 0 -6px 12px rgba(0,0,0,.6), 0 8px 18px rgba(0,0,0,.55), 0 0 12px -6px var(--mc, rgba(255,255,255,.3));}
 .nm-dial-btn[data-nm-sendmode="chat"].on,.nm-dial-btn[data-nm-sendmode="mail"].on,.nm-dial-btn[data-nm-sendmode="post"].on{border-color:var(--mc);box-shadow:inset 0 2px 0 rgba(255,255,255,.35), inset 0 -6px 12px rgba(0,0,0,.55), 0 8px 18px rgba(0,0,0,.55), 0 0 16px -4px var(--mc);}
 /* Compose dial (mail stage): rest-state rims per mode, lit glow restrained. */
@@ -4373,7 +4380,7 @@ html{scroll-padding-top:130px;}
    it stays white in every state (rest, hover, active); the BOX is
    what lights up, around the OUTSIDE only. The icon is a dual-flow
    orb: a flow of energy inside AND a flow outside, like the DMs and
-   the orbs. Zero flatness. Compose gets the red-N effect.
+   the orbs. Zero flatness. Compose gets the the red N effect effect.
    MAIL IS BLUE, MESSAGES IS PURPLE: the Mail toggle ball is the
    richest elegant blue with gloss obsidian black inside — many balls
    inside, all the way through (layered radial orbs); the Messenger
@@ -4401,7 +4408,7 @@ html{scroll-padding-top:130px;}
   .mail-stage .ml-folder .ml-ficon::before,.mail-stage .ml-folder .ml-ficon::after{animation:none;}
   .ml-compose-top::after{animation:none;}
 }
-/* COMPOSE — the red-N effect: red ball, white ring, gloss obsidian. */
+/* COMPOSE — the the red N effect effect: red ball, white ring, gloss obsidian. */
 .ml-compose-top{position:relative;background:radial-gradient(130% 130% at 30% 20%, #f87171 0%, #dc2626 38%, #991b1b 72%, #450a0a 100%);border:2px solid #ffffff;box-shadow:inset 0 2px 0 rgba(255,255,255,.55), inset 0 -8px 16px rgba(0,0,0,.6), 0 0 26px -4px rgba(220,38,38,.85), 0 0 12px rgba(255,255,255,.3), 0 14px 30px rgba(0,0,0,.65);}
 .ml-compose-top:hover{transform:translateY(-2px);box-shadow:inset 0 2px 0 rgba(255,255,255,.6), inset 0 -8px 16px rgba(0,0,0,.6), 0 0 32px -4px rgba(220,38,38,.95), 0 0 16px rgba(255,255,255,.35), 0 18px 36px rgba(0,0,0,.7);}
 .ml-compose-top .ml-plus{font-size:25px;text-shadow:0 2px 8px rgba(0,0,0,.9), 0 0 14px rgba(255,255,255,.7);}
@@ -4482,7 +4489,7 @@ html{scroll-padding-top:130px;}
    this viewer entirely; the transform deletes the <nav> from the
    source, and this rule is belt-and-braces. (3) THE TOGGLE LIVES IN
    THE BOTTOM AREA — a slim fixed dock holding ONLY the toggle: wide
-   pill (aaa_1), red-N effect (raised, gloss, real object), high
+   pill (aaa_1), the red N effect effect (raised, gloss, real object), high
    contrast purple/blue halves. Everything else moves up. (4) ICONS
    INSTANTLY READABLE — rebuilt in overlay.js as bold white glyphs
    on raised obsidian balls. (5) ICON ROW AT THE VERY TOP — first
@@ -4552,6 +4559,163 @@ html{scroll-padding-top:130px;}
 @media (max-width:640px){.nm-icon{width:44px;height:44px;}.nm-icon svg{width:34px;height:34px;}}
 .nm-plus-glyph{font-size:38px;}
 @media (max-width:640px){.nm-plus-glyph{font-size:36px;}}
+
+/* --- 16. DM AVATARS ARE INITIALS + the red N effect (2026-11-25 09:31) ---
+   the red N effect is the name for the effect from now on (renamed in the
+   comments throughout this round; same effect). DM AVATARS: beside
+   a name in the DMs, the avatar is that person's own beautiful
+   initial in a flowing ball like the N — Shawn gets "S", everyone
+   else their own initial, never a made-up symbol. The cause: v14's
+   nmApplyJewels() replaced every .nm-orb[data-jewel="sender"] with
+   a jewel image, wiping the initial for a diamond — the transform
+   (T11) guards the orbs out of the jewel pass, so the initials
+   survive every render. The ball itself gets the flowing treatment:
+   layered orbs inside in the person's own color (--cc/--pc), white
+   top light, the orbit ring in the person's own color, and a bigger
+   initial so it reads beautiful and evident. Mail thread avatars
+   (.ml-avatar) already showed initials; they get the same flowing
+   ball so every avatar on the page speaks one language. */
+.nm-orb{background:
+  radial-gradient(circle at 30% 22%, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 30%),
+  radial-gradient(circle at 72% 76%, var(--cc, #8e24aa) 0%, rgba(255,255,255,0) 48%),
+  radial-gradient(130% 130% at 30% 20%, #2b2b35 0%, #0d0d12 55%, #050607 100%);
+  border:2px solid var(--cc, #8e24aa);font-size:30px;}
+.nm-orb::after{border-color:var(--cc, #8e24aa);}
+.nm-person .nm-orb{font-size:26px;}
+.mail-stage .ml-avatar{background:
+  radial-gradient(circle at 30% 22%, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 30%),
+  radial-gradient(circle at 72% 76%, var(--pc, #0f52ba) 0%, rgba(255,255,255,0) 48%),
+  radial-gradient(130% 130% at 30% 20%, #2b2b35 0%, #0d0d12 55%, #050607 100%);
+  border:2px solid var(--pc, #0f52ba);font-size:19px;}
+
+/* --- 17. BOARDS OBSIDIAN BLACK + LIT, PIN EVIDENT, REACTIONS AS LIT BALLS (2026-11-25 09:32 + 09:33 + 09:36) --- */
+/* Boards: obsidian black #050607 (no more grayish/off-black), intelligent-block look —
+   rim, top gloss, restrained lit glow — so everything pops and it reads clean. */
+.nm-pane,
+.mail-stage .ml-list,
+.mail-stage .ml-read,
+.naya-drawer{
+  background:linear-gradient(180deg, rgba(255,255,255,.05) 0%, rgba(255,255,255,0) 16%), #050607 !important;
+  border:1.5px solid rgba(255,255,255,.16) !important;
+  box-shadow:0 14px 34px rgba(0,0,0,.6), 0 0 26px -8px rgba(142,36,170,.40), inset 0 1px 0 rgba(255,255,255,.12) !important;}
+.mail-stage .ml-panes{background:#050607;}
+/* Thread panel: its own obsidian board inside the reader pane. */
+.nm-msg{background:#050607;border-radius:16px;}
+/* PIN — evident, not a keyhole: a white pushpin in a lit gold-rimmed ball (09:32 item 1).
+   The keyhole ::before/::after are gone; the title (transform T13) says what it does. */
+.nm-pin-jewel{width:30px !important;height:30px !important;border:2px solid #d4a017 !important;
+  background:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M9 2h6v2.5h-2V9l3.2 3.2v2.3H7.8v-2.3L11 9V4.5H9z'/%3E%3Cpath fill='%23ffffff' d='M12 14.5h1.6v6.5H12z'/%3E%3C/svg%3E") center/20px 20px no-repeat,
+  radial-gradient(circle at 32% 24%, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 32%),
+  radial-gradient(130% 130% at 30% 20%, #2b2b35 0%, #0d0d12 55%, #050607 100%) !important;
+  box-shadow:0 6px 16px rgba(0,0,0,.55), 0 0 14px -4px rgba(212,160,23,.7), inset 0 1px 0 rgba(255,255,255,.35) !important;}
+.nm-pin-jewel::before,.nm-pin-jewel::after{display:none !important;}
+/* REACTIONS (09:32 item 5) — lit balls, big white glyphs, aligned in a clean row.
+   The glyphs are swapped to white SVG marks by overlay.js litReactions(); the
+   jewel replacement is guarded out in the transform (T12), so no jewel image
+   can ever sit in one of these balls. */
+.nm-reacts{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:12px 0 0;}
+.nm-react{width:44px;height:44px;min-width:44px;padding:0;border-radius:50%;display:inline-grid;place-items:center;
+  background:
+  radial-gradient(circle at 32% 24%, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 30%),
+  radial-gradient(circle at 72% 78%, var(--rc, #d4a017) 0%, rgba(255,255,255,0) 52%),
+  radial-gradient(130% 130% at 30% 20%, #2b2b35 0%, #0d0d12 55%, #050607 100%);
+  border:2px solid var(--rc, #d4a017);
+  box-shadow:0 8px 18px rgba(0,0,0,.55), 0 0 14px -5px var(--rc, #d4a017), inset 0 1px 0 rgba(255,255,255,.35);}
+.nm-react svg{width:24px;height:24px;display:block;}
+.nm-react[data-nm-react="♥"]{--rc:#e0218a;}
+.nm-react[data-nm-react="👍"]{--rc:#0f52ba;}
+.nm-react[data-nm-react="✓"]{--rc:#07925f;}
+.nm-react[data-nm-react="★"]{--rc:#d4a017;}
+.nm-react:hover{transform:translateY(-2px);}
+.nm-react:active{transform:scale(.95);}
+.nm-react.on{box-shadow:0 0 0 2px #ffffff, 0 8px 18px rgba(0,0,0,.55), 0 0 18px -2px var(--rc, #d4a017), inset 0 1px 0 rgba(255,255,255,.35);}
+/* Keep: same row, same height — an image-1 pill with a gold rim, aligned with the balls. */
+.nm-keep{height:44px;padding:0 18px;border-radius:999px;display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0) 30%), #050607;
+  border:2px solid #d4a017;color:#ffffff;font-size:17px;font-weight:700;
+  box-shadow:0 8px 18px rgba(0,0,0,.55), 0 0 14px -5px rgba(212,160,23,.7), inset 0 1px 0 rgba(255,255,255,.3);}
+.nm-keep:hover{transform:translateY(-2px);}
+.nm-keep:active{transform:scale(.97);}
+
+/* --- 18. HIGH-QUALITY BUTTONS ALL THROUGHOUT + ULTRA-PRO BOARDS (2026-11-25 09:33 + 09:36) --- */
+/* Reader-head + person-row action buttons (.nm-act): lit balls in their own --ac
+   color, glyph big and white. (The jewel images inside stay — envelope / chat
+   bubble are readable shapes — but the button itself is now a ball, not flat.) */
+.nm-act{width:44px;height:44px;min-width:44px;border-radius:50%;display:inline-grid;place-items:center;
+  background:
+  radial-gradient(circle at 32% 24%, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 30%),
+  radial-gradient(circle at 72% 78%, var(--ac, #d4a017) 0%, rgba(255,255,255,0) 52%),
+  radial-gradient(130% 130% at 30% 20%, #2b2b35 0%, #0d0d12 55%, #050607 100%);
+  border:2px solid var(--ac, #d4a017);
+  box-shadow:0 8px 18px rgba(0,0,0,.55), 0 0 14px -5px var(--ac, #d4a017), inset 0 1px 0 rgba(255,255,255,.35);}
+.nm-act svg,.nm-act img.nj-img{width:26px;height:26px;display:block;}
+.nm-act:hover{transform:translateY(-2px);}
+.nm-act:active{transform:scale(.95);}
+.nm-acts{display:flex;align-items:center;gap:10px;}
+/* Conversation + person rows: intelligent-block rows on the obsidian board —
+   breathing room (taller padding, gaps between rows), lift on hover, own-color
+   rim when selected. Nothing crowded, nothing flat. */
+.nm-conv,.nm-person{padding:16px;margin:0 0 10px;
+  background:linear-gradient(180deg, rgba(255,255,255,.045) 0%, rgba(255,255,255,0) 30%), #0a0a0f !important;
+  border:1.5px solid rgba(255,255,255,.12);border-radius:16px;
+  box-shadow:0 8px 22px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.08);}
+.nm-conv:hover,.nm-person:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.28);
+  box-shadow:0 12px 26px rgba(0,0,0,.5), 0 0 18px -6px rgba(142,36,170,.5), inset 0 1px 0 rgba(255,255,255,.1);}
+.nm-conv:active,.nm-person:active{transform:scale(.99);}
+.nm-conv.sel,.nm-person.sel{border-color:#ffffff;box-shadow:0 0 0 1px #ffffff, 0 12px 26px rgba(0,0,0,.5), 0 0 20px -6px rgba(142,36,170,.6);}
+/* Message bubbles: obsidian black, more air, manuscript body (see §19). */
+.nm-bubble{padding:20px;margin:0 0 20px;
+  background:linear-gradient(180deg, rgba(255,255,255,.045) 0%, rgba(255,255,255,0) 22%), #050607 !important;
+  border:1.5px solid rgba(255,255,255,.16);
+  box-shadow:0 12px 30px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.14);}
+/* Chips + room picks: already pills — give them the image-1 / dial quality bar
+   (gloss, elevation, lift, press) instead of leaving them flat. */
+.nm-chip{box-shadow:0 8px 18px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.16);
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0) 32%), #050607;}
+.nm-chip:hover{transform:translateY(-2px);}
+.nm-chip:active{transform:scale(.97);}
+.nm-space{box-shadow:0 8px 18px rgba(0,0,0,.5), 0 0 14px -6px rgba(255,255,255,.4), inset 0 1px 0 rgba(255,255,255,.16);
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0) 32%), #050607;}
+.nm-space:hover{transform:translateY(-2px);}
+.nm-space:active{transform:scale(.97);}
+/* Mail thread rows: same intelligent-block row treatment, uncluttered. */
+.mail-stage .ml-thread{padding:16px;margin:0 0 10px;border-radius:16px;
+  background:linear-gradient(180deg, rgba(255,255,255,.045) 0%, rgba(255,255,255,0) 30%), #0a0a0f !important;
+  border:1.5px solid rgba(255,255,255,.12);
+  box-shadow:0 8px 22px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.08);}
+.mail-stage .ml-thread:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.28);}
+.mail-stage .ml-thread.sel{border-color:#ffffff;box-shadow:0 0 0 1px #ffffff, 0 12px 26px rgba(0,0,0,.5);}
+
+/* --- 19. NICEST TEXT — OUR INSTANT MESSENGER & MAIL TYPE (2026-11-25 09:33) --- */
+/* Harvested from the live Hub bytes (2026-11-25): the Hub's UI face is
+   --font: Inter, ui-sans-serif, system-ui…; its manuscript face is
+   Newsreader, Georgia, serif (italic 500); its display face is
+   Marcellus, Georgia, serif (700). The Ask Naya answer is set in that
+   manuscript face. Our own custom type for Messenger + Mail keeps the
+   same three faces, tuned for this viewer: Marcellus for headings,
+   Newsreader for reading text, Inter for UI labels and buttons.
+   The Google Fonts @import is the first line of this file; Georgia /
+   system fallbacks keep it elegant if the webfont cannot load. */
+:root{
+  --mm-font-ui:'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mm-font-ms:'Newsreader', Georgia, 'Times New Roman', serif;
+  --mm-font-display:'Marcellus', Georgia, 'Times New Roman', serif;}
+.mail-stage, .nm-chrome, .naya-drawer, .nm-toggle-dock{font-family:var(--mm-font-ui);}
+/* Headings — Marcellus, letterspaced, manuscript-display. */
+.nm-pane h2, .nm-pane h3, .mail-stage .ml-sec-h, .nm-side-sec, .hub-rail-head{
+  font-family:var(--mm-font-display);letter-spacing:.14em;font-weight:700;}
+/* Subjects + names — Newsreader, manuscript-clear. */
+.nm-conv-subj, .nm-person-name, .mail-stage .ml-read-subj, .mail-stage .ml-thread-subj, .nm-room-head .nm-person-name{
+  font-family:var(--mm-font-ms);font-weight:600;letter-spacing:.01em;}
+/* Reading text — Newsreader 500, 18px, generous leading: manuscript-clear
+   with breathing room (09:36 ultra-pro). */
+.nm-bubble, .nm-bubble p, .mail-stage .ml-read-body, .mail-stage .ml-read-body p, .nm-conv-prev, .nm-person-sub{
+  font-family:var(--mm-font-ms);font-weight:500;font-size:18px;line-height:1.7;letter-spacing:.01em;}
+/* UI labels + buttons stay Inter — high-tech, crisp. */
+.nm-toggle-btn, .nm-dial-btn, .nm-react, .nm-keep, .nm-chip, .nm-space, .nm-btn,
+.mail-stage .ml-folder .ml-fname, .mail-stage .ml-qa-item, .smart-tab b, .nm-side-hub, .nm-side-create{
+  font-family:var(--mm-font-ui);}
 
 </style>
 <script id="ov-script">
@@ -4935,6 +5099,35 @@ function watchTabs(){
     mo.observe(host, {childList:true, subtree:true});
   }
 }
+/* Reaction balls (09:32 item 5): each .nm-react keeps a big white SVG mark —
+   heart / thumbs-up / check / star — inside its lit ball. The jewel
+   replacement is guarded out in the transform (T12); this swap also strips
+   any jewel <img> that was already placed before this script loaded. */
+var OV_REACT_SVGS = {
+  '♥': '<svg viewBox="0 0 24 24" fill="#ffffff" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>',
+  '👍': '<svg viewBox="0 0 24 24" fill="#ffffff" aria-hidden="true"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>',
+  '✓': '<svg viewBox="0 0 24 24" fill="#ffffff" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>',
+  '★': '<svg viewBox="0 0 24 24" fill="#ffffff" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>'
+};
+function litReactions(){
+  $all('.nm-react').forEach(function(b){
+    var g = b.getAttribute('data-nm-react');
+    var svg = OV_REACT_SVGS[g];
+    if(!svg) return;
+    if(b.querySelector('svg')) return;
+    var img = b.querySelector('img.nj-img');
+    if(img) img.remove();
+    b.innerHTML = svg;
+  });
+}
+function watchReactions(){
+  litReactions();
+  if(window.MutationObserver && !document.body.__ovReactWatched){
+    document.body.__ovReactWatched = true;
+    var mo = new MutationObserver(function(){ litReactions(); });
+    mo.observe(document.body, {childList:true, subtree:true});
+  }
+}
 function removeSmartLinksRow(){
   var sl = document.getElementById('nmSmartLinks');
   if(sl && sl.parentNode) sl.parentNode.removeChild(sl);
@@ -4943,7 +5136,7 @@ function removeSmartLinksRow(){
 /* ---------- TOGGLE IN THE BOTTOM AREA (2026-11-25 09:26) ----------
    SUPERSEDES the 09:18 bottom-bar move: the icon bar is GONE, and
    the big Messenger/Mail toggle lives alone in a slim fixed dock in
-   the bottom area — wide pill, red-N effect, raised, elegant, high
+   the bottom area — wide pill, the red N effect effect, raised, elegant, high
    contrast. Move the SAME .nm-toggle node into a new .nm-toggle-dock
    (handlers travel with it; nmSetTempo never rebuilds the chrome).
    The sliding ::after indicator is driven by the toggle's own
@@ -5064,9 +5257,10 @@ function boot(){
      from the mail clusters on the first paint. */
   if(applyMailClusters() && window.__mmTabsMount){ try { window.__mmTabsMount(); } catch(e){} }
   watchTabs();
+  watchReactions();
   pauseMarqueeOnTap();
   trimTabText();
-  setTimeout(function(){ removeSmartLinksRow(); if(applyMailClusters() && window.__mmTabsMount){ try { window.__mmTabsMount(); } catch(e){} } watchTabs(); }, 1500);
+  setTimeout(function(){ removeSmartLinksRow(); if(applyMailClusters() && window.__mmTabsMount){ try { window.__mmTabsMount(); } catch(e){} } watchTabs(); watchReactions(); }, 1500);
   setTimeout(trimTabText, 3000);
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape' && document.body.hasAttribute('data-naya-drawer')) closeSides();
