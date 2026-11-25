@@ -618,6 +618,17 @@ textarea.gr-input{resize:vertical;min-height:110px;line-height:1.55;}
   #sp-walk .sp-stage{--fin-t:196px;--fin-b:192px}
 }
 </style>
+<style id="sp-toptitle-css">
+/* SMART PROJECTS TOPBAR-TITLE 20261125 — the walk's fixed step title clears the
+   top frame's ornament band at phone width. Phone only; desktop untouched.
+   The short title (st.title) is 2 lines max; at 19px Marcellus (sub-headline,
+   25/19/17 §2.3) the title bottom lands ~156, 7px clear of the band top (163).
+   At 25px the same 2 lines ended ~168 — glyphs clear, but only just, and the
+   full question ran 4 lines. No text, no colors, no new elements. */
+@media (max-width:480px){
+  #sp-walk .frame-title{font-size:19px}
+}
+</style>
 <style id="sp-v6-css">
 /* SMART PROJECTS v6 — landing boards. New CSS only; 17px minimum, white text, deep colors. */
 .sp-home-states{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
@@ -2727,10 +2738,26 @@ function spField(label, id, ph, val, area){
   w.appendChild(inp); return w;
 }
 function spSavedLine(html){ var p=el('div','sp-w-saved'); p.innerHTML=html; return p; }
+/* TOPBAR-TITLE 20261125 — at phone width (<=480px) the topbar carries the step's
+   own short title (st.title) and 'STEP N OF 8' with no kind suffix. The full
+   question (spStepQ title) is too long for the 75px between the stage top (88)
+   and the top frame's ornament band (163): at 25px it ran 4 lines on steps 2-4
+   and printed across the winged emblem, and the '· KIND' suffix wrapped the
+   kind line to 2 lines on steps 6-7. The full question still lives in the
+   scroll body — it is the field label on clean black on every step — so
+   nothing the citizen needs is lost. Desktop keeps the full question and the
+   kind suffix. The matchMedia listener re-swaps the two text nodes if the
+   viewport crosses 480px mid-walk; it never touches the body, so typed
+   answers are never lost. */
+function spTopbarTitle(st){
+  var narrow=window.matchMedia&&window.matchMedia('(max-width:480px)').matches;
+  document.getElementById('sp-w-kind').textContent=narrow?'STEP '+(spStep+1)+' OF '+SP_WALK.length:'STEP '+(spStep+1)+' OF '+SP_WALK.length+' · '+st.kind;
+  document.getElementById('sp-w-title').textContent=narrow?st.title:spStepQ(st).title;
+}
+if(window.matchMedia){var spTtMq=window.matchMedia('(max-width:480px)');var spTtFn=function(){spTopbarTitle(SP_WALK[spStep]);};if(spTtMq.addEventListener)spTtMq.addEventListener('change',spTtFn);else if(spTtMq.addListener)spTtMq.addListener(spTtFn);}
 function spRenderStep(){
   var st=SP_WALK[spStep];
-  document.getElementById('sp-w-kind').textContent='STEP '+(spStep+1)+' OF '+SP_WALK.length+' · '+st.kind;
-  document.getElementById('sp-w-title').textContent=spStepQ(st).title;
+  spTopbarTitle(st);
   var g=document.getElementById('sp-w-glyph'); g.textContent=st.glyph; g.style.setProperty('--tone', st.color);
   document.getElementById('sp-w-kind').style.color=st.color;
   var dots=document.getElementById('sp-w-dots'); dots.innerHTML='';
