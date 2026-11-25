@@ -101,13 +101,22 @@ open.
   `https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO%2Fwalkthrough-rebuild-20261125%2Fwalkthrough-rebuild.html&ref=walkthrough-rebuild-20261125&cb=7ffa3d092931e8c2109e9e0052cf916390d1307c`
   — downloaded 183,927 B, sha matches the filed bytes exactly.
 - **Staging worker:** `naya-walkthrough-15-staging` (account NayaPOWER
-  `b5e2a51b3e883f7722287c5f51b1196b`), `worker-rebuild.js` rebuilt from the
-  fixed walk (encoder fidelity + round-trip + non-HTML-bytes identity
-  asserted pre-PUT), PUT via `cf-worker.py put-script --no-metadata`
-  (existing module worker: format + bindings preserved, nothing re-declared,
-  secrets never touched). Bindings re-verified after the PUT: both
-  `secret_text` bindings intact (same set as before the PUT).
-  Served `/welcome`: **183,927 B, sha `b78a3708…` = the built walk exactly.**
+  `b5e2a51b3e883f7722287c5f51b1196b`), `worker-rebuild.js` 912,325 B, sha256
+  `7e8b38f37287a6ecd079c6c92ae68ec6317a4983ac4f57dc82f57e3bf1f5eb2a`,
+  rebuilt from the fixed walk (encoder fidelity + round-trip +
+  non-HTML-bytes identity asserted pre-PUT). PUT HTTP 200, success true,
+  modified `2026-11-25T21:26:36Z`, deployment
+  `10ab108de8124464a5db870d38c66e71`, via `cf-worker.py put-script` with
+  the default `{"main_module":"worker.js"}` metadata. (The `--no-metadata`
+  attempt 400'd first — error 10021, "Could not read content for part
+  'metadata'" — this worker requires the metadata part. The bindings are
+  `secret_text` only, so the default metadata PUT is safe: secrets survive
+  omission.) Bindings re-verified after the PUT: both `secret_text`
+  bindings intact (`SUPABASE_SERVICE_ROLE_KEY`, `SUPERBASE_SERVICE_KEY`).
+  Served `/welcome`: **183,927 B, sha `b78a3708…` = the built walk exactly**
+  (`cmp` clean vs staged and vs local). Get-script read-back (912,509 B
+  multipart envelope) contains the fix markers (`about-extra-1`, "yours to
+  make your own", `rb-two`, `attachAudioUrl`).
   Live walk: `https://naya-walkthrough-15-staging.nayapower.workers.dev/welcome`
 - **Build:** `maker-fix/build-rebuild.mjs` (spine + RB layer, assertions
   incl. D1: no bare `.rb-cell-r{display:none!important}`; all five
