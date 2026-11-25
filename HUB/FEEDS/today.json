@@ -1,129 +1,9 @@
 {
   "contract": "room-feed/v1",
   "room": "today",
-  "emitted_at": "2026-11-24T17:59:55.681883-08:00",
+  "emitted_at": "2026-11-24T09:12:14.159939-08:00",
   "source_ref": "engine-job:hub-feeds-emitter-t0479",
   "items": [
-    {
-      "id": "idx-00408dad-5d82-4cf8-9e20-edcfaeec80c7",
-      "title": "Follow the Word",
-      "topics": [
-        "INTELLIGENT_BLOCK"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-11-24 18:01:23.839273+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-529811ac-b432-4a9b-89ba-20aa23bbc477",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-11-24 18:01:23.407871+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-d1d0b24b-3552-421d-be3a-ccfe82494425",
-      "title": "One Family, Taken Verbatim",
-      "topics": [
-        "INTELLIGENT_BLOCK"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-11-24 17:42:38.7363+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-9c4bc5ae-6cbe-438e-9e50-7774a8e94d9f",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-11-24 17:42:38.157781+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-64e68664-00fc-4867-b0f2-67c05a5f137b",
-      "title": "The Brief Carries the Want",
-      "topics": [
-        "INTELLIGENT_BLOCK"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-11-24 17:34:55.539757+00"
-        }
-      ]
-    },
-    {
-      "id": "idx-ed35d501-1fb7-422c-a023-af2bd822629c",
-      "title": "EXECUTION_RECEIPT",
-      "topics": [
-        "REFERENCE"
-      ],
-      "kind": "note",
-      "priority": 3,
-      "blocker": false,
-      "next_action": "carry-forward",
-      "layers": [
-        {
-          "name": "IN A NUTSHELL",
-          "key": "nutshell",
-          "color": "#FFFFFF",
-          "tier": "primary",
-          "body": "REFERENCE · status VERIFIED · event 2026-11-24 17:34:54.997426+00"
-        }
-      ]
-    },
     {
       "id": "idx-61912700-164e-4d59-beab-c4fae77f8649",
       "title": "One Piece at a Time",
@@ -281,6 +161,126 @@
           "color": "#FFFFFF",
           "tier": "primary",
           "body": "REFERENCE · status VERIFIED · event 2026-11-23 22:27:27.049467+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-f4c9c165-23b4-4f5d-9076-d5f69a3818f3",
+      "title": "One Mind, One Living System",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-11-23 14:35:07.426308+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-a7cf3fe9-e1e3-4ff5-94ae-5ca19138e88c",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-11-23 14:35:06.943379+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-7ed1da33-2b89-4c97-b3b0-159bcc94f383",
+      "title": "Authority Lives in the Human",
+      "topics": [
+        "INTELLIGENT_BLOCK"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "INTELLIGENT_BLOCK · status DURABLE · event 2026-11-23 14:29:03.061529+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-97f91d80-d463-417c-aba9-9341b5163392",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-11-23 14:29:02.654869+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-6ab43eb5-05d5-4003-891f-6884a00424bb",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-11-22 22:42:19.110193+00"
+        }
+      ]
+    },
+    {
+      "id": "idx-4e0f2a56-2b5f-4107-a83a-4dc9962d356d",
+      "title": "EXECUTION_RECEIPT",
+      "topics": [
+        "REFERENCE"
+      ],
+      "kind": "note",
+      "priority": 3,
+      "blocker": false,
+      "next_action": "carry-forward",
+      "layers": [
+        {
+          "name": "IN A NUTSHELL",
+          "key": "nutshell",
+          "color": "#FFFFFF",
+          "tier": "primary",
+          "body": "REFERENCE · status VERIFIED · event 2026-11-22 22:42:18.757382+00"
         }
       ]
     },
