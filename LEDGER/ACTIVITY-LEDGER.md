@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 12:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 13:04 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -49109,6 +49109,14 @@ _Last updated: 2026-11-25 12:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ gap-lane-scorer-20261016-0550 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: query-side NEED-QUERY hybrid vs Q15 trap; characterize tau=0.36
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261016-0550-lane5.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); hybrid script auto-retrieval/semantic-arm-hybrid-q15.py sha256 c3ea05ec... matches the receipt's full pin; results JSON fe0a123b... matches; parent semantic-arm-t0553.py 281ee5f7...b882849 matches the .md pin; parent t0553 scored 9.0 in the ledger; brief dequ
+
 ### ✅ gap-lane-scorer-20261015-2310-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** Re-derive WINMINE patterns from remaining 18 nine-point-five receipts; bias-half audit
@@ -62724,6 +62732,66 @@ _Last updated: 2026-11-25 12:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261016-0607 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
+
+**Task:** gate stall: 22/22 briefs unclaimable by Clarity seat, zero claims
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); pinned transcript sha256 b14f7f48... matches; 22-brief set matches the 0606/0617 siblings. Score 8.0, REWORK. Why not 9.5: the receipt over-claims its own method and counts - section A header says 'exit 2, 5 briefs' but lists 6 rows, section B header says 'ex
+
+### ✅ gate-stall-20261016-0606 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: 22/22 briefs unclaimable by Clarity seat, zero claims
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); pinned transcript hidden_files/gap-gap-gate-stall-20261016-0633-transcript.log exists, sha256 b14f7f48... matches the receipt's full pin; 11 dry-run attempts, 10x EXIT 7 + 1x EXIT 6 exactly as receipted; 22-brief accounting exact (10 exit-7 + 1 exit-6 + 11 st
+
+### ✅ gate-stall-20261016-0617 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: 22/22 briefs unclaimable by Clarity seat, zero claims
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); its 22-brief set matches the 11:38 and 11:42 sibling receipts brief-for-brief (same 6 header gates + 15 exit-7 + 1 exit-6 composition); consistent with sibling scores 8.5/9.0. Score 9.0, GOOD, ONE MORE PASS. Why not 9.5: no surviving Oct-16 sweep log, so the 
+
+### ✅ gap-lane-scorer-20261016-0540 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: re-verify #2459 hold, re-run boot-pointer gate matrix on main, persist landing patch
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261016-0540-lane0.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); durable patch hidden_files/boot-pointer-20261016.patch exists, sha256 4e040e2644008506c3f09dbbeb098a1c4c91d742ef0a8682dcff694b5cf6a2d1 matches the receipt's full pin, 3 diff files; parent receipt distill-daily-20261016.md exists. Score 9.0, GOOD, ONE MORE PAS
+
+### ✅ gap-lane-scorer-20261016-0530 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up: pin per-brief transcript for the 0536 gate-stall parent's refusal tallies and audit coverage
+
+**Receipt:** `twelve-lane-receipts/gap-lane-scorer-20261016-0530-lane0.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); transcript hidden_files/gap-gap-gate-stall-20261016-0600-transcript.log exists, 297 lines, sha256 676e22db8f7a26b9... matches the receipt's full pin; 22 command blocks with exit tally 2x6 / 6x1 / 7x15 exactly as receipted; parent receipt gate-stall-20261016-0
+
+### ✅ gap-gate-stall-20261016-1037 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** gap follow-up: pin per-brief command/exit/output transcript for the 1037 gate-stall parent's 28 refusal verdicts
+
+**Receipt:** `twelve-lane-receipts/gap-gate-stall-20261016-1037-lane0.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); transcript hidden_files/gap-gap-gate-stall-20261016-1037-transcript.log exists, 275 lines, sha256 prefix 7ef715c66676a72c matches the receipt's pin; 28 command blocks with exit tally 2x6 / 7x15 / 1x6 / 6x1 exactly as receipted; parent receipt gate-stall-20261
+
+### ✅ gate-stall-20261016-1142 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: 22/22 briefs unclaimable by Clarity seat, zero claims
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); its 22-brief set matches the 11:38 sibling brief-for-brief (6 explicit gates + 15 exit-7 + 1 no-refile); the one material delta (0530-lane6 still in queue, blocked by no-refile verdict t0431-lane6) checks out - the t0431-lane6 score entry exists in twelve-lan
+
+### ✅ gate-stall-20261016-1138 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** gate stall: 22/22 briefs unclaimable by Clarity seat, zero claims
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); its 22-brief set cross-matches the sibling 11:42 receipt brief-for-brief (same 6 explicit NON-Clarity gates, same 15 exit-7 briefs, plus the 0530-lane6 delta the sibling explains as no-refile-blocked). Score 8.5, REWORK, below the receipt's self-score 10. Why
+
+### ✅ gate-stall-20261125-0439 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** gate stall: 31/31 unclaimable by Clarity seat, zero claims
+
+**Evidence:** FRESH WINDOW. VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); brief-queue/ holds 31 brief-*.md and the sha256 of the sha256sum list recomputes to 6d9e2c4ec6fff11fb09482178ca94dd657e7c948dfa77f74905cf73180620ad4 - byte-identical to the receipt's claim and to the 03:39 receipt, so the queue is untouched and the 0-claimed outcome is verif
 
 ### ✅ gate-stall-20261016-0430 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
