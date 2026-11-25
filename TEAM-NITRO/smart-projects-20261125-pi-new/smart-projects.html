@@ -704,6 +704,24 @@ textarea.gr-input{resize:vertical;min-height:110px;line-height:1.55;}
    bar (.eco-bottombar) stays flush at the viewport bottom — the Hub
    pattern, and the captain did not flag it. */
 header.naya-topbar{top:var(--bw);margin:var(--bw) var(--bw) 0}
+/* The walk rows lost the old .sp-stage fins (30px sides, 88px top/bottom),
+   so the walk content now spans the full inner width and kisses the rim
+   (template head x=17, face circle flush to the rim, DONE 1px above the
+   bottom rim; old proven metrics were headX 36 / content 318 wide). The
+   20px side inset restores the old content width; the top margin gives
+   the kind line room under the daybar (was 2px); the foot padding gives
+   DONE room above the rim. */
+#sp-walk .frame-topbar{margin-top:10px}
+#sp-walk .frame-topbar,#sp-walk .frame-scroll,#sp-walk .frame-foot{padding-left:20px;padding-right:20px}
+#sp-walk .frame-foot{padding-bottom:12px}
+/* Daybar whole from first paint — the harvested daybar carries a .9s
+   max-height/padding/transform transition (Innovations' fold); with no
+   fold JS in PI the walk opens mid-transition, the box reads 27px tall
+   on step 1 while its content is 37.6px, and overflow:hidden slices the
+   "Project Intelligence" title mid-glyph. No transition + a min-height
+   floor (content is 58.6px at phone; the floor never binds above it), so
+   the top bar can never clip its own title. */
+#sp-walk .daybar{transition:none;min-height:60px}
 </style>
 <style id="sp-v6-css">
 /* SMART PROJECTS v6 — landing boards. New CSS only; 17px minimum, white text, deep colors. */
