@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 10:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -57019,6 +57019,12 @@ _Last updated: 2026-11-25 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ gap-lane-scorer-20261015-2120-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** SURGE ledger 8-holed-verdict re-extraction: 10 verdicts re-extracted as verbatim quotes, holes 0/68
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: all 10 named receipt files exist in twelve-lane-receipts/; ledger retrieval/surge-evidence-ledger-t0605.json exists with 68 rows and an extensions key; FALSIFIED* verdict strings re-counted from the live ledger = 13 and ARM* = 8, matching the receipt's machine-derived counts (the pinned s
+
 ### ✅ gap-scorer-20261015-0550-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Second-seat re-judge of the 12 metric_audit_t0822 rows (M2/M3/M4 flags)
@@ -58284,6 +58290,12 @@ _Last updated: 2026-11-25 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ gap-lane-scorer-20261015-2130-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** PR #2541 equivalent regen proven with bytes (byte-diff modulo date stamps at pinned basis 582e5e5f)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick via the local mirror: PR head de0805407... exists as a commit, its single parent is exactly 582e5e5f... as claimed, and all 3 regenerated files exist at that head. NOT PHANTOM. The regen byte-diff itself (0 non-date diff lines) cannot be re-run this tick - the worktree is gone and re-runni
 
 ### ✅ gap-t1342 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -62652,6 +62664,36 @@ _Last updated: 2026-11-25 10:01 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261016-0412 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: 26 queued briefs, 0 claimed (17 exit-7 parent-authorship, 8 exit-2 stamped gate, 1 exit-6 no-refile)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists; claim-brief.py exists (187,852 bytes); parent stall receipt gate-stall-20261016-0034.md exists; table hand-counted 26 rows with 17 exit-7 + 8 exit-2 + 1 exit-6 = 26, matching the summary. NOT PHANTOM. The Oct-15 queue state no longer exists so the 26 verdicts cannot be re-
+
+### ✅ gate-stall-20261015-2051 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** gate stall: 30 queued briefs, 0 claimed (20 exit-7, 9 exit-2, 1 exit-6)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists; claim-brief.py exists; the table is internally ordered and each row names a parent lineage. NOT PHANTOM. The Oct-15 queue state no longer exists so the verdicts cannot be re-run, only cross-checked. Score 8.5, REWORK, below the receipt's self-score 10. Why not 9.5: the tab
+
+### ✅ gate-stall-20261015-2048 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** gate stall: 28 queued briefs, 0 claimed (18 exit-7, 8 exit-2, 1 exit-6)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists; claim-brief.py exists; named parent gap-t0593-lane10.md exists; exit-2 count (8) and exit-6 count (1) match their lists; total 28 matches the scanned count. NOT PHANTOM. The Oct-15 queue state no longer exists so the 28 verdicts cannot be re-run, only cross-checked. Score 
+
+### ✅ gate-stall-20261015-2041 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** gate stall (delta): 29 queued briefs, 0 claimed; one new arrival brief-gap-gap-gap-t0677-lane4.md barred
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists; the named new arrival brief-gap-gap-gap-t0677-lane4.md is a brief-queue file, not a receipt, so its existence cannot be checked against twelve-lane-receipts/ (Oct-15 queue state no longer exists); the delta framing is sound in form. NOT PHANTOM. Score 8.5, REWORK, below th
+
+### ✅ gate-stall-20261015-2036 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gate stall: 27 queued briefs, 0 claimed (8 stamped gate, 18 exit-7 parent-authorship, 1 exit-6 no-refile)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists; claim-brief.py exists (187,852 bytes); named parent receipts t0431-lane6.md, t0413-lane3.md, t0692-lane4.md exist in twelve-lane-receipts/; inventory internally consistent (8+18+1=27, hand-counted per list). NOT PHANTOM. The Oct-15 queue state no longer exists so the 27 ve
 
 ### ✅ gate-stall-20261015-2021 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
 
