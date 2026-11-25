@@ -1192,6 +1192,42 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 #screen-slide .more-behind,#depthBody .more-behind{min-height:0;padding:2px 10px;margin-top:6px}
 }
 </style>
+<style>
+/* FIX4D — flex-shrink guard (phone text panels): a panel that overflows must
+   report its true scrollHeight so the fit can measure it — the marker was
+   flex-squashed to 6px tall inside the overflowing L3 panel. Image/video
+   panels are untouched (their media still flexes). */
+@media(max-width:900px){
+  #depthBody .depth-thirds .ib-layer:not(.ib-img) .ib-layer-body>*{flex-shrink:0}
+  #screen-slide .slide-boards .ib-layer:not(.ib-img) .ib-layer-body>*{flex-shrink:0}
+  #screen-slide #slideTextCenter .ib-layer:not(.ib-img) .ib-layer-body>*{flex-shrink:0}
+}
+</style>
+<style>
+/* FIX4G — continuation layers are one full-body text board (see renderDepth):
+   the text third spans the whole depth grid; the two image thirds are
+   zero-height shells that paint nothing but keep their data-third + chrome,
+   so per-third taps and the L3 sweep still find them. */
+#depthBody .depth-thirds .ib-layer.cont-full{grid-column:1 / -1;grid-row:1 / -1}
+#depthBody .depth-thirds .ib-layer.cont-ph{height:0 !important;min-height:0 !important;overflow:hidden;visibility:hidden}
+</style>
+<style>
+/* FIX4H — 390 swap popup: the card (84vh) clipped the Go button below its
+   visible bottom, so taps at the button's rect hit the backdrop and closed
+   the popup without storing. Phone only: near-full-height card, compact
+   rows, lib-note hidden — the whole popup (all three rows + Close) fits in
+   the 844px viewport and the Go button is tappable on open. */
+@media(max-width:900px){
+  #swapPop{padding:8px}
+  #swapPop .innov-pop-card{max-height:calc(100dvh - 16px);padding:14px 16px}
+  #swapPop .innov-pop-card .b-script{font-size:22px}
+  #swapPop .innov-pop-card p{margin:6px 0;font-size:18px}
+  #swapPop .innov-row{margin:8px 0;gap:6px}
+  #swapPop .lib-note{display:none}
+  #swapPop .innov-row textarea{padding:8px 10px}
+  #swapPop #swapClose{margin-top:4px}
+}
+</style>
 </head>
 <body>
 <div class="royal-frame" aria-hidden="true"><div class="rf-et top"></div><div class="rf-es left"></div><div class="rf-es right"></div><div class="rf-rim"></div><div class="rf-corner tl"></div><div class="rf-corner tr"></div><div class="rf-corner bl"></div><div class="rf-corner br"></div><div class="rf-n top"></div></div>
@@ -1522,6 +1558,19 @@ function renderSlide(){
         img.style.display = 'none';
         img.removeAttribute('src');
         bg.style.backgroundImage = 'none';
+      } else if (window.innerWidth <= 900){
+        /* FIX4E — phone: the even-chapter centre is a real image board in
+           #slideTextCenter (same image, own swap/add/N controls, like the
+           odd chapters' centre) — the bare frame image left no centre board
+           to find. The frame image stays as it was (backdrop, pattern and
+           fast-load point); the board covers it. Desktop keeps the bare
+           frame image (the BARE ruling). */
+        img.style.display = '';
+        img.alt = g.t;
+        img.src = src;
+        bg.style.backgroundImage = 'url(' + src + ')';
+        tc.innerHTML = imgBoardFor(src, g.t, 'C', current);
+        tc.hidden = false;
       } else {
         img.style.display = '';
         img.alt = g.t;
@@ -1784,7 +1833,7 @@ var TEXTEDIT = { slot: null, el: null };
 /* LIBRARY — the images in this presentation, by chapter (the swap panel's
    "choose from our library" list). No server backend in this static build:
    choosing one applies that slide's real image to the slot. */
-var LIB_LABELS = ['Naya Door — tunnel', 'Smart Tap — board floats forward', 'Smart Tap — whole board alive', 'Collective Chain — Nayavation 11', 'Naya Code — v1 placeholder', 'Deletion — fading words', 'Deletion — saved words', 'Smart Match', 'Smart Vault — living vault', 'Everyone hired — sharing wealth', 'The template'];
+var LIB_LABELS = ['Naya Door — tunnel', 'Smart Tap — board floats forward', 'Smart Tap — whole board alive', 'Collective Chain — Nayavation 11', 'Naya Code — v1 placeholder', 'Deletion — fading words', 'Deletion — saved words', 'Smart Match', 'Smart Vault — living vault', 'Everyone hired — sharing wealth', 'The template', 'Everyone hired — the market', 'Naya Windows — see through'];
 /* DEPTH IMAGES — THE CHAPTER METHOD (Shawn, 2026-11-23): 3–4 images per
    chapter, 30–40 total, each batch labeled with its innovation. Slots
    are EMPTY (null) until Shawn approves that chapter's images — an empty
@@ -1896,6 +1945,14 @@ function openSwap(slot, mode){
   });
   lib.value = '';
   document.getElementById('swapPop').hidden = false;
+  /* FIX4H — belt-and-braces: if the Go button for the visible row is still
+     below the card's fold on a phone, scroll it into view on open (no-op
+     when the card already fits, desktop untouched). */
+  if (window.innerWidth <= 900){
+    var fix4hGo = !document.getElementById('swapTxtRow').hidden ? document.getElementById('swapTxtGo')
+      : (!document.getElementById('swapVidRow').hidden ? document.getElementById('swapVidGo') : null);
+    if (fix4hGo) fix4hGo.scrollIntoView({block: 'nearest'});
+  }
 }
 function closeSwap(){ document.getElementById('swapPop').hidden = true; }
 function applyImageSwap(dataUrl){
@@ -2315,36 +2372,61 @@ function fitDepthText(){
          fits on a DIFFERENT layer. */
       var curLayer = depthLayers(DEPTH_BOARD)[DEPTH_IDX];
       var viewingThisCont = !!(curLayer && curLayer.kind === 'text' && curLayer.cont === 'D' + i);
-      if (!viewingThisCont && DEPTH_CONT[key] !== undefined){
+      /* FIX4F — evict unconditionally: the layer is keyed per third but the
+         split that made it was keyed per (step, third), so a layer made at
+         another step survived this step's fit and the total depended on
+         visit history. Re-derived whenever its own step is viewed again. */
+      if (!viewingThisCont){
         delete DEPTH_CONT[key];
         BEHIND[DEPTH_BOARD] = (BEHIND[DEPTH_BOARD] || []).filter(function(L2){ return L2.cont !== 'D' + i; });
       }
       return;
     }
+    /* FIX4D — the level-3 Deeper line is the overflow: at 390 the three
+       equal rows cap a text panel at 207px and the fixed costs (heading +
+       Deeper line + marker + padding) already exceed it, so trimming the
+       paragraph to a single word still overflows 8–19px. When the paragraph
+       is at its floor and the panel still overflows, the Deeper line goes
+       behind the N with the rest and the paragraph is re-fit into the freed
+       room — the line stays reachable on the continuation layer, nothing is
+       clipped or hidden. (The !rest guards keep the moved line: if the whole
+       paragraph fits once the line is out of the way, the line itself is
+       still the continuation — it is never dropped.) */
     var words = String(full).split(/\s+/);
-    var lo = 0, hi = words.length, best = 0;
-    while (lo <= hi){
-      var mid = Math.floor((lo + hi) / 2);
-      p.textContent = words.slice(0, mid).join(' ');
-      if (b.scrollHeight <= b.clientHeight + 1){ best = mid; lo = mid + 1; } else hi = mid - 1;
-    }
-    if (best < 1) best = 1;
-    var rest = words.slice(best).join(' ');
-    if (!rest){ p.textContent = full; return; }
-    p.textContent = words.slice(0, best).join(' ');
-    marker = document.createElement('button');
-    marker.type = 'button';
-    marker.className = 'more-behind';
-    marker.textContent = '… more behind the N →';
-    b.appendChild(marker);
-    if (b.scrollHeight > b.clientHeight + 1){
-      while (best > 1 && b.scrollHeight > b.clientHeight + 1){
-        best--;
-        p.textContent = words.slice(0, best).join(' ');
-        rest = words.slice(best).join(' ');
+    var best = 0, rest = '', movedDeeper = '';
+    for (var pass = 0; pass < 2; pass++){
+      var lo = 0, hi = words.length; best = 0;
+      while (lo <= hi){
+        var mid = Math.floor((lo + hi) / 2);
+        p.textContent = words.slice(0, mid).join(' ');
+        if (b.scrollHeight <= b.clientHeight + 1){ best = mid; lo = mid + 1; } else hi = mid - 1;
       }
-      if (!rest){ marker.remove(); p.textContent = full; return; }
+      if (best < 1) best = 1;
+      rest = words.slice(best).join(' ');
+      if (!rest && !movedDeeper){ p.textContent = full; return; }
+      p.textContent = words.slice(0, best).join(' ');
+      marker = document.createElement('button');
+      marker.type = 'button';
+      marker.className = 'more-behind';
+      marker.textContent = '… more behind the N →';
+      b.appendChild(marker);
+      if (b.scrollHeight > b.clientHeight + 1){
+        while (best > 1 && b.scrollHeight > b.clientHeight + 1){
+          best--;
+          p.textContent = words.slice(0, best).join(' ');
+          rest = words.slice(best).join(' ');
+        }
+        if (!rest && !movedDeeper){ marker.remove(); p.textContent = full; return; }
+      }
+      if (b.scrollHeight <= b.clientHeight + 1) break;
+      var deep = b.querySelector('.third-deeper');
+      if (!deep || pass === 1) break;
+      movedDeeper = deep.textContent.trim();
+      deep.remove();
+      if (marker){ marker.remove(); marker = null; }
+      p.textContent = full;
     }
+    if (movedDeeper) rest = (rest ? rest + ' ' : '') + movedDeeper;
     DEPTH_CONT[key] = rest;
     BEHIND[DEPTH_BOARD] = (BEHIND[DEPTH_BOARD] || []).filter(function(L2){ return L2.cont !== 'D' + i; });
     BEHIND[DEPTH_BOARD].push({ kind: 'text', text: rest, cont: 'D' + i });
@@ -2398,7 +2480,22 @@ function renderDepth(){
   else if (L.kind === 'text') title.textContent = g.t + (L.cont ? ' — continued' : ' — behind the board');
   var thirds = depthThirdsFor(DEPTH_BOARD, L).map(function(d, i){ return applyDepthSwap(d, i); });
   thirds.forEach(function(d, i){ if (d.kind === 'text') DEPTH_FULL[depthSwapKey(i)] = d.txt; });
-  var html = thirds.map(function(d, i){ return thirdPanelHTML(d, THIRD_LVL[i] || 1, i); }).join('');
+  /* FIX4G — a continuation layer is ONE full-body text board, not three
+     equal rows: at 390 a 207px row shows ~180 chars, so the 3243-char rest
+     needed ~18 windows and the 8-click walk never reached its tail. The
+     text third spans the whole depth body (~950 chars a window at phone,
+     ~1400 at desktop) and the tail is reached in ~3–4 clicks. The two image
+     thirds stay as zero-height shells (data-third 0 and 2, chrome intact)
+     so per-third taps and the L3 sweep still find them; they paint nothing.
+     Built-in layers are untouched. */
+  var html;
+  if (L.kind === 'text' && L.cont){
+    var tp = thirdPanelHTML(thirds[1], THIRD_LVL[1] || 1, 1).replace('class="ib-layer ', 'class="ib-layer cont-full ');
+    var ph = function(i){ return '<div class="ib-layer ib-img cont-ph" data-third="' + i + '"><div class="ib-layer-body">' + thirdChrome(i, THIRD_LVL[i] || 1) + '</div></div>'; };
+    html = ph(0) + tp + ph(2);
+  } else {
+    html = thirds.map(function(d, i){ return thirdPanelHTML(d, THIRD_LVL[i] || 1, i); }).join('');
+  }
   body.innerHTML = '<div class="depth-thirds">' + html + '</div>';
   fitDepthText();
   var card = document.querySelector('#depthView .innov-pop-card');
