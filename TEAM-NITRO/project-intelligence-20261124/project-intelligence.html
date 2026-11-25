@@ -2736,21 +2736,29 @@ function piDeleteProject(p,btn){
     return;
   }
   btn.disabled=true; btn.textContent='DELETING…';
-  get('/object_links?a_kind=eq.project&a_id=eq.'+p.id+'&select=b_kind,b_id,b_label').then(function(links){
-    var listIds=(links||[]).filter(function(l){ return l.b_kind==='list'; }).map(function(l){ return l.b_id; });
-    var chain=Promise.resolve();
-    listIds.forEach(function(id){
-      chain=chain.then(function(){ return del('/smart_list_items?list_id=eq.'+id); })
-                 .then(function(){ return del('/smart_lists?id=eq.'+id); });
-    });
-    return chain.then(function(){ return del('/object_links?a_kind=eq.project&a_id=eq.'+p.id); })
-      .then(function(){ return del('/projects?id=eq.'+p.id); });
-  }).then(function(){
-    PI.mine=PI.mine.filter(function(x){ return x.id!==p.id; });
-    PI.shared=PI.shared.filter(function(x){ return x.id!==p.id; });
-    delete PI.expanded[p.id];
-    return piLoadStats().then(function(){ piRenderAll(); }).catch(function(){ piRenderAll(); }); })
-  .catch(function(){ btn.disabled=false; btn.textContent='DELETE'; });
+  var tries=0;
+  function attempt(){
+    tries++;
+    return get('/object_links?a_kind=eq.project&a_id=eq.'+p.id+'&select=b_kind,b_id,b_label').then(function(links){
+      var listIds=(links||[]).filter(function(l){ return l.b_kind==='list'; }).map(function(l){ return l.b_id; });
+      var chain=Promise.resolve();
+      listIds.forEach(function(id){
+        chain=chain.then(function(){ return del('/smart_list_items?list_id=eq.'+id); })
+                   .then(function(){ return del('/smart_lists?id=eq.'+id); });
+      });
+      return chain.then(function(){ return del('/object_links?a_kind=eq.project&a_id=eq.'+p.id); })
+        .then(function(){ return del('/projects?id=eq.'+p.id); });
+    }).then(function(){
+      PI.mine=PI.mine.filter(function(x){ return x.id!==p.id; });
+      PI.shared=PI.shared.filter(function(x){ return x.id!==p.id; });
+      delete PI.expanded[p.id];
+      return piLoadStats().then(function(){ piRenderAll(); }).catch(function(){ piRenderAll(); }); });
+  }
+  function fail(){
+    if(tries<2){ return new Promise(function(res){ setTimeout(res,800); }).then(attempt).catch(fail); }
+    btn.disabled=false; btn.textContent='DELETE — TRY AGAIN';
+  }
+  attempt().catch(fail);
 }
 function piBlock(p,idx,owned){
   var s=PI.stats[p.id]||piEmptyStats();
