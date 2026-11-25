@@ -1232,6 +1232,27 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 /* FIX5E — END BOARD actions row (harvested verbatim from the fix4 delta build, FIX3H). */
 .end-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:16px}
 </style>
+<style>
+/* FIX6 — FRONT TEASER CHROME RELIEF (phone only, 2026-11-24).
+   Measured at true 390x844: the front text panel's fixed chrome (padding
+   36 + heading 30 + p margins 22 + N 46 + marker 36 = ~170px) left 17px
+   for the paragraph in a 187px body — less than one line, so no fit
+   could ever reach zero overflow. This frees ~46px (padding 36->16,
+   p 22px->19px at 1.35 with 4px margins, N 40->32px, marker margin
+   6->4px) so two lines of teaser fit the unfolded body with ~12px
+   slack. Front slide only; depth, cover and desktop untouched. */
+@media(max-width:900px){
+ #screen-slide .slide-boards .ib-layer:not(.ib-img) .ib-layer-body,
+ #screen-slide #slideTextCenter .ib-layer:not(.ib-img) .ib-layer-body{padding-top:10px;padding-bottom:6px}
+ #screen-slide .slide-boards .ib-layer:not(.ib-img) .ib-layer-body p,
+ #screen-slide #slideTextCenter .ib-layer:not(.ib-img) .ib-layer-body p{font-size:19px;line-height:1.35;margin-top:4px;margin-bottom:4px}
+ #screen-slide .slide-boards .ib-layer:not(.ib-img) .ib-n,
+ #screen-slide #slideTextCenter .ib-layer:not(.ib-img) .ib-n{width:32px;height:32px;min-height:0;margin-top:4px}
+ #screen-slide .slide-boards .ib-layer:not(.ib-img) .ib-n img,
+ #screen-slide #slideTextCenter .ib-layer:not(.ib-img) .ib-n img{width:32px;height:32px}
+ #screen-slide .more-behind{margin-top:4px}
+}
+</style>
 </head>
 <body>
 <div class="royal-frame" aria-hidden="true"><div class="rf-et top"></div><div class="rf-es left"></div><div class="rf-es right"></div><div class="rf-rim"></div><div class="rf-corner tl"></div><div class="rf-corner tr"></div><div class="rf-corner bl"></div><div class="rf-corner br"></div><div class="rf-n top"></div></div>
@@ -2155,6 +2176,7 @@ function fitPanels(){
     ['B', document.getElementById('slideBoardsB')],
     ['C', document.getElementById('slideTextCenter')]
   ];
+  var phone = window.matchMedia ? window.matchMedia('(max-width: 900px)').matches : window.innerWidth <= 900;
   panels.forEach(function(entry){
     var slot = entry[0], host = entry[1];
     if (!host || host.hidden) return;
@@ -2167,8 +2189,10 @@ function fitPanels(){
     if (full === undefined) full = slot === 'B' ? GROUPS[current].b : GROUPS[current].a;
     var marker = body.querySelector('.more-behind');
     p.textContent = full;
+    p.style.fontSize = ''; p.style.lineHeight = '';
     if (marker) marker.remove();
     marker = null;
+    if (phone){ fitPhonePanel(body, p, key, full, slot); return; }
     if (body.scrollHeight <= body.clientHeight + 1){
       if (CONTINUED[key] !== undefined){
         delete CONTINUED[key];
@@ -2192,7 +2216,7 @@ function fitPanels(){
     marker = document.createElement('button');
     marker.type = 'button';
     marker.className = 'more-behind';
-    marker.textContent = '… more behind the N →';
+    marker.textContent = '\u2026 more behind the N \u2192';
     body.appendChild(marker);
     if (body.scrollHeight > body.clientHeight + 1){
       while (best > 1 && body.scrollHeight > body.clientHeight + 1){
@@ -2207,6 +2231,113 @@ function fitPanels(){
     BEHIND[current].push({ kind: 'text', text: rest, cont: slot });
     marker.setAttribute('data-layer', String(depthSteps(current).length + BEHIND[current].length - 1));
   });
+}
+/* FIX6 — PHONE PHRASE FIT (max-width:900px only). The teaser shows the
+   LONGEST run of whole phrases that fits in FIX6_MAX_LINES lines with
+   the marker in place — never a mid-phrase cut, never a lone word.
+   Line-capped, not height-fitted: the daybar fold only ever ADDS room,
+   so the chosen teaser cannot change as the walk proceeds; the re-fit
+   triggers below only settle it after a font swap. */
+var FIX6_MAX_LINES = 2;
+var FIX6_DANGLE = ['a','an','the','one','two','to','and','or','of','in','on','at','with','before','after','but','so','as','by','for','from','is','are','was','it','its','this','that'];
+function frontPhrases(full){
+  var text = String(full || '').replace(/\s+/g, ' ').trim();
+  if (!text) return [];
+  var parts = text.match(/[^.!?;:\u2014]+(?:[.!?;:]|\u2014|$)/g) || [text];
+  return parts.map(function(s){ return s.trim(); }).filter(Boolean);
+}
+function frontCommaParts(phrase){
+  var parts = String(phrase || '').match(/[^,]+(?:,|$)/g) || [phrase];
+  return parts.map(function(s){ return s.trim(); }).filter(Boolean);
+}
+function fitPhonePanel(body, p, key, full, slot){
+  var lineH = parseFloat(window.getComputedStyle(p).lineHeight) || 26;
+  function pLines(){ return Math.max(1, Math.round(p.getBoundingClientRect().height / lineH)); }
+  function fits(){ return pLines() <= FIX6_MAX_LINES && body.scrollHeight <= body.clientHeight + 1; }
+  function clearCont(){
+    if (CONTINUED[key] !== undefined){
+      delete CONTINUED[key];
+      BEHIND[current] = (BEHIND[current] || []).filter(function(L){ return L.cont !== slot; });
+    }
+  }
+  p.textContent = full;
+  if (fits()){ clearCont(); return; }
+  var marker = document.createElement('button');
+  marker.type = 'button';
+  marker.className = 'more-behind';
+  marker.textContent = '\u2026 more behind the N \u2192';
+  body.appendChild(marker);
+  function displayFor(cand, hasRest){
+    var t = String(cand).replace(/\s+$/, '');
+    if (!hasRest) return t;
+    if (/[\u2014]$/.test(t)) return t.slice(0, -1).replace(/\s+$/, '') + '\u2026';
+    if (/[,:;]$/.test(t)) return t.slice(0, -1).replace(/\s+$/, '') + '\u2026';
+    if (/[.!?]$/.test(t)) return t;
+    return t + '\u2026';
+  }
+  function dangling(t){
+    var w = String(t).replace(/[\u2026.!?,;:\u2014\s]+$/g, '').split(/\s+/).pop();
+    return w ? FIX6_DANGLE.indexOf(w.toLowerCase()) !== -1 : false;
+  }
+  function wordsOf(t){ return String(t).split(/\s+/).filter(Boolean).length; }
+  function longestFitting(phrases){
+    var best = -1;
+    for (var n = 1; n <= phrases.length; n++){
+      p.textContent = phrases.slice(0, n).join(' ');
+      if (fits()) best = n; else break;
+    }
+    return best;
+  }
+  var phrases = frontPhrases(full);
+  var best = longestFitting(phrases);
+  if (best < 1){
+    var sub = frontCommaParts(phrases[0] || full);
+    if (sub.length > 1){ phrases = sub.concat(phrases.slice(1)); best = longestFitting(phrases); }
+  }
+  while (best > 1){
+    var cand = phrases.slice(0, best).join(' ');
+    if (/[.!?]$/.test(cand.replace(/\s+$/, ''))) break; /* FIX6B: a finished sentence is never dangling — "No AI reads it." ends in "it" and is complete; the guard is only for mid-sentence (comma/dash) endings */
+    if (!dangling(cand) && wordsOf(cand) >= 3) break;
+    best--;
+  }
+  if (best < 1 || (wordsOf(phrases.slice(0, best).join(' ')) < 3 && !/[.!?]$/.test(phrases.slice(0, best).join(' ').replace(/\s+$/, '')))){
+    /* Safety net, never expected after the chrome relief: first phrase
+       at the 17px floor, marker off (the rest stays reachable behind
+       the N — the continuation is still pushed to BEHIND). */
+    window.__fix6Fallbacks = (window.__fix6Fallbacks || 0) + 1;
+    p.style.fontSize = '17px'; p.style.lineHeight = '1.35';
+    lineH = parseFloat(window.getComputedStyle(p).lineHeight) || 23;
+    marker.remove();
+    var first = frontPhrases(full)[0] || full;
+    var rest0 = String(full).slice(first.length).trim();
+    p.textContent = displayFor(first, !!rest0);
+    CONTINUED[key] = rest0;
+    BEHIND[current] = (BEHIND[current] || []).filter(function(L){ return L.cont !== slot; });
+    BEHIND[current].push({ kind: 'text', text: rest0, cont: slot });
+    return;
+  }
+  var shown = phrases.slice(0, best).join(' ');
+  var rest = phrases.slice(best).join(' ');
+  if (!rest){ marker.remove(); p.textContent = full; clearCont(); return; }
+  p.textContent = displayFor(shown, true);
+  CONTINUED[key] = rest;
+  BEHIND[current] = (BEHIND[current] || []).filter(function(L){ return L.cont !== slot; });
+  BEHIND[current].push({ kind: 'text', text: rest, cont: slot });
+  marker.setAttribute('data-layer', String(depthSteps(current).length + BEHIND[current].length - 1));
+}
+/* FIX6 — RE-FIT TRIGGERS (phone determinism). The fit is measured
+   against live fonts, so re-run it when the webfonts land, when the
+   viewport changes, and when the daybar finishes folding. The fit is
+   line-capped, so a re-fit can only settle the teaser, never grow it
+   past the cap. Attached once. */
+if (!window.__fix6FitListeners){
+  window.__fix6FitListeners = true;
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ if (typeof fitPanels === 'function') fitPanels(); });
+  if (document.fonts && document.fonts.addEventListener) document.fonts.addEventListener('loadingdone', function(){ if (typeof fitPanels === 'function') fitPanels(); });
+  var __fix6ResizeT = null;
+  window.addEventListener('resize', function(){ if (__fix6ResizeT) clearTimeout(__fix6ResizeT); __fix6ResizeT = setTimeout(function(){ if (typeof fitPanels === 'function') fitPanels(); }, 150); });
+  var __fix6Bar = document.querySelector('.daybar');
+  if (__fix6Bar) __fix6Bar.addEventListener('transitionend', function(e){ if (e && e.propertyName === 'max-height' && typeof fitPanels === 'function') fitPanels(); });
 }
 document.getElementById('swapClose').addEventListener('click', closeSwap);
 document.getElementById('swapPop').addEventListener('click', function(e){ if (e.target === this) closeSwap(); });
