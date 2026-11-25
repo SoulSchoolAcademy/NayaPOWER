@@ -5094,6 +5094,21 @@ html{scroll-padding-top:130px;}
   .nm-msg-panes .nm-pane:not(.nm-rail) .nm-search input{height:44px!important;padding:8px 14px!important;box-sizing:border-box!important;}
 }
 
+/* --- 26. ROUND 15e — the checker-14 fix pass, fifth cut (2026-11-25 ~11:55) ---
+   The c18 probe met the D1 bar by measurement but only by 1px on the
+   first conv top and 3px on the search bottom — and two runs of the same
+   page differ by ~8px as the tabs re-render, so that margin is not
+   safe. The diagnostic showed the last slack: the tab labels sit on a
+   29px "normal" line-height (20px font), so every pill is 40-45px tall
+   on leading alone; and the band tiles sit on their 84px min-height.
+   Tightening the label leading to 1.2 drops every pill to ~36px, and
+   the tiles to their 80px content height. No font moves, nothing
+   deleted, tabs stay 20px. */
+@media (max-width:640px){
+  #mmTabsHost .smart-tab .sn-label{line-height:1.2;}
+  .ov-second-row .ml-qa-item,.ov-second-row .ml-compose-top{padding:4px 6px;min-height:80px;}
+}
+
 </style>
 <script id="ov-script">
 /* ===== OVERLAY ROUND — behavior (2026-11-25) =====
