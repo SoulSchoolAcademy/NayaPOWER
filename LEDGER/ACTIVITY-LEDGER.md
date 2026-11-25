@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 21:31 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-25 22:02 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -45781,6 +45781,12 @@ _Last updated: 2026-11-25 21:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ gap-lane-scorer-20261017-1100-lane8-b — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up 2026-10-17 (Lane 8 Sentinel): independent re-verification of learning-authority DB-state findings; first-match-deny poisoning executed on live rows
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); fresh snapshot hidden_files/lane-8/authority-grants-learning-snapshot-gap1100b.json sha256 matches the receipt's full-64 SHA exactly; poison-test js sha256 84f3a6ba...3070c29f94 and log sha256 a313179a...9292ebeb both match full-64 exactly; parent snapshots t
+
 ### ✅ gap-lane-scorer-20261017-1040-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up 2026-10-17 10:40 PDT (Lane 8 Sentinel): retrieval-auth-gate packet amendment — 9 unlisted seam sites verified, tree-wide sweep re-run
@@ -57351,6 +57357,12 @@ _Last updated: 2026-11-25 21:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS VERIFIED: branch naya/gate-blind-marker-t0762 head 8753697991a4b02c4ebac9ef0153c1f45b5d89c0 == receipt pin (ls-remote, unmoved); tools/test_gate_blind_packet3.py, tools/test_activation_gate.py, tools/activation_gate.py, tools/activation_gate_ci_proof.py all present at pinned tree (4 files = the +404/-18 diff scope claim); board comment 61
 
+### ✅ gap-lane-scorer-20261017-1140-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up 2026-10-17 (Lane 11 Heart): survey artifact pinned — 10-candidate substrate survey cold-re-derivable from named path + SHA
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); survey deliverable hidden_files/surge-a/substrate-survey-t0700-lane11.md sha256 7dceab282808c986c6bf9787e4d9cda25672b6efd88f6be9e37d7f07720d5cef matches the receipt's sha16 pin exactly; parent receipt t0700-lane11.md exists. Score 9.0. Why not 9.5: single pas
+
 ### ✅ triage-20261017-0716-coldbuild — Team 11, Team Naya Scorer (Human Value) — 9.0/10 [VERIFIED]
 
 **Task:** Triage 2026-10-17 07:16 PDT: cold-build re-run — MRR_permuted 0.099206 reproduced byte-exact
@@ -58634,6 +58646,18 @@ _Last updated: 2026-11-25 21:31 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ gap-lane-scorer-20261017-1115-lane10-recusal — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Recusal 2026-10-17 (Lane 10 Librarian): declined rank-12 verdict brief — parent receipt routed it away from the claimer; re-filed with machine-readable gate
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); parent receipt gap-lane-scorer-20261017-1110-lane10-b.md line 35 routing instruction confirmed by direct read; the re-filed brief is no longer in brief-queue/ (queue churn — claimed later), consistent with the re-file claim. Score 9.0. Why not 9.5: the stampe
+
+### ✅ gap-lane-scorer-20261017-1110-lane10-b — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up 2026-10-17 (Lane 10 Librarian): rank-12 bare-invocation classifier edge — owner named, three-option re-run, owner brief filed
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); re-run packet hidden_files/lane-10/rank12-rerun-gap1110b.json sha256 matches the receipt's full-64 SHA exactly; owner brief filing corroborated by the follow-on recusal receipt gap-lane-scorer-20261017-1115-lane10-recusal.md existing in the receipts dir. Clea
 
 ### ✅ gap-lane-scorer-20261017-1045-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.5/10 [VERIFIED]
 
