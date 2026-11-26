@@ -6927,4 +6927,54 @@ body:not(.os-bottom-hidden):not(.os-bottom-off) .naya-drawer-left .rail.left{pad
   .nm-bubble p.nm-note{line-height:1.4 !important;}
 }
 </style>
+
+<style id="ov-fix4-20261125">
+/* ===== FIX4 2026-11-25 — D-1 drawers answer late (first-frame fix) =====
+   (1) Pre-warm: drawers on-screen but invisible (opacity:0) so the layer
+       is built + rastered at load; no flash possible. */
+body.fx4-warm .naya-drawer-left{transform:none !important;opacity:0 !important;pointer-events:none !important;}
+body.fx4-warm .naya-drawer-left .rail.left{transform:none !important;}
+body.fx4-warm .naya-drawer-right{transform:none !important;opacity:0 !important;pointer-events:none !important;}
+body.fx4-warm .naya-drawer-backdrop{opacity:0 !important;pointer-events:none !important;}
+/* (3) .25s -> .4s so the slide shows intermediate frames even at ~5 fps. */
+.naya-drawer{transition:transform .4s ease !important;}
+.naya-drawer-backdrop{transition:opacity .4s ease !important;}
+</style>
+<script id="ov-fix4-20261125-js">
+(function(){
+  var warmed = false, warmTimers = [];
+  function cancelWarm(){
+    warmTimers.forEach(clearTimeout); warmTimers = [];
+    document.body.classList.remove('fx4-warm');
+  }
+  function warm(){
+    if (warmed) return; warmed = true;
+    if (document.body.hasAttribute('data-naya-drawer')) return; /* user already in a drawer */
+    document.body.classList.add('fx4-warm');
+    /* force style + layout + two frames while on-screen but invisible */
+    var L = document.querySelector('.naya-drawer-left');
+    var R = document.querySelector('.naya-drawer-right');
+    if (L) void L.getBoundingClientRect();
+    if (R) void R.getBoundingClientRect();
+    function frames(n, done){
+      if (n <= 0) return done();
+      requestAnimationFrame(function(){ if (L) void L.getBoundingClientRect(); frames(n - 1, done); });
+    }
+    frames(2, function(){
+      warmTimers.push(setTimeout(function(){
+        cancelWarm();
+      }, 1200)); /* hold on-screen invisible, then restore + let it settle */
+    });
+  }
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    warmTimers.push(setTimeout(warm, 800));
+  } else {
+    document.addEventListener('DOMContentLoaded', function(){ warmTimers.push(setTimeout(warm, 800)); });
+  }
+  /* If the user opens a drawer mid-warm, cancel at once — never block a tap. */
+  document.addEventListener('click', function(e){
+    if (document.body.classList.contains('fx4-warm')) cancelWarm();
+  }, true);
+})();
+</script>
 </body></html>
