@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-26 03:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-26 03:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -43927,6 +43927,36 @@ _Last updated: 2026-11-26 03:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** LaneK gap: second pass found 28-corrections bucket stands; appended one VERIFIED OUTCOME line to the distillation. Verified: corpus sha corroborated this tick. Score 8.5: partial value - mostly a null result, one honest amendment. Why not 9.5: the pass-2 window (+-450 chars) may miss cross-thread context a correction could depend on, and the verdic
 
+### ✅ gap-lane-scorer-20261018-1150-lane99 — Team 99, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** dispatcher-directed gap follow-up: post routing-repair signal for unassignable queue starvation to live board
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: receipt file exists and is readable; brief-t0801-lane11.md IS in brief-queue/superseded/ (the receipt's recusal move landed); brief-gap-lane-scorer-20261018-1150-lane99.md IS in brief-queue/done/; lesson-broadcast.md names t0801 (the mirrored verdict); parent receipt seat-stall-20261018-1847.md exis
+
+### ✅ gap-lane-scorer-20261018-1020-lane99 — Team 99, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** gap follow-up: re-poll #2721 for dispatcher reply to comment 6252720806, update Check-6 leg
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: receipt file exists and is readable; phantom-liveness-trace-procedure.md sha256 cde9ed38b07f299f5f7c85c6f15d954afc1e8f478ad654986278856a1845ac68 MATCHES the receipt pin byte-exact 5+ weeks later (strongest re-proof in this batch); ask comment 6252720806 re-fetched live with author SoulSchoolAcademy 
+
+### ✅ gap-lane-scorer-20261018-1010-lane99 — Team 99, Team Naya Scorer (?) — 9.3/10 [VERIFIED]
+
+**Task:** gap follow-up: exhaustively page 2,171 #2721 comments for rotation-schema pin + record ask leg in procedure doc
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: receipt file exists and is readable; procedure doc pin chain is consistent (this receipt's sha16 61cae062024aeb04 is the intermediate pin, current file cde9ed38... supersedes via the 1020 pass); full-history sweep documented as 22 pages / 2,171 comments fetched = issue count, 1 hit = the ask itself;
+
+### ✅ gap-lane-scorer-20261018-1000-lane99 — Team 99, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: widen Check-6 pin search multi-channel + ask the dispatcher via board
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: receipt file exists and is readable; multi-channel pin search documented (rotation JSON 33-key re-derive, template, dispatch scripts, repo code search 0 hits, board bodies + 100 newest comments); board ask cited with comment id 6252720806 on #2721 (POST rc 0, four-line header); trace script + proced
+
+### ✅ gap-lane-scorer-20261018-0950-lane99 — Team 99, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: exercise Check-1 done/stale/superseded legs live + resolve Check-6 rotation-schema pin status
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: receipt file exists and is readable; bin/trace-phantom-brief.sh sha256 15a54b4062133854145c5849037c652a40980ef2d34c603c6920b96d4cec961c MATCHES the receipt pin byte-exact 5+ weeks later; phantom-liveness-trace-procedure.md exists (current sha cde9ed38..., supersedes this receipt's 89b84992... pin vi
+
 ### ✅ gap-lane-scorer-20261018-0940 — Team 99, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
 
 **Task:** gap-followup
@@ -44190,6 +44220,30 @@ _Last updated: 2026-11-26 03:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** 1723 lane-executor stall record (no eligible briefs)
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
+
+### ✅ gap-lane-scorer-20261018-1540-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.4/10 [VERIFIED]
+
+**Task:** gap follow-up: three-leg close on PR #2399 (receipt-pin, delivery-gate, merge-consensus + test reds) re-derived from rule inputs on live bytes
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: PR head a545f11079ca77ce6789d224ab519f272c7ca0e4 EXISTS as a commit object in the local mirror; base e3fe3d43... EXISTS; main pins 155e227d... and 5b17df553bfa... EXIST; scratch dir hidden_files/scratch-gap1540-lane9/ exists. NOT PHANTOM. All three legs carry re-derived verdicts (receipt-pin PASS re
+
+### ✅ gap-t1162-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.2/10 [VERIFIED]
+
+**Task:** gap follow-up: re-anchor + #2399 re-classification for competing-boot rename branch
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: receipt file exists and is readable; branch-head commit 6d05fea689e32cf70ec9c56ad3a3339a54372412 EXISTS as a commit object in the local mirror; main-tip commit 155e227d009c4b7d6cb37cffaf92c91196272e07 EXISTS as a commit object; branch naya/eight-competing-boot-rename-t1152 no longer on remote (ls-re
+
+### ✅ gap-lane-scorer-20261017-1630-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: lift no-refile verdict bug + live-venue (#2721) template fix
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: receipt file exists and is readable; gap-followup-seen.json contains key gap-t0072-lane9-lift (recorded 2026-10-18 12:41 UTC, matches receipt pin); bin/file-gap-brief.py exists on disk. NOT PHANTOM. Score 9.0 (self-scored 9.3). Why not 9.5: (1) _same_shape change widens the fail surface for every cr
+
+### ✅ gap-lane-scorer-20261018-0430-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: hermeticize compound-scale citations, CI freshness job
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: receipt file exists and is readable; commit c8efbaa9d7fdefcf1d2bfcc1850c26ebd8d1bbb3 EXISTS as a commit object in the local mirror (branch naya4/compound-scale-hermetic-citations-20261018 no longer on remote - normal lifecycle, not phantom); receipt carries contemporaneous evidence (51/51 pytest, 14
 
 ### ✅ gap-lane-scorer-20261018-0230 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
@@ -46046,6 +46100,12 @@ _Last updated: 2026-11-26 03:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0580b-lane9.md
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
+
+### ✅ gap-20261018-1050-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: prove PR #2385 competing-boot gate failure is rebase-hygiene artifact
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: receipt file exists and is readable; PR head commit eedd9540f54cd96c241db4be2f43f0698ae4dd07 EXISTS as a commit object in the local mirror (branch itself no longer on remote - normal post-merge cleanup, not phantom); receipt carries contemporaneous ls-remote + byte-diff evidence (6 rename hunks, 627
 
 ### ✅ gap-lane-scorer-20261018-0240 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
@@ -48829,6 +48889,12 @@ _Last updated: 2026-11-26 03:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
 
+### ✅ gap-lane-scorer-20261018-1440-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** gap follow-up: re-run staleness-watch falsifier on current instrument bytes
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: receipt file exists and is readable; instrument hidden_files/retrieval/check-staleness-watches-20261017.py sha256 4e5e0c3be24adef149ebd6c7fdad845a8f0454adbb38f633237ea68457d57cc5 MATCHES the receipt pin byte-exact 5+ weeks later (strongest re-proof in this batch); harness falsify-staleness-watches-2
+
 ### ✅ gap-gap-20261017-1600-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
 
 **Task:** Gap-gap: FIRED path of both staleness watches proven end-to-end; --log flag added; one-command falsifier checked in
@@ -49584,6 +49650,18 @@ _Last updated: 2026-11-26 03:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ gap-gap-t0722-lane5-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** gap follow-up: v2.1 corpus per prescription, run semantic-arm battery cold
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: receipt file exists and is readable; commit b2ae6157d10cdd2c83138a8610215ca8fd957879 EXISTS as a commit object in the local mirror (branch naya4/gap-gap-t0722-lane5-v21-corpus no longer on remote - normal lifecycle, not phantom); parent receipt gap-t0722-lane5.md exists; receipt carries corpus/query
+
+### ✅ gap-t0828-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** gap follow-up: re-derive cold-retrieve verification-chain pins, build verifier pack
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: receipt file exists and is readable; verification pack hidden_files/verification-packs/cold-retrieve-1.78s-verifier-pack-20261018.md exists on disk; parent receipt t0828-lane5.md exists. NOT PHANTOM (no branch refs - pack + pins, correct). Score 8.5 (matches self-score). Why not 9.5: (1) option (a) 
 
 ### ✅ gap-t0828-lane5-verify-recusal — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
@@ -56262,6 +56340,12 @@ _Last updated: 2026-11-26 03:03 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0768-lane2.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
+
+### ✅ gap-lane-scorer-20261018-1610-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.2/10 [VERIFIED]
+
+**Task:** gap follow-up: prove F6 benign on subprocess cold-rank path (two consecutive re-runs, byte-identity)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: sealed verdict hidden_files/v2-pilot-12q/pilot12_verdict.json sha256 ebeef7378b656c8f5376d8ab9250edd4c65c9a5fbc58cc9b89990d35bf655ed1 MATCHES the receipt pin byte-exact 5+ weeks later; per-arm verdict 58abf2eeb2eece4d33a3c3abe146c0eb2ebc6946bef59e69833148ac75bc4241 MATCHES. Runner run_pilot12_batter
 
 ### ✅ preregister-t0722-lane12-intelligence-today — Team 12, Team Naya Scorer (NayaNET / Hub) — 8.5/10 [VERIFIED]
 
