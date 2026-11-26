@@ -190,7 +190,7 @@ body{color:#fff;-webkit-text-size-adjust:100%;}
   .today-chrome .chrome-act{padding:8px 8px;}
 }
 /* FRAMED ROLLOUT: the daily-report list — titles + SNs from the live table. */
-.report-list{margin:12px 0 0;padding:0;list-style:none;text-align:left;}
+.report-list{margin:12px 0 0;padding:0 0 24px;list-style:none;text-align:left;}
 .report-list li{font-size:17px;line-height:1.5;color:#fff;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.12);}
 .report-list li b{font-weight:900;}
 .report-hint{font-size:17px;line-height:1.5;color:#fff;}
@@ -601,8 +601,22 @@ shareBtn.addEventListener('click',function(e){
   e.stopPropagation();
   var n=notes[ix];if(!n)return;
   var text=(n.title||'')+(n.nutshell?'\n\n'+n.nutshell:'');
-  if(navigator.share){navigator.share({title:n.title||'Intel Today',text:text,url:location.href}).catch(function(){});}
-  else if(navigator.clipboard){navigator.clipboard.writeText(text).then(function(){shareBtn.textContent='COPIED';setTimeout(function(){shareBtn.textContent='SHARE';},1500);}).catch(function(){});}
+  /* FIX (2026-11-25, eye 9d219faa) — SHARE gave no visible feedback in
+     headless Chromium: the old code called navigator.share first when it
+     existed and only fell back to the clipboard when it did not, so the
+     label stayed "SHARE" with nothing to show for the tap. The label now
+     changes to COPIED on the tap itself, before any async work, and reverts
+     after 1.5s; the clipboard write is still attempted first, with
+     navigator.share only as the fallback when the clipboard is unavailable. */
+  shareBtn.textContent='COPIED';
+  clearTimeout(shareBtn._t);shareBtn._t=setTimeout(function(){shareBtn.textContent='SHARE';},1500);
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).catch(function(){
+      if(navigator.share){try{navigator.share({title:n.title||'Intel Today',text:text,url:location.href}).catch(function(){});}catch(err){}}
+    });
+  }else if(navigator.share){
+    try{navigator.share({title:n.title||'Intel Today',text:text,url:location.href}).catch(function(){});}catch(err){}
+  }
 });
 /* FRAMED ROLLOUT — THE CHAIN (Hub \u2192 Intel Today \u2192 Calendar):
    the tile opens the staged Calendar day view for the date on screen
@@ -741,6 +755,9 @@ function groupAt(n){if(daySetMode)return ix+1;return notes.filter(function(x){re
 var MONTHS_SHORT=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 function reportDateLabel(ds){var p=ds.split('-');return MONTHS_SHORT[parseInt(p[1],10)-1]+' '+parseInt(p[2],10);}
 function renderReport(){
+  /* FIX (2026-11-25, eye 9d219faa) — SAVE/SHARE act on the day's last skill
+     on this frame, so the chrome names that note. */
+  if(notes.length)updateChrome(notes[notes.length-1]);
   bodyEl.innerHTML='';
   curInner=null;curPar=null;
   var order=Object.keys(DAY_SET);
@@ -756,7 +773,7 @@ function renderReport(){
   inner.appendChild(el('h3','b-script','Daily report'));
   var meta=el('p','ib-meta','');
   var mb=el('b','','Day '+k+' of 6');var mt=document.createElement('span');
-  mt.textContent=' \u00B7 '+catLabelOf(daySetCat)+' \u00B7 '+notes.length+' skills today';
+  mt.textContent=' \u00B7 '+catLabelOf(daySetCat)+' \u00B7 '+notes.length+' skills';
   meta.appendChild(mb);meta.appendChild(mt);inner.appendChild(meta);
   /* Two meta lines, not one: the single line wrapped mid-phrase ("SKILLS
      SO / FAR" on Nov 28) — the cumulative count gets its own line. */
@@ -785,6 +802,12 @@ function renderReport(){
   board.appendChild(foot);
   board.addEventListener('click',function(){atReport=false;ix=0;layer=0;secIx=0;render();});
   bodyEl.appendChild(board);
+  /* FIX (2026-11-25, eye 9d219faa) — the scroll fold cut a list row in half
+     at rest (the row straddling the body's bottom edge read as hidden
+     behind the foot N). alignReportFold nudges the list's top margin so the
+     fold lands exactly on a row boundary: the last visible row is whole. */
+  alignReportFold();
+  if(window.requestAnimationFrame)requestAnimationFrame(alignReportFold);
   navEl.innerHTML='';
   var back=el('button','naya-btn naya-btn--secondary');back.type='button';back.id='btnBack';back.setAttribute('aria-label','Back');
   back.innerHTML='<svg viewBox=\"0 0 24 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M14.5 4.5 7 12l7.5 7.5\" stroke=\"currentColor\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M19.5 4.5 12 12l7.5 7.5\" stroke=\"currentColor\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" opacity=\".5\"/></svg>';
@@ -799,11 +822,44 @@ function renderReport(){
   navEl.appendChild(back);navEl.appendChild(mid);navEl.appendChild(fwd);
   footEl.hidden=false;
 }
+/* FIX (2026-11-25, eye 9d219faa) — fold alignment for the daily-report list.
+   The list scrolls inside .ib-layer-body while the foot N sits directly
+   below it, so at rest the row straddling the body's bottom edge was cut in
+   half and read as hidden behind the N. This measures the live fold: if the
+   bottom edge falls inside a row, the list's top margin grows by the exact
+   remainder so the fold lands on the row boundary below — the last visible
+   row is whole and the next row sits fully below the fold. No row is ever
+   cut, nothing is scrolled, the face/title/metas above the list do not move.
+   Re-run on resize (a new viewport is a new fold). Safe no-op when the fold
+   already lands on a boundary, when fewer than two rows exist, or when the
+   report is not on screen. */
+function alignReportFold(){
+  if(!atReport)return;
+  var body=document.querySelector('.today-frame .ib-layer-body');
+  var ul=document.querySelector('.report-list');
+  if(!body||!ul)return;
+  var lis=ul.querySelectorAll('li');
+  if(lis.length<2)return;
+  ul.style.marginTop='12px';
+  var fold=body.getBoundingClientRect().bottom;
+  var first=lis[0].getBoundingClientRect();
+  var rowH=lis[1].getBoundingClientRect().top-first.top;
+  if(!(rowH>0))return;
+  var d=fold-first.top;
+  var rem=((d%rowH)+rowH)%rowH;
+  if(rem>1&&rem<rowH-1)ul.style.marginTop=(12+(rowH-rem))+'px';
+}
 function render(){
   var n=notes[ix];if(!n)return;
   bodyEl.innerHTML='';
   curInner=null;curPar=null;
   if(atReport){renderReport();return;}
+  /* FIX (2026-11-25, eye 9d219faa) — updateChrome was only ever called from
+     the SAVE tap, so SAVE/SHARE accessible names stayed on whatever note was
+     showing when the page first loaded (or last saved). They now update on
+     every render, so they name the note on screen. This also keeps the SAVE
+     label itself in sync when landing on an already-saved note. */
+  updateChrome(n);
   var secs=sectionsOf(n);
   var board=el('div','ib-layer');
   board.style.setProperty('--lc','#8e24aa');
@@ -915,7 +971,7 @@ document.addEventListener('keydown',function(e){
   if(e.key==='ArrowLeft'){step(ix-1);}
   else if(e.key==='ArrowRight'){step(ix+1);}
 });
-window.addEventListener('resize',function(){fitHighlight();});
+window.addEventListener('resize',function(){fitHighlight();alignReportFold();});
 if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){fitHighlight();});}
 /* The ready promise above can resolve before the frame font is even
    requested (no Cormorant text exists until the first render), so the
