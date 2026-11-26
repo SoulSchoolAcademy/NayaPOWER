@@ -1,0 +1,136 @@
+776c776
+< .ncorner-right img{animation:eco-spin 90s linear infinite;}
+---
+> .ncorner-right img{}
+804c804
+<   button.fp-circle-n img{animation:none;}
+---
+>   button.fp-circle-n img{animation:none;}   button.fp-circle-n::before{animation:none;}   button.fp-circle-n::after{animation:none;}
+2324,2325c2324,2325
+<   display:block;animation:eco-spin 90s linear infinite}
+< button.fp-circle-n .ncorner-gloss{position:absolute;z-index:4;top:11%;left:15%;
+---
+>   display:block;}
+> button.fp-circle-n::before{content:"";position:absolute;inset:-6px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0 58%,rgba(255,255,255,.95) 74%,rgba(255,45,70,.9) 82%,rgba(142,3 …[line 945 B total, truncated; see char-diff note below for the giant footer line]…  button.fp-circle-n .ncorner-gloss{position:absolute;z-index:4;top:11%;left:15%;
+2379a2380,2382
+>   /* ROUND 6e — the deed text box on the end slide: the verbatim front-page
+>      wording, in a green-rimmed box (the Agree green), Marcellus 19px. */
+>   .fp-story-deed{font-family:Marcellus,Georgia,serif;font-size:19px;line-height:1.6;color:#fff;margin:18px 0 0;border:1.5px solid rgba(7,146,95,.6);border-radius:14px;padding:14px 16px;background:rgba(7,146,95,.08);box-sizing:border-box}
+2595c2598
+<   <footer class="botbar">Create. Connect. Grow with us.<button class="fp-enter-deal" id="fpEnterDeal" type="button">Read the agreement &#9670;</button><a class="ncorner ncorner-left" href="https://n …[line 760744 B total, truncated; see char-diff note below for the giant footer line]… th a gold N"><span class="ncorner-gloss" aria-hidden="true"></span></a></footer>
+---
+>   <footer class="botbar">Create. Connect. Grow with us.<a class="ncorner ncorner-left" href="https://nayanet.app/" aria-label="NayaNET — home"><img src="data:image/jpeg;base64,/9j/4QhoRXhpZgAASUkqAA …[line 760617 B total, truncated; see char-diff note below for the giant footer line]… th a gold N"><span class="ncorner-gloss" aria-hidden="true"></span></a></footer>
+3007c3010
+< <div class="letter-page-end" id="letterPageEnd" hidden><button class="p3-enter deal-agree-btn" id="letterPageAgree" type="button">I agree &#9670;</button><button class="letter-all" id="letterPageBack" type="button">&#8249; Back to the opening page &#9670;</button></div>
+---
+> <div class="letter-page-end" id="letterPageEnd" hidden><button class="p3-enter deal-agree-btn" id="letterPageAgree" type="button">I agree &mdash; show me my world &#9670;</button><button class="letter-all" id="letterPageBack" type="button">&#8249; Back to the opening page &#9670;</button></div>
+3019c3022
+< <button class="p3-enter deal-agree-btn" id="dealAgreeBtn" type="button">I agree &#9670;</button>
+---
+> <button class="p3-enter deal-agree-btn" id="dealAgreeBtn" type="button">I agree &mdash; show me my world &#9670;</button>
+3155,3156c3158,3159
+<         show(cur);
+<         idx = cur + 1;
+---
+>         show(cur); show(cur + 1); show(cur + 2);
+>         idx = cur + 3;
+3356a3360
+>     try{localStorage.setItem('nayanet_agreement_done', new Date().toISOString());}catch(e){}
+3673c3677
+<     window.location.href='/identity.html'+(v?'?name='+encodeURIComponent(v):'');
+---
+>     window.location.href='https://nayanet.app/identity.html'+(v?'?name='+encodeURIComponent(v):'');
+3729c3733
+<   if(_tim){ _tim.addEventListener('click',function(){ window.location.href='/identity.html'; }); }
+---
+>   if(_tim){ _tim.addEventListener('click',function(){ window.location.href='https://nayanet.app/identity.html'; }); }
+4145c4149
+<   var plainEl=q('#dealPlain'), enterBtn=q('#fpEnterDeal');
+---
+>   var plainEl=q('#dealPlain');
+4228,4229c4232,4233
+<       jewelNum.textContent=(S.letter+1)+' / '+letterBeats.length;
+<       jewelBar.style.width=Math.round(((S.letter+1)/letterBeats.length)*100)+'%';
+---
+>       jewelNum.textContent=(Math.floor(S.letter/3)+1)+' / '+Math.ceil(letterBeats.length/3);
+>       jewelBar.style.width=Math.round(((Math.floor(S.letter/3)+1)/Math.ceil(letterBeats.length/3))*100)+'%';
+4231,4232c4235,4236
+<       if(S.letter>=letterBeats.length-1){setNext('I agree \u25C6','#07925f','letterPageAgree');}
+<       else{setNext('Keep reading \u25C6',tone,'letterNext');}
+---
+>       if(S.letter+3>=letterBeats.length){setNext('I agree — show me my world \u25C6','#07925f','letterPageAgree');if(nextBtn2){nextBtn2.textContent='Begin the visual story \u25C6';nextBtn2.style.setProperty('--tone','#8e24aa');nextBtn2.hidden=false;}if(nextRow)nextRow.classList.add('fp-two');}
+>       else{setNext('Keep reading \u25C6',tone,'letterNext');}if(nextBtn2){nextBtn2.textContent='Begin the visual story \u25C6';nextBtn2.style.setProperty('--tone','#8e24aa');nextBtn2.hidden=false;}if(nextRow)nextRow.classList.add('fp-two');
+4239,4240c4243,4244
+<       if(S.letter>=letterBeats.length-1){setNext('I agree \u25C6','#07925f','letterPageAgree');}
+<       else{setNext('Keep reading \u25C6',tone,'letterNext');}
+---
+>       if(S.letter+3>=letterBeats.length){setNext('I agree — show me my world \u25C6','#07925f','letterPageAgree');if(nextBtn2){nextBtn2.textContent='Begin the visual story \u25C6';nextBtn2.style.setProperty('--tone','#8e24aa');nextBtn2.hidden=false;}if(nextRow)nextRow.classList.add('fp-two');}
+>       else{setNext('Keep reading \u25C6',tone,'letterNext');}if(nextBtn2){nextBtn2.textContent='Begin the visual story \u25C6';nextBtn2.style.setProperty('--tone','#8e24aa');nextBtn2.hidden=false;}if(nextRow)nextRow.classList.add('fp-two');
+4246c4250
+<       setNext('I agree \u25C6','#07925f','agree');
+---
+>       setNext('I agree — show me my world \u25C6','#07925f','agree');
+4308c4312
+<         b=letterBeats[i];var sl=(S.all==='letter')||i===S.letter;
+---
+>         b=letterBeats[i];var sl=(S.all==='letter')||(i>=S.letter&&i<S.letter+3);
+4318c4322
+<         b=letterBeats[i];var slp=i===S.letter;
+---
+>         b=letterBeats[i];var slp=(i>=S.letter&&i<S.letter+3);
+4455c4459
+<       var l=lastShown(letterBeats);if(l>=0)S.letter=l;
+---
+>       var l=lastShown(letterBeats);if(l>=0)S.letter=l-(l%3);
+4469c4473
+<       var lp=lastShown(letterBeats);if(lp>=0)S.letter=lp;
+---
+>       var lp=lastShown(letterBeats);if(lp>=0)S.letter=lp-(lp%3);
+4581c4585
+<   if(nextBtn2)nextBtn2.addEventListener('click',function(){if(S.view==='intro'){window.location.href='/agreement';}else if(S.view==='deck'&&S.deck===deckBeats.length-1){window.location.href='/agreement';}});
+---
+>   if(nextBtn2)nextBtn2.addEventListener('click',function(){if(S.view==='intro'){window.location.href='/agreement';}else if(S.view==='deck'&&S.deck===deckBeats.length-1){window.location.href='/agreem …[line 308 B total, truncated; see char-diff note below for the giant footer line]… er'||S.view==='letterPage'){if(window.__fpOpenStory)window.__fpOpenStory(0);}});
+4719a4724,4729
+> <script>/* ROUND 6 — the /agreement URL serves the real agreement directly.
+>    A load on /agreement (the exact agreement URL) opens the stage straight
+>    into the v7 letter view at beat 0 — no preview intro, no bridge choice,
+>    no "Begin the visual story" as an entry step. The portal root (/) is
+>    untouched: a plain load still lands on the login and stays there. */
+> (function(){try{if(window.location.pathname!=='/agreement')return;var st=window.__fpStage;if(!st)return;st.enter();st.state.view='letter';st.state.letter=0;st.state.all=null;st.state.legalId=null;st.render();}catch(e){}})();</script>
+4740c4750
+<           <p class="fp-story-franchise">You&rsquo;re getting the franchise &mdash; the deed to your own world: high-level digital real estate &mdash; <b>one personal page, one business page, one spa …[line 333 B total, truncated; see char-diff note below for the giant footer line]… lding complete, business operational, brand established. Move in and own it.</p>
+---
+>           <p class="fp-story-franchise">You&rsquo;re getting the franchise &mdash; the deed to your own world: high-level digital real estate &mdash; <b>one personal page, one business page, one spa …[line 602 B total, truncated; see char-diff note below for the giant footer line]…  &mdash; your personal page, your business, your space &mdash; free forever.</p>
+4867c4877,4884
+<   /* entries: the red N in the circle, both corner Ns, "Read the agreement" */
+---
+>   /* ROUND 6e — ONE ENTRY (Shawn's correction 2026-11-26 09:14:29 MST): the
+>      red N orb dead center at the top is the only agreement entry. Click it
+>      and you go STRAIGHT to https://nayanet.app/agreement — the real
+>      collective agreement itself, no preview, no intermediate, no pop-up.
+>      The corner Ns are plain links (home), not entries; the bottom
+>      "Read the agreement" button is gone (B2). The 27-slide story stays,
+>      reachable only from INSIDE the agreement view. */
+>   window.__fpOpenStory = openStory;
+4869,4878c4886
+<   if (circleN) circleN.addEventListener('click', function () { openStory(0); });
+<   var corners = document.querySelectorAll('.ncorner');
+<   for (var c = 0; c < corners.length; c++) {
+<     corners[c].addEventListener('click', function (ev) {
+<       ev.preventDefault();
+<       openStory(0);
+<     });
+<   }
+<   var deal = document.getElementById('fpEnterDeal');
+<   if (deal) deal.addEventListener('click', function () { openStory(0); });
+---
+>   if (circleN) circleN.addEventListener('click', function () { window.location.href = 'https://nayanet.app/agreement'; });
+4887c4895
+<   agreeBtn.addEventListener('click', closeStory);
+---
+>   agreeBtn.addEventListener('click', function(){ try{localStorage.setItem('nayanet_agreement_done', new Date().toISOString());}catch(e){} closeStory(); });
+
+
+NOTE: the 760 KB footer line (hunk 2595c2598) differs ONLY by the removed button:
+  R5: ...Create. Connect. Grow with us.<button class="fp-enter-deal" id="fpEnterDeal" type="button">Read the agreement &#9670;</button>... (button gone in R6e)
+  R6e: ...Create. Connect. Grow with us. (no button; the corner Ns follow on the same line)

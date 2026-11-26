@@ -1121,7 +1121,28 @@
     @media(max-height:700px){ .enter{
         height:48px;
         margin-top:8px;
-      } }
+      }
+      /* FIX1 (2026-11-25, about-skills-clone): below 700px the 1fr/auto/1fr
+         face grid collapses and the centred entry overlaps the title, the
+         seal and the foot (seen at 573x354, 342x388, 1012x480). Stack the
+         three bands and scroll inside the face instead: every part stays
+         legible, nothing overlaps. Tall viewports are untouched. */
+      /* FIX1 (2026-11-25, about-skills-clone): below 700px the 1fr/auto/1fr
+         face grid collapses — measured: auto rows resolve to 144.5/57/134.5
+         while the zones lay out at 236/57/331, so head and foot overflow
+         their rows and the entry strikes through the title (seen at
+         573x354, 342x388, 1012x480, 350x600). A grid-track fix cannot fit
+         content taller than the viewport, so at short heights the face
+         becomes a plain column that stacks the three zones in flow and
+         scrolls inside the card: every part legible, nothing overlaps.
+         Tall viewports are untouched. */
+      .identity-face{ display:flex; flex-direction:column; overflow-y:auto; }
+      .cert-plaque.is-certified .identity-face{ display:flex; flex-direction:column; }
+      /* the zones must keep their content height and let the face scroll —
+         flex items shrink by default, and a shrunken zone spills its
+         content over its neighbour (the overlap above). */
+      .identity-face .face-zone{ flex-shrink:0; }
+    }
     @media(max-width:380px){ .enter{
         font-size:.76rem;
         letter-spacing:.13em;
@@ -1855,9 +1876,21 @@ function clearPendingRoute() {
         done = localStorage.getItem(LS_DONE) || localStorage.getItem(LS_INSTALLED);
         shows = parseInt(localStorage.getItem(LS_SHOWS) || '0', 10) || 0;
       } catch (e) {}
+      /* EMBED (2026-11-25, about-skills-clone fix1): when this page is
+         embedded (e.g. the walkthrough certificate preview) or loaded with
+         ?embed=1, the Install prompt must never auto-cover the certificate
+         on arrival. Manual install via the corner button stays available
+         on the standalone page; inside an embed the corner button is
+         hidden too, so nothing inside the preview can cover the document.
+         Standalone behaviour is unchanged. */
+      var isEmbedded = false;
+      try {
+        isEmbedded = (window.self !== window.top) || /[?&]embed=1\b/.test(window.location.search);
+      } catch (e) { isEmbedded = true; }
+      if (isEmbedded && cornerBtn) cornerBtn.style.display = "none";
       if (done && cornerBtn) {
         cornerBtn.style.display = 'none';
-      } else if (!hide && !done && shows < 3) {
+      } else if (!hide && !done && shows < 3 && !isEmbedded) {
         setTimeout(function () {
           var h = null, d = null, n = 0;
           try {
