@@ -831,7 +831,7 @@ body.member-signed-in #screen-slide .ib-layer-body p{cursor:text}
 .depth-h{color:#fff;font-family:"Cormorant Garamond",serif;font-size:19px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin:16px 0 0}
 .depth-h + p{margin-top:4px}
 #depthView .innov-pop-card{text-align:center}
-#depthView .innov-pop-card p{text-align:left}
+#depthView .innov-pop-card p{text-align:center} /* FIX11 (2): the depth paragraphs were left-aligned by this rule — it beat the inherited .ib-layer-body center. Headings, subheads and body are centered on every board now. */
 #depthView .depth-foot{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:18px}
 .depth-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
 .depth-back{display:inline-flex;align-items:center;min-height:44px;padding:8px 20px;border-radius:999px;cursor:pointer;background:linear-gradient(135deg,#0b0c10,#050607);border:1.5px solid #8e24aa;color:#fff;font-family:"Cormorant Garamond",serif;font-size:19px;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,.55),0 0 14px rgba(142,36,170,.35);transition:transform .3s ease,box-shadow .3s ease}
@@ -1300,8 +1300,8 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
    padding) run 215px against a 207px row, so the seal gives back 12px
    (4px size + 8px margin) and the floor fits at 203px.
    FIX7C (found on my own prove read-back): the floor still ran 209px against a 207px row (2px over, 33 thirds) — the paragraph’s own 10px top+bottom margins are the fattest remaining cost, so the last shave comes from the two gaps around the seal/marker instead: the seal’s top margin 2px -> 0 (the paragraph’s 10px bottom margin is still the visible gap) and the depth marker’s top margin 6px -> 2px. Floor lands at 203px, 4px of slack. */
-.depth-thirds .ib-layer-body .depth-seal{display:block;width:32px;height:32px;margin:10px auto 0;flex:none}
-.depth-thirds .ib-layer-body .depth-seal img{width:32px;height:32px;display:block;border-radius:50%;object-fit:cover;filter:brightness(.95) saturate(1.08);box-shadow:0 0 0 2px rgba(255,255,255,.22),0 10px 20px rgba(0,0,0,.6),0 0 18px rgba(255,45,70,.30)}
+.depth-thirds .ib-layer-body .depth-seal{display:block;width:48px;height:48px;margin:10px auto 0;flex:none} /* FIX11 (1): 32 -> 48 */
+.depth-thirds .ib-layer-body .depth-seal img{width:48px;height:48px;display:block;border-radius:50%;object-fit:cover;filter:grayscale(.9) brightness(1.5) contrast(1.02); /* FIX11 (1)+(7): 32 -> 48, white light — the harvested ball, no longer red */box-shadow:0 0 0 2px rgba(255,255,255,.22),0 10px 20px rgba(0,0,0,.6),0 0 18px rgba(255,45,70,.30)}
 #depthBody .ib-layer-body p .d-sent{display:block}
 #depthBody .ib-layer-body p .d-sent + .d-sent{margin-top:12px}
 @media(max-width:900px){
@@ -1309,9 +1309,9 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
  #depthBody .ib-img-el{object-fit:cover}
  #screen-slide .ib-layer-body .b-script{font-size:24px}
  #depthBody .depth-thirds .ib-layer-body .b-script{font-size:24px}
- .depth-thirds .ib-layer-body .depth-seal{width:28px;height:28px;margin-top:0}
+ .depth-thirds .ib-layer-body .depth-seal{width:44px;height:44px;margin-top:0} /* FIX11 (1): 28 -> 44 at phone */
  #depthBody .more-behind{margin-top:2px}
- .depth-thirds .ib-layer-body .depth-seal img{width:28px;height:28px}
+ .depth-thirds .ib-layer-body .depth-seal img{width:44px;height:44px}
  #depthBody .ib-layer-body p .d-sent{display:block} /* base: desktop depth paragraphs are long; the gap must show there too */
  #depthBody .ib-layer-body p .d-sent + .d-sent{margin-top:12px}
 }
@@ -1319,8 +1319,8 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 <style>
 /* FIX7F — see the block comment above the FIX7F reps in apply-fix7.cjs. */
 @keyframes fx7f-spin{to{transform:rotate(360deg)}}
-.fs-btn{position:absolute;top:8px;right:8px;z-index:5;width:34px;height:34px;min-height:34px;padding:0;flex:none;display:grid;place-items:center;border-radius:50%;cursor:pointer;border:2px solid rgba(255,255,255,.85);background:linear-gradient(135deg,#17171f,#050607);box-shadow:0 6px 16px rgba(0,0,0,.6),0 0 12px rgba(255,255,255,.18);transition:transform .18s ease,filter .18s ease}
-.fs-btn:hover{filter:brightness(1.15);transform:scale(1.06)}
+.fs-btn{position:absolute;top:8px;right:8px;z-index:5;width:44px;height:44px;min-height:44px;padding:0;flex:none;display:grid;place-items:center;border-radius:50%;cursor:pointer;border:2px solid rgba(255,255,255,.95);background:radial-gradient(circle at 34% 28%,#3a3b46 0%,#17171f 42%,#050607 100%);box-shadow:0 6px 16px rgba(0,0,0,.65),0 0 0 2px rgba(255,255,255,.12),0 0 18px rgba(255,255,255,.28);transition:transform .18s ease,filter .18s ease,box-shadow .18s ease} /* FIX11 (4): 34px thin-outline button -> 44px obsidian ball, bright rim + glow, alive on hover */
+.fs-btn:hover{filter:brightness(1.2);transform:scale(1.08);box-shadow:0 8px 20px rgba(0,0,0,.7),0 0 0 2px rgba(255,255,255,.2),0 0 26px rgba(255,255,255,.45)}
 .fs-btn:active{transform:scale(.92)}
 .fs-btn svg{display:block}
 /* Continuation shells (.cont-ph) are zero-height, visibility:hidden placeholders
@@ -1333,10 +1333,15 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
    frame's button hides so the board never shows two (found on my own
    prove read-back, diag7f: Ch1 front showed 4 visible buttons). */
 .pm-art-frame #slideTextCenter:not([hidden]) ~ .fs-btn{display:none}
-#fsView .innov-pop-card{width:min(940px,100%);max-height:92vh}
+#fsView{display:grid;place-items:stretch;padding:0;background:#02030a} /* FIX11 (6): full screen fills the viewport edge to edge at BOTH widths — the centered 940px panel is gone. Harvested precedent: #depthView.cover-full. */
+#fsView[hidden]{display:none}
+#fsView .innov-pop-card{width:100%;max-width:none;height:100vh;height:100dvh;max-height:none;border-radius:0;border:0;padding:16px 20px 20px;display:flex;flex-direction:column;overflow:hidden}
+#fsView .fs-body{flex:1 1 auto;min-height:0;overflow-y:auto;display:flex;flex-direction:column}
+#fsView .fs-body>.ib-layer{flex:1 1 auto;min-height:0}
+#fsView .fs-clone .ib-n{pointer-events:none} /* the cloned board's N is visual in full screen — it must not navigate from inside the overlay */
 .fs-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
 .fs-title{color:#fff;font-family:"Cormorant Garamond",serif;font-size:19px;font-weight:700}
-.fs-img{width:100%;max-height:calc(92vh - 140px);object-fit:contain;border-radius:14px;display:block;background:#000}
+.fs-img{width:100%;max-height:calc(100dvh - 160px);object-fit:contain;border-radius:14px;display:block;background:#000}
 .fs-vid iframe,.fs-vid video{width:100%;aspect-ratio:16/9;border:0;border-radius:14px;display:block;background:#000}
 #fsView .fs-head{font-size:26px;margin-bottom:14px}
 #fsView .fs-para{font-size:20px;line-height:1.55;color:#f4efe3;font-family:"Cormorant Garamond",serif;margin:0 0 16px}
@@ -1435,23 +1440,71 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 #slideMain.end-mode .end-chapters{display:none}
 #slideMain.end-mode .end-chapters-btn{--nb-accent:#d4a017;--nb-accent-rgb:212,160,23;align-self:center;margin-top:8px}
 @media(min-width:901px){
+  #slideMain.end-mode .pm-art{margin-top:-16px} /* FIX11 (5): desktop ball back up 16px — the text board shrank when the two stacked action buttons became one login button, and at desktop every saved pixel lets the ball sit lower (fix9 comment); the settle proved cy 372 at 1440, target 356. Mobile untouched: its own margin-top:185px (max-width:900px) lands 305. */
   #slideMain.end-mode .end-chapters{display:inline}
   #slideMain.end-mode.end-chapters-closed .end-chapters{display:none}
 }
 @media(max-width:900px){
   #slideMain.end-mode.end-chapters-open .end-chapters{display:inline}
   #slideMain.end-mode{padding-top:8px !important;padding-bottom:8px !important}
-  #slideMain.end-mode .pm-art{flex:none !important;min-height:192px !important;margin-top:185px}
+  #slideMain.end-mode .pm-art{flex:none !important;min-height:204px !important;margin-top:185px} /* FIX11 (1)+(5): min-height 192 -> 204 (36 pad + 120 ball + 44 seal + slack); margin 185 -> 203 (first guess) -> back to 185 after the settle proved cy 323 at 203 (+1px margin = +1px centre, so 185 lands 305). Re-proved by the settle series. */
   #slideMain.end-mode.end-chapters-open .pm-art{margin-top:75px}
   #slideMain.end-mode .end-ball .ib-img-el{height:120px !important}
-  #slideMain.end-mode .end-ball .ib-n{width:32px !important;height:32px !important;margin-top:0 !important;margin-bottom:0 !important}
-  #slideMain.end-mode .end-ball .ib-n img{width:32px !important;height:32px !important}
+  #slideMain.end-mode .end-ball .ib-n{width:44px !important;height:44px !important;margin-top:0 !important;margin-bottom:0 !important} /* FIX11 (1): 32 -> 44 */
+  #slideMain.end-mode .end-ball .ib-n img{width:44px !important;height:44px !important}
   #slideMain.end-mode #slideBoardsB{min-height:0 !important}
   #slideMain.end-mode #slideBoardsB .ib-layer-body{padding-top:6px !important;padding-bottom:6px !important}
   #slideMain.end-mode #slideBoardsB .b-script{margin-top:0 !important}
   #slideMain.end-mode #slideBoardsB .ib-layer-body p{margin-top:0;margin-bottom:0}
   #slideMain.end-mode .end-chapters-btn{height:32px;min-height:32px;padding:0 20px}
   #slideMain.end-mode .end-actions button{height:40px;min-height:40px}
+}
+</style>
+
+<style>
+/* FIX11 (2026-11-25, Shawn's eye ~18:13-18:22 MST) — this block is LAST in
+   <head>, so it wins ties. One size per level, continuously, across all ten
+   chapters and all board types (front, depth, end) — and inside full screen,
+   which clones the board (no second size system in FS).
+   HEADLINE .b-script: 24px at 390, 38px at 1440 (was front 24/38, depth 24/25, end 24/38).
+   BODY p: 18px at 390, 26px at 1440 (was front 19/26, depth 17/19, end 17/23).
+   SUBHEAD .third-cap / p.third-deeper: 20px at 390, 30px at 1440 (was 17/17).
+   SEALS: 48px desktop, 44px phone, white light (was depth 32/28, front 80/40/32, end 80/32).
+   The end-ball and #depthN centrepieces stay red; the cover stays red. */
+#screen-slide .slide-boards .ib-layer-body .b-script,
+#screen-slide #slideTextCenter .ib-layer-body .b-script,
+#depthBody .depth-thirds .ib-layer-body .b-script,
+#slideMain.end-mode #slideBoardsB .ib-layer-body .b-script,
+#fsView .ib-layer-body .b-script{font-size:clamp(24px,3vw,38px)}
+#screen-slide .slide-boards .ib-layer-body p,
+#screen-slide #slideTextCenter .ib-layer-body p,
+#depthBody .depth-thirds .ib-layer-body p,
+#slideMain.end-mode #slideBoardsB .ib-layer-body p,
+#fsView .ib-layer-body p{font-size:clamp(18px,1.8vw,26px)}
+#screen-slide .slide-boards .ib-layer:not(.ib-img) .ib-layer-body p,
+#screen-slide #slideTextCenter .ib-layer:not(.ib-img) .ib-layer-body p{font-size:clamp(18px,1.8vw,26px)}
+#depthBody .ib-layer-body .third-cap,
+#depthBody .ib-layer-body p.third-deeper,
+#screen-slide .ib-layer-body .third-cap,
+#screen-slide .ib-layer-body p.third-deeper,
+#fsView .ib-layer-body .third-cap,
+#fsView .ib-layer-body p.third-deeper{font-size:clamp(20px,2.2vw,30px)}
+#slideMain.end-mode .naya-btn{font-size:18px} /* FIX11 (3): end button labels 15 -> 18 (Chapters + Back to login) */
+#depthBody .more-behind{font-size:18px} /* FIX11 (3): the continuation marker is board text too */
+/* Seals — one size, white light. Desktop 48px: */
+#screen-slide .ib-n, #screen-slide .ib-n img,
+#fsView .ib-n, #fsView .ib-n img,
+#fsView .depth-seal, #fsView .depth-seal img{width:48px;height:48px}
+#screen-slide .ib-n img, #fsView .ib-n img, #fsView .depth-seal img{filter:grayscale(.9) brightness(1.5) contrast(1.02)} /* FIX11 (7): white light, not red */
+@media(max-width:900px){
+  /* Seals — phone 44px: */
+  #screen-slide .ib-n, #screen-slide .ib-n img,
+  #screen-slide .slide-boards .ib-layer:not(.ib-img) .ib-n,
+  #screen-slide #slideTextCenter .ib-layer:not(.ib-img) .ib-n,
+  #screen-slide .slide-boards .ib-layer:not(.ib-img) .ib-n img,
+  #screen-slide #slideTextCenter .ib-layer:not(.ib-img) .ib-n img,
+  #fsView .ib-n, #fsView .ib-n img,
+  #fsView .depth-seal, #fsView .depth-seal img{width:44px;height:44px}
 }
 </style>
 </head>
@@ -1514,7 +1567,7 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
                   <span class="v1-tag" id="slideV1Tag" hidden>v1 PLACEHOLDER</span>
                   <button class="swap-btn tool-btn" type="button" data-slot="C" aria-label="Member tools — change this slot"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5 5l1.8 1.8M17.2 17.2L19 19M19 5l-1.8 1.8M6.8 17.2L5 19"/></svg></button>
                   <button class="add-btn" type="button" data-slot="C">+ Behind</button>
-                  <button class="fs-btn" type="button" aria-label="View full screen"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+                  <button class="fs-btn" type="button" aria-label="View full screen"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
                 </div>
                 <div class="pm-cap">
                   <div class="onair"><span class="onair-dot"></span>NAYA PRESENTS</div>
@@ -1676,7 +1729,7 @@ function textPanelFor(g, txt, slot){
   return '<div class="ib-layer"><div class="ib-layer-body">'
     + '<button class="swap-btn tool-btn" type="button" data-slot="' + slot + '" aria-label="Member tools — change this slot"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5 5l1.8 1.8M17.2 17.2L19 19M19 5l-1.8 1.8M6.8 17.2L5 19"/></svg></button>'
     + '<button class="add-btn" type="button" data-slot="' + slot + '">+ Behind</button>'
-    + '<button class="fs-btn" type="button" aria-label="View full screen"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>'
+    + '<button class="fs-btn" type="button" aria-label="View full screen"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>'
     + '<div class="b-script">' + g.t + draftTag(g) + '</div>'
     + '<p>' + txt + '</p>'
     + '<button type="button" class="ib-n ib-n--small" aria-label="Go in — the full presentation behind this board"><img src="' + EMBED.ball + '" alt="The red N" /></button>'
@@ -1707,7 +1760,7 @@ function imgBoardFor(src, alt, slot, boardIdx){
   return '<div class="ib-layer ib-img fx7-cover"><div class="ib-layer-body">'
     + '<button class="swap-btn tool-btn" type="button" data-slot="' + slot + '" aria-label="Member tools — change this slot"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5 5l1.8 1.8M17.2 17.2L19 19M19 5l-1.8 1.8M6.8 17.2L5 19"/></svg></button>'
     + '<button class="add-btn" type="button" data-slot="' + slot + '">+ Behind</button>'
-    + '<button class="fs-btn" type="button" aria-label="View full screen"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>'
+    + '<button class="fs-btn" type="button" aria-label="View full screen"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>'
     + (isV1Img ? '<span class="v1-tag">v1 PLACEHOLDER</span>' : '')
     + media
     + '<button type="button" class="ib-n ib-n--small" aria-label="Go in — the full presentation behind this board"><img src="' + EMBED.ball + '" alt="The red N" /></button>'
@@ -1849,7 +1902,10 @@ function renderSlide(){
 /* FIX5E — goToPortal RETIRED: the portal exit is gone — nothing in this
    build leaves the page for the live site any more. The name stays
    because the board-tap script guards on it (typeof goToPortal); any
-   call now lands on the in-page end board. */
+   call now lands on the in-page end board.
+   FIX11 (5): the portal exit is BACK, as goToLogin — the end board's one
+   exit action leaves for https://nayanet.app/. goToPortal itself still
+   lands on the in-page end board. */
 function goToPortal(){ showEnd(); }
 /* FIX5A + FIX5E — TWO buttons only: Back and Forward. Back steps to the
    previous slide — from the first slide, back returns to the COVER
@@ -1863,7 +1919,7 @@ document.getElementById('btnBack').addEventListener('click', function(){
   else { show('cover'); } /* FIX5A: back from Chapter 1 returns to the cover */
 });
 document.getElementById('btnForward').addEventListener('click', function(){
-  if (typeof END_MODE !== 'undefined' && END_MODE){ beginAgain(); return; } /* FIX5E: forward from the end board begins again */
+  if (typeof END_MODE !== 'undefined' && END_MODE){ goToLogin(); return; } /* FIX11 (5): forward from the end board exits to the portal login — no loop back into the deck */
   if (current < TOTAL - 1){ current++; renderSlide(); }
   else { showEnd(); } /* FIX5E: forward past the last slide lands on the end board, never out of the page */
 });
@@ -1889,9 +1945,9 @@ var END_TEXT = 'Begin. You have the ten — Naya Windows, Naya Door, Smart Tap, 
 function endImgBoard(src, alt){
   var ballCls = (src === EMBED.ball) ? ' end-ball' : '';
   return '<div class="ib-layer ib-img' + ballCls + '"><div class="ib-layer-body">'
-    + '<button class="fs-btn" type="button" aria-label="View full screen"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>'
+    + '<button class="fs-btn" type="button" aria-label="View full screen"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>'
     + '<img class="ib-img-el" src="' + src + '" alt="' + alt + '" />'
-    + '<button type="button" class="ib-n ib-n--small" data-end="begin" aria-label="Begin again — back to Naya Windows"><img src="' + EMBED.ball + '" alt="The red N" /></button>'
+    + '<button type="button" class="ib-n ib-n--small" data-go="portal" aria-label="Back to login — the portal"><img src="' + EMBED.ball + '" alt="The red N" /></button>'
     + '</div></div>';
 }
 function renderEnd(){
@@ -1902,15 +1958,14 @@ function renderEnd(){
   document.getElementById('slideBg').style.backgroundImage = 'none';
   document.getElementById('slideBoardsA').innerHTML = endImgBoard(EMBED.slides[12], 'The red N on its pedestal');
   var __fix9parts = END_TEXT.split(' — '); /* FIX9: the ten titles split from END_TEXT itself — one source of truth, never a retyped copy */
-  document.getElementById('slideBoardsB').innerHTML = '<div class="ib-layer"><div class="ib-layer-body">' + '<button class="fs-btn" type="button" aria-label="View full screen"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>' + '<div class="b-script">What comes next</div><p>' + __fix9parts[0] + ' — <span class="end-chapters" id="endChaptersList">' + __fix9parts[1] + '</span></p><button class="naya-btn end-chapters-btn" id="endChapters" type="button" aria-expanded="false" aria-controls="endChaptersList">Chapters ▾</button><div class="end-actions"><button class="naya-btn" id="endBegin" type="button">Begin again</button><button class="naya-btn naya-btn--secondary" id="endBack" type="button">Back to The template</button></div></div></div>'; /* FIX8: the end text panel moves to B — the ball takes the middle (see R5) */
+  document.getElementById('slideBoardsB').innerHTML = '<div class="ib-layer"><div class="ib-layer-body">' + '<button class="fs-btn" type="button" aria-label="View full screen"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>' + '<div class="b-script">What comes next</div><p>' + __fix9parts[0] + ' — <span class="end-chapters" id="endChaptersList">' + __fix9parts[1] + '</span></p><button class="naya-btn end-chapters-btn" id="endChapters" type="button" aria-expanded="false" aria-controls="endChaptersList">Chapters ▾</button><div class="end-actions"><button class="naya-btn end-login-btn" id="endLogin" type="button" data-go="portal">Back to login</button></div></div></div>'; /* FIX8: the end text panel moves to B — the ball takes the middle (see R5) */
   document.getElementById('slideMain').classList.add('end-mode'); /* FIX8: end-board phone layout — scroll, one board at a time */
   document.getElementById('screen-slide').classList.add('end-mode');
   var __fix8sw = document.querySelector('.slide-frame > .swap-btn[data-slot="C"]'); if (__fix8sw) __fix8sw.style.display = 'none'; /* FIX8: the centre ball is not a swappable slide slot */
   var __fix8ad = document.querySelector('.slide-frame > .add-btn[data-slot="C"]'); if (__fix8ad) __fix8ad.style.display = 'none';
   document.getElementById('slideTextCenter').innerHTML = endImgBoard(EMBED.ball, 'The red N'); /* FIX8: the ball takes the middle slot — ball first, text below */
   document.getElementById('slideTextCenter').hidden = false;
-  document.getElementById('endBegin').addEventListener('click', beginAgain);
-  document.getElementById('endBack').addEventListener('click', function(){ END_MODE = false; current = TOTAL - 1; renderSlide(); });
+  /* FIX11 (5): endBegin/endBack are gone — the login exit is handled by the delegated [data-go="portal"] listener (it also covers the full-screen clone, whose button has no direct listener). The Back ARROW (btnBack, to The template) is separate and stays. */
   document.getElementById('endChapters').addEventListener('click', toggleEndChapters); /* FIX9 */
   var __fix9sm = document.getElementById('slideMain'); __fix9sm.classList.remove('end-chapters-open'); __fix9sm.classList.remove('end-chapters-closed'); syncEndChapters(); /* FIX9: default state — collapsed at phone, expanded at desktop (CSS); the toggle only ever adds one class */
 }
@@ -1932,7 +1987,11 @@ function toggleEndChapters(){ /* FIX9: one tap flips the one class for this widt
   syncEndChapters();
 }
 function showEnd(){ renderEnd(); show('slide'); }
-function beginAgain(){ END_MODE = false; current = 0; renderSlide(); show('slide'); }
+function beginAgain(){ END_MODE = false; current = 0; renderSlide(); show('slide'); } /* FIX11 (5): beginAgain is left defined but unreferenced — nothing in the flow calls it any more. */
+/* FIX11 (5) — THE PORTAL LOGIN EXIT. The end board's one exit action. */
+function goToLogin(){ window.location.href = 'https://nayanet.app/'; }
+/* Delegated so the full-screen clone of the end board exits too (its button carries data-go="portal" but has no direct listener, and its id was stripped in the clone). */
+document.addEventListener('click', function(e){ var g = e.target && e.target.closest ? e.target.closest('[data-go="portal"]') : null; if (g){ goToLogin(); } });
 /* Touch light on the text boards (both sides of the image) */
 document.querySelectorAll('.slide-boards').forEach(function(el){
   var boardLight = function(e){
@@ -2802,7 +2861,7 @@ function thirdChrome(i, lvl){
   var back = (lvl > 1) ? '<button class="third-lvl" type="button" data-third="' + i + '" aria-label="Third ' + (i + 1) + ', level ' + lvl + ' of 3 — tap to go back one level">‹ L' + lvl + '</button>' : '';
   return back
     + '<button class="swap-btn third-tool" type="button" data-slot="D' + i + '" aria-label="Change this slot — text, image or video">' + "<svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\" fill=\"none\" stroke=\"#fff\" stroke-width=\"2\" stroke-linecap=\"round\"><circle cx=\"12\" cy=\"12\" r=\"3.2\"/><path d=\"M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5 5l1.8 1.8M17.2 17.2L19 19M19 5l-1.8 1.8M6.8 17.2L5 19\"/></svg>" + '</button>'
-    + '<button class="fs-btn" type="button" aria-label="View full screen"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>';
+    + '<button class="fs-btn" type="button" aria-label="View full screen"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>';
 }
 function thirdPanelHTML(d, lvl, i){
   var chrome = thirdChrome(i, lvl);
@@ -3107,7 +3166,7 @@ document.addEventListener('click', function(e){
   if (!t || !t.closest) return;
   if (t.closest('#depthView') || t.closest('#swapPop') || t.closest('#textPop')) return;
   var n = t.closest('button.ib-n');
-  if (n){ if (n.hasAttribute('data-end')){ beginAgain(); return; } openDepth(current); return; } /* FIX5E: the end board's N begins again */
+  if (n){ if (n.hasAttribute('data-go')){ return; } openDepth(current); return; } /* FIX11 (5): the end board's N exits through the delegated [data-go="portal"] listener alone — one goToLogin call per tap. (Two rapid location.href assignments race: the request is attempted but the navigation can fail to commit, proven at 1440 — the end-ball tap attempted https://nayanet.app/ and stayed on the file. The N-tap handler must not call goToLogin too, and must not openDepth either — it just steps aside.) */
   var sw = t.closest('.swap-btn');
   if (sw){ openSwap(sw.getAttribute('data-slot'), 'swap'); return; }
   var ad = t.closest('.add-btn');
@@ -3153,9 +3212,24 @@ current = 0; renderSlide(); show('cover');
     for (var i = 0; i < parts.length; i += per) groups.push(parts.slice(i, i + per).join(' '));
     return groups.map(function(g){ return '<p class="fs-para">' + esc(g) + '</p>'; }).join('');
   }
-  function openFS(kind, title, payload){
+  /* FIX11 (6): full screen shows the LITERAL board — the board's own
+     .ib-layer cloned in (same heading, same body, same image, same caption,
+     same seal, same template), only larger. The .fs-head/.fs-para re-render
+     below stays ONLY as fallback for the no-layer cases (single image /
+     video with no board layer). Controls are stripped from the clone
+     (FS / swap / add / Chapters / more-behind are chrome, not content);
+     ids are stripped (no duplicate ids); the login exit keeps working
+     through the delegated [data-go="portal"] listener. */
+  function openFS(kind, title, payload, srcLayer){
     fsTitle.textContent = title || 'Full screen';
-    if (kind === 'img') fsBody.innerHTML = '<img class="fs-img" src="' + esc(payload) + '" alt="" />';
+    fsBody.innerHTML = '';
+    if (srcLayer){
+      var clone = srcLayer.cloneNode(true);
+      clone.classList.add('fs-clone');
+      clone.querySelectorAll('.fs-btn,.swap-btn,.add-btn,.end-chapters-btn,.more-behind').forEach(function(x){ x.remove(); });
+      clone.querySelectorAll('[id]').forEach(function(x){ x.removeAttribute('id'); });
+      fsBody.appendChild(clone);
+    } else if (kind === 'img') fsBody.innerHTML = '<img class="fs-img" src="' + esc(payload) + '" alt="" />';
     else if (kind === 'video') fsBody.innerHTML = '<div class="fs-vid">' + payload + '</div>';
     else fsBody.innerHTML = '<div class="b-script fs-head">' + esc(title || '') + '</div>' + fsParas(payload);
     ov.hidden = false;
@@ -3225,7 +3299,10 @@ current = 0; renderSlide(); show('cover');
       }
     }
     if (!kind) return;
-    openFS(kind, title, payload);
+    /* FIX11 (6): the source layer is the board itself — its clone IS the full-screen content. No layer (single image / video) falls back to the old render. */
+    var srcLayer = layer || null;
+    if (!srcLayer){ var tc2 = document.getElementById('slideTextCenter'); if (tc2 && !tc2.hidden){ srcLayer = tc2.querySelector('.ib-layer'); } }
+    openFS(kind, title, payload, srcLayer);
   });
 })();
 </script>
