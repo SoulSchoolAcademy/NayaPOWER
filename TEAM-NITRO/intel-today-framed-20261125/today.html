@@ -826,8 +826,8 @@ function renderReport(){
    The list scrolls inside .ib-layer-body while the foot N sits directly
    below it, so at rest the row straddling the body's bottom edge was cut in
    half and read as hidden behind the N. This measures the live fold: if the
-   bottom edge falls inside a row, the list's top margin grows by the exact
-   remainder so the fold lands on the row boundary below — the last visible
+   bottom edge falls inside a row, the list's top margin grows by exactly the
+   cut-off amount, so the fold lands on that row's top edge — the last visible
    row is whole and the next row sits fully below the fold. No row is ever
    cut, nothing is scrolled, the face/title/metas above the list do not move.
    Re-run on resize (a new viewport is a new fold). Safe no-op when the fold
@@ -847,7 +847,7 @@ function alignReportFold(){
   if(!(rowH>0))return;
   var d=fold-first.top;
   var rem=((d%rowH)+rowH)%rowH;
-  if(rem>1&&rem<rowH-1)ul.style.marginTop=(12+(rowH-rem))+'px';
+  if(rem>1&&rem<rowH-1)ul.style.marginTop=(12+rem)+'px';
 }
 function render(){
   var n=notes[ix];if(!n)return;
