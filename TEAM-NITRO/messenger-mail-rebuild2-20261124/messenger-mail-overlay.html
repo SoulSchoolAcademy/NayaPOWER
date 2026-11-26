@@ -7095,15 +7095,16 @@ body.fx8-drawer-right-open .fx2-conv-like{display:none!important;}
 .nm-toggle-btn:active{transform:scale(.97);}
 /* --- 8b: compose — full screen, in the frame, clean --- */
 .mail-stage .ml-overlay{padding:0!important;align-items:stretch!important;justify-content:center!important;}
-.mail-stage .ml-modal.mlx{position:relative!important;max-width:none!important;width:100%!important;height:100dvh!important;max-height:100dvh!important;margin:0!important;border-radius:0!important;padding:16px 20px 20px!important;overflow-y:auto!important;display:flex!important;flex-direction:column!important;}
+.mail-stage .ml-modal.mlx{position:relative!important;box-sizing:border-box!important;max-width:none!important;width:100%!important;height:100dvh!important;max-height:100dvh!important;margin:0!important;border-radius:0!important;padding:12px 16px 12px!important;overflow-y:auto!important;display:flex!important;flex-direction:column!important;}
 .ml-modal.mlx .mlx-top{margin-bottom:10px!important;}
 .ml-modal.mlx .ml-modes{margin-bottom:10px!important;}
 .ml-modal.mlx .ml-field{margin-bottom:8px!important;}
 .ml-modal.mlx .ml-field-l{margin-bottom:4px!important;}
-.ml-modal.mlx select[name="to"]{height:96px!important;}
-.ml-modal.mlx textarea.mlx-body{height:110px!important;min-height:96px!important;flex:1 1 auto!important;}
+.ml-modal.mlx select[name="to"]{height:72px!important;}
+.ml-modal.mlx textarea.mlx-body{height:80px!important;min-height:64px!important;flex:1 1 auto!important;}
+.ml-modal.mlx .ml-mode-hint{display:none!important;}
 .ml-modal.mlx .mlx-attachsec{margin-bottom:10px!important;}
-.ml-modal.mlx>.mlx-schedsec{position:static!important;background:none!important;padding-top:8px!important;margin-bottom:0!important;}
+.ml-modal.mlx>.mlx-schedsec{position:sticky!important;bottom:0!important;z-index:2!important;background:#10131e!important;padding:12px 0 4px!important;margin:0!important;}
 .ml-modal.mlx .mlx-send{width:100%!important;}
 /* --- 11: file + image attach chips --- */
 .fx8-attach-btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 18px;border-radius:999px;background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);border:1.5px solid rgba(255,255,255,.35);color:#ffffff;font-size:17px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.5);}
@@ -7159,14 +7160,30 @@ function fx8CleanStatus(){
 function fx8ResetAria(){
   qsa('.naya-corner-btn').forEach(function(b){ b.setAttribute('aria-expanded', 'false'); });
 }
+function fx8DrawerOpen(){
+  var r = document.querySelector('.naya-drawer-right');
+  return !!(r && r.classList.contains('fx6-open'));
+}
+function fx8SyncDrawerState(){
+  /* The drawer is open when its fx6-open class is on (fix7 leaves the body
+     attr null while open) — key the one-list rule + aria off the class. */
+  var open = fx8DrawerOpen();
+  document.body.classList.toggle('fx8-drawer-right-open', open);
+  qsa('.naya-corner-btn').forEach(function(b){
+    var label = b.getAttribute('aria-label') || '';
+    if(label.indexOf('people') > -1) b.setAttribute('aria-expanded', open ? 'true' : 'false');
+    else if(label.indexOf('messages') > -1){
+      var l = document.querySelector('.naya-drawer-left');
+      b.setAttribute('aria-expanded', (l && l.classList.contains('fx6-open')) ? 'true' : 'false');
+    }
+  });
+}
 function fx8WatchDrawerAttr(){
   if(!window.MutationObserver) return;
-  var mo = new MutationObserver(function(){
-    if(!document.body.hasAttribute('data-naya-drawer')) fx8ResetAria();
-    document.body.classList.toggle('fx8-drawer-right-open', document.body.getAttribute('data-naya-drawer') === 'right');
-  });
+  var mo = new MutationObserver(function(){ fx8SyncDrawerState(); });
   mo.observe(document.body, { attributes:true, attributeFilter:['data-naya-drawer','class'] });
-  if(!document.body.hasAttribute('data-naya-drawer')) fx8ResetAria();
+  qsa('.naya-drawer').forEach(function(d){ mo.observe(d, { attributes:true, attributeFilter:['class'] }); });
+  fx8SyncDrawerState();
 }
 function fx8WrapClose(){
   try {
@@ -7344,6 +7361,7 @@ function fx8BindAttach(){
       return;
     }
     var send = e.target && e.target.closest ? e.target.closest('#nmMsgSend') : null;
+    if(send){ fx8SentYet = true; }
     if(send && fx8Files.im.length){
       var names = fx8Files.im.map(function(f){ return f.name; });
       fx8Files.im = []; fx8RenderChips();
@@ -7505,6 +7523,7 @@ function fx8WatchMount(){
 }
 
 /* ---------- master sweep (re-renders rebuild the views) ---------- */
+var fx8SentYet = false;
 function fx8Sweep(){
   fx8CleanStatus();
   fx8Headings();
@@ -7512,6 +7531,17 @@ function fx8Sweep(){
   fx8SweepAttach();
   fx8SweepMailOrbs();
   fx8CueCheck();
+  /* 1d: an empty thread shows the typing indicator on load, until the
+     first send (after that the base after-send flow owns it). */
+  try {
+    var list = document.getElementById('nmMsgList');
+    if(list && !fx8SentYet && !list.__fx8TypingShown && !list.querySelector('.fx2-typing')
+      && !list.querySelector('.nm-bubble:not(.fx2-typing)') && window.fx2ShowTyping){
+      fx2ShowTyping();
+      if(window.fx2ShowTyping && window.fx2ShowTyping._t){ clearTimeout(window.fx2ShowTyping._t); window.fx2ShowTyping._t = null; }
+      list.__fx8TypingShown = true;
+    }
+  } catch(e){}
 }
 function fx8WatchSweep(){
   if(!window.MutationObserver) return;
@@ -7545,5 +7575,6 @@ onReady(function(){
 });
 })();
 </script>
+
 
 </body></html>
