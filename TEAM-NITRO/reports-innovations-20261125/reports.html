@@ -1632,6 +1632,38 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
   #screen-slide #slideTextCenter .more-behind{margin-top:2px!important}
 }
 </style>
+<style id="reports-fix5-20261126">
+/* REPORTS FIX5 — 2026-11-26. Deck geometry ONLY at phone width; fix4 CSS/JS untouched. */
+/* (A) SIDE IMAGE BOARDS SHOW THEIR IMAGE: the F1 phone rule reserves 70px of bottom
+   padding on every slide-board body for the text boards' pinned N, so on an 82px
+   image board the picture (.ib-img-el, flex:1, min-height:0) got 82-8-70 = 4px and
+   read as an empty black rail (measured live on fix4: img 284x36 in a 118px folded
+   board, ~0px in the 82px unfolded board; at 1440 the same board is 324px and the
+   image shows). Image boards carry their N absolute, so they need no bottom reserve:
+   padding-bottom 70px -> 16px (the value the base .ib-img rule already intends).
+   Desktop untouched (images already show at 1440). */
+@media(max-width:900px){
+  #screen-slide .slide-boards .ib-layer.ib-img .ib-layer-body{padding-bottom:16px!important}
+  /* The side N shrinks 64px -> 32px (the centre text-panel N size, FIX6 precedent)
+     so the jewel sits on the picture instead of covering most of it; its pinned
+     bottom:22px (ROUND 8, Shawn's order) is untouched. */
+  #screen-slide .slide-boards .ib-layer.ib-img .ib-n,#screen-slide .slide-boards .ib-layer.ib-img .ib-n img{width:32px!important;height:32px!important}
+  /* (B) CENTRE N INSIDE ITS BOARD: the centre body's flow stack (padTop 58 + 2-line
+     script 54 + 2-line p 51 + N 32 + margins) ran 21px past the 165px layer's bottom
+     edge (measured on fix4: N y638-670 vs layer bottom y649), the N reading cut by
+     its own frame. The stack is centred in the body, so every pixel cut from the
+     stack or the top pad moves the N's bottom up by half a pixel: padTop 58 -> 36
+     (the p's first line still starts 27px below the 46px expand icon's bottom, and
+     the script stays horizontally clear of it), script 22px -> 19px (the
+     sub-headline size, Laws §2.3), N 32 -> 24px, all flow margins 4px -> 0.
+     N bottom lands ~642, ~7px inside the board; the sentence stays whole on 2 lines. */
+  #screen-slide #slideTextCenter .ib-layer-body{padding-top:36px!important}
+  #screen-slide #slideTextCenter .ib-layer-body .b-script{font-size:19px!important;margin-top:0!important}
+  #screen-slide #slideTextCenter .ib-layer-body p{margin-top:0!important;margin-bottom:0!important}
+  #screen-slide #slideTextCenter .ib-n,#screen-slide #slideTextCenter .ib-n img{width:24px!important;height:24px!important}
+  #screen-slide #slideTextCenter .ib-n{margin-top:0!important}
+}
+</style>
 </head>
 <body>
 <div class="royal-frame" aria-hidden="true"><div class="rf-et top"></div><div class="rf-es left"></div><div class="rf-es right"></div><div class="rf-rim"></div><div class="rf-corner tl"></div><div class="rf-corner tr"></div><div class="rf-corner bl"></div><div class="rf-corner br"></div><div class="rf-n top"></div></div>
