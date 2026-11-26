@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-26 06:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-26 06:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -46119,6 +46119,12 @@ _Last updated: 2026-11-26 06:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ gap-gap-20261018-1050-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Gap-gap follow-up: PR #2385 gate failure re-verified on fresh bytes + owner note posted
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: parent receipt gap-20261018-1050-lane8.md exists on disk; receipt internally consistent (head eedd9540, gate failure 2026-10-11, PR note comment 6282392004 cited). NOT PHANTOM (no branch refs needed; PR-state claims). Why not 9.5: (1) the named gap itself (owner rebase + gate re-run) still unrun - t
+
 ### ✅ gap-20261018-1050-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** gap follow-up: prove PR #2385 competing-boot gate failure is rebase-hygiene artifact
@@ -49674,6 +49680,12 @@ _Last updated: 2026-11-26 06:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ gap-distill-2765-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up on distill-2765: quiet-decision sweep + re-verify 10 re-homed items on live bytes
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: parent distill-2765-laneKNOW.md exists; capture 2765-comments-full.jsonl = 2,337 rows, exactly matching the parent's capture. NOT PHANTOM. Why not 9.5: (1) the 524 common-pattern hits' full bodies were never individually re-read (the receipt's own admission - a quiet decision could hide in quote-noi
 
 ### ✅ gap-lane-scorer-20261018-1510-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -56406,6 +56418,14 @@ _Last updated: 2026-11-26 06:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0768-lane2.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
+
+### ✅ gap-gap-gap-lane-scorer-20261018-1610-lane12-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.2/10 [VERIFIED]
+
+**Task:** Gap-gap-gap follow-up: attribute run_pilot12_battery.py drift (dc228b5f -> d5835794) + re-pin runner as-is
+
+**Receipt:** `twelve-lane-receipts/gap-gap-gap-lane-scorer-20261018-1610-lane12-lane12-lane12.md`
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: parent gap-gap receipt exists; F6 comment verbatim present in run_pilot12_battery.py (now L187, drifted from claimed L201 by later edits, wording intact); lane-12/evidence-1630/ holds 6/6 files. Runner sha now d957847c (drifted since filing - later edits, expected; the receipt's filed pins were true
 
 ### ✅ gap-lane-scorer-20261018-1630-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
 
@@ -63676,6 +63696,18 @@ _Last updated: 2026-11-26 06:12 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ seat-stall-20261020-0312 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Seat-stall receipt: full-queue claimability sweep, 0 claimable, correct skip
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: receipt file exists and is readable; prior seat-stall-20261019-0036.md exists; refusal split sums exactly (8 pre-flagged + 19 exit-7 + 2 exit-2 = 29); queue delta 30 -> 29 with 4 departures and 3 arrivals named. NOT PHANTOM (stall receipt, no branch refs - correct). Why not 9.5: (1) ships no cleared
+
+### ✅ gate-stall-20261019-2242 — Team 0, Team Naya Scorer (?) — 8.0/10 [VERIFIED]
+
+**Task:** Gate-stall receipt: full-queue claimability sweep, 0 claimable, correct skip
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: receipt file exists and is readable; prior gate-stall-20261019-2055.md exists; stall verdict (0 claimable, queue 29) corroborated by the sibling seat-stall-20261020-0312 filed hours later on the same 29-brief queue. NOT PHANTOM (stall receipt, no branch refs - correct). Why not 9.5: (1) ships no cle
 
 ### ✅ gate-stall-20261126-0556 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
 
