@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-26 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-26 06:12 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -49675,6 +49675,12 @@ _Last updated: 2026-11-26 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ gap-lane-scorer-20261018-1510-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: encode F7 lexical-ceiling guardrail (F7F) + sealed-kill G5 re-dial guard in freeze gate
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick, 38 days on: kill verdict sha ebeef737... matches claimed sha EXACTLY; lexical arm sha eec52d25... matches claimed sha EXACTLY; hidden_files/freeze-corpus-v2.py still contains FALSIFIED_PINS, F7F and the G5 sealed-kill rejection. NOT PHANTOM. Why not 9.5: (1) single-seat - guardrail code and registry
+
 ### ✅ gap-lane-scorer-20261018-0320-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up: prove the claim-brief.py compound-token matcher fix with a failing demo + exact patch proposal
@@ -56401,6 +56407,12 @@ _Last updated: 2026-11-26 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
 
+### ✅ gap-lane-scorer-20261018-1630-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: preserve Lane-12 cold-run evidence + land F6 falsifier-line convention in runner
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick, 38 days on: hidden_files/lane-12/evidence-1630/ holds all 6 files; cold-file sha 2365ff4e... and log sha fce6dd7e... match the claimed prefixes EXACTLY on all 6 files; the F6 comment '# F6 fires ONLY on non-identical cold runs (b1 != b2); report as clear, never fired' is verbatim in run_pilot12_batt
+
 ### ✅ gap-lane-scorer-20261018-0900-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up: exercise full --arm semantic-t0426 end-to-end post-refactor (default-arm subprocess cold-rank path)
@@ -59198,6 +59210,12 @@ _Last updated: 2026-11-26 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** FP-001 feedback from the human-cost seat (t0492): honesty-tax immunity clause, symmetric penalty cost, cost-accounted done-criteria
 
 **Evidence:** Verified: hidden_files/feedback-feed.md contains the [Lane 11 - Naya Heart, t0492] entry (grep 1 exact match) and the 'honesty tax' sharpening. Complete, format-exact, distinct from Lanes 3/5, every sharpening pinned to this seat's measured incidents (t1322 retraction, M3, HV2). Score 9.0 (self 9.0). Why not 9.5: no second-seat review of the feedba
+
+### ✅ gap-20261020-0220-lane10 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
+
+**Task:** Read-only dissection of the t0960 investigation-depth gap: exact DRIFT diff (3 omitted index entries), duplicated published page path, merge-timing mechanism
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: all three cited commits exist in the mirror (1a1c22d32 drift commit, d12fcbd71 branch regen, f424f5b97 main tip) and all three omitted-entry blob SHAs exist (025259f7, 05fc29be, e83585f5). NOT PHANTOM. Exact diff counts and mechanism (generator ran at T0, merge carried stale bytes) fully specified w
 
 ### ✅ weekly-distill-20261122 — Team 10, Team Naya Scorer (Brain Index) — 9.0/10 [VERIFIED]
 
@@ -63658,6 +63676,48 @@ _Last updated: 2026-11-26 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261126-0556 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall receipt: full-queue claimability sweep, 0 claimable, correct skip
+
+**Evidence:** FRESH (filed 05:56Z, ~5 min before this tick). VERIFIED this tick: claim log brief-queue/claim-sweep-20261125-2153.log exists and ends 'NO CLAIM: all candidates refused'; prior receipt gate-stall-20261126-0450.md exists; queued brief count now 31, matching the receipt's 31. NOT PHANTOM (stall receipt, no branch refs - correct). Caveat: log rc-lines
+
+### ✅ gap-gate-stall-20261016-0721-lane0 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: reconcile t0426-lane2 author-attribution conflict (verity token = title-naming defect), failing test + patch decision package
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: parent receipt gate-stall-20261016-0721.md exists on disk; gap-followup-seen.json key t0426-lane2 present with verbatim verdict matching the receipt's quote; 26/26-refused sweep accounting (8 exit-2 + 17 exit-7 + 1 exit-6) sums exactly. NOT PHANTOM. Why not 9.5: (1) filing-time sha pin for t0426-lan
+
+### ✅ gate-stall-20261016-0122 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall receipt: full-queue claimability sweep, 0 claimable, correct skip
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: receipt file exists and is readable; 25-brief accounting sums exactly (6 explicit NON-Clarity gates + 16 exit-7 + 2 exit-2 + 1 no-refile = 25); counts agree with sibling receipt gate-stall-20261016-0117 filed 5 minutes earlier. NOT PHANTOM (stall receipt, no branch refs - correct). Why not 9.5: (1) 
+
+### ✅ gate-stall-20261016-0117 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall receipt: full-queue claimability sweep, 0 claimable, correct skip
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: receipt file exists and is readable; 25-brief accounting sums exactly (19 exit-7 authorship + 5 exit-2 clarity-bar + 1 exit-6 no-refile = 25); correct-skip verdict per GATE-SKIP. NOT PHANTOM (stall receipt, no branch refs - correct). Why not 9.5: (1) ships no cleared work - a status report, honestly
+
+### ✅ gap-gate-stall-20261016-0805-lane0 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: retire stale brief-gap-lane-scorer-20261015-0430-lane2.md (unclaimable by all seats) and reconcile queue
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: retired brief exists in brief-queue/stale/ with sha256 EXACT MATCH to receipt pin (155482628320b8f6a3b62d69bd7c3f9bc5efd0768ee240ad79073e23e9cef513); gap-followup-seen.json key t0426-lane2 present with verbatim verdict matching receipt quote. NOT PHANTOM. Real closed work: one brief retired reversib
+
+### ✅ gap-20261020-1110-lane0 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Correction addendum to parent receipt: six-case lint battery with fixtures on disk, fully-specified lead attribution
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: all six lint-battery fixture sha256s match live bytes exactly (case1 6de11b9c, case2 3f621ce2, case3 31bae718, case4a a4c47541, case4b c1039b4c, case5 480b9635); CORRECTION ADDENDUM present in parent receipt gap-20261020-1050-lane0.md; lint pin confirmed unchanged at filing time per this receipt. NO
+
+### ✅ gap-20261020-1050-lane0 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Build receipt-filename-lint.py filing-time tripwire + wire as MACHINE LAW gate 7 in the brief template, four-class test battery
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: lint script exists, executable, and runs live - case1 fixture still exits 1 with findings; gate-7 hook present in lane-agent-brief-template.md line 74 (lint command + tripwire-not-judge disposition + root citation). NOT PHANTOM. Self-score 9.0. Why not 9.5: (1) script bytes at receipt pin unverifiab
 
 ### ✅ gate-stall-20261126-0450 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
