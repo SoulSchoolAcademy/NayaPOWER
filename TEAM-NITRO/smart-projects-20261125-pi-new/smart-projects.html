@@ -3999,10 +3999,10 @@ function qFrames(wrapId, countId){
 function summaryLines(isHome){
   var lines=[];
   var kind=$('sp-dd-picked'); lines.push(['Kind', kind?kind.textContent.trim():'Pick a kind — all 25 are here']);
-  var tpl=$('sp-kind-preview'); var tt=tpl?tpl.textContent.replace(/s+/g,' ').trim():'';
-  lines.push(['Template', tt?tt.slice(0,160):'Pick a kind first — its template shows here']);
+  var tpl=$('sp-kind-preview'); var tt=tpl?tpl.textContent.replace(/\s+/g,' ').trim():'';
+  var ttm=tt.match(/^(.*?) — template note (SN-\d+)/); lines.push(['Template', ttm?ttm[1]+' — template note '+ttm[2]:(tt&&tt.indexOf('Pick a kind')!==0?tt.split(' — ')[0]:'Pick a kind first — its template shows here')]);
   var nm=$('pj-new-name'); lines.push(['Project name', (nm&&nm.value.trim())||'Not named yet']);
-  var cnt=$(isHome?'sp-home-q-count':'sp-q-count'); lines.push(['Questions answered', cnt?cnt.textContent.trim():'0 of 14 answered']);
+  var cnt=$(isHome?'sp-home-q-count':'sp-q-count'); lines.push(['Questions answered', cnt?cnt.textContent.trim().split(' — ')[0]:'0 of 14 answered']);
   var mine=$('pj-mine'); lines.push(['Your projects', mine?String(mine.children.length)+' listed':'—']);
   var vault=$('pj-vault-counts'); if(vault && vault.textContent.trim() && !isHome) lines.push(['Vault', vault.textContent.trim()]);
   return lines;
@@ -4294,6 +4294,89 @@ if(hb) new MutationObserver(function(){ setTimeout(applyTemplate,30); }).observe
 if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',function(){ setTimeout(applyTemplate,300); });
 else setTimeout(applyTemplate,300);
 setTimeout(applyTemplate,1200);
+})();
+</script>
+<style id="sp-fix4-css">
+/* ═══ PI-FIX4 ═══
+   D2/D3/D5: the deck nav is a LANE in normal flow below the stage, not a
+   fixed overlay. The stage shrinks by the nav height + the bottom bar it
+   used to sit above, so stage + nav end above the fixed bottom bar and no
+   frame content ever sits behind the nav. Phone nav wraps to ~98px tall,
+   desktop stays one row (~64px). */
+#sp-deck-nav{position:static;left:auto;right:auto;bottom:auto;z-index:auto;flex:none;margin:8px 0 0;padding:0 12px;box-sizing:border-box}
+#pj-home.sp-deck-on,#pj-project.sp-deck-on{height:calc(100dvh - 474px)}
+@media (min-width:1024px){#pj-home.sp-deck-on,#pj-project.sp-deck-on{height:calc(100vh - 448px)}}
+#pj-home.sp-deck-on>.sp-deck-frame.sp-on,#pj-project.sp-deck-on>.sp-deck-frame.sp-on{padding-bottom:24px}
+/* Frame 1: hero slimmed to its title only (quote, +PROJECT, note hide — the
+   Start board below is the frame\u2019s work); Start board cover tightened,
+   its three OPTIONAL mission/goal/vision fields hidden on frame 1 only —
+   they are filled by the template (USE THIS KIND) and the walk steps. */
+#pj-home .gr-hero.sp-deck-frame.sp-on{margin:0 0 8px}
+#pj-home .gr-hero.sp-deck-frame.sp-on .gr-hero-quote,#pj-home .gr-hero.sp-deck-frame.sp-on .gr-note{display:none}
+#pj-home .gr-hero.sp-deck-frame.sp-on p:has(#sp-plus){display:none}
+#pj-home .gr-hero.sp-deck-frame.sp-on .gr-hero-cover{padding:12px 18px}
+#pj-home .gr-hero.sp-deck-frame.sp-on h1{margin:0}
+#pj-home .gr-board:has(#pj-new-name).sp-on .gr-board-num,#pj-home .gr-board:has(#pj-new-name).sp-on .gr-board-sub{display:none}
+#pj-home .gr-board:has(#pj-new-name).sp-on .gr-board-cover{padding:12px 18px 8px}
+#pj-home .gr-board:has(#pj-new-name).sp-on .gr-board-body{padding:12px 18px 16px}
+#pj-home .gr-board:has(#pj-new-name).sp-on .gr-field:has(> #pj-new-mission),#pj-home .gr-board:has(#pj-new-name).sp-on .gr-field:has(> #pj-new-goal),#pj-home .gr-board:has(#pj-new-name).sp-on .gr-field:has(> #pj-new-vision){display:none}
+/* Q frames: the cover keeps only the question head (renamed with the
+   template by fix4 JS) — number, headline, count and template line hide;
+   the answer box is 72px. The question + textarea + SAVE fit the lane. */
+.gr-board-cover:has(.sp-deck-qhead){padding:8px 18px}
+.gr-board-cover:has(.sp-deck-qhead) .gr-board-num,.gr-board-cover:has(.sp-deck-qhead) h2{display:none}
+/* sp-fix4b */
+.sp-deck-frame.sp-on:has(.sp-deck-qhead) .sp-fix3-tplline{display:none}
+.sp-deck-frame.sp-on:has(.sp-deck-qhead) .gr-board-body{padding:12px 18px 16px}
+.sp-deck-frame.sp-on:has(.sp-deck-qhead) #sp-home-q-count,.sp-deck-frame.sp-on:has(.sp-deck-qhead) #sp-q-count{display:none}
+.sp-deck-frame.sp-on:has(.sp-deck-qhead) .sp-qta{min-height:72px;height:72px}
+/* Summary frame: number + sub hide, cover and line gaps tighten. */
+.sp-deck-frame.sp-on:has([data-sp-sum]) .gr-board-num,.sp-deck-frame.sp-on:has([data-sp-sum]) .gr-board-sub{display:none}
+.sp-deck-frame.sp-on:has([data-sp-sum]) .gr-board-cover{padding:12px 18px 8px}
+.sp-deck-frame.sp-on:has([data-sp-sum]) .gr-board-body{padding:12px 18px 16px}
+.sp-deck-frame.sp-on:has([data-sp-sum]) .sp-sum-line{margin-bottom:4px}
+.sp-deck-frame.sp-on:has([data-sp-sum]) .gr-board-cover{padding:8px 18px 4px}
+</style>
+<script id="sp-fix4-js">
+/* PI-FIX4 — nav lane + qhead naming + deck heal. Runs after fix2/fix3. */
+(function(){
+'use strict';
+/* D2/D5: move the deck nav into normal flow directly below the stages,
+   inside .gr-stage, so stage + nav stack above the fixed bottom bar. */
+var nav=document.getElementById('sp-deck-nav');
+var proj=document.getElementById('pj-project');
+if(nav&&proj&&proj.parentNode&&nav.parentNode!==proj.parentNode){ proj.parentNode.insertBefore(nav, proj.nextSibling); }
+/* Q frames: name the template in the question head, from the template line
+   (hidden by fix4 CSS on Q frames but still in the DOM). */
+function nameQheads(){
+  document.querySelectorAll('.sp-deck-qhead').forEach(function(qh){
+    if(qh.getAttribute('data-sp-fix4-named')) return;
+    var board=qh.closest('section'); if(!board) return;
+    var tl=board.querySelector('.sp-fix3-tplline'); if(!tl) return;
+    var m=tl.textContent.match(/Template:\s*([A-Za-z ]+?)\s*—/); if(!m) return;
+    var q=qh.textContent.match(/Question\s+(\d+)\s+of\s+14/); if(!q) return;
+    qh.textContent='Question '+q[1]+' of 14 \u00b7 '+m[1].trim()+' template';
+    qh.setAttribute('data-sp-fix4-named','1');
+  });
+}
+if(window.MutationObserver){ var qmo=new MutationObserver(nameQheads); qmo.observe(document.body,{childList:true,subtree:true}); nameQheads(); }
+/* D4 (a): deck-shape heal. On a direct ?p= load the deck can build before
+   the async questions render (15 frames); the fix2 observer rebuilds when
+   they land, but if its timing is missed the deck stays short. Poll for
+   ~11s: when 14 question blocks are present but the deck total is short,
+   nudge the wrap so the fix2 observer rebuilds to the full deck. */
+var tries=0;
+var iv=setInterval(function(){
+  tries++;
+  var projOn=!document.getElementById('pj-project').hidden;
+  var wrap=document.getElementById(projOn?'sp-questions':'sp-home-questions');
+  var n=wrap?wrap.querySelectorAll('.sp-qblock').length:0;
+  var lab=document.querySelector('#sp-deck-nav .sp-deck-label');
+  var total=lab?parseInt((lab.textContent.split(' of ')[1]||'').split(' ')[0],10):0;
+  var want=projOn?29:21;
+  if(n===14&&total>0&&total!==want){ var t=document.createTextNode(''); wrap.appendChild(t); wrap.removeChild(t); }
+  if(tries>=16) clearInterval(iv);
+},700);
 })();
 </script>
 </body>
