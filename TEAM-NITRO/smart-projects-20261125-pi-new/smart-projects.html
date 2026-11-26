@@ -4141,5 +4141,129 @@ try{ if(new URLSearchParams(location.search).get('new')==='project'){
 } }catch(e){}
 })();
 </script>
+<style id="sp-fix3-css">
+/* ═══ PI-FIX3 — r2 §7 defect + §8 wiring ═══
+   (1) ZERO SCROLLING fix: the STAGE scrolls, not each element. r2 put a
+   552px min/max-height on every .sp-deck-frame.sp-on, so frame 1 was two
+   stacked 552px boxes (hero, then Start below the 844 fold, unreachable
+   with body overflow hidden). Now #pj-home/#pj-project is the fixed-height
+   scroll container and frames are plain blocks inside it — arrival shows
+   the hero with the top of the Start board directly under it, the rest of
+   Start reachable inside the frame (walk .frame-scroll pattern).
+   (2) Deck label: "Frame 3 of 21 — …" truncated to "Fra…" at 390. Label is
+   now "3 of 21 — …" (fix3 JS) with a 54vw cap and tighter nav gaps.
+   (3) Template line on the question frames (fix3 JS fills it). */
+#pj-home.sp-deck-on,#pj-project.sp-deck-on{height:calc(100dvh - 292px);overflow-y:auto;overscroll-behavior:contain}
+@media (min-width:1024px){#pj-home.sp-deck-on,#pj-project.sp-deck-on{height:calc(100vh - 340px)}}
+#pj-home.sp-deck-on>.sp-deck-frame.sp-on,#pj-project.sp-deck-on>.sp-deck-frame.sp-on{min-height:0;max-height:none;overflow-y:visible;padding-bottom:180px}
+#sp-deck-nav{gap:8px}
+#sp-deck-nav .sp-deck-btn{padding:13px 16px}
+#sp-deck-nav .sp-deck-label{max-width:54vw}
+@media (max-width:640px){#sp-deck-nav .sp-deck-label{max-width:54vw}}
+.sp-fix3-tplline{font-size:17px;font-weight:800;color:#fff;margin:0 0 12px}
+.sp-fix3-tplline b{color:#d4a017}
+</style>
+<script id="sp-fix3-js">
+/* PI-FIX3 — stage scroll is CSS above; this script wires template→questions,
+   shortens the deck label, and re-points the two dead nayanet.live bottom-bar
+   destinations at their live nayanet.app equivalents (proven by curl:
+   nayanet.live/rooms/mail gives no response, /rooms/spaces 404;
+   nayanet.app/rooms/mail 200 "Smart Mail — NayaNET", 276,609 B;
+   nayanet.app/rooms/spaces 200 "Smart Spaces — NayaNET", 1,077,302 B). */
+(function(){
+'use strict';
+function $(id){ return document.getElementById(id); }
+/* ── (a) Bottom-bar destinations: MAIL + WORLDS to live nayanet.app ── */
+var REPL={'https://nayanet.live/rooms/mail':'https://nayanet.app/rooms/mail',
+          'https://nayanet.live/rooms/spaces':'https://nayanet.app/rooms/spaces'};
+document.querySelectorAll('.eco-bottombar a').forEach(function(a){
+  var n=REPL[a.getAttribute('href')||'']; if(!n) return;
+  a.href=n; a.target='_blank'; a.rel='noopener';
+  a.setAttribute('aria-label',(a.getAttribute('data-label')||'')+' (opens in new tab)');
+});
+/* ── (b) Deck label: "Frame 3 of 21 — …" → "3 of 21 — …" ── */
+function shortLabel(){
+  var l=document.querySelector('#sp-deck-nav .sp-deck-label'); if(!l) return;
+  if(l.textContent.indexOf('Frame ')===0) l.textContent=l.textContent.slice(6);
+}
+var lab=document.querySelector('#sp-deck-nav .sp-deck-label');
+if(lab) new MutationObserver(shortLabel).observe(lab,{childList:true,characterData:true,subtree:true});
+shortLabel();
+/* ── (c) TEMPLATE → QUESTIONS: picking a template selects which questions
+   lead the deck. The template owns Mission/Goal/Vision (SP_TEMPLATES, the
+   same mapping the walk already uses via spStepQ); the deck's question
+   frames 4–6 become those three, in that order, and the line above them
+   names the template. Frames 7–17 stay the project's own 14-question set
+   (SN-4710) — the template leads, it does not replace the record.
+   Display-level only: answers still save under q01–q03, exactly as the
+   walk saves its swapped titles under mission/goal/vision keys. A template
+   change after answering re-labels the slot; nothing is deleted. ── */
+var origTexts={};
+function readTemplate(){
+  var prev=$('sp-kind-preview'); if(!prev) return null;
+  if(prev.querySelector('.gr-empty')) return null;
+  var rows=prev.querySelectorAll('.sp-kind-q'); if(rows.length<4) return null;
+  var title=(rows[0].querySelector('b')||{}).textContent||'';
+  function q(row){
+    var t=row.textContent||''; var i=t.indexOf(' — ');
+    return i>=0?t.slice(i+3).trim():t.trim();
+  }
+  return {title:title.trim(), mission:q(rows[1]), goal:q(rows[2]), vision:q(rows[3])};
+}
+function tplLine(tpl){
+  var board=null, q=document.querySelector('#sp-home-questions');
+  if(q) board=q.closest('section.gr-board'); if(!board) return;
+  var line=board.querySelector('.sp-fix3-tplline');
+  if(!line){
+    line=document.createElement('p'); line.className='sp-fix3-tplline';
+    var body=board.querySelector('.gr-board-body'); if(!body) return;
+    body.insertBefore(line, q);
+  }
+  if(tpl){
+    line.innerHTML='';
+    line.appendChild(document.createTextNode('Template: '));
+    var b=document.createElement('b'); b.textContent=tpl.title; line.appendChild(b);
+    line.appendChild(document.createTextNode(' — its Mission, Goal and Vision questions lead the frames below.'));
+  } else {
+    line.textContent='No template picked yet — the 14 questions below are the project’s own.';
+  }
+}
+function applyTemplate(){
+  var tpl=readTemplate();
+  var wrap=$('sp-home-questions'); if(!wrap) return;
+  var kids=Array.prototype.filter.call(wrap.children,function(c){ return c.classList.contains('sp-qblock'); });
+  if(kids.length!==14){ tplLine(tpl); return; }
+  kids.forEach(function(k,i){
+    var t=k.querySelector('.pj-row-t'); if(!t) return;
+    if(!(i in origTexts)) origTexts[i]=t.textContent;
+    if(tpl && i<3){
+      t.textContent=(i+1)+'. '+[tpl.mission,tpl.goal,tpl.vision][i];
+      k.setAttribute('data-sp-fix3-tpl','1');
+    } else {
+      t.textContent=origTexts[i];
+      k.removeAttribute('data-sp-fix3-tpl');
+    }
+  });
+  tplLine(tpl);
+  /* The question-frame head (fix2 builds it on every show) names the template too. */
+  var qh=document.querySelector('#sp-home-questions') &&
+         document.querySelector('#sp-home-questions').closest('section.gr-board');
+  if(qh){
+    var h=qh.querySelector('.sp-deck-qhead');
+    if(h && tpl && h.textContent.indexOf(tpl.title)<0) h.textContent=h.textContent+' · '+tpl.title+' template';
+  }
+}
+document.addEventListener('click',function(){ setTimeout(applyTemplate,80); },true);
+var prev=$('sp-kind-preview');
+if(prev) new MutationObserver(function(){ setTimeout(applyTemplate,30); }).observe(prev,{childList:true,subtree:true});
+var hw=$('sp-home-questions');
+if(hw) new MutationObserver(function(){ setTimeout(applyTemplate,30); }).observe(hw,{childList:true});
+var hb=hw && hw.closest('section.gr-board');
+if(hb) new MutationObserver(function(){ setTimeout(applyTemplate,30); }).observe(hb.querySelector('.gr-board-cover')||hb,{childList:true,subtree:true});
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',function(){ setTimeout(applyTemplate,300); });
+else setTimeout(applyTemplate,300);
+setTimeout(applyTemplate,1200);
+})();
+</script>
 </body>
 </html>
