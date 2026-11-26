@@ -7617,4 +7617,57 @@ onReady(function(){
 
 
 
+<style id="ov-fix9-20261126">
+/* ===== FIX9 (2026-11-26) — D-1 compose fit + D-2 toggle clears composer icons.
+   Override block only: no base byte edited, fix8 block untouched.
+   D-1 re-layout (not another squeeze): modes forced one row at phone,
+   attach button shares a row with the search box, TO select 56, compose
+   mic 44 (thread .nm-mic stays 52), message box 56, tighter footer.
+   D-2: thread list capped at phone so the composer icon row sits above
+   the fixed toggle dock; composer tightened; thread view gets bottom
+   clearance so a scroll can bring mic/send fully above the toggle.
+   Laws: white text only, 17px minimum, deep palette, one light top-left. */
+/* --- D-1: modes one row at phone (base 760px media stacks them: 114px) --- */
+.mail-stage .ml-modal.mlx .ml-modes{flex-direction:row!important;flex-wrap:nowrap!important;margin-bottom:6px!important;}
+/* --- D-1: attach section re-laid out — search + attach button, one row --- */
+.mail-stage .ml-modal.mlx .mlx-attachsec{display:flex!important;flex-direction:row!important;flex-wrap:wrap!important;gap:8px!important;margin-bottom:6px!important;}
+.mail-stage .ml-modal.mlx .mlx-attachsec>*{order:5!important;margin:0!important;}
+.mail-stage .ml-modal.mlx .mlx-attachsec>.ml-field-l{order:0!important;flex:1 1 100%!important;letter-spacing:.06em!important;}
+.mail-stage .ml-modal.mlx .mlx-attachsec>.ml-input.mlx-search{order:1!important;flex:1 1 0!important;min-width:0!important;}
+.mail-stage .ml-modal.mlx .mlx-attachsec>.fx8-attach-btn{order:2!important;flex:none!important;}
+.mail-stage .ml-modal.mlx .mlx-attachsec>.mlx-notes{order:3!important;flex:1 1 100%!important;max-height:48px!important;}
+.mail-stage .ml-modal.mlx .mlx-attachsec>.fx8-attach-row{order:4!important;flex:1 1 100%!important;}
+.mail-stage .ml-modal.mlx .mlx-attachsec>.mlx-attached-l,.mail-stage .ml-modal.mlx .mlx-attachsec>.mlx-attached{flex:1 1 100%!important;}
+/* --- D-1: TO select 76 -> 56 (still shows 2 rows, plainly a list) --- */
+.mail-stage .ml-modal.mlx select[name="to"]{height:56px!important;min-height:56px!important;max-height:56px!important;}
+/* --- D-1: compose dictation mic 52/56 -> 44 (thread .nm-mic untouched) --- */
+.mail-stage .ml-modal.mlx .mlx-mic{width:44px!important;height:44px!important;min-width:44px!important;}
+/* --- D-1: message box 64 -> 56 --- */
+.mail-stage .ml-modal.mlx textarea.mlx-body{height:56px!important;min-height:48px!important;}
+/* --- D-1: inputs a touch tighter, 17px text kept --- */
+.mail-stage .ml-modal.mlx .ml-input{padding:6px 12px!important;}
+/* --- D-1: footer — SEND NOW padding 18 -> 12, subrow tighter --- */
+.mail-stage .ml-modal.mlx .ml-btn.mlx-send{padding:12px 34px!important;}
+.mail-stage .ml-modal.mlx .mlx-subrow{margin-top:6px!important;}
+.mail-stage .ml-modal.mlx .mlx-subrow .mlx-schedlink,.mail-stage .ml-modal.mlx .mlx-subrow .mlx-cancel{padding:6px!important;}
+.mail-stage .ml-modal.mlx>.mlx-schedsec{padding:8px 0 2px!important;}
+/* --- D-1: field gaps --- */
+.mail-stage .ml-modal.mlx .ml-field{gap:6px!important;}
+.mail-stage .ml-modal.mlx .mlx-msghead{margin-bottom:4px!important;}
+.mail-stage .ml-modal.mlx .mlx-to-picks{margin:6px 0 2px!important;}
+/* --- D-2: toggle clears the composer icon row at phone --- */
+@media (max-width:560px){
+  /* ROOT CAUSE (measured): fix8's 200px padding-bottom on .nm-msg-list is
+     INSIDE the list's border box (content 163 + padding 200 = 363 tall),
+     so it pushes the composer 200px down the document — the scroll anchors
+     on the reader above, so the icon row lands under the fixed toggle.
+     Removing the padding lifts the whole composer above the toggle.
+     The list itself still scrolls (overflow auto); #nmMsgView bottom
+     clearance below lets a scroll bring mic/send fully above the toggle. */
+  .nm-msg-list{padding-bottom:0!important;}
+  .nm-composer{padding:12px!important;margin-top:8px!important;}
+  #nmMsgView{padding-bottom:140px!important;}
+}
+</style>
+<script id="ov-fix9-20261126-js">window.__fx9=true;</script>
 </body></html>
