@@ -8055,4 +8055,660 @@ setTimeout(fx12Sweep, 800);
 setInterval(fx12Sweep, 1000);
 })();
 </script>
+<style id="ov-fix13-20261126">
+/* ===== FIX13 (2026-11-26) — UNIFIED Connections + Mail + IM, one system.
+   Shawn's order, voice call ~15:33 MST: Connections is NOT separate — it
+   lives INSIDE the Mail/IM interface; the Like Minds rows ARE the
+   connections display, opening the ONE connection card. Plus the 15:35
+   toggle (CONNECTIONS | SMART NOTES, 93 skill notes in six categories)
+   and the 15:36 share + pin. Override block only: no base byte edited,
+   fix12 and every earlier block untouched. Laws: white text only, 17px
+   minimum, deep palette, one light top-left, 135deg gradients, shadow
+   down-right, spectrum flow never repeats. Toggle lights untouched (O-1
+   carried, rim NOT changed). Nothing live — staged only. ===== */
+
+/* --- the unified toggle: two obsidian pills, one lit in its own colour --- */
+.fx13-toggle{display:flex;gap:8px;margin:0 0 12px;padding:0 2px;}
+.fx13-toggle-btn{flex:1;min-height:48px;border-radius:999px;border:2px solid rgba(255,255,255,.22);
+  background:linear-gradient(135deg,#141419,#050607);color:#ffffff;font-size:17px;font-weight:800;
+  letter-spacing:.06em;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.55);
+  transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease;}
+.fx13-toggle-btn small{display:block;font-size:17px;font-weight:700;opacity:1;color:#ffffff;}
+.fx13-toggle-btn:hover{transform:translateY(-2px);}
+.fx13-toggle-btn:active{transform:scale(.97);}
+.fx13-toggle-btn[data-side="connections"].on{border-color:#8e24aa;box-shadow:0 8px 20px rgba(0,0,0,.55),0 0 26px -4px rgba(142,36,170,.85);}
+.fx13-toggle-btn[data-side="notes"].on{border-color:#0f52ba;box-shadow:0 8px 20px rgba(0,0,0,.55),0 0 26px -4px rgba(15,82,186,.85);}
+
+/* --- Smart Notes side: category boards, one after another --- */
+.fx13-notes{display:flex;flex-direction:column;gap:12px;}
+.fx13-notes-head{margin:0 0 4px;font-size:19px;font-weight:800;color:#ffffff;letter-spacing:.02em;}
+.fx13-notes-sub{margin:0 0 8px;font-size:17px;color:#ffffff;line-height:1.5;}
+.fx13-cat{display:flex;align-items:center;gap:16px;width:100%;text-align:left;cursor:pointer;
+  padding:16px;border-radius:20px;border:2px solid var(--cc,#8e24aa);
+  background:linear-gradient(135deg,#141419,#050607);color:#ffffff;
+  box-shadow:0 10px 24px rgba(0,0,0,.6),0 0 22px -6px var(--cc,#8e24aa);
+  transition:transform .3s ease,box-shadow .3s ease;}
+.fx13-cat:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(0,0,0,.65),0 0 32px -4px var(--cc,#8e24aa);}
+.fx13-cat:active{transform:scale(.97);}
+.fx13-cat-name{flex:1;font-size:19px;font-weight:800;color:#ffffff;}
+.fx13-cat-count{min-width:44px;height:44px;padding:0 10px;display:grid;place-items:center;border-radius:12px;
+  background:#050607;border:2px solid var(--cc,#8e24aa);font-size:19px;font-weight:800;color:#ffffff;}
+.fx13-back{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 18px;border-radius:999px;
+  border:2px solid rgba(255,255,255,.25);background:linear-gradient(135deg,#141419,#050607);color:#ffffff;
+  font-size:17px;font-weight:800;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.55);}
+.fx13-back:hover{transform:translateY(-2px);}
+.fx13-back:active{transform:scale(.97);}
+
+/* --- note rows: SN digit tile + white title, rim in the category colour --- */
+.fx13-note-row{display:flex;align-items:center;gap:16px;width:100%;text-align:left;cursor:pointer;
+  padding:14px 16px;border-radius:16px;border:2px solid var(--cc,#8e24aa);
+  background:linear-gradient(135deg,#141419,#050607);color:#ffffff;
+  box-shadow:0 8px 20px rgba(0,0,0,.55),0 0 18px -6px var(--cc,#8e24aa);
+  transition:transform .3s ease,box-shadow .3s ease;}
+.fx13-note-row:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(0,0,0,.6),0 0 28px -4px var(--cc,#8e24aa);}
+.fx13-note-row:active{transform:scale(.97);}
+.fx13-sn{min-width:76px;padding:6px 8px;text-align:center;border-radius:10px;background:#050607;
+  border:2px solid var(--cc,#8e24aa);font-size:17px;font-weight:800;color:#ffffff;white-space:nowrap;}
+.fx13-note-title{flex:1;font-size:17px;font-weight:700;color:#ffffff;line-height:1.4;}
+.fx13-note-flag{font-size:17px;font-weight:800;color:#ffffff;white-space:nowrap;}
+
+/* --- the ONE note card: framed, calm, everything the system knows --- */
+.fx13-note-card{padding:20px;border-radius:20px;border:2px solid var(--cc,#8e24aa);
+  background:linear-gradient(135deg,#141419,#050607);color:#ffffff;
+  box-shadow:0 16px 32px rgba(0,0,0,.65),0 0 28px -6px var(--cc,#8e24aa);}
+.fx13-note-card h3{margin:0 0 8px;font-size:25px;font-weight:800;color:#ffffff;line-height:1.25;font-family:Marcellus,Georgia,serif;}
+.fx13-note-meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px;}
+.fx13-chip{display:inline-flex;align-items:center;min-height:36px;padding:6px 14px;border-radius:999px;
+  border:2px solid var(--cc,#8e24aa);background:#050607;font-size:17px;font-weight:800;color:#ffffff;}
+.fx13-note-actions{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0;}
+.fx13-act-btn{min-height:48px;padding:10px 18px;border-radius:999px;border:2px solid var(--cc,#8e24aa);
+  background:linear-gradient(135deg,#141419,#050607);color:#ffffff;font-size:17px;font-weight:800;cursor:pointer;
+  box-shadow:0 8px 20px rgba(0,0,0,.55);transition:transform .3s ease,box-shadow .3s ease;}
+.fx13-act-btn:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(0,0,0,.6),0 0 24px -4px var(--cc,#8e24aa);}
+.fx13-act-btn:active{transform:scale(.97);}
+.fx13-act-btn[aria-pressed="true"]{background:linear-gradient(135deg,rgba(142,36,170,.35),#050607);}
+.fx13-stars{display:flex;gap:8px;margin:4px 0 0;}
+.fx13-star{width:44px;height:44px;border-radius:50%;border:2px solid var(--cc,#8e24aa);background:#050607;
+  color:#ffffff;font-size:19px;font-weight:800;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.5);}
+.fx13-star[aria-pressed="true"]{background:linear-gradient(135deg,#d4a017,#050607);}
+.fx13-comment-row{display:flex;gap:8px;margin:12px 0 0;}
+.fx13-comment-in{flex:1;min-height:48px;padding:10px 14px;border-radius:14px;border:2px solid rgba(255,255,255,.22);
+  background:rgba(0,0,0,.4);color:#ffffff;font-size:17px;font-family:inherit;}
+.fx13-comment-in::placeholder{color:#ffffff;}
+.fx13-comment{margin:8px 0 0;padding:12px 14px;border-radius:14px;border:1.5px solid rgba(255,255,255,.18);
+  background:rgba(0,0,0,.35);font-size:17px;color:#ffffff;line-height:1.5;}
+.fx13-share-row{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0;align-items:center;}
+.fx13-share-row select{flex:1;min-width:140px;min-height:48px;padding:8px 12px;border-radius:14px;
+  border:2px solid rgba(255,255,255,.22);background:#050607;color:#ffffff;font-size:17px;font-family:inherit;}
+.fx13-queued{margin:12px 0 0;font-size:17px;color:#ffffff;line-height:1.5;}
+
+/* --- Smart Lists: beautiful lists, one after another --- */
+.fx13-lists{margin-top:20px;padding-top:16px;border-top:1.5px solid rgba(255,255,255,.14);}
+.fx13-lists-head{margin:0 0 4px;font-size:19px;font-weight:800;color:#ffffff;letter-spacing:.02em;}
+.fx13-lists-sub{margin:0 0 12px;font-size:17px;color:#ffffff;line-height:1.5;}
+.fx13-list{margin-bottom:12px;border-radius:20px;border:2px solid var(--cc,#8e24aa);
+  background:linear-gradient(135deg,#141419,#050607);color:#ffffff;overflow:hidden;
+  box-shadow:0 10px 24px rgba(0,0,0,.6),0 0 22px -6px var(--cc,#8e24aa);}
+.fx13-list-head{display:flex;align-items:center;gap:16px;width:100%;text-align:left;cursor:pointer;
+  padding:16px;border:0;background:transparent;color:#ffffff;}
+.fx13-list-head:hover{transform:translateY(-2px);}
+.fx13-list-name{flex:1;font-size:19px;font-weight:800;color:#ffffff;text-align:left;}
+.fx13-list-count{min-width:44px;height:44px;padding:0 10px;display:grid;place-items:center;border-radius:12px;
+  background:#050607;border:2px solid var(--cc,#8e24aa);font-size:19px;font-weight:800;color:#ffffff;}
+.fx13-feat-tag{padding:6px 12px;border-radius:999px;border:2px solid #d4a017;background:#050607;
+  font-size:17px;font-weight:800;color:#ffffff;white-space:nowrap;}
+.fx13-list-body{padding:0 16px 16px;}
+.fx13-member{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1.5px solid rgba(255,255,255,.12);}
+.fx13-member-ball{width:40px;height:40px;flex:none;border-radius:50%;display:grid;place-items:center;
+  background:#050607;border:2px solid var(--cc,#8e24aa);font-size:17px;font-weight:800;color:#ffffff;}
+.fx13-member-name{flex:1;font-size:17px;font-weight:700;color:#ffffff;}
+.fx13-member-x{width:40px;height:40px;flex:none;border-radius:50%;border:2px solid rgba(255,255,255,.25);
+  background:#050607;color:#ffffff;font-size:17px;cursor:pointer;}
+.fx13-add-row{display:flex;gap:8px;margin-top:12px;}
+.fx13-add-row select{flex:1;min-width:120px;min-height:48px;padding:8px 12px;border-radius:14px;
+  border:2px solid rgba(255,255,255,.22);background:#050607;color:#ffffff;font-size:17px;font-family:inherit;}
+.fx13-create-row{display:flex;gap:8px;margin-top:4px;}
+.fx13-create-row input{flex:1;min-height:48px;padding:10px 14px;border-radius:14px;border:2px solid rgba(255,255,255,.22);
+  background:rgba(0,0,0,.4);color:#ffffff;font-size:17px;font-family:inherit;}
+.fx13-create-row input::placeholder{color:#ffffff;}
+.fx13-plus-btn{width:48px;height:48px;flex:none;border-radius:50%;border:2px solid #8e24aa;
+  background:linear-gradient(135deg,#141419,#050607);color:#ffffff;font-size:25px;font-weight:800;cursor:pointer;
+  box-shadow:0 8px 20px rgba(0,0,0,.55),0 0 20px -4px rgba(142,36,170,.8);}
+.fx13-plus-btn:hover{transform:translateY(-2px);}
+.fx13-plus-btn:active{transform:scale(.97);}
+
+/* --- COMPOSE REBUILD: framed, calm, separated. The frame holds; the
+   middle scrolls; attach + send share one pinned row, always in view.
+   This resolves D-1: attach and send can no longer sit below the fold. --- */
+.mail-stage .ml-overlay{align-items:center;justify-content:center;padding:16px;}
+.ml-modal.mlx{display:flex;flex-direction:column;max-width:720px;width:calc(100vw - 32px);
+  max-height:calc(100dvh - 32px);max-height:calc(100svh - 32px);padding:24px;border-radius:22px;
+  border:2px solid rgba(255,255,255,.22);background:linear-gradient(135deg,#141419,#050607);
+  box-shadow:0 24px 48px rgba(0,0,0,.7),0 0 32px -6px rgba(142,36,170,.5);overflow:hidden;}
+.fx13-compose-scroll{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;
+  padding-right:4px;margin-right:-4px;}
+.fx13-compose-foot{flex:0 0 auto;display:flex;gap:12px;align-items:stretch;
+  padding-top:16px;margin-top:16px;border-top:1.5px solid rgba(255,255,255,.14);}
+.fx13-attach-btn{flex:0 0 auto;min-height:52px;padding:12px 20px;border-radius:16px;border:2px solid #0f52ba;
+  background:linear-gradient(135deg,#141419,#050607);color:#ffffff;font-size:17px;font-weight:800;
+  letter-spacing:.08em;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.55),0 0 20px -4px rgba(15,82,186,.8);}
+.fx13-attach-btn:hover{transform:translateY(-2px);}
+.fx13-attach-btn:active{transform:scale(.97);}
+.fx13-compose-foot .mlx-send{flex:1 1 auto;width:auto;}
+@media (max-width:640px){ .ml-modal.mlx{padding:18px 16px;} .fx13-compose-foot{flex-direction:column;} .fx13-attach-btn{width:100%;} }
+
+/* --- Item 2 at phone width: no hover on a phone, so a tap presses the
+   board instead — the same lift, proven by real tap at 390. --- */
+@media (hover:none){
+  .nm-bubble:active{transform:translateY(-2px);box-shadow:0 20px 36px rgba(0,0,0,.65),0 0 36px -4px var(--cc,#8e24aa);}
+  .pc-card:active{transform:translateY(-2px);}
+}
+</style>
+<script id="ov-fix13-20261126-js">
+/* ===== FIX13 (2026-11-26) — unified Connections + Mail + IM.
+   Override block only; every earlier block untouched. Privacy: this block
+   adds NO read path for mail or messages (localStorage only, this device);
+   no Supabase write except through the existing window.__nmSend path, which
+   the RLS gate still blocks until Shawn's hand opens it. ===== */
+(function(){
+'use strict';
+var FX13_NOTES=[{"sn":"SN-4747","name":"The Five Gates","category":"Identity and decision","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/IDENTITY-AND-DECISION/SN-4747/IB-SMART-NOTE-20261124-sn4747-the-five-gates.md"},{"sn":"SN-4748","name":"His Eye Is the Final Gate","category":"Proof","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/PROOF/SN-4748/IB-SMART-NOTE-20261124-sn4748-his-eye-is-the-final-gate.md"},{"sn":"SN-4749","name":"Prove It Before You Report It","category":"Proof","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/PROOF/SN-4749/IB-SMART-NOTE-20261124-sn4749-prove-it-before-you-report-it.md"},{"sn":"SN-4750","name":"Verify the Rendered Experience","category":"Proof","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/PROOF/SN-4750/IB-SMART-NOTE-20261124-sn4750-verify-the-rendered-experience.md"},{"sn":"SN-4751","name":"The Link Law (sharpened)","category":"Proof","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/PROOF/SN-4751/IB-SMART-NOTE-20261124-sn4751-the-link-law.md"},{"sn":"SN-4752","name":"The Real Object Law","category":"Design","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/DESIGN/SN-4752/IB-SMART-NOTE-20261124-sn4752-real-object-law.md"},{"sn":"SN-4753","name":"The Wise One","category":"Identity and decision","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/IDENTITY-AND-DECISION/SN-4753/IB-SMART-NOTE-20261124-sn4753-the-wise-one.md"},{"sn":"SN-4754","name":"The Sense Check — on the Page, Not the Brief","category":"Identity and decision","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/IDENTITY-AND-DECISION/SN-4754/IB-SMART-NOTE-20261124-sn4754-the-sense-check.md"},{"sn":"SN-4755","name":"Harvest First / Connect, Don't Create","category":"Build","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/BUILD/SN-4755/IB-SMART-NOTE-20261124-sn4755-harvest-first-connect-dont-create.md"},{"sn":"SN-4756","name":"The Checklist Law: One List, Worked to Zero","category":"Operations","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/OPERATIONS/SN-4756/IB-SMART-NOTE-20261124-sn4756-checklist-law-one-list-worked-to-zero.md"},{"sn":"SN-4757","name":"The Whole-Page Rule","category":"Operations","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/OPERATIONS/SN-4757/IB-SMART-NOTE-20261124-sn4757-whole-page-rule.md"},{"sn":"SN-4758","name":"The Continuous Cycle Law: Nothing Sits","category":"Operations","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/OPERATIONS/SN-4758/IB-SMART-NOTE-20261124-sn4758-continuous-cycle-law-nothing-sits.md"},{"sn":"SN-4759","name":"The Intelligent Block Anatomy","category":"Design","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/DESIGN/SN-4759/IB-SMART-NOTE-20261124-sn4759-intelligent-block-anatomy.md"},{"sn":"SN-4760","name":"Done-Proven Reporting","category":"Proof","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/PROOF/SN-4760/IB-SMART-NOTE-20261124-sn4760-done-proven-reporting.md"},{"sn":"SN-4761","name":"Scorecarding","category":"Identity and decision","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/IDENTITY-AND-DECISION/SN-4761/IB-SMART-NOTE-20261124-sn4761-scorecarding.md"},{"sn":"SN-4762","name":"The Layered Context Law: The Brief Replaces the Context","category":"Operations","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/OPERATIONS/SN-4762/IB-SMART-NOTE-20261124-sn4762-layered-context-law-brief-replaces-context.md"},{"sn":"SN-4763","name":"The Frame Library + The One-Build Law","category":"Build","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/BUILD/SN-4763/IB-SMART-NOTE-20261124-sn4763-frame-library-one-build-law.md"},{"sn":"SN-4764","name":"The No-Redesign Law","category":"Build","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/BUILD/SN-4764/IB-SMART-NOTE-20261124-sn4764-no-redesign-law.md"},{"sn":"SN-4765","name":"The Captain Decides","category":"Identity and decision","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/IDENTITY-AND-DECISION/SN-4765/IB-SMART-NOTE-20261124-sn4765-the-captain-decides.md"},{"sn":"SN-4766","name":"The Privacy Law","category":"System and business","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/SYSTEM-AND-BUSINESS/SN-4766/IB-SMART-NOTE-20261124-sn4766-the-privacy-law.md"},{"sn":"SN-4767","name":"The Awesome Law","category":"Design","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/DESIGN/SN-4767/IB-SMART-NOTE-20261124-sn4767-awesome-law.md"},{"sn":"SN-4768","name":"The Live Loop / Live-First Law","category":"Operations","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/OPERATIONS/SN-4768/IB-SMART-NOTE-20261124-sn4768-live-loop-live-first-law.md"},{"sn":"SN-4769","name":"The Design-Laws Activation Habit","category":"Design","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/DESIGN/SN-4769/IB-SMART-NOTE-20261124-sn4769-design-laws-activation-habit.md"},{"sn":"SN-4770","name":"The Flywheel","category":"Operations","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/OPERATIONS/SN-4770/IB-SMART-NOTE-20261124-sn4770-flywheel.md"},{"sn":"SN-4771","name":"Distillation — 100 Notes Down to 10","category":"System and business","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/SYSTEM-AND-BUSINESS/SN-4771/IB-SMART-NOTE-20261124-sn4771-distillation-100-notes-down-to-10.md"},{"sn":"SN-4772","name":"Declare Who You Are","category":"Identity and decision","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/IDENTITY-AND-DECISION/SN-4772/IB-SMART-NOTE-20261124-sn4772-declare-who-you-are.md"},{"sn":"SN-4773","name":"The Oath + The Max Declaration","category":"Identity and decision","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/IDENTITY-AND-DECISION/SN-4773/IB-SMART-NOTE-20261124-sn4773-the-oath-and-the-max-declaration.md"},{"sn":"SN-4774","name":"A Lesson Counts Only When a Future Decision Changes","category":"Identity and decision","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/IDENTITY-AND-DECISION/SN-4774/IB-SMART-NOTE-20261124-sn4774-a-lesson-counts-only-when-a-future-decision-changes.md"},{"sn":"SN-4775","name":"The Drift Line","category":"Identity and decision","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/IDENTITY-AND-DECISION/SN-4775/IB-SMART-NOTE-20261124-sn4775-the-drift-line.md"},{"sn":"SN-4776","name":"Answer Your Own Questions","category":"Identity and decision","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/IDENTITY-AND-DECISION/SN-4776/IB-SMART-NOTE-20261124-sn4776-answer-your-own-questions.md"},{"sn":"SN-4777","name":"When I Speak, It's Law","category":"Identity and decision","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/IDENTITY-AND-DECISION/SN-4777/IB-SMART-NOTE-20261124-sn4777-when-i-speak-its-law.md"},{"sn":"SN-4778","name":"How You Do It Is the Law","category":"Identity and decision","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/IDENTITY-AND-DECISION/SN-4778/IB-SMART-NOTE-20261124-sn4778-how-you-do-it-is-the-law.md"},{"sn":"SN-4779","name":"Take Initiative — Don't Wait to Be Told","category":"Identity and decision","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/IDENTITY-AND-DECISION/SN-4779/IB-SMART-NOTE-20261124-sn4779-take-initiative-dont-wait-to-be-told.md"},{"sn":"SN-4780","name":"The Broken-System Law","category":"Identity and decision","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/IDENTITY-AND-DECISION/SN-4780/IB-SMART-NOTE-20261124-sn4780-the-broken-system-law.md"},{"sn":"SN-4781","name":"AI Builds the OS","category":"Identity and decision","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/IDENTITY-AND-DECISION/SN-4781/IB-SMART-NOTE-20261124-sn4781-ai-builds-the-os.md"},{"sn":"SN-4782","name":"The Balanced Machine","category":"Identity and decision","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/IDENTITY-AND-DECISION/SN-4782/IB-SMART-NOTE-20261124-sn4782-the-balanced-machine.md"},{"sn":"SN-4783","name":"See It, Fix It, Write It Down, Share It","category":"Identity and decision","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/IDENTITY-AND-DECISION/SN-4783/IB-SMART-NOTE-20261124-sn4783-see-it-fix-it-write-it-down-share-it.md"},{"sn":"SN-4784","name":"The Self-Check Law + The Captain Double-Checks","category":"Proof","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/PROOF/SN-4784/IB-SMART-NOTE-20261124-sn4784-self-check-law-captain-double-checks.md"},{"sn":"SN-4785","name":"Live-Before-Delivery","category":"Proof","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/PROOF/SN-4785/IB-SMART-NOTE-20261124-sn4785-live-before-delivery.md"},{"sn":"SN-4786","name":"Three Tries Max","category":"Proof","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/PROOF/SN-4786/IB-SMART-NOTE-20261124-sn4786-three-tries-max.md"},{"sn":"SN-4787","name":"Own Your Mistakes in Public","category":"Proof","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/PROOF/SN-4787/IB-SMART-NOTE-20261124-sn4787-own-your-mistakes-in-public.md"},{"sn":"SN-4788","name":"Compose, Never Create","category":"Build","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/BUILD/SN-4788/IB-SMART-NOTE-20261124-sn4788-compose-never-create.md"},{"sn":"SN-4789","name":"Mirror Success","category":"Build","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/BUILD/SN-4789/IB-SMART-NOTE-20261124-sn4789-mirror-success.md"},{"sn":"SN-4790","name":"The Inventory Law","category":"Build","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/BUILD/SN-4790/IB-SMART-NOTE-20261124-sn4790-inventory-law.md"},{"sn":"SN-4791","name":"Debug by Evidence","category":"Build","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/BUILD/SN-4791/IB-SMART-NOTE-20261124-sn4791-debug-by-evidence.md"},{"sn":"SN-4792","name":"The Swap Standard","category":"Build","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/BUILD/SN-4792/IB-SMART-NOTE-20261124-sn4792-swap-standard.md"},{"sn":"SN-4793","name":"Verify Every Write by Size + Sha","category":"Build","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/BUILD/SN-4793/IB-SMART-NOTE-20261124-sn4793-verify-every-write-by-size-and-sha.md"},{"sn":"SN-4794","name":"Relay Discipline","category":"Build","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/BUILD/SN-4794/IB-SMART-NOTE-20261124-sn4794-relay-discipline.md"},{"sn":"SN-4795","name":"The Deep Palette + Spectrum Flow","category":"Design","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/DESIGN/SN-4795/IB-SMART-NOTE-20261124-sn4795-deep-palette-spectrum-flow.md"},{"sn":"SN-4796","name":"The Text Laws","category":"Design","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/DESIGN/SN-4796/IB-SMART-NOTE-20261124-sn4796-text-laws.md"},{"sn":"SN-4797","name":"Minimum Text, Speak in Icons","category":"Design","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/DESIGN/SN-4797/IB-SMART-NOTE-20261124-sn4797-minimum-text-speak-in-icons.md"},{"sn":"SN-4798","name":"The Object Anatomy + The Catalog","category":"Design","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/DESIGN/SN-4798/IB-SMART-NOTE-20261124-sn4798-object-anatomy-catalog.md"},{"sn":"SN-4799","name":"The Emblem Is the Standard","category":"Design","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/DESIGN/SN-4799/IB-SMART-NOTE-20261124-sn4799-emblem-is-the-standard.md"},{"sn":"SN-4800","name":"The Glow Law","category":"Design","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/DESIGN/SN-4800/IB-SMART-NOTE-20261124-sn4800-glow-law.md"},{"sn":"SN-4801","name":"The Unfold + The Slideshow","category":"Design","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/DESIGN/SN-4801/IB-SMART-NOTE-20261124-sn4801-unfold-slideshow.md"},{"sn":"SN-4802","name":"Auto-Optimization of the Viewport","category":"Design","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/DESIGN/SN-4802/IB-SMART-NOTE-20261124-sn4802-auto-optimization-viewport.md"},{"sn":"SN-4803","name":"Mobile First, Premium Mobile App First","category":"Design","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/DESIGN/SN-4803/IB-SMART-NOTE-20261124-sn4803-mobile-first-premium-mobile-app-first.md"},{"sn":"SN-4804","name":"Every Page Guides Like a Best Friend","category":"Design","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/DESIGN/SN-4804/IB-SMART-NOTE-20261124-sn4804-every-page-guides-like-a-best-friend.md"},{"sn":"SN-4805","name":"Fit-Perfect + No-Scroll","category":"Design","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/DESIGN/SN-4805/IB-SMART-NOTE-20261124-sn4805-fit-perfect-no-scroll.md"},{"sn":"SN-4806","name":"Prime Real Estate + One Area","category":"Design","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/DESIGN/SN-4806/IB-SMART-NOTE-20261124-sn4806-prime-real-estate-one-area.md"},{"sn":"SN-4807","name":"The Mirror Pattern","category":"Design","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/DESIGN/SN-4807/IB-SMART-NOTE-20261124-sn4807-the-mirror-pattern.md"},{"sn":"SN-4808","name":"The Literal Law — 3D Ultra Realism","category":"Design","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/DESIGN/SN-4808/IB-SMART-NOTE-20261124-sn4808-the-literal-law-3d-ultra-realism.md"},{"sn":"SN-4809","name":"The Chapter Method","category":"Design","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/DESIGN/SN-4809/IB-SMART-NOTE-20261124-sn4809-the-chapter-method.md"},{"sn":"SN-4810","name":"The Headlights Principle","category":"Design","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/DESIGN/SN-4810/IB-SMART-NOTE-20261124-sn4810-the-headlights-principle.md"},{"sn":"SN-4811","name":"The Queen's Voice","category":"Design","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/DESIGN/SN-4811/IB-SMART-NOTE-20261124-sn4811-the-queens-voice.md"},{"sn":"SN-4812","name":"Plain Words, Child-and-Grandma Clear","category":"Design","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/DESIGN/SN-4812/IB-SMART-NOTE-20261124-sn4812-plain-words-child-and-grandma-clear.md"},{"sn":"SN-4813","name":"The Cube","category":"Design","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/DESIGN/SN-4813/IB-SMART-NOTE-20261124-sn4813-the-cube.md"},{"sn":"SN-4814","name":"The One Bar","category":"Design","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/DESIGN/SN-4814/IB-SMART-NOTE-20261124-sn4814-the-one-bar.md"},{"sn":"SN-4815","name":"The Standard of Three","category":"Design","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/DESIGN/SN-4815/IB-SMART-NOTE-20261124-sn4815-the-standard-of-three.md"},{"sn":"SN-4816","name":"The Intelligent Library","category":"Design","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/DESIGN/SN-4816/IB-SMART-NOTE-20261124-sn4816-the-intelligent-library.md"},{"sn":"SN-4817","name":"The Live Sequence","category":"Operations","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/OPERATIONS/SN-4817/IB-SMART-NOTE-20261124-sn4817-live-sequence.md"},{"sn":"SN-4818","name":"The Parallel Law","category":"Operations","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/OPERATIONS/SN-4818/IB-SMART-NOTE-20261124-sn4818-parallel-law.md"},{"sn":"SN-4819","name":"One Lane, One Round","category":"Operations","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/OPERATIONS/SN-4819/IB-SMART-NOTE-20261124-sn4819-one-lane-one-round.md"},{"sn":"SN-4820","name":"The Score Is Verified Completions Per Hour","category":"Operations","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/OPERATIONS/SN-4820/IB-SMART-NOTE-20261124-sn4820-score-verified-completions-per-hour.md"},{"sn":"SN-4821","name":"Fail Fast","category":"Operations","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/OPERATIONS/SN-4821/IB-SMART-NOTE-20261124-sn4821-fail-fast.md"},{"sn":"SN-4822","name":"Lean Operation","category":"Operations","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/OPERATIONS/SN-4822/IB-SMART-NOTE-20261124-sn4822-lean-operation.md"},{"sn":"SN-4823","name":"The Captain's Status","category":"Operations","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/OPERATIONS/SN-4823/IB-SMART-NOTE-20261124-sn4823-captains-status.md"},{"sn":"SN-4824","name":"The Dictation Rule","category":"Operations","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/OPERATIONS/SN-4824/IB-SMART-NOTE-20261124-sn4824-dictation-rule.md"},{"sn":"SN-4825","name":"Word Perfect Before Public","category":"Operations","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/OPERATIONS/SN-4825/IB-SMART-NOTE-20261124-sn4825-word-perfect-before-public.md"},{"sn":"SN-4826","name":"The No-Counting Law","category":"Operations","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/OPERATIONS/SN-4826/IB-SMART-NOTE-20261124-sn4826-no-counting-law.md"},{"sn":"SN-4827","name":"The Name Rule","category":"Operations","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/OPERATIONS/SN-4827/IB-SMART-NOTE-20261124-sn4827-name-rule.md"},{"sn":"SN-4828","name":"Star Level Names","category":"Operations","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/OPERATIONS/SN-4828/IB-SMART-NOTE-20261124-sn4828-star-level-names.md"},{"sn":"SN-4829","name":"The Fifteen — Universal Page Creation","category":"System and business","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/SYSTEM-AND-BUSINESS/SN-4829/IB-SMART-NOTE-20261124-sn4829-the-fifteen-universal-page-creation.md"},{"sn":"SN-4830","name":"The Universal System First","category":"System and business","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/SYSTEM-AND-BUSINESS/SN-4830/IB-SMART-NOTE-20261124-sn4830-the-universal-system-first.md"},{"sn":"SN-4831","name":"Three Views Only","category":"System and business","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/SYSTEM-AND-BUSINESS/SN-4831/IB-SMART-NOTE-20261124-sn4831-three-views-only.md"},{"sn":"SN-4832","name":"The Day-Menu Doors / Calendar as Cockpit","category":"System and business","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/SYSTEM-AND-BUSINESS/SN-4832/IB-SMART-NOTE-20261124-sn4832-the-day-menu-doors-calendar-as-cockpit.md"},{"sn":"SN-4833","name":"Two Vaults — Personal and Collective","category":"System and business","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/SYSTEM-AND-BUSINESS/SN-4833/IB-SMART-NOTE-20261124-sn4833-two-vaults-personal-and-collective.md"},{"sn":"SN-4834","name":"Smart Notes as Skills","category":"System and business","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/SYSTEM-AND-BUSINESS/SN-4834/IB-SMART-NOTE-20261124-sn4834-smart-notes-as-skills.md"},{"sn":"SN-4835","name":"The Money Law — Money = Joins Only","category":"System and business","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/SYSTEM-AND-BUSINESS/SN-4835/IB-SMART-NOTE-20261124-sn4835-the-money-law-money-joins-only.md"},{"sn":"SN-4836","name":"Membership + Payments","category":"System and business","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/SYSTEM-AND-BUSINESS/SN-4836/IB-SMART-NOTE-20261124-sn4836-membership-and-payments.md"},{"sn":"SN-4837","name":"Auto-Match","category":"System and business","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/SYSTEM-AND-BUSINESS/SN-4837/IB-SMART-NOTE-20261124-sn4837-auto-match.md"},{"sn":"SN-4838","name":"The Publishing Law","category":"System and business","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/SYSTEM-AND-BUSINESS/SN-4838/IB-SMART-NOTE-20261124-sn4838-the-publishing-law.md"},{"sn":"SN-4839","name":"Four Kinds of Gold","category":"System and business","github_path":"BRAIN/05-MEMORY/SMART-NOTES/2026/11/24/SKILLS/SYSTEM-AND-BUSINESS/SN-4839/IB-SMART-NOTE-20261124-sn4839-four-kinds-of-gold.md"}];
+var FX13_CATS=[
+ {name:'Identity and decision',short:'Identity',color:'#8e24aa'},
+ {name:'Proof',short:'Proof',color:'#0f52ba'},
+ {name:'Build',short:'Build',color:'#07925f'},
+ {name:'Design',short:'Design',color:'#d4a017'},
+ {name:'Operations',short:'Operations',color:'#c2410c'},
+ {name:'System and business',short:'System',color:'#c62828'}
+];
+var FX13_PEOPLE=[
+ {alias:'shawn',pct:97,color:'#3f51b5'},{alias:'wrena',pct:95,color:'#07925f'},
+ {alias:'sophia',pct:94,color:'#3f51b5'},{alias:'vera',pct:93,color:'#0e7490'},
+ {alias:'zoe',pct:92,color:'#c62828'},{alias:'thora',pct:91,color:'#8e24aa'},
+ {alias:'iris',pct:91,color:'#0e7490'},{alias:'astraea',pct:90,color:'#c62828'},
+ {alias:'emesa',pct:89,color:'#0e7490'},{alias:'terra',pct:88,color:'#8e24aa'},
+ {alias:'ruth',pct:88,color:'#0e7490'},{alias:'mira',pct:87,color:'#c2410c'},
+ {alias:'aurelia',pct:86,color:'#c62828'}
+];
+var FX13_PAGES=['Personal','Business','Space','Hub'];
+function fx13esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function fx13el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
+function fx13store(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+function fx13load(k,d){try{var v=JSON.parse(localStorage.getItem(k)||'null');return v==null?d:v;}catch(e){return d;}}
+function fx13catOf(name){for(var i=0;i<FX13_CATS.length;i++)if(FX13_CATS[i].name===name)return FX13_CATS[i];return FX13_CATS[0];}
+function fx13catCount(name){var n=0;for(var i=0;i<FX13_NOTES.length;i++)if(FX13_NOTES[i].category===name)n++;return n;}
+function fx13notesIn(name){var out=[];for(var i=0;i<FX13_NOTES.length;i++)if(FX13_NOTES[i].category===name)out.push(FX13_NOTES[i]);return out;}
+function fx13noteBySn(sn){for(var i=0;i<FX13_NOTES.length;i++)if(FX13_NOTES[i].sn===sn)return FX13_NOTES[i];return null;}
+function fx13toast(msg){try{if(window.showToast)window.showToast(msg);}catch(e){}}
+
+/* ---------- state: likes / reviews / comments / shares / pins / lists ----------
+   All local to this device (localStorage). Nothing is shared by default:
+   a share is the citizen's own tap, recorded here, and sent through the
+   existing mail path when the RLS gate allows it; until then it is queued
+   and labelled queued, never claimed sent. */
+var fx13Likes=fx13load('fx13-likes',{});
+var fx13Reviews=fx13load('fx13-reviews',{});
+var fx13Comments=fx13load('fx13-comments',{});
+var fx13Shares=fx13load('fx13-shares',[]);
+var fx13Pins=fx13load('fx13-pins',[]);
+var fx13CustomLists=fx13load('fx13-custom-lists',[]);
+var fx13Featured=fx13load('fx13-featured','Like Minds');
+var fx13Side=fx13load('fx13-side','connections');
+function fx13BuiltInLists(){
+  var top=[],close=[],circle=[];
+  FX13_PEOPLE.forEach(function(p){if(p.pct>=95)top.push(p.alias);else if(p.pct>=90)close.push(p.alias);else circle.push(p.alias);});
+  return [
+   {name:'Like Minds',members:FX13_PEOPLE.map(function(p){return p.alias;}),color:'#8e24aa',built:true,auto:'All 13 connections'},
+   {name:'Top matches',members:top,color:'#0f52ba',built:true,auto:'Match 95–97'},
+   {name:'Close circle',members:close,color:'#07925f',built:true,auto:'Match 90–94'},
+   {name:'Wider circle',members:circle,color:'#d4a017',built:true,auto:'Match 86–89'}
+  ];
+}
+function fx13AllLists(){
+  var lists=fx13BuiltInLists();
+  fx13CustomLists.forEach(function(l){lists.push({name:l.name,members:l.members.slice(),color:'#a21caf',built:false,auto:'Your list'});});
+  return lists;
+}
+function fx13Person(alias){for(var i=0;i<FX13_PEOPLE.length;i++)if(FX13_PEOPLE[i].alias===alias)return FX13_PEOPLE[i];return {alias:alias,pct:0,color:'#8e24aa'};}
+
+/* ---------- the toggle + panels, mounted beside each people list ----------
+   Hosts: the messenger Like Minds list (#nmLikeMindsList) and the drawer
+   rail (#hubPeopleList). The toggle bar + notes panel + lists sit BESIDE
+   the list element, never inside it, so the base re-renders of the list
+   (fx2RenderLikeMinds) cannot wipe them. */
+var fx13Hosts=[];
+function fx13SetSide(side){
+  fx13Side=side;fx13store('fx13-side',side);
+  fx13Hosts.forEach(function(h){fx13PaintHost(h);});
+  try{window.__fx13Side=side;}catch(e){}
+}
+function fx13PaintHost(h){
+  var notesSide=(fx13Side==='notes');
+  if(h.toggle){var btns=h.toggle.querySelectorAll('.fx13-toggle-btn');
+    for(var i=0;i<btns.length;i++){var on=btns[i].getAttribute('data-side')===(notesSide?'notes':'connections');
+      btns[i].classList.toggle('on',on);btns[i].setAttribute('aria-pressed',on?'true':'false');}}
+  if(h.list)h.list.style.display=notesSide?'none':'';
+  if(h.search)h.search.style.display=notesSide?'none':'';
+  if(h.panel)h.panel.style.display=notesSide?'':'none';
+  if(h.lists)h.lists.style.display=notesSide?'none':'';
+  if(notesSide)fx13RenderPanel(h,'cats',null);
+}
+function fx13MakeToggle(host){
+  var bar=fx13el('div','fx13-toggle');bar.setAttribute('role','tablist');bar.setAttribute('aria-label','Connections or Smart Notes');
+  var b1=fx13el('button','fx13-toggle-btn');b1.type='button';b1.setAttribute('data-side','connections');b1.setAttribute('role','tab');
+  b1.innerHTML='CONNECTIONS<small>13 people</small>';
+  var b2=fx13el('button','fx13-toggle-btn');b2.type='button';b2.setAttribute('data-side','notes');b2.setAttribute('role','tab');
+  b2.innerHTML='SMART NOTES<small>93 notes</small>';
+  b1.addEventListener('click',function(){fx13SetSide('connections');});
+  b2.addEventListener('click',function(){fx13SetSide('notes');});
+  bar.appendChild(b1);bar.appendChild(b2);
+  return bar;
+}
+function fx13MountHost(listEl,searchEl){
+  if(!listEl||listEl.getAttribute('data-fx13-host'))return null;
+  listEl.setAttribute('data-fx13-host','1');
+  var parent=listEl.parentNode;if(!parent)return null;
+  var host={list:listEl,search:searchEl||null,panel:null,lists:null,toggle:null,view:'cats',cat:null,sn:null,openList:null};
+  host.toggle=fx13MakeToggle(host);
+  parent.insertBefore(host.toggle,listEl);
+  host.panel=fx13el('div','fx13-notes');host.panel.style.display='none';
+  parent.insertBefore(host.panel,listEl.nextSibling);
+  host.lists=fx13el('div','fx13-lists');
+  parent.insertBefore(host.lists,host.panel.nextSibling);
+  fx13RenderLists(host);
+  fx13Hosts.push(host);
+  fx13PaintHost(host);
+  return host;
+}
+function fx13MountAll(){
+  fx13MountHost(document.getElementById('nmLikeMindsList'),document.getElementById('nmLikeMindsSearch'));
+  fx13MountHost(document.getElementById('hubPeopleList'),document.getElementById('pcRailSearch'));
+  try{window.__fx13Hosts=fx13Hosts.length;}catch(e){}
+}
+
+/* ---------- Smart Notes side: categories -> notes -> the ONE note card --- */
+function fx13RenderPanel(h,view,arg){
+  h.view=view;h.cat=(view==='cat'||view==='note')?arg:null;if(view==='note')h.sn=arg;
+  var p=h.panel;if(!p)return;p.innerHTML='';
+  if(view==='cats'){
+    p.appendChild(fx13el('p','fx13-notes-head','Smart notes — all of them, in order.'));
+    var sub=fx13el('p','fx13-notes-sub','93 notes, in six categories. Tap a category to see its notes. Tap a note to read it, review it, comment, like it — and share it or pin it.');
+    p.appendChild(sub);
+    FX13_CATS.forEach(function(c){
+      var b=fx13el('button','fx13-cat');b.type='button';b.style.setProperty('--cc',c.color);
+      b.setAttribute('aria-label',c.name+', '+fx13catCount(c.name)+' notes');
+      var nm=fx13el('span','fx13-cat-name',c.name);b.appendChild(nm);
+      b.appendChild(fx13el('span','fx13-cat-count',String(fx13catCount(c.name))));
+      b.addEventListener('click',function(){fx13RenderPanel(h,'cat',c.name);});
+      p.appendChild(b);
+    });
+    var tot=fx13el('p','fx13-notes-sub','Total 93 — verified against the filing manifest (SN-4747–SN-4839). Vault check: 2026-11-25.');
+    p.appendChild(tot);
+  } else if(view==='cat'){
+    var c=fx13catOf(arg);
+    var back=fx13el('button','fx13-back','‹ All categories');back.type='button';
+    back.addEventListener('click',function(){fx13RenderPanel(h,'cats',null);});p.appendChild(back);
+    p.appendChild(fx13el('p','fx13-notes-head',c.name+' — '+fx13catCount(c.name)+' notes'));
+    fx13notesIn(c.name).forEach(function(n){
+      var r=fx13el('button','fx13-note-row');r.type='button';r.style.setProperty('--cc',c.color);
+      r.setAttribute('aria-label',n.sn+': '+n.name);
+      r.appendChild(fx13el('span','fx13-sn',n.sn));
+      r.appendChild(fx13el('span','fx13-note-title',n.name));
+      var flags=[];
+      if(fx13Likes[n.sn])flags.push('♥');
+      if(fx13Pins.some(function(x){return x.sn===n.sn;}))flags.push('Pinned');
+      if(fx13Shares.some(function(x){return x.sn===n.sn;}))flags.push('Shared');
+      if(flags.length)r.appendChild(fx13el('span','fx13-note-flag',flags.join(' · ')));
+      r.addEventListener('click',function(){fx13RenderPanel(h,'note',n.sn);});
+      p.appendChild(r);
+    });
+  } else if(view==='note'){
+    var n=fx13noteBySn(arg);if(!n){fx13RenderPanel(h,'cats',null);return;}
+    var c=fx13catOf(n.category);
+    var back2=fx13el('button','fx13-back','‹ '+c.name);back2.type='button';
+    back2.addEventListener('click',function(){fx13RenderPanel(h,'cat',c.name);});p.appendChild(back2);
+    var card=fx13el('div','fx13-note-card');card.style.setProperty('--cc',c.color);
+    card.appendChild(fx13el('h3','',n.name));
+    var meta=fx13el('div','fx13-note-meta');
+    meta.appendChild(fx13el('span','fx13-chip',n.sn));
+    meta.appendChild(fx13el('span','fx13-chip',c.name));
+    meta.appendChild(fx13el('span','fx13-chip','Smart note'));
+    card.appendChild(meta);
+    var src=fx13el('p','fx13-notes-sub','From the collective skills vault — '+n.github_path);
+    card.appendChild(src);
+    /* review: five stars, this device */
+    card.appendChild(fx13el('p','fx13-notes-head','Review it'));
+    var stars=fx13el('div','fx13-stars');
+    var cur=fx13Reviews[n.sn]||0;
+    for(var s=1;s<=5;s++){
+      (function(v){
+        var st=fx13el('button','fx13-star','★');st.type='button';st.setAttribute('aria-label','Rate '+v+' of 5');
+        st.setAttribute('aria-pressed',(cur>=v)?'true':'false');
+        st.addEventListener('click',function(){fx13Reviews[n.sn]=v;fx13store('fx13-reviews',fx13Reviews);fx13RenderPanel(h,'note',n.sn);});
+        stars.appendChild(st);
+      })(s);
+    }
+    card.appendChild(stars);
+    /* like */
+    var acts=fx13el('div','fx13-note-actions');
+    var liked=!!fx13Likes[n.sn];
+    var likeBtn=fx13el('button','fx13-act-btn',(liked?'♥ Liked':'♡ Like'));likeBtn.type='button';
+    likeBtn.style.setProperty('--cc',c.color);likeBtn.setAttribute('aria-pressed',liked?'true':'false');
+    likeBtn.addEventListener('click',function(){if(fx13Likes[n.sn])delete fx13Likes[n.sn];else fx13Likes[n.sn]=true;fx13store('fx13-likes',fx13Likes);fx13RenderPanel(h,'note',n.sn);});
+    acts.appendChild(likeBtn);
+    card.appendChild(acts);
+    /* comment */
+    card.appendChild(fx13el('p','fx13-notes-head','Comment'));
+    var crow=fx13el('div','fx13-comment-row');
+    var cin=fx13el('input','fx13-comment-in');cin.type='text';cin.setAttribute('placeholder','Write a comment…');cin.setAttribute('aria-label','Write a comment');
+    var cbtn=fx13el('button','fx13-act-btn','Comment');cbtn.type='button';cbtn.style.setProperty('--cc',c.color);
+    cbtn.addEventListener('click',function(){
+      var t=cin.value.trim();if(!t)return;
+      (fx13Comments[n.sn]=fx13Comments[n.sn]||[]).push(t);fx13store('fx13-comments',fx13Comments);
+      fx13RenderPanel(h,'note',n.sn);
+    });
+    crow.appendChild(cin);crow.appendChild(cbtn);card.appendChild(crow);
+    (fx13Comments[n.sn]||[]).forEach(function(t){card.appendChild(fx13el('p','fx13-comment',t));});
+    /* share: to a connection, or to a page — the citizen's tap, nothing by default */
+    card.appendChild(fx13el('p','fx13-notes-head','Share it'));
+    var srow=fx13el('div','fx13-share-row');
+    var starget=fx13el('select');starget.setAttribute('aria-label','Share with');
+    var og1=document.createElement('optgroup');og1.label='Connections';
+    FX13_PEOPLE.forEach(function(pp){var o=document.createElement('option');o.value='person:'+pp.alias;o.textContent=pp.alias+' ('+pp.pct+'%)';og1.appendChild(o);});
+    starget.appendChild(og1);
+    var og2=document.createElement('optgroup');og2.label='Pages';
+    FX13_PAGES.forEach(function(pg){var o=document.createElement('option');o.value='page:'+pg;o.textContent=pg+' page';og2.appendChild(o);});
+    starget.appendChild(og2);
+    var shareBtn=fx13el('button','fx13-act-btn','Share');shareBtn.type='button';shareBtn.style.setProperty('--cc',c.color);
+    shareBtn.addEventListener('click',function(){
+      var v=starget.value;var parts=v.split(':');var kind=parts[0],dest=parts.slice(1).join(':');
+      var rec={sn:n.sn,kind:kind,dest:dest,at:new Date().toISOString(),state:'queued'};
+      if(kind==='person'&&window.__nmSend){
+        try{window.__nmSend('dm',dest,'','Shared smart note: '+n.name+' ('+n.sn+')').then(function(res){
+          rec.state=(res&&res.ok)?'sent':'queued';fx13store('fx13-shares',fx13Shares);
+          fx13RenderPanel(h,'note',n.sn);
+        },function(){fx13store('fx13-shares',fx13Shares);fx13RenderPanel(h,'note',n.sn);});}catch(e){}
+      }
+      fx13Shares.push(rec);fx13store('fx13-shares',fx13Shares);
+      fx13toast(kind==='person'?'Sharing '+n.sn+' with '+dest+' — queued until mail sends.':'Sharing '+n.sn+' to the '+dest+' page — queued.');
+      fx13RenderPanel(h,'note',n.sn);
+    });
+    srow.appendChild(starget);srow.appendChild(shareBtn);card.appendChild(srow);
+    /* pin: to a person, or to a page — works now, on this device */
+    card.appendChild(fx13el('p','fx13-notes-head','Pin it'));
+    var prow=fx13el('div','fx13-share-row');
+    var ptarget=fx13el('select');ptarget.setAttribute('aria-label','Pin to');
+    var pg1=document.createElement('optgroup');pg1.label='People';
+    FX13_PEOPLE.forEach(function(pp){var o=document.createElement('option');o.value='person:'+pp.alias;o.textContent=pp.alias;pg1.appendChild(o);});
+    ptarget.appendChild(pg1);
+    var pg2=document.createElement('optgroup');pg2.label='Pages';
+    FX13_PAGES.forEach(function(pg){var o=document.createElement('option');o.value='page:'+pg;o.textContent=pg+' page';pg2.appendChild(o);});
+    ptarget.appendChild(pg2);
+    var pinBtn=fx13el('button','fx13-act-btn','Pin');pinBtn.type='button';pinBtn.style.setProperty('--cc',c.color);
+    pinBtn.addEventListener('click',function(){
+      var v=ptarget.value;var parts=v.split(':');
+      fx13Pins.push({sn:n.sn,kind:parts[0],dest:parts.slice(1).join(':'),at:new Date().toISOString()});
+      fx13store('fx13-pins',fx13Pins);
+      fx13toast('Pinned '+n.sn+' to '+parts.slice(1).join(':')+'.');
+      fx13RenderPanel(h,'note',n.sn);
+    });
+    prow.appendChild(ptarget);prow.appendChild(pinBtn);card.appendChild(prow);
+    /* what is already shared / pinned, in plain words */
+    fx13Shares.filter(function(x){return x.sn===n.sn;}).forEach(function(x){
+      card.appendChild(fx13el('p','fx13-queued','Shared with '+(x.kind==='person'?'':'the ')+x.dest+(x.kind==='page'?' page':'')+' — '+(x.state==='sent'?'sent.':'queued until mail sends.')));
+    });
+    fx13Pins.filter(function(x){return x.sn===n.sn;}).forEach(function(x){
+      card.appendChild(fx13el('p','fx13-queued','Pinned to '+(x.kind==='person'?'':'the ')+x.dest+(x.kind==='page'?' page':'')+'.'));
+    });
+    p.appendChild(card);
+  }
+}
+
+/* ---------- Smart Lists: the lists live under the people, on the
+   Connections side. Built-ins are auto-categorized by match band;
+   the citizen's own lists are added with + and an input. ---------- */
+function fx13RenderLists(h){
+  var w=h.lists;if(!w)return;w.innerHTML='';
+  w.appendChild(fx13el('p','fx13-lists-head','SMART LISTS'));
+  w.appendChild(fx13el('p','fx13-lists-sub','Your connections, in lists. A list is your contacts — open it, add or remove people, feature the one that matters most.'));
+  fx13AllLists().forEach(function(l){
+    var box=fx13el('div','fx13-list');box.style.setProperty('--cc',l.color);
+    var head=fx13el('button','fx13-list-head');head.type='button';
+    head.setAttribute('aria-expanded',(h.openList===l.name)?'true':'false');
+    head.appendChild(fx13el('span','fx13-list-name',l.name+(l.auto?' — '+l.auto:'')));
+    if(fx13Featured===l.name)head.appendChild(fx13el('span','fx13-feat-tag','★ FEATURED'));
+    head.appendChild(fx13el('span','fx13-list-count',String(l.members.length)));
+    head.addEventListener('click',function(){
+      h.openList=(h.openList===l.name)?null:l.name;
+      fx13Hosts.forEach(function(hh){fx13RenderLists(hh);});
+    });
+    box.appendChild(head);
+    if(h.openList===l.name){
+      var body=fx13el('div','fx13-list-body');
+      l.members.forEach(function(alias){
+        var pp=fx13Person(alias);
+        var m=fx13el('div','fx13-member');m.style.setProperty('--cc',pp.color);
+        m.appendChild(fx13el('span','fx13-member-ball',alias.charAt(0).toUpperCase()));
+        m.appendChild(fx13el('span','fx13-member-name',alias+' — '+pp.pct+'%'));
+        var x=fx13el('button','fx13-member-x','×');x.type='button';x.setAttribute('aria-label','Remove '+alias+' from '+l.name);
+        x.addEventListener('click',function(){
+          if(l.built){fx13toast('Built-in lists follow the match bands — make your own list to choose members.');return;}
+          var ci=-1;for(var i=0;i<fx13CustomLists.length;i++)if(fx13CustomLists[i].name===l.name)ci=i;
+          if(ci>-1){var mi=fx13CustomLists[ci].members.indexOf(alias);if(mi>-1)fx13CustomLists[ci].members.splice(mi,1);fx13store('fx13-custom-lists',fx13CustomLists);}
+          fx13Hosts.forEach(function(hh){fx13RenderLists(hh);});
+        });
+        m.appendChild(x);body.appendChild(m);
+      });
+      var addRow=fx13el('div','fx13-add-row');
+      var sel=fx13el('select');sel.setAttribute('aria-label','Add a connection to '+l.name);
+      FX13_PEOPLE.forEach(function(pp){if(l.members.indexOf(pp.alias)>-1)return;var o=document.createElement('option');o.value=pp.alias;o.textContent=pp.alias+' ('+pp.pct+'%)';sel.appendChild(o);});
+      var addBtn=fx13el('button','fx13-act-btn','Add');addBtn.type='button';addBtn.style.setProperty('--cc',l.color);
+      addBtn.addEventListener('click',function(){
+        if(!sel.value)return;
+        if(l.built){fx13toast('Built-in lists follow the match bands — make your own list to choose members.');return;}
+        var ci=-1;for(var i=0;i<fx13CustomLists.length;i++)if(fx13CustomLists[i].name===l.name)ci=i;
+        if(ci>-1&&fx13CustomLists[ci].members.indexOf(sel.value)<0){fx13CustomLists[ci].members.push(sel.value);fx13store('fx13-custom-lists',fx13CustomLists);}
+        fx13Hosts.forEach(function(hh){fx13RenderLists(hh);});
+      });
+      if(sel.options.length){addRow.appendChild(sel);addRow.appendChild(addBtn);body.appendChild(addRow);}
+      var feat=fx13el('button','fx13-act-btn',(fx13Featured===l.name?'★ Featured':'☆ Feature this list'));feat.type='button';feat.style.setProperty('--cc',l.color);
+      feat.addEventListener('click',function(){fx13Featured=l.name;fx13store('fx13-featured',l.name);fx13Hosts.forEach(function(hh){fx13RenderLists(hh);});});
+      body.appendChild(feat);
+      if(!l.built){
+        var del=fx13el('button','fx13-act-btn','Delete list');del.type='button';del.style.setProperty('--cc','#c62828');
+        del.addEventListener('click',function(){
+          fx13CustomLists=fx13CustomLists.filter(function(x){return x.name!==l.name;});fx13store('fx13-custom-lists',fx13CustomLists);
+          if(fx13Featured===l.name){fx13Featured='Like Minds';fx13store('fx13-featured','Like Minds');}
+          fx13Hosts.forEach(function(hh){fx13RenderLists(hh);});
+        });
+        body.appendChild(del);
+      }
+      box.appendChild(body);
+    }
+    w.appendChild(box);
+  });
+  var crow=fx13el('div','fx13-create-row');
+  var cin=fx13el('input');cin.type='text';cin.setAttribute('placeholder','Name a new list…');cin.setAttribute('aria-label','Name a new list');
+  var plus=fx13el('button','fx13-plus-btn','+');plus.type='button';plus.setAttribute('aria-label','Create a new list');
+  function createList(){
+    var name=cin.value.trim();if(!name)return;
+    if(fx13AllLists().some(function(x){return x.name.toLowerCase()===name.toLowerCase();})){fx13toast('That list already exists — scroll to it.');return;}
+    fx13CustomLists.push({name:name,members:[]});fx13store('fx13-custom-lists',fx13CustomLists);
+    cin.value='';fx13Hosts.forEach(function(hh){h.openList=name;fx13RenderLists(hh);});
+  }
+  plus.addEventListener('click',createList);
+  cin.addEventListener('keydown',function(ev){if(ev.key==='Enter')createList();});
+  crow.appendChild(cin);crow.appendChild(plus);w.appendChild(crow);
+}
+
+/* ---------- COMPOSE REBUILD (D-1): frame holds, middle scrolls,
+   attach + send share one pinned row, always inside the viewport. --- */
+function fx13RestructureCompose(card){
+  if(!card||card.getAttribute('data-fx13-compose'))return;
+  card.setAttribute('data-fx13-compose','1');
+  var foot=null,scroll=null;
+  try{
+    scroll=document.createElement('div');scroll.className='fx13-compose-scroll';
+    foot=document.createElement('div');foot.className='fx13-compose-foot';
+    var kids=Array.prototype.slice.call(card.childNodes);
+    var kept=[];
+    kids.forEach(function(n){
+      if(n.nodeType!==1){scroll.appendChild(n);return;}
+      var isTop=n.classList&&(n.classList.contains('mlx-top'));
+      var isSend=n.classList&&(n.classList.contains('mlx-send'));
+      var isErr=n.classList&&(n.classList.contains('ml-err'));
+      if(isTop)kept.push(n);else if(isSend||isErr)foot.appendChild(n);else scroll.appendChild(n);
+    });
+    card.innerHTML='';
+    kept.forEach(function(n){card.appendChild(n);});
+    card.appendChild(scroll);
+    /* the send button is NOT a direct child of the card — it lives inside
+       the schedule row (schRow.appendChild(sendBtn)). A direct-children
+       pass alone leaves it in the scroll region, below the fold: the
+       exact D-1 failure. Hoist it (and the error line, if nested) into
+       the pinned footer so attach + send share one in-view row. */
+    var nestedSend=scroll.querySelector('.mlx-send');
+    if(nestedSend)foot.appendChild(nestedSend);
+    var nestedErr=scroll.querySelector('.ml-err');
+    if(nestedErr)foot.appendChild(nestedErr);
+    var attach=fx13el('button','fx13-attach-btn','⌖ ATTACH');attach.type='button';
+    attach.setAttribute('data-fx13-attach','1');attach.setAttribute('aria-label','Attach intelligence — go to the attach section');
+    attach.addEventListener('click',function(){
+      var sec=card.querySelector('.mlx-attachsec');
+      if(sec){try{sec.scrollIntoView({block:'start'});}catch(e){scroll.scrollTop=sec.offsetTop;}
+        var si=card.querySelector('.mlx-attachsec .mlx-search');if(si)si.focus();}
+    });
+    foot.insertBefore(attach,foot.firstChild);
+    var sendBtn=foot.querySelector('.mlx-send');if(sendBtn)sendBtn.setAttribute('data-fx13-send','1');
+    card.appendChild(foot);
+    try{window.__fx13Compose=true;}catch(e){}
+  }catch(e){/* compose keeps its base shape; the frame CSS still bounds it */}
+}
+function fx13WatchCompose(){
+  if(!window.MutationObserver)return;
+  try{
+    var mo=new MutationObserver(function(muts){
+      muts.forEach(function(m){
+        Array.prototype.forEach.call(m.addedNodes||[],function(n){
+          if(n.nodeType!==1)return;
+          if(n.classList&&n.classList.contains('ml-modal')&&n.classList.contains('mlx'))fx13RestructureCompose(n);
+          var inner=n.querySelector?n.querySelector('.ml-modal.mlx'):null;
+          if(inner)fx13RestructureCompose(inner);
+        });
+      });
+    });
+    mo.observe(document.body,{childList:true,subtree:true});
+  }catch(e){}
+  var existing=document.querySelector('.ml-modal.mlx');
+  if(existing)fx13RestructureCompose(existing);
+}
+
+/* ---------- D-4: the plain failure message, fast. Two triggers:
+   (1) the moment a smart_mail_threads POST answers !ok, the outcome is
+   known — write the plain message at once; (2) a 1400ms watchdog on the
+   thread Send button: if the send is still in flight and the status is
+   still empty, say so in plain words. The later settle rewrites the
+   same plain text (fx11 dedupes it) or, if it ever succeeds, the Sent
+   board — so the watchdog can never leave a wrong message standing. --- */
+var FX13_PLAIN='<p><b>The message could not be sent &mdash; try again.</b></p>';
+var FX13_PLAIN_BOARD='<div class="nm-status gate">'+FX13_PLAIN+'</div>';
+function fx13WritePlain(){
+  try{var st=document.getElementById('nmMsgStatus');
+    if(st&&!(st.textContent||'').trim())st.innerHTML=FX13_PLAIN_BOARD;}catch(e){}
+}
+function fx13WatchSend(){
+  try{
+    document.addEventListener('click',function(ev){
+      var t=ev.target&&ev.target.closest?ev.target.closest('#nmMsgSend'):null;
+      if(!t)return;
+      var t0=Date.now();
+      setTimeout(function(){
+        try{var st=document.getElementById('nmMsgStatus');var sb=document.getElementById('nmMsgSend');
+          if(st&&!(st.textContent||'').trim()&&sb&&sb.disabled){
+            st.innerHTML=FX13_PLAIN_BOARD;sb.disabled=false;
+            try{window.__fx13Watchdog=Date.now()-t0;}catch(e){}
+          }}catch(e){}
+      },1400);
+    },true);
+  }catch(e){}
+  try{
+    if(window.fetch&&!window.fetch.__fx13){
+      var origFetch=window.fetch;
+      var wrapped=function(input,init){
+        var url=String((input&&input.url)||input||'');
+        var method=(init&&init.method)||'GET';
+        return origFetch.apply(this,arguments).then(function(res){
+          try{
+            if(method==='POST'&&url.indexOf('smart_mail_threads')>-1&&!res.ok){
+              setTimeout(fx13WritePlain,0);
+              try{window.__fx13PostFailed=Date.now();}catch(e){}
+            }
+          }catch(e){}
+          return res;
+        },function(err){throw err;});
+      };
+      wrapped.__fx13=true;
+      window.fetch=wrapped;
+    }
+  }catch(e){}
+}
+
+/* ---------- D-3 / D-5 at 390: bring the orb into view BEFORE the tap
+   lands. Capture-phase pointerdown scrolls an offscreen orb/react into
+   the centre of its scrolling list, so elementFromPoint can reach it. --- */
+function fx13WatchOrbs(){
+  try{
+    document.addEventListener('pointerdown',function(ev){
+      var t=ev.target&&ev.target.closest?ev.target.closest('.nm-orb,.nm-react'):null;
+      if(!t)return;
+      try{
+        var r=t.getBoundingClientRect();
+        var list=t.closest?t.closest('.nm-msg-list'):null;
+        var box=list?list.getBoundingClientRect():{top:0,bottom:window.innerHeight};
+        if(r.top<box.top||r.bottom>box.bottom||r.top<0||r.bottom>window.innerHeight){
+          t.scrollIntoView({block:'center'});
+        }
+      }catch(e){}
+    },true);
+  }catch(e){}
+}
+
+/* ---------- the old Connections room retires INTO this interface:
+   #connections (or ?view=connections) opens the unified interface on
+   the Connections side. The URL mapping itself is a deploy step. --- */
+function fx13Route(){
+  try{
+    if((location.hash||'')==='#connections'||/view=connections/.test(location.search||'')){
+      fx13SetSide('connections');
+      var rail=document.querySelector('.naya-drawer-right');
+      if(rail&&rail.classList)rail.classList.add('fx6-open');
+    }
+  }catch(e){}
+}
+
+/* ---------- boot ---------- */
+function fx13Boot(){
+  try{fx13MountAll();}catch(e){}
+  try{fx13WatchCompose();}catch(e){}
+  try{fx13WatchSend();}catch(e){}
+  try{fx13WatchOrbs();}catch(e){}
+  try{fx13Route();}catch(e){}
+  try{
+    window.__fx13={side:function(){return fx13Side;},notes:FX13_NOTES.length,
+      cats:FX13_CATS.map(function(c){return c.name+':'+fx13catCount(c.name);}),
+      hosts:fx13Hosts.length,lists:function(){return fx13AllLists().map(function(l){return l.name+':'+l.members.length;});},
+      version:'fix13-20261126'};
+  }catch(e){}
+  if(window.MutationObserver){
+    try{
+      var mo2=new MutationObserver(function(){fx13MountAll();});
+      mo2.observe(document.body,{childList:true,subtree:true});
+    }catch(e){}
+  }
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fx13Boot);
+else fx13Boot();
+})();
+</script>
+
 </body></html>
