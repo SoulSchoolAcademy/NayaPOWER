@@ -7793,4 +7793,115 @@ fx10GoldS();
 setTimeout(fx10GoldS, 800);
 })();
 </script>
+<script id="ov-fix11-20261126-js">
+/* ===== FIX11 (2026-11-26) — D-4 send-failure wedge. Override script only;
+   no base byte edited, fix8/fix9/fix10 blocks untouched.
+   DIAGNOSIS (live, fx11-diag1..5 on fix10 bytes): the checker's hypothesis
+   (fx8CleanStatus rewrites .nm-status.gate unconditionally inside a
+   body-wide MutationObserver sweep) is real in the bytes, but the live
+   wedge is bigger — the page wedges 0.8-3s after a Send tap BEFORE any
+   status board ever renders (ihGate 0, ihStatus 0, statusNodes 0 at the
+   last beacon; the trip-wire never saw a gate write), and a no-click run
+   wedged at rest too. The live churn that saturates the main thread:
+   the base pass() runs every 800ms and its moveActions() order loop does
+   THREE unconditional insertBefore moves on .nm-sendrow every pass — the
+   clones end in the same order they started, so every pass is pure
+   churn: ~9 mutation records per burst, every ~800ms, forever. Each
+   burst fires the body-wide observers, whose full-document sweeps cost
+   60-186ms (longtask tail); timers fire 100-1000ms late, the heartbeat
+   runs ~5/s instead of 20/s, and the Send tap tips saturation into a
+   total wedge (no timers, no reads, the send promise never settles).
+   FIX (two guards, both no-ops when nothing is wrong):
+   (1) insertBefore guard: a redundant re-order move of an .ov-send-act
+   clone inside .nm-sendrow is skipped when the three clones already
+   stand mail/chat/video in that order — the visible order is identical,
+   the mutations (and the sweep storm they trigger) stop. Fresh clones
+   and genuine re-orders still pass through untouched.
+   (2) innerHTML guard on status elements only: a raw-error / policy
+   leak is replaced at write time with the plain words (no table name,
+   no policy name, no code on screen), and a repeat write of the exact
+   plain message is skipped — so the fix8 sanitizer's unconditional
+   rewrite becomes a one-time write and cannot re-trigger its own
+   observer loop once a failure board exists.
+   D-8: no code change — the composer-wins landing stands (see report).
+   S colour: untouched (HELD OPEN per the captain's 2026-11-26 ~12:35 MST
+   hold — the official seven-colour pattern says S=6=indigo; gold S is
+   neither re-proved nor recoloured here). Laws: white text only, 17px
+   minimum, deep palette, one light top-left. */
+(function(){
+'use strict';
+window.__fx11 = true;
+
+/* ---------- (1) silence the redundant .nm-sendrow re-order moves ---------- */
+function fx11SendRowOrderOk(row){
+  try {
+    var acts = [];
+    var kids = row.children;
+    for (var i = 0; i < kids.length; i++){
+      var k = kids[i];
+      if (k.classList && k.classList.contains('ov-send-act')) acts.push(k.getAttribute('data-nm-icon') || '');
+    }
+    return acts.length === 3 && acts[0] === 'mail' && acts[1] === 'chat' && acts[2] === 'video';
+  } catch(e){ return false; }
+}
+try {
+  var __fx11OrigIB = Node.prototype.insertBefore;
+  if (__fx11OrigIB && !__fx11OrigIB.__fx11){
+    var __fx11IB = function(node, child){
+      try {
+        if (node && node.nodeType === 1 && this && this.classList && this.classList.contains('nm-sendrow')
+          && node.classList && node.classList.contains('ov-send-act') && node.parentNode === this
+          && fx11SendRowOrderOk(this)){
+          window.__fx11SkippedMoves = (window.__fx11SkippedMoves || 0) + 1;
+          return node;
+        }
+      } catch(e){}
+      return __fx11OrigIB.call(this, node, child);
+    };
+    __fx11IB.__fx11 = true;
+    Node.prototype.insertBefore = __fx11IB;
+  }
+} catch(e){}
+
+/* ---------- (2) status writes: plain words only, no repeat rewrites ---------- */
+/* Exact fx8 constant (line 7162/7166): '&mdash;' entity, not the literal char. */
+var FX11_PLAIN = '<p><b>The message could not be sent &mdash; try again.</b></p>';
+var FX11_PLAIN_BOARD = '<div class="nm-status gate">' + FX11_PLAIN + '</div>';
+var FX11_LEAK = /smart_mail_threads|row-level security|42501|INSERT policy|public.smart|PGRST|new row violates/i;
+var fx11LastWritten = (typeof WeakMap !== 'undefined') ? new WeakMap() : null;
+function fx11IsStatusEl(el){
+  try {
+    if (!el || el.nodeType !== 1) return false;
+    if (el.id === 'nmMsgStatus') return true;
+    return !!(el.classList && el.classList.contains('nm-status'));
+  } catch(e){ return false; }
+}
+try {
+  var __fx11IhDesc = Object.getOwnPropertyDescriptor(Element.prototype, 'innerHTML');
+  if (__fx11IhDesc && __fx11IhDesc.set && !__fx11IhDesc.set.__fx11){
+    var __fx11IhOrigSet = __fx11IhDesc.set, __fx11IhOrigGet = __fx11IhDesc.get;
+    var __fx11Set = function(v){
+      try {
+        if (fx11IsStatusEl(this)){
+          var s = String(v);
+          if (FX11_LEAK.test(s)){
+            var plain = (this.id === 'nmMsgStatus') ? FX11_PLAIN_BOARD : FX11_PLAIN;
+            if (fx11LastWritten) fx11LastWritten.set(this, plain);
+            return __fx11IhOrigSet.call(this, plain);
+          }
+          if ((s === FX11_PLAIN || s === FX11_PLAIN_BOARD) && fx11LastWritten && fx11LastWritten.get(this) === s){
+            window.__fx11SkippedStatus = (window.__fx11SkippedStatus || 0) + 1;
+            return;
+          }
+          if (fx11LastWritten) fx11LastWritten.set(this, s);
+        }
+      } catch(e){}
+      return __fx11IhOrigSet.call(this, v);
+    };
+    __fx11Set.__fx11 = true;
+    Object.defineProperty(Element.prototype, 'innerHTML', {get: __fx11IhOrigGet, set: __fx11Set, configurable: true, enumerable: __fx11IhDesc.enumerable});
+  }
+} catch(e){}
+})();
+</script>
 </body></html>
