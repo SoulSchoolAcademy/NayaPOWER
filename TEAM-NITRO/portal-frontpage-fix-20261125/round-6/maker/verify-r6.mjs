@@ -57,6 +57,16 @@ assert('R6: nutshell pop-up present with the verbatim wording', p.includes('id="
 assert('R6: little N is static (no animation on .fp-little-n)', p.includes('.fp-little-n{display:inline-grid;') && !/\.fp-little-n\{[^}]*animation/.test(p));
 assert('final nine: 9 eco-item anchors', (p.match(/class="eco-item"/g) || []).length === 9);
 assert('structure: 8 style elements, 11 scripts (boot + deed style + nutshell script)', (p.match(/<style>/g) || []).length === 8 && (p.match(/<script>/g) || []).length === 11);
+assert('R6: place() repaired (guard drops the missing reader)', p.includes('if (!stage || !portal || !content || !sentence) return;') && p.includes('if (reader) stage.insertBefore(reader, sentence.nextSibling);'));
+assert('R6: deed sentence is a block, ball on its own line', p.includes("body:not(.fp-returning) #fpDeedSentence.fp-deed-sentence{display:block;}") && p.includes('#fpDeedSentence .fp-circle-n{display:block;margin:10px auto 0;}'));
+{
+  const {Script} = require('node:vm');
+  const blocks = [...p.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m => m[1]);
+  let bad = [];
+  blocks.forEach((code, i) => { try { new Script(code); } catch (e) { bad.push(i + ': ' + e.message); } });
+  assert('all ' + blocks.length + ' staged inline scripts compile', bad.length === 0);
+  if (bad.length) console.log('  STAGED COMPILE FAILURES: ' + bad.join(' | '));
+}
 const sw = await get('/sw.js');
 assert('sw.js 200 + matches lane', sw.equals(readFileSync(LANE + 'sw.js')));
 console.log('VERIFY DONE');

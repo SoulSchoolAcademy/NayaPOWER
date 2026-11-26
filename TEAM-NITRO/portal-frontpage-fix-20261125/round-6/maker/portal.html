@@ -2504,6 +2504,8 @@ button.fp-circle-n:active{transform:scale(.97)}
           <p class="fp-deed-sentence" id="fpDeedSentence"><span class="fp-deed-text">By entering your name, you make it official &mdash; you are signing the Collective Agreement, and you get the deed to your own world: high-level digital real estate &mdash; your personal page, your business, your space &mdash; free forever. <button class="fp-little-n" id="fpLittleN" type="button" aria-label="In a nutshell — the Collective Agreement">N</button></span><button class="fp-deed-info fp-circle-n" id="fpCircleN" type="button" aria-label="The Collective Agreement — the red N"><img id="fpCircleNImg" alt="The red N — a raised glass ball with a gold N"><span class="ncorner-gloss" aria-hidden="true"></span></button></p>
 <style> /* ROUND 6 — the little N + nutshell (Shawn, locked 2026-11-26). The deed text spans the full row, centred; the red ball wraps to its own centred line below. The little N is a 26px obsidian circle, white Marcellus N, purple glow — STATIC, no animation anywhere, so it can never read sideways. The pop-up is a centred overlay; it hides, the page underneath is untouched. */
 #fpDeedSentence{flex-wrap:wrap;}
+body:not(.fp-returning) #fpDeedSentence.fp-deed-sentence{display:block;}
+#fpDeedSentence .fp-circle-n{display:block;margin:10px auto 0;}
 .fp-deed-text{flex:0 0 100%;text-align:center;}
 .fp-little-n{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;border:1.5px solid #fff;background:#050507;color:#fff;font-family:Marcellus,Georgia,serif;font-size:17px;line-height:1;cursor:pointer;vertical-align:-5px;box-shadow:0 0 10px rgba(142,36,170,.45),0 4px 10px rgba(0,0,0,.5);transition:box-shadow .25s,transform .25s;}
 .fp-little-n:hover{box-shadow:0 0 18px rgba(142,36,170,.9),0 4px 12px rgba(0,0,0,.5);transform:translateY(-1px);}
@@ -2549,19 +2551,19 @@ button.fp-circle-n:active{transform:scale(.97)}
      <div id="returningView"> in the document, so at parse time it is null
      and the old guard returned early, leaving the deed in the circle. The
      narrow path never needs it; the widen path looks it up lazily. */
-  if (!stage || !portal || !content || !sentence || !reader) return;
+  if (!stage || !portal || !content || !sentence) return;
   function place(){
     var narrow = window.matchMedia('(max-width:480px)').matches;
     if (narrow){
       if (sentence.parentElement !== stage){
         stage.insertBefore(sentence, portal.nextSibling);
-        stage.insertBefore(reader, sentence.nextSibling);
+        if (reader) stage.insertBefore(reader, sentence.nextSibling);
       }
     } else {
       var returning = document.getElementById('returningView');
       if (returning && sentence.parentElement !== content){
         content.insertBefore(sentence, returning);
-        content.insertBefore(reader, returning);
+        if (reader) content.insertBefore(reader, returning);
       }
     }
   }
@@ -4245,7 +4247,7 @@ function fpJumpToHub(){
       jewelBar.style.width=Math.round(((Math.floor(S.letter/3)+1)/Math.ceil(letterBeats.length/3))*100)+'%';
       jewelEl.style.setProperty('--tone',tone);
       if(S.letter+3>=letterBeats.length){setNext('I agree — show me my world \u25C6','#07925f','letterPageAgree');if(nextBtn2){nextBtn2.textContent='Begin the visual story \u25C6';nextBtn2.style.setProperty('--tone','#8e24aa');nextBtn2.hidden=false;}if(nextRow)nextRow.classList.add('fp-two');}
-      else{setNext('Keep reading \u25C6',tone,'letterNext');}if(nextBtn2){nextBtn2.textContent='Begin the visual story \u25C6';nextBtn2.style.setProperty('--tone','#8e24aa');nextBtn2.hidden=false;}if(nextRow)nextRow.classList.add('fp-two');}
+      else{setNext('Keep reading \u25C6',tone,'letterNext');}if(nextBtn2){nextBtn2.textContent='Begin the visual story \u25C6';nextBtn2.style.setProperty('--tone','#8e24aa');nextBtn2.hidden=false;}if(nextRow)nextRow.classList.add('fp-two');
       if(linkLetterBack)linkLetterBack.hidden=false;
       if(linkLetterAll)linkLetterAll.hidden=false;
       if(linkLetterSkip)linkLetterSkip.hidden=false;
@@ -4253,7 +4255,7 @@ function fpJumpToHub(){
     else if(S.view==='letterPage'){
       tone=toneOf(letterBeats[S.letter]);
       if(S.letter+3>=letterBeats.length){setNext('I agree — show me my world \u25C6','#07925f','letterPageAgree');if(nextBtn2){nextBtn2.textContent='Begin the visual story \u25C6';nextBtn2.style.setProperty('--tone','#8e24aa');nextBtn2.hidden=false;}if(nextRow)nextRow.classList.add('fp-two');}
-      else{setNext('Keep reading \u25C6',tone,'letterNext');}if(nextBtn2){nextBtn2.textContent='Begin the visual story \u25C6';nextBtn2.style.setProperty('--tone','#8e24aa');nextBtn2.hidden=false;}if(nextRow)nextRow.classList.add('fp-two');}
+      else{setNext('Keep reading \u25C6',tone,'letterNext');}if(nextBtn2){nextBtn2.textContent='Begin the visual story \u25C6';nextBtn2.style.setProperty('--tone','#8e24aa');nextBtn2.hidden=false;}if(nextRow)nextRow.classList.add('fp-two');
       if(linkLetterBack)linkLetterBack.hidden=false;
       if(linkDeckBack)linkDeckBack.hidden=false;
       if(linkLetterAll)linkLetterAll.hidden=false;

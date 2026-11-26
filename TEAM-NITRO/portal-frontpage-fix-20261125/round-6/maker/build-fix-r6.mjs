@@ -57,6 +57,7 @@
 // Node only (python writes EPERM). Base is the R5 staged portal, edited.
 import {readFileSync, writeFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
+import vm from 'node:vm';
 const sha = b => createHash('sha256').update(b).digest('hex');
 const LANE = new URL('./', import.meta.url).pathname;
 
@@ -173,7 +174,7 @@ const agreeIfOld = "if(S.letter>=letterBeats.length-1){setNext('I agree \\u25C6'
 const agreeIfNew = "if(S.letter+3>=letterBeats.length){setNext('I agree — show me my world \\u25C6','#07925f','letterPageAgree');if(nextBtn2){nextBtn2.textContent='Begin the visual story \\u25C6';nextBtn2.style.setProperty('--tone','#8e24aa');nextBtn2.hidden=false;}if(nextRow)nextRow.classList.add('fp-two');}";
 rep(agreeIfOld, agreeIfNew, 2, 'D5-agreeIf');
 const keepOld = "else{setNext('Keep reading \\u25C6',tone,'letterNext');}";
-const keepNew = "else{setNext('Keep reading \\u25C6',tone,'letterNext');}if(nextBtn2){nextBtn2.textContent='Begin the visual story \\u25C6';nextBtn2.style.setProperty('--tone','#8e24aa');nextBtn2.hidden=false;}if(nextRow)nextRow.classList.add('fp-two');}";
+const keepNew = "else{setNext('Keep reading \\u25C6',tone,'letterNext');}if(nextBtn2){nextBtn2.textContent='Begin the visual story \\u25C6';nextBtn2.style.setProperty('--tone','#8e24aa');nextBtn2.hidden=false;}if(nextRow)nextRow.classList.add('fp-two');";
 rep(keepOld, keepNew, 2, 'D5-keep');
 
 // --- E. Agree wording everywhere it reads "I agree ◆". ---
@@ -198,7 +199,7 @@ rep("if(nextBtn2)nextBtn2.addEventListener('click',function(){if(S.view==='intro
 {
   const pOld = '<p class="fp-deed-sentence" id="fpDeedSentence"><button class="fp-deed-info fp-circle-n" id="fpCircleN" type="button" aria-label="The Collective Agreement — the red N"><img id="fpCircleNImg" alt="The red N — a raised glass ball with a gold N"><span class="ncorner-gloss" aria-hidden="true"></span></button></p>';
   const pNew = '<p class="fp-deed-sentence" id="fpDeedSentence"><span class="fp-deed-text">By entering your name, you make it official &mdash; you are signing the Collective Agreement, and you get the deed to your own world: high-level digital real estate &mdash; your personal page, your business, your space &mdash; free forever. <button class="fp-little-n" id="fpLittleN" type="button" aria-label="In a nutshell — the Collective Agreement">N</button></span><button class="fp-deed-info fp-circle-n" id="fpCircleN" type="button" aria-label="The Collective Agreement — the red N"><img id="fpCircleNImg" alt="The red N — a raised glass ball with a gold N"><span class="ncorner-gloss" aria-hidden="true"></span></button></p>'
-    + '\n<style> /* ROUND 6 — the little N + nutshell (Shawn, locked 2026-11-26). The deed text spans the full row, centred; the red ball wraps to its own centred line below. The little N is a 26px obsidian circle, white Marcellus N, purple glow — STATIC, no animation anywhere, so it can never read sideways. The pop-up is a centred overlay; it hides, the page underneath is untouched. */\n#fpDeedSentence{flex-wrap:wrap;}\n.fp-deed-text{flex:0 0 100%;text-align:center;}\n.fp-little-n{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;border:1.5px solid #fff;background:#050507;color:#fff;font-family:Marcellus,Georgia,serif;font-size:17px;line-height:1;cursor:pointer;vertical-align:-5px;box-shadow:0 0 10px rgba(142,36,170,.45),0 4px 10px rgba(0,0,0,.5);transition:box-shadow .25s,transform .25s;}\n.fp-little-n:hover{box-shadow:0 0 18px rgba(142,36,170,.9),0 4px 12px rgba(0,0,0,.5);transform:translateY(-1px);}\n.fp-little-n:active{transform:scale(.97);}\n.fp-nutshell-pop{position:fixed;inset:0;z-index:90;display:grid;place-items:center;background:rgba(0,0,0,.65);padding:16px;}\n.fp-nutshell-pop[hidden]{display:none;}\n.fp-nutshell-card{max-width:560px;width:100%;text-align:center;background:#050507;border:1.5px solid rgba(142,36,170,.6);border-radius:18px;box-shadow:0 8px 24px rgba(0,0,0,.6),0 0 18px rgba(142,36,170,.25);padding:20px 22px;}\n.fp-nutshell-text{color:#fff;font-family:Marcellus,Georgia,serif;font-size:19px;line-height:1.6;margin:0 0 16px;text-shadow:0 1px 2px rgba(0,0,0,.85);}\n.fp-nutshell-close{display:inline-block;padding:12px 28px;border-radius:999px;font-size:17px;font-weight:800;letter-spacing:.05em;color:#fff;cursor:pointer;background:linear-gradient(180deg,#1b1b24,#050507);border:2px solid #07925f;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),0 0 24px -4px #07925f,0 10px 22px rgba(0,0,0,.55);}\n.fp-nutshell-close:hover{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -4px 8px rgba(0,0,0,.5),0 0 38px -2px #07925f,0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px);}\n</style>'
+    + '\n<style> /* ROUND 6 — the little N + nutshell (Shawn, locked 2026-11-26). The deed text spans the full row, centred; the red ball wraps to its own centred line below. The little N is a 26px obsidian circle, white Marcellus N, purple glow — STATIC, no animation anywhere, so it can never read sideways. The pop-up is a centred overlay; it hides, the page underneath is untouched. */\n#fpDeedSentence{flex-wrap:wrap;}\nbody:not(.fp-returning) #fpDeedSentence.fp-deed-sentence{display:block;}\n#fpDeedSentence .fp-circle-n{display:block;margin:10px auto 0;}\n.fp-deed-text{flex:0 0 100%;text-align:center;}\n.fp-little-n{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;border:1.5px solid #fff;background:#050507;color:#fff;font-family:Marcellus,Georgia,serif;font-size:17px;line-height:1;cursor:pointer;vertical-align:-5px;box-shadow:0 0 10px rgba(142,36,170,.45),0 4px 10px rgba(0,0,0,.5);transition:box-shadow .25s,transform .25s;}\n.fp-little-n:hover{box-shadow:0 0 18px rgba(142,36,170,.9),0 4px 12px rgba(0,0,0,.5);transform:translateY(-1px);}\n.fp-little-n:active{transform:scale(.97);}\n.fp-nutshell-pop{position:fixed;inset:0;z-index:90;display:grid;place-items:center;background:rgba(0,0,0,.65);padding:16px;}\n.fp-nutshell-pop[hidden]{display:none;}\n.fp-nutshell-card{max-width:560px;width:100%;text-align:center;background:#050507;border:1.5px solid rgba(142,36,170,.6);border-radius:18px;box-shadow:0 8px 24px rgba(0,0,0,.6),0 0 18px rgba(142,36,170,.25);padding:20px 22px;}\n.fp-nutshell-text{color:#fff;font-family:Marcellus,Georgia,serif;font-size:19px;line-height:1.6;margin:0 0 16px;text-shadow:0 1px 2px rgba(0,0,0,.85);}\n.fp-nutshell-close{display:inline-block;padding:12px 28px;border-radius:999px;font-size:17px;font-weight:800;letter-spacing:.05em;color:#fff;cursor:pointer;background:linear-gradient(180deg,#1b1b24,#050507);border:2px solid #07925f;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),0 0 24px -4px #07925f,0 10px 22px rgba(0,0,0,.55);}\n.fp-nutshell-close:hover{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -4px 8px rgba(0,0,0,.5),0 0 38px -2px #07925f,0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px);}\n</style>'
     + '\n<div class="fp-nutshell-pop" id="fpNutshellPop" hidden role="dialog" aria-modal="true" aria-label="In a nutshell — the Collective Agreement"><div class="fp-nutshell-card"><p class="fp-nutshell-text">By entering your name, you make it official &mdash; you are signing the Collective Agreement, and you get the deed to your own world: high-level digital real estate &mdash; your personal page, your business, your space &mdash; free forever.</p><button class="fp-nutshell-close" id="fpNutshellClose" type="button">Close &#9670;</button></div></div>'
     + '\n<script>/* ROUND 6 — the little N opens the nutshell; Close, backdrop, or Esc shuts it and the page underneath is untouched. */\n(function(){var n=document.getElementById(\'fpLittleN\'),pop=document.getElementById(\'fpNutshellPop\'),close=document.getElementById(\'fpNutshellClose\');if(!n||!pop||!close)return;function open(){pop.hidden=false;close.focus();}function shut(){pop.hidden=true;n.focus();}n.addEventListener(\'click\',open);close.addEventListener(\'click\',shut);pop.addEventListener(\'click\',function(e){if(e.target===pop)shut();});document.addEventListener(\'keydown\',function(e){if(e.key===\'Escape\'&&!pop.hidden)shut();});})();</script>';
   rep(pOld, pNew, 1, 'H-deed');
@@ -207,6 +208,23 @@ rep("if(nextBtn2)nextBtn2.addEventListener('click',function(){if(S.view==='intro
 rep('the red N in the circle\n   where the ⓘ was', 'the red N in the circle\n   where the (i) was', 1, 'H2-a');
 rep('/* --- the circle N (replaces the ⓘ) --- */', '/* --- the circle N (replaces the (i)) --- */', 1, 'H2-b');
 rep('the little ⓘ eyes', 'the little (i) eyes', 1, 'H2-c');
+
+// --- I. place() is dead code in the R5 base — and the restored deed text
+// exposes it on phone. The place() script moves the deed sentence OUT of
+// the circle on phone (whole, unclipped, under the portal — the v2
+// behaviour the live probe proved) — but its guard requires #fpDeedReader,
+// an element that no longer exists, so it returns early on every load and
+// the sentence never moves. In R5 that was invisible (a 56px ball fits in
+// the circle); with the deed text restored the 373px sentence overflows
+// the 288px phone circle and pushes the heading, name field, and Enter
+// button out of view. Repair: the guard drops the reader requirement, and
+// the two reader moves are guarded individually (reader is null-safe).
+rep('if (!stage || !portal || !content || !sentence || !reader) return;',
+  'if (!stage || !portal || !content || !sentence) return;', 1, 'I-guard');
+rep('stage.insertBefore(reader, sentence.nextSibling);',
+  'if (reader) stage.insertBefore(reader, sentence.nextSibling);', 1, 'I-narrow');
+rep('content.insertBefore(reader, returning);',
+  'if (reader) content.insertBefore(reader, returning);', 1, 'I-wide');
 
 // --- Assertions. ---
 const assert = (name, ok) => { console.log((ok ? 'PASS ' : 'FAIL ') + name); if (!ok) process.exitCode = 1; };
@@ -238,7 +256,18 @@ assert('H: deed text restored verbatim with the little N at its end', html.inclu
 assert('H: little N is static — no animation on .fp-little-n', html.includes('.fp-little-n{display:inline-grid;') && !/\.fp-little-n\{[^}]*animation/.test(html));
 assert('H: nutshell pop-up carries the verbatim wording + closes (button/backdrop/Esc)', html.includes('id="fpNutshellPop"') && html.includes('id="fpNutshellClose"') && (html.match(/By entering your name, you make it official/g) || []).length === 2);
 assert('H: zero ⓘ anywhere in the file', (html.match(/ⓘ/g) || []).length === 0);
-assert('H: red ball kept after the deed text', html.indexOf('id="fpLittleN"') < html.indexOf('id="fpCircleN"'));
+assert('I: place() guard no longer requires the missing reader', html.includes('if (!stage || !portal || !content || !sentence) return;') && html.includes('if (reader) stage.insertBefore(reader, sentence.nextSibling);') && html.includes('if (reader) content.insertBefore(reader, returning);'));
+assert('H: deed sentence is a block (text centred, ball on its own line)', html.includes("body:not(.fp-returning) #fpDeedSentence.fp-deed-sentence{display:block;}") && html.includes('#fpDeedSentence .fp-circle-n{display:block;margin:10px auto 0;}'));
+// Every inline <script> must COMPILE — the R6 round shipped a stray '}'
+// that string assertions could not see (it killed the whole stage IIFE at
+// runtime: __fpStage undefined, stage never opened). Compile-check here.
+{
+  const blocks = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m => m[1]);
+  let bad = [];
+  blocks.forEach((code, i) => { try { new vm.Script(code); } catch (e) { bad.push(i + ': ' + e.message); } });
+  assert('all ' + blocks.length + ' inline scripts compile (vm.Script)', bad.length === 0);
+  if (bad.length) console.log('  COMPILE FAILURES: ' + bad.join(' | '));
+}
 assert('structure: 8 style elements, 11 scripts (deed style + nutshell script added)', (html.match(/<style>/g) || []).length === 8 && (html.match(/<script>/g) || []).length === 11);
 
 const out = Buffer.from(html, 'utf8');
