@@ -1,0 +1,2394 @@
+{
+  "legs": {
+    "phone": {
+      "front": {
+        "orbPresent": true,
+        "orbCenterX": 195,
+        "viewportCenterX": 195,
+        "orbTop": 463,
+        "orbW": 56,
+        "orbAria": "The Collective Agreement \u2014 the red N",
+        "orbRingAnim": "eco-spin",
+        "orbHaloAnim": "fpOrbHalo",
+        "orbImgAnim": "none",
+        "fpEnterDeal": 0,
+        "bottomReadBtn": [],
+        "iCount": 0,
+        "menuLabels": 0,
+        "menuTips0": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "heading": "Naya Welcomes You",
+        "redCornerHref": "https://nayanet.app/",
+        "redCornerAria": "NayaNET \u2014 home",
+        "blackCornerHref": "https://nayanet.app/",
+        "nameInput": true,
+        "stageOn": false
+      },
+      "n_angle_t0": {
+        "circle": 0,
+        "red": 0,
+        "black": 0
+      },
+      "ring_t0": {
+        "cx": 195,
+        "cy": 430,
+        "portalW": 248,
+        "jewels": [
+          {
+            "ang": -169,
+            "rad": 171
+          },
+          {
+            "ang": -166,
+            "rad": 171
+          },
+          {
+            "ang": -163,
+            "rad": 171
+          },
+          {
+            "ang": -159,
+            "rad": 171
+          },
+          {
+            "ang": -156,
+            "rad": 171
+          },
+          {
+            "ang": -153,
+            "rad": 171
+          },
+          {
+            "ang": -149,
+            "rad": 171
+          },
+          {
+            "ang": -146,
+            "rad": 171
+          },
+          {
+            "ang": -143,
+            "rad": 171
+          },
+          {
+            "ang": -139,
+            "rad": 171
+          },
+          {
+            "ang": -136,
+            "rad": 171
+          },
+          {
+            "ang": -133,
+            "rad": 171
+          },
+          {
+            "ang": -129,
+            "rad": 171
+          },
+          {
+            "ang": -126,
+            "rad": 171
+          },
+          {
+            "ang": -123,
+            "rad": 171
+          },
+          {
+            "ang": -119,
+            "rad": 171
+          },
+          {
+            "ang": -116,
+            "rad": 171
+          },
+          {
+            "ang": -113,
+            "rad": 171
+          },
+          {
+            "ang": -109,
+            "rad": 171
+          },
+          {
+            "ang": -106,
+            "rad": 171
+          },
+          {
+            "ang": -103,
+            "rad": 171
+          },
+          {
+            "ang": -99,
+            "rad": 171
+          },
+          {
+            "ang": -96,
+            "rad": 171
+          },
+          {
+            "ang": -93,
+            "rad": 171
+          },
+          {
+            "ang": -89,
+            "rad": 171
+          },
+          {
+            "ang": -86,
+            "rad": 171
+          },
+          {
+            "ang": -83,
+            "rad": 171
+          },
+          {
+            "ang": -79,
+            "rad": 171
+          },
+          {
+            "ang": -76,
+            "rad": 171
+          },
+          {
+            "ang": -73,
+            "rad": 171
+          },
+          {
+            "ang": -69,
+            "rad": 171
+          },
+          {
+            "ang": -66,
+            "rad": 171
+          },
+          {
+            "ang": -63,
+            "rad": 171
+          },
+          {
+            "ang": -59,
+            "rad": 171
+          },
+          {
+            "ang": -56,
+            "rad": 171
+          },
+          {
+            "ang": -53,
+            "rad": 171
+          },
+          {
+            "ang": -49,
+            "rad": 171
+          },
+          {
+            "ang": -46,
+            "rad": 171
+          },
+          {
+            "ang": -43,
+            "rad": 171
+          },
+          {
+            "ang": -39,
+            "rad": 171
+          },
+          {
+            "ang": -36,
+            "rad": 171
+          },
+          {
+            "ang": -33,
+            "rad": 171
+          },
+          {
+            "ang": -29,
+            "rad": 171
+          },
+          {
+            "ang": -26,
+            "rad": 171
+          },
+          {
+            "ang": -23,
+            "rad": 171
+          },
+          {
+            "ang": -19,
+            "rad": 171
+          },
+          {
+            "ang": -16,
+            "rad": 171
+          },
+          {
+            "ang": -13,
+            "rad": 171
+          },
+          {
+            "ang": -9,
+            "rad": 171
+          },
+          {
+            "ang": -6,
+            "rad": 171
+          },
+          {
+            "ang": -3,
+            "rad": 171
+          },
+          {
+            "ang": 1,
+            "rad": 171
+          },
+          {
+            "ang": 4,
+            "rad": 171
+          },
+          {
+            "ang": 7,
+            "rad": 171
+          },
+          {
+            "ang": 11,
+            "rad": 171
+          },
+          {
+            "ang": 14,
+            "rad": 171
+          },
+          {
+            "ang": 17,
+            "rad": 171
+          },
+          {
+            "ang": 21,
+            "rad": 171
+          },
+          {
+            "ang": 24,
+            "rad": 171
+          },
+          {
+            "ang": 27,
+            "rad": 171
+          },
+          {
+            "ang": 31,
+            "rad": 171
+          },
+          {
+            "ang": 34,
+            "rad": 171
+          },
+          {
+            "ang": 37,
+            "rad": 171
+          },
+          {
+            "ang": 41,
+            "rad": 171
+          },
+          {
+            "ang": 44,
+            "rad": 171
+          },
+          {
+            "ang": 47,
+            "rad": 171
+          },
+          {
+            "ang": 51,
+            "rad": 171
+          },
+          {
+            "ang": 54,
+            "rad": 171
+          },
+          {
+            "ang": 57,
+            "rad": 171
+          },
+          {
+            "ang": 61,
+            "rad": 171
+          },
+          {
+            "ang": 64,
+            "rad": 171
+          },
+          {
+            "ang": 67,
+            "rad": 171
+          },
+          {
+            "ang": 71,
+            "rad": 171
+          },
+          {
+            "ang": 74,
+            "rad": 171
+          },
+          {
+            "ang": 77,
+            "rad": 171
+          },
+          {
+            "ang": 81,
+            "rad": 171
+          },
+          {
+            "ang": 84,
+            "rad": 171
+          },
+          {
+            "ang": 87,
+            "rad": 171
+          },
+          {
+            "ang": 91,
+            "rad": 171
+          },
+          {
+            "ang": 94,
+            "rad": 171
+          },
+          {
+            "ang": 97,
+            "rad": 171
+          },
+          {
+            "ang": 101,
+            "rad": 171
+          },
+          {
+            "ang": 104,
+            "rad": 171
+          },
+          {
+            "ang": 107,
+            "rad": 171
+          },
+          {
+            "ang": 111,
+            "rad": 171
+          },
+          {
+            "ang": 114,
+            "rad": 171
+          },
+          {
+            "ang": 117,
+            "rad": 171
+          },
+          {
+            "ang": 121,
+            "rad": 171
+          },
+          {
+            "ang": 124,
+            "rad": 171
+          },
+          {
+            "ang": 127,
+            "rad": 171
+          },
+          {
+            "ang": 131,
+            "rad": 171
+          },
+          {
+            "ang": 134,
+            "rad": 171
+          },
+          {
+            "ang": 137,
+            "rad": 171
+          },
+          {
+            "ang": 141,
+            "rad": 171
+          },
+          {
+            "ang": 144,
+            "rad": 171
+          },
+          {
+            "ang": 147,
+            "rad": 171
+          },
+          {
+            "ang": 151,
+            "rad": 171
+          },
+          {
+            "ang": 154,
+            "rad": 171
+          },
+          {
+            "ang": 157,
+            "rad": 171
+          },
+          {
+            "ang": 161,
+            "rad": 171
+          },
+          {
+            "ang": 164,
+            "rad": 171
+          },
+          {
+            "ang": 167,
+            "rad": 171
+          },
+          {
+            "ang": 171,
+            "rad": 171
+          },
+          {
+            "ang": 174,
+            "rad": 171
+          },
+          {
+            "ang": 177,
+            "rad": 171
+          },
+          {
+            "ang": -179,
+            "rad": 171
+          },
+          {
+            "ang": -176,
+            "rad": 171
+          },
+          {
+            "ang": -173,
+            "rad": 171
+          }
+        ]
+      },
+      "n_angle_t12": {
+        "circle": 0,
+        "red": 0,
+        "black": 0
+      },
+      "ring_t12": {
+        "cx": 195,
+        "cy": 430,
+        "portalW": 248,
+        "jewels": [
+          {
+            "ang": 135,
+            "rad": 171
+          },
+          {
+            "ang": 138,
+            "rad": 171
+          },
+          {
+            "ang": 141,
+            "rad": 171
+          },
+          {
+            "ang": 145,
+            "rad": 171
+          },
+          {
+            "ang": 148,
+            "rad": 171
+          },
+          {
+            "ang": 151,
+            "rad": 171
+          },
+          {
+            "ang": 155,
+            "rad": 171
+          },
+          {
+            "ang": 158,
+            "rad": 171
+          },
+          {
+            "ang": 161,
+            "rad": 171
+          },
+          {
+            "ang": 165,
+            "rad": 171
+          },
+          {
+            "ang": 168,
+            "rad": 171
+          },
+          {
+            "ang": 171,
+            "rad": 171
+          },
+          {
+            "ang": 175,
+            "rad": 171
+          },
+          {
+            "ang": 178,
+            "rad": 171
+          },
+          {
+            "ang": -179,
+            "rad": 171
+          },
+          {
+            "ang": -175,
+            "rad": 171
+          },
+          {
+            "ang": -172,
+            "rad": 171
+          },
+          {
+            "ang": -169,
+            "rad": 171
+          },
+          {
+            "ang": -165,
+            "rad": 171
+          },
+          {
+            "ang": -162,
+            "rad": 171
+          },
+          {
+            "ang": -159,
+            "rad": 171
+          },
+          {
+            "ang": -155,
+            "rad": 171
+          },
+          {
+            "ang": -152,
+            "rad": 171
+          },
+          {
+            "ang": -149,
+            "rad": 171
+          },
+          {
+            "ang": -145,
+            "rad": 171
+          },
+          {
+            "ang": -142,
+            "rad": 171
+          },
+          {
+            "ang": -139,
+            "rad": 171
+          },
+          {
+            "ang": -135,
+            "rad": 171
+          },
+          {
+            "ang": -132,
+            "rad": 171
+          },
+          {
+            "ang": -129,
+            "rad": 171
+          },
+          {
+            "ang": -125,
+            "rad": 171
+          },
+          {
+            "ang": -122,
+            "rad": 171
+          },
+          {
+            "ang": -119,
+            "rad": 171
+          },
+          {
+            "ang": -115,
+            "rad": 171
+          },
+          {
+            "ang": -112,
+            "rad": 171
+          },
+          {
+            "ang": -109,
+            "rad": 171
+          },
+          {
+            "ang": -105,
+            "rad": 171
+          },
+          {
+            "ang": -102,
+            "rad": 171
+          },
+          {
+            "ang": -99,
+            "rad": 171
+          },
+          {
+            "ang": -95,
+            "rad": 171
+          },
+          {
+            "ang": -92,
+            "rad": 171
+          },
+          {
+            "ang": -89,
+            "rad": 171
+          },
+          {
+            "ang": -85,
+            "rad": 171
+          },
+          {
+            "ang": -82,
+            "rad": 171
+          },
+          {
+            "ang": -79,
+            "rad": 171
+          },
+          {
+            "ang": -75,
+            "rad": 171
+          },
+          {
+            "ang": -72,
+            "rad": 171
+          },
+          {
+            "ang": -69,
+            "rad": 171
+          },
+          {
+            "ang": -65,
+            "rad": 171
+          },
+          {
+            "ang": -62,
+            "rad": 171
+          },
+          {
+            "ang": -59,
+            "rad": 171
+          },
+          {
+            "ang": -55,
+            "rad": 171
+          },
+          {
+            "ang": -52,
+            "rad": 171
+          },
+          {
+            "ang": -49,
+            "rad": 171
+          },
+          {
+            "ang": -45,
+            "rad": 171
+          },
+          {
+            "ang": -42,
+            "rad": 171
+          },
+          {
+            "ang": -39,
+            "rad": 171
+          },
+          {
+            "ang": -35,
+            "rad": 171
+          },
+          {
+            "ang": -32,
+            "rad": 171
+          },
+          {
+            "ang": -29,
+            "rad": 171
+          },
+          {
+            "ang": -25,
+            "rad": 171
+          },
+          {
+            "ang": -22,
+            "rad": 171
+          },
+          {
+            "ang": -19,
+            "rad": 171
+          },
+          {
+            "ang": -15,
+            "rad": 171
+          },
+          {
+            "ang": -12,
+            "rad": 171
+          },
+          {
+            "ang": -9,
+            "rad": 171
+          },
+          {
+            "ang": -5,
+            "rad": 171
+          },
+          {
+            "ang": -2,
+            "rad": 171
+          },
+          {
+            "ang": 1,
+            "rad": 171
+          },
+          {
+            "ang": 5,
+            "rad": 171
+          },
+          {
+            "ang": 8,
+            "rad": 171
+          },
+          {
+            "ang": 11,
+            "rad": 171
+          },
+          {
+            "ang": 15,
+            "rad": 171
+          },
+          {
+            "ang": 18,
+            "rad": 171
+          },
+          {
+            "ang": 21,
+            "rad": 171
+          },
+          {
+            "ang": 25,
+            "rad": 171
+          },
+          {
+            "ang": 28,
+            "rad": 171
+          },
+          {
+            "ang": 31,
+            "rad": 171
+          },
+          {
+            "ang": 35,
+            "rad": 171
+          },
+          {
+            "ang": 38,
+            "rad": 171
+          },
+          {
+            "ang": 41,
+            "rad": 171
+          },
+          {
+            "ang": 45,
+            "rad": 171
+          },
+          {
+            "ang": 48,
+            "rad": 171
+          },
+          {
+            "ang": 51,
+            "rad": 171
+          },
+          {
+            "ang": 55,
+            "rad": 171
+          },
+          {
+            "ang": 58,
+            "rad": 171
+          },
+          {
+            "ang": 61,
+            "rad": 171
+          },
+          {
+            "ang": 65,
+            "rad": 171
+          },
+          {
+            "ang": 68,
+            "rad": 171
+          },
+          {
+            "ang": 71,
+            "rad": 171
+          },
+          {
+            "ang": 75,
+            "rad": 171
+          },
+          {
+            "ang": 78,
+            "rad": 171
+          },
+          {
+            "ang": 81,
+            "rad": 171
+          },
+          {
+            "ang": 85,
+            "rad": 171
+          },
+          {
+            "ang": 88,
+            "rad": 171
+          },
+          {
+            "ang": 91,
+            "rad": 171
+          },
+          {
+            "ang": 95,
+            "rad": 171
+          },
+          {
+            "ang": 98,
+            "rad": 171
+          },
+          {
+            "ang": 101,
+            "rad": 171
+          },
+          {
+            "ang": 105,
+            "rad": 171
+          },
+          {
+            "ang": 108,
+            "rad": 171
+          },
+          {
+            "ang": 111,
+            "rad": 171
+          },
+          {
+            "ang": 115,
+            "rad": 171
+          },
+          {
+            "ang": 118,
+            "rad": 171
+          },
+          {
+            "ang": 121,
+            "rad": 171
+          },
+          {
+            "ang": 125,
+            "rad": 171
+          },
+          {
+            "ang": 128,
+            "rad": 171
+          },
+          {
+            "ang": 131,
+            "rad": 171
+          }
+        ]
+      },
+      "ring_delta": [
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56
+      ],
+      "orb_click_url": [
+        "https://nayanet.app/agreement",
+        "https://nayanet.app/agreement"
+      ],
+      "cover": {
+        "coverActive": true,
+        "choiceNull": true,
+        "previewStrings": {
+          "beginStory": 0,
+          "readAgreement": 0,
+          "trust": 0
+        },
+        "marquee": null,
+        "poster": {
+          "complete": true,
+          "natural": [
+            1000,
+            750
+          ],
+          "fit": "contain",
+          "pos": "50% 50%",
+          "box": {
+            "x": 35,
+            "y": 208,
+            "w": 320,
+            "h": 180
+          }
+        },
+        "frame": {
+          "x": 35,
+          "y": 208,
+          "w": 320,
+          "h": 180
+        },
+        "facade": {
+          "count": 1,
+          "belowFrame": true,
+          "box": {
+            "x": 35,
+            "y": 388,
+            "w": 320,
+            "h": 64
+          },
+          "coversPoster": false
+        },
+        "audio": {
+          "hidden": true,
+          "hasControls": false,
+          "duration": 258.15,
+          "readyState": 4,
+          "srcKind": "data:audio/mp4;base64,AAAAHGZ0"
+        },
+        "panelHas418": true,
+        "tDur": "4:18",
+        "transport": [
+          "Back 15 seconds",
+          "Play Naya\u2019s welcome",
+          "Stop",
+          "Forward 30 seconds"
+        ],
+        "capText": "ON AIR\n                  \n                  NAYA POWER RADIO\n                  W",
+        "letsGo": "Let\u2019s Go"
+      },
+      "facade_click": {
+        "shellHidden": false,
+        "iframe": {
+          "src": "https://www.youtube.com/embed/a06pPpxRil4?autoplay=1&mute=0&playsinline=1&rel=0&enablejsapi=1",
+          "w": "",
+          "h": ""
+        },
+        "framePlaying": true,
+        "facadeHidden": true,
+        "status": "ON AIR\n                  \n                  NAYA POWER RADIO",
+        "tDur": "4:19"
+      },
+      "slide_walk": {
+        "first": {
+          "slideActive": true,
+          "station": "THE OLD WAY"
+        },
+        "stations": [
+          "THE OLD WAY",
+          "WELCOME",
+          "THE COLLECTIVE INTELLIGENCE NETWORK",
+          "YOUR WORLDS",
+          "IN A NUTSHELL",
+          "THE SYSTEM",
+          "HOW IT WORKS",
+          "YOUR DAY",
+          "SMART CALENDAR",
+          "THE SIMPLE VERSION",
+          "FOR AIS",
+          "YOUR AIS, TOGETHER",
+          "THE MOTHER BRAIN",
+          "THE MACHINE VIEW",
+          "WHAT IT MEANS",
+          "PLUG IN",
+          "WHY IT MATTERS",
+          "THE NAYA MACHINE",
+          "FOR AIS",
+          "YOUR THREE WORLDS",
+          "THE WHOLE-SYSTEM UNFOLDING",
+          "DONE FOR YOU",
+          "THE PLATFORM",
+          "YOUR OWN WORLDS",
+          "WHAT\u2019S IN IT FOR YOU",
+          "YOU\u2019RE HIRED",
+          "YOUR FRANCHISE"
+        ],
+        "order_ok": true
+      },
+      "end": {
+        "deed": "By entering your name, you make it official \u2014 you are signing the Collective Agreement, and you get the deed to your own world: high-level digital real estate \u2014 your personal page, your business, your space \u2014 free forever.",
+        "deedVerbatim": true,
+        "agreeText": "I agree \u25c6",
+        "agreeAnim": "agreeFlash",
+        "agreeBottomAboveArrows": true,
+        "agreeBottom": 552,
+        "arrowsTop": 558,
+        "linksOnSlide": 0,
+        "linksInBar": [
+          "Our Vow",
+          "The Deal",
+          "Our Promise",
+          "The Governance",
+          "Our Constitution",
+          "Our Laws",
+          "Our Rules",
+          "Our Oath"
+        ],
+        "barAfterArrows": true,
+        "rowBeforeArrows": true,
+        "viewportH": 844,
+        "agreeVisible": true
+      },
+      "flag": "2026-11-26T16:40:08.528Z",
+      "agree_click_url": [
+        "https://nayanet.app/?from=agreement"
+      ],
+      "return": {
+        "nameInput": true,
+        "nameVisible": true,
+        "stageOn": false,
+        "url": "/?from=agreement#userName",
+        "flag": "2026-11-26T16:40:08.528Z"
+      },
+      "reload": {
+        "stageOn": false,
+        "view": "intro",
+        "flag": "2026-11-26T16:40:08.528Z",
+        "modalOpen": false
+      }
+    },
+    "desk": {
+      "front": {
+        "orbPresent": true,
+        "orbCenterX": 720,
+        "viewportCenterX": 720,
+        "orbTop": 509,
+        "orbW": 56,
+        "orbAria": "The Collective Agreement \u2014 the red N",
+        "orbRingAnim": "eco-spin",
+        "orbHaloAnim": "fpOrbHalo",
+        "orbImgAnim": "none",
+        "fpEnterDeal": 0,
+        "bottomReadBtn": [],
+        "iCount": 0,
+        "menuLabels": 0,
+        "menuTips0": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "heading": "Naya Welcomes You",
+        "redCornerHref": "https://nayanet.app/",
+        "redCornerAria": "NayaNET \u2014 home",
+        "blackCornerHref": "https://nayanet.app/",
+        "nameInput": true,
+        "stageOn": false
+      },
+      "n_angle_t0": {
+        "circle": 0,
+        "red": 0,
+        "black": 0
+      },
+      "ring_t0": {
+        "cx": 720,
+        "cy": 471,
+        "portalW": 459,
+        "jewels": [
+          {
+            "ang": -169,
+            "rad": 240
+          },
+          {
+            "ang": -166,
+            "rad": 240
+          },
+          {
+            "ang": -162,
+            "rad": 240
+          },
+          {
+            "ang": -159,
+            "rad": 240
+          },
+          {
+            "ang": -156,
+            "rad": 240
+          },
+          {
+            "ang": -152,
+            "rad": 240
+          },
+          {
+            "ang": -149,
+            "rad": 240
+          },
+          {
+            "ang": -146,
+            "rad": 240
+          },
+          {
+            "ang": -142,
+            "rad": 240
+          },
+          {
+            "ang": -139,
+            "rad": 240
+          },
+          {
+            "ang": -136,
+            "rad": 240
+          },
+          {
+            "ang": -132,
+            "rad": 240
+          },
+          {
+            "ang": -129,
+            "rad": 240
+          },
+          {
+            "ang": -126,
+            "rad": 240
+          },
+          {
+            "ang": -122,
+            "rad": 240
+          },
+          {
+            "ang": -119,
+            "rad": 240
+          },
+          {
+            "ang": -116,
+            "rad": 240
+          },
+          {
+            "ang": -112,
+            "rad": 240
+          },
+          {
+            "ang": -109,
+            "rad": 240
+          },
+          {
+            "ang": -106,
+            "rad": 240
+          },
+          {
+            "ang": -102,
+            "rad": 240
+          },
+          {
+            "ang": -99,
+            "rad": 240
+          },
+          {
+            "ang": -96,
+            "rad": 240
+          },
+          {
+            "ang": -92,
+            "rad": 240
+          },
+          {
+            "ang": -89,
+            "rad": 240
+          },
+          {
+            "ang": -86,
+            "rad": 240
+          },
+          {
+            "ang": -82,
+            "rad": 240
+          },
+          {
+            "ang": -79,
+            "rad": 240
+          },
+          {
+            "ang": -76,
+            "rad": 240
+          },
+          {
+            "ang": -72,
+            "rad": 240
+          },
+          {
+            "ang": -69,
+            "rad": 240
+          },
+          {
+            "ang": -66,
+            "rad": 240
+          },
+          {
+            "ang": -62,
+            "rad": 240
+          },
+          {
+            "ang": -59,
+            "rad": 240
+          },
+          {
+            "ang": -56,
+            "rad": 240
+          },
+          {
+            "ang": -52,
+            "rad": 240
+          },
+          {
+            "ang": -49,
+            "rad": 240
+          },
+          {
+            "ang": -46,
+            "rad": 240
+          },
+          {
+            "ang": -42,
+            "rad": 240
+          },
+          {
+            "ang": -39,
+            "rad": 240
+          },
+          {
+            "ang": -36,
+            "rad": 240
+          },
+          {
+            "ang": -32,
+            "rad": 240
+          },
+          {
+            "ang": -29,
+            "rad": 240
+          },
+          {
+            "ang": -26,
+            "rad": 240
+          },
+          {
+            "ang": -22,
+            "rad": 240
+          },
+          {
+            "ang": -19,
+            "rad": 240
+          },
+          {
+            "ang": -16,
+            "rad": 240
+          },
+          {
+            "ang": -12,
+            "rad": 240
+          },
+          {
+            "ang": -9,
+            "rad": 240
+          },
+          {
+            "ang": -6,
+            "rad": 240
+          },
+          {
+            "ang": -2,
+            "rad": 240
+          },
+          {
+            "ang": 1,
+            "rad": 240
+          },
+          {
+            "ang": 4,
+            "rad": 240
+          },
+          {
+            "ang": 8,
+            "rad": 240
+          },
+          {
+            "ang": 11,
+            "rad": 240
+          },
+          {
+            "ang": 14,
+            "rad": 240
+          },
+          {
+            "ang": 18,
+            "rad": 240
+          },
+          {
+            "ang": 21,
+            "rad": 240
+          },
+          {
+            "ang": 24,
+            "rad": 240
+          },
+          {
+            "ang": 28,
+            "rad": 240
+          },
+          {
+            "ang": 31,
+            "rad": 240
+          },
+          {
+            "ang": 34,
+            "rad": 240
+          },
+          {
+            "ang": 38,
+            "rad": 240
+          },
+          {
+            "ang": 41,
+            "rad": 240
+          },
+          {
+            "ang": 44,
+            "rad": 240
+          },
+          {
+            "ang": 48,
+            "rad": 240
+          },
+          {
+            "ang": 51,
+            "rad": 240
+          },
+          {
+            "ang": 54,
+            "rad": 240
+          },
+          {
+            "ang": 58,
+            "rad": 240
+          },
+          {
+            "ang": 61,
+            "rad": 240
+          },
+          {
+            "ang": 64,
+            "rad": 240
+          },
+          {
+            "ang": 68,
+            "rad": 240
+          },
+          {
+            "ang": 71,
+            "rad": 240
+          },
+          {
+            "ang": 74,
+            "rad": 240
+          },
+          {
+            "ang": 78,
+            "rad": 240
+          },
+          {
+            "ang": 81,
+            "rad": 240
+          },
+          {
+            "ang": 84,
+            "rad": 240
+          },
+          {
+            "ang": 88,
+            "rad": 240
+          },
+          {
+            "ang": 91,
+            "rad": 240
+          },
+          {
+            "ang": 94,
+            "rad": 240
+          },
+          {
+            "ang": 98,
+            "rad": 240
+          },
+          {
+            "ang": 101,
+            "rad": 240
+          },
+          {
+            "ang": 104,
+            "rad": 240
+          },
+          {
+            "ang": 108,
+            "rad": 240
+          },
+          {
+            "ang": 111,
+            "rad": 240
+          },
+          {
+            "ang": 114,
+            "rad": 240
+          },
+          {
+            "ang": 118,
+            "rad": 240
+          },
+          {
+            "ang": 121,
+            "rad": 240
+          },
+          {
+            "ang": 124,
+            "rad": 240
+          },
+          {
+            "ang": 128,
+            "rad": 240
+          },
+          {
+            "ang": 131,
+            "rad": 240
+          },
+          {
+            "ang": 134,
+            "rad": 240
+          },
+          {
+            "ang": 138,
+            "rad": 240
+          },
+          {
+            "ang": 141,
+            "rad": 240
+          },
+          {
+            "ang": 144,
+            "rad": 240
+          },
+          {
+            "ang": 148,
+            "rad": 240
+          },
+          {
+            "ang": 151,
+            "rad": 240
+          },
+          {
+            "ang": 154,
+            "rad": 240
+          },
+          {
+            "ang": 158,
+            "rad": 240
+          },
+          {
+            "ang": 161,
+            "rad": 240
+          },
+          {
+            "ang": 164,
+            "rad": 240
+          },
+          {
+            "ang": 168,
+            "rad": 240
+          },
+          {
+            "ang": 171,
+            "rad": 240
+          },
+          {
+            "ang": 174,
+            "rad": 240
+          },
+          {
+            "ang": 178,
+            "rad": 240
+          },
+          {
+            "ang": -179,
+            "rad": 240
+          },
+          {
+            "ang": -176,
+            "rad": 240
+          },
+          {
+            "ang": -172,
+            "rad": 240
+          }
+        ]
+      },
+      "n_angle_t12": {
+        "circle": 0,
+        "red": 0,
+        "black": 0
+      },
+      "ring_t12": {
+        "cx": 720,
+        "cy": 471,
+        "portalW": 459,
+        "jewels": [
+          {
+            "ang": 135,
+            "rad": 240
+          },
+          {
+            "ang": 138,
+            "rad": 240
+          },
+          {
+            "ang": 142,
+            "rad": 240
+          },
+          {
+            "ang": 145,
+            "rad": 240
+          },
+          {
+            "ang": 148,
+            "rad": 240
+          },
+          {
+            "ang": 152,
+            "rad": 240
+          },
+          {
+            "ang": 155,
+            "rad": 240
+          },
+          {
+            "ang": 158,
+            "rad": 240
+          },
+          {
+            "ang": 162,
+            "rad": 240
+          },
+          {
+            "ang": 165,
+            "rad": 240
+          },
+          {
+            "ang": 168,
+            "rad": 240
+          },
+          {
+            "ang": 172,
+            "rad": 240
+          },
+          {
+            "ang": 175,
+            "rad": 240
+          },
+          {
+            "ang": 178,
+            "rad": 240
+          },
+          {
+            "ang": -178,
+            "rad": 240
+          },
+          {
+            "ang": -175,
+            "rad": 240
+          },
+          {
+            "ang": -172,
+            "rad": 240
+          },
+          {
+            "ang": -168,
+            "rad": 240
+          },
+          {
+            "ang": -165,
+            "rad": 240
+          },
+          {
+            "ang": -162,
+            "rad": 240
+          },
+          {
+            "ang": -158,
+            "rad": 240
+          },
+          {
+            "ang": -155,
+            "rad": 240
+          },
+          {
+            "ang": -152,
+            "rad": 240
+          },
+          {
+            "ang": -148,
+            "rad": 240
+          },
+          {
+            "ang": -145,
+            "rad": 240
+          },
+          {
+            "ang": -142,
+            "rad": 240
+          },
+          {
+            "ang": -138,
+            "rad": 240
+          },
+          {
+            "ang": -135,
+            "rad": 240
+          },
+          {
+            "ang": -132,
+            "rad": 240
+          },
+          {
+            "ang": -128,
+            "rad": 240
+          },
+          {
+            "ang": -125,
+            "rad": 240
+          },
+          {
+            "ang": -122,
+            "rad": 240
+          },
+          {
+            "ang": -118,
+            "rad": 240
+          },
+          {
+            "ang": -115,
+            "rad": 240
+          },
+          {
+            "ang": -112,
+            "rad": 240
+          },
+          {
+            "ang": -108,
+            "rad": 240
+          },
+          {
+            "ang": -105,
+            "rad": 240
+          },
+          {
+            "ang": -102,
+            "rad": 240
+          },
+          {
+            "ang": -98,
+            "rad": 240
+          },
+          {
+            "ang": -95,
+            "rad": 240
+          },
+          {
+            "ang": -92,
+            "rad": 240
+          },
+          {
+            "ang": -88,
+            "rad": 240
+          },
+          {
+            "ang": -85,
+            "rad": 240
+          },
+          {
+            "ang": -82,
+            "rad": 240
+          },
+          {
+            "ang": -78,
+            "rad": 240
+          },
+          {
+            "ang": -75,
+            "rad": 240
+          },
+          {
+            "ang": -72,
+            "rad": 240
+          },
+          {
+            "ang": -68,
+            "rad": 240
+          },
+          {
+            "ang": -65,
+            "rad": 240
+          },
+          {
+            "ang": -62,
+            "rad": 240
+          },
+          {
+            "ang": -58,
+            "rad": 240
+          },
+          {
+            "ang": -55,
+            "rad": 240
+          },
+          {
+            "ang": -52,
+            "rad": 240
+          },
+          {
+            "ang": -48,
+            "rad": 240
+          },
+          {
+            "ang": -45,
+            "rad": 240
+          },
+          {
+            "ang": -42,
+            "rad": 240
+          },
+          {
+            "ang": -38,
+            "rad": 240
+          },
+          {
+            "ang": -35,
+            "rad": 240
+          },
+          {
+            "ang": -32,
+            "rad": 240
+          },
+          {
+            "ang": -28,
+            "rad": 240
+          },
+          {
+            "ang": -25,
+            "rad": 240
+          },
+          {
+            "ang": -22,
+            "rad": 240
+          },
+          {
+            "ang": -18,
+            "rad": 240
+          },
+          {
+            "ang": -15,
+            "rad": 240
+          },
+          {
+            "ang": -12,
+            "rad": 240
+          },
+          {
+            "ang": -8,
+            "rad": 240
+          },
+          {
+            "ang": -5,
+            "rad": 240
+          },
+          {
+            "ang": -2,
+            "rad": 240
+          },
+          {
+            "ang": 2,
+            "rad": 240
+          },
+          {
+            "ang": 5,
+            "rad": 240
+          },
+          {
+            "ang": 8,
+            "rad": 240
+          },
+          {
+            "ang": 12,
+            "rad": 240
+          },
+          {
+            "ang": 15,
+            "rad": 240
+          },
+          {
+            "ang": 18,
+            "rad": 240
+          },
+          {
+            "ang": 22,
+            "rad": 240
+          },
+          {
+            "ang": 25,
+            "rad": 240
+          },
+          {
+            "ang": 28,
+            "rad": 240
+          },
+          {
+            "ang": 32,
+            "rad": 240
+          },
+          {
+            "ang": 35,
+            "rad": 240
+          },
+          {
+            "ang": 38,
+            "rad": 240
+          },
+          {
+            "ang": 42,
+            "rad": 240
+          },
+          {
+            "ang": 45,
+            "rad": 240
+          },
+          {
+            "ang": 48,
+            "rad": 240
+          },
+          {
+            "ang": 52,
+            "rad": 240
+          },
+          {
+            "ang": 55,
+            "rad": 240
+          },
+          {
+            "ang": 58,
+            "rad": 240
+          },
+          {
+            "ang": 62,
+            "rad": 240
+          },
+          {
+            "ang": 65,
+            "rad": 240
+          },
+          {
+            "ang": 68,
+            "rad": 240
+          },
+          {
+            "ang": 72,
+            "rad": 240
+          },
+          {
+            "ang": 75,
+            "rad": 240
+          },
+          {
+            "ang": 78,
+            "rad": 240
+          },
+          {
+            "ang": 82,
+            "rad": 240
+          },
+          {
+            "ang": 85,
+            "rad": 240
+          },
+          {
+            "ang": 88,
+            "rad": 240
+          },
+          {
+            "ang": 92,
+            "rad": 240
+          },
+          {
+            "ang": 95,
+            "rad": 240
+          },
+          {
+            "ang": 98,
+            "rad": 240
+          },
+          {
+            "ang": 102,
+            "rad": 240
+          },
+          {
+            "ang": 105,
+            "rad": 240
+          },
+          {
+            "ang": 108,
+            "rad": 240
+          },
+          {
+            "ang": 112,
+            "rad": 240
+          },
+          {
+            "ang": 115,
+            "rad": 240
+          },
+          {
+            "ang": 118,
+            "rad": 240
+          },
+          {
+            "ang": 122,
+            "rad": 240
+          },
+          {
+            "ang": 125,
+            "rad": 240
+          },
+          {
+            "ang": 128,
+            "rad": 240
+          },
+          {
+            "ang": 132,
+            "rad": 240
+          }
+        ]
+      },
+      "ring_delta": [
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56
+      ],
+      "orb_click_url": [
+        "https://nayanet.app/agreement",
+        "https://nayanet.app/agreement"
+      ],
+      "cover": {
+        "coverActive": true,
+        "choiceNull": true,
+        "previewStrings": {
+          "beginStory": 0,
+          "readAgreement": 0,
+          "trust": 0
+        },
+        "marquee": null,
+        "poster": {
+          "complete": true,
+          "natural": [
+            1000,
+            750
+          ],
+          "fit": "contain",
+          "pos": "50% 50%",
+          "box": {
+            "x": 103,
+            "y": 271,
+            "w": 777,
+            "h": 437
+          }
+        },
+        "frame": {
+          "x": 103,
+          "y": 271,
+          "w": 777,
+          "h": 437
+        },
+        "facade": {
+          "count": 1,
+          "belowFrame": true,
+          "box": {
+            "x": 103,
+            "y": 708,
+            "w": 777,
+            "h": 86
+          },
+          "coversPoster": false
+        },
+        "audio": {
+          "hidden": true,
+          "hasControls": false,
+          "duration": 258.15,
+          "readyState": 4,
+          "srcKind": "data:audio/mp4;base64,AAAAHGZ0"
+        },
+        "panelHas418": true,
+        "tDur": "4:18",
+        "transport": [
+          "Back 15 seconds",
+          "Play Naya\u2019s welcome",
+          "Stop",
+          "Forward 30 seconds"
+        ],
+        "capText": "ON AIR\n                  \n                  NAYA POWER RADIO\n                  W",
+        "letsGo": "Let\u2019s Go"
+      },
+      "facade_click": {
+        "shellHidden": false,
+        "iframe": {
+          "src": "https://www.youtube.com/embed/a06pPpxRil4?autoplay=1&mute=0&playsinline=1&rel=0&enablejsapi=1",
+          "w": "",
+          "h": ""
+        },
+        "framePlaying": true,
+        "facadeHidden": true,
+        "status": "ON AIR\n                  \n                  NAYA POWER RADIO",
+        "tDur": "4:19"
+      },
+      "slide_walk": {
+        "first": {
+          "slideActive": true,
+          "station": "THE OLD WAY"
+        },
+        "stations": [
+          "THE OLD WAY",
+          "WELCOME",
+          "THE COLLECTIVE INTELLIGENCE NETWORK",
+          "YOUR WORLDS",
+          "IN A NUTSHELL",
+          "THE SYSTEM",
+          "HOW IT WORKS",
+          "YOUR DAY",
+          "SMART CALENDAR",
+          "THE SIMPLE VERSION",
+          "FOR AIS",
+          "YOUR AIS, TOGETHER",
+          "THE MOTHER BRAIN",
+          "THE MACHINE VIEW",
+          "WHAT IT MEANS",
+          "PLUG IN",
+          "WHY IT MATTERS",
+          "THE NAYA MACHINE",
+          "FOR AIS",
+          "YOUR THREE WORLDS",
+          "THE WHOLE-SYSTEM UNFOLDING",
+          "DONE FOR YOU",
+          "THE PLATFORM",
+          "YOUR OWN WORLDS",
+          "WHAT\u2019S IN IT FOR YOU",
+          "YOU\u2019RE HIRED",
+          "YOUR FRANCHISE"
+        ],
+        "order_ok": true
+      },
+      "end": {
+        "deed": "By entering your name, you make it official \u2014 you are signing the Collective Agreement, and you get the deed to your own world: high-level digital real estate \u2014 your personal page, your business, your space \u2014 free forever.",
+        "deedVerbatim": true,
+        "agreeText": "I agree \u25c6",
+        "agreeAnim": "agreeFlash",
+        "agreeBottomAboveArrows": true,
+        "agreeBottom": 712,
+        "arrowsTop": 718,
+        "linksOnSlide": 0,
+        "linksInBar": [
+          "Our Vow",
+          "The Deal",
+          "Our Promise",
+          "The Governance",
+          "Our Constitution",
+          "Our Laws",
+          "Our Rules",
+          "Our Oath"
+        ],
+        "barAfterArrows": true,
+        "rowBeforeArrows": true,
+        "viewportH": 900,
+        "agreeVisible": true
+      },
+      "flag": "2026-11-26T16:42:10.263Z",
+      "agree_click_url": [
+        "https://nayanet.app/?from=agreement"
+      ],
+      "return": {
+        "nameInput": true,
+        "nameVisible": true,
+        "stageOn": false,
+        "url": "/?from=agreement#userName",
+        "flag": "2026-11-26T16:42:10.263Z"
+      },
+      "reload": {
+        "stageOn": false,
+        "view": "intro",
+        "flag": "2026-11-26T16:42:10.263Z",
+        "modalOpen": false
+      }
+    }
+  },
+  "pageerrors": [
+    "phone console.error Failed to load resource: the server responded with a status of 404 ()",
+    "desk console.error Failed to load resource: the server responded with a status of 404 ()"
+  ],
+  "failed_requests": [],
+  "requestfailed": [
+    "phone net::ERR_FAILED https://nayanet.app/agreement",
+    "phone net::ERR_FAILED https://nayanet.app/agreement",
+    "phone net::ERR_ABORTED https://yt3.ggpht.com/luPB-gSg0hKMUsjs00nBWpl_4o1wJAbbU-tXarPWKnBQxQXmQR35US-wEv4g4oxKjNDPg7EQfg=s68-c-k-c0x00ffffff-no-rj",
+    "phone net::ERR_ABORTED https://yt3.ggpht.com/luPB-gSg0hKMUsjs00nBWpl_4o1wJAbbU-tXarPWKnBQxQXmQR35US-wEv4g4oxKjNDPg7EQfg=s68-c-k-c0x00ffffff-no-rj",
+    "phone net::ERR_ABORTED https://rr2---sn-aj5ua5-5p.googlevideo.com/videoplayback?expire=1795732786&ei=0mAIa75Py8Gx8g_em_H5Dg&ip=2a04%3A4e41%3A8%3A16b2%3A%3A9b2%3A96",
+    "phone net::ERR_FAILED https://nayanet.app/?from=agreement",
+    "phone net::ERR_ABORTED https://www.youtube.com/youtubei/v1/log_event?alt=json",
+    "desk net::ERR_FAILED https://nayanet.app/agreement",
+    "desk net::ERR_FAILED https://nayanet.app/agreement",
+    "desk net::ERR_ABORTED https://yt3.ggpht.com/luPB-gSg0hKMUsjs00nBWpl_4o1wJAbbU-tXarPWKnBQxQXmQR35US-wEv4g4oxKjNDPg7EQfg=s68-c-k-c0x00ffffff-no-rj",
+    "desk net::ERR_ABORTED https://yt3.ggpht.com/luPB-gSg0hKMUsjs00nBWpl_4o1wJAbbU-tXarPWKnBQxQXmQR35US-wEv4g4oxKjNDPg7EQfg=s68-c-k-c0x00ffffff-no-rj",
+    "desk net::ERR_ABORTED https://rr5---sn-2pu2x-aph6.googlevideo.com/videoplayback?expire=1795732895&ei=P2EIa6HjL_eglu8P-bza-Ag&ip=2a04%3A4e41%3A4%3A3902%3A%3Aacac%3",
+    "desk net::ERR_ABORTED https://rr5---sn-q4fl6nd6.googlevideo.com/videoplayback?expire=1795732895&ei=P2EIa6HjL_eglu8P-bza-Ag&ip=2a04%3A4e41%3A4%3A3902%3A%3Aacac%3A3",
+    "desk net::ERR_FAILED https://nayanet.app/?from=agreement",
+    "desk net::ERR_ABORTED https://www.youtube.com/youtubei/v1/log_event?alt=json"
+  ]
+}

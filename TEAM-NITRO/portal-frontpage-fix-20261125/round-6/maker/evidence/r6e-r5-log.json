@@ -1,0 +1,75 @@
+{
+  "legs": {
+    "portal_story": {
+      "titles": [
+        "The Old Way",
+        "Welcome",
+        "The Collective Intelligence Network",
+        "Your Worlds",
+        "In a Nutshell",
+        "The System",
+        "How It Works",
+        "Your Day",
+        "Smart Calendar",
+        "The Simple Version",
+        "For AIs",
+        "Your AIs, Together",
+        "The Mother Brain",
+        "The Machine View",
+        "What It Means",
+        "Plug In",
+        "Why It Matters",
+        "The Naya Machine",
+        "For AIs",
+        "Your Three Worlds",
+        "The Whole-System Unfolding",
+        "Done For You",
+        "The Platform",
+        "Your Own Worlds",
+        "What\u2019s In It For You",
+        "You\u2019re Hired",
+        "Your Franchise"
+      ],
+      "order_ok": false,
+      "agree": "I agree \u2014 show me my world \u25c6",
+      "links": [
+        "Our Vow",
+        "The Deal",
+        "Our Promise",
+        "The Governance",
+        "Our Constitution",
+        "Our Laws",
+        "Our Rules",
+        "Our Oath"
+      ]
+    },
+    "cert_link": {
+      "intercepted": [
+        "https://nayanet.app/identity.html?name=R6eCheck",
+        "https://nayanet.app/identity.html?name=R6eCheck"
+      ]
+    },
+    "cert_staged": {
+      "title": "NayaNET \u2014 Smart Identity Activation",
+      "hasWalkUrl": true,
+      "bodyLen": 145279
+    },
+    "returning": {
+      "stored": {
+        "alias": "r6check01",
+        "name": "R6Check"
+      },
+      "ret": {
+        "returning": true,
+        "greet": {
+          "hidden": false,
+          "text": "Welcome back, R6Check."
+        },
+        "deedHidden": true,
+        "jumpVisible": true,
+        "formHidden": true
+      }
+    }
+  },
+  "pageerrors": []
+}
