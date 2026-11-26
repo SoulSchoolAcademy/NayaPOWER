@@ -1532,16 +1532,18 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 .rp-day--active{box-shadow:0 10px 24px rgba(0,0,0,.55),0 0 30px 2px var(--dc)}
 .rp-day--await{opacity:.55;cursor:default}
 .rp-day--await:hover{transform:none;box-shadow:0 10px 24px rgba(0,0,0,.55),0 0 18px -4px var(--dc)}
-.rp-day-name{display:block;font-size:17px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--dc)}
+.rp-day-name{display:block;font-size:18px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--dc)}
 .rp-day-date{display:block;font-size:25px;font-weight:700;color:#fff;line-height:1.2;margin:4px 0}
-.rp-day-sub{display:block;font-size:17px;line-height:1.4;color:#fff}
+.rp-day-sub{display:block;font-size:18px;line-height:1.4;color:#fff}
 .rp-day-pill{display:inline-block;margin-top:12px;font-size:18px;color:#fff;border:2px solid var(--dc);border-radius:999px;padding:8px 16px;box-shadow:0 0 14px -2px var(--dc)}
 .rp-day--await .rp-day-pill{border-color:rgba(255,255,255,.35);box-shadow:none}
 /* (d) SMART-NOTES LIST, CENTRED — the Nov 24 notes panel in the depth view
-   (the day's smart-notes list) is centred: panel, lines, and buttons. */
+   (the day's smart-notes list) is centred: panel, lines, and buttons. Buttons
+   are shrink-to-fit and capped at the panel width, so a long note title wraps
+   instead of running past the viewport edge. */
 #rpNotesPanel{text-align:center!important}
 #rpNotesPanel p{text-align:center!important}
-#rpNotesPanel .naya-btn{display:inline-block!important;margin:6px auto!important}
+#rpNotesPanel .naya-btn{display:block!important;width:fit-content!important;max-width:100%!important;margin:6px auto!important;white-space:normal!important;text-align:center!important}
 /* (f) NINE-AREA BOARDS — the report's nine areas, 1–3 then 4–6 then 7–9 down
    the page, inside the slide's scroll. Each board is a real object (obsidian,
    rim + glow in the day's colour, digit tile for its number) and a button:
@@ -3489,12 +3491,18 @@ current = 0; renderSlide(); show('cover');
     }
   }
   /* (c) Week-bar taps: a day with a report jumps to it; AWAITING REPORT days are
-     disabled buttons and never navigate. */
+     disabled buttons and never navigate. (goSlide lives inside fix1's drawer
+     IIFE, so this handler navigates the same way directly: close any depth,
+     set current, render, show the slide.) */
   document.getElementById('rpWeekRow').addEventListener('click', function(e){
     var b = e.target.closest ? e.target.closest('.rp-day') : null;
     if (!b || b.disabled) return;
     var s = b.getAttribute('data-slide');
-    if (s !== null && s !== '') goSlide(parseInt(s, 10));
+    if (s === null || s === '') return;
+    if (typeof closeDepth === 'function') closeDepth();
+    current = parseInt(s, 10);
+    if (typeof END_MODE !== 'undefined') END_MODE = false;
+    renderSlide(); show('slide');
   });
   /* (f) Nine-board taps: click in, or keyboard Enter/Space — the deep dive opens
      at that area's own layer. The boards stay in the scroll, so the same nine
