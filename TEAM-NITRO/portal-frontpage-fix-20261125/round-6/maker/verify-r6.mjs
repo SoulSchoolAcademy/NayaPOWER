@@ -3,6 +3,7 @@
 // agreement-entry changes. Nothing on trust. Node only.
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
+import {Script} from 'node:vm';
 const sha = b => createHash('sha256').update(b).digest('hex');
 const LANE = new URL('./', import.meta.url).pathname;
 const BASE = 'https://portal-frontpage-fix-20261125-r6-staging.nayapower.workers.dev';
@@ -60,7 +61,6 @@ assert('structure: 8 style elements, 11 scripts (boot + deed style + nutshell sc
 assert('R6: place() repaired (guard drops the missing reader)', p.includes('if (!stage || !portal || !content || !sentence) return;') && p.includes('if (reader) stage.insertBefore(reader, sentence.nextSibling);'));
 assert('R6: deed sentence is a block, ball on its own line', p.includes("body:not(.fp-returning) #fpDeedSentence.fp-deed-sentence{display:block;}") && p.includes('#fpDeedSentence .fp-circle-n{display:block;margin:10px auto 0;}'));
 {
-  const {Script} = require('node:vm');
   const blocks = [...p.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m => m[1]);
   let bad = [];
   blocks.forEach((code, i) => { try { new Script(code); } catch (e) { bad.push(i + ': ' + e.message); } });
