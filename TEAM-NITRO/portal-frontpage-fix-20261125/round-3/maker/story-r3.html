@@ -1,0 +1,52 @@
+<!-- ROUND 3 — the visual story, in place (Shawn's rulings 2026-11-25 ~17:32-17:39 MST).
+     A full in-place view inside the portal frame — NOT a pop-up, NOT the intro
+     landing, NOT the Terms overlay. Entered directly at slide 1, "The Old Way".
+     The eight links live ONLY as a bar across the bottom; the agreement is not
+     mixed with their full content. Agree returns to the name box. -->
+<div id="fpStory" hidden role="dialog" aria-modal="true" aria-label="The Collective Agreement">
+  <div class="fp-story-frame">
+    <div class="fp-story-top">
+      <span class="fp-story-kicker">NAYA PRESENTS</span>
+      <span class="fp-story-station" id="fpStoryStation">THE OLD WAY</span>
+      <button class="fp-story-close" id="fpStoryClose" type="button" aria-label="Close the agreement">&times;</button>
+    </div>
+    <div class="fp-story-main">
+      <figure class="fp-story-art"><img id="fpStoryImg" alt=""></figure>
+      <div class="fp-story-board">
+        <div class="fp-story-face"><img id="fpStoryFace" alt="Naya"><b>Naya</b></div>
+        <h2 class="fp-story-title" id="fpStoryTitle"></h2>
+        <p class="fp-story-text" id="fpStoryText"></p>
+        <div id="fpStoryEnd" hidden>
+          <p class="fp-story-welcome"><b>Welcome home.</b> Your world begins here.</p>
+          <p class="fp-story-franchise">You&rsquo;re getting the franchise &mdash; the deed to your own world: high-level digital real estate &mdash; <b>one personal page, one business page, one space &mdash; free forever. Yours.</b> Land secured, building complete, business operational, brand established. Move in and own it.</p>
+        </div>
+        <div class="fp-story-n"><img id="fpStoryN" alt="The red N"></div>
+      </div>
+    </div>
+    <div class="fp-story-agree-wrap" id="fpStoryAgreeWrap" hidden>
+      <button class="fp-story-agree" id="fpStoryAgree" type="button">I agree &mdash; show me my world &#9670;</button>
+    </div>
+    <div class="fp-story-nav">
+      <button class="fp-story-navbtn" id="fpStoryBack" type="button" aria-label="Previous slide">&lsaquo;</button>
+      <span class="fp-story-count" id="fpStoryCount">1 of 27</span>
+      <button class="fp-story-navbtn" id="fpStoryNext" type="button" aria-label="Next slide">&rsaquo;</button>
+    </div>
+    <nav class="fp-story-links" id="fpStoryLinks" hidden aria-label="The Invitation">
+      <button class="fp-story-link" type="button" data-final="vow">Our Vow</button>
+      <button class="fp-story-link" type="button" data-final="deal">The Deal</button>
+      <button class="fp-story-link" type="button" data-final="promise">Our Promise</button>
+      <button class="fp-story-link" type="button" data-final="governance">The Governance</button>
+      <button class="fp-story-link" type="button" data-final="constitution">Our Constitution</button>
+      <button class="fp-story-link" type="button" data-final="laws">Our Laws</button>
+      <button class="fp-story-link" type="button" data-final="rules">Our Rules</button>
+      <button class="fp-story-link" type="button" data-final="oath">Our Oath</button>
+    </nav>
+  </div>
+  <div class="fp-story-final" id="fpStoryFinal" hidden role="dialog" aria-modal="true" aria-label="Answer">
+    <div class="fp-story-final-frame">
+      <h2 id="fpStoryFinalTitle"></h2>
+      <div class="fp-story-final-body" id="fpStoryFinalBody"></div>
+      <button class="fp-story-final-close" id="fpStoryFinalClose" type="button">Close &#9670;</button>
+    </div>
+  </div>
+</div>

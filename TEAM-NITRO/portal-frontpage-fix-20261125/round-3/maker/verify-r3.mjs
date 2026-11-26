@@ -1,0 +1,47 @@
+// Round-3 verifier: re-fetch the STAGED worker bytes and re-check them
+// against the lane files + the R2 assertions. Nothing on trust. Node only.
+import {readFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+const sha = b => createHash('sha256').update(b).digest('hex');
+const LANE = new URL('./', import.meta.url).pathname;
+const BASE = 'https://portal-frontpage-fix-20261125-r3-staging.nayapower.workers.dev';
+const get = async (p) => {
+  const r = await fetch(BASE + p, {headers: {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120 Safari/537.36'}});
+  if (!r.ok) throw new Error(p + ' HTTP ' + r.status);
+  return Buffer.from(await r.arrayBuffer());
+};
+const assert = (name, ok) => { console.log((ok ? 'PASS ' : 'FAIL ') + name); if (!ok) process.exitCode = 1; };
+const stagedPortal = await get('/');
+const lanePortal = readFileSync(LANE + 'portal.html');
+assert('staged portal == lane portal.html (bytes + sha)', stagedPortal.equals(lanePortal));
+console.log('portal', stagedPortal.length, 'B sha256', sha(stagedPortal));
+const stagedIdent = await get('/identity.html');
+const laneIdent = readFileSync(LANE + 'identity.html');
+assert('staged identity == lane identity.html (bytes + sha)', stagedIdent.equals(laneIdent));
+console.log('identity', stagedIdent.length, 'B sha256', sha(stagedIdent));
+assert('certificate sha unchanged from R2 (57bdd387...)', sha(stagedIdent).startsWith('57bdd387'));
+assert('R3: circle N present, ⓘ gone', p.includes('id="fpCircleN"') && !p.includes('fpDeedInfo') && !p.includes('var PARAS'));
+assert('R3: story overlay present, 27 slides', p.includes('id="fpStory"') && p.includes('FP_SLIDES'));
+assert('R3: official agree wording', p.includes('I agree &mdash; show me my world &#9670;'));
+assert('R3: eight links in bottom bar', (p.match(/data-final="/g)||[]).length===8);
+assert('R3: no preview-landing navigation', !p.includes("window.location.href='/agreement-landing'"));
+assert('R3: 27 slide images embedded', (p.match(/FP_SLIDE_IMGS/g)||[]).length>=1);
+assert('F1 kept: corner ball spins', p.includes('.ncorner-right img{animation:eco-spin 90s linear infinite;}'));
+assert('F2 kept: narrow+short gate', p.includes('@media (max-width:640px) and (max-height:700px)'));
+assert('front page: sentence only behind the N', !/id="fpDeedSentence">[^<]*By entering/.test(p));
+assert('final nine: 9 eco-item anchors', (p.match(/class="eco-item"/g)||[]).length===9);
+assert('structure: 7 style elements', (p.match(/<style>/g)||[]).length===7);
+const p = stagedPortal.toString('utf8');
+assert('F1: right-corner img spins (eco-spin 90s)', p.includes('.ncorner-right img{animation:eco-spin 90s linear infinite;}'));
+assert('F1: ball asset unchanged (WEBP 182452 B src kept)', p.includes('data:image/webp;base64,'));
+assert('F1: left N untouched', p.includes('ncorner-left" href="https://nayanet.app/"'));
+assert('F2: narrow+short gate present', p.includes('@media (max-width:640px) and (max-height:700px)'));
+assert('F2: no new font-size in the gate', !/\.presence\{[^}]*font-size/.test(p.split('@media (max-width:640px) and (max-height:700px)')[1] || ''));
+assert('(a): reader-open ring fade present', p.includes("body.fp-reader-open .naya-orbit{opacity:0;}"));
+assert('front page: sentence only behind ⓘ', !/id="fpDeedSentence">[^<]*By entering/.test(p));
+assert('inner reader: PARAS[0] is the moved sentence', p.includes('var PARAS = ["By entering your name, you make it official'));
+assert('final nine: 9 eco-item anchors', (p.match(/class="eco-item"/g) || []).length === 9);
+assert('structure: 6 style elements', (p.match(/<style>/g) || []).length === 6);
+const sw = await get('/sw.js');
+assert('sw.js 200 + matches lane', sw.equals(readFileSync(LANE + 'sw.js')));
+console.log('VERIFY DONE');
