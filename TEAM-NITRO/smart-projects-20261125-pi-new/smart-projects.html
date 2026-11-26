@@ -4174,6 +4174,10 @@ try{ if(new URLSearchParams(location.search).get('new')==='project'){
 /* PI-FIX3b (4): drawer buttons are width:100% + padding + border with no
    border-box — exactly the 26px sideways overflow. */
 .naya-drawer-btn{box-sizing:border-box}
+/* sp-fix3c */
+/* PI-FIX3c (1): phone nav — BACK leaves the layout when hidden, BACK/NEXT
+   share one row instead of stacking full-width. */
+@media (max-width:640px){#sp-deck-nav .sp-deck-btn{flex:1 1 0;min-width:0;width:auto}#sp-deck-nav .sp-deck-back[style*="hidden"]{display:none}}
 </style>
 <script id="sp-fix3-js">
 /* PI-FIX3 — stage scroll is CSS above; this script wires template→questions,
@@ -4269,7 +4273,10 @@ function applyTemplate(){
          document.querySelector('#sp-home-questions').closest('section.gr-board');
   if(qh){
     var h=qh.querySelector('.sp-deck-qhead');
-    if(h && tpl && h.textContent.indexOf(tpl.title)<0) h.textContent=h.textContent+' · '+tpl.title+' template';
+    if(h){ var qhm=h.textContent.match(/Question (\d+) of 14/);
+      /* PI-FIX3c (2): one line — the 3-line head ate the room the question
+         needs. The deck label already says which frame it is. */
+      if(qhm) h.textContent='Question '+qhm[1]+' of 14'+(tpl?' \u00b7 '+tpl.title+' template':''); }
   }
 }
 document.addEventListener('click',function(){ setTimeout(applyTemplate,80); },true);
