@@ -7904,4 +7904,155 @@ try {
 } catch(e){}
 })();
 </script>
+<style id="ov-fix12-20261126">
+/* ===== FIX12 (2026-11-26) — S goes INDIGO (Shawn's word, voice call
+   ~13:17-13:19 MST, SUPERSEDING the Nov 26 gold-S ruling — the gold-S
+   exception is dead) + message on an elevated board + DM list matched
+   exactly to the approved Naya Ask sidebar (live Hub right rail spec).
+   Override block only: no base byte edited, fix8/fix9/fix10/fix11 blocks
+   untouched. Laws: white text only, 17px minimum, deep palette
+   (indigo #3f51b5 per Design Laws §3.1), one light top-left. */
+/* --- 1: S = INDIGO (pattern 6). These selectors mirror fix10's gold-S
+   braces exactly, same specificity, later in the document — so indigo
+   wins the cascade. The JS below re-indigos every S initial the CSS
+   cannot reach (text-selected orbs), with !important priority, so the
+   fix10 observer's later gold writes cannot win them back. --- */
+.pc-card[data-pc-alias="shawn"] .fc-pick-av,.pc-card[data-pc-alias="sophia"] .fc-pick-av,
+[data-fx2-card="shawn"],[data-fx2-card="sophia"]{--cc:#3f51b5!important;}
+.pc-card[data-pc-alias="shawn"],.pc-card[data-pc-alias="sophia"]{--pc:#3f51b5!important;}
+.pc-card[data-pc-alias="shawn"] .pc-pct-one,.pc-card[data-pc-alias="sophia"] .pc-pct-one{--pc:#3f51b5!important;}
+/* --- 3: DM row card border matches the ball's own colour at REST
+   (was a white 1.5px rim on every row; the % pill already used --pc).
+   Own-colour rim + own-colour underglow, like the pill beside it. --- */
+.pc-card{border-color:var(--pc,#8e24aa)!important;box-shadow:0 8px 20px rgba(0,0,0,.5),0 0 16px -6px var(--pc,#8e24aa)!important;}
+/* --- 2: EACH MESSAGE ON ITS OWN ELEVATED BOARD. The Messenger board
+   stays exactly as it is; the bubble itself is a second raised board —
+   2px rim in the sender's own colour, deeper 135deg gradient, a real
+   shadow down-right plus its own-colour underglow, inset top light.
+   Same specificity as the fix8 .mine/.theirs rule, later in the
+   document, so this shadow wins. Hover lifts it further. --- */
+.nm-bubble.mine,.nm-bubble.theirs{border:2px solid var(--cc,#8e24aa)!important;border-radius:20px!important;background:linear-gradient(135deg,#232329 0%,#050607 50%,#1b1b22 100%)!important;box-shadow:0 16px 32px rgba(0,0,0,.65),0 0 28px -6px var(--cc,#8e24aa),inset 0 1px 0 rgba(255,255,255,.22)!important;}
+.nm-bubble.mine:hover,.nm-bubble.theirs:hover{transform:translateY(-2px)!important;box-shadow:0 20px 36px rgba(0,0,0,.7),0 0 36px -4px var(--cc,#8e24aa),inset 0 1px 0 rgba(255,255,255,.25)!important;}
+/* --- 4: TOGGLE LIGHTS (fold-in, voice call 2026-11-26 ~13:20-13:26 MST):
+   Messenger GREEN, Mail BLUE; beautiful buttons; NO weird glow over
+   the top of Messenger, NO dull light — clean and crisp, pro.
+   The lit state is the sliding .nm-toggle::after pill. The base mail
+   rule (.mail-stage[data-tempo="mail"] ...) is DEAD — the toggle moved
+   into the dock and data-tempo now lives on .nm-toggle itself — so
+   mail never slid and the purple glow stayed parked over Messenger.
+   These rules drive the pill from the toggle's own data-tempo. The
+   white halo around the whole dock toggle (the glow over the top) is
+   removed; the lit pill carries its own crisp rim + glow only. --- */
+.nm-toggle[data-tempo="chat"]::after{left:8px!important;border-color:#07925f!important;box-shadow:0 10px 24px rgba(0,0,0,.75),0 0 26px -4px rgba(7,146,95,.85),inset 0 1px 0 rgba(255,255,255,.2)!important;}
+.nm-toggle[data-tempo="mail"]::after{left:calc(50%)!important;border-color:#0f52ba!important;box-shadow:0 10px 24px rgba(0,0,0,.75),0 0 26px -4px rgba(15,82,186,.85),inset 0 1px 0 rgba(255,255,255,.2)!important;}
+.nm-toggle-dock .nm-toggle{box-shadow:0 20px 44px rgba(0,0,0,.8),inset 0 2px 0 rgba(255,255,255,.45),inset 0 -10px 20px rgba(0,0,0,.8)!important;}
+.nm-toggle-btn[data-tempo="chat"]:hover{background:linear-gradient(135deg,rgba(7,146,95,.28) 0%,#050607 50%,rgba(7,146,95,.28) 100%)!important;box-shadow:0 0 24px -4px rgba(7,146,95,.65),0 8px 24px rgba(0,0,0,.5)!important;}
+/* --- 5: DM ROW ICONS (fold-in, same call): the ⓘ eye comes OUT —
+   four buttons only (DM, mail, audio, video), made BIGGER. --- */
+.pc-card .pc-act-btn[data-pc-info]{display:none!important;}
+.pc-card .pc-act-btn{width:40px!important;height:40px!important;font-size:20px!important;}
+/* --- 6: DM HOVER COLOUR FLOW (fold-in, same call): hovering a row
+   lights its buttons in that person's own colour (the board's
+   colour — the initial's colour). --- */
+.pc-card:hover .pc-act-btn{--ac:var(--pc,#8e24aa)!important;border-color:var(--pc,#8e24aa)!important;box-shadow:0 0 18px -2px var(--pc,#8e24aa)!important;}
+/* --- 6b: DOUBLE REDS (fold-in, same call): mira (M) and aurelia (A)
+   sat red-on-red at the foot of the list — the cipher puts M and A
+   both on 1 (red). M moves to 2 (burnt orange #c2410c) by his word,
+   so no two reds sit together; M stays one colour everywhere. --- */
+.pc-card[data-pc-alias="mira"]{--pc:#c2410c!important;}
+.pc-card[data-pc-alias="mira"] .fc-pick-av{--cc:#c2410c!important;}
+.pc-card[data-pc-alias="mira"] .pc-pct-one{--pc:#c2410c!important;}
+</style>
+<script id="ov-fix12-20261126-js">
+/* ===== FIX12 (2026-11-26) — override script only; runs last. ===== */
+(function(){
+'use strict';
+window.__fx12 = true;
+var INDIGO = '#3f51b5'; /* Design Laws §3.1 deep indigo; pattern 6 */
+/* ---------- (1) S -> INDIGO, everywhere ----------
+   fix10 moved window.__nmGemNum.S from 6 to 3 (gold) and its observer
+   re-golds every S orb on every mutation. Restore the key (future
+   renders through nmColorFor go indigo) AND re-indigo every S element
+   already on screen with !important priority — fix10's later
+   setProperty('--cc', GOLD) carries no priority, so it cannot win back
+   an inline !important. This observer registers AFTER fix10's, so in
+   any mutation batch fix10 golds first and this sweep indigos last.
+   N stays red (key 1, untouched); every other letter already follows
+   the pattern through nmColorFor. */
+try { if(window.__nmGemNum) window.__nmGemNum.S = 6; } catch(e){}
+try { if(window.__nmGemNum) window.__nmGemNum.M = 2; } catch(e){} /* double reds: M 1->2 orange, his word */
+function fx12IndigoS(){
+  var n = 0;
+  var els = document.querySelectorAll('.nm-orb,.fc-pick-av,.ml-avatar,.fx8-boot-av,.fx8-mail-orb');
+  for(var i = 0; i < els.length; i++){
+    var el = els[i];
+    if((el.textContent || '').trim() === 'S'){
+      el.style.setProperty('--cc', INDIGO, 'important');
+      el.style.setProperty('--pc', INDIGO, 'important');
+      n++;
+    }
+  }
+  var cards = document.querySelectorAll('.pc-card[data-pc-alias="shawn"],.pc-card[data-pc-alias="sophia"]');
+  for(var j = 0; j < cards.length; j++){
+    cards[j].style.setProperty('--pc', INDIGO, 'important');
+    var pcts = cards[j].querySelectorAll('.pc-pct-one');
+    for(var k = 0; k < pcts.length; k++) pcts[k].style.setProperty('--pc', INDIGO, 'important');
+    n++;
+  }
+  var whos = document.querySelectorAll('.fx2-who-name');
+  for(var w = 0; w < whos.length; w++){
+    if(((whos[w].textContent || '').trim().charAt(0)) === 'S'){
+      var row = whos[w].closest ? whos[w].closest('.fx2-who') : null;
+      if(row){ var dot = row.querySelector('.fx2-live-dot'); if(dot){ dot.style.setProperty('--cc', INDIGO, 'important'); n++; } }
+    }
+  }
+  var fr = document.querySelector('.fx2-card-frame');
+  if(fr){
+    var cn = document.querySelector('.fx2-card-name');
+    if(cn && (cn.textContent || '').trim().charAt(0) === 'S'){ fr.style.setProperty('--cc', INDIGO, 'important'); n++; }
+  }
+  window.__fx12Indigoed = n;
+  /* double reds: every M initial (mira) goes orange, same !important
+     treatment so nothing re-reds it. */
+  var mN = 0;
+  for(var mi = 0; mi < els.length; mi++){
+    var mel = els[mi];
+    if((mel.textContent || '').trim() === 'M'){
+      mel.style.setProperty('--cc', '#c2410c', 'important');
+      mel.style.setProperty('--pc', '#c2410c', 'important');
+      mN++;
+    }
+  }
+  var mcards = document.querySelectorAll('.pc-card[data-pc-alias="mira"]');
+  for(var mj = 0; mj < mcards.length; mj++){
+    mcards[mj].style.setProperty('--pc', '#c2410c', 'important');
+    var mp = mcards[mj].querySelectorAll('.pc-pct-one');
+    for(var mk = 0; mk < mp.length; mk++) mp[mk].style.setProperty('--pc', '#c2410c', 'important');
+    mN++;
+  }
+  window.__fx12OrangeM = mN;
+}
+/* ---------- (3) DM search placeholder matches the rail spec exactly ----------
+   The recorded spec of the live Hub right rail reads "Search people..."
+   (three dots); the DM list and rail inputs rendered "Search people…"
+   (one ellipsis glyph). Set the literal spec text wherever it differs. */
+function fx12SearchFix(){
+  var sels = ['#nmLikeMindsSearch', '#pcRailSearch'];
+  for(var i = 0; i < sels.length; i++){
+    var el = document.querySelector(sels[i]);
+    if(el && el.getAttribute('placeholder') !== 'Search people...') el.setAttribute('placeholder', 'Search people...');
+  }
+  var boot = document.querySelector('.fx8-boot input[type="search"]');
+  if(boot && boot.getAttribute('placeholder') !== 'Search people...') boot.setAttribute('placeholder', 'Search people...');
+}
+function fx12Sweep(){ fx12IndigoS(); fx12SearchFix(); }
+if(window.MutationObserver){
+  var mo = new MutationObserver(function(){ fx12Sweep(); });
+  try { mo.observe(document.body, {childList: true, subtree: true}); } catch(e){}
+}
+fx12Sweep();
+setTimeout(fx12Sweep, 800);
+setInterval(fx12Sweep, 1000);
+})();
+</script>
 </body></html>
