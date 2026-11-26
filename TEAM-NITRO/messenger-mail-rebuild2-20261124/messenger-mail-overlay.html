@@ -8477,6 +8477,10 @@ function fx13RenderLists(h){
     head.setAttribute('aria-expanded',(h.openList===l.name)?'true':'false');
     head.appendChild(fx13el('span','fx13-list-name',l.name+(l.auto?' — '+l.auto:'')));
     if(fx13Featured===l.name)head.appendChild(fx13el('span','fx13-feat-tag','★ FEATURED'));
+    var lflags=[];
+    if(fx13Shares.some(function(x){return x.list===l.name;}))lflags.push('Shared');
+    if(fx13Pins.some(function(x){return x.list===l.name;}))lflags.push('Pinned');
+    if(lflags.length)head.appendChild(fx13el('span','fx13-feat-tag',lflags.join(' · ')));
     head.appendChild(fx13el('span','fx13-list-count',String(l.members.length)));
     head.addEventListener('click',function(){
       h.openList=(h.openList===l.name)?null:l.name;
@@ -8514,6 +8518,59 @@ function fx13RenderLists(h){
       var feat=fx13el('button','fx13-act-btn',(fx13Featured===l.name?'★ Featured':'☆ Feature this list'));feat.type='button';feat.style.setProperty('--cc',l.color);
       feat.addEventListener('click',function(){fx13Featured=l.name;fx13store('fx13-featured',l.name);fx13Hosts.forEach(function(hh){fx13RenderLists(hh);});});
       body.appendChild(feat);
+      /* --- share + pin THIS LIST (15:36 refinement, same as the note card):
+         one tap shares it to a connection or a page; one tap pins it to a
+         person or a page. Citizen's tap only, nothing by default. Share
+         rides the existing mail path and queues behind the RLS gate, never
+         claimed sent; pin works now, on this device. --- */
+      body.appendChild(fx13el('p','fx13-notes-head','Share this list'));
+      var lsrow=fx13el('div','fx13-share-row');
+      var lstarget=fx13el('select');lstarget.setAttribute('aria-label','Share '+l.name+' with');
+      var log1=document.createElement('optgroup');log1.label='Connections';
+      FX13_PEOPLE.forEach(function(pp){var o=document.createElement('option');o.value='person:'+pp.alias;o.textContent=pp.alias+' ('+pp.pct+'%)';log1.appendChild(o);});
+      lstarget.appendChild(log1);
+      var log2=document.createElement('optgroup');log2.label='Pages';
+      FX13_PAGES.forEach(function(pg){var o=document.createElement('option');o.value='page:'+pg;o.textContent=pg+' page';log2.appendChild(o);});
+      lstarget.appendChild(log2);
+      var lshare=fx13el('button','fx13-act-btn','Share');lshare.type='button';lshare.style.setProperty('--cc',l.color);
+      lshare.addEventListener('click',function(){
+        var v=lstarget.value;var parts=v.split(':');var kind=parts[0],dest=parts.slice(1).join(':');
+        var rec={list:l.name,kind:kind,dest:dest,at:new Date().toISOString(),state:'queued'};
+        if(kind==='person'&&window.__nmSend){
+          try{window.__nmSend('dm',dest,'','Shared smart list: '+l.name+' ('+l.members.length+' connections)').then(function(res){
+            rec.state=(res&&res.ok)?'sent':'queued';fx13store('fx13-shares',fx13Shares);
+            fx13Hosts.forEach(function(hh){fx13RenderLists(hh);});
+          },function(){fx13store('fx13-shares',fx13Shares);fx13Hosts.forEach(function(hh){fx13RenderLists(hh);});});}catch(e){}
+        }
+        fx13Shares.push(rec);fx13store('fx13-shares',fx13Shares);
+        fx13toast(kind==='person'?'Sharing '+l.name+' with '+dest+' — queued until mail sends.':'Sharing '+l.name+' to the '+dest+' page — queued.');
+        fx13Hosts.forEach(function(hh){fx13RenderLists(hh);});
+      });
+      lsrow.appendChild(lstarget);lsrow.appendChild(lshare);body.appendChild(lsrow);
+      body.appendChild(fx13el('p','fx13-notes-head','Pin this list'));
+      var lprow=fx13el('div','fx13-share-row');
+      var lptarget=fx13el('select');lptarget.setAttribute('aria-label','Pin '+l.name+' to');
+      var lpg1=document.createElement('optgroup');lpg1.label='People';
+      FX13_PEOPLE.forEach(function(pp){var o=document.createElement('option');o.value='person:'+pp.alias;o.textContent=pp.alias;lpg1.appendChild(o);});
+      lptarget.appendChild(lpg1);
+      var lpg2=document.createElement('optgroup');lpg2.label='Pages';
+      FX13_PAGES.forEach(function(pg){var o=document.createElement('option');o.value='page:'+pg;o.textContent=pg+' page';lpg2.appendChild(o);});
+      lptarget.appendChild(lpg2);
+      var lpin=fx13el('button','fx13-act-btn','Pin');lpin.type='button';lpin.style.setProperty('--cc',l.color);
+      lpin.addEventListener('click',function(){
+        var v=lptarget.value;var parts=v.split(':');
+        fx13Pins.push({list:l.name,kind:parts[0],dest:parts.slice(1).join(':'),at:new Date().toISOString()});
+        fx13store('fx13-pins',fx13Pins);
+        fx13toast('Pinned '+l.name+' to '+parts.slice(1).join(':')+'.');
+        fx13Hosts.forEach(function(hh){fx13RenderLists(hh);});
+      });
+      lprow.appendChild(lptarget);lprow.appendChild(lpin);body.appendChild(lprow);
+      fx13Shares.filter(function(x){return x.list===l.name;}).forEach(function(x){
+        body.appendChild(fx13el('p','fx13-queued','Shared with '+(x.kind==='person'?'':'the ')+x.dest+(x.kind==='page'?' page':'')+' — '+(x.state==='sent'?'sent.':'queued until mail sends.')));
+      });
+      fx13Pins.filter(function(x){return x.list===l.name;}).forEach(function(x){
+        body.appendChild(fx13el('p','fx13-queued','Pinned to '+(x.kind==='person'?'':'the ')+x.dest+(x.kind==='page'?' page':'')+'.'));
+      });
       if(!l.built){
         var del=fx13el('button','fx13-act-btn','Delete list');del.type='button';del.style.setProperty('--cc','#c62828');
         del.addEventListener('click',function(){
