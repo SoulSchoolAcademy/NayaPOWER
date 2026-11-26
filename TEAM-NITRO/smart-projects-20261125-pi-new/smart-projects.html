@@ -76,18 +76,123 @@ body.naya-drawer-open{overflow:hidden}
 .naya-drawer-btn:focus-visible,.naya-corner-btn:focus-visible,.naya-brand:focus-visible{outline:2px solid #fff;outline-offset:2px}
 @media (prefers-reduced-motion:reduce){.naya-drawer,.naya-drawer-backdrop{transition:none}}
 
-/* --- Bottom ecosystem bar: fixed quick access to all 12 destinations (mirrors Hub eco-bottombar) --- */
-.eco-bottombar{position:fixed;bottom:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px calc(14px + env(safe-area-inset-bottom, 0px));background:linear-gradient(180deg,transparent,rgba(5,5,8,.92) 30%);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(255,255,255,.08);flex-wrap:wrap}
-.eco-bb-btn{width:46px;height:46px;flex:0 0 46px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:radial-gradient(circle at 35% 30%,#2a2a32,#0a0a0e 70%);color:#fff;cursor:pointer;display:grid;place-items:center;text-decoration:none;transition:all .22s cubic-bezier(.16,.84,.22,1);box-shadow:inset 0 1px rgba(255,255,255,.15),0 0 14px rgba(255,255,255,.1),0 4px 10px rgba(0,0,0,.4);position:relative;-webkit-tap-highlight-color:transparent}
-.eco-bb-btn svg{width:20px;height:20px;transition:transform .22s;filter:drop-shadow(0 0 3px rgba(255,255,255,.4))}
-.eco-bb-btn:hover{transform:translateY(-3px) scale(1.08);border-color:var(--eco);box-shadow:inset 0 1px rgba(255,255,255,.2),0 0 24px var(--eco),0 6px 16px rgba(0,0,0,.5)}
-.eco-bb-btn:hover svg{color:var(--eco);filter:drop-shadow(0 0 6px var(--eco))}
-.eco-bb-btn:active{transform:translateY(-3px) scale(1.08);border-color:var(--eco);box-shadow:inset 0 1px rgba(255,255,255,.2),0 0 24px var(--eco),0 6px 16px rgba(0,0,0,.5)}
-.eco-bb-btn:active svg{color:var(--eco);filter:drop-shadow(0 0 6px var(--eco))}
-.eco-bb-btn::after{content:attr(data-label);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(4px);white-space:nowrap;font-size:10px;font-weight:800;letter-spacing:.1em;color:#fff;background:rgba(10,10,14,.95);border:1px solid var(--eco);padding:6px 10px;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
-.eco-bb-btn:hover::after{opacity:1;transform:translateX(-50%) translateY(0)}
-.eco-bb-btn:active::after{opacity:1;transform:translateX(-50%) translateY(0)}
-@media (max-width:640px){.eco-bottombar{gap:8px;padding:12px 12px calc(12px + env(safe-area-inset-bottom, 0px))}.eco-bb-btn{width:44px;height:44px;flex:0 0 44px}.eco-bb-btn svg{width:18px;height:18px}}
+/* PI-FIX6 — the Hub's bottom bar, harvested VERBATIM from live Hub R12
+   (https://nayanet.app/hub, 24,968,311 B, sha b3685e05…, lines 304–407 + orbit
+   keyframes 15244–15245 + has-notif reserve 3804–3808 + label-hide 16186). Nothing retyped. */
+   /* Harvested VERBATIM from the Hub nav file's .notif-bar
+   (~/workspace/team-nitro/hub-navigation-20261112/hub-navigation-fixed.html,
+   "Notifications bar (Shawn 2026-10-20)"): Mail blue · Activity green ·
+   Spaces gold, count bubbles with a 9+ cap, hidden at 0. The trio rides
+   at the very bottom (bottom: var(--smartbar-h, 0px) — 0 now that the
+   Smart Bar is OUT, Shawn 15:43Z). Two adaptations, named: (1) the fade
+   — .nsb-trio-faded, which no listener in this file drives (the fold is
+   driven by os-bottom-hidden in the stack script below, Amendment #3:
+   down hides the bar, only the very bottom brings it back); the base rule
+   carries the opacity transition for it.
+   (2) The Hub-only rules are NOT carried over: the eco-bottombar rider
+   (no such element here), the .toast-stack/.main padding, and the
+   .corner-plus block. */
+/* SWEEP-3 F9: the row centres on the viewport by design — recorded, not moved. */
+.notif-bar {
+  position: fixed; left: 0; right: 0; bottom: var(--smartbar-h, 0px); z-index: 45;
+  display: flex; justify-content: center;
+  background: rgba(5,5,9,.96);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  /* F3 (Shawn 16:06Z) — NO divider line above the trio: the border-top and
+     the inset 1px highlight are gone; the icons sit clean on the page. */
+  box-shadow: 0 -10px 34px rgba(0,0,0,.6);
+  padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px)); /* FOLLOW-ON 2026-11-19 (item 3): real clearance — the tiles sit fully inside the viewport, harvested from the Dashboard follow-on. */
+  animation: notifUp .55s cubic-bezier(.16,.84,.22,1) backwards;
+  transition: opacity .45s ease;
+}
+.notif-bar.nsb-trio-faded{opacity:0;pointer-events:none;}
+@keyframes notifUp { from { transform: translateY(100%); opacity: 0; } to { transform: none; opacity: 1; } }
+.notif-row { display: flex; gap: 40px /* A9 (2026-11-17): depth + separation — 6×54px + 5×40px = 524px, inside 640px. */; width: 100%; max-width: 640px; padding: 12px 14px 10px; justify-content: center; }
+.notif-seg {
+  position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 2px 6px 0; cursor: pointer; background: none; border: none;
+  color: #ffffff; font-family: inherit; transition: transform .12s;
+  -webkit-tap-highlight-color: transparent;
+}
+.notif-seg:active { transform: scale(.94); }
+/* SWEEP-3 F8: no gloss layer in the bytes — flat board black plus rim plus glow. Whether the rim-light IS the gloss is Shawn's eye call; do not invent a swoosh. */
+.notif-tile {
+  position: relative; z-index: 0; width: 54px; height: 54px; border-radius: 16px; /* MODEL TILE (blob 9a006c47, 22:48Z + 23:00Z): harvested verbatim — 16px, not the Hub's 26px squircle */
+  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(130% 140% at 30% 18%, color-mix(in srgb, var(--nc) 36%, #12121a), #07070b 78%); /* MODEL: the ball face — own-color top-left light, obsidian body */
+  border: 1.5px solid color-mix(in srgb, var(--nc) 62%, rgba(255,255,255,.12)); /* MODEL: the 62% rim */
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.38),
+    inset 0 -9px 15px rgba(0,0,0,.6),
+    inset 1px 0 0 rgba(255,255,255,.07),
+    0 7px 16px rgba(0,0,0,.6),
+    0 12px 28px rgba(0,0,0,.55),
+    0 0 17px color-mix(in srgb, var(--nc) 42%, transparent); /* MODEL: the around-glow, restrained */
+  color: #ffffff;
+  transition: box-shadow .3s, border-color .3s, transform .22s cubic-bezier(.16,.84,.22,1);
+}
+.notif-tile::before { display: none; } /* MODEL (Personal L32407): no clone layer — the later rule wins, exactly as in the model file. */
+.notif-tile::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none; border: 1.5px solid color-mix(in srgb, var(--nc) 45%, transparent); transform: translate(1px, 1px); box-shadow: 0 4px 10px rgba(0,0,0,.5); /* EYE-NOTES-FIX §3.3(a)(b): radius follows the squircle; the clone shadow brought in tight */
+  background: #050607; /* BLACK DIAMOND: the wash is out — ::before is now the clone layer */
+
+}
+/* EYE-NOTES-FIX 2026-11-17 §3.3 + Amendment #1 (the ultimate bar) + #2 (the
+   right amount of elegance): the slow turning flow around every tile — the
+   orbit from this morning, taken from the hamburger and the brand mark
+   (the same travelling-dot object, never a rotating element, so the glyph
+   stays upright). AMENDMENT #3 (2026-11-17 20:29Z): the filed flow was
+   VERIFIED against the morning orbit and differed in exactly one
+   declaration — it missed background-repeat:no-repeat, so the 9px dot
+   tiled into a dotted band instead of one dot travelling the ring. The
+   no-repeat is restored from the canonical object (hamburger .rail-toggle,
+   brand mark), verbatim. Odd tiles turn clockwise in 120s, even tiles counter in
+   150s, the same pair as the hamburger (120s CW) and the brand mark
+   (150s CCW) — one treatment, congruent on all six. Amendment #2: the
+   flow goes here and NOWHERE else new in this round — the sidebar icons,
+   the sub-tabs, the tab jewels, the top controls and the brand mark
+   already carry it where it belongs; piling it onto more places in this
+   round would be too much in one place. */
+.notif-tile::after{content:""; position:absolute; inset:-6px; z-index:-1; pointer-events:none; border-radius:inherit; border:1px solid color-mix(in srgb, var(--nc) 35%, transparent); background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,var(--nc) 300deg,rgba(255,255,255,.95) 330deg,transparent 360deg); -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); mask-composite:exclude; padding:2px; animation:orb-spin 12s linear infinite, naya-breathe 6s ease-in-out infinite alternate;} /* MODEL (blob 9a006c47): the conic comet — a light that follows the line perfectly, 22:48Z. */
+.notif-seg:nth-child(even) .notif-tile::after{animation:naya-orbit-dot-ccw 150s linear infinite;}
+.notif-tile svg { width: 25px; height: 25px; color: #fff; filter: drop-shadow(0 2px 2px rgba(0,0,0,.7)); position: relative; transition: transform .22s, filter .22s; } /* MODEL: dark-only — the white glows in the middle are gone (22:48Z). */
+.notif-lbl { display: block; font-size: 17px; font-weight: 700; letter-spacing: .08em; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.9); white-space: nowrap; line-height: 1.2; } /* FOLLOW-ON 2026-11-19 (item 3): labels read — 17px bold white, harvested from the Dashboard follow-on (os-followup2-20261119). The 10.5px label was unreadable at 1920 and is gone. */
+.notif-count { position: absolute; top: 4px; right: 4px; min-width: 20px; height: 20px; padding: 0 2px; /* FOLLOW-ON 2026-11-19 (item 3): the ball is 20px with 11px numerals, inset top-right INSIDE the tile, rim-lit in the tile's colour — the Dashboard standard, sized down (ROUND 6) so it clears the glyph: the 26px ball covered the pulse line's rising edge, and its 1.7x landing flare left the tile. */
+  display: none; align-items: center; justify-content: center; border-radius: 999px; z-index: 2;
+  font-size: 11px; font-weight: 900; color: #fff; background: radial-gradient(130% 140% at 30% 18%, rgba(255,255,255,.22), #07070b 78%);
+  border: 1.5px solid var(--nc);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.4), inset 0 -3px 6px rgba(0,0,0,.6), 0 0 12px color-mix(in srgb, var(--nc) 55%, transparent), 0 3px 8px rgba(0,0,0,.5); } /* 23:11Z notification ball: black obsidian ball, white number, inside the tile, lit around in the tile's own color. */
+@keyframes notifLand { 0% { border-color:#fff; box-shadow: inset 0 -9px 15px rgba(0,0,0,.6), 0 7px 16px rgba(0,0,0,.6), 0 8px 18px rgba(0,0,0,.6), 0 0 0 1px #fff, 0 0 34px #fff, 0 0 50px color-mix(in srgb, var(--nc) 90%, transparent); } 100% { border-color: color-mix(in srgb, var(--nc) 88%, #ffffff); box-shadow: inset 0 -9px 15px rgba(0,0,0,.6), 0 7px 16px rgba(0,0,0,.6), 0 0 0 1px color-mix(in srgb, var(--nc) 30%, transparent), 0 0 26px color-mix(in srgb, var(--nc) 68%, transparent); } }
+@keyframes notifCountLand { 0% { transform: scale(1.15); } 100% { transform: scale(1); } } /* ROUND 6 2026-11-19 (defect 5): the 1.7x flare put the 26px ball half outside the tile's top edge — the straddle the eye saw. A 1.15x pop stays inside the tile and still reads as a landing. */
+.notif-seg.just-landed .notif-tile { animation: notifLand 1.4s ease-out 1; }
+.notif-seg.just-landed .notif-count { animation: notifCountLand .9s ease-out 1; } /* EYE-NOTES-FIX §3.3(d): the light-up is a once-off — bright and obvious when a notification lands, then it settles to the steady has-news glow. It never blinks forever. */
+.notif-seg.has-news .notif-tile {
+  border-color: color-mix(in srgb, var(--nc) 88%, #ffffff);
+  box-shadow: 0 7px 16px rgba(0,0,0,.6), 0 0 26px color-mix(in srgb, var(--nc) 68%, transparent); /* MODEL: the lit state, verbatim. */
+}
+/* HUB SIDEBARS+PLUS 2026-11-16 — the sixth tile (RIGHT + / CONNECT, Shawn
+   18:58Z): the six 54px tiles + 34px gaps measure 594px at desktop (fits
+   every desktop width) but overflow below 640px. Tiles drop to 46px below
+   640px (Personal's own 400px tile size), so the row measures 378px at
+   401-640px and 312px at <=400px — six tiles on ONE line at 390 (312 <= 390)
+   and at 320 (312 <= 320), nothing cut off, nothing wrapped. SWEEP-3 F4:
+   gap 8px -> 4px and row side padding 14px -> 8px below 400px. Measured,
+   not guessed. */
+@media (max-width:640px){ .notif-row{gap:10px;} .notif-tile{width:46px;height:46px;} .notif-seg{padding:2px 2px 0;} }
+@media (max-width:400px){ .notif-row{gap:4px;padding:12px 8px 10px;} .notif-tile{width:46px;height:46px;} .notif-seg{padding:2px 0 0;} }
+/* THE LINE (Personal correction, harvested): the page-wide button shadow's
+   inset top line is restated away on the seg itself. */
+.notif-seg{box-shadow: inset 0 -2px 8px rgba(0,0,0,.25), 0 6px 20px rgba(0,0,0,.4)!important;}
+@keyframes naya-orbit-dot-cw{0%{background-position:50% 0}12.5%{background-position:100% 0}25%{background-position:100% 50%}37.5%{background-position:100% 100%}50%{background-position:50% 100%}62.5%{background-position:0 100%}75%{background-position:0 50%}87.5%{background-position:0 0}100%{background-position:50% 0}}
+@keyframes naya-orbit-dot-ccw{0%{background-position:50% 0}12.5%{background-position:0 0}25%{background-position:0 50%}37.5%{background-position:0 100%}50%{background-position:50% 100%}62.5%{background-position:100% 100%}75%{background-position:100% 50%}87.5%{background-position:100% 0}100%{background-position:50% 0}}
+/* D6 — the fixed bottom bar must not cover content: when the bar is showing, the page
+   reserves exactly its measured height (desktop 124px, phone 90px) at the bottom, so
+   the last content scrolls fully clear of it. When hidden, no reserve. */
+body.has-notif:not(.os-bottom-hidden){padding-bottom:124px!important}
+@media(max-width:760px){body.has-notif:not(.os-bottom-hidden){padding-bottom:90px!important}}
+@media (max-width:640px){ .notif-lbl { display: none; } }
+#naya-notif-bar, #naya-notif-bar *{box-sizing:border-box} /* PI-FIX6: the Hub sets border-box globally (its line 164); PI does not — scoped to the bar so the row measures the same. */
+
 
 html,body{margin:0;padding:0;background:#060608;color:#f4f6fb;
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,"Segoe UI",sans-serif;}
@@ -701,7 +806,7 @@ textarea.gr-input{resize:vertical;min-height:110px;line-height:1.55;}
    defect. It moves INSIDE the royal frame: top + side margins of --bw,
    sticky top var(--bw), so it sticks just inside the frame's top edge
    and never covers the frame rim or the content below it. The bottom
-   bar (.eco-bottombar) stays flush at the viewport bottom — the Hub
+   bar (#naya-notif-bar, the Hub bar) stays flush at the viewport bottom — the Hub
    pattern, and the captain did not flag it. */
 header.naya-topbar{top:var(--bw);margin:var(--bw) var(--bw) 0}
 /* The walk rows lost the old .sp-stage fins (30px sides, 88px top/bottom),
@@ -754,14 +859,11 @@ body > .naya-frame, body > .frame-light{z-index:-1}
 /* v6b — the frame label (his direction, ~19:53 MST: "let's try to put in
    the label"). A plate at the top of the stage, in the walk's frame-topbar
    language, saying what this view is: on the landing, the system itself;
-   on a hub, the project's name, its kind, and how many of the 14
-   questions are answered. Never empty, never black: if the project fails
-   to load, the hub's own "That project is not here" state shows inside
-   the frame, and the label says so. */
+   on a hub, the project's kind. (PI-FIX6: the title line is gone on Shawn's
+   word — the label is the kind line only.) */
 .sp-frame-label{display:flex;align-items:center;gap:12px;margin:2px 0 16px;padding:12px 16px;border:1px solid rgba(255,255,255,.16);border-radius:14px;background:rgba(5,5,7,.72)}
 .sp-fl-jewel{font-size:25px;line-height:1;color:#a06bff}
 .sp-fl-kind{display:block;font-size:17px;font-weight:800;letter-spacing:.14em;color:#ffbf3d}
-.sp-fl-title{font-family:Marcellus,Georgia,serif;font-size:25px;line-height:1.15;color:#fff}
 /* v6b — per-kind template board: the 25 kinds, each carrying its own
    questions (SP_TEMPLATES mission_q / goal_q / vision_q, already in the
    build for the walk). Pick a kind and its questions are there,
@@ -780,9 +882,6 @@ body > .naya-frame, body > .frame-light{z-index:-1}
 </style>
 <style id="sp-v5-css">
 /* SMART PROJECTS v5 — questions board, mini-block notes, project search. New CSS only; 17px minimum, white text, deep colors. */
-.sp-search{margin:0 0 16px;display:flex;gap:10px;align-items:center}
-.sp-search input{flex:1;min-height:52px;font-size:17px}
-.sp-search-count{font-size:17px;color:#fff;line-height:1.5;margin:0 0 16px}
 .sp-qblock{display:flex;gap:12px;align-items:flex-start;padding:16px;border:1.5px solid rgba(255,255,255,.22);border-radius:16px;margin:12px 0;background:linear-gradient(135deg,#17171f,#07070b);box-shadow:0 10px 24px rgba(0,0,0,.45)}
 .sp-qblock:hover{border-color:#8e24aa;box-shadow:0 0 20px -4px #8e24aa,0 10px 24px rgba(0,0,0,.45)}
 .sp-jewel{flex:none;font-size:19px;color:#d4a017;line-height:1.5}
@@ -805,13 +904,12 @@ body > .naya-frame, body > .frame-light{z-index:-1}
 .sp-nv-sec p{margin:0;font-size:17px;color:#fff;line-height:1.5}
 .sp-nv-empty{color:#fff;opacity:.85}
 </style>
-<body>
+<body class="has-notif">
   <div class="royal-frame" aria-hidden="true"><div class="rf-et top"></div><div class="rf-es left"></div><div class="rf-es right"></div><div class="rf-rim"></div><div class="rf-corner tl"></div><div class="rf-corner tr"></div><div class="rf-corner bl"></div><div class="rf-corner br"></div><div class="rf-n top"></div></div>
 <div class="gr-stage" id="top">
   <div class="sp-frame-label" id="sp-frame-label">
     <span class="sp-fl-jewel" aria-hidden="true">◆</span>
-    <span><span class="sp-fl-kind" id="sp-fl-kind">SMART PROJECTS · PROJECT INTELLIGENCE</span>
-    <span class="sp-fl-title" id="sp-fl-title">Your projects — the whole system in one frame</span></span>
+    <span><span class="sp-fl-kind" id="sp-fl-kind">SMART PROJECTS · PROJECT INTELLIGENCE</span></span>
   </div>
 
   <!-- ════ HOME — your projects ════ -->
@@ -893,7 +991,7 @@ body > .naya-frame, body > .frame-light{z-index:-1}
         <p class="gr-board-sub">The minimum viable intelligence interface for NayaNET itself — from the filed Daily Project Intelligence Report, SN-4710, 2026-11-23. Answer them here, before you create anything. Your answers are kept on this device and file into your project the moment you create it. Unanswered stays honestly unanswered — never filled in for you.</p>
       </div>
       <div class="gr-board-body">
-        <p class="gr-note" id="sp-home-q-count" style="margin-top:4px;">0 of 14 answered — the rest are honestly unanswered, never filled in for you.</p>
+        <p class="gr-note" id="sp-home-q-count" style="margin-top:4px;display:none">0 of 14 answered — the rest are honestly unanswered, never filled in for you.</p>
         <div id="sp-home-questions"><div class="gr-empty">Reading the questions…</div></div>
         <p class="gr-status" id="sp-home-q-status" aria-live="polite"></p>
       </div>
@@ -969,10 +1067,6 @@ body > .naya-frame, body > .frame-light{z-index:-1}
       </div>
     </section>
 
-    <div class="sp-search">
-      <input class="gr-input" id="sp-search" type="search" maxlength="200" placeholder="Search this project — intelligence, questions, notes, links…" aria-label="Search this project">
-    </div>
-    <p class="sp-search-count" id="sp-search-count">Search this project, not the internet — it only ever searches what is in this project.</p>
     <section class="gr-board" style="--sc:#3fb8ff">
       <div class="gr-board-cover">
         <div class="gr-board-num" aria-hidden="true"></div>
@@ -993,7 +1087,7 @@ body > .naya-frame, body > .frame-light{z-index:-1}
         <p class="gr-board-sub">The minimum viable intelligence interface for NayaNET itself — from the filed Daily Project Intelligence Report, SN-4710, 2026-11-23. Answer them in your own words, one at a time. Unanswered stays honestly unanswered — never filled in for you.</p>
       </div>
       <div class="gr-board-body">
-        <p class="gr-note" id="sp-q-count" style="margin-top:4px;">0 of 14 answered — the rest are honestly unanswered, never filled in for you.</p>
+        <p class="gr-note" id="sp-q-count" style="margin-top:4px;display:none">0 of 14 answered — the rest are honestly unanswered, never filled in for you.</p>
         <div id="sp-questions"><div class="gr-empty">Reading the questions…</div></div>
         <p class="gr-status" id="sp-q-status" aria-live="polite"></p>
       </div>
@@ -1401,11 +1495,7 @@ body > .naya-frame, body > .frame-light{z-index:-1}
    ~/workspace/user/files/Naya_Smart_Hub_Design.html (.eco-plus), with --jewel
    set to the law's ADD purple #8e24aa (Design Laws §3.2: + ADD royal purple).
    The Hub file's instance carries --jewel:#ffea00; the law governs the colour. */
-.sp-add-btn{--jewel:#8e24aa;width:48px;height:48px;flex:0 0 48px;border-radius:14px;border:1px solid rgba(255,255,255,.35);background:radial-gradient(circle at 32% 22%,rgba(255,255,255,.85),transparent 42%),radial-gradient(circle at 50% 55%,var(--jewel),#000 78%);color:#fff;cursor:pointer;display:grid;place-items:center;text-shadow:0 2px 8px rgba(0,0,0,.6);box-shadow:inset 0 1px rgba(255,255,255,.5),inset 0 -3px 8px rgba(0,0,0,.4),0 0 22px rgba(142,36,170,.55),0 8px 20px rgba(0,0,0,.5);transition:transform .18s cubic-bezier(.16,.84,.22,1),box-shadow .18s}
-.sp-add-btn svg{width:20px;height:20px}
-.sp-add-btn:hover{transform:translateY(-2px) scale(1.04);box-shadow:inset 0 1px rgba(255,255,255,.5),inset 0 -3px 8px rgba(0,0,0,.4),0 0 32px rgba(142,36,170,.75),0 12px 28px rgba(0,0,0,.6)}
-.sp-add-btn:active{transform:scale(.97)}
-.sp-add-btn:focus-visible{outline:2px solid #8e24aa;outline-offset:2px}
+
 </style>
 <div id="naya-inst" role="region" aria-label="Install Projects as an app">
   <div class="naya-inst-bar">
@@ -1610,67 +1700,7 @@ body > .naya-frame, body > .frame-light{z-index:-1}
 
 
 </script>
-<script>
 
-/* Bottom eco bar — exact Reports pattern */
-
-/* --- Bottom bar: the Hub's bottom five (ADD, MAIL, ACTIVITY, WORLDS, ECOSYSTEM) — Design Laws §3.2 --- */
-(function(){
-  var ICONS={
-    home:'<path d="M3 11.5L12 3l9 8.5"/><path d="M5.5 10.5V20h5v-6h3v6h5v-9.5"/>',
-    bolt:'<path d="M13 2L4 14h6l-1 8 9-12h-6z"/>',
-    users:'<circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/>',
-    brief:'<rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2"/>',
-    doc:'<path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/>',
-    cap:'<path d="M12 4L2 9l10 5 10-5z"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/>',
-    trophy:'<path d="M8 4h8v5a4 4 0 01-8 0z"/><path d="M12 13v4M8 20h8"/>',
-    gauge:'<path d="M4 14a8 8 0 1116 0"/><path d="M12 14l4-5"/>',
-    star:'<path d="M12 3l2.7 5.8 6.3.8-4.6 4.3 1.2 6.1-5.6-3.1-5.6 3.1 1.2-6.1L3 9.6l6.3-.8z"/>',
-    report:'<path d="M5 20V10M12 20V4M19 20v-7"/>',
-    heart:'<path d="M12 20s-7-4.5-9-9c-1.2-2.7.5-6 3.5-6 2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4 3 0 4.7 3.3 3.5 6-2 4.5-9 9-9 9z"/>',
-    sprout:'<path d="M12 21v-8"/><path d="M12 13c0-4 3-7 8-7 0 4-3 7-8 7z"/><path d="M12 13c0-4-3-7-8-7 0 4 3 7 8 7z"/>',
-    gear:'<circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/>',
-    diamond:'<path d="M12 2l8 8-8 12-8-12z"/>',
-    mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
-    pulse:'<path d="M3 12h4l3 8 4-16 3 8h4"/>',
-    globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14 0 18M12 3c-3 3.5-3 14 0 18"/>',
-    key:'<circle cx="8" cy="14" r="4.5"/><path d="M11 11l8-8M17 5l2.5 2.5"/>'
-  };
-  var LINKS=[
-    ['Smart Mail','https://nayanet.live/rooms/mail','mail','#0f52ba'],
-    ['Activity','https://nayanet.app/hub/feed-activity','pulse','#07925f'],
-    ['Smart Spaces','https://nayanet.live/rooms/spaces','diamond','#d4a017']
-  ];
-  var bar=document.createElement('nav');
-  bar.className='eco-bottombar';
-  bar.setAttribute('aria-label','Hub bottom bar: Add, Mail, Activity, Worlds, Ecosystem');
-  LINKS.forEach(function(l){
-    var a=document.createElement('a');
-    a.href=l[1]; if(l[1].indexOf('nayanet.live')<0){ a.target='_blank'; a.rel='noopener'; }
-    a.className='eco-bb-btn';
-    a.setAttribute('data-label',l[0]);
-    a.setAttribute('aria-label',l[0]+' (opens in new tab)');
-    a.setAttribute('title',l[0]);
-    a.style.setProperty('--eco',l[3]);
-    a.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(ICONS[l[2]]||ICONS.star)+'</svg>';
-    bar.appendChild(a);
-  });
-  var eco=document.createElement('button');
-  eco.type='button'; eco.className='eco-bb-btn'; eco.id='sp-bb-eco';
-  eco.setAttribute('data-label','Ecosystem'); eco.setAttribute('aria-label','Ecosystem — open the NayaNET menu'); eco.setAttribute('title','Ecosystem');
-  eco.style.setProperty('--eco','#c2410c');
-  eco.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(ICONS.globe||ICONS.star)+'</svg>';
-  eco.addEventListener('click', function(){
-    var rb=document.querySelector('.naya-corner-btn[aria-label="Open NayaNET menu"]');
-    if(rb){ rb.click(); return; }
-    document.body.setAttribute('data-naya-drawer','right'); document.body.classList.add('naya-drawer-open');
-  });
-  bar.appendChild(eco);
-  document.body.appendChild(bar);
-})();
-
-
-</script>
 <script>
 /* Projects service worker — scoped to /rooms/projects/ (mirrors Spaces). */
 if('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost')){
@@ -3025,7 +3055,7 @@ function spRenderQuestions(){
   var saved=(S.spQuestions||{}); var answered=0;
   SP_QUESTIONS.forEach(function(q){ if(saved[spQKey(q.n)]) answered++; });
   var head=document.getElementById('sp-q-count');
-  if(head) head.textContent=answered+' of 14 answered — the rest are honestly unanswered, never filled in for you.';
+  if(head){ head.textContent=answered+' of 14 answered — the rest are honestly unanswered, never filled in for you.'; head.style.display=answered>0?'':'none'; }
   wrap.innerHTML='';
   SP_QUESTIONS.forEach(function(q){
     var key=spQKey(q.n); var ans=saved[key]||'';
@@ -3045,7 +3075,7 @@ function spRenderQuestions(){
     });
     main.appendChild(b); box.appendChild(main); wrap.appendChild(box);
   });
-  spAddNoteButtons(); spRenderMiniNotes(); spSearchInit();
+  spAddNoteButtons(); spRenderMiniNotes();
 }
 /* B3 — mini intelligent blocks: note-taking inside every hub board. A note is a naya_note
    (anon INSERT works) filed to the project by object_link, with its block in the label and
@@ -3155,20 +3185,6 @@ function spAddNoteButtons(){
     body.insertBefore(b, body.firstChild);
   });
 }
-/* B6 — project search (harvested from the old PI's search bar idea, in-project only: it never
-   searches the internet and never leaves this project). Honest numbers: the count line says
-   exactly how many of the project's rows match. */
-function spSearchInit(){
-  var inp=document.getElementById('sp-search'); if(!inp||inp.dataset.bound) return; inp.dataset.bound='1';
-  inp.addEventListener('input', function(){
-    var q=inp.value.trim().toLowerCase();
-    var rows=document.querySelectorAll('#pj-project .pj-row, #pj-project .sp-qblock, #pj-project .sp-mininote');
-    var shown=0, total=rows.length;
-    rows.forEach(function(r){ var hit=!q||(r.textContent||'').toLowerCase().indexOf(q)!==-1; r.style.display=hit?'':'none'; if(hit) shown++; });
-    var c=document.getElementById('sp-search-count');
-    if(c) c.textContent=q?(shown+' of '+total+' shown for \u201c'+inp.value.trim()+'\u201d'):(total+' items in this project — type to search them.');
-  });
-}
 /* B4 — four-create deep link: ?new=project opens the create walk immediately (the create form,
    focused, on the staged page). A project created that way lands on its hub as a TRACKED mini
    intelligent block: its mission/goal/vision, its 14 questions, its mini-block notes and its
@@ -3219,7 +3235,7 @@ function spRenderHomeQuestions(){
   var saved=spHomeAnswers(); var answered=0;
   SP_QUESTIONS.forEach(function(q){ if((saved[spQKey(q.n)]||'').trim()) answered++; });
   var head=document.getElementById('sp-home-q-count');
-  if(head) head.textContent=answered+' of 14 answered — the rest are honestly unanswered, never filled in for you.';
+  if(head){ head.textContent=answered+' of 14 answered — the rest are honestly unanswered, never filled in for you.'; head.style.display=answered>0?'':'none'; }
   wrap.innerHTML='';
   SP_QUESTIONS.forEach(function(q){
     var key=spQKey(q.n); var ans=saved[key]||'';
@@ -3411,8 +3427,6 @@ function spRenderHome(){
   spStateButtons(document.getElementById('sp-home-states-pick'), SP_HOME_NOTE_STATE, function(s){ SP_HOME_NOTE_STATE=s; });
   spRenderHomeMinis();
   spLoadHomeLiveNotes();
-  spRenderKindBoard();
-  spUpdateFrameLabel();
   var sv=document.getElementById('sp-home-note-save');
   if(sv && !sv.dataset.bound){ sv.dataset.bound='1'; sv.addEventListener('click', spSaveHomeNote); }
 }
@@ -3441,36 +3455,7 @@ document.getElementById('sp-nv-edit').addEventListener('click', function(){
 var SP_HOME_KIND_KEY='nayanet.smart-projects.home-kind.v1';
 function spHomeKind(){ try{ return localStorage.getItem(SP_HOME_KIND_KEY)||''; }catch(e){ return ''; } }
 function spSaveHomeKind(id){ try{ if(id) localStorage.setItem(SP_HOME_KIND_KEY, id); else localStorage.removeItem(SP_HOME_KIND_KEY); }catch(e){} }
-/* The label on the frame (his direction: "let's try to put in the label").
-   Hub: the project's name, its kind, and its honest 14-question count.
-   Hub still loading: says so. Hub failed to load: after 6s the label says
-   the project is not here — the frame never renders empty and black, and
-   the page's own error state shows inside it. Landing: the system itself. */
-function spUpdateFrameLabel(){
-  var kindEl=document.getElementById('sp-fl-kind'); var titleEl=document.getElementById('sp-fl-title');
-  if(!kindEl || !titleEl) return;
-  if(S && S.project){
-    var name=(document.getElementById('pj-name') && document.getElementById('pj-name').textContent.trim()) || S.project.name || 'Project';
-    var k=spActiveKind();
-    var q=(document.getElementById('sp-q-count') && document.getElementById('sp-q-count').textContent.trim()) || '';
-    var qm=q.match(/^(\d+) of 14/);
-    kindEl.textContent='PROJECT HUB · ' + (k ? k.title.toUpperCase() : 'NO KIND PICKED YET');
-    titleEl.textContent=name + ' — Project Hub' + (qm ? ' · ' + qm[1] + ' of 14 questions answered' : '');
-  } else if(typeof PID!=='undefined' && PID){
-    kindEl.textContent='PROJECT HUB · OPENING THIS PROJECT…';
-    titleEl.textContent='Reading the project — its name, its questions, its tracking.';
-  } else {
-    kindEl.textContent='SMART PROJECTS · PROJECT INTELLIGENCE';
-    titleEl.textContent='Your projects — the whole system in one frame';
-  }
-}
-var _spRenderHeaderOrig=renderHeader;
-renderHeader=function(){ _spRenderHeaderOrig(); spUpdateFrameLabel(); };
-var _spRenderQuestionsOrig=spRenderQuestions;
-spRenderQuestions=function(){ _spRenderQuestionsOrig(); spUpdateFrameLabel(); };
-var _spLoadKindOrig=spLoadKind;
-spLoadKind=function(id){ _spLoadKindOrig(id); spUpdateFrameLabel(); };
-if(typeof PID!=='undefined' && PID){ setTimeout(function(){ if(S && S.project) return; var k2=document.getElementById('sp-fl-kind'); var t2=document.getElementById('sp-fl-title'); if(k2) k2.textContent='PROJECT HUB · NOT HERE'; if(t2) t2.textContent='That project is not here — it may have been deleted. Go back to all projects.'; }, 6000); }
+
 /* Per-kind templates: the 25 kinds in SP_TEMPLATES each carry their own
    mission_q / goal_q / vision_q plus links, notes and people hints — the
    walk already swaps them in (spStepQ). Here they are EVIDENT on the
@@ -3539,7 +3524,6 @@ function spUseKind(kindId, quiet){
   var f=document.getElementById('pj-new-name');
   if(f) f.scrollIntoView({behavior:'smooth', block:'center'});
 }
-spUpdateFrameLabel();
 
 /* ═══════════ PI-NEW 20261125 — the new Project Intelligence ═══════════
    Shawn's order, voice call 2026-11-25 ~10:41–10:42 MST: a project is the
@@ -3774,7 +3758,9 @@ function spRenderVault(){
   var counts=document.getElementById('pj-vault-counts');
   var notes=(S.notesFiled||[]).filter(function(l){ return l.b_kind==='naya_note'; });
   var smart=(S.notesFiled||[]).filter(function(l){ return l.b_kind==='smart_note'; });
-  if(counts) counts.textContent=(S.urls.length+S.smartFiled.length)+' links · '+notes.length+' notes · '+smart.length+' smart notes · '+S.files.length+' files · '+S.images.length+' images — everything under this project, saved in your Smart Vault.';
+  if(counts){ var _tot=(S.urls.length+S.smartFiled.length)+notes.length+smart.length+S.files.length+S.images.length;
+    if(_tot>0){ counts.textContent=(S.urls.length+S.smartFiled.length)+' links · '+notes.length+' notes · '+smart.length+' smart notes · '+S.files.length+' files · '+S.images.length+' images — everything under this project, saved in your Smart Vault.'; counts.style.display=''; }
+    else { counts.textContent=''; counts.style.display='none'; } }
   function group(title, items, fn){
     if(!items.length) return;
     wrap.appendChild(el('div','sp-vault-group', title));
@@ -3855,17 +3841,13 @@ function spPlusPick(which){
 }
 (function spPlusInit(){
   if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', spPlusInit); return; }
-  var bar=document.querySelector('.eco-bottombar'); if(!bar) return;
-  var add=document.createElement('button');
-  add.type='button'; add.className='sp-add-btn'; add.id='sp-hub-add'; add.setAttribute('data-label','Add'); add.style.setProperty('--eco','#8e24aa');
-  add.setAttribute('aria-label','Add — create a post, note, world or project');
-  add.innerHTML='<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>';
-  add.addEventListener('click', function(){
+  var add=document.getElementById('sp-hub-add'); if(!add) return; /* PI-FIX6: ADD is the Hub bar's own tile now */
+  add.addEventListener('click', function(ev){
+    if(ev) ev.preventDefault();
     var m=document.getElementById('sp-plus-menu'); if(!m) return;
     m.hidden=!m.hidden;
     if(!m.hidden){ var f=m.querySelector('.sp-plus-item'); if(f) f.focus(); }
   });
-  bar.insertBefore(add, bar.firstChild);
   var menu=document.getElementById('sp-plus-menu'); if(!menu) return;
   var list=menu.querySelector('#sp-plus-list');
   SP_PLUS_ITEMS.forEach(function(it){
@@ -3947,8 +3929,8 @@ body.sp-deck-on{overflow:hidden}
 #sp-deck-nav .sp-deck-label{pointer-events:auto;flex:0 1 auto;min-width:0;text-align:center;font-size:17px;font-weight:800;letter-spacing:.06em;color:#fff;background:rgba(5,6,7,.88);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:10px 16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46vw}
 @media (max-width:640px){#sp-deck-nav .sp-deck-label{max-width:38vw}}
 /* Bottom bar fades on scroll, returns ~1.5s after stopping (Anatomy §2.5). */
-.eco-bottombar{transition:opacity .45s ease,transform .45s ease}
-.eco-bottombar.sp-bb-hidden{opacity:0;transform:translateY(24px);pointer-events:none}
+.notif-bar{transition:opacity .45s ease,transform .45s ease}
+.notif-bar.sp-bb-hidden{opacity:0;transform:translateY(24px);pointer-events:none}
 /* Nit (c): NayaNET drawer must never scroll sideways. */
 .naya-drawer{overflow-x:hidden;overflow-y:auto}
 .naya-drawer-btn{overflow-wrap:anywhere;min-width:0}
@@ -3972,7 +3954,7 @@ function logoCheck(){ var img=document.querySelector('.naya-brand-img'); if(!img
 if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', logoCheck); else logoCheck();
 window.addEventListener('load', logoCheck);
 /* Bottom bar fade (Anatomy §2.5): hide while scrolling, return 1.5s after stop. */
-var bar=document.querySelector('.eco-bottombar'), bbTimer=null;
+var bar=document.getElementById('naya-notif-bar'), bbTimer=null;
 function bbHide(){ if(!bar) return; bar.classList.add('sp-bb-hidden'); if(bbTimer) clearTimeout(bbTimer);
   bbTimer=setTimeout(function(){ bar.classList.remove('sp-bb-hidden'); }, 1500); }
 ['scroll','wheel','touchmove'].forEach(function(ev){
@@ -4195,13 +4177,7 @@ try{ if(new URLSearchParams(location.search).get('new')==='project'){
 'use strict';
 function $(id){ return document.getElementById(id); }
 /* ── (a) Bottom-bar destinations: MAIL + WORLDS to live nayanet.app ── */
-var REPL={'https://nayanet.live/rooms/mail':'https://nayanet.app/rooms/mail',
-          'https://nayanet.live/rooms/spaces':'https://nayanet.app/rooms/spaces'};
-document.querySelectorAll('.eco-bottombar a').forEach(function(a){
-  var n=REPL[a.getAttribute('href')||'']; if(!n) return;
-  a.href=n; a.target='_blank'; a.rel='noopener';
-  a.setAttribute('aria-label',(a.getAttribute('data-label')||'')+' (opens in new tab)');
-});
+/* PI-FIX6: the old eco-bar REPL fixup is gone — the harvested Hub bar already carries the live nayanet.app URLs. */
 /* ── (b) Deck label: "Frame 3 of 21 — …" → "3 of 21 — …" ── */
 function shortLabel(){
   var l=document.querySelector('#sp-deck-nav .sp-deck-label'); if(l) {
@@ -4388,5 +4364,16 @@ var iv=setInterval(function(){
    cannot consume it. Frame overflow itself is untouched (board clipping). */
 #pj-home.sp-deck-on>.sp-deck-frame.sp-on,#pj-project.sp-deck-on>.sp-deck-frame.sp-on{overscroll-behavior:auto}
 </style>
+<nav id="naya-notif-bar" class="notif-bar" data-static="1" aria-label="Notifications"><div class="notif-row"><a class="notif-seg" data-notif="plus" id="sp-hub-add" style="--nc:#8e24aa" href="#" aria-label="ADD — open" title="ADD"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ADD</span></a><a class="notif-seg" data-notif="mail" style="--nc:#0f52ba" href="https://nayanet.app/rooms/mail" target="_blank" rel="noopener" aria-label="MAIL — open (opens in new tab)" title="MAIL"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">MAIL</span></a><a class="notif-seg" data-notif="activity" style="--nc:#07925f" href="https://nayanet.app/hub/feed-activity" target="_blank" rel="noopener" aria-label="ACTIVITY — open (opens in new tab)" title="ACTIVITY"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ACTIVITY</span></a><a class="notif-seg" data-notif="spaces" style="--nc:#d4a017" href="https://nayanet.app/rooms/spaces" target="_blank" rel="noopener" aria-label="WORLDS — open (opens in new tab)" title="WORLDS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">WORLDS</span></a><a class="notif-seg" data-notif="eco" id="sp-bb-eco" style="--nc:#c2410c" href="https://nayanet.app/hub" target="_blank" rel="noopener" aria-label="ECOSYSTEM — open (opens in new tab)" title="ECOSYSTEM"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ECOSYSTEM</span></a><a class="notif-seg" data-notif="plusR" style="--nc:#c62828" href="https://nayanet.app/hub/connections" target="_blank" rel="noopener" aria-label="CONNECT — open (opens in new tab)" title="CONNECT"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19.5c.7-3.4 2.9-5.2 5.5-5.2s4.8 1.8 5.5 5.2"/><circle cx="17" cy="9" r="2.7"/><path d="M16.2 14.6c2.5-.2 4.1 1.4 4.6 3.9"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">CONNECT</span></a></div></nav>
+<script>
+/* PI-FIX6 — ECOSYSTEM on the harvested Hub bar opens PI's own NayaNET menu drawer (the old eco button's behaviour verbatim); the href is the Hub fallback if the drawer is absent. */
+(function(){ var e=document.getElementById('sp-bb-eco'); if(!e) return;
+  e.addEventListener('click', function(ev){
+    var rb=document.querySelector('.naya-corner-btn[aria-label="Open NayaNET menu"]');
+    if(rb){ ev.preventDefault(); rb.click(); return; }
+    document.body.setAttribute('data-naya-drawer','right'); document.body.classList.add('naya-drawer-open'); ev.preventDefault();
+  });
+})();
+</script>
 </body>
 </html>
