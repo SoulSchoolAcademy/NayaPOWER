@@ -827,9 +827,11 @@ function renderReport(){
    below it, so at rest the row straddling the body's bottom edge was cut in
    half and read as hidden behind the N. This measures the live fold: if the
    bottom edge falls inside a row, the list's top margin grows by exactly the
-   cut-off amount, so the fold lands on that row's top edge — the last visible
-   row is whole and the next row sits fully below the fold. No row is ever
-   cut, nothing is scrolled, the face/title/metas above the list do not move.
+   part of that row showing above the fold, so the row sits fully below it
+   while the row above ends whole on the fold. The straddling row itself is
+   the measure — rows are not uniform height (long titles wrap), so no
+   row-height arithmetic. No row is ever cut, nothing is scrolled, the
+   face/title/metas above the list do not move.
    Re-run on resize (a new viewport is a new fold). Safe no-op when the fold
    already lands on a boundary, when fewer than two rows exist, or when the
    report is not on screen. */
@@ -838,16 +840,24 @@ function alignReportFold(){
   var body=document.querySelector('.today-frame .ib-layer-body');
   var ul=document.querySelector('.report-list');
   if(!body||!ul)return;
-  var lis=ul.querySelectorAll('li');
-  if(lis.length<2)return;
+  /* Reset first: the second (rAF) pass must measure from the un-nudged layout. */
   ul.style.marginTop='12px';
   var fold=body.getBoundingClientRect().bottom;
-  var first=lis[0].getBoundingClientRect();
-  var rowH=lis[1].getBoundingClientRect().top-first.top;
-  if(!(rowH>0))return;
-  var d=fold-first.top;
-  var rem=((d%rowH)+rowH)%rowH;
-  if(rem>1&&rem<rowH-1)ul.style.marginTop=(12+rem)+'px';
+  var lis=ul.querySelectorAll('li');
+  for(var i=0;i<lis.length;i++){
+    var r=lis[i].getBoundingClientRect();
+    if(r.top<fold&&fold<r.bottom){
+      /* The straddling row itself is the measure — rows are NOT uniform
+         height (long titles wrap to two lines), so no row-height arithmetic:
+         push the list down by exactly the part of this row showing above the
+         fold, and the row sits fully below it while the row above ends whole
+         on the fold. */
+      var delta=fold-r.top;
+      if(delta>1)ul.style.marginTop=(12+delta)+'px';
+      return;
+    }
+    if(r.top>=fold)break;
+  }
 }
 function render(){
   var n=notes[ix];if(!n)return;
