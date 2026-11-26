@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-26 00:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-26 01:03 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -8863,6 +8863,12 @@ _Last updated: 2026-11-26 00:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1284-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
+**Task:** New hypothesis semantic-clausemax-t1284 vs frozen v3 battery - RED (rank1 0.2917 vs 0.60 bar), sealed falsifier fired cleanly
+
+**Evidence:** FRESH. VERIFIED first-hand this tick: arm hidden_files/arms/semantic-clausemax-t1284/arm.py sha256 c21d621a... BYTE-EXACT; judge hidden_files/judge-runs/t1284-lane11/judge_semantic_v3_t1284.py sha256 3d725cb0... BYTE-EXACT; verdict JSON sha256 14c49291... BYTE-EXACT. NOT PHANTOM. Verdict JSON read live: metrics rank1 0.2917 / mrr 0.3646 / hit5 0.5,
+
+### ✅ t1284-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
 **Task:** Judge verdict: semantic-clausemax-t1284 hypothesis, sealed falsifier rank1<0.60 -> RED 0.2917 vs bar 0.60
 
 **Evidence:** VERIFIED on workspace bytes: arm file hidden_files/arms/semantic-clausemax-t1284/arm.py present; scorer recomputed its sha256 prefix c21d621a1d1c9725, matching the receipt's recorded sha (verdict-record match True); verdict JSON hidden_files/judge-runs/t1284-lane11/verdict_t1284.json present (9589b); sealed predictions mtime before results mtime (f
@@ -9015,6 +9021,12 @@ _Last updated: 2026-11-26 00:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1281-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
+**Task:** Human-register cover for the retrieval-auth-gate word-ask (protected-gate ask packet, t1273-t1280 chain)
+
+**Evidence:** FRESH. VERIFIED first-hand this tick: deliverable hidden_files/surge-b/retrieval-auth-gate-word-ask-register-t1281.md EXISTS, sha256 e7a0f066... BYTE-EXACT vs receipt. NOT PHANTOM. Score 9.5, ACCEPTED, matching self-score. Clears 9.5 because: all load-bearing pins recomputed live in a fresh clone (tip 3/3, seam/enforcer/spec blobs, 3 callers, packe
+
+### ✅ t1281-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
 **Task:** Human-register cover for the retrieval-auth-gate protected-gate word-ask (closes the t1273->t1280 chain into a presentable packet)
 
 **Evidence:** VERIFIED on workspace bytes: cover doc hidden_files/surge-b/retrieval-auth-gate-word-ask-register-t1281.md present (6537b); pin lineage consistent with the chain (rider sha 1724a552... matches t1280's recorded pin; review 2ebc2816... and verdict 21a3afcb... hashes match t1279's); tip e8a10e0a consistent across t1277-t1280 lineage; read-only session
@@ -9026,6 +9038,12 @@ _Last updated: 2026-11-26 00:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1281-lane11.md`
 
 **Evidence:** VERIFIED: deliverable hidden_files/surge-b/retrieval-auth-gate-word-ask-register-t1281.md exists at the receipt's exact pinned sha256 e7a0f0668b445f656c2fbc1ffb7998c018704520a5f49c057ee7b5087122205c (byte-exact, independent fresh read); cover opens in his register (nutshell + per-decision cost + if-no lines, confirmed by head read); rider pin 1724a
+
+### ✅ t1280-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** Conditions-rider doc amending t1277 dossier carry-forward - 5 conditions (t1278 A/B, t1279 A/B/C) re-verified in dossier bytes
+
+**Evidence:** FRESH. VERIFIED first-hand this tick: deliverable hidden_files/surge-b/retrieval-auth-gate-dossier-conditions-rider-t1280.md EXISTS, sha256 1724a552... BYTE-EXACT vs receipt, 13,431 B exact. NOT PHANTOM. Score 9.5, ACCEPTED, matching self-score. Clears 9.5 because: every condition re-grepped against the dossier's CURRENT bytes (zero true hits, fals
 
 ### ✅ t1280-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
@@ -9049,6 +9067,12 @@ _Last updated: 2026-11-26 00:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: rider file hidden_files/surge-b/retrieval-auth-gate-dossier-conditions-rider-t1280.md exists, 13,431 bytes, sha256 1724a552b4d53491cd674151c8940d67f84ef74fd6684e541efc64789269b3a2 byte-exact vs receipt pin; content carries all five dispositions (5x CARRIED-FORWARD) with byte-quoted evidence. Tip pin e8a10e0a...e62946 matches live remote H
 
+### ✅ t1279-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.2/10 [VERIFIED]
+
+**Task:** Hostile second-seat verdict on t1277 migration-readiness dossier - CONDITIONAL (conditions A/B/C)
+
+**Evidence:** FRESH. VERIFIED first-hand this tick: deliverable hidden_files/surge-b/retrieval-auth-gate-ask-readiness-verdict-t1279.md EXISTS, sha256 21a3afcb... BYTE-EXACT vs receipt. NOT PHANTOM. Score 9.2, GOOD ONE MORE PASS, matching self-score (9.2). Why not 9.5: (1) two dossier section-1 pins (t1272/t1274 receipt shas) inherited without byte re-derivation
+
 ### ✅ t1279-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
 **Task:** Hostile second-seat verdict on the t1277 retrieval-auth-gate dossier: VERDICT CONDITIONAL with 3 carried conditions
@@ -9062,6 +9086,12 @@ _Last updated: 2026-11-26 00:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1279-lane3.md`
 
 **Evidence:** VERIFIED: deliverable hidden_files/surge-b/retrieval-auth-gate-ask-readiness-verdict-t1279.md exists at the receipt's exact pinned sha256 21a3afcb4e4d36506a418f415d1f688217f1bfce7c86860a1780adbb37e16d35 (9,722 B, byte-identical, independent fresh read). Receipt's key claims corroborated by grep: VERDICT: CONDITIONAL with conditions A/B/C named; hon
+
+### ✅ t1278-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
+**Task:** Hostile second-seat design review of t1276 test-flag harness design - CONDITIONAL PASS, holes A/B
+
+**Evidence:** FRESH. VERIFIED first-hand this tick: deliverable hidden_files/surge-b/retrieval-auth-gate-testflag-harness-review-t1278.md EXISTS, sha256 2ebc2816... BYTE-EXACT vs receipt, 8,118 B exact. NOT PHANTOM. Score 9.5, ACCEPTED, matching self-score. Clears 9.5 because: 7 pre-registered falsifiers before reading the design's claims, repo-wide caller censu
 
 ### ✅ t1278-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
@@ -9079,6 +9109,12 @@ _Last updated: 2026-11-26 00:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1277-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
+**Task:** Retrieval-auth-gate migration-readiness dossier (byte-pinned ask packet, 5 gated writes named, 8 leg verdicts)
+
+**Evidence:** FRESH. VERIFIED first-hand this tick: deliverable hidden_files/retrieval-auth-gate-migration-readiness-t1277.md EXISTS, sha256 c738ebed... BYTE-EXACT vs receipt. NOT PHANTOM. Minor: receipt says 9,300 B, live file is 9,286 B - cosmetic size miscount only; the sha256 pin is the load-bearing claim and it matches exactly. Score 9.5, ACCEPTED, matching
+
+### ✅ t1277-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
 **Task:** Retrieval-authorization-gate migration-readiness dossier (read-only, zero wiring)
 
 **Evidence:** VERIFIED on live bytes by independent scorer: dossier hidden_files/retrieval-auth-gate-migration-readiness-t1277.md sha256 c738ebed70b0c2ba574399df2214b355df1c832694d7b0afa2e5725ee441b612 EXACT match to receipt pin; enforcer tools/retrieval_authorization_gate.py sha256 fbe6ee29482fdc57... matches receipt's fbe6ee29... pin (zero drift); smart_note_v
@@ -9090,6 +9126,12 @@ _Last updated: 2026-11-26 00:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1277-lane4.md`
 
 **Evidence:** VERIFIED (2026-10-22 ~05:21 PDT tick): deliverable hidden_files/retrieval-auth-gate-migration-readiness-t1277.md exists at the receipt's exact pinned sha256 c738ebed70b0c2ba574399df2214b355df1c832694d7b0afa2e5725ee441b612 (byte-identical, independent fresh read). Receipt pins cross-consistent with this scorer's t1274/t1275/t1276 verifications: tip 
+
+### ✅ t1276-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Reversible test-flag harness design for retrieval-auth-gate (spec 0007 SURGE-b), DESIGN ONLY, 8-section doc
+
+**Evidence:** FRESH. VERIFIED first-hand this tick: deliverable hidden_files/surge-b/retrieval-auth-gate-testflag-harness-design-t1276.md EXISTS, sha256 52ec1216... BYTE-EXACT vs receipt, 16,090 B exact. NOT PHANTOM. Score 9.5, ACCEPTED, matching self-score. Clears 9.5 because: all pins re-derived live (tip 3/3, seam/enforcer zero drift), flag-name collision gre
 
 ### ✅ t1276-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
 
@@ -9107,6 +9149,12 @@ _Last updated: 2026-11-26 00:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ t1275-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
 
+**Task:** Blinded third corroboration of t1273 read-seam pin; found real third production caller scripts/gate-learning-compounding.py:152
+
+**Evidence:** FRESH. VERIFIED first-hand this tick: deliverable hidden_files/surge-b/seam-corroboration-t1275-lane11.md EXISTS, sha256 80b94371... BYTE-EXACT vs receipt, 8,798 B exact. NOT PHANTOM. Score 9.5, ACCEPTED, matching self-score. Clears 9.5 because: sealed-then-compare with pre-registered REFUTE conditions (none fired), blind pins byte-identical to t12
+
+### ✅ t1275-lane11 — Team 11, Team Naya Scorer (Human Value) — 9.5/10 [VERIFIED]
+
 **Task:** Blinded third corroboration of the t1273 read-seam pin
 
 **Evidence:** Verified: deliverable hidden_files/surge-b/seam-corroboration-t1275-lane11.md sha256 80b94371... matches receipt EXACTLY; blind-sealed pins match t1273/t1274 byte-for-byte; the third caller scripts/gate-learning-compounding.py:152 (loads the real shipped module) is a genuine find the first two seats missed, confirmed against spec 4.1. Clears 9.5 be
@@ -9118,6 +9166,12 @@ _Last updated: 2026-11-26 00:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/t1275-lane11.md`
 
 **Evidence:** VERIFIED: deliverable hidden_files/surge-b/seam-corroboration-t1275-lane11.md exists at the exact pinned sha256 80b94371088c07b8cb0906049fdcd881d4925fdc413148e71f7c7b89ef9fc6c7 (8798 B, byte-identical); git ls-remote HEAD re-derived live now = e8a10e0a4ba05eea4c0c0d8448e9362b6de62946 == receipt pin at 11:49Z == t1274 pin (zero drift). Sealed-then-c
+
+### ✅ t1274-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
+
+**Task:** Second-seat independent corroboration of t1273 read-seam pin, tip-drift resolved byte-for-byte
+
+**Evidence:** FRESH. VERIFIED first-hand this tick: deliverable hidden_files/surge-b/seam-corroboration-t1274-lane4.md EXISTS, sha256 e1fc48c1... BYTE-EXACT vs receipt, 6,130 B exact. NOT PHANTOM. Score 9.5, ACCEPTED, matching self-score. Clears 9.5 because: every t1273 pin re-derived from live bytes (not inherited), tip drift f7bd39ca->e8a10e0a localized via co
 
 ### ✅ t1274-lane4 — Team 4, Team Naya Scorer (Intelligent Blocks) — 9.5/10 [VERIFIED]
 
@@ -63193,9 +63247,9 @@ _Last updated: 2026-11-26 00:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 ### ✅ gate-stall-20261126-0032 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
 
-**Task:** Gate-stall 2026-11-25 16:32 PST: hourly queue sweep, 31 briefs attempted, 0 claimed, 31 refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose)
+**Task:** Hourly gate-stall sweep 2026-11-25 16:28 PST: 31 queued briefs attempted in ORDERING order, 0 claimed, 31 refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose bar)
 
-**Evidence:** FRESH (filed 00:32Z this tick, scored same tick). VERIFIED first-hand this tick: receipt exists (5,449 B, NOT PHANTOM); sweep log hidden_files/brief-queue/claim-sweep-20261125-1628.log exists (27,458 B) with exactly 31 unique brief headers, byte-matching the receipt's 31-row table (none missing, none extra), and exactly 31 rc lines - 29x rc=7, 2x r
+**Evidence:** FRESH (filed 00:34Z, scored this tick). VERIFIED first-hand this tick: receipt exists (6,247 B, NOT PHANTOM); cited sweep log brief-queue/claim-sweep-20261125-1628.log EXISTS (27,458 B) with exactly 29x 'exit 7' + 2x 'exit 2' and 31 distinct brief names, matching the receipt's 31-row table including both exit-2 briefs (t0547-lane1-lane1, t0172-lane
 
 ### ✅ gate-stall-20261017-2251 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
