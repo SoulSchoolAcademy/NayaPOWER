@@ -3318,6 +3318,38 @@ current = 0; renderSlide(); show('cover');
      labels are shortened by script (fitFabs), never by font-size. */
   #walkFab{right:12px;bottom:12px;padding:12px 16px}
   #walkNayaBtn{left:12px;bottom:12px;padding:12px 16px}
+  /* FIX2 — R1: at phone width the fixed chrome alone (title + step + type
+     pills + actions + footer) measured ~853px against an 844px viewport,
+     so the only shrinkable child — .walk-thirds, min-height:0 — absorbed
+     ALL of it and collapsed to clientH 0 at every step (cert, inputs,
+     "How it lands", Smart Link box, privacy list all clipped, unpainted).
+     Compact the chrome so the thirds gets real height, and floor the
+     thirds so it can never collapse to 0 again:
+     - type pills: hide the "— your page" small (the step line already
+       names the page type) + tighter padding, so the three pills fit one
+       row instead of stacking three rows (~170px -> ~52px);
+     - actions: tighter padding/gap, so Enter + Close share a row;
+     - footer (.walk-owed): capped at two lines with its own scroll —
+       the text stays, it just stops eating ~208px;
+     - thirds: min-height 200px floor, still flexing with internal scroll.
+     Desktop untouched (this block is <=820px only); Enter stays inside
+     the viewport at 390 and 573 (measured in the fix2 probe). */
+  .walk-thirds{min-height:200px}
+  .walk-type{padding:8px 14px}
+  .walk-type small{display:none}
+  .walk-actions{gap:8px}
+  .walk-btn{padding:12px 16px}
+  .walk-owed{max-height:56px;overflow-y:auto}
+  .walk-step{margin-bottom:4px}
+  /* FIX2 — R1b: on question steps the video slot is flex:1 inside a
+     min-height:0 third, so the grid row shrinks its box to the 160px
+     min-height while its centred content (~350px: play button + 3
+     paragraphs) overflows the box and the play button lands on top of
+     the "1 · Naya talks you through it" heading. flex:none sizes the
+     slot to its content — no overlap, the thirds just scrolls a little
+     further. Scoped to non-cert steps; the certificate steps keep
+     flex:1 (their box is a fixed-height iframe, no centred overflow). */
+  .walk-frame:not(.cert-mode) .walk-video{flex:none}
 }
 @media(max-width:640px){
   /* FIX1 — D5: the centred view badge collided with the view toggle at
