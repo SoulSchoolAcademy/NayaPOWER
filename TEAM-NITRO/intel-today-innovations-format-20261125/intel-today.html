@@ -1506,6 +1506,48 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 .intel-sec p{font-size:18px;line-height:1.55;color:#fff;margin:0}
 .intel-sec p.intel-missing{font-style:italic}
 .intel-close{display:block;margin:24px auto 0}
+/* FIX2 — Shawn's word, voice call 2026-11-26 ~14:40 MST. Day bar on every view
+   (the frame's own .daybar header, filled with the six Intel days, fold
+   defeated in JS + CSS so it stays up); the Hub viewer board as ONE 16:9
+   board, one section at a time, going IN; a dropdown top-right for the day's
+   notes; two obvious controls — GO DEEPER (in) and NEXT NOTE (across). */
+.daybar .official-headliner{display:none}
+.daybar{max-height:none}
+.daybar.folded{max-height:none !important;padding:10px 16px 11px !important;opacity:1 !important;transform:none !important;pointer-events:auto !important;border-bottom-color:rgba(87,182,255,.5) !important}
+.intel-daybar{display:flex;gap:8px;width:100%}
+.intel-daybtn{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:6px 2px;background:linear-gradient(135deg,#17171f,#050607 70%);border:2px solid var(--dc,#8e24aa);border-radius:14px;color:#fff;font-family:Marcellus,serif;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.5)}
+.intel-daybtn span{font-size:18px;line-height:1.15;color:#fff}
+.intel-daybtn:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(0,0,0,.6),0 0 18px var(--dc)}
+.intel-daybtn:active{transform:scale(.97)}
+.intel-daybtn.active{box-shadow:0 0 0 2px var(--dc),0 0 24px var(--dc),0 8px 20px rgba(0,0,0,.6)}
+.intel-daybtn.active span{font-weight:700}
+.intel-viewtop{max-width:720px;margin:0 auto 12px}
+.intel-viewtop .intel-daybar{margin-bottom:10px}
+.intel-selectrow{display:flex;justify-content:flex-end;align-items:center;gap:8px}
+.intel-selectrow label{font-size:18px;color:#fff}
+#intelNoteSelect{max-width:230px;height:44px;font-size:18px;color:#fff;background:#0a0a10;border:2px solid var(--sc,#8e24aa);border-radius:12px;padding:0 10px}
+.intel-sec{aspect-ratio:16/9;display:flex;flex-direction:column;min-height:0}
+.intel-sec h3{flex:0 0 auto}
+.intel-sec p{flex:1 1 auto;min-height:0;overflow-y:auto}
+/* FIX2 refinement (Shawn, voice call ~14:51 MST): Intel Today is STRICTLY TEXT,
+   like an intelligent block. No image treatment inside the board — the board
+   renders only the section label + text (both escaped); if a note ever carried
+   an image it would show as a COVER, the way in, never inside the board.
+   This guard makes text-only true in the bytes, not just by construction. */
+#intelViewer .intel-sec img,#intelViewer .intel-sec svg,#intelViewer .intel-sec video,#intelViewer .intel-sec iframe,#intelViewer .intel-sec picture{display:none !important}
+.intel-progress{text-align:center;font-size:18px;color:#fff;margin:12px 0 8px}
+.intel-controls{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:0 0 8px}
+.intel-controls .naya-btn{min-height:48px;font-size:18px}
+.intel-controls .naya-btn:disabled{opacity:.45;cursor:default}
+.intel-endhint{text-align:center;font-size:18px;color:#fff;font-style:italic;margin:4px 0 8px}
+@media(max-width:900px){
+/* Phone: aspect-ratio OFF — Chrome sizes a ratio box's WIDTH from a
+   min-height-clamped height (250px x 16/9 = 444px in a 390px viewport, proven
+   by the maker probe), so the board overflowed the phone. Content-sized here:
+   the board grows to fit its section whole at 18px; exact 16:9 holds at desktop. */
+.intel-sec{aspect-ratio:auto;min-height:250px}
+#intelNoteSelect{max-width:200px}
+}
 </style>
 </head>
 <body>
@@ -3342,6 +3384,10 @@ current = 0; renderSlide(); show('cover');
 })();
 </script>
 <div id="intelViewer" hidden role="dialog" aria-modal="true" aria-labelledby="intelViewerTitle">
+  <div class="intel-viewtop">
+    <nav class="intel-daybar" id="intelViewerDays" aria-label="Intel days"></nav>
+    <div class="intel-selectrow"><label for="intelNoteSelect">Note</label><select id="intelNoteSelect" aria-label="Choose a smart note for this day"></select></div>
+  </div>
   <div class="intel-matrix">
     <h2 id="intelViewerTitle"></h2>
     <p class="intel-dayline" id="intelViewerDay"></p>
@@ -3350,6 +3396,13 @@ current = 0; renderSlide(); show('cover');
       <button class="naya-btn" id="intelSave" type="button" aria-pressed="false">SAVE</button>
     </div>
     <div id="intelViewerBody"></div>
+    <div class="intel-progress" id="intelProgress"></div>
+    <div class="intel-controls">
+      <button class="naya-btn" id="intelBack" type="button">← BACK</button>
+      <button class="naya-btn" id="intelDeeper" type="button">GO DEEPER ▾</button>
+      <button class="naya-btn" id="intelNext" type="button">NEXT NOTE →</button>
+    </div>
+    <p class="intel-endhint" id="intelEndHint" hidden>That’s the whole note — tap NEXT NOTE for the next one.</p>
     <button class="naya-btn intel-close" id="intelClose" type="button">Close</button>
   </div>
 </div>
@@ -3384,28 +3437,78 @@ function updateChrome(){
   saveBtn.setAttribute('aria-label',(isOn?'Remove from your Smart List: ':'Save to your Smart List: ')+(currentNote.title||''));
   shareBtn.setAttribute('aria-label','Share: '+(currentNote.title||''));
 }
-function openViewer(sn){
-  var m=MATRIX[sn];if(!m)return;
-  currentSn=sn;
-  currentNote={id:m.sn?'IB-SMART-NOTE-'+m.sn:'',title:m.title,sn:m.sn};
-  var snap=(window.__INTEL_SNAPSHOT__||[]).filter(function(n){return n.sn===sn;})[0]||{};
-  currentNote.id=snap.id||currentNote.id;
+/* FIX2 — the viewer is ONE Hub board, 16:9, one section at a time, going IN.
+   Two axes, both obvious: GO DEEPER walks this note's 9 sections in order
+   (In a nutshell -> What it's not -> For a child -> For a grandma -> What it
+   means -> Why it matters -> How it connects -> How to apply -> What's in it
+   for you); NEXT NOTE goes ACROSS to the next note of the day and ALWAYS
+   lands on its In a nutshell. BACK walks back along the path you came in on
+   (history stack); at the root it closes the viewer. The dropdown top-right
+   lists the day's notes; picking one opens it at In a nutshell. */
+var vSec=0, vHistory=[];
+function intelDayColor(date){var days=window.__INTEL_DAYS__||[];for(var i=0;i<days.length;i++){if(days[i].date===date)return days[i].color;}return '#8e24aa';}
+function intelDayOf(sn){var g=(window.__INTEL_GROUPS__||[]).filter(function(x){return x.sn===sn;})[0];return g?g.day:'';}
+function intelNotesOfDay(date){var days=window.__INTEL_DAYS__||[];var d=null;for(var i=0;i<days.length;i++){if(days[i].date===date)d=days[i];}if(!d)return[];return (window.__INTEL_SNAPSHOT__||[]).filter(function(n){return n.skillCat===d.cat;}).sort(function(a,b){return a.sn-b.sn;});}
+function intelFillSelect(date){var sel=document.getElementById('intelNoteSelect');if(!sel)return;var notes=intelNotesOfDay(date);sel.innerHTML='';notes.forEach(function(n){var o=document.createElement('option');o.value=String(n.sn);o.textContent='SN-'+n.sn+' · '+(n.title||'').slice(0,26);sel.appendChild(o);});sel.value=String(currentSn);}
+function intelDayBarSync(){
+  var active='';
+  if(viewer&&!viewer.hidden&&currentSn)active=intelDayOf(currentSn);
+  else if(typeof END_MODE!=='undefined'&&END_MODE)active='2026-11-30';
+  else if(typeof GROUPS!=='undefined'&&typeof current!=='undefined'&&GROUPS[current])active=GROUPS[current].day||'';
+  var btns=document.querySelectorAll('.intel-daybtn');
+  for(var i=0;i<btns.length;i++){var on=btns[i].getAttribute('data-date')===active;btns[i].classList.toggle('active',on);btns[i].setAttribute('aria-pressed',on?'true':'false');}
+}
+function intelRenderSection(push){
+  var m=MATRIX[currentSn];if(!m)return;
+  if(vSec<0)vSec=0;if(vSec>m.sections.length-1)vSec=m.sections.length-1;
+  var sec=m.sections[vSec];
+  var day=intelDayOf(currentSn);
+  var color=intelDayColor(day);
+  var snap=(window.__INTEL_SNAPSHOT__||[]).filter(function(n){return n.sn===currentSn;})[0]||{};
+  currentNote={id:snap.id||(currentSn?'IB-SMART-NOTE-'+currentSn:''),title:m.title,sn:currentSn};
   vTitle.textContent=m.title;
-  var day=(window.__INTEL_GROUPS__||[]).filter(function(g){return g.sn===sn;})[0];
-  vDay.textContent=(m.cat||'')+(day&&day.day?' \u00b7 '+day.day:'')+' \u00b7 SN-'+sn;
-  var html='';
-  m.sections.forEach(function(s,i){
-    html+='<section class="intel-sec" style="--sc:'+COLORS[i%COLORS.length]+'"><h3>'+esc(s.label)+'</h3><p'+(s.src==='missing'?' class="intel-missing"':'')+'>'+esc(s.text||'')+'</p></section>';
-  });
-  vBody.innerHTML=html;
+  vDay.textContent=(m.cat||'')+(day?' · '+day:'')+' · SN-'+currentSn;
+  vBody.innerHTML='<section class="intel-sec" style="--sc:'+color+'"><h3>'+esc(sec.label)+'</h3><p'+(sec.src==='missing'?' class="intel-missing"':'')+'>'+esc(sec.text||'')+'</p></section>';
+  var notes=intelNotesOfDay(day);
+  var ni=-1;for(var i=0;i<notes.length;i++){if(notes[i].sn===currentSn)ni=i;}
+  var prog=document.getElementById('intelProgress');
+  if(prog)prog.textContent='Note '+(ni+1)+' of '+notes.length+' today · Section '+(vSec+1)+' of '+m.sections.length+' — '+sec.label;
+  var deeper=document.getElementById('intelDeeper');
+  if(deeper)deeper.disabled=vSec>=m.sections.length-1;
+  var next=document.getElementById('intelNext');
+  if(next){
+    var lastDay='2026-11-30';
+    if(ni>=0&&ni<notes.length-1){next.disabled=false;next.textContent='NEXT NOTE →';}
+    else if(day&&day!==lastDay){next.disabled=false;next.textContent='NEXT DAY →';}
+    else{next.disabled=true;next.textContent='NEXT NOTE →';}
+  }
+  var hint=document.getElementById('intelEndHint');
+  if(hint)hint.hidden=vSec<m.sections.length-1;
+  var sel=document.getElementById('intelNoteSelect');
+  if(sel){if(sel.options.length!==notes.length)intelFillSelect(day);sel.value=String(currentSn);}
+  intelDayBarSync();
   updateChrome();
   viewer.hidden=false;
   document.body.style.overflow='hidden';
-  /* FIX1 D4: focus the title at the TOP (never CLOSE at the bottom — focusing
-     CLOSE scrolled the viewer to its end), then pin the scroll to the top so
-     the reader lands on the nutshell, not "What's in it for you". */
   try{vTitle.setAttribute('tabindex','-1');vTitle.focus({preventScroll:true});}catch(err){try{vTitle.focus();}catch(err2){}}
   viewer.scrollTop=0;
+  if(push)vHistory.push({sn:currentSn,sec:vSec});
+}
+function intelGoNote(sn,keepHist){if(!MATRIX[sn])return;currentSn=sn;vSec=0;if(!keepHist)vHistory=[];intelRenderSection(true);}
+function intelGoDay(date){
+  var notes=intelNotesOfDay(date);
+  if(viewer&&!viewer.hidden&&notes.length){intelGoNote(notes[0].sn,true);return;}
+  if(DAY_START[date]!==undefined&&typeof show==='function'&&typeof renderSlide==='function'){
+    if(typeof END_MODE!=='undefined')END_MODE=false;
+    current=DAY_START[date];renderSlide();show('slide');
+  }
+  intelDayBarSync();
+}
+function openViewer(sn,keepHist){
+  var m=MATRIX[sn];if(!m)return;
+  currentSn=sn;vSec=0;
+  if(!keepHist)vHistory=[];
+  intelRenderSection(true);
 }
 function closeViewer(){viewer.hidden=true;document.body.style.overflow='';}
 window.__intelOpenViewer=openViewer;
@@ -3443,6 +3546,76 @@ document.addEventListener('click',function(e){
   var b=e.target.closest?e.target.closest('.intel-matrix-btn'):null;
   if(b&&b.getAttribute('data-sn'))openViewer(parseInt(b.getAttribute('data-sn'),10));
 });
+/* FIX2 wiring — day bars (slide view + viewer), fold defeat, two-axis controls. */
+(function(){
+  var WD=['SUN','MON','TUE','WED','THU','FRI','SAT'];
+  function buildBar(host){
+    if(!host)return;
+    host.innerHTML='';
+    var days=window.__INTEL_DAYS__||[];
+    days.forEach(function(d){
+      var b=document.createElement('button');
+      b.type='button';b.className='intel-daybtn';b.setAttribute('data-date',d.date);
+      b.style.setProperty('--dc',d.color);
+      var p=d.date.split('-');var dt=new Date(Date.UTC(parseInt(p[0],10),parseInt(p[1],10)-1,parseInt(p[2],10)));
+      var wd=WD[dt.getUTCDay()];
+      b.innerHTML='<span>'+wd+'</span><span>'+parseInt(p[2],10)+'</span>';
+      b.setAttribute('aria-label',d.weekday+' '+d.date+' — '+d.label+', '+d.count+' notes');
+      host.appendChild(b);
+    });
+  }
+  var daybar=document.querySelector('.daybar');
+  if(daybar){
+    var nav=document.createElement('nav');
+    nav.id='intelDayBar';nav.className='intel-daybar';nav.setAttribute('aria-label','Intel days');
+    daybar.appendChild(nav);
+    buildBar(nav);
+    daybar.classList.remove('folded');
+  }
+  buildBar(document.getElementById('intelViewerDays'));
+  /* The frame folds its daybar after 5s — fix2 keeps the bar up on every view. */
+  if(typeof scheduleFold==='function'){scheduleFold=function(){};}
+  try{if(typeof barTimer!=='undefined')clearTimeout(barTimer);}catch(e){}
+  document.addEventListener('click',function(e){
+    var b=e.target.closest?e.target.closest('.intel-daybtn'):null;
+    if(b)intelGoDay(b.getAttribute('data-date'));
+  });
+  var back=document.getElementById('intelBack');
+  if(back)back.addEventListener('click',function(){
+    if(vHistory.length>1){
+      vHistory.pop();
+      var prev=vHistory[vHistory.length-1];
+      currentSn=prev.sn;vSec=prev.sec;intelRenderSection(false);
+    }else{closeViewer();}
+  });
+  var deeper=document.getElementById('intelDeeper');
+  if(deeper)deeper.addEventListener('click',function(){
+    var m=MATRIX[currentSn];if(!m)return;
+    if(vSec<m.sections.length-1){vSec++;intelRenderSection(true);}
+  });
+  var next=document.getElementById('intelNext');
+  if(next)next.addEventListener('click',function(){
+    var day=intelDayOf(currentSn);
+    var notes=intelNotesOfDay(day);
+    var ni=-1;for(var i=0;i<notes.length;i++){if(notes[i].sn===currentSn)ni=i;}
+    if(ni>=0&&ni<notes.length-1){intelGoNote(notes[ni+1].sn,true);return;}
+    var days=window.__INTEL_DAYS__||[];
+    for(var j=0;j<days.length-1;j++){
+      if(days[j].date===day){var nxt=intelNotesOfDay(days[j+1].date);if(nxt.length){intelGoNote(nxt[0].sn,true);}return;}
+    }
+  });
+  var sel=document.getElementById('intelNoteSelect');
+  if(sel)sel.addEventListener('change',function(){
+    var sn=parseInt(sel.value,10);
+    if(sn)intelGoNote(sn,true);
+  });
+  if(typeof show==='function'&&!window.__intelShowWrapped){
+    var __intelShow=show;
+    show=function(n){__intelShow(n);if(typeof intelDayBarSync==='function')intelDayBarSync();};
+    window.__intelShowWrapped=true;
+  }
+  intelDayBarSync();
+})();
 /* FIX1 D1: cover titles split date / category onto two lines (date on one
    line, category on the next) so no cover title can run under an icon. */
 function intelSplitCoverTitles(){
@@ -3594,7 +3767,7 @@ function intelTint(){
 }
 if(typeof renderSlide==='function'){
   var __intelRender=renderSlide;
-  renderSlide=function(){__intelRender();intelTint();intelSplitCoverTitles();intelLayoutClasses();};
+  renderSlide=function(){__intelRender();intelTint();intelSplitCoverTitles();intelLayoutClasses();if(typeof intelDayBarSync==='function')intelDayBarSync();};
 }
 if(typeof fitPanels==='function'){
   var __intelFitPanels=fitPanels;
