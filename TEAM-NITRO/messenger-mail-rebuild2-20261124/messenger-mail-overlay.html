@@ -1120,9 +1120,6 @@ function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className
         item.appendChild(mid);
 
         if(t.unread){ item.appendChild(el('span','ml-dot','')); }
-        if(t.demo){
-          var chip = el('span','ml-chip',''); chip.textContent='DEMO'; top.appendChild(chip);
-        }
         if(t.status==='scheduled'){
           var sc = el('span','ml-sched-tag',''); sc.textContent='SCHEDULED'; item.appendChild(sc);
         }
@@ -1247,7 +1244,6 @@ function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className
       }
       if(t.isPost){ var pc2=el('span','ml-post-tag',''); pc2.textContent='SMART POST'; meta.appendChild(pc2); }
       if(t.fromAlias){ var al=el('span','ml-chip',''); al.textContent='VIA '+String(t.fromAlias).toUpperCase(); meta.appendChild(al); }
-      if(t.demo){ var chip=el('span','ml-chip',''); chip.textContent='DEMO'; meta.appendChild(chip); }
       read.appendChild(meta);
 
       var body = el('div','ml-read-body');
@@ -1460,7 +1456,7 @@ function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className
       });
       spRow.appendChild(spaceSel);
       postWrap.appendChild(spRow);
-      var pvLabel = el('span','ml-field-l','FEED PREVIEW');
+      var pvLabel = el('span','ml-field-l','FEED POST');
       postWrap.appendChild(pvLabel);
       var preview = el('div','ml-post-preview');
       postWrap.appendChild(preview);
@@ -1909,7 +1905,7 @@ schRow.appendChild(dtWrap);
             threads.unshift({ id:'draft-'+Date.now().toString(36), from:me, to:firstTo || '', toKind:firstKind || 'person', toLabel:toLabel || '(no recipients)', mode:composeMode, subject:nmSubj, snippet:body.slice(0,120), body:body, ts:Date.now(), status:'draft', unread:false, demo:false });
             state.folder = 'drafts';
             closeCompose(); renderRail(); renderList(); renderRead();
-            showToast('Not sent — saved as a draft. Live send is not connected in this preview, so nothing was delivered.');
+            showToast('Not sent — saved as a draft.');
             return;
           }
           var first = ok[0];
@@ -2066,7 +2062,7 @@ schRow.appendChild(dtWrap);
          renders the DEMO chip). Only when the live read came back empty. */
       if(window.__nmDemoMode && !threads.length){
         threads = [
-          { id:'sample-mail-1', from:'shawn', to:'naya4', toKind:'person', toLabel:'shawn', subject:'Welcome to the new Messenger', snippet:'Welcome to the new Messenger \u2014 this is your mail, living next to your messages. One place, two speeds: a quick chat, or a proper letter.', body:'Welcome to the new Messenger \u2014 this is your mail, living next to your messages.\n\nOne place, two speeds. A quick chat when you want an answer now, and a proper letter when the thought deserves room to breathe. Both live here, side by side, and both find the same people.\n\nWrite to anyone in your world from the compose button. Your letters stay yours \u2014 saved in your vault when you save them, and never passed around.\n\nTry it now: reply to this letter, or start a fresh one. Say hello to someone you have not spoken to in a while. That is what this room is for.\n\n\u2014 Naya', ts:Date.parse('2026-11-24T19:10:00Z'), unread:false, demo:true },
+          { id:'sample-mail-1', from:'shawn', to:'naya4', toKind:'person', toLabel:'shawn', subject:'Welcome to the new Messenger', snippet:'Welcome to the new Messenger \u2014 this is your mail, beside your messages. One place, two speeds: a quick chat, or a proper letter.', body:'Welcome to the new Messenger \u2014 this is your mail, beside your messages.\n\nOne place, two speeds. A quick chat when you want an answer now, and a proper letter when the thought deserves room to breathe. Both live here, side by side, and both find the same people.\n\nWrite to anyone in your world from the compose button. Your letters stay yours \u2014 saved in your vault when you save them, and never passed around.\n\nTry it now: reply to this letter, or start a fresh one. Say hello to someone you have not spoken to in a while. That is what this room is for.\n\n\u2014 Naya', ts:Date.parse('2026-11-24T19:10:00Z'), unread:false, demo:true },
           { id:'sample-mail-2', from:'naya4', to:'shawn', toKind:'person', toLabel:'shawn', subject:'A post for the feed, out in the open', snippet:'A post for the feed, out in the open.', body:'A post for the feed, out in the open.', ts:Date.parse('2026-11-24T19:20:00Z'), unread:false, demo:true }
         ];
       }
@@ -2940,7 +2936,7 @@ function nmApplyJewels(){
 'use strict';
 window.__nmGemNum = {A:1,B:2,C:3,D:4,E:5,F:6,G:7,H:6,I:5,J:4,K:3,L:2,M:1,N:1,O:2,P:3,Q:4,R:5,S:6,T:7,U:6,V:5,W:4,X:3,Y:2,Z:1};
 window.__nmGemCol = {1:'#c62828',2:'#c2410c',3:'#d4a017',4:'#07925f',5:'#0e7490',6:'#3f51b5',7:'#8e24aa'};
-window.PC_RAIL_SEED = [{"alias": "sophia", "nut": "LEARN — wisdom. I turn what the hive does into lessons.", "pct": 94}, {"alias": "thora", "nut": "KNOW — she sees. One record, one timeline.", "pct": 91}, {"alias": "terra", "nut": "INFRA — earth. The machines, the deploys, the uptime.", "pct": 88}, {"alias": "zoe", "nut": "ACT — life. Seats out, loops closing, nothing sitting.", "pct": 92}, {"alias": "emesa", "nut": "PRODUCT — beloved. The offer: what you touch, what you pay for.", "pct": 89}, {"alias": "astraea", "nut": "LAW — the scales. The five gates, the Self-Check Law.", "pct": 90}, {"alias": "mira", "nut": "MEMORY — wonder. The Box: what is kept, what is distilled.", "pct": 87}, {"alias": "vera", "nut": "VERIFY — truth. Nothing counts until I see it.", "pct": 93}, {"alias": "aurelia", "nut": "GOVERN — golden. The scorecard, the direction, the decisions.", "pct": 86}, {"alias": "wrena", "nut": "BUILD — the nest-builder. The Factory and the pages.", "pct": 95}, {"alias": "iris", "nut": "WIRE — the rainbow bridge. Box to Ledger to Hub, one system.", "pct": 91}, {"alias": "ruth", "nut": "TEAM — friend. I keep the sisters tuned in, healthy, together.", "pct": 88}, {"alias": "shawn", "nut": "Welcome to my world — post, message, make yourself at home.", "pct": 97}];
+window.PC_RAIL_SEED = [{"alias": "sophia", "nut": "LEARN — wisdom. I turn what the hive does into lessons.", "pct": 94}, {"alias": "thora", "nut": "KNOW — she sees. One record, one timeline.", "pct": 91}, {"alias": "terra", "nut": "INFRA — earth. The machines, the deploys, the uptime.", "pct": 88}, {"alias": "zoe", "nut": "ACT — life. Seats out, loops closing, nothing sitting.", "pct": 92}, {"alias": "emesa", "nut": "PRODUCT — beloved. The offer: what you touch, what you pay for.", "pct": 89}, {"alias": "astraea", "nut": "LAW — the scales. The five gates, the Self-Check Law.", "pct": 90}, {"alias": "mira", "nut": "MEMORY — wonder. The Box: what is saved, what is distilled.", "pct": 87}, {"alias": "vera", "nut": "VERIFY — truth. Nothing counts until I see it.", "pct": 93}, {"alias": "aurelia", "nut": "GOVERN — golden. The scorecard, the direction, the decisions.", "pct": 86}, {"alias": "wrena", "nut": "BUILD — the nest-builder. The Factory and the pages.", "pct": 95}, {"alias": "iris", "nut": "WIRE — the rainbow bridge. Box to Ledger to Hub, one system.", "pct": 91}, {"alias": "ruth", "nut": "TEAM — friend. I keep the sisters tuned in, healthy, together.", "pct": 88}, {"alias": "shawn", "nut": "Welcome to my world — post, message, make yourself at home.", "pct": 97}];
 
 var SB_URL = 'https://dahisasgpfvziswqvmvm.supabase.co';
 var SB_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhaGlzYXNncGZ2emlzd3F2bXZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc2MjM3ODgsImV4cCI6MjEwMzE5OTc4OH0.zX2r3T23sKebUMBdNg-4Noxos8JFOHaK2rRwqAVXU_s';
@@ -2994,7 +2990,7 @@ function sendMessage(kind, toAlias, subject, body, fromAlias){
 }
 function statusHtml(res){
   if(res.ok){
-    return '<div class="nm-status ok"><p><b>Sent as ' + (res.tempo === 'chat' ? 'CHAT — living' : 'MAIL — kept, signed, a record') + '.</b> To ' + esc(res.to) + ' — read back from the server: ' + (res.readBack ? 'yes, the message is there.' : 'the insert returned the row; the read-back could not confirm it.') + '</p>'
+    return '<div class="nm-status ok"><p><b>Sent as ' + (res.tempo === 'chat' ? 'CHAT' : 'MAIL') + '.</b> To ' + esc(res.to) + ' — read back from the server: ' + (res.readBack ? 'yes, the message is there.' : 'the insert returned the row; the read-back could not confirm it.') + '</p>'
       + '<p>Thread <code>' + esc(res.threadId) + '</code><br>Message <code>' + esc(res.messageId) + '</code><br>At <code>' + esc(res.at) + '</code></p></div>';
   }
   var gate = (res.gate === 'rls-insert-smart_mail_threads')
@@ -3079,22 +3075,30 @@ function nmLoadDMs(){
        live read comes back empty on the staged host, seed the three fixed
        sample threads (chat/mail/post — the shape the v11 stub harness proved)
        so the type + reaction jewels have something to attach to. demo:true
-       rides onto each conv and renders a SAMPLE chip. */
+       rides onto each row (internal flag only — nothing labelled on screen,
+       per the no-sample-text law). The chat thread carries the mock
+       Shawn<->Naya exchange (judging the interface), no label on it. */
     if(window.__nmDemoMode && !(rows || []).length){
       rows = [
-        {id:'m1',thread_id:'t-chat',from_alias:'shawn',to_alias:'naya4',body:'Quick hello — AI is hiring, and the new internet needs builders.',sent_at:'2026-11-24T19:00:00Z',read_at:null,tempo:'chat',demo:true},
-        {id:'m2',thread_id:'t-mail',from_alias:'naya4',to_alias:'shawn',body:'A kept letter for the record, signed and filed — your vault stays private, deleted by default.',sent_at:'2026-11-24T19:10:00Z',read_at:'2026-11-24T19:11:00Z',tempo:'mail',demo:true},
+        {id:'m1',thread_id:'t-chat',from_alias:'shawn',to_alias:'naya4',body:'Quick hello — AI is hiring, and the new internet needs builders.',sent_at:'2026-11-24T18:52:00Z',read_at:null,tempo:'chat',demo:true},
+        {id:'m1b',thread_id:'t-chat',from_alias:'naya4',to_alias:'shawn',body:'Hello, Shawn. The builders are here — and every word in this room is a jewel, lit up and alive.',sent_at:'2026-11-24T18:54:00Z',read_at:'2026-11-24T18:55:00Z',tempo:'chat',demo:true},
+        {id:'m1c',thread_id:'t-chat',from_alias:'shawn',to_alias:'naya4',body:'Show me the most beautiful DM interface anyone has ever seen.',sent_at:'2026-11-24T18:56:00Z',read_at:null,tempo:'chat',demo:true},
+        {id:'m1d',thread_id:'t-chat',from_alias:'naya4',to_alias:'shawn',body:'Look above the input. Your words beside mine, back and forth — each bubble a real object. Press one, and it answers.',sent_at:'2026-11-24T18:58:00Z',read_at:'2026-11-24T18:59:00Z',tempo:'chat',demo:true},
+        {id:'m1e',thread_id:'t-chat',from_alias:'shawn',to_alias:'naya4',body:'That is what I mean. Nothing flat. Everything you touch lights up.',sent_at:'2026-11-24T19:00:00Z',read_at:null,tempo:'chat',demo:true},
+        {id:'m2',thread_id:'t-mail',from_alias:'naya4',to_alias:'shawn',body:'A letter for the record, signed and filed — your vault stays private, deleted by default.',sent_at:'2026-11-24T19:10:00Z',read_at:'2026-11-24T19:11:00Z',tempo:'mail',demo:true},
         {id:'m3',thread_id:'t-post',from_alias:'shawn',to_alias:'naya4',body:'A post for the feed, out in the open — the intelligent internet, the new net, a civilization of builders.',sent_at:'2026-11-24T19:20:00Z',read_at:null,tempo:'post',demo:true}
       ];
     }
     (rows || []).forEach(function(r){
       var other = (r.from_alias === NM_ME) ? r.to_alias : r.from_alias;
       if(!other) return;
-      if(!byThread[r.thread_id]) byThread[r.thread_id] = { threadId:r.thread_id, with:other, last:r, count:0, unread:0, lastAt:r.sent_at, demo: !!r.demo };
+      if(!byThread[r.thread_id]) byThread[r.thread_id] = { threadId:r.thread_id, with:other, last:r, count:0, unread:0, lastAt:r.sent_at, demo: !!r.demo, msgs:[] };
       byThread[r.thread_id].count++;
+      byThread[r.thread_id].msgs.push(r);
       if(r.sent_at > byThread[r.thread_id].lastAt) { byThread[r.thread_id].lastAt = r.sent_at; byThread[r.thread_id].last = r; }
       if(r.to_alias === NM_ME && !r.read_at) byThread[r.thread_id].unread++;
     });
+    Object.keys(byThread).forEach(function(k){ byThread[k].msgs.sort(function(a, b){ return Date.parse(a.sent_at || '') - Date.parse(b.sent_at || ''); }); });
     nmConvs = Object.keys(byThread).map(function(k){ return byThread[k]; });
     nmConvs.sort(function(a, b){ return Date.parse(b.lastAt || '') - Date.parse(a.lastAt || ''); });
     return nmConvs;
@@ -3135,7 +3139,7 @@ function nmConvRows(){
     var tempo = (c.last && c.last.tempo) || 'chat';
     h += '<div class="nm-conv' + (nmSelectedConv === c.threadId ? ' sel' : '') + (c.unread ? ' unread' : '') + '" data-nm-conv="' + esc(c.threadId) + '">'
       + '<span class="nm-orb" data-jewel="sender" style="--cc:' + color + '">' + esc(String(c.with).charAt(0).toUpperCase()) + '</span>'
-      + '<div><div class="nm-conv-subj">' + (nmPins[c.threadId] ? '<span class="nm-pin-jewel" aria-hidden="true"></span> ' : '') + esc(nmName(c.with)) + (c.demo ? ' <span class="nm-sample-chip">SAMPLE</span>' : '') + '</div>'
+      + '<div><div class="nm-conv-subj">' + (nmPins[c.threadId] ? '<span class="nm-pin-jewel" aria-hidden="true"></span> ' : '') + esc(nmName(c.with)) + '</div>'
       + '<div class="nm-conv-prev">' + esc(String((c.last && c.last.body) || '').slice(0, 80)) + '</div>'
       + '<div class="nm-conv-prev">' + nmTimeAgo(c.lastAt) + ' · <span class="nm-type-jewel" data-jewel="type-' + (tempo === 'mail' ? 'mail' : tempo === 'post' ? 'post' : 'chat') + '"></span>' + (c.unread ? ' · <b>' + c.unread + ' new</b>' : '') + '</div>'
       + '<div class="nm-acts"><button type="button" class="nm-act" data-jewel="chat" data-nm-dm="' + esc(c.with) + '" style="--ac:#0f52ba" aria-label="Message ' + esc(c.with) + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.5 0-3-.4-4.2-1L3 20l1-5.3A8.5 8.5 0 1 1 21 11.5z"/></svg></button>'
@@ -3149,8 +3153,7 @@ function nmMsgViewHtml(){
      nmRefreshMsgView re-parsed it, so the Messenger view could never be
      seen — the toggle un-hid it and the refresh re-hid it in the same call.) */
   var h = '<section class="nm-msg" id="nmMsgView"><div class="nm-msg-panes">';
-  h += '<div class="nm-pane nm-rail"><h2>CONVERSATIONS</h2>' + (nmConvs.some(function(c){ return c.demo; }) ? '<p class="nm-note nm-demo-note">&#9670; SAMPLE DATA — demo threads for this staged preview, not live conversations.</p>' : '') + '<input class="nm-search" id="nmSearch" type="search" placeholder="Search anyone…" aria-label="Search anyone" value="' + esc(nmSearch) + '">';
-   h += '<div id="nmConvList">' + nmConvRows() + '</div></div>';
+  h += '<div class="nm-pane nm-rail"><h2>CONVERSATIONS</h2>' + fx2LikeMindsHtml() + '</div>';
   h += '<div class="nm-pane"><div id="nmReader">' + nmReaderHtml() + '</div></div>';
   h += '</div></section>';
   return h;
@@ -3164,18 +3167,17 @@ function nmReaderHtml(){
   var color = nmColorFor(alias);
   var conv = nmConvs.filter(function(c){ return c.threadId === nmSelectedConv; })[0];
   var h = '<h2>' + esc(nmName(alias)) + '</h2>'
-    + '<div class="nm-reader-head"><span class="nm-orb" data-jewel="sender" style="--cc:' + color + '">' + esc(String(alias).charAt(0).toUpperCase()) + '</span>'
+    + '<div class="nm-reader-head"><button type="button" class="nm-orb" data-fx2-card="' + esc(alias) + '" data-jewel="sender" style="--cc:' + color + '" aria-label="Open contact card: ' + esc(nmName(alias)) + '">' + esc(String(alias).charAt(0).toUpperCase()) + '</button>'
     + '<div><div class="nm-person-name">' + esc(nmName(alias)) + '</div><div class="nm-person-sub">' + nmPresence(alias) + '</div></div>'
     + '<button type="button" class="nm-act" data-nm-pin-conv="' + esc(nmSelectedConv || '') + '" style="--ac:#d4a017" aria-label="Pin conversation" title="Pin this conversation to the top — for this visit"><span class="nm-pin-jewel" aria-hidden="true"></span></button></div>'
-    + (conv && conv.demo ? '<p class="nm-note nm-demo-note">&#9670; SAMPLE thread — demo data for this staged preview, not a live conversation.</p>' : '')
+   
     + '<div class="nm-filter"><input class="nm-search" id="nmThreadSearch" type="search" placeholder="Search this thread…" aria-label="Search this thread"></div>'
     + '<div class="nm-msg-list" id="nmMsgList">' + nmMessagesHtml(conv) + '</div>'
     + '<div class="nm-composer"><label style="font-size:17px;color:#ffffff;display:block;margin:0 0 8px;">' + ((nmSendMode || nmTempo) === 'chat' ? 'Sending as CHAT.' : (nmSendMode || nmTempo) === 'mail' ? 'Sending as MAIL.' : 'Sending as POST.') + '</label>'
-    + '<div class="nm-dial" role="tablist" aria-label="Send as — Chat, Mail, or Post">'
-    + '<button type="button" class="nm-dial-btn' + (((nmSendMode || nmTempo) === 'chat') ? ' on' : '') + '" data-nm-sendmode="chat" role="tab" aria-pressed="' + (((nmSendMode || nmTempo) === 'chat') ? 'true' : 'false') + '">Chat</button>'
-    + '<button type="button" class="nm-dial-btn' + (((nmSendMode || nmTempo) === 'mail') ? ' on' : '') + '" data-nm-sendmode="mail" role="tab" aria-pressed="' + (((nmSendMode || nmTempo) === 'mail') ? 'true' : 'false') + '">Mail</button>'
-    + '<button type="button" class="nm-dial-btn' + (((nmSendMode || nmTempo) === 'post') ? ' on' : '') + '" data-nm-sendmode="post" role="tab" aria-pressed="' + (((nmSendMode || nmTempo) === 'post') ? 'true' : 'false') + '">Post</button></div>'
-    + '<textarea class="nm-area" id="nmMsgBody" placeholder="' + ((nmSendMode || nmTempo) === 'chat' ? 'Message ' + esc(nmName(alias)) + '…' : (nmSendMode || nmTempo) === 'mail' ? 'Write to ' + esc(nmName(alias)) + ' — a letter, kept.' : 'Write a post for the feed…') + '" aria-label="Write to ' + esc(alias) + '"></textarea>'
+    + '<div class="fx2-who" role="group" aria-label="Writing to">'
+    + '<button type="button" class="nm-orb fx2-who-orb" data-fx2-card="' + esc(alias) + '" data-jewel="sender" style="--cc:' + color + '" aria-label="Open contact card: ' + esc(nmName(alias)) + '">' + esc(String(alias).charAt(0).toUpperCase()) + '</button>'
+    + '<div class="fx2-who-id"><div class="fx2-who-name">' + esc(nmName(alias)) + '</div><div class="fx2-who-status"><span class="fx2-live-dot" style="--cc:' + color + '"></span>' + nmPresence(alias) + '</div></div></div>'
+    + '<textarea class="nm-area" id="nmMsgBody" placeholder="' + ((nmSendMode || nmTempo) === 'chat' ? 'Message ' + esc(nmName(alias)) + '…' : (nmSendMode || nmTempo) === 'mail' ? 'Write to ' + esc(nmName(alias)) + ' — a letter.' : 'Write a post for the feed…') + '" aria-label="Write to ' + esc(alias) + '"></textarea>'
     + '<div class="nm-sendrow"><button type="button" class="nm-mic" id="nmMic" data-jewel="mic" aria-label="Voice note" title="Voice note — record, transcribe, send the words"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>'
     + '<button type="button" class="nm-btn' + ((nmSendMode || nmTempo) === 'mail' ? ' gold' : (nmSendMode || nmTempo) === 'post' ? ' violet' : ' purple') + '" data-jewel="send" id="nmMsgSend">' + ((nmSendMode || nmTempo) === 'chat' ? 'Send message' : (nmSendMode || nmTempo) === 'mail' ? 'Send mail' : 'Post it') + '</button>'
     + '<span class="nm-note" id="nmVoiceNote"></span></div><div id="nmMsgStatus"></div></div>';
@@ -3183,19 +3185,35 @@ function nmReaderHtml(){
 }
 function nmMessagesHtml(conv){
   if(!conv || !conv.last) return '<p class="nm-note">✉ No messages yet — say hello.</p>';
-  var mine = (conv.last.from_alias === NM_ME);
-  var tempo = conv.last.tempo || 'chat';
   var id = conv.threadId;
   var reacts = nmReacts[id] || {};
-  var h = '<div class="nm-bubble ' + (mine ? 'mine' : 'theirs') + '" data-nm-msg="' + esc(id) + '">'
-    + '<div class="nm-bubble-meta"><span class="nm-type-jewel" data-jewel="type-' + (tempo === 'mail' ? 'mail' : tempo === 'post' ? 'post' : 'chat') + '"></span>'
-    + '<span>' + nmTimeAgo(conv.lastAt) + '</span>'
-    + (mine ? ('<span>' + (conv.last.read_at ? 'Seen' : 'Sent') + '</span>') : '') + '</div>'
-    + '<p>' + esc(conv.last.body || '') + '</p>'
-    + '<div class="nm-reacts">'
-    + ['♥', '👍', '✓', '★'].map(function(r){ return '<button type="button" class="nm-react' + (reacts[r] ? ' on' : '') + '" data-jewel="react" data-nm-react="' + esc(r) + '" data-nm-msgid="' + esc(id) + '" aria-label="React ' + esc(r) + '">' + esc(r) + '</button>'; }).join('')
-    + '<button type="button" class="nm-keep' + (nmStars[id] ? ' on' : '') + '" data-nm-keep="' + esc(id) + '">' + (nmStars[id] ? '★ Kept' : '☆ Keep') + '</button></div>'
-    + '<p class="nm-note">Reactions and pins stay for this visit — they have no server home yet.</p></div>';
+  /* FIX2-E — back and forth: every message in the thread is a bubble, each
+     with its sender's initial (gematria colour) + name. Reacts + Save ride
+     only on the latest bubble. */
+  var list = (conv.msgs && conv.msgs.length) ? conv.msgs : [conv.last];
+  var h = '';
+  list.forEach(function(m, ix){
+    var mine = (m.from_alias === NM_ME);
+    var tempo = m.tempo || 'chat';
+    var who = m.from_alias;
+    var col = nmColorFor(who);
+    var init = String(who || '?').charAt(0).toUpperCase();
+    var lastOne = (ix === list.length - 1);
+    h += '<div class="nm-bubble ' + (mine ? 'mine' : 'theirs') + '" data-nm-msg="' + esc(id) + '-' + ix + '" style="--cc:' + col + '">'
+      + '<div class="nm-bubble-meta"><button type="button" class="nm-orb fx2-bubble-orb" data-fx2-card="' + esc(who) + '" data-jewel="sender" style="--cc:' + col + '" aria-label="Open contact card: ' + esc(nmName(who)) + '">' + esc(init) + '</button>'
+      + '<span>' + esc(nmName(who)) + '</span>'
+      + '<span class="nm-type-jewel" data-jewel="type-' + (tempo === 'mail' ? 'mail' : tempo === 'post' ? 'post' : 'chat') + '"></span>'
+      + '<span>' + nmTimeAgo(m.sent_at) + '</span>'
+      + (mine ? ('<span>' + (m.read_at ? 'Seen' : 'Sent') + '</span>') : '') + '</div>'
+      + '<p>' + esc(m.body || '') + '</p>';
+    if(lastOne){
+      h += '<div class="nm-reacts">'
+        + ['♥', '👍', '✓', '★'].map(function(r){ return '<button type="button" class="nm-react' + (reacts[r] ? ' on' : '') + '" data-jewel="react" data-nm-react="' + esc(r) + '" data-nm-msgid="' + esc(id) + '" aria-label="React ' + esc(r) + '">' + esc(r) + '</button>'; }).join('')
+        + '<button type="button" class="nm-keep' + (nmStars[id] ? ' on' : '') + '" data-nm-keep="' + esc(id) + '">' + (nmStars[id] ? '★ Saved' : '☆ Save') + '</button></div>'
+        + '<p class="nm-note">Reactions and pins stay for this visit — they have no server home yet.</p>';
+    }
+    h += '</div>';
+  });
   return h;
 }
 function nmRefreshMsgView(){
@@ -3280,8 +3298,8 @@ function nmBindConvRows(){
 function nmBindMsgView(){
   var view = document.getElementById('nmMsgView');
   if(!view) return;
-  var s = view.querySelector('#nmSearch');
-  if(s) s.addEventListener('input', function(){ nmSearch = s.value; var pl = document.getElementById('nmPeopleList'); if(pl) pl.innerHTML = nmMemberRows(); var cl = document.getElementById('nmConvList'); if(cl) cl.innerHTML = nmConvRows(); if(window.nmApplyJewels) window.nmApplyJewels(); nmBindConvRows(); });
+  var lms = view.querySelector('#nmLikeMindsSearch');
+  if(lms) lms.addEventListener('input', function(){ __fx2ConvQ = lms.value || ''; fx2RenderLikeMinds(); });
   view.querySelectorAll('[data-nm-space]').forEach(function(b){
     b.addEventListener('click', function(){
       nmSpace = b.getAttribute('data-nm-space');
@@ -3292,6 +3310,26 @@ function nmBindMsgView(){
     b.addEventListener('click', function(){ nmFilter = b.getAttribute('data-nm-filter'); nmRefreshMsgView(); });
   });
   nmBindConvRows();
+  /* FIX2-E — the Like Minds list: orb / i open the card, pen opens the
+     chat thread, mail opens mail compose, audio / video name the call. */
+  var lml = view.querySelector('#nmLikeMindsList');
+  if(lml) lml.addEventListener('click', function(ev){
+    var t = ev.target.closest ? ev.target.closest('[data-pc-orb],[data-pc-info],[data-pc-act]') : null;
+    if(!t) return;
+    var alias = t.getAttribute('data-pc-orb') || t.getAttribute('data-pc-info') || t.getAttribute('data-pc-alias') || '';
+    if(t.hasAttribute('data-pc-orb') || t.hasAttribute('data-pc-info')){ fx2OpenCard(alias); return; }
+    var act = t.getAttribute('data-pc-act');
+    var st = document.querySelector('[data-fx2-conv-status]');
+    if(act === 'chat'){ fx2OpenThreadWith(alias); }
+    else if(act === 'mail'){ nmSetTempo('mail'); setTimeout(function(){ var c = document.querySelector('.ml-compose-top'); if(c) c.click(); }, 400); }
+    else if(act === 'audio'){ if(st) st.textContent = 'Audio calls arrive with Smart Meet — not live here yet.'; }
+    else if(act === 'video'){ if(st) st.textContent = 'Video calls arrive with Smart Meet — not live here yet.'; }
+  });
+  /* FIX2-E — every initial is the button: head orb, who-row orb, bubble orbs. */
+  view.addEventListener('click', function(ev){
+    var t = ev.target.closest ? ev.target.closest('[data-fx2-card]') : null;
+    if(t) fx2OpenCard(t.getAttribute('data-fx2-card') || '');
+  });
   view.querySelectorAll('[data-nm-react]').forEach(function(b){
     b.addEventListener('click', function(){
       var id = b.getAttribute('data-nm-msgid'), r = b.getAttribute('data-nm-react');
@@ -3321,7 +3359,7 @@ function nmBindMsgView(){
     });
   });
   var send = view.querySelector('#nmMsgSend');
-  if(send) send.addEventListener('click', function(){ nmSendCurrent(); });
+  if(send) send.addEventListener('click', function(){ var b = document.getElementById('nmMsgBody'); if(((nmSendMode || nmTempo) === 'chat') && b && b.value.trim()) fx2ShowTyping(); nmSendCurrent(); });
   var mic = view.querySelector('#nmMic');
   if(mic) mic.addEventListener('click', function(){ nmVoiceNote(mic); });
   /* FIX7-2 thread dial: switches the thread's mode in place — no refresh, so
@@ -3338,7 +3376,7 @@ function nmSyncSendDial(){
   if(label) label.textContent = mode === 'chat' ? 'Sending as CHAT.' : mode === 'mail' ? 'Sending as MAIL.' : 'Sending as POST.';
   var body = document.getElementById('nmMsgBody');
   if(body){ var nm = nmSelectedPerson ? nmName(nmSelectedPerson) : 'them';
-    body.placeholder = mode === 'chat' ? 'Message ' + nm + '…' : mode === 'mail' ? 'Write to ' + nm + ' — a letter, kept.' : 'Write a post for the feed…'; }
+    body.placeholder = mode === 'chat' ? 'Message ' + nm + '…' : mode === 'mail' ? 'Write to ' + nm + ' — a letter.' : 'Write a post for the feed…'; }
   var send = document.getElementById('nmMsgSend');
   if(send){ send.textContent = mode === 'chat' ? 'Send message' : mode === 'mail' ? 'Send mail' : 'Post it';
     send.className = 'nm-btn' + (mode === 'mail' ? ' gold' : mode === 'post' ? ' violet' : ' purple'); }
@@ -3612,7 +3650,7 @@ function nmInit(){
     b.addEventListener('click', function(){ nmSetTempo(b.getAttribute('data-tempo')); });
   });
   nmBootData();
-  nmLoadDMs().then(function(){ if(window.__nmActBadgeUpdate) window.__nmActBadgeUpdate(); if(window.__nmDemoMode && nmConvs.length && !nmSelectedConv && !nmSelectedPerson){ nmSelectedConv = nmConvs[0].threadId; nmSelectedPerson = nmConvs[0].with; } if(nmTempo === 'chat') nmRefreshMsgView(); if(window.__mmTabsMount) window.__mmTabsMount(); });
+  nmLoadDMs().then(function(){ if(window.__nmActBadgeUpdate) window.__nmActBadgeUpdate(); if(window.__nmDemoMode && nmConvs.length && !nmSelectedConv && !nmSelectedPerson){ var __fx2pick = null; nmConvs.forEach(function(c){ if(!__fx2pick && c.last && c.last.tempo === (nmTempo === 'mail' ? 'mail' : 'chat')) __fx2pick = c; }); if(!__fx2pick) nmConvs.forEach(function(c){ if(!__fx2pick && c.last && c.last.tempo !== 'post') __fx2pick = c; }); if(!__fx2pick) __fx2pick = nmConvs[0]; nmSelectedConv = __fx2pick.threadId; nmSelectedPerson = __fx2pick.with; } if(nmTempo === 'chat') nmRefreshMsgView(); if(window.__mmTabsMount) window.__mmTabsMount(); });
   nmBindMsgView();
   nmSetTempo(nmTempo); /* sync the initial view to the initial toggle — v2.1 never did, so load showed Mail under a MESSENGER toggle */
   return true;
@@ -3622,6 +3660,204 @@ var __nmTimer = setInterval(function(){
   __nmTries++;
   if(nmInit() || __nmTries > 40){ clearInterval(__nmTimer); }
 }, 250);
+
+/* ===== FIX2-E 2026-11-25 — the DM interface (voice call 16:30–16:37 MST) =====
+   The conversations area is the harvested Connect with Like Minds list
+   (Ask sidebar = Hub right rail, capture d112894b); the right pane has no
+   Chat/Mail dial — the person's initial + name + active status sit above
+   the input, and the initial IS the button: it opens the full-screen
+   contact card. Bubbles carry the sender's initial in gematria colour.
+   All of this is IIFE-local; the three window.* bridges are what the
+   ov-script calls (it cannot see these names otherwise). */
+var __fx2ConvQ = '';
+var __fx2ListTempo = null; /* null = all people; 'chat' | 'mail' | 'post' | 'starred' */
+function __fx2SetListTempo(t){
+  __fx2ListTempo = (t === 'chat' || t === 'mail' || t === 'post' || t === 'starred') ? t : null;
+  fx2RenderLikeMinds();
+}
+window.__fx2SetListTempo = function(lb){
+  var m = {'All':null, 'Chats':'chat', 'Letters':'mail', 'Posts':'post'};
+  __fx2SetListTempo(m[lb] !== undefined ? m[lb] : null);
+};
+function fx2ListType(){ return __fx2ListTempo; }
+function fx2PeopleWithTempo(type){
+  var set = {};
+  /* Before the first load resolves nmConvs is [] and the filter would
+     hide everyone. Fall back to this file's own seed rows (m1 chat, m2
+     mail, m3 post, all shawn) until the load lands; a loaded nmConvs —
+     seed or real — always replaces this, so real data is never masked. */
+  if(!(nmConvs || []).length){
+    if(type === 'chat' || type === 'mail' || type === 'post') set['shawn'] = 1;
+    return set;
+  }
+  (nmConvs || []).forEach(function(c){
+    if(!c || !c.with) return;
+    if(type === 'starred'){ if(nmStars[c.threadId]) set[c.with] = 1; return; }
+    if(c.last && c.last.tempo === type) set[c.with] = 1;
+  });
+  return set;
+}
+/* The ONE card builder: the harvested Like Minds row, byte-identical in
+   structure to the R10 right rail (44px ball, name, % pill, five icons).
+   The rail and the conversations area both render through it. */
+function __fx2PcCardsHtml(seed, q, type){
+  seed = (seed || []).slice().sort(function(a, b){ return b.pct - a.pct; });
+  var qq = String(q || '').toLowerCase();
+  if(qq){
+    seed = seed.filter(function(p){
+      if(p.alias.toLowerCase().indexOf(qq) >= 0) return true;
+      var words = p.nut.toLowerCase().split(/[^a-z0-9]+/);
+      for(var i = 0; i < words.length; i++){ if(words[i] && words[i].indexOf(qq) === 0) return true; }
+      return false;
+    });
+  }
+  if(type){
+    var keep = fx2PeopleWithTempo(type);
+    seed = seed.filter(function(p){ return !!keep[p.alias]; });
+  }
+  if(!seed.length) return '<p class="pc-rail-note">No one matches that search.</p>';
+  var html = '';
+  seed.forEach(function(p){
+    var init = p.alias.charAt(0).toUpperCase();
+    var col = nmColorFor(p.alias);
+    html += '<article class="pc-card" data-pc-alias="' + esc(p.alias) + '" style="--pc:' + col + '">'
+      + '<div class="pc-card-top"><button type="button" class="fc-pick-av" data-pc-orb="' + esc(p.alias) + '" aria-label="Open profile: ' + esc(p.alias) + '" style="--cc:' + col + '">' + esc(init) + '</button>'
+      + '<div class="pc-card-id"><span class="pc-id-line"><b>' + esc(p.alias) + '</b></span><span class="pc-pct-one" style="--pc:' + col + '">' + p.pct + '%</span></div></div>'
+      + '<div class="pc-card-acts">'
+      + '<button type="button" class="pc-act-btn" data-pc-info="' + esc(p.alias) + '" style="--ac:#ffffff" aria-label="About ' + esc(p.alias) + '" title="About ' + esc(p.alias) + '"><b>i</b></button>'
+      + '<button type="button" class="pc-act-btn" data-pc-act="chat" data-pc-alias="' + esc(p.alias) + '" style="--ac:#0f52ba" aria-label="DM ' + esc(p.alias) + '" title="DM ' + esc(p.alias) + '">\u270e</button>'
+      + '<button type="button" class="pc-act-btn" data-pc-act="mail" data-pc-alias="' + esc(p.alias) + '" style="--ac:#d4a017" aria-label="Mail ' + esc(p.alias) + '" title="Mail ' + esc(p.alias) + '">\u2709</button>'
+      + '<button type="button" class="pc-act-btn" data-pc-act="audio" data-pc-alias="' + esc(p.alias) + '" style="--ac:#07925f" aria-label="Audio ' + esc(p.alias) + '" title="Audio ' + esc(p.alias) + '">\u266a</button>'
+      + '<button type="button" class="pc-act-btn" data-pc-act="video" data-pc-alias="' + esc(p.alias) + '" style="--ac:#8e24aa" aria-label="Video ' + esc(p.alias) + '" title="Video ' + esc(p.alias) + '">\u25b6</button>'
+      + '</div></article>';
+  });
+  return html;
+}
+window.__fx2PcCardsHtml = function(seed, q, type){ return __fx2PcCardsHtml(seed, q, type); };
+function fx2LikeMindsHtml(){
+  return '<section class="fx2-conv-like" aria-label="Connect with Like Minds">'
+    + '<div class="hub-rail-people-head"><b>Connect with Like Minds</b></div>'
+    + '<input type="search" id="nmLikeMindsSearch" class="hub-rail-search" placeholder="Search people…" aria-label="Search people" autocomplete="off" value="' + esc(__fx2ConvQ || '') + '">'
+    + '<div class="hub-people-list fx2-conv-list" id="nmLikeMindsList">' + __fx2PcCardsHtml(window.PC_RAIL_SEED, __fx2ConvQ, fx2ListType()) + '</div>'
+    + '<p class="pc-rail-note fx2-conv-status" data-fx2-conv-status></p></section>';
+}
+function fx2RenderLikeMinds(){
+  var list = document.getElementById('nmLikeMindsList');
+  if(!list) return;
+  list.innerHTML = __fx2PcCardsHtml(window.PC_RAIL_SEED, __fx2ConvQ, fx2ListType());
+}
+/* Open the chat thread with this person (chat-tempo first, else their
+   latest thread) — or a fresh thread with them when there is none yet. */
+function fx2OpenThreadWith(alias){
+  nmTempo = 'chat'; nmSendMode = null; nmSyncToggle();
+  var c = null, any = null;
+  (nmConvs || []).forEach(function(x){
+    if(!x || x.with !== alias) return;
+    if(!any) any = x;
+    if(!c && x.last && x.last.tempo === 'chat') c = x;
+  });
+  if(!c) c = any;
+  nmSelectedPerson = alias;
+  nmSelectedConv = c ? c.threadId : null;
+  nmRefreshMsgView();
+  var ta = document.getElementById('nmMsgBody'); if(ta) ta.focus();
+  nmScrollReaderIntoView();
+}
+function fx2NotesGet(alias){
+  try { var all = JSON.parse(localStorage.getItem('nayanet.personNotes.v1') || '{}'); return all[alias] || ''; } catch(e){ return ''; }
+}
+function fx2NotesSet(alias, text){
+  try {
+    var all = JSON.parse(localStorage.getItem('nayanet.personNotes.v1') || '{}');
+    if(text) all[alias] = text; else delete all[alias];
+    localStorage.setItem('nayanet.personNotes.v1', JSON.stringify(all));
+    return true;
+  } catch(e){ return false; }
+}
+/* The full-screen contact card: the initial IS the button. Everything
+   about them — initial, what the system knows, match %, your notes. */
+function fx2OpenCard(alias){
+  alias = String(alias || '').toLowerCase();
+  if(!alias) return;
+  var person = null;
+  (window.PC_RAIL_SEED || []).forEach(function(p){ if(p.alias === alias) person = p; });
+  var col = nmColorFor(alias);
+  var init = alias.charAt(0).toUpperCase();
+  var pres = nmPresence(alias);
+  var nut = person ? person.nut : '';
+  var pct = person ? person.pct : null;
+  var role = '';
+  (nmMembers || []).forEach(function(m){ if(m.member_alias === alias) role = m.role || ''; });
+  var chats = 0, mails = 0;
+  (nmConvs || []).forEach(function(c){ if(!c || c.with !== alias) return; if(c.last && c.last.tempo === 'mail') mails++; else chats++; });
+  var notes = fx2NotesGet(alias);
+  var card = document.getElementById('fx2Card');
+  if(!card){
+    card = document.createElement('div');
+    card.id = 'fx2Card';
+    card.className = 'fx2-card';
+    card.setAttribute('role', 'dialog');
+    card.setAttribute('aria-label', 'Contact card');
+    document.body.appendChild(card);
+  }
+  card.innerHTML = '<div class="fx2-card-frame" style="--cc:' + col + '">'
+    + '<button type="button" class="fx2-card-x" data-fx2-card-close aria-label="Close">×</button>'
+    + '<div class="fx2-card-head"><span class="nm-orb fx2-card-orb" style="--cc:' + col + '">' + esc(init) + '</span>'
+    + '<div class="fx2-card-id"><div class="fx2-card-name">' + esc(nmName(alias)) + '</div>'
+    + '<div class="fx2-card-sub">' + esc(alias) + ' · ' + pres + '</div></div>'
+    + (pct === null ? '' : '<span class="pc-pct-one fx2-card-pct" style="--pc:' + col + '">' + pct + '%</span>') + '</div>'
+    + '<div class="fx2-card-sec"><div class="fx2-card-sec-t">WHAT THE SYSTEM KNOWS</div>'
+    + (nut ? '<p class="fx2-card-nut">' + esc(nut) + '</p>' : '')
+    + '<p class="fx2-card-facts">' + (role ? esc(role) + ' · ' : '') + chats + ' chat conversation' + (chats === 1 ? '' : 's') + ' · ' + mails + ' letter' + (mails === 1 ? '' : 's') + '</p></div>'
+    + '<div class="fx2-card-sec"><div class="fx2-card-sec-t">YOUR NOTES</div>'
+    + '<textarea class="fx2-card-notes" aria-label="Notes about ' + esc(nmName(alias)) + '" placeholder="Write a note about ' + esc(nmName(alias)) + '…">' + esc(notes) + '</textarea>'
+    + '<div class="fx2-card-note-row"><button type="button" class="fx2-card-save">Save note</button><span class="fx2-card-saved" data-fx2-card-saved></span></div></div>'
+    + '<button type="button" class="fx2-card-close" data-fx2-card-close>Close</button></div>';
+  card.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  card.querySelectorAll('[data-fx2-card-close]').forEach(function(b){ b.addEventListener('click', fx2CloseCard); });
+  var save = card.querySelector('.fx2-card-save');
+  var ta = card.querySelector('.fx2-card-notes');
+  var saved = card.querySelector('[data-fx2-card-saved]');
+  if(save && ta) save.addEventListener('click', function(){
+    var ok = fx2NotesSet(alias, ta.value);
+    if(saved) saved.textContent = ok ? 'Note saved.' : 'Could not save this note here.';
+  });
+  if(!window.__fx2EscBound){
+    window.__fx2EscBound = true;
+    document.addEventListener('keydown', function(ev){
+      if(ev.key === 'Escape'){ var c2 = document.getElementById('fx2Card'); if(c2 && c2.classList.contains('open')) fx2CloseCard(); }
+    });
+  }
+}
+function fx2CloseCard(){
+  var card = document.getElementById('fx2Card');
+  if(card) card.classList.remove('open');
+  document.body.style.overflow = '';
+}
+window.__fx2OpenCard = fx2OpenCard;
+/* Typing indicator: the other side is writing. Shown when a chat send
+   starts; the view refresh (or the 4s timer) clears it. */
+function fx2ShowTyping(){
+  var list = document.getElementById('nmMsgList'); if(!list) return;
+  if(list.querySelector('.fx2-typing')) return;
+  var alias = nmSelectedPerson || '';
+  var col = nmColorFor(alias);
+  var init = String(alias || '?').charAt(0).toUpperCase();
+  var d = document.createElement('div');
+  d.className = 'nm-bubble theirs fx2-typing';
+  d.setAttribute('style', '--cc:' + col);
+  d.innerHTML = '<div class="nm-bubble-meta"><span class="nm-orb fx2-bubble-orb" style="--cc:' + col + '">' + esc(init) + '</span><span>' + esc(nmName(alias)) + ' is writing</span><span class="fx2-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>';
+  list.appendChild(d);
+  list.scrollTop = list.scrollHeight;
+  if(fx2ShowTyping._t) clearTimeout(fx2ShowTyping._t);
+  fx2ShowTyping._t = setTimeout(fx2HideTyping, 4000);
+}
+function fx2HideTyping(){
+  if(fx2ShowTyping._t){ clearTimeout(fx2ShowTyping._t); fx2ShowTyping._t = null; }
+  var t = document.querySelector('.fx2-typing');
+  if(t && t.parentNode) t.parentNode.removeChild(t);
+}
 window.NayaMsgRebuild = {
   version: '2026-11-24-rebuild2-v3',
   refresh: nmRefreshMsgView, /* MM-TABS ADAPTER: lets the tabs re-render re-filter the conversations */
@@ -5196,7 +5432,7 @@ function renderDMs(){
     var b = document.createElement('button');
     b.type = 'button'; b.className = 'nm-side-dm';
     b.setAttribute('aria-label', 'Open messages with ' + name);
-    b.innerHTML = '<span class="nm-side-dm-orb" style="--pc:#8e24aa">' + init + '</span><span><b>' + name + '</b><small>' + snip.replace(/</g, '&lt;') + '</small></span>';
+    b.innerHTML = '<span class="nm-side-dm-orb" style="--pc:' + pcColorFor(name) + '">' + init + '</span><span><b>' + name + '</b><small>' + snip.replace(/</g, '&lt;') + '</small></span>';
     b.addEventListener('click', function(){ closeSides(); openConvByName(name); });
     host.appendChild(b);
   });
@@ -5261,7 +5497,7 @@ var PC_SEED = [
   {alias:'zoe', nut:'ACT \u2014 life. Seats out, loops closing, nothing sitting.', pct:92},
   {alias:'emesa', nut:'PRODUCT \u2014 beloved. The offer: what you touch, what you pay for.', pct:89},
   {alias:'astraea', nut:'LAW \u2014 the scales. The five gates, the Self-Check Law.', pct:90},
-  {alias:'mira', nut:'MEMORY \u2014 wonder. The Box: what is kept, what is distilled.', pct:87},
+  {alias:'mira', nut:'MEMORY \u2014 wonder. The Box: what is saved, what is distilled.', pct:87},
   {alias:'vera', nut:'VERIFY \u2014 truth. Nothing counts until I see it.', pct:93},
   {alias:'aurelia', nut:'GOVERN \u2014 golden. The scorecard, the direction, the decisions.', pct:86},
   {alias:'wrena', nut:'BUILD \u2014 the nest-builder. The Factory and the pages.', pct:95},
@@ -5286,33 +5522,9 @@ var railQ = '';
 function renderRailPeople(){
   var list = $('#hubPeopleList');
   if(!list) return;
-  var q = railQ.toLowerCase();
-  var seed = PC_SEED.slice().sort(function(a, b){ return b.pct - a.pct; });
-  if(q){
-    seed = seed.filter(function(p){
-      if(p.alias.toLowerCase().indexOf(q) >= 0) return true;
-      var words = p.nut.toLowerCase().split(/[^a-z0-9]+/);
-      for(var i = 0; i < words.length; i++){ if(words[i] && words[i].indexOf(q) === 0) return true; }
-      return false;
-    });
-  }
-  if(!seed.length){ list.innerHTML = '<p class="pc-rail-note">No one matches that search.</p>'; return; }
-  var html = '';
-  seed.forEach(function(p){
-    var init = p.alias.charAt(0).toUpperCase();
-    var col = pcColorFor(p.alias);
-    html += '<article class="pc-card" data-pc-alias="' + esc(p.alias) + '" style="--pc:' + col + '">'
-      + '<div class="pc-card-top"><button type="button" class="fc-pick-av" data-pc-orb="' + esc(p.alias) + '" aria-label="Open profile: ' + esc(p.alias) + '" style="--cc:' + col + '">' + esc(init) + '</button>'
-      + '<div class="pc-card-id"><span class="pc-id-line"><b>' + esc(p.alias) + '</b></span><span class="pc-pct-one" style="--pc:' + col + '">' + p.pct + '%</span></div></div>'
-      + '<div class="pc-card-acts">'
-      + '<button type="button" class="pc-act-btn" data-pc-info="' + esc(p.alias) + '" style="--ac:#ffffff" aria-label="About ' + esc(p.alias) + '" title="About ' + esc(p.alias) + '"><b>i</b></button>'
-      + '<button type="button" class="pc-act-btn" data-pc-act="chat" data-pc-alias="' + esc(p.alias) + '" style="--ac:#0f52ba" aria-label="DM ' + esc(p.alias) + '" title="DM ' + esc(p.alias) + '">\u270e</button>'
-      + '<button type="button" class="pc-act-btn" data-pc-act="mail" data-pc-alias="' + esc(p.alias) + '" style="--ac:#d4a017" aria-label="Mail ' + esc(p.alias) + '" title="Mail ' + esc(p.alias) + '">\u2709</button>'
-      + '<button type="button" class="pc-act-btn" data-pc-act="audio" data-pc-alias="' + esc(p.alias) + '" style="--ac:#07925f" aria-label="Audio ' + esc(p.alias) + '" title="Audio ' + esc(p.alias) + '">\u266a</button>'
-      + '<button type="button" class="pc-act-btn" data-pc-act="video" data-pc-alias="' + esc(p.alias) + '" style="--ac:#8e24aa" aria-label="Video ' + esc(p.alias) + '" title="Video ' + esc(p.alias) + '">\u25b6</button>'
-      + '</div></article>';
-  });
-  list.innerHTML = html;
+  /* FIX2-E — one builder for the harvested row (NM script): the right rail
+     and the conversations area render the same rows from the same code. */
+  list.innerHTML = window.__fx2PcCardsHtml(PC_SEED, railQ, null);
 }
 function buildRightRail(){
   var right = $('.naya-drawer-right');
@@ -5377,7 +5589,7 @@ function buildRightRail(){
     var person = null;
     PC_SEED.forEach(function(p){ if(p.alias === alias) person = p; });
     if(t.hasAttribute('data-pc-orb') || t.hasAttribute('data-pc-info')){
-      if(person) toast(person.alias + ' \u2014 ' + person.nut);
+      if(person && window.__fx2OpenCard) window.__fx2OpenCard(person.alias);
       return;
     }
     var act = t.getAttribute('data-pc-act');
@@ -5967,11 +6179,34 @@ else boot();
             var l = pills[i].querySelector('.sn-label') || pills[i];
             if(txt(l) === lb){ pills[i].click(); break; }
           }
+          if(window.__fx2SetListTempo) window.__fx2SetListTempo(lb);
           $all('.ov-sl-item', grid).forEach(function(x){ x.classList.toggle('on', x === b); });
           dd.hidden = true;
         });
         grid.appendChild(b);
       });
+      /* D-1 guard: the host tabs already yield a Chats pill once mounted
+         (it mounts async), and the labels loop builds it — only build the
+         manual fallback when the host yields no Chats, so there is exactly
+         one Chats item in either timing. */
+      if(labels.indexOf('Chats') === -1){
+      var ch = document.createElement('button');
+      ch.type = 'button'; ch.className = 'ov-sl-item'; ch.setAttribute('data-ov-list', 'Chats');
+      ch.style.setProperty('--tc', PALETTE['Chats'] || '#6d28d9');
+      ch.innerHTML = '<span class="ov-sl-dot" aria-hidden="true"></span><span>Chats</span>';
+      ch.addEventListener('click', function(){
+        var pills = $all('#mmTabsHost .smart-tab');
+        for(var i = 0; i < pills.length; i++){
+          var l = pills[i].querySelector('.sn-label') || pills[i];
+          if(txt(l) === 'All'){ pills[i].click(); break; }
+        }
+        if(window.__fx2SetListTempo) window.__fx2SetListTempo('Chats');
+        if(window.NayaMsgRebuild){ window.NayaMsgRebuild.setTempo('chat'); window.NayaMsgRebuild.refresh(); }
+        $all('.ov-sl-item', grid).forEach(function(x){ x.classList.toggle('on', x === ch); });
+        dd.hidden = true;
+      });
+      grid.appendChild(ch);
+      }
       var w = document.createElement('button');
       w.type = 'button'; w.className = 'ov-sl-item'; w.setAttribute('data-ov-list', 'Worlds');
       w.style.setProperty('--tc', '#0e7490');
@@ -6240,4 +6475,67 @@ else boot();
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', pass);
 })();
 </script>
+<style id="ov-fix2-20261125">
+/* ===== FIX2 (2026-11-25) =====
+   S1: demo/sample copy is OUR note, never on-screen — the strings are
+   removed at the source (in-place edits above); nothing here re-adds them.
+   D-1: the Chats dropdown item is built in ensureDropdown above.
+   O-1: the letterhead kicker was 13px — the 17px law, same as the v1 ROOMS fix.
+   O-2: the mail letter ran under the fixed toggle dock — the stage gets
+   200px of bottom clearance (dock top sits ~166px up on desktop) and the
+   letter body gets 96px inside its own 480px scroll pane, so the last
+   line can always scroll clear of the dock.
+   O-3: the desktop send row was center-aligned (balls y=514, Send y=507)
+   — tops align exactly now: flex-start, so the 44px balls and the taller
+   Send button share one top line.
+   S2: DONE in fix2-E — the conversations area IS the harvested Ask/Hub
+   right-rail Like Minds list (capture d112894b: Ask sidebar = Hub right
+   rail); the old conv-card list is out. */
+.ov-kicker{font-size:17px !important;}
+.nm-sendrow{align-items:flex-start !important;}
+.mail-stage{padding-bottom:calc(200px + env(safe-area-inset-bottom,0px)) !important;}
+.mail-stage .ml-read-body{padding-bottom:96px;}
+</style>
+
+<style id="ov-fix2e-20261125">
+/* ===== FIX2-E 2026-11-25 — the DM interface: scrollable Like Minds box,
+   who row, lit bubbles, typing indicator, full-screen contact card. ===== */
+.fx2-conv-like{display:flex;flex-direction:column;min-height:0;}
+.fx2-conv-list{overflow-y:auto;max-height:560px;padding-bottom:120px;box-sizing:border-box;scrollbar-width:thin;}
+@media (max-width:640px){.fx2-conv-list{max-height:460px;}}
+.fx2-conv-status{margin:8px 0 0;}
+.fx2-who{display:flex;align-items:center;gap:12px;margin:0 0 12px;}
+button.nm-orb{font-family:inherit;cursor:pointer;padding:0;}
+.fx2-who-orb{width:48px;height:48px;font-size:25px;}
+.fx2-who-name{font-size:19px;font-weight:700;color:#ffffff;font-family:Marcellus,Georgia,serif;}
+.fx2-who-status{font-size:17px;color:#ffffff;display:flex;align-items:center;gap:8px;}
+.fx2-live-dot{flex:none;width:10px;height:10px;border-radius:50%;background:var(--cc,#07925f);box-shadow:0 0 12px 2px var(--cc,#07925f);animation:fx2-pulse 2.2s ease-in-out infinite;}
+@keyframes fx2-pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.65;transform:scale(.8);}}
+.nm-bubble.mine,.nm-bubble.theirs{border-color:var(--cc,#ffffff) !important;box-shadow:0 12px 30px rgba(0,0,0,.6),0 0 24px -6px var(--cc,#ffffff),inset 0 1px 0 rgba(255,255,255,.14);}
+.fx2-bubble-orb{width:32px;height:32px;font-size:17px;flex:none;}
+.nm-bubble-meta{gap:10px;}
+.fx2-typing .fx2-dots{display:inline-flex;gap:5px;align-items:center;margin-left:4px;}
+.fx2-typing .fx2-dots i{width:8px;height:8px;border-radius:50%;background:#ffffff;display:inline-block;animation:fx2-dot 1.2s ease-in-out infinite;}
+.fx2-typing .fx2-dots i:nth-child(2){animation-delay:.2s;}
+.fx2-typing .fx2-dots i:nth-child(3){animation-delay:.4s;}
+@keyframes fx2-dot{0%,60%,100%{transform:translateY(0);opacity:.5;}30%{transform:translateY(-4px);opacity:1;}}
+.fx2-card{position:fixed;inset:0;z-index:9999;display:none;background:rgba(5,6,7,.97);overflow-y:auto;}
+.fx2-card.open{display:block;}
+.fx2-card-frame{max-width:720px;margin:0 auto;min-height:100vh;box-sizing:border-box;padding:40px 24px 120px;position:relative;border-left:1.5px solid var(--cc,#8e24aa);border-right:1.5px solid var(--cc,#8e24aa);box-shadow:0 0 40px -8px var(--cc,#8e24aa);}
+.fx2-card-x{position:absolute;top:16px;right:16px;width:44px;height:44px;border-radius:50%;background:#050607;border:1.5px solid rgba(255,255,255,.4);color:#ffffff;font-size:25px;cursor:pointer;}
+.fx2-card-head{display:flex;align-items:center;gap:16px;margin:24px 0;}
+.fx2-card-orb{width:96px;height:96px;font-size:48px;flex:none;}
+.fx2-card-name{font-size:25px;font-weight:700;color:#ffffff;font-family:Marcellus,Georgia,serif;}
+.fx2-card-sub{font-size:17px;color:#ffffff;margin-top:4px;}
+.fx2-card-pct{margin-left:auto;}
+.fx2-card-sec{margin:24px 0;}
+.fx2-card-sec-t{font-size:17px;letter-spacing:.24em;font-weight:800;color:#ffffff;margin-bottom:12px;}
+.fx2-card-nut,.fx2-card-facts{font-size:19px;line-height:1.6;color:#ffffff;font-family:Marcellus,Georgia,serif;margin:0 0 12px;}
+.fx2-card-notes{width:100%;box-sizing:border-box;min-height:120px;padding:16px;border-radius:16px;border:1.5px solid rgba(255,255,255,.35);background:#050607;color:#ffffff;font-size:17px;font-family:inherit;resize:vertical;}
+.fx2-card-note-row{display:flex;align-items:center;gap:12px;margin-top:12px;}
+.fx2-card-save{padding:12px 24px;border-radius:999px;background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);border:1.5px solid #0f52ba;color:#ffffff;font-size:17px;font-weight:700;cursor:pointer;box-shadow:0 0 20px -6px #0f52ba;}
+.fx2-card-saved{font-size:17px;color:#ffffff;}
+.fx2-card-close{display:block;margin:32px auto 0;padding:14px 36px;border-radius:999px;background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);border:1.5px solid rgba(255,255,255,.4);color:#ffffff;font-size:19px;font-weight:700;cursor:pointer;}
+@media (max-width:640px){.fx2-card-frame{padding:24px 16px 100px;}.fx2-card-orb{width:72px;height:72px;font-size:36px;}}
+</style>
 </body></html>
