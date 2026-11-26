@@ -3359,8 +3359,10 @@ current = 0; renderSlide(); show('cover');
   /* FIX1 — D5: the centred view badge collided with the view toggle at
      phone width (badge text cut, toggle half off-screen). The badge docks
      left, the toggle compacts — both fully on-screen. */
-  #walkViewBadge{left:12px;transform:none;max-width:44vw}
-  #walkViewToggle button{padding:8px 10px}
+  /* FIX6 — O1: badge max-width 44vw (171.6px) overlapped the view toggle at
+     390 (toggle starts x125.3). 30vw ends the badge at x129, clear of it. */
+  #walkViewBadge{left:12px;transform:none;max-width:30vw}
+  #walkViewToggle button{padding:8px 8px}
 }
 
 /* FIX3 — PANEL LAW (Shawn, 2026-11-26 voice call): every question board, same
@@ -3412,8 +3414,20 @@ current = 0; renderSlide(); show('cover');
 .walk-certwrap{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;gap:10px;overflow-y:auto}
 .walk-certwrap[hidden]{display:none}
 .walk-certwrap .walk-cert{flex:none;height:min(82svh,700px);min-height:0}
+/* FIX6 — D1: the delivered Close sat below the fold at both widths because
+   the cert lane (690px, flex:none) + topbar + 3-row actions overflowed the
+   frame. In delivered mode the frame itself scrolls and the actions bar
+   sticks to its bottom, so Close is always in first view; the cert lane
+   gets a fixed 750px height so the claim line clears the certificate's
+   own pinned footer band at phone width (O2); the delivered-only dead
+   buttons are hidden — Edit does nothing on this step, and the plain Close
+   skips the pricing pop-up — so one clear action remains. */
+.walk-frame.deliv-mode{overflow-y:auto;overflow-x:hidden}
+.walk-frame.deliv-mode .walk-actions{position:sticky;bottom:0;background:#050607;z-index:2}
 .walk-frame.deliv-mode .walk-certwrap{flex:none}
-.walk-frame.deliv-mode .walk-certwrap .walk-cert{height:min(82svh,690px)}
+.walk-frame.deliv-mode .walk-certwrap .walk-cert{height:750px}
+.walk-frame.deliv-mode #walkEdit{display:none}
+.walk-frame.deliv-mode #walkClose{display:none}
 .walk-certwrap .walk-cert iframe{height:100%}
 .walk-certnotes{flex:none;font-size:18px;line-height:1.5;text-align:center;color:#fff}
 .walk-delivwrap{flex:1 1 auto;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
@@ -3771,7 +3785,6 @@ var WALK = [
     updateBadge();
   }
   function applyType(t){
-    // FIX3 — CREATE WORLD LAW (Shawn, 2026-11-26 ~09:33 MST): the 27 happen ONCE.
     // A new world/business/space carries everything over, pre-filled — the
     // citizen replaces content, never starts fresh. Never called cloning.
     if (t !== pageType) {
@@ -3912,7 +3925,7 @@ var WALK = [
       return;
     }
     if (isDeliv) {
-      document.getElementById('walkQ').textContent = lang === 'en' ? 'Done — your certificate, delivered' : 'Done';
+      document.getElementById('walkQ').textContent = 'Done'; // FIX6 — D1: one line at 390 (was 3 lines, 93.8px topbar); ES already said 'Done'.
       document.getElementById('walkStep').textContent = T('stepOf') + ORDER.indexOf(102) + ' · ' + TYPE_LABEL[pageType];
       walkComplete = true; saveWalk();
       certWrap.innerHTML = certHTML();
