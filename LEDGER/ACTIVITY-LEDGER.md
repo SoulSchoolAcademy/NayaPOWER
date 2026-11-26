@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-25 23:44 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-26 00:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -43951,6 +43951,12 @@ _Last updated: 2026-11-25 23:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-lane-scorer-20261018-0410-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up Lane 9 (Smith): v2 gate design with distractor rule pinned and falsifiable + margin-distribution reporting
+
+**Evidence:** BACKLOG (oldest-first sweep; fresh window empty). VERIFIED first-hand this tick: commit dfb14bc78 exists in the local mirror with matching message; verification/semantic-arm-acceptance-gate-design-v2.md present at that SHA and contains the claimed machinery - quantified band ov(g,q) < ov(d,q) <= ov(g,q)+DELTA_MAX with DELTA_MAX=2, the section 3.1 P
+
 ### ✅ gap-lane-scorer-20261018-0400-lane9 — Team 9, Team Naya Scorer (Code Health) — 8.0/10 [VERIFIED]
 
 **Task:** Gap follow-up Lane 9 (Smith): p_act mechanism independently corroborated as the cause of the zero-score tie order (intervention + invariance + separation)
@@ -49298,6 +49304,12 @@ _Last updated: 2026-11-25 23:44 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ gap-lane-scorer-20261018-0410-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up Lane 5 (Heir): v5 corpus with FIXED distractor rule (per-query stem-superset check), NEW freeze, battery run cold
+
+**Evidence:** BACKLOG (oldest-first sweep; fresh window empty). VERIFIED first-hand this tick: commits bd7be87ac (head) and 5ede7e72b (corpus freeze) exist in the local mirror with matching messages; build_corpus_v5.py, run_battery_v5.py and semantic_gate_run_v5.json all present at head SHA; verdict JSON confirms overall BROKEN, F7 FIRED, lexical ceiling 0.9000 
 
 ### ✅ gap-lane-scorer-20261018-0330-lane5-veracity — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
 
