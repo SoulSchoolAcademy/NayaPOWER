@@ -3474,14 +3474,14 @@ function intelNutshellFix(){
   if(!g)return;
   intelLayoutClasses();
   if(!intelPhone())return;
-  function expand(slot,full){
+  function expand(slot,full,lh){
     var host=document.getElementById(slot==='A'?'slideBoardsA':slot==='B'?'slideBoardsB':'slideTextCenter');
     if(!host)return;
     var body=host.querySelector('.ib-layer-body');if(!body)return;
     var p=body.querySelector('p');if(!p)return;
     var key=current+'-'+slot;
     p.textContent=full;
-    p.style.fontSize='18px';p.style.lineHeight='1.5';
+    p.style.fontSize='18px';p.style.lineHeight=lh||'1.5';
     var marker=body.querySelector('.more-behind');if(marker)marker.remove();
     if(typeof CONTINUED!=='undefined'&&CONTINUED[key]!==undefined){delete CONTINUED[key];}
     if(typeof BEHIND!=='undefined'&&BEHIND[current]){BEHIND[current]=BEHIND[current].filter(function(L){return L.cont!==slot;});}
@@ -3492,8 +3492,61 @@ function intelNutshellFix(){
     var gg=GROUPS[current];
     return slot==='B'?gg.b:gg.a;
   }
-  if(g.kind==='nut')expand('A',fullFor('A'));
-  else if(g.kind==='plain'||g.kind==='means')expand('C',fullFor('C'));
+  if(g.kind==='nut')expand('A',fullFor('A'),'1.5');
+  else if(g.kind==='plain'||g.kind==='means')expand('C',fullFor('C'),'1.4');
+  intelTrimToFit();
+}
+/* FIX1 D3a follow-on: the 18px floor makes some phone boards overflow — the
+   board body is justify-content:center, so overflow exits at the TOP and the
+   title's first line clips (cover B at short height: 194px of stack in a
+   178px body). After every fit, trim the truncatable <p> of any board whose
+   body still overflows, until it fits — the dropped words join the rest
+   behind the N, so nothing is lost. The nutshell panels (slide-1 A, the
+   strip C) are NEVER trimmed: their full text is the D2 deliverable. */
+function intelTrimToFit(){
+  if(!intelPhone())return;
+  if(typeof END_MODE!=='undefined'&&END_MODE)return;
+  var g=(typeof GROUPS!=='undefined')?GROUPS[current]:null;
+  if(!g)return;
+  var skip={};
+  if(g.kind==='nut')skip['A']=true;
+  if(g.kind==='plain'||g.kind==='means')skip['C']=true;
+  ['A','B','C'].forEach(function(slot){
+    if(skip[slot])return;
+    var host=document.getElementById(slot==='A'?'slideBoardsA':slot==='B'?'slideBoardsB':'slideTextCenter');
+    if(!host||host.hidden||getComputedStyle(host).display==='none')return;
+    var body=host.querySelector('.ib-layer-body');if(!body)return;
+    var p=body.querySelector('p');if(!p)return;
+    var key=current+'-'+slot;
+    function over(){return body.scrollHeight>body.clientHeight+1;}
+    if(!over())return;
+    var words=String(p.textContent).replace(/…/g,'').replace(/s+$/,'').split(/s+/).filter(Boolean);
+    if(!words.length)return;
+    function setText(wds){
+      var t=wds.join(' ');
+      if(/[.!?]$/.test(t))p.textContent=t;
+      else p.textContent=t.replace(/[,:;—]$/,'')+'…';
+    }
+    var lo=1,hi=words.length,best=0;
+    while(lo<=hi){var mid=Math.floor((lo+hi)/2);setText(words.slice(0,mid));if(!over()){best=mid;lo=mid+1;}else hi=mid-1;}
+    if(best<1)best=1;
+    var kept=words.slice(0,best),dropped=words.slice(best);
+    setText(kept);
+    if(dropped.length){
+      var add=dropped.join(' ');
+      if(typeof CONTINUED!=='undefined'){CONTINUED[key]=add+(CONTINUED[key]?' '+CONTINUED[key]:'');}
+      if(typeof BEHIND!=='undefined'&&BEHIND[current]){
+        var e=null;
+        for(var i=0;i<BEHIND[current].length;i++){if(BEHIND[current][i].cont===slot)e=BEHIND[current][i];}
+        if(e)e.text=add+(e.text?' '+e.text:'');
+        else BEHIND[current].push({kind:'text',text:add,cont:slot});
+      }
+    }
+    if(over()){
+      var mk=body.querySelector('.more-behind');
+      if(mk)mk.remove();
+    }
+  });
 }
 /* Day tint: one rim colour per day on the slide boards (FIX1 D3d: Nov 27 takes
    its weekday ruby #c62828 per Design Laws §3.3 — the gold was the base
