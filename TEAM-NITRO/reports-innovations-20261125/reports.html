@@ -1499,6 +1499,70 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 #depthView .rp-cal-link{text-align:center;margin-top:12px}
 #depthView .rp-cal-link a{color:#fff!important;text-decoration:underline;font-size:18px!important;line-height:1.6}
 </style>
+<style id="reports-fix2-20261126">
+/* REPORTS FIX2 — 2026-11-26. (a)–(g) only; the frame CSS is untouched. */
+/* (a) COVER TAG, phone width (fix1 D1-visual): the 26-char tag at 10px + .34em
+   tracking wrapped to two lines and clipped under the fixed hamburger in the
+   settled state at 390. At phone width: tighter tracking (.08em / .10em),
+   no wrap, and the top row starts 68px in so it clears the 52px hamburger at
+   12,12. Full text kept — "DAILY INTELLIGENCE REPORTS" is not shortened — and
+   the size stays the frame's 10px, so this fix adds ZERO new laws violations. */
+@media (max-width:640px){
+  #screen-cover .pm-top{padding:12px 12px 0 68px!important;flex-wrap:nowrap!important;gap:8px}
+  #screen-cover .np-tag{letter-spacing:.08em!important;white-space:nowrap!important}
+  #screen-cover .deck-status{letter-spacing:.10em!important;white-space:nowrap!important}
+}
+/* (b) MIDDLE TEXT BIGGER — Shawn's eye: "the text is too small, you can't barely
+   read it in the middle." Slide body 18px -> 20px, depth body 18px -> 19px.
+   Floor held: nothing below 18px anywhere in these rules. */
+#screen-slide .ib-layer p{font-size:20px!important;line-height:1.6}
+#screen-slide .ib-layer .b-script{font-size:20px!important}
+#depthView .ib-layer p{font-size:19px!important}
+#depthView .ib-layer .b-script{font-size:20px!important}
+/* (c) WEEK BAR — across the top of the slide screen. Seven obsidian day cards in
+   one row (scrolls sideways at phone width); each card's rim + glow is its day's
+   LOCKED weekday colour (laws §3.3); day name small caps in the day colour
+   (§2.2 carve-out: a label may take its board's own deep colour); date bold
+   white; pill READ or dimmed AWAITING REPORT. */
+#rpWeekBar{flex:0 0 auto;width:100%;padding:10px 16px 6px;background:#050607;border-bottom:1px solid rgba(255,255,255,.14)}
+.rp-week-head{font-family:Marcellus,serif;font-size:19px;letter-spacing:.14em;color:#fff;text-align:center;margin:2px 0 8px}
+.rp-week-row{display:flex;gap:12px;overflow-x:auto;padding:4px 4px 12px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.rp-day{flex:0 0 168px;scroll-snap-align:start;background:linear-gradient(135deg,#17171f,#050607);border:2px solid var(--dc);border-radius:18px;padding:16px 12px;text-align:center;box-shadow:0 10px 24px rgba(0,0,0,.55),0 0 18px -4px var(--dc);cursor:pointer;color:#fff;font-family:Marcellus,serif;transition:transform .3s ease,box-shadow .3s ease}
+.rp-day:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(0,0,0,.6),0 0 28px -2px var(--dc)}
+.rp-day--active{box-shadow:0 10px 24px rgba(0,0,0,.55),0 0 30px 2px var(--dc)}
+.rp-day--await{opacity:.55;cursor:default}
+.rp-day--await:hover{transform:none;box-shadow:0 10px 24px rgba(0,0,0,.55),0 0 18px -4px var(--dc)}
+.rp-day-name{display:block;font-size:17px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--dc)}
+.rp-day-date{display:block;font-size:25px;font-weight:700;color:#fff;line-height:1.2;margin:4px 0}
+.rp-day-sub{display:block;font-size:17px;line-height:1.4;color:#fff}
+.rp-day-pill{display:inline-block;margin-top:12px;font-size:18px;color:#fff;border:2px solid var(--dc);border-radius:999px;padding:8px 16px;box-shadow:0 0 14px -2px var(--dc)}
+.rp-day--await .rp-day-pill{border-color:rgba(255,255,255,.35);box-shadow:none}
+/* (d) SMART-NOTES LIST, CENTRED — the Nov 24 notes panel in the depth view
+   (the day's smart-notes list) is centred: panel, lines, and buttons. */
+#rpNotesPanel{text-align:center!important}
+#rpNotesPanel p{text-align:center!important}
+#rpNotesPanel .naya-btn{display:inline-block!important;margin:6px auto!important}
+/* (f) NINE-AREA BOARDS — the report's nine areas, 1–3 then 4–6 then 7–9 down
+   the page, inside the slide's scroll. Each board is a real object (obsidian,
+   rim + glow in the day's colour, digit tile for its number) and a button:
+   tap it and its deep dive opens. The full section text is in the board, so
+   scrolling down reads the whole report in order. */
+#rpNine{flex:0 0 auto;width:100%;margin-top:24px}
+.rp-nine-head{font-family:Marcellus,serif;font-size:25px;color:#fff;text-align:center;margin:8px 0 4px}
+.rp-nine-sub{font-size:19px;line-height:1.5;color:#fff;text-align:center;margin:0 0 20px}
+.rp-nine-empty{font-size:19px;color:#fff;text-align:center}
+.rp-trio-head{font-family:Marcellus,serif;font-size:19px;font-weight:700;letter-spacing:.18em;color:var(--dayc,#8e24aa);text-align:center;margin:24px 0 12px}
+.rp-nine-board{display:block;background:linear-gradient(135deg,#17171f,#050607);border:2px solid var(--dayc,#8e24aa);border-radius:20px;padding:24px 20px;margin:0 0 16px;text-align:center;box-shadow:0 14px 30px rgba(0,0,0,.56),0 0 26px -6px var(--dayc,#8e24aa);cursor:pointer;transition:transform .3s ease,box-shadow .3s ease}
+.rp-nine-board:hover{transform:translateY(-2px);box-shadow:0 18px 34px rgba(0,0,0,.6),0 0 36px -4px var(--dayc,#8e24aa)}
+.rp-nine-num{width:48px;height:48px;margin:0 auto 12px;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#3d3d4e,#050607 75%);border:2px solid var(--dayc,#8e24aa);border-radius:14px;box-shadow:0 6px 16px rgba(0,0,0,.6),0 0 14px -2px var(--dayc,#8e24aa);font-size:25px;font-weight:700;color:#fff}
+.rp-nine-board h3{font-family:Marcellus,serif;font-size:20px;line-height:1.35;color:#fff;text-align:center;margin:0 0 10px}
+.rp-nine-board p{font-size:19px;line-height:1.6;color:#fff;text-align:center;margin:0 0 12px}
+.rp-nine-cta{display:inline-block;font-size:18px;color:#fff;border:2px solid var(--dayc,#8e24aa);border-radius:999px;padding:8px 18px;box-shadow:0 0 14px -2px var(--dayc,#8e24aa)}
+/* (g) PER-DAY THEMING — the day's boards take the day's LOCKED weekday colour
+   (laws §3.3, set as --dayc on #screen-slide by the fix2 script). The frame
+   stays the frame: chrome, cover, navigation, and the depth view are untouched. */
+#screen-slide .slide-boards .ib-layer{--lc:var(--dayc,#8e24aa)!important}
+</style>
 </head>
 <body>
 <div class="royal-frame" aria-hidden="true"><div class="rf-et top"></div><div class="rf-es left"></div><div class="rf-es right"></div><div class="rf-rim"></div><div class="rf-corner tl"></div><div class="rf-corner tr"></div><div class="rf-corner bl"></div><div class="rf-corner br"></div><div class="rf-n top"></div></div>
@@ -1545,6 +1609,7 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 
     <!-- ======= THREE 9:16 BOARDS — text board (Board A) · image · text board (Board B) ======= -->
     <section class="screen" id="screen-slide">
+      <div id="rpWeekBar" aria-label="This week — pick a day"><div class="rp-week-head">THIS WEEK &middot; NOV 22 &ndash; NOV 28</div><div class="rp-week-row" id="rpWeekRow"><button type="button" class="rp-day" style="--dc:#8e24aa" data-date="2026-11-22" data-slide="2" aria-label="Sunday, November 22 — read this day’s report"><span class="rp-day-name">Sunday</span><span class="rp-day-date">22</span><span class="rp-day-sub">Daily Intelligence Briefing</span><span class="rp-day-pill">READ &rarr;</span></button><button type="button" class="rp-day" style="--dc:#c2410c" data-date="2026-11-23" data-slide="1" aria-label="Monday, November 23 — read this day’s report"><span class="rp-day-name">Monday</span><span class="rp-day-date">23</span><span class="rp-day-sub">Daily Intelligence Briefing</span><span class="rp-day-pill">READ &rarr;</span></button><button type="button" class="rp-day" style="--dc:#d4a017" data-date="2026-11-24" data-slide="0" aria-label="Tuesday, November 24 — read this day’s report"><span class="rp-day-name">Tuesday</span><span class="rp-day-date">24</span><span class="rp-day-sub">Daily Intelligence Briefing</span><span class="rp-day-pill">READ &rarr;</span></button><button type="button" class="rp-day rp-day--await" style="--dc:#0f52ba" data-date="2026-11-25" disabled aria-label="Wednesday, November 25 — no report yet"><span class="rp-day-name">Wednesday</span><span class="rp-day-date">25</span><span class="rp-day-sub">Daily Intelligence Briefing</span><span class="rp-day-pill">AWAITING REPORT</span></button><button type="button" class="rp-day rp-day--await" style="--dc:#07925f" data-date="2026-11-26" disabled aria-label="Thursday, November 26 — no report yet"><span class="rp-day-name">Thursday</span><span class="rp-day-date">26</span><span class="rp-day-sub">Daily Intelligence Briefing</span><span class="rp-day-pill">AWAITING REPORT</span></button><button type="button" class="rp-day rp-day--await" style="--dc:#c62828" data-date="2026-11-27" disabled aria-label="Friday, November 27 — no report yet"><span class="rp-day-name">Friday</span><span class="rp-day-date">27</span><span class="rp-day-sub">Daily Intelligence Briefing</span><span class="rp-day-pill">AWAITING REPORT</span></button><button type="button" class="rp-day rp-day--await" style="--dc:#3f51b5" data-date="2026-11-28" disabled aria-label="Saturday, November 28 — no report yet"><span class="rp-day-name">Saturday</span><span class="rp-day-date">28</span><span class="rp-day-sub">Daily Intelligence Briefing</span><span class="rp-day-pill">AWAITING REPORT</span></button></div></div>
       <div class="panel-body">
         <div class="showcase">
           <section class="promax slide-deck intel-board" aria-label="Slide showcase">
@@ -1570,6 +1635,7 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
               <div class="slide-boards" id="slideBoardsB"></div>
             </div>
           </section>
+          <div id="rpNine" aria-label="The nine areas of this report"></div>
         </div>
       </div>
       <div class="floatnav">
@@ -3344,6 +3410,111 @@ current = 0; renderSlide(); show('cover');
       } catch (e) { /* viewer buttons are additive; a failure here must never break the depth view */ }
     };
   }
+})();
+</script>
+<script>
+/* REPORTS FIX2-20261126 — (c) week bar taps + active day, (f) nine-area boards,
+   (g) per-day theming. (a) is CSS-only, (b) is CSS-only, (d) is CSS-only,
+   (e) the note viewer is untouched — same .innov-pop frame, verified by probe. */
+(function(){
+  /* (g) LOCKED weekday colours, laws §3.3 — Sun..Sat. Hexes from §3.1, never a screenshot. */
+  var DAYC = { 0:'#8e24aa', 1:'#c2410c', 2:'#d4a017', 3:'#0f52ba', 4:'#07925f', 5:'#c62828', 6:'#3f51b5' };
+  function dayColor(dateStr){
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(dateStr || '')) return '#8e24aa';
+    return DAYC[new Date(dateStr + 'T12:00:00Z').getUTCDay()];
+  }
+  /* (f) THE NINE AREAS: the nine sections under THE DISTILLATION CORE — the top 10
+     most valuable / useful / helpful / enlightening / memorable / important / wisest,
+     the best of the best, and what it is saying in the simplest words. Days that were
+     not filed with a distillation core show their first nine substantive sections
+     instead (About-shape / full-report / calendar-link sections never count).
+     Nothing is invented: a day with fewer than nine sections shows what it filed. */
+  function nineIdx(boardIdx){
+    var g = GROUPS[boardIdx]; if (!g) return [];
+    var heads = g.d.map(function(x){ return x[0]; });
+    var core = -1;
+    for (var i = 0; i < heads.length; i++) { if (/^THE DISTILLATION CORE/i.test(heads[i])) { core = i; break; } }
+    var idx = [];
+    if (core >= 0) { for (var k = core + 1; k < heads.length && idx.length < 9; k++) idx.push(k); return idx; }
+    for (var j = 0; j < heads.length && idx.length < 9; j++) {
+      if (!/About this report|The full report|See this day in the Calendar/i.test(heads[j])) idx.push(j);
+    }
+    return idx;
+  }
+  function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  /* Depth layers interleave one image slot after each of the first N text sections
+     (depthSteps: dtext k, then dimg k when k < DEPTH_IMGS[board].length) — so the
+     deep dive for section k lives at layer k + min(k, imageCount), not at k. */
+  function layerFor(boardIdx, k){
+    var n = 0;
+    try { var im = (typeof DEPTH_IMGS !== 'undefined' && DEPTH_IMGS[boardIdx]) ? DEPTH_IMGS[boardIdx].length : 0; n = Math.min(k, im); } catch (e) {}
+    return k + n;
+  }
+  function renderNine(){
+    var host = document.getElementById('rpNine'); if (!host) return;
+    var g = GROUPS[current]; if (!g) { host.innerHTML = ''; return; }
+    var idx = nineIdx(current);
+    var meta = (typeof REPORTS_META !== 'undefined') ? REPORTS_META[current] : null;
+    var label = (meta && meta.date && meta.date !== '2026-W40') ? ' — ' + meta.date : '';
+    var h = '<div class="rp-nine-head">The nine areas' + esc(label) + '</div>'
+      + '<div class="rp-nine-sub">Read them down the page, 1&ndash;3, then 4&ndash;6, then 7&ndash;9 &mdash; or tap any board to open its deep dive.</div>';
+    if (!idx.length) { h += '<p class="rp-nine-empty">This day filed no sections to list &mdash; nothing invented.</p>'; host.innerHTML = h; return; }
+    for (var t = 0; t < 3; t++) {
+      var trio = idx.slice(t * 3, t * 3 + 3); if (!trio.length) break;
+      h += '<div class="rp-trio"><div class="rp-trio-head">' + (t * 3 + 1) + ' &ndash; ' + (t * 3 + trio.length) + '</div>';
+      trio.forEach(function(k, j){
+        var n = t * 3 + j + 1, sec = g.d[k];
+        h += '<article class="rp-nine-board" role="button" tabindex="0" data-layer="' + layerFor(current, k) + '" aria-label="Area ' + n + ': ' + esc(sec[0]) + ' &mdash; open its deep dive">'
+          + '<div class="rp-nine-num">' + n + '</div>'
+          + '<h3>' + esc(sec[0]) + '</h3>'
+          + '<p>' + esc(sec[1] || '') + '</p>'
+          + '<span class="rp-nine-cta">Read the deep dive &rarr;</span></article>';
+      });
+      h += '</div>';
+    }
+    host.innerHTML = h;
+  }
+  function rpAfterSlide(){
+    var meta = (typeof REPORTS_META !== 'undefined') ? REPORTS_META[current] : null;
+    var dc = dayColor(meta ? meta.date : '');
+    var ss = document.getElementById('screen-slide'); if (ss) ss.style.setProperty('--dayc', dc);
+    var dv = document.getElementById('depthView'); if (dv) dv.style.setProperty('--dayc', dc);
+    renderNine();
+    var row = document.getElementById('rpWeekRow');
+    if (row) {
+      var cards = row.querySelectorAll('.rp-day');
+      for (var i = 0; i < cards.length; i++) cards[i].classList.toggle('rp-day--active', !!meta && cards[i].getAttribute('data-date') === meta.date);
+      var act = row.querySelector('.rp-day--active');
+      if (act && act.scrollIntoView) act.scrollIntoView({ behavior: 'auto', inline: 'center', block: 'nearest' });
+    }
+  }
+  /* (c) Week-bar taps: a day with a report jumps to it; AWAITING REPORT days are
+     disabled buttons and never navigate. */
+  document.getElementById('rpWeekRow').addEventListener('click', function(e){
+    var b = e.target.closest ? e.target.closest('.rp-day') : null;
+    if (!b || b.disabled) return;
+    var s = b.getAttribute('data-slide');
+    if (s !== null && s !== '') goSlide(parseInt(s, 10));
+  });
+  /* (f) Nine-board taps: click in, or keyboard Enter/Space — the deep dive opens
+     at that area's own layer. The boards stay in the scroll, so the same nine
+     also read straight down the page. */
+  document.getElementById('rpNine').addEventListener('click', function(e){
+    var b = e.target.closest ? e.target.closest('.rp-nine-board') : null;
+    if (!b) return;
+    if (typeof openDepthAt === 'function') openDepthAt(current, parseInt(b.getAttribute('data-layer'), 10));
+  });
+  document.getElementById('rpNine').addEventListener('keydown', function(e){
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    var b = e.target.closest ? e.target.closest('.rp-nine-board') : null;
+    if (!b) return;
+    e.preventDefault();
+    if (typeof openDepthAt === 'function') openDepthAt(current, parseInt(b.getAttribute('data-layer'), 10));
+  });
+  /* Wrap renderSlide (same pattern as fix1's renderDepth wrap) and paint once now —
+     the boot render runs before this script, so the first slide needs its nine. */
+  if (typeof renderSlide === 'function') { var __rpRS = renderSlide; renderSlide = function(){ __rpRS(); rpAfterSlide(); }; }
+  rpAfterSlide();
 })();
 </script>
 </body>
