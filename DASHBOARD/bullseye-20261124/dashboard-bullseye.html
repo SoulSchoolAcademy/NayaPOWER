@@ -21872,18 +21872,77 @@ window.ldLayoutNodes = ldLayoutNodes;
       if (nm) nm.textContent = cur.name;
       if (sc) sc.textContent = cur.scope;
       if (st){
-        var h = '';
-        /* FIXB 2026-11-07 (Fix 5): the featured score is '—' while the
-           ledger has not answered (loading/stale spine) — never the orb
-           total standing in as the score. Link stats are that link's own
-           counts, not the score, so they are untouched. */
+        /* INNER-FRAMES FIX 4 2026-11-25 (R2): update the stats IN PLACE.
+           The old code rebuilt the stats as one HTML string and assigned
+           it to the container, which DETACHED every .os-sl-stat node on
+           every refresh -- a human holding the 200 digit felt the press
+           die under their finger (checker-6: node detached between press
+           t100-t200). Now the existing .os-sl-stat nodes are kept and
+           only their number/label text is written (textContent). The cell
+           node stays the same DOM node across refreshes, so :active and
+           the press survive a re-render. Values still update; only the
+           node identity survives. If the cell count ever differs from
+           cur.stats (first render, or a future stats shape), the cells
+           are built node by node with createElement -- still no container
+           assignment anywhere in this function. */
         var _sp5 = window._osSpine, _spLoading = !!(_sp5 && (_sp5.loading || _sp5.stale));
-        cur.stats.forEach(function(s){
-          var _n = s.n, _l = s.l;
-          if (_spLoading && s.k === 'score'){ _n = '—'; _l = s.l + ' — loading'; }
-          h += '<div class="os-sl-stat"><span class="os-sl-stat-n" data-derive="' + _esc(s.k || 'score') + '">' + _esc(_n) + '</span><span class="os-sl-stat-l">' + _esc(_l) + '</span>' + (s.why ? '<span class="os-sl-why">' + _esc(s.why) + '</span>' : '') + '</div>'; /* PASS 1 v6 (c): the featured number is a door — tap it, see what it is made of. */
-        });
-        st.innerHTML = h;
+        var _cells = st.querySelectorAll('.os-sl-stat');
+        if (_cells.length === cur.stats.length){
+          cur.stats.forEach(function(s, _i){
+            var _cell = _cells[_i];
+            var _n = s.n, _l = s.l;
+            if (_spLoading && s.k === 'score'){ _n = '—'; _l = s.l + ' — loading'; }
+            var _nEl = _cell.querySelector('.os-sl-stat-n');
+            var _lEl = _cell.querySelector('.os-sl-stat-l');
+            var _wEl = _cell.querySelector('.os-sl-why');
+            if (_nEl){
+              if (_nEl.getAttribute('data-derive') !== (s.k || 'score')){
+                /* The derivation key changed for this cell (e.g. the
+                   strongest orb changed): the old number span carries
+                   a stale tnTruth closure key, so swap ONLY the number
+                   span for a fresh one. The .os-sl-stat cell itself
+                   is NOT touched -- the press lives on the cell. The
+                   renderBoards tail re-wires the fresh span. */
+                var _fresh = document.createElement('span');
+                _fresh.className = 'os-sl-stat-n';
+                _fresh.setAttribute('data-derive', s.k || 'score');
+                _fresh.textContent = _n;
+                _nEl.parentNode.replaceChild(_fresh, _nEl);
+                _nEl = _fresh;
+              } else if (_nEl.textContent !== String(_n)){
+                _nEl.textContent = _n;
+              }
+              if (_nEl._tntWired) _nEl.setAttribute('aria-label', String(_n).trim() + '. Tap to see the math.');
+            }
+            if (_lEl && _lEl.textContent !== String(_l)) _lEl.textContent = _l;
+            if (s.why){
+              if (_wEl){ if (_wEl.textContent !== String(s.why)) _wEl.textContent = s.why; }
+              else { var _w = document.createElement('span'); _w.className = 'os-sl-why'; _w.textContent = s.why; _cell.appendChild(_w); }
+            } else if (_wEl){ _wEl.remove(); }
+          });
+        } else {
+          /* First render (empty container) or a future stats shape:
+             build the cells node by node -- still no container
+             assignment anywhere in this function. */
+          while (st.firstChild) st.removeChild(st.firstChild);
+          cur.stats.forEach(function(s){
+            var _n = s.n, _l = s.l;
+            if (_spLoading && s.k === 'score'){ _n = '—'; _l = s.l + ' — loading'; }
+            var _cell = document.createElement('div');
+            _cell.className = 'os-sl-stat';
+            var _nEl = document.createElement('span');
+            _nEl.className = 'os-sl-stat-n';
+            _nEl.setAttribute('data-derive', s.k || 'score');
+            _nEl.textContent = _n;
+            var _lEl = document.createElement('span');
+            _lEl.className = 'os-sl-stat-l';
+            _lEl.textContent = _l;
+            _cell.appendChild(_nEl);
+            _cell.appendChild(_lEl);
+            if (s.why){ var _wEl = document.createElement('span'); _wEl.className = 'os-sl-why'; _wEl.textContent = s.why; _cell.appendChild(_wEl); }
+            st.appendChild(_cell);
+          });
+        }
       }
     }catch(e){}
     /* HERO FIX 2026-11-09 (u): the network boards are the WORLD + PAGES only.
@@ -33073,5 +33132,25 @@ input:focus-visible{outline:2px solid #ffffff !important;outline-offset:2px !imp
 @media (max-width:900px){#os-feat-stats .os-sl-stat:first-child{order:-1 !important;text-align:right !important;}}
 /* D4 -- wide desktop fills the frame. */
 @media (min-width:1440px){.os-feed-board{max-width:1240px !important;}.os-data-area{max-width:1240px !important;}body.os-feed-open #os-feed-board > *:not(.os-feed-x){max-width:1240px !important;}.os-trend-board .os-week,.os-trend-board .os-week-days{max-width:1240px !important;}}
+</style>
+<style id="inner-frames-fix4-20261125">
+/* INNER-FRAMES FIX 4 2026-11-25 -- two fixes, nothing else.
+   R1 PRESS MISSES THE 250MS BAR (checker-6): every stable node reaches
+   scale(.97) + its own-colour 22px light while held, but arrival is
+   ~300-500ms, not ~100ms -- the :active transition is .1s on paper and
+   this heavy page delivers it late. The fix: transition:none on :active,
+   so scale(.97) + the light apply on mousedown with no transition to
+   lag. On release the base .3s ease transition returns and the button
+   eases back up over .3s. These two rules sit AFTER the fix3 block in
+   source order, same specificity, so they win over its
+   transition-duration:.1s on :active. The rest look is untouched --
+   no restatement, no recolour, no new layout (Design Laws section 5).
+   R2 STAT CELLS BREAK MID-HOLD: renderBoards() replaced the
+   #os-feat-stats .os-sl-stat nodes on every refresh. The fix is in
+   renderBoards itself (see the FIX 4 comment there): the stat cells
+   are now updated in place, textContent only -- the cell node stays
+   the same DOM node across refreshes. */
+button:active,a[href]:active,[data-derive]:active,.notif-seg:active,.os-sl-stat:active{transition:none !important;}
+#os-pts-toggle .os-pts-btn:active{transition:none !important;}
 </style>
 </body></html>
