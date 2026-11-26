@@ -4162,6 +4162,18 @@ try{ if(new URLSearchParams(location.search).get('new')==='project'){
 @media (max-width:640px){#sp-deck-nav .sp-deck-label{max-width:54vw}}
 .sp-fix3-tplline{font-size:17px;font-weight:800;color:#fff;margin:0 0 12px}
 .sp-fix3-tplline b{color:#d4a017}
+/* sp-fix3b */
+/* PI-FIX3b (1): hero is never the last element of frame 1 — its 180px
+   frame padding is void inside the hero rim. Only the last element of a
+   frame needs the clearance. */
+#pj-home.sp-deck-on>.gr-hero.sp-deck-frame.sp-on,#pj-project.sp-deck-on>.gr-hero.sp-deck-frame.sp-on{padding-bottom:0}
+/* PI-FIX3b (2): at phone width the two 17px pills leave ~94px for the
+   label — no cap fixes that. Wrap the nav: label full-width above the
+   pills, nothing truncated, 17px kept. Desktop keeps one row. */
+@media (max-width:640px){#sp-deck-nav{flex-wrap:wrap;row-gap:8px}#sp-deck-nav .sp-deck-label{order:-1;flex:1 1 100%;max-width:none}}
+/* PI-FIX3b (4): drawer buttons are width:100% + padding + border with no
+   border-box — exactly the 26px sideways overflow. */
+.naya-drawer-btn{box-sizing:border-box}
 </style>
 <script id="sp-fix3-js">
 /* PI-FIX3 — stage scroll is CSS above; this script wires template→questions,
@@ -4183,8 +4195,15 @@ document.querySelectorAll('.eco-bottombar a').forEach(function(a){
 });
 /* ── (b) Deck label: "Frame 3 of 21 — …" → "3 of 21 — …" ── */
 function shortLabel(){
-  var l=document.querySelector('#sp-deck-nav .sp-deck-label'); if(!l) return;
-  if(l.textContent.indexOf('Frame ')===0) l.textContent=l.textContent.slice(6);
+  var l=document.querySelector('#sp-deck-nav .sp-deck-label'); if(l) {
+    if(l.textContent.indexOf('Frame ')===0) l.textContent=l.textContent.slice(6); }
+  /* PI-FIX3b (3): a tap low in a frame (e.g. a kind chip) scrolls the
+     stage; the frame change never reset it, so the next frame arrived
+     with its top clipped (board -159, qhead -138 in probe). Reset on
+     every label change — i.e. every frame change. Scrolling inside a
+     frame never touches the label, so it is never reset mid-frame. */
+  var h=$('pj-home'), pr=$('pj-project');
+  if(h) h.scrollTop=0; if(pr) pr.scrollTop=0;
 }
 var lab=document.querySelector('#sp-deck-nav .sp-deck-label');
 if(lab) new MutationObserver(shortLabel).observe(lab,{childList:true,characterData:true,subtree:true});
