@@ -1,0 +1,163 @@
+/* ROUND 3 — THE VISUAL STORY, IN PLACE (Shawn's rulings, voice calls 2026-11-25
+   ~17:32-17:39 MST). Every N on the portal front page (the red N in the circle
+   where the ⓘ was, the black N bottom-left, the red N bottom-right) and "Read
+   the agreement" open the REAL collective agreement — the visual story
+   slideshow, entered DIRECTLY at its first content slide ("The Old Way") —
+   in place, inside the portal frame. NEVER the intro landing (the preview
+   page, ordered out), NEVER the Terms overlay alone, NEVER a pop-up below.
+   Closing (X, Esc, or the agree button on the last slide) returns to the
+   front page, to the name box. The story's slides, pictures and link answers
+   are harvested verbatim from the live agreement v25 (same bytes as R1/R2:
+   22,953,906 B, sha 2c88513f…); the words authority is the official v7
+   COLLECTIVE-AGREEMENT-OFFICIAL-20261115.md. No new font-size declarations:
+   the design-law counts must not move. */
+
+/* --- the circle N (replaces the ⓘ) --- */
+button.fp-circle-n{position:relative;width:56px;height:56px;border-radius:50%;
+  display:inline-grid;place-items:center;overflow:visible;background:#050507;
+  border:0;padding:0;cursor:pointer;
+  box-shadow:0 0 0 2px rgba(255,255,255,.35),0 0 18px rgba(255,45,70,.45),0 8px 18px rgba(0,0,0,.6);
+  transition:transform .25s cubic-bezier(.16,.84,.22,1),box-shadow .25s;
+  -webkit-tap-highlight-color:transparent}
+button.fp-circle-n img{width:100%;height:100%;border-radius:50%;object-fit:cover;
+  display:block;animation:eco-spin 90s linear infinite}
+button.fp-circle-n .ncorner-gloss{position:absolute;z-index:4;top:11%;left:15%;
+  width:36%;height:22%;border-radius:50%;pointer-events:none;transform:rotate(-24deg);
+  background:radial-gradient(ellipse at center,rgba(255,255,255,.6),rgba(255,255,255,0) 68%)}
+button.fp-circle-n:hover{transform:translateY(-3px) scale(1.08);
+  box-shadow:0 0 0 2px rgba(255,255,255,.6),0 0 28px rgba(198,40,40,.95),0 10px 22px rgba(0,0,0,.6)}
+button.fp-circle-n:active{transform:scale(.97)}
+
+/* --- the story overlay: a full in-place view, not a pop-up --- */
+#fpStory[hidden]{display:none}
+#fpStory{position:fixed;inset:0;z-index:9000;background:#02030a;color:#fff;
+  overflow:hidden;box-sizing:border-box;
+  font-family:inherit}
+.fp-story-frame{height:100svh;min-height:0;display:flex;flex-direction:column;
+  max-width:1100px;margin:0 auto;padding:16px 16px 12px;box-sizing:border-box}
+.fp-story-top{display:flex;align-items:center;gap:16px;justify-content:space-between}
+.fp-story-kicker{font-size:17px;letter-spacing:.18em;color:#fff;white-space:nowrap}
+.fp-story-station{font-family:Marcellus,Georgia,serif;font-size:25px;color:#fff;
+  text-align:center;flex:1;min-width:0}
+.fp-story-close{flex:none;width:44px;height:44px;border-radius:50%;cursor:pointer;
+  color:#fff;background:linear-gradient(180deg,#1b1b24,#050507);
+  border:2px solid #8e24aa;font-size:25px;line-height:1;
+  box-shadow:0 0 18px rgba(142,36,170,.45),0 8px 18px rgba(0,0,0,.6)}
+.fp-story-close:hover{transform:translateY(-2px) scale(1.06)}
+.fp-story-close:active{transform:scale(.97)}
+.fp-story-main{flex:1;display:flex;gap:24px;align-items:stretch;margin-top:16px;min-height:0}
+.fp-story-art{flex:1.55 1 0;margin:0;min-width:0;min-height:0;display:flex;flex-direction:column}
+.fp-story-art img{width:100%;height:100%;object-fit:contain;display:block;
+  border-radius:14px;background:#000;min-height:0}
+.fp-story-board{flex:1 1 0;min-width:280px;min-height:0;overflow-y:auto;display:flex;flex-direction:column;
+  border:2px solid rgba(244,239,255,.42);border-radius:18px;
+  background:linear-gradient(135deg,#17171f,#0a0a10);
+  box-shadow:0 14px 30px rgba(0,0,0,.56),0 0 34px -8px #f4efff;
+  padding:24px 22px;box-sizing:border-box;text-align:left}
+.fp-story-face{display:flex;flex-direction:column;align-items:center;gap:8px}
+.fp-story-face img{width:120px;height:120px;border-radius:50%;object-fit:cover;
+  display:block;border:2px solid rgba(255,255,255,.5);
+  box-shadow:0 8px 18px rgba(0,0,0,.6)}
+.fp-story-face b{font-family:Marcellus,Georgia,serif;font-size:19px;color:#fff;
+  font-weight:600;letter-spacing:.04em}
+.fp-story-title{font-family:Marcellus,Georgia,serif;font-size:25px;color:#fff;
+  margin:18px 0 0;text-align:left}
+.fp-story-text{font-size:17px;line-height:1.5;color:#fff;margin:12px 0 0}
+.fp-story-text strong{color:#fff}
+.fp-story-n{display:flex;justify-content:center;margin-top:auto;padding-top:18px}
+.fp-story-n img{width:52px;height:52px;border-radius:50%;object-fit:cover;display:block}
+.fp-story-welcome{font-family:Marcellus,Georgia,serif;font-size:19px;color:#fff;
+  margin:18px 0 0}
+.fp-story-welcome b{color:#d4a017}
+/* end-slide franchise text box — back on the slide, in the words of what the
+   button itself says (land secured, building complete, business operational,
+   brand established — move in and own it). */
+.fp-story-franchise{font-size:17px;line-height:1.5;color:#fff;margin:18px 0 0;
+  border:1.5px solid rgba(212,160,23,.6);border-radius:14px;padding:14px 16px;
+  background:rgba(212,160,23,.08);box-sizing:border-box}
+.fp-story-franchise b{color:#d4a017}
+/* the agree button: at the VERY BOTTOM, just above the < > arrows, flashing
+   nice (his word wins over the no-pulse habit — slow 2 s glow pulse, this
+   button only). Official wording from the v7 words source. */
+.fp-story-agree-wrap{flex:none;margin-top:20px;text-align:center}
+.fp-story-agree{position:relative;overflow:hidden;display:inline-block;
+  margin:0 auto;padding:16px 46px;border-radius:999px;cursor:pointer;
+  font-family:inherit;font-size:19px;font-weight:800;letter-spacing:.05em;
+  color:#fff;background:linear-gradient(180deg,#1b1b24,#050507);
+  border:2px solid #07925f;
+  text-shadow:0 1px 2px rgba(0,0,0,.8);
+  box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),
+    0 0 24px -4px #07925f,0 10px 22px rgba(0,0,0,.55);
+  animation:fp-agree-flash 2s ease-in-out infinite}
+@keyframes fp-agree-flash{
+  0%,100%{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),
+    0 0 18px -4px #07925f,0 10px 22px rgba(0,0,0,.55)}
+  50%{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),
+    0 0 42px 0 #07925f,0 10px 22px rgba(0,0,0,.55)}}
+.fp-story-agree:hover{transform:translateY(-2px)}
+.fp-story-agree:active{transform:scale(.97)}
+.fp-story-nav{flex:none;display:flex;align-items:center;justify-content:center;gap:16px;
+  margin-top:16px}
+.fp-story-navbtn{width:44px;height:44px;min-height:44px;border-radius:50%;
+  cursor:pointer;color:#fff;background:linear-gradient(180deg,#1b1b24,#050507);
+  border:2px solid #8e24aa;font-size:25px;line-height:1;
+  box-shadow:0 0 14px rgba(142,36,170,.35),0 8px 18px rgba(0,0,0,.6)}
+.fp-story-navbtn:hover:not(:disabled){transform:translateY(-2px) scale(1.06)}
+.fp-story-navbtn:active:not(:disabled){transform:scale(.97)}
+.fp-story-navbtn:disabled{opacity:.35;cursor:default}
+.fp-story-count{display:none}
+/* ROUND 3 follow-up (confirmed live format, 2026-11-25 17:42-17:55 MST):
+   NO slide counter or progress dots on the story — the count span stays in
+   the DOM only so the nav stays centred; it is never shown. */
+/* the eight links: a bar across the bottom, just below the page — small,
+   there if they want to click, not the main content. */
+.fp-story-links[hidden]{display:none}
+.fp-story-agree-wrap[hidden]{display:none}
+#fpStoryEnd[hidden]{display:none}
+.fp-story-links{flex:none;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 14px;
+  margin-top:16px;padding-top:12px;border-top:1px solid rgba(255,255,255,.18)}
+.fp-story-link{background:none;border:0;color:#fff;font-family:inherit;
+  font-size:17px;font-weight:700;text-decoration:underline;
+  text-underline-offset:3px;cursor:pointer;padding:6px 4px}
+/* link answers open in a frame (live behaviour) — the agreement itself is
+   NOT mixed with the promise/guarantee/constitution as full content. */
+.fp-story-final[hidden]{display:none}
+.fp-story-final{position:fixed;inset:0;z-index:9001;display:flex;
+  align-items:center;justify-content:center;background:rgba(2,3,10,.88);
+  padding:20px;box-sizing:border-box}
+.fp-story-final-frame{max-width:680px;max-height:86vh;overflow:auto;
+  background:#050507;border:1.5px solid rgba(142,36,170,.6);border-radius:20px;
+  padding:24px 26px;box-shadow:0 8px 24px rgba(0,0,0,.6),0 0 18px rgba(142,36,170,.25);
+  color:#fff;text-align:left;box-sizing:border-box}
+.fp-story-final-frame h2{font-family:Marcellus,Georgia,serif;font-size:25px;
+  margin:0 0 12px;text-align:center;color:#fff}
+.fp-story-final-body{white-space:pre-wrap;font-size:17px;line-height:1.6;color:#fff}
+.fp-story-final-close{display:block;margin:18px auto 0;padding:12px 28px;
+  border-radius:999px;cursor:pointer;font-family:inherit;font-size:17px;
+  font-weight:700;color:#fff;background:linear-gradient(180deg,#1b1b24,#050507);
+  border:2px solid #8e24aa}
+@media (max-width:900px){
+  .fp-story-main{flex-direction:column}
+  .fp-story-board{order:1}
+  .fp-story-art{order:2;flex:none}
+  .fp-story-art img{max-height:24svh}
+  .fp-story-face img{width:80px;height:80px}
+  .fp-story-kicker{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .fp-story-agree{animation:none}
+  button.fp-circle-n img{animation:none}
+}
+/* ROUND 4 (a) — desktop end slide: the board overflowed by 69px and the red
+   N orb at the bottom was 83% clipped at the board edge. On the LAST slide
+   only (fp-last, desktop only — the phone end slide is a HOLD item for
+   Shawn's eye), take the overflow out of the face + margins so the orb is
+   whole on arrival. Face 120->72 (-48), title/welcome/franchise margins
+   18->10 (-8 each), N padding 18->8 (-10): -82px against 69px overflow. */
+@media (min-width:901px){
+  #fpStory.fp-last .fp-story-face img{width:72px;height:72px}
+  #fpStory.fp-last .fp-story-title{margin-top:10px}
+  #fpStory.fp-last .fp-story-welcome{margin-top:10px}
+  #fpStory.fp-last .fp-story-franchise{margin-top:10px}
+  #fpStory.fp-last .fp-story-n{padding-top:8px}
+}
