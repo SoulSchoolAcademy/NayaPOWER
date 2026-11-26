@@ -3230,8 +3230,16 @@ current = 0; renderSlide(); show('cover');
      then (2) the input. Close + Enter lands the answer into the board on the spot.
      THE NAYA VIDEO ASSET DOES NOT EXIST YET: the slot names the owed asset
      (naya-walkthrough-video-9x16.mp4, 9:16, with audio) and shows NO stand-in
-     video and NO silent image. The same frame is the universal page creator:
-     it works for any page (About, Skills, Business, Space). -->
+     video and NO silent image. The same frame is the universal page creator.
+     NEW LAW (Shawn, 2026-11-25 ~18:54 MST) — THE 15 INPUTS ARE THE PAGE CREATOR:
+     the R2 CERTIFICATE sits INSIDE the 15-question flow (step 0 = the cover/entry,
+     step 16 = what the flow delivers); the 15 are the standard inputs that create
+     ANY page, parameterized by page type (personal / business / world) — same
+     frames, same inputs, fresh answers per page, answers landing into THAT page's
+     About + Skills boards. THROW-OUT ORDER (Shawn, ~18:52 MST): zero bytes from
+     the thrown-out old walkthrough build are in this
+     file — the build is fresh from the Innovations fix9 clone; the only
+     certificate referenced anywhere here is the R2 certificate below. -->
 <style>
 #walkFab{position:fixed;right:16px;bottom:16px;z-index:9998;background:#050607;color:#fff;border:2px solid #8e24aa;border-radius:999px;padding:14px 22px;font-size:19px;font-weight:700;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.7),0 0 24px rgba(142,36,170,.55)}
 #walkFab:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.7),0 0 34px rgba(142,36,170,.8)}
@@ -3239,7 +3247,11 @@ current = 0; renderSlide(); show('cover');
 #walkOverlay[hidden]{display:none}
 .walk-frame{width:min(1060px,96vw);max-height:94vh;overflow:auto;background:#050607;border:2px solid #8e24aa;border-radius:22px;box-shadow:0 30px 90px rgba(0,0,0,.8),0 0 44px rgba(142,36,170,.45);padding:24px;color:#fff}
 .walk-q{font-size:25px;line-height:1.25;text-align:center;margin:4px 0 4px;color:#fff}
-.walk-step{text-align:center;font-size:19px;color:#fff;margin:0 0 16px}
+.walk-step{text-align:center;font-size:19px;color:#fff;margin:0 0 12px}
+.walk-types{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:0 0 16px}
+.walk-type{background:#050607;color:#fff;border:2px solid rgba(255,255,255,.35);border-radius:999px;padding:10px 20px;font-size:18px;cursor:pointer}
+.walk-type.on{border-color:#8e24aa;box-shadow:0 0 18px rgba(142,36,170,.7)}
+.walk-type small{font-size:17px}
 .walk-thirds{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
 @media(max-width:820px){.walk-thirds{grid-template-columns:1fr}}
 .walk-third{background:#050607;border:2px solid rgba(255,255,255,.25);border-radius:18px;padding:16px;min-height:280px;display:flex;flex-direction:column;gap:12px}
@@ -3255,6 +3267,10 @@ current = 0; renderSlide(); show('cover');
 .walk-chip{background:#050607;color:#fff;border:2px solid rgba(255,255,255,.35);border-radius:999px;padding:12px 18px;font-size:18px;cursor:pointer}
 .walk-chip.on{border-color:#07925f;box-shadow:0 0 18px rgba(7,146,95,.7);transform:scale(1.03)}
 .walk-third .walk-note{font-size:18px;line-height:1.5;text-align:center;color:#fff}
+.walk-cert{flex:1;border:2px solid #d4a017;border-radius:14px;overflow:hidden;min-height:220px;background:#050607}
+.walk-cert iframe{width:100%;height:100%;min-height:220px;border:0;display:block;background:#fff}
+.walk-cert-link{font-size:18px;text-align:center;color:#fff}
+.walk-cert-link a{color:#d4a017}
 .walk-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:18px}
 .walk-btn{background:#050607;color:#fff;border:2px solid #8e24aa;border-radius:999px;padding:14px 26px;font-size:19px;font-weight:700;cursor:pointer}
 .walk-btn.go{border-color:#07925f;box-shadow:0 0 20px rgba(7,146,95,.55)}
@@ -3263,17 +3279,30 @@ current = 0; renderSlide(); show('cover');
 .walk-info{position:absolute;top:14px;right:14px;width:44px;height:44px;border-radius:50%;background:#050607;border:2px solid #0f52ba;color:#fff;font-size:19px;font-weight:700;cursor:pointer}
 .walk-saved{text-align:center;font-size:19px;color:#fff;margin-top:12px}
 .walk-owed{font-size:17px;text-align:center;color:#fff;margin-top:8px}
+.walkName,.walkAlias{width:100%;background:#050607;color:#fff;border:2px solid #d4a017;border-radius:14px;padding:14px;font-size:19px;font-family:inherit}
+.walk-linkbox{border:2px solid #07925f;border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.walk-linkbox p{font-size:18px;line-height:1.5;margin:0;color:#fff}
+.walk-linkbox a{color:#d4a017;font-size:18px;word-break:break-all}
+.walk-linkbox code{font-size:18px;color:#fff}
+#walkNayaBtn{position:fixed;left:16px;bottom:16px;z-index:9998;background:#050607;color:#fff;border:2px solid #07925f;border-radius:999px;padding:14px 22px;font-size:19px;font-weight:700;cursor:pointer;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.7),0 0 24px rgba(7,146,95,.55)}
+#walkNayaBtn[hidden]{display:none}
 </style>
 <button type="button" id="walkFab" aria-label="Open the walkthrough">✎ Walkthrough — answer the 15 questions</button>
+<a id="walkNayaBtn" href="#" hidden aria-label="Naya app — join through me">Naya app</a>
 <div id="walkOverlay" hidden role="dialog" aria-modal="true" aria-label="Walkthrough">
   <div class="walk-frame">
     <button type="button" class="walk-info" id="walkInfo" aria-label="About this walkthrough video">i</button>
     <p class="walk-q" id="walkQ"></p>
     <p class="walk-step" id="walkStep"></p>
+    <div class="walk-types" role="group" aria-label="Which page are you creating?">
+      <button type="button" class="walk-type on" data-type="personal">Personal <small>— your page</small></button>
+      <button type="button" class="walk-type" data-type="business">Business <small>— your business page</small></button>
+      <button type="button" class="walk-type" data-type="world">World <small>— your world page</small></button>
+    </div>
     <div class="walk-thirds">
       <div class="walk-third">
-        <h3>1 · Naya talks you through it</h3>
-        <div class="walk-video">
+        <h3 id="walkH1">1 · Naya talks you through it</h3>
+        <div class="walk-video" id="walkThird1">
           <button type="button" class="walk-play" disabled aria-label="Naya video — not yet filmed">▶</button>
           <p>Naya&rsquo;s video for this question is not filmed yet.</p>
           <p>Asset owed: <code>naya-walkthrough-video-9x16.mp4</code><br>9:16, with audio — one standard video for every question.</p>
@@ -3281,11 +3310,11 @@ current = 0; renderSlide(); show('cover');
         </div>
       </div>
       <div class="walk-third">
-        <h3>2 · Your answer</h3>
+        <h3 id="walkH2">2 · Your answer</h3>
         <div class="walk-input" id="walkInput"></div>
       </div>
       <div class="walk-third">
-        <h3>3 · How it lands</h3>
+        <h3 id="walkH3">3 · How it lands</h3>
         <p class="walk-note" id="walkHow"></p>
         <p class="walk-note">Skip any question — come back any time. Edit the example instead of starting blank. Your words ARE the page.</p>
         <p class="walk-note" id="walkSaved" role="status"></p>
@@ -3297,14 +3326,67 @@ current = 0; renderSlide(); show('cover');
       <button type="button" class="walk-btn go" id="walkEnter">Enter — put it on the board ✓</button>
       <button type="button" class="walk-btn ghost" id="walkClose">Close</button>
     </div>
-    <p class="walk-owed">The walkthrough is the universal page creator — the same pop-up frame works for About, Skills, Business and Space.</p>
+    <p class="walk-owed">The 15 inputs ARE the page creator — the same 15 create your Personal, Business or World page. The R2 certificate rides inside this flow: it is the cover, and what the flow delivers.</p>
   </div>
 </div>
 <script>
 (function(){
-  // Input method per question — the push-button plan (Shawn, 2026-11-25).
-  // Structured answers get taps; personal answers get type/dictate with the
-  // example pre-filled, never a blank box. Every question: skip + edit-the-example.
+  // THE 15 INPUTS ARE THE PAGE CREATOR (Shawn, 2026-11-25 ~18:54 MST).
+  // Same 15 inputs, parameterized by page type (personal / business / world):
+  // same frames, same inputs, fresh answers per page, answers landing into
+  // THAT page's About + Skills boards. Personal first; Business / World on
+  // click of the tab — another 15, fresh answers, and the page is created.
+  // THE CERTIFICATE GOES INTO THE 15: step 0 is the cover/entry, step 16 is
+  // what the flow delivers. The ONLY certificate here is the R2 certificate:
+  // portal R2 /identity.html — 313,224 B, sha 57bdd387…, 5 real jewels —
+  // verified live before this build. Zero bytes from the thrown-out
+  // old thrown-out walkthrough build are in this file.
+  var CERT_URL = 'https://portal-consolidated-20261125-staging.nayapower.workers.dev/identity.html';
+  var CERT_FP = 'R2 certificate · 313,224 B · sha 57bdd387… · 5 real jewels';
+  // SIGNUP IDENTITY CHAIN (Shawn, 2026-11-25 ~18:58 MST) + TWO ACCOUNTS /
+  // TWO VIEWS (Shawn, ~19:02 MST). At sign-up the citizen AUTOMATICALLY gets
+  // their mail ID (assigned, no extra step — rides the Ambassador system) and
+  // their NAME becomes their affiliate ID. Joins through them are tracked
+  // through the Smart Link system and the results show on the Dashboard
+  // (Ambassador system). Their Smart Link auto-links to the Naya app button
+  // on their profile page: anybody clicks it and joins through them, they get
+  // credit. First name = PRIVATE profile; alias = PUBLIC profile — the public
+  // page never shows their name, only their alias. So the end slide mints the
+  // PUBLIC Smart Link from the ALIAS entered here, never from the name; the
+  // name stays the (private) affiliate ID. Face: private by default, public
+  // only by their choice (checkbox, default off). NOT the old spine gap (a
+  // staging ambassador URL).
+  var citizenName = '';
+  var citizenAlias = '';
+  var facePublic = false;
+  function slugName(s){ return s.toLowerCase().trim().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,''); }
+  // TWO ACCOUNTS / TWO VIEWS (Shawn, 2026-11-25 ~19:02 MST). First name in =
+  // PRIVATE profile. Alias = PUBLIC profile — that is how people know them
+  // publicly. The public page NEVER shows their name — only their alias. The
+  // citizen chooses what is public and what is private. Face: private by
+  // default, public only by their choice. So the public Smart Link is minted
+  // from the ALIAS, never from the name; the name stays the (private)
+  // affiliate ID. If no alias is chosen yet, no public link is minted.
+  function smartLink(){ var s = slugName(citizenAlias); return s ? 'https://nayanet.app/' + s : ''; }
+  function syncIdentity(){
+    var link = smartLink();
+    window.NayaAffiliateId = slugName(citizenName);
+    window.NayaAlias = slugName(citizenAlias);
+    window.NayaSmartLink = link;
+    window.NayaFacePublic = facePublic;
+    document.querySelectorAll('.walkName').forEach(function(inp){ if (inp.value !== citizenName) inp.value = citizenName; });
+    document.querySelectorAll('.walkAlias').forEach(function(inp){ if (inp.value !== citizenAlias) inp.value = citizenAlias; });
+    var aff = document.getElementById('walkAffId'); if (aff) aff.textContent = window.NayaAffiliateId || '— enter your first name —';
+    var pal = document.getElementById('walkAliasPub'); if (pal) pal.textContent = window.NayaAlias || '— choose your alias —';
+    var sl = document.getElementById('walkSmartLink');
+    if (sl) { if (link) { sl.href = link; sl.textContent = link; } else { sl.removeAttribute('href'); sl.textContent = 'Choose your alias above to mint your public link.'; } }
+    var nb = document.getElementById('walkNayaBtn');
+    if (nb) { if (link) { nb.href = link; nb.hidden = false; } else { nb.hidden = true; } }
+    var eb = document.getElementById('walkEndNayaBtn');
+    if (eb) { if (link) { eb.href = link; eb.style.display = ''; } else { eb.style.display = 'none'; } }
+    var fc = document.getElementById('walkFacePublic'); if (fc) fc.checked = facePublic;
+  }
+  var TYPE_LABEL = {personal:'Personal page', business:'Business page', world:'World page'};
   var WALK = [
     {q:'What is your motto?', m:'type', ex:'Ten stars or don\u2019t send it. That\u2019s our promise to you. If it isn\u2019t ten stars for you, it doesn\u2019t go out. You will never get our second-best \u2014 only our best, every time.', how:'Type or dictate your motto. It sits at the top of your About page, crowned first.'},
     {q:'What is your vision?', m:'type', ex:'What if everybody could win? That\u2019s our vision for you. A new internet where you win \u2014 your notes, your people, your work, all in one place, remembering for you, connecting you to the people like you. First it\u2019ll be 100. Then 1,000. Then 10,000. And then one day no child will know a world without her.', how:'Type or dictate your vision. The archway ahead — what you see coming.'},
@@ -3322,30 +3404,123 @@ current = 0; renderSlide(); show('cover');
     {q:'How do you work?', m:'multi', opts:['Go all in','Do it right the first time','Every layer great','Finished work you can see','One tap, and you\u2019re in'], ex:'We go all in and do things right \u2014 for you. No summaries, no prototypes. Do it right the first time. Every layer great. Finished work you can see and use. One tap, and you\u2019re in.', how:'Tap all that apply. How you work is what people feel first.'},
     {q:'How do people start with you?', m:'single', opts:['Connect','Book','Begin'], ex:'One tap, and you\u2019re in. Connect, book, or begin \u2014 one clear tap. That\u2019s it. You don\u2019t need to know how it works. You just start, and it works for you. And we\u2019re thinking about you the whole way \u2014 that\u2019s the peace of mind. We\u2019ve got you.', how:'Tap ONE — Connect, Book or Begin. One clear tap is the whole start.'}
   ];
-  var idx = 0, sel = [], recog = null;
+  var idx = -1; // -1 = certificate cover/entry · 0–14 = the 15 · 15 = certificate delivered
+  var pageType = 'personal';
+  var sel = [], recog = null;
+  var answersByType = {personal:{}, business:{}, world:{}};
+  var ORIG = (typeof GROUPS !== 'undefined') ? GROUPS.map(function(g){ return g.a; }) : WALK.map(function(w){ return w.ex; });
   var ov = document.getElementById('walkOverlay');
+  function stored(i){ return answersByType[pageType][i]; }
+  function applyBoards(){
+    if (typeof GROUPS === 'undefined') return;
+    for (var i = 0; i < 15; i++) {
+      var v = answersByType[pageType][i] || ORIG[i];
+      GROUPS[i].a = v;
+      GROUPS[i].d = [['What it is', v]];
+    }
+    if (typeof renderSlide === 'function') { try { renderSlide(); } catch(e){} }
+  }
+  function applyType(t){
+    pageType = t;
+    document.querySelectorAll('.walk-type').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-type') === t); });
+    applyBoards();
+    idx = -1; sel = [];
+    render();
+  }
   function cur(){ return (typeof current === 'number' && current >= 0 && current < WALK.length) ? current : 0; }
   function open(i){
-    idx = (typeof i === 'number') ? i : cur();
+    idx = (typeof i === 'number') ? i : -1;
     sel = [];
     render();
     ov.hidden = false;
   }
   function close(){ ov.hidden = true; if (recog) { try { recog.stop(); } catch(e){} recog = null; } }
+  function certHTML(kind){
+    return '<div class="walk-cert"><iframe src="' + CERT_URL + '" title="Your R2 certificate" loading="lazy"></iframe></div>'
+      + '<p class="walk-cert-link">' + CERT_FP + '<br><a href="' + CERT_URL + '" target="_blank" rel="noopener">Open the certificate</a></p>';
+  }
   function render(){
+    var t1 = document.getElementById('walkThird1');
+    var box = document.getElementById('walkInput');
+    document.getElementById('walkSaved').textContent = '';
+    document.getElementById('walkEnter').textContent = 'Enter — put it on the board ✓';
+    if (idx === -1) {
+      document.getElementById('walkQ').textContent = 'Your certificate — the cover of this flow';
+      document.getElementById('walkStep').textContent = 'Step 0 · ' + TYPE_LABEL[pageType] + ' · The certificate sits INSIDE the 15 — it is the cover, and what the flow delivers';
+      document.getElementById('walkH1').textContent = '1 · Your certificate';
+      document.getElementById('walkH2').textContent = '2 · What it is';
+      document.getElementById('walkH3').textContent = '3 · What happens next';
+      t1.innerHTML = certHTML('cover');
+      box.innerHTML = '<p class="walk-note">This is your certificate — the R2 certificate, with its 5 real jewels. It opens this flow and it is what the flow delivers at the end. Not a step before, not a step after — inside the 15.</p>'
+        + '<input class="walkName" type="text" placeholder="Your first name" aria-label="Your first name — your private profile" autocomplete="given-name">'
+        + '<input class="walkAlias" type="text" placeholder="Your alias" aria-label="Your alias — your public profile, how people know you publicly" autocomplete="nickname">'
+        + '<p class="walk-note">Two accounts, two views. Your first name is your PRIVATE profile. Your alias is your PUBLIC profile — that is how people know you publicly, and the public page never shows your name, only your alias. Your name becomes your affiliate ID. Your mail ID is assigned automatically when you sign up, no extra step. Joins through you are tracked, and the results show on your Dashboard.</p>';
+      var nm0 = box.querySelector('.walkName');
+      if (nm0) nm0.addEventListener('input', function(){ citizenName = nm0.value; syncIdentity(); });
+      var al0 = box.querySelector('.walkAlias');
+      if (al0) al0.addEventListener('input', function(){ citizenAlias = al0.value; syncIdentity(); });
+      syncIdentity();
+      document.getElementById('walkHow').textContent = 'Tap Enter and the 15 questions begin — the same 15 that build your ' + TYPE_LABEL[pageType] + '’s About + Skills.';
+      document.getElementById('walkEnter').textContent = 'Enter — begin the 15 →';
+      document.getElementById('walkSkip').textContent = 'Skip →';
+      return;
+    }
+    if (idx === 15) {
+      document.getElementById('walkQ').textContent = 'Done — your certificate, delivered';
+      document.getElementById('walkStep').textContent = 'Step 16 · ' + TYPE_LABEL[pageType] + ' · The 15 are answered — here is what the flow delivers';
+      document.getElementById('walkH1').textContent = '1 · Your certificate — delivered';
+      document.getElementById('walkH2').textContent = '2 · What the flow delivered';
+      document.getElementById('walkH3').textContent = '3 · Your page';
+      t1.innerHTML = certHTML('delivered');
+      box.innerHTML = '<p class="walk-note">Your certificate — delivered with your page. Your 15 answers are on the boards now: your About + Skills, in your words. That is most of the page — the rest of the page’s information comes from those answers.</p>'
+        + '<input class="walkName" type="text" placeholder="Your first name" aria-label="Your first name — your private profile" autocomplete="given-name">'
+        + '<input class="walkAlias" type="text" placeholder="Your alias" aria-label="Your alias — your public profile" autocomplete="nickname">'
+        + '<div class="walk-linkbox"><p>Your affiliate ID (private): <code id="walkAffId">— enter your first name —</code></p>'
+        + '<p>Your public alias: <code id="walkAliasPub">— choose your alias —</code></p>'
+        + '<p>Your Smart Link (public, from your alias — never your name): <a id="walkSmartLink">Choose your alias above to mint your public link.</a></p>'
+        + '<p>Your mail ID is assigned automatically at sign-up — no extra step. Joins through your link are tracked through the Smart Link system, and the results show on your Dashboard.</p>'
+        + '<p><label style="font-size:18px"><input type="checkbox" id="walkFacePublic"> Show my face publicly</label><br>Your face stays private unless you choose otherwise — private by default, public only by your choice.</p>'
+        + '<p><a id="walkEndNayaBtn" class="walk-btn go" href="#" style="display:none;text-decoration:none">Naya app — join through me</a> <button type="button" class="walk-btn ghost" id="walkCopyLink">Copy my Smart Link</button></p></div>';
+      var nm1 = box.querySelector('.walkName');
+      if (nm1) nm1.addEventListener('input', function(){ citizenName = nm1.value; syncIdentity(); });
+      var al1 = box.querySelector('.walkAlias');
+      if (al1) al1.addEventListener('input', function(){ citizenAlias = al1.value; syncIdentity(); });
+      var fc1 = document.getElementById('walkFacePublic');
+      if (fc1) fc1.addEventListener('change', function(){ facePublic = fc1.checked; syncIdentity(); });
+      var cp = document.getElementById('walkCopyLink');
+      if (cp) cp.onclick = function(){
+        var link = smartLink();
+        if (!link) { document.getElementById('walkSaved').textContent = 'Choose your alias first — the public link carries your alias, never your name.'; return; }
+        function done(){ document.getElementById('walkSaved').textContent = '✓ Copied — your Smart Link: ' + link; }
+        if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(link).then(done, done); } else done();
+      };
+      syncIdentity();
+      document.getElementById('walkHow').textContent = 'Your ' + TYPE_LABEL[pageType] + '’s About + Skills are filled. Your Smart Link is minted from your alias — never your name — and lives on the Naya app button on your page: anybody clicks it and joins through you, you get credit. Your face stays private unless you choose otherwise. Tap Close to see your page — or pick Business or World above and run the same 15 fresh to create that page.';
+      document.getElementById('walkEnter').textContent = 'Close — see my page ✓';
+      document.getElementById('walkSkip').textContent = 'Close';
+      return;
+    }
     var w = WALK[idx];
     document.getElementById('walkQ').textContent = w.q;
-    document.getElementById('walkStep').textContent = 'Question ' + (idx + 1) + ' of 15 · ' + (idx < 10 ? 'About' : 'Skills') + ' · Step ' + (idx + 1) + ' — tap, type or dictate, then Enter';
+    document.getElementById('walkStep').textContent = TYPE_LABEL[pageType] + ' · Question ' + (idx + 1) + ' of 15 · ' + (idx < 10 ? 'About' : 'Skills') + ' — tap, type or dictate, then Enter';
+    document.getElementById('walkH1').textContent = '1 · Naya talks you through it';
+    document.getElementById('walkH2').textContent = '2 · Your answer';
+    document.getElementById('walkH3').textContent = '3 · How it lands';
     document.getElementById('walkHow').textContent = w.how;
-    document.getElementById('walkSaved').textContent = '';
-    var box = document.getElementById('walkInput');
+    document.getElementById('walkSkip').textContent = 'Skip →';
+    t1.innerHTML = '<button type="button" class="walk-play" disabled aria-label="Naya video — not yet filmed">▶</button>'
+      + '<p>Naya&rsquo;s video for this question is not filmed yet.</p>'
+      + '<p>Asset owed: <code>naya-walkthrough-video-9x16.mp4</code><br>9:16, with audio — one standard video for every question.</p>'
+      + '<p>No stand-in video is shown here, and no silent picture pretends to be her.</p>';
     box.innerHTML = '';
+    var saved = stored(idx);
     if (w.m === 'single' || w.m === 'multi') {
+      sel = saved ? saved.split(' · ').filter(function(s){ return w.opts.indexOf(s) >= 0; }) : [];
       var chips = document.createElement('div');
       chips.className = 'walk-chips';
       w.opts.forEach(function(o){
         var b = document.createElement('button');
-        b.type = 'button'; b.className = 'walk-chip'; b.textContent = o;
+        b.type = 'button'; b.className = 'walk-chip' + (sel.indexOf(o) >= 0 ? ' on' : ''); b.textContent = o;
         b.onclick = function(){
           if (w.m === 'single') { sel = [o]; chips.querySelectorAll('.walk-chip').forEach(function(c){ c.classList.remove('on'); }); b.classList.add('on'); }
           else { var j = sel.indexOf(o); if (j >= 0) { sel.splice(j, 1); b.classList.remove('on'); } else { sel.push(o); b.classList.add('on'); } }
@@ -3356,16 +3531,15 @@ current = 0; renderSlide(); show('cover');
       var p = document.createElement('p'); p.className = 'walk-note';
       p.textContent = 'The example is below — tap the chips, then Enter. Your words become the board.';
       box.appendChild(p);
-      var t = document.createElement('textarea'); t.id = 'walkText'; t.value = w.ex; t.setAttribute('aria-label', 'Your answer, example pre-filled');
+      var t = document.createElement('textarea'); t.id = 'walkText'; t.value = saved || w.ex; t.setAttribute('aria-label', 'Your answer, example pre-filled');
       box.appendChild(t);
     } else {
-      var cat = null;
       if (w.m === 'type-cat') {
-        cat = document.createElement('select'); cat.id = 'walkCat'; cat.setAttribute('aria-label', 'What kind of offer is this?');
+        var cat = document.createElement('select'); cat.id = 'walkCat'; cat.setAttribute('aria-label', 'What kind of offer is this?');
         w.cats.forEach(function(c){ var o = document.createElement('option'); o.value = c; o.textContent = c; cat.appendChild(o); });
         box.appendChild(cat);
       }
-      var t2 = document.createElement('textarea'); t2.id = 'walkText'; t2.value = w.ex; t2.setAttribute('aria-label', 'Your answer, example pre-filled and editable');
+      var t2 = document.createElement('textarea'); t2.id = 'walkText'; t2.value = saved || w.ex; t2.setAttribute('aria-label', 'Your answer, example pre-filled and editable');
       box.appendChild(t2);
       var row = document.createElement('div'); row.className = 'walk-actions'; row.style.marginTop = '0';
       var mic = document.createElement('button'); mic.type = 'button'; mic.className = 'walk-btn'; mic.textContent = '🎙 Dictate';
@@ -3385,32 +3559,38 @@ current = 0; renderSlide(); show('cover');
     }
   }
   function enter(){
+    if (idx === -1) { idx = 0; sel = []; render(); return; }
+    if (idx === 15) { close(); return; }
     var w = WALK[idx];
     var val = '';
     if (w.m === 'single' || w.m === 'multi') {
       var ta = document.getElementById('walkText');
-      val = sel.length ? sel.join(' · ') + (ta && ta.value !== w.ex ? ' — ' + ta.value : '') : (ta ? ta.value : w.ex);
+      val = sel.length ? sel.join(' · ') + (ta && ta.value !== w.ex && ta.value !== (stored(idx) || '') ? ' — ' + ta.value : '') : (ta ? ta.value : w.ex);
     } else {
       var t = document.getElementById('walkText');
       val = t ? t.value : w.ex;
       if (w.m === 'type-cat') { var c = document.getElementById('walkCat'); if (c) val = c.value + ': ' + val; }
     }
     if (!val.trim()) val = w.ex;
+    answersByType[pageType][idx] = val;
     if (typeof GROUPS !== 'undefined' && GROUPS[idx]) {
       GROUPS[idx].a = val;
       GROUPS[idx].d = [['What it is', val]];
     }
     if (typeof renderSlide === 'function') { try { renderSlide(); } catch(e){} }
-    document.getElementById('walkSaved').textContent = '✓ On the board — question ' + (idx + 1) + ': ' + w.q;
-    setTimeout(function(){ if (idx < WALK.length - 1) { idx++; sel = []; render(); } else { close(); } }, 900);
+    document.getElementById('walkSaved').textContent = '✓ On the ' + TYPE_LABEL[pageType] + '’s board — question ' + (idx + 1) + ': ' + w.q;
+    setTimeout(function(){ if (idx < WALK.length - 1) { idx++; sel = []; render(); } else { idx = 15; sel = []; render(); } }, 900);
   }
   document.getElementById('walkFab').onclick = function(){ open(); };
   document.getElementById('walkClose').onclick = close;
-  document.getElementById('walkSkip').onclick = function(){ if (idx < WALK.length - 1) { idx++; sel = []; render(); } else close(); };
+  document.getElementById('walkSkip').onclick = function(){ if (idx === -1) { idx = 0; sel = []; render(); } else if (idx < 14) { idx++; sel = []; render(); } else if (idx === 14) { idx = 15; sel = []; render(); } else close(); };
   document.getElementById('walkEdit').onclick = function(){ var t = document.getElementById('walkText'); if (t) { t.value = WALK[idx].ex; t.focus(); } };
   document.getElementById('walkEnter').onclick = enter;
+  document.querySelectorAll('.walk-type').forEach(function(b){
+    b.onclick = function(){ applyType(b.getAttribute('data-type')); };
+  });
   document.getElementById('walkInfo').onclick = function(){
-    alert('Naya\u2019s walkthrough video — one standard 9:16 video with audio for every question.\n\nAsset owed: naya-walkthrough-video-9x16.mp4\nIt does not exist yet, so this frame shows the slot and names it — no stand-in video, no silent picture.');
+    alert('Naya\u2019s walkthrough video — one standard 9:16 video with audio for every question.\n\nAsset owed: naya-walkthrough-video-9x16.mp4\nIt does not exist yet, so this frame shows the slot and names it — no stand-in video, no silent picture.\n\nThe certificate in this flow is the R2 certificate only:\nportal R2 /identity.html — 313,224 B, sha 57bdd387…, 5 real jewels.\n\nYour first name is your private profile; your alias is your public profile — the end slide mints your Smart Link from your alias, never your name, and the Naya app button on your page carries that link. Your face stays private unless you choose otherwise.');
   };
   ov.addEventListener('click', function(e){ if (e.target === ov) close(); });
 })();
