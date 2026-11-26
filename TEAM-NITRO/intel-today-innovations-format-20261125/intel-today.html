@@ -1462,8 +1462,8 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 #screen-slide .ib-layer-body{text-align:center}
 #screen-slide .ib-layer-body p{font-size:18px;line-height:1.55}
 #screen-slide .b-script{font-size:20px;line-height:1.3}
-#screen-slide .ib-n,#screen-slide .ib-n img{width:96px;height:96px}
-#screen-slide .ib-n--small,#screen-slide .ib-n--small img{width:96px;height:96px}
+#screen-slide .ib-n,#screen-slide .ib-n img{width:80px !important;height:80px !important}
+#screen-slide .ib-n--small,#screen-slide .ib-n--small img{width:80px !important;height:80px !important}
 #screen-slide .naya-btn{font-size:18px}
 #screen-slide .add-btn{font-size:18px}
 #screen-slide .intel-matrix-btn{margin-top:12px;height:44px;padding:0 20px;font-size:18px}
@@ -1997,8 +1997,8 @@ function renderEnd(){
   var __fix8ad = document.querySelector('.slide-frame > .add-btn[data-slot="C"]'); if (__fix8ad) __fix8ad.style.display = 'none';
   document.getElementById('slideTextCenter').innerHTML = endImgBoard(EMBED.ball, 'The red N'); /* FIX8: the ball takes the middle slot — ball first, text below */
   document.getElementById('slideTextCenter').hidden = false;
-  document.getElementById('endBegin').addEventListener('click', beginAgain);
-  document.getElementById('endBack').addEventListener('click', function(){ END_MODE = false; current = TOTAL - 1; renderSlide(); });
+  document.getElementById('endLogin').addEventListener('click', beginAgain); /* INTEL TODAY: single end button goes to the login */
+  /* INTEL TODAY: endBack removed — the end has one button, Back to login */
   document.getElementById('endChapters').addEventListener('click', toggleEndChapters); /* FIX9 */
   var __fix9sm = document.getElementById('slideMain'); __fix9sm.classList.remove('end-chapters-open'); __fix9sm.classList.remove('end-chapters-closed'); syncEndChapters(); /* FIX9: default state — collapsed at phone, expanded at desktop (CSS); the toggle only ever adds one class */
 }
