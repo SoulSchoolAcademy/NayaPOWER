@@ -3235,8 +3235,9 @@ current = 0; renderSlide(); show('cover');
      the R2 CERTIFICATE sits INSIDE the 27-question flow (step 0 = the cover/entry,
      step 30 = what the flow delivers); the 27 are the standard inputs that create
      ANY page, parameterized by page type (personal / business / world) — same
-     frames, same inputs, fresh answers per page, answers landing into THAT page's
-     About + Skills boards. THROW-OUT ORDER (Shawn, ~18:52 MST): zero bytes from
+     frames, same inputs. THE 27 HAPPEN ONCE (Shawn, 2026-11-26 ~09:33 MST): the
+     answers are saved once and carried over, pre-filled, into every new page —
+     only the new page's name is fresh. THROW-OUT ORDER (Shawn, ~18:52 MST): zero bytes from
      the thrown-out old walkthrough build are in this file — the build is fresh
      from the Innovations fix9 clone; the only certificate referenced anywhere
      here is the R2 certificate below.
@@ -3431,6 +3432,19 @@ current = 0; renderSlide(); show('cover');
 .walk-linkrow{display:flex;gap:8px}
 .walk-linkrow select{flex:none;width:38%}
 .walk-spotify{border-color:#07925f}
+/* FIX3-ADDITIONS — CREATE A WORLD (Shawn, 2026-11-26 ~09:33–09:38 MST):
+   the delivered step carries the create flow: the buttons, the name-only ask,
+   the plain-words confirmation, the About template waiting to type into, the
+   Naya draft, and the short 5-question page walkthrough. Same frame, same
+   buttons, same 18px+ white text — no new language invented. */
+.walk-create{border:2px solid #d4a017;border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.walk-create h3{font-size:25px;margin:0;text-align:center;color:#fff}
+.walk-create p{font-size:18px;line-height:1.5;margin:0;color:#fff;text-align:center}
+.walk-create-btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.walk-create input[type=text]{width:100%;background:#050607;color:#fff;border:2px solid #d4a017;border-radius:14px;padding:14px;font-size:18px;font-family:inherit}
+.walk-create textarea{width:100%;min-height:90px;background:#050607;color:#fff;border:2px solid #0f52ba;border-radius:14px;padding:14px;font-size:18px;line-height:1.5;font-family:inherit;resize:vertical}
+.walk-template-label{font-size:18px;color:#fff;text-align:left}
+.walk-short-q{font-size:25px;line-height:1.25;text-align:center;margin:2px 0;color:#fff}
 @media(max-width:820px){
   .walk-thirds{grid-auto-rows:max-content}
   .walk-audio{justify-content:flex-start}
@@ -3502,9 +3516,11 @@ current = 0; renderSlide(); show('cover');
 (function(){
   // THE 27 QUESTIONS ARE THE PAGE CREATOR (Shawn, 2026-11-25 ~18:54 MST).
   // Same 27 inputs, parameterized by page type (personal / business / world):
-  // same frames, same inputs, fresh answers per page, answers landing into
-  // THAT page's About + Skills boards. Personal first; Business / World on
-  // click of the tab — another 27, fresh answers, and the page is created.
+  // same frames, same inputs. THE 27 HAPPEN ONCE (Shawn, 2026-11-26 ~09:33 MST):
+  // answers are saved once and carried over, pre-filled, into every new page —
+  // only the new page's name is fresh. A new page is created from the first
+  // walk, never by answering the 27 again. Personal first; Business / World on
+  // click of the tab — carried answers, pre-filled, and the page is created.
   // THE CERTIFICATE GOES INTO THE 15: step 0 is the cover/entry, step 30 is
   // what the flow delivers. The ONLY certificate here is the fixed certificate:
   // fixed /identity.html — 315,409 B, sha 0c11fdb8…, 5 real jewels —
@@ -3565,6 +3581,156 @@ var WALK = [
   var citizenName = '';
   var citizenAlias = '';
   var facePublic = false;
+  // FIX3-ADDITIONS — CREATE A WORLD (Shawn, 2026-11-26 ~09:33–09:38 MST).
+  // The 27 happen ONCE. Answers are saved once (localStorage, one key) and
+  // carried over, pre-filled, into every new page. A new page asks only for
+  // its name. "Create" is the only word the citizen ever sees — the internal
+  // build-from-template is never called cloning where they can see it.
+  var walkComplete = false;
+  var createdPages = []; // {type, kind, name, source, carried, createdAt}
+  var pageBasics = {};   // pageKey "type::name" -> {vision, goal, mission, about, benefits}
+  var createState = {phase:'pick', kind:'', type:'', name:'', pageKey:''}; // pick | name | done
+  var shortState = {active:false, step:0, pageKey:''};
+  var WALK_STORE_KEY = 'naya.walk.v1';
+  function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function saveWalk(){
+    try { localStorage.setItem(WALK_STORE_KEY, JSON.stringify({name:citizenName, alias:citizenAlias, lang:lang, answers:answersByType, pages:createdPages, basics:pageBasics, complete:walkComplete})); } catch(e){}
+  }
+  function loadWalk(){
+    try {
+      var raw = localStorage.getItem(WALK_STORE_KEY); if (!raw) return;
+      var d = JSON.parse(raw); if (!d || typeof d !== 'object') return;
+      if (typeof d.name === 'string') citizenName = d.name;
+      if (typeof d.alias === 'string') citizenAlias = d.alias;
+      if (d.lang && LANGS[d.lang]) lang = d.lang;
+      if (d.answers && typeof d.answers === 'object') { ['personal','business','world'].forEach(function(t){ if (d.answers[t] && typeof d.answers[t] === 'object') answersByType[t] = d.answers[t]; }); }
+      if (Array.isArray(d.pages)) createdPages = d.pages;
+      if (d.basics && typeof d.basics === 'object') pageBasics = d.basics;
+      if (d.complete) walkComplete = true;
+    } catch(e){}
+  }
+  // The short page walkthrough: just the page basics, never personal questions.
+  var PAGE_BASICS = [
+    {k:'vision', q:"What's this page's vision?", from:9},
+    {k:'goal', q:"What's this page's goal?", from:10},
+    {k:'mission', q:"What's this page's mission?", from:11},
+    {k:'about', q:'What is this page all about?', from:14},
+    {k:'benefits', q:'What are the benefits of this page?', from:19}
+  ];
+  function pageKeyFor(type, name){ return type + '::' + (name || '').trim(); }
+  function carriedCount(type){ var n = 0; for (var i = 0; i < 27; i++) if (answersByType[type] && answersByType[type][i]) n++; return n; }
+  function sourceTypeFor(type){
+    if (answersByType[type] && Object.keys(answersByType[type]).length) return type;
+    if (answersByType.personal && Object.keys(answersByType.personal).length) return 'personal';
+    if (answersByType.business && Object.keys(answersByType.business).length) return 'business';
+    if (answersByType.world && Object.keys(answersByType.world).length) return 'world';
+    return 'personal';
+  }
+  var SOURCE_LABEL = {personal:'your Personal page', business:'your Business page', world:'your World page'};
+  // Kind -> page type. World and Space are the same page kind in this build
+  // (the World page IS the space); the kind is the citizen's word for it,
+  // kept on the record. Personal and Business are their own kinds.
+  function createTypeFor(kind){ return kind === 'personal' ? 'personal' : (kind === 'business' ? 'business' : 'world'); }
+  function createPageRecord(kind, name){
+    var type = createTypeFor(kind);
+    var src = sourceTypeFor(type);
+    var from = answersByType[src] || {};
+    var to = answersByType[type] || {};
+    var carried = 0;
+    for (var i = 0; i < 27; i++) { if (from[i] && !to[i]) { to[i] = from[i]; carried++; } }
+    answersByType[type] = to;
+    var key = pageKeyFor(type, name);
+    var basics = pageBasics[key] || {};
+    PAGE_BASICS.forEach(function(pb){ if (!basics[pb.k]) basics[pb.k] = to[pb.from] || ''; });
+    pageBasics[key] = basics;
+    var rec = {type:type, kind:kind, name:name, source:src, carried:carried, createdAt:new Date().toISOString()};
+    createdPages.push(rec);
+    createState = {phase:'done', kind:kind, type:type, name:name, pageKey:key};
+    shortState = {active:false, step:0, pageKey:key};
+    walkComplete = true;
+    saveWalk(); renderBoards();
+    return rec;
+  }
+  // Naya's draft: the citizen's OWN answers, under plain labels — no words
+  // invented. A blank answer becomes a plain "[add it here]" slot, never
+  // invented content. The labels are plain system copy, for Shawn's word.
+  function nayaDraftText(key){
+    var a = answersByType[createState.type] || {};
+    function piece(i, label){ var v = a[i]; return v ? v : '[' + label + ' — add it here]'; }
+    return 'Our motto: ' + piece(8, 'your motto')
+      + '\n\nOur vision: ' + piece(9, 'your vision')
+      + '\n\nOur goal: ' + piece(10, 'your goal')
+      + '\n\nOur mission: ' + piece(11, 'your mission')
+      + '\n\nOur gift: ' + piece(18, 'your gift')
+      + '\n\nThe benefit: ' + piece(19, 'the benefit of your gift');
+  }
+  function renderCreateBox(){
+    var box = document.getElementById('walkCreateBox'); if (!box) return;
+    if (shortState.active) { renderShortWalk(box); return; }
+    if (createState.phase === 'name') {
+      box.innerHTML = '<p class="walk-note">What do you want to call it?</p>'
+        + '<input type="text" id="walkCreateName" placeholder="The name of your new page" aria-label="What do you want to call your new page?">'
+        + '<p class="walk-note">Only the name is new — everything else arrives already filled in from your first walk. Nothing else to answer.</p>'
+        + '<p class="walk-note" id="walkCreateMsg"></p>'
+        + '<div class="walk-create-btns"><button type="button" class="walk-btn go" id="walkCreateGo">Create it ✓</button></div>';
+      var ni = document.getElementById('walkCreateName'); if (ni) ni.focus();
+      var go = document.getElementById('walkCreateGo');
+      if (go) go.onclick = function(){
+        var nm = (document.getElementById('walkCreateName').value || '').trim();
+        if (!nm) { var m = document.getElementById('walkCreateMsg'); if (m) m.textContent = 'Give your new page a name — that is the only thing we need.'; return; }
+        createPageRecord(createState.kind, nm);
+        renderCreateBox();
+      };
+      return;
+    }
+    if (createState.phase === 'done') {
+      var rec = createdPages[createdPages.length - 1];
+      var key = createState.pageKey; var b = pageBasics[key] || {};
+      var n = carriedCount(createState.type);
+      box.innerHTML = '<p class="walk-note"><b>Boom — you have it.</b> ' + esc(createState.name) + ' is yours now. You just have to go in and update your content — your title, your pictures, your settings, and your words.</p>'
+        + '<p class="walk-note">Already filled in from ' + esc(SOURCE_LABEL[rec.source] || 'your first walk') + ': ' + n + ' of your 27 answers — your motto, your vision, your goal, your mission, your gift, and the rest. Change anything, per page.</p>'
+        + '<p class="walk-template-label">About this page — already waiting for you to type into:</p>'
+        + '<p class="walk-template-label">Vision</p><textarea id="walkTplVision" aria-label="This page’s vision">' + esc(b.vision || '') + '</textarea>'
+        + '<p class="walk-template-label">Goal</p><textarea id="walkTplGoal" aria-label="This page’s goal">' + esc(b.goal || '') + '</textarea>'
+        + '<p class="walk-template-label">Mission</p><textarea id="walkTplMission" aria-label="This page’s mission">' + esc(b.mission || '') + '</textarea>'
+        + '<p class="walk-template-label">What it is all about</p><textarea id="walkTplAbout" aria-label="What this page is all about">' + esc(b.about || '') + '</textarea>'
+        + '<p class="walk-template-label">Benefits</p><textarea id="walkTplBenefits" aria-label="The benefits of this page">' + esc(b.benefits || '') + '</textarea>'
+        + '<p class="walk-template-label">Or let Naya draft it for you — from what we already know about you:</p>'
+        + '<textarea id="walkAboutDraft" aria-label="Naya’s draft of your about and story" placeholder="Naya’s draft will appear here — from your own answers. Tweak it however you like."></textarea>'
+        + '<p class="walk-note" id="walkCreateMsg"></p>'
+        + '<div class="walk-create-btns">'
+        + '<button type="button" class="walk-btn go" id="walkDraftBtn">Let Naya draft it for you</button>'
+        + '<button type="button" class="walk-btn" id="walkShortBtn">Take the short walk — 5 quick questions</button>'
+        + '<button type="button" class="walk-btn ghost" id="walkDoneCreate">Done — see my page ✓</button></div>';
+      [['walkTplVision','vision'],['walkTplGoal','goal'],['walkTplMission','mission'],['walkTplAbout','about'],['walkTplBenefits','benefits']].forEach(function(pair){
+        var el = document.getElementById(pair[0]);
+        if (el) el.addEventListener('input', function(){ pageBasics[key][pair[1]] = el.value; saveWalk(); });
+      });
+      var db = document.getElementById('walkDraftBtn');
+      if (db) db.onclick = function(){ var d = document.getElementById('walkAboutDraft'); if (d) d.value = nayaDraftText(key); var m2 = document.getElementById('walkCreateMsg'); if (m2) m2.textContent = 'Naya’s draft — written from your own answers. Change anything you like.'; };
+      var sb = document.getElementById('walkShortBtn');
+      if (sb) sb.onclick = function(){ shortState = {active:true, step:0, pageKey:key}; renderCreateBox(); };
+      var dn = document.getElementById('walkDoneCreate');
+      if (dn) dn.onclick = function(){ close(); };
+      return;
+    }
+    box.innerHTML = '';
+  }
+  function renderShortWalk(box){
+    var key = shortState.pageKey; var b = pageBasics[key] || {};
+    if (shortState.step >= PAGE_BASICS.length) {
+      shortState.active = false; saveWalk(); renderCreateBox(); return;
+    }
+    var pb = PAGE_BASICS[shortState.step];
+    box.innerHTML = '<p class="walk-note"><b>The short walk — just the page basics.</b> Question ' + (shortState.step + 1) + ' of 5. No personal questions — only this page.</p>'
+      + '<h3 class="walk-short-q">' + esc(pb.q) + '</h3>'
+      + '<textarea id="walkShortText" aria-label="' + esc(pb.q) + '">' + esc(b[pb.k] || '') + '</textarea>'
+      + '<div class="walk-create-btns"><button type="button" class="walk-btn go" id="walkShortEnter">Enter ✓</button><button type="button" class="walk-btn ghost" id="walkShortSkip">Skip →</button></div>';
+    var en = document.getElementById('walkShortEnter');
+    if (en) en.onclick = function(){ b[pb.k] = document.getElementById('walkShortText').value; pageBasics[key] = b; saveWalk(); shortState.step++; renderCreateBox(); };
+    var sk = document.getElementById('walkShortSkip');
+    if (sk) sk.onclick = function(){ shortState.step++; renderCreateBox(); };
+  }
   // Per-piece privacy: alias is public (it IS the public profile); name and
   // face are private; each of the 15 board answers is private until the citizen
   // marks it Public. The citizen chooses, per piece.
@@ -3606,6 +3772,7 @@ var WALK = [
     var a = document.getElementById('walkLang'); if (a) a.value = lang;
     var b = document.getElementById('walkLang2'); if (b) b.value = lang;
     render();
+    saveWalk();
   }
   window.NayaSetLang = setLang;
   // Country auto-detect from the browser locale (changeable in the dropdown).
@@ -3710,11 +3877,22 @@ var WALK = [
     pageType = t;
     document.querySelectorAll('.walk-type').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-type') === t); });
     renderBoards();
-    pos = 0; idx = ORDER[0]; sel = [];
+    saveWalk();
+    // After the walk is complete, switching type lands on the delivered step
+    // for the new type — answers already carried over, pre-filled — never a
+    // re-ask of the 27. During the first walk, the switch restarts the walk
+    // with the answers carried so far, pre-filled.
+    if (walkComplete) { pos = ORDER.indexOf(102); idx = 102; }
+    else { pos = 0; idx = ORDER[0]; }
+    sel = [];
     render();
   }
   function open(){
-    pos = 0; idx = ORDER[0]; sel = [];
+    // After the walk is complete, reopening lands on the delivered step —
+    // the page, the certificate, and Create a world — never a re-ask of the 27.
+    if (walkComplete) { pos = ORDER.indexOf(102); idx = 102; }
+    else { pos = 0; idx = ORDER[0]; }
+    sel = [];
     render();
     ov.hidden = false;
   }
@@ -3800,7 +3978,7 @@ var WALK = [
         + '<p class="walk-note">Your first name becomes your private affiliate ID — never your public link. Your Smart Link is minted from your alias, never your name. Your mail ID is assigned automatically when you sign up, no extra step.</p>'
         + '<div class="walk-panelenter"><button type="button" class="walk-btn go" id="walkPanelEnter">Enter \u2014 save my first name \u2192</button></div>';
       var nm = box.querySelector('.walkName');
-      if (nm) nm.addEventListener('input', function(){ citizenName = nm.value; syncIdentity(); });
+      if (nm) nm.addEventListener('input', function(){ citizenName = nm.value; syncIdentity(); saveWalk(); });
       var pe1 = document.getElementById('walkPanelEnter'); if (pe1) pe1.onclick = enter;
       syncIdentity();
       return;
@@ -3817,7 +3995,7 @@ var WALK = [
         + '<p class="walk-note">Your public page shows ONLY your alias — never your first name. Your Smart Link is minted from your alias.</p>'
         + '<div class="walk-panelenter"><button type="button" class="walk-btn go" id="walkPanelEnter">Enter \u2014 save my alias \u2192</button></div>';
       var al = box.querySelector('.walkAlias');
-      if (al) al.addEventListener('input', function(){ citizenAlias = al.value; syncIdentity(); });
+      if (al) al.addEventListener('input', function(){ citizenAlias = al.value; syncIdentity(); saveWalk(); });
       var pe2 = document.getElementById('walkPanelEnter'); if (pe2) pe2.onclick = enter;
       syncIdentity();
       return;
@@ -3825,6 +4003,7 @@ var WALK = [
     if (isDeliv) {
       document.getElementById('walkQ').textContent = lang === 'en' ? 'Done — your certificate, delivered' : 'Done';
       document.getElementById('walkStep').textContent = T('stepOf') + '30 · ' + TYPE_LABEL[pageType];
+      walkComplete = true; saveWalk();
       certWrap.innerHTML = certHTML();
       delivWrap.innerHTML = '<p class="walk-note">Your certificate — delivered with your page. Your 27 answers are on the boards now: your About + Skills, in your words.</p>'
         + '<div class="walk-linkbox"><p>Your affiliate ID (private): <code id="walkAffId">— enter your first name —</code></p>'
@@ -3849,7 +4028,25 @@ var WALK = [
       en.onclick = function(){ pos = ORDER.indexOf(100); idx = 100; sel = []; render(); };
       var ea = document.createElement('button'); ea.type = 'button'; ea.className = 'walk-btn ghost'; ea.textContent = 'Edit my alias';
       ea.onclick = function(){ pos = ORDER.indexOf(101); idx = 101; sel = []; render(); };
-      eb.appendChild(en); eb.appendChild(ea); delivWrap.appendChild(eb);
+      var er = document.createElement('button'); er.type = 'button'; er.className = 'walk-btn ghost'; er.textContent = 'Review my 27 answers';
+      er.onclick = function(){ pos = 0; idx = ORDER[0]; sel = []; render(); };
+      eb.appendChild(en); eb.appendChild(ea); eb.appendChild(er); delivWrap.appendChild(eb);
+      // CREATE A WORLD — the 27 happen once; a new page asks only its name.
+      var cs = document.createElement('div'); cs.className = 'walk-create';
+      cs.innerHTML = '<h3>Create a world</h3>'
+        + '<p>Want another page? You never answer the 27 again. Your answers are saved once — every new page arrives already filled in. You only name it.</p>'
+        + '<div class="walk-create-btns">'
+        + '<button type="button" class="walk-btn" data-create="world">Create world</button>'
+        + '<button type="button" class="walk-btn" data-create="space">Create space</button>'
+        + '<button type="button" class="walk-btn" data-create="business">Create business</button>'
+        + '<button type="button" class="walk-btn" data-create="personal">Create personal</button></div>'
+        + '<p>Built from the page you already made — a world from your World, a space from your Space, a business from your Business, a personal from your Personal. If that page is new, it is built from your first walk instead — your 27 answers, already filled in. Then you go in and change the settings, the pictures, the title, and the content — that is the whole update.</p>'
+        + '<div id="walkCreateBox"></div>';
+      delivWrap.appendChild(cs);
+      cs.querySelectorAll('[data-create]').forEach(function(btn){
+        btn.onclick = function(){ createState = {phase:'name', kind:btn.getAttribute('data-create'), type:'', name:'', pageKey:''}; renderCreateBox(); };
+      });
+      renderCreateBox();
       enterBtn.textContent = 'Close \u2014 see my page \u2713';
       skipBtn.style.display = 'none';
       syncIdentity();
@@ -4049,6 +4246,7 @@ var WALK = [
     else { var t = document.getElementById('walkText'); val = t ? t.value : w.ex; }
     if (!val || !val.trim() || val.trim() === ' \u00b7 ' || val.trim() === 'Teams:  \u00b7 Music:') val = w.ex || stored(idx) || '';
     answersByType[pageType][idx] = val;
+    saveWalk();
     if (w.b >= 0 && typeof GROUPS !== 'undefined' && GROUPS[w.b]) {
       GROUPS[w.b].a = val || ORIG[w.b];
       GROUPS[w.b].d = [['What it is', GROUPS[w.b].a]];
@@ -4091,12 +4289,24 @@ var WALK = [
   fitFabs();
   window.addEventListener('resize', fitFabs);
   (function(){
+    loadWalk();
     var a = document.getElementById('walkLang');
     if (a) { Object.keys(LANGS).forEach(function(k){ var o = document.createElement('option'); o.value = k; o.textContent = LANGS[k]; if (k === lang) o.selected = true; a.appendChild(o); });
       a.onchange = function(){ setLang(a.value); }; }
     if (window.EMBED && EMBED.slides && EMBED.slides[1]) { var ti = document.getElementById('walkTopImg'); if (ti) ti.src = EMBED.slides[1]; }
     if (typeof EMBLEM_URI === 'string' && EMBLEM_URI.indexOf('data:') === 0) { document.documentElement.style.setProperty('--emblem', 'url("' + EMBLEM_URI + '")'); }
   })();
+  // Checker API: the saved-once answers, the created pages, and the create
+  // call itself — so the carry-over is provable without re-tapping the 27.
+  window.NayaWalk = {
+    answers: function(){ return answersByType; },
+    pages: function(){ return createdPages; },
+    basics: function(){ return pageBasics; },
+    complete: function(){ return walkComplete; },
+    createPage: function(kind, name){ return createPageRecord(kind, name); },
+    draft: function(key){ return nayaDraftText(key); },
+    save: saveWalk, load: loadWalk
+  };
   document.getElementById('walkPopClose').onclick = function(){ document.getElementById('walkPop').hidden = true; };
   document.getElementById('walkPop').addEventListener('click', function(e){ if (e.target.id === 'walkPop') document.getElementById('walkPop').hidden = true; });
   updateBadge();
