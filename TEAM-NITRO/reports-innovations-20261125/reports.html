@@ -159,7 +159,7 @@
 <title>Reports — NayaNET</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Marcellus&display=swap" rel="stylesheet" />
 <style>
   :root{
     --bg:#000; --ink:#f2f4fa; --muted:#c3c9da; --dim:#8f97ad;
@@ -1569,6 +1569,42 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
    (laws §3.3, set as --dayc on #screen-slide by the fix2 script). The frame
    stays the frame: chrome, cover, navigation, and the depth view are untouched. */
 #screen-slide .slide-boards .ib-layer{--lc:var(--dayc,#8e24aa)!important}
+</style>
+<style id="reports-fix3-20261126">
+/* REPORTS FIX3 — 2026-11-26. D1 + D2 + Marcellus only; frame CSS and fix2 CSS untouched. */
+/* D1 — COVER CRUSHED TO 0px AT 390 (fix2 regression, checker D1). Root cause: the
+   pre-existing rule #screen-slide{display:flex} (ID specificity) overrides
+   .screen{display:none}, so the INACTIVE slide stays laid out. Fix2's nine-area
+   text renders into #rpNine at load, inflating that inactive slide to ~7,301px;
+   in the column flex parent (.inner / .stage) the cover (flex:1, min-height:0)
+   then shrinks to 0 and the slide paints over it — cover Forward/Back at y=-36,
+   slide Forward at y~7,261. Fix: the inactive slide is out of layout entirely.
+   When active, .screen.active{display:flex} + #screen-slide{display:flex} apply
+   exactly as before, so the slide's own layout is unchanged.
+   Second half of D1 (found by the maker's own probe — the deck was squeezed
+   to ~0 by the nine strip): #rpNine (2,261px of boards, flex:0 0 auto) sits
+   inside .showcase next to .promax, so in the height-bound slide it shrank
+   the deck to 22px and painted over the slide Ns. Fix: .panel-body becomes
+   the scroller (deck + nine, week bar fixed above it, nav fixed below it)
+   and .promax keeps its full fitted height (flex-basis 100% of the showcase,
+   shrink 0), so the nine flows BELOW the deck in the scroll instead of
+   squeezing it. Deck geometry restored to the fix1 shape (3 fitted boards,
+   Ns in view, Forward in view). */
+#screen-slide:not(.active){display:none!important}
+#screen-slide .panel-body{overflow-y:auto!important}
+#screen-slide .promax{flex:1 0 100%!important}
+/* D2 — WEEK HEADER WRAPS TO TWO LINES AT 390 ("THIS WEEK · NOV 22 – NOV" / "28").
+   At phone width: one line, no wrap, tighter tracking, 18px — the 18px floor
+   holds (nothing below 17px anywhere in this block), full text kept.
+   Cover top row, same pass (maker's probe: the status "NAYA PRESENTS" ran
+   10px past the stage edge at 390 and was clipped): tighter tracking on the
+   tag + status and a 4px gap, so the whole row fits inside the stage. */
+@media (max-width:640px){
+  .rp-week-head{font-size:18px!important;letter-spacing:.04em!important;white-space:nowrap!important}
+  #screen-cover .pm-top{gap:4px!important}
+  #screen-cover .np-tag{letter-spacing:.03em!important}
+  #screen-cover .deck-status{letter-spacing:.01em!important}
+}
 </style>
 </head>
 <body>
@@ -3528,6 +3564,23 @@ current = 0; renderSlide(); show('cover');
      the boot render runs before this script, so the first slide needs its nine. */
   if (typeof renderSlide === 'function') { var __rpRS = renderSlide; renderSlide = function(){ __rpRS(); rpAfterSlide(); }; }
   rpAfterSlide();
+})();
+</script>
+<script>
+/* REPORTS FIX3-20261126 — D1: lazy nine + re-fit on slide activation. */
+(function(){
+  var host = document.getElementById('rpNine');
+  var ss = document.getElementById('screen-slide');
+  if (host && ss && !ss.classList.contains('active')) host.innerHTML = '';
+  if (typeof show === 'function') {
+    var __fix3Show = show;
+    show = function(name){
+      __fix3Show(name);
+      if (name === 'slide' && typeof END_MODE !== 'undefined' && !END_MODE && typeof renderSlide === 'function') {
+        renderSlide();
+      }
+    };
+  }
 })();
 </script>
 </body>
