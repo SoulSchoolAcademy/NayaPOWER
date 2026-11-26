@@ -4379,5 +4379,14 @@ var iv=setInterval(function(){
 },700);
 })();
 </script>
+<style id="sp-fix5-css">
+/* ═══ PI-FIX5 — D6: gesture scrolling ═══
+   The deck frame must not swallow wheel/touch gestures. It is a scroll
+   container with no internal overflow, and overscroll-behavior:contain
+   (fix2) stops the gesture chaining up to #pj-home, the real scroller.
+   overscroll-behavior:auto lets the gesture chain up when the frame
+   cannot consume it. Frame overflow itself is untouched (board clipping). */
+#pj-home.sp-deck-on>.sp-deck-frame.sp-on,#pj-project.sp-deck-on>.sp-deck-frame.sp-on{overscroll-behavior:auto}
+</style>
 </body>
 </html>
