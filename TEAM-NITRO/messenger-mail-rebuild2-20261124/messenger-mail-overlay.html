@@ -8768,4 +8768,202 @@ else fx13Boot();
 })();
 </script>
 
+<style id="ov-fix14-20261126">
+/* ===== FIX14 (2026-11-26) — narrow send-back round on the fix13 checker verdict.
+   Append-only: no base byte edited, fix13 and every earlier block untouched.
+   Laws: white text only, 17px minimum (this block sets NO font-size at all),
+   deep palette, one light top-left, 135deg gradients, shadow down-right.
+   O-1 carried, rim NOT changed. Nothing live — staged only. ===== */
+
+/* --- (6) COMPOSE FRAME, FOR REAL: the fix8 block (line ~7099) sets
+   .mail-stage .ml-modal.mlx to full-bleed with !important
+   (max-width:none / width:100% / height:100dvh / border-radius:0), which
+   beat fix13's non-important 720px rule. Same selector, !important on
+   every property, later in source order — this wins. The frame is now
+   actually max 720px wide, centred, rounded, with the middle scrolling
+   inside it and attach + send pinned below. --- */
+.mail-stage .ml-overlay{align-items:center!important;justify-content:center!important;padding:16px!important;}
+.mail-stage .ml-modal.mlx{max-width:720px!important;width:min(720px,calc(100vw - 32px))!important;
+  height:auto!important;max-height:calc(100dvh - 32px)!important;max-height:calc(100svh - 32px)!important;
+  margin:auto!important;border-radius:22px!important;padding:24px!important;overflow:hidden!important;}
+@media (max-width:640px){ .mail-stage .ml-modal.mlx{padding:18px 16px!important;} }
+/* --- (6) the empty-state line must never sit sliced at the scroll fold:
+   breathing room at the bottom of the scroll region, and the line itself
+   never clips (a board slicing text mid-glyph is broken, §6). --- */
+.fx13-compose-scroll{padding-bottom:28px;}
+.ml-modal.mlx .ml-empty{overflow:visible;line-height:1.5;}
+
+/* --- (5) ITEM-2 PRESS LIFT: applied by a class the press itself puts on
+   the bubble (see script) — a trigger that actually arrives, on the
+   element, with pointer capture for mouse so an off-element release still
+   reaches it. Same lift as the 1440 hover lift. --- */
+.nm-bubble.fx14-pressed{transform:translateY(-2px)!important;
+  box-shadow:0 20px 36px rgba(0,0,0,.65),0 0 36px -4px var(--cc,#8e24aa)!important;}
+</style>
+<script id="ov-fix14-20261126-js">
+/* ===== FIX14 (2026-11-26) — narrow send-back round, fix13 checker verdict.
+   Append-only; every earlier block untouched. No new read path for mail or
+   messages; no Supabase write; no deletion; the RLS gate untouched. ===== */
+(function(){
+'use strict';
+var FX14_EXCLUDED_SN='SN-4852';
+var fx14Purged=0;
+
+/* ---------- (8) SN-4852 OUT OF THE TOGGLE LISTING — BY FILTER ONLY.
+   The note itself is NOT deleted (deletion needs Shawn's hand via the
+   privileged path). The toggle data holds 93 notes (SN-4747–SN-4839) and
+   SN-4852 appears nowhere in the filed file — this filter is the guard so
+   it can never appear: any note row or note card carrying SN-4852 is
+   removed from the DOM the moment it renders, in either host. ---------- */
+function fx14PurgeSn(){
+  var removed=0;
+  Array.prototype.forEach.call(document.querySelectorAll('.fx13-note-row'),function(row){
+    var sn=row.querySelector('.fx13-sn');
+    if(sn&&sn.textContent.trim()===FX14_EXCLUDED_SN){row.remove();removed++;}
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.fx13-note-card'),function(card){
+    var chips=card.querySelectorAll('.fx13-chip');
+    for(var i=0;i<chips.length;i++){
+      if(chips[i].textContent.trim()===FX14_EXCLUDED_SN){card.remove();removed++;break;}
+    }
+  });
+  if(removed){fx14Purged+=removed;try{window.__fx14Purged=fx14Purged;}catch(e){}}
+}
+function fx14WatchSn(){
+  if(!window.MutationObserver)return;
+  try{
+    var scheduled=false;
+    var mo=new MutationObserver(function(){
+      if(scheduled)return;scheduled=true;
+      setTimeout(function(){scheduled=false;try{fx14PurgeSn();}catch(e){}},0);
+    });
+    mo.observe(document.body,{childList:true,subtree:true});
+  }catch(e){}
+  try{fx14PurgeSn();}catch(e){}
+}
+
+/* ---------- (4) D-3 AT 390: the react toggle happens ON POINTERDOWN.
+   Root cause (diagnosed live, fx14-diag3): the fix13 capture-phase
+   pointerdown scroll moves the list under the finger when a react sits
+   offscreen in its scrolling list, so the click that follows lands
+   elsewhere and the base click handler never runs — the tap is lost.
+   Toggling at pointerdown time cannot be lost by a later scroll, and the
+   click that follows is suppressed for that same react (under a second)
+   so it can never double-toggle. Keyboard activation has no pointerdown,
+   so the base click path still serves it, untouched. ---------- */
+var fx14ReactHandled={};
+function fx14ReactKey(id,r){return id+'|'+r;}
+function fx14WatchReacts(){
+  try{
+    document.addEventListener('pointerdown',function(ev){
+      var t=ev.target&&ev.target.closest?ev.target.closest('.nm-react'):null;
+      if(!t)return;
+      var id=t.getAttribute('data-nm-msgid'),r=t.getAttribute('data-nm-react');
+      if(!id||!r)return;
+      try{
+        if(window.nmReacts){
+          window.nmReacts[id]=window.nmReacts[id]||{};
+          window.nmReacts[id][r]=!window.nmReacts[id][r];
+          t.classList.toggle('on',!!window.nmReacts[id][r]);
+        }else{t.classList.toggle('on');}
+      }catch(e){t.classList.toggle('on');}
+      fx14ReactHandled[fx14ReactKey(id,r)]=Date.now();
+      try{window.__fx14ReactToggles=(window.__fx14ReactToggles||0)+1;}catch(e){}
+    },true);
+    document.addEventListener('click',function(ev){
+      var t=ev.target&&ev.target.closest?ev.target.closest('.nm-react'):null;
+      if(!t)return;
+      var id=t.getAttribute('data-nm-msgid'),r=t.getAttribute('data-nm-react');
+      var at=fx14ReactHandled[fx14ReactKey(id,r)];
+      if(at&&Date.now()-at<900){ev.stopPropagation();ev.preventDefault();}
+    },true);
+  }catch(e){}
+}
+
+/* ---------- (5) ITEM-2 PRESS LIFT AT 390: the press puts the lift on
+   the bubble itself. pointerdown (capture) adds .fx14-pressed; the class
+   comes off on pointerup / pointercancel / lostpointercapture listeners
+   attached TO THE BUBBLE (never a document-level up handler — the
+   Dashboard press-in round proved an off-element release never reaches
+   the DOM on this page shape), plus a 900ms safety timer. For a mouse
+   the bubble takes pointer capture, so the release reaches it even off
+   the bubble. No document pointerup/mouseup listener is added. ---------- */
+function fx14WatchPress(){
+  try{
+    document.addEventListener('pointerdown',function(ev){
+      var b=ev.target&&ev.target.closest?ev.target.closest('.nm-bubble'):null;
+      if(!b||b.classList.contains('fx14-pressed'))return;
+      try{
+        if(ev.pointerType==='mouse'&&ev.pointerId!==undefined&&b.setPointerCapture)b.setPointerCapture(ev.pointerId);
+      }catch(e){}
+      b.classList.add('fx14-pressed');
+      var clear=function(){b.classList.remove('fx14-pressed');};
+      try{
+        b.addEventListener('pointerup',clear,{once:true});
+        b.addEventListener('pointercancel',clear,{once:true});
+        b.addEventListener('lostpointercapture',clear,{once:true});
+      }catch(e){}
+      setTimeout(clear,900);
+    },true);
+  }catch(e){}
+}
+
+/* ---------- (6) COMPOSE EMPTY-LINE UNCLIP: when the attach section has
+   no smart notes, its "No smart notes available." line can sit straddling
+   the scroll fold, sliced mid-glyph (§6). Whenever that line renders in
+   an open compose modal and its bottom passes the fold, nudge the scroll
+   region just enough to show the whole line. Idempotent — a fully visible
+   line is never moved. ---------- */
+function fx14UnclipCompose(){
+  try{
+    var m=document.querySelector('.ml-modal.mlx');if(!m)return;
+    var sc=m.querySelector('.fx13-compose-scroll');if(!sc)return;
+    var empty=m.querySelector('.ml-empty');if(!empty)return;
+    var r=empty.getBoundingClientRect(),sr=sc.getBoundingClientRect();
+    if(r.bottom>sr.bottom-2){sc.scrollTop+=(r.bottom-sr.bottom)+14;}
+  }catch(e){}
+}
+function fx14WatchCompose(){
+  try{
+    document.addEventListener('click',function(ev){
+      var t=ev.target&&ev.target.closest?ev.target.closest('.ml-compose-top'):null;
+      if(!t)return;
+      setTimeout(fx14UnclipCompose,150);
+      setTimeout(fx14UnclipCompose,600);
+    },true);
+  }catch(e){}
+  if(!window.MutationObserver)return;
+  try{
+    var scheduled=false;
+    var mo=new MutationObserver(function(){
+      if(scheduled)return;scheduled=true;
+      setTimeout(function(){scheduled=false;fx14UnclipCompose();},0);
+    });
+    mo.observe(document.body,{childList:true,subtree:true});
+  }catch(e){}
+}
+
+/* ---------- boot ---------- */
+function fx14Boot(){
+  try{fx14WatchSn();}catch(e){}
+  try{fx14WatchReacts();}catch(e){}
+  try{fx14WatchPress();}catch(e){}
+  try{fx14WatchCompose();}catch(e){}
+  try{
+    window.__fx14={version:'fix14-20261126',excludedSn:FX14_EXCLUDED_SN,
+      scanSn:function(){
+        var n=0;
+        Array.prototype.forEach.call(document.querySelectorAll('.fx13-note-row .fx13-sn,.fx13-note-card .fx13-chip'),function(e){
+          if(e.textContent.trim()===FX14_EXCLUDED_SN)n++;
+        });
+        return n;
+      }};
+    window.__fx14Purged=fx14Purged;
+  }catch(e){}
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fx14Boot);
+else fx14Boot();
+})();
+</script>
+
 </body></html>
