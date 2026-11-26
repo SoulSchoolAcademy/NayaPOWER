@@ -52208,7 +52208,7 @@ body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:calc(100
    transform:none!important), so the slides-arrival bar is up while the chevron was
    pinned to the orb centre by the calc(100vh-480px) rule — that was the 273px float.
    Desktop folded is untouched (bottom:12px corner, L9064); os-bottom-off untouched. */
-body:not(.os-bottom-hidden):not(.os-bottom-off) #os-b3-hide{bottom:106px;}
+body:not(.os-bottom-hidden):not(.os-bottom-off) #os-b3-hide{bottom:106px !important;} /* FIX2fresh 2026-11-25: !important required — the later stylesheet (line 9176) carries the identical selector with bottom:200px and wins on order alone; without this the desktop open-state gap stays 101px. Folded state untouched: this rule only matches :not(.os-bottom-hidden). */
 @media(max-width:640px){body:not(.os-bottom-hidden):not(.os-bottom-off) #os-b3-hide{bottom:98px;}}
 @media(max-width:640px){body.os-bottom-hidden #os-b3-hide{bottom:98px;}}
 </style>
