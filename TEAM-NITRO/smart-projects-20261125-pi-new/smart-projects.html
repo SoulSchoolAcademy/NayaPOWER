@@ -873,7 +873,6 @@ body > .naya-frame, body > .frame-light{z-index:-1}
           <p class="gr-status" id="sp-dd-status" aria-live="polite"></p>
         </div>
         <div class="sp-kind-chips" id="sp-kind-chips"><div class="gr-empty">Reading the kinds…</div></div>
-</div>
         <p class="gr-status" id="sp-kind-status" aria-live="polite"></p>
       </div>
     </section>
@@ -884,7 +883,7 @@ body > .naya-frame, body > .frame-light{z-index:-1}
         <p class="gr-board-sub">The template does the thinking — it decides which questions you are asked and how the flow runs. Pick a kind above and its template shows here.</p>
       </div>
       <div class="gr-board-body">
-        <div id="sp-kind-preview"><div class="gr-empty">Pick a kind above — its three questions, and where its links, notes and people live, appear here.</div>
+        <div id="sp-kind-preview"><div class="gr-empty">Pick a kind above — its three questions, and where its links, notes and people live, appear here.</div></div>
       </div>
     </section>
     <section class="gr-board" style="--sc:#8e24aa">
@@ -4028,6 +4027,7 @@ function build(){
   var isHome = projEl.hidden;
   view = isHome?'home':'project';
   var root = isHome?homeEl:projEl;
+  root.querySelectorAll('[data-sp-title="Where you are at"]').forEach(function(e){ e.remove(); });
   var secs = Array.prototype.filter.call(root.children, function(c){ return c.tagName==='SECTION'; });
   var newItems=[];
   function boardByH2(txt){ for(var i=0;i<secs.length;i++){ var h=secs[i].querySelector('h2'); if(h && h.textContent.indexOf(txt)===0) return secs[i]; } return null; }
@@ -4074,6 +4074,7 @@ function build(){
   }
   items=newItems;
   root.classList.add('sp-deck-on');
+  document.body.classList.add('sp-deck-on');
   if(idx>=items.length) idx=items.length-1; if(idx<0) idx=0;
 }
 function show(i){
