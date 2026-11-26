@@ -3210,7 +3210,7 @@ function nmMessagesHtml(conv){
       h += '<div class="nm-reacts">'
         + ['♥', '👍', '✓', '★'].map(function(r){ return '<button type="button" class="nm-react' + (reacts[r] ? ' on' : '') + '" data-jewel="react" data-nm-react="' + esc(r) + '" data-nm-msgid="' + esc(id) + '" aria-label="React ' + esc(r) + '">' + esc(r) + '</button>'; }).join('')
         + '<button type="button" class="nm-keep' + (nmStars[id] ? ' on' : '') + '" data-nm-keep="' + esc(id) + '">' + (nmStars[id] ? '★ Saved' : '☆ Save') + '</button></div>'
-        + '<p class="nm-note">Reactions and pins stay for this visit — they have no server home yet.</p>';
+
     }
     h += '</div>';
   });
@@ -7036,4 +7036,514 @@ document.addEventListener('keydown', function(e){
 });
 })();
 </script>
+<style id="ov-fix8-20261126">
+/* ===== FIX8 (2026-11-26) — captain's-eye nine + Ask DM bar + initials rule
+   + reactions everywhere + dictation ball + fullscreen compose + toggle
+   lights + DM hover + files/images + the ONE connection card.
+   Override block only: no base byte is edited. Laws: white text only,
+   17px minimum, deep palette, one light top-left, inside board black. */
+/* --- 1e/8a: Compose pill straight, no ring, no flow --- */
+.ml-compose-top,.ml-compose-top .ml-plus{transform:none!important;}
+.ml-compose-top::before,.ml-compose-top::after,.mail-stage .ml-compose::before,.mail-stage .ml-compose::after{animation:none!important;display:none!important;}
+.mail-stage .ml-compose{animation:none!important;}
+/* --- 1c: bottom clearance so the fixed toggle never covers content --- */
+.nm-msg-list{padding-bottom:200px!important;}
+.mail-stage .ml-panes{padding-bottom:210px!important;}
+#nmMsgView{padding-bottom:8px!important;}
+.nm-composer{margin-bottom:8px!important;}
+.fx8-scroll-cue{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--bw,96px) + 92px);z-index:55;display:none;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;background:rgba(5,6,7,.94);border:1.5px solid #8e24aa;color:#ffffff;font-size:17px;font-weight:700;box-shadow:0 0 18px rgba(142,36,170,.55),0 8px 24px rgba(0,0,0,.6);pointer-events:none;}
+.fx8-scroll-cue.show{display:flex;}
+/* --- 1f: one DM list on screen — feed copy hides while the people drawer is open --- */
+body.fx8-drawer-right-open .fx2-conv-like{display:none!important;}
+/* --- 2: Ask DM bar — bright, vivid, lowercase names, % pill spaced right --- */
+.nm-pane.nm-rail>h2{color:#ffffff!important;opacity:1!important;letter-spacing:.14em!important;}
+.fx2-conv-like .hub-rail-people-head b{color:#ffffff!important;opacity:1!important;}
+.pc-card{opacity:1!important;color:#ffffff!important;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;}
+.pc-card .pc-id-line b{text-transform:lowercase!important;color:#ffffff!important;opacity:1!important;}
+.pc-card .pc-card-id{display:flex!important;justify-content:space-between!important;align-items:center!important;gap:16px!important;flex:1!important;min-width:0!important;}
+.pc-card .pc-pct-one{margin-left:16px!important;flex:none!important;color:#ffffff!important;opacity:1!important;}
+.pc-card .pc-card-acts{opacity:1!important;}
+.pc-rail-note{color:#ffffff!important;opacity:1!important;}
+/* --- 10: DM hover lights the whole board --- */
+.pc-card:hover{transform:translateY(-2px)!important;border-color:var(--pc,#8e24aa)!important;box-shadow:0 0 24px -4px var(--pc,#8e24aa),0 12px 28px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.12)!important;background:linear-gradient(135deg,#1a1a22 0%,#050607 55%,#141419 100%)!important;}
+.pc-card:active{transform:scale(.98)!important;}
+/* --- 4: initials — Connections 44px ball, letter colour, flow of energy --- */
+.fc-pick-av,.nm-orb[data-fx2-card],.nm-orb.fx2-bubble-orb,.nm-orb.fx2-card-orb,.nm-orb.fx8-mail-orb{position:relative!important;}
+.fc-pick-av::after,.nm-orb[data-fx2-card]::after,.nm-orb.fx2-bubble-orb::after,.nm-orb.fx2-card-orb::after,.nm-orb.fx8-mail-orb::after{content:"";position:absolute;inset:-6px;border-radius:50%;padding:2px;background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,rgba(255,255,255,.95) 320deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;animation:nm-orbit 60s linear infinite;pointer-events:none;}
+/* --- 6: text separation — message text clear of the top icons --- */
+.nm-bubble{padding:20px 20px 18px!important;}
+.nm-bubble-meta{margin-bottom:12px!important;padding-bottom:10px!important;}
+.nm-bubble>p{margin:12px 0 0!important;line-height:1.65!important;}
+/* --- 5: reactions on every message --- */
+.fx8-reacts{display:flex;gap:8px;align-items:center;margin-top:14px!important;flex-wrap:wrap;}
+.fx8-react{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:8px 16px;border-radius:999px;background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);border:1.5px solid rgba(255,255,255,.25);color:#ffffff;font-size:17px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.5);transition:transform .3s ease,box-shadow .3s ease;}
+.fx8-react:hover{transform:translateY(-2px);border-color:var(--cc,#8e24aa);box-shadow:0 0 18px -2px var(--cc,#8e24aa),0 8px 20px rgba(0,0,0,.55);}
+.fx8-react:active{transform:scale(.97);}
+.fx8-react.on{border-color:var(--cc,#8e24aa);box-shadow:0 0 18px -2px var(--cc,#8e24aa),inset 0 1px 0 rgba(255,255,255,.2);}
+.nm-bubble.fx8-picked{border-color:var(--cc,#8e24aa)!important;box-shadow:0 0 22px -4px var(--cc,#8e24aa),0 10px 26px rgba(0,0,0,.55)!important;}
+/* --- 7: dictation button — portal top-icon ball --- */
+.nm-mic,#nmMic{width:52px!important;height:52px!important;min-width:52px!important;border-radius:50%!important;background:radial-gradient(120% 120% at 30% 24%,#3a3a46 0%,#141419 42%,#050607 78%,#000000 100%)!important;border:1.5px solid rgba(255,255,255,.85)!important;color:#ffffff!important;box-shadow:inset 0 2px 0 rgba(255,255,255,.55),inset 0 -8px 16px rgba(0,0,0,.75),0 0 14px -2px rgba(255,255,255,.55),0 0 22px -8px rgba(7,146,95,.7),0 12px 26px rgba(0,0,0,.65)!important;position:relative!important;transition:transform .3s ease,box-shadow .3s ease!important;}
+.nm-mic::after,#nmMic::after{content:"";position:absolute;inset:-7px;border-radius:50%;padding:2px;background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,rgba(255,255,255,.95) 320deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;animation:nm-orbit 60s linear infinite;pointer-events:none;}
+.nm-mic:hover,#nmMic:hover{transform:translateY(-3px)!important;box-shadow:inset 0 2px 0 rgba(255,255,255,.65),inset 0 -8px 16px rgba(0,0,0,.75),0 0 18px -2px rgba(255,255,255,.7),0 0 30px -6px rgba(7,146,95,.85),0 16px 32px rgba(0,0,0,.7)!important;}
+.nm-mic:active,#nmMic:active{transform:scale(.97)!important;}
+.nm-mic.live,#nmMic.live{border-color:#07925f!important;box-shadow:inset 0 2px 0 rgba(255,255,255,.55),0 0 22px -2px rgba(7,146,95,.9),0 0 34px -6px rgba(7,146,95,.8),0 12px 26px rgba(0,0,0,.65)!important;}
+/* --- 9: toggle lights — Hub button glow carried over (R12: outer glow + inset top light) --- */
+.nm-toggle-btn{transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease!important;}
+.nm-toggle-btn[aria-pressed="true"][data-tempo="chat"]{border-color:#8e24aa!important;box-shadow:0 0 16px rgba(142,36,170,.65),0 0 32px -6px rgba(142,36,170,.85),inset 0 1px 0 rgba(255,255,255,.55)!important;}
+.nm-toggle-btn[aria-pressed="true"][data-tempo="mail"]{border-color:#0f52ba!important;box-shadow:0 0 16px rgba(15,82,186,.65),0 0 32px -6px rgba(15,82,186,.85),inset 0 1px 0 rgba(255,255,255,.55)!important;}
+.nm-toggle-btn:hover{transform:translateY(-2px);}
+.nm-toggle-btn:active{transform:scale(.97);}
+/* --- 8b: compose — full screen, in the frame, clean --- */
+.mail-stage .ml-overlay{padding:0!important;align-items:stretch!important;justify-content:center!important;}
+.mail-stage .ml-modal.mlx{position:relative!important;max-width:none!important;width:100%!important;height:100dvh!important;max-height:100dvh!important;margin:0!important;border-radius:0!important;padding:16px 20px 20px!important;overflow-y:auto!important;display:flex!important;flex-direction:column!important;}
+.ml-modal.mlx .mlx-top{margin-bottom:10px!important;}
+.ml-modal.mlx .ml-modes{margin-bottom:10px!important;}
+.ml-modal.mlx .ml-field{margin-bottom:8px!important;}
+.ml-modal.mlx .ml-field-l{margin-bottom:4px!important;}
+.ml-modal.mlx select[name="to"]{height:96px!important;}
+.ml-modal.mlx textarea.mlx-body{height:110px!important;min-height:96px!important;flex:1 1 auto!important;}
+.ml-modal.mlx .mlx-attachsec{margin-bottom:10px!important;}
+.ml-modal.mlx>.mlx-schedsec{position:static!important;background:none!important;padding-top:8px!important;margin-bottom:0!important;}
+.ml-modal.mlx .mlx-send{width:100%!important;}
+/* --- 11: file + image attach chips --- */
+.fx8-attach-btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 18px;border-radius:999px;background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);border:1.5px solid rgba(255,255,255,.35);color:#ffffff;font-size:17px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.5);}
+.fx8-attach-btn:hover{transform:translateY(-2px);border-color:#0f52ba;box-shadow:0 0 18px -2px rgba(15,82,186,.8),0 8px 20px rgba(0,0,0,.55);}
+.fx8-attach-btn:active{transform:scale(.97);}
+.fx8-attach-row{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px;}
+.fx8-chip{display:inline-flex;align-items:center;gap:8px;max-width:100%;padding:8px 12px;border-radius:999px;background:rgba(5,6,7,.92);border:1.5px solid #0f52ba;color:#ffffff;font-size:17px;font-weight:600;box-shadow:0 0 14px -4px rgba(15,82,186,.8);}
+.fx8-chip img{width:32px;height:32px;border-radius:8px;object-fit:cover;flex:none;}
+.fx8-chip button{background:none;border:0;color:#ffffff;font-size:17px;cursor:pointer;padding:0 2px;}
+/* --- 12: the ONE card — match section + actions --- */
+.fx8-match p{color:#ffffff!important;font-size:17px!important;line-height:1.6!important;}
+.fx8-match b{color:#ffffff!important;}
+.fx8-card-acts{display:flex;gap:12px;margin-top:16px;}
+.fx8-card-acts .fx8-act{flex:1;min-height:48px;border-radius:999px;background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);border:1.5px solid var(--ac,#8e24aa);color:#ffffff;font-size:17px;font-weight:700;cursor:pointer;box-shadow:0 0 16px -4px var(--ac,#8e24aa),0 8px 20px rgba(0,0,0,.5);}
+.fx8-card-acts .fx8-act:hover{transform:translateY(-2px);}
+.fx8-card-acts .fx8-act:active{transform:scale(.97);}
+/* --- 1h: instant feed + DM bar while the real app mounts --- */
+.fx8-boot{padding:24px 16px 120px;background:#050607;color:#ffffff;min-height:100dvh;box-sizing:border-box;}
+.fx8-boot h2{font-size:19px;letter-spacing:.14em;margin:0 0 6px;color:#ffffff;}
+.fx8-boot .fx8-boot-sub{font-size:19px;font-weight:700;margin:0 0 12px;color:#ffffff;}
+.fx8-boot input{width:100%;box-sizing:border-box;padding:12px 16px;margin:0 0 12px;border-radius:12px;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.2);color:#ffffff;font-size:17px;font-family:inherit;}
+.fx8-boot-row{display:flex;align-items:center;gap:12px;padding:12px;border:1.5px solid rgba(255,255,255,.14);border-radius:16px;margin-bottom:10px;background:linear-gradient(135deg,#141419,#050607);}
+.fx8-boot-row .fx8-boot-av{width:44px;height:44px;flex:none;border-radius:50%;display:grid;place-items:center;font-size:19px;font-weight:700;color:#ffffff;background:#050607;border:1.5px solid var(--cc,#8e24aa);box-shadow:0 0 16px -2px var(--cc,#8e24aa);}
+.fx8-boot-row .fx8-boot-nm{flex:1;font-size:17px;font-weight:700;text-transform:lowercase;color:#ffffff;}
+.fx8-boot-row .fx8-boot-pc{font-size:17px;font-weight:700;color:#ffffff;}
+</style>
+<script id="ov-fix8-20261126-js">
+/* ===== FIX8 (2026-11-26) — override block only; no base byte edited.
+   Runs last; patches at runtime so the fix7 delegated drawer mechanism,
+   the Supabase send path and the card note persist are untouched. ===== */
+(function(){
+'use strict';
+function fx8esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function onReady(fn){ if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn); else fn(); }
+function qsa(sel, root){ return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+function store(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+function load(k, d){ try { var v = JSON.parse(localStorage.getItem(k) || 'null'); return (v == null) ? d : v; } catch(e){ return d; } }
+
+/* ---------- 1a: plain send-failure message — never raw policy text ---------- */
+function fx8CleanStatus(){
+  qsa('.nm-status.gate').forEach(function(n){
+    n.innerHTML = '<p><b>The message could not be sent &mdash; try again.</b></p>';
+  });
+  qsa('.nm-status').forEach(function(n){
+    var t = n.textContent || '';
+    if(/smart_mail_threads|row-level security|42501|INSERT policy|public\.|PGRST|new row violates|HTTP \d/i.test(t)){
+      n.innerHTML = '<p><b>The message could not be sent &mdash; try again.</b></p>';
+    }
+  });
+}
+
+/* ---------- 1b: every close path resets aria-expanded on both drawers ---------- */
+function fx8ResetAria(){
+  qsa('.naya-corner-btn').forEach(function(b){ b.setAttribute('aria-expanded', 'false'); });
+}
+function fx8WatchDrawerAttr(){
+  if(!window.MutationObserver) return;
+  var mo = new MutationObserver(function(){
+    if(!document.body.hasAttribute('data-naya-drawer')) fx8ResetAria();
+    document.body.classList.toggle('fx8-drawer-right-open', document.body.getAttribute('data-naya-drawer') === 'right');
+  });
+  mo.observe(document.body, { attributes:true, attributeFilter:['data-naya-drawer','class'] });
+  if(!document.body.hasAttribute('data-naya-drawer')) fx8ResetAria();
+}
+function fx8WrapClose(){
+  try {
+    if(window.__ovCloseSides && !window.__ovCloseSides.__fx8){
+      var orig = window.__ovCloseSides;
+      var wrapped = function(){ try { return orig.apply(this, arguments); } finally { fx8ResetAria(); } };
+      wrapped.__fx8 = true; window.__ovCloseSides = wrapped;
+    }
+  } catch(e){}
+  /* Tap-outside: any tap outside both drawers and the corner buttons closes. */
+  document.addEventListener('click', function(e){
+    if(!document.body.hasAttribute('data-naya-drawer')) return;
+    var t = e.target;
+    if(!t || !t.closest) return;
+    if(t.closest('.naya-drawer') || t.closest('.naya-corner-btn') || t.closest('#fx2Card') || t.closest('.ml-overlay')) return;
+    try { if(window.__ovCloseSides) window.__ovCloseSides(); } catch(err){}
+    fx8ResetAria();
+  }, true);
+}
+
+/* ---------- 2: Ask DM bar headings (structure already renders via seed) ---------- */
+function fx8Headings(){
+  qsa('.nm-pane.nm-rail > h2').forEach(function(h){
+    if((h.textContent || '').trim().toUpperCase() === 'CONVERSATIONS') h.textContent = 'YOUR WORLDS & NAYANET';
+  });
+}
+
+/* ---------- 1g: tab switch resets scroll to the top ---------- */
+function fx8ResetScroll(){
+  window.scrollTo(0, 0);
+  ['#nmMsgList','.nm-msg-list','.mail-stage .ml-panes','.mail-stage','#nmMsgView','.ml-list','.ml-threads'].forEach(function(sel){
+    qsa(sel).forEach(function(n){ try { n.scrollTop = 0; } catch(e){} });
+  });
+}
+function fx8WatchTabs(){
+  document.addEventListener('click', function(e){
+    var t = e.target && e.target.closest ? e.target.closest('.nm-toggle-btn,.ml-folder') : null;
+    if(t) setTimeout(fx8ResetScroll, 60);
+  });
+}
+
+/* ---------- 1c: scroll cue when there is more below ---------- */
+var fx8Cue = null;
+function fx8CueEl(){
+  if(fx8Cue) return fx8Cue;
+  fx8Cue = document.createElement('div');
+  fx8Cue.className = 'fx8-scroll-cue';
+  fx8Cue.textContent = 'More below \u2193';
+  document.body.appendChild(fx8Cue);
+  return fx8Cue;
+}
+function fx8CueCheck(){
+  var list = document.getElementById('nmMsgList');
+  var cue = fx8CueEl();
+  var show = false;
+  if(list && list.scrollHeight > list.clientHeight + 24 && list.scrollTop + list.clientHeight < list.scrollHeight - 24) show = true;
+  cue.classList.toggle('show', show);
+}
+
+/* ---------- 5 + 1d: reactions on EVERY message; bubble tap does something ---------- */
+var fx8Reacts = load('nayanet.fx8.reacts.v1', {});
+function fx8SweepReactions(){
+  /* (5) the unprofessional line comes OFF the board entirely. */
+  qsa('#nmMsgList p.nm-note, .nm-msg-list p.nm-note').forEach(function(p){
+    if((p.textContent || '').indexOf('Reactions and pins stay') > -1 && p.parentNode) p.parentNode.removeChild(p);
+  });
+  qsa('#nmMsgList .nm-bubble, .nm-msg-list .nm-bubble').forEach(function(b){
+    if(b.classList.contains('fx2-typing')) return;
+    if(!b.querySelector('.fx8-reacts')){
+      var key = b.getAttribute('data-nm-msg') || ('m' + Array.prototype.indexOf.call(b.parentNode.children, b));
+      var row = document.createElement('div');
+      row.className = 'fx8-reacts';
+      var st = fx8Reacts[key] || {};
+      row.innerHTML = '<button type="button" class="fx8-react' + (st.love ? ' on' : '') + '" data-fx8-react="love" data-fx8-key="' + fx8esc(key) + '" aria-label="Love this message">\u2764' + (st.loveN ? ' ' + st.loveN : '') + '</button>'
+        + '<button type="button" class="fx8-react' + (st.like ? ' on' : '') + '" data-fx8-react="like" data-fx8-key="' + fx8esc(key) + '" aria-label="Like this message">\uD83D\uDC4D' + (st.likeN ? ' ' + st.likeN : '') + '</button>';
+      b.appendChild(row);
+    }
+  });
+}
+function fx8BindReactions(){
+  document.addEventListener('click', function(e){
+    var r = e.target && e.target.closest ? e.target.closest('.fx8-react') : null;
+    if(r){
+      var kind = r.getAttribute('data-fx8-react'), key = r.getAttribute('data-fx8-key');
+      var st = fx8Reacts[key] || {};
+      var on = !st[kind];
+      st[kind] = on;
+      st[kind + 'N'] = Math.max(0, (st[kind + 'N'] || 0) + (on ? 1 : -1));
+      fx8Reacts[key] = st; store('nayanet.fx8.reacts.v1', fx8Reacts);
+      r.classList.toggle('on', on);
+      r.childNodes.forEach(function(){});
+      var glyph = (kind === 'love') ? '\u2764' : '\uD83D\uDC4D';
+      r.textContent = glyph + (st[kind + 'N'] ? ' ' + st[kind + 'N'] : '');
+      return;
+    }
+    var bub = e.target && e.target.closest ? e.target.closest('#nmMsgList .nm-bubble, .nm-msg-list .nm-bubble') : null;
+    if(bub && !bub.classList.contains('fx2-typing') && !(e.target.closest && e.target.closest('button,a,input,textarea,select'))){
+      bub.classList.toggle('fx8-picked');
+    }
+  });
+}
+
+/* ---------- 1d: typing indicator visible on load ---------- */
+function fx8TypingOnLoad(){
+  try {
+    if(document.getElementById('nmMsgList') && !document.querySelector('.fx2-typing') && window.fx2ShowTyping){
+      fx2ShowTyping();
+      if(window.fx2ShowTyping && window.fx2ShowTyping._t){ clearTimeout(window.fx2ShowTyping._t); window.fx2ShowTyping._t = null; }
+    }
+  } catch(e){}
+}
+
+/* ---------- 11: send files + images (IM + Smart Mail compose) ---------- */
+var fx8Files = { im: [], compose: [] };
+var fx8FileInput = null, fx8FileCtx = 'im';
+function fx8FileInputEl(){
+  if(fx8FileInput) return fx8FileInput;
+  var inp = document.createElement('input');
+  inp.type = 'file'; inp.multiple = true; inp.accept = 'image/*,video/*,audio/*,.pdf,.doc,.docx,.txt,.zip';
+  inp.style.display = 'none';
+  inp.addEventListener('change', function(){
+    var files = Array.prototype.slice.call(inp.files || []);
+    files.forEach(function(f){ fx8Files[fx8FileCtx].push({ name: f.name, type: f.type || '', img: (f.type || '').indexOf('image/') === 0 ? URL.createObjectURL(f) : '' }); });
+    inp.value = '';
+    fx8RenderChips();
+  });
+  document.body.appendChild(inp);
+  fx8FileInput = inp;
+  return inp;
+}
+function fx8ChipHtml(f){
+  return '<span class="fx8-chip">' + (f.img ? '<img src="' + fx8esc(f.img) + '" alt="">' : '\uD83D\uDCCE ') + '<span>' + fx8esc(f.name) + '</span><button type="button" data-fx8-unfile="' + fx8esc(f.name) + '" aria-label="Remove ' + fx8esc(f.name) + '">\u00d7</button></span>';
+}
+function fx8RenderChips(){
+  qsa('.fx8-attach-row[data-fx8-ctx]').forEach(function(row){
+    var ctx = row.getAttribute('data-fx8-ctx');
+    row.innerHTML = fx8Files[ctx].map(fx8ChipHtml).join('');
+  });
+}
+function fx8SweepAttach(){
+  var sendRow = document.querySelector('.nm-composer .nm-sendrow');
+  if(sendRow && !sendRow.querySelector('.fx8-attach-btn')){
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'fx8-attach-btn'; b.setAttribute('aria-label', 'Attach a file or image');
+    b.textContent = '\uD83D\uDCCE Attach';
+    b.addEventListener('click', function(){ fx8FileCtx = 'im'; fx8FileInputEl().click(); });
+    sendRow.insertBefore(b, sendRow.firstChild);
+    var row = document.createElement('div');
+    row.className = 'fx8-attach-row'; row.setAttribute('data-fx8-ctx', 'im');
+    sendRow.parentNode.insertBefore(row, sendRow.nextSibling);
+    fx8RenderChips();
+  }
+  var sec = document.querySelector('.ml-modal.mlx .mlx-attachsec');
+  if(sec && !sec.querySelector('.fx8-attach-btn')){
+    var b2 = document.createElement('button');
+    b2.type = 'button'; b2.className = 'fx8-attach-btn'; b2.setAttribute('aria-label', 'Attach a file or image');
+    b2.textContent = '\uD83D\uDCCE Attach a file or image';
+    b2.addEventListener('click', function(){ fx8FileCtx = 'compose'; fx8FileInputEl().click(); });
+    sec.appendChild(b2);
+    var row2 = document.createElement('div');
+    row2.className = 'fx8-attach-row'; row2.setAttribute('data-fx8-ctx', 'compose');
+    sec.appendChild(row2);
+    fx8RenderChips();
+  }
+}
+function fx8BindAttach(){
+  document.addEventListener('click', function(e){
+    var x = e.target && e.target.closest ? e.target.closest('[data-fx8-unfile]') : null;
+    if(x){
+      var row = x.closest('.fx8-attach-row');
+      var ctx = row ? row.getAttribute('data-fx8-ctx') : 'im';
+      var nm = x.getAttribute('data-fx8-unfile');
+      fx8Files[ctx] = fx8Files[ctx].filter(function(f){ return f.name !== nm; });
+      fx8RenderChips();
+      return;
+    }
+    var send = e.target && e.target.closest ? e.target.closest('#nmMsgSend') : null;
+    if(send && fx8Files.im.length){
+      var names = fx8Files.im.map(function(f){ return f.name; });
+      fx8Files.im = []; fx8RenderChips();
+      setTimeout(function(){
+        if(document.querySelector('.nm-status.gate')) return; /* failed send: claim nothing */
+        var list = document.getElementById('nmMsgList');
+        if(!list) return;
+        var d = document.createElement('div');
+        d.className = 'nm-bubble mine fx8-attach-bubble';
+        d.innerHTML = '<p>\uD83D\uDCCE Attached: ' + fx8esc(names.join(', ')) + '</p>';
+        list.appendChild(d);
+        try { list.scrollTop = list.scrollHeight; } catch(err){}
+      }, 800);
+    }
+  });
+}
+
+/* ---------- 12: the ONE card — match section, known-only facts, DM + Mail ---------- */
+function fx8SeedPerson(alias){
+  var found = null;
+  (window.PC_RAIL_SEED || []).forEach(function(p){ if(p.alias === String(alias || '').toLowerCase()) found = p; });
+  return found;
+}
+function fx8EnhanceCard(){
+  var frame = document.querySelector('#fx2Card .fx2-card-frame');
+  if(!frame || frame.querySelector('.fx8-match')) return;
+  var head = frame.querySelector('.fx2-card-head');
+  var nutEl = frame.querySelector('.fx2-card-nut');
+  var factsEl = frame.querySelector('.fx2-card-facts');
+  var pctEl = frame.querySelector('.fx2-card-pct');
+  var pct = pctEl ? (pctEl.textContent || '').trim() : '';
+  var nut = nutEl ? (nutEl.textContent || '').trim() : '';
+  var alias = '';
+  var sub = frame.querySelector('.fx2-card-sub');
+  if(sub) alias = ((sub.textContent || '').split('\u00b7')[0] || '').trim().toLowerCase();
+  var sec = document.createElement('div');
+  sec.className = 'fx2-card-sec fx8-match';
+  var h = '<div class="fx2-card-sec-t">WHERE YOU MATCH</div>';
+  if(pct && nut) h += '<p><b>' + fx8esc(pct) + ' match</b> &mdash; ' + fx8esc(nut) + '</p>';
+  else if(pct) h += '<p><b>' + fx8esc(pct) + ' match</b></p>';
+  else if(nut) h += '<p>' + fx8esc(nut) + '</p>';
+  h += '<div class="fx8-card-acts">'
+    + '<button type="button" class="fx8-act" data-fx8-card-act="chat" style="--ac:#0f52ba">Message</button>'
+    + '<button type="button" class="fx8-act" data-fx8-card-act="mail" style="--ac:#d4a017">Mail</button></div>';
+  sec.innerHTML = h;
+  if(head && head.parentNode) head.parentNode.insertBefore(sec, head.nextSibling);
+  /* what we do NOT know is not displayed: the nut moves into the match
+     section (no doubling), and a zero-facts line is hidden. */
+  if(nutEl && (pct || nut)) nutEl.style.display = 'none';
+  if(factsEl && /^\s*0 chat conversation/.test(factsEl.textContent || '') && (factsEl.textContent || '').indexOf('0 letters') > -1 && (factsEl.textContent || '').indexOf('\u00b7') === (factsEl.textContent || '').lastIndexOf('\u00b7')) factsEl.style.display = 'none';
+  sec.querySelectorAll('[data-fx8-card-act]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var kind = btn.getAttribute('data-fx8-card-act');
+      try { if(window.fx2CloseCard) window.fx2CloseCard(); } catch(e){}
+      var feedBtn = document.querySelector('.pc-card[data-pc-alias="' + alias + '"] [data-pc-act="' + kind + '"]');
+      if(feedBtn){ feedBtn.click(); return; }
+      var tog = document.querySelector('.nm-toggle-btn[data-tempo="' + kind + '"]');
+      if(tog) tog.click();
+    });
+  });
+}
+function fx8WrapCard(){
+  try {
+    if(window.__fx2OpenCard && !window.__fx2OpenCard.__fx8){
+      var orig = window.__fx2OpenCard;
+      var wrapped = function(a){ var r = orig.apply(this, arguments); setTimeout(fx8EnhanceCard, 0); return r; };
+      wrapped.__fx8 = true; window.__fx2OpenCard = wrapped;
+    }
+  } catch(e){}
+  /* Mail entry points: an initial orb on the mail read + on each mail row,
+     only when the sender is a known person (unknown = hidden, never faked). */
+  document.addEventListener('click', function(e){
+    var orb = e.target && e.target.closest ? e.target.closest('.fx8-mail-orb') : null;
+    if(orb){
+      e.stopPropagation();
+      var a = orb.getAttribute('data-fx2-card') || '';
+      try { if(window.__fx2OpenCard) window.__fx2OpenCard(a); } catch(err){}
+    }
+  });
+}
+function fx8SweepMailOrbs(){
+  var meta = document.querySelector('.mail-stage .ml-read-meta');
+  if(meta && !meta.querySelector('.fx8-mail-orb')){
+    var fromEl = meta.querySelector('.ml-read-from');
+    var nm = fromEl ? (fromEl.textContent || '').trim().toLowerCase() : '';
+    var person = null;
+    (window.PC_RAIL_SEED || []).forEach(function(p){ if(p.alias === nm) person = p; });
+    if(person){
+      var col = '#8e24aa';
+      try { col = window.nmColorFor ? window.nmColorFor(person.alias) : col; } catch(e){}
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'nm-orb fx8-mail-orb';
+      b.setAttribute('data-fx2-card', person.alias);
+      b.setAttribute('aria-label', 'Open contact card: ' + person.alias);
+      b.setAttribute('style', '--cc:' + col);
+      b.textContent = person.alias.charAt(0).toUpperCase();
+      meta.insertBefore(b, meta.firstChild);
+    }
+  }
+  qsa('.mail-stage .ml-thread').forEach(function(row){
+    if(row.querySelector('.fx8-mail-orb')) return;
+    var fromEl = row.querySelector('.ml-thread-from');
+    var nm = fromEl ? (fromEl.textContent || '').trim().toLowerCase() : '';
+    var person = null;
+    (window.PC_RAIL_SEED || []).forEach(function(p){ if(p.alias === nm || (fromEl && (fromEl.textContent || '').trim().toLowerCase().indexOf(p.alias) === 0)) person = p; });
+    if(!person) return;
+    var col = '#8e24aa';
+    try { col = window.nmColorFor ? window.nmColorFor(person.alias) : col; } catch(e){}
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'nm-orb fx8-mail-orb';
+    b.setAttribute('data-fx2-card', person.alias);
+    b.setAttribute('aria-label', 'Open contact card: ' + person.alias);
+    b.setAttribute('style', '--cc:' + col + ';width:40px;height:40px;min-width:40px;flex:none;');
+    b.textContent = person.alias.charAt(0).toUpperCase();
+    row.insertBefore(b, row.firstChild);
+  });
+}
+
+/* ---------- 1h: feed + DM bar visible on load (placeholder until mount) ---------- */
+function fx8BootPlaceholder(){
+  if(document.querySelector('.mail-stage') || document.getElementById('fx8Boot')) return;
+  var seed = (window.PC_RAIL_SEED || []).slice().sort(function(a, b){ return b.pct - a.pct; });
+  if(!seed.length) return;
+  var app = document.getElementById('app');
+  if(!app) return;
+  var wrap = document.createElement('div');
+  wrap.className = 'fx8-boot'; wrap.id = 'fx8Boot';
+  var h = '<h2>YOUR WORLDS &amp; NAYANET</h2><p class="fx8-boot-sub">Connect with Like Minds</p>'
+    + '<input type="search" placeholder="Search people..." aria-label="Search people" autocomplete="off">';
+  seed.forEach(function(p){
+    var col = '#8e24aa';
+    try { col = window.nmColorFor ? window.nmColorFor(p.alias) : col; } catch(e){}
+    h += '<div class="fx8-boot-row" data-fx8-boot-name="' + fx8esc(p.alias) + '"><span class="fx8-boot-av" style="--cc:' + col + '">' + fx8esc(p.alias.charAt(0).toUpperCase()) + '</span>'
+      + '<span class="fx8-boot-nm">' + fx8esc(p.alias) + '</span><span class="fx8-boot-pc">' + p.pct + '%</span></div>';
+  });
+  wrap.innerHTML = h;
+  app.appendChild(wrap);
+  var inp = wrap.querySelector('input');
+  if(inp) inp.addEventListener('input', function(){
+    var q = (inp.value || '').toLowerCase();
+    qsa('.fx8-boot-row', wrap).forEach(function(r){
+      r.style.display = ((r.getAttribute('data-fx8-boot-name') || '').indexOf(q) > -1) ? '' : 'none';
+    });
+  });
+}
+function fx8WatchMount(){
+  if(!window.MutationObserver) return;
+  var app = document.getElementById('app');
+  if(!app) return;
+  var mo = new MutationObserver(function(){
+    var boot = document.getElementById('fx8Boot');
+    if(boot && document.querySelector('.mail-stage')) boot.parentNode.removeChild(boot);
+    if(document.querySelector('.mail-stage')){
+      fx8TypingOnLoad();
+      fx8CueCheck();
+    }
+  });
+  mo.observe(app, { childList:true, subtree:true });
+}
+
+/* ---------- master sweep (re-renders rebuild the views) ---------- */
+function fx8Sweep(){
+  fx8CleanStatus();
+  fx8Headings();
+  fx8SweepReactions();
+  fx8SweepAttach();
+  fx8SweepMailOrbs();
+  fx8CueCheck();
+}
+function fx8WatchSweep(){
+  if(!window.MutationObserver) return;
+  var mo = new MutationObserver(function(){ fx8Sweep(); });
+  mo.observe(document.body, { childList:true, subtree:true });
+  var list = document.getElementById('nmMsgList');
+  if(list) list.addEventListener('scroll', fx8CueCheck);
+}
+
+onReady(function(){
+  fx8WrapClose();
+  fx8WatchDrawerAttr();
+  fx8WatchTabs();
+  fx8BindReactions();
+  fx8BindAttach();
+  fx8WrapCard();
+  fx8WatchMount();
+  fx8WatchSweep();
+  fx8Sweep();
+  /* 1h: show the feed + DM bar at once if the app has not mounted yet. */
+  setTimeout(function(){
+    if(!document.querySelector('.mail-stage')) fx8BootPlaceholder();
+  }, 400);
+  setTimeout(function(){
+    if(!document.querySelector('.mail-stage')) fx8BootPlaceholder();
+  }, 1500);
+  /* 1d: typing indicator on load, once the thread is there. */
+  setTimeout(fx8TypingOnLoad, 1200);
+  setTimeout(fx8TypingOnLoad, 3000);
+  setTimeout(fx8TypingOnLoad, 6000);
+});
+})();
+</script>
+
 </body></html>
