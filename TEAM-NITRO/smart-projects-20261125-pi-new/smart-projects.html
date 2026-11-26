@@ -911,6 +911,8 @@ body > .naya-frame, body > .frame-light{z-index:-1}
     <span class="sp-fl-jewel" aria-hidden="true">◆</span>
     <span><span class="sp-fl-kind" id="sp-fl-kind">SMART PROJECTS · PROJECT INTELLIGENCE</span></span>
   </div>
+  <!-- PI-FIX7: progress strip — only on question frames (body.sp-fix7-q). Slim bar + true answered count, never hidden by any rule. -->
+  <div id="sp-fix7-progress" aria-live="polite"><div class="sp-fix7-track"><div class="sp-fix7-fill" id="sp-fix7-fill"></div></div><span class="sp-fix7-count" id="sp-fix7-count">0 of 14</span></div>
 
   <!-- ════ HOME — your projects ════ -->
   <div id="pj-home">
@@ -958,7 +960,7 @@ body > .naya-frame, body > .frame-light{z-index:-1}
       <div class="gr-board-cover">
         <div class="gr-board-num" aria-hidden="true"></div>
         <h2>Pick your kind — the template does the thinking</h2>
-        <p class="gr-board-sub">Twenty-five kinds of project, each with its own questions already written for that kind — not the same questions all the way through. Pick one and its questions appear here, ready to answer; tap USE THIS KIND and they sit in the form below, waiting for your words. The questions are pre-filled. The answers are always yours.</p>
+        <p class="gr-board-sub">Twenty-five kinds of project, each with its own questions already written for that kind — not the same questions all the way through. Pick one and its questions appear here, ready to answer; tap USE THIS KIND and it takes you straight to that template's questions. The questions are pre-filled. The answers are always yours.</p>
       </div>
       <div class="gr-board-body">
         <div class="sp-dd" id="sp-kind-dd">
@@ -972,15 +974,6 @@ body > .naya-frame, body > .frame-light{z-index:-1}
         </div>
         <div class="sp-kind-chips" id="sp-kind-chips"><div class="gr-empty">Reading the kinds…</div></div>
         <p class="gr-status" id="sp-kind-status" aria-live="polite"></p>
-      </div>
-    </section>
-    <section class="gr-board" style="--sc:#ffbf3d" id="sp-template-board">
-      <div class="gr-board-cover">
-        <div class="gr-board-num" aria-hidden="true"></div>
-        <h2>Pick your template</h2>
-        <p class="gr-board-sub">The template does the thinking — it decides which questions you are asked and how the flow runs. Pick a kind above and its template shows here.</p>
-      </div>
-      <div class="gr-board-body">
         <div id="sp-kind-preview"><div class="gr-empty">Pick a kind above — its three questions, and where its links, notes and people live, appear here.</div></div>
       </div>
     </section>
@@ -3063,7 +3056,7 @@ function spRenderQuestions(){
     box.appendChild(el('span','sp-jewel','◆'));
     var main=el('div','pj-row-main');
     main.appendChild(el('div','pj-row-t', q.n+'. '+q.q));
-    var chip=el('div','sp-qchip'); chip.textContent=ans?'ANSWERED ✓':'NOT ANSWERED YET'; chip.style.color=ans?'#2fe89e':'#ffbf3d'; main.appendChild(chip);
+    if(ans){ var chip=el('div','sp-qchip'); chip.textContent='ANSWERED ✓'; chip.style.color='#2fe89e'; main.appendChild(chip); } /* PI-FIX7: the unanswered chip is gone — no chip at all until answered. */
     if(ans) main.appendChild(el('div','pj-row-s', ans));
     var ta=document.createElement('textarea'); ta.className='gr-input sp-qta'; ta.rows=2; ta.maxLength=4000;
     ta.placeholder='Answer in your own words…'; ta.value=ans; ta.setAttribute('aria-label','Answer to question '+q.n); main.appendChild(ta);
@@ -3243,7 +3236,7 @@ function spRenderHomeQuestions(){
     box.appendChild(el('span','sp-jewel','◆'));
     var main=el('div','pj-row-main');
     main.appendChild(el('div','pj-row-t', q.n+'. '+q.q));
-    var chip=el('div','sp-qchip'); chip.textContent=ans?'ANSWERED ✓':'NOT ANSWERED YET'; chip.style.color=ans?'#2fe89e':'#ffbf3d'; main.appendChild(chip);
+    if(ans){ var chip=el('div','sp-qchip'); chip.textContent='ANSWERED ✓'; chip.style.color='#2fe89e'; main.appendChild(chip); } /* PI-FIX7: the unanswered chip is gone — no chip at all until answered. */
     if(ans) main.appendChild(el('div','pj-row-s', ans));
     var ta=document.createElement('textarea'); ta.className='gr-input sp-qta'; ta.rows=2; ta.maxLength=4000;
     ta.placeholder='Answer in your own words…'; ta.value=ans; ta.setAttribute('aria-label','Answer to question '+q.n+' before creating a project'); main.appendChild(ta);
@@ -3499,7 +3492,7 @@ function spSyncKindUI(kindId){
   var lab=document.getElementById('sp-dd-picked');
   if(lab) lab.textContent=k.label+' — '+k.title;
   var st=document.getElementById('sp-dd-status');
-  if(st) st.textContent=k.title+' template — its questions are in the form below. Name the project, then walk it.';
+  if(st) st.textContent=k.title+' template — its questions are below. Name the project, then walk it.';
   document.querySelectorAll('#sp-kind-chips .sp-kind-chip').forEach(function(c){
     c.setAttribute('aria-pressed', c.textContent.trim()===k.label ? 'true' : 'false');
   });
@@ -3510,7 +3503,7 @@ function spPickKind(kindId){
   spSyncKindUI(kindId);
   var st=document.getElementById('sp-kind-status');
   var k=spKindById(kindId);
-  if(st && k) st.textContent=k.title+' template — its questions are below. Tap USE THIS KIND to put them in the form.';
+  if(st && k) st.textContent=k.title+' template — its questions are below. Tap USE THIS KIND to go to its questions.';
 }
 function spUseKind(kindId, quiet){
   var k=spKindById(kindId); if(!k) return;
@@ -3520,7 +3513,9 @@ function spUseKind(kindId, quiet){
   var v=document.getElementById('pj-new-vision'); if(v) v.placeholder=k.vision_q;
   if(quiet) return;
   var st=document.getElementById('sp-kind-status');
-  if(st) st.textContent=k.title+' template chosen — its Mission, Goal and Vision questions are in the form below, waiting for your words. They file into the project when you create it.';
+  if(st) st.textContent=k.title+' template chosen — its Mission, Goal and Vision questions lead the way. Taking you to its questions.';
+  /* PI-FIX7: USE THIS KIND is real now — it takes them to the picked template's first question frame. (quiet calls return before this; only a real tap navigates.) */
+  if(window.spDeckGoToFirstQuestion){ window.spDeckGoToFirstQuestion(); return; }
   var f=document.getElementById('pj-new-name');
   if(f) f.scrollIntoView({behavior:'smooth', block:'center'});
 }
@@ -3918,7 +3913,6 @@ body.sp-deck-on{overflow:hidden}
 @media (min-width:1024px){#pj-home.sp-deck-on>.sp-deck-frame.sp-on,#pj-project.sp-deck-on>.sp-deck-frame.sp-on{min-height:calc(100vh - 340px);max-height:calc(100vh - 340px)}}
 /* Each question is its own themed frame: the board takes the question's own
    deep colour (§3.1 spectrum, never twice in a row) while it is showing. */
-.sp-deck-qhead{font-size:17px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin:0 0 10px}
 /* Deck nav — the walk's .frame-foot pattern, reused for home/project: BACK
    pill (sapphire) + frame label + NEXT pill (purple). Never a second Next
    inside the walk; this is the home/project equivalent of the walk foot. */
@@ -3926,8 +3920,6 @@ body.sp-deck-on{overflow:hidden}
 #sp-deck-nav .sp-deck-btn{pointer-events:auto;font-size:17px;padding:13px 22px}
 #sp-deck-nav .sp-deck-back{--sc:#0f52ba}
 #sp-deck-nav .sp-deck-next{--sc:#8e24aa}
-#sp-deck-nav .sp-deck-label{pointer-events:auto;flex:0 1 auto;min-width:0;text-align:center;font-size:17px;font-weight:800;letter-spacing:.06em;color:#fff;background:rgba(5,6,7,.88);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:10px 16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46vw}
-@media (max-width:640px){#sp-deck-nav .sp-deck-label{max-width:38vw}}
 /* Bottom bar fades on scroll, returns ~1.5s after stopping (Anatomy §2.5). */
 .notif-bar{transition:opacity .45s ease,transform .45s ease}
 .notif-bar.sp-bb-hidden{opacity:0;transform:translateY(24px);pointer-events:none}
@@ -4015,13 +4007,12 @@ function build(){
   function boardByH2(txt){ for(var i=0;i<secs.length;i++){ var h=secs[i].querySelector('h2'); if(h && h.textContent.indexOf(txt)===0) return secs[i]; } return null; }
   function mark(el, t){ if(!el) return; el.classList.add('sp-deck-frame'); if(t) el.setAttribute('data-sp-title', t); }
   if(isHome){
-    var hero=secs[0], start=boardByH2('Start a project'), kind=boardByH2('Pick your kind'), tpl=$('sp-template-board'),
+    var hero=secs[0], start=boardByH2('Start a project'), kind=boardByH2('Pick your kind'), /* PI-FIX7: no second pick step — the template frame is gone */
         qBoard=boardByH2('The 14 Questions'), intel=boardByH2('Project intelligence'), mine=boardByH2('Your projects'), shared=boardByH2('Shared with you');
-    [hero,start,kind,tpl,qBoard,intel,mine,shared].forEach(function(el){ mark(el); });
+    [hero,start,kind,qBoard,intel,mine,shared].forEach(function(el){ mark(el); });
     var tail=root.querySelector(':scope > p.gr-note'); if(tail){ mark(tail); }
     newItems.push({els:[hero,start], title:'Start a project'});
     newItems.push({els:[kind], title:'Pick your kind'});
-    newItems.push({els:[tpl], title:'Pick your template'});
     qFrames('sp-home-questions','sp-home-q-count').forEach(function(q){ newItems.push(q); });
     var sum=buildSummary(true); root.appendChild(sum); mark(sum,'Where you are at');
     newItems.push({els:[sum], title:'Where you are at', summary:true, isHome:true});
@@ -4067,19 +4058,15 @@ function show(i){
   // Question sub-frames: the board shows, only this question's block shows, board takes the question's colour.
   document.querySelectorAll('#sp-home-questions .sp-qblock,#sp-questions .sp-qblock').forEach(function(k){ k.style.display=''; });
   document.querySelectorAll('#sp-home-questions,#sp-questions').forEach(function(w){
-    var b=w.closest('section.gr-board'); if(b){ b.style.removeProperty('--sc'); var qh=b.querySelector('.sp-deck-qhead'); if(qh) qh.remove(); }
+    var b=w.closest('section.gr-board'); if(b){ b.style.removeProperty('--sc'); b.removeAttribute('data-sp-fix7-q'); }
   });
   it.els.forEach(function(el){ if(el) el.classList.add('sp-on'); });
   if(it.q){
     var board=it.board;
     Array.prototype.forEach.call(it.wrap.children, function(c){ if(c.classList.contains('sp-qblock')) c.style.display=(c===it.kid)?'':'none'; });
     board.style.setProperty('--sc', it.tone);
-    var cover=board.querySelector('.gr-board-cover');
-    if(cover && !cover.querySelector('.sp-deck-qhead')){
-      var qh=document.createElement('p'); qh.className='sp-deck-qhead';
-      qh.textContent='Question '+it.q+' of 14 — one per frame';
-      cover.insertBefore(qh, cover.firstChild);
-    }
+    /* PI-FIX7: no headline element any more — the question itself leads. The board carries the hook instead. */
+    board.setAttribute('data-sp-fix7-q', it.q);
     it.wrap.scrollTop=0;
   }
   if(it.summary) fillSummary(it.els[0], it.isHome);
@@ -4096,7 +4083,7 @@ function show(i){
 }
 var nav=document.createElement('nav');
 nav.id='sp-deck-nav'; nav.setAttribute('aria-label','Frame navigation');
-nav.innerHTML='<button type="button" class="gr-btn sp-deck-btn sp-deck-back">← BACK</button><span class="sp-deck-label"></span><button type="button" class="gr-btn sp-deck-btn sp-deck-next">NEXT →</button>';
+nav.innerHTML='<button type="button" class="gr-btn sp-deck-btn sp-deck-back">← BACK</button><button type="button" class="gr-btn sp-deck-btn sp-deck-next">NEXT →</button>'; /* PI-FIX7: the label pill is gone — BACK + NEXT sit together, nothing between them. */
 document.body.appendChild(nav);
 nav.querySelector('.sp-deck-back').addEventListener('click', function(){ show(idx-1); });
 nav.querySelector('.sp-deck-next').addEventListener('click', function(){ if(idx<items.length-1) show(idx+1); });
@@ -4115,6 +4102,8 @@ var mo=new MutationObserver(function(){ var was=idx; var cur=items[idx]; build()
 if(homeEl) mo.observe(homeEl, {attributes:true, attributeFilter:['hidden']});
 if(projEl) mo.observe(projEl, {attributes:true, attributeFilter:['hidden']});
 build(); show(0);
+/* PI-FIX7: the deck's jump — USE THIS KIND takes them to the first question frame of the picked template. */
+window.spDeckGoToFirstQuestion=function(){ for(var i=0;i<items.length;i++){ if(items[i].q){ show(i); return true; } } return false; };
 /* ?new=project deep link: kind frame, dropdown open (button click — the
    panel opener lives inside the main IIFE and is not reachable here). */
 try{ if(new URLSearchParams(location.search).get('new')==='project'){
@@ -4140,8 +4129,6 @@ try{ if(new URLSearchParams(location.search).get('new')==='project'){
 #pj-home.sp-deck-on>.sp-deck-frame.sp-on,#pj-project.sp-deck-on>.sp-deck-frame.sp-on{min-height:0;max-height:none;overflow-y:visible;padding-bottom:180px}
 #sp-deck-nav{gap:8px}
 #sp-deck-nav .sp-deck-btn{padding:13px 16px}
-#sp-deck-nav .sp-deck-label{max-width:54vw}
-@media (max-width:640px){#sp-deck-nav .sp-deck-label{max-width:54vw}}
 .sp-fix3-tplline{font-size:17px;font-weight:800;color:#fff;margin:0 0 12px}
 .sp-fix3-tplline b{color:#d4a017}
 /* sp-fix3b */
@@ -4152,7 +4139,6 @@ try{ if(new URLSearchParams(location.search).get('new')==='project'){
 /* PI-FIX3b (2): at phone width the two 17px pills leave ~94px for the
    label — no cap fixes that. Wrap the nav: label full-width above the
    pills, nothing truncated, 17px kept. Desktop keeps one row. */
-@media (max-width:640px){#sp-deck-nav{flex-wrap:wrap;row-gap:8px}#sp-deck-nav .sp-deck-label{order:-1;flex:1 1 100%;max-width:none}}
 /* PI-FIX3b (4): drawer buttons are width:100% + padding + border with no
    border-box — exactly the 26px sideways overflow. */
 .naya-drawer-btn{box-sizing:border-box}
@@ -4164,7 +4150,6 @@ try{ if(new URLSearchParams(location.search).get('new')==='project'){
 /* PI-FIX3d: on a question frame the board sub (6 lines) pushes the
    question below the visible area. Hide it only while the question head
    is present; count + template line stay. */
-.gr-board-cover:has(.sp-deck-qhead) .gr-board-sub{display:none}
 </style>
 <script id="sp-fix3-js">
 /* PI-FIX3 — stage scroll is CSS above; this script wires template→questions,
@@ -4281,7 +4266,7 @@ setTimeout(applyTemplate,1200);
    desktop stays one row (~64px). */
 #sp-deck-nav{position:static;left:auto;right:auto;bottom:auto;z-index:auto;flex:none;margin:8px 0 0;padding:0 12px;box-sizing:border-box}
 #pj-home.sp-deck-on,#pj-project.sp-deck-on{height:calc(100dvh - 474px)}
-@media (min-width:1024px){#pj-home.sp-deck-on,#pj-project.sp-deck-on{height:calc(100vh - 448px)}}
+@media (min-width:1024px){#pj-home.sp-deck-on,#pj-project.sp-deck-on{height:calc(100vh - 480px)}} /* PI-FIX7: D2 — the 448px reserve was sized for the old ~74px bar; the harvested Hub bar is 124px at 1440 */
 #pj-home.sp-deck-on>.sp-deck-frame.sp-on,#pj-project.sp-deck-on>.sp-deck-frame.sp-on{padding-bottom:24px}
 /* Frame 1: hero slimmed to its title only (quote, +PROJECT, note hide — the
    Start board below is the frame\u2019s work); Start board cover tightened,
@@ -4299,13 +4284,14 @@ setTimeout(applyTemplate,1200);
 /* Q frames: the cover keeps only the question head (renamed with the
    template by fix4 JS) — number, headline, count and template line hide;
    the answer box is 72px. The question + textarea + SAVE fit the lane. */
-.gr-board-cover:has(.sp-deck-qhead){padding:8px 18px}
-.gr-board-cover:has(.sp-deck-qhead) .gr-board-num,.gr-board-cover:has(.sp-deck-qhead) h2{display:none}
-/* sp-fix4b */
-.sp-deck-frame.sp-on:has(.sp-deck-qhead) .sp-fix3-tplline{display:none}
-.sp-deck-frame.sp-on:has(.sp-deck-qhead) .gr-board-body{padding:12px 18px 16px}
-.sp-deck-frame.sp-on:has(.sp-deck-qhead) #sp-home-q-count,.sp-deck-frame.sp-on:has(.sp-deck-qhead) #sp-q-count{display:none}
-.sp-deck-frame.sp-on:has(.sp-deck-qhead) .sp-qta{min-height:72px;height:72px}
+/* PI-FIX7: the :has(.sp-deck-qhead) rules are retargeted to the board's data-sp-fix7-q hook. The fix4 rule that hid
+   #sp-q-count / #sp-home-q-count on question frames (fix6 D1's root cause) is DELETED, not worked around — the count
+   now lives in the top strip, governed by no hiding rule. */
+.sp-deck-frame.sp-on[data-sp-fix7-q] .gr-board-cover{padding:8px 18px}
+.sp-deck-frame.sp-on[data-sp-fix7-q] .gr-board-num,.sp-deck-frame.sp-on[data-sp-fix7-q] h2,.sp-deck-frame.sp-on[data-sp-fix7-q] .gr-board-sub{display:none}
+.sp-deck-frame.sp-on[data-sp-fix7-q] .sp-fix3-tplline{display:none}
+.sp-deck-frame.sp-on[data-sp-fix7-q] .gr-board-body{padding:12px 18px 16px}
+.sp-deck-frame.sp-on[data-sp-fix7-q] .sp-qta{min-height:88px;height:88px}
 /* Summary frame: number + sub hide, cover and line gaps tighten. */
 .sp-deck-frame.sp-on:has([data-sp-sum]) .gr-board-num,.sp-deck-frame.sp-on:has([data-sp-sum]) .gr-board-sub{display:none}
 .sp-deck-frame.sp-on:has([data-sp-sum]) .gr-board-cover{padding:12px 18px 8px}
@@ -4349,7 +4335,7 @@ var iv=setInterval(function(){
   var n=wrap?wrap.querySelectorAll('.sp-qblock').length:0;
   var lab=document.querySelector('#sp-deck-nav .sp-deck-label');
   var total=lab?parseInt((lab.textContent.split(' of ')[1]||'').split(' ')[0],10):0;
-  var want=projOn?29:21;
+  var want=projOn?29:20; /* PI-FIX7: home deck lost the template frame (21 → 20) */
   if(n===14&&total>0&&total!==want){ var t=document.createTextNode(''); wrap.appendChild(t); wrap.removeChild(t); }
   if(tries>=16) clearInterval(iv);
 },700);
@@ -4364,6 +4350,62 @@ var iv=setInterval(function(){
    cannot consume it. Frame overflow itself is untouched (board clipping). */
 #pj-home.sp-deck-on>.sp-deck-frame.sp-on,#pj-project.sp-deck-on>.sp-deck-frame.sp-on{overscroll-behavior:auto}
 </style>
+<style id="sp-fix7-css">
+/* ═══ PI-FIX7 — Shawn's eye 2026-11-26 ~15:23 + template wiring ~15:26 + Vault tie ~15:27 ═══
+   (1) Question screen: the frame label (wordmark + gold kicker) hides on question frames; the big QUESTION N OF 14
+   headline is gone — the question itself (25px Marcellus) leads; the count moves to a slim progress bar across the
+   top + "N of 14" top-right, always showing the TRUE answered count, governed by NO hiding rule; the unanswered chip is
+   gone; the card centers in the stage (margin-auto, safe when taller); BACK/NEXT share one row just above the bar.
+   (2) Template wiring: the second pick step is gone — its preview lives in the kind board;
+   USE THIS KIND jumps the deck to the picked template's first question; Next from the kind frame lands there too.
+   Per-kind questions are the harvested SP_TEMPLATES mission/goal/vision sets (fix3 relabel, unchanged); the other
+   11 frames stay the project's own 14-question spine (SN-4710) — named, not invented.
+   (3) Vault tie: save paths untouched — answers, links, notes still file into the project's Vault. */
+#sp-fix7-progress{display:none;align-items:center;gap:12px;margin:2px 0 12px}
+body.sp-fix7-q #sp-fix7-progress{display:flex}
+.sp-fix7-track{flex:1;height:8px;border-radius:999px;background:#0d0c15;border:1px solid rgba(255,255,255,.25);overflow:hidden}
+.sp-fix7-fill{height:100%;width:0%;border-radius:999px;background:#d4a017;transition:width .3s ease}
+.sp-fix7-count{flex:none;font-size:17px;font-weight:800;color:#fff;letter-spacing:.06em;white-space:nowrap}
+body.sp-fix7-q #sp-frame-label{display:none}
+body.sp-fix7-q #sp-q-count,body.sp-fix7-q #sp-home-q-count{display:none}
+.sp-deck-frame.sp-on[data-sp-fix7-q] .pj-row-t{font-size:25px;font-family:Marcellus,Georgia,serif;font-weight:400;line-height:1.35}
+body.sp-fix7-q #pj-home.sp-deck-on,body.sp-fix7-q #pj-project.sp-deck-on{display:flex;flex-direction:column}
+body.sp-fix7-q #pj-home.sp-deck-on,body.sp-fix7-q #pj-project.sp-deck-on{height:calc(100dvh - 305px)}
+@media (min-width:1024px){body.sp-fix7-q #pj-home.sp-deck-on,body.sp-fix7-q #pj-project.sp-deck-on{height:calc(100vh - 444px)}}
+body.sp-fix7-q #pj-home.sp-deck-on>.sp-deck-frame.sp-on,body.sp-fix7-q #pj-project.sp-deck-on>.sp-deck-frame.sp-on{margin-top:auto;margin-bottom:auto;flex:none}
+</style>
+<script id="sp-fix7-js">
+/* PI-FIX7 — progress strip + question-frame toggle. The strip shows the TRUE answered count (read live from the
+   count elements the renderers already maintain) and the fill width; the tone follows the question's own colour.
+   No rule anywhere hides the strip or the count — visibility is only "a question frame is showing". */
+(function(){
+'use strict';
+function $(id){ return document.getElementById(id); }
+function answeredCount(){
+  var isHome=$('pj-project').hidden;
+  var el=$(isHome?'sp-home-q-count':'sp-q-count');
+  var m=el && el.textContent.match(/(\d+)\s+of\s+14/);
+  return m?parseInt(m[1],10):0;
+}
+function update(){
+  var qboard=document.querySelector('.sp-deck-frame.sp-on[data-sp-fix7-q]');
+  document.body.classList.toggle('sp-fix7-q', !!qboard);
+  if(!qboard) return;
+  var n=answeredCount();
+  /* PI-FIX7b: EVERY write below is change-only. Setting textContent replaces the text node even for an identical
+     string, which re-fires this observer and loops the renderer frozen — the probe proved it on the first question
+     frame. A write happens only when the value actually differs, so update() settles after one pass. */
+  var c=$('sp-fix7-count'); var ct=n+' of 14'; if(c && c.textContent!==ct) c.textContent=ct;
+  var f=$('sp-fix7-fill'); if(f){ var w=(n/14*100)+'%'; if(f.style.width!==w) f.style.width=w;
+    var tone=(qboard.style.getPropertyValue('--sc')||'').trim()||'#d4a017';
+    if(f.style.background!==tone) f.style.background=tone;
+    var bs='0 0 12px '+tone; if(f.style.boxShadow!==bs) f.style.boxShadow=bs; }
+}
+if(window.MutationObserver){ new MutationObserver(update).observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['data-sp-fix7-q','class','style']}); }
+document.addEventListener('click', function(){ setTimeout(update,120); }, true);
+update();
+})();
+</script>
 <nav id="naya-notif-bar" class="notif-bar" data-static="1" aria-label="Notifications"><div class="notif-row"><a class="notif-seg" data-notif="plus" id="sp-hub-add" style="--nc:#8e24aa" href="#" aria-label="ADD — open" title="ADD"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ADD</span></a><a class="notif-seg" data-notif="mail" style="--nc:#0f52ba" href="https://nayanet.app/rooms/mail" target="_blank" rel="noopener" aria-label="MAIL — open (opens in new tab)" title="MAIL"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">MAIL</span></a><a class="notif-seg" data-notif="activity" style="--nc:#07925f" href="https://nayanet.app/hub/feed-activity" target="_blank" rel="noopener" aria-label="ACTIVITY — open (opens in new tab)" title="ACTIVITY"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ACTIVITY</span></a><a class="notif-seg" data-notif="spaces" style="--nc:#d4a017" href="https://nayanet.app/rooms/spaces" target="_blank" rel="noopener" aria-label="WORLDS — open (opens in new tab)" title="WORLDS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">WORLDS</span></a><a class="notif-seg" data-notif="eco" id="sp-bb-eco" style="--nc:#c2410c" href="https://nayanet.app/hub" target="_blank" rel="noopener" aria-label="ECOSYSTEM — open (opens in new tab)" title="ECOSYSTEM"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ECOSYSTEM</span></a><a class="notif-seg" data-notif="plusR" style="--nc:#c62828" href="https://nayanet.app/hub/connections" target="_blank" rel="noopener" aria-label="CONNECT — open (opens in new tab)" title="CONNECT"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19.5c.7-3.4 2.9-5.2 5.5-5.2s4.8 1.8 5.5 5.2"/><circle cx="17" cy="9" r="2.7"/><path d="M16.2 14.6c2.5-.2 4.1 1.4 4.6 3.9"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">CONNECT</span></a></div></nav>
 <script>
 /* PI-FIX6 — ECOSYSTEM on the harvested Hub bar opens PI's own NayaNET menu drawer (the old eco button's behaviour verbatim); the href is the Hub fallback if the drawer is absent. */
