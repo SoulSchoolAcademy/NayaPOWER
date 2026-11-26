@@ -33177,34 +33177,101 @@ button:active,a[href]:active,[data-derive]:active,.notif-seg:active,.os-sl-stat:
 button:active,a[href]:active,[data-derive]:active,.notif-seg:active,.os-sl-stat:active{transition:transform .3s ease,box-shadow .3s ease,filter .3s ease !important;transition-duration:.01s !important;}
 #os-pts-toggle .os-pts-btn:active{transition:transform .3s ease,box-shadow .3s ease,filter .3s ease !important;transition-duration:.01s !important;}
 </style>
-<script id="inner-frames-fix5-20261125-js">
-/* INNER-FRAMES FIX 5 2026-11-25 (R3a): clear a STUCK :active.
-   Firefox keeps a pressed element matching :active after an off-element
-   mouseup until the next mousedown anywhere -- the six bottom-bar segs
-   and the Join door stayed pressed (scale .97 + own light) past +3000ms
-   after release, clearing only when the user tapped elsewhere. Measured:
-   blur, inert, display:none and setPointerCapture all fail to clear it.
-   Moving the SAME node out of the document and back in drops the stale
-   activation while listeners and expando state survive (same node).
-   On pointerup/mouseup, every element still matching :active whose rect
-   does NOT contain the release point gets exactly that move. A release
-   inside the rect is left alone: it clears naturally and its click
-   must proceed untouched. */
+<script id="inner-frames-fix6-20261125-js">
+/* INNER-FRAMES FIX 6 2026-11-26 (R3a + R3b): clear a stuck press WITHOUT any release event.
+   Checker-8 proved the trigger event never arrives: on an off-element release,
+   document-capture, document-bubble AND element-level pointerup/mouseup ALL read
+   0, so the fix5 clearStuck handler (pointerup/mouseup only) can never run.
+   Maker probe6-mech (in-page performance.now sampling, fix5 bytes) adds two facts:
+   (a) pointerleave/mouseleave/pointerout/mouseout DO fire when the pointer moves
+   off a pressed element, before the release; (b) the :active scale applies LATE
+   on this starved page -- during the hold the transform still reads the hover
+   lift, and scale(.97) first appears AFTER the release, lingering ~1s, so the
+   return is late because the style pipeline is starved, not because of the
+   transition duration. So this script uses triggers that actually arrive and a
+   clear that bypasses the slow return: the proven same-node move (fix5 probe2b
+   T6 -- moving the node out and back drops the stale activation AND resets the
+   transform to none at once, same node, listeners and expando state survive).
+   Trigger 1 -- TIMER POLL: every 50ms, any PRESSABLE element still matching
+   :active whose pointer has left it (not :hover) for >=50ms is moved. The poll
+   needs no event at all, so it fires even when the release is swallowed
+   entirely. The poll queries the pressable selectors ONLY (button / link /
+   [data-derive] / .notif-seg / .os-sl-stat -- the fix3 set): a bare ':active'
+   query also matches ANCESTORS of the pressed element, and moving layout
+   ancestors out and back is out of scope and unsafe, so they are never
+   touched. (Proven in probe6-fix: the bare query moved dash-main, ph-main,
+   os-dash and other ancestors -- fixed here before filing.)
+   Trigger 2 -- MOUSEOUT: when the pointer leaves a pressed element for the
+   outside (relatedTarget not inside it), the same move runs at once.
+   R3b STALE TRANSFORM: a press recorded on pointerdown is remembered; in the
+   poll, a remembered element that is no longer :active and no longer :hover
+   but whose computed scale is still depressed (0.90..0.995) is moved, snapping
+   it to rest instead of waiting out the starved return transition.
+   Guards: an element still :hover is never touched (a live hold, and an
+   on-element release, clear naturally and their click must proceed untouched);
+   keyboard activation is never touched (a keydown since the last pointerdown
+   disables the sweep -- keyboard :active clears on keyup by itself). */
 (function(){
-  function clearStuck(e){
-    var els = document.querySelectorAll(':active');
+  var POLL = 50, GRACE = 50;
+  var PRESSABLE_ACTIVE = 'button:active,a[href]:active,[data-derive]:active,.notif-seg:active,.os-sl-stat:active';
+  var recent = new Map();
+  var firstStuck = new WeakMap();
+  var lastPtr = 0, lastKey = 0, polls = 0, moves = [];
+  window.__fix6 = {polls: 0, moves: moves};
+  function move(el, why){
+    var p = el.parentNode, n = el.nextSibling;
+    if (!p) return;
+    p.removeChild(el);
+    p.insertBefore(el, n);
+    moves.push({t: Math.round(performance.now()), why: why, cls: (el.className && el.className.baseVal !== undefined ? el.className.baseVal : String(el.className)).slice(0, 60)});
+  }
+  function scaleOf(el){
+    var m = getComputedStyle(el).transform;
+    if (!m || m === 'none') return 1;
+    var a = m.slice(7, -1).split(',');
+    return parseFloat(a[0]) || 1;
+  }
+  function clearIfStuck(el, why){
+    if (!el || !el.matches || !el.matches(':active')) return;
+    if (el.matches(':hover')) return;
+    move(el, why);
+    firstStuck.delete(el);
+    recent.delete(el);
+  }
+  document.addEventListener('pointerdown', function(e){
+    lastPtr = performance.now();
+    var el = e.target && e.target.closest ? e.target.closest('button,a[href],[data-derive],.notif-seg,.os-sl-stat') : null;
+    if (el) recent.set(el, performance.now());
+  }, true);
+  document.addEventListener('keydown', function(){ lastKey = performance.now(); }, true);
+  document.addEventListener('mouseout', function(e){
+    if (lastKey > lastPtr) return;
+    var el = e.target && e.target.closest ? e.target.closest('button,a[href],[data-derive],.notif-seg,.os-sl-stat') : null;
+    if (!el) return;
+    if (e.relatedTarget && el.contains(e.relatedTarget)) return;
+    clearIfStuck(el, 'mouseout');
+  }, true);
+  setInterval(function(){
+    polls++;
+    window.__fix6.polls = polls;
+    if (lastKey > lastPtr) return;
+    var now = performance.now();
+    var els = document.querySelectorAll(PRESSABLE_ACTIVE);
     for (var i = 0; i < els.length; i++){
       var el = els[i];
-      var r = el.getBoundingClientRect();
-      if (e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom) continue;
-      var p = el.parentNode, n = el.nextSibling;
-      if (!p) continue;
-      p.removeChild(el);
-      p.insertBefore(el, n);
+      if (el.matches(':hover')){ firstStuck.delete(el); continue; }
+      var f = firstStuck.get(el);
+      if (f === undefined){ firstStuck.set(el, now); continue; }
+      if (now - f >= GRACE){ move(el, 'poll-stuck'); firstStuck.delete(el); recent.delete(el); }
     }
-  }
-  document.addEventListener('pointerup', clearStuck, true);
-  document.addEventListener('mouseup', clearStuck, true);
+    recent.forEach(function(t, el){
+      if (now - t > 3000){ recent.delete(el); return; }
+      if (el.matches(':active') || el.matches(':hover')) return;
+      var s = scaleOf(el);
+      if (s < 0.995 && s > 0.9){ move(el, 'poll-stale-transform'); recent.delete(el); }
+    });
+  }, POLL);
 })();
+
 </script>
 </body></html>
