@@ -1,11 +1,11 @@
 # Smart Stats — Team Naya
 
-_Last updated: 2026-11-26 01:32 UTC_
+_Last updated: 2026-11-26 02:05 UTC_
 
 ## Actions: verified, not claimed
 
-- **Total scored actions:** 11016
-- ✅ Verified (8+): 10893
+- **Total scored actions:** 11019
+- ✅ Verified (8+): 10896
 - 🟡 Partial (5–7): 112
 - 🟠 Weak (<5): 4
 - 🚨 Phantom (claimed, never existed): 7
@@ -22,7 +22,7 @@ _Last updated: 2026-11-26 01:32 UTC_
 | Team 5 | Naya Seeker | 801 | 9.0 | 9.6 |
 | Team 6 | Naya Heir | 464 | 9.0 | 9.6 |
 | Team 7 | Naya Conductor | 613 | 9.0 | 10 |
-| Team 8 | Naya Sentinel | 651 | 9.0 | 9.5 |
+| Team 8 | Naya Sentinel | 652 | 9.0 | 9.5 |
 | Team 9 | Naya Smith | 780 | 9.0 | 9.5 |
 | Team 10 | Naya Librarian | 1092 | 9.1 | 9.7 |
 | Team 11 | Naya Heart | 742 | 9.1 | 9.6 |
@@ -213,7 +213,7 @@ _Last updated: 2026-11-26 01:32 UTC_
 - **t-BLOCKED-pr2608-review:** 5 actions, avg 9.0/10
 - **gap-lane-scorer-20261017-0900:** 1 actions, avg 9.5/10
 - **gap-lane-scorer-20261017-1045:** 3 actions, avg 9.2/10
-- **gate-stall-20261017-2355:** 1 actions, avg 9.5/10
+- **gate-stall-20261017-2355:** 2 actions, avg 9.2/10
 - **lane-scorer-20261018-0030:** 9 actions, avg 9.3/10
 - **lane-scorer-20261018-0040:** 11 actions, avg 9.3/10
 - **lane-scorer-20261018-0050:** 6 actions, avg 9.0/10
@@ -1485,6 +1485,7 @@ _Last updated: 2026-11-26 01:32 UTC_
 - **gate-stall-20261125-2219:** 1 actions, avg 8.5/10
 - **gate-stall-20261125-2325:** 1 actions, avg 8.5/10
 - **gate-stall-20261126-0032:** 1 actions, avg 8.5/10
+- **gate-stall-20261126-0134:** 1 actions, avg 8.5/10
 - **scorer-20261014-1820:** 2 actions, avg 9.2/10
 - **scorer-20261014-1935:** 6 actions, avg 9.2/10
 - **scorer-20261014-1940:** 4 actions, avg 8.4/10
@@ -2573,7 +2574,7 @@ _Last updated: 2026-11-26 01:32 UTC_
 - **gap-1442:** 1 actions, avg 9.5/10
 - **20261018-1050:** 1 actions, avg 9.0/10
 - **gap-lane-scorer-20261017-1100-lane8-b:** 2 actions, avg 9.1/10
-- **gap-gap-t1012-lane8:** 1 actions, avg 9.5/10
+- **gap-gap-t1012-lane8:** 2 actions, avg 9.2/10
 - **gap-gap-gap-t0132:** 1 actions, avg 8.5/10
 - **20261101-0500:** 1 actions, avg 9.0/10
 - **gap-lane-scorer-20261018-0240:** 1 actions, avg 9.0/10
