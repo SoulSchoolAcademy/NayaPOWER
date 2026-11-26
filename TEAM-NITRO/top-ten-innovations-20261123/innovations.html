@@ -837,8 +837,8 @@ body.member-signed-in #screen-slide .ib-layer-body p{cursor:text}
 .depth-back{display:inline-flex;align-items:center;min-height:44px;padding:8px 20px;border-radius:999px;cursor:pointer;background:linear-gradient(135deg,#0b0c10,#050607);border:1.5px solid #8e24aa;color:#fff;font-family:"Cormorant Garamond",serif;font-size:19px;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,.55),0 0 14px rgba(142,36,170,.35);transition:transform .3s ease,box-shadow .3s ease}
 .depth-back:hover{transform:translateY(-2px)}
 .depth-back:active{transform:scale(.97)}
-.depth-x{width:44px;height:44px;flex:none;border-radius:50%;cursor:pointer;background:linear-gradient(135deg,#17171f,#050607);border:1.5px solid rgba(255,255,255,.9);color:#fff;font-size:26px;line-height:1;display:grid;place-items:center;box-shadow:0 8px 20px rgba(0,0,0,.6);transition:transform .3s ease}
-.depth-x:hover{transform:translateY(-2px)}
+.depth-x{width:44px;height:44px;flex:none;border-radius:50%;cursor:pointer;background:radial-gradient(circle at 34% 28%,rgba(255,255,255,.32),transparent 48%),radial-gradient(circle at 32% 26%,#454c66,#101018 58%,#050508);border:none;color:#fff;font-size:26px;line-height:1;display:grid;place-items:center;box-shadow:0 8px 20px rgba(0,0,0,.6),0 0 18px rgba(255,255,255,.28),inset 0 2px 3px rgba(255,255,255,.55),inset 0 -7px 12px rgba(0,0,0,.75);text-shadow:0 1px 2px rgba(0,0,0,.8);transition:transform .3s ease,filter .3s ease} /* FIX13: same harvested .orb3d ball as .fs-btn — the old 135deg linear wash + 1.5px white border read as a flat outline circle with a x in it. Applies to #fsClose and, sharing the class, #depthClose — same control, same defect, same treatment. */
+.depth-x:hover{transform:translateY(-2px);filter:brightness(1.15)} /* FIX13: the ball lights on touch, like .fs-btn:hover */
 .depth-x:active{transform:scale(.97)}
 .draft-tag{font-size:17px;letter-spacing:.14em;color:#fff;opacity:.85;white-space:nowrap}
 .depth-img-slot{display:flex;align-items:center;justify-content:center;min-height:180px;border-radius:14px;background:linear-gradient(135deg,#0b0c10,#050607);border:1.5px solid rgba(255,255,255,.35);box-shadow:0 6px 18px rgba(0,0,0,.55);margin:12px 0;overflow:hidden}
@@ -1319,10 +1319,10 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 <style>
 /* FIX7F — see the block comment above the FIX7F reps in apply-fix7.cjs. */
 @keyframes fx7f-spin{to{transform:rotate(360deg)}}
-.fs-btn{position:absolute;top:8px;right:8px;z-index:5;width:44px;height:44px;min-height:44px;padding:0;flex:none;display:grid;place-items:center;border-radius:50%;cursor:pointer;border:2px solid rgba(255,255,255,.95);background:radial-gradient(circle at 34% 28%,#3a3b46 0%,#17171f 42%,#050607 100%);box-shadow:0 6px 16px rgba(0,0,0,.65),0 0 0 2px rgba(255,255,255,.12),0 0 18px rgba(255,255,255,.28);transition:transform .18s ease,filter .18s ease,box-shadow .18s ease} /* FIX11 (4): 34px thin-outline button -> 44px obsidian ball, bright rim + glow, alive on hover */
-.fs-btn:hover{filter:brightness(1.2);transform:scale(1.08);box-shadow:0 8px 20px rgba(0,0,0,.7),0 0 0 2px rgba(255,255,255,.2),0 0 26px rgba(255,255,255,.45)}
+.fs-btn{position:absolute;top:8px;right:8px;z-index:5;width:44px;height:44px;min-height:44px;padding:0;flex:none;display:grid;place-items:center;border-radius:50%;cursor:pointer;border:none;background:radial-gradient(circle at 34% 28%,rgba(255,255,255,.32),transparent 48%),radial-gradient(circle at 32% 26%,#454c66,#101018 58%,#050508);box-shadow:0 6px 16px rgba(0,0,0,.65),0 0 18px rgba(255,255,255,.28),inset 0 2px 3px rgba(255,255,255,.55),inset 0 -7px 12px rgba(0,0,0,.75);transition:transform .18s ease,filter .18s ease,box-shadow .18s ease} /* FIX13: FIX11 (4) size was right but the eye still saw a flat white-outline ring — the 2px white border drew the ring and the dim #3a3b46 wash had no gloss. Harvested verbatim from this page: .orb3d ball gradient + inset top light/bottom shade, .pm-play-disc top-left gloss wash, seal white outer glow. No border: the ball edge is the inset light, like .orb3d. */
+.fs-btn:hover{filter:brightness(1.2);transform:scale(1.08);box-shadow:0 8px 20px rgba(0,0,0,.7),0 0 26px rgba(255,255,255,.45),inset 0 2px 3px rgba(255,255,255,.65),inset 0 -7px 12px rgba(0,0,0,.75)} /* FIX13: hover keeps the .orb3d inset lights — the old hover shadow dropped them, flattening the ball on touch */
 .fs-btn:active{transform:scale(.92)}
-.fs-btn svg{display:block}
+.fs-btn svg{display:block;filter:drop-shadow(0 1px 2px rgba(0,0,0,.8))} /* FIX13: expand glyph reads as a white object sitting ON the ball, not drawn flat on it */
 /* Continuation shells (.cont-ph) are zero-height, visibility:hidden placeholders
    — their FS button is invisible and unreachable, and its 34px box was the
    only thing making the shell read scroll-overflow 18 (prove7 rerun on the
