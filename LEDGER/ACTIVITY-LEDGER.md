@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-26 05:05 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-26 05:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -43927,6 +43927,12 @@ _Last updated: 2026-11-26 05:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** LaneK gap: second pass found 28-corrections bucket stands; appended one VERIFIED OUTCOME line to the distillation. Verified: corpus sha corroborated this tick. Score 8.5: partial value - mostly a null result, one honest amendment. Why not 9.5: the pass-2 window (+-450 chars) may miss cross-thread context a correction could depend on, and the verdic
 
+### ✅ gap-lane-scorer-20261018-0940-lane99 — Team 99, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: harden the phantom-liveness trace to cover the retired-with-witness fifth queue state (procedure doc + trace script)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: trace script bin/trace-phantom-brief.sh 15a54b40 exact match; retired brief + .WITHDRAWN.txt present; gap-followup-seen.json brief_retired_to matches exactly. NOT PHANTOM. Self-score 9.4; author's own 2026-10-19 correction struck the run-window claim (work evidence unaffected). Why not 9.5: (1) proc
+
 ### ✅ gap-lane-scorer-20261018-1150-lane99 — Team 99, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
 **Task:** dispatcher-directed gap follow-up: post routing-repair signal for unassignable queue starvation to live board
@@ -44220,6 +44226,12 @@ _Last updated: 2026-11-26 05:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** 1723 lane-executor stall record (no eligible briefs)
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
+
+### ✅ gap-lane-scorer-20261018-0910-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: neutral-tie-break stem-overlap baseline + 12/12 tie census + sub-band semantic margins for the t0412 lexical arm
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: all five SHAs match live bytes exactly - corpus seal 74434a9f, queries seal 2e61bd7d, arm.py 635d7446, script efa916f3, results 046ea9d9. NOT PHANTOM. Self-score 9.0; author's own 2026-10-19 correction struck the run-window claim (future-knowledge attestation voided; work evidence unaffected). Why n
 
 ### ✅ gap-lane-scorer-20261018-0502-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
@@ -56388,6 +56400,12 @@ _Last updated: 2026-11-26 05:05 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0768-lane2.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
+
+### ✅ gap-lane-scorer-20261018-0900-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: exercise full --arm semantic-t0426 end-to-end post-refactor (default-arm subprocess cold-rank path)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: sealed pilot12_verdict.json ebeef7378 exact match (untouched); per-arm verdict 58abf2ee exact match with arm block (semantic-t0426 / rank pin 814f75f203cf); pin re-confirmed in receipt. NOT PHANTOM. Self-score 9.2; author's own 2026-10-19 correction struck the run-window claim (future-knowledge atte
 
 ### ✅ gap-gap-lane-scorer-20261016-0740-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
 
