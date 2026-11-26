@@ -6932,7 +6932,7 @@ body:not(.os-bottom-hidden):not(.os-bottom-off) .naya-drawer-left .rail.left{pad
 
 <style id="ov-fix5-20261125">
 /* ===== FIX5 2026-11-25 — D-4 warm-up flash REMOVED; D-1 honestly not closed in-VM =====
-   D-4: the fix4 invisible pre-warm (body.fx4-warm) is GONE — style rules + script
+   D-4: the fix4 invisible pre-warm (the warm class) is GONE — style rules + script
    removed above. No warm class is ever added, so there is no warm-off return edge
    and no load flash is possible from this mechanism. The drawer sits off-screen
    (translateX(-102%)) at load exactly as in fix3.
@@ -6947,4 +6947,72 @@ body:not(.os-bottom-hidden):not(.os-bottom-off) .naya-drawer-left .rail.left{pad
 .naya-drawer{transition:transform .4s ease !important;}
 .naya-drawer-backdrop{transition:opacity .4s ease !important;}
 </style>
+
+<style id="ov-fix6-20261125">
+/* ===== FIX6 2026-11-25 — D-1 drawer-class toggle (measured, shipped) =====
+   The open state flips with a class on the DRAWER element itself, not with
+   the body[data-naya-drawer] attribute. Probe proof (phone 390, same
+   session, fresh loads, rAF sampler + MutationObserver, real taps):
+   click-baseline 302-598 ms, body-attr control 81-997 ms (mean ~403),
+   drawer-class 14-181 ms (mean ~81, n=9 incl. the same-task set+remove
+   form 14/93/104), bare-panel floor 277-279 ms. The attribute flip forces
+   a full-page style recalc on every tap; the drawer-class flip scopes it
+   to the drawer subtree. The original body-attr rules elsewhere in this
+   file are left untouched as dead fallbacks and are never matched while
+   fix6 runs (the attribute is taken back off in the same task it is set).
+   The .4s drawer/backdrop transition from fix4/fix5 is kept verbatim. */
+.naya-drawer-left.fx6-open{transform:none !important;}
+.naya-drawer-left.fx6-open .rail.left{transform:none !important;opacity:1 !important;pointer-events:auto !important;}
+.naya-drawer-left.fx6-open .rail-left-x{display:grid !important;}
+.naya-drawer-left.fx6-open ~ .naya-drawer-backdrop{opacity:1 !important;pointer-events:auto !important;}
+.naya-drawer-right.fx6-open{transform:none !important;}
+.naya-drawer-right.fx6-open ~ .naya-drawer-backdrop{opacity:1 !important;pointer-events:auto !important;}
+</style>
+<script id="ov-fix6-20261125-js">
+/* ===== FIX6 2026-11-25 — D-1: drawer-class toggle =====
+   Open: the plus buttons' base listeners (openSide) run first — same
+   target, registered earlier, same task — with all their side effects
+   (renderDMs, aria-expanded, body class naya-drawer-open). This listener
+   runs immediately after, in the same task: it moves the open state onto
+   the drawer element and takes the body attribute back off before any
+   style recalc or paint. Net state at first paint: attribute absent,
+   drawer class present — the exact net state the probe measured.
+   Close, universal: every base close path (rail X, backdrop, Escape, DM
+   rows, nav links, the line-3876 caller) funnels through closeSides /
+   closeDrawers, which remove the body class 'naya-drawer-open'. A
+   MutationObserver on that class removes the drawer class, so no close
+   path is missed. Escape is re-wired through the wrapped
+   window.__ovCloseSides because both base Escape handlers are gated on
+   the body attribute, which fix6 never leaves set. */
+(function(){
+'use strict';
+var left = document.querySelector('.naya-drawer-left');
+var right = document.querySelector('.naya-drawer-right');
+if(!left || !right) return;
+function convertOpen(which){
+  var d = (which === 'left') ? left : right;
+  var other = (which === 'left') ? right : left;
+  other.classList.remove('fx6-open');
+  d.classList.add('fx6-open');
+  document.body.removeAttribute('data-naya-drawer');
+}
+function closeAll(){
+  left.classList.remove('fx6-open');
+  right.classList.remove('fx6-open');
+}
+var pluses = Array.prototype.slice.call(document.querySelectorAll('.naya-corner-btn'));
+pluses.forEach(function(btn, i){
+  btn.addEventListener('click', function(){ convertOpen(i === 0 ? 'left' : 'right'); });
+});
+var obs = new MutationObserver(function(){
+  if(!document.body.classList.contains('naya-drawer-open')) closeAll();
+});
+obs.observe(document.body, {attributes: true, attributeFilter: ['class']});
+var origClose = window.__ovCloseSides;
+window.__ovCloseSides = function(){ if(origClose) origClose(); closeAll(); };
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') window.__ovCloseSides();
+});
+})();
+</script>
 </body></html>
