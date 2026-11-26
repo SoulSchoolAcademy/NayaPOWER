@@ -52198,7 +52198,7 @@ div[data-block="cover"] > .ph-actions-row{padding-left:0!important;padding-right
 body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
 @media(max-width:768px){#os-b3-hide{bottom:calc(100vh - 480px);right:8px;}
 body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:calc(100vh - 480px);}}
-<style id="personal-skills-slides-fix3-20261125">
+/* FIX2fresh 2026-11-25: the FIX3 block was inserted as a NESTED <style> element inside this stylesheet, so the HTML parser ate its opening tag as CSS text and dropped the desktop rule with it (the @media rules survived by recovery — that is why phone rode at 98px while desktop stayed at 200px). The rules now live directly in this stylesheet, no nested tags. */
 /* FIX3 2026-11-25 — THE OPEN-STATE CHEVRON RIDES THE BAR TOP (checker item 8, FIX2 FAIL).
    Desktop open gap was 101px, phone open 109px, phone slides-arrival 273px — the
    chevron floated detached in empty black space. Bar heights measured: desktop 98px,
@@ -52211,7 +52211,6 @@ body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:calc(100
 body:not(.os-bottom-hidden):not(.os-bottom-off) #os-b3-hide{bottom:106px !important;} /* FIX2fresh 2026-11-25: !important required — the later stylesheet (line 9176) carries the identical selector with bottom:200px and wins on order alone; without this the desktop open-state gap stays 101px. Folded state untouched: this rule only matches :not(.os-bottom-hidden). */
 @media(max-width:640px){body:not(.os-bottom-hidden):not(.os-bottom-off) #os-b3-hide{bottom:98px;}}
 @media(max-width:640px){body.os-bottom-hidden #os-b3-hide{bottom:98px;}}
-</style>
 </style>
 <style id="personal-followon-20261119">
 /* FOLLOW-ON 2026-11-19 — B: demographics switches. One per question, in the
