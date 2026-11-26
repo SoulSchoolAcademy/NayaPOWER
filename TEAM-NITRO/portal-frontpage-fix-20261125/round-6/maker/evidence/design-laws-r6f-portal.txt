@@ -1,0 +1,86 @@
+FAIL portal.html:727: SIZE (§2.3 below 17px): font-size:12px
+FAIL portal.html:821: SIZE (§2.3 below 17px): font-size:12px
+FAIL portal.html:834: SIZE (§2.3 below 17px): font-size:12px
+FAIL portal.html:837: SIZE (§2.3 below 17px): font-size:12px
+FAIL portal.html:889: SIZE (§2.3 below 17px): font-size:15px
+FAIL portal.html:896: SIZE (§2.3 below 17px): font-size:15px
+FAIL portal.html:898: SIZE (§2.3 below 17px): font-size:15px
+FAIL portal.html:910: SIZE (§2.3 below 17px): font-size:15px
+FAIL portal.html:921: SIZE (§2.3 below 17px): font-size:14px
+FAIL portal.html:922: SIZE (§2.3 below 17px): font-size:14px
+FAIL portal.html:924: SIZE (§2.3 below 17px): font-size:14px
+FAIL portal.html:926: SIZE (§2.3 below 17px): font-size:14px
+FAIL portal.html:929: SIZE (§2.3 below 17px): font-size:13px
+FAIL portal.html:935: SIZE (§2.3 below 17px): font-size:13.5px
+FAIL portal.html:937: SIZE (§2.3 below 17px): font-size:14px
+FAIL portal.html:947: SIZE (§2.3 below 17px): font-size:14px
+FAIL portal.html:954: SIZE (§2.3 below 17px): font-size:11px
+FAIL portal.html:969: SIZE (§2.3 below 17px): font-size:13px
+FAIL portal.html:971: SIZE (§2.3 below 17px): font-size:16px
+FAIL portal.html:979: SIZE (§2.3 below 17px): font-size:16.5px
+FAIL portal.html:1001: SIZE (§2.3 below 17px): font-size:14.5px
+FAIL portal.html:1008: SIZE (§2.3 below 17px): font-size:15px
+FAIL portal.html:1009: SIZE (§2.3 below 17px): font-size:16px
+FAIL portal.html:1011: SIZE (§2.3 below 17px): font-size:14px
+FAIL portal.html:1020: SIZE (§2.3 below 17px): font-size:14px
+FAIL portal.html:1025: SIZE (§2.3 below 17px): font-size:15.5px
+FAIL portal.html:1039: SIZE (§2.3 below 17px): font-size:14px
+FAIL portal.html:1040: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL portal.html:1056: SIZE (§2.3 below 17px): font-size:16.5px
+FAIL portal.html:1115: SIZE (§2.3 below 17px): font-size: 13px
+FAIL portal.html:1116: SIZE (§2.3 below 17px): font-size: 13px
+FAIL portal.html:1118: SIZE (§2.3 below 17px): font-size: 12px
+FAIL portal.html:1135: SIZE (§2.3 below 17px): font-size: 16px
+FAIL portal.html:1190: SIZE (§2.3 below 17px): font-size: 11px
+FAIL portal.html:1231: SIZE (§2.3 below 17px): font-size: 11px
+FAIL portal.html:1252: SIZE (§2.3 below 17px): font-size: 11px
+FAIL portal.html:1257: SIZE (§2.3 below 17px): font-size: 12.5px
+FAIL portal.html:1268: SIZE (§2.3 below 17px): font-size: 11px
+FAIL portal.html:1301: SIZE (§2.3 below 17px): font-size: 16px
+FAIL portal.html:1308: SIZE (§2.3 below 17px): font-size: 16px
+FAIL portal.html:1312: SIZE (§2.3 below 17px): font-size: 14px
+FAIL portal.html:1315: SIZE (§2.3 below 17px): font-size: 16px
+FAIL portal.html:1318: SIZE (§2.3 below 17px): font-size: 12.5px
+FAIL portal.html:1322: SIZE (§2.3 below 17px): font-size: 16px
+FAIL portal.html:1345: SIZE (§2.3 below 17px): font-size:15px
+FAIL portal.html:1358: SIZE (§2.3 below 17px): font-size:14px
+FAIL portal.html:1374: SIZE (§2.3 below 17px): font-size:14px
+FAIL portal.html:1375: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL portal.html:1381: SIZE (§2.3 below 17px): font-size:16.5px
+FAIL portal.html:1449: SIZE (§2.3 below 17px): font-size: 13px
+FAIL portal.html:1477: SIZE (§2.3 below 17px): font-size: 12.5px
+FAIL portal.html:1506: SIZE (§2.3 below 17px): font-size:15px
+FAIL portal.html:1517: SIZE (§2.3 below 17px): font-size:13px
+FAIL portal.html:1519: SIZE (§2.3 below 17px): font-size:15px
+FAIL portal.html:1523: SIZE (§2.3 below 17px): font-size:16px
+FAIL portal.html:1526: SIZE (§2.3 below 17px): font-size:15px
+FAIL portal.html:1527: SIZE (§2.3 below 17px): font-size:13px
+FAIL portal.html:1529: SIZE (§2.3 below 17px): font-size:13px
+FAIL portal.html:1531: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL portal.html:1560: SIZE (§2.3 below 17px): font-size:14px
+FAIL portal.html:1563: SIZE (§2.3 below 17px): font-size:14px
+FAIL portal.html:1570: SIZE (§2.3 below 17px): font-size:14px
+FAIL portal.html:1572: SIZE (§2.3 below 17px): font-size:15px
+FAIL portal.html:1578: SIZE (§2.3 below 17px): font-size:12.5px
+FAIL portal.html:1593: SIZE (§2.3 below 17px): font-size:16px
+FAIL portal.html:1594: SIZE (§2.3 below 17px): font-size:15px
+FAIL portal.html:1595: SIZE (§2.3 below 17px): font-size:14px
+FAIL portal.html:1643: SIZE (§2.3 below 17px): font-size:13px
+FAIL portal.html:1645: SIZE (§2.3 below 17px): font-size:11px
+FAIL portal.html:1652: SIZE (§2.3 below 17px): font-size:16px
+FAIL portal.html:1655: SIZE (§2.3 below 17px): font-size:13px
+FAIL portal.html:1677: SIZE (§2.3 below 17px): font-size:14px
+FAIL portal.html:1687: SIZE (§2.3 below 17px): font-size:15px
+FAIL portal.html:1779: SIZE (§2.3 below 17px): font-size:12px
+FAIL portal.html:1811: SIZE (§2.3 below 17px): font-size:16px
+FAIL portal.html:1846: SIZE (§2.3 below 17px): font-size:13px
+FAIL portal.html:1848: SIZE (§2.3 below 17px): font-size:13px
+FAIL portal.html:1954: SIZE (§2.3 below 17px): font-size:13px
+FAIL portal.html:1995: SIZE (§2.3 below 17px): font-size:13px
+FAIL portal.html:2211: SIZE (§2.3 below 17px): font-size:15px
+FAIL portal.html:2645: SIZE (§2.3 below 17px): font-size:15px
+WARN portal.html:729: TEXT-COLOR? (§2.2 check by eye): color:rgba(255,255,255,.85)
+WARN portal.html:929: TEXT-COLOR? (§2.2 check by eye): color:rgba(232,232,236,.75)
+WARN portal.html:986: TEXT-COLOR? (§2.2 check by eye): color:transparent
+WARN portal.html:1995: TEXT-COLOR? (§2.2 check by eye): color:rgba(255,255,255,.78)
+81 violation(s), 4 warning(s) — fix the FAILs, do not ship.
