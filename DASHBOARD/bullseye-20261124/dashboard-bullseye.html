@@ -33153,4 +33153,58 @@ input:focus-visible{outline:2px solid #ffffff !important;outline-offset:2px !imp
 button:active,a[href]:active,[data-derive]:active,.notif-seg:active,.os-sl-stat:active{transition:none !important;}
 #os-pts-toggle .os-pts-btn:active{transition:none !important;}
 </style>
+<style id="inner-frames-fix5-20261125">
+/* INNER-FRAMES FIX 5 2026-11-25 -- return-to-rest, two fixes, nothing else.
+   R3b SLOW RETURN (checker-7): fix4's transition:none on :active bought
+   the instant press but delayed the return -- non-stuck classes were
+   still exactly scale(.97) at +300ms after release, completing only
+   ~600-3000ms, while fix3 (transition-duration:.1s on :active) was
+   already back to rest at +300ms. Measured on this build (maker probe):
+   the return starts promptly iff the :active transition-duration is
+   NONZERO -- .1s returns by +300ms, 0s and none return late. The press
+   needs ~0s and the return needs >0s, so :active now carries a tiny
+   nonzero duration (.01s): the press still lands at once (10ms is
+   nothing against the 250ms bar) and the return transition starts
+   promptly and completes within ~300ms. These two rules sit AFTER the
+   fix4 block in source order, same specificity, so they win over its
+   transition:none and over fix3's .1s. Rest look untouched -- no
+   restatement, no recolour, no new layout (Design Laws section 5).
+   R3a STUCK :active: the six bottom-bar segs + the Join door stayed
+   :active past +3000ms after an off-element mouseup. The fix is in the
+   fix5 script below (see the FIX 5 comment there): on pointerup/mouseup
+   a still-:active element whose rect does not contain the release point
+   is moved out and back in -- same node, stale activation dropped. */
+button:active,a[href]:active,[data-derive]:active,.notif-seg:active,.os-sl-stat:active{transition:transform .3s ease,box-shadow .3s ease,filter .3s ease !important;transition-duration:.01s !important;}
+#os-pts-toggle .os-pts-btn:active{transition:transform .3s ease,box-shadow .3s ease,filter .3s ease !important;transition-duration:.01s !important;}
+</style>
+<script id="inner-frames-fix5-20261125-js">
+/* INNER-FRAMES FIX 5 2026-11-25 (R3a): clear a STUCK :active.
+   Firefox keeps a pressed element matching :active after an off-element
+   mouseup until the next mousedown anywhere -- the six bottom-bar segs
+   and the Join door stayed pressed (scale .97 + own light) past +3000ms
+   after release, clearing only when the user tapped elsewhere. Measured:
+   blur, inert, display:none and setPointerCapture all fail to clear it.
+   Moving the SAME node out of the document and back in drops the stale
+   activation while listeners and expando state survive (same node).
+   On pointerup/mouseup, every element still matching :active whose rect
+   does NOT contain the release point gets exactly that move. A release
+   inside the rect is left alone: it clears naturally and its click
+   must proceed untouched. */
+(function(){
+  function clearStuck(e){
+    var els = document.querySelectorAll(':active');
+    for (var i = 0; i < els.length; i++){
+      var el = els[i];
+      var r = el.getBoundingClientRect();
+      if (e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom) continue;
+      var p = el.parentNode, n = el.nextSibling;
+      if (!p) continue;
+      p.removeChild(el);
+      p.insertBefore(el, n);
+    }
+  }
+  document.addEventListener('pointerup', clearStuck, true);
+  document.addEventListener('mouseup', clearStuck, true);
+})();
+</script>
 </body></html>
