@@ -26,6 +26,10 @@
       el.classList.remove('loading');
       el.innerHTML = 'Your world is quiet right now — <b>start creating</b> and watch this come alive.';
     }
+    /* R14 (A): wake the data clients waiting on 'supabase-ready' so they
+       fall back to local data now (their getSb() is null and they skip
+       cleanly); a late CDN load still fires done() and they run then. */
+    try { window.dispatchEvent(new CustomEvent('supabase-ready')); } catch(e){}
   }
   var s1 = document.createElement('script');
   s1.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
@@ -4146,7 +4150,7 @@ body:not(.is-owner).pp-memberships [data-os-view="memberships"],body:not(.is-own
     <!-- FRAME FIX 2026-11-24: the calendar's font stack (Marcellus headline) — verbatim from https://calendar.nayanet.app/ head -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Archivo:wght@500;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Archivo:wght@500;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <!-- FRAME FIX 2026-11-24: calendar frame chrome, harvested verbatim — see frame-harvest.css (sha256 e9e16fa76bd210761d7799ae0a6b7dc66762cca4dba95b19c16bd79cc875be83) -->
     <style id="fr-cal-frame-harvest">
 .royal-frame{position:fixed;inset:0;z-index:40;pointer-events:none;
@@ -10602,7 +10606,10 @@ window.NayaContent = {
     var ctl=null, timer=null;
     try{ ctl=new AbortController(); }catch(e){}
     if(ctl){ timer=setTimeout(function(){ try{ ctl.abort(); }catch(e){} }, 15000); }
-    var p=ctl?fetch('/feed-live.json',{signal:ctl.signal}):fetch('/feed-live.json');
+    /* R14 (B): staged origin first — the iframe URL carries ?ref=, so the
+       proof-host copy (same origin) is tried before the live origin. */
+    var _fu='/feed-live.json'; try{ var _rm2=location.search.match(/[?&]ref=([^&]+)/); if(_rm2) _fu=location.origin+'/?file=HUB/app/feed-live.json&ref='+_rm2[1]; }catch(e){}
+    var p=ctl?fetch(_fu,{signal:ctl.signal}):fetch(_fu);
     p.then(function(r){ if(!r.ok) throw new Error('live fetch '+r.status); return r.json(); }).then(function(d){
       if(timer) clearTimeout(timer);
       if(!d || !Array.isArray(d.notes) || !d.notes.length) throw new Error('live feed empty');
@@ -11363,6 +11370,7 @@ const Router = (() => {
       }
     }
     if (!handler) handler = routes['*'];
+     if (!handler) return; /* R14 (C): no route at all — skip, never call undefined */
     current = key;
     const view = handler(params) || document.createElement('div');
     outlet.appendChild(view);
@@ -18917,7 +18925,7 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
   window.NayaGuide = { mount: mount, reset: resetAll };
 })();
 </script>
-<script src="/js/naya-search.js"></script>
+<script defer src="/js/naya-search.js"></script>
 <script>
 (function () {
   'use strict';
@@ -49819,6 +49827,7 @@ function render() {
       }
     }
     if (!handler) handler = routes['*'];
+     if (!handler) return; /* R14 (C): no route at all — skip, never call undefined */
     current = key;
     const view = handler(params) || document.createElement('div');
     outlet.appendChild(view);
