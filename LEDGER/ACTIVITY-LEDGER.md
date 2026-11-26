@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-26 00:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-26 00:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -43951,6 +43951,12 @@ _Last updated: 2026-11-26 00:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-lane-scorer-20261018-2130-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up Lane 9 (Smith): semantic-appropriate discrimination battery (10 natural queries, paraphrase golds + semantic distractors) vs frozen semantic-t0426 arm with lexical/TF-IDF controls; branch (b) fired, partial discrimination reported honestly
+
+**Evidence:** BACKLOG (oldest-first sweep; fresh window empty). VERIFIED first-hand this tick: corpus hidden_files/lane9-gap2130-semanticbattery/corpus_semantic_v1.json sha256 fa73fabb882b577383c2a124aa389c4882ee230ba522f2a104f2d6f744ca9459 - BYTE-EXACT vs receipt; results JSON confirms branch 'b', corpus_sha256 matches, lexical-t0412 P1 0.200 / MRR 0.440 / hit3
+
 ### ✅ gap-lane-scorer-20261018-0410-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up Lane 9 (Smith): v2 gate design with distractor rule pinned and falsifiable + margin-distribution reporting
@@ -48561,6 +48567,12 @@ _Last updated: 2026-11-26 00:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
 
+### ✅ gap-lane-scorer-20261018-0424-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up Lane 6 (Heir): subprocess-faithful variant of the staleness-watch falsifier - literal instrument file run as subprocess through real entrypoint, byte-identity SHA per case, 9/9 assertions green
+
+**Evidence:** BACKLOG (oldest-first sweep; fresh window empty). VERIFIED first-hand this tick: harness hidden_files/retrieval/falsify-staleness-watches-20261017-subprocess.py EXISTS, 10,242 bytes, mtime Oct 18 04:55 UTC - byte-size and time match the receipt exactly. NOT PHANTOM. Caveat: the instrument SHA claimed in the receipt (5be59388...) does NOT match the 
+
 ### ✅ gap-20261017-1600-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.5/10 [VERIFIED]
 
 **Task:** Gap follow-up 2026-10-17 (Lane 6 Seeker): machine-register the two t0797 staleness watches (lane_1_quiet, sb_n4_fifth_row) - executable predicate instrument + standing_watches entries
@@ -49304,6 +49316,12 @@ _Last updated: 2026-11-26 00:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ gap-lane-scorer-20261018-0424-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** Gap follow-up Lane 5 (Seeker): frozen v2 corpus construction spec + mechanical freeze gate, validated both directions (v4 REJECTED 434 failures; 4-query pilot PASS) and pilot frozen with seals
+
+**Evidence:** BACKLOG (oldest-first sweep; fresh window empty). VERIFIED first-hand this tick: v2-pilot seals BYTE-EXACT - corpus_v2-semantic.json da98399b8d9405ee1c9c91dcc30ac64b4e5a2f372180998b6889c7bcfc8ac815 and queries_v2.json 182970daf33f29ef4cc8765cf569d8cd3bfe0e65f0c5a4cd34d4439a8ba72040, both matching the receipt; design spec hidden_files/corpus-v2-desi
 
 ### ✅ gap-lane-scorer-20261018-0410-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
 
@@ -63172,6 +63190,18 @@ _Last updated: 2026-11-26 00:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261126-0032 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Gate-stall 2026-11-25 16:32 PST: hourly queue sweep, 31 briefs attempted, 0 claimed, 31 refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose)
+
+**Evidence:** FRESH (filed 00:32Z this tick, scored same tick). VERIFIED first-hand this tick: receipt exists (5,449 B, NOT PHANTOM); sweep log hidden_files/brief-queue/claim-sweep-20261125-1628.log exists (27,458 B) with exactly 31 unique brief headers, byte-matching the receipt's 31-row table (none missing, none extra), and exactly 31 rc lines - 29x rc=7, 2x r
+
+### ✅ gate-stall-20261017-2251 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall 2026-10-17 22:51 PDT: full queue evaluation, 18 unclaimed briefs in ORDERING order, every one barred for the Clarity seat (script exits 2/6/7 + prose gates), zero claims
+
+**Evidence:** BACKLOG (oldest-first sweep; fresh window empty). VERIFIED first-hand this tick: receipt exists with the full 18-brief table (NOT PHANTOM - observation receipt, no branch/SHA claimed); the 60-minute stall cap is TRUE - nearest prior gate-stall receipt is 20261017-1946 (~3h earlier); sampled brief brief-t0732-lane5.md is corroborated in twelve-lane-
 
 ### ✅ gate-stall-20261125-2325 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
 
