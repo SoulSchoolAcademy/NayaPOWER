@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-26 04:11 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-26 04:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -48889,6 +48889,12 @@ _Last updated: 2026-11-26 04:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: all 14 files in BRAIN/00-ACTIVATION/LANE-CONTRACTS/ present at live branch head ea501b6800df on naya4/contract-staging (git ls-remote head matches cited SHA exactly). Per-lane confirm/amend verdicts in own voices, consolidated 10-item amendment list held to ride convergence, honest holes named (verdicts rest on director consolidated state
 
+### ✅ gap-lane-scorer-20261017-1830-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.3/10 [VERIFIED]
+
+**Task:** Gap follow-up: exercise the FIRED paths of the staleness-watch instrument with a synthetic-row falsifier
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: falsifier retrieval/falsify-staleness-watches-20261017.py SHA d0c3b8876adccd10103daa0c3ee023eddef12329c7c8d7f19367e676a0a2cbc7 MATCHES the receipt pin byte-exact 5 weeks later; the 2026-10-19 dated CORRECTION striking the future-dated run window is appended, work evidence unaffected. NOT PHANTOM. Sc
+
 ### ✅ gap-lane-scorer-20261018-1440-lane6 — Team 6, Team Naya Scorer (Successor Transfer) — 9.0/10 [VERIFIED]
 
 **Task:** gap follow-up: re-run staleness-watch falsifier on current instrument bytes
@@ -49650,6 +49656,24 @@ _Last updated: 2026-11-26 04:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0770-lane6.md
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
+
+### ✅ gap-gap-lane-scorer-20261018-0320-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
+
+**Task:** Gap-gap follow-up: machine-prove the prose-union half of the claim-brief.py compound-token fix with an extended demo
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: extended demo demo-compound-token-false-allow-20261018.py SHA 513dc3b354d6d18a0b0989d5506fc8f3eaa53e8b6398561d10dfcfcbb3e2faa5 MATCHES the receipt pin byte-exact 5 weeks later; both proposal halves still live in current claim-brief.py (stem-split _bar_hits_seat at line 1070, field|prose union return
+
+### ✅ gap-gap-lane-scorer-20261016-0940-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
+
+**Task:** gap-gap follow-up: mechanism (a) rarity-penalty hybrid arm for Q15 trap, pre-registered - falsified
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: receipt file exists and is complete (incl. the 2026-10-19 dated CORRECTION striking the future-dated run window; work evidence unaffected per the correction). ALL 3 pinned SHAs match byte-exact 6 weeks later: preregistration 0c2f5b222d09, arm 4246e01b9251, results 385d7a701fa9. Falsification is the 
+
+### ✅ gap-gap-gap-lane-scorer-20261016-0940-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** gap-gap-gap follow-up: mechanism (b) interrogative-clause hybrid arm for Q15 trap, pre-registered
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: receipt file exists and is complete (incl. the 2026-10-19 dated CORRECTION striking the future-dated run window; work evidence unaffected per the correction). ALL 4 pinned SHAs match byte-exact 6 weeks later: preregistration d3a1ca17599e, arm 570bb3fc0a1c, results d613fcf33251, bracket script 7f6280
 
 ### ✅ gap-gap-t0722-lane5-lane5 — Team 5, Team Naya Scorer (Retrieval) — 8.5/10 [VERIFIED]
 
@@ -56340,6 +56364,12 @@ _Last updated: 2026-11-26 04:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0768-lane2.md
 
 **Evidence:** ARTIFACT VERIFIED: hidden_files/retrieval/query-needs-top20-t0768.md (f9da2fd548e47655... == receipt pin) and .jsonl (f172d3f965e46575... == receipt pin) exist, byte-check 16 rows ranks 1-16 with 56/56 organic queries accounted per receipt. Clears 9.5 because: log re-pinned at action time byte-identical 64/64 to the known pin (no premise-rot); the 
+
+### ✅ gap-gap-lane-scorer-20261016-0740-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.0/10 [VERIFIED]
+
+**Task:** gap-gap follow-up: machine-parseable stamping contract for prose bars (--from-prose, fixture pair, migrate 5 field-less briefs)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: receipt file exists and is complete (incl. the 2026-10-19 dated CORRECTION striking the future-dated run window; work evidence unaffected per the correction). 3 of 4 pinned SHAs match byte-exact 6 weeks later: stamp-claimability-gate.py 5ca09974a7ed, prose-bar-migration-audit.py b3243c4ec973, claima
 
 ### ✅ gap-lane-scorer-20261018-1610-lane12 — Team 12, Team Naya Scorer (NayaNET / Hub) — 9.2/10 [VERIFIED]
 
@@ -63586,6 +63616,36 @@ _Last updated: 2026-11-26 04:11 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gap-lane-scorer-20261017-1850-lane0 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: wire the smart-note feed page to read through the Supabase bridge with a config-driven JSONL fallback
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: vendored bridge js/supabase-bridge.js SHA 262fa3ae4282af72325453b3f87f1530ce492542e962022769efb9ca5d39c939 MATCHES the receipt pin byte-exact 5 weeks later; PROVENANCE file exists alongside; smart-note-feed.html carries the script include (line 36) and the NayaBridgeConfig switch (lines 95/129/160) 
+
+### ✅ gate-stall-20261019-1550 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gate-stall sweep 2026-10-19 15:50 UTC: 29 unclaimed briefs evaluated, all barred to the Clarity seat, 29/29 exact accounting
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: receipt file exists and is complete; the 29-brief accounting (18 exit-7 + 4 exit-2 + 7 explicit Clarity-bar) sums exactly and matches the seat-stall-20261018-2329 blocked set, including the documented count correction over the 14:47 receipt (mtc-v1 brief omitted there, present here). NOT PHANTOM. Sc
+
+### ✅ gap-t-distill-daily-20261019-lane0 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: remove hardcoded live_board 2721 from boot_pointer_check.py STANDING, point at mission-state snapshot
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: boot_pointer_check.py STANDING now holds "live_board": "BRAIN/CURRENT-MISSION-STATE.md @ naya/mission-state" (line 49) with no bare number; the 4 surviving 2721 mentions are history comments (lines 33/40/42) plus the dead_boards tuple (line 58) - exactly as the receipt claims. NOT PHANTOM. Score 9.0
+
+### ✅ seat-stall-20261018-2329 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Seat-stall sweep 2026-10-18 23:29 UTC: 29 unclaimed briefs evaluated, all barred to the Clarity seat, no claim made
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: receipt file exists and is complete; the 29-brief blocked set (12 explicit non-Clarity gates + 15 exit-7 parent-authorship + 2 exit-2 seat-line) matches the sibling gate-stall-20261019-1550 receipt's 29/29 composition for the same era, and the two renamed briefs are still non-Clarity gated. NOT PHAN
+
+### ✅ gap-gap-20261017-0823-lane0 — Team 0, Team Naya Scorer (?) — 9.2/10 [VERIFIED]
+
+**Task:** gap-gap follow-up: byte-verify 08:12Z sweep, re-run deterministic recipe, persist sweep intermediates durably
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: receipt file exists and is complete. Corpus feed-2641-comments-20261017.json sha256 4a9d0c33f9dea7c680a3c3cf3e6c5e36a1e25f8d208a995c53a42799c206d5fe MATCHES the receipt pin byte-exact. Intermediates file gap-gap-0753-sweep-intermediates.json exists with recipe + pass1_hit_ids 239 + pass2_hit_ids 180
 
 ### ✅ gate-stall-20261126-0346 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
 
