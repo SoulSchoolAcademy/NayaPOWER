@@ -32965,4 +32965,62 @@ body:not(.os-feed-open) #os-feed-board .os-feed-x{display:none!important;}
   });
 })();
 </script>
+<style id="inner-frames-fix2-20261125">
+/* INNER-FRAMES FIX 2 2026-11-25 -- checker verdict 2 GOES BACK, two defects only.
+   (D1) 1440 RIGHT-PLUS CLOSE UNRELIABLE: the fix-1 lift of #os-bottom3 to
+   z-index 1001 while a drawer is open was scoped to max-width 1439px, so
+   at 1440 the open right rail (z-index 1000) still paints over the right
+   plus and the close tap hits the rail nav link. Same treatment, all
+   widths now: while either drawer/rail is open the bottom bar paints above
+   the rail (1001 > rail 1000, backdrop 950), so the close tap hits the plus
+   at 1440 too. Below 1440 this re-states the fix-1 rule with identical
+   selectors and declarations, so the proven 390 cycles are unchanged.
+   Exactly two pluses, bottom bar only, look and destinations unchanged, no
+   third close control, pluses not moved. The open rail scrolls, so its
+   bottom content stays reachable above the bar; each rail X stays at the top.
+   (D2) ADD "WHICH FEED?" MENU NEVER VISIBLE: #hubPlusPost is
+   position:fixed with no top/left anywhere in the file, so top:auto leaves
+   it at its static position near the document end (computed top 12048.9px
+   at 390, 6770.45px at 1440) -- thousands of pixels below any viewport.
+   The ADD handler only toggles hidden; nothing positions the menu. The
+   fix-2 script below positions the menu from the ADD button VIEWPORT rect
+   on open, so the fixed menu is placed in viewport coordinates, above the
+   bottom bar, fully on-screen at 390 and 1440. Rows and destinations are
+   untouched; Escape close and the outside-click close are untouched. */
+body.dash-drawer-open #os-bottom3,
+body.dash-rail-right-open #os-bottom3{z-index:1001 !important;}
+</style>
+<script id="inner-frames-fix2-20261125-js">
+/* INNER-FRAMES FIX 2 2026-11-25 (D2): position the ADD "Which feed?" menu
+   from the ADD button VIEWPORT rect on open. The menu is position:fixed,
+   so its top/left are viewport coordinates -- never document coordinates.
+   This listener binds AFTER the base ADD handler (which toggles hidden),
+   so on an opening click the menu is already unhidden and measurable, and
+   this positions it in the same synchronous handler, before any paint.
+   Placement: directly above the ADD button (top = button top - menu
+   height - 8px), centred on the button, clamped 8px inside the viewport.
+   If there is no room above, it falls back below the button, still
+   clamped on-screen. On a closing click (menu now hidden) it does nothing.
+   It touches nothing else: the rows, their destinations, the outside-click
+   close and the Escape close are the base handler, byte-identical. */
+(function(){
+  var add=document.querySelector('#os-bottom3 [data-notif="plus"]');
+  var menu=document.getElementById('hubPlusPost');
+  if(!add || !menu) return;
+  add.addEventListener('click', function(){
+    if(menu.hidden) return;
+    var r=add.getBoundingClientRect();
+    var mw=menu.offsetWidth || 234, mh=menu.offsetHeight || 322;
+    var vw=window.innerWidth || 390, vh=window.innerHeight || 844;
+    var half=mw/2, lo=half+8, hi=vw-half-8;
+    if(hi<lo) hi=lo;
+    var left=Math.min(Math.max(r.left+r.width/2, lo), hi);
+    var top=r.top-mh-8;
+    if(top<8) top=Math.min(r.bottom+8, Math.max(8, vh-mh-8));
+    if(top+mh>vh-8) top=Math.max(8, vh-mh-8);
+    menu.style.left=left+'px';
+    menu.style.top=top+'px';
+  });
+})();
+</script>
 </body></html>
