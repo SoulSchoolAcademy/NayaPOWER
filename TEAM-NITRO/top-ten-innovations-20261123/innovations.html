@@ -1958,7 +1958,7 @@ function renderEnd(){
   document.getElementById('slideBg').style.backgroundImage = 'none';
   document.getElementById('slideBoardsA').innerHTML = endImgBoard(EMBED.slides[12], 'The red N on its pedestal');
   var __fix9parts = END_TEXT.split(' — '); /* FIX9: the ten titles split from END_TEXT itself — one source of truth, never a retyped copy */
-  document.getElementById('slideBoardsB').innerHTML = '<div class="ib-layer"><div class="ib-layer-body">' + '<button class="fs-btn" type="button" aria-label="View full screen"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>' + '<div class="b-script">What comes next</div><p>' + __fix9parts[0] + ' — <span class="end-chapters" id="endChaptersList">' + __fix9parts[1] + '</span></p><button class="naya-btn end-chapters-btn" id="endChapters" type="button" aria-expanded="false" aria-controls="endChaptersList">Chapters ▾</button><div class="end-actions"><button class="naya-btn end-login-btn" id="endLogin" type="button" data-go="portal">Back to login</button></div></div></div>'; /* FIX8: the end text panel moves to B — the ball takes the middle (see R5) */
+  document.getElementById('slideBoardsB').innerHTML = '<div class="ib-layer"><div class="ib-layer-body">' + '<button class="fs-btn" type="button" aria-label="View full screen"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>' + '<div class="b-script">What comes next</div><p>' + __fix9parts[0] + ' — <span class="end-chapters" id="endChaptersList">' + __fix9parts[1] + '</span></p><div class="end-actions"><button class="naya-btn end-login-btn" id="endLogin" type="button" data-go="portal">Back to login</button></div></div></div>'; /* FIX8: the end text panel moves to B — the ball takes the middle (see R5) */
   document.getElementById('slideMain').classList.add('end-mode'); /* FIX8: end-board phone layout — scroll, one board at a time */
   document.getElementById('screen-slide').classList.add('end-mode');
   var __fix8sw = document.querySelector('.slide-frame > .swap-btn[data-slot="C"]'); if (__fix8sw) __fix8sw.style.display = 'none'; /* FIX8: the centre ball is not a swappable slide slot */
@@ -1966,7 +1966,7 @@ function renderEnd(){
   document.getElementById('slideTextCenter').innerHTML = endImgBoard(EMBED.ball, 'The red N'); /* FIX8: the ball takes the middle slot — ball first, text below */
   document.getElementById('slideTextCenter').hidden = false;
   /* FIX11 (5): endBegin/endBack are gone — the login exit is handled by the delegated [data-go="portal"] listener (it also covers the full-screen clone, whose button has no direct listener). The Back ARROW (btnBack, to The template) is separate and stays. */
-  document.getElementById('endChapters').addEventListener('click', toggleEndChapters); /* FIX9 */
+  /* FIX14: #endChapters button removed — its listener goes with it */
   var __fix9sm = document.getElementById('slideMain'); __fix9sm.classList.remove('end-chapters-open'); __fix9sm.classList.remove('end-chapters-closed'); syncEndChapters(); /* FIX9: default state — collapsed at phone, expanded at desktop (CSS); the toggle only ever adds one class */
 }
 function endChaptersOpen(){ /* FIX9: the effective chapters state — CSS default per width, one toggle class */
