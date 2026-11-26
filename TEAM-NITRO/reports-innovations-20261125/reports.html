@@ -1606,6 +1606,32 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
   #screen-cover .deck-status{letter-spacing:.01em!important}
 }
 </style>
+<style id="reports-fix4-20261126">
+/* REPORTS FIX4 — 2026-11-26. D1-deck ONLY; frame CSS, fix2 CSS and fix3 CSS/JS untouched. */
+/* (A) WEEK BAR COMPACT — padding/margins only, all font sizes stay (>=17). ~45px back to the deck. */
+#rpWeekBar{padding:2px 16px 2px!important}
+.rp-week-head{margin:0!important}
+.rp-week-row{padding:2px 4px 2px!important}
+.rp-day{padding:6px 12px!important}
+.rp-day-date{margin:2px 0!important}
+.rp-day-pill{margin-top:6px!important;padding:2px 14px!important}
+/* (B) PHONE — centre frame double share; centre body text starts below the 46px icon (bottom 54). */
+@media(max-width:900px){
+  #screen-slide .pm-art{flex:2 1 0!important}
+  #screen-slide #slideTextCenter .ib-layer-body{padding-top:58px!important}
+}
+/* (C) DESKTOP — caption strip compacts; centre N 80->48; centre script 19px one line on a wider body; p 1.35; padTop 46 / padBottom 8. */
+@media(min-width:901px){
+  #screen-slide .pm-cap{gap:4px!important;padding-top:0!important}
+  #screen-slide .pm-cap .onair{padding:3px 12px!important}
+  #screen-slide #slideTextCenter .ib-layer-body{padding-top:46px!important;padding-bottom:6px!important;padding-left:16px!important;padding-right:16px!important}
+  #screen-slide #slideTextCenter .ib-layer-body .b-script{font-size:19px!important;margin-top:4px!important}
+  #screen-slide #slideTextCenter .ib-layer-body p{line-height:1.35!important;margin:4px 0!important}
+  #screen-slide #slideTextCenter .ib-n,#screen-slide #slideTextCenter .ib-n img{width:40px!important;height:40px!important}
+  #screen-slide #slideTextCenter .ib-n{margin-top:4px!important}
+  #screen-slide #slideTextCenter .more-behind{margin-top:2px!important}
+}
+</style>
 </head>
 <body>
 <div class="royal-frame" aria-hidden="true"><div class="rf-et top"></div><div class="rf-es left"></div><div class="rf-es right"></div><div class="rf-rim"></div><div class="rf-corner tl"></div><div class="rf-corner tr"></div><div class="rf-corner bl"></div><div class="rf-corner br"></div><div class="rf-n top"></div></div>
