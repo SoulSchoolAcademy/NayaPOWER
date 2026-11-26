@@ -516,7 +516,7 @@ body.sr-qmode #tbTitle{font-size:clamp(20px,4.5vw,28px);line-height:1.2}
  * the arrows step questions inside the profile, Q1 ‹ and Q14 › go home);
  * age is a dropdown of authored numeric ranges, phrased "I am…"; EVERY
  * factual question is pick-first (dropdown) with a small write box
- * underneath; mission-type questions (mission, love, needs) are
+ * underneath; mission-type questions (mission, love) are
  * write-first with the big box; skills is two dropdowns (industry, then
  * skills in that industry — both lists authored, disclosed in the maker
  * report, no source list exists in the build).
@@ -530,6 +530,19 @@ body.sr-qmode #tbTitle{font-size:clamp(20px,4.5vw,28px);line-height:1.2}
  * walkthrough answers into Settings; 'offer' is aliased to 'offers' so
  * one answer is never asked twice); the connect-with question offers
  * his list with checkmarks.
+ * ADDITION #4 (2026-11-26 ~10:48-10:51 MST; closing charge: full speed
+ * ahead, Nitro speed, triple-A work, everything ALIGNED — the same
+ * logos, icons, buttons everywhere, the same frame, the same language;
+ * harvest the frame and the parts, never invent a variant): Q13 intent
+ * is pick-first — "What do you intend to use Naya for?" with a dropdown
+ * of HARVESTED intent options (the mission seeds: learn, create, grow,
+ * earn, connect, build my world) plus space to write your goal, and the
+ * i-button example 'build my world'; Q14 adds 'People within your
+ * business' (the one genuine gap in his coverage list — business people
+ * who aren't founders) and carries his reason note as its sub; the
+ * alignment inventory (frame source + blobs, red N source, button/icon
+ * sources) is in the maker report for the checker to verify
+ * byte-identical.
  * The builder injects QUESTIONS (JSON), IMG_STD / IMG_PUR / IMG_NAYA
  * (data URIs) by replacing the marker lines below. */
 (function () {
@@ -552,24 +565,32 @@ body.sr-qmode #tbTitle{font-size:clamp(20px,4.5vw,28px);line-height:1.2}
     thing: 'What are you into?',
     love_about: 'What is your thing?',
     offers: "What do you offer others? What's your gift? What's your talent?",
-    needs: 'What is your intent? What do you intend to use Naya for?'
+    needs: 'What do you intend to use Naya for?'
   };
   var REASON_Q12 = 'It lets us maximize your NayaNET experience and connect you with people of like minds — we get to know you so we can get the right content and the right people to you.';
   var SUB_OVERRIDE = {
     love_about: "Everybody's got their thing — what's yours?",
     offers: REASON_Q12,
-    needs: 'Help us to optimize for your intent and your goal of NayaNET.'
+    needs: 'Help us to optimize for your intent and your goal of NayaNET.',
+    /* FIX4 addition 4 — the Q14 reason note, in his words (only the
+       opening capital is presentation). */
+    connect_with: 'This helps us connect you with the people you want to connect with, and share your interests and the types of people — you share whatever you wish, we give you the options.'
   };
   var PH_OVERRIDE = {
     love_about: 'Write it in your own words…',
-    offers: 'Write it in your own words…'
+    offers: 'Write it in your own words…',
+    needs: 'Write your goal in your own words…'
   };
   /* Q14 options — HIS list, verbatim from the call (same interest, same
      industry, from where you are, other founders, girls or guys, dating,
-     friendship, meeting others, connecting with like minds). No source
-     list exists in the build for these; the harvested connect_with seeds
-     are superseded for this question. */
-  var CONNECT_WITH = ['Same interest', 'Same industry', 'From where you are', 'Other founders', 'Girls or guys', 'Dating', 'Friendship', 'Meeting others', 'Connecting with like minds'];
+     friendship, meeting others, connecting with like minds). FIX4
+     addition 4 adds 'People within your business' — his coverage list
+     names it separately from 'other founders', and it is a genuine gap
+     (business people who aren't founders); every other phrase in his
+     fuller list maps onto one of the nine. No source list exists in
+     the build for these; the harvested connect_with seeds are
+     superseded for this question. */
+  var CONNECT_WITH = ['Same interest', 'Same industry', 'From where you are', 'People within your business', 'Other founders', 'Girls or guys', 'Dating', 'Friendship', 'Meeting others', 'Connecting with like minds'];
 
   /* AGE RANGES — AUTHORED (addition #2, 2026-11-26): no age-range list
      exists in the build; the harvested groupings (Young child / Teen /
@@ -851,8 +872,9 @@ body.sr-qmode #tbTitle{font-size:clamp(20px,4.5vw,28px);line-height:1.2}
      lists), which are disclosed as authored in the maker report. Q1's
      list opens with Afghanistan, so the example is Canada — a member of
      the harvested list, and the build's own example context (Q2's
-     examples are Toronto). Q11/Q13 have no example values anywhere in
-     the build — guidance only (see below). */
+     examples are Toronto). Q11 has no harvested example — its i-button
+     carries his example list instead (addition #3). Q13's example is
+     the harvested mission seed 'build my world' (addition #4). */
   function exampleFor(q) {
     if (q.key === 'nationality') return 'Canada';
     if (q.key === 'age') return 'I am a teen';
@@ -861,6 +883,10 @@ body.sr-qmode #tbTitle{font-size:clamp(20px,4.5vw,28px);line-height:1.2}
        first connect-with type. */
     if (q.key === 'love_about') return 'sport, music, talent, AI, tech — whatever you’re into.';
     if (q.key === 'connect_with') return 'Same interest';
+    /* FIX4 addition 4 — the intent example is the harvested mission
+       seed 'build my world': the fullest statement of intent among the
+       seeds, and distinct from Q9's 'learn'. */
+    if (q.key === 'needs') return 'build my world';
     if (q.choices && q.choices.length) return q.choices[0].t;
     if (REC_SEED && REC_SEED[q.key] && REC_SEED[q.key].length) return REC_SEED[q.key][0];
     return '';
@@ -918,6 +944,14 @@ body.sr-qmode #tbTitle{font-size:clamp(20px,4.5vw,28px);line-height:1.2}
       for (ind in SKILLS_BY_INDUSTRY) { if (SKILLS_BY_INDUSTRY[ind].indexOf(skill) >= 0) return ind; }
       return '';
     }
+    /* FIX4 addition 4 — the intent options are the HARVESTED mission
+       seeds (learn, create, grow, earn, connect, build my world): what
+       people come here to do is what they intend to use Naya for. No
+       intent list exists in the build; nothing here is authored. */
+    function intentOptions() {
+      if (REC_SEED && REC_SEED.mission && REC_SEED.mission.length) return REC_SEED.mission.map(function (t) { return { v: t, t: t }; });
+      return [];
+    }
     function isOffered(val) {
       if (!val) return false;
       var k;
@@ -929,6 +963,8 @@ body.sr-qmode #tbTitle{font-size:clamp(20px,4.5vw,28px);line-height:1.2}
          text — the duplicate-textbox bug fix4 exists to kill.) */
       if (q.key === 'skills') { var ps = parsePicked(val, allSkills()); return ps.length > 0 && ps.join(', ') === String(val).trim(); }
       if (q.key === 'connect_with') { var pc = parsePicked(val, CONNECT_WITH); return pc.length > 0 && pc.join(', ') === String(val).trim(); }
+      /* FIX4 addition 4 — the intent options are the harvested mission seeds. */
+      if (q.key === 'needs') { var io = intentOptions(); for (k = 0; k < io.length; k++) if (io[k].v === val) return true; return false; }
       if (q.choices) for (k = 0; k < q.choices.length; k++) if (q.choices[k].t === val) return true;
       if (REC_SEED && REC_SEED[q.key]) for (k = 0; k < REC_SEED[q.key].length; k++) if (REC_SEED[q.key][k] === val) return true;
       return false;
@@ -937,11 +973,13 @@ body.sr-qmode #tbTitle{font-size:clamp(20px,4.5vw,28px);line-height:1.2}
        offers a dropdown (harvested options where they exist; authored
        where they do not — see AGE_RANGES / SKILLS_BY_INDUSTRY, both
        disclosed in the maker report). The open / mission-type questions
-       (mission, love_about, needs) are write-FIRST: no dropdown, the big
-       write box is the point, with the i-button example beside it. An
-       untouched example is never an answer — only a pick or typed text
-       counts. */
-    var WRITE_FIRST = (q.key === 'mission' || q.key === 'love_about' || q.key === 'needs');
+       (mission, love_about) are write-FIRST: no dropdown, the big
+       write box is the point, with the i-button example beside it. FIX4
+       addition 4 — the intent question (needs) is pick-FIRST: a
+       dropdown of harvested intent options, plus space to write your
+       goal underneath. An untouched example is never an answer — only a
+       pick or typed text counts. */
+    var WRITE_FIRST = (q.key === 'mission' || q.key === 'love_about');
     var box = $('sr-q-choices');
     var plate = $('sr-q-plate');
     var hasChoices = false;
@@ -1031,6 +1069,14 @@ body.sr-qmode #tbTitle{font-size:clamp(20px,4.5vw,28px);line-height:1.2}
            of people from his list (CONNECT_WITH). The harvested
            connect_with seeds are superseded for this question. */
         buildMulti(box, CONNECT_WITH, multiStored(q.key, CONNECT_WITH), 'Pick who to connect with…', 'picked', function (np) { multiPick(q.key, np); });
+      } else if (!WRITE_FIRST && q.key === 'needs') {
+        hasChoices = true;
+        /* FIX4 addition 4 — clear choices for intent, plus space to
+           write your goal. The options are the harvested mission seeds
+           (intentOptions); the small write box underneath takes their
+           own goal in their own words. */
+        var iopts = intentOptions();
+        if (iopts.length) addDropdown(iopts, 'Pick an intent…', (saved && isOffered(saved)) ? saved : '', function (v) { pickValue(q.key, v); });
       } else if (!WRITE_FIRST) {
         /* One dropdown from the harvested options: the question's own
            choices, else the harvested seed list (offers, connect_with). */
