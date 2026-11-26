@@ -9705,7 +9705,7 @@ html.os-calm .os-sl-graph::after,html.os-calm .os-ld-riverwrap::after,html.os-ca
 <div class="naya-stage-head"><h2 class="naya-stage-title">Running feed</h2><span class="naya-stage-num">5 / 6</span></div>
 <section class="os-feed-board" id="os-feed-board">
 <h3>Running feed</h3>
-<p class="os-feed-sub"><a href="https://nayanet.app/rooms/mail">Open inbox &rarr;</a></p>
+<p class="os-feed-sub"><a href="https://nayanet.app/rooms/mail">Open inbox &rarr;</a> <button type="button" class="os-feed-open-btn" id="os-feed-open-btn">Open full feed</button></p>
 <div id="os-feed-list"><div class="os-feed-empty">Reading&hellip;</div></div>
 </section>
 <button class="naya-stage-fwd" type="button" data-next="naya-stage-6">Next: NayaNET network stats &rarr;</button>
@@ -32888,6 +32888,81 @@ body:not(.os-feed-open) #os-feed-board .os-feed-x{display:none!important;}
       if(typeof window._dashSyncPlus==="function"){try{window._dashSyncPlus();}catch(e){}}
     });
   }
+})();
+</script>
+<style id="inner-frames-fix-20261125">
+/* INNER-FRAMES FIX 2026-11-25 -- checker GOES BACK, three defects only.
+   (D1) FRAMING WEIGHT: the 6-7 frame rule and the in-stage override lose to
+   base .intel-board line 4215, whose border carries !important. Same
+   declarations, only the weight changes: every property below now carries
+   !important, so the frame beats line 4215. In-stage cards render the faint
+   2px edge; outside-stage cards render the white 3px frame. The look is
+   unchanged (white 3px, radius 4px, background #02030a; in-stage 2px faint
+   edge, radius 20). NOTE: the pre-existing .ph-card:hover gold border-color
+   (no !important) no longer shows on framed cards -- the !important frame
+   pins the border even on hover. Hover lift/transform still works.
+   (D2) PLUS CANNOT CLOSE AT 390: the open drawer (z-index 1000) paints over
+   the bottom bar (z-index 200), so the close tap hits the drawer. While a
+   drawer is open below desktop width, the bottom bar paints above the
+   drawer (z-index 1001, above the drawer 1000 and the backdrop 950), so the
+   close tap hits the plus. Scoped to max-width 1439px: at 1440 the rails
+   are docked and close already works, so desktop stacking is untouched.
+   The rails scroll (overflow-y auto), so their bottom content stays
+   reachable above the bar; each drawer X stays at the top. The plus
+   handlers already toggle -- only the hit-test was broken.
+   (D3) FEED OVERLAY TRIGGER: the overlay only binding was
+   getElementById('os-notif-btn'), an element that does not exist. Two
+   triggers now, both on the Dashboard: (a) a visible button in the Stage 5
+   feed board, "Open full feed", beside "Open inbox ->"; (b) clicking the
+   feed board itself opens the overlay, except on the inbox link, any
+   button, the overlay X, and a feed row (rows keep tap-to-see-more).
+   "Open inbox ->" still lands on rooms/mail; the Activity tap still
+   navigates; the X still closes. */
+.naya-stage,
+.ph-card{
+  border:3px solid #ffffff !important;
+  border-radius:4px !important;
+  box-shadow:0 0 24px rgba(255,255,255,.55),0 0 0 1px rgba(0,0,0,.9),0 0 34px rgba(255,255,255,.35),inset 0 0 70px rgba(255,255,255,.06) !important;
+  background:#02030a !important;
+}
+.naya-stage .ph-card{
+  border:2px solid rgba(255,255,255,.16) !important;
+  border-radius:20px !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -2px 8px rgba(0,0,0,.3),0 14px 36px rgba(0,0,0,.5) !important;
+  background:linear-gradient(180deg,#07070b,#050607) !important;
+}
+/* (D2) While a drawer is open below desktop width, the bottom bar (with its
+   pluses) paints above the open drawer, so the close tap hits the plus. */
+@media (max-width:1439px){
+  body.dash-drawer-open #os-bottom3,
+  body.dash-rail-right-open #os-bottom3{z-index:1001 !important;}
+}
+/* (D3) Visible trigger for the feed overlay, on the Stage 5 feed board. */
+.os-feed-open-btn{display:inline-block;margin-left:12px;padding:10px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:#050607;color:#ffffff;font-size:17px;font-weight:700;cursor:pointer;}
+.os-feed-open-btn:hover{border-color:#ffffff;}
+</style>
+<script id="inner-frames-fix-20261125-js">
+/* INNER-FRAMES FIX 2026-11-25 (D3): give the feed overlay a user-facing
+   trigger. The base script already exposes window._osOpenFeed; this block
+   only binds triggers to it. The visible button opens the overlay. A click
+   anywhere on the Stage 5 feed board opens it too, except on the inbox
+   link (it must keep landing on rooms/mail), any button (the overlay X and
+   the open button itself), and a feed row (rows keep tap-to-see-more).
+   While the overlay is open this handler does nothing: the base handler
+   owns close-on-background-click there. */
+(function(){
+  var fb=document.getElementById('os-feed-board');
+  if(!fb) return;
+  var btn=document.getElementById('os-feed-open-btn');
+  if(btn) btn.addEventListener('click', function(){
+    if(typeof window._osOpenFeed==='function') window._osOpenFeed();
+  });
+  fb.addEventListener('click', function(e){
+    if(document.body.classList.contains('os-feed-open')) return;
+    var t=e.target;
+    if(t && t.closest && t.closest('a,button,.os-feed-row,.os-feed-x')) return;
+    if(typeof window._osOpenFeed==='function') window._osOpenFeed();
+  });
 })();
 </script>
 </body></html>
