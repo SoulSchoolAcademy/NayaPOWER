@@ -1540,6 +1540,28 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 .intel-controls .naya-btn{min-height:48px;font-size:18px}
 .intel-controls .naya-btn:disabled{opacity:.45;cursor:default}
 .intel-endhint{text-align:center;font-size:18px;color:#fff;font-style:italic;margin:4px 0 8px}
+/* FIX3 — the captain's order, 2026-11-26 ~15:16 MST (fix2 checker A6): the
+   viewer control row goes STICKY, so BACK / GO DEEPER / NEXT NOTE / CLOSE
+   stay visible on every section at 390 and 1440 without a viewer scroll.
+   Fix2 left the controls below the fold on the two longest phone boards
+   ("What it means" 639px, "How to apply" 583px — GO DEEPER at y 1015-1067
+   and y 960-1012 in an 844 viewport). The sticky row is ONE real object:
+   obsidian bar, thin bright rim in the note's own day colour (--sc, set on
+   the viewer by intelRenderSection), white labels, alive on hover, no glow
+   inside, nothing under 17px. Close sits INSIDE the row (last, same order,
+   same handler) so there is one bar, not two stacked bars. Inside the row
+   the pills take 14px side padding so two fit per row at 390 (BACK + GO
+   DEEPER, then NEXT NOTE + CLOSE) — one row at 1440. The bar sits ON the
+   board's lower edge like a toolbar — on the long phone boards it occludes
+   the board's lowest lines at scrollTop 0; every line scrolls fully above
+   the bar (the matrix carries bottom padding equal to the bar), so no line
+   is sliced and no text is lost. Board geometry, 16:9 at desktop, the
+   content-sized phone board, the 18px floor and both axes are untouched. */
+#intelViewer{--sc:#8e24aa}
+.intel-matrix{padding-bottom:160px}
+.intel-controls{position:sticky;bottom:0;z-index:5;background:linear-gradient(135deg,#17171f,#050607 70%);border:2px solid var(--sc,#8e24aa);border-radius:18px;box-shadow:0 14px 30px rgba(0,0,0,.65),0 0 24px -6px var(--sc,#8e24aa);padding:10px 12px;margin:0 0 8px}
+.intel-controls .naya-btn{padding:0 14px;white-space:nowrap}
+.intel-controls .intel-close{margin:0}
 @media(max-width:900px){
 /* Phone: aspect-ratio OFF — Chrome sizes a ratio box's WIDTH from a
    min-height-clamped height (250px x 16/9 = 444px in a 390px viewport, proven
@@ -3401,9 +3423,9 @@ current = 0; renderSlide(); show('cover');
       <button class="naya-btn" id="intelBack" type="button">← BACK</button>
       <button class="naya-btn" id="intelDeeper" type="button">GO DEEPER ▾</button>
       <button class="naya-btn" id="intelNext" type="button">NEXT NOTE →</button>
+      <button class="naya-btn intel-close" id="intelClose" type="button">Close</button>
     </div>
     <p class="intel-endhint" id="intelEndHint" hidden>That’s the whole note — tap NEXT NOTE for the next one.</p>
-    <button class="naya-btn intel-close" id="intelClose" type="button">Close</button>
   </div>
 </div>
 <script>
@@ -3464,6 +3486,7 @@ function intelRenderSection(push){
   var sec=m.sections[vSec];
   var day=intelDayOf(currentSn);
   var color=intelDayColor(day);
+  viewer.style.setProperty('--sc',color); /* FIX3: sticky control bars rim in the note's day colour */
   var snap=(window.__INTEL_SNAPSHOT__||[]).filter(function(n){return n.sn===currentSn;})[0]||{};
   currentNote={id:snap.id||(currentSn?'IB-SMART-NOTE-'+currentSn:''),title:m.title,sn:currentSn};
   vTitle.textContent=m.title;
