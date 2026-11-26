@@ -7100,9 +7100,15 @@ body.fx8-drawer-right-open .fx2-conv-like{display:none!important;}
 .ml-modal.mlx .ml-modes{margin-bottom:10px!important;}
 .ml-modal.mlx .ml-field{margin-bottom:8px!important;}
 .ml-modal.mlx .ml-field-l{margin-bottom:4px!important;}
-.ml-modal.mlx select[name="to"]{height:72px!important;}
-.ml-modal.mlx textarea.mlx-body{height:80px!important;min-height:64px!important;flex:1 1 auto!important;}
+.ml-modal.mlx select[name="to"]{height:76px!important;max-height:76px!important;overflow-y:auto!important;}
+.ml-modal.mlx textarea.mlx-body{height:64px!important;min-height:56px!important;flex:1 1 auto!important;}
 .ml-modal.mlx .ml-mode-hint{display:none!important;}
+.ml-modal.mlx .mlx-sub{display:none!important;}
+.ml-modal.mlx .ml-modes{flex-wrap:nowrap!important;}
+.ml-modal.mlx .ml-mode{flex:1 1 0!important;min-width:0!important;padding:10px 6px!important;white-space:nowrap!important;}
+.ml-modal.mlx .ml-field{margin-bottom:6px!important;}
+.ml-modal.mlx .mlx-attached,.ml-modal.mlx .ml-attach{max-height:96px!important;overflow-y:auto!important;}
+.ml-modal.mlx .mlx-top{margin-bottom:8px!important;}
 .ml-modal.mlx .mlx-attachsec{margin-bottom:10px!important;}
 .ml-modal.mlx>.mlx-schedsec{position:sticky!important;bottom:0!important;z-index:2!important;background:#10131e!important;padding:12px 0 4px!important;margin:0!important;}
 .ml-modal.mlx .mlx-send{width:100%!important;}
@@ -7424,6 +7430,8 @@ function fx8EnhanceCard(){
   });
 }
 function fx8WrapCard(){
+  /* The card opens through the LOCAL fx2OpenCard (feed orbs call it
+     directly), not the window export — so watch the card node itself. */
   try {
     if(window.__fx2OpenCard && !window.__fx2OpenCard.__fx8){
       var orig = window.__fx2OpenCard;
@@ -7431,6 +7439,13 @@ function fx8WrapCard(){
       wrapped.__fx8 = true; window.__fx2OpenCard = wrapped;
     }
   } catch(e){}
+  if(window.MutationObserver){
+    var cmo = new MutationObserver(function(){
+      var c = document.getElementById('fx2Card');
+      if(c && c.classList.contains('open')) fx8EnhanceCard();
+    });
+    cmo.observe(document.body, { childList:true, subtree:true, attributes:true, attributeFilter:['class'] });
+  }
   /* Mail entry points: an initial orb on the mail read + on each mail row,
      only when the sender is a known person (unknown = hidden, never faked). */
   document.addEventListener('click', function(e){
@@ -7532,13 +7547,25 @@ function fx8Sweep(){
   fx8SweepMailOrbs();
   fx8CueCheck();
   /* 1d: an empty thread shows the typing indicator on load, until the
-     first send (after that the base after-send flow owns it). */
+     first send (after that the base after-send flow owns it). Built here:
+     fx2ShowTyping is NOT global, so the base function cannot be called
+     from this block — the bubble below is its exact rendering. */
   try {
     var list = document.getElementById('nmMsgList');
     if(list && !fx8SentYet && !list.__fx8TypingShown && !list.querySelector('.fx2-typing')
-      && !list.querySelector('.nm-bubble:not(.fx2-typing)') && window.fx2ShowTyping){
-      fx2ShowTyping();
-      if(window.fx2ShowTyping && window.fx2ShowTyping._t){ clearTimeout(window.fx2ShowTyping._t); window.fx2ShowTyping._t = null; }
+      && !list.querySelector('.nm-bubble:not(.fx2-typing)')){
+      var horb = document.querySelector('.nm-reader-head .nm-orb');
+      var hname = document.querySelector('.nm-reader-head .nm-person-name');
+      var tInit = horb ? (horb.textContent || '?').trim().charAt(0) : '?';
+      var tCol = '#8e24aa';
+      if(horb){ var cs = getComputedStyle(horb); var m = /rgb\((\d+),\s*(\d+),\s*(\d+)\)/.exec(cs.borderColor || ''); if(m) tCol = '#' + [1,2,3].map(function(i){ var v = parseInt(m[i], 10).toString(16); return v.length === 1 ? '0' + v : v; }).join(''); }
+      var tName = hname ? (hname.textContent || '').trim() : 'Shawn';
+      var td = document.createElement('div');
+      td.className = 'nm-bubble theirs fx2-typing';
+      td.setAttribute('style', '--cc:' + tCol);
+      td.innerHTML = '<div class="nm-bubble-meta"><span class="nm-orb fx2-bubble-orb" style="--cc:' + tCol + '">' + fx8esc(tInit) + '</span><span>' + fx8esc(tName) + ' is writing</span><span class="fx2-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>';
+      list.appendChild(td);
+      try { list.scrollTop = list.scrollHeight; } catch(e2){}
       list.__fx8TypingShown = true;
     }
   } catch(e){}
@@ -7575,6 +7602,7 @@ onReady(function(){
 });
 })();
 </script>
+
 
 
 </body></html>
