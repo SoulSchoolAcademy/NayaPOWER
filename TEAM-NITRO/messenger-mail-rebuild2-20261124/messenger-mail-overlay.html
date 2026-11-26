@@ -6970,13 +6970,22 @@ body:not(.os-bottom-hidden):not(.os-bottom-off) .naya-drawer-left .rail.left{pad
 </style>
 <script id="ov-fix6-20261125-js">
 /* ===== FIX6 2026-11-25 — D-1: drawer-class toggle =====
-   Open: the plus buttons' base listeners (openSide) run first — same
-   target, registered earlier, same task — with all their side effects
-   (renderDMs, aria-expanded, body class naya-drawer-open). This listener
-   runs immediately after, in the same task: it moves the open state onto
+   Open: the plus buttons' base listeners (openSide) run first — on the
+   target, same task — with all their side effects (renderDMs,
+   aria-expanded, body class naya-drawer-open). This listener runs
+   immediately after, in the same task: it moves the open state onto
    the drawer element and takes the body attribute back off before any
    style recalc or paint. Net state at first paint: attribute absent,
    drawer class present — the exact net state the probe measured.
+   FIX7 2026-11-26 — the fix6 wiring attached convertOpen to the
+   parse-time .naya-corner-btn nodes, but boot() -> wirePlusButtons()
+   clones each button (cloneNode(true)) and replaces the original, so
+   the live buttons never carried the listener (checker verdict D-1).
+   Fix7 wires convertOpen by document-level delegation instead: one
+   listener on document matches the click's closest .naya-corner-btn
+   at click time, so it survives the clone and any future re-clone.
+   It still runs in the same task as openSide (target listeners first,
+   then this bubble listener at document) before any recalc or paint.
    Close, universal: every base close path (rail X, backdrop, Escape, DM
    rows, nav links, the line-3876 caller) funnels through closeSides /
    closeDrawers, which remove the body class 'naya-drawer-open'. A
@@ -7000,9 +7009,21 @@ function closeAll(){
   left.classList.remove('fx6-open');
   right.classList.remove('fx6-open');
 }
-var pluses = Array.prototype.slice.call(document.querySelectorAll('.naya-corner-btn'));
-pluses.forEach(function(btn, i){
-  btn.addEventListener('click', function(){ convertOpen(i === 0 ? 'left' : 'right'); });
+/* FIX7: document-level delegation — survives the wirePlusButtons() clone:
+   the listener matches the click's closest .naya-corner-btn at click time,
+   so it fires for the live clones (and any future re-clone). Side is read
+   from the clone's aria-label ('Open messages sidebar' = left, 'Open people
+   sidebar' = right), falling back to document order (first = left). */
+document.addEventListener('click', function(e){
+  var t = (e.target && e.target.closest) ? e.target.closest('.naya-corner-btn') : null;
+  if(!t) return;
+  var label = t.getAttribute('aria-label') || '';
+  var which = (label.indexOf('people') > -1) ? 'right' : (label.indexOf('messages') > -1) ? 'left' : null;
+  if(!which){
+    var all = document.querySelectorAll('.naya-corner-btn');
+    which = (Array.prototype.indexOf.call(all, t) === 0) ? 'left' : 'right';
+  }
+  convertOpen(which);
 });
 var obs = new MutationObserver(function(){
   if(!document.body.classList.contains('naya-drawer-open')) closeAll();
