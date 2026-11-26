@@ -31,9 +31,9 @@ button.fp-circle-n:active{transform:scale(.97)}
 /* --- the story overlay: a full in-place view, not a pop-up --- */
 #fpStory[hidden]{display:none}
 #fpStory{position:fixed;inset:0;z-index:9000;background:#02030a;color:#fff;
-  overflow-y:auto;box-sizing:border-box;
+  overflow:hidden;box-sizing:border-box;
   font-family:inherit}
-.fp-story-frame{min-height:100%;display:flex;flex-direction:column;
+.fp-story-frame{height:100svh;min-height:0;display:flex;flex-direction:column;
   max-width:1100px;margin:0 auto;padding:16px 16px 12px;box-sizing:border-box}
 .fp-story-top{display:flex;align-items:center;gap:16px;justify-content:space-between}
 .fp-story-kicker{font-size:17px;letter-spacing:.18em;color:#fff;white-space:nowrap}
@@ -46,10 +46,10 @@ button.fp-circle-n:active{transform:scale(.97)}
 .fp-story-close:hover{transform:translateY(-2px) scale(1.06)}
 .fp-story-close:active{transform:scale(.97)}
 .fp-story-main{flex:1;display:flex;gap:24px;align-items:stretch;margin-top:16px;min-height:0}
-.fp-story-art{flex:1.55 1 0;margin:0;min-width:0;display:flex;flex-direction:column}
+.fp-story-art{flex:1.55 1 0;margin:0;min-width:0;min-height:0;display:flex;flex-direction:column}
 .fp-story-art img{width:100%;height:100%;object-fit:contain;display:block;
-  border-radius:14px;background:#000}
-.fp-story-board{flex:1 1 0;min-width:280px;display:flex;flex-direction:column;
+  border-radius:14px;background:#000;min-height:0}
+.fp-story-board{flex:1 1 0;min-width:280px;min-height:0;overflow-y:auto;display:flex;flex-direction:column;
   border:2px solid rgba(244,239,255,.42);border-radius:18px;
   background:linear-gradient(135deg,#17171f,#0a0a10);
   box-shadow:0 14px 30px rgba(0,0,0,.56),0 0 34px -8px #f4efff;
@@ -79,7 +79,7 @@ button.fp-circle-n:active{transform:scale(.97)}
 /* the agree button: at the VERY BOTTOM, just above the < > arrows, flashing
    nice (his word wins over the no-pulse habit — slow 2 s glow pulse, this
    button only). Official wording from the v7 words source. */
-.fp-story-agree-wrap{margin-top:20px;text-align:center}
+.fp-story-agree-wrap{flex:none;margin-top:20px;text-align:center}
 .fp-story-agree{position:relative;overflow:hidden;display:inline-block;
   margin:0 auto;padding:16px 46px;border-radius:999px;cursor:pointer;
   font-family:inherit;font-size:19px;font-weight:800;letter-spacing:.05em;
@@ -96,7 +96,7 @@ button.fp-circle-n:active{transform:scale(.97)}
     0 0 42px 0 #07925f,0 10px 22px rgba(0,0,0,.55)}}
 .fp-story-agree:hover{transform:translateY(-2px)}
 .fp-story-agree:active{transform:scale(.97)}
-.fp-story-nav{display:flex;align-items:center;justify-content:center;gap:16px;
+.fp-story-nav{flex:none;display:flex;align-items:center;justify-content:center;gap:16px;
   margin-top:16px}
 .fp-story-navbtn{width:44px;height:44px;min-height:44px;border-radius:50%;
   cursor:pointer;color:#fff;background:linear-gradient(180deg,#1b1b24,#050507);
@@ -105,10 +105,16 @@ button.fp-circle-n:active{transform:scale(.97)}
 .fp-story-navbtn:hover:not(:disabled){transform:translateY(-2px) scale(1.06)}
 .fp-story-navbtn:active:not(:disabled){transform:scale(.97)}
 .fp-story-navbtn:disabled{opacity:.35;cursor:default}
-.fp-story-count{font-size:17px;color:#fff;min-width:74px;text-align:center}
+.fp-story-count{display:none}
+/* ROUND 3 follow-up (confirmed live format, 2026-11-25 17:42-17:55 MST):
+   NO slide counter or progress dots on the story — the count span stays in
+   the DOM only so the nav stays centred; it is never shown. */
 /* the eight links: a bar across the bottom, just below the page — small,
    there if they want to click, not the main content. */
-.fp-story-links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 14px;
+.fp-story-links[hidden]{display:none}
+.fp-story-agree-wrap[hidden]{display:none}
+#fpStoryEnd[hidden]{display:none}
+.fp-story-links{flex:none;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 14px;
   margin-top:16px;padding-top:12px;border-top:1px solid rgba(255,255,255,.18)}
 .fp-story-link{background:none;border:0;color:#fff;font-family:inherit;
   font-size:17px;font-weight:700;text-decoration:underline;
@@ -134,7 +140,8 @@ button.fp-circle-n:active{transform:scale(.97)}
   .fp-story-main{flex-direction:column}
   .fp-story-board{order:1}
   .fp-story-art{order:2;flex:none}
-  .fp-story-art img{max-height:34svh}
+  .fp-story-art img{max-height:24svh}
+  .fp-story-face img{width:80px;height:80px}
   .fp-story-kicker{display:none}
 }
 @media (prefers-reduced-motion:reduce){

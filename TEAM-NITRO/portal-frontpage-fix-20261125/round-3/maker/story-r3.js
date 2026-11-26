@@ -44,11 +44,16 @@
     countEl.textContent = (current + 1) + ' of ' + TOTAL;
     faceEl.src = FP_PORTRAITS[current % FP_PORTRAITS.length];
     backBtn.disabled = current === 0;
-    nextBtn.disabled = current === TOTAL - 1;
+    /* CONFIRMED live behaviour (2026-11-25 17:42-17:55 MST): forward from
+       slide 27 EXITS to the name entry — so Next is never disabled; on the
+       last slide it is the agree action (close to the name box). */
+    nextBtn.disabled = false;
     var last = current === TOTAL - 1;
     agreeWrap.hidden = !last;
     linksBar.hidden = !last;
     endBox.hidden = !last;
+    var board = story.querySelector('.fp-story-board');
+    if (board) board.scrollTop = 0;
     story.querySelector('.fp-story-frame').scrollTop = 0;
     story.scrollTop = 0;
   }
@@ -91,6 +96,7 @@
   });
   nextBtn.addEventListener('click', function () {
     if (current < TOTAL - 1) { current++; render(); }
+    else closeStory(); /* forward from slide 27 exits to the name entry */
   });
   closeBtn.addEventListener('click', closeStory);
   agreeBtn.addEventListener('click', closeStory);
@@ -109,8 +115,9 @@
     if (ev.key === 'Escape') {
       if (!finalReader.hidden) { finalReader.hidden = true; closeBtn.focus(); }
       else closeStory();
-    } else if (ev.key === 'ArrowRight' && finalReader.hidden && current < TOTAL - 1) {
-      current++; render();
+    } else if (ev.key === 'ArrowRight' && finalReader.hidden) {
+      if (current < TOTAL - 1) { current++; render(); }
+      else closeStory();
     } else if (ev.key === 'ArrowLeft' && finalReader.hidden && current > 0) {
       current--; render();
     }

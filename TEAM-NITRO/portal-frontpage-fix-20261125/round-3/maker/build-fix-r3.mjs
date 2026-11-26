@@ -168,11 +168,11 @@ const storyJs = readFileSync(LANE + 'story-r3.js', 'utf8');
 const headClose = html.indexOf('</head>');
 if (headClose === -1) throw new Error('</head> not found');
 html = html.slice(0, headClose) + '<style>\n' + storyCss + '\n</style>\n' + html.slice(headClose);
-let dataScript = '<script>\nvar FP_SLIDES = ' + JSON.stringify(SLIDES) + ';\nvar FP_SLIDE_IMGS = ' + JSON.stringify(SLIDE_IMGS) + ';\nvar FP_FINAL = ' + JSON.stringify(FINAL) + ';\nvar FP_PORTRAITS = ' + JSON.stringify(PORTRAITS) + ';\n</script>\n';
-if (dataScript.toLowerCase().includes('</script', 9)) {
-  // A literal </script inside a data string would close the element early.
-  dataScript = dataScript.split('</script').join('<\\/script');
-}
+const escScript = j => j.split('</script').join('<\\/script').split('<!--').join('<\\!--');
+let dataScript = '<script>\nvar FP_SLIDES = ' + escScript(JSON.stringify(SLIDES)) + ';\nvar FP_SLIDE_IMGS = ' + escScript(JSON.stringify(SLIDE_IMGS)) + ';\nvar FP_FINAL = ' + escScript(JSON.stringify(FINAL)) + ';\nvar FP_PORTRAITS = ' + escScript(JSON.stringify(PORTRAITS)) + ';\n</script>\n';
+// Escape ONLY inside the JSON payloads above; the wrapper's own closing tag
+// must stay a real </script> (an earlier build escaped it too and the story
+// script then parsed as data — PAGEERROR "Unexpected token '<'").
 const bodyClose = html.indexOf('</body>');
 if (bodyClose === -1) throw new Error('</body> not found');
 html = html.slice(0, bodyClose) + storyHtml + '\n' + dataScript + '<script>\n' + storyJs + '\n</script>\n' + html.slice(bodyClose);
@@ -204,7 +204,7 @@ assert('front page still clean: sentence only behind the N', !/id="fpDeedSentenc
 assert('final nine: 9 eco-item anchors', (html.match(/class="eco-item"/g) || []).length === 9);
 assert('structure: style-element count 7 open / 7 close (6 R2 + 1 story)', (html.match(/<style>/g) || []).length === 7 && (html.match(/<\/style>/g) || []).length === 7);
 assert('structure: RETURNING rules still inside a style element', html.indexOf('/* PORTAL RETURNING VIEW v2') < html.indexOf('</head>'));
-assert('no stray </script inside the data script', !dataScript.toLowerCase().includes('</script', 9));
+assert('no stray </script inside the data payloads (only the wrapper close)', (dataScript.match(/<\/script/gi) || []).length === 1);
 // The short live wording "I agree ◆" must not be the story's agree button.
 const shortAgree = (html.match(/I agree &#9670;/g) || []).length;
 console.log('INFO short "I agree ◆" occurrences in portal (live deck text, not the story button):', shortAgree);
