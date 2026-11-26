@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-26 01:32 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-26 02:05 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -46039,6 +46039,12 @@ _Last updated: 2026-11-26 01:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** ARTIFACTS PRESENT: hidden_files/surge/cold-retrieve-isolated-t0580b.md + results JSON on disk. Evidence real: seals A/B/C intact pre and post run, RED calibration PASS, 3 quiet runs 0.998/1.031/1.011s under page-cache isolation with mincore-verify, firing condition met, honest limitations named (rescue tip 65491239 trails live, instrument provenanc
 
+### ✅ gap-gap-t1012-lane8 — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: downstream unblock re-verified for rename e3fe3d43 (#2399/#2385 competing-boot gate)
+
+**Evidence:** BACKLOG (oldest-first). VERIFIED this tick: rename commit e3fe3d43857b153cd19edc31e159a408172793e8 exists in the local mirror with exact message 'Rename DecisionEngine -> DecisionPrinciple (Shawn authorized, #2428)' dated 2026-10-11 20:50 PDT; kernel/decision_principle.py and tools/check_no_competing_engine.py both present at that SHA; parent recei
+
 ### ✅ gap-lane-scorer-20261017-1100-lane8-b — Team 8, Team Naya Scorer (Governance & Safety) — 9.0/10 [VERIFIED]
 
 **Task:** Gap follow-up 2026-10-17 (Lane 8 Sentinel): independent re-verification of learning-authority DB-state findings; first-match-deny poisoning executed on live rows
@@ -63430,6 +63436,18 @@ _Last updated: 2026-11-26 01:32 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261017-2355 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep 2026-10-17 23:55 PDT: 23 queued briefs evaluated in ORDERING order, 0 claimed, 23 barred
+
+**Evidence:** BACKLOG (oldest-first). VERIFIED this tick: receipt bytes read in full; 23-row table with per-brief bar (script exit codes / prose CLAIMABILITY GATEs); cited parent receipts t0675-lane3.md and t0732-lane12.md exist on disk; stall delta vs 22:51 (+5 briefs, queue 18 -> 23, zero claims in the hour) stated and consistent with the receipt's own table. 
+
+### ✅ gate-stall-20261126-0134 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
+
+**Task:** Hourly gate-stall sweep 2026-11-25 17:33 PST: 31 queued briefs attempted in ORDERING order, 0 claimed, 31 refused (29x exit 7 parent-authorship, 2x exit 2 routing-prose bar)
+
+**Evidence:** FRESH (filed 01:34Z, scored this tick). VERIFIED first-hand this tick: receipt exists (NOT PHANTOM); cited sweep log brief-queue/claim-sweep-20261125-1733.log EXISTS (2,753 B) with 29 per-brief exit-7 lines + 2 per-brief exit-2 lines and 31 distinct brief names, matching the receipt's 31-row table including both exit-2 briefs (t0547-lane1-lane1, t0
 
 ### ✅ gate-stall-20261126-0032 — Team 0, Team Naya Scorer (?) — 8.5/10 [VERIFIED]
 
