@@ -1489,6 +1489,15 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 #rpDrawer select{width:100%;font-size:18px;padding:10px;border-radius:12px;background:#050607;color:#fff;border:1px solid rgba(255,255,255,.4);margin:0 0 10px}
 #rpDrawer .rp-note{font-size:18px;line-height:1.5;text-align:center;color:#fff}
 #rpDrawer .rp-close{float:right;background:none;border:1px solid rgba(255,255,255,.5);color:#fff;border-radius:50%;width:36px;height:36px;font-size:18px;cursor:pointer}
+/* FIX-20261125 D3 (§2.3 — no text under 17px, ever): the .station label computed
+   12px at 1440 (fix9 frame rule, line 278). Raised to 18px at all widths, override
+   only — the fix9 frame CSS is untouched. Where the phone media query hides the
+   station (display:none), nothing shows, which is unchanged. */
+#screen-cover .pm-cap .station,#screen-slide .pm-cap .station{font-size:18px!important;letter-spacing:.12em}
+/* FIX-20261125 D2: the per-day Calendar link in the depth view — a real tappable
+   anchor, white and underlined, 18px, centred like the rest of the depth text. */
+#depthView .rp-cal-link{text-align:center;margin-top:12px}
+#depthView .rp-cal-link a{color:#fff!important;text-decoration:underline;font-size:18px!important;line-height:1.6}
 </style>
 </head>
 <body>
@@ -1511,14 +1520,14 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
       <div class="panel-body">
         <div class="showcase">
           <section class="promax" id="deck" aria-label="Reports — Naya presents">
-            <div class="pm-top"><span class="np-tag">TOP TEN INNOVATIONS</span><span class="deck-status" id="deckStatus">NAYA PRESENTS</span></div>
+            <div class="pm-top"><span class="np-tag">DAILY INTELLIGENCE REPORTS</span><span class="deck-status" id="deckStatus">NAYA PRESENTS</span></div>
             <div class="pm-main cover-thirds">
-              <figure class="pm-cover-img" aria-label="Naya Windows — the first innovation">
-                <img class="pm-cover-photo" id="coverImgL" alt="Naya Windows — you see through one window to the next" />
+              <figure class="pm-cover-img" aria-label="Daily Intelligence Reports — the cover">
+                <img class="pm-cover-photo" id="coverImgL" alt="Daily Intelligence Reports — sixty reports, one story" />
               </figure>
               <div class="pm-cover-text">
-                <p class="cover-saying">&ldquo;Ten innovations. One system. Built for you.&rdquo;</p>
-                <div class="pm-cap"><div class="station">TOP TEN INNOVATIONS</div></div>
+                <p class="cover-saying">&ldquo;Sixty reports. One story. Built for you.&rdquo;</p>
+                <div class="pm-cap"><div class="station">DAILY INTELLIGENCE REPORTS</div></div>
                 <img class="cover-n" id="coverN" alt="The red N — tap to go to the next board" />
               </div>
               <figure class="pm-cover-img" aria-label="The red N">
@@ -2822,6 +2831,14 @@ function thirdChrome(i, lvl){
     + '<button class="swap-btn third-tool" type="button" data-slot="D' + i + '" aria-label="Change this slot — text, image or video">' + "<svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\" fill=\"none\" stroke=\"#fff\" stroke-width=\"2\" stroke-linecap=\"round\"><circle cx=\"12\" cy=\"12\" r=\"3.2\"/><path d=\"M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5 5l1.8 1.8M17.2 17.2L19 19M19 5l-1.8 1.8M6.8 17.2L5 19\"/></svg>" + '</button>'
     + '<button class="fs-btn" type="button" aria-label="View full screen"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>';
 }
+/* FIX-20261125 D2 — per-day Calendar link for the depth view. */
+function calLinkFor(d){
+  if (!d || d.head !== 'See this day in the Calendar') return '';
+  if (typeof REPORTS_META === 'undefined' || !REPORTS_META[DEPTH_BOARD]) return '';
+  var cd = REPORTS_META[DEPTH_BOARD].date;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(cd)) return '';
+  return '<p class="rp-cal-link"><a href="https://nayanet.app/calendar?day=' + cd + '">Open this day in the Calendar &rarr;</a></p>';
+}
 function thirdPanelHTML(d, lvl, i){
   var chrome = thirdChrome(i, lvl);
   var seal = '<span class="depth-seal" aria-hidden="true"><img src="' + EMBED.ball + '" alt="" /></span>';
@@ -2830,7 +2847,7 @@ function thirdPanelHTML(d, lvl, i){
     if (lvl === 1){ shown = firstSentence(d.txt); }
     else if (lvl === 3){ deeper = '<p class="third-deeper">Deeper — ' + escTx(deeperLine(DEPTH_BOARD, d.sec, d.noDeeper)) + '</p>'; }
     return '<div class="ib-layer lvl' + lvl + '" data-third="' + i + '"><div class="ib-layer-body">' + chrome
-      + '<div class="b-script">' + escTx(d.head) + '</div><p>' + escTx(shown) + '</p>' + deeper + seal + '</div></div>';
+      + '<div class="b-script">' + escTx(d.head) + '</div><p>' + escTx(shown) + '</p>' + calLinkFor(d) + deeper + seal + '</div></div>';
   }
   if (d.kind === 'video'){
     var cap = lvl >= 2 ? '<div class="third-cap">Video — plays right here</div>' : '';
@@ -3266,7 +3283,7 @@ current = 0; renderSlide(); show('cover');
 <script>
 /* REPORTS — sidebar drawer, ?day= intake, note matrix viewer (added 2026-11-25, maker round). */
 (function(){
-  function goSlide(i){ if (typeof current === 'undefined') return; current = i; if (typeof END_MODE !== 'undefined') END_MODE = false; renderSlide(); show('slide'); closeDrawer(); }
+  function goSlide(i){ if (typeof current === 'undefined') return; if (typeof closeDepth === 'function') closeDepth(); /* FIX-20261125 D4: a day jump (dropdown, drawer entries, ?day= intake) never leaves the old day's depth open over the new day's slide. */ current = i; if (typeof END_MODE !== 'undefined') END_MODE = false; renderSlide(); show('slide'); closeDrawer(); }
   function closeDrawer(){ var d = document.getElementById('rpDrawer'); if (d) d.hidden = true; }
   document.getElementById('rpMenuBtn').addEventListener('click', function(){ var d = document.getElementById('rpDrawer'); d.hidden = !d.hidden; });
   document.getElementById('rpDrawerClose').addEventListener('click', closeDrawer);
