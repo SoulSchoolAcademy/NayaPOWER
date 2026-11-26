@@ -6883,4 +6883,48 @@ body:not(.os-bottom-hidden):not(.os-bottom-off) .naya-drawer-left .rail.left{pad
 /* FIX2-Gb: desktop Like Minds list at max scroll ended 18px under the toggle dock (1440); +30px bottom padding clears it. */
 .fx2-conv-list{padding-bottom:150px !important;}
 </style>
+
+<style id="ov-fix3-20261125">
+/* ===== FIX3 2026-11-25 — checker fix2-v2 verdict, two blocking defects =====
+   D-1 — DRAWERS ANSWER SECONDS LATE. Root cause, proven by probe (fix3-diag.py):
+   the toggle itself is instant (click -> body[data-naya-drawer] in 2 ms), the
+   main thread is idle at rest (12 s CPU profile: 81.5% idle, 23 mutations,
+   0 fetches), and no transition-delay exists anywhere. The delay is the
+   compositor raster: .naya-drawer carries backdrop-filter:blur(14px) and the
+   backdrop blur(2px), so EVERY frame of the 250 ms slide must re-sample and
+   re-blur the whole viewport behind the drawer in software raster — the
+   frame is presented seconds late as a snap, never a slide. Proof by probe-side
+   override (same file, same taps): right-drawer open 281 ms -> 2 ms, right
+   close 85 ms -> 2 ms, left close via rail X 3501 ms -> 327 ms WITH a visible
+   intermediate slide (lx -320 mid-flight), left open 1176 ms -> 736 ms.
+   The blur is pure cost and zero look: the drawer background is opaque
+   #050607 (!important, line ~4888), the top bar background is fully opaque,
+   so nothing behind ever shows through. Removing it changes no pixel.
+   will-change, shadow removal, marquee stop and tile warm-up were all tried
+   probe-side and did NOT beat the blur removal (see fx3-diag-*.json). */
+.naya-drawer, .naya-drawer-backdrop { backdrop-filter:none !important; -webkit-backdrop-filter:none !important; }
+.naya-topbar { backdrop-filter:none !important; -webkit-backdrop-filter:none !important; }
+/* D-2 — PHONE BUBBLES FAR TOO TALL. Measured anatomy at 390 (fix3-diag.py):
+   bubble 212 px wide, text only 178 px: stage 16 px + pane 16 px side
+   padding each, then a 48 px mine/theirs side margin. Text wraps to 3-6
+   lines at 18 px/1.7, the meta row wraps to two rows (71 px), and the last
+   bubble carries a 2-row reacts row (98 px) + a 4-line note (122 px).
+   Heights 227/258/197/288/468. Fix, phone only (desktop untouched): give
+   the thread room — stage + pane side padding 16 -> 8, bubble side margin
+   48 -> 8 — so the bubble is ~278 px wide and the meta fits one row;
+   tighten padding 16 -> 12, body back to the 17 px law at 1.5, meta/reacts
+   gaps 10 -> 6, note 1.4. No text changed, no colour changed. */
+@media (max-width:640px){
+  .mail-stage{padding-left:8px !important;padding-right:8px !important;}
+  .nm-pane{padding-left:8px !important;padding-right:8px !important;}
+  .nm-bubble.mine{margin-left:8px !important;}
+  .nm-bubble.theirs{margin-right:8px !important;}
+  .nm-bubble{padding:12px !important;margin-bottom:12px !important;}
+  .nm-bubble p{font-size:17px !important;line-height:1.5 !important;margin-bottom:8px !important;}
+  .nm-bubble p:last-child{margin-bottom:0 !important;}
+  .nm-bubble-meta{gap:6px !important;}
+  .nm-reacts{gap:6px !important;}
+  .nm-bubble p.nm-note{line-height:1.4 !important;}
+}
+</style>
 </body></html>
