@@ -3459,6 +3459,32 @@ function intelSplitCoverTitles(){
 /* FIX1 D2: at phone width the nutshell gets its own room. Slide 1 gives the
    nutshell the full board (B + the centre frame hidden); on slides 2-3 the
    strip board shows only the whole nutshell text. Desktop is untouched. */
+/* FIX1 D2 follow-on: the frame's fitPanels writes the ESCAPED RUNTIME_TXT
+   string into p.textContent, so a nutshell containing a straight quote
+   renders as the literal entity &quot; on the slide (8 of 93 nutshells:
+   SN-4748/4749/4760/4778/4793/4826/4828/4837 — the measure caught it, and
+   the reader sees &quot; instead of "). Decode the four entities after
+   every fit, on every panel, and in the continuation behind the N. */
+function intelUnesc(s){
+  return String(s).replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&amp;/g,'&');
+}
+function intelDecodePanels(){
+  ['A','B','C'].forEach(function(slot){
+    var host=document.getElementById(slot==='A'?'slideBoardsA':slot==='B'?'slideBoardsB':'slideTextCenter');
+    if(!host)return;
+    var body=host.querySelector('.ib-layer-body');if(!body)return;
+    var p=body.querySelector('p');if(!p)return;
+    var key=current+'-'+slot;
+    if(p.textContent.indexOf('&')>-1)p.textContent=intelUnesc(p.textContent);
+    if(typeof CONTINUED!=='undefined'&&CONTINUED[key]!==undefined&&CONTINUED[key].indexOf('&')>-1){CONTINUED[key]=intelUnesc(CONTINUED[key]);}
+    if(typeof BEHIND!=='undefined'&&BEHIND[current]){
+      for(var i=0;i<BEHIND[current].length;i++){
+        var e=BEHIND[current][i];
+        if(e.cont===slot&&typeof e.text==='string'&&e.text.indexOf('&')>-1)e.text=intelUnesc(e.text);
+      }
+    }
+  });
+}
 function intelPhone(){return window.matchMedia?window.matchMedia('(max-width: 900px)').matches:window.innerWidth<=900;}
 function intelLayoutClasses(){
   var g=(typeof GROUPS!=='undefined')?GROUPS[current]:null;
@@ -3473,6 +3499,7 @@ function intelNutshellFix(){
   var g=(typeof GROUPS!=='undefined')?GROUPS[current]:null;
   if(!g)return;
   intelLayoutClasses();
+  intelDecodePanels();
   if(!intelPhone())return;
   function expand(slot,full,lh){
     var host=document.getElementById(slot==='A'?'slideBoardsA':slot==='B'?'slideBoardsB':'slideTextCenter');
@@ -3480,7 +3507,7 @@ function intelNutshellFix(){
     var body=host.querySelector('.ib-layer-body');if(!body)return;
     var p=body.querySelector('p');if(!p)return;
     var key=current+'-'+slot;
-    p.textContent=full;
+    p.textContent=intelUnesc(full);
     p.style.fontSize='18px';p.style.lineHeight=lh||'1.5';
     var marker=body.querySelector('.more-behind');if(marker)marker.remove();
     if(typeof CONTINUED!=='undefined'&&CONTINUED[key]!==undefined){delete CONTINUED[key];}
