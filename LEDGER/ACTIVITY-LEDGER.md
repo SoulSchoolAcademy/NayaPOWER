@@ -2,7 +2,7 @@
 
 **"Don't tell me, show me."** Every row below is a verified action with its receipt and evidence — not a claim, a record.
 
-_Last updated: 2026-11-26 04:34 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
+_Last updated: 2026-11-26 05:05 UTC_ | Data stream: `activity-ledger.jsonl` (machine-readable — feeds the future smart ledger / hub via the GitHub App)
 
 ## The Teams
 
@@ -44221,6 +44221,12 @@ _Last updated: 2026-11-26 04:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** Verified: transcript artifact claim-transcript-lane-executor-20261017-1758.md exists on disk; queue-walk (13 briefs, MIXED INTERLEAVE bands) and the t0675 recusal-by-own-stamp documented without rationalization. Why not 9.5: process-only record with no executable work — the refusal claims (12× exit 2, 1× exit 7) were cited via the transcript file, 
 
+### ✅ gap-lane-scorer-20261018-0502-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: run the 12-query v2 pilot under the quantified band and report divergence (DELTA_MAX=2 pin verdict)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: pilot12_verdict.json sha256 ebeef7378b656c8f matches receipt exactly; corpus/query seals byte-exact vs sidecars; live JSON pin_verdict KILLED, margin median -0.2225, F2 FIRES (p=1.0000), F3 FIRES, F7 BROKEN, lexical P1 0.667 - all match the receipt's reported values; freeze-corpus-v2.py now carries 
+
 ### ✅ gap-lane-scorer-20261018-1540-lane9 — Team 9, Team Naya Scorer (Code Health) — 9.4/10 [VERIFIED]
 
 **Task:** gap follow-up: three-leg close on PR #2399 (receipt-pin, delivery-gate, merge-consensus + test reds) re-derived from rule inputs on live bytes
@@ -49657,6 +49663,18 @@ _Last updated: 2026-11-26 04:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 
 **Evidence:** VERIFIED: audit file hidden_files/askworld-log-audit-t0770-lane6.md sha256 0419c797...d0c9ea1 matches receipt byte-for-byte; log pin 0fa1f99d...7972 byte-identical to Lane 2 t0768 pin as claimed. Real verified value: path trace with 8 live line cites, two-direction count (89/89 parse, awk cross-check exact match), 10 named coverage gaps with 3 sand
 
+### ✅ gap-lane-scorer-20261018-0320-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: prove the claim-brief.py compound-token matcher fix with a failing demo + exact patch proposal
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: proposal hidden_files/proposals/compound-token-matcher-proposal-20261018.md exists; demo file exists but sha256 now differs from the receipt-recorded f1d289bb because the demo was legitimately evolved later the same day (header: dispatcher applied both halves 2026-10-18 11:45 UTC, demo became the re
+
+### ✅ gap-lane-scorer-20261018-0220-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.0/10 [VERIFIED]
+
+**Task:** Gap follow-up: build the full 40-query v2 corpus and evaluate F1-F6 on acceptance (premise-moot closure)
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: pilot12_verdict.json sha256 ebeef7378b656c8f5376d8ab9250edd4c65c9a5fbc58cc9b89990d35bf655ed1 matches receipt exactly; corpus seal 74434a9f and queries seal 2e61bd7d byte-exact vs sidecars and live files; live JSON pin_verdict KILLED, pilot_gate_3_1 False, F2/F3 FIRES, F7 BROKEN; freeze-corpus-v2.py 
+
 ### ✅ gap-gap-lane-scorer-20261018-0320-lane5 — Team 5, Team Naya Scorer (Retrieval) — 9.5/10 [VERIFIED]
 
 **Task:** Gap-gap follow-up: machine-prove the prose-union half of the claim-brief.py compound-token fix with an extended demo
@@ -53544,6 +53562,12 @@ _Last updated: 2026-11-26 04:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Receipt:** `twelve-lane-receipts/coldnaya-lane4.md`
 
 **Evidence:** VERIFIED via git protocol on live bytes at tip 59e8a9afa22cf456565bfac0f2b52551f8a0dd6e (ls-remote HEAD exact match): AGENTS.md sha256 1d02820692f6ba4fc6e1c56094d8643f5ceefa551cf841e8a2af383bb54eb9fe exact match; READ-ME-FIRST.md lines 25 and 38 both cite #2175 as the live board and zero occurrences of #2537 (grep count 0) -- dead-board-pointer cla
+
+### ✅ gap-lane-scorer-20261018-0110-lane3 — Team 3, Team Naya Scorer (Decision Engine) — 9.5/10 [VERIFIED]
+
+**Task:** Gap follow-up: independently re-run the 80-case proof on live bytes + re-verify the PROHIBITED mapping against act_pipeline keying
+
+**Evidence:** BACKLOG (oldest-first sweep). VERIFIED this tick: proof script hidden_files/lane-3/t972/proof_live_rerun_20261018.py and output .txt both exist; receipt records live head 8346681cd52600e08fba3bcbb8b86a3258eaf056 re-derived via ls-remote + fresh clone, value_calculus.py sha256 8010de61 byte-identical to parent receipt, runtime constant-identity test
 
 ### ✅ gap-lane-scorer-20261017-1040-lane3-t0675 — Team 3, Team Naya Scorer (Decision Engine) — 9.0/10 [VERIFIED]
 
@@ -63616,6 +63640,12 @@ _Last updated: 2026-11-26 04:34 UTC_ | Data stream: `activity-ledger.jsonl` (mac
 **Task:** t0780: second-seat review of the DEMOTE verdict (CONFIRM with conditions)
 
 **Evidence:** ACCEPTED. Artifacts verified from live bytes before scoring: branch naya/demote-falsified-t0762 head 4c29f34197a436da8c628da150f319ff8fe26037 byte-exact on the GitHub remote (git ls-remote); verdict file hidden_files/demote-second-review-t0780-lane1.md sha256 byte-exact (b5840fc1...f4ccf4d); verdict-under-review lane-8/verdict-falsified-at-retrieve
+
+### ✅ gate-stall-20261126-0450 — Team 0, Team Naya Scorer (?) — 9.0/10 [VERIFIED]
+
+**Task:** Lane-executor gate-stall sweep 2026-11-25 20:48 PST: 31 unclaimed briefs evaluated, all refused, queue untouched
+
+**Evidence:** FRESH (last-12-tick window). VERIFIED this tick: receipt file exists and is complete; cited sweep log brief-queue/claim-sweep-20261125-2048.log exists - 31 numbered attempt lines, 29 x EXIT 7 + 2 x EXIT 2, matching the receipt table row-for-row in order and exit code (verified programmatically); all 31 named briefs still present in the live queue; 
 
 ### ✅ gap-lane-scorer-20261017-1850-lane0 — Team 0, Team Naya Scorer (?) — 9.5/10 [VERIFIED]
 
