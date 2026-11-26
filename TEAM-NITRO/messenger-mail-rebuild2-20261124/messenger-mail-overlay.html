@@ -7670,4 +7670,127 @@ onReady(function(){
 }
 </style>
 <script id="ov-fix9-20261126-js">window.__fx9=true;</script>
+<style id="ov-fix10-20261126">
+/* ===== FIX10 (2026-11-26) — D-7 thread composer clears the fixed toggle
+   dock on first view at phone + GOLD-S (initials follow the LETTER;
+   S = deep gold #d4a017, the Connections set, not the old Ask blue).
+   Override block only: no base byte edited, fix8/fix9 blocks untouched.
+   D-7 is solved in the script below (scroll-anchor on thread open);
+   the CSS here is only the gold-S braces for S initials, so they read
+   gold even before the JS sweep runs. Laws: white text only, 17px
+   minimum, deep palette, one light top-left. */
+/* --- GOLD-S: every S initial is gold, wherever it renders --- */
+.pc-card[data-pc-alias="shawn"] .fc-pick-av,.pc-card[data-pc-alias="sophia"] .fc-pick-av,
+[data-fx2-card="shawn"],[data-fx2-card="sophia"]{--cc:#d4a017!important;}
+.pc-card[data-pc-alias="shawn"],.pc-card[data-pc-alias="sophia"]{--pc:#d4a017!important;}
+.pc-card[data-pc-alias="shawn"] .pc-pct-one,.pc-card[data-pc-alias="sophia"] .pc-pct-one{--pc:#d4a017!important;}
+</style>
+<script id="ov-fix10-20261126-js">
+/* ===== FIX10 (2026-11-26) — override script only; runs last. ===== */
+(function(){
+'use strict';
+window.__fx10 = true;
+var GOLD = '#d4a017';
+/* ---------- GOLD-S: colour follows the LETTER (Connections set) ----------
+   nmColorFor is the one funnel every initial renders through (DM list,
+   header/who/bubble orbs, mail orbs, card). S = gold; every other letter
+   keeps its mapped colour (W green, V teal, Z red, T purple, I teal,
+   A red, E teal, R teal, M red). The gematria key above moves future
+   renders; the sweep below re-golds nodes that rendered before this
+   script ran, and a MutationObserver re-golds re-renders (the views
+   rebuild on every open/send). */
+/* The funnel (nmColorFor) is closure-local and NOT on window — so it
+   cannot be wrapped from here. But it reads window.__nmGemNum LIVE on
+   every call (letter -> number -> colour). S is number 6 (indigo) in the
+   Ask set; the Connections set puts S on number 3 (gold). Moving ONLY
+   the S key leaves H and U on 6 — letter-exact, no collateral, and every
+   future render (list, header, bubbles, mail orbs, card) reads gold. */
+try { if(window.__nmGemNum) window.__nmGemNum.S = 3; } catch(e){}
+function fx10GoldS(){
+  var els = document.querySelectorAll('.nm-orb,.fc-pick-av,.ml-avatar,.fx8-boot-av,.fx8-mail-orb');
+  for(var i = 0; i < els.length; i++){
+    var el = els[i];
+    if((el.textContent || '').trim() === 'S'){
+      el.style.setProperty('--cc', GOLD);
+      el.style.setProperty('--pc', GOLD);
+    }
+  }
+  var cards = document.querySelectorAll('.pc-card[data-pc-alias="shawn"],.pc-card[data-pc-alias="sophia"]');
+  for(var j = 0; j < cards.length; j++){
+    cards[j].style.setProperty('--pc', GOLD);
+    var pcts = cards[j].querySelectorAll('.pc-pct-one');
+    for(var k = 0; k < pcts.length; k++) pcts[k].style.setProperty('--pc', GOLD);
+  }
+  /* live dot beside the name has no letter of its own — gold it when the
+     who-row names Shawn or Sophia. */
+  var whos = document.querySelectorAll('.fx2-who-name');
+  for(var w = 0; w < whos.length; w++){
+    var nm = (whos[w].textContent || '').trim();
+    if(nm.charAt(0) === 'S'){
+      var row = whos[w].closest ? whos[w].closest('.fx2-who') : null;
+      if(row){ var dot = row.querySelector('.fx2-live-dot'); if(dot) dot.style.setProperty('--cc', GOLD); }
+    }
+  }
+  /* an already-open card for Shawn/Sophia: its frame carries --cc. */
+  var fr = document.querySelector('.fx2-card-frame');
+  if(fr){
+    var cn = document.querySelector('.fx2-card-name');
+    if(cn && (cn.textContent || '').trim().charAt(0) === 'S') fr.style.setProperty('--cc', GOLD);
+  }
+}
+/* ---------- D-7: thread composer clears the fixed toggle dock ----------
+   ROOT CAUSE (measured fix9 + this round): the toggle lives in
+   .nm-toggle-dock, position:fixed, bottom:var(--bw) — at 390px the dock
+   band is [736,812] and it NEVER moves with the page scroll. The base
+   scroll (nmScrollReaderIntoView) anchors on .nm-onebar, which does not
+   exist in this render, so it stops ~150px short: scrollY 754, composer
+   bottom 886, send [784,841] under the dock. The document HAS the room
+   (maxScroll 1297, need 904), the base scroll just never asks for it.
+   FIX: after a thread opens (and on every view rebuild, focus, resize),
+   scroll exactly the overlap + 8px so the composer's bottom edge sits
+   above the dock's top edge. Phone widths only (<=640px); desktop and
+   1919 are untouched — the anchor no-ops whenever need <= 0, and it
+   never fires on a manual scroll, so reading is never yanked. */
+function fx10Anchor(){
+  try {
+    if(!window.matchMedia || !window.matchMedia('(max-width:640px)').matches) return false;
+    var comp = document.querySelector('#nmReader .nm-composer');
+    if(!comp) return false;
+    var r = comp.getBoundingClientRect();
+    if(!r || r.height === 0) return false;
+    var dock = document.querySelector('.nm-toggle-dock');
+    if(!dock) return false;
+    var need = Math.ceil(r.bottom - (dock.getBoundingClientRect().top - 8));
+    if(need <= 0) return false;
+    var y = window.scrollY + need;
+    try { window.scrollTo({top: y, behavior: 'instant'}); }
+    catch(e){ window.scrollTo(0, y); }
+    return true;
+  } catch(e){ return false; }
+}
+var __fx10T = null;
+function fx10AnchorSoon(ms){
+  setTimeout(fx10Anchor, ms || 150);
+}
+document.addEventListener('click', function(ev){
+  var t = ev.target && ev.target.closest ? ev.target.closest('[data-pc-act="chat"],[data-nm-dm],[data-nm-mail],[data-nm-person],[data-nm-conv],.nm-toggle-btn') : null;
+  if(t){ fx10AnchorSoon(120); fx10AnchorSoon(450); }
+}, true);
+document.addEventListener('focusin', function(ev){
+  if(ev.target && ev.target.id === 'nmMsgBody') fx10AnchorSoon(150);
+});
+window.addEventListener('resize', function(){ fx10AnchorSoon(150); });
+if(window.MutationObserver){
+  var __fx10GoldT = null;
+  var mo = new MutationObserver(function(){
+    fx10GoldS();
+    if(__fx10GoldT) clearTimeout(__fx10GoldT);
+    __fx10GoldT = setTimeout(fx10Anchor, 150);
+  });
+  mo.observe(document.body, {childList: true, subtree: true});
+}
+fx10GoldS();
+setTimeout(fx10GoldS, 800);
+})();
+</script>
 </body></html>
