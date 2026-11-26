@@ -4178,6 +4178,11 @@ try{ if(new URLSearchParams(location.search).get('new')==='project'){
 /* PI-FIX3c (1): phone nav — BACK leaves the layout when hidden, BACK/NEXT
    share one row instead of stacking full-width. */
 @media (max-width:640px){#sp-deck-nav .sp-deck-btn{flex:1 1 0;min-width:0;width:auto}#sp-deck-nav .sp-deck-back[style*="hidden"]{display:none}}
+/* sp-fix3d */
+/* PI-FIX3d: on a question frame the board sub (6 lines) pushes the
+   question below the visible area. Hide it only while the question head
+   is present; count + template line stay. */
+.gr-board-cover:has(.sp-deck-qhead) .gr-board-sub{display:none}
 </style>
 <script id="sp-fix3-js">
 /* PI-FIX3 — stage scroll is CSS above; this script wires template→questions,
