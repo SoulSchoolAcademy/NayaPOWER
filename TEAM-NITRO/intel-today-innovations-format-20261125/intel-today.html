@@ -275,7 +275,7 @@
   .hero-eq span:nth-child(3){height:60%;animation-delay:.3s}
   .hero-eq span:nth-child(4){height:100%;animation-delay:.45s}
   .hero-eq span:nth-child(5){height:50%;animation-delay:.6s}
-  .pm-cap .station{font-size:12px;font-weight:900;letter-spacing:.3em;color:#fff}
+  .pm-cap .station{font-size:17px;font-weight:900;letter-spacing:.3em;color:#fff}
   .pm-yt-link{color:var(--silver);font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;white-space:nowrap}
   .pm-yt-link:hover{color:#fff;text-decoration:underline}
 
@@ -545,7 +545,7 @@
   #screen-slide .pm-art-frame{width:100%;flex:1 1 auto;min-height:0;aspect-ratio:auto}
   #screen-slide .slide-boards{flex:1 1 0;min-width:0;height:100%}
   /* The words must fit whole — the board text caps at 21px on laptop so the longest board (Q16 A, 117 words) sits whole with room. */
-  #screen-slide .slide-boards .ib-layer-body p{font-size:clamp(17px,1.35vw,21px);line-height:1.5}
+  #screen-slide .slide-boards .ib-layer-body p{font-size:clamp(18px,1.35vw,21px);line-height:1.5}
   /* ROUND 6 — SHORT LAPTOP HEIGHTS (his verdict ~16:30 MST: boards whole, no scrolling down):
      at 1366x768 the boards are only 458 tall while the laptop type holds 18.4px, so
      G08 Board A overflowed 25px and Q16 Board A 108px, sliced by overflow:hidden.
@@ -814,7 +814,7 @@ button.ib-n{background:none;border:0;padding:0;cursor:pointer}
 .tool-btn:active,.add-btn:active{transform:scale(.97)}
 body:not(.member-signed-in) .tool-btn,body:not(.member-signed-in) .add-btn,body:not(.member-signed-in) .third-tool{display:none!important} /* FIX5F: the depth gear is member-only, like the front gear */
 body.member-signed-in #screen-slide .ib-layer-body p{cursor:text}
-.more-behind{display:block;margin:10px auto 0;padding:4px 12px;border-radius:999px;border:1.5px solid rgba(255,255,255,.5);background:rgba(0,0,0,.35);color:#f4efe3;font-family:"Cormorant Garamond",serif;font-size:17px;cursor:pointer}
+.more-behind{display:block;margin:10px auto 0;padding:4px 12px;border-radius:999px;border:1.5px solid rgba(255,255,255,.5);background:rgba(0,0,0,.35);color:#f4efe3;font-family:"Cormorant Garamond",serif;font-size:18px;cursor:pointer}
 .lib-note{color:#fff;opacity:.75;font-size:17px;margin:6px 0 0}
 .cont-note{color:#fff;opacity:.8;font-style:italic}
 .cover-vid{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:14px;z-index:2}
@@ -1395,7 +1395,7 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
   #slideMain.end-mode #slideBoardsB{flex:none !important;min-height:320px}
   #slideMain.end-mode #slideBoardsB .ib-layer{flex:1 1 auto !important;min-width:0 !important;width:100% !important;height:auto}
   #slideMain.end-mode #slideBoardsB .ib-layer-body{flex:1 1 auto !important;min-width:0 !important;width:100% !important;height:auto;padding-top:10px;padding-bottom:12px}
-  #slideMain.end-mode #slideBoardsB .ib-layer-body p{width:100%;font-size:17px;line-height:1.3;margin-top:4px;margin-bottom:4px}
+  #slideMain.end-mode #slideBoardsB .ib-layer-body p{width:100%;font-size:18px;line-height:1.3;margin-top:4px;margin-bottom:4px}
   #slideMain.end-mode #slideBoardsB .end-actions{margin-top:8px}
 }
 </style>
@@ -1470,6 +1470,30 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 #screen-slide .fs-btn{width:44px;height:44px;min-height:44px;border:2px solid rgba(255,255,255,.95);background:radial-gradient(135deg at 30% 25%,#2a2a35,#050607 70%);box-shadow:0 8px 20px rgba(0,0,0,.65),0 0 16px rgba(255,255,255,.22),inset 0 1px 0 rgba(255,255,255,.35)}
 #screen-slide .fs-btn svg{width:20px;height:20px}
 #screen-slide .fs-btn:hover{transform:scale(1.08)}
+/* FIX1 D1: at phone width the fullscreen icon leaves the title line — it docks
+   bottom-right, clear of the title, the N and the button. */
+@media(max-width:900px){
+#screen-slide .fs-btn{top:auto;bottom:8px;right:8px}
+}
+/* FIX1 D2: at phone width slide 1 gives the nutshell the full board (B + the
+   centre frame hidden, A stretched); on slides 2-3 the strip board shows
+   only the whole nutshell text, centred, with its chrome hidden. */
+@media(max-width:900px){
+#screen-slide.intel-nut1 #slideBoardsB,
+#screen-slide.intel-nut1 .pm-art{display:none}
+#screen-slide.intel-nut1 #slideBoardsA{flex:1 1 auto}
+#screen-slide.intel-nut1 #slideBoardsA .ib-layer-body{justify-content:center}
+#screen-slide.intel-strip #slideTextCenter .b-script,
+#screen-slide.intel-strip #slideTextCenter .intel-matrix-btn,
+#screen-slide.intel-strip #slideTextCenter .ib-n,
+#screen-slide.intel-strip #slideTextCenter .fs-btn,
+#screen-slide.intel-strip #slideTextCenter .swap-btn,
+#screen-slide.intel-strip #slideTextCenter .add-btn,
+#screen-slide.intel-strip .slide-frame > .fs-btn,
+#screen-slide.intel-strip .slide-frame > .swap-btn,
+#screen-slide.intel-strip .slide-frame > .add-btn{display:none}
+#screen-slide.intel-strip #slideTextCenter .ib-layer-body{justify-content:center}
+}
 /* HIGHLIGHTED VIEWER — the matrix version of the intelligent notes */
 #intelViewer{position:fixed;inset:0;z-index:9999;background:rgba(3,3,5,.94);overflow-y:auto;padding:24px 16px 64px}
 #intelViewer[hidden]{display:none}
@@ -2635,7 +2659,7 @@ function fitPhonePanel(body, p, key, full, slot){
        at the 17px floor, marker off (the rest stays reachable behind
        the N — the continuation is still pushed to BEHIND). */
     window.__fix6Fallbacks = (window.__fix6Fallbacks || 0) + 1;
-    p.style.fontSize = '17px'; p.style.lineHeight = '1.35';
+    p.style.fontSize = '18px'; p.style.lineHeight = '1.35';
     lineH = parseFloat(window.getComputedStyle(p).lineHeight) || 23;
     marker.remove();
     var first = frontPhrases(full)[0] || full;
@@ -3377,7 +3401,11 @@ function openViewer(sn){
   updateChrome();
   viewer.hidden=false;
   document.body.style.overflow='hidden';
-  try{closeBtn.focus();}catch(err){}
+  /* FIX1 D4: focus the title at the TOP (never CLOSE at the bottom — focusing
+     CLOSE scrolled the viewer to its end), then pin the scroll to the top so
+     the reader lands on the nutshell, not "What's in it for you". */
+  try{vTitle.setAttribute('tabindex','-1');vTitle.focus({preventScroll:true});}catch(err){try{vTitle.focus();}catch(err2){}}
+  viewer.scrollTop=0;
 }
 function closeViewer(){viewer.hidden=true;document.body.style.overflow='';}
 window.__intelOpenViewer=openViewer;
@@ -3415,8 +3443,62 @@ document.addEventListener('click',function(e){
   var b=e.target.closest?e.target.closest('.intel-matrix-btn'):null;
   if(b&&b.getAttribute('data-sn'))openViewer(parseInt(b.getAttribute('data-sn'),10));
 });
-/* Day tint: one rim colour per day on the slide boards (Nov 27 takes gold,
-   not its weekday ruby — one red centerpiece per view, never a red cluster). */
+/* FIX1 D1: cover titles split date / category onto two lines (date on one
+   line, category on the next) so no cover title can run under an icon. */
+function intelSplitCoverTitles(){
+  var g=(typeof GROUPS!=='undefined')?GROUPS[current]:null;
+  if(!g||g.kind!=='cover')return;
+  var els=document.querySelectorAll('#screen-slide .b-script');
+  for(var i=0;i<els.length;i++){
+    var el=els[i];
+    if(el.innerHTML.indexOf('<br>')<0&&el.textContent.indexOf(' · ')>-1){
+      el.innerHTML=el.innerHTML.replace(' · ','<br>');
+    }
+  }
+}
+/* FIX1 D2: at phone width the nutshell gets its own room. Slide 1 gives the
+   nutshell the full board (B + the centre frame hidden); on slides 2-3 the
+   strip board shows only the whole nutshell text. Desktop is untouched. */
+function intelPhone(){return window.matchMedia?window.matchMedia('(max-width: 900px)').matches:window.innerWidth<=900;}
+function intelLayoutClasses(){
+  var g=(typeof GROUPS!=='undefined')?GROUPS[current]:null;
+  var slide=document.getElementById('screen-slide');
+  if(!g||!slide)return;
+  var phone=intelPhone();
+  slide.classList.toggle('intel-nut1',phone&&g.kind==='nut');
+  slide.classList.toggle('intel-strip',phone&&(g.kind==='plain'||g.kind==='means'));
+}
+function intelNutshellFix(){
+  if(typeof END_MODE!=='undefined'&&END_MODE)return;
+  var g=(typeof GROUPS!=='undefined')?GROUPS[current]:null;
+  if(!g)return;
+  intelLayoutClasses();
+  if(!intelPhone())return;
+  function expand(slot,full){
+    var host=document.getElementById(slot==='A'?'slideBoardsA':slot==='B'?'slideBoardsB':'slideTextCenter');
+    if(!host)return;
+    var body=host.querySelector('.ib-layer-body');if(!body)return;
+    var p=body.querySelector('p');if(!p)return;
+    var key=current+'-'+slot;
+    p.textContent=full;
+    p.style.fontSize='18px';p.style.lineHeight='1.5';
+    var marker=body.querySelector('.more-behind');if(marker)marker.remove();
+    if(typeof CONTINUED!=='undefined'&&CONTINUED[key]!==undefined){delete CONTINUED[key];}
+    if(typeof BEHIND!=='undefined'&&BEHIND[current]){BEHIND[current]=BEHIND[current].filter(function(L){return L.cont!==slot;});}
+  }
+  function fullFor(slot){
+    var key=current+'-'+slot;
+    if(typeof RUNTIME_TXT!=='undefined'&&RUNTIME_TXT[key]!==undefined)return RUNTIME_TXT[key];
+    var gg=GROUPS[current];
+    return slot==='B'?gg.b:gg.a;
+  }
+  if(g.kind==='nut')expand('A',fullFor('A'));
+  else if(g.kind==='plain'||g.kind==='means')expand('C',fullFor('C'));
+}
+/* Day tint: one rim colour per day on the slide boards (FIX1 D3d: Nov 27 takes
+   its weekday ruby #c62828 per Design Laws §3.3 — the gold was the base
+   maker's own call; the law wins. Watch-out for the eye: ruby rim + red N
+   together read as two reds in one view on Nov 27 slides.) */
 function intelTint(){
   if(typeof END_MODE!=='undefined'&&END_MODE)return;
   var g=(typeof GROUPS!=='undefined')?GROUPS[current]:null;
@@ -3426,13 +3508,17 @@ function intelTint(){
   var found=null;
   for(var i=0;i<days.length;i++){if(days[i].date===g.day)found=days[i];}
   if(!found)return;
-  var color=(found.date==='2026-11-27')?'#d4a017':found.color;
+  var color=found.color;
   var layers=document.querySelectorAll('#screen-slide .ib-layer');
   for(var j=0;j<layers.length;j++){layers[j].style.setProperty('--lc',color);}
 }
 if(typeof renderSlide==='function'){
   var __intelRender=renderSlide;
-  renderSlide=function(){__intelRender();intelTint();};
+  renderSlide=function(){__intelRender();intelTint();intelSplitCoverTitles();intelLayoutClasses();};
+}
+if(typeof fitPanels==='function'){
+  var __intelFitPanels=fitPanels;
+  fitPanels=function(){__intelFitPanels();intelNutshellFix();};
 }
 /* End login button (rendered by renderEnd). */
 document.addEventListener('click',function(e){
