@@ -4608,6 +4608,18 @@ if(window.MutationObserver){
 .smart-tab:nth-child(9n+9){--ac:#07925f;}
 .smart-tab{border-color:var(--ac)!important;}
 .smart-tab.act{box-shadow:0 0 18px var(--ac)!important;}
+/* R14b — (H) centre header must not wrap at 1440: the row squeezed
+   .top-title (flex:1 + min-width:0) below content width. flex:none stops
+   the squeeze; nowrap + tighter tracking at 17px (law §2.3, no size change)
+   keep INTELLIGENT HUB on one line. Parse-time CSS, survives rebuilds. */
+.top-title{flex:none!important;min-width:0!important;}
+.top-title b{white-space:nowrap!important;letter-spacing:.06em!important;}
+/* R14b — (S) lens-tab jewels are circles with flow, not rounded squares.
+   .tab-jewel ships border-radius:8px; the R14 script never added the class
+   (its textContent match missed the leading glyph char). CSS direct. */
+.lens-tab .tab-jewel{border-radius:50%!important;}
+.lens-tab .tab-jewel::after{content:'';position:absolute;inset:-4px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,rgba(255,255,255,.55) 50deg,transparent 110deg,transparent 180deg,rgba(255,255,255,.35) 230deg,transparent 290deg);animation:uh-r14-flow 60s linear infinite;pointer-events:none;}
+@media (prefers-reduced-motion: reduce){.lens-tab .tab-jewel::after{animation:none;}}
 </style>
 <script id="uh-r14">
 /* R14 — D1 avatar (initial ball, click -> person card), D5 header nowrap,
@@ -4651,37 +4663,34 @@ if(window.MutationObserver){
   var avv=document.getElementById('avv');
   if(avv){ avv.addEventListener('click', function(ev){ if(ev.target && ev.target.closest && ev.target.closest('#avedit')) return; personCard(); }); }
   paintAvatar();
-  /* D5 header: "INTELLIGENT HUB" must not wrap/clip at desktop 1440 — the
-     title is JS-built, so this runs on a short retry, not at parse time. */
-  var tries=0;
-  var ht=setInterval(function(){
-    tries++;
+  /* R14b — D5 header + item 6 signature, permanent. The R14 500ms x10
+     retries never fired: the top bar / lens tabs are built AFTER the 5s
+     window, and the signature match missed the leading glyph char
+     (textContent starts with ✦/◆/★, not the label). A MutationObserver
+     re-applies on every (re)build instead. */
+  function uhR14bApply(){
     try{
-      var sm=null, all=document.querySelectorAll('small');
-      for(var i=0;i<all.length;i++){ if((all[i].textContent||'').trim()==='INTELLIGENT HUB'){ sm=all[i]; break; } }
-      if(sm){ sm.style.whiteSpace='nowrap'; sm.style.fontSize='15px'; sm.style.letterSpacing='2px'; if(sm.parentNode) sm.parentNode.style.flex='none'; clearInterval(ht); }
-    }catch(e){}
-    if(tries>10) clearInterval(ht);
-  }, 500);
-  /* Item 6 signature: Collective / Personal / Activity carry circles with
-     flow, not square/diamond glyphs. */
-  var tries2=0;
-  var sg=setInterval(function(){
-    tries2++;
-    try{
-      var btns=document.querySelectorAll('button');
-      var hit=0;
-      for(var i=0;i<btns.length;i++){
-        var tx=(btns[i].textContent||'').trim();
-        if(tx.indexOf('Collective')===0||tx.indexOf('Personal')===0||tx.indexOf('Activity')===0){
-          var sp=btns[i].querySelector('span');
-          if(sp && !sp.classList.contains('uh-r14-circflow')){ sp.classList.add('uh-r14-circflow'); hit++; }
+      var all=document.querySelectorAll('small');
+      for(var i=0;i<all.length;i++){
+        if((all[i].textContent||'').trim()==='INTELLIGENT HUB'){
+          var sm=all[i];
+          sm.style.whiteSpace='nowrap'; sm.style.fontSize='15px'; sm.style.letterSpacing='2px';
+          if(sm.parentNode) sm.parentNode.style.flex='none';
         }
       }
-      if(hit>0) clearInterval(sg);
+      var tt=document.querySelector('.top-title b');
+      if(tt){ tt.style.whiteSpace='nowrap'; tt.style.letterSpacing='0.06em'; }
+      var tp=document.querySelector('.top-title');
+      if(tp){ tp.style.flex='none'; }
+      var jw=document.querySelectorAll('.lens-tab .tab-jewel');
+      for(var j=0;j<jw.length;j++){ if(!jw[j].classList.contains('uh-r14-circflow')) jw[j].classList.add('uh-r14-circflow'); }
     }catch(e){}
-    if(tries2>10) clearInterval(sg);
-  }, 500);
+  }
+  uhR14bApply();
+  try{
+    var uhR14bObs=new MutationObserver(function(){ uhR14bApply(); });
+    uhR14bObs.observe(document.documentElement,{childList:true,subtree:true});
+  }catch(e){}
   /* Item 5 affiliate: an inbound ?ref= / ?by= is the referrer — stored on
      this device so the sale credits them. */
   try{
