@@ -52,9 +52,11 @@ assert('R3: Next on last slide exits (closeStory)', p.includes('else closeStory(
 assert('R3: circle N present, info-i gone', p.includes('id="fpCircleN"') && !p.includes('fpDeedInfo') && !p.includes('var PARAS'));
 assert('F1: ball asset unchanged (WEBP src kept)', p.includes('data:image/webp;base64,'));
 assert('F2: narrow+short gate present', p.includes('@media (max-width:640px) and (max-height:700px)'));
-assert('front page: sentence only behind the N', !/id="fpDeedSentence">[^<]*By entering/.test(p));
+assert('R6: deed text restored verbatim + little N at its end (0 info-i)', p.includes('By entering your name, you make it official') && p.includes('id="fpLittleN"') && (p.match(/ⓘ/g) || []).length === 0);
+assert('R6: nutshell pop-up present with the verbatim wording', p.includes('id="fpNutshellPop"') && p.includes('id="fpNutshellClose"') && (p.match(/By entering your name, you make it official/g) || []).length === 2);
+assert('R6: little N is static (no animation on .fp-little-n)', p.includes('.fp-little-n{display:inline-grid;') && !/\.fp-little-n\{[^}]*animation/.test(p));
 assert('final nine: 9 eco-item anchors', (p.match(/class="eco-item"/g) || []).length === 9);
-assert('structure: 7 style elements, 10 scripts (boot added)', (p.match(/<style>/g) || []).length === 7 && (p.match(/<script>/g) || []).length === 10);
+assert('structure: 8 style elements, 11 scripts (boot + deed style + nutshell script)', (p.match(/<style>/g) || []).length === 8 && (p.match(/<script>/g) || []).length === 11);
 const sw = await get('/sw.js');
 assert('sw.js 200 + matches lane', sw.equals(readFileSync(LANE + 'sw.js')));
 console.log('VERIFY DONE');

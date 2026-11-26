@@ -2301,7 +2301,7 @@ document.documentElement.classList.add('fp-locked');</script>
 <style>
 /* ROUND 3 — THE VISUAL STORY, IN PLACE (Shawn's rulings, voice calls 2026-11-25
    ~17:32-17:39 MST). Every N on the portal front page (the red N in the circle
-   where the ⓘ was, the black N bottom-left, the red N bottom-right) and "Read
+   where the (i) was, the black N bottom-left, the red N bottom-right) and "Read
    the agreement" open the REAL collective agreement — the visual story
    slideshow, entered DIRECTLY at its first content slide ("The Old Way") —
    in place, inside the portal frame. NEVER the intro landing (the preview
@@ -2313,7 +2313,7 @@ document.documentElement.classList.add('fp-locked');</script>
    COLLECTIVE-AGREEMENT-OFFICIAL-20261115.md. No new font-size declarations:
    the design-law counts must not move. */
 
-/* --- the circle N (replaces the ⓘ) --- */
+/* --- the circle N (replaces the (i)) --- */
 button.fp-circle-n{position:relative;width:56px;height:56px;border-radius:50%;
   display:inline-grid;place-items:center;overflow:visible;background:#050507;
   border:0;padding:0;cursor:pointer;
@@ -2501,7 +2501,23 @@ button.fp-circle-n:active{transform:scale(.97)}
             <input id="userName" class="input" type="text" placeholder="Your name" autocomplete="name" autocapitalize="words" autofocus required>
             <button class="enter" type="submit">Enter NayaNET →</button>
           </form>
-          <p class="fp-deed-sentence" id="fpDeedSentence"><button class="fp-deed-info fp-circle-n" id="fpCircleN" type="button" aria-label="The Collective Agreement — the red N"><img id="fpCircleNImg" alt="The red N — a raised glass ball with a gold N"><span class="ncorner-gloss" aria-hidden="true"></span></button></p>
+          <p class="fp-deed-sentence" id="fpDeedSentence"><span class="fp-deed-text">By entering your name, you make it official &mdash; you are signing the Collective Agreement, and you get the deed to your own world: high-level digital real estate &mdash; your personal page, your business, your space &mdash; free forever. <button class="fp-little-n" id="fpLittleN" type="button" aria-label="In a nutshell — the Collective Agreement">N</button></span><button class="fp-deed-info fp-circle-n" id="fpCircleN" type="button" aria-label="The Collective Agreement — the red N"><img id="fpCircleNImg" alt="The red N — a raised glass ball with a gold N"><span class="ncorner-gloss" aria-hidden="true"></span></button></p>
+<style> /* ROUND 6 — the little N + nutshell (Shawn, locked 2026-11-26). The deed text spans the full row, centred; the red ball wraps to its own centred line below. The little N is a 26px obsidian circle, white Marcellus N, purple glow — STATIC, no animation anywhere, so it can never read sideways. The pop-up is a centred overlay; it hides, the page underneath is untouched. */
+#fpDeedSentence{flex-wrap:wrap;}
+.fp-deed-text{flex:0 0 100%;text-align:center;}
+.fp-little-n{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;border:1.5px solid #fff;background:#050507;color:#fff;font-family:Marcellus,Georgia,serif;font-size:17px;line-height:1;cursor:pointer;vertical-align:-5px;box-shadow:0 0 10px rgba(142,36,170,.45),0 4px 10px rgba(0,0,0,.5);transition:box-shadow .25s,transform .25s;}
+.fp-little-n:hover{box-shadow:0 0 18px rgba(142,36,170,.9),0 4px 12px rgba(0,0,0,.5);transform:translateY(-1px);}
+.fp-little-n:active{transform:scale(.97);}
+.fp-nutshell-pop{position:fixed;inset:0;z-index:90;display:grid;place-items:center;background:rgba(0,0,0,.65);padding:16px;}
+.fp-nutshell-pop[hidden]{display:none;}
+.fp-nutshell-card{max-width:560px;width:100%;text-align:center;background:#050507;border:1.5px solid rgba(142,36,170,.6);border-radius:18px;box-shadow:0 8px 24px rgba(0,0,0,.6),0 0 18px rgba(142,36,170,.25);padding:20px 22px;}
+.fp-nutshell-text{color:#fff;font-family:Marcellus,Georgia,serif;font-size:19px;line-height:1.6;margin:0 0 16px;text-shadow:0 1px 2px rgba(0,0,0,.85);}
+.fp-nutshell-close{display:inline-block;padding:12px 28px;border-radius:999px;font-size:17px;font-weight:800;letter-spacing:.05em;color:#fff;cursor:pointer;background:linear-gradient(180deg,#1b1b24,#050507);border:2px solid #07925f;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 0 -4px 8px rgba(0,0,0,.55),0 0 24px -4px #07925f,0 10px 22px rgba(0,0,0,.55);}
+.fp-nutshell-close:hover{box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -4px 8px rgba(0,0,0,.5),0 0 38px -2px #07925f,0 12px 26px rgba(0,0,0,.6);transform:translateY(-2px);}
+</style>
+<div class="fp-nutshell-pop" id="fpNutshellPop" hidden role="dialog" aria-modal="true" aria-label="In a nutshell — the Collective Agreement"><div class="fp-nutshell-card"><p class="fp-nutshell-text">By entering your name, you make it official &mdash; you are signing the Collective Agreement, and you get the deed to your own world: high-level digital real estate &mdash; your personal page, your business, your space &mdash; free forever.</p><button class="fp-nutshell-close" id="fpNutshellClose" type="button">Close &#9670;</button></div></div>
+<script>/* ROUND 6 — the little N opens the nutshell; Close, backdrop, or Esc shuts it and the page underneath is untouched. */
+(function(){var n=document.getElementById('fpLittleN'),pop=document.getElementById('fpNutshellPop'),close=document.getElementById('fpNutshellClose');if(!n||!pop||!close)return;function open(){pop.hidden=false;close.focus();}function shut(){pop.hidden=true;n.focus();}n.addEventListener('click',open);close.addEventListener('click',shut);pop.addEventListener('click',function(e){if(e.target===pop)shut();});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!pop.hidden)shut();});})();</script>
           
 <style>
 /* WHOLE-SYSTEM CONNECTION 2026-11-24 (items 60/61/63) — the name box IS the
@@ -3333,7 +3349,7 @@ button.fp-circle-n:active{transform:scale(.97)}
   document.getElementById('dealEyeMain').addEventListener('click', function(){
     openPlainLetter();
   });
-  /* FIX ROUND — the little ⓘ eyes: each note sits right behind its eye,
+  /* FIX ROUND — the little (i) eyes: each note sits right behind its eye,
      opens on tap, closes on tap again, and scrolls into view. */
   document.getElementById('letterBody').addEventListener('click', function(e){
     var eye = e.target.closest('.deal-eye');
