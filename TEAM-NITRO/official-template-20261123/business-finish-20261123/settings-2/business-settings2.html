@@ -670,6 +670,8 @@ body{background:#050607}
 .sr-multibtn{height:52px;min-height:52px}
 .sr-multi{margin-top:2px;padding:4px}
 body.sr-qmode #tbTitle{font-size:clamp(22px,4.8vw,25px)}
+body.sr-qmode .official-headliner{display:block}
+body.sr-qmode #slotLeft,body.sr-qmode #slotRight{display:none}
 
 /* ================= FIX8 — 2026-11-26, Shawn's order on staged fix7
    (voice call ~15:04 MST: "make all those edits"). Closes fix7 B1 (Q14
@@ -822,7 +824,7 @@ body.sr-qmode #tbTitle{font-size:clamp(22px,4.8vw,25px)}
    behaviour is identical (same keys, same stores, same labels). */
 .sr-side-btn{text-align:left}
 .sr-side-btn .sr-side-label{display:block;padding-right:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sr-side-menu{max-height:380px;overflow-y:auto;margin-top:6px;padding:3px;border:2px solid var(--qc,#8e24aa);border-radius:16px;background:#050607;box-shadow:0 14px 30px rgba(0,0,0,.65),0 0 20px -4px var(--qc,#8e24aa);scrollbar-width:thin;scrollbar-color:#17171f transparent;scroll-snap-type:y mandatory;scroll-padding-top:3px;padding-bottom:27px}
+.sr-side-menu{max-height:380px;overflow-y:auto;margin-top:6px;padding:3px;border:2px solid var(--qc,#8e24aa);border-radius:16px;background:#050607;box-shadow:0 14px 30px rgba(0,0,0,.65),0 0 20px -4px var(--qc,#8e24aa);scrollbar-width:thin;scrollbar-color:#17171f transparent;padding-bottom:27px}
 .sr-multi.sr-side-menu{margin-top:0}
 .sr-side-menu::-webkit-scrollbar{width:6px}
 .sr-side-menu::-webkit-scrollbar-track{background:transparent}
@@ -1165,6 +1167,21 @@ body.sr-qmode #tbTitle{font-size:clamp(22px,4.8vw,25px)}
      button, sized to the board, its own scroll), so opening or scrolling
      it can never push the textbox, Dictate, Next or N anywhere, and can
      never overflow the card. On close it goes back into its own wrap. */
+  /* ALIGN-2f — snap the top row whole, only near the bottom of a menu. */
+  function snapMenuRows(panel) {
+    if (!panel || panel.hidden) return;
+    if (panel.scrollTop < panel.scrollHeight - panel.clientHeight - 40) return;
+    var pr = panel.getBoundingClientRect();
+    var straddler = null;
+    Array.prototype.forEach.call(panel.querySelectorAll('.sr-side-row,.sr-menu-sec,.sr-menu-major'), function (el) {
+      if (straddler) return;
+      var r = el.getBoundingClientRect();
+      if (r.top < pr.top - 0.5 && r.bottom > pr.top + 0.5) straddler = el;
+    });
+    if (!straddler) return;
+    var cut = pr.top - straddler.getBoundingClientRect().top;
+    if (cut > 2) panel.scrollTop -= cut;
+  }
   function dockMenu(panel, btn) {
     var board = document.querySelector('#sr-q-board .ib-layer-body');
     if (!board || !panel || !btn) return;
@@ -1188,6 +1205,7 @@ body.sr-qmode #tbTitle{font-size:clamp(22px,4.8vw,25px)}
     panel._btn = btn;
     if (panel.parentNode !== board) { panel._home = panel.parentNode; board.appendChild(panel); }
     panel.classList.add('sr-docked');
+    if (!panel._snapBound) { panel._snapBound = true; panel.addEventListener('scrollend', function () { snapMenuRows(panel); }); }
     panel.style.left = '18px'; panel.style.right = '18px'; panel.style.width = 'auto';
     panel.style.top = top + 'px';
     /* FIX11-4b — the bottom bound is the BOARD's bottom edge (the body box
@@ -1247,7 +1265,24 @@ body.sr-qmode #tbTitle{font-size:clamp(22px,4.8vw,25px)}
       sc.style.gap = gaps[g] + 'px';
     }
   }
-  function setTitle(text) { var t = $('tbTitle'); if (t) t.textContent = text; }
+  /* ALIGN-6b — shrink-to-fit: the question title is always one line.
+     Steps down 1px from the clamp size until height == one line-height,
+     floor 17px. Runs on every setTitle, on resize, and when fonts settle. */
+  function fitTitle() {
+    var t = $('tbTitle'); if (!t) return;
+    t.style.fontSize = '';
+    if (!document.body.classList.contains('sr-qmode')) return;
+    var guard = 0;
+    while (guard++ < 12) {
+      var cs = getComputedStyle(t);
+      var lh = parseFloat(cs.lineHeight);
+      var px = parseFloat(cs.fontSize);
+      if (!lh || !px) break;
+      if (Math.round(t.getBoundingClientRect().height / lh) <= 1 || px <= 17) break;
+      t.style.fontSize = (px - 1) + 'px';
+    }
+  }
+  function setTitle(text) { var t = $('tbTitle'); if (t) t.textContent = text; fitTitle(); }
   /* FIX4 addition 2 — ONE navigation only: the frame ‹ › arrows. The
      board BACK/NEXT pills are gone, and so are the ‹ Settings return
      pills. The arrows move between views — and inside the profile they
@@ -1940,11 +1975,12 @@ body.sr-qmode #tbTitle{font-size:clamp(22px,4.8vw,25px)}
     window.addEventListener('resize', fitClearance);
     window.addEventListener('resize', function () {
       Array.prototype.forEach.call(document.querySelectorAll('.sr-side-menu.sr-docked:not([hidden])'), function (m) { if (m._btn) dockMenu(m, m._btn); });
+      fitTitle();
     });
     /* FIX9-3 — re-fit once the webfonts settle: Marcellus arriving
        after render can re-wrap a sub-line a few px taller, and the
        fit must still end at 0. One quiet re-fit, no visible jump. */
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { fitClearance(); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { fitClearance(); fitTitle(); });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
