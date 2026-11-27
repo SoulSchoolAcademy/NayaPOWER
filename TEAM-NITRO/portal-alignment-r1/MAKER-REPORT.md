@@ -19,7 +19,7 @@
 | Base | R5 staged portal, harvested by curl, **13,883,771 B, sha256 `d4bb2102279838984db558e87cec4a977e4782ed22e5a2cc98be70f28e00b86b`** — byte-identical to lane `portal-r4.html`/`round-5/maker/portal.html` |
 | Certificate | **313,224 B, sha256 `57bdd3873f65104f3ee6f4648cfec4a1a556a78ea8b7fb57153cd49da528af4b`** — byte-identical to R2, unchanged |
 | Worker | `worker-consolidated.js` 14,219,084 B, sha256 `d462ddf203c2b9954bf40079f3498396e16dbccce4230fee47b887fb3199ada7`; worker `portal-alignment-r1-staging`, deployment `2f5ceeeecd9142fda05d702cb01306aa`, modified 2026-11-27T22:48:47Z, subdomain enabled (`enabled:true`), KV binding `WELCOME_ASSETS` (namespace `1cf80db6183245d19dd5296645a12bd0`) |
-| GitHub | **NOT FILED in this session** — see "Owed" below. No branch/commit to report; do not treat the staging worker as the filing. |
+| GitHub | Branch `portal-alignment-r1` (from R5 head `5d68aeece9f80cb2949ed6ef19e2b17d7881ec4c`), commit **`61542721ae75260f66581c93d0c9d33e18232d57`** (verified by API read-back, 2026-11-27T22:56:05Z) · portal blob `6fbfaefac964a46ec24fb66c56e5e00cbda55b6e` (13,882,866 B) · tree `2a5dc6db4980de58adb5c71446430f2b4b5b7664` · files `TEAM-NITRO/portal-alignment-r1/` (portal, identity, worker, meta, sw.js, build/probe scripts, this report) |
 
 **Staged verification:** curl read-back — staged portal == lane `portal.html` bytes + sha (`4ad2041c…`), staged identity == lane (313,224 B, `57bdd387…`). Build scripts: `build-r1.mjs` **26/26 assertions PASS**; `build-r1b.mjs` **14/14 assertions PASS**.
 
@@ -70,6 +70,5 @@ This seat has no smart-note filing path in-session, so the note is recorded here
 ## Owed
 
 1. **Independent checker** (see above) — dispatch by the director.
-2. **GitHub filing** — no branch/commit in this session (time ran to the hour; the staging worker is deployed and verified, the filing is not). Suggested: new branch `portal-alignment-r1` from `portal-frontpage-fix-20261125-r5` head `5d68aeece9f80cb2949ed6ef19e2b17d7881ec4c`, files `portal.html`, `identity.html`, `worker-consolidated.js`, `worker-meta.json`, `sw.js`, `build-r1.mjs`, `build-r1b.mjs`, `build-worker-r1.mjs`, `MAKER-REPORT.md`, via the R5 `commit-r5.mjs` pattern (git-data API, blobs >1MB).
-3. **Smart-note filing** — the note text above, via the normal filing path.
-4. **Photographic scene light** — the dial image's central light is the one item-2 remainder; needs an art pass or Shawn's eye, not a CSS round.
+2. **Smart-note filing** — the note text above, via the normal filing path.
+3. **Photographic scene light** — the dial image's central light is the one item-2 remainder; needs an art pass or Shawn's eye, not a CSS round.
