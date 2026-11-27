@@ -13179,4 +13179,174 @@ else fx20Boot();
 })();
 </script>
 
+
+<style id="ov-fix21-20261127">
+/* ===== FIX21 (2026-11-27, Shawn's screenshot ~14:01 MST + captain's eye) —
+   append-only: no base byte edited, fix13–fix20 untouched. Three changes.
+   Laws: white text only, 17px minimum on every new word (no new words here),
+   deep palette hexes only, one light top-left, 135deg gradients, shadow
+   down-right, edge glow only — middle obsidian. NOTHING else is touched.
+   (3+4) Composer clears the sticky top bar + stays put: see the script below.
+   (5) Cloud bubbles: the message text sits on a soft dark inside with NO rim
+   and NO slab shadow — the inner text-board's 1px hairline + its 6px drop
+   shadow made a box within a box and fought the soft-cloud read at 390
+   (fix18 eye observation). The board-black middle stays (#050607), the
+   padding and radius stay — only the rim and the slab edge go, so the bubble
+   reads as ONE raised cloud in its own colour, not a form field in a frame. */
+#nmReader #nmMsgList .nm-bubble p{border:0 !important;box-shadow:none !important;}
+</style>
+<script>
+(function(){
+'use strict';
+/* ================= FIX21 — composer clears the bar + stays put =================
+   STEP 0 FOUND (proven by my own browser, both widths): the fix20 staged page
+   renders CLEAN — header is the S only, toggle is the last child at the
+   bottom. Shawn's 14:01 screenshot is the PRE-fix18 bytes: fix17 staged
+   renders his exact header line for line ("Shawn / Shawn / Active 3d ago /
+   @shawn / Last message 3d ago / Friday, November 27, 2026 2:01:07 PM /
+   Auto-deletes in a week unless saved" + Save) with the toggle as the FIRST
+   child of the stage — the top. He opened a stale link, not fix20. Items 1+2
+   therefore need NO code change here; they are re-proven below on fix21 bytes.
+   What IS still broken on fix20 bytes, measured by me:
+   (4) X UNDER THE BAR: the sticky top bar (HEADER.naya-topbar, z 60) spans
+   y 32–190 at 390 and y 96–181 at 1440. The composer lands at top 125–130,
+   so its X ([279,145] at 390, [1191,151] at 1440) sits UNDER the bar — a real
+   tap hits BUTTON.ml-compose-top / HEADER.naya-topbar, never the X.
+   FIX: after fix20 brings the composer into view, shift the window UP just
+   far enough that the composer's top clears the bar's bottom + 8px. (Up, not
+   down: content moves opposite to the scroll — scrolling up moves the modal
+   DOWN the viewport, away from the bar. The first build got this backwards:
+   it scrolled down, hit the document's max scroll, and moved nothing while
+   burning its nudge budget.) The X then sits fully below the bar, visible
+   and tappable at first open, no pre-scroll, no Escape. The nudge never
+   fights fix20: fix20 only scrolls when the modal is OUT of view (visible
+   slice < 300px); the nudge only fires when it is IN view but under the bar.
+   The nudge also waits until the modal is settled in its viewer (the
+   fx19-inviewer class set, or 1s of continuous visibility) — never on a
+   mid-move modal, which is what burned the first build's budget.
+   (3) STAYS PUT: the captain's eye saw the composer show ~1.5s then scroll
+   back up, leaving it ~3,000px below. I could NOT reproduce that on fix20
+   bytes — five 8s traces (first open, reopen, normal Compose, both widths)
+   hold the rect rock-stable (390: top exactly 125/130, scrollY constant;
+   1440: a 5px settle at ~1s, then stable). The base carries competing
+   scrollers (fx10Anchor yanks on every mutation; fx16c notes fx13's
+   re-render can jump the window scroll), so the failure is real somewhere
+   even if my paths never tripped it. FIX: the same nudge re-asserts for 6s
+   after open — if anything drags the composer back under the bar or out of
+   view without the citizen touching anything, it is put back. After 6s, or
+   the moment the citizen scrolls (wheel / touch / keys), the anchor stops —
+   a citizen who scrolls away is never yanked back. Max 3 nudges per open;
+   the counter resets when the modal closes, so the next open anchors again.
+   (5) is the CSS above. No base byte touched, no other behaviour changes. */
+function fx21BarBottom(){
+  try{
+    var bar=document.querySelector('HEADER.naya-topbar')||document.querySelector('.naya-topbar');
+    if(!bar)return 0;
+    var r=bar.getBoundingClientRect();
+    if(r.width<=0||r.height<=0)return 0;
+    var cs=getComputedStyle(bar);
+    if(cs.position!=='fixed'&&cs.position!=='sticky')return 0;
+    if(r.bottom<=0||r.top>=window.innerHeight)return 0;
+    return Math.round(r.bottom);
+  }catch(e){return 0;}
+}
+function fx21Rect(m){var r=m.getBoundingClientRect();return [Math.round(r.left),Math.round(r.top),Math.round(r.width),Math.round(r.height)];}
+function fx21Vis(m){var r=m.getBoundingClientRect();return r.width>0&&r.height>0;}
+function fx21Placed(m){return !!m.closest('#nmReader, .ml-read');}
+function fx21InView(m){
+  var r=m.getBoundingClientRect();
+  var visH=Math.min(r.bottom,window.innerHeight)-Math.max(r.top,0);
+  if(visH<0)visH=0;
+  return r.top>=-2&&visH>=300;
+}
+var fx21LastUser=0;
+function fx21MarkUser(){fx21LastUser=Date.now();}
+function fx21Sweep(){
+  try{
+    var now=Date.now();
+    Array.prototype.forEach.call(document.querySelectorAll('.ml-modal.mlx'),function(m){
+      if(!fx21Vis(m)){
+        if(m.hasAttribute('data-fx21-opened'))m.removeAttribute('data-fx21-opened');
+        if(m.hasAttribute('data-fx21-nudges'))m.removeAttribute('data-fx21-nudges');
+        return;
+      }
+      if(!fx21Placed(m))return;
+      var opened=parseInt(m.getAttribute('data-fx21-opened')||'0',10);
+      if(!opened){m.setAttribute('data-fx21-opened',String(now));m.setAttribute('data-fx21-nudges','0');return;}
+      if(now-opened>6000)return; /* after 6s the citizen owns the scroll */
+      if(now-fx21LastUser<500)return; /* never fight a citizen who just scrolled */
+      /* Settled in its viewer only: the fx19-inviewer class set, or 1s of
+         continuous visibility. A mid-move modal (placed but class not yet
+         set, top still the dialog's) must never spend a nudge. */
+      var settled=m.classList.contains('fx19-inviewer')||(now-opened>1000);
+      if(!settled)return;
+      if(!fx21InView(m))return; /* out of view is fix20's job, not ours */
+      var barB=fx21BarBottom();
+      if(barB<=0)return;
+      var top=m.getBoundingClientRect().top;
+      var need=Math.round(barB+8-top);
+      if(need<=0)return;
+      var n=parseInt(m.getAttribute('data-fx21-nudges')||'0',10);
+      if(n>=3)return;
+      m.setAttribute('data-fx21-nudges',String(n+1));
+      /* Scroll UP by need: content moves opposite to the scroll, so scrolling
+         up moves the modal DOWN the viewport, clear of the bar. (Scrolling
+         down moves it UP, into the bar — and at max scroll it moves nothing.) */
+      try{window.scrollTo(0,Math.max(0,Math.round(window.scrollY-need)));}
+      catch(e){window.scrollTo(0,Math.max(0,Math.round(window.scrollY-need)));}
+    });
+  }catch(e){}
+}
+function fx21XState(){
+  try{
+    var m=null;
+    Array.prototype.forEach.call(document.querySelectorAll('.ml-modal.mlx'),function(x){if(!m&&fx21Vis(x))m=x;});
+    if(!m)return {open:false};
+    var x=m.querySelector('.mlx-x');
+    if(!x)return {open:true,x:'NO-X'};
+    var r=x.getBoundingClientRect();
+    var cx=Math.round(r.left+r.width/2),cy=Math.round(r.top+r.height/2);
+    var h=document.elementFromPoint(cx,cy);
+    return {open:true,rect:fx21Rect(m),xRect:[Math.round(r.left),Math.round(r.top),Math.round(r.width),Math.round(r.height)],
+      xCentre:[cx,cy],xHit:h?h.tagName+'.'+String(h.className).slice(0,60):'none',
+      xSelf:h===x||(x.contains&&x.contains(h)),barBottom:fx21BarBottom(),
+      nudges:parseInt(m.getAttribute('data-fx21-nudges')||'0',10),
+      scrollY:Math.round(window.scrollY)};
+  }catch(e){return {open:'ERR'};}
+}
+function fx21ComposerState(){
+  try{
+    var m=null;
+    Array.prototype.forEach.call(document.querySelectorAll('.ml-modal.mlx'),function(x){if(!m&&fx21Vis(x))m=x;});
+    if(!m)return {open:false};
+    return {open:true,inViewer:m.classList.contains('fx19-inviewer')&&!!m.closest('#nmReader, .ml-read'),
+      rect:fx21Rect(m),inView:fx21InView(m),barBottom:fx21BarBottom(),
+      nudges:parseInt(m.getAttribute('data-fx21-nudges')||'0',10),
+      scrollY:Math.round(window.scrollY)};
+  }catch(e){return {open:'ERR'};}
+}
+function fx21Boot(){
+  try{
+    document.addEventListener('wheel',fx21MarkUser,{passive:true});
+    document.addEventListener('touchmove',fx21MarkUser,{passive:true});
+    document.addEventListener('keydown',fx21MarkUser);
+  }catch(e){}
+  try{
+    var obs=new MutationObserver(function(){fx21Sweep();});
+    obs.observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['class','style']});
+  }catch(e){}
+  setInterval(fx21Sweep,450);
+  fx21Sweep();
+  try{
+    window.__fx21={version:'fix21-20261127',
+      composerState:function(){return fx21ComposerState();},
+      xState:function(){return fx21XState();},
+      barBottom:function(){return fx21BarBottom();}};
+  }catch(e){}
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fx21Boot);
+else fx21Boot();
+})();
+</script>
+
 </body></html>
