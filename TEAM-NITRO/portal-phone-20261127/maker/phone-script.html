@@ -1,0 +1,79 @@
+<script>
+/* BLACK DIAMOND PHONE 2026-11-27 — phone chrome logic, no walk state.
+   Runs BEFORE the harvested walk script: the walk IIFE calls
+   window.bdPhone.showInput() on render, .reveal() on ball tap, .showEnd()
+   on finish. Clock ticks live; battery reads navigator.getBattery when the
+   browser offers it, else the reference 87%. Copy-my-answers reads the same
+   localStorage key the walk saves (naya_welcome_right_v1) — in-page state,
+   copy-out on the review screen. No server save is faked: the walk's own
+   complete() POST to the walkthrough-15 staging worker is untouched. */
+(function(){
+  function $(id){ return document.getElementById(id); }
+  function tick(){
+    var d = new Date();
+    var h = d.getHours() % 12 || 12;
+    var m = ('0' + d.getMinutes()).slice(-2);
+    var c = $('bdClock');
+    if (c) c.textContent = h + ':' + m;
+  }
+  tick();
+  setInterval(tick, 15000);
+  if (navigator.getBattery) {
+    navigator.getBattery().then(function(b){
+      function u(){
+        var n = $('bdBattNum');
+        if (n) n.textContent = Math.round(b.level * 100);
+        var f = $('bdBattFill');
+        if (f) f.style.width = Math.round(b.level * 100) + '%';
+      }
+      u();
+      b.addEventListener('levelchange', u);
+    }).catch(function(){});
+  }
+  function showInput(){
+    var r = $('bdReveal'); if (r) r.hidden = true;
+    var w = $('bdInputWrap'); if (w) w.hidden = false;
+    var n = $('bdNav'); if (n) n.hidden = false;
+  }
+  function reveal(q, answer, def){
+    var w = $('bdInputWrap'); if (w) w.hidden = true;
+    var r = $('bdReveal'); if (!r) return;
+    var qEl = $('bdRevealQ'), aEl = $('bdRevealA'), exEl = $('bdRevealEx');
+    if (qEl) qEl.textContent = '\u201C' + q + '\u201D';
+    if (aEl) aEl.textContent = answer || '';
+    if (exEl) {
+      exEl.textContent = '';
+      if (def) {
+        var s = document.createElement('strong');
+        s.textContent = 'Our example: ';
+        exEl.appendChild(s);
+        exEl.appendChild(document.createTextNode(def));
+        exEl.hidden = false;
+      } else { exEl.hidden = true; }
+    }
+    r.hidden = false;
+    r.classList.remove('bd-anim');
+    void r.offsetWidth;
+    r.classList.add('bd-anim');
+    var ball = $('fpWalkEnter');
+    if (ball) { ball.classList.remove('bd-spun'); void ball.offsetWidth; ball.classList.add('bd-spun'); }
+  }
+  function showEnd(){
+    var w = $('bdInputWrap'); if (w) w.hidden = true;
+    var r = $('bdReveal'); if (r) r.hidden = true;
+    var n = $('bdNav'); if (n) n.hidden = true;
+  }
+  window.bdPhone = { showInput: showInput, reveal: reveal, showEnd: showEnd, tick: tick };
+  var copyAll = $('fpWalkCopyAll');
+  if (copyAll) copyAll.addEventListener('click', function(){
+    var txt = '';
+    try {
+      var S = JSON.parse(localStorage.getItem('naya_welcome_right_v1') || 'null');
+      if (S && S.answers) txt = Object.keys(S.answers).map(function(k){ return k + ': ' + S.answers[k]; }).join('\n');
+    } catch(e){}
+    function done(){ var t = copyAll.textContent; copyAll.textContent = 'Copied'; setTimeout(function(){ copyAll.textContent = t; }, 1200); }
+    if (navigator.clipboard && navigator.clipboard.writeText && txt) { navigator.clipboard.writeText(txt).then(done, done); }
+    else { done(); }
+  });
+})();
+</script>

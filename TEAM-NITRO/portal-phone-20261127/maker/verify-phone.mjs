@@ -1,0 +1,58 @@
+// Phone-round verifier: re-fetch the STAGED worker bytes and re-check them
+// against the lane files + the phone transplant + the R5 keepers.
+// Nothing on trust. Node only.
+import {readFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+const sha = b => createHash('sha256').update(b).digest('hex');
+const LANE = new URL('./', import.meta.url).pathname;
+const BASE = 'https://portal-frontpage-fix-20261125-r5phone-staging.nayapower.workers.dev';
+const get = async (p) => {
+  const r = await fetch(BASE + p, {headers: {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120 Safari/537.36'}});
+  if (!r.ok) throw new Error(p + ' HTTP ' + r.status);
+  return Buffer.from(await r.arrayBuffer());
+};
+const assert = (name, ok) => { console.log((ok ? 'PASS ' : 'FAIL ') + name); if (!ok) process.exitCode = 1; };
+const stagedPortal = await get('/');
+const lanePortal = readFileSync(LANE + 'portal.html');
+assert('staged portal == lane portal.html (bytes + sha)', stagedPortal.equals(lanePortal));
+console.log('portal', stagedPortal.length, 'B sha256', sha(stagedPortal));
+assert('portal sha is the phone build (3b489c5a...)', sha(stagedPortal).startsWith('3b489c5a'));
+const stagedIdent = await get('/identity.html');
+const laneIdent = readFileSync(LANE + 'identity.html');
+assert('staged identity == lane identity.html (bytes + sha)', stagedIdent.equals(laneIdent));
+console.log('identity', stagedIdent.length, 'B sha256', sha(stagedIdent));
+assert('certificate sha unchanged from R2 (57bdd387...)', sha(stagedIdent).startsWith('57bdd387'));
+const p = stagedPortal.toString('utf8');
+assert('PHONE: phone present (bd-phone, bd-ball, fpWalkNext)', p.includes('class="bd-phone"') && p.includes('bd-ball') && p.includes('id="fpWalkNext"'));
+assert('PHONE: no separate Enter button', !p.includes('>Enter</button>'));
+assert('PHONE: 18 screens (country/province/city + 15 harvested)', p.includes('"key": "country"') && p.includes('"key": "province"') && p.includes('"key": "city"') && p.includes('"key": "motto"') && p.includes('"key": "start"'));
+assert('PHONE: ball reveals, never navigates', p.includes('the ball is Enter: it reveals, it never navigates') && p.includes('window.bdPhone.reveal(q.q, ansEl.value, q.def)'));
+assert('PHONE: live clock + battery', p.includes('id="bdClock"') && p.includes('id="bdBattFill"'));
+assert('PHONE: copy-out on review screen', p.includes('id="fpWalkCopyAll"'));
+assert('PHONE: 8 style elements, 10 scripts', (p.match(/<style>/g) || []).length === 8 && (p.match(/<script/g) || []).length === 10);
+assert('PHONE: faceted chrome + carbon chin + 9:16 screen', p.includes('repeating-conic-gradient') && p.includes('repeating-linear-gradient(45deg') && p.includes('aspect-ratio:9/16'));
+assert('R5: hover-only menu transplanted (eco-tip, no eco-label)', !p.includes('eco-label') && p.includes('.eco-item .eco-tip{') && p.includes('clampEcoTip'));
+assert('R5: phone menu is a single nowrap row (no 3x3 grid, no 1240 wrap guard)', p.includes('.eco-inline{flex-wrap:nowrap;gap:8px;max-width:374px;}') && !p.includes('flex:0 0 122px') && !p.includes('@media (max-width:1240px)'));
+assert('R5: nine R4 destinations unchanged', ['https://nayanet.groovepages.com/aboutus', 'https://howitworks.nayanet.app/', 'https://innovations.nayanet.app/', 'https://12elements.nayanet.app/', 'https://nayanet.app/personal#skills', 'https://grandmission.nayanet.app/', 'https://powercasts.nayapower.workers.dev/', 'https://academy.nayanet.app/', 'https://naya-model-pricing.nayapower.workers.dev/'].every(h => p.includes('href="' + h + '"')));
+assert('R5: ring untouched (nayaSpectrum 78s, nayaWhite 31s)', p.includes('animation:nayaSpectrum 78s linear infinite') && p.includes('animation:nayaWhite 31s linear infinite'));
+assert('R4: F2 stack tightening present (<=480px, fresh view)', p.includes('body:not(.fp-returning) .presence{margin-bottom:4px}') && p.includes('#entryForm .input{height:39px}') && p.includes('#entryForm .enter{margin-top:6px;height:37px}'));
+assert('R4: desktop end-slide orb fix present (fp-last)', p.includes('#fpStory.fp-last .fp-story-face img{width:72px;height:72px}') && p.includes("story.classList.toggle('fp-last', last);"));
+assert('R4: vow answer opens at head', p.includes('finalClose.focus({preventScroll:true});') && p.includes('if (fr) fr.scrollTop = 0;'));
+assert('R4: circle N untouched (56px, eco-spin 90s)', p.includes('button.fp-circle-n{position:relative;width:56px;height:56px') && p.includes('button.fp-circle-n img{width:100%;height:100%;border-radius:50%;object-fit:cover;'));
+assert('R3: circle N present, info-i gone', p.includes('id="fpCircleN"') && !p.includes('fpDeedInfo') && !p.includes('var PARAS'));
+assert('R3: story overlay present, 27 slides', p.includes('id="fpStory"') && p.includes('FP_SLIDES'));
+assert('R3: official agree wording', p.includes('I agree &mdash; show me my world &#9670;'));
+assert('R3: eight links in bottom bar', (p.match(/data-final="/g) || []).length === 8);
+assert('R3: no preview-landing navigation', !p.includes("window.location.href='/agreement-landing'"));
+assert('R3: no slide counter visible (count hidden)', p.includes('.fp-story-count{display:none}'));
+assert('R3: Next on last slide exits (closeStory)', p.includes('else closeStory(); /* forward from slide 27 exits to the name entry */'));
+assert('F1: right-corner img spins (eco-spin 90s)', p.includes('.ncorner-right img{animation:eco-spin 90s linear infinite;}'));
+assert('F1: ball asset unchanged (WEBP src kept)', p.includes('data:image/webp;base64,'));
+assert('F1: left N untouched', p.includes('ncorner-left" href="https://nayanet.app/"'));
+assert('F2: narrow+short gate present', p.includes('@media (max-width:640px) and (max-height:700px)'));
+assert('front page: sentence only behind the N', !/id="fpDeedSentence">[^<]*By entering/.test(p));
+assert('final nine: 9 eco-item anchors', (p.match(/class="eco-item"/g) || []).length === 9);
+assert('structure: 8 style elements', (p.match(/<style>/g) || []).length === 8);
+const sw = await get('/sw.js');
+assert('sw.js 200 + matches lane', sw.equals(readFileSync(LANE + 'sw.js')));
+console.log('VERIFY DONE');

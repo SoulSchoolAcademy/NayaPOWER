@@ -1,0 +1,88 @@
+<!-- BLACK DIAMOND PHONE 2026-11-27 — the walkthrough lives HERE, on the portal,
+     inside the phone. Entry unchanged: ?walk=1&name=...&alias=... (the
+     certificate hands off here). The phone starts AFTER portal + certificate:
+     no real-name screen (the portal has it), no alias screen (the certificate
+     has it). First phone screen: country / province-or-state / city — one
+     board each — then the 15 harvested R5 walk questions verbatim, in order.
+     The ball IS Enter: it reveals your answer in place; only the ‹ › arrows
+     move forward/back. Answers save as you go (same key naya_welcome_right_v1).
+     IDs kept so the harvested walk script keeps working: fpWalk, fpWalkQ,
+     fpWalkProgress, fpWalkAnswer, fpWalkBack, fpWalkEnter (the ball),
+     fpWalkSkip, fpWalkEnd, fpWalkLinkRow, fpWalkLink, fpWalkCopy,
+     fpWalkReadyLine, fpWalkFailLine, fpWalkWorld, fpWalkPricing, fpWalkRetry,
+     fpWalkHub, fpWalkDash, fpWalkBiz, fpWalkSpace. New: fpWalkNext (› arrow),
+     fpWalkCopyAll (copy-out of every answer on the review screen). -->
+<section id="fpWalk" hidden>
+  <div class="bd-phone" id="bdPhone">
+    <div class="bd-frame">
+      <div class="bd-bezel">
+        <div class="bd-screen">
+          <div class="bd-statusbar">
+            <span class="bd-clock" id="bdClock">9:41</span>
+            <span class="bd-status-right">
+              <span class="bd-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+              <span class="bd-5g">5G</span>
+              <svg class="bd-wifi" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="#fff" d="M12 18.5c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5zm0-4.2c1.9 0 3.6.8 4.9 2l-1.5 1.6c-.9-.9-2.1-1.4-3.4-1.4s-2.5.5-3.4 1.4L7.1 16.3c1.3-1.2 3-2 4.9-2zm0-4.3c3 0 5.8 1.2 7.8 3.2l-1.5 1.6c-1.6-1.6-3.8-2.6-6.3-2.6s-4.7 1-6.3 2.6L4.2 13.2C6.2 11.2 9 10 12 10z"/></svg>
+              <span class="bd-batt" aria-hidden="true"><i id="bdBattFill"></i></span><span class="bd-batt-num" id="bdBattNum">87</span>
+            </span>
+          </div>
+          <div class="bd-stage">
+            <div class="bd-input" id="bdInputWrap">
+              <p class="bd-kicker">Your walkthrough</p>
+              <h1 class="fp-walk-q" id="fpWalkQ"></h1>
+              <p class="fp-walk-progress" id="fpWalkProgress"></p>
+              <div class="bd-card">
+                <textarea class="fp-walk-answer bd-answer" id="fpWalkAnswer" rows="4"></textarea>
+              </div>
+              <p class="fp-walk-hint">Type your answer &mdash; it saves as you go. Tap the ball to reveal it.</p>
+            </div>
+            <div class="bd-reveal" id="bdReveal" hidden>
+              <div class="bd-reveal-card">
+                <p class="bd-reveal-kicker" id="bdRevealKicker">Your answer</p>
+                <h2 class="bd-reveal-q" id="bdRevealQ"></h2>
+                <p class="bd-reveal-a" id="bdRevealA"></p>
+                <p class="bd-reveal-ex" id="bdRevealEx"></p>
+              </div>
+              <p class="bd-reveal-note">Tap Next to keep going.</p>
+            </div>
+            <div id="fpWalkEnd" hidden>
+              <p class="fp-walk-endline">Your own personal branded Smart Link</p>
+              <p class="fp-walk-linkrow" id="fpWalkLinkRow"><span class="fp-walk-link" id="fpWalkLink"></span> <button class="fp-walk-copy" id="fpWalkCopy" type="button">Copy</button></p>
+              <p class="fp-walk-endline" id="fpWalkReadyLine">Your answers are saved on this device. Your world is ready &mdash; go see it, then choose your plan.</p>
+              <p class="fp-walk-endline" id="fpWalkFailLine" hidden></p>
+              <p class="fp-walk-endline"><button class="fp-walk-copy" id="fpWalkCopyAll" type="button">Copy my answers</button></p>
+              <div class="fp-walk-nav">
+                <button class="fp-walk-enter" id="fpWalkWorld" type="button">See my world &rarr;</button>
+                <button class="fp-walk-navbtn" id="fpWalkPricing" type="button">Choose your plan &rarr;</button>
+              </div>
+              <div class="fp-walk-nav">
+                <button class="fp-walk-enter" id="fpWalkRetry" type="button" hidden>Try again &rarr;</button>
+              </div>
+              <div class="fp-walk-nav">
+                <button class="fp-walk-enter" id="fpWalkHub" type="button">Your smart hub app &rarr;</button>
+                <button class="fp-walk-navbtn" id="fpWalkDash" type="button">Your personal dashboard &rarr;</button>
+              </div>
+              <div class="fp-walk-nav">
+                <button class="fp-walk-navbtn" id="fpWalkBiz" type="button">Your business &rarr;</button>
+                <button class="fp-walk-navbtn" id="fpWalkSpace" type="button">Your space &rarr;</button>
+              </div>
+            </div>
+          </div>
+          <div class="bd-nav" id="bdNav">
+            <button class="fp-walk-navbtn bd-arrow" id="fpWalkBack" type="button" aria-label="Back">&lsaquo;</button>
+            <button class="fp-walk-skip" id="fpWalkSkip" type="button">Skip this question &rarr;</button>
+            <button class="bd-arrow bd-next" id="fpWalkNext" type="button" aria-label="Next">&rsaquo;</button>
+          </div>
+        </div>
+        <div class="bd-chin">
+          <div class="bd-chin-label">BLACK DIAMOND SERIES</div>
+          <button class="fp-walk-enter bd-ball" id="fpWalkEnter" type="button" aria-label="Enter — reveal your answer">
+            <span class="bd-orbit" aria-hidden="true"><span class="bd-orbit-jewel">&#9670;</span></span>
+            <span class="bd-ball-jewel"><span class="bd-ball-n">N</span></span>
+          </button>
+          <div class="bd-enter-label">ENTER</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
