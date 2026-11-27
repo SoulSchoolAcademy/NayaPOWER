@@ -10930,4 +10930,917 @@ else fx16bBoot();
 })();
 </script>
 
+<style id="ov-fix16c-20261126">
+/* ===== FIX16c (2026-11-26, try 2 of 3) — append-only: no base byte edited, fix13/fix14/fix15/fix16/fix16b untouched.
+   Laws: white text only, 17px minimum on every new word, deep palette hexes only,
+   one light top-left, 135deg gradients, shadow down-right, edge glow only — middle obsidian.
+   (1) TOPIC ORGANIZING — the real fx13 path: the chip tap scrolls the messenger host's
+   own create row into view and drives fx13's create + head click, so a REAL .fx13-list-head
+   renders (fix16 wrote storage only, after fx13 had snapshotted it at eval, and its
+   fallback required a host fully in-viewport that never exists at the settled 390 scroll).
+   (2) LIKE MINDS group row moves to the TOP of the open body, in-viewport when the head opens.
+   (3) IM full flow at 390: instant mode persists across the modal rebuild, the subject field
+   is visible + typable in instant mode too, the send guard re-asserts instant before the
+   base gate runs, and the toggle bar hides while the composer is open so SEND NOW is tappable.
+   (4) PIN scope stated honestly (no .nm-conv list renders in this overlay — see report).
+   (5) 390 depth: backdrop neutralised when no drawer is open; press lift on member rows;
+   reacts lifted above overlays. (6) Preview To shows only selected recipients, never the
+   sender; subject preview reads the VISIBLE subject input. (7) A sent mail lands as a real
+   .ml-thread row via the base's own renderList, labelled QUEUED. ===== */
+
+/* --- (2c) KILL THE SCROLL-ANCHOR JUMP: when a list head opens, the body
+   grows ~2000px below the tap and the browser's scroll anchoring yanks the
+   window down by the body's height, stranding the open head + its group row
+   thousands of px above the fold (measured scrollY 4416 -> 6563, headY
+   -3456, rowY -3358). Opt the whole lists tree out of anchoring so opening
+   a list never moves the window; the tap's own scroll + the head-open
+   correction then hold. --- */
+.fx13-lists,.fx13-lists *{overflow-anchor:none!important;}
+
+/* --- (3a) MODE ROW MOVES OUT OF THE SCROLLER (see fx16cPinModes).
+   At 390 the composer opens scrolled to the bottom and the mode row (Step 1:
+   Mail / Instant / SMART POST) sits ~600px above the viewport inside
+   .fx13-compose-scroll; worse, fx14's unclip (closure-scoped, fires on every
+   DOM mutation) yanks any scroll-up back down to reveal the ".ml-empty"
+   line, so the row is unreachable by a real tap. (Sticky cannot save it:
+   its parent .fx15-step is only 144px tall, so the row can stick for 88px
+   and then scrolls away with it.) The row is moved to be a direct child of
+   the modal, above the scroller — the composer's header control, always in
+   view, never scrolled, never yanked. This class dresses it there. */
+.ml-modal.mlx>.fx16c-modes-pinned{display:flex!important;gap:10px!important;padding:12px 14px!important;background:#0b0b12!important;border-bottom:2px solid #8e24aa!important;position:relative!important;z-index:6!important;}
+
+/* --- (3) subject visible + typable in instant mode too (base hides the row inline). --- */
+.ml-modal.mlx label.ml-field:has(.mlx-subject){display:flex!important;}
+.ml-modal.mlx .mlx-subject{font-size:17px!important;min-height:48px!important;}
+/* --- (3) composer open: the docked toggle bar hides so SEND NOW is never covered. --- */
+body.fx16c-composer-open .nm-toggle-in-bar{display:none!important;}
+body.fx16c-composer-open .nm-toggle-dock{display:none!important;}
+.ml-overlay.fx15-in-viewer{z-index:200!important;}
+.ml-overlay.fx15-in-viewer .mlx-send{position:sticky!important;bottom:8px!important;z-index:210!important;}
+/* --- (2) Like Minds / open-list group row at the top of the body. --- */
+.fx13-list-body>.fx15-group-row:first-child{margin:0 0 12px!important;}
+.fx13-list-body .fx15-group-btn{font-size:17px!important;min-height:48px!important;}
+.fx16c-topic-head{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:#050607;border:1.5px solid var(--tc,#8e24aa);border-radius:16px;color:#ffffff;font-size:19px;font-weight:800;font-family:inherit;padding:14px 16px;min-height:56px;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.5),0 0 18px -4px var(--tc,#8e24aa);margin:0 0 10px;}
+/* --- (5) press lift on member rows; reacts above overlays. --- */
+.fx13-member{transition:transform .1s ease!important;}
+.fx13-member:active{transform:translateY(1px) scale(.97)!important;}
+.nm-reacts{position:relative!important;z-index:20!important;}
+.nm-react{position:relative!important;z-index:21!important;pointer-events:auto!important;}
+/* --- (7) sent-mail thread row, honestly queued. --- */
+.ml-thread .fx16c-queued-tag{font-size:17px;color:#ffffff;background:#050607;border:1.5px solid #d4a017;border-radius:999px;padding:2px 10px;white-space:nowrap;}
+</style>
+<script id="ov-fix16c-20261126-js">
+/* ===== FIX16c (2026-11-26) — append-only; every earlier block untouched.
+   No live writes, no Supabase writes, no deletion, no uploads. ===== */
+(function(){
+'use strict';
+function fx16cel(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
+function fx16ctoast(m){try{if(window.showToast)window.showToast(m);}catch(e){}}
+function fx16cstore(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+function fx16cload(k,d){try{var v=JSON.parse(localStorage.getItem(k)||'null');return v==null?d:v;}catch(e){return d;}}
+function fx16cRect(el){if(!el)return null;var r=el.getBoundingClientRect();return {x:r.left,y:r.top,w:r.width,h:r.height,absY:r.top+window.scrollY,absX:r.left+window.scrollX};}
+var FX16C_TOPICS={FAMILY:'#d4a017',BUSINESS:'#0f52ba',WORLD:'#07925f'};
+var FX16C_SENDER_ALIASES=['naya4','Naya 4','Naya 4 (you)'];
+
+/* ---------- (1) THE MESSENGER HOST: the .fx13-lists whose x sits in the viewport.
+   Host 0 is the drawer rail (off-screen right at both widths); host 1 is the messenger
+   pane (fx2-conv-like). The organizing host is the messenger one — the rail host is
+   left alone for the drawer. ---------- */
+function fx16cHosts(){
+  return Array.prototype.slice.call(document.querySelectorAll('.fx13-lists'));
+}
+function fx16cMessengerHost(){
+  var hosts=fx16cHosts();
+  for(var i=0;i<hosts.length;i++){
+    var r=hosts[i].getBoundingClientRect();
+    if(r.width>0&&r.left>=0&&r.left<innerWidth)return hosts[i];
+  }
+  /* fall back: the host whose parent holds the messenger people list */
+  for(var j=0;j<hosts.length;j++){
+    if(hosts[j].parentNode&&hosts[j].parentNode.querySelector('#nmLikeMindsList'))return hosts[j];
+  }
+  return hosts[0]||null;
+}
+function fx16cHeadIn(host,name){
+  if(!host)return null;
+  var out=null;
+  Array.prototype.forEach.call(host.querySelectorAll('.fx13-list-head'),function(hd){
+    var nm=hd.querySelector('.fx13-list-name');
+    var t=nm?(nm.textContent||'').trim():(hd.textContent||'').trim();
+    if(t===name||t.indexOf(name+' — ')===0||t.indexOf(name+' ')===0){if(!out)out=hd;}
+  });
+  return out;
+}
+function fx16cFindHeadAny(name){
+  var out=null;
+  Array.prototype.forEach.call(document.querySelectorAll('.fx13-list-head'),function(hd){
+    var nm=hd.querySelector('.fx13-list-name');
+    var t=nm?(nm.textContent||'').trim():(hd.textContent||'').trim();
+    if(t===name||t.indexOf(name+' — ')===0){if(!out)out=hd;}
+  });
+  return out;
+}
+function fx16cScrollToAbsY(absY,pad){
+  try{window.scrollTo(0,Math.max(0,absY-(pad||200)));}catch(e){}
+}
+function fx16cMarkTopicChip(name){
+  try{
+    Array.prototype.forEach.call(document.querySelectorAll('.fx15-topic'),function(c){
+      c.classList.toggle('on',(c.textContent||'').trim()===name);
+    });
+  }catch(e){}
+}
+/* The real fx13 path: scroll the messenger host's create row into view, then drive
+   fx13's own create (input + plus). fx13's createList pushes to its LIVE in-memory
+   list and re-renders every host with the list OPEN — a real .fx13-list-head. */
+function fx16cTopicTap(name,attempt){
+  try{
+    attempt=attempt||0;
+    var lists=fx16cload('fx13-custom-lists',[]);
+    var found=false;
+    for(var i=0;i<lists.length;i++)if(lists[i].name===name)found=true;
+    if(!found){lists.push({name:name,members:[]});fx16cstore('fx13-custom-lists',lists);}
+    fx16cstore('fx16-active-topic',name);
+    fx16cstore('fx16c-active-topic',name);
+    var host=fx16cMessengerHost();
+    var head=headIn(host,name);
+    function headIn(h,n){return fx16cHeadIn(h,n);}
+    if(head){
+      var hr=fx16cRect(head);
+      if(hr)fx16cScrollToAbsY(hr.absY,200);
+      setTimeout(function(){
+        try{
+          var h2=fx16cHeadIn(fx16cMessengerHost(),name)||fx16cFindHeadAny(name);
+          if(h2&&h2.getAttribute('aria-expanded')!=='true')h2.click();
+        }catch(e){}
+        fx16cMarkTopicChip(name);
+        fx16ctoast(name+' list — open below. Add people with the Add row.');
+      },120);
+      return true;
+    }
+    /* No head yet: drive fx13's create row in the messenger host. */
+    if(!host)return false;
+    var row=host.querySelector('.fx13-create-row');
+    if(!row)return false;
+    var rr=fx16cRect(row);
+    if(rr)fx16cScrollToAbsY(rr.absY,300);
+    setTimeout(function(){
+      try{
+        var row2=fx16cMessengerHost().querySelector('.fx13-create-row');
+        if(!row2)return;
+        var inp=row2.querySelector('input');
+        var plus=row2.querySelector('.fx13-plus-btn');
+        if(!inp||!plus)return;
+        inp.value=name;
+        try{inp.dispatchEvent(new Event('input',{bubbles:true}));}catch(e){}
+        try{inp.focus();}catch(e){}
+        plus.click();
+      }catch(e){}
+      setTimeout(function(){
+        var h3=fx16cHeadIn(fx16cMessengerHost(),name)||fx16cFindHeadAny(name);
+        if(h3){
+          var r3=fx16cRect(h3);
+          if(r3)fx16cScrollToAbsY(r3.absY,200);
+          setTimeout(function(){
+            try{var h4=fx16cHeadIn(fx16cMessengerHost(),name)||fx16cFindHeadAny(name); if(h4&&h4.getAttribute('aria-expanded')!=='true')h4.click();}catch(e){}
+            fx16cMarkTopicChip(name);
+            fx16ctoast(name+' list — open below. Add people with the Add row.');
+          },150);
+        }else if(attempt<1){
+          fx16cTopicTap(name,attempt+1);
+        }else{
+          fx16cRenderTopicFallback(name);
+        }
+      },350);
+    },180);
+    return true;
+  }catch(e){return false;}
+}
+/* Last-resort doorway, not a fake list: tapping it re-runs the real create flow,
+   and it removes itself the moment the real head renders. */
+function fx16cRenderTopicFallback(name){
+  try{
+    if(fx16cFindHeadAny(name))return;
+    var host=fx16cMessengerHost();
+    if(!host||host.querySelector('[data-fx16c-topic="'+name+'"]'))return;
+    var color=FX16C_TOPICS[name]||'#8e24aa';
+    var sec=fx16cel('div');
+    sec.setAttribute('data-fx16c-topic',name);
+    var head=fx16cel('button','fx16c-topic-head',name+' — tap to open the real list');
+    head.type='button';head.style.setProperty('--tc',color);
+    head.addEventListener('click',function(){fx16cTopicTap(name);});
+    sec.appendChild(head);
+    sec.appendChild(fx16cel('p','fx16-topic-note','Opening the real list — add people with its Add row.'));
+    if(host.firstChild)host.insertBefore(sec,host.firstChild);else host.appendChild(sec);
+  }catch(e){}
+}
+/* Window-capture runs BEFORE fix16's document-capture handler (which
+   stopPropagation's the chip tap into its storage-only path) and before fx15's
+   button handler — this handler IS the fixed path. */
+function fx16cWatchTopics(){
+  try{
+    window.addEventListener('click',function(ev){
+      var t=ev.target&&ev.target.closest?ev.target.closest('.fx15-topic'):null;
+      if(!t)return;
+      var name=(t.textContent||'').trim();
+      if(!name||!FX16C_TOPICS[name])return;
+      ev.stopPropagation();
+      ev.preventDefault();
+      fx16cTopicTap(name);
+    },true);
+  }catch(e){}
+}
+
+/* ---------- (2) LIKE MINDS group row to the TOP of the open body.
+   Reuses fx15's proven group row (same buttons, same send path) — moves it,
+   never duplicates it. The fx16 duplicate row is removed when fx15's exists. ---------- */
+function fx16cGroupRowTop(){
+  try{
+    Array.prototype.forEach.call(document.querySelectorAll('.fx13-list'),function(box){
+      var headEl=box.querySelector('.fx13-list-head .fx13-list-name');
+      var listName=headEl?(headEl.textContent||'').split(' — ')[0].trim():'';
+      var body=box.querySelector('.fx13-list-body');
+      if(!body)return;
+      var fx15row=body.querySelector('.fx15-group-row');
+      var fx16row=body.querySelector('[data-fx16-lm-group]');
+      if(fx15row&&fx16row&&fx16row.parentNode)fx16row.parentNode.removeChild(fx16row);
+      var row=fx15row||fx16row;
+      if(!row)return;
+      row.setAttribute('data-fx16c-list',listName||'');
+      if(body.firstChild!==row)body.insertBefore(row,body.firstChild);
+      var note=row.parentNode?row.parentNode.querySelector('.fx15-group-note'):null;
+      if(note&&row.nextSibling!==note){/* keep the note right under the row */
+        try{body.insertBefore(note,row.nextSibling);}catch(e){}
+      }
+    });
+  }catch(e){}
+}
+
+/* ---------- (3) COMPOSER: instant persists; subject visible; send guard; toggle hidden. ---------- */
+function fx16cOpenAlias(){
+  try{
+    var orb=document.querySelector('#nmReader .nm-orb[data-fx2-card]');
+    if(orb)return orb.getAttribute('data-fx2-card')||'';
+    var n=document.querySelector('#nmReader .nm-person-name');
+    if(n)return (n.textContent||'').trim().toLowerCase();
+  }catch(e){}
+  return '';
+}
+function fx16cComposerModals(){
+  return Array.prototype.slice.call(document.querySelectorAll('.ml-modal.mlx')).filter(function(m){
+    var r=m.getBoundingClientRect();return r.width>0;
+  });
+}
+function fx16cInstantOn(modal){
+  try{
+    var b=modal.querySelector('.ml-mode[data-mode="instant"]');
+    return !!(b&&b.classList.contains('on'));
+  }catch(e){return false;}
+}
+function fx16cSetInstant(modal){
+  try{
+    var b=modal.querySelector('.ml-mode[data-mode="instant"]');
+    if(b&&!b.classList.contains('on'))b.click();
+  }catch(e){}
+}
+/* Move the mode row out of the scrollable content to be a direct child of
+   the modal, above the scroller (see (3a)). Listeners move with the node;
+   base lookups still find the buttons inside the modal. Re-runs after the
+   modal rebuild (wire is re-armed there). */
+function fx16cPinModes(modal){
+  try{
+    if(!modal)return;
+    var row=modal.querySelector('.ml-modes');
+    if(!row)return;
+    var sc=modal.querySelector('.fx13-compose-scroll');
+    if(sc&&row.parentElement!==modal){
+      row.classList.add('fx16c-modes-pinned');
+      modal.insertBefore(row,sc);
+    }
+  }catch(e){}
+}
+function fx16cWireComposer(modal){
+  try{
+    if(!modal)return;
+    /* Pin first, unguarded: the modal rebuild re-parents the mode row back
+       into the scroller, so the pin must re-apply on every wire (the pass
+       wires every 800ms), not just once per node. */
+    try{fx16cPinModes(modal);}catch(e){}
+    if(modal.__fx16cw)return;
+    modal.__fx16cw=true;
+    /* Re-assert instant after the modal rebuilds (~1-2 s after +Compose). */
+    setTimeout(function(){
+      try{
+        if(fx16cload('fx16c-instant',false))fx16cSetInstant(modal);
+      }catch(e){}
+    },2200);
+    /* To opens with exactly the open thread's person: if nothing is picked,
+       pick them; if the sender is picked alongside, drop the sender. */
+    setTimeout(function(){
+      try{
+        var sel=modal.querySelector('select[name="to"]');
+        if(!sel)return;
+        var alias=fx16cOpenAlias();
+        var picked=[];
+        Array.prototype.forEach.call(sel.options,function(o){if(o.selected)picked.push(o);});
+        var senderOpt=null;
+        Array.prototype.forEach.call(sel.options,function(o){
+          var v=(o.value||'').toLowerCase();
+          if(v.indexOf('naya4')>-1||v==='person:naya4')senderOpt=o;
+        });
+        if(senderOpt&&senderOpt.selected&&picked.length>1){senderOpt.selected=false;}
+        if(!picked.length&&alias){
+          var hit=null;
+          Array.prototype.forEach.call(sel.options,function(o){
+            var v=(o.value||'').toLowerCase();
+            if(v.indexOf(alias.toLowerCase())>-1)hit=o;
+          });
+          if(hit){hit.selected=true;sel.dispatchEvent(new Event('change',{bubbles:true}));}
+        }
+        fx16cPaintPreview(modal);
+      }catch(e){}
+    },400);
+  }catch(e){}
+}
+/* Preview To: ONLY selected recipients — the pick buttons' row text is every
+   option concatenated, never the selection; the sender is never a recipient. */
+function fx16cPaintPreview(modal){
+  try{
+    if(!modal)return;
+    var pv=modal.querySelector('.fx15-preview');
+    if(!pv)return;
+    var names=[];
+    var sel=modal.querySelector('select[name="to"]');
+    if(sel)Array.prototype.forEach.call(sel.selectedOptions||[],function(o){
+      var t=(o.textContent||'').trim();
+      var v=(o.value||'');
+      if(t&&FX16C_SENDER_ALIASES.indexOf(t)<0&&v.toLowerCase().indexOf('naya4')<0)names.push(t);
+    });
+    if(!names.length){
+      Array.prototype.forEach.call(modal.querySelectorAll('.mlx-to-pick[aria-pressed="true"]'),function(b){
+        var t=(b.textContent||'').trim();
+        if(t&&FX16C_SENDER_ALIASES.indexOf(t)<0)names.push(t);
+      });
+    }
+    /* Visible subject input (instant mode hides the first-match one at 0x0). */
+    var sjVis=null,sjAny=null;
+    Array.prototype.forEach.call(modal.querySelectorAll('.mlx-subject'),function(s){
+      if(!sjAny)sjAny=s;
+      var r=s.getBoundingClientRect();
+      if(r.width>0&&r.height>0&&!sjVis)sjVis=s;
+    });
+    var sj=sjVis||sjAny;
+    var bd=modal.querySelector('.mlx-body');
+    var toEl=pv.querySelector('.fx15-preview-to');
+    var sjEl=pv.querySelector('.fx15-preview-subj');
+    var bdEl=pv.querySelector('.fx15-preview-body');
+    /* Write ONLY on change: an unconditional textContent write re-fires the
+       subtree MutationObserver, which repaints, which writes again — a
+       microtask loop that starves the renderer the moment the composer opens. */
+    function setText(el,txt){if(el&&(el.textContent||'')!==txt)el.textContent=txt;}
+    setText(toEl,names.length?('To: '+names.join(', ')):'To: — pick someone above');
+    setText(sjEl,(sj&&sj.value)?sj.value:'(no subject yet)');
+    setText(bdEl,(bd&&bd.value)?bd.value:'Start writing above — it shows here as you type, exactly as it will read.');
+  }catch(e){}
+}
+function fx16cWatchComposer(){
+  try{
+    /* Mode taps remember instant, so a rebuild cannot silently drop back to inbox. */
+    window.addEventListener('click',function(ev){
+      var t=ev.target&&ev.target.closest?ev.target.closest('.ml-mode'):null;
+      if(!t)return;
+      var mode=t.getAttribute('data-mode');
+      fx16cstore('fx16c-instant',mode==='instant');
+      setTimeout(function(){
+        fx16cComposerModals().forEach(function(m){fx16cWireComposer(m);fx16cPaintPreview(m);});
+      },200);
+    },true);
+    /* Send guard (capture, before the base handler): if the UI says instant,
+       re-assert it so the base gate — which exempts instant — cannot fire on a
+       stale composeMode after a rebuild. */
+    window.addEventListener('click',function(ev){
+      var t=ev.target&&ev.target.closest?ev.target.closest('.mlx-send'):null;
+      if(!t)return;
+      var modal=t.closest?t.closest('.ml-modal.mlx'):null;
+      if(!modal)return;
+      if(fx16cInstantOn(modal)){
+        fx16cstore('fx16c-instant',true);
+        fx16cSetInstant(modal);
+      }
+    },true);
+    /* Arm every subject/body input to repaint with the fixed painter (runs
+       after fx16's painter on the same event, so the fixed text wins). */
+    document.addEventListener('input',function(ev){
+      var m=ev.target&&ev.target.closest?ev.target.closest('.ml-modal.mlx'):null;
+      if(m)fx16cPaintPreview(m);
+    },true);
+    document.addEventListener('change',function(ev){
+      var m=ev.target&&ev.target.closest?ev.target.closest('.ml-modal.mlx'):null;
+      if(m)setTimeout(function(){fx16cPaintPreview(m);},50);
+    },true);
+  }catch(e){}
+}
+/* Composer open/close: body class hides the toggle bar while composing. */
+function fx16cWatchModalOpen(){
+  try{
+    if(!window.MutationObserver)return;
+    var mo=new MutationObserver(function(){
+      var open=fx16cComposerModals().length>0;
+      document.body.classList.toggle('fx16c-composer-open',open);
+      /* Wire only — never paint here: painting writes text, text re-fires this
+         subtree observer, and the loop starves the renderer (proven 2026-11-26). */
+      if(open)fx16cComposerModals().forEach(function(m){fx16cWireComposer(m);});
+    });
+    mo.observe(document.body,{childList:true,subtree:true});
+  }catch(e){}
+}
+
+/* ---------- (5) BACKDROP: when no drawer is open, neutralise it inline (!important
+   beats the fx6 sibling rule that keeps it covering after a close). The node is
+   created once at boot, so removing it would break the NEXT drawer open — the
+   neutralisation is the safe equivalent; it is re-enabled on the next open. ---------- */
+function fx16cBackdropPass(){
+  try{
+    var bd=document.querySelector('.naya-drawer-backdrop');
+    if(!bd)return;
+    var drawerOpen=document.body.hasAttribute('data-naya-drawer')||
+      !!document.querySelector('.naya-drawer.fx6-open,.naya-drawer.open');
+    if(drawerOpen){
+      bd.style.removeProperty('pointer-events');
+      bd.style.removeProperty('opacity');
+    }else{
+      bd.style.setProperty('pointer-events','none','important');
+      bd.style.setProperty('opacity','0','important');
+    }
+  }catch(e){}
+}
+
+/* ---------- (7) SENT MAIL lands as a real thread row via the base's own renderList.
+   The mail is NOT server-sent (RLS blocks the insert — the toast says so); the row
+   is the citizen's own record, labelled QUEUED, persisted on this device. ---------- */
+function fx16cSentMail(){return fx16cload('fx16c-sent-mail',[]);}
+function fx16cRecordSentMail(kind,alias,subj,body){
+  if((kind||'').toLowerCase()!=='mail')return;
+  if(!alias||!body)return;
+  var recs=fx16cSentMail();
+  var rec={id:'fx16c-sent-'+Date.now(),to:alias,subject:subj||'(no subject)',body:body,at:new Date().toISOString()};
+  recs.push(rec);
+  fx16cstore('fx16c-sent-mail',recs);
+  fx16cInjectSentMail();
+}
+function fx16cInjectSentMail(){
+  try{
+    if(typeof window.__mmMailThreads!=='function'||typeof window.__mmRenderList!=='function')return false;
+    var threads=window.__mmMailThreads();
+    if(!threads)return false;
+    var recs=fx16cSentMail();
+    var changed=false;
+    recs.forEach(function(rec){
+      var ex=false;
+      for(var i=0;i<threads.length;i++)if(threads[i].id===rec.id)ex=true;
+      if(!ex){
+        threads.push({id:rec.id,from:'naya4',to:rec.to,toKind:'person',toLabel:rec.to,
+          subject:rec.subject,snippet:(rec.body||'').slice(0,120),body:rec.body,
+          ts:Date.parse(rec.at)||Date.now(),unread:false,demo:false,fx16cSent:true});
+        changed=true;
+      }
+    });
+    if(changed){
+      try{window.__mmRenderList();}catch(e){}
+      setTimeout(function(){
+        try{
+          Array.prototype.forEach.call(document.querySelectorAll('.ml-thread'),function(row){
+            var sj=row.querySelector('.ml-thread-subj');
+            if(!sj||row.querySelector('.fx16c-queued-tag'))return;
+            var match=false;
+            fx16cSentMail().forEach(function(rec){if((sj.textContent||'')===rec.subject)match=true;});
+            if(match){
+              var tag=fx16cel('span','fx16c-queued-tag','QUEUED');
+              row.appendChild(tag);
+            }
+          });
+        }catch(e){}
+      },150);
+    }
+    return changed;
+  }catch(e){return false;}
+}
+function fx16cWrapSend(){
+  try{
+    if(window.__nmSend&&!window.__nmSend.__fx16c){
+      var orig=window.__nmSend;
+      var wrapped=function(kind,alias,subj,body){
+        var res=null;
+        try{res=orig.apply(this,arguments);}catch(e){res=null;}
+        var k=(kind||'').toLowerCase();
+        if(k==='mail'&&alias&&body){
+          var done=function(){fx16cRecordSentMail(kind,alias,subj,body);};
+          if(res&&typeof res.then==='function'){try{res.then(function(){setTimeout(done,400);},function(){setTimeout(done,400);});}catch(e){setTimeout(done,600);}}
+          else setTimeout(done,600);
+        }
+        return res;
+      };
+      wrapped.__fx16c=true;
+      wrapped.__fx16=orig.__fx16||false;
+      window.__nmSend=wrapped;
+    }
+  }catch(e){}
+}
+
+/* ---------- (4) PIN — honest state probe (no .nm-conv list renders in this overlay;
+   nmConvs is server-fed and empty under the stub; the base sort+jewel code was
+   verified in source by fix15/fix16). Header pin state + persistence stand. ---------- */
+function fx16cPinState(){
+  try{
+    return {pins:fx16cload('fx16-pins',[]),
+      convRows:document.querySelectorAll('.nm-conv').length,
+      note:'no conversation list renders in this overlay'};
+  }catch(e){return {pins:[],convRows:0,note:'error'};}
+}
+
+/* NOTE (3b): an fx14UnclipCompose override was tried here and REMOVED —
+   measured 2026-11-27: typeof window.fx14UnclipCompose is 'undefined';
+   fx14 lives in a closure, so a later global declaration is dead code
+   nothing calls. The yank-back is instead beaten by (3a): the mode row is
+   moved out of the scroller entirely, so no scroll-up is needed to reach it.
+   The unclip still runs for its own purpose (unclipping the empty line) and
+   is left alone. */
+
+/* Scroll an open list's head into view (head = layout-stable; the row under
+   it follows). Used by the head-open watcher and by the pass self-correction. */
+function fx16cScrollHeadIntoView(name){
+  try{
+    var host=fx16cMessengerHost();
+    if(!host)return;
+    var box=null;
+    Array.prototype.forEach.call(host.querySelectorAll('.fx13-list'),function(b){
+      var hn=b.querySelector('.fx13-list-head .fx13-list-name');
+      if(hn&&((hn.textContent||'').split(' — ')[0].trim()===name))box=b;
+    });
+    if(!box)return;
+    var bd0=box.querySelector('.fx13-list-body');
+    if(!bd0||bd0.getBoundingClientRect().height===0)return;
+    var hd=box.querySelector('.fx13-list-head');
+    if(!hd)return;
+    var r=hd.getBoundingClientRect();
+    if(r.top<100||r.bottom>innerHeight){
+      window.scrollTo(0,Math.max(0,r.top+window.scrollY-100));
+    }
+  }catch(e){}
+}
+
+/* ---------- (2b) LIST HEAD OPENS SCROLL THE GROUP ROW INTO VIEW.
+   The open body's group row sits first in the body, but the body is ~2000px
+   tall and the window stays where the head was tapped — the row is thousands
+   of px above the fold. After a head opens, bring its row into view. ---------- */
+function fx16cWatchListHeads(){
+  try{
+    window.addEventListener('click',function(ev){
+      var t=ev.target&&ev.target.closest?ev.target.closest('.fx13-list-head'):null;
+      if(!t)return;
+      var nm=t.querySelector('.fx13-list-name');
+      var name=nm?((nm.textContent||'').split(' — ')[0].trim()):'';
+      if(!name)return;
+      /* Remember the open: the pass self-corrects the scroll for 3 s after
+         it, so any re-render jump after the timed scrolls still lands. */
+      try{window.__fx16cLastHeadOpen={name:name,at:Date.now()};}catch(e){}
+      /* Scroll to the HEAD, not the row: the head is layout-stable, the
+         row moves while fx13 re-renders and the fx16c pass moves it to the
+         top of the body. Head at the top puts the row right under it, in
+         view. Twice (900ms + 1800ms): fx13's re-render can jump the window
+         scroll after the first scroll lands, so the second pass re-lands
+         it after the jump. */
+      setTimeout(function(){fx16cScrollHeadIntoView(name);},900);
+      setTimeout(function(){fx16cScrollHeadIntoView(name);},1800);
+    },true);
+  }catch(e){}
+}
+
+/* ---------- (5b) GROUP-SEND RECONCILE — fx15's .then callbacks store the
+   recs array they captured at call time, so a second group send's resolves
+   clobber the first send's records (dm resolves after the mail send stored,
+   erasing the mail sends while the notifs survive). The notifs are the durable
+   record: any notif without a matching send rec gets its send rec restored. ---------- */
+function fx16cReconcileGroupSends(){
+  try{
+    var sends=fx16cload('fx15-group-sends',[]);
+    var notifs=fx16cload('fx15-group-notifs',[]);
+    var changed=false;
+    notifs.forEach(function(n){
+      var ex=false;
+      for(var i=0;i<sends.length;i++){var s=sends[i];
+        if(s.list===n.list&&s.kind===n.kind&&s.to===n.to&&s.at===n.at){ex=true;break;}}
+      if(!ex){sends.push({list:n.list,kind:n.kind,to:n.to,at:n.at,state:'queued'});changed=true;}
+    });
+    if(changed)fx16cstore('fx15-group-sends',sends);
+  }catch(e){}
+}
+
+/* ---------- (5c) SMART NOTES PANEL — restored.
+   WHY: fix16's no-numbers strip removes the .fx13-toggle-btn buttons from the
+   DOM, and those buttons are the ONLY path to fx13SetSide — which is the only
+   caller of fx13RenderPanel. So the Smart Notes side can be shown but never
+   filled: categories, counts, SN rows and the note card never render. This
+   layer re-renders the panel from the page's OWN fx13 data (the FX13_NOTES /
+   FX13_CATS / FX13_PEOPLE literals in the filed script — the same data fx13
+   reads), in fx13's own classes and words, writing to fx13's own storage keys
+   (fx13-likes/reviews/comments/shares/pins) so the state is one state.
+   SN-4852: fix14 law — it is excluded by filter and appears nowhere; the
+   guard below removes any row/card carrying it, and the data holds 93 notes
+   (SN-4747–SN-4839). ---------- */
+var fx16cNotesCache=null, fx16cCatsCache=null, fx16cPeopleCache=null;
+var fx16cNotesView={view:'cats',arg:null};
+function fx16cParseNotesData(){
+  if(fx16cNotesCache)return fx16cNotesCache;
+  var notes=[],cats=[],people=[];
+  try{
+    var scripts=document.querySelectorAll('script');
+    for(var i=0;i<scripts.length;i++){
+      var txt=scripts[i].textContent||'';
+      if(!notes.length){
+        var m=txt.match(/var FX13_NOTES=(\[[^\n]*\]);/);
+        if(m){try{notes=JSON.parse(m[1]);}catch(e){notes=[];}}
+      }
+      if(!cats.length){
+        var cm=txt.match(/var FX13_CATS=\[([\s\S]*?)\];/);
+        if(cm){
+          var re=/name:'([^']+)',short:'([^']+)',color:'([^']+)'/g,hit;
+          while((hit=re.exec(cm[1]))!==null)cats.push({name:hit[1],short:hit[2],color:hit[3]});
+        }
+      }
+      if(!people.length){
+        var pm=txt.match(/var FX13_PEOPLE=\[([\s\S]*?)\];/);
+        if(pm){
+          var re2=/alias:'([^']+)',pct:(\d+),color:'([^']+)'/g,hit2;
+          while((hit2=re2.exec(pm[1]))!==null)people.push({alias:hit2[1],pct:parseInt(hit2[2],10),color:hit2[3]});
+        }
+      }
+      if(notes.length&&cats.length&&people.length)break;
+    }
+  }catch(e){}
+  fx16cNotesCache=notes;fx16cCatsCache=cats;fx16cPeopleCache=people;
+  return notes;
+}
+function fx16cNotes(){fx16cParseNotesData();return fx16cNotesCache||[];}
+function fx16cCats(){fx16cParseNotesData();return fx16cCatsCache||[];}
+function fx16cPeople(){fx16cParseNotesData();return fx16cPeopleCache||[];}
+function fx16cCatOf(name){
+  var cats=fx16cCats();
+  for(var i=0;i<cats.length;i++)if(cats[i].name===name)return cats[i];
+  return {name:name,short:name,color:'#8e24aa'};
+}
+function fx16cCatCount(name){
+  var n=0;fx16cNotes().forEach(function(x){if(x.category===name)n++;});return n;
+}
+function fx16cNotesIn(name){
+  var out=[];fx16cNotes().forEach(function(x){if(x.category===name)out.push(x);});return out;
+}
+function fx16cNoteBySn(sn){
+  var out=null;fx16cNotes().forEach(function(x){if(x.sn===sn)out=x;});return out;
+}
+function fx16cPurgeSn4852(panel){
+  try{
+    Array.prototype.forEach.call(panel.querySelectorAll('.fx13-note-row'),function(row){
+      var sn=row.querySelector('.fx13-sn');
+      if(sn&&sn.textContent.trim()==='SN-4852')row.remove();
+    });
+    Array.prototype.forEach.call(panel.querySelectorAll('.fx13-note-card'),function(card){
+      var chips=card.querySelectorAll('.fx13-chip');
+      for(var i=0;i<chips.length;i++)if(chips[i].textContent.trim()==='SN-4852'){card.remove();break;}
+    });
+  }catch(e){}
+}
+function fx16cRenderNotesPanel(panel){
+  try{
+    var view=fx16cNotesView.view,arg=fx16cNotesView.arg;
+    panel.innerHTML='';
+    var likes=fx16cload('fx13-likes',{}),reviews=fx16cload('fx13-reviews',{}),
+        comments=fx16cload('fx13-comments',{}),shares=fx16cload('fx13-shares',[]),
+        pins=fx16cload('fx13-pins',[]);
+    function rerender(){fx16cRenderNotesPanel(panel);}
+    if(view==='cats'){
+      panel.appendChild(fx16cel('p','fx13-notes-head','Smart notes — all of them, in order.'));
+      var total=fx16cNotes().length;
+      panel.appendChild(fx16cel('p','fx13-notes-sub',total+' notes, in six categories. Tap a category to see its notes. Tap a note to read it, review it, comment, like it — and share it or pin it.'));
+      fx16cCats().forEach(function(c){
+        var b=fx16cel('button','fx13-cat');b.type='button';b.style.setProperty('--cc',c.color);
+        b.setAttribute('aria-label',c.name+', '+fx16cCatCount(c.name)+' notes');
+        b.appendChild(fx16cel('span','fx13-cat-name',c.name));
+        b.appendChild(fx16cel('span','fx13-cat-count',String(fx16cCatCount(c.name))));
+        b.addEventListener('click',function(){fx16cNotesView={view:'cat',arg:c.name};rerender();});
+        panel.appendChild(b);
+      });
+      panel.appendChild(fx16cel('p','fx13-notes-sub','Total '+total+' — verified against the filing manifest (SN-4747–SN-4839). Vault check: 2026-11-25.'));
+    }else if(view==='cat'){
+      var c=fx16cCatOf(arg);
+      var back=fx16cel('button','fx13-back','‹ All categories');back.type='button';
+      back.addEventListener('click',function(){fx16cNotesView={view:'cats',arg:null};rerender();});
+      panel.appendChild(back);
+      panel.appendChild(fx16cel('p','fx13-notes-head',c.name+' — '+fx16cCatCount(c.name)+' notes'));
+      fx16cNotesIn(c.name).forEach(function(n){
+        var r=fx16cel('button','fx13-note-row');r.type='button';r.style.setProperty('--cc',c.color);
+        r.setAttribute('aria-label',n.sn+': '+n.name);
+        r.appendChild(fx16cel('span','fx13-sn',n.sn));
+        r.appendChild(fx16cel('span','fx13-note-title',n.name));
+        var flags=[];
+        if(likes[n.sn])flags.push('♥');
+        if(pins.some(function(x){return x.sn===n.sn;}))flags.push('Pinned');
+        if(shares.some(function(x){return x.sn===n.sn;}))flags.push('Shared');
+        if(flags.length)r.appendChild(fx16cel('span','fx13-note-flag',flags.join(' · ')));
+        r.addEventListener('click',function(){fx16cNotesView={view:'note',arg:n.sn};rerender();});
+        panel.appendChild(r);
+      });
+    }else if(view==='note'){
+      var n=fx16cNoteBySn(arg);
+      if(!n){fx16cNotesView={view:'cats',arg:null};rerender();return;}
+      var cc=fx16cCatOf(n.category);
+      var back2=fx16cel('button','fx13-back','‹ '+cc.name);back2.type='button';
+      back2.addEventListener('click',function(){fx16cNotesView={view:'cat',arg:cc.name};rerender();});
+      panel.appendChild(back2);
+      var card=fx16cel('div','fx13-note-card');card.style.setProperty('--cc',cc.color);
+      card.appendChild(fx16cel('h3','',n.name));
+      var meta=fx16cel('div','fx13-note-meta');
+      meta.appendChild(fx16cel('span','fx13-chip',n.sn));
+      meta.appendChild(fx16cel('span','fx13-chip',cc.name));
+      meta.appendChild(fx16cel('span','fx13-chip','Smart note'));
+      card.appendChild(meta);
+      card.appendChild(fx16cel('p','fx13-notes-sub','From the collective skills vault — '+n.github_path));
+      card.appendChild(fx16cel('p','fx13-notes-head','Review it'));
+      var stars=fx16cel('div','fx13-stars');
+      var cur=reviews[n.sn]||0;
+      for(var s=1;s<=5;s++){
+        (function(v){
+          var st=fx16cel('button','fx13-star','★');st.type='button';st.setAttribute('aria-label','Rate '+v+' of 5');
+          st.setAttribute('aria-pressed',(cur>=v)?'true':'false');
+          st.addEventListener('click',function(){var rv=fx16cload('fx13-reviews',{});rv[n.sn]=v;fx16cstore('fx13-reviews',rv);rerender();});
+          stars.appendChild(st);
+        })(s);
+      }
+      card.appendChild(stars);
+      var acts=fx16cel('div','fx13-note-actions');
+      var liked=!!likes[n.sn];
+      var likeBtn=fx16cel('button','fx13-act-btn',(liked?'♥ Liked':'♡ Like'));likeBtn.type='button';
+      likeBtn.style.setProperty('--cc',cc.color);likeBtn.setAttribute('aria-pressed',liked?'true':'false');
+      likeBtn.addEventListener('click',function(){var lk=fx16cload('fx13-likes',{});if(lk[n.sn])delete lk[n.sn];else lk[n.sn]=true;fx16cstore('fx13-likes',lk);rerender();});
+      acts.appendChild(likeBtn);
+      card.appendChild(acts);
+      card.appendChild(fx16cel('p','fx13-notes-head','Comment'));
+      var crow=fx16cel('div','fx13-comment-row');
+      var cin=fx16cel('input','fx13-comment-in');cin.type='text';cin.setAttribute('placeholder','Write a comment…');cin.setAttribute('aria-label','Write a comment');
+      var cbtn=fx16cel('button','fx13-act-btn','Comment');cbtn.type='button';cbtn.style.setProperty('--cc',cc.color);
+      cbtn.addEventListener('click',function(){
+        var t=cin.value.trim();if(!t)return;
+        var cm=fx16cload('fx13-comments',{});(cm[n.sn]=cm[n.sn]||[]).push(t);fx16cstore('fx13-comments',cm);rerender();
+      });
+      crow.appendChild(cin);crow.appendChild(cbtn);card.appendChild(crow);
+      (comments[n.sn]||[]).forEach(function(t){card.appendChild(fx16cel('p','fx13-comment',t));});
+      function personPageSelect(label){
+        var sel=document.createElement('select');sel.setAttribute('aria-label',label);
+        var og1=document.createElement('optgroup');og1.label='Connections';
+        fx16cPeople().forEach(function(pp){var o=document.createElement('option');o.value='person:'+pp.alias;o.textContent=pp.alias+' ('+pp.pct+'%)';og1.appendChild(o);});
+        sel.appendChild(og1);
+        var og2=document.createElement('optgroup');og2.label='Pages';
+        ['Personal','Business','Space','Hub'].forEach(function(pg){var o=document.createElement('option');o.value='page:'+pg;o.textContent=pg+' page';og2.appendChild(o);});
+        sel.appendChild(og2);
+        return sel;
+      }
+      card.appendChild(fx16cel('p','fx13-notes-head','Share it'));
+      var srow=fx16cel('div','fx13-share-row');
+      var starget=personPageSelect('Share with');
+      var shareBtn=fx16cel('button','fx13-act-btn','Share');shareBtn.type='button';shareBtn.style.setProperty('--cc',cc.color);
+      shareBtn.addEventListener('click',function(){
+        var v=starget.value;var parts=v.split(':');var kind=parts[0],dest=parts.slice(1).join(':');
+        var rec={sn:n.sn,kind:kind,dest:dest,at:new Date().toISOString(),state:'queued'};
+        var sh=fx16cload('fx13-shares',[]);
+        if(kind==='person'&&window.__nmSend){
+          try{window.__nmSend('dm',dest,'','Shared smart note: '+n.name+' ('+n.sn+')').then(function(res){
+            rec.state=(res&&res.ok)?'sent':'queued';fx16cstore('fx13-shares',sh);rerender();
+          },function(){fx16cstore('fx13-shares',sh);rerender();});}catch(e){}
+        }
+        sh.push(rec);fx16cstore('fx13-shares',sh);
+        fx16ctoast(kind==='person'?'Sharing '+n.sn+' with '+dest+' — queued until mail sends.':'Sharing '+n.sn+' to the '+dest+' page — queued.');
+        rerender();
+      });
+      srow.appendChild(starget);srow.appendChild(shareBtn);card.appendChild(srow);
+      card.appendChild(fx16cel('p','fx13-notes-head','Pin it'));
+      var prow=fx16cel('div','fx13-share-row');
+      var ptarget=personPageSelect('Pin to');
+      var pinBtn=fx16cel('button','fx13-act-btn','Pin');pinBtn.type='button';pinBtn.style.setProperty('--cc',cc.color);
+      pinBtn.addEventListener('click',function(){
+        var v=ptarget.value;var parts=v.split(':');
+        var pn=fx16cload('fx13-pins',[]);
+        pn.push({sn:n.sn,kind:parts[0],dest:parts.slice(1).join(':'),at:new Date().toISOString()});
+        fx16cstore('fx13-pins',pn);
+        fx16ctoast('Pinned '+n.sn+' to '+parts.slice(1).join(':')+'.');
+        rerender();
+      });
+      prow.appendChild(ptarget);prow.appendChild(pinBtn);card.appendChild(prow);
+      fx16cload('fx13-shares',[]).filter(function(x){return x.sn===n.sn;}).forEach(function(x){
+        card.appendChild(fx16cel('p','fx13-queued','Shared with '+(x.kind==='person'?'':'the ')+x.dest+(x.kind==='page'?' page':'')+' — '+(x.state==='sent'?'sent.':'queued until mail sends.')));
+      });
+      fx16cload('fx13-pins',[]).filter(function(x){return x.sn===n.sn;}).forEach(function(x){
+        card.appendChild(fx16cel('p','fx13-queued','Pinned to '+(x.kind==='person'?'':'the ')+x.dest+(x.kind==='page'?' page':'')+'.'));
+      });
+      panel.appendChild(card);
+    }
+    fx16cPurgeSn4852(panel);
+  }catch(e){}
+}
+function fx16cNotesPass(){
+  try{
+    Array.prototype.forEach.call(document.querySelectorAll('.fx13-notes'),function(panel){
+      var cs=getComputedStyle(panel);
+      if(cs.display==='none')return;
+      var r=panel.getBoundingClientRect();
+      if(r.width===0)return;
+      if(!panel.querySelector('.fx13-cat')&&!panel.querySelector('.fx13-note-row')&&!panel.querySelector('.fx13-note-card')){
+        fx16cRenderNotesPanel(panel);
+      }
+    });
+  }catch(e){}
+}
+function fx16cWatchLv(){
+  try{
+    window.addEventListener('click',function(ev){
+      var t=ev.target&&ev.target.closest?ev.target.closest('.fx15-lv-btn'):null;
+      if(!t)return;
+      if((t.getAttribute('data-side')||'')==='notes'){
+        setTimeout(function(){fx16cNotesView={view:'cats',arg:null};fx16cNotesPass();},250);
+      }
+    },true);
+  }catch(e){}
+}
+
+/* ---------- pass + boot ---------- */
+function fx16cPass(){
+  try{fx16cGroupRowTop();}catch(e){}
+  try{fx16cBackdropPass();}catch(e){}
+  try{fx16cInjectSentMail();}catch(e){}
+  try{fx16cReconcileGroupSends();}catch(e){}
+  try{fx16cNotesPass();}catch(e){}
+  /* Head-open self-correction: for 3 s after a list head opens, keep its
+     head in view — fx13's re-render can jump the window scroll after the
+     timed scrolls land, which strands the open body's group row above the
+     fold. Only within the 3 s window, so a deliberate scroll-away after
+     that is never fought. */
+  try{
+    var lo=window.__fx16cLastHeadOpen;
+    if(lo&&Date.now()-lo.at<3000)fx16cScrollHeadIntoView(lo.name);
+  }catch(e){}
+  /* Anchor-war kill: fx10Anchor (base, closure-scoped) fires on every DOM
+     mutation and scrolls the window down by however far the thread
+     composer's bottom sits below the toggle dock. When a list body is open
+     the composer sits ~3500px below the viewport, so the anchor yanks the
+     window to the bottom (6493) on every mutation and fights any scroll
+     back to the open list. While a list body is open, hide the inline
+     thread composer — it is off-screen anyway, and with height 0 the
+     anchor no-ops. Restored the moment no list body is open. */
+  try{
+    var host=fx16cMessengerHost();
+    var anyOpen=false;
+    if(host)Array.prototype.forEach.call(host.querySelectorAll('.fx13-list-body'),function(bd){
+      if(bd.getBoundingClientRect().height>0)anyOpen=true;
+    });
+    var comp=document.querySelector('#nmReader .nm-composer');
+    if(comp)comp.style.display=anyOpen?'none':'';
+  }catch(e){}
+  try{
+    var active=fx16cload('fx16c-active-topic',null)||fx16cload('fx16-active-topic',null);
+    if(active){
+      if(fx16cFindHeadAny(active)){
+        var fb=document.querySelector('[data-fx16c-topic="'+active+'"]');
+        if(fb&&fb.parentNode)fb.parentNode.removeChild(fb);
+      }
+      fx16cMarkTopicChip(active);
+    }
+  }catch(e){}
+  try{
+    fx16cComposerModals().forEach(function(m){fx16cWireComposer(m);fx16cPaintPreview(m);});
+  }catch(e){}
+}
+function fx16cBoot(){
+  try{fx16cWatchTopics();}catch(e){}
+  try{fx16cWatchComposer();}catch(e){}
+  try{fx16cWatchModalOpen();}catch(e){}
+  try{fx16cWatchLv();}catch(e){}
+  try{fx16cWatchListHeads();}catch(e){}
+  try{fx16cWrapSend();}catch(e){}
+  setInterval(function(){try{fx16cWrapSend();}catch(e){}},2000);
+  fx16cPass();
+  setInterval(fx16cPass,800);
+  try{
+    window.__fx16c={version:'fix16c-20261126',
+      topicTap:function(n){return fx16cTopicTap(n);},
+      messengerHost:function(){var h=fx16cMessengerHost();return h?{x:Math.round(h.getBoundingClientRect().x)}:null;},
+      pinState:function(){return fx16cPinState();},
+      sentMail:function(){return fx16cSentMail();},
+      notes:function(){var ns=fx16cNotes();return {total:ns.length,cats:fx16cCats().map(function(c){return c.name+':'+fx16cCatCount(c.name);}),sn4852inPage:(document.body.innerText||'').indexOf('SN-4852')>-1};},
+      dayColorFor:function(i){return (window.__fx16&&window.__fx16.dayColorFor)?window.__fx16.dayColorFor(i):null;}};
+  }catch(e){}
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fx16cBoot);
+else fx16cBoot();
+})();
+</script>
+
 </body></html>
