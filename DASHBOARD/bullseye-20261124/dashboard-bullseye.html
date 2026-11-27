@@ -33177,47 +33177,71 @@ button:active,a[href]:active,[data-derive]:active,.notif-seg:active,.os-sl-stat:
 button:active,a[href]:active,[data-derive]:active,.notif-seg:active,.os-sl-stat:active{transition:transform .3s ease,box-shadow .3s ease,filter .3s ease !important;transition-duration:.01s !important;}
 #os-pts-toggle .os-pts-btn:active{transition:transform .3s ease,box-shadow .3s ease,filter .3s ease !important;transition-duration:.01s !important;}
 </style>
-<script id="inner-frames-fix6-20261125-js">
-/* INNER-FRAMES FIX 6 2026-11-26 (R3a + R3b): clear a stuck press WITHOUT any release event.
-   Checker-8 proved the trigger event never arrives: on an off-element release,
-   document-capture, document-bubble AND element-level pointerup/mouseup ALL read
-   0, so the fix5 clearStuck handler (pointerup/mouseup only) can never run.
-   Maker probe6-mech (in-page performance.now sampling, fix5 bytes) adds two facts:
-   (a) pointerleave/mouseleave/pointerout/mouseout DO fire when the pointer moves
-   off a pressed element, before the release; (b) the :active scale applies LATE
-   on this starved page -- during the hold the transform still reads the hover
-   lift, and scale(.97) first appears AFTER the release, lingering ~1s, so the
-   return is late because the style pipeline is starved, not because of the
-   transition duration. So this script uses triggers that actually arrive and a
-   clear that bypasses the slow return: the proven same-node move (fix5 probe2b
-   T6 -- moving the node out and back drops the stale activation AND resets the
-   transform to none at once, same node, listeners and expando state survive).
-   Trigger 1 -- TIMER POLL: every 50ms, any PRESSABLE element still matching
-   :active whose pointer has left it (not :hover) for >=50ms is moved. The poll
-   needs no event at all, so it fires even when the release is swallowed
-   entirely. The poll queries the pressable selectors ONLY (button / link /
-   [data-derive] / .notif-seg / .os-sl-stat -- the fix3 set): a bare ':active'
-   query also matches ANCESTORS of the pressed element, and moving layout
-   ancestors out and back is out of scope and unsafe, so they are never
-   touched. (Proven in probe6-fix: the bare query moved dash-main, ph-main,
-   os-dash and other ancestors -- fixed here before filing.)
-   Trigger 2 -- MOUSEOUT: when the pointer leaves a pressed element for the
-   outside (relatedTarget not inside it), the same move runs at once.
-   R3b STALE TRANSFORM: a press recorded on pointerdown is remembered; in the
-   poll, a remembered element that is no longer :active and no longer :hover
-   but whose computed scale is still depressed (0.90..0.995) is moved, snapping
-   it to rest instead of waiting out the starved return transition.
-   Guards: an element still :hover is never touched (a live hold, and an
-   on-element release, clear naturally and their click must proceed untouched);
-   keyboard activation is never touched (a keydown since the last pointerdown
-   disables the sweep -- keyboard :active clears on keyup by itself). */
+<style id="inner-frames-fix7-20261125">
+/* INNER-FRAMES FIX 7 2026-11-26 -- R1 press: restore transition:none on :active.
+   Fix4 proved the press instant on all nine classes at 390/1440/1919 with
+   transition:none on :active (checker-7). Fix5 changed that one thing to
+   transition-duration .01s, and the press went late on fix5 AND fix6
+   (checker-8/9: :active true, transform still hover lift / identity
+   0.5-0.9s after down, in-page time; scale(.97) first appearing AFTER the
+   release). The mechanism: a transitioned change needs the transition
+   engine to START, and on this starved page that start lags hundreds of
+   ms; the checker's stamp forces a style recalc but cannot force
+   transition progress. With transition:none the forced recalc reads
+   scale(.97) at once, at any load. These two rules sit AFTER the fix5
+   block in source order, same specificity, so they win over its .01s.
+   The return stays fixed by the fix6 script (kept, one stale-snap change):
+   its same-node move bypasses the slow return transition, which is the
+   job the .01s rule was trying to do. Rest look untouched -- no
+   restatement, no recolour, no new layout (Design Laws section 5). */
+button:active,a[href]:active,[data-derive]:active,.notif-seg:active,.os-sl-stat:active{transition:none !important;}
+#os-pts-toggle .os-pts-btn:active{transition:none !important;}
+</style>
+
+<script id="inner-frames-fix7-20261125-js">
+/* INNER-FRAMES FIX 7 2026-11-26 (R1 -- the press must land at 250ms):
+   WHY THE PRESS IS LATE (mechanism, verified, not assumed). Fix4 proved the
+   press instant on all nine classes at 390/1440/1919 with transition:none on
+   :active (checker-7). Fix5 changed that one thing -- transition-duration
+   .01s on :active -- and the press went late on fix5 AND fix6 (checker-8/9:
+   :active true, transform still hover lift / identity 0.5-0.9s after down,
+   in-page time; scale(.97) first appearing AFTER the release). The only
+   press-path change between fix4 and fix5 was none -> .01s. The mechanism:
+   a transitioned property change needs the transition engine to START, and
+   on this starved page that start lags hundreds of ms (maker probe6-mech:
+   in-page sampler gaps grow 26ms -> 438ms; :active matches at once but the
+   .97 only lands after release). The checker's stamp forces a style recalc
+   but cannot force transition progress -- so with ANY nonzero duration the
+   press reads late at any load, while with transition:none the forced recalc
+   reads scale(.97) at once. Fix7 therefore restores transition:none on
+   :active (new fix7 style block, after fix5's -- same specificity, later
+   source order, so it wins). The return stays fixed by the fix6 snap below,
+   which bypasses the slow return transition the same way the .01s rule was
+   trying to -- the .01s rule's job is done by the snap now.
+   ONE SCRIPT CHANGE vs fix6: the stale-transform snap no longer skips a
+   still-:hover element. A normal tap releases ON the element (pointer still
+   hovering), so fix6's hover exclusion left the stale .97 sitting until the
+   starved return transition started (~1s, fix4 evidence). The snap now fires
+   whenever a remembered press is no longer :active and its scale is still
+   depressed (0.90..0.995) -- hover or not. It cannot fire spuriously: a
+   hovered element at rest reads lift (scale 1.0) or none, never .90..0.995;
+   a live hold is :active, so it never fires mid-hold. After the move the
+   hover lift re-applies by its own rule. Everything else is fix6 verbatim:
+   poll + mouseout stuck clear, same-node move, keyboard guard. Counters stay
+   on window.__fix6 (same object, aliased as window.__fix7) so checker
+   harnesses keep reading them. KNOWN BEHAVIOUR, named not hidden: an
+   ancestor that itself matches a pressable selector (e.g. a [data-derive]
+   board around the Join button) can still be moved by the sweep, because
+   :active matches ancestors of the pressed element (checker-9 section 1c); no
+   layout ancestor (dash-main / ph-main / os-dash) is ever moved, and no harm
+   was observed from the board move. */
 (function(){
   var POLL = 50, GRACE = 50;
   var PRESSABLE_ACTIVE = 'button:active,a[href]:active,[data-derive]:active,.notif-seg:active,.os-sl-stat:active';
   var recent = new Map();
   var firstStuck = new WeakMap();
   var lastPtr = 0, lastKey = 0, polls = 0, moves = [];
-  window.__fix6 = {polls: 0, moves: moves};
+  window.__fix7 = window.__fix6 = {polls: 0, moves: moves};
   function move(el, why){
     var p = el.parentNode, n = el.nextSibling;
     if (!p) return;
@@ -33266,7 +33290,13 @@ button:active,a[href]:active,[data-derive]:active,.notif-seg:active,.os-sl-stat:
     }
     recent.forEach(function(t, el){
       if (now - t > 3000){ recent.delete(el); return; }
-      if (el.matches(':active') || el.matches(':hover')) return;
+      if (el.matches(':active')) return;
+      /* FIX7: no :hover exclusion. A normal tap releases ON the element, so
+         fix6's hover skip left the stale .97 sitting until the starved
+         return transition started. A hovered element at rest reads scale
+         1.0 / none, never 0.90..0.995, so this cannot fire spuriously; a
+         live hold is :active and is skipped above. After the move the hover
+         lift re-applies by its own rule. */
       var s = scaleOf(el);
       if (s < 0.995 && s > 0.9){ move(el, 'poll-stale-transform'); recent.delete(el); }
     });
