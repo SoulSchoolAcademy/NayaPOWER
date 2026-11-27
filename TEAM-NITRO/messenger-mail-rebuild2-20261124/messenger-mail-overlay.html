@@ -13083,4 +13083,100 @@ else fx19Boot();
 })();
 </script>
 
+
+<script>
+(function(){
+'use strict';
+/* ---------- FIX20 (2026-11-27) — D1 ONLY: the composer must present ----------
+   Fix19 moved the whole overlay into the viewer (.ml-read / #nmReader) and
+   the modal is position:static in-flow inside it. At 390 the reader sits
+   ~3,300px below the lists button, so the first "Mail group" tap opened the
+   composer ~2,766px below the viewport — the tap visibly did nothing until
+   the citizen scrolled ~2,800px. At 1440 the reader sits beside the lists,
+   so the same modal landed in view.
+   FIX: after the composer opens, bring it into view — scroll it into the
+   viewport on open. No base byte is touched, no other behaviour changes.
+   Rules that keep this honest:
+   - Scroll ONLY when the modal is actually placed in a viewer (fx19's pass
+     moves the overlay up to 500ms after open; scrolling before the move
+     would be undone by the move, so placement is checked first).
+   - Scroll ONLY when the modal is out of view (at 1440 it is already in
+     view, so nothing moves there).
+   - At most TWO scrolls per open (the second covers the placement race).
+     A citizen who scrolls away afterwards is never yanked back.
+   - The counter resets when the modal closes (hidden or removed), so the
+     next open scrolls again.
+   Laws: no new words, no new colours, no new layout — behaviour only. */
+function fx20Rect(m){var r=m.getBoundingClientRect();return [Math.round(r.left),Math.round(r.top),Math.round(r.width),Math.round(r.height)];}
+function fx20Vis(m){var r=m.getBoundingClientRect();return r.width>0&&r.height>0;}
+function fx20Placed(m){return !!m.closest('#nmReader, .ml-read');}
+function fx20InView(m){
+  /* "Presents" = the modal's top is visible AND a substantial slice of it
+     (300px) is on screen. The checker's bar is fix18's rect [49,-1,292,724]
+     at 390 and fix19's [551,130,711,780] at 1440 — both pass this test, so
+     at 1440 (already in view) the page does not scroll at all. A sliver
+     (top at the viewport's bottom edge) does NOT pass: it gets scrolled. */
+  var r=m.getBoundingClientRect();
+  var visH=Math.min(r.bottom,window.innerHeight)-Math.max(r.top,0);
+  if(visH<0)visH=0;
+  return r.top>=-2&&visH>=300;
+}
+function fx20Bring(m){
+  try{
+    if(!m||!fx20Vis(m))return 'hidden';
+    if(!fx20Placed(m))return 'not-placed';
+    if(fx20InView(m))return 'already-in-view';
+    var n=parseInt(m.getAttribute('data-fx20-scrolls')||'0',10);
+    if(n>=2)return 'cap-reached';
+    m.setAttribute('data-fx20-scrolls',String(n+1));
+    m.scrollIntoView({block:'center',behavior:'instant'});
+    return 'scrolled-'+(n+1);
+  }catch(e){return 'ERR';}
+}
+function fx20Sweep(){
+  try{
+    Array.prototype.forEach.call(document.querySelectorAll('.ml-modal.mlx'),function(m){
+      if(!fx20Vis(m)){
+        /* Closed modal: reset the counter so the next open scrolls again. */
+        if(m.hasAttribute('data-fx20-scrolls'))m.removeAttribute('data-fx20-scrolls');
+        return;
+      }
+      fx20Bring(m);
+    });
+  }catch(e){}
+}
+function fx20ComposerState(){
+  try{
+    var m=null;
+    Array.prototype.forEach.call(document.querySelectorAll('.ml-modal.mlx'),function(x){if(!m&&fx20Vis(x))m=x;});
+    if(!m)return {open:false};
+    var ov=m.closest?m.closest('.ml-overlay'):null;
+    return {open:true,inViewer:m.classList.contains('fx19-inviewer')&&!!m.closest('#nmReader, .ml-read'),
+      viewer:!!m.closest('#nmReader')?'nmReader':(!!m.closest('.ml-read')?'ml-read':'none'),
+      overlayCls:ov?String(ov.className):null,pos:getComputedStyle(m).position,
+      rect:fx20Rect(m),inView:fx20InView(m),
+      scrolls:parseInt(m.getAttribute('data-fx20-scrolls')||'0',10),
+      scrollY:Math.round(window.scrollY)};
+  }catch(e){return {open:'ERR'};}
+}
+function fx20Boot(){
+  try{
+    var obs=new MutationObserver(function(){fx20Sweep();});
+    obs.observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['class','style']});
+  }catch(e){}
+  /* Backstop: fx19 moves the overlay on its own 500ms pass, so a 400ms
+     sweep catches any open the observer saw before placement. */
+  setInterval(fx20Sweep,400);
+  fx20Sweep();
+  try{
+    window.__fx20={version:'fix20-20261127',
+      composerState:function(){return fx20ComposerState();},
+      bringIntoView:function(){var m=null;Array.prototype.forEach.call(document.querySelectorAll('.ml-modal.mlx'),function(x){if(!m&&fx20Vis(x))m=x;});return m?fx20Bring(m):'no-modal';}};
+  }catch(e){}
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fx20Boot);
+else fx20Boot();
+})();
+</script>
+
 </body></html>
