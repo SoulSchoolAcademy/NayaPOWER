@@ -12584,4 +12584,149 @@ else fx17Boot();
 })();
 </script>
 
+
+<style id="ov-fix18-20261127">
+/* ===== FIX18 (2026-11-27, Shawn's own order on the voice call ~09:00 MST) —
+   append-only: no base byte edited, fix13–fix17 untouched. Exactly three items.
+   Laws: white text only, 17px minimum on every new word, deep palette hexes only,
+   one light top-left, 135deg gradients, shadow down-right, edge glow only —
+   middle obsidian. NOTHING else is touched.
+   (1) Toggle back to the BOTTOM: the .nm-toggle-dock leaves the top of the stage
+   and sits in-flow as the LAST child of .mail-stage — at the bottom of the page,
+   switching both ways, covering nothing. The toggle itself is the proven real
+   object (obsidian pill, white rim, own-color lit state); only its place moves,
+   plus a physical 0.97 press on the buttons.
+   (2) Conversation header stripped to the S: every word in #nmReader
+   .nm-reader-head goes — name, "Active 2d ago", @alias, "Last message",
+   date/time line, "Auto-deletes in a week unless saved.", the Save button.
+   What remains is the single S initial ball in the corner, plus the pin jewel
+   (icon-only, no text — kept because pin is a proven keeper and the control
+   must stay tappable; named plainly in the report). The same repeat above the
+   composer ("Writing to — Shawn / Active 2d ago") goes too: the S orb stays,
+   the words go. The name/sub nodes stay IN the DOM (display:none) because
+   fix17's openAlias reads the name from them — hiding, not removing, is what
+   keeps IM send working.
+   (3) Instant messages are CLOUD bubbles: fit-content width, max 86%, mine
+   right / theirs left, big soft radius with a small tail corner, raised with a
+   real down-right shadow and a rim in the message's own colour, alive on hover,
+   0.97 on press. Never a flat full-width rectangle, never a form field. ===== */
+
+/* (1) Toggle dock: in-flow at the BOTTOM of the stage — last child, never over content. */
+.nm-toggle-dock{position:static !important;left:auto !important;right:auto !important;bottom:auto !important;top:auto !important;z-index:5 !important;margin:24px auto 32px !important;}
+.nm-toggle-dock .nm-toggle-btn:active{transform:scale(.97) !important;transition:transform .1s ease !important;}
+.nm-toggle-dock .nm-toggle-btn{transition:transform .3s ease,box-shadow .3s ease !important;}
+
+/* (2) Conversation header: the single S only. Every word goes. */
+#nmReader .nm-reader-head{border-bottom:none !important;padding-bottom:0 !important;margin-bottom:16px !important;}
+/* The reader title above the head — the second "Shawn" in his screenshot.
+   Hidden, not removed: fix17's openAlias reads the open thread's name from it. */
+#nmReader>h2{display:none !important;}
+#nmReader .nm-reader-head>div{display:none !important;}
+#nmReader .nm-reader-head .nm-person-name,
+#nmReader .nm-reader-head .nm-person-sub,
+#nmReader .nm-reader-head .fx15-head-lines,
+#nmReader .nm-reader-head .fx15-head-user,
+#nmReader .nm-reader-head .fx15-head-when,
+#nmReader .nm-reader-head .fx15-head-today,
+#nmReader .nm-reader-head .fx15-head-save-note,
+#nmReader .nm-reader-head .fx15-save-conv{display:none !important;}
+/* Pin jewel: icon-only, no text — far corner, so the S stands alone in its corner. */
+#nmReader .nm-reader-head [data-nm-pin-conv]{margin-left:auto !important;}
+/* Composer "Writing to": the S orb stays, the repeated name + status go. */
+#nmReader .nm-composer .fx2-who-name,
+#nmReader .nm-composer .fx2-who-status{display:none !important;}
+
+/* (3) Instant messages as CLOUD bubbles — raised, soft, own-colour rim, one light top-left. */
+#nmReader #nmMsgList .nm-bubble{box-sizing:border-box !important;width:fit-content !important;max-width:86% !important;border-radius:26px !important;padding:20px 20px 18px !important;background:linear-gradient(135deg,#232329 0%,#050607 50%,#1b1b22 100%) !important;border:2px solid var(--cc,#8e24aa) !important;box-shadow:0 18px 36px rgba(0,0,0,.7),0 0 30px -6px var(--cc,#8e24aa),inset 0 1px 0 rgba(255,255,255,.22) !important;}
+#nmReader #nmMsgList .nm-bubble.mine{margin-left:auto !important;margin-right:0 !important;border-radius:26px 26px 8px 26px !important;}
+#nmReader #nmMsgList .nm-bubble.theirs{margin-right:auto !important;margin-left:0 !important;border-radius:26px 26px 26px 8px !important;}
+#nmReader #nmMsgList .nm-bubble:hover{transform:translateY(-2px) !important;box-shadow:0 22px 40px rgba(0,0,0,.75),0 0 38px -4px var(--cc,#8e24aa),inset 0 1px 0 rgba(255,255,255,.25) !important;}
+#nmReader #nmMsgList .nm-bubble:active{transform:scale(.97) !important;}
+</style>
+<script>
+(function(){
+'use strict';
+/* ================= FIX18 — toggle to the bottom, header to the S, bubbles to clouds ================= */
+function fx18load(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch(e){return d;}}
+
+/* ---------- (1) Toggle dock to the BOTTOM: last child of .mail-stage, in-flow.
+   fix17's own dock pass only moves the dock when it has LEFT the stage, so
+   keeping it inside the stage never fights it — this pass just keeps it LAST. ---------- */
+function fx18DockToBottom(){
+  try{
+    var dock=document.querySelector('.nm-toggle-dock');
+    var stage=document.querySelector('.mail-stage');
+    if(!dock||!stage)return;
+    if(dock.parentNode!==stage)stage.appendChild(dock);
+    else if(stage.lastElementChild!==dock)stage.appendChild(dock);
+    dock.style.position='static';
+  }catch(e){}
+}
+
+/* ---------- (2) Header stripped to the S.
+   CSS hides every header word instantly (and survives re-renders); this pass
+   REMOVES the fx15-added lines + Save button nodes so they are gone from
+   textContent too. NEVER remove .nm-person-name / .nm-person-sub: fix17's
+   openAlias reads the open thread's name from those nodes, and removing them
+   would break IM send. The pin jewel stays: icon-only, no text, the keeper. ---------- */
+function fx18StripHeader(){
+  try{
+    var head=document.querySelector('#nmReader .nm-reader-head');
+    if(!head)return;
+    var lines=head.querySelector('.fx15-head-lines');
+    if(lines&&lines.parentNode)lines.parentNode.removeChild(lines);
+    var save=head.querySelector('.fx15-save-conv');
+    if(save&&save.parentNode)save.parentNode.removeChild(save);
+    if(head.style.borderBottom)head.style.borderBottom='';
+    if(head.style.paddingBottom)head.style.paddingBottom='';
+  }catch(e){}
+}
+
+/* ---------- Pass + boot ---------- */
+function fx18Pass(){
+  try{fx18DockToBottom();}catch(e){}
+  try{fx18StripHeader();}catch(e){}
+}
+function fx18Boot(){
+  fx18Pass();
+  setInterval(fx18Pass,800);
+  try{
+    window.__fx18={version:'fix18-20261127',
+      dock:function(){
+        var d=document.querySelector('.nm-toggle-dock');
+        var s=document.querySelector('.mail-stage');
+        if(!d||!s)return null;
+        var r=d.getBoundingClientRect();
+        return {inStage:d.parentNode===s,lastChild:s.lastElementChild===d,
+          pos:getComputedStyle(d).position,
+          rect:[Math.round(r.left),Math.round(r.top),Math.round(r.width),Math.round(r.height)]};
+      },
+      header:function(){
+        var h=document.querySelector('#nmReader .nm-reader-head');
+        if(!h)return null;
+        var orb=h.querySelector('.nm-orb');
+        var pin=h.querySelector('[data-nm-pin-conv]');
+        return {innerText:(h.innerText||'').replace(/\s+/g,' ').trim(),
+          orbText:orb?(orb.textContent||'').trim():null,
+          pinPresent:!!pin, pinText:pin?(pin.innerText||'').trim():null,
+          savePresent:!!h.querySelector('.fx15-save-conv'),
+          linesPresent:!!h.querySelector('.fx15-head-lines')};
+      },
+      bubbles:function(){
+        var list=document.getElementById('nmMsgList');
+        if(!list)return [];
+        return Array.prototype.map.call(list.querySelectorAll('.nm-bubble'),function(b){
+          var r=b.getBoundingClientRect();var cs=getComputedStyle(b);
+          return {cls:b.className, w:Math.round(r.width), left:Math.round(r.left),
+            right:Math.round(r.right), radius:cs.borderRadius,
+            shadow:(cs.boxShadow||'').slice(0,80)};
+        });
+      }};
+  }catch(e){}
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fx18Boot);
+else fx18Boot();
+})();
+</script>
+
 </body></html>
