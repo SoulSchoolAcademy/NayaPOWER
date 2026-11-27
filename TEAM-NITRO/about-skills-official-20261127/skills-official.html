@@ -5194,6 +5194,17 @@ wave(); // start the voice-canvas loop at load; guarded until the deck is cloned
 })();
 </script>
 
+<style>
+/* OFFICIAL 2026-11-27 — ALIGNMENT (laws §1): the view toggle must be alive on hover.
+   Measured 2026-11-27: the harvested CSS has no :hover rule for #walkViewToggle button —
+   the unlit pill did nothing on hover (dead button). Additive only; the lit pill keeps
+   its own-colour rim and glow, it only gains the lift. */
+#walkViewToggle button{transition:none;}
+#walkViewToggle button:not(.on):hover{transform:translateY(-2px);border-color:rgba(255,255,255,.9);box-shadow:0 0 18px rgba(255,255,255,.35),0 10px 24px rgba(0,0,0,.6);}
+#walkViewToggle button:not(.on):active{transform:translateY(1px) scale(.975);}
+#walkViewToggle button.on:hover{transform:translateY(-2px);}
+#walkViewToggle button.on:active{transform:translateY(1px) scale(.975);}
+</style>
 <script>
 /* OFFICIAL SKILLS — 2026-11-27. ONE PROJECT with the walkthrough: the walkthrough creates this page.
    Harvest: about-skills-clone fix11 (branch about-skills-clone-20261125-fix11, commit 1839c327c94ebf11288211b413b2ae320ebeeb65, blob d81a6201f52e67158308493a766fccdf71c56868, 21,461,146 B, sha256 7e216a10e52b2f952671046abdfc6ee32c2dbcb0759eab5688cda9190696b08d). ADDITIVE ONLY: no harvested line is touched except the <title>, which now names this page. This block opens this file straight on its half of the walkthrough’s own slide deck and adds the slides the 15-board deck never had. The deck is NOT contiguous per page, so navigation walks an ORDER list (About: story 0-9 + identity 15; Skills: skills 10-14 + new 15-18). Round 4 (walkthrough-restart-20261127-round4) is DISCARDED per Shawn’s order 2026-11-27 ~15:20 MST — not used here. */
