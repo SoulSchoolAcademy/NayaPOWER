@@ -41,7 +41,7 @@ window.addEventListener('appinstalled', function () {
 .naya-hub-back:hover{border-color:#7c3aed;box-shadow:0 0 20px -2px #7c3aed,0 0 6px #7c3aed,0 8px 20px rgba(0,0,0,.6)}
 .naya-hub-back:active{border-color:#7c3aed;box-shadow:0 0 20px -2px #7c3aed,0 0 6px #7c3aed,0 8px 20px rgba(0,0,0,.6);transform:scale(.97)}
 .naya-hub-back:focus-visible{outline:2px solid #fff;outline-offset:2px}
-.naya-topbar{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px;padding:calc(10px + env(safe-area-inset-top, 0px)) 16px 10px;background:linear-gradient(180deg,rgba(11,10,16,.96),rgba(11,10,16,.80));border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.naya-topbar{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px;padding:calc(10px + env(safe-area-inset-top, 0px)) 16px 10px;background:linear-gradient(180deg,rgba(11,10,16,.99),rgba(11,10,16,.99));border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)} /* PI-FIX13 #5c: solid, not .80-fade — content scrolling under the bar read half-clipped through the translucent bottom edge. */
 .naya-corner-btn{flex:none;width:44px;height:44px;border-radius:14px;border:1px solid rgba(232,234,242,.42);background:linear-gradient(145deg,rgba(26,20,36,.9),rgba(11,10,16,.9));color:#fff;cursor:pointer;display:grid;place-items:center;padding:0;box-shadow:0 0 16px -6px rgba(255,255,255,.45),0 8px 20px rgba(0,0,0,.6);transition:border-color .15s ease,box-shadow .15s ease;-webkit-tap-highlight-color:transparent}
 .naya-corner-btn:hover{border-color:#7c3aed;box-shadow:0 0 20px -2px #7c3aed,0 0 6px #7c3aed,0 8px 20px rgba(0,0,0,.6)}
 .naya-corner-btn:active{border-color:#7c3aed;box-shadow:0 0 20px -2px #7c3aed,0 0 6px #7c3aed,0 8px 20px rgba(0,0,0,.6);transform:scale(.94)}
@@ -1044,7 +1044,7 @@ body > .naya-frame, body > .frame-light{z-index:-1}
         <div class="pj-members" id="pj-hero-members" style="justify-content:center;margin-top:14px;"></div>
       </div>
     </section>
-    <div style="text-align:center;margin:0 0 16px;"><button type="button" class="gr-btn" id="sp-walk-open">WALK THIS PROJECT →</button><p class="gr-note" style="margin-top:10px;">One framed block at a time — pick your kind, then click Next through them. Walking it IS the project intelligence.</p></div>
+    <div style="text-align:center;margin:0 0 16px;scroll-margin-top:170px;"><button type="button" class="gr-btn" id="sp-walk-open" style="scroll-margin-top:170px;">WALK THIS PROJECT →</button><p class="gr-note" style="margin-top:10px;">One framed block at a time — pick your kind, then click Next through them. Walking it IS the project intelligence.</p></div>
 
     <section class="gr-board" style="--sc:#a06bff">
       <div class="gr-board-cover">
@@ -1086,7 +1086,7 @@ body > .naya-frame, body > .frame-light{z-index:-1}
     <section class="gr-board" style="--sc:#d4a017">
       <div class="gr-board-cover">
         <div class="gr-board-num" aria-hidden="true"></div>
-        <h2>What you learned, day by day</h2>
+        <h2>Your days of learning</h2>
         <p class="gr-board-sub">What did you learn today? What was valuable — what intelligence did you gain? Answer it every day, in your own words, and come back to any day to see how you grew.</p>
       </div>
       <div class="gr-board-body">
@@ -1350,7 +1350,7 @@ body > .naya-frame, body > .frame-light{z-index:-1}
 
 <!-- NayaNET install strip — every Naya page installs like an app -->
 <style>
-#naya-inst{margin:56px 0 14px;padding:10px 14px;border-radius:16px;background:rgba(12,12,18,.92);
+#naya-inst{margin:56px 0 170px;padding:10px 14px;border-radius:16px;background:rgba(12,12,18,.92); /* PI-FIX13 #5d: 170px bottom clearance lifts the tip fully above the fixed deck nav (bottom:88px, ~60px tall) at max scroll — it sat behind the nav and could not be scrolled into view. */
  border:1.5px solid rgba(255,255,255,.55);box-shadow:0 0 16px rgba(255,255,255,.14),0 6px 18px rgba(0,0,0,.45);
  color:#fff;font:500 14px Inter,system-ui,sans-serif;position:relative;z-index:5}
 #naya-inst .naya-inst-bar{display:flex;align-items:center;gap:10px}
@@ -1836,20 +1836,46 @@ function renderMine(elm, rows){
     });
   });
 }
+/* PI-FIX13 #2: a hung list fetch left "Reading your projects…" on screen for
+   ever — no rows, no empty state, no error, no way back. Race every home-list
+   read against a 6s timer; on timeout show the honest error WITH a retry that
+   re-runs the load. A late answer still renders when it lands (renderMine
+   rebuilds the list), so the retry never fights the data. */
+function spGetSoon(path, ms){
+  return Promise.race([get(path), new Promise(function(_, rej){ setTimeout(function(){ rej(new Error('list timeout')); }, ms||6000); })]);
+}
+function spListRetry(elm, msg, reading){
+  elm.innerHTML='';
+  elm.appendChild(el('div','gr-empty', msg));
+  var b=el('button','gr-btn small','TRY AGAIN'); b.type='button'; b.style.marginTop='10px';
+  b.addEventListener('click', function(){ elm.innerHTML=''; elm.appendChild(el('div','gr-empty', reading||'Reading your projects…')); loadHome(); });
+  elm.appendChild(b);
+}
+/* PI-FIX13 #2b: one silent re-try before the error shows — the first read
+   through a cold connection can hang past the 6s race even though the data
+   is there (the eye's case: the rows exist, the fetch never settled). The
+   re-try is once per list per page lifetime (flag on the element), then the
+   honest error + TRY AGAIN stands. */
+function spListRetryOnce(elm){
+  if(elm._spRetried) return false;
+  elm._spRetried=true;
+  setTimeout(loadHome, 400);
+  return true;
+}
 function loadHome(){
   var mineEl=document.getElementById('pj-mine'), sharedEl=document.getElementById('pj-shared');
-  get('/projects?owner_alias=eq.'+enc(ME)+'&order=created_at.desc').then(function(rows){
+  spGetSoon('/projects?owner_alias=eq.'+enc(ME)+'&order=created_at.desc').then(function(rows){
     renderMine(mineEl, rows||[]);
-  }).catch(function(){ mineEl.innerHTML=''; mineEl.appendChild(el('div','gr-empty','Could not reach your projects. Reload to try again.')); });
+  }).catch(function(){ if(spListRetryOnce(mineEl)) return; spListRetry(mineEl, 'Could not reach your projects — the list did not answer. Try again.'); });
   var inList=ME_KEYS.map(function(k){ return '"'+k+'"'; }).join(',');
-  get('/project_members?member_ref=in.('+inList+')&select=project_id').then(function(ms){
+  spGetSoon('/project_members?member_ref=in.('+inList+')&select=project_id').then(function(ms){
     var ids=(ms||[]).map(function(m){ return m.project_id; })
       .filter(function(v,i,a){ return a.indexOf(v)===i; });
     if(!ids.length){ fillList(sharedEl, [], 'Nothing shared with you yet.'); return; }
     return get('/projects?id=in.('+ids.join(',')+')&order=created_at.desc').then(function(rows){
       fillList(sharedEl, (rows||[]).filter(function(p){ return p.owner_alias!==ME; }), 'Nothing shared with you yet.', true);
     });
-  }).catch(function(){ sharedEl.innerHTML=''; sharedEl.appendChild(el('div','gr-empty','Could not reach the shared projects. Reload to try again.')); });
+  }).catch(function(){ if(spListRetryOnce(sharedEl)) return; spListRetry(sharedEl, 'Could not reach the shared projects — the list did not answer. Try again.', 'Reading…'); });
 }
 var plusBtn=document.getElementById('sp-plus');
 if(plusBtn) plusBtn.addEventListener('click', function(){ var f=document.getElementById('pj-new-name'); if(f){ f.scrollIntoView({behavior:'smooth', block:'center'}); f.focus(); } });
@@ -1917,7 +1943,7 @@ function renderNumbers(events){
   var stats=[
     ['Lists', listCount], ['Notes', S.notesFiled.length], ['Links', S.urls.length+S.smartFiled.length],
     ['To-dos open', open], ['To-dos done', done], ['People', 1+S.members.length],
-    ['Intelligence', S.intel.length]
+    ['Intelligence', spIntelTotal()]
   ];
   stats.forEach(function(s, i){
     var o=el('div','pj-orb');
@@ -1928,8 +1954,8 @@ function renderNumbers(events){
   var line=document.getElementById('pj-numbers-line');
   var last=events && events.length ? events[0] : null;
   var dp=S.intel.filter(function(i){ return i.state==='done-proven'; }).length;
-  var intelBit=S.intel.length ? (' · Intelligence: '+S.intel.length+' items · '+dp+' done + proven') : '';
-  line.textContent = todoItems.length===0 && S.notesFiled.length===0 && !S.intel.length && !last
+  var intelBit=spIntelTotal() ? (' · Intelligence: '+spIntelTotal()+' items · '+dp+' done + proven') : '';
+  line.textContent = todoItems.length===0 && S.notesFiled.length===0 && !spIntelTotal() && !last
     ? 'A fresh project — file the first thing and it starts living here.'
     : (open+' to-do'+(open===1?'':'s')+' open · '+done+' done'+intelBit+(last ? ' · Latest: '+last.text : ''));
 }
@@ -1947,7 +1973,7 @@ var INTEL_GROUPS=[
   ['queued','QUEUED','#ffbf3d']
 ];
 function splitIntel(rows){
-  S.intel=[]; S.production=null; S.prodTrend=[]; S.prodAging=[]; S.prodLoops=[]; S.intelStamp=''; S.spKind=''; S.spDismissed=[]; S.spQuestions={}; S.spNoteStates={}; S.spDaily={};
+  S.intel=[]; S.production=null; S.prodTrend=[]; S.prodAging=[]; S.prodLoops=[]; S.intelStamp=''; S.spKind=''; S.spDismissed=[]; S.spQuestions={}; S.spNoteStates={}; S.spDaily={}; S.spQuestionMeta={}; S.spDailyMeta={};
   rows.forEach(function(r){
     if(r.item_key==='production:stamp'){ S.intelStamp=r.detail||r.updated_at||''; return; }
     if(r.item_key==='production:today'){ try{ S.production=JSON.parse(r.detail); }catch(e){} return; }
@@ -1955,14 +1981,21 @@ function splitIntel(rows){
     if(r.item_key.indexOf('production:aging:')===0){ try{ var a=JSON.parse(r.detail); S.prodAging.push({title:r.title, days:a.days_still}); }catch(e){} return; }
     if(r.item_key.indexOf('production:loop:')===0){ try{ var l=JSON.parse(r.detail); S.prodLoops.push({loop:l.loop||r.title, runs:l.runs_24h}); }catch(e){} return; }
     if(r.item_key.indexOf('production:')===0) return;
-    if(r.item_key.indexOf('citizen:q')===0){ S.spQuestions[r.item_key]=r.detail||''; return; }
-    if(r.item_key.indexOf('citizen:daily-')===0){ S.spDaily[r.item_key]=r.detail||''; return; }
+    if(r.item_key.indexOf('citizen:q')===0){ S.spQuestions[r.item_key]=r.detail||''; S.spQuestionMeta[r.item_key]={title:r.title||'', updated_at:r.updated_at||''}; return; }
+    if(r.item_key.indexOf('citizen:daily-')===0){ S.spDaily[r.item_key]=r.detail||''; S.spDailyMeta[r.item_key]={title:r.title||'', updated_at:r.updated_at||''}; return; }
     if(r.item_key.indexOf('citizen:note-state:')===0){ S.spNoteStates[r.item_key.replace('citizen:note-state:','')]=r.state||'in-motion'; return; }
     if(r.item_key==='citizen:kind'){ S.spKind=r.detail||''; return; }
     if(r.item_key==='citizen:dismissed-kinds'){ try{ S.spDismissed=JSON.parse(r.detail)||[]; }catch(e){ S.spDismissed=[]; } return; }
     S.intel.push(r);
   });
 }
+/* PI-FIX13 #4: a saved answer IS intelligence — the Q&A answers (citizen:q*)
+   and daily entries (citizen:daily-*) live in the same project_intel_items
+   store as the mission/goal/vision rows, but splitIntel filed them aside
+   into S.spQuestions / S.spDaily, so the hub counted 0, the feed showed only
+   "Project created", and both boards said nothing was filed. Count them. */
+function spAnsweredCount(){ return Object.keys(S.spQuestions||{}).length + Object.keys(S.spDaily||{}).length; }
+function spIntelTotal(){ return S.intel.length + spAnsweredCount(); }
 function renderIntel(){
   var wrap=document.getElementById('pj-intel'); wrap.innerHTML='';
   var st=document.getElementById('pj-intel-stamp');
@@ -1974,9 +2007,38 @@ function renderIntel(){
     }
   }
   if(!S.intelStamp && S.intel.length){ st.textContent='Filed by you, in this project — newest first.'; }
-  if(!S.intel.length){
+  if(!S.intel.length && !spAnsweredCount()){
     wrap.appendChild(el('div','gr-empty','No intelligence filed for this project yet — walk the project below and put the first thing in.'));
     return;
+  }
+  /* PI-FIX13 #4: saved answers are intelligence — show them on the board. */
+  var _qKeys=Object.keys(S.spQuestions||{}).sort();
+  if(_qKeys.length){
+    var _qh=el('div','pj-intel-group');
+    var _qt=el('span','pj-kindtag','ANSWERED QUESTIONS'); _qt.style.setProperty('--jc','#6d28d9');
+    _qh.appendChild(_qt); _qh.appendChild(el('span','pj-intel-n', String(_qKeys.length))); wrap.appendChild(_qh);
+    _qKeys.forEach(function(k){
+      var _m=(S.spQuestionMeta||{})[k]||{};
+      var _row=el('div','pj-row'); var _main=el('div','pj-row-main');
+      _main.appendChild(el('div','pj-row-t', _m.title||k));
+      var _d=S.spQuestions[k]||'';
+      if(_d) _main.appendChild(el('div','pj-row-s', _d.length>220?_d.slice(0,220)+'…':_d));
+      _row.appendChild(_main); wrap.appendChild(_row);
+    });
+  }
+  var _dKeys=Object.keys(S.spDaily||{}).sort();
+  if(_dKeys.length){
+    var _dh=el('div','pj-intel-group');
+    var _dt=el('span','pj-kindtag','DAILY LEARNING'); _dt.style.setProperty('--jc','#0e7490');
+    _dh.appendChild(_dt); _dh.appendChild(el('span','pj-intel-n', String(_dKeys.length))); wrap.appendChild(_dh);
+    _dKeys.forEach(function(k){
+      var _m2=(S.spDailyMeta||{})[k]||{}; var _day=k.replace('citizen:daily-','');
+      var _row2=el('div','pj-row'); var _main2=el('div','pj-row-main');
+      _main2.appendChild(el('div','pj-row-t', _m2.title||('Learned '+_day)));
+      var _d2=S.spDaily[k]||'';
+      if(_d2) _main2.appendChild(el('div','pj-row-s', _d2.length>220?_d2.slice(0,220)+'…':_d2));
+      _row2.appendChild(_main2); wrap.appendChild(_row2);
+    });
   }
   INTEL_GROUPS.forEach(function(g){
     var rows=S.intel.filter(function(i){ return i.state===g[0]; });
@@ -2116,6 +2178,7 @@ function loadIntelAndFamily(){
     S.children=res[1]||[];
     S.parent=(res[2]&&res[2][0])||null;
     renderIntel(); renderProduction(); renderChildren(); renderCrumb(); spRenderQuestions();
+    if(typeof spRenderVault==='function') spRenderVault(); /* PI-FIX13 #4: the Vault counts saved answers — re-render it when the intel lands, not only when links/notes land. */
     refreshNumbersOnly(); loadActivity();
     if(!S.children.length) return;
     var ids=S.children.map(function(c){ return c.id; });
@@ -2468,11 +2531,20 @@ function buildEvents(){
     });
   });
   S.children.forEach(function(c){ ev.push({ts:c.created_at, icon:'▣', c:'#ffbf3d', text:'Sub-project started — “'+c.name+'”'}); });
-  if(S.intel.length){
+  /* PI-FIX13 #4: each saved answer is a feed event — it happened, it shows. */
+  Object.keys(S.spQuestions||{}).forEach(function(k){
+    var m=(S.spQuestionMeta||{})[k]||{};
+    ev.push({ts:m.updated_at||S.project.created_at, icon:'✓', c:'#6d28d9', text:'Answer saved — '+(m.title||k)});
+  });
+  Object.keys(S.spDaily||{}).forEach(function(k){
+    var m2=(S.spDailyMeta||{})[k]||{}; var day=k.replace('citizen:daily-','');
+    ev.push({ts:m2.updated_at||S.project.created_at, icon:'✎', c:'#0e7490', text:'Daily learning saved — '+day});
+  });
+  if(spIntelTotal()){
     var latest=S.intel[0];
-    S.intel.forEach(function(i){ if((i.updated_at||'')>(latest.updated_at||'')) latest=i; });
+    S.intel.forEach(function(i){ if((i.updated_at||'')>((latest&&latest.updated_at)||'')) latest=i; });
     var dpn=S.intel.filter(function(i){ return i.state==='done-proven'; }).length;
-    ev.push({ts:latest.updated_at, icon:'✦', c:'#3fb8ff', text:'Project intelligence synced — '+S.intel.length+' items, '+dpn+' done + proven'});
+    ev.push({ts:(latest&&latest.updated_at)||S.project.created_at, icon:'✦', c:'#3fb8ff', text:'Project intelligence synced — '+spIntelTotal()+' items, '+dpn+' done + proven'});
   }
   ev.sort(function(a,b){ return new Date(b.ts)-new Date(a.ts); });
   return ev;
@@ -3535,6 +3607,7 @@ function spFileHomeToProject(p){
 }
 function spRenderHome(){
   spRenderHomeQuestions();
+  spRenderKindBoard(); /* PI-FIX13 #5e: the kind chips were only built when a kind was picked — on fresh load the board kept saying "Reading the kinds…" after the kinds had loaded. Build them on arrival. */
   spStateButtons(document.getElementById('sp-home-states-pick'), SP_HOME_NOTE_STATE, function(s){ SP_HOME_NOTE_STATE=s; });
   spRenderHomeMinis();
   spLoadHomeLiveNotes();
@@ -3874,8 +3947,8 @@ function spRenderVault(){
   var counts=document.getElementById('pj-vault-counts');
   var notes=(S.notesFiled||[]).filter(function(l){ return l.b_kind==='naya_note'; });
   var smart=(S.notesFiled||[]).filter(function(l){ return l.b_kind==='smart_note'; });
-  if(counts){ var _tot=(S.urls.length+S.smartFiled.length)+notes.length+smart.length+S.files.length+S.images.length;
-    if(_tot>0){ counts.textContent=(S.urls.length+S.smartFiled.length)+' links · '+notes.length+' notes · '+smart.length+' smart notes · '+S.files.length+' files · '+S.images.length+' images — everything under this project, saved in your Smart Vault.'; counts.style.display=''; }
+  if(counts){ var _ans=spAnsweredCount(); var _tot=(S.urls.length+S.smartFiled.length)+notes.length+smart.length+S.files.length+S.images.length+_ans;
+    if(_tot>0){ counts.textContent=(S.urls.length+S.smartFiled.length)+' links · '+notes.length+' notes · '+smart.length+' smart notes · '+S.files.length+' files · '+S.images.length+' images'+(_ans?' · '+_ans+' answers':'')+' — everything under this project, saved in your Smart Vault.'; counts.style.display=''; }
     else { counts.textContent=''; counts.style.display='none'; } }
   function group(title, items, fn){
     if(!items.length) return;
@@ -3904,6 +3977,11 @@ function spRenderVault(){
   });
   group('Files', S.files.filter(function(f){ return f.kind!=='image'; }), spFileRow);
   group('Images', S.images, spFileRow);
+  /* PI-FIX13 #4: saved answers live in the Vault too — they are saved under this project. */
+  var _ansRows=[];
+  Object.keys(S.spQuestions||{}).sort().forEach(function(k){ var _m=(S.spQuestionMeta||{})[k]||{}; _ansRows.push({t:_m.title||k, s:S.spQuestions[k]||''}); });
+  Object.keys(S.spDaily||{}).sort().forEach(function(k){ var _m2=(S.spDailyMeta||{})[k]||{}; _ansRows.push({t:_m2.title||('Learned '+k.replace('citizen:daily-','')), s:S.spDaily[k]||''}); });
+  group('Answers', _ansRows, function(it){ var row=el('div','pj-row'); var main=el('div','pj-row-main'); main.appendChild(el('div','pj-row-t', it.t)); if(it.s) main.appendChild(el('div','pj-row-s', it.s.length>220?it.s.slice(0,220)+'…':it.s)); row.appendChild(main); return row; });
   if(!wrap.children.length)
     wrap.appendChild(el('div','gr-empty','Nothing saved under this project yet — add a link, a note or a file and it gathers here.'));
 }
@@ -4159,7 +4237,7 @@ function build(){
     newItems.push({els:[back,hero2,walkBtn,nums].filter(Boolean), title:'This project'});
     newItems.push({els:[search,intel2].filter(Boolean), title:'Project intelligence'});
     qFrames('sp-questions','sp-q-count').forEach(function(q){ newItems.push(q); });
-    var restTitles=['What you learned, day by day','Production','Sub-projects','Lists','Notes','Links','Files','Images','Your Smart Vault','To-dos','People','Project feed','Live updates']; /* PI-FIX10: the daily loop is its own deck frame, right after the questions — never inside the question board, where it would sit under every question frame. */
+    var restTitles=['Your days of learning','Production','Sub-projects','Lists','Notes','Links','Files','Images','Your Smart Vault','To-dos','People','Project feed','Live updates']; /* PI-FIX10: the daily loop is its own deck frame, right after the questions — never inside the question board, where it would sit under every question frame. PI-FIX13 #5a: board heading renamed so it no longer duplicates the card heading "What you learned, day by day". */
     restTitles.forEach(function(t){
       var b=boardByH2(t); if(b) newItems.push({els:[b], title:t});
     });
@@ -4593,7 +4671,7 @@ placeNav();
    leak into each other and projects never leak into each other. The list
    under it is the day-back view — tap any day to see that day again. */
 #sp-daily-loop{margin-top:24px}
-.sp-daily-card{padding:16px;border:1.5px solid rgba(255,255,255,.22);border-radius:16px;background:linear-gradient(135deg,#17171f,#07070b);box-shadow:0 10px 24px rgba(0,0,0,.45)}
+.sp-daily-card{padding:16px 16px 120px;border:1.5px solid rgba(255,255,255,.22);border-radius:16px;background:linear-gradient(135deg,#17171f,#07070b);box-shadow:0 10px 24px rgba(0,0,0,.45)} /* PI-FIX13 #5b: bottom padding clears the fixed BACK/NEXT row, so SAVE TODAY'S LEARNING and the "Your days" list scroll fully into view instead of hiding under it. */
 .sp-daily-card h3{margin:0 0 8px;font-size:19px;color:#fff;font-family:Marcellus,Georgia,serif}
 .sp-daily-card p{font-size:17px;color:#fff;line-height:1.5;margin:0 0 12px}
 .sp-daily-card label{font-size:17px;font-weight:800;color:#fff;display:block;margin:12px 0 6px}
