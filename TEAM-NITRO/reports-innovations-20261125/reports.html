@@ -1732,6 +1732,25 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 .rp-day-name{min-width:0!important;letter-spacing:0!important}
 .rp-day-date{margin:0 0 0 2px!important}
 </style>
+<style id="reports-fix8-20261126">
+/* REPORTS FIX8 — 2026-11-26. Captain's eye went back on fix7 (PASS 9.5).
+   (2) Filed/awaiting number rows on all 7 week-bar cards: the card is a
+   three-row grid now — 28px day+number, 46px counts (two 17px lines),
+   52px pill — height 120 -> 150px. Counts are white 17px (law floor §2.3),
+   centred, one line each ("126 filed" / "0 awaiting"). The counts element
+   itself is injected by the fix8 script, before the pill, from the file's
+   own per-day data (see the script). The date tile stays in row 1.
+   (3) Back/forth arrows CENTRED and close together (Shawn's word — this
+   supersedes the fix6 "bottom corners, one each side" spread for the
+   horizontal placement; the buttons stay at the bottom): both floatnavs
+   centre with a 12px gap. The base .floatnav already centres (gap 18px);
+   the cover rule and the fix6 slide rule pushed them to the edges. */
+#screen-cover .floatnav{justify-content:center!important;gap:12px!important}
+#screen-slide .floatnav{justify-content:center!important;gap:12px!important}
+.rp-day{grid-template-rows:28px 46px 52px!important;height:150px!important}
+.rp-day-counts{grid-column:1/-1!important;justify-self:center!important;text-align:center!important;font-size:17px!important;line-height:1.3!important;color:#fff!important}
+.rp-day-counts span{display:block!important;white-space:nowrap!important}
+</style>
 </head>
 <body>
 <div class="royal-frame" aria-hidden="true"><div class="rf-et top"></div><div class="rf-es left"></div><div class="rf-es right"></div><div class="rf-rim"></div><div class="rf-corner tl"></div><div class="rf-corner tr"></div><div class="rf-corner bl"></div><div class="rf-corner br"></div><div class="rf-n top"></div></div>
@@ -3890,6 +3909,101 @@ current = 0; renderSlide(); show('cover');
         var act = row && row.querySelector('.rp-day--active');
         if (act && act.scrollIntoView) act.scrollIntoView({ behavior: 'auto', inline: 'center', block: 'nearest' });
       });
+      return r;
+    };
+  }
+})();
+</script>
+<script id="reports-fix8-js">
+/* REPORTS FIX8 — 2026-11-26. Captain's eye went back on fix7 (PASS 9.5).
+   (1) NOV 24 WHOLE REPORT: the file already holds it verbatim — GROUPS[0],
+   "Daily Intelligence Report — November 24, 2026", 12 sections across 15
+   depth layers, the same presentation as Nov 22's 24 layers (depthLayers(2)
+   = 24, depthLayers(0) = 15, measured live on the fix7 bytes). The ONLY
+   thing breaking it was the notes panel the fix7F script appends to
+   #depthBody on every renderDepth for 2026-11-24 (13 note pills SN-4853–
+   SN-4865 + drill-in via openNoteViewer). This wrap removes #rpNotesPanel
+   after every depth render, on every day, so the click-in shows the day's
+   one whole formatted report and nothing else — never the list, never
+   drill-in, never unformatted, never a format change. The panel's buttons
+   were the only openNoteViewer call sites in the UI; with the panel gone
+   the drill-in has no path. GROUPS[0] itself says its matrix slots "What
+   It's Not, How It Connects, What's In It For You" are NOT carried (its
+   "About this report's shape" section) — so the front walk's honest holes
+   at steps 6 and 8 stay holes; filling them would be inventing, which the
+   brief forbids. The 13 notes' matrices carry no connects / what's-in-it-
+   for-you keys either (keys: nutshell, human, child, grandma, naya, means,
+   matters, apply).
+   (2) FILED/AWAITING ROWS: injected once per card from the file's own data.
+   Nov 24 "126 filed / 0 awaiting" — GROUPS[0].a: "126 Smart Notes were
+   filed today (SN-4716–SN-4852), 0 Naya Notes."; all 13 groups filed, none
+   outstanding. Nov 22/23 "— filed / 0 awaiting" — the report is filed, but
+   the file states no filed-today count for those days (their reports name
+   only other numbers: Nov 22's weekly-series 27 notes + SN-4611 in a
+   24-hour window, Nov 23's "Registry 3,442 Smart Notes" cumulative) — the
+   dash is the honest absence, not a zero. Nov 25–28 "0 filed / 1 awaiting"
+   — no report in the file for those days, and the day's report is awaited
+   (the AWAITING REPORT pill). No number is invented.
+   (3) Arrows: CSS only (see the fix8 style block).
+   (6) UNFOLDED-390 TEASER: mechanism — the phone fit measures the centre
+   paragraph against the font live at fit time; on a cold load Marcellus has
+   not landed, the 65-char sentence measures 3 lines, and the fit
+   comma-splits it to 51 chars + "…" — then nothing re-fits until the 5s
+   fold. (The checker's own screenshot shows the 51-char teaser; this
+   maker's two fresh runs both showed the whole 65-char sentence from the
+   first sample because Marcellus had already landed — the defect is a
+   cold-font race, not a steady state.) The fix6 fonts.ready/loadingdone
+   listeners can miss the window (they no-op while the slide is inactive).
+   This wrap re-fits shortly after every slide render (900ms and 1800ms)
+   and once more when the webfonts settle, so the whole sentence lands well
+   before the fold. fitPanels is idempotent and guards END_MODE and
+   slide-active itself; a re-fit that finds the sentence already whole
+   changes nothing. */
+(function(){
+  /* (2) Counts rows, from the file's own per-day data (see the header). */
+  var RP8_COUNTS = {
+    '2026-11-22': ['— filed', '0 awaiting'],
+    '2026-11-23': ['— filed', '0 awaiting'],
+    '2026-11-24': ['126 filed', '0 awaiting'],
+    '2026-11-25': ['0 filed', '1 awaiting'],
+    '2026-11-26': ['0 filed', '1 awaiting'],
+    '2026-11-27': ['0 filed', '1 awaiting'],
+    '2026-11-28': ['0 filed', '1 awaiting']
+  };
+  (function(){
+    var cards = document.querySelectorAll('#rpWeekRow .rp-day');
+    for (var i = 0; i < cards.length; i++) {
+      var c = cards[i];
+      if (c.querySelector('.rp-day-counts')) continue;
+      var row = RP8_COUNTS[c.getAttribute('data-date')];
+      if (!row) continue;
+      var el = document.createElement('span');
+      el.className = 'rp-day-counts';
+      el.setAttribute('aria-label', row[0] + ', ' + row[1]);
+      var pill = c.querySelector('.rp-day-pill');
+      el.innerHTML = '<span>' + row[0] + '</span><span>' + row[1] + '</span>';
+      if (pill) c.insertBefore(el, pill); else c.appendChild(el);
+    }
+  })();
+  /* (1) The note-pill list goes, on every day. */
+  if (typeof renderDepth === 'function') {
+    var __rp8RD = renderDepth;
+    renderDepth = function(){
+      var r = __rp8RD.apply(this, arguments);
+      try { var p = document.getElementById('rpNotesPanel'); if (p && p.parentNode) p.parentNode.removeChild(p); } catch (e) {}
+      return r;
+    };
+  }
+  /* (6) Re-fit backstop so a cold-font comma-split teaser cannot survive
+     until the 5s fold. */
+  function __rp8Refit(){ try { if (typeof fitPanels === 'function') fitPanels(); } catch (e) {} }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ setTimeout(__rp8Refit, 100); });
+  if (typeof renderSlide === 'function') {
+    var __rp8RS = renderSlide;
+    renderSlide = function(){
+      var r = __rp8RS.apply(this, arguments);
+      setTimeout(__rp8Refit, 900);
+      setTimeout(__rp8Refit, 1800);
       return r;
     };
   }
