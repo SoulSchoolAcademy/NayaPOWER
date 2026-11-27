@@ -54,8 +54,8 @@ V2's 17 steps are the spine in their relative order; sports folded into favorite
 | Worker | `worker-consolidated.js`, 47,769,362 B, sha256 `8328f68fb0d94aff2d62bf33461c170a8354df1085a5dd0172f7b88e2844aea0`; worker `portal-phone-v3-staging`, subdomain enabled, HTTP 200; `GET /naya-video.mp4` → 200 |
 | Video KV | key `naya-welcome-video`, 7,368,202 B, sha `c86da39e…`; `GET /naya-video.mp4` → 200, `video/mp4`, bytes == source file |
 | Branch | `portal-frontpage-fix-20261125-r5-phone-v3` (from v2 branch head) |
-| Commit | (filled after probe) |
-| Portal blob | (filled after probe) |
+| Commit | `9cbb0dfda4fe999d8f188399bdd0da3335054b12` on branch `portal-frontpage-fix-20261125-r5-phone-v3` (from v2 head `b14fe2d52…`; filed by local clone + push — the blobs API 422s the 47 MB portal as too large; branch ref was created by the API script first, files pushed from `~/workspace/nayapower-repo-v3-wt`) |
+| Portal blob | `40a5410762d0ab83bf220d49805a5191fc182d8d` (47,429,694 B) — verified via the GitHub tree API (commit tree `b9bb2250…`): blob sha == local `git hash-object`, size matches the lane bytes; identity.html blob 313,224 B (byte-identical certificate) |
 
 Build: 30/30 assertions in `build-v3.mjs` (exit 0); all 10 spliced scripts pass `node --check`. Verify: 27/27 PASS in `verify-v3.mjs` (staged bytes == lane bytes + sha, identity unchanged, R5 keepers intact).
 
