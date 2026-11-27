@@ -10018,6 +10018,42 @@ function fx15FixMailThreads(){
     });
   }catch(e){}
 }
+/* ---------- (12b) VIEWER LEAD — the title appears ONCE. The mail viewer's
+   first line (.ov-lead) repeats the subject as its opening words
+   ("Welcome to the new Messenger — this is your mail…") while the subject
+   already shows as the title above it. Strip the subject prefix from the
+   lead so the title shows once and the message reads below it, in Naya's
+   own "NAYA · FROM THE BANK" format (untouched). Re-render safe: a fresh
+   lead node gets fixed again; a fixed one no longer starts with the
+   subject, so the pass leaves it alone. --- */
+function fx15FixMailLead(){
+  try{
+    var sj=document.querySelector('.ml-read-subj');
+    var lead=document.querySelector('.ml-read-body .ov-lead')||document.querySelector('.ml-read-body p');
+    if(!sj||!lead)return;
+    if(lead.getAttribute('data-fx15-lead-fixed'))return;
+    if(lead.children.length>0)return; /* rich lead — do not mangle it */
+    var subj=(sj.textContent||'').trim();
+    var txt=(lead.textContent||'').trim();
+    if(!subj||txt.indexOf(subj)!==0)return;
+    var rest=txt.slice(subj.length).replace(/^[—–\-:,;\s]+/,'').trim();
+    if(!rest){ lead.style.display='none'; lead.setAttribute('data-fx15-lead-fixed','1'); return; }
+    lead.textContent=rest.charAt(0).toUpperCase()+rest.slice(1);
+    lead.setAttribute('data-fx15-lead-fixed','1');
+  }catch(e){}
+}
+/* ---------- (12c) VIEWER LEAD WATCHER — fix the lead the moment the viewer
+   renders it, not up to 800ms later on the pass. The viewer renders async
+   after a thread tap, so a pass-only fix races the render and the double
+   title can still be showing when eyes land on it. The observer fires on
+   the render itself; fx15FixMailLead is a no-op when already fixed. --- */
+function fx15WatchMailLead(){
+  if(!window.MutationObserver)return;
+  try{
+    var mo=new MutationObserver(function(){ try{fx15FixMailLead();}catch(e){} });
+    mo.observe(document.body,{childList:true,subtree:true});
+  }catch(e){}
+}
 /* ---------- (13) SELECT / ACTIONS CLUSTER — each control its own look.
    Tag by label (labels are constants in the base); CSS above gives each
    its colour. Runs every pass so re-renders get tagged again. --- */
@@ -10050,6 +10086,7 @@ function fx15Pass(){
   try{fx15PaintLvToggle();}catch(e){}
   try{fx15EnhanceReader();}catch(e){}
   try{fx15FixMailThreads();}catch(e){}
+  try{fx15FixMailLead();}catch(e){}
   try{fx15PaintSelectCluster();}catch(e){}
 }
 function fx15Boot(){
@@ -10057,6 +10094,7 @@ function fx15Boot(){
   try{fx15WatchQaPanel();}catch(e){}
   try{fx15WatchCard();}catch(e){}
   try{fx15WatchComposer();}catch(e){}
+  try{fx15WatchMailLead();}catch(e){}
   fx15Pass();
   setInterval(fx15Pass,800);
   try{
