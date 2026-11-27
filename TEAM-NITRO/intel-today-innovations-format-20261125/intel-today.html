@@ -1495,9 +1495,11 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 #screen-slide.intel-strip #slideTextCenter .ib-layer-body{justify-content:center}
 }
 /* HIGHLIGHTED VIEWER — the matrix version of the intelligent notes */
-#intelViewer{position:fixed;inset:0;z-index:9999;background:rgba(3,3,5,.94);overflow-y:auto;padding:24px 16px 64px}
+#intelViewer{position:fixed;inset:0;z-index:9999;background:rgba(3,3,5,.94);display:flex;flex-direction:column;overflow:hidden;padding:24px 16px}
 #intelViewer[hidden]{display:none}
-.intel-matrix{max-width:720px;margin:0 auto}
+.intel-matrix{width:100%;max-width:720px;margin:0 auto;flex:1 1 auto;min-height:0;display:flex;flex-direction:column;align-self:center}
+#intelViewerBody{flex:1 1 auto;min-height:0;overflow-y:auto}
+.intel-matrix h2,.intel-matrix .intel-dayline,.intel-matrix .intel-actions,.intel-controls,.intel-progress,.intel-endhint{flex:0 0 auto}
 .intel-matrix h2{font-family:Marcellus,serif;font-size:25px;line-height:1.25;color:#fff;text-align:center;margin:8px 0 4px}
 .intel-matrix .intel-dayline{font-size:18px;color:#fff;text-align:center;margin:0 0 16px}
 .intel-matrix .intel-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:0 0 24px}
@@ -1521,7 +1523,7 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 .intel-daybtn:active{transform:scale(.97)}
 .intel-daybtn.active{box-shadow:0 0 0 2px var(--dc),0 0 24px var(--dc),0 8px 20px rgba(0,0,0,.6)}
 .intel-daybtn.active span{font-weight:700}
-.intel-viewtop{max-width:720px;margin:0 auto 12px}
+.intel-viewtop{width:100%;max-width:720px;margin:0 auto 12px;flex:0 0 auto;align-self:center}
 .intel-viewtop .intel-daybar{margin-bottom:10px}
 .intel-selectrow{display:flex;justify-content:flex-end;align-items:center;gap:8px}
 .intel-selectrow label{font-size:18px;color:#fff}
@@ -1540,22 +1542,21 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 .intel-controls .naya-btn{min-height:48px;font-size:18px}
 .intel-controls .naya-btn:disabled{opacity:.45;cursor:default}
 .intel-endhint{text-align:center;font-size:18px;color:#fff;font-style:italic;margin:4px 0 8px}
-/* FIX4 — the fix3 checker verdict (GOES BACK 8.5/10, §6): the sticky bar sat ON
-   the board and sliced the two longest phone sections ("What it means" 20 lines /
-   "How to apply" 18 lines — line 10 cut to a 1.5px sliver at the bar's top edge,
-   lines 11–14 fully hidden, line 15 sliced at the bottom edge). Range rects are
-   unclipped layout rects (proven in this lane by clip-test.cjs), so ANY bar that
-   overlaps the text span fails the per-line measurement — and 100 of 837 sections
-   exceed 12 lines across 79 of 93 notes, so distilling the two sections cannot
-   carry it and the data stays byte-identical. The bar therefore moves IN-FLOW
-   ABOVE the board (after SHARE/SAVE, before #intelViewerBody) and is no longer
-   sticky: it never overlaps a line at any scroll position, it scrolls away like
-   the title, and intelRenderSection already resets viewer.scrollTop=0 on every
-   render, so every section arrives with all four controls visible + hit-testable.
-   The bar itself is unchanged: ONE obsidian bar, thin bright rim in the note's
-   own day colour (--sc), white 18px labels, alive on hover, no glow inside.
-   The .intel-matrix bottom padding (scroll-through under the old sticky bar) goes
-   with it — its purpose is gone. Board geometry, 16:9 at desktop, the content-
+/* FIX5 — the fix4 checker verdict (PASS 9.0/10): the §6 slice is cured but the
+   in-flow bar scrolls away while reading a long section's lower lines (a step back
+   from fix3's always-in-reach bar), and the checker's own 390 per-line proof on
+   SN-4747 is missing. Fix5 keeps the fix4 bar exactly where it is (in-flow above
+   the board, after SHARE/SAVE, before #intelViewerBody) and splits the viewer into
+   a fixed flex column with ONE scrolling region: #intelViewer becomes
+   display:flex; flex-direction:column; overflow:hidden, and #intelViewerBody
+   becomes flex:1 1 auto; overflow-y:auto; min-height:0. The day bar, title,
+   SHARE/SAVE, the control bar, progress and end-hint are flex:0 0 auto outside
+   the scroller, so they stay in reach at every scroll position; the board's text
+   lives ONLY inside #intelViewerBody, whose top edge sits below the bar, so no
+   line can run under the bar at any scroll position. intelRenderSection now resets
+   BOTH viewer.scrollTop and vBody.scrollTop to 0 on every render, so every section
+   still arrives at the top with all four controls visible + hit-testable. Bar
+   styling, order, ids, handlers, board geometry, 16:9 at desktop, the content-
    sized phone board, the 18px floor, both axes and the data are untouched. */
 #intelViewer{--sc:#8e24aa}
 .intel-controls{background:linear-gradient(135deg,#17171f,#050607 70%);border:2px solid var(--sc,#8e24aa);border-radius:18px;box-shadow:0 14px 30px rgba(0,0,0,.65),0 0 24px -6px var(--sc,#8e24aa);padding:10px 12px;margin:0 0 8px}
@@ -3514,6 +3515,7 @@ function intelRenderSection(push){
   document.body.style.overflow='hidden';
   try{vTitle.setAttribute('tabindex','-1');vTitle.focus({preventScroll:true});}catch(err){try{vTitle.focus();}catch(err2){}}
   viewer.scrollTop=0;
+  if(vBody)vBody.scrollTop=0; /* FIX5: the body is the scroller now */
   if(push)vHistory.push({sn:currentSn,sec:vSec});
 }
 function intelGoNote(sn,keepHist){if(!MATRIX[sn])return;currentSn=sn;vSec=0;if(!keepHist)vHistory=[];intelRenderSection(true);}
