@@ -8966,4 +8966,1110 @@ else fx14Boot();
 })();
 </script>
 
+<style id="ov-fix15-20261126">
+/* ===== FIX15 v2 (2026-11-26) — Shawn's eye, voice calls 17:43–17:52 MST.
+   Append-only: no base byte edited, fix13/fix14 and every earlier block untouched.
+   Laws: white text only, 17px minimum on every new word (19px on toggle/step words),
+   deep palette hexes from the law book only, one light top-left, 135deg gradients,
+   shadow down-right, edge glow only — the middle stays obsidian black.
+   (1) Contact-card tap: fix14's pointer capture is released when the press lands
+   on an interactive child. (2) Mail/Messenger toggle: edge glow only, Mail canyon
+   blue #0f52ba, Messenger green #07925f (settled O-1: one colour when lit), spacing.
+   (3) No dynamic numbers in any button. (4) Rail = conversations only.
+   (5) CONNECTIONS = SMART LISTS, one interface; ACTIVE CONTACTS = the active list,
+   SMART LISTS = all contacts in lists; groupings harvested from the live
+   Connections room (FAMILY / BUSINESS / WORLD + ALL CONTACTS); GROUP MESSAGING.
+   The contacts-vs-smart-notes toggle lives INSIDE the lists view.
+   (6) COMPOSER REBUILD: same engine, new ten-star presentation, plain words,
+   Step 1-2-3 then Send. (7) CONTACT CARD: a real frame, stats + match reasons
+   (never a bare %), notes into the Smart Vault (personal + business), day-by-day
+   calendar. NO photo/file uploads to the card (not approved — open question). ===== */
+
+/* --- (2) THE MAIL/MESSENGER TOGGLE: edge glow only, obsidian middle.
+   The tempo lives ON the toggle itself (data-tempo) — the .mail-stage selector
+   in the base never matches this toggle. One colour when lit: the sliding pill
+   carries the rim + glow, the buttons stay transparent. --- */
+.nm-toggle{gap:8px!important;}
+.nm-toggle::after{background:#050607!important;}
+.nm-toggle[data-tempo="chat"]::after{left:8px!important;width:calc(50% - 12px)!important;
+  background:#050607!important;border-color:#07925f!important;
+  box-shadow:0 10px 24px rgba(0,0,0,.75),0 0 28px -4px rgba(7,146,95,.75)!important;}
+.nm-toggle[data-tempo="mail"]::after{left:calc(50% + 4px)!important;width:calc(50% - 12px)!important;
+  background:#050607!important;border-color:#0f52ba!important;
+  box-shadow:0 10px 24px rgba(0,0,0,.75),0 0 28px -4px rgba(15,82,186,.75)!important;}
+.nm-toggle-btn{border-color:transparent!important;box-shadow:none!important;}
+.nm-toggle-btn[data-tempo="chat"]:hover{background:transparent!important;border-color:#07925f!important;
+  box-shadow:0 0 24px -4px rgba(7,146,95,.65),0 8px 24px rgba(0,0,0,.5)!important;}
+.nm-toggle-btn[data-tempo="mail"]:hover{background:transparent!important;border-color:#0f52ba!important;
+  box-shadow:0 0 24px -4px rgba(15,82,186,.65),0 8px 24px rgba(0,0,0,.5)!important;}
+
+/* --- (3) NO DYNAMIC NUMBERS IN A BUTTON, EVER (JS removes the nodes too) --- */
+.ml-qcount,.ml-badge,.fx13-list-count,.nm-ob-badge{display:none!important;}
+
+/* --- (4) RAIL = CONVERSATIONS ONLY: the rail toggle goes (hidden, kept in the
+   DOM — the lists-view toggle drives it with a click, see script) --- */
+.fx13-toggle{display:none!important;}
+
+/* --- (5) THE PILLS PANEL GOES: Smart Lists opens the one interface --- */
+#ovSlDropdown{display:none!important;}
+
+/* --- (5) THE LISTS-VIEW TOGGLE (inside the lists view): same look and feel
+   as the Mail/Messenger toggle — obsidian pill, sliding pill, edge glow only. --- */
+.fx15-lv-toggle{display:flex;gap:8px;margin:0 0 12px;max-width:520px;background:#050607;
+  border:1.5px solid rgba(255,255,255,.4);border-radius:999px;padding:8px;position:relative;
+  box-shadow:0 16px 36px rgba(0,0,0,.65);}
+.fx15-lv-toggle::after{content:"";position:absolute;top:8px;bottom:8px;left:8px;
+  width:calc(50% - 12px);border-radius:999px;background:#050607;border:1.5px solid #0f52ba;
+  box-shadow:0 10px 24px rgba(0,0,0,.75),0 0 28px -4px rgba(15,82,186,.75);
+  transition:left .35s cubic-bezier(.4,0,.2,1),border-color .35s ease,box-shadow .35s ease;
+  pointer-events:none;}
+.fx15-lv-toggle[data-side="notes"]::after{left:calc(50% + 4px);border-color:#07925f;
+  box-shadow:0 10px 24px rgba(0,0,0,.75),0 0 28px -4px rgba(7,146,95,.75);}
+.fx15-lv-btn{flex:1;position:relative;z-index:1;background:transparent;border:1.5px solid transparent;
+  border-radius:999px;color:#ffffff;font-size:19px;font-weight:700;font-family:inherit;
+  padding:12px 16px;min-height:56px;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;}
+.fx15-lv-btn:hover{transform:translateY(-2px);}
+.fx15-lv-btn:active{transform:scale(.97);}
+.fx15-lv-btn[data-side="contacts"]:hover{border-color:#0f52ba;
+  box-shadow:0 0 24px -4px rgba(15,82,186,.65),0 8px 24px rgba(0,0,0,.5);}
+.fx15-lv-btn[data-side="notes"]:hover{border-color:#07925f;
+  box-shadow:0 0 24px -4px rgba(7,146,95,.65),0 8px 24px rgba(0,0,0,.5);}
+
+/* --- (5) ORGANIZE: topic chips + search, plain words, 17px --- */
+.fx15-room-title{font-size:19px;font-weight:700;color:#ffffff;margin:0 0 12px;}
+.fx15-topics{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 12px;}
+.fx15-topics-t{font-size:17px;color:#ffffff;margin-right:4px;}
+.fx15-topic{background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);
+  border:1.5px solid var(--tc,#8e24aa);border-radius:999px;color:#ffffff;font-size:17px;
+  font-weight:700;font-family:inherit;padding:8px 16px;min-height:44px;cursor:pointer;
+  box-shadow:0 8px 24px rgba(0,0,0,.5);transition:transform .3s ease,box-shadow .3s ease;}
+.fx15-topic:hover{transform:translateY(-2px);box-shadow:0 0 24px -4px var(--tc,#8e24aa),0 8px 24px rgba(0,0,0,.5);}
+.fx15-topic:active{transform:scale(.97);}
+.fx15-search{width:100%;box-sizing:border-box;min-height:48px;padding:10px 14px;margin:0 0 12px;
+  border-radius:14px;border:2px solid rgba(255,255,255,.22);background:#050607;color:#ffffff;
+  font-size:17px;font-family:inherit;outline:none;}
+.fx15-search:focus{border-color:#0f52ba;box-shadow:0 0 24px -4px rgba(15,82,186,.65);}
+.fx15-search::placeholder{color:#ffffff;}
+
+/* --- (5) MEMBER ROWS, LIKE THE CONNECTIONS ROWS: ball, name, %, 4 actions --- */
+.fx15-member-acts{display:flex;gap:8px;margin-left:auto;flex:none;}
+.fx15-act{width:40px;height:40px;flex:none;border-radius:50%;background:#050607;
+  border:1.5px solid var(--ac,#0f52ba);color:#ffffff;font-size:19px;font-family:inherit;
+  cursor:pointer;display:grid;place-items:center;padding:0;
+  box-shadow:0 2px 8px rgba(0,0,0,.4),0 0 16px -2px var(--ac,#0f52ba);
+  transition:transform .3s ease,box-shadow .3s ease;}
+.fx15-act:hover{transform:translateY(-2px);}
+.fx15-act:active{transform:scale(.97);}
+.fx13-member{display:flex!important;align-items:center;gap:10px;}
+.fx13-member .fx13-member-name{font-size:17px;}
+
+/* --- (5) ALL CONTACTS (the live room's structure) --- */
+.fx15-all-contacts{border:1.5px solid #8e24aa;border-radius:16px;background:#050607;
+  padding:12px;margin:0 0 10px;box-shadow:0 8px 20px rgba(0,0,0,.5);}
+.fx15-all-head{display:flex;align-items:center;gap:10px;}
+.fx15-all-name{font-size:19px;font-weight:700;color:#ffffff;}
+.fx15-all-count{font-size:17px;color:#ffffff;margin-left:auto;}
+.fx15-all-body{margin-top:10px;}
+
+/* --- (5) GROUP MESSAGING: message or mail the whole grouping at once --- */
+.fx15-group-row{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 4px;}
+.fx15-group-btn{flex:1;background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);
+  border:1.5px solid var(--gc,#07925f);border-radius:999px;color:#ffffff;font-size:17px;
+  font-weight:700;font-family:inherit;padding:10px 16px;min-height:48px;cursor:pointer;
+  box-shadow:0 8px 24px rgba(0,0,0,.5),0 0 18px -6px var(--gc,#07925f);
+  transition:transform .3s ease,box-shadow .3s ease;}
+.fx15-group-btn:hover{transform:translateY(-2px);}
+.fx15-group-btn:active{transform:scale(.97);}
+.fx15-group-note{font-size:17px;color:#ffffff;margin:8px 0 0;line-height:1.5;}
+
+/* --- (6) COMPOSER REBUILD: steps, plain words, one obvious Send --- */
+.fx15-step{margin:0 0 20px;padding:16px;border-radius:20px;background:#050607;
+  border:1.5px solid rgba(255,255,255,.22);box-shadow:0 8px 24px rgba(0,0,0,.5);}
+.fx15-step-h{font-size:19px;font-weight:700;color:#ffffff;margin:0 0 12px;}
+.fx15-step-h b{color:#d4a017;}
+.fx15-send-hero{width:100%!important;min-height:64px!important;font-size:19px!important;
+  font-weight:800!important;letter-spacing:.06em!important;border-radius:999px!important;
+  border:2px solid #0f52ba!important;
+  box-shadow:0 12px 34px -8px rgba(0,0,0,.6),0 0 28px -4px rgba(15,82,186,.75)!important;}
+.fx15-step .ml-field-l{font-size:17px!important;color:#ffffff!important;}
+
+/* --- (8) ONE INITIAL BALL — the DM ball (.nm-orb) wins everywhere.
+   Harvested verbatim from the DM ball (base line 2322): obsidian #050607,
+   1.5px rim in the person's own colour, orbit ring. Every initial ball in
+   this interface — top, beside the name, DM, lists, Quick Access — is that
+   same ball, same construction, same flow. REFINEMENT (his word): more like
+   a ball, more flowing INSIDE — the orbit alone sits outside and you can
+   barely see the flow, so the ball now carries a bright arc flowing around
+   its INSIDE edge too, alive, clearly visible. Sizes stay per spot. --- */
+.nm-orb,.fc-pick-av,.fx13-member-ball,.ml-qa-ava{position:relative;background:#050607!important;
+  border:1.5px solid var(--cc,var(--pc,#8e24aa))!important;
+  box-shadow:0 8px 20px rgba(0,0,0,.6),0 0 18px -4px var(--cc,var(--pc,#8e24aa)),inset 0 1px 0 rgba(255,255,255,.16)!important;}
+.nm-orb::after,.fc-pick-av::after,.fx13-member-ball::after,.ml-qa-ava::after{content:"";position:absolute;
+  inset:-6px;border-radius:50%;padding:2px;
+  background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,rgba(255,255,255,.95) 320deg,transparent 360deg);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;
+  animation:nm-orbit 60s linear infinite;pointer-events:none;}
+.nm-orb::before,.fc-pick-av::before,.fx13-member-ball::before,.ml-qa-ava::before{content:"";position:absolute;
+  inset:4px;border-radius:50%;padding:2px;
+  background:conic-gradient(from 0deg,transparent 0deg,transparent 200deg,rgba(255,255,255,.9) 300deg,transparent 360deg);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;
+  animation:nm-orbit 24s linear infinite;pointer-events:none;}
+
+/* --- (7) CONTACT CARD: a real frame, stats, reasons, Vault notes, calendar --- */
+.fx2-card-frame{border:2px solid var(--cc,#8e24aa)!important;border-radius:22px!important;
+  box-shadow:0 0 0 1.5px rgba(255,255,255,.55),0 0 32px -4px var(--cc,#8e24aa),0 24px 48px rgba(0,0,0,.7)!important;
+  padding:20px!important;}
+.fx15-card-sec-t{font-size:17px;font-weight:800;letter-spacing:.14em;color:#ffffff;margin:0 0 8px;}
+.fx15-card-why{font-size:17px;color:#ffffff;line-height:1.6;margin:0 0 6px;}
+.fx15-card-why b{color:#d4a017;}
+.fx15-card-pct-note{font-size:17px;color:#ffffff;margin:6px 0 0;}
+.fx15-ctx-row{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 8px;}
+.fx15-ctx{border:1.5px solid var(--tc,#8e24aa);border-radius:999px;background:#050607;
+  color:#ffffff;font-size:17px;font-weight:700;font-family:inherit;padding:6px 14px;
+  min-height:40px;cursor:pointer;}
+.fx15-ctx.on{box-shadow:0 0 18px -4px var(--tc,#8e24aa),0 8px 20px rgba(0,0,0,.5);}
+.fx15-vault-note{font-size:17px;color:#ffffff;margin:8px 0 0;}
+.fx15-cal-strip{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 8px;}
+.fx15-cal-day{min-width:56px;min-height:56px;border-radius:14px;background:#050607;
+  border:1.5px solid rgba(255,255,255,.35);color:#ffffff;font-size:17px;font-weight:700;
+  font-family:inherit;cursor:pointer;padding:6px 8px;}
+.fx15-cal-day.on{border-color:#d4a017;box-shadow:0 0 18px -4px rgba(212,160,23,.65);}
+.fx15-cal-day:active{transform:scale(.97);}
+.fx15-cal-view{font-size:17px;color:#ffffff;line-height:1.6;margin:0;}
+/* --- (9) CONVERSATION FEED HEADER — name, username, date, time, active.
+   The header already carries the name (h2 + .nm-person-name) and when they
+   were active (.nm-person-sub = presence). What it never said: the username,
+   the date, the time. The base keeps message timestamps closure-private and
+   renders relative-only times ("1d ago") — so the header states the last
+   message exactly as the system knows it, plus the live date and time of
+   this conversation (today, now), each labelled so nothing misreads. No
+   info button exists in this header — the only action was the pin; any info
+   button is hidden outright. The pin stays the rightmost control. --- */
+#nmReader .nm-reader-head .fx15-head-lines{font-size:17px;color:#ffffff;line-height:1.45;}
+#nmReader .nm-reader-head .fx15-head-user{font-weight:700;}
+#nmReader .nm-reader-head .fx15-head-when{opacity:.85;}
+#nmReader .nm-reader-head .fx15-head-today{opacity:.7;}
+.fx15-save-conv{margin-left:auto;flex:none;font-size:17px;font-weight:700;color:#ffffff;background:#050607;border:1.5px solid #0f52ba;border-radius:99px;padding:10px 16px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.4),0 0 16px -2px #0f52ba;}
+.fx15-save-conv.on{border-color:#d4a017;box-shadow:0 2px 8px rgba(0,0,0,.4),0 0 16px -2px #d4a017;}
+#nmReader [data-pc-info],#nmReader .nm-info{display:none!important;}
+/* Mail thread: ONE initial — the viewer shows the DM ball AND a second
+   .ml-avatar with the same initial ("S and S again"). The first stays,
+   the second goes. The row's own avatar (.ml-thread .ml-avatar) is
+   untouched. */
+.mail-stage .ml-read-meta .ml-avatar{display:none!important;}
+/* Select / actions cluster: each control its own clear look, proper
+   spacing — never all the same blue. */
+.mail-stage .ml-filters{gap:10px!important;}
+.mail-stage .ml-bulkbar{gap:10px!important;}
+.mail-stage .fx15-chip-select{border-color:#8e24aa!important;box-shadow:0 0 16px -4px #8e24aa!important;}
+.mail-stage .fx15-chip-select.on{background:#8e24aa!important;color:#ffffff!important;}
+.mail-stage .fx15-chip-all{border-color:#0f52ba!important;box-shadow:0 0 16px -4px #0f52ba!important;}
+.mail-stage .fx15-chip-all.on{background:#0f52ba!important;color:#ffffff!important;}
+.mail-stage .fx15-chip-notes{border-color:#d4a017!important;box-shadow:0 0 16px -4px #d4a017!important;}
+.mail-stage .fx15-chip-notes.on{background:#d4a017!important;color:#ffffff!important;}
+.mail-stage .fx15-chip-unread{border-color:#a21caf!important;box-shadow:0 0 16px -4px #a21caf!important;}
+.mail-stage .fx15-chip-unread.on{background:#a21caf!important;color:#ffffff!important;}
+.mail-stage .fx15-mark-read{border:1.5px solid #07925f!important;color:#ffffff!important;background:#050607!important;border-radius:99px!important;padding:10px 16px!important;font-size:17px!important;box-shadow:0 0 16px -4px #07925f!important;cursor:pointer;}
+.mail-stage .fx15-delete{border:1.5px solid #c62828!important;color:#ffffff!important;background:#050607!important;border-radius:99px!important;padding:10px 16px!important;font-size:17px!important;box-shadow:0 0 16px -4px #c62828!important;cursor:pointer;}
+
+/* --- (10) MESSAGE TEXT ON A RAISED ELEVATED BOARD.
+   The bubble itself was already a board — but the TEXT inside it was flat,
+   transparent, sitting straight on the bubble's gradient. Now the text has
+   its own raised board inside the bubble: obsidian, its own rim in the
+   sender's colour, its own shadow and top light. Never flat again. --- */
+.nm-bubble p{background:#050607!important;border:1.5px solid var(--cc,#ffffff)!important;border-radius:14px!important;padding:12px 14px!important;box-shadow:0 6px 16px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.12)!important;margin:12px 0!important;}
+
+/* --- (11) COMPOSER LIVES IN THE VIEWER, LIVE PREVIEW.
+   Compose opens no new window and no new frame: the overlay itself moves
+   INTO the viewer where the mail is read (.mail-stage .ml-read, or the
+   conversation viewer #nmReader for instant messages) and renders inline,
+   full width, as a panel of that viewer. The base close logic still removes
+   the overlay, so X and send-close work untouched. The preview card shows
+   the draft exactly as the reader will show it, updating as you type. --- */
+.ml-overlay.fx15-in-viewer{position:static!important;inset:auto!important;background:transparent!important;display:block!important;padding:0!important;margin:0!important;overflow:visible!important;}
+.ml-overlay.fx15-in-viewer .ml-modal.mlx{position:static!important;max-width:none!important;width:100%!important;margin:0!important;max-height:none!important;}
+.fx15-preview{margin:16px 0 0;border:1.5px solid rgba(255,255,255,.25);border-radius:18px;padding:16px;background:linear-gradient(135deg,#141419 0%,#050607 50%,#141419 100%);box-shadow:0 8px 24px rgba(0,0,0,.5);}
+.fx15-preview-h{font-size:17px;letter-spacing:.08em;color:#ffffff;opacity:.8;margin:0 0 10px;}
+.fx15-preview-to{font-size:17px;color:#ffffff;margin:0 0 6px;}
+.fx15-preview-subj{font-size:19px;font-weight:900;color:#ffffff;margin:0 0 10px;}
+.fx15-preview-body{font-size:17px;line-height:1.6;color:#ffffff;background:#050607;border:1.5px solid rgba(255,255,255,.5);border-radius:14px;padding:12px 14px;box-shadow:0 6px 16px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.12);}
+</style>
+<script id="ov-fix15-20261126-js">
+/* ===== FIX15 v2 (2026-11-26) — append-only; every earlier block untouched.
+   No new read path for mail or messages; no Supabase write beyond the
+   existing mail path; no deletion; the RLS gate untouched. No uploads. ===== */
+(function(){
+'use strict';
+
+/* ---------- helpers ---------- */
+function fx15el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
+function fx15toast(m){try{if(window.showToast)window.showToast(m);}catch(e){}}
+function fx15store(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+function fx15load(k,d){try{var v=JSON.parse(localStorage.getItem(k)||'null');return v==null?d:v;}catch(e){return d;}}
+function fx15vis(el){if(!el)return false;var r=el.getBoundingClientRect();return r.width>0&&r.x>=0&&r.x+r.width<=innerWidth&&r.y>=0&&r.y+r.height<=innerHeight;}
+function fx15visAny(el){if(!el)return false;var r=el.getBoundingClientRect();return r.width>0&&r.bottom>0&&r.top<innerHeight&&r.right>0&&r.left<innerWidth;}
+function fx15todayISO(d){var p=function(n){return (n<10?'0':'')+n;};return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate());}
+
+/* ---------- EVAL-TIME: seed the live room's groupings + force the rail side,
+   BEFORE the fix13 boot reads localStorage (it reads on DOMContentLoaded). --- */
+(function fx15SeedEarly(){
+  try{
+    var lists=fx15load('fx13-custom-lists',[]);
+    var changed=false;
+    ['FAMILY','BUSINESS','WORLD'].forEach(function(g){
+      var found=false;
+      for(var i=0;i<lists.length;i++)if(lists[i].name===g){found=true;break;}
+      if(!found){lists.push({name:g,members:[]});changed=true;}
+    });
+    if(changed)fx15store('fx13-custom-lists',lists);
+  }catch(e){}
+  try{localStorage.setItem('fx13-side',JSON.stringify('connections'));}catch(e){}
+})();
+
+/* ---------- (1) CONTACT-CARD TAP: release fix14's pointer capture when the
+   press lands on an interactive child (fix14's capture-phase pointerdown runs
+   first and captures to the bubble; this runs second in the same dispatch and
+   releases it before pointerup, so the click retargets to the orb again).
+   Safety net: a click landing on the bubble while the point is over an orb
+   opens that card directly — it only fires when the normal path did not. --- */
+function fx15WatchCapture(){
+  try{
+    document.addEventListener('pointerdown',function(ev){
+      var t=ev.target;
+      if(!t||!t.closest)return;
+      var inter=t.closest('[data-fx2-card],.nm-react,button,a,input,select,textarea,[data-pc-act],[data-pc-orb]');
+      if(!inter)return;
+      var b=t.closest('.nm-bubble');if(!b)return;
+      try{if(b.hasPointerCapture&&b.hasPointerCapture(ev.pointerId))b.releasePointerCapture(ev.pointerId);}catch(e){}
+    },true);
+    document.addEventListener('click',function(ev){
+      var t=ev.target;
+      if(!t||!t.closest)return;
+      if(t.closest('[data-fx2-card]'))return;
+      var b=t.closest('.nm-bubble');if(!b)return;
+      var orb=null;
+      try{var at=document.elementFromPoint(ev.clientX,ev.clientY);orb=at&&at.closest?at.closest('[data-fx2-card]'):null;}catch(e){}
+      if(!orb)return;
+      var alias=orb.getAttribute('data-fx2-card')||'';
+      try{if(window.__fx2OpenCard)window.__fx2OpenCard(alias);}catch(e){}
+    },true);
+  }catch(e){}
+}
+
+/* ---------- (3) STRIP COUNTS FROM BUTTONS ---------- */
+function fx15StripCounts(){
+  try{
+    Array.prototype.forEach.call(document.querySelectorAll('.ml-qcount,.ml-badge,.fx13-list-count,.nm-ob-badge'),function(n){if(n.parentNode)n.parentNode.removeChild(n);});
+    /* List-head buttons carry digits too ("All 13 connections",
+       "Match 95–97") — a count/range inside a button is still a number in
+       a button. The band stays, the digits go. Runs every pass so
+       fx13 re-renders get stripped again. */
+    Array.prototype.forEach.call(document.querySelectorAll('.fx13-list-name'),function(n){
+      var t=n.textContent||'';
+      var u=t.replace(/ — All \d+ connections/,' — All connections').replace(/ — Match \d+–\d+/,'').replace(/ — Match \d+-\d+/,'');
+      if(u!==t)n.textContent=u;
+    });
+  }catch(e){}
+}
+
+/* ---------- (5) DOM-DERIVED HOSTS (fx13 internals are closure-private;
+   only window.__fx13.{side,notes,cats,hosts,lists,version} is exposed). --- */
+function fx15DomHosts(){
+  var out=[];
+  try{
+    Array.prototype.forEach.call(document.querySelectorAll('.fx13-lists'),function(listsEl){
+      var parent=listsEl.parentNode;if(!parent)return;
+      var panel=parent.querySelector('.fx13-notes');
+      var list=parent.querySelector('#nmLikeMindsList, #hubPeopleList');
+      out.push({lists:listsEl,panel:panel,list:list,parent:parent});
+    });
+  }catch(e){}
+  return out;
+}
+function fx15PeopleFromDom(){
+  var seen={},out=[];
+  try{
+    Array.prototype.forEach.call(document.querySelectorAll('[data-pc-alias]'),function(n){
+      var a=n.getAttribute('data-pc-alias');if(!a||seen[a])return;
+      var card=n.closest? n.closest('.pc-card'):null;
+      var pctEl=card?card.querySelector('.pc-pct-one'):null;
+      var pct=pctEl?parseInt((pctEl.textContent||'').replace(/[^0-9]/g,''),10):0;
+      var col='#8e24aa';
+      if(card){var cs=card.getAttribute('style')||'';var m=cs.match(/--pc:\s*([^;]+)/);if(m)col=m[1].trim();}
+      seen[a]=1;out.push({alias:a,pct:pct||0,color:col});
+    });
+  }catch(e){}
+  return out;
+}
+
+/* ---------- (5) THE LISTS-VIEW TOGGLE: drives the hidden rail toggle with a
+   real click (the closure's setSide repaints every host), then keeps the
+   people list visible — the rail is conversations always. --- */
+var fx15LvSide=fx15load('fx15-lv-side','contacts');
+function fx15ClickRailSide(side){
+  try{
+    var btn=document.querySelector('.fx13-toggle-btn[data-side="'+side+'"]');
+    if(btn){btn.click();return true;}
+  }catch(e){}
+  return false;
+}
+function fx15SetLvSide(side){
+  fx15LvSide=side;fx15store('fx15-lv-side',side);
+  try{window.__fx15LvSide=side;}catch(e){}
+  fx15ClickRailSide(side==='notes'?'notes':'connections');
+  setTimeout(function(){
+    fx15DomHosts().forEach(function(h){
+      if(h.list)h.list.style.display='';
+      if(side==='notes'){
+        if(h.lists)h.lists.style.display='none';
+        if(h.panel)h.panel.style.display='';
+      }else{
+        if(h.panel)h.panel.style.display='none';
+        if(h.lists)h.lists.style.display='';
+      }
+    });
+    fx15PaintLvToggle();
+  },80);
+}
+function fx15PaintLvToggle(){
+  try{
+    Array.prototype.forEach.call(document.querySelectorAll('.fx15-lv-toggle'),function(t){
+      t.setAttribute('data-side',fx15LvSide);
+      Array.prototype.forEach.call(t.querySelectorAll('.fx15-lv-btn'),function(b){
+        var on=b.getAttribute('data-side')===fx15LvSide;
+        b.classList.toggle('on',on);b.setAttribute('aria-pressed',on?'true':'false');
+      });
+    });
+  }catch(e){}
+}
+
+/* ---------- (5) ORGANIZE + GROUP MESSAGING ---------- */
+var FX15_TOPICS=[['FAMILY','#d4a017'],['BUSINESS','#0f52ba'],['WORLD','#07925f']];
+var FX15_ACTS=[['chat','\u270e','#0f52ba','DM'],['mail','\u2709','#d4a017','Mail'],['audio','\u266a','#07925f','Audio'],['video','\u25b6','#8e24aa','Video']];
+function fx15MemberAlias(m){
+  var n=m.querySelector('.fx13-member-name');
+  var t=n?n.textContent:'';
+  var ix=t.indexOf(' — ');
+  return (ix>-1?t.slice(0,ix):t).trim();
+}
+function fx15ActClick(alias,kind){
+  var verbs={chat:'DM',mail:'mail',audio:'call',video:'video call'};
+  var orig=null;
+  try{
+    var all=document.querySelectorAll('[data-pc-act="'+kind+'"][data-pc-alias="'+alias+'"]');
+    for(var i=0;i<all.length;i++){if(fx15vis(all[i])){orig=all[i];break;}}
+    if(!orig&&all.length)orig=all[0];
+  }catch(e){}
+  if(orig){try{orig.click();return true;}catch(e){}}
+  fx15toast('Open '+alias+' in the rail to '+(verbs[kind]||'message')+'.');
+  return false;
+}
+function fx15EnhanceMember(m){
+  if(!m||m.querySelector('.fx15-member-acts'))return;
+  var alias=fx15MemberAlias(m);if(!alias)return;
+  var acts=fx15el('span','fx15-member-acts');
+  FX15_ACTS.forEach(function(a){
+    var b=fx15el('button','fx15-act',a[1]);b.type='button';
+    b.style.setProperty('--ac',a[2]);
+    b.setAttribute('aria-label',a[3]+' '+alias);
+    b.setAttribute('data-fx15-act',a[0]);b.setAttribute('data-fx15-alias',alias);
+    b.addEventListener('click',function(ev){ev.stopPropagation();fx15ActClick(alias,a[0]);});
+    acts.appendChild(b);
+  });
+  m.appendChild(acts);
+}
+function fx15GroupSend(kind,listName,members){
+  var recs=fx15load('fx15-group-sends',[]);
+  var notifs=fx15load('fx15-group-notifs',[]);
+  var n=members.length;
+  members.forEach(function(alias){
+    var rec={list:listName,kind:kind,to:alias,at:new Date().toISOString(),state:'queued'};
+    var body='Group '+(kind==='dm'?'message':'mail')+' for '+listName;
+    if(window.__nmSend){
+      try{
+        window.__nmSend(kind,alias,'',body).then(function(res){
+          rec.state=(res&&res.ok)?'sent':'queued';
+          fx15store('fx15-group-sends',recs);
+        },function(){fx15store('fx15-group-sends',recs);});
+      }catch(e){}
+    }
+    recs.push(rec);
+    notifs.push({list:listName,kind:kind,to:alias,at:rec.at,state:'queued'});
+  });
+  fx15store('fx15-group-sends',recs);
+  fx15store('fx15-group-notifs',notifs);
+  var msg=(kind==='dm'?'Messaged all ':'Mailed all ')+n+' in '+listName+' — they all get a notification.';
+  fx15toast(msg+' (queued until mail sends.)');
+  return msg;
+}
+function fx15AllContactsSection(h){
+  if(!h||!h.lists)return;
+  var w=h.lists;
+  if(w.querySelector('.fx15-all-contacts'))return;
+  var people=fx15PeopleFromDom();
+  var sec=fx15el('div','fx15-all-contacts');
+  var head=fx15el('div','fx15-all-head');
+  head.appendChild(fx15el('span','fx15-all-name','ALL CONTACTS'));
+  head.appendChild(fx15el('span','fx15-all-count',people.length+' people'));
+  sec.appendChild(head);
+  var body=fx15el('div','fx15-all-body');
+  if(!people.length)body.appendChild(fx15el('p','fx15-group-note','No one here yet.'));
+  people.forEach(function(pp){
+    var m=fx15el('div','fx13-member');
+    m.style.setProperty('--cc',pp.color);
+    m.appendChild(fx15el('span','fx13-member-ball',pp.alias.charAt(0).toUpperCase()));
+    m.appendChild(fx15el('span','fx13-member-name',pp.alias+' — '+pp.pct+'%'));
+    body.appendChild(m);
+    fx15EnhanceMember(m);
+  });
+  var row=fx15el('div','fx15-group-row');
+  var gm=fx15el('button','fx15-group-btn','Message group');gm.type='button';
+  gm.style.setProperty('--gc','#07925f');
+  var gl=fx15el('button','fx15-group-btn','Mail group');gl.type='button';
+  gl.style.setProperty('--gc','#0f52ba');
+  var note=fx15el('p','fx15-group-note');
+  /* Members are read at CLICK time, not at enhance time: fx13 renders the
+     member rows lazily, so a list captured while closed has none. */
+  gm.addEventListener('click',function(){note.textContent=fx15GroupSend('dm','ALL CONTACTS',fx15PeopleFromDom().map(function(pp){return pp.alias;}));});
+  gl.addEventListener('click',function(){note.textContent=fx15GroupSend('mail','ALL CONTACTS',fx15PeopleFromDom().map(function(pp){return pp.alias;}));});
+  row.appendChild(gm);row.appendChild(gl);
+  body.appendChild(row);body.appendChild(note);
+  sec.appendChild(body);
+  if(w.firstChild)w.insertBefore(sec,w.firstChild);else w.appendChild(sec);
+}
+function fx15EnhanceLists(h){
+  if(!h||!h.lists)return;
+  var parent=h.parent;if(!parent)return;
+  if(!parent.querySelector('.fx15-lv-toggle')){
+    var roomT=fx15el('p','fx15-room-title','Your Connections');
+    parent.insertBefore(roomT,h.lists);
+    var topics=fx15el('div','fx15-topics');
+    topics.appendChild(fx15el('span','fx15-topics-t','Organize into a list:'));
+    FX15_TOPICS.forEach(function(tp){
+      var c=fx15el('button','fx15-topic',tp[0]);c.type='button';
+      c.style.setProperty('--tc',tp[1]);
+      c.setAttribute('data-fx15-topic',tp[0]);
+      c.addEventListener('click',function(){
+        try{
+          var lists=fx15load('fx13-custom-lists',[]);
+          var found=false;
+          for(var i=0;i<lists.length;i++)if(lists[i].name===tp[0])found=true;
+          if(!found){lists.push({name:tp[0],members:[]});fx15store('fx13-custom-lists',lists);}
+          var head=null, headAny=null;
+          Array.prototype.forEach.call(document.querySelectorAll('.fx13-list-head'),function(hd){
+            if((hd.textContent||'').indexOf(tp[0])===0){
+              if(!headAny)headAny=hd;
+              var r=hd.getBoundingClientRect();
+              var vis=r.width>0&&r.x>=0&&r.x+r.width<=innerWidth&&r.y>=0&&r.y<=innerHeight;
+              if(vis&&!head)head=hd; /* the list the user actually sees wins */
+            }
+          });
+          if(!head)head=headAny;
+          if(head)head.click();
+        }catch(e){}
+        fx15toast(tp[0]+' list — open it and add people to it.');
+      });
+      topics.appendChild(c);
+    });
+    parent.insertBefore(topics,h.lists);
+    var search=fx15el('input','fx15-search');
+    search.type='search';search.setAttribute('placeholder','Search your contacts…');
+    search.setAttribute('aria-label','Search your contacts');
+    search.addEventListener('input',function(){
+      var q=(search.value||'').toLowerCase();
+      fx15DomHosts().forEach(function(hh){
+        if(!hh||!hh.lists)return;
+        Array.prototype.forEach.call(hh.lists.querySelectorAll('.fx13-member'),function(m){
+          var a=fx15MemberAlias(m).toLowerCase();
+          m.style.display=(!q||a.indexOf(q)>-1)?'':'none';
+        });
+      });
+    });
+    parent.insertBefore(search,topics.nextSibling);
+    var tog=fx15el('div','fx15-lv-toggle');
+    tog.setAttribute('role','tablist');tog.setAttribute('aria-label','Active contacts or Smart Notes');
+    tog.setAttribute('data-side',fx15LvSide);
+    var b1=fx15el('button','fx15-lv-btn','ACTIVE CONTACTS');b1.type='button';
+    b1.setAttribute('data-side','contacts');b1.setAttribute('role','tab');
+    var b2=fx15el('button','fx15-lv-btn','SMART NOTES');b2.type='button';
+    b2.setAttribute('data-side','notes');b2.setAttribute('role','tab');
+    b1.addEventListener('click',function(){fx15SetLvSide('contacts');});
+    b2.addEventListener('click',function(){fx15SetLvSide('notes');});
+    tog.appendChild(b1);tog.appendChild(b2);
+    parent.insertBefore(tog,h.lists);
+  }
+  if(h.panel){
+    var tg=parent.querySelector('.fx15-lv-toggle');
+    if(tg&&h.panel.previousSibling!==tg)parent.insertBefore(h.panel,tg.nextSibling);
+  }
+  Array.prototype.forEach.call(h.lists.querySelectorAll('.fx13-member'),function(m){fx15EnhanceMember(m);});
+  try{fx15AllContactsSection(h);}catch(e){}
+  var body=h.lists.querySelector('.fx13-list-body');
+  if(body&&!body.querySelector('.fx15-group-row')){
+    var members=[];
+    Array.prototype.forEach.call(body.querySelectorAll('.fx13-member'),function(m){var a=fx15MemberAlias(m);if(a)members.push(a);});
+    var headEl=body.parentNode?body.parentNode.querySelector('.fx13-list-name'):null;
+    var listName=headEl?(headEl.textContent||'').split(' — ')[0].trim():'this list';
+    var row=fx15el('div','fx15-group-row');
+    var gm=fx15el('button','fx15-group-btn','Message group');gm.type='button';
+    gm.style.setProperty('--gc','#07925f');
+    gm.setAttribute('data-fx15-group','dm');gm.setAttribute('data-fx15-list',listName);
+    var gl=fx15el('button','fx15-group-btn','Mail group');gl.type='button';
+    gl.style.setProperty('--gc','#0f52ba');
+    gl.setAttribute('data-fx15-group','mail');gl.setAttribute('data-fx15-list',listName);
+    var note=fx15el('p','fx15-group-note');
+    /* Members are read at CLICK time from every host rendering this list
+       (see fx15ListMembers): fx13 renders member rows lazily, so one
+       host's body can be empty while the other holds the members. */
+    gm.addEventListener('click',function(){var ms=fx15ListMembers(listName);note.textContent=fx15GroupSend('dm',listName,ms);});
+    gl.addEventListener('click',function(){var ms=fx15ListMembers(listName);note.textContent=fx15GroupSend('mail',listName,ms);});
+    row.appendChild(gm);row.appendChild(gl);
+    body.appendChild(row);body.appendChild(note);
+  }
+  if(fx15LvSide==='notes'){h.lists.style.display='none';if(h.panel)h.panel.style.display='';}
+  else{if(h.panel)h.panel.style.display='none';h.lists.style.display='';}
+  if(h.list)h.list.style.display='';
+  fx15PaintLvToggle();
+}
+
+/* Members of a list, read LIVE at click time from every host that renders
+   that list: fx13 renders member rows lazily per host, so one host's body
+   can be empty while the other holds the members. 'Like Minds' is all
+   connections by definition, so it falls back to every person on the page. */
+function fx15ListMembers(listName){
+  var out={}, n=0;
+  function add(a){ if(a&&!out[a]){out[a]=1;n++;} }
+  Array.prototype.forEach.call(document.querySelectorAll('.fx13-list-body'),function(bd){
+    var hd=bd.parentNode?bd.parentNode.querySelector('.fx13-list-name'):null;
+    if(hd&&((hd.textContent||'').split(' — ')[0].trim()===listName)){
+      Array.prototype.forEach.call(bd.querySelectorAll('.fx13-member'),function(m){add(fx15MemberAlias(m));});
+    }
+  });
+  if(!n&&listName==='Like Minds'){
+    fx15PeopleFromDom().forEach(function(pp){add(pp.alias);});
+  }
+  if(!n){
+    fx15load('fx13-custom-lists',[]).forEach(function(l){
+      if(l.name===listName)(l.members||[]).forEach(add);
+    });
+  }
+  return Object.keys(out);
+}
+
+/* ---------- ACTIVE CONTACTS: the name. Rename every button that says
+   CONTACTS for this list (top band + Quick Access). ---------- */
+function fx15RenameActive(){
+  try{
+    Array.prototype.forEach.call(document.querySelectorAll('.ml-qname'),function(n){
+      if((n.textContent||'').trim()==='CONTACTS')n.textContent='ACTIVE CONTACTS';
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.ml-qa-item'),function(b){
+      var t=(b.textContent||'').trim();
+      if(t.indexOf('CONTACTS')===0)b.setAttribute('aria-label','Open active contacts');
+    });
+  }catch(e){}
+}
+
+/* ---------- (5) THE TOP BUTTONS open the SAME interface ---------- */
+function fx15ShowLists(){
+  try{var dd=document.getElementById('ovSlDropdown');if(dd)dd.hidden=true;}catch(e){}
+  try{fx15SetLvSide('contacts');}catch(e){}
+  var target=null;
+  try{
+    var hs=fx15DomHosts();
+    for(var i=0;i<hs.length;i++){
+      if(hs[i]&&hs[i].lists&&fx15visAny(hs[i].lists)){target=hs[i].lists;break;}
+    }
+    if(!target&&hs.length&&hs[0]&&hs[0].lists)target=hs[0].lists;
+  }catch(e){}
+  if(!target)return false;
+  try{target.scrollIntoView({block:'center',behavior:'instant'});}catch(e){}
+  return true;
+}
+function fx15ScrollPeople(){
+  try{
+    var hs=fx15DomHosts();
+    for(var i=0;i<hs.length;i++){
+      if(hs[i]&&hs[i].list&&fx15visAny(hs[i].list)){hs[i].list.scrollIntoView({block:'center',behavior:'instant'});return true;}
+    }
+    if(hs.length&&hs[0]&&hs[0].list){hs[0].list.scrollIntoView({block:'center',behavior:'instant'});return true;}
+  }catch(e){}
+  return false;
+}
+function fx15WireTopButton(){
+  try{
+    Array.prototype.forEach.call(document.querySelectorAll('#ovSecondRow .ml-qa-item'),function(it){
+      var t=(it.textContent||'').trim();
+      if(t.indexOf('SMART LISTS')!==0||it.__fx15Wired)return;
+      it.__fx15Wired=true;
+      it.addEventListener('click',function(){
+        try{var dd=document.getElementById('ovSlDropdown');if(dd)dd.hidden=true;}catch(e){}
+        setTimeout(fx15ShowLists,60);
+      });
+    });
+  }catch(e){}
+}
+/* the Quick Access CONTACTS / SMART LISTS buttons open openQaPanel — separate
+   panels. One interface only: when either appears, close it and show the same
+   interface instead (ACTIVE CONTACTS = the active people list). */
+function fx15WatchQaPanel(){
+  if(!window.MutationObserver)return;
+  try{
+    var mo=new MutationObserver(function(){
+      Array.prototype.forEach.call(document.querySelectorAll('.ml-qa-panel'),function(p){
+        var t=(p.getAttribute('aria-label')||'').trim();
+        var head=p.querySelector('.ml-qa-title');
+        var ht=head?(head.textContent||'').trim():'';
+        if(t==='SMART LISTS'||ht==='SMART LISTS'){
+          if(p.parentNode)p.parentNode.removeChild(p);
+          Array.prototype.forEach.call(document.querySelectorAll('.ml-qa-backdrop'),function(b){if(b.parentNode)b.parentNode.removeChild(b);});
+          setTimeout(fx15ShowLists,60);
+        }else if(t==='CONTACTS'||ht==='CONTACTS'){
+          if(p.parentNode)p.parentNode.removeChild(p);
+          Array.prototype.forEach.call(document.querySelectorAll('.ml-qa-backdrop'),function(b){if(b.parentNode)b.parentNode.removeChild(b);});
+          setTimeout(fx15ScrollPeople,60);
+        }
+      });
+    });
+    mo.observe(document.body,{childList:true,subtree:true});
+  }catch(e){}
+}
+
+/* ---------- (7) CONTACT CARD: frame (CSS) + stats + match reasons + Vault
+   notes + day-by-day calendar. NO uploads — not approved, not built. --- */
+function fx15VaultEntries(alias){
+  var all=fx15load('fx15-vault-notes',[]);
+  return all.filter(function(e){return e.alias===alias;});
+}
+function fx15VaultAdd(alias,text,ctx){
+  var all=fx15load('fx15-vault-notes',[]);
+  all.push({alias:alias,date:fx15todayISO(new Date()),text:text,ctx:ctx||'Personal',at:new Date().toISOString()});
+  if(all.length>400)all=all.slice(all.length-400);
+  fx15store('fx15-vault-notes',all);
+}
+function fx15EnhanceCard(card){
+  try{
+    if(!card||!card.classList.contains('open'))return;
+    var alias='';
+    var sub=card.querySelector('.fx2-card-sub');
+    if(sub){var m=(sub.textContent||'').split(' · ');alias=(m[0]||'').trim().toLowerCase();}
+    if(!alias)return;
+    if(card.getAttribute('data-fx15-card')===alias)return;
+    card.setAttribute('data-fx15-card',alias);
+    var nameEl=card.querySelector('.fx2-card-name');
+    var name=nameEl?(nameEl.textContent||'').trim():alias;
+    var pctEl=card.querySelector('.fx2-card-pct');
+    var pct=pctEl?(pctEl.textContent||'').trim():'';
+    var factsEl=card.querySelector('.fx2-card-facts');
+    var facts=factsEl?(factsEl.textContent||'').trim():'';
+    var nutEl=card.querySelector('.fx2-card-nut');
+    var nut=nutEl?(nutEl.textContent||'').trim():'';
+    var pres='';
+    if(sub){var parts=(sub.textContent||'').split(' · ');pres=(parts[1]||'').trim();}
+    var chats=0,mails=0;
+    var cm=facts.match(/(\d+)\s+chat conversation/);if(cm)chats=parseInt(cm[1],10);
+    var mm=facts.match(/(\d+)\s+letter/);if(mm)mails=parseInt(mm[1],10);
+    var role='';
+    var rm=facts.match(/^(.*?)\s*·\s*\d+\s+chat/);if(rm)role=rm[1].trim();
+    var frame=card.querySelector('.fx2-card-frame');if(!frame)return;
+    if(pctEl){
+      var pn=fx15el('p','fx15-card-pct-note','Auto-Match score — see why below.');
+      pctEl.parentNode.insertBefore(pn,pctEl.nextSibling);
+    }
+    var why=fx15el('div','fx15-card-sec');
+    why.appendChild(fx15el('div','fx15-card-sec-t','WHY THIS MATCH'));
+    if(pct)why.appendChild(fx15el('p','fx15-card-why','This number comes from Auto-Match — how closely your worlds line up.'));
+    if(role)why.appendChild(fx15el('p','fx15-card-why','Role: '+role+'.'));
+    if(chats>0)why.appendChild(fx15el('p','fx15-card-why',chats+' chat conversation'+(chats===1?'':'s')+' together.'));
+    if(mails>0)why.appendChild(fx15el('p','fx15-card-why',mails+' letter'+(mails===1?'':'s')+' together.'));
+    if(pres)why.appendChild(fx15el('p','fx15-card-why','Right now: '+pres+'.'));
+    if(nut)why.appendChild(fx15el('p','fx15-card-why','What the system knows: '+nut));
+    if(chats===0&&mails===0){
+      var b=fx15el('p','fx15-card-why');
+      b.innerHTML='No stats yet — no chats or letters with '+name+' on record. The score above is the Auto-Match score only, not a history.';
+      why.appendChild(b);
+    }
+    if(!role)why.appendChild(fx15el('p','fx15-card-why','No role on record.'));
+    frame.insertBefore(why,frame.querySelector('.fx2-card-close'));
+    /* notes into the Smart Vault, personal + business, day by day */
+    var notesSec=null;
+    Array.prototype.forEach.call(frame.querySelectorAll('.fx2-card-sec'),function(s){
+      var t=s.querySelector('.fx2-card-sec-t');
+      if(t&&(t.textContent||'').indexOf('YOUR NOTES')===0)notesSec=s;
+    });
+    if(notesSec){
+      var ta=notesSec.querySelector('.fx2-card-notes');
+      var saveBtn=notesSec.querySelector('.fx2-card-save');
+      var ctx='Personal';
+      var ctxRow=fx15el('div','fx15-ctx-row');
+      var cp=fx15el('button','fx15-ctx on','Personal');cp.type='button';cp.style.setProperty('--tc','#0f52ba');
+      var cb=fx15el('button','fx15-ctx','Business');cb.type='button';cb.style.setProperty('--tc','#d4a017');
+      cp.addEventListener('click',function(){ctx='Personal';cp.classList.add('on');cb.classList.remove('on');});
+      cb.addEventListener('click',function(){ctx='Business';cb.classList.add('on');cp.classList.remove('on');});
+      ctxRow.appendChild(cp);ctxRow.appendChild(cb);
+      var quick=fx15el('button','fx15-ctx','Make a note about this');quick.type='button';quick.style.setProperty('--tc','#07925f');
+      quick.addEventListener('click',function(){if(ta)ta.focus();});
+      ctxRow.appendChild(quick);
+      notesSec.insertBefore(ctxRow,ta);
+      var vaultNote=fx15el('p','fx15-vault-note');
+      notesSec.appendChild(vaultNote);
+      if(saveBtn){
+        saveBtn.addEventListener('click',function(){
+          setTimeout(function(){
+            try{
+              var txt=ta?ta.value:'';
+              if(txt&&txt.trim()){
+                fx15VaultAdd(alias,txt.trim(),ctx);
+                vaultNote.textContent='Saved to your Smart Vault ('+ctx+', today).';
+                fx15RenderCalDays(calStrip,calView,alias);
+              }
+            }catch(e){}
+          },60);
+        });
+      }
+      var calSec=fx15el('div','fx15-card-sec');
+      calSec.appendChild(fx15el('div','fx15-card-sec-t','NOTES, DAY BY DAY'));
+      var calStrip=fx15el('div','fx15-cal-strip');
+      var calView=fx15el('p','fx15-cal-view');
+      calSec.appendChild(calStrip);calSec.appendChild(calView);
+      frame.insertBefore(calSec,frame.querySelector('.fx2-card-close'));
+      fx15RenderCalDays(calStrip,calView,alias);
+    }
+  }catch(e){}
+}
+function fx15RenderCalDays(strip,view,alias){
+  if(!strip||!view)return;
+  strip.innerHTML='';
+  var days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var today=new Date();
+  function showDay(iso,label){
+    var entries=fx15VaultEntries(alias).filter(function(e){return e.date===iso;});
+    if(!entries.length){view.textContent=label+': no note that day.';return;}
+    view.textContent=label+': '+entries.map(function(e){return e.text+' ('+e.ctx+')';}).join(' — ');
+  }
+  for(var i=6;i>=0;i--){
+    (function(off){
+      var d=new Date(today.getFullYear(),today.getMonth(),today.getDate()-off);
+      var iso=fx15todayISO(d);
+      var label=days[d.getDay()]+' '+d.getDate()+(off===0?' (today)':'');
+      var b=fx15el('button','fx15-cal-day'+(off===0?' on':''),days[d.getDay()]+' '+d.getDate());
+      b.type='button';b.setAttribute('data-fx15-day',iso);
+      b.addEventListener('click',function(){
+        Array.prototype.forEach.call(strip.querySelectorAll('.fx15-cal-day'),function(x){x.classList.remove('on');});
+        b.classList.add('on');
+        showDay(iso,label);
+      });
+      strip.appendChild(b);
+      if(off===0)showDay(iso,label);
+    })(i);
+  }
+}
+function fx15WatchCard(){
+  if(!window.MutationObserver)return;
+  try{
+    var mo=new MutationObserver(function(){
+      var c=document.getElementById('fx2Card');
+      if(c)fx15EnhanceCard(c);
+    });
+    mo.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['class']});
+  }catch(e){}
+}
+
+/* ---------- (6) COMPOSER REBUILD: same engine, new presentation.
+   The modal is rebuilt fresh on every open — restructure it each time by
+   MOVING its own nodes into plain-word steps (listeners move with them). --- */
+function fx15RestructureComposer(modal){
+  try{
+    if(!modal||modal.querySelector('.fx15-step'))return;
+    var container=modal.querySelector('.fx13-compose-scroll')||modal;
+    var top=modal.querySelector('.mlx-top');
+    var title=modal.querySelector('.mlx-title');
+    if(title)title.textContent='Write a message';
+    var sub=modal.querySelector('.mlx-sub');
+    if(sub)sub.textContent='Pick who, write it plainly, send it. Step 1, Step 2, Step 3 — then Send.';
+    function step(n,head){
+      var s=fx15el('div','fx15-step');
+      var h=fx15el('div','fx15-step-h');
+      h.innerHTML='Step '+n+' — '+head;
+      s.appendChild(h);
+      return s;
+    }
+    function relabel(txt,nu){
+      Array.prototype.forEach.call(container.querySelectorAll('.ml-field-l'),function(l){
+        if((l.textContent||'').trim()===txt)l.textContent=nu;
+      });
+    }
+    relabel('FROM (ALIAS)','Sending as');
+    relabel('TO','To — pick people or lists');
+    relabel('SUBJECT','Subject — what is it about?');
+    relabel('MESSAGE','Your message');
+    relabel('ATTACH INTELLIGENCE (SMART NOTES)','Attach a smart note (optional)');
+    relabel('POST TO SPACE','Post to a space');
+    relabel('FEED POST','Post preview');
+    Array.prototype.forEach.call(container.querySelectorAll('.ml-mode'),function(b){
+      var m=b.getAttribute('data-mode');
+      if(m==='inbox')b.textContent='Mail';
+      else if(m==='instant')b.textContent='Instant message';
+    });
+    var hint=container.querySelector('.ml-field-hint');
+    if(hint)hint.textContent='Pick one or several — lists expand when you send.';
+    var s1=step(1,'Mail or instant message?');
+    var s2=step(2,'Who is this for?');
+    var s3=step(3,'What is it about?');
+    var s4=step(4,'Write it');
+    var s5=step(5,'Add something smart');
+    var s6=step(6,'Send it');
+    function move(sel,dest){
+      var n=container.querySelector(sel);
+      if(n)dest.appendChild(n);
+      return n;
+    }
+    move('.ml-modes',s1);move('.ml-mode-hint',s1);
+    move('.ml-recent',s2);move('#mlToRow',s2);move('.mlx-to-picks',s2);move('.mlx-chips',s2);move('.ml-postwrap',s2);
+    var sj=null;
+    Array.prototype.forEach.call(container.querySelectorAll('.ml-field'),function(f){
+      var l=f.querySelector('.ml-field-l');
+      var t=l?(l.textContent||'').trim():'';
+      if(t.indexOf('Subject')===0)sj=f;
+    });
+    if(sj)s3.appendChild(sj);
+    move('.mlx-msgsec',s4);
+    move('.mlx-attachsec',s5);
+    move('.ml-field',s6);
+    var sch=container.querySelector('.mlx-schedsec');
+    if(sch)s6.appendChild(sch);
+    var sendBtn=container.querySelector('.mlx-send');
+    if(sendBtn)sendBtn.classList.add('fx15-send-hero');
+    [s1,s2,s3,s4,s5,s6].forEach(function(s){container.appendChild(s);});
+    Array.prototype.forEach.call(Array.prototype.slice.call(container.children),function(ch){
+      if(ch===top||ch.classList.contains('fx15-step'))return;
+      s6.appendChild(ch);
+    });
+    modal.setAttribute('data-fx15-composed','1');
+    fx15WirePreview(modal);
+    fx15PlaceComposerInViewer(modal);
+  }catch(e){}
+}
+function fx15WatchComposer(){
+  if(!window.MutationObserver)return;
+  try{
+    var mo=new MutationObserver(function(){
+      var m=document.querySelector('.ml-modal.mlx');
+      if(m)fx15RestructureComposer(m);
+    });
+    mo.observe(document.body,{childList:true,subtree:true});
+  }catch(e){}
+  try{
+    document.addEventListener('click',function(ev){
+      var t=ev.target&&ev.target.closest?ev.target.closest('.ml-compose-top'):null;
+      if(!t)return;
+      setTimeout(function(){var m=document.querySelector('.ml-modal.mlx');if(m){fx15RestructureComposer(m);fx15PlaceComposerInViewer(m);}},350);
+      setTimeout(function(){var m2=document.querySelector('.ml-modal.mlx');if(m2){fx15RestructureComposer(m2);fx15PlaceComposerInViewer(m2);}},900);
+    },true);
+  }catch(e){}
+}
+
+/* ---------- (9) CONVERSATION FEED HEADER + SAVE TO VAULT.
+   The reader re-renders on every refresh, so enhance on each pass
+   (idempotent per render via data-fx15-head). Pin stays rightmost: Save
+   is inserted BEFORE it. Date/time: the base renders relative-only times
+   and keeps timestamps closure-private, so the header states the last
+   message exactly as the system knows it, plus today's live date/time,
+   labelled "Today" so it can never misread as the message's date. --- */
+function fx15SavedConvs(){return fx15load('fx15-vault-convs',[]);}
+function fx15PaintSaveBtn(alias,btn){
+  try{
+    var saved=fx15SavedConvs().some(function(c){return c.alias===alias;});
+    btn.textContent=saved?'Saved ✓':'Save';
+    btn.classList.toggle('on',saved);
+    var note=btn.parentNode?btn.parentNode.querySelector('.fx15-head-save-note'):null;
+    if(note)note.textContent=saved?'Saved — stays in your Smart Vault.':'Auto-deletes in a week unless saved.';
+  }catch(e){}
+}
+function fx15ToggleSaveConv(alias,btn){
+  try{
+    var all=fx15SavedConvs();
+    var ix=-1;all.forEach(function(c,i){if(c.alias===alias)ix=i;});
+    if(ix>=0){all.splice(ix,1);}
+    else{
+      var msgs=[];Array.prototype.forEach.call(document.querySelectorAll('#nmReader .nm-bubble p'),function(p){msgs.push(p.textContent);});
+      var threadId='';var b=document.querySelector('#nmReader .nm-bubble');if(b)threadId=b.getAttribute('data-nm-msg')||'';
+      all.push({type:'conversation',alias:alias,threadId:threadId,savedAt:new Date().toISOString(),messages:msgs});
+    }
+    fx15store('fx15-vault-convs',all);
+    fx15PaintSaveBtn(alias,btn);
+  }catch(e){}
+}
+function fx15EnhanceReader(){
+  try{
+    var head=document.querySelector('#nmReader .nm-reader-head');
+    if(!head||head.getAttribute('data-fx15-head'))return;
+    var orb=head.querySelector('.nm-orb[data-fx2-card]');
+    if(!orb)return;
+    head.setAttribute('data-fx15-head','1');
+    var alias=orb.getAttribute('data-fx2-card')||'';
+    var nameEl=head.querySelector('.nm-person-name');
+    var idBox=nameEl?nameEl.parentNode:null;
+    var now=new Date();
+    var dateStr=now.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+    var timeStr=now.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',second:'2-digit'});
+    /* THE DAY'S THEME: the header carries the day's tile in the exact form
+       he showed — "Thursday, November 26, 2026 · 5:57:05 PM" — full weekday,
+       full date, time with seconds. The day's colour (seven law-book
+       colours, one per weekday, Sun→Sat) marks the tile with a ◆ and rules
+       the header's underline, so the IM wears the day. (Constructed map,
+       named in the maker report — no weekday→colour source exists in the
+       file to harvest.) */
+    var DAY_COLORS=['#0f52ba','#07925f','#8e24aa','#d4a017','#c2410c','#c62828','#a21caf'];
+    var dayColor=DAY_COLORS[now.getDay()]||'#0f52ba';
+    head.style.borderBottom='2px solid '+dayColor;
+    head.style.paddingBottom='10px';
+    var rels=[];Array.prototype.forEach.call(document.querySelectorAll('#nmReader .nm-bubble .nm-bubble-meta span'),function(s){var t=(s.textContent||'').trim();if(/ago|just now/.test(t))rels.push(t);});
+    var lastRel=rels.length?rels[rels.length-1]:'';
+    var lines=document.createElement('div');lines.className='fx15-head-lines';
+    var u=document.createElement('div');u.className='fx15-head-user';u.textContent='@'+alias;lines.appendChild(u);
+    var w=document.createElement('div');w.className='fx15-head-when';w.textContent=lastRel?('Last message '+lastRel):'Last message —';lines.appendChild(w);
+    var t=document.createElement('div');t.className='fx15-head-today';
+    var dia=document.createElement('span');dia.textContent='◆ ';dia.style.color=dayColor;t.appendChild(dia);
+    t.appendChild(document.createTextNode(dateStr+' · '+timeStr));lines.appendChild(t);
+    var n=document.createElement('div');n.className='fx15-head-save-note';n.textContent='Auto-deletes in a week unless saved.';lines.appendChild(n);
+    if(idBox)idBox.appendChild(lines);else head.appendChild(lines);
+    var pin=head.querySelector('[data-nm-pin-conv]');
+    var save=document.createElement('button');save.type='button';save.className='fx15-save-conv';save.textContent='Save';
+    save.setAttribute('aria-label','Save this conversation to your Smart Vault');
+    save.addEventListener('click',function(){fx15ToggleSaveConv(alias,save);});
+    if(pin)head.insertBefore(save,pin);else head.appendChild(save);
+    fx15PaintSaveBtn(alias,save);
+  }catch(e){}
+}
+
+/* ---------- (11) COMPOSER IN THE VIEWER + LIVE PREVIEW.
+   Move the whole overlay into the viewer where the mail is read
+   (.mail-stage .ml-read for mail, #nmReader for instant messages) and
+   render it inline — the base close logic removes the overlay, so X and
+   send-close work untouched. If neither viewer is visible, leave the
+   window where it is (honest fallback, never an invisible composer). --- */
+function fx15PlaceComposerInViewer(modal){
+  try{
+    if(!modal)return;
+    var ov=modal.closest?modal.closest('.ml-overlay'):null;
+    if(!ov||ov.classList.contains('fx15-in-viewer'))return;
+    var mode='inbox';
+    var act=modal.querySelector('.ml-mode.on,.ml-mode.active,.ml-mode[aria-pressed="true"]');
+    if(act)mode=act.getAttribute('data-mode')||mode;
+    var mailView=document.querySelector('.mail-stage .ml-read');
+    var chatView=document.querySelector('#nmReader');
+    function vis(el){if(!el)return false;var r=el.getBoundingClientRect();return r.width>0&&r.height>0;}
+    var target=null;
+    if(mode==='instant')target=vis(chatView)?chatView:(vis(mailView)?mailView:null);
+    else target=vis(mailView)?mailView:(vis(chatView)?chatView:null);
+    if(!target)return;
+    ov.classList.add('fx15-in-viewer');
+    target.appendChild(ov);
+    try{ov.scrollIntoView({block:'start',behavior:'instant'});}catch(e){}
+  }catch(e){}
+}
+function fx15WirePreview(modal){
+  try{
+    if(!modal||modal.querySelector('.fx15-preview'))return;
+    var steps=modal.querySelectorAll('.fx15-step');
+    var host=steps.length>=4?steps[3]:null;
+    if(!host)return;
+    var pv=fx15el('div','fx15-preview');
+    pv.innerHTML='<div class="fx15-preview-h">THIS IS HOW IT WILL READ</div><div class="fx15-preview-to"></div><div class="fx15-preview-subj"></div><div class="fx15-preview-body"></div>';
+    host.appendChild(pv);
+    function paint(){
+      var to=modal.querySelector('select[name="to"]');
+      var names=[];if(to)Array.prototype.forEach.call(to.selectedOptions||[],function(o){names.push((o.textContent||'').trim());});
+      var sj=modal.querySelector('.mlx-subject');
+      var bd=modal.querySelector('.mlx-body');
+      pv.querySelector('.fx15-preview-to').textContent=names.length?('To: '+names.join(', ')):'To: — pick someone above';
+      pv.querySelector('.fx15-preview-subj').textContent=(sj&&sj.value)?sj.value:'(no subject yet)';
+      pv.querySelector('.fx15-preview-body').textContent=(bd&&bd.value)?bd.value:'Start writing above — it shows here as you type, exactly as it will read.';
+    }
+    var sj2=modal.querySelector('.mlx-subject');if(sj2)sj2.addEventListener('input',paint);
+    var bd2=modal.querySelector('.mlx-body');if(bd2)bd2.addEventListener('input',paint);
+    var to2=modal.querySelector('select[name="to"]');if(to2)to2.addEventListener('change',paint);
+    Array.prototype.forEach.call(modal.querySelectorAll('.ml-mode'),function(b){b.addEventListener('click',function(){setTimeout(paint,150);});});
+    paint();
+  }catch(e){}
+}
+
+/* ---------- (12) MAIL THREAD — ONE TITLE, NO DOUBLE TEXT.
+   The row's snippet repeats the subject ("Welcome to the new Messenger —
+   this is your mail…"). Just the title, then the message: strip the
+   subject prefix off the snippet; hide the snippet if nothing is left.
+   Runs every pass so list re-renders get fixed again. --- */
+function fx15FixMailThreads(){
+  try{
+    Array.prototype.forEach.call(document.querySelectorAll('.ml-thread'),function(row){
+      var sj=row.querySelector('.ml-thread-subj');
+      var sn=row.querySelector('.ml-thread-snip');
+      if(!sj||!sn)return;
+      var subj=(sj.textContent||'').trim();
+      var snip=(sn.textContent||'').trim();
+      if(subj&&snip.indexOf(subj)===0){
+        var rest=snip.slice(subj.length).replace(/^[—–\-:\s]+/,'').trim();
+        if(rest!==snip)sn.textContent=rest;
+        sn.style.display=rest?'':'none';
+      }
+    });
+  }catch(e){}
+}
+/* ---------- (13) SELECT / ACTIONS CLUSTER — each control its own look.
+   Tag by label (labels are constants in the base); CSS above gives each
+   its colour. Runs every pass so re-renders get tagged again. --- */
+function fx15PaintSelectCluster(){
+  try{
+    Array.prototype.forEach.call(document.querySelectorAll('.ml-fchip'),function(b){
+      var t=(b.textContent||'').trim();
+      if(t==='SELECT')b.classList.add('fx15-chip-select');
+      else if(t==='ALL')b.classList.add('fx15-chip-all');
+      else if(t==='WITH NOTES')b.classList.add('fx15-chip-notes');
+      else if(t==='UNREAD')b.classList.add('fx15-chip-unread');
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.ml-bulkbar button'),function(b){
+      var t=(b.textContent||'').trim();
+      if(t==='MARK READ')b.classList.add('fx15-mark-read');
+      else if(t==='DELETE')b.classList.add('fx15-delete');
+    });
+  }catch(e){}
+}
+
+/* ---------- boot ---------- */
+function fx15Pass(){
+  try{fx15StripCounts();}catch(e){}
+  try{fx15RenameActive();}catch(e){}
+  try{fx15DomHosts().forEach(function(h){fx15EnhanceLists(h);});}catch(e){}
+  try{fx15WireTopButton();}catch(e){}
+  try{
+    var dd=document.getElementById('ovSlDropdown');if(dd)dd.hidden=true;
+  }catch(e){}
+  try{fx15PaintLvToggle();}catch(e){}
+  try{fx15EnhanceReader();}catch(e){}
+  try{fx15FixMailThreads();}catch(e){}
+  try{fx15PaintSelectCluster();}catch(e){}
+}
+function fx15Boot(){
+  try{fx15WatchCapture();}catch(e){}
+  try{fx15WatchQaPanel();}catch(e){}
+  try{fx15WatchCard();}catch(e){}
+  try{fx15WatchComposer();}catch(e){}
+  fx15Pass();
+  setInterval(fx15Pass,800);
+  try{
+    window.__fx15={version:'fix15-20261126-v2',lvSide:function(){return fx15LvSide;},
+      groupSends:function(){return fx15load('fx15-group-sends',[]);},
+      groupNotifs:function(){return fx15load('fx15-group-notifs',[]);},
+      vaultNotes:function(){return fx15load('fx15-vault-notes',[]);},
+      vaultConvs:function(){return fx15load('fx15-vault-convs',[]);}};
+  }catch(e){}
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fx15Boot);
+else fx15Boot();
+})();
+</script>
+
 </body></html>
