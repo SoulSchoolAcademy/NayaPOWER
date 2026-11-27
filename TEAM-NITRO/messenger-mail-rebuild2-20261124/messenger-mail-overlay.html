@@ -10699,4 +10699,235 @@ else fx16Boot();
 })();
 </script>
 
+<!-- ============ FIX16b — 2026-11-26 (Shawn's eye, ~21:04 MST) ============
+     Appended after fix16 (commit d52f3076). Base bytes untouched.
+     1) DM / mail / audio / video circles +20% (40px -> 48px, the size of the
+        orb itself; rail card buttons 40px -> 48px too).
+     2) Click the INITIAL opens the contact card, everywhere the initial appears.
+     3) The card is ALL-STAR: everything we know, full history, honestly stated.
+     4) Notes on the person save in the Smart Vault (fx15 path, re-proved). -->
+<style id="ov-fix16b-20261126">
+/* --- (1) circles +20% --- */
+.fx15-act{width:48px!important;height:48px!important;font-size:23px!important;}
+.pc-act-btn{width:48px!important;height:48px!important;font-size:20px!important;}
+.pc-card .pc-act-btn{width:48px!important;height:48px!important;font-size:20px!important;}
+.fx13-member-ball{width:48px!important;height:48px!important;font-size:20px!important;cursor:pointer!important;}
+.nm-side-dm-orb{width:48px!important;height:48px!important;font-size:23px!important;cursor:pointer!important;}
+/* The four big circles ride on their own row under the name, at every width:
+   the lists column is narrow (~294px) and the row already overflowed at 40px —
+   wrapping keeps the name whole and nothing overflows. */
+.fx13-member{flex-wrap:wrap!important;gap:8px!important;}
+.fx15-member-acts{gap:6px!important;margin-left:0!important;flex-basis:100%!important;justify-content:flex-start!important;}
+.fx13-member-name{min-width:0!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important;}
+/* --- (3) all-star card --- */
+.fx16-star-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important;margin:10px 0 4px!important;}
+.fx16-star-tile{background:#050607!important;border:1.5px solid var(--sc,#8e24aa)!important;border-radius:14px!important;padding:12px!important;box-shadow:0 6px 16px rgba(0,0,0,.5),0 0 14px -6px var(--sc,#8e24aa)!important;}
+.fx16-star-tile b{display:block!important;font-size:25px!important;font-weight:800!important;color:#ffffff!important;line-height:1.15!important;}
+.fx16-star-tile span{font-size:17px!important;font-weight:700!important;color:#ffffff!important;line-height:1.35!important;}
+.fx16-star-line{font-size:17px!important;color:#ffffff!important;line-height:1.55!important;margin:8px 0 0!important;}
+.fx16-star-line b{color:#ffffff!important;}
+</style>
+<script>
+(function(){
+'use strict';
+/* ---------- helpers (local copies; fx16's live in its own IIFE) ---------- */
+function fx16bLoad(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch(e){return d;}}
+function fx16bEl(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
+function fx16bAliasFromName(txt){
+  if(!txt)return '';
+  var t=(txt||'').trim();
+  var ix=t.indexOf(' — '); if(ix>-1)t=t.slice(0,ix).trim();
+  var first=(t.split(/\s+/)[0]||'').toLowerCase().replace(/[^a-z0-9]/g,'');
+  if(first==='shawn')return 'shawn';
+  if(/^naya\d+$/.test(first))return first;
+  if(first==='naya'){var m=t.match(/naya\s*(\d+)/i);if(m)return 'naya'+m[1];}
+  return first;
+}
+function fx16bOpenCard(alias){
+  if(!alias)return false;
+  try{
+    var card=document.getElementById('fx2Card');
+    if(card&&card.classList.contains('open')&&card.getAttribute('data-fx15-card')===alias)return true;
+    if(window.__fx2OpenCard)window.__fx2OpenCard(alias);
+    setTimeout(function(){
+      try{
+        var c=document.getElementById('fx2Card');
+        if(c&&c.classList.contains('open'))return;
+        var orig=document.querySelector('[data-pc-info="'+alias+'"]')||document.querySelector('[data-pc-orb="'+alias+'"]');
+        if(orig)orig.click();
+      }catch(e){}
+    },600);
+    return true;
+  }catch(e){return false;}
+}
+/* ---------- (2) the INITIAL opens the card, everywhere it appears ---------- */
+function fx16bWatchBalls(){
+  document.addEventListener('click',function(ev){
+    try{
+      var ball=ev.target&&ev.target.closest?ev.target.closest('.fx13-member-ball'):null;
+      if(ball){
+        var row=ball.closest('.fx13-member');
+        var nm=row?row.querySelector('.fx13-member-name'):null;
+        var alias=fx16bAliasFromName(nm?nm.textContent:'');
+        if(alias){ev.stopPropagation();ev.preventDefault();fx16bOpenCard(alias);return;}
+      }
+      var orb=ev.target&&ev.target.closest?ev.target.closest('.nm-side-dm-orb,.ml-qa-ava'):null;
+      if(orb){
+        var a=orb.getAttribute('data-pc-orb')||orb.getAttribute('data-pc-alias')||orb.getAttribute('data-alias')||'';
+        if(!a){var lab=orb.getAttribute('aria-label')||orb.getAttribute('title')||'';a=fx16bAliasFromName(lab);}
+        if(!a){
+          /* side DM orb: fall back to the open thread's person */
+          var rd=document.getElementById('nmReader');
+          var hd=rd?rd.querySelector('.nm-thread-name,.nm-conv-name'):null;
+          a=fx16bAliasFromName(hd?hd.textContent:'');
+        }
+        if(a){fx16bOpenCard(a);}
+      }
+    }catch(e){}
+  },true);
+}
+/* ---------- (3) ALL-STAR card: everything we know, honestly stated ---------- */
+function fx16bVaultEntries(alias){
+  var all=fx16bLoad('fx15-vault-notes',[]);
+  return all.filter(function(e){return e&&e.alias===alias;});
+}
+function fx16bMailHistory(alias,name){
+  var out=[];
+  try{
+    Array.prototype.forEach.call(document.querySelectorAll('.ml-thread'),function(t){
+      if(out.length>=6)return;
+      var txt=(t.textContent||'').replace(/\s+/g,' ').trim();
+      if(!txt)return;
+      var low=txt.toLowerCase();
+      if(low.indexOf(name.toLowerCase())<0&&low.indexOf(alias.toLowerCase())<0)return;
+      var lines=(t.textContent||'').split('\n').map(function(x){return x.trim();}).filter(function(x){return x;});
+      var subj='',date='';
+      lines.forEach(function(l){
+        if(!subj&&l.toLowerCase().indexOf(name.toLowerCase())<0&&l.toLowerCase().indexOf(alias.toLowerCase())<0&&l.length>2)subj=l;
+        else if(!date&&/\d{4}|\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\b|today|yesterday/i.test(l))date=l;
+      });
+      out.push({subj:subj||txt.slice(0,80),date:date||''});
+    });
+  }catch(e){}
+  return out;
+}
+function fx16bImHistory(alias,name){
+  var out={match:false,items:[]};
+  try{
+    var rd=document.getElementById('nmReader');
+    if(!rd)return out;
+    var head=(rd.textContent||'').slice(0,300).toLowerCase();
+    if(head.indexOf(name.toLowerCase())<0&&head.indexOf(alias.toLowerCase())<0)return out;
+    out.match=true;
+    var ps=rd.querySelectorAll('.nm-bubble p');
+    var arr=[];Array.prototype.forEach.call(ps,function(p){var t=(p.textContent||'').trim();if(t)arr.push(t);});
+    out.items=arr.slice(-6);
+  }catch(e){}
+  return out;
+}
+function fx16bAllStar(card,alias){
+  try{
+    if(!card||!alias)return;
+    if(card.getAttribute('data-fx16b-star')===alias)return;
+    card.setAttribute('data-fx16b-star',alias);
+    var nameEl=card.querySelector('.fx2-card-name');
+    var name=nameEl?(nameEl.textContent||'').trim():alias;
+    var pctEl=card.querySelector('.fx2-card-pct');
+    var pct=pctEl?(pctEl.textContent||'').trim():'';
+    var factsEl=card.querySelector('.fx2-card-facts');
+    var facts=factsEl?(factsEl.textContent||'').trim():'';
+    var sub=card.querySelector('.fx2-card-sub');
+    var pres='';if(sub){var parts=(sub.textContent||'').split(' · ');pres=(parts[1]||'').trim();}
+    var chats=0,mails=0,role='';
+    var cm=facts.match(/(\d+)\s+chat conversation/);if(cm)chats=parseInt(cm[1],10);
+    var mm=facts.match(/(\d+)\s+letter/);if(mm)mails=parseInt(mm[1],10);
+    var rm=facts.match(/^(.*?)\s*·\s*\d+\s+chat/);if(rm)role=rm[1].trim();
+    var notes=fx16bVaultEntries(alias);
+    var frame=card.querySelector('.fx2-card-frame');if(!frame)return;
+    var closeBtn=frame.querySelector('.fx2-card-close');
+    /* --- EVERYTHING WE KNOW: the stat grid --- */
+    var sec=fx16bEl('div','fx15-card-sec');
+    sec.appendChild(fx16bEl('div','fx15-card-sec-t','EVERYTHING WE KNOW'));
+    var honest=fx16bEl('p','fx16-star-line','Every number below comes from your own records — nothing guessed. Where a number is missing, it says so.');
+    sec.appendChild(honest);
+    var grid=fx16bEl('div','fx16-star-grid');
+    function tile(val,label,colour){
+      var t=fx16bEl('div','fx16-star-tile');t.style.setProperty('--sc',colour||'#8e24aa');
+      t.appendChild(fx16bEl('b',null,val));t.appendChild(fx16bEl('span',null,label));grid.appendChild(t);
+    }
+    tile(pct||'—','Auto-Match score','#8e24aa');
+    tile(chats>0?String(chats):'0','chat conversations','#0f52ba');
+    tile(mails>0?String(mails):'0','letters together','#d4a017');
+    tile(notes.length>0?String(notes.length):'0','notes saved in your Vault','#07925f');
+    sec.appendChild(grid);
+    if(role)sec.appendChild(fx16bEl('p','fx16-star-line','Role: '+role+'.'));
+    if(pres)sec.appendChild(fx16bEl('p','fx16-star-line','Right now: '+pres+'.'));
+    if(chats===0&&mails===0)sec.appendChild(fx16bEl('p','fx16-star-line','No chats or letters with '+name+' on record yet — the score above is the Auto-Match score only, not a history.'));
+    frame.insertBefore(sec,closeBtn);
+    /* --- FULL HISTORY: IM + mail + notes, both directions --- */
+    var hist=fx16bEl('div','fx15-card-sec');
+    hist.appendChild(fx16bEl('div','fx15-card-sec-t','FULL HISTORY — MESSAGES & NOTES'));
+    var im=fx16bImHistory(alias,name);
+    if(im.match&&im.items.length){
+      hist.appendChild(fx16bEl('p','fx16-star-line','Instant messages with '+name+':'));
+      im.items.forEach(function(t){var p=fx16bEl('p','fx15-card-why','IM · '+t);hist.appendChild(p);});
+    }else if(im.match){
+      hist.appendChild(fx16bEl('p','fx16-star-line','Their instant thread is open, with no messages shown yet.'));
+    }else{
+      hist.appendChild(fx16bEl('p','fx16-star-line','Instant messages: open their instant thread to read your messages here.'));
+    }
+    var mh=fx16bMailHistory(alias,name);
+    if(mh.length){
+      hist.appendChild(fx16bEl('p','fx16-star-line','Letters with '+name+':'));
+      mh.forEach(function(h){var p=fx16bEl('p','fx15-card-why','MAIL · '+h.subj+(h.date?' — '+h.date:''));hist.appendChild(p);});
+    }else{
+      hist.appendChild(fx16bEl('p','fx16-star-line','No letters with '+name+' on record.'));
+    }
+    if(notes.length){
+      hist.appendChild(fx16bEl('p','fx16-star-line','Your notes on '+name+' (in your Smart Vault):'));
+      notes.slice(-6).forEach(function(n){var p=fx16bEl('p','fx15-card-why','NOTE · '+(n.ctx||'Personal')+' · '+(n.date||'')+': '+(n.text||''));hist.appendChild(p);});
+    }else{
+      hist.appendChild(fx16bEl('p','fx16-star-line','No notes on '+name+' yet — write one below and it saves to your Smart Vault.'));
+    }
+    frame.insertBefore(hist,closeBtn);
+    /* --- (4) the notes section says where notes go --- */
+    Array.prototype.forEach.call(frame.querySelectorAll('.fx2-card-sec'),function(s){
+      var t=s.querySelector('.fx2-card-sec-t');
+      if(t&&(t.textContent||'').indexOf('YOUR NOTES')===0&&!s.querySelector('.fx16-star-line')){
+        s.appendChild(fx16bEl('p','fx16-star-line','Notes you save here go to your Smart Vault — Personal or Business, day by day on the calendar below.'));
+      }
+    });
+  }catch(e){}
+}
+function fx16bCardPass(){
+  try{
+    var card=document.getElementById('fx2Card');
+    if(!card||!card.classList.contains('open'))return;
+    var a=card.getAttribute('data-fx15-card');
+    if(a)fx16bAllStar(card,a);
+    /* initials are buttons to the card: label them */
+    Array.prototype.forEach.call(document.querySelectorAll('.fx13-member-ball'),function(b){
+      if(b.getAttribute('data-fx16b-ball'))return;
+      b.setAttribute('data-fx16b-ball','1');
+      var row=b.closest('.fx13-member');
+      var nm=row?row.querySelector('.fx13-member-name'):null;
+      var who=nm?(nm.textContent||'').split(' — ')[0].trim():'this person';
+      b.setAttribute('title','Open '+who+'’s card');
+      b.setAttribute('aria-label','Open '+who+'’s card');
+      b.setAttribute('role','button');
+    });
+  }catch(e){}
+}
+function fx16bPass(){try{fx16bCardPass();}catch(e){}}
+function fx16bBoot(){
+  try{fx16bWatchBalls();}catch(e){}
+  fx16bPass();
+  setInterval(fx16bPass,700);
+  try{window.__fx16b={version:'fix16b-20261126',aliasFromName:fx16bAliasFromName,openCard:fx16bOpenCard};}catch(e){}
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fx16bBoot);
+else fx16bBoot();
+})();
+</script>
+
 </body></html>
