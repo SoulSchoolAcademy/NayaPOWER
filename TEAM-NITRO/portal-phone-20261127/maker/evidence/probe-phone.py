@@ -1,0 +1,97 @@
+# Real-tap probe of the staged Black Diamond phone (Playwright Chromium
+# via the localhost forwarder — VM browsers flap; Chromium is the proven
+# engine for live reads). Loads ?walk=1, types answers, taps the ball,
+# taps Next/Back, screenshots both widths. Prints PASS/FAIL per check.
+import json, re, sys
+from playwright.sync_api import sync_playwright
+
+BASE = "https://portal-frontpage-fix-20261125-r5phone-staging.nayapower.workers.dev/?walk=1&name=Test&alias=tester"
+OUT = "/home/hatch/workspace/team-nitro/portal-phone-20261127/maker/evidence/"
+fails = []
+def check(name, ok, extra=""):
+    print(("PASS " if ok else "FAIL ") + name + (" " + str(extra) if extra else ""))
+    if not ok:
+        fails.append(name)
+
+with sync_playwright() as pw:
+    browser = pw.chromium.launch(proxy={"server": "http://127.0.0.1:18080"})
+    # ---- phone 390x844 ----
+    ctx = browser.new_context(viewport={"width": 390, "height": 844}, device_scale_factor=2)
+    page = ctx.new_page()
+    errors = []
+    page.on("pageerror", lambda e: errors.append(str(e)))
+    page.on("console", lambda m: errors.append("console." + m.type + ": " + m.text) if m.type == "error" else None)
+    page.goto(BASE, wait_until="networkidle", timeout=90000)
+    page.wait_for_selector("#bdPhone", timeout=15000)
+    check("phone visible at 390", page.is_visible("#bdPhone"))
+    check("walk section visible (not hidden)", page.is_visible("#fpWalk"))
+    q1 = page.text_content("#fpWalkQ")
+    check("Q1 is country", "country" in q1.lower(), q1)
+    check("progress 1 of 18", "1 of 18" in page.text_content("#fpWalkProgress"))
+    clock = page.text_content("#bdClock")
+    check("live clock ticking (h:mm)", bool(re.match(r"^\d{1,2}:\d{2}$", clock.strip())), clock)
+    check("5G in status bar", "5G" in page.text_content(".bd-statusbar"))
+    batt = page.text_content("#bdBattNum").strip()
+    check("battery shows a live 0-100 level (100 here = headless Chromium's real level; 87 is the no-API fallback)", batt.isdigit() and 0 <= int(batt) <= 100, batt)
+    check("battery fill matches the number", page.eval_on_selector("#bdBattFill", "el => el.style.width") == batt + "%")
+    check("ENTER label under ball", page.text_content(".bd-enter-label").strip() == "ENTER")
+    check("no separate Enter button inside the phone", page.locator("#bdPhone button", has_text="Enter").count() == 0)
+    check("ball is the Enter button", page.locator("#fpWalkEnter.bd-ball").count() == 1)
+    check("screen is 9:16", abs(page.eval_on_selector(".bd-screen", "el => el.offsetWidth / el.offsetHeight") - 9/16) < 0.02)
+    check("phone fills mobile width", page.eval_on_selector(".bd-phone", "el => el.offsetWidth") >= 380)
+    page.fill("#fpWalkAnswer", "Canada")
+    page.click("#fpWalkEnter")
+    page.wait_for_selector("#bdReveal:not([hidden])", timeout=5000)
+    check("ball reveals in place", page.is_visible("#bdReveal"))
+    check("reveal shows typed answer", "Canada" in page.text_content("#bdRevealA"))
+    check("input hidden after reveal", not page.is_visible("#bdInputWrap"))
+    check("still Q1 after ball (ball never navigates)", "1 of 18" in page.text_content("#fpWalkProgress"))
+    page.wait_for_timeout(800)
+    page.screenshot(path=OUT + "phone-390-reveal.png")
+    page.click("#fpWalkNext")
+    check("Next -> Q2 province", "province" in page.text_content("#fpWalkQ").lower(), page.text_content("#fpWalkQ"))
+    check("progress 2 of 18", "2 of 18" in page.text_content("#fpWalkProgress"))
+    page.fill("#fpWalkAnswer", "Ontario")
+    page.click("#fpWalkEnter")
+    check("Q2 reveal shows Ontario", "Ontario" in page.text_content("#bdRevealA"))
+    page.click("#fpWalkNext")
+    check("Next -> Q3 city", "city" in page.text_content("#fpWalkQ").lower())
+    page.fill("#fpWalkAnswer", "Toronto")
+    page.click("#fpWalkEnter")
+    page.click("#fpWalkNext")
+    q4 = page.text_content("#fpWalkQ")
+    check("Next -> Q4 motto (harvested walk)", "motto" in q4.lower(), q4)
+    check("progress 4 of 18", "4 of 18" in page.text_content("#fpWalkProgress"))
+    page.fill("#fpWalkAnswer", "Ten stars or bust.")
+    page.click("#fpWalkEnter")
+    check("Q4 reveal shows answer + our example", "Ten stars or bust." in page.text_content("#bdRevealA") and "Our example" in page.text_content("#bdRevealEx"))
+    page.click("#fpWalkBack")
+    check("Back -> Q3 city, answer kept", "city" in page.text_content("#fpWalkQ").lower() and page.input_value("#fpWalkAnswer") == "Toronto")
+    saved = page.evaluate("() => JSON.parse(localStorage.getItem('naya_welcome_right_v1') || '{}').answers || {}")
+    check("answers saved as you go (localStorage)", saved.get("country") == "Canada" and saved.get("province") == "Ontario" and saved.get("city") == "Toronto" and saved.get("motto") == "Ten stars or bust.", json.dumps(saved))
+    page.wait_for_timeout(800)
+    page.screenshot(path=OUT + "phone-390-q3.png")
+    check("0 page errors at 390", len(errors) == 0, errors[:3])
+    ctx.close()
+    # ---- desktop 1440x900 ----
+    ctx2 = browser.new_context(viewport={"width": 1440, "height": 900})
+    page2 = ctx2.new_page()
+    errors2 = []
+    page2.on("pageerror", lambda e: errors2.append(str(e)))
+    page2.on("console", lambda m: errors2.append("console." + m.type + ": " + m.text) if m.type == "error" else None)
+    page2.goto(BASE, wait_until="networkidle", timeout=90000)
+    page2.wait_for_selector("#bdPhone", timeout=15000)
+    w = page2.eval_on_selector(".bd-phone", "el => el.offsetWidth")
+    check("desktop phone XL width (~560)", 520 <= w <= 600, w)
+    check("desktop Q1 country (fresh state per context)", "country" in page2.text_content("#fpWalkQ").lower())
+    page2.fill("#fpWalkAnswer", "Canada")
+    page2.click("#fpWalkEnter")
+    page2.wait_for_selector("#bdReveal:not([hidden])", timeout=5000)
+    check("desktop ball reveals", page2.is_visible("#bdReveal"))
+    page2.wait_for_timeout(800)
+    page2.screenshot(path=OUT + "phone-1440-reveal.png", full_page=False)
+    check("0 page errors at 1440", len(errors2) == 0, errors2[:3])
+    ctx2.close()
+    browser.close()
+print("PROBE DONE", "FAILURES: " + ", ".join(fails) if fails else "ALL PASS")
+sys.exit(1 if fails else 0)

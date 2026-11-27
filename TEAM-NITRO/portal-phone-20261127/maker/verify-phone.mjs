@@ -16,7 +16,7 @@ const stagedPortal = await get('/');
 const lanePortal = readFileSync(LANE + 'portal.html');
 assert('staged portal == lane portal.html (bytes + sha)', stagedPortal.equals(lanePortal));
 console.log('portal', stagedPortal.length, 'B sha256', sha(stagedPortal));
-assert('portal sha is the phone build (3b489c5a...)', sha(stagedPortal).startsWith('3b489c5a'));
+assert('portal sha is the phone build (b7ee02d6...)', sha(stagedPortal).startsWith('b7ee02d6'));
 const stagedIdent = await get('/identity.html');
 const laneIdent = readFileSync(LANE + 'identity.html');
 assert('staged identity == lane identity.html (bytes + sha)', stagedIdent.equals(laneIdent));

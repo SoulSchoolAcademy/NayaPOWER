@@ -14,12 +14,12 @@ The walkthrough is now the Black Diamond phone, real on the portal page — not 
 | Item | Value |
 |---|---|
 | R5 base | `portal-r5-base.html`, 13,883,771 B, sha256 `d4bb2102279838984db558e87cec4a977e4782ed22e5a2cc98be70f28e00b86b` (re-verified live on the R5 staging worker: HTTP 200, same bytes + sha, before building) |
-| Built portal | `portal.html`, 13,900,189 B, sha256 `3b489c5a0b0e32ab288ac6bb4cfc45a321e9f8e22a5a6aeea63fb06efa1fe0e3` (+16,418 B) |
+| Built portal | `portal.html`, 13,900,396 B, sha256 `b7ee02d6177628e5700ae57f819cb7e87f532689245cf639e6d228b080559ee0` (+16,625 B vs R5) |
 | Certificate | byte-identical, sha256 `57bdd3873f65104f3ee6f4648cfec4a1a556a78ea8b7fb57153cd49da528af4b` |
 | Branch | `portal-frontpage-fix-20261125-r5-phone` (from R5 head `5d68aeece9f80cb2949ed6ef19e2b17d7881ec4c`) |
-| Commit | TBD |
-| Portal blob | TBD (verified via git blob API) |
-| Worker | `worker-consolidated.js` 14,237,881 B, sha256 `2360ee8673e23db0be41d7f78e676527ba5ee7eba7b673b0a3849a1ea743b494`; worker `portal-frontpage-fix-20261125-r5phone-staging`, subdomain enabled, HTTP 200 |
+| Commit | `869875412f50a365062d22f4ce970f0abae64ad2` (phone build) + fix commit TBD (eye-fix pass — see below) |
+| Portal blob | `59776fa2b08ac8d5acc4a5633de852807cda399e` (first commit; verified by blob-API read-back: same sha, size 13,900,189, base64) — fix commit re-blobs the rebuilt portal |
+| Worker | `worker-consolidated.js` 14,238,088 B, sha256 `ab1d675ebf5d7277f622ed9ee1f8385b357e6188d352bd135b72168692ddf7d0`; worker `portal-frontpage-fix-20261125-r5phone-staging`, subdomain enabled, HTTP 200 |
 
 **Hunks (all in `portal.html`, nothing else in the R5 portal touched):**
 1. Walk `<section id="fpWalk">` swapped whole for the phone markup (same IDs the walk script needs, plus `fpWalkNext` and `fpWalkCopyAll`). Old section was 2,140 B; phone section 5,773 B.
@@ -29,11 +29,13 @@ The walkthrough is now the Black Diamond phone, real on the portal page — not 
 
 **Files filed to the branch:** `portal.html`, `portal-r5-base.html`, `identity.html`, `identity-consolidated.html`, `worker-consolidated.js`, `worker-meta.json`, `sw.js`, `build-phone.mjs`, `build-worker-phone.mjs`, `verify-phone.mjs`, `commit-phone.mjs`, `phone-section.html`, `phone-style.html`, `phone-script.html`, `MAKER-REPORT.md`.
 
+**Eye-fix pass (after the first staged render, before this report):** my own eye caught three defects and they were fixed in `phone-style.html` only, then rebuilt, recommitted, redeployed, re-probed: (1) the jewel's facet overlay read as a harsh pinwheel and the reveal spin rotated the whole jewel so the N read as a Z mid-spin — facets softened (lower alphas, irregular stops), radial deepened to obsidian, spin moved to the facet layer only so the N stands still; (2) the frame ring read as bold zebra stripes — conic slices fined to 5° at lower alphas so the chrome base shows through; (3) the reveal/input cards left dead black below them in the 9:16 screen — cards now flex:1 and fill the stage. First-build numbers (portal 13,900,189 B sha `3b489c5a…`, worker 14,237,881 B sha `2360ee86…`) are superseded by the table above.
+
 ## Verification (real taps)
 
-Build: 18/18 assertions in `build-phone.mjs` (phone markers, no separate Enter button, 18 screens, live clock/battery, copy-out, 8 styles / 10 scripts, all R5 keepers).
-Staged: `verify-phone.mjs` — staged bytes == lane bytes + sha, identity unchanged.
-Browser (Playwright Chromium via the localhost forwarder; VM browsers flap, Firefox never fires Supabase reads — Chromium used): TBD — 390×844 + 1440×900, 0 page errors, real taps: type country → ball reveals → Next advances → Back returns → ball on last screen reveals → Next completes (or fails plainly if the staging complete() endpoint is down).
+Build: 18/18 assertions in `build-phone.mjs` (phone markers, no separate Enter button, 18 screens, live clock/battery, copy-out, 8 styles / 10 scripts, all R5 keepers) — re-run clean after the eye-fix rebuild.
+Staged: `verify-phone.mjs` — 36/36 PASS, staged bytes == lane bytes + sha (portal sha `b7ee02d6…` after the fix rebuild), identity unchanged.
+Browser (Playwright Chromium via the localhost forwarder; VM browsers flap, Firefox never fires Supabase reads — Chromium used): **31/31 PASS** (`evidence/probe-phone.py`) — 390×844 + 1440×900, 0 page errors, real taps: type country → ball reveals → Next advances → Back returns with answer kept → motto reveal shows answer + our example → answers in localStorage. Battery reads live (headless Chromium reports 100; 87 is the no-API fallback). Screenshots: `evidence/phone-390-reveal.png`, `evidence/phone-390-q3.png`, `evidence/phone-1440-reveal.png`.
 
 ## Design-law check (§11)
 
