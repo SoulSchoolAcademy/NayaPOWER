@@ -3323,6 +3323,12 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           inset 0 -6px 10px rgba(0, 0, 0, 0.5),
           8px 10px 18px rgba(0, 0, 0, 0.55);
       }
+      /* ROUND 2 — D1 press fix: the appended :hover rules above beat :active
+         while hovered+pressed (ID specificity on the nav arrows; later source
+         order on the plaque). These :active rules sit AFTER them at equal
+         specificity, so press wins and all four buttons depress scale(0.97). */
+      #prevMonth:active, #nextMonth:active{transform:scale(0.97)}
+      .nowplaque:active{transform:scale(0.97)}
       /* Phone header: icon ABOVE the word again, so no column bleeds into
          the next — the fix-3 row override (line 2228) is beaten by later
          position + !important, same as its own mechanism. */
