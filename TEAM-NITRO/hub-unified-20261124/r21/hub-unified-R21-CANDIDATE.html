@@ -4134,7 +4134,7 @@ window.uhOpenRoom = function(id){
   var room = $('uhRoom'), frame = $('uhRoomFrame'), body = $('uhRoomBody'), title = $('uhRoomTitle');
   if(!room) return;
   if(title) title.textContent = id.charAt(0).toUpperCase()+id.slice(1);
-  if(frame){ frame.style.display=''; frame.src = 'https://nayanet.app/rooms/' + id + (id==='skills' ? '#skills' : ''); /* R21 D8: Personal boots its Skills view (the 14-slide slideshow) on a #skills hash; the bare route redirects to Personal's top. */ }
+  if(frame){ frame.style.display=''; frame.src = (id==='skills' ? 'https://nayanet.app/personal#skills' : 'https://nayanet.app/rooms/' + id); /* R21b D8: rooms/skills#skills does NOT carry the hash — the redirect lands the frame on /personal with location.hash === '' (proven in-frame), so Personal booted on its top with Skills ~6,000px down. Personal's own router honours #skills as the boot state for its Skills view, so the frame loads /personal#skills directly: same page, hash intact, Skills view (the 14-slide slideshow) on open. */ }
   if(body){ body.style.display='none'; }
   room.classList.add('on');
 };
@@ -16833,6 +16833,22 @@ main.main{padding-bottom:24px!important;}
    tracking tightens slightly so the whole title fits its middle lane. */
 .top .top-title{white-space:nowrap!important;}
 .top .top-title b{white-space:nowrap!important;letter-spacing:.12em!important;}
+/* R21b D5 — the thick purple band around the photo is .ph-av's OWN background
+   (135deg #8e24aa->#a21caf), revealed by the img's scale(.9). The ::after arc
+   is gone and the outer ring is the day colour, but the eye still read purple
+   because the band is the widest ring on the avatar. Recolour the band itself
+   to the day colour fading to white light: the eye reads day colour + white,
+   no pink anywhere. */
+.ph-av{background:linear-gradient(135deg,var(--av-day,#07925f),rgba(255,255,255,.85))!important;}
+/* R21b D9 — the title lane: 111px was never enough for a 183px title. The lane
+   gets a fixed 168px (tracking tightened to .05em, text ~155px) and the room
+   comes from the bar's own padding, gaps and pill padding — no pill loses
+   its word, nothing else moves. */
+.top{gap:6px!important;padding-left:12px!important;padding-right:12px!important;}
+.top .top-title{flex:0 0 168px!important;min-width:168px!important;}
+.top .top-title b{letter-spacing:.05em!important;}
+.top .hub-obsidian-btn{padding-left:12px!important;padding-right:12px!important;}
+.top .powercast-topbtn{padding-left:12px!important;padding-right:12px!important;}
 </style>
 <style id="hub-followup14-20261119">
 /* ——— FOLLOW-UP 14 20261119 — search only (Shawn 19:01 MST: "All you need is a
