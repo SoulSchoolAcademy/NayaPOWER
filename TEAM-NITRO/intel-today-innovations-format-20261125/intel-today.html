@@ -2107,7 +2107,7 @@ function toggleEndChapters(){ /* FIX9: one tap flips the one class for this widt
   else sm.classList.toggle('end-chapters-open');
   syncEndChapters();
 }
-function showEnd(){ if(window.__intelCloseViewer)window.__intelCloseViewer(); /* FIX6 D2: the viewer overlay (z-index 9999) sat over the end board, so a real tap hit the overlay, not BACK TO LOGIN */ renderEnd(); show('slide'); }
+function showEnd(){ if(window.__intelCloseViewer)window.__intelCloseViewer(); /* FIX6 D2: the viewer overlay (z-index 9999) sat over the end board, so a real tap hit the overlay, not BACK TO LOGIN */ var __sl=document.getElementById('screen-slide'); if(__sl){__sl.classList.remove('intel-nut1');__sl.classList.remove('intel-strip');} /* FIX6 D2b: the nut phone layout hides #slideBoardsB (display:none) — the end board's B panel holds BACK TO LOGIN, so a nut slide's layout class must not survive onto the end board (proven 0x0 on fix5 AND fix6 bytes when the end is reached from a nut slide) */ renderEnd(); show('slide'); }
 function beginAgain(){ location.href = 'https://nayanet.app'; } /* INTEL TODAY: the end goes back to the LOGIN (portal) — Shawn's eye, 2026-11-25 */
 /* Touch light on the text boards (both sides of the image) */
 document.querySelectorAll('.slide-boards').forEach(function(el){
