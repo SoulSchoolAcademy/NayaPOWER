@@ -1386,7 +1386,7 @@ body.msg-open{overflow:hidden;}
    called better. The build as he saw it had Activity red and Personal
    orange; that pairing is wrong. At rest white, ignites in its color. */
 .lens-tab.lens-collective { --glow: #d4a017; } /* gold — syncs with Spaces (Shawn 2026-10-20) */
-.lens-tab.lens-personal { --glow: #0e7490; } /* R18: Personal lens glow joins the seven-colour flow (canyon blue) — its jewel already does via uhLensTabs. */ /* AMENDMENT A3: blue — Personal is blue again */
+.lens-tab.lens-personal { --glow: #0f52ba; } /* AMENDMENT A3: blue — Personal is blue again */
 .lens-tab.lens-activity { --glow: #8e24aa; } /* AMENDMENT A3: purple — Activity is purple again */
 .lens-tab.active {
   border-color: var(--glow); color: #fff;
@@ -3580,10 +3580,10 @@ div[data-block="cover"] > .ph-actions-row{padding:0 24px;box-sizing:border-box;}
   -webkit-mask-composite:xor;mask-composite:exclude;padding:3px;
   animation:orb-spin 6s linear infinite;opacity:.95;pointer-events:none;z-index:2;}
 .ph-avwrap::after{content:'';position:absolute;inset:-10px;border-radius:50%;
-  background:conic-gradient(from 180deg,transparent 0deg,transparent 300deg,rgba(255,255,255,.95) 335deg,rgba(255,255,255,.7) 350deg,transparent 360deg) /* R17: white light, not pink */;
+  background:conic-gradient(from 180deg,transparent 0deg,transparent 300deg,rgba(162,28,175,.7) 335deg,transparent 360deg);
   -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
   -webkit-mask-composite:xor;mask-composite:exclude;padding:2px;
-  animation:orb-spin 12s linear infinite;opacity:.95;filter:drop-shadow(0 0 6px rgba(255,255,255,.85)) drop-shadow(0 0 14px rgba(255,255,255,.45)); /* R17: the flow of white light spins like the portal — visible movement between captures seconds apart. */pointer-events:none;z-index:2;}
+  animation:orb-spin-rev 11s linear infinite;opacity:.6;pointer-events:none;z-index:2;}
 #phIntroBoard .ph-intro-name::before{content:'\2726 ';color:#8e24aa;}
 #phIntroBoard .ph-intro-motto{color:#ffffff;}
 .ph-av-orb{position:absolute;inset:-14px;border-radius:50%;animation:orb-spin 6s linear infinite;pointer-events:none;z-index:3;}
@@ -3662,7 +3662,7 @@ div[data-block="cover"] > .ph-actions-row{padding:0 24px;box-sizing:border-box;}
 .ph-av{box-shadow:0 0 0 2px #8e24aa,0 18px 40px rgba(0,0,0,.65),0 0 48px rgba(142,36,170,.55),inset 0 2px 10px rgba(255,255,255,.25)}
 .ph-av:hover{box-shadow:0 0 0 2px #8e24aa,0 18px 40px rgba(0,0,0,.65),0 0 70px rgba(142,36,170,.8),inset 0 2px 10px rgba(255,255,255,.25)}
 .ph-avwrap::before{animation:orb-spin 120s linear infinite;background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,#8e24aa 295deg,#0f52ba 315deg,#07925f 330deg,#d4a017 345deg,rgba(255,255,255,.95) 355deg,transparent 360deg)}
-.ph-avwrap::after{animation:orb-spin 12s linear infinite; /* R17: white-light flow spins (was the 90s pink slow ring). */background:conic-gradient(from 180deg,transparent 0deg,transparent 300deg,rgba(255,255,255,.95) 335deg,rgba(255,255,255,.7) 350deg,transparent 360deg) /* R17: white light, not pink */}
+.ph-avwrap::after{animation:orb-spin-rev 90s linear infinite;background:conic-gradient(from 180deg,transparent 0deg,transparent 300deg,rgba(162,28,175,.7) 335deg,transparent 360deg)}
 .ph-av-orb{animation:orb-spin 150s linear infinite}
 .mw-cover-slot input[type=text]::placeholder{color:#fff;opacity:1}
 .handle-input::placeholder,.visionin::placeholder,.search-input::placeholder,
@@ -3813,7 +3813,7 @@ body.has-notif:not(.os-bottom-hidden){padding-bottom:124px!important}
 /* R9 pass 2 — phone: the points pill is row 1 of the head grid; with the head pulled up
    it would sit under the cover pills (top-right column). Left-align it on phone so it
    clears the pills column entirely (x16-126 vs pills x181+). */
-#uhTop .ph-head .ph-points{transform:none!important} /* R17: the R9 -125px shove is gone at every width — at 481-760px it drove the pill to x=-33, off-screen, and the 2-column phone head it cleared no longer exists. */ #uhTop #pointsdisplay{overflow:visible!important} /* R17: the gold digit tiles are never clipped by the pill itself. */ .top{display:none!important} /* R17 toolbar guard: .top never mounts (see main.append change); this kills it if any other path appends it. */
+@media(max-width:760px){#uhTop .ph-head .ph-points{transform:translateX(-125px)!important}}
 /* R9 pass 2 — the name + motto sit higher on the cover now, over brighter art; a dark
    shadow keeps the white text readable (Laws §2 — text must be readable at a glance). */
 #phIntroBoard .ph-intro-name,#phIntroBoard .ph-intro-motto{text-shadow:0 2px 14px rgba(0,0,0,.95),0 1px 4px rgba(0,0,0,.9)!important}
@@ -3921,7 +3921,7 @@ body:has(#osCalDlg:not([hidden])) #uhTop{z-index:1010!important}
     <button type="button" class="ph-msg" data-ph-flow-x>Cancel</button></div>
   </div>
 </div>
-  <!-- R18: the gear beside Change cover is out entirely (Shawn 2026-11-26) — Settings already lives on the #setbtn menu pill. -->
+  <button class="ph-cover-btn pc-gear" id="settingsbtn" type="button" style="--ac:#ffffff;" data-os-go="settings" aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.1"/><circle cx="12" cy="12" r="6.3"/><path d="M12 2.8v2.7M12 18.5v2.7M2.8 12h2.7M18.5 12h2.7M5.5 5.5l1.9 1.9M16.6 16.6l1.9 1.9M18.5 5.5l-1.9 1.9M7.4 16.6l-1.9 1.9"/></svg></button>
 <!-- HEADER 2026-11-15 H3 — the membership pills live ON the cover now, top-right
      (row at >=1024px, column below); filled by mwRenderCover as before. -->
 <div class="mw-cover-mships" id="mwCoverMships" aria-label="Memberships"></div>
@@ -3944,105 +3944,17 @@ body:has(#osCalDlg:not([hidden])) #uhTop{z-index:1010!important}
   </div>
 
 </div>
-<div class="ph-actions-row up-actions"><button class="up-act" id="saBackBtn" type="button" style="--ac:#ffffff;display:none;">← Back to my world</button><!-- R20: the extra Feed button goes (his words 2026-11-26 ~20:58 MST — never ordered; the feed is reached by the plus button, Message stays) --><button class="up-act" id="msgbtn" type="button" style="--ac:#0f52ba;"><span class="os-jewel os-jewel-sm" style="--jc:#0f52ba">✉</span> Message</button><button class="up-act" id="aboutbtn" type="button" style="--ac:#07925f;" data-os-go="about"><span class="os-jewel os-jewel-sm" style="--jc:#07925f">◉</span> About</button><button class="up-act" id="myworldbtn" type="button" style="--ac:#d4a017;" data-os-go="myworld"><span class="os-jewel os-jewel-sm" style="--jc:#d4a017">▦</span> Calendar</button><button class="up-act" id="skillsbtn" type="button" style="--ac:#c2410c;" data-os-go="skills"><span class="os-jewel os-jewel-sm" style="--jc:#c2410c">⚙</span> Skills</button><button class="up-act" id="connbtn" type="button" style="--ac:#c62828;" data-os-go="people"><span class="os-jewel os-jewel-sm" style="--jc:#c62828">◈</span> Connections</button><button class="up-act" id="growthbtn" type="button" style="--ac:#a21caf;" data-os-go="growth"><span class="os-jewel os-jewel-sm" style="--jc:#a21caf">↗</span> Invite</button><button class="up-act" id="sharebtn" type="button" style="--ac:#3f51b5;"><span class="os-jewel os-jewel-sm" style="--jc:#3f51b5">⇄</span> Share</button><button class="up-act" id="setbtn" type="button" style="--ac:#0e7490;" data-os-go="settings"><span class="os-jewel os-jewel-sm" style="--jc:#0e7490"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.1"/><circle cx="12" cy="12" r="6.3"/><path d="M12 2.8v2.7M12 18.5v2.7M2.8 12h2.7M18.5 12h2.7M5.5 5.5l1.9 1.9M16.6 16.6l1.9 1.9M18.5 5.5l-1.9 1.9M7.4 16.6l-1.9 1.9"/></svg></span> Settings</button><button class="up-act" id="joinbtn" type="button" style="--ac:#8e24aa; /* R18: menu Naya Power follows the seven-cycle (red, cycle repeat) — the COVER Naya Power pill stays green per item 2. */display:inline-flex;align-items:center;justify-content:center;"><span class="os-jewel os-jewel-sm" style="--jc:#8e24aa">✦</span> Naya Power</button><button class="up-act" id="memberbtn" type="button" style="--ac:#a21caf;display:none;">★ Become a Member</button></div>
+<div class="ph-actions-row up-actions"><button class="up-act" id="saBackBtn" type="button" style="--ac:#ffffff;display:none;">← Back to my world</button><button class="up-act" id="msgbtn" type="button" style="--ac:#0f52ba;"><span class="os-jewel os-jewel-sm" style="--jc:#0f52ba">✉</span> Message</button><button class="up-act" id="aboutbtn" type="button" style="--ac:#07925f;" data-os-go="about"><span class="os-jewel os-jewel-sm" style="--jc:#07925f">◉</span> About</button><button class="up-act" id="myworldbtn" type="button" style="--ac:#d4a017;" data-os-go="myworld"><span class="os-jewel os-jewel-sm" style="--jc:#d4a017">▦</span> Calendar</button><button class="up-act" id="skillsbtn" type="button" style="--ac:#c2410c;" data-os-go="skills"><span class="os-jewel os-jewel-sm" style="--jc:#c2410c">⚙</span> Skills</button><button class="up-act" id="connbtn" type="button" style="--ac:#c62828;" data-os-go="people"><span class="os-jewel os-jewel-sm" style="--jc:#c62828">◈</span> Connections</button><button class="up-act" id="growthbtn" type="button" style="--ac:#a21caf;" data-os-go="growth"><span class="os-jewel os-jewel-sm" style="--jc:#a21caf">↗</span> Invite</button><button class="up-act" id="sharebtn" type="button" style="--ac:#3f51b5;"><span class="os-jewel os-jewel-sm" style="--jc:#3f51b5">⇄</span> Share</button><button class="up-act" id="setbtn" type="button" style="--ac:#0e7490;" data-os-go="settings"><span class="os-jewel os-jewel-sm" style="--jc:#0e7490"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.1"/><circle cx="12" cy="12" r="6.3"/><path d="M12 2.8v2.7M12 18.5v2.7M2.8 12h2.7M18.5 12h2.7M5.5 5.5l1.9 1.9M16.6 16.6l1.9 1.9M18.5 5.5l-1.9 1.9M7.4 16.6l-1.9 1.9"/></svg></span> Settings</button><button class="up-act" id="joinbtn" type="button" style="--ac:#8e24aa;display:inline-flex;align-items:center;justify-content:center;"><span class="os-jewel os-jewel-sm" style="--jc:#8e24aa">✦</span> Naya Power</button><button class="up-act" id="memberbtn" type="button" style="--ac:#a21caf;display:none;">★ Become a Member</button></div>
 
 <div id="uhViewBanner"></div>
 </div>
-<!-- R18: the big centred feed modal is gone — Feed now opens a simple dropdown (see #uhFeedDrop in the menu row). --><div id="uhRoom" role="dialog" aria-modal="true" aria-label="Room"><div id="uhRoomCard"><div id="uhRoomBar"><h2 id="uhRoomTitle">Room</h2><button type="button" onclick="window.uhCloseRoom()">← Back to the Hub</button></div><iframe id="uhRoomFrame" title="Room"></iframe><div id="uhRoomBody" style="display:none"></div></div></div>
-<style id="uh-r19-top10">
-/* R19 — TOP 10 CATEGORIES IN THE FEED (Shawn, voice call 2026-11-26 ~18:48 MST).
-   One data structure (UH_CATS below) drives the row and the worlds, so a new
-   category drops in without a rebuild. Harvested patterns only: smart-tab
-   pill ribbon (.smart-tabs), PILL_FLOW seven-colour cycle, LIB cover
-   gradients (135deg), obsidian pill/board anatomy. Text 25/19/17, Marcellus,
-   white — no gray, nothing flat, nothing dead. */
-.uh-top10{margin:24px 0 0;padding:0 4px}
-.uh-top10-label{font-size:17px;letter-spacing:.12em;color:#fff;font-weight:700;margin:0 0 8px}
-.uh-top10 h2{font-family:Marcellus,serif;font-size:25px;color:#fff;margin:0 0 8px;font-weight:400}
-.uh-top10-sub{font-size:19px;color:#fff;margin:0 0 8px}
-.uh-top10-row{display:flex;align-items:center;gap:12px;overflow-x:auto;scrollbar-width:none;margin:8px 0 0;padding:16px 12px 20px;-webkit-mask-image:linear-gradient(90deg,#000,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,#000,#000 calc(100% - 28px),transparent)}
-.uh-top10-row::-webkit-scrollbar{display:none}
-.uh-cat-chip{flex:0 0 auto;display:flex;align-items:center;gap:10px;background:#050607;border:2px solid var(--tc);border-radius:999px;color:#fff;font-family:Marcellus,serif;font-size:17px;padding:12px 18px;cursor:pointer;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.6);transition:transform .3s ease,box-shadow .3s ease}
-.uh-cat-chip:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.65),0 0 18px -4px var(--tc)}
-.uh-cat-chip:active{transform:scale(.97)}
-.uh-cat-rank{display:inline-grid;place-items:center;min-width:26px;height:34px;padding:0 4px;background:#050607;border:1.5px solid var(--tc);border-radius:8px;color:#fff;font-weight:900;font-size:22px;line-height:1}
-.uh-cat-jewel{color:var(--tc);font-size:19px;line-height:1}
-.uh-cat-name{color:#fff}
-/* World overlay content (uhRoomBody) — same anatomy as the About/Skills rooms. */
-.uh-world-hero{border-radius:22px;padding:24px;margin:0 0 16px;border:2px solid var(--tc);box-shadow:0 16px 40px rgba(0,0,0,.6)}
-.uh-world-hero h3{font-family:Marcellus,serif;font-size:25px;color:#fff;margin:0 0 8px;font-weight:400}
-.uh-world-hero p{font-size:19px;color:#fff;margin:0 0 8px}
-.uh-world-hero .uh-world-desc{font-size:17px;color:#fff;margin:0}
-.uh-world-sec{font-size:17px;letter-spacing:.12em;color:#fff;font-weight:700;margin:24px 0 8px}
-.uh-world-subs{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0}
-.uh-world-sub{background:#050607;border:2px solid var(--tc);border-radius:999px;color:#fff;font-size:17px;padding:10px 16px;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease}
-.uh-world-sub:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.6),0 0 14px -4px var(--tc)}
-.uh-world-sub:active{transform:scale(.97)}
-.uh-world-note{background:#050607;border:2px solid var(--tc);border-radius:22px;padding:16px 20px;margin:12px 0;box-shadow:0 12px 30px rgba(0,0,0,.55)}
-.uh-world-note b{font-size:19px;color:#fff;font-weight:700}
-.uh-world-note p{font-size:17px;color:#fff;margin:8px 0 0}
-.uh-world-note button{background:#050607;border:2px solid var(--tc);border-radius:999px;color:#fff;font-size:17px;padding:10px 18px;cursor:pointer;margin-top:12px}
-.uh-world-note button:hover{box-shadow:0 0 14px -4px var(--tc)}
-.uh-world-empty{font-size:17px;color:#fff;margin:8px 0}
-</style>
-<style id="uh-r20">
-/* ═══ HUB R20 ═══ */
-/* (1) AVATAR RING — white light like the portal; the pink ring goes. The
-   ::before ring spins white light plus the day's own colour (Thursday green,
-   Friday red — Laws §3.3 weekday identity; --av-day is set by the R20 script). */
-.ph-avwrap{--av-day:#07925f;}
-.ph-avwrap::before{background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,var(--av-day) 295deg,rgba(255,255,255,.95) 335deg,rgba(255,255,255,.7) 350deg,transparent 360deg)!important;filter:drop-shadow(0 0 6px rgba(255,255,255,.85)) drop-shadow(0 0 14px rgba(255,255,255,.45));}
-/* (2) LIT LENS — the active lens fills in its OWN colour: Activity purple,
-   Collective gold, Personal canyon blue. Black-with-a-thin-ring is gone. */
-.lens-tab.active{background:linear-gradient(135deg,color-mix(in srgb,var(--glow) 78%,#050607),var(--glow))!important;color:#fff!important;}
-.lens-tab .lens-sub{display:none!important;}
-/* (3) The little ⓘ — one small button, same primo language as its neighbours. */
-.lens-tab.lens-info{flex:none;width:44px;padding:13px 0;font-size:19px;}
-.lens-tabs{grid-template-columns:repeat(3,1fr) 52px 44px!important;}
-@media (max-width:640px){.lens-tabs{grid-template-columns:repeat(3,minmax(0,1fr)) 40px 36px!important;gap:6px!important;}.lens-tab.lens-info{width:36px;}}
-/* (4) ICON BUTTONS — any button with an icon inside it has a circle, with a
-   flow of energy around that circle (his words 2026-11-26 ~20:18 MST). The
-   jewel circles on the menu pills, cover pills and plus items carry a slow
-   white-light orbit (60s, Laws §1 ambient band), harvested from the
-   avatar-ring pattern in this same file. */
-.up-act .os-jewel,.mw-mship-ico,.fc-pi-ico{position:relative;}
-.up-act .os-jewel::after,.mw-mship-ico::after,.fc-pi-ico::after{content:'';position:absolute;inset:-4px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,transparent 300deg,rgba(255,255,255,.95) 335deg,rgba(255,255,255,.55) 350deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:1.5px;animation:orb-spin 60s linear infinite;pointer-events:none;}
-/* (5) POP-UPS — elegantly presented: the room card lights up whole in its own
-   colour, title white 19, easy to read. */
-#uhRoomCard{box-shadow:0 24px 64px rgba(0,0,0,.75),0 0 40px rgba(142,36,170,.35),inset 0 1px 0 rgba(255,255,255,.25)!important;}
-#uhRoomBar h2{color:#fff!important;}
-/* (6) PHONE — the feed dropdown must not be clipped by the bottom bar. */
-#uhFeedDrop{max-height:calc(100vh - 180px)!important;overflow-y:auto!important;bottom:96px!important;}
-/* (7) PHONE — the lens row must not clip: at phone width the jewel stacks
-   ABOVE the label and the + / ⓘ wrap to a second row, so COLLECTIVE /
-   PERSONAL / ACTIVITY each get a full column at 17px, nothing cut off.
-   (Measured: labels 103px/91px in 81px pills before this rule.) */
-@media (max-width:640px){
-  .lens-tabs{grid-template-columns:repeat(3,minmax(0,1fr))!important;}
-  .lens-tab{flex-direction:column!important;gap:4px!important;padding:10px 2px!important;}
-  .lens-tab .tab-jewel{width:26px!important;height:26px!important;font-size:17px!important;}
-  .lens-tab b{letter-spacing:0!important;}
-  .lens-tab.lens-add,.lens-tab.lens-info{width:52px!important;justify-self:center!important;flex-direction:row!important;padding:13px 0!important;}
-}
-/* (8) PHONE — the floating ▾ (bottom-bar control) and ✕ (rail toggle) must
-   not sit on the cover pills, menu pills, lens circles or search field:
-   they fade out while the cover/menu are on screen (see the R20 script
-   scroll gate) and fade in once the reader is in the feed. */
-#os-b3-hide,#uhRailToggle{transition:opacity .3s ease;}
-/* (9) ITEM 21 — THE BOTTOM MUST SHOW, AND END CLEANLY. Measured: the page
-   ended in a 416px dead void below the footer — stacked bottom padding
-   (main 160 + .main-show 140 + body 90 + trailing room-body 26). Trimmed so
-   the clearance below the footer is 164px: the footer lands just above the
-   fixed bottom bar (90px at 390, 124px at 1440) with room to breathe, and
-   the page ends on its footer instead of on empty black. */
-main.main{padding-bottom:24px!important;}
-.main-show{padding-bottom:24px!important;}
-</style>
+<div id="uhChooser" role="dialog" aria-modal="true" aria-label="Choose your feed"><div id="uhChooserCard"><button type="button" class="uh-x" onclick="window.uhCloseFeedChooser()" aria-label="Close">✕</button><h2>Choose your feed</h2><p>Home, your worlds, and the news — one tap.</p><div class="uh-ch"><button type="button" onclick="window.uhChoose('collective','/hub/feed')"><b>Home / Hub</b><small>Collective, Personal, Activity — the Hub hub</small></button><button type="button" onclick="window.uhChoose('personal','/hub/feed-personal')"><b>Personal — Shawn Vibert</b><small>Your personal feed</small></button><button type="button" onclick="window.uhChoose('business')"><b>Business — Your Business</b><small>Your business feed</small></button><button type="button" onclick="window.uhChoose('world')"><b>World — Your World</b><small>Your world feed</small></button><button type="button" onclick="window.uhChoose('news')"><b>News</b><small>The news feed</small></button><button type="button" onclick="window.uhChoose('news')"><b>News Feed — local, province, global</b><small>Local news · Provincial news · Global news</small></button></div></div></div>
+<div id="uhRoom" role="dialog" aria-modal="true" aria-label="Room"><div id="uhRoomCard"><div id="uhRoomBar"><h2 id="uhRoomTitle">Room</h2><button type="button" onclick="window.uhCloseRoom()">← Back to the Hub</button></div><iframe id="uhRoomFrame" title="Room"></iframe><div id="uhRoomBody" style="display:none"></div></div></div>
 <style id="uh-r11-top">
 /* R11 — Hub top restored to the correct picture (2026-11-25). Top only. */
 .pc-digit-tile{display:inline-grid;place-items:center;min-width:26px;height:34px;padding:0 4px;background:#050507;border:1.5px solid #d4a017;border-radius:8px;color:#fff;font-weight:900;font-size:22px;line-height:1;box-shadow:0 0 10px rgba(212,160,23,.35);vertical-align:middle;}
 .pc-digit-sep{color:#fff;font-weight:900;font-size:22px;line-height:1;vertical-align:middle;}
-#uhTop .ph-pointsrow{transform:none!important;} /* R17: the -14px lift pushed the pill toward the top edge of the overflow:hidden head — the top cut. The avatar's own -14px lift is untouched. */
+#uhTop .ph-pointsrow{transform:translateY(-14px)!important;}
 #uhTop .ph-avwrap{transform:translateY(-14px)!important;}
 @media(min-width:641px){
 #uhTop .ph-head #phIntroBoard{grid-column:2!important;grid-row:2!important;align-self:center!important;}
@@ -4058,7 +3970,7 @@ main.main{padding-bottom:24px!important;}
 @media(max-width:480px){
 #uhTop .ph-pointsrow{justify-self:center!important;margin-left:auto!important;margin-right:auto!important;max-width:100%!important;}
 #pointsdisplay{max-width:calc(100vw - 32px)!important;}
-/* R12 D5 ROOT CAUSE: R9 #uhTop .ph-head .ph-points{transform:none!important} /* R17: the R9 -125px shove is gone at every width — at 481-760px it drove the pill to x=-33, off-screen, and the 2-column phone head it cleared no longer exists. */ #uhTop #pointsdisplay{overflow:visible!important} /* R17: the gold digit tiles are never clipped by the pill itself. */ .top{display:none!important} /* R17 toolbar guard: .top never mounts (see main.append change); this kills it if any other path appends it. */ shoved the pill 125px left to clear a pills column that existed in R9 2-column phone head. The head is now a single-column grid at <=480px, so the shove puts the pill at x=-33, off-screen, and its !important also killed the hover transform. Neutralise it at <=480px only (481-760px keeps the R9 behaviour, unmeasured); hover/active re-asserted with higher specificity so they win over the !important none. */
+/* R12 D5 ROOT CAUSE: R9 @media(max-width:760px){#uhTop .ph-head .ph-points{transform:translateX(-125px)!important}} shoved the pill 125px left to clear a pills column that existed in R9 2-column phone head. The head is now a single-column grid at <=480px, so the shove puts the pill at x=-33, off-screen, and its !important also killed the hover transform. Neutralise it at <=480px only (481-760px keeps the R9 behaviour, unmeasured); hover/active re-asserted with higher specificity so they win over the !important none. */
 #uhTop .ph-head .ph-points{transform:none!important;}
 #uhTop #pointsdisplay:hover{transform:translateY(-2px) scale(1.04)!important;box-shadow:0 0 22px rgba(212,160,23,.65),0 8px 20px rgba(0,0,0,.55)!important;}
 #uhTop #pointsdisplay:active{transform:scale(.97)!important;}
@@ -4077,8 +3989,8 @@ main.main{padding-bottom:24px!important;}
 "use strict";
 window.uhLensTabs = function(stream){
   var C=['collective','COLLECTIVE',"The whole network's smart-notes feed",'/hub/feed','#d4a017','\u2726'];
-  var P=['personal','PERSONAL','Your personal smart notes','/hub/feed-personal','#0e7490','\u25C6']; /* R18: Personal lens joins the seven-colour flow — canyon blue #0e7490 is the seven-cycle blue; sapphire #0f52ba drops out of the flow. Glow and jewel come from this one entry, so they still match. */
-  var A=['activity','ACTIVITY','The activity going on in the network','/hub/feed-activity','#8e24aa','\u2605']; /* R18 D-1: the LIVE uhLensTabs definition — R17 changed only the dead fallback array, so the rendered jewel stayed green. Activity jewel is royal purple #8e24aa, matching its --glow. */
+  var P=['personal','PERSONAL','Your personal smart notes','/hub/feed-personal','#0f52ba','\u25C6'];
+  var A=['activity','ACTIVITY','The activity going on in the network','/hub/feed-activity','#07925f','\u2605'];
   if(stream==='personal') return [P,C,A];
   if(stream==='activity') return [A,P,C];
   return [C,P,A];
@@ -4202,13 +4114,14 @@ function uhFilterFeed(view){
   }catch(e){}
 }
 // ---- feed chooser ----
-window.uhOpenFeedChooser = function(){ /* R18: the modal is gone — Feed opens the simple dropdown instead. */ if(window.uhToggleFeedDrop){ window.uhToggleFeedDrop(); return; } var c = $('uhChooser'); if(c) c.classList.add('on');
+window.uhOpenFeedChooser = function(){
+  var c = $('uhChooser'); if(c) c.classList.add('on');
 };
 window.uhCloseFeedChooser = function(){
   var c = $('uhChooser'); if(c) c.classList.remove('on');
 };
 function nav(path){ if(window.NayaRouter) window.NayaRouter.navigate(path); else location.hash = '#'+path; }
-window.uhChoose = function(view, path){ if(window.uhCloseFeedDrop) window.uhCloseFeedDrop(); /* R18: choosing a feed closes the dropdown. */
+window.uhChoose = function(view, path){
   window.uhCloseFeedChooser();
   window.uhSetView(view);
   if(path) nav(path);
@@ -4251,12 +4164,12 @@ function uhOverlay(title, html){
 function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
 function mwGet(k,d){ try{ var v=localStorage.getItem('mw.set.'+k); return v===null?d:JSON.parse(v); }catch(e){ return d; } }
 function mwPut(k,v){ try{ localStorage.setItem('mw.set.'+k, JSON.stringify(v)); }catch(e){} }
-var C3=['#07925f','#0e7490','#3f51b5']; /* R18: Naya Power green, AI Masterclass canyon blue, Naya Academy indigo. */
-var C5=['#8e24aa','#c62828','#c2410c','#d4a017','#07925f','#0e7490','#3f51b5']; /* R18: the seven-cycle. */
+var C3=['#8e24aa','#0f52ba','#07925f'];
+var C5=['#d4a017','#07925f','#0e7490','#0f52ba','#6d28d9'];
 var MW_DEFAULT_SLOTS=[
-  {on:true,label:'Naya Power',url:'https://nayanet.app/pricing'}, /* R18: default slot 1 — Naya Power, green, first even when they choose none of the three. The render appends ?ref=<alias> (see mwRenderCover). */
+  {on:true,label:'Naya Academy',url:'https://nayanet.groovepages.com/academy'},
   {on:true,label:'AI Masterclass',url:'https://aimasterclass.help/'},
-  {on:true,label:'Naya Academy',url:'https://nayanet.groovepages.com/academy'}, /* R18: default slot 3 — Naya Academy, the membership one. */
+  {on:true,label:'Fast Action Club',url:'#memberships'},
   {on:false,label:'',url:''},
   {on:false,label:'',url:''}
 ];
@@ -4290,7 +4203,7 @@ function mwRenderCover(){
   var colors=mwCoverColors(slots.length);
   var html='';
   slots.slice(0,5).forEach(function(s,i){
-    var href=esc(s.url), label=esc(s.label), col=colors[i]||C5[i%C5.length]; if(label==='Naya Power'){ var _a='shawn'; try{ _a=localStorage.getItem('nayanet_smart_alias')||'shawn'; }catch(e){} href='https://nayanet.app/pricing?ref='+encodeURIComponent(_a); } /* R18: the Naya Power cover pill carries the citizen's own affiliate link (attached at account creation) so they get credit when somebody clicks. */
+    var href=esc(s.url), label=esc(s.label), col=colors[i]||C5[i%C5.length];
     if(s.url.charAt(0)==='#'){
       html+='<a class="mw-mship-btn" href="'+href+'" data-mw-cover="'+label+'" style="--mc:'+col+'"><span class="mw-mship-ico">'+mwCoverIcon(s)+'</span>'+label+'</a>';
     } else {
@@ -4308,11 +4221,11 @@ function mwRenderCover(){
 function wire(){
   var on = function(id, fn){ var e=$(id); if(e && !e.dataset.uhWired){ e.dataset.uhWired='1'; e.addEventListener('click', fn); } };
   on('msgbtn', function(){ window.uhOpenRoom('mail'); });
-  on('aboutbtn', function(){ uhOverlay('About — Naya', '<h3>Naya</h3><p>Together we grow</p><p>This is the Hub, your one home: the cover and menu above, the feed below. Naya Power, AI Masterclass, and Naya Academy are featured on the cover.</p>'); });
-  on('phIntroInfo', function(){ uhOverlay('About — Naya', '<h3>Naya</h3><p>Together we grow</p><p>This is the Hub, your one home: the cover and menu above, the feed below. Naya Power, AI Masterclass, and Naya Academy are featured on the cover.</p>'); }); /* R20: the About Me cover pill had no handler — it now opens the same About overlay as the menu About button. */
+  on('aboutbtn', function(){ uhOverlay('About — Naya', '<h3>Naya</h3><p>Together we grow</p><p>This is the Hub, your one home: the cover and menu above, the feed below. Naya Academy, AI Masterclass, and the Fast Action Club are featured on the cover.</p>'); });
+  on('phIntroInfo', function(){ uhOverlay('About — Naya', '<h3>Naya</h3><p>Together we grow</p><p>This is the Hub, your one home: the cover and menu above, the feed below. Naya Academy, AI Masterclass, and the Fast Action Club are featured on the cover.</p>'); }); /* R20: the About Me cover pill had no handler — it now opens the same About overlay as the menu About button. */
   // R5 (checker FAIL 1): test getAttribute('src') — f.src is the IDL property and resolves "" to the page URL, so the old !f.src guard never fired and the dialog stayed black. /sean 404s (curl-verified; only the calendar root serves the app), so the dialog loads the live calendar root.
   on('myworldbtn', function(){ var d=$('osCalDlg'); if(d){ show(d); var f=$('osCalFrame'); if(f && !f.getAttribute('src')) f.src='https://calendar.nayanet.app/'; } });
-  on('skillsbtn', function(){ uhOverlay('Skills', '<h3>Skills</h3><p>All six skill areas live on your Personal page, in the Skills slideshow. The featured courses are here:</p><p><a href="https://nayanet.groovepages.com/academy">Naya Academy</a> · <a href="https://aimasterclass.help/">AI Masterclass</a> · <a href="#memberships">Fast Action Club</a></p><p><button onclick="window.uhChoose(\'personal\',\'/hub/feed-personal\');window.uhCloseRoom();">See my Personal page</button></p>'); });
+  on('skillsbtn', function(){ window.uhOpenRoom('skills'); }); /* R20 S1: Skills displays the real Skills — the live rooms/skills route lands on Personal, where the 14-slide Skills slideshow lives. The pointer overlay goes. */
   on('connbtn', function(){ window.uhOpenRoom('connections'); });
   on('growthbtn', function(){ uhOverlay('Invite — bring your people', '<h3>Invite by email, get credit</h3><p>Invite someone you know. When they join through you, you get the credit — 50% of the revenue when someone joins because you shared.</p><p><label style="font-size:17px">Their email<br><input id="uhInviteEmail" type="email" placeholder="friend@example.com" style="font:inherit;font-size:17px;padding:10px;border-radius:10px;width:min(420px,90%);margin-top:6px"></label></p><p><button onclick="var e=document.getElementById(\'uhInviteEmail\');if(e&&e.value){location.href=\'mailto:\'+e.value+\'?subject=Join me on NayaNET&body=Come and see my world on NayaNET — https://nayanet.app/\';}else{alert(\'Add their email first.\');}">Send the invite</button></p>'); });
   on('sharebtn', function(){ var u='https://nayanet.app/hub'; if(navigator.share){ navigator.share({title:'NayaNET Hub', url:u}).catch(function(){}); } else { if(navigator.clipboard){ try{ navigator.clipboard.writeText(u).catch(function(){}); }catch(e){} } uhOverlay('Share the Hub','<p>Hub link copied: '+u+'</p><p><a href="'+u+'">Open the Hub</a></p>'); } });
@@ -7947,7 +7860,7 @@ function HubView(params) {
      richest deep hues as the sidebar (Laws §3.1/§3.2). No two adjacent pills
      share a color; no red-with-red. tabColor (gematria by first letter) is
      kept for reference; the strip no longer calls it. */
-  const PILL_FLOW = ['#8e24aa', '#c62828', '#c2410c', '#d4a017', '#07925f', '#0e7490', '#3f51b5']; /* R18: the official seven-colour pattern — purple, red, orange, gold, green, canyon blue, indigo, repeat. Sapphire and magenta drop out of the flow. */ /* R17: nine-colour deep-palette flow in spectrum order — was 7 starting at magenta, missing indigo + cyan. Rich light, never neon; never two same colours in a row. */
+  const PILL_FLOW = ['#a21caf', '#8e24aa', '#0f52ba', '#07925f', '#d4a017', '#c2410c', '#c62828'];
   function tabColor(key) {
     const first = String(key || '').trim().charAt(0).toUpperCase();
     var DEEP_TAB_COLOR={1:'#c62828',2:'#c2410c',3:'#d4a017',4:'#07925f',5:'#0e7490',6:'#3f51b5',7:'#8e24aa',8:'#6d28d9',9:'#a21caf'};
@@ -8261,11 +8174,10 @@ function HubView(params) {
      redundant room header (the hero says it once) and no search box — the
      shared searchWrap node simply isn't appended here, so global search
      keeps working everywhere else untouched. */
-/* ═══ R20 — UH DATA MOVED ABOVE THE RENDER (R19 load fix) ═══
-   R19 assigned UH_FLOW/UH_CATS ~1,500 lines AFTER the top-level room-outlet
-   render called mainShow -> uhTop10Section() read UH_CATS.top10 of undefined
-   and killed the feed. The data now lives here, before the render, so the
-   call finds it assigned. Byte-identical data, new position only. */
+/* ═══ R20 — TOP 10 CARRIED FORWARD FROM R19 (verbatim, live R12 had none) ═══
+   The Top 10 categories + 25 subcategories are the only staged parts
+   carried into the live re-base (R19 checker verified the data complete
+   and verbatim). Placed here, before the render, so mainShow finds it. */
 /* ═══ R19 — TOP 10 CATEGORIES / 6 MAJORS / 24 SUBCATEGORIES ═══
    Shawn's words, voice call 2026-11-26 ~18:48 MST (the Top 10) + his full
    structured list, web 2026-11-26 ~18:49 MST (the 6 majors, 24 subs —
@@ -8371,7 +8283,7 @@ window.UH_CATS = UH_CATS;
   // (A note view sets its own title inside noteView — leave it alone.)
   if (!params.note) document.title = room.name + ' — NayaNET';
 
-  main.append(lensSlot, outlet); /* R17: the .top toolbar is out (Shawn 2026-11-26; top-bar-off) — Feed / INTELLIGENT HUB / Powercasts / Life with Naya / hamburger no longer mount. top stays built-but-detached so syncMenuBtn() keeps a node to write to; the search box and the feed outlet are untouched. */
+  main.append(top, lensSlot, outlet);
 
   /* ONE-BOTTOM-BAR (2026-11-11): the 12-icon eco-bottombar builder lived here.
      Replaced by the one bottom bar component. SWEEP-3 F10 (2026-11-17): the
@@ -8750,7 +8662,7 @@ window.NayaNotif = window.NayaNotif || {
         if (plusKey === 'message') { if (typeof openMsgPanel === 'function') openMsgPanel(); return; }
         if (plusKey === 'mail') { if (window.NayaRouter) window.NayaRouter.navigate('/hub/mail'); else location.hash = '#/hub/mail'; return; }
         if (plusKey === 'world') { if (window.NayaRouter) window.NayaRouter.navigate('/hub/spaces'); else location.hash = '#/hub/spaces'; return; }
-        if (plusKey === 'create-world') { location.href = 'https://nayanet.app/'; return; } /* HUB GO-LIVE ROUND 3 2026-11-24: the plus menu's Create world goes to the portal (nayanet.app/) — /welcome is dead. */
+        if (plusKey === 'create-world') { if(window.uhR20Overlay) window.uhR20Overlay('Create a world', '<h3>Create a world</h3><p>A world starts as a clone of your Personal page — everything that is you is already there, and you go in and edit it to make it your own. This drafts it here, on this device, saved by day. The clone itself is filed by the world-creation lane.</p><p><label style="font-size:17px">World name<br><input id="uhWorldTitle" type="text" placeholder="What is this world called?" style="font:inherit;font-size:17px;padding:10px;border-radius:10px;width:min(420px,90%);margin-top:6px"></label></p><p><button id="uhWorldSave" type="button">Save the draft</button></p>'); return; } /* R20: Create World clones Personal — the portal link went nowhere near that (the old GO-LIVE ROUND 3 comment went with it). Drafted here on this device; the clone rides the world-creation lane. */
         if (plusKey === 'home') { if (window.NayaRouter) window.NayaRouter.navigate('/hub/feed'); else location.hash = '#/hub/feed'; return; }
         var href = it.getAttribute('data-hub-href');
         if (href && window.NayaHubGoStaged) window.NayaHubGoStaged(href);
@@ -9834,8 +9746,7 @@ window.NayaJewels = (() => {
      notes; nothing here advances a slide, so nothing is rebuilt. */
 
   /* ═══ THE MAIN SHOW — hero, full-width lens, layered intelligence boards ═══ */
-  
-
+  /* ═══ R20 — TOP 10 FUNCTIONS CARRIED FORWARD FROM R19 (verbatim) ═══ */
 function uhEsc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
 function uhCatFollow(){ try { var v = JSON.parse(localStorage.getItem('naya.hub.catfollow.v1') || '{}'); return (v && typeof v === 'object') ? v : {}; } catch(e){ return {}; } }
 function uhCatFollowPut(v){ try { localStorage.setItem('naya.hub.catfollow.v1', JSON.stringify(v)); } catch(e){} }
@@ -10203,7 +10114,7 @@ function mainShow(rm, content, stream, searchWrap, provenanceEl) {
     /* — Lens: THREE buttons in one row, real navigation (HUB GO-LIVE ROUND 2 2026-11-24, Shawn ~10:41 MST: Collective · Personal · Activity, in this order. Business and Thing are not lenses — Business lives on the Personal page. ROUND 3: the Business/Thing routes are removed entirely; old links land on Collective. Worlds are reached from the bottom bar's WORLDS button, not as feed tabs.) — */
     const lens = el('nav', 'lens-tabs');
     lens.setAttribute('aria-label', 'Feed lens');
-    const tabs = (window.uhLensTabs ? window.uhLensTabs(stream) : [['collective', 'COLLECTIVE', 'The whole network\'s smart-notes feed', '/hub/feed', '#d4a017', '\u2726'], ['personal', 'PERSONAL', 'Your personal smart notes', '/hub/feed-personal', '#0e7490', '\u25C6'] /* R18: fallback kept consistent with the live definition (canyon blue). */, ['activity', 'ACTIVITY', 'The activity going on in the network', '/hub/feed-activity', '#8e24aa', '\u2605']]);
+    const tabs = (window.uhLensTabs ? window.uhLensTabs(stream) : [['collective', 'COLLECTIVE', 'The whole network\'s smart-notes feed', '/hub/feed', '#d4a017', '\u2726'], ['personal', 'PERSONAL', 'Your personal smart notes', '/hub/feed-personal', '#0f52ba', '\u25C6'], ['activity', 'ACTIVITY', 'The activity going on in the network', '/hub/feed-activity', '#07925f', '\u2605']]);
     tabs.forEach(([key, label, sub, path, color, glyph]) => {
       const b = el('button', 'primo theme-purple elev-2 lens-tab lens-' + key + (stream === key ? ' active' : ''));
       b.setAttribute('aria-current', stream === key ? 'true' : 'false');
@@ -10247,7 +10158,7 @@ function mainShow(rm, content, stream, searchWrap, provenanceEl) {
     quickRow.setAttribute('aria-label', 'Your quick links');
     wrap.appendChild(quickRow);
     renderLensQuick(quickRow);
-    /* R19 — Top 10 categories row, above the feed boards. */
+    /* R20 — Top 10 categories row, above the feed boards (carried forward from R19, verbatim). */
     wrap.appendChild(uhTop10Section());
     /* EYE-NOTES 2026-11-17 §3.3: the caption line under the tabs is OUT —
        gone, not restyled, not moved (Shawn 18:00Z). */
@@ -10769,10 +10680,10 @@ function mainShow(rm, content, stream, searchWrap, provenanceEl) {
        Every board takes the next spectrum color — magenta → purple → indigo → blue → cyan →
        green → gold → orange → red → round again. Real piece, never still. */
     const ORB_WALK = [
-      ['#8e24aa', '142,36,170'], ['#c62828', '198,40,40'], ['#c2410c', '194,65,12'],
-      ['#d4a017', '212,160,23'], ['#07925f', '7,146,95'], ['#0e7490', '14,116,144'],
-      ['#3f51b5', '63,81,181']
-    ]; /* R18: boards flow down the official seven-colour pattern, starting at royal purple — sapphire and magenta drop out. */
+      ['#a21caf', '162,28,175'], ['#8e24aa', '142,36,170'], ['#3f51b5', '63,81,181'],
+      ['#0f52ba', '15,82,186'], ['#0e7490', '14,116,144'], ['#07925f', '7,146,95'],
+      ['#d4a017', '212,160,23'], ['#c2410c', '194,65,12'], ['#c62828', '198,40,40']
+    ];
     const oc = ORB_WALK[(idx || 0) % ORB_WALK.length];
     const jewel = el('span', 'orb orb--sm ib-card-orb');
     jewel.setAttribute('aria-hidden', 'true');
@@ -16446,12 +16357,24 @@ window.uhR20Overlay = function(title, html){
 };
 (function(){
   /* Avatar ring flows with the day (Laws §3.3): Sun purple, Mon orange,
-     Tue gold, Wed sapphire, Thu emerald, Fri ruby, Sat indigo. */
-  try{
+     Tue gold, Wed sapphire, Thu emerald, Fri ruby, Sat indigo. Re-painted
+     on load + timers: the same mainShow re-render that detaches the Feed
+     button can replace the avatar wrap, and a parse-time-only paint would
+     silently go stale. */
+  (function(){
     var DAY=['#8e24aa','#c2410c','#d4a017','#0f52ba','#07925f','#c62828','#3f51b5'];
-    var dc=DAY[new Date().getDay()];
-    document.querySelectorAll('.ph-avwrap').forEach(function(w){ w.style.setProperty('--av-day', dc); });
-  }catch(e){}
+    function paintAv(){
+      try{
+        var dc=DAY[new Date().getDay()];
+        document.querySelectorAll('.ph-avwrap').forEach(function(w){ w.style.setProperty('--av-day', dc); });
+      }catch(e){}
+    }
+    paintAv();
+    if (document.readyState === 'complete') paintAv();
+    else window.addEventListener('load', paintAv);
+    setTimeout(paintAv, 1500);
+    setTimeout(paintAv, 4000);
+  })();
   /* Create Project — the fourth create. There is no Project Intelligence
      destination inside this build, so the tap does NOT pretend to open one:
      it opens an elegant draft composer on this device (title + what it is
@@ -16485,6 +16408,90 @@ window.uhR20Overlay = function(title, html){
     if(!window.uhR20Overlay) return;
     window.uhR20Overlay('Create a project', '<h3>Create a project</h3><p>A project lives in Project Intelligence — this drafts it here, on this device, saved by day. Filing it into Project Intelligence rides the PI lane.</p><p><label style="font-size:17px">Project title<br><input id="uhProjTitle" type="text" placeholder="What are we building?" style="font:inherit;font-size:17px;padding:10px;border-radius:10px;width:min(420px,90%);margin-top:6px"></label></p><p><button onclick="var e=document.getElementById(\'uhProjTitle\');var v=e?e.value.trim():\'\';if(!v){alert(\'Give the project a title first.\');return;}try{var d=JSON.parse(localStorage.getItem(\'nayanet.hub.project.drafts.v1\')||\'[]\');d.push({title:v,day:new Date().toISOString().slice(0,10)});localStorage.setItem(\'nayanet.hub.project.drafts.v1\',JSON.stringify(d));}catch(x){}window.uhCloseRoom&&window.uhCloseRoom();">Save the draft</button></p>');
   });
+  document.addEventListener('click', function(ev){
+    var t = ev.target && ev.target.closest ? ev.target.closest('#uhWorldSave') : null;
+    if(!t) return;
+    var e=document.getElementById('uhWorldTitle'); var v=e?e.value.trim():'';
+    if(!v){ alert('Give the world a name first.'); return; }
+    try{ var d=JSON.parse(localStorage.getItem('nayanet.hub.world.drafts.v1')||'[]'); d.push({title:v,day:new Date().toISOString().slice(0,10),clone:'personal'}); localStorage.setItem('nayanet.hub.world.drafts.v1',JSON.stringify(d)); }catch(x){}
+    if(window.uhCloseRoom) window.uhCloseRoom();
+  });
+  /* R20 item 23(b)/(c)/(d) — THE FEED CHOOSER IS A DROPDOWN (his words
+     2026-11-26 ~21:03 MST: "just like the three lines"). The original opener
+     only adds class 'on' to #uhChooser (a full-screen dim modal); this
+     override hangs the card under the Feed button instead — the hamburger's
+     #hubMenuChoices pattern, harvested: fixed, centred under the button,
+     top = button bottom + 10. Outside tap / Escape / choosing a feed closes
+     it (uhCloseFeedChooser stays the closer). The six chooser buttons are
+     icons only: each gets a jewel from this file's own jewel set
+     (✦ ◉ ▦ ◈ ✉ ⇄ — all harvested from the file's os-jewel spans) in its own
+     deep colour, and the R20 CSS puts the slow white-light orbit ring around
+     each jewel — one energy circle per icon, flowing. The <b>/<small> text
+     stays in the DOM (screen readers, title attributes) and is hidden by CSS. */
+  (function(){
+    var btn = document.getElementById('uhFeedBtn');
+    var chooser = document.getElementById('uhChooser');
+    if(!btn || !chooser) return;
+    var GLYPHS = [
+      {g:'✦', c:'#8e24aa', t:'Home / Hub — the whole network'},
+      {g:'◉', c:'#0f52ba', t:'Personal — your personal feed'},
+      {g:'▦', c:'#d4a017', t:'Business — your business feed'},
+      {g:'◈', c:'#07925f', t:'World — your world feed'},
+      {g:'✉', c:'#c2410c', t:'News — the news feed'},
+      {g:'⇄', c:'#c62828', t:'News Feed — local, province, global'}
+    ];
+    var chBtns = chooser.querySelectorAll('.uh-ch button');
+    chBtns.forEach(function(b, i){
+      var m = GLYPHS[i % GLYPHS.length];
+      var bEl = b.querySelector('b');
+      if(bEl) b.setAttribute('title', bEl.textContent.trim());
+      else b.setAttribute('title', m.t);
+      b.setAttribute('aria-label', m.t);
+      if(!b.querySelector('.uh-ch-ico')){
+        var s = document.createElement('span');
+        s.className = 'uh-ch-ico';
+        s.textContent = m.g;
+        s.style.background = m.c;
+        s.setAttribute('aria-hidden', 'true');
+        b.insertBefore(s, b.firstChild);
+      }
+    });
+    function place(){
+      /* Looked up on EVERY run: mainShow re-renders the middle bar, so the
+         parse-time btn is a DETACHED node after any menu/lens tap — its
+         rect is all zeros and the card lands at top:10px. Proven 2026-11-26:
+         a logging wrapper read the live button bottom 62.84 while place()
+         measured the detached one at 0. The live lookup is the fix. */
+      var live = document.getElementById('uhFeedBtn') || btn;
+      var r = live.getBoundingClientRect();
+      chooser.style.setProperty('top', (r.bottom + 10) + 'px', 'important');
+    }
+    /* The opener override MUST be installed AFTER every inline script has
+       run: the uh-script that defines the original uhOpenFeedChooser sits
+       AFTER this script in the document, so a parse-time assignment gets
+       clobbered by the original (which only adds 'on' — the full-screen
+       modal pose). Install on window load + a 1.5s fallback; the jewel
+       spans above are DOM, so they survive either way. */
+    function installOpener(){
+      window.uhOpenFeedChooser = function(){
+        place();
+        chooser.classList.add('on');
+      };
+    }
+    if (document.readyState === 'complete') installOpener();
+    else window.addEventListener('load', installOpener);
+    setTimeout(installOpener, 1500);
+    setTimeout(installOpener, 4000);
+    document.addEventListener('click', function(ev){
+      if(!chooser.classList.contains('on')) return;
+      if(ev.target.closest && (ev.target.closest('#uhChooser') || ev.target.closest('#uhFeedBtn'))) return;
+      if(window.uhCloseFeedChooser) window.uhCloseFeedChooser();
+    });
+    document.addEventListener('keydown', function(ev){
+      if(ev.key === 'Escape' && chooser.classList.contains('on') && window.uhCloseFeedChooser) window.uhCloseFeedChooser();
+    });
+    window.addEventListener('resize', function(){ if(chooser.classList.contains('on')) place(); });
+  })();
 })();
 </script>
 <div id="hubPlusConnect" class="fc-plusmenu hub-plusmenu" hidden role="menu" aria-label="Connect">
@@ -16701,6 +16708,118 @@ body:not(.os-bottom-hidden):not(.os-bottom-off) #os-b3-hide { bottom: 200px; }
    inline on the layer, so the hover override needs !important. */
 .intel-board .ib-layer.ib-late:hover { --lc: #d4a017 !important; }
 </style>
+<style id="uh-r19-top10">
+/* R19 — TOP 10 CATEGORIES IN THE FEED (Shawn, voice call 2026-11-26 ~18:48 MST).
+   One data structure (UH_CATS below) drives the row and the worlds, so a new
+   category drops in without a rebuild. Harvested patterns only: smart-tab
+   pill ribbon (.smart-tabs), PILL_FLOW seven-colour cycle, LIB cover
+   gradients (135deg), obsidian pill/board anatomy. Text 25/19/17, Marcellus,
+   white — no gray, nothing flat, nothing dead. */
+.uh-top10{margin:24px 0 0;padding:0 4px}
+.uh-top10-label{font-size:17px;letter-spacing:.12em;color:#fff;font-weight:700;margin:0 0 8px}
+.uh-top10 h2{font-family:Marcellus,serif;font-size:25px;color:#fff;margin:0 0 8px;font-weight:400}
+.uh-top10-sub{font-size:19px;color:#fff;margin:0 0 8px}
+.uh-top10-row{display:flex;align-items:center;gap:12px;overflow-x:auto;scrollbar-width:none;margin:8px 0 0;padding:16px 12px 20px;-webkit-mask-image:linear-gradient(90deg,#000,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,#000,#000 calc(100% - 28px),transparent)}
+.uh-top10-row::-webkit-scrollbar{display:none}
+.uh-cat-chip{flex:0 0 auto;display:flex;align-items:center;gap:10px;background:#050607;border:2px solid var(--tc);border-radius:999px;color:#fff;font-family:Marcellus,serif;font-size:17px;padding:12px 18px;cursor:pointer;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.6);transition:transform .3s ease,box-shadow .3s ease}
+.uh-cat-chip:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.65),0 0 18px -4px var(--tc)}
+.uh-cat-chip:active{transform:scale(.97)}
+.uh-cat-rank{display:inline-grid;place-items:center;min-width:26px;height:34px;padding:0 4px;background:#050607;border:1.5px solid var(--tc);border-radius:8px;color:#fff;font-weight:900;font-size:22px;line-height:1}
+.uh-cat-jewel{color:var(--tc);font-size:19px;line-height:1}
+.uh-cat-name{color:#fff}
+/* World overlay content (uhRoomBody) — same anatomy as the About/Skills rooms. */
+.uh-world-hero{border-radius:22px;padding:24px;margin:0 0 16px;border:2px solid var(--tc);box-shadow:0 16px 40px rgba(0,0,0,.6)}
+.uh-world-hero h3{font-family:Marcellus,serif;font-size:25px;color:#fff;margin:0 0 8px;font-weight:400}
+.uh-world-hero p{font-size:19px;color:#fff;margin:0 0 8px}
+.uh-world-hero .uh-world-desc{font-size:17px;color:#fff;margin:0}
+.uh-world-sec{font-size:17px;letter-spacing:.12em;color:#fff;font-weight:700;margin:24px 0 8px}
+.uh-world-subs{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0}
+.uh-world-sub{background:#050607;border:2px solid var(--tc);border-radius:999px;color:#fff;font-size:17px;padding:10px 16px;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease}
+.uh-world-sub:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.6),0 0 14px -4px var(--tc)}
+.uh-world-sub:active{transform:scale(.97)}
+.uh-world-note{background:#050607;border:2px solid var(--tc);border-radius:22px;padding:16px 20px;margin:12px 0;box-shadow:0 12px 30px rgba(0,0,0,.55)}
+.uh-world-note b{font-size:19px;color:#fff;font-weight:700}
+.uh-world-note p{font-size:17px;color:#fff;margin:8px 0 0}
+.uh-world-note button{background:#050607;border:2px solid var(--tc);border-radius:999px;color:#fff;font-size:17px;padding:10px 18px;cursor:pointer;margin-top:12px}
+.uh-world-note button:hover{box-shadow:0 0 14px -4px var(--tc)}
+.uh-world-empty{font-size:17px;color:#fff;margin:8px 0}
+</style>
+<style id="uh-r20">
+/* ═══ HUB R20 ═══ */
+/* (1) AVATAR RING — white light like the portal; the pink ring goes. The
+   ::before ring spins white light plus the day's own colour (Thursday green,
+   Friday red — Laws §3.3 weekday identity; --av-day is set by the R20 script). */
+.ph-avwrap{--av-day:#07925f;}
+.ph-avwrap::before{background:conic-gradient(from 0deg,transparent 0deg,transparent 250deg,var(--av-day) 295deg,rgba(255,255,255,.95) 335deg,rgba(255,255,255,.7) 350deg,transparent 360deg)!important;filter:drop-shadow(0 0 6px rgba(255,255,255,.85)) drop-shadow(0 0 14px rgba(255,255,255,.45));}
+/* (2) LIT LENS — the active lens fills in its OWN colour: Activity purple,
+   Collective gold, Personal canyon blue. Black-with-a-thin-ring is gone. */
+.lens-tab.active{background:linear-gradient(135deg,color-mix(in srgb,var(--glow) 78%,#050607),var(--glow))!important;color:#fff!important;}
+.lens-tab .lens-sub{display:none!important;}
+/* (3) The little ⓘ — one small button, same primo language as its neighbours. */
+.lens-tab.lens-info{flex:none;width:44px;padding:13px 0;font-size:19px;}
+.lens-tabs{grid-template-columns:repeat(3,1fr) 52px 44px!important;}
+@media (max-width:640px){.lens-tabs{grid-template-columns:repeat(3,minmax(0,1fr)) 40px 36px!important;gap:6px!important;}.lens-tab.lens-info{width:36px;}}
+/* (4) ICON BUTTONS — any button with an icon inside it has a circle, with a
+   flow of energy around that circle (his words 2026-11-26 ~20:18 MST). The
+   jewel circles on the menu pills, cover pills and plus items carry a slow
+   white-light orbit (60s, Laws §1 ambient band), harvested from the
+   avatar-ring pattern in this same file. */
+.up-act .os-jewel,.mw-mship-ico,.fc-pi-ico{position:relative;}
+.up-act .os-jewel::after,.mw-mship-ico::after,.fc-pi-ico::after{content:'';position:absolute;inset:-4px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,transparent 300deg,rgba(255,255,255,.95) 335deg,rgba(255,255,255,.55) 350deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:1.5px;animation:orb-spin 60s linear infinite;pointer-events:none;}
+/* (5) POP-UPS — elegantly presented: the room card lights up whole in its own
+   colour, title white 19, easy to read. */
+#uhRoomCard{box-shadow:0 24px 64px rgba(0,0,0,.75),0 0 40px rgba(142,36,170,.35),inset 0 1px 0 rgba(255,255,255,.25)!important;}
+#uhRoomBar h2{color:#fff!important;}
+/* (6) ITEM 23(b)/(c)/(d) — THE FEED CHOOSER IS A DROPDOWN NOW, ICONS ONLY,
+   WITH ENERGY FLOWING AROUND EACH ICON (his words 2026-11-26 ~21:03 MST).
+   The chooser stops being a full-screen dim modal and hangs under the Feed
+   button like the hamburger's #hubMenuChoices (fixed, centred under the
+   button, same obsidian card, same shadow; no dim backdrop, taps outside
+   close it — see the R20 script). The heading and sub-text go; the six
+   chooser buttons lose their <b> labels and <small> sub-texts (icons only)
+   and each shows a jewel from this file's own jewel set, with the slow
+   white-light orbit ring from rule (4) — one energy circle per icon. */
+#uhChooser{inset:auto!important;left:50%!important;top:auto!important;transform:translateX(-50%)!important;background:transparent!important;padding:0!important;pointer-events:none!important;}
+#uhChooserCard{pointer-events:auto!important;max-width:calc(100vw - 32px)!important;box-shadow:0 18px 48px rgba(0,0,0,.8),0 0 36px rgba(15,82,186,.35),inset 0 1px 0 rgba(255,255,255,.25)!important;}
+#uhChooserCard h2,#uhChooserCard>p{display:none!important;}
+#uhChooser .uh-ch{flex-direction:row!important;gap:10px!important;padding:14px!important;}
+#uhChooser .uh-ch button{width:52px!important;height:52px!important;padding:0!important;border-radius:50%!important;display:grid!important;place-items:center!important;position:relative!important;background:transparent!important;border:none!important;}
+#uhChooser .uh-ch button b,#uhChooser .uh-ch button small{display:none!important;}
+#uhChooser .uh-ch button .uh-ch-ico{width:44px!important;height:44px!important;border-radius:50%!important;display:grid!important;place-items:center!important;font-size:20px!important;color:#fff!important;position:relative!important;}
+#uhChooser .uh-ch button .uh-ch-ico::after{content:'';position:absolute;inset:-4px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,transparent 300deg,rgba(255,255,255,.95) 335deg,rgba(255,255,255,.55) 350deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:1.5px;animation:orb-spin 60s linear infinite;pointer-events:none;}
+/* (7) PHONE — the lens row must not clip: at phone width the jewel stacks
+   ABOVE the label and the + / ⓘ wrap to a second row, so COLLECTIVE /
+   PERSONAL / ACTIVITY each get a full column at 17px, nothing cut off.
+   (Measured: labels 103px/91px in 81px pills before this rule.) */
+@media (max-width:640px){
+  .lens-tabs{grid-template-columns:repeat(3,minmax(0,1fr))!important;}
+  .lens-tab{flex-direction:column!important;gap:4px!important;padding:10px 2px!important;}
+  .lens-tab .tab-jewel{width:26px!important;height:26px!important;font-size:17px!important;}
+  .lens-tab b{letter-spacing:0!important;}
+  .lens-tab.lens-add,.lens-tab.lens-info{width:52px!important;justify-self:center!important;flex-direction:row!important;padding:13px 0!important;}
+}
+/* (8) PHONE — the floating ▾ (bottom-bar control) and ✕ (rail toggle) must
+   not sit on the cover pills, menu pills, lens circles or search field:
+   they fade out while the cover/menu are on screen (see the R20 script
+   scroll gate) and fade in once the reader is in the feed. */
+#os-b3-hide,#uhRailToggle{transition:opacity .3s ease;}
+/* (9) ITEM 21 — THE BOTTOM MUST SHOW, AND END CLEANLY. Measured: the page
+   ended in a 416px dead void below the footer — stacked bottom padding
+   (main 160 + .main-show 140 + body 90 + trailing room-body 26). Trimmed so
+   the clearance below the footer is 164px: the footer lands just above the
+   fixed bottom bar (90px at 390, 124px at 1440) with room to breathe, and
+   the page ends on its footer instead of on empty black. */
+/* (10) SHIP-READY — THE CALENDAR OPENS FULL SCREEN ON FIRST OPEN (his words
+   2026-11-26 ~20:56 MST). Live's D5 framed the card (min(620px,74vh), 22px
+   radius, purple rim — measured 367×620 at 390, the Hub showing below it);
+   the bar says full screen, so the dialog's padding goes and the card fills
+   the viewport, borderless, at every width. The "Open full-screen ↗" link
+   inside still offers the standalone calendar page. */
+#osCalDlg{padding:0!important;}
+#osCalDlg .os-cal-card{width:100%!important;height:100dvh!important;max-width:none!important;max-height:100dvh!important;margin:0!important;border:0!important;border-radius:0!important;}
+main.main{padding-bottom:24px!important;}
+.main-show{padding-bottom:24px!important;}
+</style>
 <style id="hub-followup14-20261119">
 /* ——— FOLLOW-UP 14 20261119 — search only (Shawn 19:01 MST: "All you need is a
    search"). The 13 contacts category chips are gone; the rail keeps one small
@@ -16890,232 +17009,5 @@ body:not(.os-bottom-hidden):not(.os-bottom-off) .private{padding-bottom:140px;}
 }
 @keyframes uhWhiteBreath{0%,100%{box-shadow:0 0 18px rgba(255,255,255,.45),0 0 42px rgba(255,255,255,.18),0 14px 30px rgba(0,0,0,.6);}50%{box-shadow:0 0 28px rgba(255,255,255,.65),0 0 64px rgba(255,255,255,.3),0 14px 30px rgba(0,0,0,.6);}}
 </style>
-
-<style id="uh-r18">
-/* R18 — seven-colour pattern, initial ball, rail toggle, feed dropdown, cover-pill editing. */
-/* Initial ball beside the name: dark ball, white letter, own-colour rim + flow (Gematria: S=6=indigo). */
-.ph-uh-initial{position:relative;display:inline-grid;place-items:center;width:30px;height:30px;flex:none;border-radius:50%;vertical-align:-9px;margin:0 10px 0 2px;background:#050607;border:2px solid var(--ic,#3f51b5);color:#fff;font-weight:900;font-size:17px;line-height:1;box-shadow:0 0 12px var(--ic,#3f51b5),0 4px 10px rgba(0,0,0,.6);}
-.ph-uh-initial::after{content:'';position:absolute;inset:-5px;border-radius:50%;pointer-events:none;background:conic-gradient(from 0deg,transparent 0deg,transparent 300deg,var(--ic,#3f51b5) 335deg,transparent 360deg);animation:orb-spin 60s linear infinite;}
-/* The one little rail button: fixed bottom-right above the bottom bar, gold when the people rail is open. */
-#uhRailToggle{position:fixed;bottom:150px;right:12px;z-index:1001;width:48px;height:48px;border-radius:50%;background:#050607;border:2px solid #d4a017;color:#fff;font-size:20px;line-height:1;cursor:pointer;display:grid;place-items:center;box-shadow:0 0 16px rgba(212,160,23,.5),0 6px 16px rgba(0,0,0,.6);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;}
-#uhRailToggle:hover{transform:translateY(-2px) scale(1.06);}
-#uhRailToggle[data-r18-state="sidebar"]{border-color:#8e24aa;box-shadow:0 0 16px rgba(142,36,170,.55),0 6px 16px rgba(0,0,0,.6);}
-#uhRailToggle[data-r18-state="neither"]{border-color:rgba(255,255,255,.55);box-shadow:0 0 12px rgba(255,255,255,.25),0 6px 16px rgba(0,0,0,.6);}
-/* R18 rail states (fix3) — unconditional, body-qualified so they beat the chassis's
-   drawer rules: the diag proved drawer-open left .rail.right at transform 0 at 390
-   despite the collapsed !important rule. Transform only, so the rails keep their
-   layout space at desktop; pointer-events off while a rail is translated out. */
-body .shell.rail-right-open .rail.right{transform:none!important;opacity:1!important;pointer-events:auto!important}
-body .shell.rail-right-open .rail.left{transform:translateX(-105%)!important;pointer-events:none!important}
-body .shell.drawer-open .rail.left{transform:none!important;opacity:1!important;pointer-events:auto!important}
-body .shell.drawer-open .rail.right{transform:translateX(105%)!important;pointer-events:none!important}
-body .shell.rail-collapsed .rail.left{transform:translateX(-105%)!important;pointer-events:none!important}
-body .shell.rail-right-collapsed .rail.right{transform:translateX(105%)!important;pointer-events:none!important}
-/* Feed dropdown: a plain list that pulls down under the Feed pill — no big pop-up.
-   position:fixed (placed by JS under the pill) so it escapes the menu row's stacking
-   context — at desktop the docked left rail painted over the absolute version. */
-.uh-feed-wrap{position:relative;flex:1 1 0;min-width:0;}
-.uh-feed-wrap #uhFeedBtn{width:100%;}
-#uhFeedDrop{position:fixed;min-width:280px;max-width:88vw;background:#050607;border:2px solid #8e24aa;border-radius:16px;box-shadow:0 18px 44px rgba(0,0,0,.7),0 0 24px rgba(142,36,170,.35);padding:6px;z-index:10000;display:none;} /* fix4: above the lens-tab stacking context that covered the rows at 1440 */
-#uhFeedDrop.on{display:block;}
-#uhFeedDrop button{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:transparent;border:0;color:#fff;font-size:17px;padding:12px 14px;border-radius:12px;cursor:pointer;font-family:inherit;}
-#uhFeedDrop button:hover{background:rgba(255,255,255,.08);}
-.uh-feed-dot{width:12px;height:12px;flex:none;border-radius:50%;background:var(--fc,#8e24aa);box-shadow:0 0 10px var(--fc,#8e24aa);}
-/* Cover-pill editing (owner only, alias present): a small edit mark on each pill. */
-.mw-r18-edit{margin-left:8px;flex:none;width:24px;height:24px;border-radius:50%;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.6);color:#fff;font-size:17px;line-height:1;cursor:pointer;padding:0;}
-.mw-r18-edit:hover{border-color:#d4a017;box-shadow:0 0 10px rgba(212,160,23,.6);}
-.mw-r18-editor{display:flex;flex-direction:column;gap:6px;background:#050607;border:2px solid #d4a017;border-radius:14px;padding:10px;min-width:240px;box-shadow:0 12px 32px rgba(0,0,0,.7);}
-.mw-r18-editor input{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);border-radius:10px;color:#fff;padding:9px 11px;font-size:17px;font-family:inherit;width:100%;box-sizing:border-box;}
-.mw-r18-editor .mw-r18-edrow{display:flex;gap:8px;}
-.mw-r18-editor .mw-r18-edrow button{flex:1;background:#050607;border:2px solid #07925f;border-radius:999px;color:#fff;font-size:17px;padding:8px 10px;cursor:pointer;font-family:inherit;}
-.mw-r18-editor .mw-r18-edrow button:last-child{border-color:rgba(255,255,255,.4);}
-.mw-r18-editor .mw-r18-edhint{color:#fff;font-size:17px;opacity:.85;}
-</style>
-<script>
-/* R18 live block — Shawn 2026-11-26: initial ball, three-state rail toggle, editable cover pills, seven-colour flow painting. */
-(function(){ 'use strict';
-var SEVEN=['#8e24aa','#c62828','#c2410c','#d4a017','#07925f','#0e7490','#3f51b5'];
-var GEM={A:1,B:2,C:3,D:4,E:5,F:6,G:7,H:6,I:5,J:4,K:3,L:2,M:1,N:1,O:2,P:3,Q:4,R:5,S:6,T:7,U:6,V:5,W:4,X:3,Y:2,Z:1};
-var GEMC={1:'#c62828',2:'#c2410c',3:'#d4a017',4:'#07925f',5:'#0e7490',6:'#3f51b5',7:'#8e24aa'};
-function alias(){ try{ return localStorage.getItem('nayanet_smart_alias')||''; }catch(e){ return ''; } }
-function gemColor(letter){ var n=GEM[(letter||'N').toUpperCase()]||6; return GEMC[n]; }
-/* --- ITEM 3: the initial beside the name --- */
-function ensureInitial(){
-  var pn=document.getElementById('pname'); if(!pn) return;
-  var a=alias(); var letter=(a?a.charAt(0):'N').toUpperCase(); var col=gemColor(letter);
-  var b=pn.querySelector('.ph-uh-initial');
-  if(!b){ b=document.createElement('span'); b.className='ph-uh-initial'; b.setAttribute('aria-hidden','true');
-    var orb=pn.querySelector('.ph-intro-orb');
-    if(orb&&orb.nextSibling) pn.insertBefore(b,orb.nextSibling); else pn.insertBefore(b,pn.firstChild); }
-  if(b.textContent!==letter) b.textContent=letter;
-  b.style.setProperty('--ic',col); b.title='Initial of '+(a||'Naya');
-}
-var _initGuard=false;
-function onNameMut(){ if(_initGuard) return; _initGuard=true; try{ ensureInitial(); }catch(e){} _initGuard=false; }
-/* --- ITEM 4: boards + DM boards follow the seven-cycle as they flow down --- */
-/* Board rims take --tone; the orb walk (ORB_WALK, now seven) already colours the orb.
-   This pass aligns each board's rim with its place in the flow, and each DM row's
-   border with its place in the people list. Orbs/initials keep their Gematria colour. */
-function paintFlow(){
-  var i=0;
-  document.querySelectorAll('.show-feed article, .intel-board').forEach(function(el){ el.style.setProperty('--tone',SEVEN[i%7]); i++; });
-  var j=0;
-  document.querySelectorAll('#hubPeopleList .pc-card').forEach(function(el){ el.style.borderColor=SEVEN[j%7]; j++; });
-}
-/* --- ITEM 2: cover pills editable, like smart links --- */
-function readSlots(){ try{ var v=localStorage.getItem('mw.set.coverslots'); if(v) return JSON.parse(v); }catch(e){} return null; }
-function writeSlots(slots){ try{ localStorage.setItem('mw.set.coverslots',JSON.stringify(slots)); }catch(e){} if(typeof window.mwRenderCover==='function'){ try{ window.mwRenderCover(); }catch(e){} } }
-function attachCoverEdits(){
-  var box=document.getElementById('mwCoverMships'); if(!box) return;
-  if(!alias()) return; /* owner-only: the alias is the working owner signal (body.is-owner is never set). */
-  box.querySelectorAll('.mw-mship-btn').forEach(function(pill){
-    if(pill.querySelector('.mw-r18-edit')) return;
-    var ed=document.createElement('button'); ed.type='button'; ed.className='mw-r18-edit'; ed.textContent='\u270E';
-    ed.title='Edit this link'; ed.setAttribute('aria-label','Edit link: '+(pill.textContent||'').trim());
-    ed.addEventListener('click',function(ev){ ev.preventDefault(); ev.stopPropagation(); openCoverEditor(pill); });
-    pill.appendChild(ed);
-  });
-}
-function openCoverEditor(pill){
-  var box=document.getElementById('mwCoverMships'); if(!box) return;
-  /* Slots live in localStorage when the citizen has saved them; otherwise the page's
-     own defaults apply (mwSlots() does exactly this — the defaults are NOT in storage).
-     mwRenderCover / MW_DEFAULT_SLOTS are scoped inside the page's script, not global,
-     so the editor reads storage and falls back to the R18 defaults itself. */
-  var slots=readSlots();
-  if(!slots){ slots=[
-    {on:true,label:'Naya Power',url:'https://nayanet.app/pricing'},
-    {on:true,label:'AI Masterclass',url:'https://aimasterclass.help/'},
-    {on:true,label:'Naya Academy',url:'https://nayanet.groovepages.com/academy'},
-    {on:false,label:'',url:''},{on:false,label:'',url:''}]; }
-  var active=slots.filter(function(s){ return s.on&&s.label&&s.url; });
-  var idx=Array.prototype.indexOf.call(box.querySelectorAll('.mw-mship-btn'),pill);
-  var target=active[idx]; if(!target) return;
-  var fullIdx=slots.indexOf(target); if(fullIdx<0) return;
-  var curLabel=target.label, curUrl=(target.label==='Naya Power')?'https://nayanet.app/pricing':target.url;
-  var ed=document.createElement('div'); ed.className='mw-r18-editor';
-  ed.innerHTML='<input type="text" class="mw-r18-edlabel" value="" aria-label="Link label"><input type="text" class="mw-r18-edurl" value="" aria-label="Link URL" placeholder="https://…"><div class="mw-r18-edrow"><button type="button" class="mw-r18-edsave">Save</button><button type="button" class="mw-r18-edcancel">Cancel</button></div><div class="mw-r18-edhint">Blank URL turns this pill off. Naya Power keeps your affiliate link.</div>';
-  ed.querySelector('.mw-r18-edlabel').value=curLabel;
-  ed.querySelector('.mw-r18-edurl').value=curUrl;
-  pill.replaceWith(ed);
-  function restorePill(label,url,on){
-    /* Update the pill in place (no global re-render exists to call) and put it back. */
-    if(!on){ ed.replaceWith(document.createComment('R18: cover pill turned off')); return; }
-    var href=url;
-    if(label==='Naya Power'){ var _a='shawn'; try{ _a=alias()||'shawn'; }catch(e){} href='https://nayanet.app/pricing?ref='+encodeURIComponent(_a); }
-    pill.setAttribute('href',href);
-    var ico=pill.querySelector('.mw-mship-ico');
-    while(pill.firstChild) pill.removeChild(pill.firstChild);
-    if(ico) pill.appendChild(ico);
-    pill.appendChild(document.createTextNode(label));
-    pill.setAttribute('data-mw-cover',label);
-    ed.replaceWith(pill);
-    setTimeout(attachCoverEdits,200);
-  }
-  ed.querySelector('.mw-r18-edsave').addEventListener('click',function(){
-    var nl=ed.querySelector('.mw-r18-edlabel').value.trim()||curLabel;
-    var nu=ed.querySelector('.mw-r18-edurl').value.trim();
-    var fresh=readSlots()||slots;
-    var t=fresh[fullIdx];
-    if(!t){ restorePill(curLabel,curUrl,true); return; }
-    t.label=nl;
-    if(nu){ t.url=nu; t.on=true; } else { t.on=false; }
-    try{ localStorage.setItem('mw.set.coverslots',JSON.stringify(fresh)); }catch(e){}
-    restorePill(nl,nu||curUrl,!!nu);
-  });
-  ed.querySelector('.mw-r18-edcancel').addEventListener('click',function(){
-    ed.replaceWith(pill); setTimeout(attachCoverEdits,200);
-  });
-}
-/* --- ITEM 5: ONE button, three states — people rail, sidebar, neither --- */
-var RAIL_STATES=['people','sidebar','neither'];
-var RAIL_GLYPH={people:'\uD83D\uDC65',sidebar:'\u2630',neither:'\u2715',both:'\u25A4'};
-function measureRail(){
-  var l=document.querySelector('.rail.left'), r=document.querySelector('.rail.right');
-  /* A rail counts as open only when a real slab of it is on screen — the collapsed
-     rails still show a ~10px sliver at the viewport edge, and that sliver is not open. */
-  function vis(el){ if(!el) return false; var b=el.getBoundingClientRect();
-    var shown=Math.min(b.right,window.innerWidth)-Math.max(b.left,0); return shown>=100; }
-  var lv=vis(l), rv=vis(r);
-  if(lv&&rv) return 'both'; if(rv) return 'people'; if(lv) return 'sidebar'; return 'neither';
-}
-function applyRail(state){
-  var sh=document.querySelector('.shell'); if(!sh) return;
-  if(state==='people'){
-    sh.classList.remove('drawer-open','rail-right-collapsed'); sh.classList.add('rail-collapsed','rail-right-open');
-    document.body.classList.remove('drawer-open','rail-right-collapsed'); document.body.classList.add('rail-right-open');
-  }else if(state==='sidebar'){
-    sh.classList.remove('rail-right-open','rail-collapsed'); sh.classList.add('drawer-open','rail-right-collapsed');
-    document.body.classList.remove('rail-right-open'); document.body.classList.add('drawer-open','rail-right-collapsed');
-  }else{
-    sh.classList.remove('drawer-open','rail-right-open'); sh.classList.add('rail-collapsed','rail-right-collapsed');
-    document.body.classList.remove('drawer-open','rail-right-open'); document.body.classList.add('rail-right-collapsed');
-  }
-  var btn=document.getElementById('uhRailToggle');
-  if(btn){ btn.setAttribute('data-r18-state',state); btn.textContent=RAIL_GLYPH[state]||'\u2630';
-    btn.title='Rails: '+state+' — tap for '+(state==='people'?'sidebar':state==='sidebar'?'neither':'people');
-    btn.setAttribute('aria-label','Rails: '+state+'. Tap for '+(state==='people'?'sidebar':state==='sidebar'?'neither':'people')); }
-}
-function cycleRail(){
-  var cur=measureRail();
-  var next=(cur==='people')?'sidebar':(cur==='sidebar')?'neither':'people';
-  applyRail(next);
-}
-function ensureToggle(){
-  if(document.getElementById('uhRailToggle')) return;
-  var b=document.createElement('button'); b.type='button'; b.id='uhRailToggle';
-  b.addEventListener('click',function(){ cycleRail(); });
-  document.body.appendChild(b);
-  /* The button reports the state the page is actually in (both rails docked at
-     desktop reads 'both'); the first tap goes to people, then sidebar, then neither. */
-  var cur=measureRail();
-  b.setAttribute('data-r18-state',cur); b.textContent=RAIL_GLYPH[cur]||'\u2630';
-  b.title='Rails: '+cur+' — tap for people'; b.setAttribute('aria-label','Rails: '+cur+'. Tap for people');
-}
-/* --- ITEM 6: the simple Feed dropdown (fixed under the Feed pill) --- */
-window.uhToggleFeedDrop=function(){
-  var d=document.getElementById('uhFeedDrop'); if(!d) return;
-  var f=document.getElementById('uhFeedBtn');
-  var open=!d.classList.contains('on');
-  if(open&&f){ var r=f.getBoundingClientRect();
-    d.style.left=Math.max(8,Math.min(r.left,window.innerWidth-292))+'px';
-    d.style.top=(r.bottom+8)+'px'; d.style.minWidth=Math.max(280,r.width)+'px'; }
-  d.classList.toggle('on',open);
-  if(f) f.setAttribute('aria-expanded',open?'true':'false');
-};
-window.uhCloseFeedDrop=function(){
-  var d=document.getElementById('uhFeedDrop'); if(d) d.classList.remove('on');
-  var f=document.getElementById('uhFeedBtn'); if(f) f.setAttribute('aria-expanded','false');
-};
-function wireFeedDrop(){
-  var f=document.getElementById('uhFeedBtn'); if(!f||f.dataset.r18Wired) return; f.dataset.r18Wired='1';
-  f.addEventListener('click',function(ev){ ev.stopPropagation(); window.uhToggleFeedDrop(); });
-  document.querySelectorAll('#uhFeedDrop [data-r18-view]').forEach(function(b){
-    b.addEventListener('click',function(){ if(window.uhChoose) window.uhChoose(b.getAttribute('data-r18-view'),b.getAttribute('data-r18-path')||undefined); });
-  });
-  document.addEventListener('click',function(ev){ var d=document.getElementById('uhFeedDrop'); if(d&&d.classList.contains('on')&&!ev.target.closest('#uhFeedDrop')&&!ev.target.closest('#uhFeedBtn')) window.uhCloseFeedDrop(); });
-  document.addEventListener('keydown',function(ev){ if(ev.key==='Escape') window.uhCloseFeedDrop(); });
-  /* fix3: a scroll listener that CLOSED the dropdown killed it — the diag proved the page
-     scrolls ~1.5s after the Feed tap (its own settling) and the close fired. On scroll we
-     re-place the open dropdown under the pill instead; outside-click / Escape / choice
-     still close it. */
-  window.addEventListener('scroll',function(){ var d=document.getElementById('uhFeedDrop'); var f=document.getElementById('uhFeedBtn'); if(d&&f&&d.classList.contains('on')){ var r=f.getBoundingClientRect(); d.style.left=Math.max(8,Math.min(r.left,window.innerWidth-292))+'px'; d.style.top=(r.bottom+8)+'px'; } },true);
-  window.addEventListener('resize',function(){ window.uhCloseFeedDrop(); });
-}
-/* --- boot + keep-alive (the feed builds late; the pills re-render) --- */
-function boot(){
-  ensureInitial(); ensureToggle(); wireFeedDrop(); attachCoverEdits(); paintFlow();
-  var pn=document.getElementById('pname');
-  if(pn&&typeof MutationObserver!=='undefined'){ new MutationObserver(onNameMut).observe(pn,{childList:true}); }
-  var box=document.getElementById('mwCoverMships');
-  if(box&&typeof MutationObserver!=='undefined'){ new MutationObserver(function(){ setTimeout(attachCoverEdits,200); }).observe(box,{childList:true}); }
-  var pl=document.getElementById('hubPeopleList');
-  if(pl&&typeof MutationObserver!=='undefined'){ new MutationObserver(function(){ setTimeout(paintFlow,200); }).observe(pl,{childList:true,subtree:true}); }
-  var n=0; var iv=setInterval(function(){ paintFlow(); attachCoverEdits(); if(++n>=15) clearInterval(iv); },2000);
-}
-if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',boot); } else { boot(); }
-})();
-</script>
-
 </body>
 </html>
