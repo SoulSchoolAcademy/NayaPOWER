@@ -3222,6 +3222,115 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
    scroll reveals it. Laws §6: a board that slices text mid-glyph is broken. */
 .smart-block[aria-label="Journal"] .ink-timeline{flex:none!important;max-height:none!important;overflow-y:visible!important}
 
+/* ============ CALENDAR ROUND 1 — 2026-11-26 (Shawn's voice-call word) ============
+   (1) NAME + NUMBER, CENTERED IN EVERY CELL — the full day name rides above
+       the harvested digit tiles, both dead center (.cell-core). SUPERSESSION,
+       named not silent: Laws §7 "day number TOP LEFT" is superseded by his
+       2026-11-26 word; his newer word wins (§0/§13).
+       TYPE-FLOOR TENSION, named not silent: a full "Wednesday" at the §2.3
+       17px floor cannot fit a ~40px phone cell — so the name scales to fit
+       its own cell (container units, capped at 17px, never clipped, never
+       abbreviated). His word (full name in every cell) governs; the 17px
+       floor cannot also hold at phone width. Same family as the open §13
+       question on digit-tile labels under 17px.
+   (2) THE MISMATCH, measured on the live render at 390px (probe 2026-11-26):
+       the GRID data was right — Sunday column 1/8/15/22/29, row 4 = 22–28,
+       header-to-cell centres within ±2px, matching the Reports week bar
+       (THIS WEEK · NOV 22 – NOV 28). What was WRONG was the header's
+       render: each .wk-col is 39px but holds icon 16px + gap 8px + word
+       ~41px = ~65px, so every column overflows ~13px a side — each icon
+       paints over the previous column's word and each word bleeds under
+       the next column's icon, and the columns LOOK shifted against the
+       week bar. Fix: at phone width the header stacks icon ABOVE word
+       (the base .weekrow column layout the fix-3 row override replaced),
+       so nothing bleeds across columns; and the cell now carries its own
+       full name, so no day is read from the header alone.
+   (3) THE GLOW SHADOW GOES — the cells' diffuse `0 0 NNpx` glow wash is
+       removed (base, hover, today). In its place the board POPS as a real
+       object: thin bright rim in the day's own colour + a real directional
+       drop shadow down-right (one light, top-left). Inside stays board
+       black; no glow inside, ever.
+   (4) ELEVATED DAY NAMES — white Marcellus, layered (top edge light,
+       drop shadow, the day's own colour as outer glow), sitting ON the
+       black like a real thing. The header keeps its approved royalty
+       treatment (dark letters, day-colour stroke + glow); the cell names
+       are the new white elevated text.
+   (5) BUTTONS ALIVE — nav arrows, the now-plaque and the day cells lift
+       + light whole in their own colour on hover and depress (scale .97)
+       on press. The month view's buttons are: prev / now-plaque / next /
+       the cells — all four covered. Nothing else on the month view
+       changes; day view, doors, navigation, day opening all untouched. */
+      .cell:not(.blank){
+        container-type: inline-size;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        border: 1.5px solid color-mix(in srgb, var(--dc) 68%, #ffffff 10%);
+        box-shadow:
+          10px 12px 22px rgba(0, 0, 0, 0.55),
+          inset 0 1px 0 rgba(255, 255, 255, 0.16),
+          inset 0 -10px 16px rgba(0, 0, 0, 0.35);
+        transition: border-color 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease, transform 0.25s ease;
+      }
+      .cell-core{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-width:0}
+      .cell-dayname{
+        font-family:"Marcellus",serif;font-size:min(17px,26cqw);line-height:1;letter-spacing:.02em;
+        color:#ffffff;white-space:nowrap;
+        text-shadow:
+          0 -1px 0 rgba(255, 255, 255, 0.28),
+          0 2px 3px rgba(0, 0, 0, 0.85),
+          0 0 12px color-mix(in srgb, var(--dc) 55%, transparent);
+      }
+      .cell:not(.blank):hover, .cell:not(.blank):focus-visible{
+        border-color: color-mix(in srgb, var(--dc) 85%, #ffffff 15%);
+        transform: translateY(-2px);
+        box-shadow:
+          12px 16px 26px rgba(0, 0, 0, 0.6),
+          inset 0 1px 0 rgba(255, 255, 255, 0.25),
+          inset 0 -10px 16px rgba(0, 0, 0, 0.3);
+        z-index: 2;
+      }
+      .cell:not(.blank):hover .cell-dayname{
+        text-shadow:
+          0 -1px 0 rgba(255, 255, 255, 0.35),
+          0 2px 3px rgba(0, 0, 0, 0.85),
+          0 0 16px color-mix(in srgb, var(--dc) 75%, transparent);
+      }
+      .cell:not(.blank):active{transform:scale(0.97)}
+      /* Today keeps its marker — white border + day-colour ring — but the
+         24px diffuse glow goes; the directional shadow carries the pop. */
+      .cell.today{
+        border: 2px solid #ffffff;
+        box-shadow:
+          0 0 0 2px var(--dc),
+          10px 12px 22px rgba(0, 0, 0, 0.55),
+          inset 0 1px 0 rgba(255, 255, 255, 0.3),
+          inset 0 -10px 16px rgba(0, 0, 0, 0.35);
+      }
+      /* Nav arrows + now-plaque: lift + light whole on hover, depress on press. */
+      #prevMonth:hover, #nextMonth:hover{
+        transform: translateY(-2px); filter: brightness(1.3);
+        box-shadow:
+          0 0 18px rgba(142, 36, 170, 0.45),
+          inset 0 1px 0 rgba(255, 255, 255, 0.35),
+          inset 0 -6px 10px rgba(0, 0, 0, 0.5),
+          8px 10px 18px rgba(0, 0, 0, 0.55);
+      }
+      .navbtn:active{transform:scale(0.97)}
+      .nowplaque:hover{
+        transform: translateY(-2px); filter: brightness(1.3);
+        box-shadow:
+          0 0 18px color-mix(in srgb, var(--dc) 35%, transparent),
+          inset 0 1px 0 rgba(255, 255, 255, 0.35),
+          inset 0 -6px 10px rgba(0, 0, 0, 0.5),
+          8px 10px 18px rgba(0, 0, 0, 0.55);
+      }
+      /* Phone header: icon ABOVE the word again, so no column bleeds into
+         the next — the fix-3 row override (line 2228) is beaten by later
+         position + !important, same as its own mechanism. */
+      @media (max-width: 560px){
+        .weekrow .wk-col{flex-direction:column!important;gap:3px!important;padding-top:4px!important}
+        .weekrow .wk-ico{width:16px!important;height:16px!important}
+        .cell-core{gap:4px}
+      }
 </style>
   </head>
   <body>
@@ -3959,7 +4068,12 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
                         (isToday(d) ? " — today" : "") + (na ? " — " + na + (na === 1 ? " appointment" : " appointments") : "");
             html += '<button type="button" role="gridcell" class="cell' + (isToday(d) ? ' today' : '') + '" style="--dc:' + dc + '" data-y="' + d.getFullYear() +
                     '" data-m="' + d.getMonth() + '" data-d="' + d.getDate() + '" aria-label="' + label + '">' +
-                    dayDigitsHTML(d.getDate(), dc) +
+                    /* ROUND 1 (2026-11-26, Shawn's word): the day's FULL name
+                       rides in the cell with its number — name above the
+                       harvested digit tiles, both dead center (.cell-core).
+                       dayDigitsHTML is untouched — the tiles stay verbatim. */
+                    '<span class="cell-core"><span class="cell-dayname">' + WEEKDAYS[dow] + '</span>' +
+                    dayDigitsHTML(d.getDate(), dc) + '</span>' +
                     dots + jewelSVG() + "</button>";
           }
           grid.innerHTML = html;
