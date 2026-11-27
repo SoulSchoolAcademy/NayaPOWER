@@ -13349,4 +13349,413 @@ else fx21Boot();
 })();
 </script>
 
+
+<style id="ov-fix22-20261127">
+/* ===== FIX22 (2026-11-27, captain's eye on fix21 + Shawn's header call 14:34 MST) —
+   append-only: no base byte edited, fix13–fix21 untouched. Six changes.
+   Laws: white text only, 17px floor on every new word, deep palette only,
+   one light top-left, 135deg gradients, shadow down-right, edge glow only.
+   (TOP) Header, final form: S orb + @shawn ONCE beside it, Save + info at
+   the top right with the pin — nothing else. The name block and the
+   status line stay hidden.
+   (BUBBLES) The name/time line inside every bubble goes — the cloud holds
+   the message text only. The text board goes transparent so the bubble's
+   own 135deg gradient runs through unbroken — one cloud, no slab step
+   at any width. The cloud pops: deeper drop shadow, stronger own-colour
+   edge glow, lift on hover, press on tap — warm, elevated, alive.
+   (PIN) The reader becomes one viewport panel: head pinned at its top,
+   messages scrolling inside it, composer at its foot, toggle stuck to
+   the viewport bottom — all four on screen together, no voids.
+   (MODAL) The group composer becomes a real centred modal: fixed to the
+   viewport, top below the bar, foot above the bottom edge, heading and
+   X pinned at its top, SEND NOW pinned at its foot, steps scrolling
+   inside — whole on screen at both widths.
+   (COUNT) The Like Minds roster label reads its real member count, and
+   the "No members yet" line goes when members are listed. */
+#nmReader .nm-reader-head{display:flex !important;align-items:center !important;gap:6px !important;}
+#nmReader .nm-reader-head .nm-person-name,#nmReader .nm-reader-head .nm-person-sub{display:none !important;}
+#nmReader .nm-reader-head .nm-orb{width:44px !important;height:44px !important;font-size:27px !important;}
+#nmReader .nm-reader-head .fx22-alias{font-size:17px !important;color:#ffffff !important;font-weight:600 !important;white-space:nowrap !important;margin-right:auto !important;}
+#nmReader .nm-reader-head .fx22-head-btn{flex:none !important;min-width:44px !important;height:44px !important;padding:0 8px !important;border-radius:22px !important;background:#050607 !important;border:1px solid rgba(255,255,255,.25) !important;color:#ffffff !important;font-size:17px !important;line-height:44px !important;cursor:pointer !important;}
+#nmReader .nm-reader-head .fx22-head-btn:hover{border-color:#d4a017 !important;}
+#nmReader .nm-reader-head .fx22-info{padding:0 !important;width:40px !important;min-width:40px !important;border-radius:50% !important;}
+#nmReader #nmMsgList .nm-bubble-meta{display:none !important;}
+#nmReader #nmMsgList .nm-bubble p{background:transparent !important;}
+#nmReader #nmMsgList .nm-bubble{transition:transform .18s ease,box-shadow .18s ease !important;box-shadow:0 24px 48px rgba(0,0,0,.75),0 0 34px -4px var(--cc,#3f51b5),inset 0 1px 0 rgba(255,255,255,.22) !important;}
+#nmReader #nmMsgList .nm-bubble:hover{transform:translateY(-2px) !important;box-shadow:0 30px 56px rgba(0,0,0,.8),0 0 40px -2px var(--cc,#3f51b5),inset 0 1px 0 rgba(255,255,255,.28) !important;}
+#nmReader #nmMsgList .nm-bubble:active{transform:translateY(0) scale(.995) !important;}
+.mail-stage:not([data-tempo="mail"]) #nmReader{display:flex !important;flex-direction:column !important;overflow:hidden !important;}
+.mail-stage:not([data-tempo="mail"]) #nmReader .nm-reader-head{flex:none !important;}
+.mail-stage:not([data-tempo="mail"]) #nmReader #nmMsgList{height:auto !important;flex:1 1 auto !important;min-height:0 !important;overflow-y:auto !important;}
+#nmReader .fx8-scroll-cue{display:none !important;}
+#nmReader .nm-composer{flex:none !important;}
+#nmReader .nm-composer .fx2-who{display:none !important;}
+#nmReader #nmMsgBody{height:56px !important;min-height:56px !important;}
+.nm-toggle-dock{position:sticky !important;bottom:0 !important;z-index:55 !important;background:#050607 !important;}
+.mail-stage .ml-overlay.fx22-modal-overlay{position:fixed !important;inset:0 !important;z-index:250 !important;background:rgba(0,0,0,.55) !important;}
+/* The base pins the composer to the stage with two heavier rules
+   (.mail-stage .ml-modal.mlx relative 100% 100dvh, and
+   .ml-overlay.fx15-in-viewer .ml-modal.mlx static 100%) — this root
+   outranks both, so the modal is really fixed and centred. */
+.mail-stage .ml-overlay.fx15-in-viewer .ml-modal.mlx{position:fixed !important;top:200px !important;bottom:12px !important;left:50% !important;transform:translateX(-50%) !important;width:min(680px,calc(100vw - 32px)) !important;max-height:none !important;height:auto !important;display:flex !important;flex-direction:column !important;overflow:hidden !important;z-index:300 !important;}
+.mail-stage .ml-overlay.fx15-in-viewer .ml-modal.mlx .mlx-top{flex:none !important;}
+.mail-stage .ml-overlay.fx15-in-viewer .ml-modal.mlx .ml-modes{flex:none !important;}
+.mail-stage .ml-overlay.fx15-in-viewer .ml-modal.mlx .fx13-compose-scroll{flex:1 1 auto !important;min-height:0 !important;height:auto !important;overflow-y:auto !important;}
+.mail-stage .ml-overlay.fx15-in-viewer .ml-modal.mlx .fx13-compose-foot{flex:none !important;}
+</style>
+<script>
+(function(){
+'use strict';
+/* ================= FIX22 — header final form, cloud bubbles, pinned panel,
+   centred modal, true member count =================
+   TOP (his call 14:34 MST): the header is the S orb + @shawn ONCE beside
+   it, Save + info at the top right with the pin — nothing else. The name
+   block and status line stay hidden (they already render at zero size in
+   the base; the rule above makes it explicit). Save toggles a local saved
+   mark for this conversation and toasts; info toasts the plain facts.
+   The composer prompt drops the name too, so the alias lives in the
+   header only.
+   BUBBLES: the name/time line inside every bubble is hidden (the cloud
+   holds the message text only) and the text board goes transparent, so
+   the bubble's own gradient runs through unbroken — one cloud, no slab
+   step at any width. Reactions and the Save row stay — they are function,
+   not a name line.
+   PIN: the reader becomes one viewport panel (flex column, height set
+   from the live bar bottom and dock height) with the messages scrolling
+   inside it; the toggle sticks to the viewport bottom. At boot the page
+   is aligned once so the reader top sits just below the bar. The panel
+   rule is scoped to non-mail tempo so the mail view is untouched.
+   MODAL: the group composer is fixed to the viewport, top below the bar,
+   foot above the bottom edge, heading + X pinned at its top and SEND NOW
+   pinned at its foot, steps scrolling inside. On open the steps region
+   is reset to the top while the citizen has not touched it, so the modal
+   opens at Step 1, not mid-way.
+   COUNT: the roster label is rewritten from the member rows actually
+   listed in that roster, and the "No members yet" line is hidden when
+   members are listed. The count is never guessed: rows first, then the
+   "(N contacts)" option in the To list, else the label is left alone. */
+function fx22BarBottom(){
+  try{
+    var bar=document.querySelector('HEADER.naya-topbar')||document.querySelector('.naya-topbar');
+    if(!bar)return 0;
+    var r=bar.getBoundingClientRect();
+    if(r.width<=0||r.height<=0)return 0;
+    var cs=getComputedStyle(bar);
+    if(cs.position!=='fixed'&&cs.position!=='sticky')return 0;
+    if(r.bottom<=0||r.top>=window.innerHeight)return 0;
+    return Math.round(r.bottom);
+  }catch(e){return 0;}
+}
+function fx22DockH(){
+  try{
+    var d=document.querySelector('.nm-toggle-dock');
+    if(!d)return 76;
+    var r=d.getBoundingClientRect();
+    return r.height>0?Math.round(r.height):76;
+  }catch(e){return 76;}
+}
+function fx22Pin(){
+  try{
+    var reader=document.querySelector('#nmReader');
+    if(!reader)return;
+    var h=Math.max(320,Math.round(window.innerHeight)-fx22BarBottom()-fx22DockH());
+    var cur=parseInt(reader.style.height||'0',10);
+    if(Math.abs(cur-h)>1)reader.style.height=h+'px';
+  }catch(e){}
+}
+var fx22LastUser=0;
+function fx22MarkUser(){fx22LastUser=Date.now();}
+function fx22Toast(msg){
+  try{
+    if(typeof window.showToast==='function'){window.showToast(msg);return;}
+  }catch(e){}
+  try{
+    var t=document.createElement('div');
+    t.textContent=msg;
+    t.style.cssText='position:fixed;left:50%;bottom:96px;transform:translateX(-50%);z-index:9999;padding:12px 18px;border-radius:22px;background:#050607;border:1px solid #d4a017;color:#ffffff;font-size:17px;';
+    document.body.appendChild(t);
+    setTimeout(function(){try{t.remove();}catch(e){}},3500);
+  }catch(e){}
+}
+function fx22EnsureHeader(){
+  try{
+    var head=document.querySelector('#nmReader .nm-reader-head');
+    if(!head)return;
+    var orb=head.querySelector('.nm-orb');
+    if(orb&&!head.querySelector('.fx22-alias')){
+      var a=document.createElement('span');
+      a.className='fx22-alias';
+      a.textContent='@shawn';
+      orb.insertAdjacentElement('afterend',a);
+    }
+    var pin=head.querySelector('[data-nm-pin-conv]')||head.querySelector('.nm-act');
+    if(pin&&!head.querySelector('.fx22-save')){
+      var s=document.createElement('button');
+      s.type='button';
+      s.className='fx22-head-btn fx22-save';
+      s.setAttribute('aria-label','Save this conversation');
+      var saved=false;
+      try{saved=window.localStorage.getItem('fx22-conv-saved')==='1';}catch(e){}
+      s.textContent=saved?'Saved':'Save';
+      s.addEventListener('click',function(){
+        var on=false;
+        try{
+          on=window.localStorage.getItem('fx22-conv-saved')!=='1';
+          if(on)window.localStorage.setItem('fx22-conv-saved','1');
+          else window.localStorage.removeItem('fx22-conv-saved');
+        }catch(e){on=s.textContent==='Save';}
+        s.textContent=on?'Saved':'Save';
+        fx22Toast(on?'Saved — this conversation stays in your vault':'Save removed');
+      });
+      pin.insertAdjacentElement('beforebegin',s);
+    }
+    if(pin&&!head.querySelector('.fx22-info')){
+      var b=document.createElement('button');
+      b.type='button';
+      b.className='fx22-head-btn fx22-info';
+      b.setAttribute('aria-label','About this conversation');
+      b.textContent='ⓘ';
+      b.addEventListener('click',function(){
+        var n=0;
+        try{n=document.querySelectorAll('#nmReader .nm-bubble').length;}catch(e){}
+        fx22Toast('@shawn · '+n+' messages in this conversation');
+      });
+      pin.insertAdjacentElement('beforebegin',b);
+    }
+    var ta=document.getElementById('nmMsgBody');
+    if(ta&&ta.getAttribute('placeholder')!=='Message…')ta.setAttribute('placeholder','Message…');
+  }catch(e){}
+}
+function fx22CountFromRows(roster){
+  try{
+    var rows=roster.querySelectorAll('.fx13-member');
+    if(rows.length>0)return rows.length;
+  }catch(e){}
+  return 0;
+}
+function fx22CountFromSelect(){
+  try{
+    var opts=document.querySelectorAll('select[name="to"] option');
+    for(var i=0;i<opts.length;i++){
+      var m=(opts[i].textContent||'').match(/All connections \((\d+) contacts\)/);
+      if(m)return parseInt(m[1],10);
+    }
+  }catch(e){}
+  return 0;
+}
+function fx22FixCounts(){
+  try{
+    Array.prototype.forEach.call(document.querySelectorAll('h4'),function(h){
+      var t=h.textContent||'';
+      var m=t.match(/\((\d+) members\)/);
+      if(!m)return;
+      var n=0;
+      var node=h;
+      for(var i=0;i<4&&node;i++){
+        node=node.parentElement;
+        if(!node)break;
+        n=fx22CountFromRows(node);
+        if(n>0)break;
+      }
+      if(n<=0)n=fx22CountFromSelect();
+      if(n<=0)return;
+      var nt=t.replace(/\(\d+ members\)/,'('+n+' members)');
+      nt=nt.replace(/All \d+ connections/,'All connections');
+      if(nt!==t)h.textContent=nt;
+      if(n>0){
+        var p=h.parentElement?h.parentElement.querySelector('p'):null;
+        if(p&&/^No members yet/.test((p.textContent||'').trim()))p.style.display='none';
+      }
+    });
+  }catch(e){}
+}
+var fx22ModalOpenedAt=0;
+var fx22ModalTouched=false;
+function fx22BindScrollBounce(m){
+  try{
+    var sc=m.querySelector('.fx13-compose-scroll');
+    if(!sc)return;
+    if(sc.getAttribute('data-fx22-bounce'))return;
+    sc.setAttribute('data-fx22-bounce','1');
+    sc.addEventListener('scroll',function(){
+      try{
+        if(!fx22ModalOpenedAt||fx22ModalTouched)return;
+        if(Date.now()-fx22ModalOpenedAt<6000&&sc.scrollTop!==0)sc.scrollTop=0;
+      }catch(e){}
+    },{passive:true});
+  }catch(e){}
+}
+function fx22WatchModal(){
+  try{
+    var m=null;
+    Array.prototype.forEach.call(document.querySelectorAll('.ml-modal.mlx'),function(x){
+      var r=x.getBoundingClientRect();
+      if(!m&&r.width>0&&r.height>0)m=x;
+    });
+    if(!m){fx22ModalOpenedAt=0;return;}
+    var ov=m.parentElement;
+    if(ov&&ov.classList&&ov.classList.contains('ml-overlay')&&!ov.classList.contains('fx22-modal-overlay'))ov.classList.add('fx22-modal-overlay');
+    if(!fx22ModalOpenedAt){
+      fx22ModalOpenedAt=Date.now();
+      fx22ModalTouched=false;
+      try{
+        m.style.top=(fx22BarBottom()+8)+'px';
+        m.style.bottom='12px';
+      }catch(e){}
+    }
+    fx22BindScrollBounce(m);
+    if(fx22ModalOpenedAt&&Date.now()-fx22ModalOpenedAt<6000&&!fx22ModalTouched){
+      var sc=m.querySelector('.fx13-compose-scroll');
+      if(sc&&sc.scrollTop!==0)sc.scrollTop=0;
+    }
+  }catch(e){}
+}
+function fx22Sweep(){
+  fx22EnsureHeader();
+  fx22FixCounts();
+  fx22WatchModal();
+}
+function fx22ReaderState(){
+  try{
+    var r=document.querySelector('#nmReader');
+    var ml=document.querySelector('#nmMsgList');
+    var cp=document.querySelector('#nmReader .nm-composer');
+    var dk=document.querySelector('.nm-toggle-dock');
+    var hd=document.querySelector('#nmReader .nm-reader-head');
+    var rect=function(el){if(!el)return null;var b=el.getBoundingClientRect();return [Math.round(b.left),Math.round(b.top),Math.round(b.width),Math.round(b.height)];};
+    var inView=function(el){if(!el)return false;var b=el.getBoundingClientRect();return b.top>=0&&b.bottom<=window.innerHeight+1&&b.height>0;};
+    return {reader:rect(r),msgList:rect(ml),composer:rect(cp),dock:rect(dk),head:rect(hd),
+      allInView:inView(hd)&&inView(ml)&&inView(cp)&&inView(dk),
+      barBottom:fx22BarBottom(),dockH:fx22DockH(),viewport:[window.innerWidth,window.innerHeight],scrollY:Math.round(window.scrollY)};
+  }catch(e){return {open:'ERR'};}
+}
+function fx22HeaderState(){
+  try{
+    var reader=document.querySelector('#nmReader');
+    var out=[];
+    var aliasHits=0;
+    if(reader){
+      var walker=document.createTreeWalker(reader,NodeFilter.SHOW_TEXT);
+      var node;
+      while(node=walker.nextNode()){
+        var t=(node.nodeValue||'').replace(/\s+/g,' ').trim();
+        if(!t)continue;
+        var el=node.parentElement;
+        if(el.closest('.nm-bubble')&&!el.closest('.nm-bubble-meta')&&el.tagName!=='P')continue;
+        if(el.closest('.nm-bubble')&&el.tagName==='P')continue;
+        var r=el.getBoundingClientRect();
+        var cs=getComputedStyle(el);
+        if(cs.display==='none'||cs.visibility==='hidden'||r.width===0||r.height===0)continue;
+        out.push(t);
+        if(t.indexOf('@shawn')>-1)aliasHits++;
+      }
+    }
+    var head=document.querySelector('#nmReader .nm-reader-head');
+    var metaVisible=0;
+    Array.prototype.forEach.call(document.querySelectorAll('#nmReader .nm-bubble-meta'),function(x){
+      var b=x.getBoundingClientRect();
+      if(b.width>0&&b.height>0)metaVisible++;
+    });
+    return {headInnerText:head?head.innerText.replace(/\s+/g,' ').trim():null,
+      aliasHits:aliasHits,visibleTexts:out,
+      bannedInHead:out.filter(function(t){return ['Shawn','Active','Last message','Auto-deletes','3d ago'].some(function(b){return t.indexOf(b)>-1;});}),
+      metaVisible:metaVisible};
+  }catch(e){return {open:'ERR'};}
+}
+function fx22ModalState(){
+  try{
+    var m=null;
+    Array.prototype.forEach.call(document.querySelectorAll('.ml-modal.mlx'),function(x){
+      var r=x.getBoundingClientRect();
+      if(!m&&r.width>0&&r.height>0)m=x;
+    });
+    if(!m)return {open:false};
+    var rect=function(el){if(!el)return null;var b=el.getBoundingClientRect();return [Math.round(b.left),Math.round(b.top),Math.round(b.width),Math.round(b.height)];};
+    var x=m.querySelector('.mlx-x');
+    var send=m.querySelector('.mlx-send');
+    var sc=m.querySelector('.fx13-compose-scroll');
+    var step1=null;
+    try{step1=m.querySelector('.fx15-step');}catch(e){}
+    return {open:true,rect:rect(m),pos:getComputedStyle(m).position,
+      heading:rect(m.querySelector('.mlx-title')),xRect:rect(x),
+      xHit:(function(){if(!x)return null;var b=x.getBoundingClientRect();var h=document.elementFromPoint(Math.round(b.left+b.width/2),Math.round(b.top+b.height/2));return h?h.tagName+'.'+String(h.className).slice(0,50):'none';})(),
+      sendRect:rect(send),scrollTop:sc?sc.scrollTop:null,step1Rect:rect(step1),
+      barBottom:fx22BarBottom(),viewport:[window.innerWidth,window.innerHeight]};
+  }catch(e){return {open:'ERR'};}
+}
+function fx22CountState(){
+  try{
+    var h4=null;
+    Array.prototype.forEach.call(document.querySelectorAll('h4'),function(h){
+      if(!h4&&(h.textContent||'').indexOf('members)')>-1)h4=h;
+    });
+    var p=null;
+    if(h4&&h4.parentElement)p=h4.parentElement.querySelector('p');
+    var rows=0;
+    var node=h4;
+    for(var i=0;i<4&&node;i++){node=node.parentElement;if(!node)break;rows=node.querySelectorAll('.fx13-member').length;if(rows>0)break;}
+    return {h4:h4?h4.textContent.trim():null,h4Visible:h4?h4.getBoundingClientRect().width>0:false,
+      noMembersHidden:p?getComputedStyle(p).display==='none':null,
+      noMembersText:p?(p.textContent||'').trim().slice(0,60):null,memberRows:rows};
+  }catch(e){return {open:'ERR'};}
+}
+function fx22Boot(){
+  try{
+    document.addEventListener('wheel',fx22MarkUser,{passive:true});
+    document.addEventListener('touchmove',fx22MarkUser,{passive:true});
+    document.addEventListener('keydown',fx22MarkUser);
+    document.addEventListener('mousedown',function(e){
+      try{if(e.target&&e.target.closest&&e.target.closest('.ml-modal.mlx'))fx22ModalTouched=true;}catch(err){}
+    });
+    document.addEventListener('keydown',function(e){
+      try{if(e.target&&e.target.closest&&e.target.closest('.ml-modal.mlx'))fx22ModalTouched=true;}catch(err){}
+    });
+    document.addEventListener('wheel',function(e){
+      try{if(e.target&&e.target.closest&&e.target.closest('.ml-modal.mlx'))fx22ModalTouched=true;}catch(err){}
+    },{passive:true});
+  }catch(e){}
+  try{
+    var obs=new MutationObserver(function(){fx22Sweep();});
+    obs.observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['class','style']});
+  }catch(e){}
+  var scrollTick=false;
+  function onScroll(){
+    if(scrollTick)return;
+    scrollTick=true;
+    requestAnimationFrame(function(){scrollTick=false;fx22Pin();});
+  }
+  try{window.addEventListener('resize',fx22Pin);window.addEventListener('scroll',onScroll,{passive:true});}catch(e){}
+  fx22Pin();
+  fx22Sweep();
+  setInterval(fx22WatchModal,450);
+  function fx22AlignOnce(){
+    try{
+      if(Date.now()-fx22LastUser<500)return;
+      if(document.querySelector('.ml-modal.mlx'))return;
+      var reader=document.querySelector('#nmReader');
+      if(!reader)return;
+      var barB=fx22BarBottom();
+      var r=reader.getBoundingClientRect();
+      var dockH=fx22DockH();
+      if(r.top<barB-2||r.bottom>window.innerHeight-dockH+2){
+        window.scrollTo(0,Math.max(0,Math.round(window.scrollY+r.top-barB)));
+      }
+    }catch(e){}
+  }
+  setTimeout(fx22AlignOnce,1200);
+  setTimeout(fx22AlignOnce,3000);
+  try{
+    window.__fx22={version:'fix22-20261127',
+      readerState:function(){return fx22ReaderState();},
+      headerState:function(){return fx22HeaderState();},
+      modalState:function(){return fx22ModalState();},
+      countState:function(){return fx22CountState();},
+      pin:function(){fx22Pin();}};
+  }catch(e){}
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fx22Boot);
+else fx22Boot();
+})();
+</script>
+
 </body></html>
