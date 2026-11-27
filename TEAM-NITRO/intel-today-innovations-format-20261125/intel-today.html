@@ -3498,6 +3498,7 @@ function intelDayBarSync(){
   var btns=document.querySelectorAll('.intel-daybtn');
   for(var i=0;i<btns.length;i++){var on=btns[i].getAttribute('data-date')===active;btns[i].classList.toggle('active',on);btns[i].setAttribute('aria-pressed',on?'true':'false');}
 }
+function intelCentreStrip(){var bars=document.querySelectorAll('.intel-daybar');for(var i=0;i<bars.length;i++){var h=bars[i];if(!h.clientWidth)continue;var a=h.querySelector('.intel-daybtn.active')||h.querySelector('.intel-daybtn.is-today');if(!a)continue;if(h.scrollWidth>h.clientWidth)h.scrollLeft=a.offsetLeft+a.offsetWidth/2-h.clientWidth/2;}}
 function intelRenderSection(push){
   vAwaiting=null;
   var m=MATRIX[currentSn];if(!m)return;
@@ -3532,10 +3533,10 @@ function intelRenderSection(push){
   if(sel){if(sel.options.length!==notes.length)intelFillSelect(day);sel.value=String(currentSn);}
   intelDayBarSync();
   updateChrome();
-  viewer.hidden=false;
+  viewer.hidden=false;intelDayBarSync();
   document.body.style.overflow='hidden';
   try{vTitle.setAttribute('tabindex','-1');vTitle.focus({preventScroll:true});}catch(err){try{vTitle.focus();}catch(err2){}}
-  viewer.scrollTop=0;
+  viewer.scrollTop=0;intelCentreStrip();
   if(vBody)vBody.scrollTop=0; /* FIX5: the body is the scroller now */
   if(push)vHistory.push({sn:currentSn,sec:vSec});
 }
@@ -3572,10 +3573,10 @@ function intelShowAwaiting(date){
   if(el)el.hidden=true;
   intelFillSelect(date);
   intelDayBarSync();updateChrome();
-  viewer.hidden=false;
+  viewer.hidden=false;intelDayBarSync();
   document.body.style.overflow='hidden';
   try{vTitle.setAttribute('tabindex','-1');vTitle.focus({preventScroll:true});}catch(err){try{vTitle.focus();}catch(err2){}}
-  viewer.scrollTop=0;
+  viewer.scrollTop=0;intelCentreStrip();
 }
 function openViewer(sn,keepHist){
   var m=MATRIX[sn];if(!m)return;
