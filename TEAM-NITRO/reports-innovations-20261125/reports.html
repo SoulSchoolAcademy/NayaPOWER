@@ -3945,20 +3945,23 @@ current = 0; renderSlide(); show('cover');
    — no report in the file for those days, and the day's report is awaited
    (the AWAITING REPORT pill). No number is invented.
    (3) Arrows: CSS only (see the fix8 style block).
-   (6) UNFOLDED-390 TEASER: mechanism — the phone fit measures the centre
-   paragraph against the font live at fit time; on a cold load Marcellus has
-   not landed, the 65-char sentence measures 3 lines, and the fit
-   comma-splits it to 51 chars + "…" — then nothing re-fits until the 5s
-   fold. (The checker's own screenshot shows the 51-char teaser; this
-   maker's two fresh runs both showed the whole 65-char sentence from the
-   first sample because Marcellus had already landed — the defect is a
-   cold-font race, not a steady state.) The fix6 fonts.ready/loadingdone
-   listeners can miss the window (they no-op while the slide is inactive).
-   This wrap re-fits shortly after every slide render (900ms and 1800ms)
-   and once more when the webfonts settle, so the whole sentence lands well
-   before the fold. fitPanels is idempotent and guards END_MODE and
-   slide-active itself; a re-fit that finds the sentence already whole
-   changes nothing. */
+   (6) UNFOLDED-390 TEASER — CORRECTED MECHANISM (cold-tested 2026-11-26,
+   after the first fix8 filing): NOT a font race. Cormorant Garamond (the
+   centre <p>'s font — not Marcellus) was loaded from the first sample, yet
+   the 51-char teaser survived every re-fit (900/1800ms + fonts.ready).
+   The cause is the phone fit's hardcoded 2-line cap (FIX6_MAX_LINES):
+   the 65-char first sentence is 3 lines at 20px, so it is comma-split to
+   "126 Smart Notes were filed today (SN-4716–SN-4852)…" even though the
+   first sentence FITS the unfolded body by height once the marker is gone
+   (measured live: unfolded body 190px, first sentence = 3 lines with the
+   27px marker removed = scrollHeight 190 = clientHeight 190; the marker
+   itself was the 14px overflow). The full a-text is ~257 chars and stays
+   behind the N by design. Only the daybar fold at ~5s used to restore the
+   first sentence (transitionend re-fit) — that is the ~5s teaser window
+   the checker saw.
+   (6b) below fixes it at the fit itself: after every fitPanels, restore
+   the longest run of whole phrases that fits by height. The
+   900/1800ms + fonts.ready re-fits stay as the settle backstop. */
 (function(){
   /* (2) Counts rows, from the file's own per-day data (see the header). */
   var RP8_COUNTS = {
@@ -3994,8 +3997,8 @@ current = 0; renderSlide(); show('cover');
       return r;
     };
   }
-  /* (6) Re-fit backstop so a cold-font comma-split teaser cannot survive
-     until the 5s fold. */
+  /* (6) Re-fit backstop so a split teaser settles after font swaps and
+     after every slide render. */
   function __rp8Refit(){ try { if (typeof fitPanels === 'function') fitPanels(); } catch (e) {} }
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ setTimeout(__rp8Refit, 100); });
   if (typeof renderSlide === 'function') {
@@ -4004,6 +4007,116 @@ current = 0; renderSlide(); show('cover');
       var r = __rp8RS.apply(this, arguments);
       setTimeout(__rp8Refit, 900);
       setTimeout(__rp8Refit, 1800);
+      return r;
+    };
+  }
+  /* (6b) WHOLE PHRASES THAT FIT BY HEIGHT: the phone fit caps the teaser
+     at 2 lines (FIX6_MAX_LINES), so Nov 24's first sentence (65 chars,
+     3 lines at 20px) is comma-split to 51 chars even though it FITS the
+     unfolded body by height (measured live: phrase 1 = 3 lines,
+     scrollHeight 190 = clientHeight 190 with the marker off; the full
+     a-text is ~257 chars and stays behind the N by design — only the
+     first sentence is the "whole sentence" the brief wants). After every
+     fitPanels, this wrap re-derives each split phone board as the LONGEST
+     run of whole phrases that fits by height (<=4 lines, scrollHeight <=
+     clientHeight+1, marker off for the measure), updating that slot's
+     continuation IN PLACE so the tail is not duplicated behind the N and
+     the behind-layer order never moves. If no whole-phrase prefix fits,
+     the split is restored exactly (same text + same marker node). Phone
+     only; mirrors fitPanels' own slide-active + END_MODE guards and skips
+     while the depth view is open. */
+  function __rp8Dangling(t){
+    var w = String(t).replace(/[….!?,;:—s]+$/g, '').split(/s+/).pop();
+    return w ? (typeof FIX6_DANGLE !== 'undefined' && FIX6_DANGLE.indexOf(w.toLowerCase()) !== -1) : false;
+  }
+  function __rp8WholeWhenFits(){
+    if (!screens.slide || !screens.slide.classList.contains('active')) return;
+    if (typeof END_MODE !== 'undefined' && END_MODE) return;
+    var dv = document.getElementById('depthView');
+    if (dv && !dv.hidden) return;
+    if (!(window.matchMedia && window.matchMedia('(max-width: 900px)').matches)) return;
+    var panels = [['A', document.getElementById('slideBoardsA')], ['B', document.getElementById('slideBoardsB')], ['C', document.getElementById('slideTextCenter')]];
+    for (var i = 0; i < panels.length; i++) {
+      var slot = panels[i][0], host = panels[i][1];
+      if (!host || host.hidden) continue;
+      var body = host.querySelector('.ib-layer-body');
+      if (!body) continue;
+      var p = body.querySelector('p');
+      if (!p) continue;
+      var marker = body.querySelector('.more-behind');
+      if (!marker) continue; /* nothing split on this board */
+      var dispNow = p.textContent.replace(/s+$/, '');
+      if (/[.!?]$/.test(dispNow)) {
+        /* Already whole phrases — the base fit's choice stands. Only
+           ensure the hint fits; never grow the teaser past what the fit
+           chose, so the teaser cannot change as the walk proceeds (fix6
+           stability: the fold only ever adds room, the teaser stays). */
+        if (body.scrollHeight > body.clientHeight + 1) marker.remove();
+        continue;
+      }
+      /* Mid-phrase truncation (comma-split, ends with …): complete it to
+         the longest whole-phrase prefix that fits by height. */
+      var key = current + '-' + slot;
+      var full = (typeof RUNTIME_TXT !== 'undefined' && RUNTIME_TXT[key] !== undefined) ? RUNTIME_TXT[key] : (slot === 'B' ? GROUPS[current].b : GROUPS[current].a);
+      if (!full) continue;
+      var phrases = (typeof frontPhrases === 'function') ? frontPhrases(full) : [String(full)];
+      if (!phrases.length) continue;
+      var savedText = p.textContent;
+      marker.remove();
+      var lineH = parseFloat(window.getComputedStyle(p).lineHeight) || 27;
+      var best = 0;
+      for (var n = phrases.length; n >= 1; n--) {
+        p.textContent = phrases.slice(0, n).join(' ');
+        var ln = Math.round(p.getBoundingClientRect().height / lineH * 10) / 10;
+        if (ln <= 4 && body.scrollHeight <= body.clientHeight + 1) { best = n; break; }
+      }
+      if (best < 1) { p.textContent = savedText; body.appendChild(marker); continue; }
+      while (best > 1) { /* same dangling guard as the base fit */
+        var cand = phrases.slice(0, best).join(' ');
+        if (/[.!?]$/.test(cand.replace(/s+$/, ''))) break;
+        if (!__rp8Dangling(cand) && cand.split(/s+/).filter(Boolean).length >= 3) break;
+        best--;
+      }
+      var shown = phrases.slice(0, best).join(' ');
+      var rest = phrases.slice(best).join(' ');
+      if (!rest) {
+        p.textContent = full;
+        if (typeof CONTINUED !== 'undefined' && CONTINUED[key] !== undefined) {
+          delete CONTINUED[key];
+          if (typeof BEHIND !== 'undefined') BEHIND[current] = (BEHIND[current] || []).filter(function(L){ return L.cont !== slot; });
+        }
+        continue; /* whole text stands, marker stays gone */
+      }
+      var disp = String(shown).replace(/s+$/, '');
+      if (/[—]$/.test(disp)) disp = disp.slice(0, -1).replace(/s+$/, '') + '…';
+      else if (/[,:;]$/.test(disp)) disp = disp.slice(0, -1).replace(/s+$/, '') + '…';
+      else if (!/[.!?]$/.test(disp)) disp = disp + '…';
+      p.textContent = disp;
+      if (typeof CONTINUED !== 'undefined') {
+        CONTINUED[key] = rest;
+        if (typeof BEHIND !== 'undefined') {
+          var arr = BEHIND[current] || (BEHIND[current] = []);
+          var found = false;
+          for (var j = 0; j < arr.length; j++) { if (arr[j].cont === slot) { arr[j].text = rest; found = true; break; } }
+          if (!found) arr.push({ kind: 'text', text: rest, cont: slot });
+        }
+      }
+      body.appendChild(marker);
+      /* The hint only stays if it fits: in the unfolded body the whole
+         first sentence + the 27px marker overflows by 14px and the marker
+         would slice in half at the board's edge (measured live). The rest
+         stays behind the N either way — the N remains the control — and
+         the marker returns when the fit re-runs with room (after the
+         fold), because the base fit re-appends it and this wrap keeps it
+         when it fits. */
+      if (body.scrollHeight > body.clientHeight + 1) marker.remove();
+    }
+  }
+  if (typeof fitPanels === 'function') {
+    var __rp8FP = fitPanels;
+    fitPanels = function(){
+      var r = __rp8FP.apply(this, arguments);
+      try { __rp8WholeWhenFits(); } catch (e) {}
       return r;
     };
   }
