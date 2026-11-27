@@ -54,9 +54,9 @@ Pictures are harvested verbatim from `workspace/user/media_library/image/` (file
 | Built portal | `portal.html`, 22,107,028 B, sha256 `523a6844df4bb508529da2386fc6d825360130352d0d3473106e340852085e70` (+8,206,632 B vs v1 — the 8 harvested pictures, ~8.2 MB base64) |
 | Certificate | byte-identical, sha256 `57bdd3873f65104f3ee6f4648cfec4a1a556a78ea8b7fb57153cd49da528af4b` |
 | Branch | `portal-frontpage-fix-20261125-r5-phone-v2` (from v1 branch head) |
-| Commit | (see commit section below) |
-| Portal blob | (see commit section below) |
-| Worker | `worker-consolidated.js` 22,444,930 B, sha256 `29150ae597e90d0734d1cd15288cd55797d8ad0ca573b6a5104b7cbccc2e3880`; worker `portal-phone-v2-staging`, subdomain enabled, HTTP 200 |
+| Commit | `f1652863a18f3fc6f178bc3d6f8e8bf4fd661aee` (+ correction commit below for the worker sha in this report) |
+| Portal blob | `221c77588d73e5e291d049ce2fe022ae0c2b1238` (blob-API read-back verified: decodes to 22,107,028 B, sha `523a6844…`) |
+| Worker | `worker-consolidated.js` 22,445,919 B, sha256 `72859d1d3334ba6c41511aba506292d7e72bc91c9ae11e15e0792daf2476dffa`; worker `portal-phone-v2-staging`, subdomain enabled, HTTP 200 |
 
 **Splices (all in `portal.html`, nothing else in the v1 portal touched):**
 1. Walk `<section id="fpWalk">` swapped whole for the v2 phone markup (SVG jewel, `#bdPic` + `#bdFields`, hidden Skip, 2-column end grid).
