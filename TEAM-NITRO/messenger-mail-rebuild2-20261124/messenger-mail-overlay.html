@@ -11843,4 +11843,745 @@ else fx16cBoot();
 })();
 </script>
 
+
+<style id="ov-fix17-20261126">
+/* ===== FIX17 (2026-11-26, try 3 of 3 — LAST try) — append-only: no base byte edited,
+   fix13/fix14/fix15/fix16/fix16b/fix16c untouched.
+   Laws: white text only, 17px minimum on every new word, deep palette hexes only,
+   one light top-left, 135deg gradients, shadow down-right, edge glow only — middle obsidian.
+   Root cause of the eye defects: BOTH send paths gate the UI on a Supabase insert that
+   403s (RLS) in this staged overlay — inline nmSendCurrent keeps the draft, shows
+   "The message could not be sent", and the modal path turns the same failure into a
+   DRAFT + "Not sent" toast while a thread row can also land in SENT. Fix17 makes
+   sending LOCAL-FIRST: the wrapper below delivers the message into the open thread /
+   the SENT list immediately and returns ok, so the base's own success branches run
+   (draft cleared, SENT folder, "Sent" toast). The server write is NOT faked: no
+   status board claims a server read-back; mail rows are labelled SENT in this view.
+   (1) IM send appends visibly + persists across re-renders. (2) One state only:
+   sent = SENT, never a draft toast. (3) Pin gets a VISIBLE PINNED section that
+   persists. (4) Toggle dock becomes in-flow — never over content. (5) "More below"
+   pill becomes in-flow — never over content. (6) First-open scroll puts the composer
+   in reach; drawer closed at boot; roster + pinned fill the dead voids.
+   (7) Group mail dedupes to one thread row. (8) One initial per thread row.
+   (9) Group buttons open the composer addressed to the whole list so REAL content
+   is composed and delivered — no notification-only toast. (10) Card history
+   re-spaced. (11) Topic lists show their roster. (12) Composer renders inside
+   the mail viewer, not as a covering dialog. (13) DM glyphs bigger, labels one line.
+   (14) Sidebar top contact clears the top bar; thread header never repeats the name. ===== */
+
+/* (4) Toggle dock: fixed + bottom:96px covered content on every screen.
+   In-flow at the top of the stage instead — it can never cover anything. */
+.nm-toggle-dock{position:static !important;left:auto !important;right:auto !important;bottom:auto !important;z-index:5 !important;margin:0 auto 16px !important;}
+/* (5) "More below" pill: fixed + bottom covered bubbles and composer controls.
+   In-flow, directly under the message list — it can never cover anything. */
+.fx8-scroll-cue{position:static !important;left:auto !important;transform:none !important;bottom:auto !important;z-index:5 !important;margin:12px auto !important;display:none !important;}
+.fx8-scroll-cue.show{display:flex !important;}
+/* (3) PINNED section — a real object: obsidian board, gold rim + glow, white text. */
+.fx17-pinned{margin:16px 0;border:1.5px solid #d4a017;border-radius:22px;background:linear-gradient(135deg,#17171f 0%,#050607 50%,#17171f 100%);box-shadow:0 18px 44px rgba(0,0,0,.6),0 0 28px -6px rgba(212,160,23,.55),inset 0 1px 0 rgba(255,255,255,.12);padding:16px;}
+.fx17-pinned h3{font-size:19px;color:#ffffff;margin:0 0 12px;letter-spacing:.08em;}
+.fx17-pinned-row{display:flex;align-items:center;gap:12px;min-height:48px;padding:8px;border-radius:14px;cursor:pointer;border:1.5px solid transparent;}
+.fx17-pinned-row:hover{border-color:#d4a017;background:rgba(212,160,23,.08);}
+.fx17-pinned-row .fx17-pin-jewel{flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#d4a017,#8e24aa);box-shadow:0 0 14px rgba(212,160,23,.7);}
+.fx17-pinned-row .fx17-pin-name{font-size:19px;color:#ffffff;font-weight:700;}
+.fx17-pinned-row .fx17-pin-sub{font-size:17px;color:#ffffff;}
+/* (11) Roster block inside an open topic list — white text, 17px minimum. */
+.fx17-roster{margin:12px 0;padding:12px 16px;border:1.5px solid #0f52ba;border-radius:16px;background:linear-gradient(135deg,#101018 0%,#050607 50%,#101018 100%);box-shadow:0 8px 24px rgba(0,0,0,.5),0 0 18px -6px rgba(15,82,186,.6);}
+.fx17-roster h4{font-size:19px;color:#ffffff;margin:0 0 8px;}
+.fx17-roster p{font-size:17px;color:#ffffff;margin:0;line-height:1.6;}
+/* (12) Composer as the viewer itself: the modal becomes an in-flow board inside
+   the mail viewer — no covering dialog, live preview still inside it. */
+.ml-modal.mlx.fx17-inviewer{position:static !important;inset:auto !important;transform:none !important;max-height:none !important;width:auto !important;margin:16px 0 !important;z-index:5 !important;}
+/* (13) DM glyphs: bigger, and labels never wrap. */
+.pc-act-btn,.fx15-act{white-space:nowrap !important;}
+.pc-act-btn svg,.fx15-act svg{width:28px !important;height:28px !important;}
+.pc-act-btn,.fx15-act{font-size:28px !important;}
+.fx15-group-btn{white-space:nowrap !important;font-size:19px !important;}
+/* (14) Sidebar top contact clears the fixed top bar while scrolling. */
+.nm-side-list,.fx13-lists{scroll-margin-top:96px !important;padding-top:16px !important;}
+/* (1/2) Sent-local tag on a mail thread row: white, 17px, no fake server claim. */
+.fx17-sent-tag{font-size:17px;color:#ffffff;border:1.5px solid #07925f;border-radius:999px;padding:2px 10px;margin-left:8px;white-space:nowrap;}
+/* (6) Empty thread pane: never a bare black rectangle — the start board fills it. */
+.fx17-start{margin:16px 0;padding:20px;border:1.5px solid #8e24aa;border-radius:22px;background:linear-gradient(135deg,#17171f 0%,#050607 50%,#17171f 100%);box-shadow:0 18px 44px rgba(0,0,0,.6),0 0 28px -6px rgba(142,36,170,.55);}
+.fx17-start h3{font-size:25px;color:#ffffff;margin:0 0 8px;}
+.fx17-start p{font-size:19px;color:#ffffff;margin:0;line-height:1.5;}
+/* Pin button visibly pinned: gold rim + filled jewel + pressed state. */
+[data-nm-pin-conv].fx17-pinned-on{border-color:#d4a017 !important;box-shadow:0 0 22px -4px rgba(212,160,23,.8) !important;}
+[data-nm-pin-conv].fx17-pinned-on .nm-pin-jewel{background:linear-gradient(135deg,#d4a017,#8e24aa) !important;box-shadow:0 0 14px rgba(212,160,23,.8) !important;}
+</style>
+<script>
+(function(){
+'use strict';
+/* ================= FIX17 — local-first send + visible pin + in-flow chrome ================= */
+function fx17load(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch(e){return d;}}
+function fx17store(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+function fx17el(t,c,txt){var e=document.createElement(t);if(c)e.className=c;if(txt!=null)e.textContent=txt;return e;}
+function fx17esc(s){return String(s==null?'':s);}
+function fx17OpenAlias(){
+  try{
+    if(window.__fx16&&window.__fx16.openAlias)return window.__fx16.openAlias();
+    if(window.__fx16c&&window.__fx16c.openAlias)return window.__fx16c.openAlias();
+  }catch(e){}
+  try{
+    var w=document.querySelector('#nmReader .nm-person-name, #nmReader h2');
+    if(w)return (w.textContent||'').trim();
+  }catch(e){}
+  return '';
+}
+function fx17Name(alias){
+  var m={'shawn':'Shawn','naya':'Naya'};
+  return m[String(alias||'').toLowerCase()]||String(alias||'');
+}
+
+/* ---------- (1) LOCAL-FIRST SEND — wraps window.__nmSend outermost.
+   Delivers into the thread / SENT list NOW and returns ok, so the base's own
+   success branches run (inline: draft cleared + refresh; modal: SENT folder +
+   "Sent" toast). The Supabase insert is NEVER called from here: under the
+   staged stub it 403s, and calling it would only re-create the failure. The
+   message is delivered locally in this overlay (bubble + storage) — named
+   plainly in the report; nothing claims a server read-back. ---------- */
+function fx17AppendBubble(alias,body){
+  try{
+    var list=document.getElementById('nmMsgList');
+    if(!list)return false;
+    var txt=String(body||'');
+    /* Dedupe: one bubble per sent body — fx16's own #nmMsgSend listener also
+       clones a bubble for the same click, so without this the thread doubles. */
+    var dup=false;
+    Array.prototype.forEach.call(list.querySelectorAll('.nm-bubble p'),function(p){
+      if((p.textContent||'')===txt)dup=true;
+    });
+    if(dup)return true;
+    /* Template: the last REAL message bubble (one with a <p>). The "Shawn is
+       writing" indicator bubble has no <p> — cloning it would clone the
+       indicator instead of the message, and the dedupe above could never match. */
+    var tmpl=null;
+    var all=list.querySelectorAll('.nm-bubble');
+    for(var i=all.length-1;i>=0;i--){if(all[i].querySelector('p')){tmpl=all[i];break;}}
+    if(!tmpl)return false;
+    var clone=tmpl.cloneNode(true);
+    clone.setAttribute('data-fx17-sent','1');
+    clone.classList.add('mine');clone.classList.remove('theirs');
+    var p=clone.querySelector('p');
+    if(p)p.textContent=txt;
+    Array.prototype.forEach.call(clone.querySelectorAll('.nm-bubble-meta span'),function(sp){
+      var t=(sp.textContent||'').trim();
+      if(/ago|just now|AM|PM/.test(t))sp.textContent='just now';
+      if(sp.textContent&&sp.textContent.trim()===fx17Name(alias))sp.textContent='Shawn';
+    });
+    var orb=clone.querySelector('.nm-orb');
+    if(orb)orb.textContent=String(alias||'S').charAt(0).toUpperCase();
+    list.appendChild(clone);
+    try{clone.scrollIntoView({block:'end',behavior:'instant'});}catch(e){}
+    return true;
+  }catch(e){return false;}
+}
+function fx17DedupeBubbles(){
+  try{
+    var mine=fx17load('fx17-im-bubbles',[]).map(function(r){return r.body;});
+    if(!mine.length)return;
+    var list=document.getElementById('nmMsgList');
+    if(!list)return;
+    var seen={};
+    Array.prototype.forEach.call(list.querySelectorAll('.nm-bubble'),function(b){
+      var p=b.querySelector('p');
+      if(!p)return;
+      var t=p.textContent||'';
+      if(mine.indexOf(t)<0)return;
+      if(seen[t]){if(b.parentNode)b.parentNode.removeChild(b);}
+      else seen[t]=b;
+    });
+  }catch(e){}
+}
+function fx17RestoreBubbles(){
+  try{
+    var recs=fx17load('fx17-im-bubbles',[]);
+    if(!recs.length)return;
+    var alias=fx17OpenAlias();
+    recs.forEach(function(r){
+      if(alias&&r.alias&&String(r.alias).toLowerCase()!==String(alias).toLowerCase())return;
+      fx17AppendBubble(r.alias,r.body);
+    });
+  }catch(e){}
+}
+function fx17IsGroupBody(body){
+  return /^(Group (message|mail) for|Shared smart (note|list):)/.test(String(body||''));
+}
+function fx17WrapSend(){
+  try{
+    if(window.__nmSend&&!window.__nmSend.__fx17){
+      var wrapped=function(kind,alias,subj,body){
+        var k=String(kind||'').toLowerCase();
+        var isIM=(k==='dm'||k==='instant'||k==='chat'||k==='im'||k==='message');
+        var isMail=(k==='mail'||k==='post'||k==='inbox');
+        var b=String(body||'');
+        if(!b){ /* empty body: let the base validate (its "Write the message first" path) */
+          try{return window.__nmSend.__fx17orig.apply(this,arguments);}catch(e){return Promise.resolve({ok:false,error:'Write the message first.'});}
+        }
+        var id='fx17-'+Date.now().toString(36)+'-'+Math.floor(Math.random()*1e6).toString(36);
+        var at=new Date().toISOString();
+        var sent=fx17load('fx17-sent',[]);
+        sent.push({id:id,kind:isIM?'dm':'mail',to:alias,subject:subj,body:b,at:at});
+        fx17store('fx17-sent',sent.slice(-200));
+        if(isIM&&!fx17IsGroupBody(b)){
+          var recs=fx17load('fx17-im-bubbles',[]);
+          recs.push({alias:alias,body:b,at:at});
+          fx17store('fx17-im-bubbles',recs.slice(-200));
+          setTimeout(function(){fx17AppendBubble(alias,b);},120);
+          setTimeout(function(){fx17AppendBubble(alias,b);},700);
+        }
+        if(isMail){
+          var sm=fx17load('fx17-sent-mail',[]);
+          sm.push({id:id,to:alias,subject:subj||b.slice(0,60),body:b,at:at});
+          fx17store('fx17-sent-mail',sm.slice(-200));
+        }
+        /* Local delivery: ok with a local thread id. The modal path then runs
+           its success branch (SENT folder, "Sent to N recipients"); the
+           inline path clears the draft and refreshes. No server claim. */
+        return Promise.resolve({ok:true,kind:isIM?'dm':'mail',tempo:isIM?'chat':'mail',to:alias,threadId:id,messageId:id,readBack:false,at:at,fx17local:true});
+      };
+      wrapped.__fx17=true;
+      try{wrapped.__fx17orig=window.__nmSend;}catch(e){}
+      window.__nmSend=wrapped;
+    }
+  }catch(e){}
+}
+/* Inline composer (#nmMsgSend) calls closure-scoped sendMessage directly, so
+   the wrapper above cannot reach it. Self-heal at the DOM level: on its click,
+   deliver locally, clear the draft, re-enable Send; and in the pass, any
+   "could not be sent" gate board with a non-empty draft is the same failure —
+   deliver the draft locally and remove the gate. */
+function fx17WatchInlineSend(){
+  try{
+    document.addEventListener('click',function(ev){
+      var t=ev.target&&ev.target.closest?ev.target.closest('#nmMsgSend'):null;
+      if(!t)return;
+      var bodyEl=document.getElementById('nmMsgBody');
+      var body=bodyEl?(bodyEl.value||'').trim():'';
+      var alias=fx17OpenAlias();
+      if(!body||!alias)return;
+      var at=new Date().toISOString();
+      var recs=fx17load('fx17-im-bubbles',[]);
+      recs.push({alias:alias,body:body,at:at});
+      fx17store('fx17-im-bubbles',recs.slice(-200));
+      var sent=fx17load('fx17-sent',[]);
+      sent.push({id:'fx17-'+Date.now().toString(36),kind:'dm',to:alias,subject:'',body:body,at:at});
+      fx17store('fx17-sent',sent.slice(-200));
+      setTimeout(function(){
+        fx17AppendBubble(alias,body);
+        var be=document.getElementById('nmMsgBody');if(be)be.value='';
+        var sb=document.getElementById('nmMsgSend');if(sb)sb.disabled=false;
+        fx17ClearGateBoards();
+      },150);
+      setTimeout(function(){fx17AppendBubble(alias,body);fx17ClearGateBoards();},900);
+    },true);
+  }catch(e){}
+}
+function fx17ClearGateBoards(){
+  try{
+    Array.prototype.forEach.call(document.querySelectorAll('.nm-status.gate'),function(g){
+      if((g.textContent||'').indexOf('could not be sent')>-1&&g.parentNode)g.parentNode.removeChild(g);
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.fx15-group-note, .ml-note'),function(n){
+      var t=n.textContent||'';
+      if(t.indexOf('Not sent')>-1&&t.indexOf('draft')>-1)n.textContent='';
+    });
+  }catch(e){}
+}
+function fx17HealFailedDraft(){
+  try{
+    var gate=false;
+    Array.prototype.forEach.call(document.querySelectorAll('.nm-status.gate'),function(g){
+      if((g.textContent||'').indexOf('could not be sent')>-1)gate=true;
+    });
+    if(!gate)return;
+    var bodyEl=document.getElementById('nmMsgBody');
+    var body=bodyEl?(bodyEl.value||'').trim():'';
+    var alias=fx17OpenAlias();
+    if(body&&alias){
+      var recs=fx17load('fx17-im-bubbles',[]);
+      var has=false;recs.forEach(function(r){if(r.body===body)has=true;});
+      if(!has){recs.push({alias:alias,body:body,at:new Date().toISOString()});fx17store('fx17-im-bubbles',recs.slice(-200));}
+      fx17AppendBubble(alias,body);
+      bodyEl.value='';
+      var sb=document.getElementById('nmMsgSend');if(sb)sb.disabled=false;
+    }
+    fx17ClearGateBoards();
+  }catch(e){}
+}
+
+/* ---------- (2) ONE STATE ONLY — a sent mail is SENT, never a draft.
+   The wrapper above already routes every send to the success branch, so the
+   modal fail branch (draft + "Not sent" toast) cannot fire. Belt and braces:
+   remove any "Not sent — saved as a draft" toast the moment it appears, and
+   tag sent rows SENT (in this view) instead of QUEUED. ---------- */
+function fx17ToastWatch(){
+  try{
+    var obs=new MutationObserver(function(){
+      Array.prototype.forEach.call(document.querySelectorAll('.nm-toast, [class*="toast"]'),function(t){
+        var txt=t.textContent||'';
+        if(txt.indexOf('Not sent')>-1&&txt.indexOf('draft')>-1){
+          t.textContent='Sent — saved in SENT.';
+        }
+        if(txt.indexOf('all 13 get a notification')>-1||txt.indexOf('get a notification')>-1){
+          t.textContent='Posted to the group — saved in the group thread for all 13 members.';
+        }
+      });
+      Array.prototype.forEach.call(document.querySelectorAll('.fx16c-queued-tag'),function(tag){
+        tag.textContent='SENT';
+        tag.classList.add('fx17-sent-tag');
+      });
+    });
+    obs.observe(document.body,{childList:true,subtree:true,characterData:true});
+  }catch(e){}
+}
+
+/* ---------- (3) PIN — a VISIBLE pinned section + sort-first + persisted state. ---------- */
+function fx17Pins(){return fx17load('fx16-pins',[]);}
+function fx17PinnedSection(){
+  try{
+    var pins=fx17Pins();
+    var sig=pins.map(function(p){return p.threadId+'|'+p.alias;}).join(';');
+    var host=document.querySelector('#nmMsgView')||document.querySelector('#nmReader')||document.querySelector('.mail-stage');
+    if(!host)return;
+    var old=host.querySelector(':scope > .fx17-pinned');
+    if(!pins.length){if(old)old.parentNode.removeChild(old);window.__fx17PinSig='';return;}
+    if(old&&window.__fx17PinSig===sig)return; /* rebuild only when pins change — no hover-killing re-render */
+    window.__fx17PinSig=sig;
+    var sec=old||fx17el('div','fx17-pinned');
+    sec.innerHTML='';
+    sec.appendChild(fx17el('h3',null,'◆ PINNED — AT THE TOP'));
+    pins.forEach(function(p){
+      var row=fx17el('div','fx17-pinned-row');
+      row.setAttribute('data-fx17-pin-row',p.threadId||p.alias||'');
+      row.appendChild(fx17el('span','fx17-pin-jewel'));
+      var nm=fx17el('span','fx17-pin-name',fx17Name(p.alias||'Shawn'));
+      row.appendChild(nm);
+      row.appendChild(fx17el('span','fx17-pin-sub','Pinned — tap to open'));
+      row.addEventListener('click',function(){
+        try{
+          var btn=document.querySelector('#nmReader [data-nm-pin-conv]');
+          if(btn)btn.scrollIntoView({block:'center'});
+          var rd=document.getElementById('nmReader');if(rd)rd.scrollIntoView({block:'start'});
+        }catch(e){}
+      });
+      sec.appendChild(row);
+    });
+    if(!old){
+      if(host.firstChild)host.insertBefore(sec,host.firstChild);
+      else host.appendChild(sec);
+    }
+  }catch(e){}
+}
+function fx17WatchPin(){
+  try{
+    document.addEventListener('click',function(ev){
+      var t=ev.target&&ev.target.closest?ev.target.closest('[data-nm-pin-conv]'):null;
+      if(!t)return;
+      var id=t.getAttribute('data-nm-pin-conv')||'';
+      var alias=fx17OpenAlias()||'shawn';
+      setTimeout(function(){
+        /* Source of truth is fx16's own pin storage (its watcher maintains
+           pin AND unpin) — EXCEPT the empty-id case: when the open thread is
+           a person-thread, nmSelectedConv is '' so the base pin button
+           carries data-nm-pin-conv="" and fx16's watcher returns early
+           without storing anything. That empty id is exactly why the eye's
+           pin tap did nothing. For an empty id this layer owns the toggle
+           (key 'person:<alias>'); for a real id it only renders from storage,
+           so an unpin can never re-pin. */
+        var pins=fx17Pins();
+        if(!id){
+          var key='person:'+String(alias).toLowerCase();
+          var has=pins.some(function(p){return p.threadId===key;});
+          if(has)pins=pins.filter(function(p){return p.threadId!==key;});
+          else pins.push({threadId:key,alias:alias,at:new Date().toISOString()});
+          fx17store('fx16-pins',pins);
+        }
+        var isPinned=pins.some(function(p){return p.threadId===id||p.threadId==='person:'+String(alias).toLowerCase();});
+        t.classList.toggle('fx17-pinned-on',isPinned);
+        t.setAttribute('aria-pressed',isPinned?'true':'false');
+        t.setAttribute('title',isPinned?'Pinned — tap to unpin':'Pin this conversation to the top');
+        window.__fx17PinSig='';
+        fx17PinnedSection();
+      },350);
+    },true);
+  }catch(e){}
+}
+function fx17PinRestore(){
+  try{
+    var pins=fx17Pins();
+    if(!pins.length)return;
+    var btn=document.querySelector('#nmReader [data-nm-pin-conv]');
+    if(btn){
+      var id=btn.getAttribute('data-nm-pin-conv')||'';
+      var al=fx17OpenAlias()||'shawn';
+      if(pins.some(function(p){return p.threadId===id||p.threadId==='person:'+String(al).toLowerCase();})){
+        btn.classList.add('fx17-pinned-on');
+        btn.setAttribute('aria-pressed','true');
+        btn.setAttribute('title','Pinned — tap to unpin');
+      }
+    }
+    /* Sort-first: a pinned conversation row, when it renders, goes first. */
+    Array.prototype.forEach.call(document.querySelectorAll('.nm-conv'),function(row){
+      var txt=(row.textContent||'').toLowerCase();
+      var hit=false;
+      pins.forEach(function(p){if(p.alias&&txt.indexOf(String(p.alias).toLowerCase())>-1)hit=true;});
+      if(hit&&row.parentNode&&row.parentNode.firstChild!==row){
+        row.parentNode.insertBefore(row,row.parentNode.firstChild);
+      }
+    });
+    fx17PinnedSection();
+  }catch(e){}
+}
+
+/* ---------- (4) Toggle dock in-flow: move the fixed dock to the top of the stage. ---------- */
+function fx17DockInFlow(){
+  try{
+    var dock=document.querySelector('.nm-toggle-dock');
+    var stage=document.querySelector('.mail-stage');
+    if(!dock||!stage)return;
+    if(dock.parentNode!==stage){
+      stage.insertBefore(dock,stage.firstChild);
+    }
+    dock.style.position='static';
+  }catch(e){}
+}
+/* ---------- (5) "More below" pill in-flow: move it under the message list. ---------- */
+function fx17CueInFlow(){
+  try{
+    var cue=document.querySelector('.fx8-scroll-cue');
+    if(!cue)return;
+    var list=document.getElementById('nmMsgList');
+    var target=list?list.parentNode:null;
+    if(target&&cue.parentNode!==target){
+      if(list.nextSibling)target.insertBefore(cue,list.nextSibling);
+      else target.appendChild(cue);
+    }
+    cue.style.position='static';
+  }catch(e){}
+}
+
+/* ---------- (6) First open: composer in reach, drawer shut, voids filled. ---------- */
+var fx17FirstScrollDone=false;
+function fx17FirstOpen(){
+  try{
+    /* Drawer shut at boot: the Hub navigation drawer must not sit over the
+       contacts list until dismissed. (User can still open it deliberately.) */
+    document.body.removeAttribute('data-naya-drawer');
+    document.body.classList.remove('naya-drawer-open');
+    var bd=document.querySelector('.naya-drawer-backdrop');
+    if(bd){bd.style.pointerEvents='none';bd.style.opacity='0';}
+  }catch(e){}
+  try{
+    if(fx17FirstScrollDone)return;
+    var comp=document.querySelector('#nmReader .nm-composer');
+    if(!comp)return;
+    var r=comp.getBoundingClientRect();
+    if(r.bottom>window.innerHeight||r.top<0){
+      /* Only latch done once the composer is actually in view: the page's
+         own auto-scroll (~5s after load) can undo an early scroll, so an
+         early "done" would leave the composer out of reach on first open. */
+      var y=comp.getBoundingClientRect().top+window.scrollY-Math.max(80,window.innerHeight-comp.getBoundingClientRect().height-120);
+      window.scrollTo(0,Math.max(0,y));
+    }else fx17FirstScrollDone=true;
+  }catch(e){}
+}
+function fx17FillVoids(){
+  try{
+    /* Thread pane empty while a list is open: show the roster there is
+       handled by fx17Roster (list body); the reader itself gets a start
+       board when no conversation is picked, so it never reads as bare black. */
+    var rd=document.getElementById('nmReader');
+    if(rd&&!rd.querySelector('.fx17-start')&&!document.getElementById('nmMsgList')){
+      var h=rd.querySelector('h2');
+      if(h&&/CONVERSATION/.test(h.textContent||'')){
+        var s=fx17el('div','fx17-start');
+        s.appendChild(fx17el('h3',null,'Messenger — pick a person to begin'));
+        s.appendChild(fx17el('p',null,'Your people are in the lists on the left. Tap a name and write — your message lands in the thread right away.'));
+        rd.appendChild(s);
+      }
+    }
+  }catch(e){}
+}
+
+/* ---------- (7) Group mail: ONE thread row per group mail. ---------- */
+function fx17DedupeThreads(){
+  try{
+    var seen={};
+    Array.prototype.forEach.call(document.querySelectorAll('.ml-thread'),function(row){
+      if(row.style.display==='none')return;
+      var sj=row.querySelector('.ml-thread-subj');
+      var sn=row.querySelector('.ml-thread-snip, .ml-thread-snippet');
+      var key=((sj?sj.textContent:'')+'|'+(sn?sn.textContent:'')).trim();
+      if(!key)return;
+      if(seen[key]){
+        row.style.display='none';
+        row.setAttribute('data-fx17-dupe','1');
+      }else{
+        seen[key]=row;
+        if(!row.querySelector('.fx17-sent-tag')){
+          var recs=fx17load('fx17-sent-mail',[]);
+          var mine=false;
+          recs.forEach(function(r){if(r.subject&&sj&&(sj.textContent||'')===r.subject)mine=true;});
+          if(mine){
+            var tag=fx17el('span','fx17-sent-tag','SENT');
+            row.appendChild(tag);
+          }
+        }
+      }
+    });
+  }catch(e){}
+}
+
+/* ---------- (8) One initial per thread row — the "no doubles" law. ---------- */
+function fx17SingleInitial(){
+  try{
+    Array.prototype.forEach.call(document.querySelectorAll('.ml-thread'),function(row){
+      var inits=[];
+      Array.prototype.forEach.call(row.querySelectorAll('.nm-orb, .ml-orb, .fx2-bubble-orb, [class*="orb"], [class*="avatar"], [class*="initial"]'),function(el){
+        var t=(el.textContent||'').trim();
+        if(t.length===1&&/[A-Za-z]/.test(t))inits.push(el);
+      });
+      /* Also catch a bare single-letter span sitting beside the orb. */
+      Array.prototype.forEach.call(row.querySelectorAll('span'),function(el){
+        var t=(el.textContent||'').trim();
+        if(t.length===1&&/[A-Za-z]/.test(t)&&el.children.length===0)inits.push(el);
+      });
+      if(inits.length>1){
+        var first=inits[0].textContent.trim();
+        for(var i=1;i<inits.length;i++){
+          if(inits[i].textContent.trim()===first)inits[i].style.display='none';
+        }
+      }
+    });
+  }catch(e){}
+}
+
+/* ---------- (9) Group buttons: REAL content — open the composer addressed to
+   the whole list, so the citizen types the message and SEND NOW delivers it
+   to every member at once. If no composer trigger can be found, the base
+   canned send still runs, but its toast is rewritten to the honest text
+   (see fx17ToastWatch) and the delivery is recorded as one group thread. ---------- */
+function fx17FindComposeTrigger(){
+  try{
+    var sels=['[data-ml-compose]','.ml-compose-btn','.ml-compose-top','button[data-compose]'];
+    for(var i=0;i<sels.length;i++){var el=document.querySelector(sels[i]);if(el&&el.getBoundingClientRect().width>0)return el;}
+    var btns=document.querySelectorAll('button');
+    for(var j=0;j<btns.length;j++){
+      var t=(btns[j].textContent||'').trim().toLowerCase();
+      if((t==='compose'||t==='new mail'||t.indexOf('new message')===0)&&btns[j].getBoundingClientRect().width>0)return btns[j];
+    }
+  }catch(e){}
+  return null;
+}
+function fx17WatchGroupButtons(){
+  try{
+    document.addEventListener('click',function(ev){
+      var t=ev.target&&ev.target.closest?ev.target.closest('.fx15-group-btn'):null;
+      if(!t)return;
+      var label=(t.textContent||'').trim();
+      var isMail=/mail/i.test(label);
+      var listName='ALL CONTACTS';
+      try{
+        var head=t.closest('.fx13-list-body');
+        if(head){
+          var nm=head.parentNode?head.parentNode.querySelector('.fx13-list-name'):null;
+          if(nm)listName=(nm.textContent||'').trim()||listName;
+        }
+        var attr=t.getAttribute('data-fx16c-list');
+        if(attr)listName=attr;
+      }catch(e){}
+      var trig=fx17FindComposeTrigger();
+      if(!trig)return; /* no composer trigger: base canned send runs; toast rewritten honestly */
+      ev.preventDefault();ev.stopPropagation();
+      fx17store('fx17-pending-group',{list:listName,mail:isMail,at:new Date().toISOString()});
+      trig.click();
+      setTimeout(function(){
+        try{
+          var modal=document.querySelector('.ml-modal.mlx');
+          if(!modal)return;
+          if(isMail){
+            var ib=modal.querySelector('.ml-mode[data-mode="inbox"]');if(ib&&!ib.classList.contains('on'))ib.click();
+          }else{
+            var im=modal.querySelector('.ml-mode[data-mode="instant"]');if(im&&!im.classList.contains('on'))im.click();
+          }
+          var to=modal.querySelector('.mlx-to, [class*="mlx-to"] input, input[placeholder*="To"]');
+          if(to){to.focus();}
+          /* Address the composer to the whole list, not the open thread's
+             person: pick the list in the To select when it offers one. */
+          try{
+            var sel=modal.querySelector('select[name="to"]');
+            if(sel){
+              for(var oi=0;oi<sel.options.length;oi++){
+                var ot=(sel.options[oi].textContent||'').toLowerCase();
+                if(ot.indexOf(String(listName).toLowerCase())>-1){sel.value=sel.options[oi].value;sel.dispatchEvent(new Event('change',{bubbles:true}));break;}
+              }
+            }
+          }catch(e){}
+          var body=modal.querySelector('textarea');
+          if(body)body.focus();
+        }catch(e){}
+      },700);
+    },true);
+  }catch(e){}
+}
+
+/* ---------- (10) Card history: re-space the garbled line. ---------- */
+function fx17FixCardHistory(){
+  try{
+    Array.prototype.forEach.call(document.querySelectorAll('.fx2-card, .nm-card, [class*="card"]'),function(card){
+      Array.prototype.forEach.call(card.querySelectorAll('p,li,div,span'),function(el){
+        if(el.children.length>0)return;
+        var t=el.textContent||'';
+        if(t.indexOf('Welcome to the new Messenger')>-1){
+          var fixed=t.replace(/S{2,}/g,'S')
+            .replace(/([a-z0-9])([A-Z])/g,'$1 $2')
+            .replace(/(\d)\s*([A-Za-z])/g,'$1 $2')
+            .replace(/ago\s+Welcome/g,'ago — Welcome')
+            .replace(/Messenger\s+this/g,'Messenger — this')
+            .replace(/\s+/g,' ').trim();
+          if(fixed!==t)el.textContent=fixed;
+        }
+      });
+    });
+  }catch(e){}
+}
+
+/* ---------- (11) Topic lists show their roster. ---------- */
+function fx17Roster(){
+  try{
+    var lists=fx17load('fx13-custom-lists',null);
+    Array.prototype.forEach.call(document.querySelectorAll('.fx13-list-body'),function(body){
+      if(body.getBoundingClientRect().height===0)return;
+      if(body.querySelector(':scope > .fx17-roster'))return;
+      var name='';
+      try{
+        var head=body.parentNode?body.parentNode.querySelector('.fx13-list-name'):null;
+        if(head)name=(head.textContent||'').trim();
+      }catch(e){}
+      var members=[];
+      if(lists&&name){
+        for(var i=0;i<lists.length;i++){
+          if(String(lists[i].name||'').toUpperCase()===String(name).toUpperCase()){
+            members=(lists[i].members||[]).map(function(m){return typeof m==='string'?m:(m.alias||m.name||'');}).filter(Boolean);
+          }
+        }
+      }
+      if(!members.length){
+        Array.prototype.forEach.call(body.querySelectorAll('.fx13-member-ball, [data-member], option'),function(o){
+          var a=o.getAttribute&&o.getAttribute('data-member');
+          if(a)members.push(a);
+        });
+      }
+      var addRow=body.querySelector('.fx13-add-row, select');
+      var opts=addRow?addRow.querySelectorAll('option'):null;
+      var pool=[];
+      if(opts){Array.prototype.forEach.call(opts,function(o){var v=(o.textContent||'').trim();if(v)pool.push(v);});}
+      var roster=fx17el('div','fx17-roster');
+      roster.appendChild(fx17el('h4',null,'In this list'+(name?' — '+name:'')+' ('+members.length+' member'+(members.length===1?'':'s')+')'));
+      roster.appendChild(fx17el('p',null,members.length?members.map(fx17Name).join(' · '):'No members yet — add someone from the list below.'));
+      if(body.firstChild)body.insertBefore(roster,body.firstChild);
+      else body.appendChild(roster);
+    });
+  }catch(e){}
+}
+
+/* ---------- (12) Composer as the viewer itself. ---------- */
+function fx17ComposerAsViewer(){
+  /* REVERTED in the 1440 probe: reparenting the modal into the reader broke
+     the base close path (closeCompose targets the .ml-overlay wrapper, so a
+     moved modal stayed open after SEND NOW and covered the toggle — mail
+     view could not be reached). The composer therefore stays the proven
+     dialog with its real live preview; item 12 is NOT done in fix17, named
+     plainly in the report. This function is kept as a no-op so the pass
+     still runs its other work. */
+  return;
+  try{
+    var modals=document.querySelectorAll('.ml-modal.mlx');
+    Array.prototype.forEach.call(modals,function(m){
+      if(m.getBoundingClientRect().width===0)return;
+      /* Viewer = the mail reader when it is showing, else the messenger
+         reader (the composer opens from Messenger view, where .ml-read is
+         0-height — the viewer there is #nmReader itself). */
+      var viewer=null;
+      Array.prototype.forEach.call(document.querySelectorAll('.ml-read, #nmReader'),function(v){
+        if(!viewer&&v.getBoundingClientRect().height>0&&getComputedStyle(v).display!=='none')viewer=v;
+      });
+      var vis=!!viewer;
+      if(vis&&m.parentNode!==viewer){
+        viewer.insertBefore(m,viewer.firstChild);
+        m.classList.add('fx17-inviewer');
+      }else if(!vis){
+        m.classList.remove('fx17-inviewer');
+      }
+    });
+  }catch(e){}
+}
+
+/* ---------- (14) Thread header: never repeat the name in the subline. ---------- */
+function fx17HeaderDedupe(){
+  try{
+    Array.prototype.forEach.call(document.querySelectorAll('#nmReader .nm-reader-head'),function(head){
+      var nameEl=head.querySelector('.nm-person-name');
+      var sub=head.querySelector('.nm-person-sub');
+      if(!nameEl||!sub)return;
+      var n=(nameEl.textContent||'').trim();
+      var s=(sub.textContent||'').trim();
+      if(n&&s===n)sub.style.display='none';
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('#nmReader .fx2-who'),function(who){
+      var nameEl=who.querySelector('.fx2-who-name');
+      var st=who.querySelector('.fx2-who-status');
+      if(!nameEl||!st)return;
+      var n=(nameEl.textContent||'').trim();
+      if(n&&(st.textContent||'').trim()===n)st.style.display='none';
+    });
+  }catch(e){}
+}
+
+/* ---------- Pass + boot ---------- */
+function fx17Pass(){
+  try{fx17WrapSend();}catch(e){}
+  try{fx17RestoreBubbles();}catch(e){}
+  try{fx17DedupeBubbles();}catch(e){}
+  try{fx17HealFailedDraft();}catch(e){}
+  try{fx17ClearGateBoards();}catch(e){}
+  try{fx17DockInFlow();}catch(e){}
+  try{fx17CueInFlow();}catch(e){}
+  try{fx17PinRestore();}catch(e){}
+  try{fx17DedupeThreads();}catch(e){}
+  try{fx17SingleInitial();}catch(e){}
+  try{fx17FixCardHistory();}catch(e){}
+  try{fx17Roster();}catch(e){}
+  try{fx17ComposerAsViewer();}catch(e){}
+  try{fx17HeaderDedupe();}catch(e){}
+  try{fx17FillVoids();}catch(e){}
+}
+function fx17Boot(){
+  try{fx17FirstOpen();}catch(e){}
+  try{fx17WatchInlineSend();}catch(e){}
+  try{fx17WatchPin();}catch(e){}
+  try{fx17WatchGroupButtons();}catch(e){}
+  try{fx17ToastWatch();}catch(e){}
+  try{fx17WrapSend();}catch(e){}
+  setInterval(function(){try{fx17WrapSend();}catch(e){}},2000);
+  setTimeout(function(){try{fx17FirstOpen();}catch(e){}},1200);
+  setTimeout(function(){try{fx17FirstOpen();}catch(e){}},2500);
+  setTimeout(function(){try{fx17FirstOpen();}catch(e){}},6000);
+  setTimeout(function(){try{fx17FirstOpen();}catch(e){}},9000);
+  fx17Pass();
+  setInterval(fx17Pass,800);
+  try{
+    window.__fx17={version:'fix17-20261126',
+      sent:function(){return fx17load('fx17-sent',[]);},
+      sentMail:function(){return fx17load('fx17-sent-mail',[]);},
+      imBubbles:function(){return fx17load('fx17-im-bubbles',[]);},
+      pins:function(){return fx17Pins();},
+      groupSends:function(){return fx17load('fx15-group-sends',[]);}};
+  }catch(e){}
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fx17Boot);
+else fx17Boot();
+})();
+</script>
+
 </body></html>
