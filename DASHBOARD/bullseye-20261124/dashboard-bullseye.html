@@ -82,7 +82,7 @@ window._osOrbAria = function(key, label, pts, isCount, act){
   try{ od = (typeof window._osOrbDisplay === 'function') ? window._osOrbDisplay(key, pts, !!isCount) : null; }catch(e){}
   if (od){
     if (mode === 'pct' && key === 'sales' && isCount) return lbl + ': ' + od.pct + '% of all clicks. ' + a;
-    if (mode === 'pct' && !isCount) return lbl + ': ' + od.pct + '% of the 500 dial. ' + a; /* FIX8: see above. */
+    if (mode === 'pct' && !isCount) return lbl + ': ' + od.pct + '% of score. ' + a; /* FIX8B (6): the orb % is its share of the score. */
     if (mode === 'money' && key === 'joins' && !isCount) return lbl + ': ' + od.text + ' dollars. ' + a;
   }
   if (isCount) return lbl + ': ' + spc(pts) + ' ' + lbl.toLowerCase() + '. ' + a;
@@ -12376,8 +12376,11 @@ window._dashIsDesktop=_dashIsDesktop; window._dashSyncPlus=_dashSyncPlus; window
        simply render no board, per the 2026-11-07 ruling. */
     var _PAYPAL10 = {'power-monthly':1,'power-quarterly':1,'power-yearly':1,'pro-monthly':1,'pro-quarterly':1,'pro-yearly':1,'max-monthly':1,'max-quarterly':1,'max-yearly':1};
     links = (links||[]).filter(function(l){ return l && l.active !== false && !_PAYPAL10[String(l.name||'').toLowerCase()]; });
+    /* FIX8B (6): the drill reads the shared click snapshot, not its own re-sum at its own moment — same-minute renders agree. */
+    var _snap8b = (typeof window._osClickSnap === 'function') ? window._osClickSnap() : null;
     var _tc = 0, _tj = 0;
-    links.forEach(function(l){ var st = byName[l.name] || { clicks: 0, joins: 0, week: 0 }; _tc += st.clicks; _tj += st.joins; });
+    if (_snap8b && (_snap8b.c > 0 || _snap8b.j > 0)){ _tc = _snap8b.c; _tj = _snap8b.j; }
+    else { links.forEach(function(l){ var st = byName[l.name] || { clicks: 0, joins: 0, week: 0 }; _tc += st.clicks; _tj += st.joins; }); }
     var _g = (typeof window._slGaugesHTML === 'function') ? window._slGaugesHTML({clicks:_tc, joins:_tj, name:'all'}, _tc, '#3fb8ff') : '';
     host.innerHTML = '<div class="os-well" style="padding:14px 16px;margin-top:12px;">'
       + '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;"><b style="font-size:17px;color:#fff;">All your Smart Links</b>'
@@ -21168,7 +21171,11 @@ window.ldLayoutNodes = ldLayoutNodes;
     return {total:total, top:top, totalClicks:totalClicks, totalJoins:totalJoins, hasSales:hasSales};
   }
   function _spineScore(fallback){
-    if (window._osSpine && typeof window._osSpine.score === 'number' && isFinite(window._osSpine.score)) return window._osSpine.score;
+    /* FIX8B (6): the displayed total is the LIVE ORB TOTAL once the ledger has landed — the gauge IS the sum of its orbs. The spine score is a second formula that can sit in a 24h cache; that is how the gauge read 200 while the orbs summed 249. The cache still serves the first paint, and the birth x2 (spine == 2x the orb total) still shows the doubled final. */
+    if (window._osSpine && typeof window._osSpine.score === 'number' && isFinite(window._osSpine.score)){
+      if (window._dashDataLanded && typeof fallback === 'number' && isFinite(fallback) && fallback > 0 && window._osSpine.score !== fallback * 2) return fallback;
+      return window._osSpine.score;
+    }
     return fallback;
   }
   /* the featured view: everything the three outputs + the panel + the boards need */
@@ -21615,7 +21622,7 @@ window.ldLayoutNodes = ldLayoutNodes;
     var _w = window._ldWindow || 'all';
     if (_w === 'all'){
       var _sp = window._osSpine;
-      if (_sp && typeof _sp.score === 'number' && isFinite(_sp.score)) return _sp.score;
+      if (_sp && typeof _sp.score === 'number' && isFinite(_sp.score) && (!window._dashDataLanded || (typeof fallbackTotal === 'number' && isFinite(fallbackTotal) && fallbackTotal > 0 && _sp.score === fallbackTotal * 2))) return _sp.score; /* FIX8B (6): same rule as _spineScore — the live total once landed, the spine only for first paint or birth x2. */
     }
     /* FIX 6 — period window, non-link holder (a page has no center of its own):
        the tiles must equal the math line, and the math line IS the window orb
@@ -21868,7 +21875,7 @@ window.ldLayoutNodes = ldLayoutNodes;
       '<div class="os-wb-top"><span class="os-jewel" style="--jc:' + color + '">' + icon + '</span>' +
       '<div class="os-wb-id"><b>' + _esc(name) + '</b></div></div>' +
       _boardCellsHTML(holder) +
-      (holder.kind === 'world' ? '<p class="os-note" style="margin:10px 0 0;">Dashboard total: ' + _fmt((window._dashLinkT && window._dashLinkT.c) || 0) + ' clicks across ' + (_r5bn ? 'these ' + _r5bn + ' ' : '') + 'board links.</p>' : '') + /* ROUND 5 (1): the grand total names its universe — the board links only — never "all links": the drill's ALL counts board+plan (5,175 found), so "across all links" beside it was the contradiction the walk named. (PASS-11 (8): the grand total as a small reference only — the first cell above leads with the top link.) */
+      (holder.kind === 'world' ? '<p class="os-note" style="margin:10px 0 0;">Dashboard total: ' + _fmt((typeof window._osClickSnap === 'function' ? window._osClickSnap().c : ((window._dashLinkT && window._dashLinkT.c) || 0))) + ' clicks across ' + (_r5bn ? 'these ' + _r5bn + ' ' : '') + 'board links.</p>' : '') + /* ROUND 5 (1): the grand total names its universe — the board links only — never "all links": the drill's ALL counts board+plan (5,175 found), so "across all links" beside it was the contradiction the walk named. (PASS-11 (8): the grand total as a small reference only — the first cell above leads with the top link.) */
       (holder.kind === 'page' ? '<p class="os-note" style="margin:10px 0 0;">' + ((holder._p10 && (holder._p10.c > 0 || holder._p10.j > 0)) ? 'These are the clicks of the links that point at this page — its own numbers, counted live.' : 'No links point at this page yet — its clicks count in the Dashboard total above. <a href="#naya-stage-3" style="color:#fff;text-decoration:underline;">Claim a Smart Link for this page to start counting →</a>') + '</p>' : '') +
       '</div>' +
       '<div class="ph-actions os-wb-side"><a class="ph-connect os-wb-btn" href="' + _esc(openHref) + '">Open the stats</a></div></article>';
@@ -22328,7 +22335,7 @@ window._renderScoreDerivation = function(totalArg, orbDataArg){
     if (!view || view.kind !== 'link'){
       /* ---- world / page: the v6 derivation, verbatim ---- */
       if (derEl || derBelow){
-        var spineScore = (window._osSpine && typeof window._osSpine.score === 'number') ? window._osSpine.score : total;
+        var spineScore = _spineScore(total);
         var mult = (total > 0 && spineScore === total * 2) ? 2 : 1;
         var h = '';
         if (orbData.length === 0){
@@ -22358,7 +22365,7 @@ window._renderScoreDerivation = function(totalArg, orbDataArg){
         if (derBelow) derBelow.innerHTML = h;
       }
       if (nextEl || nextBelow){
-        var spineScore2 = (window._osSpine && typeof window._osSpine.score === 'number') ? window._osSpine.score : total;
+        var spineScore2 = _spineScore(total);
         var mult2 = (total > 0 && spineScore2 === total * 2) ? 2 : 1;
         var gain = 50 * mult2;
         /* FIX F7: the next move follows the window too — in a period window the
@@ -22945,7 +22952,7 @@ function loadPointsBoard(_t){
              2026-11-05 — DEFECT FIX: was hardcoded 300. Now reads the live score
              from the spine (the same live score the gauge shows); falls back to
              the orb total if the spine is ever unavailable. */
-          var displayTotal = (typeof window._featuredCenter === 'function') ? window._featuredCenter(total) : ((window._osSpine && typeof window._osSpine.score === 'number' && isFinite(window._osSpine.score)) ? window._osSpine.score : total);
+          var displayTotal = (typeof window._featuredCenter === 'function') ? window._featuredCenter(total) : _spineScore(total);
           /* 2026-11-06 — v7.1 FIX 10: instant — the big number reads its final
              value on first paint (was a 3s linear 0->score count, Shawn's
              2026-11-02 "drama" order; the scorecards + fix list require numbers
@@ -23034,7 +23041,7 @@ function loadPointsBoard(_t){
              tier on the 1,000 ladder, not the score — the sub-label now
              says so plainly. The donut keeps the orb total: its slices ARE
              the orb breakdown and sum to it by construction. */
-          var ringTotal = ((window._osSpine && typeof window._osSpine.score === 'number' && isFinite(window._osSpine.score)) ? window._osSpine.score : total);
+          var ringTotal = _spineScore(total);
           var _pf = (typeof window.v6PaceFor === 'function') ? window.v6PaceFor(ringTotal) : null;
           /* FIXC 2026-11-07 (Fix 6 follow-up): past the last rung there is
              no next tier — no name is invented ('Beyond' was a tier name
@@ -23178,10 +23185,10 @@ function loadPointsBoard(_t){
           var bigVal = document.getElementById('os-se-num') || document.getElementById('os-se-val');
           if (bigVal){
             /* PASS 3: the big number is the tile number now (the $ tile follows the mode inside _osTilesSet). */
-            if (typeof window._osTilesSet === 'function'){ var _c3 = (typeof window._featuredCenter === 'function') ? window._featuredCenter(total) : ((window._osSpine && typeof window._osSpine.score === 'number' && isFinite(window._osSpine.score)) ? window._osSpine.score : total); window._osTilesSet((window._osSpine && (window._osSpine.loading || window._osSpine.stale)) ? null : ((typeof _c3 === 'number' && isFinite(_c3)) ? _c3 : null)); }
+            if (typeof window._osTilesSet === 'function'){ var _c3 = (typeof window._featuredCenter === 'function') ? window._featuredCenter(total) : _spineScore(total); window._osTilesSet((window._osSpine && (window._osSpine.loading || window._osSpine.stale)) ? null : ((typeof _c3 === 'number' && isFinite(_c3)) ? _c3 : null)); }
             /* FIX PASS 4 (fail 10): no bare "—" — skeleton while loading, the spaced number when loaded. */
             else if (window._osSpine && (window._osSpine.loading || window._osSpine.stale)) bigVal.innerHTML = '<span class="reel d0 lit" data-div="1" data-max="0" data-final="0"><span class="cap"></span><span class="window"><span class="strip" style="transform: translateY(0px);"><span class="rd">0</span><span class="rd">1</span><span class="rd">2</span><span class="rd">3</span><span class="rd">4</span><span class="rd">5</span><span class="rd">6</span><span class="rd">7</span><span class="rd">8</span><span class="rd">9</span></span></span></span>';
-            else bigVal.textContent = window._osSpc(((typeof window._featuredCenter === 'function') ? window._featuredCenter(total) : ((window._osSpine && typeof window._osSpine.score === 'number' && isFinite(window._osSpine.score)) ? window._osSpine.score : total)));
+            else bigVal.textContent = window._osSpc(((typeof window._featuredCenter === 'function') ? window._featuredCenter(total) : _spineScore(total)));
           }
           /* PASS 1 v7 (2026-11-05) — a PTS/% flip re-reads the live ledger; the derivation under the number re-renders with it. */
           try{ if (typeof window._renderScoreDerivation === 'function') window._renderScoreDerivation(); }catch(e){}
@@ -28078,8 +28085,10 @@ window._repaintOrbMinis = function(box){
       return {text: spc(v), unit: 'COUNT', pct: ''};
     }
     if (mode === 'pct'){
-      var mv = (typeof window._osModeVal === 'function') ? window._osModeVal(v) : v;
-      return {text: mv + '%', unit: '% OF THE 500 DIAL', pct: mv}; /* FIX8: the value is share of the 500 dial, so the label says so — it said '% OF SCORE'. */
+      /* FIX8B (6): the orb % is its SHARE OF THE SCORE — pts / totalPts. */
+      var _tot = (typeof window._osTotalPts === 'number' && isFinite(window._osTotalPts) && window._osTotalPts > 0) ? window._osTotalPts : 0;
+      var mv = _tot ? Math.round(v / _tot * 100) : ((typeof window._osModeVal === 'function') ? window._osModeVal(v) : v);
+      return {text: mv + '%', unit: '% OF SCORE', pct: mv};
     }
     if (mode === 'money' && key === 'joins'){
       var rev = (typeof window._osJoinsRevenueDollars === 'function') ? window._osJoinsRevenueDollars() : null;
@@ -30971,7 +30980,7 @@ body.viewport-focus #viewport-back{
 </div>
 <nav id="os-bottom3" class="os-bottom3 notif-six notif-bar" aria-label="Dashboard">
 <!-- GEAR-FIX 2026-11-24: header + buttons (fresh — the calendar has none to copy). Left opens the left sidebar, right opens the right sidebar. -->
-<button class="naya-hdr-plus" id="naya-plus-left" type="button" aria-label="Open left sidebar" title="Open sidebar">+</button><div class="notif-row"><a class="notif-seg" data-notif="plus" style="--nc:#8e24aa" href="https://nayanet.app/personal" aria-label="ADD — open" title="ADD"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ADD</span></a><a class="notif-seg" data-notif="mail" style="--nc:#0f52ba" href="https://nayanet.app/rooms/mail" aria-label="MAIL — open" title="MAIL"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">MAIL</span></a><a class="notif-seg" data-notif="activity" style="--nc:#07925f" href="https://nayanet.app/hub#/hub/feed-activity" aria-label="ACTIVITY — open" title="ACTIVITY"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ACTIVITY</span></a><a class="notif-seg" data-notif="spaces" style="--nc:#d4a017" href="https://nayanet.app/hub#/hub/spaces" aria-label="WORLDS — open" title="WORLDS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">WORLDS</span></a><a class="notif-seg" data-notif="eco" style="--nc:#c2410c" href="https://nayanet.app/#/hub" aria-label="ECOSYSTEM — open" title="ECOSYSTEM"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ECOSYSTEM</span></a><a class="notif-seg" data-notif="plusR" style="--nc:#c62828" href="https://nayanet.app/rooms/connections" aria-label="CONNECT — open" title="CONNECT"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19.5c.7-3.4 2.9-5.2 5.5-5.2s4.8 1.8 5.5 5.2"/><circle cx="17" cy="9" r="2.7"/><path d="M16.2 14.6c2.5-.2 4.1 1.4 4.6 3.9"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">CONNECT</span></a><button class="naya-hdr-plus" id="naya-plus-right" type="button" aria-label="Open right sidebar" title="Open sidebar">+</button>
+<button class="naya-hdr-plus" id="naya-plus-left" type="button" aria-label="Open left sidebar" title="Open sidebar">+</button><div class="notif-row"><a class="notif-seg" data-notif="plus" style="--nc:#8e24aa" href="https://nayanet.app/personal" aria-label="ADD — open" title="ADD"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ADD</span></a><a class="notif-seg" data-notif="mail" style="--nc:#0f52ba" href="https://nayanet.app/rooms/mail" aria-label="MAIL — open" title="MAIL"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">MAIL</span></a><a class="notif-seg" data-notif="activity" style="--nc:#07925f" href="https://nayanet.app/#/hub/feed-activity" aria-label="ACTIVITY — open" title="ACTIVITY"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ACTIVITY</span></a><a class="notif-seg" data-notif="spaces" style="--nc:#d4a017" href="https://nayanet.app/#/hub/spaces" aria-label="WORLDS — open" title="WORLDS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">WORLDS</span></a><a class="notif-seg" data-notif="eco" style="--nc:#c2410c" href="https://nayanet.app/#/hub" aria-label="ECOSYSTEM — open" title="ECOSYSTEM"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ECOSYSTEM</span></a><a class="notif-seg" data-notif="plusR" style="--nc:#c62828" href="https://nayanet.app/rooms/connections" aria-label="CONNECT — open" title="CONNECT"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19.5c.7-3.4 2.9-5.2 5.5-5.2s4.8 1.8 5.5 5.2"/><circle cx="17" cy="9" r="2.7"/><path d="M16.2 14.6c2.5-.2 4.1 1.4 4.6 3.9"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">CONNECT</span></a><button class="naya-hdr-plus" id="naya-plus-right" type="button" aria-label="Open right sidebar" title="Open sidebar">+</button>
 </div></nav>
 <script>
 /* RENDER FIX 2026-11-21 — ADD opens the "Which feed?" post flow (Eleven Laws law 4; Personal R5 menu harvested above). ADD never navigates to /personal while this script runs; the anchor href stays as Personal's own static fallback. Rows: Personal/Business/Space go to their harvested data-hub-href; Hub goes to the Hub composer (hub#home/post — the direct parallel of the three harvested hrefs, named in MAKER-REPORT.md). */
@@ -31103,7 +31112,7 @@ body.viewport-focus #viewport-back{
   var mail = document.querySelector('[data-notif="mail"]');
   if (mail) mail.addEventListener('click', function(){ window.location.href = 'https://nayanet.app/rooms/mail'; });
   var act = document.querySelector('[data-notif="activity"]');
-  if (act) act.addEventListener('click', function(e){ if(e && e.preventDefault) e.preventDefault(); window.location.href='https://nayanet.app/hub#/hub/feed-activity'; });
+  if (act) act.addEventListener('click', function(e){ if(e && e.preventDefault) e.preventDefault(); window.location.href='https://nayanet.app/#/hub/feed-activity'; });
   /* PASS-9 2026-11-10 — TAP ONE TO SEE MORE. The notifications list is the
      only home notifications have now (the top pill is gone). Tapping a row
      opens its detail — the full date and time, then the event's own text —
@@ -31128,7 +31137,7 @@ body.viewport-focus #viewport-back{
      Which-feed menu handler (Eleven Laws law 4: ADD = "Which feed?" -> Personal / Business /
      Space / Hub, then the post). The menu handler above stays the single ADD behaviour. */
   var worlds = document.querySelector('[data-notif="spaces"]');
-  if (worlds) worlds.addEventListener('click', function(e){ if(e && e.preventDefault) e.preventDefault(); window.location.href='https://nayanet.app/hub#/hub/spaces'; });
+  if (worlds) worlds.addEventListener('click', function(e){ if(e && e.preventDefault) e.preventDefault(); window.location.href='https://nayanet.app/#/hub/spaces'; });
   /* FIX-4 2026-11-17: the ECO tile MUST stopPropagation — without it the
      tile's own click bubbles to the document-level eco-menu closer, which
      sees the just-opened menu and a target outside it and closes it in the
@@ -31914,7 +31923,7 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
 </style>
 <footer id="os-dash-footer" class="os-dash-footer">
 <div class="os-df-inner">
-<div class="os-df-brand"><span class="os-df-mark" aria-hidden="true">◆</span><span class="os-df-name">NayaNET</span><span class="os-df-tag">Your world, organized.</span></div>
+<div class="os-df-brand"><img class="os-df-face" src="data:image/jpeg;base64,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" alt="Naya" width="44" height="44"><span class="os-df-mark" aria-hidden="true">◆</span><span class="os-df-name">NayaNET</span><span class="os-df-tag">Your world, organized.</span></div>
 <nav class="os-df-nav" aria-label="Footer">
 <a href="https://nayanet.app/dashboard">Dashboard</a>
 <a href="https://nayanet.app/hub">Hub</a>
@@ -33311,6 +33320,7 @@ button:active,a[href]:active,[data-derive]:active,.notif-seg:active,.os-sl-stat:
   var recent = new Map();
   var firstStuck = new WeakMap();
   var lastPtr = 0, lastKey = 0, polls = 0, moves = [];
+  var ptrHeld = false; /* FIX8B (d): R2 guard — a layout shift under a held pointer must never clear a live hold. */
   window.__fix7 = window.__fix6 = {polls: 0, moves: moves};
   function move(el, why){
     var p = el.parentNode, n = el.nextSibling;
@@ -33327,17 +33337,20 @@ button:active,a[href]:active,[data-derive]:active,.notif-seg:active,.os-sl-stat:
   }
   function clearIfStuck(el, why){
     if (!el || !el.matches || !el.matches(':active')) return;
+    if (ptrHeld) return; /* FIX8B (d): never clear a live hold. */
     if (el.matches(':hover')) return;
     move(el, why);
     firstStuck.delete(el);
     recent.delete(el);
   }
   document.addEventListener('pointerdown', function(e){
-    lastPtr = performance.now();
+    lastPtr = performance.now(); ptrHeld = true;
     var el = e.target && e.target.closest ? e.target.closest('button,a[href],[data-derive],.notif-seg,.os-sl-stat') : null;
     if (el) recent.set(el, performance.now());
   }, true);
   document.addEventListener('keydown', function(){ lastKey = performance.now(); }, true);
+  document.addEventListener('pointerup', function(){ ptrHeld = false; }, true);
+  document.addEventListener('pointercancel', function(){ ptrHeld = false; }, true);
   document.addEventListener('mouseout', function(e){
     if (lastKey > lastPtr) return;
     var el = e.target && e.target.closest ? e.target.closest('button,a[href],[data-derive],.notif-seg,.os-sl-stat') : null;
@@ -33349,6 +33362,7 @@ button:active,a[href]:active,[data-derive]:active,.notif-seg:active,.os-sl-stat:
     polls++;
     window.__fix6.polls = polls;
     if (lastKey > lastPtr) return;
+    if (ptrHeld) return; /* FIX8B (d): never sweep mid-hold. */
     var now = performance.now();
     var els = document.querySelectorAll(PRESSABLE_ACTIVE);
     for (var i = 0; i < els.length; i++){
@@ -33373,6 +33387,27 @@ button:active,a[href]:active,[data-derive]:active,.notif-seg:active,.os-sl-stat:
   }, POLL);
 })();
 
+</script>
+<style id="inner-frames-fix8b-20261125">
+/* FIX8B 2026-11-26 — follow-up to fix8. */
+#os-join-btn:hover{border-color:#d9a521 !important} /* FIX8B (1): the hover border was pale lavender #c09aff — Join's rim is gold in every state: rest, hover, press. */
+.os-df-face{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid #d9a521;box-shadow:0 4px 14px rgba(0,0,0,.55);flex:0 0 auto} /* FIX8B (5): her face in the footer — a real photograph, gold-rimmed, one light top-left. */
+.os-df-brand{display:flex;align-items:center;gap:12px}
+</style>
+<script id="inner-frames-fix8b-20261125-js">
+/* FIX8B 2026-11-26 — follow-up to fix8. Additive only; nothing else touched. */
+(function(){
+  /* (6) ONE CLICK TOTAL PER MINUTE — see the build script. */
+  window._osClickSnap = function(){
+    var now = Date.now();
+    var s = window._osClickSnapV;
+    if (s && (now - s.at) < 60000) return s;
+    var lt = window._dashLinkT || {c:0, j:0};
+    var v = {c: Number(lt.c) || 0, j: Number(lt.j) || 0, at: now};
+    if (v.c > 0 || v.j > 0) window._osClickSnapV = v; /* never cache a zero — the summary render has not written yet. */
+    return v;
+  };
+})();
 </script>
 <script id="inner-frames-fix8-20261125-js">
 /* FIX8 2026-11-25 — captain's eye walk on fix7. Additive only; nothing else touched. */
