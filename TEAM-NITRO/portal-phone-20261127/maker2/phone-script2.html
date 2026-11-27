@@ -1,0 +1,105 @@
+<script>
+/* BLACK DIAMOND PHONE v2 2026-11-27 — phone chrome logic, no walk state.
+   Runs BEFORE the harvested walk script: the walk IIFE calls
+   window.bdPhone.showInput(pic) on render, .reveal(q, answer, def, pic) on
+   ball tap, .showEnd() on finish. Clock ticks live; battery reads
+   navigator.getBattery when the browser offers it, else the reference 87%.
+   Copy-my-answers reads the same localStorage key the walk saves
+   (naya_welcome_right_v1) — in-page state, copy-out on the review screen.
+   No server save is faked: the walk's own complete() POST to the
+   walkthrough-15 staging worker is untouched.
+   Pictures: window.BD_PICS maps pic keys to data URIs, harvested verbatim
+   from workspace/user/media_library/image/ (injected by build-v2.mjs):
+   vault=1_THE_VAULT, current=2_HOW_WE_SNYC, nano=3_NANOVERSE,
+   works=4_HOW_IT_WORKS, smartvault=5_SMART_VAULT, match=6_AUTO_MATCH,
+   org=7_AUTO_ORGINIZED, pillars=the five glowing crystal pillars. */
+window.BD_PICS = /*__BD_PICS__*/;
+(function(){
+  function $(id){ return document.getElementById(id); }
+  function tick(){
+    var d = new Date();
+    var h = d.getHours() % 12 || 12;
+    var m = ('0' + d.getMinutes()).slice(-2);
+    var c = $('bdClock');
+    if (c) c.textContent = h + ':' + m;
+  }
+  tick();
+  setInterval(tick, 15000);
+  if (navigator.getBattery) {
+    navigator.getBattery().then(function(b){
+      function u(){
+        var n = $('bdBattNum');
+        if (n) n.textContent = Math.round(b.level * 100);
+        var f = $('bdBattFill');
+        if (f) f.style.width = Math.round(b.level * 100) + '%';
+      }
+      u();
+      b.addEventListener('levelchange', u);
+    }).catch(function(){});
+  }
+  function setPic(wrapId, imgId, pic){
+    var w = $(wrapId), im = $(imgId);
+    if (!w || !im) return;
+    var src = pic && window.BD_PICS ? window.BD_PICS[pic] : null;
+    if (src) { im.src = src; w.hidden = false; }
+    else { w.hidden = true; }
+  }
+  function showInput(pic){
+    var r = $('bdReveal'); if (r) r.hidden = true;
+    var w = $('bdInputWrap'); if (w) w.hidden = false;
+    var n = $('bdNav'); if (n) n.hidden = false;
+    setPic('bdPic', 'bdPicImg', pic);
+  }
+  function reveal(q, answer, def, pic){
+    var w = $('bdInputWrap'); if (w) w.hidden = true;
+    var r = $('bdReveal'); if (!r) return;
+    var qEl = $('bdRevealQ'), aEl = $('bdRevealA'), exEl = $('bdRevealEx');
+    if (qEl) qEl.textContent = '\u201C' + q + '\u201D';
+    if (aEl) aEl.textContent = answer || '';
+    if (exEl) {
+      exEl.textContent = '';
+      if (def) {
+        var s = document.createElement('strong');
+        s.textContent = 'Our example: ';
+        exEl.appendChild(s);
+        exEl.appendChild(document.createTextNode(def));
+        exEl.hidden = false;
+      } else { exEl.hidden = true; }
+    }
+    setPic('bdRevealPic', 'bdRevealPicImg', pic);
+    r.hidden = false;
+    /* Eye fix: the reveal card must never sit sliced mid-line — scroll the
+       stage so the whole card (question + answer + our example) sits inside
+       the 9:16 area at rest. Only the stage scrolls, never the page. */
+    var st = document.querySelector('.bd-stage');
+    var card = document.querySelector('.bd-reveal-card');
+    if (st && card) st.scrollTop += card.getBoundingClientRect().top - st.getBoundingClientRect().top;
+    r.classList.remove('bd-anim');
+    void r.offsetWidth;
+    r.classList.add('bd-anim');
+    var ball = $('fpWalkEnter');
+    if (ball) { ball.classList.remove('bd-spun'); void ball.offsetWidth; ball.classList.add('bd-spun'); }
+  }
+  function showEnd(){
+    var w = $('bdInputWrap'); if (w) w.hidden = true;
+    var r = $('bdReveal'); if (r) r.hidden = true;
+    var n = $('bdNav'); if (n) n.hidden = true;
+    /* D1: the ball stays. The chin is never hollow on the end screen. */
+  }
+  window.bdPhone = { showInput: showInput, reveal: reveal, showEnd: showEnd, tick: tick };
+  var copyAll = $('fpWalkCopyAll');
+  if (copyAll) copyAll.addEventListener('click', function(){
+    var txt = '';
+    try {
+      var S = JSON.parse(localStorage.getItem('naya_welcome_right_v1') || 'null');
+      if (S && S.answers) txt = Object.keys(S.answers).map(function(k){
+        var v = S.answers[k];
+        return k + ': ' + (Array.isArray(v) ? v.join(', ') : v);
+      }).join('\n');
+    } catch(e){}
+    function done(){ var t = copyAll.textContent; copyAll.textContent = 'Copied'; setTimeout(function(){ copyAll.textContent = t; }, 1200); }
+    if (navigator.clipboard && navigator.clipboard.writeText && txt) { navigator.clipboard.writeText(txt).then(done, done); }
+    else { done(); }
+  });
+})();
+</script>

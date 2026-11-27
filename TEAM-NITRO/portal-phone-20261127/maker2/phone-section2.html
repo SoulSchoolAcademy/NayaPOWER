@@ -1,0 +1,108 @@
+<!-- BLACK DIAMOND PHONE v2 2026-11-27 — the walkthrough rebuilt to Shawn's
+     ~10:0x collapsed flow (MEMORY.md, supersedes the v1 brief).
+     NO name screen, NO alias screen (portal + certificate have them).
+     NO Skip anywhere (his ~10:41 count: no skip button; click forward).
+     Steps, in order — personal first, deep stuff at the end:
+       1 Where you live — country + province/state + city, ONE box
+       2 Age + language — ONE box (age groups, never a specific age)
+       3 Gender — dropdown, male / female / prefer not to say, NO default
+         (+ faith + ethnicity, optional, same box — R3 collapse harvest)
+       4 What you love — three boxes: brand / music type / hobby + what else
+       5 Sports — type of sport dropdown, then your team under it
+       6 Who do you want to connect with — dropdown + your own words
+         (picture 6 Smart Match)
+       7 Industry + skills — check-off dropdowns, aligned
+       8 Your experience — experience / achievements / education, ONE box
+       9 The model — how your world should work
+      10 Vision — picture 3 Nanoverse
+      11 Goal — picture 1 The Vault
+      12 Mission — picture 4 How Naya Works
+      13 Your thing — picture 7 Auto Organizer
+      14 Values — what you stand for — picture: the five pillars
+      15 Your promise — picture 5 Smart Vault
+      16 What's in it for you — picture 2 How Current Works
+      17 Categories LAST — click off, then subcategories under the ones picked
+     Pictures harvested verbatim from workspace/user/media_library/image/
+     (filenames carry the typos: 2_HOW_WE_SNYC, 7_AUTO_ORGINIZED).
+     The ball IS Enter: it reveals your answer in place; only the ‹ › arrows
+     move forward/back. Answers save as you go (same key naya_welcome_right_v1).
+     IDs kept so the harvested walk script keeps working: fpWalk, fpWalkQ,
+     fpWalkProgress, fpWalkAnswer, fpWalkBack, fpWalkEnter (the ball),
+     fpWalkSkip (kept in the DOM, hidden — NO SKIP on the page; finish()
+     still touches it), fpWalkEnd, fpWalkLinkRow, fpWalkLink, fpWalkCopy,
+     fpWalkReadyLine, fpWalkFailLine, fpWalkWorld, fpWalkPricing, fpWalkRetry,
+     fpWalkHub, fpWalkDash, fpWalkBiz, fpWalkSpace. New: fpWalkNext (› arrow),
+     fpWalkCopyAll (copy-out of every answer on the review screen),
+     bdPic (the step picture), bdFields (the step's fields, inside the card). -->
+<section id="fpWalk" hidden>
+  <div class="bd-phone" id="bdPhone">
+    <div class="bd-frame">
+      <div class="bd-bezel">
+        <div class="bd-screen">
+          <div class="bd-statusbar">
+            <span class="bd-clock" id="bdClock">9:41</span>
+            <span class="bd-status-right">
+              <span class="bd-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+              <span class="bd-5g">5G</span>
+              <svg class="bd-wifi" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="#fff" d="M12 18.5c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5zm0-4.2c1.9 0 3.6.8 4.9 2l-1.5 1.6c-.9-.9-2.1-1.4-3.4-1.4s-2.5.5-3.4 1.4L7.1 16.3c1.3-1.2 3-2 4.9-2zm0-4.3c3 0 5.8 1.2 7.8 3.2l-1.5 1.6c-1.6-1.6-3.8-2.6-6.3-2.6s-4.7 1-6.3 2.6L4.2 13.2C6.2 11.2 9 10 12 10z"/></svg>
+              <span class="bd-batt" aria-hidden="true"><i id="bdBattFill"></i></span><span class="bd-batt-num" id="bdBattNum">87</span>
+            </span>
+          </div>
+          <div class="bd-stage">
+            <div class="bd-input" id="bdInputWrap">
+              <p class="bd-kicker">Your walkthrough</p>
+              <h1 class="fp-walk-q" id="fpWalkQ"></h1>
+              <p class="fp-walk-progress" id="fpWalkProgress"></p>
+              <div class="bd-pic" id="bdPic" hidden><img id="bdPicImg" alt="" /></div>
+              <div class="bd-card">
+                <textarea class="fp-walk-answer bd-answer" id="fpWalkAnswer" rows="4"></textarea>
+                <div id="bdFields" hidden></div>
+              </div>
+              <p class="fp-walk-hint">Type your answer &mdash; it saves as you go. Tap the ball to reveal it.</p>
+            </div>
+            <div class="bd-reveal" id="bdReveal" hidden>
+              <div class="bd-pic" id="bdRevealPic" hidden><img id="bdRevealPicImg" alt="" /></div>
+              <div class="bd-reveal-card">
+                <p class="bd-reveal-kicker" id="bdRevealKicker">Your answer</p>
+                <h2 class="bd-reveal-q" id="bdRevealQ"></h2>
+                <p class="bd-reveal-a" id="bdRevealA"></p>
+                <p class="bd-reveal-ex" id="bdRevealEx"></p>
+              </div>
+              <p class="bd-reveal-note">Tap Next to keep going.</p>
+            </div>
+            <div id="fpWalkEnd" hidden>
+              <h2 class="fp-walk-endtitle">Welcome home.</h2>
+              <p class="fp-walk-endline">Your own personal branded Smart Link</p>
+              <p class="fp-walk-linkrow" id="fpWalkLinkRow"><span class="fp-walk-link" id="fpWalkLink"></span> <button class="fp-walk-copy" id="fpWalkCopy" type="button">Copy</button></p>
+              <p class="fp-walk-endline" id="fpWalkReadyLine">Your answers are saved on this device. Your world is ready &mdash; go see it, then choose your plan.</p>
+              <p class="fp-walk-endline" id="fpWalkFailLine" hidden></p>
+              <p class="fp-walk-endline"><button class="fp-walk-copy" id="fpWalkCopyAll" type="button">Copy my answers</button></p>
+              <div class="fp-walk-endgrid">
+                <button class="fp-walk-enter" id="fpWalkWorld" type="button">See my world &rarr;</button>
+                <button class="fp-walk-navbtn" id="fpWalkPricing" type="button">Choose your plan &rarr;</button>
+                <button class="fp-walk-enter" id="fpWalkRetry" type="button" hidden>Try again &rarr;</button>
+                <button class="fp-walk-enter" id="fpWalkHub" type="button">Your smart hub app &rarr;</button>
+                <button class="fp-walk-navbtn" id="fpWalkDash" type="button">Your personal dashboard &rarr;</button>
+                <button class="fp-walk-navbtn" id="fpWalkBiz" type="button">Your business &rarr;</button>
+                <button class="fp-walk-navbtn" id="fpWalkSpace" type="button">Your space &rarr;</button>
+              </div>
+            </div>
+          </div>
+          <div class="bd-nav" id="bdNav">
+            <button class="fp-walk-navbtn bd-arrow" id="fpWalkBack" type="button" aria-label="Back">&lsaquo;</button>
+            <button class="fp-walk-skip" id="fpWalkSkip" type="button" hidden>Skip this question &rarr;</button>
+            <button class="bd-arrow bd-next" id="fpWalkNext" type="button" aria-label="Next">&rsaquo;</button>
+          </div>
+        </div>
+        <div class="bd-chin">
+          <div class="bd-chin-label">BLACK DIAMOND SERIES</div>
+          <button class="fp-walk-enter bd-ball" id="fpWalkEnter" type="button" aria-label="Enter — reveal your answer">
+            <span class="bd-orbit" aria-hidden="true"><span class="bd-orbit-jewel">&#9670;</span></span>
+            <span class="bd-ball-jewel"><svg class="bd-facets" viewBox="0 0 100 100" aria-hidden="true"><defs><clipPath id="bdFacetClip"><circle cx="50" cy="50" r="49"/></clipPath><radialGradient id="bdFacetBase" cx="38%" cy="30%" r="75%"><stop offset="0%" stop-color="#e9d5ff"/><stop offset="18%" stop-color="#a855f7"/><stop offset="45%" stop-color="#8e24aa"/><stop offset="70%" stop-color="#4c1d95"/><stop offset="100%" stop-color="#1e0a2e"/></radialGradient></defs><g clip-path="url(#bdFacetClip)"><rect x="0" y="0" width="100" height="100" fill="url(#bdFacetBase)"/><g stroke="rgba(255,255,255,.38)" stroke-width=".7"><polygon points="50,24 68,33 78,50 68,67 50,76 32,67 22,50 32,33" fill="#c084fc"/><polygon points="50,0 68,33 32,33" fill="#e9d5ff"/><polygon points="68,33 86,15 78,50" fill="#a855f7"/><polygon points="78,50 86,15 100,50" fill="#6d28d9"/><polygon points="78,50 100,50 86,85" fill="#4c1d95"/><polygon points="68,67 78,50 86,85" fill="#7e22ce"/><polygon points="50,76 68,67 86,85" fill="#a855f7"/><polygon points="50,76 86,85 50,100" fill="#2e1065"/><polygon points="50,76 50,100 14,85" fill="#4c1d95"/><polygon points="32,67 50,76 14,85" fill="#8e24aa"/><polygon points="22,50 32,67 14,85" fill="#6d28d9"/><polygon points="22,50 14,85 0,50" fill="#3b0764"/><polygon points="22,50 0,50 14,15" fill="#7e22ce"/><polygon points="32,33 22,50 14,15" fill="#a855f7"/><polygon points="32,33 14,15 50,0" fill="#d8b4fe"/><polygon points="68,33 50,0 86,15" fill="#c084fc"/><polygon points="50,24 68,33 50,50 32,33" fill="#f3e8ff" opacity=".85"/><polygon points="50,50 68,33 78,50 68,67 50,76 32,67 22,50 32,33" fill="none"/></g><ellipse cx="34" cy="26" rx="20" ry="11" fill="rgba(255,255,255,.5)" transform="rotate(-18 34 26)"/></g></svg><span class="bd-ball-n">N</span></span>
+          </button>
+          <div class="bd-enter-label">ENTER</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
