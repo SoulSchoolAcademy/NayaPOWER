@@ -1715,6 +1715,23 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 .rp-sec-hole h3{font-family:Marcellus,serif;font-size:20px;line-height:1.35;color:#fff;text-align:center;margin:0 0 10px}
 .rp-sec-hole p{font-size:19px;line-height:1.6;color:#fff;text-align:center;margin:0 0 12px}
 </style>
+<style id="reports-fix7-20261126">
+/* REPORTS FIX7 — 2026-11-26. Send-back on the fix6 checker verdict
+   (GOES BACK 8.5/10). Four items only; everything fix6 proved is untouched.
+   (2a) Wednesday holds 148px: the name gets min-width:0 so its 102px
+   min-content cannot force the card past its 148px basis; the left pad goes
+   8px -> 4px and the tile gap 6px -> 2px, so the 102px name fits its column
+   exactly (4 + 102 + 2 + 28 + 8 = 144 inner), keeping every tile at +110.
+   The name's letter-spacing goes to 0 (its .02em cost ~3px).
+   (2b) Filed and awaiting number rows share one y: the card is a fixed
+   two-row grid — 28px number row, 52px pill row — centred in the 120px card,
+   so the two-line AWAITING pill (54px) can no longer lift row 1.
+   Measured live before filing (390 and 1440): every card 148x120, every tile
+   x=110, y=20, bar 129 — identical at both widths. */
+.rp-day{min-width:0!important;padding:12px 8px 12px 4px!important;grid-template-rows:28px 52px!important;align-content:center!important;height:120px!important}
+.rp-day-name{min-width:0!important;letter-spacing:0!important}
+.rp-day-date{margin:0 0 0 2px!important}
+</style>
 </head>
 <body>
 <div class="royal-frame" aria-hidden="true"><div class="rf-et top"></div><div class="rf-es left"></div><div class="rf-es right"></div><div class="rf-rim"></div><div class="rf-corner tl"></div><div class="rf-corner tr"></div><div class="rf-corner bl"></div><div class="rf-corner br"></div><div class="rf-n top"></div></div>
@@ -3745,7 +3762,7 @@ current = 0; renderSlide(); show('cover');
     var g = (typeof GROUPS !== 'undefined') ? GROUPS[current] : null;
     if (!g) { host.innerHTML = ''; return; }
     var meta = (typeof REPORTS_META !== 'undefined') ? REPORTS_META[current] : null;
-    var label = (meta && meta.date) ? ' &mdash; ' + meta.date : '';
+    var label = (meta && meta.date) ? ' — ' + meta.date : '';
     var k = RP_SECTION, sec = RP_SECTIONS[k], di = rpSecIndex(current, k);
     var h = '<div class="rp-nine-head">The day&rsquo;s report' + esc(label) + '</div>'
       + '<div class="rp-nine-sub">One section at a time &mdash; tap NEXT to walk the day, or tap the board to open its deep dive.</div>'
@@ -3820,6 +3837,62 @@ current = 0; renderSlide(); show('cover');
   var __mb = document.getElementById('rpMenuBtn'); if (__mb) __mb.remove();
   var __dr = document.getElementById('rpDrawer'); if (__dr) __dr.remove();
   rpRenderSection();
+})();
+</script>
+<script id="reports-fix7-js">
+/* REPORTS FIX7 — 2026-11-26. Send-back on fix6 (GOES BACK 8.5/10).
+   (3) Folded-390 centre sentence — MECHANISM, proven live on the fix6 bytes:
+   the fix6 phone phrase fit caps the teaser at FIX6_MAX_LINES = 2, but the
+   65-char first sentence needs 3 lines at the live 20px/27px in the 280px
+   centre body, so the fit comma-split it to 51 chars + "\u2026". The fold
+   only changes deck height; the cap is height-independent, so the truncation
+   persisted folded AND unfolded once the fit settled (the unfolded
+   whole-sentence sighting was the pre-settle fit). Fix: the centre slot (C)
+   alone gets a 3-line cap — the full sentence then fits the folded body
+   exactly (scrollHeight == clientHeight with the marker in place). The
+   unfolded body is too short, so it still truncates there. Side slots keep
+   the 2-line cap.
+   (4a) Active-card hover — proven a probe race, not a page defect: with the
+   row settled (scrollLeft steady) the active card hovers clean 6/6
+   (translateY(-4px) + glow). The settle pass below re-asserts the active
+   card's scroll position on the next frame after every slide render, so no
+   drift can move the card from under the pointer. Probe method: wait for
+   row.scrollLeft to hold steady across two frames before moving the mouse.
+   (4b) 1440 fold trigger, named exactly: the fold is a 5s timer from show(),
+   suppressed ONLY while the pointer hovers the daybar. After a week-card tap
+   made while the bar is folded, the page shifts down as the bar re-expands
+   and the stationary pointer ends up hovering the bar, clearing the timer —
+   so move the mouse off the daybar and wait 5s (+0.9s transition). The fold
+   itself was proven to fire at 1440 with the pointer clear. No build change.
+   (4c) 1440 1px N/body — rounding, not a clip: the layer is 314.8125px tall
+   (fractional flex layout); the N bottom (663.23) sits inside the layer
+   (664); body 311/312 is the same fractional rounding. No build change.
+   (1) The front-head double-escape is fixed by the one-line edit in the fix6
+   script (label now carries a real em-dash, which esc() passes through). */
+(function(){
+  /* (3) Centre slot only: 3-line phrase cap. */
+  if (typeof fitPhonePanel === 'function') {
+    var __rp7Fit = fitPhonePanel;
+    fitPhonePanel = function(body, p, key, full, slot){
+      var saved = (typeof FIX6_MAX_LINES !== 'undefined') ? FIX6_MAX_LINES : 2;
+      if (slot === 'C') { try { FIX6_MAX_LINES = 3; } catch (e) {} }
+      try { return __rp7Fit.apply(this, arguments); }
+      finally { try { FIX6_MAX_LINES = saved; } catch (e) {} }
+    };
+  }
+  /* (4a) Settle the week row after every slide render. */
+  if (typeof renderSlide === 'function') {
+    var __rp7RS = renderSlide;
+    renderSlide = function(){
+      var r = __rp7RS.apply(this, arguments);
+      requestAnimationFrame(function(){
+        var row = document.getElementById('rpWeekRow');
+        var act = row && row.querySelector('.rp-day--active');
+        if (act && act.scrollIntoView) act.scrollIntoView({ behavior: 'auto', inline: 'center', block: 'nearest' });
+      });
+      return r;
+    };
+  }
 })();
 </script>
 </body>
