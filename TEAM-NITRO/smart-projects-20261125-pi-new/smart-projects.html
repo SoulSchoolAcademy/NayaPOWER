@@ -3176,7 +3176,7 @@ function spRenderDailyLoop(){
       row.innerHTML='';
       var bb=document.createElement('b'); bb.textContent=r.day; row.appendChild(bb);
       row.appendChild(document.createTextNode(' — '+(r.text.length>90?r.text.slice(0,90)+'…':r.text)));
-      row.addEventListener('click', function(){ SP_DAILY_DAY=r.day; spRenderDailyLoop(); var c=document.querySelector('#sp-daily-loop .sp-daily-card'); if(c) c.scrollIntoView({block:'start'}); }); /* PI-FIX11 O-8: scroll-to-card-top — centering the date input sliced the card heading above the stage top. */
+      row.addEventListener('click', function(){ SP_DAILY_DAY=r.day; spRenderDailyLoop(); var c=document.querySelector('#sp-daily-loop .sp-daily-card'); if(!c) return; c.scrollIntoView({block:'start'}); var tb=document.querySelector('header.naya-topbar'); var visTop=tb?tb.getBoundingClientRect().bottom:0; var h=c.querySelector('h3'); if(h){ var d=(visTop+16)-h.getBoundingClientRect().top; if(d){ var sc=c; while((sc=sc.parentElement)&&sc.scrollHeight<=sc.clientHeight+4){} if(sc) sc.scrollTop-=d; else window.scrollBy(0,-d); } } }); /* PI-FIX12 O-9: land the heading below the VISIBLE top (bottom of the sticky topbar), not the stage top — fix11's card-top scroll hid the heading behind the chrome at 1440. The scroller is #pj-project (the deck frame itself does not scroll), and scrolling it DOWN means scrollTop MINUS the offset. */
       card.appendChild(row);
     });
   } else {
