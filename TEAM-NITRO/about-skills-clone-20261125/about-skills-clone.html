@@ -3681,6 +3681,65 @@ current = 0; renderSlide(); show('cover');
 #walkAudio .orb-wrap{width:110px;height:110px}
 #walkAudio .pm-side{padding-top:6px;padding-bottom:6px;gap:6px}
 #walkAudio .upnext{max-height:56px}
+/* FIX11 — last round: fit, not function.
+   (a) DECK FITS ITS PANEL (1440 + 390): the walk deck is a column stack (art
+   over side) 897px tall in a 525px panel at 1440 (walkAudio box 493px) — the
+   PROMAX PLAYER / READY top row sat above the visible area and UP NEXT below
+   it; at 390 the deck is already compact. Compress the stack in the walk deck
+   only (desktop >=821px): ticker off (the phone deck already hides it), art
+   frame 170->120, orb 110->72, play jewel 168->120, transport to ONE row
+   (no wrap: 44px hbtns + 120px jewel = 320px inside a 335px side), up-next
+   head + one full row. Play, pause, transport, times and the real PowerCast
+   audio are untouched — only sizes, gaps and padding change.
+   (b) 390 ONE-SCREEN: the phone thirds grid split its fixed height into two
+   equal rows whatever the content, so long captions overflowed panel 1 and
+   Q8's chips overflowed panel 3, pushing Enter below the fold. Rows are
+   content-sized now (max-content + align-content:start); the phone chrome
+   is tightened (topbar, chips, textarea, caption padding) and the example
+   captions are shortened in the data (same meaning, still ours, still
+   placeholder-only). Q8 has no caption (ex:''), so its fix is the rows +
+   the tighter chips, not caption text. */
+@media(min-width:821px){
+  #walkAudio .ticker{display:none}
+  /* FIX11-3 — the walk-audio box centres its content (justify-content:center),
+     so the deck + the two honest audio-owed notes (595px in a 501px box) rode
+     UP and the PROMAX PLAYER / READY row sat above the panel. The phone block
+     already sets flex-start; the desktop never did. Top-align the stack: the
+     deck starts at the panel top, PROMAX PLAYER / READY visible, overflow
+     (the notes) falls below, clipped exactly as on every desktop render. */
+  #walkAudio{justify-content:flex-start}
+  #walkAudio .pm-top{padding:6px 16px 0}
+  #walkAudio .pm-main{padding:6px 12px;gap:6px}
+  #walkAudio .pm-art-frame{max-height:84px}
+  #walkAudio .pm-cap{padding:8px 4px 0;gap:8px}
+  #walkAudio .orb-wrap{width:60px;height:60px}
+  #walkAudio .hero-play{width:104px;height:104px;flex:0 0 104px;font-size:36px}
+  #walkAudio .hero-eq{display:none}
+  #walkAudio .pm-cap{flex-wrap:nowrap}
+  #walkAudio .pm-cap .station{letter-spacing:.12em}
+  #walkAudio .hbtn{width:44px;height:44px;flex:0 0 44px}
+  #walkAudio .deck-ctl{flex-wrap:nowrap;gap:6px}
+  #walkAudio .pm-side{gap:4px;padding-top:2px;padding-bottom:2px}
+  #walkAudio .upnext{max-height:66px}
+  #walkAudio #upNext{max-height:54px;overflow:hidden}
+  #walkAudio .up-jewel{flex:0 0 32px;width:32px;height:32px}
+  #walkAudio .up-row{gap:8px}
+  #walkAudio .pm-tools{margin:2px 12px 8px;gap:8px}
+  #walkAudio .deck-seekrow .hero-seek{height:22px}
+}
+@media(max-width:820px){
+  #walkOverlay .walk-thirds{grid-template-rows:max-content max-content;align-content:start}
+  #walkOverlay .walk-topbar{padding:6px 10px;gap:8px}
+  #walkOverlay .walk-topbar .walk-topimg,#walkOverlay .walk-topbar .walk-toplogo{width:36px;height:36px}
+  #walkOverlay .walk-third .walk-qimg{max-height:72px;min-height:0}
+  #walkOverlay .walk-chip{padding:8px 12px}
+  #walkOverlay .walk-chips{gap:6px}
+  #walkOverlay .walk-input{gap:6px}
+  #walkOverlay #walkText{min-height:56px;max-height:80px}
+  #walkOverlay .walk-panelenter{padding:4px 4px 2px}
+  #walkOverlay .walk-third{padding:8px;gap:6px}
+  #walkOverlay .walk-excap{padding:8px 10px;margin-top:6px}
+}
 /* BUTTON LAW — icon in a circle, energy flowing around it (slow, 12s, ambient) */
 .walk-ibtn,.walk-btn,#walkAudio .hero-play,#walkAudio .hbtn,.walk-menu-btn,.walk-menu-ball,.walk-toplogo{position:relative}
 /* FIX10-7 — the ring, redesigned (see note above the block). */
@@ -3906,21 +3965,21 @@ var WALK = [
     {q:'What is your faith?', m:'faith', ex:'', img:22, b:-1},
     {q:'Are you part of a community or a church?', m:'community', ex:'', img:20, b:-1},
     {q:'Your favourite sports teams — and your favourite music?', m:'favs', ex:'', img:30, b:-1},
-    {q:'What is your motto?', m:'type', ex:'Ten stars or don\u2019t send it. That\u2019s our promise to you. If it isn\u2019t ten stars for you, it doesn\u2019t go out. You will never get our second-best \u2014 only our best, every time.', img:16, b:0},
-    {q:'What is your vision?', m:'type', ex:'What if everybody could win? That\u2019s our vision for you. A new internet where you win \u2014 your notes, your people, your work, all in one place, remembering for you, connecting you to the people like you. First it\u2019ll be 100. Then 1,000. Then 10,000. And then one day no child will know a world without her.', img:9, b:1},
-    {q:'What is your goal?', m:'multi', opts:['Create','Learn','Grow','Earn'], ex:'A 100% success rate \u2014 for you. Push-button simple. Create, learn, grow, earn \u2014 together. Instead of 99% of people failing, you succeed. It makes you money, and it connects you with people of like minds \u2014 people who are into what you are into.', img:3, b:2},
-    {q:'What is your mission?', m:'type', ex:'Create heaven on earth \u2014 for you. Heaven is a state of awesome energy. Your stress, your fears, your money worries, your hopelessness \u2014 a way to understand them, and money to pay your bills. Shifting your consciousness positive.', img:4, b:3},
-    {q:'What do you love?', m:'multi', opts:['Seeing you succeed','Your calendar keeping your days','Your world organized','Inviting the world in'], ex:'We love seeing you succeed with Naya \u2014 her, a part of your everyday life. Your calendar keeping your days, your world organized for you. And we love it when you invite the world in, to be a part of this extraordinary world we call Naya.', img:5, b:4},
-    {q:'What don\u2019t you love?', m:'multi', opts:['Anyone feeling small','Anyone feeling left out','Anyone not feeling empowered'], ex:'What don\u2019t we love? Anyone feeling small. Anyone feeling left out. Anyone not feeling empowered as a human. That\u2019s what we don\u2019t love \u2014 and that\u2019s what we built Naya to end. No summaries, no prototypes \u2014 nothing flat and dead. We do it right the first time, every layer great, so you never have to fix what we should have gotten right.', img:6, b:5},
-    {q:'What\u2019s your thing?', m:'multi', opts:['Sport','Music','Your talent','AI','Tech'], ex:'Your thing. What do you love? That\u2019s what we want to know \u2014 because connecting like minds is our thing, and making NayaNET the new internet for the world. Everybody\u2019s got their thing \u2014 what makes up their world. And here, you connect with others who are into your thing.', img:7, b:6},
-    {q:'What are your values?', m:'multi', opts:['Do no harm','Wisdom first','You\u2019re safe here'], ex:'Do no harm. Ever. That\u2019s our promise to you. Wisdom first \u2014 smart finds the fastest road, wisdom checks the destination first. We do no harm to you, or to anyone \u2014 because all is you, and connected to you. You\u2019re safe here.', img:24, b:7},
-    {q:'What do you stand for?', m:'multi', opts:['Think before we act','Is it right?','Is it what you truly need?','Is it ours to do?','Is now the time?','Can we prove it?','Ten stars or we don\u2019t send it'], ex:'We think before we act \u2014 for you. We check: is it right? Is it what you truly need? Is it ours to do? Is now the time? Can we prove it? All five yes, or we stop. Ten stars or we don\u2019t send it. That\u2019s how you know we\u2019ve got you.', img:29, b:8},
-    {q:'What is your promise?', m:'type', ex:'I am Anaya. I do the most intelligent thing every time \u2014 for you. I think things through, I see the whole picture, and I make the best possible choice for you. I take action. I check my work three times, until it\u2019s ten out of ten. That\u2019s who I am, and that\u2019s how I work for you \u2014 every single time.', img:10, b:9},
-    {q:'What\u2019s your gift — your talent?', m:'multi', opts:['Teaching','Making things','Helping people','Music and art','Writing','Building','Healing','Leading'], ex:'This is what we have to offer you \u2014 and what we\u2019re looking to do for you. An invitation, not a sales pitch. Connect with us \u2014 that\u2019s enough. You come to learn about a person first \u2014 then what they offer \u2014 and you leave connected. Our three best skills, in plain words: getting you in \u2014 one name, one code, and you\u2019re home. Remembering for you \u2014 your notes become intelligence you can use. And showing you the proof \u2014 everything counted and shown back to you, plain as day.', img:11, b:10},
-    {q:'What\u2019s the benefit of your gift, to you and to the world?', m:'multi', opts:['Create','Learn','Grow','Earn','It makes you money','Connects you with like minds'], ex:'It helps you create, learn, grow, earn \u2014 together. Push-button simple. It makes you money, and it connects you with people of like minds \u2014 people who are into what you are into. Instead of 99% of people failing: you succeed. That\u2019s the whole point \u2014 you win.', img:28, b:11},
+    {q:'What is your motto?', m:'type', ex:'Ten stars or don\u2019t send it. If it isn\u2019t ten stars for you, it doesn\u2019t go out.', img:16, b:0},
+    {q:'What is your vision?', m:'type', ex:'What if everybody could win? Your notes, your people, your work \u2014 all in one place.', img:9, b:1},
+    {q:'What is your goal?', m:'multi', opts:['Create','Learn','Grow','Earn'], ex:'A 100% success rate \u2014 for you. Create, learn, grow, earn \u2014 together. You succeed.', img:3, b:2},
+    {q:'What is your mission?', m:'type', ex:'Create heaven on earth \u2014 for you. A state of awesome energy.', img:4, b:3},
+    {q:'What do you love?', m:'multi', opts:['Seeing you succeed','Your calendar keeping your days','Your world organized','Inviting the world in'], ex:'We love seeing you succeed with Naya \u2014 your calendar keeping your days.', img:5, b:4},
+    {q:'What don\u2019t you love?', m:'multi', opts:['Anyone feeling small','Anyone feeling left out','Anyone not feeling empowered'], ex:'What don\u2019t we love? Anyone feeling small, left out, or not empowered.', img:6, b:5},
+    {q:'What\u2019s your thing?', m:'multi', opts:['Sport','Music','Your talent','AI','Tech'], ex:'Your thing. What do you love? Connecting like minds is our thing.', img:7, b:6},
+    {q:'What are your values?', m:'multi', opts:['Do no harm','Wisdom first','You\u2019re safe here'], ex:'Do no harm. Ever. Wisdom first \u2014 wisdom checks the destination first.', img:24, b:7},
+    {q:'What do you stand for?', m:'multi', opts:['Think before we act','Is it right?','Is it what you truly need?','Is it ours to do?','Is now the time?','Can we prove it?','Ten stars or we don\u2019t send it'], ex:'We think before we act \u2014 for you. Is it right? Is it what you truly need?', img:29, b:8},
+    {q:'What is your promise?', m:'type', ex:'I am Anaya. I do the most intelligent thing every time \u2014 for you.', img:10, b:9},
+    {q:'What\u2019s your gift — your talent?', m:'multi', opts:['Teaching','Making things','Helping people','Music and art','Writing','Building','Healing','Leading'], ex:'This is what we have to offer you \u2014 an invitation, not a sales pitch.', img:11, b:10},
+    {q:'What\u2019s the benefit of your gift, to you and to the world?', m:'multi', opts:['Create','Learn','Grow','Earn','It makes you money','Connects you with like minds'], ex:'It helps you create, learn, grow, earn \u2014 together. Push-button simple.', img:28, b:11},
     {q:'What makes you unique?', m:'dictate', ex:'', img:13, b:12},
     {q:'What is your work — what do you do?', m:'type', ex:'', img:14, b:13},
-    {q:'How do you want people to connect with you?', m:'social', opts:['Connect','Book','Begin'], ex:'One tap, and you\u2019re in. Connect, book, or begin \u2014 one clear tap. That\u2019s it. You don\u2019t need to know how it works. You just start, and it works for you. And we\u2019re thinking about you the whole way \u2014 that\u2019s the peace of mind. We\u2019ve got you.', img:23, b:14},
+    {q:'How do you want people to connect with you?', m:'social', opts:['Connect','Book','Begin'], ex:'One tap, and you\u2019re in. Connect, book, or begin \u2014 one clear tap.', img:23, b:14},
     {q:'What industry are you in — and your skills?', m:'typeahead', ex:'', img:21, b:-1},
     {q:'Your experience — how long in the field, what have you done?', m:'years-text', ex:'', img:18, b:-1},
     {q:'Your achievements and awards?', m:'textarea', ex:'', img:27, b:-1},
