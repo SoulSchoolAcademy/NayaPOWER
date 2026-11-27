@@ -16357,7 +16357,9 @@ window.uhR23Overlay = function(title, html){
     if (done) return;
     if (!window.matchMedia || !window.matchMedia('(max-width: 900px)').matches) return;
     var h = location.hash || '';
-    if (h && h !== '#/hub/feed' && h !== '#/' && h !== '#') return;
+    /* Fresh load lands on '#/hub' (the Hub root) — that IS the feed load.
+       Only a deep link (mail, connections, a room) skips the auto-open. */
+    if (h && h !== '#/hub/feed' && h !== '#/hub' && h !== '#/' && h !== '#') return;
     var a = window.NayaChassis;
     if (!a || typeof a.openDrawer !== 'function') return;
     var sh = document.querySelector('.shell');
