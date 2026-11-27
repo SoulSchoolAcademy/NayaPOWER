@@ -3176,7 +3176,7 @@ function spRenderDailyLoop(){
       row.innerHTML='';
       var bb=document.createElement('b'); bb.textContent=r.day; row.appendChild(bb);
       row.appendChild(document.createTextNode(' — '+(r.text.length>90?r.text.slice(0,90)+'…':r.text)));
-      row.addEventListener('click', function(){ SP_DAILY_DAY=r.day; spRenderDailyLoop(); var d2=document.getElementById('sp-daily-date'); if(d2) d2.scrollIntoView({block:'center'}); });
+      row.addEventListener('click', function(){ SP_DAILY_DAY=r.day; spRenderDailyLoop(); var c=document.querySelector('#sp-daily-loop .sp-daily-card'); if(c) c.scrollIntoView({block:'start'}); }); /* PI-FIX11 O-8: scroll-to-card-top — centering the date input sliced the card heading above the stage top. */
       card.appendChild(row);
     });
   } else {
