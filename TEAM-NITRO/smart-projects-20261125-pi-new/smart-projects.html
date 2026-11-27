@@ -910,7 +910,7 @@ body > .naya-frame, body > .frame-light{z-index:-1}
     <div class="slot" aria-hidden="true"></div>
   </div>
   <!-- PI-FIX7: progress strip — only on question frames (body.sp-fix7-q). Slim bar + true answered count, never hidden by any rule. -->
-  <div id="sp-fix7-progress" aria-live="polite"><div class="sp-fix7-track"><div class="sp-fix7-fill" id="sp-fix7-fill"></div></div><span class="sp-fix7-count" id="sp-fix7-count">0 of 14</span></div>
+  <div id="sp-fix7-progress" aria-live="polite"><div class="sp-fix7-track"><div class="sp-fix7-fill" id="sp-fix7-fill"></div></div><span class="sp-fix7-count" id="sp-fix7-count">0 of 13</span></div>
 
   <!-- ════ HOME — your projects ════ -->
   <div id="pj-home">
@@ -978,11 +978,11 @@ body > .naya-frame, body > .frame-light{z-index:-1}
     <section class="gr-board" style="--sc:#8e24aa">
       <div class="gr-board-cover">
         <div class="gr-board-num" aria-hidden="true"></div>
-        <h2>The 14 Questions</h2>
+        <h2>The 13 Questions</h2>
         <p class="gr-board-sub">The minimum viable intelligence interface for NayaNET itself — from the filed Daily Project Intelligence Report, SN-4710, 2026-11-23. Answer them here, before you create anything. Your answers are kept on this device and file into your project the moment you create it. Unanswered stays honestly unanswered — never filled in for you.</p>
       </div>
       <div class="gr-board-body">
-        <p class="gr-note" id="sp-home-q-count" style="margin-top:4px;display:none">0 of 14 answered — the rest are honestly unanswered, never filled in for you.</p>
+        <p class="gr-note" id="sp-home-q-count" style="margin-top:4px;display:none">0 of 13 answered — the rest are honestly unanswered, never filled in for you.</p>
         <div id="sp-home-questions"><div class="gr-empty">Reading the questions…</div></div>
         <p class="gr-status" id="sp-home-q-status" aria-live="polite"></p>
       </div>
@@ -1074,13 +1074,23 @@ body > .naya-frame, body > .frame-light{z-index:-1}
     <section class="gr-board" style="--sc:#8e24aa">
       <div class="gr-board-cover">
         <div class="gr-board-num" aria-hidden="true"></div>
-        <h2>The 14 Questions</h2>
+        <h2>The 13 Questions</h2>
         <p class="gr-board-sub">The minimum viable intelligence interface for NayaNET itself — from the filed Daily Project Intelligence Report, SN-4710, 2026-11-23. Answer them in your own words, one at a time. Unanswered stays honestly unanswered — never filled in for you.</p>
       </div>
       <div class="gr-board-body">
-        <p class="gr-note" id="sp-q-count" style="margin-top:4px;display:none">0 of 14 answered — the rest are honestly unanswered, never filled in for you.</p>
+        <p class="gr-note" id="sp-q-count" style="margin-top:4px;display:none">0 of 13 answered — the rest are honestly unanswered, never filled in for you.</p>
         <div id="sp-questions"><div class="gr-empty">Reading the questions…</div></div>
         <p class="gr-status" id="sp-q-status" aria-live="polite"></p>
+      </div>
+    </section>
+    <section class="gr-board" style="--sc:#d4a017">
+      <div class="gr-board-cover">
+        <div class="gr-board-num" aria-hidden="true"></div>
+        <h2>What you learned, day by day</h2>
+        <p class="gr-board-sub">What did you learn today? What was valuable — what intelligence did you gain? Answer it every day, in your own words, and come back to any day to see how you grew.</p>
+      </div>
+      <div class="gr-board-body">
+        <div id="sp-daily-loop"><div class="gr-empty">Reading your days…</div></div>
       </div>
     </section>
     <section class="gr-board" style="--sc:#2fe89e">
@@ -1937,7 +1947,7 @@ var INTEL_GROUPS=[
   ['queued','QUEUED','#ffbf3d']
 ];
 function splitIntel(rows){
-  S.intel=[]; S.production=null; S.prodTrend=[]; S.prodAging=[]; S.prodLoops=[]; S.intelStamp=''; S.spKind=''; S.spDismissed=[]; S.spQuestions={}; S.spNoteStates={};
+  S.intel=[]; S.production=null; S.prodTrend=[]; S.prodAging=[]; S.prodLoops=[]; S.intelStamp=''; S.spKind=''; S.spDismissed=[]; S.spQuestions={}; S.spNoteStates={}; S.spDaily={};
   rows.forEach(function(r){
     if(r.item_key==='production:stamp'){ S.intelStamp=r.detail||r.updated_at||''; return; }
     if(r.item_key==='production:today'){ try{ S.production=JSON.parse(r.detail); }catch(e){} return; }
@@ -1946,6 +1956,7 @@ function splitIntel(rows){
     if(r.item_key.indexOf('production:loop:')===0){ try{ var l=JSON.parse(r.detail); S.prodLoops.push({loop:l.loop||r.title, runs:l.runs_24h}); }catch(e){} return; }
     if(r.item_key.indexOf('production:')===0) return;
     if(r.item_key.indexOf('citizen:q')===0){ S.spQuestions[r.item_key]=r.detail||''; return; }
+    if(r.item_key.indexOf('citizen:daily-')===0){ S.spDaily[r.item_key]=r.detail||''; return; }
     if(r.item_key.indexOf('citizen:note-state:')===0){ S.spNoteStates[r.item_key.replace('citizen:note-state:','')]=r.state||'in-motion'; return; }
     if(r.item_key==='citizen:kind'){ S.spKind=r.detail||''; return; }
     if(r.item_key==='citizen:dismissed-kinds'){ try{ S.spDismissed=JSON.parse(r.detail)||[]; }catch(e){ S.spDismissed=[]; } return; }
@@ -3033,23 +3044,68 @@ document.getElementById('sp-w-info').addEventListener('click', function(){
 });
 document.getElementById('sp-w-tip-x').addEventListener('click', function(){ document.getElementById('sp-w-tip').hidden=true; });
 
-/* ═══ SMART PROJECTS v5 — the 14 questions, mini-block notes, project search, deep link ═══ */
-var SP_QUESTIONS=[{"n":1,"q":"What is your project?"},{"n":2,"q":"What are you building or learning?"},{"n":3,"q":"Why are you building it or learning it?"},{"n":4,"q":"What does success mean to you?"},{"n":5,"q":"WHAT is true right now?"},{"n":6,"q":"WHAT has already been proven?"},{"n":7,"q":"WHAT is unknown?"},{"n":8,"q":"WHAT authority exists?"},{"n":9,"q":"WHAT happened previously?"},{"n":10,"q":"WHAT did we learn?"},{"n":11,"q":"WHAT should happen next?"},{"n":12,"q":"HOW do I prove it?"},{"n":13,"q":"WHERE do I record it?"},{"n":14,"q":"HOW does Team Naya continue?"}];
-/* PI-FIX9: Q1–Q4 in Shawn's words (voice call 2026-11-26 ~16:57–16:58 MST) — they replace the generic set's first four; Q5–Q14 stay SN-4710 until he walks them (fix10). Per-kind fitting rides fix10; SP_TEMPLATES untouched. */
-/* B2 — the 14 questions, verbatim from SN-4710 (Daily Project Intelligence Report 2026-11-23,
+/* ═══ SMART PROJECTS v5 — the 13 questions, mini-block notes, project search, deep link ═══ */
+var SP_QUESTIONS=[{"n":1,"q":"What is your project?"},{"n":2,"q":"What are you building or learning?"},{"n":3,"q":"Why are you building it or learning it?"},{"n":4,"q":"What does success mean to you?"},{"n":5,"q":"WHAT is true right now?"},{"n":6,"q":"WHAT has already been proven?"},{"n":7,"q":"WHAT is unknown?"},{"n":8,"q":"WHAT authority exists?"},{"n":9,"q":"WHAT happened previously?"},{"n":10,"q":"WHAT did we learn?"},{"n":11,"q":"WHAT should happen next?"},{"n":12,"q":"HOW do I prove it?"},{"n":13,"q":"WHERE do I record it?"}];
+/* PI-FIX10: the generic set is 13 now — Q14 is gone (Shawn's order, voice call 2026-11-26 ~17:05 MST: a citizen is never asked that about their own project). Q1–Q4 stay his words (fix9); Q5–Q13 stay SN-4710. Per-kind sets come from spQuestionsFor below. */
+/* B2 — the 13 questions, verbatim from SN-4710 (Q14 removed in fix10; (Daily Project Intelligence Report 2026-11-23,
    TEAM-NITRO/DAILY-PROJECT-INTEL-REPORT-20261123.md, 'THE 14 QUESTIONS'); cross-checked against
    the live old PI page, which feeds the same filed report live from GitHub. Answers save as
    citizen:q01..q14 rows in project_intel_items (filtered out of the intel board, like kind rows). */
+/* PI-FIX10 — PER-KIND QUESTIONS. The generic Q1–Q4 (fix9, his words) are the PATTERN/SHAPE every kind's set follows:
+   project → what building/learning → why → what success means. Each kind's set is 13, like the generic:
+   Q1 mission_q (HARVESTED from SP_TEMPLATES) · Q2 fitted 'what do you already know' · Q3 fitted 'what feels stuck'
+   · Q4 goal_q (HARVESTED — the first proof / how you will practise it) · Q5 vision_q (HARVESTED — what success looks
+   like when you can use it / it is alive) · Q6–Q13 the shared SN-4710 spine (old Q6–Q13, unchanged).
+   Q2/Q3 are FITTED — written for this round from the kind's own template words (mission/goal/vision + hints), never
+   presented as harvested. The Learning set is his worked example (voice call ~17:01–17:02 MST): what you are learning
+   and why it matters, what you already know, what feels stuck, how you will practise it, what success looks like
+   when you can use it. Every kind has a complete 13 — no kind is left on the generic set, no kind is short. */
+var SP_Q_TOTAL=13;
+var SP_KIND_FIT={
+"learning":["What do you already know — and where are you starting from?","What feels stuck — the part that will not click yet?"],
+"business":["What do you already know about the problem and the people it hurts?","What feels stuck — the first customer, the price, or knowing where to start?"],
+"app":["What do you already know how to build — and what have you built before?","What feels stuck — the idea, the first version, or getting it in front of someone?"],
+"health":["What do you already know about your body — what has worked for you before?","What feels stuck — the habit, the time, or keeping it going?"],
+"money":["What do you already know about your money — what comes in, what goes out?","What feels stuck — the debt, the saving, or the first dollar earned?"],
+"book":["What do you already know you need to say — what have you written so far?","What feels stuck — the first chapter, the middle, or finishing it?"],
+"family":["What do you already know — the date, the place, the people, the plan so far?","What feels stuck — a decision, a date, or a cost?"],
+"career":["What do you already know about the work you want — what have you done that points to it?","What feels stuck — the application, the interview, or knowing which door to knock on?"],
+"community":["What do you already know about the people this is for — who are they?","What feels stuck — the first members, or the first gathering?"],
+"cause":["What do you already know about what needs to change — who does it hurt, and how?","What feels stuck — the first help, or the first dollar raised?"],
+"travel":["What do you already know about where you are going — what is already planned?","What feels stuck — the booking, the packing, or going?"],
+"cooking":["What do you already know how to cook — what dishes are already yours?","What feels stuck — a dish, a technique, or cooking it all the way through?"],
+"music":["What do you already know how to play — what songs are already yours?","What feels stuck — a song, a chord, or playing it all the way through?"],
+"art":["What do you already know how to make — what have you finished before?","What feels stuck — the idea, the first mark, or finishing the piece?"],
+"photography":["What do you already know about your camera — what shots are already yours?","What feels stuck — the light, the moment, or the shot you are proud to show?"],
+"gardening":["What do you already know about growing — what have you grown before?","What feels stuck — the sowing, the waiting, or the first harvest?"],
+"podcast":["What do you already know you want to say — what have you recorded so far?","What feels stuck — the first episode, or finishing it start to finish?"],
+"learning-to-code":["What do you already know about code — what have you built before?","What feels stuck — a bug, a lesson, or the first working thing?"],
+"side-hustle":["What do you already know about what you sell — who buys it, and why?","What feels stuck — the first sale, or the price?"],
+"planning-an-event":["What do you already know about this event — the date, the room, the people?","What feels stuck — a decision, a booking, or a detail?"],
+"sports-team":["What do you already know about this team — who plays, and how you play together?","What feels stuck — the first win, the training, or the last game?"],
+"startup":["What do you already know about the problem — who has it, and what have you tried?","What feels stuck — the first customer, the first sale, or the yes?"],
+"real-estate":["What do you already know about this property — what have you seen, and what do the numbers say?","What feels stuck — the viewing, the offer, or the keys?"],
+"teaching-a-course":["What do you already know how to teach — what can your students already do?","What feels stuck — the first lesson, or a lesson students understand?"],
+"personal-brand":["What do you already know you are known for — what do people already come to you for?","What feels stuck — the first post, the first page, or the first talk?"]
+};
+function spQuestionsFor(kindId){
+  if(!kindId) return SP_QUESTIONS.slice();
+  var k=spKindById(kindId); if(!k) return SP_QUESTIONS.slice();
+  var fit=SP_KIND_FIT[kindId]||["What do you already know — and where are you starting from?","What feels stuck — and what is in the way?"];
+  return [{n:1,q:k.mission_q},{n:2,q:fit[0]},{n:3,q:fit[1]},{n:4,q:k.goal_q},{n:5,q:k.vision_q}].concat(SP_QUESTIONS.slice(5));
+}
+function spTodayStr(d){ d=d||new Date(); return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2); }
 function spQKey(n){ return 'citizen:q'+('0'+n).slice(-2); }
 function spSetQStatus(t){ var s=document.getElementById('sp-q-status'); if(s) s.textContent=t||''; }
 function spRenderQuestions(){
   var wrap=document.getElementById('sp-questions'); if(!wrap) return;
   var saved=(S.spQuestions||{}); var answered=0;
-  SP_QUESTIONS.forEach(function(q){ if(saved[spQKey(q.n)]) answered++; });
+  var QS=spQuestionsFor(S.spKind||''); var total=QS.length;
+  QS.forEach(function(q){ if(saved[spQKey(q.n)]) answered++; });
   var head=document.getElementById('sp-q-count');
-  if(head){ head.textContent=answered+' of 14 answered — the rest are honestly unanswered, never filled in for you.'; head.style.display=answered>0?'':'none'; }
+  if(head){ head.textContent=answered+' of '+total+' answered — the rest are honestly unanswered, never filled in for you.'; head.style.display=answered>0?'':'none'; }
   wrap.innerHTML='';
-  SP_QUESTIONS.forEach(function(q){
+  QS.forEach(function(q){
     var key=spQKey(q.n); var ans=saved[key]||'';
     var box=el('div','sp-qblock');
     box.appendChild(el('span','sp-jewel','◆'));
@@ -3069,6 +3125,64 @@ function spRenderQuestions(){
     main.appendChild(b); box.appendChild(main); wrap.appendChild(box);
   });
   spAddNoteButtons(); spRenderMiniNotes();
+  if(typeof spRenderDailyLoop==='function') spRenderDailyLoop();
+}
+/* PI-FIX10 — LEARNING DAILY LOOP (Shawn's words, voice call 2026-11-26 ~17:01–17:02 MST):
+   "What did you learn today? What was valuable — what intelligence did you gain?" — answerable day by
+   day, in their own words, inside the project, so the project shows growth over time and they can go back
+   and see each day. One PI row per day (citizen:daily-YYYY-MM-DD, spSaveIntel — the same save path as the
+   questions, so it lands in Project Intelligence under this project, which IS this project's Vault record).
+   The calendar day-by-day surface rides the later calendar-spine round — NOT built here; this round is the
+   daily-loop data + the in-project day-back view (the list below). Lives in the main IIFE on purpose: it
+   needs el, S, spSaveIntel and spTodayStr, which are scoped here, not global. */
+var SP_DAILY_DAY='';
+function spDailyRows(){
+  var out=[]; var d=S.spDaily||{};
+  Object.keys(d).forEach(function(k){ var m=k.match(/^citizen:daily-(\d{4}-\d{2}-\d{2})$/); if(m) out.push({day:m[1], text:d[k]}); });
+  out.sort(function(a,b){ return a.day<b.day?-1:1; }); return out;
+}
+function spRenderDailyLoop(){
+  var wrap=document.getElementById('sp-daily-loop'); if(!wrap) return;
+  if(!SP_DAILY_DAY) SP_DAILY_DAY=spTodayStr();
+  var rows=spDailyRows();
+  var cur=(S.spDaily||{})['citizen:daily-'+SP_DAILY_DAY]||'';
+  wrap.innerHTML='';
+  var card=el('div','sp-daily-card');
+  card.appendChild(el('h3',null,'What you learned, day by day'));
+  card.appendChild(el('p',null,'What did you learn today? What was valuable — what intelligence did you gain? Answer it every day, in your own words, and come back to any day to see how you grew.'));
+  var lab=el('label',null,'Which day?'); lab.setAttribute('for','sp-daily-date'); card.appendChild(lab);
+  var date=document.createElement('input'); date.type='date'; date.className='sp-daily-date'; date.id='sp-daily-date'; date.value=SP_DAILY_DAY;
+  date.addEventListener('change', function(){ SP_DAILY_DAY=date.value||spTodayStr(); spRenderDailyLoop(); });
+  card.appendChild(date);
+  var q=el('div','pj-row-t','What did you learn on '+SP_DAILY_DAY+' — and what was valuable about it?'); q.style.marginTop='12px'; card.appendChild(q);
+  card.appendChild(el('div','sp-q-sub','Answer in your words.'));
+  var ta=document.createElement('textarea'); ta.className='gr-input sp-daily-ta'; ta.id='sp-daily-ta'; ta.rows=3; ta.maxLength=4000;
+  ta.placeholder='Answer in your own words…'; ta.value=cur; ta.setAttribute('aria-label','What you learned on '+SP_DAILY_DAY); card.appendChild(ta);
+  var b=el('button','gr-btn','SAVE TODAY’S LEARNING'); b.type='button'; b.style.marginTop='10px';
+  var st=el('p','gr-status',''); st.id='sp-daily-status'; st.setAttribute('aria-live','polite');
+  b.addEventListener('click', function(){
+    var v=ta.value.trim(); if(!v){ st.textContent='Write what you learned first.'; return; }
+    var day=SP_DAILY_DAY;
+    st.textContent='Saving…';
+    spSaveIntel('daily-'+day, 'Learned '+day+' — What did you learn today?', v, 50).then(function(){
+      st.textContent='Saved — '+day+' is in this project now.';
+    }).catch(function(){ st.textContent='That did not save — try again.'; });
+  });
+  card.appendChild(b); card.appendChild(st);
+  if(rows.length){
+    card.appendChild(el('div','pj-row-t','Your days — tap one to go back to it'));
+    rows.slice().reverse().forEach(function(r){
+      var row=el('div','sp-daily-day'+(r.day===SP_DAILY_DAY?' on':''),'');
+      row.innerHTML='';
+      var bb=document.createElement('b'); bb.textContent=r.day; row.appendChild(bb);
+      row.appendChild(document.createTextNode(' — '+(r.text.length>90?r.text.slice(0,90)+'…':r.text)));
+      row.addEventListener('click', function(){ SP_DAILY_DAY=r.day; spRenderDailyLoop(); var d2=document.getElementById('sp-daily-date'); if(d2) d2.scrollIntoView({block:'center'}); });
+      card.appendChild(row);
+    });
+  } else {
+    card.appendChild(el('div','gr-empty','No days yet — save today and it shows here.'));
+  }
+  wrap.appendChild(card);
 }
 /* B3 — mini intelligent blocks: note-taking inside every hub board. A note is a naya_note
    (anon INSERT works) filed to the project by object_link, with its block in the label and
@@ -3180,7 +3294,7 @@ function spAddNoteButtons(){
 }
 /* B4 — four-create deep link: ?new=project opens the create walk immediately (the create form,
    focused, on the staged page). A project created that way lands on its hub as a TRACKED mini
-   intelligent block: its mission/goal/vision, its 14 questions, its mini-block notes and its
+   intelligent block: its mission/goal/vision, its 13 questions, its mini-block notes and its
    state all live on the one hub, in one place. The Hub plus menu itself belongs to the Hub round. */
 function spDeepLink(){
   try{
@@ -3190,7 +3304,7 @@ function spDeepLink(){
     var f=document.getElementById('pj-new-name'); if(!f) return;
     f.scrollIntoView({behavior:'smooth', block:'center'}); f.focus();
     var s=document.getElementById('pj-create-status');
-    if(s) s.textContent='Create your project — name it, then walk it. Its 14 questions, notes and tracking all live on its hub.';
+    if(s) s.textContent='Create your project — name it, then walk it. Its 13 questions, notes and tracking all live on its hub.';
   }catch(e){}
 }
 document.getElementById('sp-nc-save').addEventListener('click', spSaveNote);
@@ -3228,11 +3342,12 @@ function spSetHomeQStatus(t){ var s=document.getElementById('sp-home-q-status');
 function spRenderHomeQuestions(){
   var wrap=document.getElementById('sp-home-questions'); if(!wrap) return;
   var saved=spHomeAnswers(); var answered=0;
-  SP_QUESTIONS.forEach(function(q){ if((saved[spHomeQKey(q.n)]||'').trim()) answered++; });
+  var QS=spQuestionsFor(spHomeKind()); var total=QS.length;
+  QS.forEach(function(q){ if((saved[spHomeQKey(q.n)]||'').trim()) answered++; });
   var head=document.getElementById('sp-home-q-count');
-  if(head){ head.textContent=answered+' of 14 answered — the rest are honestly unanswered, never filled in for you.'; head.style.display=answered>0?'':'none'; }
+  if(head){ head.textContent=answered+' of '+total+' answered — the rest are honestly unanswered, never filled in for you.'; head.style.display=answered>0?'':'none'; }
   wrap.innerHTML='';
-  SP_QUESTIONS.forEach(function(q){
+  QS.forEach(function(q){
     var key=spHomeQKey(q.n); var ans=saved[key]||'';
     var box=el('div','sp-qblock');
     box.appendChild(el('span','sp-jewel','◆'));
@@ -3379,7 +3494,7 @@ function spPostIntelFor(pid, key, title, text, sort, state){
 function spFileHomeToProject(p){
   var chain=Promise.resolve();
   var answers=spHomeAnswers();
-  SP_QUESTIONS.forEach(function(q){
+  spQuestionsFor(spHomeKind()).forEach(function(q){
     var v=(answers[spHomeQKey(q.n)]||answers[spQKey(q.n)]||'').trim(); if(!v) return; /* PI-FIX9 (c): file the kind-scoped answer, else a legacy plain-key one — never drop an answer on create. */
     chain=chain.then(function(){
       return spPostIntelFor(p.id, 'q'+('0'+q.n).slice(-2), 'Q'+q.n+' — '+q.q, v, 10+q.n).then(function(){
@@ -3966,13 +4081,13 @@ function titleOf(els){ for(var i=0;i<els.length;i++){ var h=els[i].querySelector
 function qFrames(wrapId, countId){
   var wrap=$(wrapId); if(!wrap) return [];
   var kids=Array.prototype.filter.call(wrap.children, function(c){ return c.classList.contains('sp-qblock'); });
-  if(kids.length!==14) return [];
+  if(kids.length!==13) return [];
   var board=wrap.closest('section.gr-board'); if(!board) return [];
   var out=[];
   kids.forEach(function(k, i){
     var qnum=i+1;
     out.push({ els:[board], q:qnum, wrap:wrap, kid:k, board:board,
-      title:'Question '+qnum+' of 14', tone:SPECTRUM[i%SPECTRUM.length] });
+      title:'Question '+qnum+' of 13', tone:SPECTRUM[i%SPECTRUM.length] });
   });
   return out;
 }
@@ -3982,7 +4097,7 @@ function summaryLines(isHome){
   var tpl=$('sp-kind-preview'); var tt=tpl?tpl.textContent.replace(/\s+/g,' ').trim():'';
   var ttm=tt.match(/^(.*?) — template note (SN-\d+)/); lines.push(['Template', ttm?ttm[1]+' — template note '+ttm[2]:(tt&&tt.indexOf('Pick a kind')!==0?tt.split(' — ')[0]:'Pick a kind first — its template shows here')]);
   var nm=$('pj-new-name'); lines.push(['Project name', (nm&&nm.value.trim())||'Not named yet']);
-  var cnt=$(isHome?'sp-home-q-count':'sp-q-count'); lines.push(['Questions answered', cnt?cnt.textContent.trim().split(' — ')[0]:'0 of 14 answered']);
+  var cnt=$(isHome?'sp-home-q-count':'sp-q-count'); lines.push(['Questions answered', cnt?cnt.textContent.trim().split(' — ')[0]:'0 of 13 answered']);
   var mine=$('pj-mine'); lines.push(['Your projects', mine?String(mine.children.length)+' listed':'—']);
   var vault=$('pj-vault-counts'); if(vault && vault.textContent.trim() && !isHome) lines.push(['Vault', vault.textContent.trim()]);
   return lines;
@@ -4014,7 +4129,7 @@ function build(){
   function mark(el, t){ if(!el) return; el.classList.add('sp-deck-frame'); if(t) el.setAttribute('data-sp-title', t); }
   if(isHome){
     var hero=secs[0], start=boardByH2('Start a project'), kind=boardByH2('Pick your kind'), /* PI-FIX7: no second pick step — the template frame is gone */
-        qBoard=boardByH2('The 14 Questions'), intel=boardByH2('Project intelligence'), mine=boardByH2('Your projects'), shared=boardByH2('Shared with you');
+        qBoard=boardByH2('The 13 Questions'), intel=boardByH2('Project intelligence'), mine=boardByH2('Your projects'), shared=boardByH2('Shared with you');
     [hero,start,kind,qBoard,intel,mine,shared].forEach(function(el){ mark(el); });
     var tail=root.querySelector(':scope > p.gr-note'); if(tail){ mark(tail); }
     newItems.push({els:[hero,start], title:'Start a project'});
@@ -4037,14 +4152,14 @@ function build(){
       if(c.classList && c.classList.contains('sp-search')) search=c;
       var h=c.querySelector && c.querySelector('h2');
       if(h && h.textContent.indexOf('Project intelligence')===0) intel2=c;
-      if(h && h.textContent.indexOf('The 14 Questions')===0) qBoard2=c;
+      if(h && h.textContent.indexOf('The 13 Questions')===0) qBoard2=c;
     });
     secs.forEach(function(el){ mark(el); });
     [back,hero2,walkBtn,nums,search,intel2,qBoard2].forEach(function(el){ if(el) mark(el); });
     newItems.push({els:[back,hero2,walkBtn,nums].filter(Boolean), title:'This project'});
     newItems.push({els:[search,intel2].filter(Boolean), title:'Project intelligence'});
     qFrames('sp-questions','sp-q-count').forEach(function(q){ newItems.push(q); });
-    var restTitles=['Production','Sub-projects','Lists','Notes','Links','Files','Images','Your Smart Vault','To-dos','People','Project feed','Live updates'];
+    var restTitles=['What you learned, day by day','Production','Sub-projects','Lists','Notes','Links','Files','Images','Your Smart Vault','To-dos','People','Project feed','Live updates']; /* PI-FIX10: the daily loop is its own deck frame, right after the questions — never inside the question board, where it would sit under every question frame. */
     restTitles.forEach(function(t){
       var b=boardByH2(t); if(b) newItems.push({els:[b], title:t});
     });
@@ -4190,7 +4305,7 @@ shortLabel();
    lead the deck. The template owns Mission/Goal/Vision (SP_TEMPLATES, the
    same mapping the walk already uses via spStepQ); the deck's question
    frames 4–6 become those three, in that order, and the line above them
-   names the template. Frames 7–17 stay the project's own 14-question set
+   names the template. Frames 7–17 stay the project's own 13-question set
    (SN-4710) — the template leads, it does not replace the record.
    Display-level only: answers still save under q01–q03, exactly as the
    walk saves its swapped titles under mission/goal/vision keys. A template
@@ -4220,37 +4335,29 @@ function tplLine(tpl){
     line.innerHTML='';
     line.appendChild(document.createTextNode('Template: '));
     var b=document.createElement('b'); b.textContent=tpl.title; line.appendChild(b);
-    line.appendChild(document.createTextNode(' — its Mission, Goal and Vision questions lead the frames below.'));
+    line.appendChild(document.createTextNode(' — its own questions lead the frames below.'));
   } else {
-    line.textContent='No template picked yet — the 14 questions below are the project’s own.';
+    line.textContent='No template picked yet — the 13 questions below are the project’s own.';
   }
 }
 function applyTemplate(){
   var tpl=readTemplate();
   var wrap=$('sp-home-questions'); if(!wrap) return;
   var kids=Array.prototype.filter.call(wrap.children,function(c){ return c.classList.contains('sp-qblock'); });
-  if(kids.length!==14){ tplLine(tpl); return; }
-  kids.forEach(function(k,i){
-    var t=k.querySelector('.pj-row-t'); if(!t) return;
-    if(!(i in origTexts)) origTexts[i]=t.textContent;
-    if(tpl && i<3){
-      t.textContent=(i+1)+'. '+[tpl.mission,tpl.goal,tpl.vision][i];
-      k.setAttribute('data-sp-fix3-tpl','1');
-    } else {
-      t.textContent=origTexts[i];
-      k.removeAttribute('data-sp-fix3-tpl');
-    }
-  });
+  if(kids.length!==13){ tplLine(tpl); return; }
+  /* PI-FIX10: the fix3 relabel is retired — spRenderHomeQuestions renders the picked kind's own 13 directly
+     (Q1 mission, Q2/Q3 fitted, Q4 goal, Q5 vision, Q6–Q13 spine). Relabelling here would overwrite Q2/Q3 with
+     the template's goal/vision and, on a kind change, restore stale text from origTexts. The template line below stays. */
   tplLine(tpl);
   /* The question-frame head (fix2 builds it on every show) names the template too. */
   var qh=document.querySelector('#sp-home-questions') &&
          document.querySelector('#sp-home-questions').closest('section.gr-board');
   if(qh){
     var h=qh.querySelector('.sp-deck-qhead');
-    if(h){ var qhm=h.textContent.match(/Question (\d+) of 14/);
+    if(h){ var qhm=h.textContent.match(/Question (\d+) of 13/);
       /* PI-FIX3c (2): one line — the 3-line head ate the room the question
          needs. The deck label already says which frame it is. */
-      if(qhm) h.textContent='Question '+qhm[1]+' of 14'+(tpl?' \u00b7 '+tpl.title+' template':''); }
+      if(qhm) h.textContent='Question '+qhm[1]+' of 13'+(tpl?' \u00b7 '+tpl.title+' template':''); }
   }
 }
 document.addEventListener('click',function(){ setTimeout(applyTemplate,80); },true);
@@ -4324,8 +4431,8 @@ function nameQheads(){
     var board=qh.closest('section'); if(!board) return;
     var tl=board.querySelector('.sp-fix3-tplline'); if(!tl) return;
     var m=tl.textContent.match(/Template:\s*([A-Za-z ]+?)\s*—/); if(!m) return;
-    var q=qh.textContent.match(/Question\s+(\d+)\s+of\s+14/); if(!q) return;
-    qh.textContent='Question '+q[1]+' of 14 \u00b7 '+m[1].trim()+' template';
+    var q=qh.textContent.match(/Question\s+(\d+)\s+of\s+13/); if(!q) return;
+    qh.textContent='Question '+q[1]+' of 13 \u00b7 '+m[1].trim()+' template';
     qh.setAttribute('data-sp-fix4-named','1');
   });
 }
@@ -4343,8 +4450,8 @@ var iv=setInterval(function(){
   var n=wrap?wrap.querySelectorAll('.sp-qblock').length:0;
   var lab=document.querySelector('#sp-deck-nav .sp-deck-label');
   var total=lab?parseInt((lab.textContent.split(' of ')[1]||'').split(' ')[0],10):0;
-  var want=projOn?29:20; /* PI-FIX7: home deck lost the template frame (21 → 20) */
-  if(n===14&&total>0&&total!==want){ var t=document.createTextNode(''); wrap.appendChild(t); wrap.removeChild(t); }
+  var want=projOn?29:19; /* PI-FIX10: 13 questions now + the daily-loop frame — home 19 frames, project 29 */
+  if(n===13&&total>0&&total!==want){ var t=document.createTextNode(''); wrap.appendChild(t); wrap.removeChild(t); }
   if(tries>=16) clearInterval(iv);
 },700);
 })();
@@ -4362,12 +4469,12 @@ var iv=setInterval(function(){
 /* ═══ PI-FIX7 — Shawn's eye 2026-11-26 ~15:23 + template wiring ~15:26 + Vault tie ~15:27 ═══
    (1) Question screen: the frame label (wordmark + gold kicker) hides on question frames; the big QUESTION N OF 14
    headline is gone — the question itself (25px Marcellus) leads; the count moves to a slim progress bar across the
-   top + "N of 14" top-right, always showing the TRUE answered count, governed by NO hiding rule; the unanswered chip is
+   top + "N of 13" top-right, always showing the TRUE answered count, governed by NO hiding rule; the unanswered chip is
    gone; the card centers in the stage (margin-auto, safe when taller); BACK/NEXT share one row just above the bar.
    (2) Template wiring: the second pick step is gone — its preview lives in the kind board;
    USE THIS KIND jumps the deck to the picked template's first question; Next from the kind frame lands there too.
    Per-kind questions are the harvested SP_TEMPLATES mission/goal/vision sets (fix3 relabel, unchanged); the other
-   11 frames stay the project's own 14-question spine (SN-4710) — named, not invented.
+   the remaining frames stay the project's own 13-question spine (SN-4710) — named, not invented.
    (3) Vault tie: save paths untouched — answers, links, notes still file into the project's Vault. */
 #sp-fix7-progress{display:none;align-items:center;gap:12px;margin:2px 0 12px}
 body.sp-fix7-q #sp-fix7-progress{display:flex}
@@ -4377,8 +4484,8 @@ body.sp-fix7-q #sp-fix7-progress{display:flex}
 body.sp-fix7-q #sp-q-count,body.sp-fix7-q #sp-home-q-count{display:none}
 .sp-deck-frame.sp-on[data-sp-fix7-q] .pj-row-t{font-size:25px;font-family:Marcellus,Georgia,serif;font-weight:400;line-height:1.35}
 body.sp-fix7-q #pj-home.sp-deck-on,body.sp-fix7-q #pj-project.sp-deck-on{display:flex;flex-direction:column}
-body.sp-fix7-q #pj-home.sp-deck-on,body.sp-fix7-q #pj-project.sp-deck-on{height:calc(100dvh - 283px)} /* PI-FIX9: 343 minus the ~60px nav lane — the nav lives inside the stage on question frames, so the stage, not the lane, holds it. */
-@media (min-width:1024px){body.sp-fix7-q #pj-home.sp-deck-on,body.sp-fix7-q #pj-project.sp-deck-on{height:calc(100vh - 443px)}} /* PI-FIX9: 503 minus the ~60px nav lane, as mobile. */
+body.sp-fix7-q #pj-home.sp-deck-on,body.sp-fix7-q #pj-project.sp-deck-on{height:calc(100dvh - 267px)} /* PI-FIX10: 283 minus 16 — the longest answered card + nav is 563px at 390 (card bottom 688, nav 704–752) against a 561px stage, so the stage clipped the nav’s bottom 2px and the hit-test returned the stage, not NEXT. 16px more stage fits it with room to spare; the card is top-aligned, so only the clip edge moves. */
+@media (min-width:1024px){body.sp-fix7-q #pj-home.sp-deck-on,body.sp-fix7-q #pj-project.sp-deck-on{height:calc(100vh - 427px)}} /* PI-FIX10: 443 minus 16, as mobile — same clip cure at desktop. */
 body.sp-fix7-q #pj-home.sp-deck-on>.sp-deck-frame.sp-on,body.sp-fix7-q #pj-project.sp-deck-on>.sp-deck-frame.sp-on{margin-top:auto;margin-bottom:auto;flex:none}
 /* PI-FIX8: reserves above are fix7's 305/444 plus the title band's height
    (38px @390, 59px @1440, calculated from the harvested rules and confirmed
@@ -4395,7 +4502,7 @@ function $(id){ return document.getElementById(id); }
 function answeredCount(){
   var isHome=$('pj-project').hidden;
   var el=$(isHome?'sp-home-q-count':'sp-q-count');
-  var m=el && el.textContent.match(/(\d+)\s+of\s+14/);
+  var m=el && el.textContent.match(/(\d+)\s+of\s+13/);
   return m?parseInt(m[1],10):0;
 }
 function update(){
@@ -4406,8 +4513,8 @@ function update(){
   /* PI-FIX7b: EVERY write below is change-only. Setting textContent replaces the text node even for an identical
      string, which re-fires this observer and loops the renderer frozen — the probe proved it on the first question
      frame. A write happens only when the value actually differs, so update() settles after one pass. */
-  var c=$('sp-fix7-count'); var ct=n+' of 14'; if(c && c.textContent!==ct) c.textContent=ct;
-  var f=$('sp-fix7-fill'); if(f){ var w=(n/14*100)+'%'; if(f.style.width!==w) f.style.width=w;
+  var c=$('sp-fix7-count'); var ct=n+' of 13'; if(c && c.textContent!==ct) c.textContent=ct;
+  var f=$('sp-fix7-fill'); if(f){ var w=(n/13*100)+'%'; if(f.style.width!==w) f.style.width=w;
     var tone=(qboard.style.getPropertyValue('--sc')||'').trim()||'#d4a017';
     if(f.style.background!==tone) f.style.background=tone;
     var bs='0 0 12px '+tone; if(f.style.boxShadow!==bs) f.style.boxShadow=bs; }
@@ -4476,5 +4583,29 @@ placeNav();
 </script>
 <nav id="naya-notif-bar" class="notif-bar" data-static="1" aria-label="Notifications"><div class="notif-row"><a class="notif-seg" data-notif="plus" id="sp-hub-add" style="--nc:#8e24aa" href="#" aria-label="ADD — open" title="ADD"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ADD</span></a><a class="notif-seg" data-notif="mail" style="--nc:#0f52ba" href="https://nayanet.app/rooms/mail" target="_blank" rel="noopener" aria-label="MAIL — open (opens in new tab)" title="MAIL"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">MAIL</span></a><a class="notif-seg" data-notif="activity" style="--nc:#07925f" href="https://nayanet.app/hub/feed-activity" target="_blank" rel="noopener" aria-label="ACTIVITY — open (opens in new tab)" title="ACTIVITY"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ACTIVITY</span></a><a class="notif-seg" data-notif="spaces" style="--nc:#d4a017" href="https://nayanet.app/rooms/spaces" target="_blank" rel="noopener" aria-label="WORLDS — open (opens in new tab)" title="WORLDS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">WORLDS</span></a><a class="notif-seg" data-notif="eco" id="sp-bb-eco" style="--nc:#c2410c" href="https://nayanet.app/hub" target="_blank" rel="noopener" aria-label="ECOSYSTEM — open (opens in new tab)" title="ECOSYSTEM"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ECOSYSTEM</span></a><a class="notif-seg" data-notif="plusR" style="--nc:#c62828" href="https://nayanet.app/hub/connections" target="_blank" rel="noopener" aria-label="CONNECT — open (opens in new tab)" title="CONNECT"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19.5c.7-3.4 2.9-5.2 5.5-5.2s4.8 1.8 5.5 5.2"/><circle cx="17" cy="9" r="2.7"/><path d="M16.2 14.6c2.5-.2 4.1 1.4 4.6 3.9"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">CONNECT</span></a></div></nav>
 <!-- PI-FIX9 (d): the ECOSYSTEM hijack is gone — it opened the site menu drawer instead of navigating. The harvested bar's own href (https://nayanet.app/hub) is the link now. Whether /hub is the right ECOSYSTEM destination is the Hub bar's call (see maker report). -->
+<style id="sp-fix10-css">
+/* ═══ PI-FIX10 — per-kind questions + Learning daily loop ═══
+   Daily loop: an inner card in the hub questions board (same .sp-qblock
+   language — obsidian, 1.5px rim, white 17px text). One question, asked
+   every day, answered day by day: "What did you learn today? What was
+   valuable — what intelligence did you gain?" Each day's answer is its
+   own PI row (citizen:daily-YYYY-MM-DD) under this project, so days never
+   leak into each other and projects never leak into each other. The list
+   under it is the day-back view — tap any day to see that day again. */
+#sp-daily-loop{margin-top:24px}
+.sp-daily-card{padding:16px;border:1.5px solid rgba(255,255,255,.22);border-radius:16px;background:linear-gradient(135deg,#17171f,#07070b);box-shadow:0 10px 24px rgba(0,0,0,.45)}
+.sp-daily-card h3{margin:0 0 8px;font-size:19px;color:#fff;font-family:Marcellus,Georgia,serif}
+.sp-daily-card p{font-size:17px;color:#fff;line-height:1.5;margin:0 0 12px}
+.sp-daily-card label{font-size:17px;font-weight:800;color:#fff;display:block;margin:12px 0 6px}
+.sp-daily-date{width:100%;box-sizing:border-box;font-size:17px;line-height:1.5;padding:14px;background:#050607;color:#fff;border:1.5px solid rgba(255,255,255,.35);border-radius:12px;color-scheme:dark}
+.sp-daily-ta{width:100%;box-sizing:border-box;font-size:17px;line-height:1.5;padding:14px;margin-top:10px}
+.sp-daily-day{font-size:17px;color:#fff;line-height:1.5;padding:12px 14px;border:1.5px solid rgba(255,255,255,.22);border-radius:12px;margin:8px 0;cursor:pointer;background:#0d0c15}
+.sp-daily-day:hover{border-color:#8e24aa}
+.sp-daily-day.on{border-color:#d4a017}
+.sp-daily-day b{color:#d4a017}
+</style>
+<script id="sp-fix10-js">
+/* PI-FIX10: the daily-loop functions live in the main IIFE (see spRenderDailyLoop above spRenderQuestions’ caller) — they need el, S, spSaveIntel and spTodayStr, which are scoped there, not global. This tag stays as the pointer. */
+</script>
 </body>
 </html>
