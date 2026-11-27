@@ -9709,6 +9709,15 @@ html.os-calm .os-sl-graph::after,html.os-calm .os-ld-riverwrap::after,html.os-ca
 <p>Newest first.</p>
 <p class="os-reports-cta">Reports room &rarr;</p>
 </a>
+<!-- FIX8D D2(a) 2026-11-26 — the Join/Next board was a mostly-empty black board in the no-data
+     state. This board dresses it honestly: no joins yet, and the one next step. Harvested
+     .os-guide-strip anatomy; emerald rim (stage 4 is blue, Join is gold — never two same). -->
+<div class="os-fix8d-board os-b-emerald" id="os-fix8d-nojoins" role="region" aria-label="No joins yet">
+  <h3>No joins yet</h3>
+  <p>Your Smart Link is waiting in Ambassador &amp; Smart Link. Share it and the first join lands here &mdash; the count, the name, and the day, right on this board.</p>
+  <p><b>&#9670;</b> Nothing here is invented &mdash; every number on this page comes from what you have actually done.</p>
+  <a class="ph-connect" href="#naya-stage-2">Get your Smart Link &rarr;</a>
+</div>
 <button class="naya-stage-fwd" type="button" data-next="naya-stage-5">Next: Running feed &rarr;</button>
 </section>
 <!-- 2026-11-07 — PASS 3 (Addenda 3+4): the running feed — a news report of
@@ -10868,6 +10877,7 @@ NF.register(UNIT, {
     }
     
     function showAuthModal(){
+      if (typeof window._osFix8dOpenAuth === 'function') { window._osFix8dOpenAuth(); return; } /* FIX8D D1: the native prompt() sign-in is retired — the designed modal owns this entry point. The prompt()/confirm()/alert() lines below are unreachable dead code. */
       if (window.NayaAuth.user) {
         // Sign out
         if (confirm('Sign out?')) {
@@ -14597,7 +14607,7 @@ function mountJoin(){
        has no user gesture left, so the browser blocks it and no new tab ever
        opened (the copy promised one anyway). */
     var w=null; try{ w=window.open('https://nayanet.app/joinus', '_blank', 'noopener'); }catch(e){}
-    if (s) s.textContent = w ? 'Join link open in a new tab \u2014 recording your join\u2026' : 'Recording your join\u2026 (your browser blocked the new tab \u2014 tap the join link below).';
+    if (s) s.textContent = w ? 'Welcome walk open in a new tab \u2014 your join is being recorded\u2026' : 'Recording your join\u2026 (your browser blocked the new tab \u2014 tap the join link below).';
     if (!w && s){ var a=document.createElement('a'); a.href='https://nayanet.app/joinus'; a.target='_blank'; a.rel='noopener'; a.textContent='Open the join link'; a.style.cssText='color:#fff;text-decoration:underline;margin-left:8px;'; s.appendChild(a); }
     record('join', 'joinus', { source_table:'smart_link_joins', source_id:'joinus' }).then(function(out){
       if (s) s.textContent = w ? (out.queued ? 'Join queued \u2014 it lands in the Ledger when the packet is applied. The join link is open in a new tab.' : 'Join recorded in the Ledger \u2014 the join link is open in a new tab.') : 'Join recorded in the Ledger. The join link is above \u2014 tap it to finish joining.';
@@ -31932,6 +31942,15 @@ html body .os-constellation .os-ld-nodes button.os-ld-node span.os-ld-lbl{
    both bars. No color, no paint change. */
 [data-sl-summary-open]{scroll-margin-top:96px;scroll-margin-bottom:120px;}
 </style>
+<!-- FIX8D D2(b) 2026-11-26 — the band between the Install panel and the footer was empty black
+     (~40% of the viewport at phone width in the no-data state). This board dresses it honestly:
+     the three next steps, in plain words. Harvested .os-guide-strip anatomy; purple rim. -->
+<div class="os-fix8d-board os-b-purple" id="os-fix8d-nextsteps" role="region" aria-label="What happens next">
+  <h3>Your Dashboard fills itself as you act</h3>
+  <p><b>Step 1</b> &mdash; Save your first note. It lands in your Vault and lights the feed.</p>
+  <p><b>Step 2</b> &mdash; Share your Smart Link. Clicks and joins land here.</p>
+  <p><b>Step 3</b> &mdash; Invite your first citizen. Your world grows.</p>
+</div>
 <footer id="os-dash-footer" class="os-dash-footer">
 <div class="os-df-inner">
 <div class="os-df-brand"><img class="os-df-face" src="data:image/jpeg;base64,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" alt="Naya" width="44" height="44"><span class="os-df-mark" aria-hidden="true">◆</span><span class="os-df-name">NayaNET</span><span class="os-df-tag">Your world, organized.</span></div>
@@ -33466,6 +33485,204 @@ button:active,a[href]:active,[data-derive]:active,.notif-seg:active,.os-sl-stat:
   }
   window._osPowerMemoryRender=render; /* FIX8C: the checker + the eye can re-render on demand. */
   render(); setInterval(render, 2000);
+})();
+</script>
+<style id="inner-frames-fix8d-20261125">
+/* FIX8D 2026-11-26 — D1: the Sign-in pill rides FIXED beside the #page-settings gear, above the
+   fixed ornate frame (.royal-frame z-40). CSS is the fallback (1440 geometry); the script below
+   measures the gear live and pins the pill to it at every width, so the eye sees "Sign in".
+   NO right: here — the script pins left, and a right: !important would over-constrain the fixed
+   pill (left + right both set) and collapse its width to padding+border (48px, showing only Sig —
+   caught by the final probe 2026-11-27 05:09Z). */
+#naya-auth-btn-top{position:fixed !important;top:104px !important;z-index:60 !important;white-space:nowrap !important;}
+/* FIX8D D1 — THE DESIGNED SIGN-IN. Obsidian board, deep-gold rim, Marcellus headline, white 17px+
+   text only, inputs with real depth, one light top-left (135deg), real shadow down-right. No
+   prompt(), no confirm(), no alert() anywhere in this flow. Pop-ups beautiful or they do not ship. */
+#os-auth-veil{position:fixed;inset:0;z-index:1200;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.72);padding:16px;}
+#os-auth-veil.os-open{display:flex;}
+#os-auth-modal{position:relative;width:100%;max-width:480px;padding:32px;border:2px solid #d4a017;border-radius:22px;background:linear-gradient(135deg,#1e1e26 0%,#050607 50%,#1e1e26 100%);box-shadow:0 16px 48px rgba(0,0,0,.7),0 0 32px rgba(212,160,23,.3);}
+#os-auth-modal h2{font-family:Marcellus,Georgia,serif;font-size:25px;color:#fff;margin:0 32px 8px 0;}
+#os-auth-modal .os-auth-sub{font-size:17px;color:#fff;margin:0 0 8px;}
+#os-auth-modal .os-auth-jewel{color:#d4a017;font-size:25px;text-shadow:0 0 12px rgba(212,160,23,.8);}
+.os-auth-input{display:block;width:100%;box-sizing:border-box;margin-top:12px;padding:14px 16px;font-size:17px;color:#fff;background:#050607;border:2px solid rgba(255,255,255,.35);border-radius:14px;box-shadow:inset 0 2px 8px rgba(0,0,0,.6);font-family:inherit;}
+.os-auth-input:focus{outline:none;border-color:#d4a017;box-shadow:inset 0 2px 8px rgba(0,0,0,.6),0 0 16px rgba(212,160,23,.35);}
+.os-auth-input::placeholder{color:#fff;opacity:.75;}
+.os-auth-err{font-size:17px;color:#fff;margin:12px 0 0;min-height:24px;}
+.os-auth-err b{color:#d4a017;}
+.os-auth-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;}
+.os-auth-x{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:2px solid rgba(255,255,255,.35);background:#050607;color:#fff;font-size:17px;font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.55);}
+.os-auth-x:hover{border-color:#d4a017;box-shadow:0 4px 14px rgba(0,0,0,.55),0 0 16px rgba(212,160,23,.35);}
+.os-auth-x:active{transform:scale(.97);transition:transform .1s ease;}
+.os-auth-note{font-size:17px;color:#fff;margin:16px 0 0;}
+/* FIX8D D2 — DESIGNED NO-DATA BOARDS. Anatomy harvested from .os-guide-strip (max-width 860,
+   radius 22, 135deg gradient, down-right shadow). White 17px+ text only. Whole-board lift on
+   hover, physical press .97. Every zero panel says what to do next. */
+.os-fix8d-board{max-width:860px;margin:24px auto 8px;padding:24px;border-radius:22px;background:linear-gradient(135deg,#1e1e26 0%,#050607 50%,#1e1e26 100%);box-shadow:0 8px 24px rgba(0,0,0,.5);transition:transform .3s ease,box-shadow .3s ease;}
+.os-fix8d-board:hover{transform:translateY(-2px);}
+.os-fix8d-board:active{transform:scale(.97);transform-origin:center;transition:transform .1s ease;}
+.os-fix8d-board.os-b-emerald{border:2px solid #07925f;box-shadow:0 8px 24px rgba(0,0,0,.5),0 0 24px rgba(7,146,95,.25);}
+.os-fix8d-board.os-b-emerald:hover{box-shadow:0 12px 32px rgba(0,0,0,.6),0 0 32px rgba(7,146,95,.45);}
+.os-fix8d-board.os-b-purple{border:2px solid #8e24aa;box-shadow:0 8px 24px rgba(0,0,0,.5),0 0 24px rgba(142,36,170,.25);}
+.os-fix8d-board.os-b-purple:hover{box-shadow:0 12px 32px rgba(0,0,0,.6),0 0 32px rgba(142,36,170,.45);}
+.os-fix8d-board h3{font-family:Marcellus,Georgia,serif;font-size:25px;color:#fff;margin:0 0 8px;}
+.os-fix8d-board p{font-size:17px;color:#fff;margin:8px 0;}
+.os-fix8d-board p b{color:#d4a017;}
+.os-fix8d-board .ph-connect{display:inline-block;margin-top:8px;}
+@media (max-width:480px){.os-fix8d-board{padding:16px;margin:16px 8px 8px;}}
+/* FIX8D D6 — #os-b3-hide (the bar-fold chevron). CSS fallback at desktop: the frame insets the
+   right rail 64px and the rail is 300px wide, so clear of the rail means right:376px — the
+   file's right:312px assumed the rail at right:0 and landed INSIDE it. The script below
+   measures the live rail rect and pins the chevron 12px left of it at every width. While a
+   drawer is open at phone widths the chevron hides — it controls a bar behind the drawer. */
+@media (min-width:1025px){ #os-b3-hide{right:376px !important;} }
+@media (max-width:1024px){ body.dash-rail-right-open #os-b3-hide, body.dash-drawer-open #os-b3-hide{display:none !important;} }
+</style>
+<script id="inner-frames-fix8d-20261125-js">
+/* FIX8D 2026-11-26 — D1 designed sign-in, D6 rail/chevron fits. No prompt(), no confirm(),
+   no alert() in this block. The auth calls are the page's own: window.NayaAuth.client.auth
+   (exposed by the auth layer) — signInWithPassword, fallback signUp, signOut. Nothing invented. */
+(function(){
+  /* ---- D1: the modal (built once, opened by the pill and by the Settings button) ---- */
+  var veil = null, emailEl = null, passEl = null, errEl = null, titleEl = null, subEl = null,
+      primaryBtn = null, signoutBtn = null, noteEl = null;
+  function buildModal(){
+    if (veil) return;
+    veil = document.createElement("div");
+    veil.id = "os-auth-veil"; veil.setAttribute("role", "dialog"); veil.setAttribute("aria-modal", "true");
+    veil.setAttribute("aria-label", "Sign in to NayaNET");
+    veil.innerHTML = '<div id="os-auth-modal">'
+      + '<button type="button" class="os-auth-x" id="os-auth-x" aria-label="Close sign in">\u2715</button>'
+      + '<span class="os-auth-jewel" aria-hidden="true">\u25C6</span>'
+      + '<h2 id="os-auth-title">Sign in</h2>'
+      + '<p class="os-auth-sub" id="os-auth-sub">Sign in so NayaNET knows it\u2019s you \u2014 your apps, your mail and your data, synced on every device.</p>'
+      + '<input class="os-auth-input" id="os-auth-email" type="email" autocomplete="email" placeholder="Your email" aria-label="Email">'
+      + '<input class="os-auth-input" id="os-auth-pass" type="password" autocomplete="current-password" placeholder="Your password" aria-label="Password">'
+      + '<p class="os-auth-err" id="os-auth-err" role="status"></p>'
+      + '<div class="os-auth-actions"><button type="button" class="ph-connect" id="os-auth-go">Sign in</button>'
+      + '<button type="button" class="ph-connect" id="os-auth-out" style="display:none;">Sign out</button></div>'
+      + '<p class="os-auth-note" id="os-auth-note">New here? Your account is created when you sign in \u2014 no separate step.</p>'
+      + '</div>';
+    document.body.appendChild(veil);
+    titleEl = document.getElementById("os-auth-title"); subEl = document.getElementById("os-auth-sub");
+    emailEl = document.getElementById("os-auth-email"); passEl = document.getElementById("os-auth-pass");
+    errEl = document.getElementById("os-auth-err"); primaryBtn = document.getElementById("os-auth-go");
+    signoutBtn = document.getElementById("os-auth-out"); noteEl = document.getElementById("os-auth-note");
+    document.getElementById("os-auth-x").addEventListener("click", closeAuth);
+    veil.addEventListener("click", function(e){ if (e.target === veil) closeAuth(); });
+    document.addEventListener("keydown", function(e){ if (e.key === "Escape") closeAuth(); });
+    primaryBtn.addEventListener("click", submitAuth);
+    passEl.addEventListener("keydown", function(e){ if (e.key === "Enter") submitAuth(); });
+    emailEl.addEventListener("keydown", function(e){ if (e.key === "Enter") submitAuth(); });
+    signoutBtn.addEventListener("click", function(){
+      var c = (window.NayaAuth && window.NayaAuth.client) || null;
+      if (c) { try { c.auth.signOut(); } catch(e){} }
+      errEl.textContent = "Signed out. See you soon."; setTimeout(closeAuth, 900);
+    });
+  }
+  function openAuth(){
+    buildModal();
+    var user = (window.NayaAuth && window.NayaAuth.user) || null;
+    errEl.textContent = "";
+    if (user) {
+      titleEl.textContent = "You are signed in";
+      subEl.textContent = "Signed in as " + (user.email || "your account") + ".";
+      emailEl.style.display = "none"; passEl.style.display = "none"; primaryBtn.style.display = "none";
+      signoutBtn.style.display = "";
+    } else {
+      titleEl.textContent = "Sign in";
+      subEl.textContent = "Sign in so NayaNET knows it\u2019s you \u2014 your apps, your mail and your data, synced on every device.";
+      emailEl.style.display = ""; passEl.style.display = ""; primaryBtn.style.display = "";
+      signoutBtn.style.display = "none";
+    }
+    veil.classList.add("os-open");
+    if (!user) { try { emailEl.focus(); } catch(e){} }
+  }
+  function closeAuth(){ if (veil) veil.classList.remove("os-open"); }
+  function submitAuth(){
+    var email = (emailEl.value || "").trim(), password = passEl.value || "";
+    if (!email || !password) { errEl.innerHTML = "<b>\u25C6</b> Your email and password, please."; return; }
+    var c = (window.NayaAuth && window.NayaAuth.client) || null;
+    if (!c) { errEl.innerHTML = "<b>\u25C6</b> Sign-in is not ready yet \u2014 try again in a moment."; return; }
+    errEl.textContent = "Signing you in\u2026";
+    c.auth.signInWithPassword({ email: email, password: password }).then(function(res){
+      if (res.error) return c.auth.signUp({ email: email, password: password });
+      return res;
+    }).then(function(res){
+      if (res.error) { errEl.innerHTML = "<b>\u25C6</b> " + (res.error.message || "Sign-in did not work."); return; }
+      errEl.textContent = "Welcome! You are now signed in.";
+      if (typeof window.fix8SyncAuth === "function") { try { window.fix8SyncAuth(); } catch(e){} }
+      setTimeout(closeAuth, 1200);
+    }).catch(function(e){ errEl.innerHTML = "<b>\u25C6</b> " + (e && e.message ? e.message : "Sign-in did not work."); });
+  }
+  window._osFix8dOpenAuth = openAuth; /* FIX8D: the checker + the eye can open the sign-in. */
+  /* ---- D1: the pill — take over from fix8b (its handler clicks the real Settings button and
+     the native prompt flow). Clone drops the old listeners; the clone opens the modal and
+     never opens Settings. Pinned beside the gear by live measurement. ---- */
+  function takeOverPill(){
+    var old = document.getElementById("naya-auth-btn-top");
+    if (!old || old._fix8dWired) { positionPill(); return; }
+    var b = old.cloneNode(true);
+    b._fix8dWired = true;
+    old.parentNode.replaceChild(b, old);
+    b.addEventListener("click", function(e){ e.preventDefault(); e.stopPropagation(); openAuth(); });
+    positionPill();
+  }
+  function positionPill(){
+    var b = document.getElementById("naya-auth-btn-top");
+    var gear = document.getElementById("page-settings");
+    if (!b || !gear) return;
+    var g = gear.getBoundingClientRect();
+    if (!g.width) return;
+    b.style.position = "fixed";
+    b.style.top = Math.round(g.top) + "px";
+    b.style.left = Math.max(8, Math.round(g.left - b.offsetWidth - 12)) + "px";
+    b.style.right = "auto";
+    b.style.zIndex = "60";
+    b.style.margin = "0";
+  }
+  /* ---- D1: the Settings button also opens the designed modal, never prompt(). ---- */
+  function takeOverSettingsAuth(){
+    var old = document.getElementById("naya-auth-btn");
+    if (!old || old._fix8dWired) return;
+    var b = old.cloneNode(true);
+    b._fix8dWired = true;
+    old.parentNode.replaceChild(b, old);
+    b.addEventListener("click", function(e){ e.preventDefault(); e.stopPropagation(); openAuth(); });
+  }
+  /* ---- D6: the left rail fits the viewport — its sticky box starts below the viewport top at
+     scroll 0, so at 100dvh its bottom (and .private) runs below the fold. Height = viewport
+     minus its live top offset; when stuck, top is 0 and the height is the full viewport. ---- */
+  function fitLeftRail(){
+    var rail = document.querySelector(".dash-shell .rail.left");
+    if (!rail) return;
+    var r = rail.getBoundingClientRect();
+    if (!r.width) return;
+    var top = Math.max(0, r.top);
+    rail.style.height = Math.max(200, Math.round(window.innerHeight - top)) + "px";
+  }
+  /* ---- D6: the bar-fold chevron rides 12px LEFT of the live right rail, at every width. ---- */
+  function positionB3(){
+    var b3 = document.getElementById("os-b3-hide");
+    if (!b3) return;
+    var rail = document.querySelector(".dash-shell .rail.right");
+    if (!rail) return;
+    var r = rail.getBoundingClientRect();
+    if (r.width && r.left < window.innerWidth && r.right > 0) {
+      b3.style.setProperty("right", Math.round(window.innerWidth - r.left + 12) + "px", "important");
+    } else {
+      b3.style.setProperty("right", "12px", "important");
+    }
+  }
+  function run(){
+    buildModal();
+    takeOverPill(); takeOverSettingsAuth(); fitLeftRail(); positionB3();
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+  setTimeout(run, 1500); setTimeout(run, 3000);
+  setInterval(function(){ takeOverPill(); takeOverSettingsAuth(); fitLeftRail(); positionB3(); }, 2000);
+  window.addEventListener("resize", function(){ positionPill(); fitLeftRail(); positionB3(); });
+  window.addEventListener("scroll", function(){ fitLeftRail(); positionB3(); }, { passive: true });
 })();
 </script>
 <script id="inner-frames-fix8b-20261125-js">
