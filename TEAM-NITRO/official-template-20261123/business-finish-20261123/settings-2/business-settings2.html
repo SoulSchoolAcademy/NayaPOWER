@@ -876,7 +876,7 @@ body.sr-qmode #tbTitle{font-size:clamp(22px,4.8vw,28px)}
 /* FIX11-6 — the small spinning ball beside every picker: obsidian marble,
    its own slow turn (120s), rim in the question colour. */
 .sr-miniball{flex:0 0 28px;width:28px;height:28px;border-radius:50%;position:relative;overflow:hidden;background:radial-gradient(circle at 32% 26%,#4a4a55 0%,#1c1c24 30%,#0a0a10 60%,#050607 100%);border:2px solid var(--qc,#8e24aa);box-shadow:0 4px 10px rgba(0,0,0,.6)}
-.sr-miniball-spin{position:absolute;inset:-30%;border-radius:50%;background:repeating-conic-gradient(from 0deg,transparent 0deg 24deg,rgba(255,255,255,.07) 26deg 28deg,transparent 30deg);animation:sr-gemspin 120s linear infinite}
+.sr-miniball-spin{position:absolute;inset:-30%;border-radius:50%;background:repeating-conic-gradient(from 0deg,transparent 0deg 24deg,rgba(255,255,255,.10) 26deg 28deg,transparent 30deg);animation:sr-gemspin 120s linear infinite}
 .sr-side-btn,.sr-multibtn{display:flex;align-items:center;gap:10px}
 @keyframes sr-gemspin{to{transform:rotate(360deg)}}
 
@@ -885,7 +885,7 @@ body.sr-qmode #tbTitle{font-size:clamp(22px,4.8vw,28px)}
    (120s) while the red N stays upright and readable. No fake glow,
    no fake ring: the orbit arcs are the only flow around it. Red stays. */
 .sr-gem{position:relative;display:block;overflow:hidden;border-radius:50%;background:radial-gradient(circle at 32% 26%,#55555f 0%,#232329 30%,#0b0b11 58%,#050607 100%);box-shadow:0 0 0 2px rgba(255,255,255,.25),0 14px 28px rgba(0,0,0,.7)}
-.sr-gem-spin{position:absolute;inset:-25%;border-radius:50%;background:repeating-conic-gradient(from 20deg,transparent 0deg 16deg,rgba(255,255,255,.07) 18deg 20deg,transparent 22deg 48deg,rgba(198,40,40,.12) 50deg 52deg,transparent 54deg 88deg,rgba(212,160,23,.08) 90deg 92deg,transparent 94deg);animation:sr-gemspin 120s linear infinite}
+.sr-gem-spin{position:absolute;inset:-25%;border-radius:50%;background:repeating-conic-gradient(from 20deg,transparent 0deg 16deg,rgba(255,255,255,.10) 18deg 20deg,transparent 22deg 48deg,rgba(198,40,40,.16) 50deg 52deg,transparent 54deg 88deg,rgba(212,160,23,.11) 90deg 92deg,transparent 94deg);animation:sr-gemspin 120s linear infinite}
 .sr-gem-n{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;height:100%;font-family:"Marcellus",serif;font-weight:700;font-size:62px;line-height:1;color:#c62828;text-shadow:0 2px 0 rgba(255,255,255,.28),0 5px 12px rgba(0,0,0,.85)}
 .sr-gem-gloss{position:absolute;inset:0;z-index:3;border-radius:50%;background:radial-gradient(ellipse at 30% 22%,rgba(255,255,255,.32),rgba(255,255,255,0) 55%);pointer-events:none}
 .sr-q-foot .sr-q-n{cursor:pointer}
@@ -1174,7 +1174,7 @@ body.sr-qmode #tbTitle{font-size:clamp(22px,4.8vw,28px)}
     var br = board.getBoundingClientRect(), bb = btn.getBoundingClientRect();
     var bd = document.querySelector('#sr-q-board').getBoundingClientRect();
     var top = Math.max(8, Math.round(bb.bottom - br.top + 6));
-    var maxH = Math.max(120, Math.round(bd.bottom - bb.bottom - 10));
+    var maxH = Math.max(120, Math.round(bd.bottom - bb.bottom - 24));
     panel._btn = btn;
     if (panel.parentNode !== board) { panel._home = panel.parentNode; board.appendChild(panel); }
     panel.classList.add('sr-docked');
@@ -1184,6 +1184,19 @@ body.sr-qmode #tbTitle{font-size:clamp(22px,4.8vw,28px)}
        runs past it), so the panel can never cross the card. */
     panel.style.maxHeight = maxH + 'px';
     panel.style.marginTop = '0';
+    /* FIX11-4d — never slice a section/major heading at the fold: if the
+       first heading would straddle the panel's bottom edge, cap the panel
+       just above it (the rows above it stay whole; the heading waits whole
+       below the fold). Runs on the next frame after unhide, before paint,
+       so offsetTop measures; on re-dock of a visible panel it runs at once. */
+    var capFold = function () {
+      if (panel.hidden) return;
+      var first = panel.querySelector('.sr-menu-sec, .sr-menu-major');
+      if (!first) return;
+      var cap = first.offsetTop + 4;
+      if (cap > 100 && cap < maxH && first.offsetTop + first.offsetHeight > maxH) panel.style.maxHeight = cap + 'px';
+    };
+    if (panel.hidden) { requestAnimationFrame(capFold); } else { capFold(); }
   }
   function undockMenu(panel) {
     if (!panel) return;
