@@ -1456,6 +1456,23 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 </style>
 </head>
 <body>
+<!-- FIX8 — INTERESTS DATA (Shawn, voice call 2026-11-26 ~18:45–18:47 MST; canonical list, his web list ~18:49 MST "I gave it to you", MEMORY.md line 4248). ONE data block — the 6 major categories, their 24 subcategories, and the 4 favorite fields live HERE and nowhere else, so a new category drops in without a rebuild. WORKING MODEL: the earlier 10 are the feed's Top 10 (Hub R19's job, NOT this file); the 6 majors below are the top-level worlds — picker Step 1 picks from these 6; the 24 subcategories are the checkbox layer for Step 2. The parenthetical descriptors live in the data ("about"); the face stays simple (names only). -->
+<script type="application/json" id="nayaInterestsData">
+{"majors":[
+{"name":"Entertainment & Media","subs":[{"name":"Music","about":"listening, concerts, playing instruments"},{"name":"Movies & Television","about":"streaming series, films, pop culture franchises"},{"name":"Gaming","about":"video games, tabletop board games, role-playing games"},{"name":"Reading & Literature","about":"fiction, non-fiction, audiobooks, book clubs"},{"name":"Podcasts & Audio","about":"true crime, comedy, educational, conversational"}]},
+{"name":"Food & Drink","subs":[{"name":"Cooking & Baking","about":"home cooking and baking"},{"name":"Dining Out & Food Culture","about":"restaurants, street food, local cafes"},{"name":"Coffee, Tea & Craft Beverages","about":"specialty coffee, mixology, wine tasting, craft beer"}]},
+{"name":"Health, Fitness & Sports","subs":[{"name":"Fitness & Working Out","about":"strength, running, yoga, Pilates, home workouts"},{"name":"Spectator Sports","about":"pro leagues, live matches, fantasy sports"},{"name":"Recreational & Team Sports","about":"pickleball, soccer, basketball, tennis, golf"},{"name":"Mental Health & Mindfulness","about":"meditation, journaling, self-improvement"}]},
+{"name":"Outdoors & Travel","subs":[{"name":"Travel & Exploration","about":"vacationing, road trips, cultural tourism"},{"name":"Hiking & Nature","about":"trail walking, camping, birding, parks"},{"name":"Gardening & Houseplants","about":"indoor plants, backyard vegetables, flower beds"},{"name":"Pets & Animals","about":"dogs, cats, exotic pets"}]},
+{"name":"Arts, Crafts & Making","subs":[{"name":"Visual Arts","about":"drawing, painting, digital illustration, sculpture"},{"name":"Photography & Videography","about":"street photography, content creation, filmmaking"},{"name":"Fiber & Textile Arts","about":"crocheting, knitting, sewing, embroidery"},{"name":"Writing & Storytelling","about":"creative writing, poetry, blogging, journaling"},{"name":"DIY & Woodworking","about":"home improvement, furniture building, pottery, candle making"}]},
+{"name":"Lifestyle, Tech & Knowledge","subs":[{"name":"Fashion & Personal Style","about":"thrifting, streetwear, skincare, makeup"},{"name":"Home Decor & Interior Design","about":"organizing, decorating, curating living spaces"},{"name":"Technology & Gadgets","about":"consumer tech, AI tools, PC building, smart home"},{"name":"History, Science & Learning","about":"language learning, astronomy, genealogy, trivia"}]}
+],
+"favorites":[
+{"key":"brand","label":"Your favorite brand","placeholder":"Your favorite brand"},
+{"key":"music","label":"Your favorite music","placeholder":"Your favorite music"},
+{"key":"hobby","label":"Your favorite hobby","placeholder":"Your favorite hobby"},
+{"key":"other","label":"Anything else you love","placeholder":"Anything else — in your own words"}
+]}
+</script>
 <div class="royal-frame" aria-hidden="true"><div class="rf-et top"></div><div class="rf-es left"></div><div class="rf-es right"></div><div class="rf-rim"></div><div class="rf-corner tl"></div><div class="rf-corner tr"></div><div class="rf-corner bl"></div><div class="rf-corner br"></div><div class="rf-n top"></div></div>
 
 <div class="stage">
@@ -3441,6 +3458,16 @@ current = 0; renderSlide(); show('cover');
 .walk-frame.deliv-mode .walk-certwrap .walk-cert{height:700px}
 .walk-frame.deliv-mode .walk-cert-link{position:sticky;bottom:64px;background:#050607;z-index:2;padding:4px 0}
 }
+/* FIX8 — interest picker. Harvested .walk-chip verbatim (Q10 chain, Q14
+   picker): obsidian pill, white 18px, rim in the object's OWN color via
+   --pick (spectrum order, never two same together); hover lifts the whole
+   chip and lights it in its own color; tap depresses 0.97; .on stays the
+   harvested emerald rim + glow + check. Group headings 19px white. */
+.walk-chip.pick{border-color:var(--pick,rgba(255,255,255,.35))}
+.walk-chip.pick:hover{transform:translateY(-2px);box-shadow:0 0 18px var(--pick,#8e24aa)}
+.walk-chip.pick:active{transform:scale(.97)}
+.walk-frame.pick-mode #walkInput .walk-btn:active{transform:scale(.97)}
+.walk-pick-group{font-size:19px;font-weight:700;color:#fff;text-align:left;margin:6px 0 0}
 .walk-certwrap .walk-cert iframe{height:100%}
 .walk-certnotes{flex:none;font-size:18px;line-height:1.5;text-align:center;color:#fff}
 .walk-delivwrap{flex:1 1 auto;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
@@ -3568,7 +3595,27 @@ current = 0; renderSlide(); show('cover');
   var CERT_URL = 'https://portal-consolidated-20261125-staging.nayapower.workers.dev/identity.html?embed=1';
   var CERT_FP = 'Fixed certificate · 315,409 B · sha 0c11fdb8… · 5 real jewels';
   var TYPE_LABEL = {personal:'Personal page', business:'Business page', world:'World page'};
-  var ORDER = [-1, 100, 101, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 102]; // FIX4: 27 + 28 are the two shared questions (intent, connect-with), after the locked 27.
+  var ORDER = [-1, 100, 101, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 200, 201, 202, 102]; // FIX4: 27 + 28 are the two shared questions (intent, connect-with), after the locked 27. FIX8: 200/201/202 are the interest picker (categories / subcategories / favorites), after 28, before delivered (102). The 27-question order is LOCKED — 0–26 untouched, unrenumbered.
+  // FIX8 — INTEREST PICKER DATA READER. The data lives in ONE block at the
+  // top of the file (#nayaInterestsData, just after <body>) — this only
+  // parses it. A new category drops into that block without a rebuild.
+  // SPECTRUM is the law's deep palette in flow order (§3.1/§3.2); the
+  // picker assigns colors by position in the order, never by taste.
+  var INTERESTS = (function(){ try { var el = document.getElementById('nayaInterestsData'); return JSON.parse(el.textContent); } catch(e){ return {majors:[], favorites:[]}; } })();
+  var SPECTRUM = ['#8e24aa','#0f52ba','#07925f','#d4a017','#c2410c','#c62828','#a21caf','#3f51b5','#0e7490','#6d28d9'];
+  var pickCats = [], pickSubs = [], pickFavs = {brand:'', music:'', hobby:'', other:''}, pickStep = -1;
+  function pickSummary(){
+    var parts = [];
+    if (pickCats.length) parts.push('Categories: ' + esc(pickCats.join(', ')));
+    if (pickSubs.length) parts.push('Subcategories: ' + esc(pickSubs.join(', ')));
+    var fb = [];
+    if (pickFavs.brand) fb.push('Brand: ' + esc(pickFavs.brand));
+    if (pickFavs.music) fb.push('Music: ' + esc(pickFavs.music));
+    if (pickFavs.hobby) fb.push('Hobby: ' + esc(pickFavs.hobby));
+    if (pickFavs.other) fb.push('Anything else: ' + esc(pickFavs.other));
+    if (fb.length) parts.push('Favorites: ' + fb.join(' · '));
+    return parts.length ? parts.join('<br>') : 'Nothing picked yet — tap to begin.';
+  }
 var WALK = [
     {q:'Where are you from — your country?', m:'country', ex:'', img:19, b:-1},
     {q:'What language do you speak?', m:'language', ex:'', img:3, b:-1},
@@ -3641,7 +3688,7 @@ var WALK = [
     {s:'education', w:[26]}, {s:'intent', w:[27]}, {s:'connect-with', w:[28]}
   ];
   function settingsValue(widx){ var a = answersByType[pageType] || {}; return widx.map(function(i){ return a[i] || ''; }).filter(function(x){ return x; }).join(' \u00b7 '); }
-  function saveSettings(){ try { var out = {name:citizenName, alias:citizenAlias, lang:lang, answers:{}, byWalk:{}, updatedAt:new Date().toISOString()}; SETTINGS_MAP.forEach(function(m){ out.answers[m.s] = settingsValue(m.w); }); var a = answersByType[pageType] || {}; for (var i = 0; i < WALK.length; i++) if (a[i]) out.byWalk[i] = a[i]; localStorage.setItem(SETTINGS_STORE_KEY, JSON.stringify(out)); } catch(e){} }
+  function saveSettings(){ try { var out = {name:citizenName, alias:citizenAlias, lang:lang, answers:{}, byWalk:{}, updatedAt:new Date().toISOString()}; SETTINGS_MAP.forEach(function(m){ out.answers[m.s] = settingsValue(m.w); }); var a = answersByType[pageType] || {}; for (var i = 0; i < WALK.length; i++) if (a[i]) out.byWalk[i] = a[i]; if (a.interests) { out.answers.interests = a.interests; out.byWalk.interests = a.interests; } if (a['interest-subcategories']) { out.answers['interest-subcategories'] = a['interest-subcategories']; out.byWalk['interest-subcategories'] = a['interest-subcategories']; } if (a.favorites) { out.answers.favorites = a.favorites; out.byWalk.favorites = a.favorites; } localStorage.setItem(SETTINGS_STORE_KEY, JSON.stringify(out)); } catch(e){} }
   function loadSettings(){ try { var raw = localStorage.getItem(SETTINGS_STORE_KEY); if (!raw) return; var d = JSON.parse(raw); if (!d || !d.byWalk) return; var a = answersByType[pageType] || {}; Object.keys(d.byWalk).forEach(function(k){ if (!a[k]) a[k] = d.byWalk[k]; }); answersByType[pageType] = a; } catch(e){} }
   window.NayaSettings = { map: function(){ return SETTINGS_MAP; }, storeKey: SETTINGS_STORE_KEY, save: saveSettings, load: loadSettings, read: function(){ try { return JSON.parse(localStorage.getItem(SETTINGS_STORE_KEY) || 'null'); } catch(e){ return null; } }, apply: function(obj){ if (!obj) return; try { if (obj.byWalk) { var a = answersByType[pageType] || {}; Object.keys(obj.byWalk).forEach(function(k){ a[k] = obj.byWalk[k]; }); answersByType[pageType] = a; } saveWalk(); } catch(e){} } };
   function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
@@ -3878,7 +3925,8 @@ var WALK = [
     var isCert = (idx === -1);
     var isDeliv = (idx === 102);
     var isQ = (idx >= 0 && idx < WALK.length);
-    if (frame) { frame.classList.toggle('cert-mode', isCert); frame.classList.toggle('deliv-mode', isDeliv); frame.classList.toggle('q-mode', isQ || idx === 100 || idx === 101); }
+    var isPick = (idx === 200 || idx === 201 || idx === 202);
+    if (frame) { frame.classList.toggle('cert-mode', isCert); frame.classList.toggle('deliv-mode', isDeliv); frame.classList.toggle('pick-mode', isPick); frame.classList.toggle('q-mode', isQ || idx === 100 || idx === 101 || isPick); }
     if (thirds) thirds.style.display = (isCert || isDeliv) ? 'none' : '';
     if (certWrap) { certWrap.hidden = !(isCert || isDeliv); }
     if (delivWrap) { delivWrap.hidden = !isDeliv; }
@@ -3943,6 +3991,7 @@ var WALK = [
       walkComplete = true; saveWalk();
       certWrap.innerHTML = certHTML();
       delivWrap.innerHTML = '<p class="walk-note">Your certificate — delivered with your page. Your 27 answers are on the boards now: your About + Skills, in your words.</p>'
+        + '<p class="walk-note" id="walkInterestsLine"></p>'
         + '<div class="walk-linkbox"><p>Your affiliate ID (private): <code id="walkAffId">— enter your first name —</code></p>'
         + '<p>Your public alias: <code id="walkAliasPub">— choose your alias —</code></p>'
         + '<p>Your Smart Link (public, from your alias — never your name): <a id="walkSmartLink">Choose your alias above to mint your public link.</a></p>'
@@ -3951,6 +4000,12 @@ var WALK = [
         + '<p><a id="walkEndNayaBtn" class="walk-btn go" href="#" style="display:none">Naya app — join through me</a> <button type="button" class="walk-btn ghost" id="walkCopyLink">Copy my Smart Link</button></p></div>'
         + '<p class="walk-note">What is public, what is private — you choose, per piece. Only the pieces you mark Public show on your public page.</p><div id="walkPrivBox"></div>';
       renderPrivList(document.getElementById('walkPrivBox'));
+      var il = document.getElementById('walkInterestsLine');
+      if (il) { var ia = answersByType[pageType] || {}; var ibits = [];
+        if (ia.interests) ibits.push('Categories: ' + ia.interests);
+        if (ia['interest-subcategories']) ibits.push('Subcategories: ' + ia['interest-subcategories']);
+        if (ia.favorites) { var fb = []; if (ia.favorites.brand) fb.push('Brand: ' + ia.favorites.brand); if (ia.favorites.music) fb.push('Music: ' + ia.favorites.music); if (ia.favorites.hobby) fb.push('Hobby: ' + ia.favorites.hobby); if (ia.favorites.other) fb.push('Anything else: ' + ia.favorites.other); if (fb.length) ibits.push('Favorites: ' + fb.join(' \u00b7 ')); }
+        il.textContent = ibits.length ? 'Your interests — ' + ibits.join(' \u00b7 ') + '. These feed Smart Match and your Smart Lists.' : 'Your interests — not picked yet. Reopen the walk to add them.'; }
       var fc1 = document.getElementById('walkFacePublic');
       if (fc1) fc1.addEventListener('change', function(){ facePublic = fc1.checked; privacy.face = facePublic; syncIdentity(); renderBoards(); });
       var cp = document.getElementById('walkCopyLink');
@@ -3973,6 +4028,98 @@ var WALK = [
       syncIdentity();
       return;
     }
+    if (isPick) {
+      // FIX8 — the interest picker, in Shawn's words (voice call 2026-11-26
+      // ~18:45–18:47 MST). Step 1: "here, click off the categories you're
+      // into" — the 6 major worlds. Step 2: "okay, now click out the
+      // subcategories" — checkboxes for ONLY the picked majors. Step 3:
+      // favorites — brands, music, hobbies, anything else, in their words.
+      // One clear button to continue on each step; Step 1 of 3 / 2 of 3 /
+      // 3 of 3 in plain words. Picks load from the saved answers when the
+      // step is first shown (pickStep), so a re-walk arrives pre-filled;
+      // taps within a step stay in memory until Enter saves them.
+      if (pickStep !== idx) {
+        var pa0 = answersByType[pageType] || {};
+        if (pa0.interests) pickCats = String(pa0.interests).split(' \u00b7 ').filter(function(x){ return x; });
+        if (pa0['interest-subcategories']) pickSubs = String(pa0['interest-subcategories']).split(' \u00b7 ').filter(function(x){ return x; });
+        if (pa0.favorites && typeof pa0.favorites === 'object') pickFavs = pa0.favorites;
+        pickStep = idx;
+      }
+      var stepNo = idx - 200;
+      document.getElementById('walkQ').textContent = idx === 200 ? 'Here — click off the categories you\u2019re into' : idx === 201 ? 'Okay — now click out the subcategories' : 'Last step — your favorites';
+      document.getElementById('walkStep').textContent = TYPE_LABEL[pageType] + ' · Step ' + (stepNo + 1) + ' of 3 · after the 27';
+      document.getElementById('walkH1').textContent = '1 · What this step is';
+      document.getElementById('walkH2').textContent = '2 · Your picks so far';
+      document.getElementById('walkH3').textContent = document.getElementById('walkQ').textContent;
+      editBtn.style.display = 'none';
+      skipBtn.style.display = '';
+      enterBtn.textContent = T('enter');
+      t1.innerHTML = '<p class="walk-note">' + (idx === 200 ? 'Tap the worlds you\u2019re into — as many as you like. Your picks shape who you meet here.' : idx === 201 ? 'Only the subcategories of the worlds you picked show here. Tap all that apply.' : 'Your favorites, in your own words — a brand, music, a hobby, anything else you love.') + '</p>';
+      aud.innerHTML = '<p class="walk-note">' + pickSummary() + '</p>';
+      box.innerHTML = '';
+      function pickRefresh(){ aud.innerHTML = '<p class="walk-note">' + pickSummary() + '</p>'; }
+      if (idx === 200) {
+        var chips = document.createElement('div'); chips.className = 'walk-chips';
+        INTERESTS.majors.forEach(function(mj, mi){
+          var bEl = document.createElement('button'); bEl.type = 'button';
+          bEl.className = 'walk-chip pick' + (pickCats.indexOf(mj.name) >= 0 ? ' on' : '');
+          bEl.textContent = mj.name;
+          bEl.style.setProperty('--pick', SPECTRUM[mi % SPECTRUM.length]);
+          bEl.setAttribute('aria-pressed', pickCats.indexOf(mj.name) >= 0 ? 'true' : 'false');
+          bEl.onclick = function(){
+            var j = pickCats.indexOf(mj.name);
+            if (j >= 0) { pickCats.splice(j, 1); bEl.classList.remove('on'); bEl.setAttribute('aria-pressed', 'false'); }
+            else { pickCats.push(mj.name); bEl.classList.add('on'); bEl.setAttribute('aria-pressed', 'true'); }
+            pickRefresh();
+          };
+          chips.appendChild(bEl);
+        });
+        box.appendChild(chips);
+      } else if (idx === 201) {
+        var picked = INTERESTS.majors.filter(function(mj){ return pickCats.indexOf(mj.name) >= 0; });
+        if (!picked.length) {
+          var nn = document.createElement('p'); nn.className = 'walk-note';
+          nn.textContent = 'You haven\u2019t picked a category yet — go back one step and tap the worlds you\u2019re into.';
+          box.appendChild(nn);
+          var bk = document.createElement('button'); bk.type = 'button'; bk.className = 'walk-btn ghost'; bk.textContent = 'Back to Step 1';
+          bk.onclick = function(){ pos = ORDER.indexOf(200); idx = 200; pickStep = -1; sel = []; render(); };
+          box.appendChild(bk);
+        } else {
+          var si = 0;
+          picked.forEach(function(mj){
+            var gh = document.createElement('p'); gh.className = 'walk-pick-group'; gh.textContent = mj.name; box.appendChild(gh);
+            var gchips = document.createElement('div'); gchips.className = 'walk-chips';
+            mj.subs.forEach(function(sb){
+              var c2 = document.createElement('button'); c2.type = 'button';
+              c2.className = 'walk-chip pick' + (pickSubs.indexOf(sb.name) >= 0 ? ' on' : '');
+              c2.textContent = sb.name;
+              c2.style.setProperty('--pick', SPECTRUM[si % SPECTRUM.length]); si++;
+              c2.setAttribute('aria-pressed', pickSubs.indexOf(sb.name) >= 0 ? 'true' : 'false');
+              c2.onclick = function(){
+                var k = pickSubs.indexOf(sb.name);
+                if (k >= 0) { pickSubs.splice(k, 1); c2.classList.remove('on'); c2.setAttribute('aria-pressed', 'false'); }
+                else { pickSubs.push(sb.name); c2.classList.add('on'); c2.setAttribute('aria-pressed', 'true'); }
+                pickRefresh();
+              };
+              gchips.appendChild(c2);
+            });
+            box.appendChild(gchips);
+          });
+        }
+      } else {
+        INTERESTS.favorites.forEach(function(fv){
+          var fl = document.createElement('p'); fl.className = 'walk-fieldlabel'; fl.textContent = fv.label; box.appendChild(fl);
+          var fi = document.createElement('input'); fi.type = 'text'; fi.id = 'walkFav-' + fv.key; fi.placeholder = fv.placeholder || fv.label; fi.value = pickFavs[fv.key] || '';
+          fi.addEventListener('input', function(){ pickFavs[fv.key] = fi.value; pickRefresh(); });
+          box.appendChild(fi);
+        });
+      }
+      var pe = document.createElement('div'); pe.className = 'walk-panelenter';
+      var eb = document.createElement('button'); eb.type = 'button'; eb.className = 'walk-btn go'; eb.id = 'walkPanelEnter'; eb.textContent = T('enter'); eb.onclick = enter; pe.appendChild(eb);
+      box.appendChild(pe);
+      syncIdentity();
+      return;
+    }
     // ---- question steps 0–26: the Panel Law ----
     var w = WALK[idx];
     var qnum = idx + 1;
@@ -3981,6 +4128,7 @@ var WALK = [
     document.getElementById('walkH1').textContent = T('p1');
     document.getElementById('walkH2').textContent = T('p2');
     document.getElementById('walkH3').textContent = qText(idx);
+    editBtn.style.display = '';
     enterBtn.textContent = T('enter');
     skipBtn.textContent = T('skip');
     skipBtn.style.display = '';
@@ -4139,6 +4287,22 @@ var WALK = [
   function enter(){
     if (advancing) return; advancing = true; setTimeout(function(){ advancing = false; }, 900);
     if (idx === -1 || idx === 100 || idx === 101) { goNext(); return; }
+    if (idx === 200 || idx === 201 || idx === 202) {
+      var pa = answersByType[pageType] || {};
+      if (idx === 200) pa.interests = pickCats.join(' \u00b7 ');
+      if (idx === 201) pa['interest-subcategories'] = pickSubs.join(' \u00b7 ');
+      if (idx === 202) {
+        var gf = function(k){ var e = document.getElementById('walkFav-' + k); return e ? e.value.trim() : (pickFavs[k] || ''); };
+        pickFavs = {brand: gf('brand'), music: gf('music'), hobby: gf('hobby'), other: gf('other')};
+        pa.favorites = pickFavs;
+      }
+      answersByType[pageType] = pa;
+      saveWalk();
+      pickStep = -1;
+      document.getElementById('walkSaved').textContent = '\u2713 Saved — ' + (idx === 200 ? 'your categories' : idx === 201 ? 'your subcategories' : 'your favorites') + ' are on your account.';
+      setTimeout(function(){ goNext(); }, 900);
+      return;
+    }
     if (idx === 102) { close(); showPricingPop(); return; }
     var w = WALK[idx];
     var val = '';
@@ -4224,7 +4388,8 @@ var WALK = [
   window.NayaWalk = {
     answers: function(){ return answersByType; },
     complete: function(){ return walkComplete; },
-    save: saveWalk, load: loadWalk
+    save: saveWalk, load: loadWalk,
+    interests: function(){ var a = answersByType[pageType] || {}; return {categories: a.interests || '', subcategories: a['interest-subcategories'] || '', favorites: a.favorites || {}}; }
   };
   document.getElementById('walkPopClose').onclick = function(){ document.getElementById('walkPop').hidden = true; };
   document.getElementById('walkPriceFree').onclick = function(){ document.getElementById('walkPricePop').hidden = true; };
