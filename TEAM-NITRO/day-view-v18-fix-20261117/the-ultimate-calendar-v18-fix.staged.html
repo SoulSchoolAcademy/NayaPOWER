@@ -102,7 +102,8 @@
         font-family: "Archivo", system-ui, sans-serif;
         font-size: var(--type-small);
         -webkit-font-smoothing: antialiased;
-        overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: auto;
       }
       button { font-family: inherit; color: inherit; background: none; border: none; cursor: pointer; }
       button:focus-visible, input:focus-visible, textarea:focus-visible {
@@ -111,7 +112,7 @@
       }
 
       #app {
-        height: 100dvh;
+        min-height: 100dvh;
         display: flex;
         flex-direction: column;
         padding: clamp(8px, 1.6vmin, 18px);
@@ -1709,7 +1710,7 @@
    this round. It never covers content: 12px band vs the shell's 14px top
    / 10–40px side padding (8px band at ≤740px); pointer-events none; z 40
    sits ABOVE the scrim (z 30) so it stays visible around the pop-up panel. */
-:root{--dc:#3fb8ff}
+:root{--dc:#0f52ba}
 .royal-frame{position:fixed;inset:0;z-index:40;pointer-events:none;
   border:12px solid transparent;
   border-image:linear-gradient(135deg,#f2f2f5 0%,#c8ccd6 22%,#7a7e88 48%,#e8e8ec 68%,#9a9ea8 84%,#f2f2f5 100%) 1;
@@ -3337,6 +3338,117 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         .weekrow .wk-ico{width:16px!important;height:16px!important}
         .cell-core{gap:4px}
       }
+      /* ============ CALENDAR ROUND 3 — 2026-11-26 (captain's eye, try 3 of 3) ============
+         (1) PRESS, FELT NOT JUST MEASURED — the eye could not SEE a 0.97
+             computed press at desktop: 3% moves ~1px on a 44px button, true
+             in the matrix, invisible to the eye. The press keeps scale(0.97)
+             AND gains a visible light/shadow shift (brighter, shadow
+             collapses, rim ignites) on a fast 0.1s press transition
+             (Laws §4). :active beats :hover by later position at
+             equal-or-higher specificity on all four buttons.
+         (2) GLOW, DECIDED PER ELEMENT — outside rim light in the day's own
+             DEEP colour is lawful (Laws §7: the rim lights, a light glow of
+             the day's colour even at rest, brighter on hover, NO glow in
+             the middle; §4: no glow inside, ever). Diffuse blur ON digits
+             and text themselves is a violation — removed below. DAY_COLORS
+             deepened to the §3.3 Deep Palette (today's ring is now deep
+             emerald #07925f, not bright #2fe89e). What stays, and why:
+             cell/jewel/nav outside rim halos (light, day-coloured, §7);
+             today ring (spread, not blur). What goes: every `0 0 NNpx`
+             diffuse term on a digit or a word. Text that was pure day
+             colour is mixed toward white (as .now-time already is) so the
+             deep values stay readable.
+         (3) HEADER 561–640px — the fix-3 row override (line 2228) returns
+             above 560px, so at 573px icon+word sit side by side in a ~72px
+             column and bleed. Stacked here too, 561–640px.
+         (7) PLAQUE reads clean at 390 — nav clusters shrink to their
+             buttons, the plaque takes the middle, date on line 1, live
+             time on line 2, both centred and deliberate, never split
+             mid-date. DAY MENU (§14) — the day screen's blocks scroll
+             inside the inner stage and clear the pinned nav, so nothing
+             hides behind the frame or the nav at scroll 0. */
+      /* (1) PRESS — visible light + shadow shift, fast 0.1s, scale kept. */
+      #prevMonth:active, #nextMonth:active{
+        transform:scale(0.97)!important; filter:brightness(1.5)!important;
+        transition:transform .1s ease, filter .1s ease, box-shadow .1s ease!important;
+        box-shadow:0 0 26px rgba(142,36,170,.65), inset 0 1px 0 rgba(255,255,255,.45), inset 0 -6px 10px rgba(0,0,0,.5), 2px 3px 8px rgba(0,0,0,.55)!important;
+      }
+      .nowplaque:active{
+        transform:scale(0.97)!important; filter:brightness(1.5)!important;
+        transition:transform .1s ease, filter .1s ease, box-shadow .1s ease!important;
+        box-shadow:0 0 26px color-mix(in srgb, var(--dc) 55%, transparent), inset 0 1px 0 rgba(255,255,255,.45), inset 0 -6px 10px rgba(0,0,0,.5), 2px 3px 8px rgba(0,0,0,.55)!important;
+      }
+      .cell:not(.blank):active{
+        transform:scale(0.97)!important; filter:brightness(1.4)!important;
+        transition:transform .1s ease, filter .1s ease, box-shadow .1s ease, border-color .1s ease!important;
+        border-color:color-mix(in srgb, var(--dc) 95%, #ffffff 5%)!important;
+        box-shadow:0 0 0 2px color-mix(in srgb, var(--dc) 60%, transparent), 4px 5px 10px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.3), inset 0 -10px 16px rgba(0,0,0,.35)!important;
+      }
+      .cell.today:not(.blank):active{
+        border-color:#ffffff!important;
+        box-shadow:0 0 0 2px var(--dc), 4px 5px 10px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.3), inset 0 -10px 16px rgba(0,0,0,.35)!important;
+      }
+      /* (2a) Cell day names — layered edge light + drop shadow only. */
+      .cell-dayname{text-shadow:0 -1px 0 rgba(255,255,255,.28), 0 2px 3px rgba(0,0,0,.85)}
+      .cell:not(.blank):hover .cell-dayname{text-shadow:0 -1px 0 rgba(255,255,255,.35), 0 2px 3px rgba(0,0,0,.85)}
+      /* (2b) Weekday header letters — dark body, day-colour stroke, drop
+         shadow only. Today stays distinct by its lit ball + cell ring. */
+      .weekrow .wk-l{text-shadow:0 3px 6px rgba(0,0,0,.8)}
+      .weekrow > span.today-col .wk-l{text-shadow:0 3px 6px rgba(0,0,0,.8)}
+      /* (2c) Plaque + clock — layered, no diffuse white/day blur. */
+      .now-date{text-shadow:0 -1px 0 rgba(255,255,255,.28), 0 2px 3px rgba(0,0,0,.85)}
+      .now-time{text-shadow:0 2px 3px rgba(0,0,0,.7)}
+      .clock-colon{text-shadow:0 2px 3px rgba(0,0,0,.7)}
+      /* (2d) Day headliner labels — stroke + drop shadow, no blur. */
+      .hl-weekday,.phl-weekday{text-shadow:0 -1px 0 rgba(255,255,255,.28), 0 2px 3px rgba(0,0,0,.85)}
+      .monthname{text-shadow:0 -1px 0 rgba(255,255,255,.28), 0 2px 3px rgba(0,0,0,.85)}
+      .hl-monthline{text-shadow:0 2px 3px rgba(0,0,0,.7)}
+      .hl-script{text-shadow:0 -1px 0 rgba(255,255,255,.28), 0 2px 3px rgba(0,0,0,.85)}
+      /* (2d2) Day-colour TEXT mixed toward white, so the deep values stay
+         readable where a word (not a rim) wears the day's colour. */
+      .hl-monthline{color:color-mix(in srgb, var(--dc,#0f52ba) 62%, #ffffff 38%)}
+      .dayteach strong{color:color-mix(in srgb, var(--dc,#0f52ba) 62%, #ffffff 38%)}
+      .door-where{color:color-mix(in srgb, var(--dc,#0f52ba) 62%, #ffffff 38%)}
+      #greetClock[data-zone]::after{color:color-mix(in srgb, var(--dc,#0f52ba) 62%, #ffffff 38%)}
+      /* (2e) Digit tiles — Deep Palette values (Laws §4 digit map); the
+         diffuse halo OFF the tile: rim + directional shadow only. */
+      .os-mini-tile{box-shadow:0 4px 10px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.35)}
+      .os-mini-tile .rd{text-shadow:0 -1px 0 rgba(255,255,255,.28), 0 2px 3px rgba(0,0,0,.85)}
+      .os-mini-tile.d0{border-color:#ffffff;box-shadow:0 4px 10px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.35)}
+      .os-mini-tile.d1{border-color:#c62828;box-shadow:0 4px 10px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.35)}
+      .os-mini-tile.d2{border-color:#c2410c;box-shadow:0 4px 10px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.35)}
+      .os-mini-tile.d3{border-color:#d4a017;box-shadow:0 4px 10px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.35)}
+      .os-mini-tile.d4{border-color:#07925f;box-shadow:0 4px 10px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.35)}
+      .os-mini-tile.d5{border-color:#0e7490;box-shadow:0 4px 10px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.35)}
+      .os-mini-tile.d6{border-color:#3f51b5;box-shadow:0 4px 10px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.35)}
+      .os-mini-tile.d7{border-color:#8e24aa;box-shadow:0 4px 10px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.35)}
+      .os-mini-tile.d8{border-color:#6d28d9;box-shadow:0 4px 10px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.35)}
+      .os-mini-tile.d9{border-color:#a21caf;box-shadow:0 4px 10px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.35)}
+      .os-mini-tile.dollar{border-color:#d4a017;box-shadow:0 4px 10px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.35)}
+      .os-mini-tile.letter{box-shadow:0 4px 10px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.35)}
+      .os-mini-num.med .os-mini-tile{box-shadow:0 8px 18px rgba(0,0,0,.75), inset 0 1px 0 rgba(255,255,255,.35)}
+      .grid .os-mini-tile{box-shadow:0 2px 6px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.3)}
+      .grid .os-mini-tile .rd{text-shadow:0 -1px 0 rgba(255,255,255,.28), 0 2px 3px rgba(0,0,0,.85)}
+      /* (2f) The live dot stops pulsing — Playbook: nothing pulses for
+         effect. It stays lit; the ticking clock is the live proof. */
+      .live-dot{animation:none!important}
+      /* (3) Header 561–640px — stacked, like the phone fix. */
+      @media (min-width:561px) and (max-width:640px){
+        .weekrow .wk-col{flex-direction:column!important;gap:3px!important;padding-top:4px!important}
+        .weekrow .wk-ico{width:24px!important;height:24px!important}
+      }
+      /* (7a) Plaque reads clean at phone width — date line 1, time line 2. */
+      @media (max-width:640px){
+        .monthbar{gap:8px}
+        .navcluster{min-width:0!important}
+        .nowplaque{flex-wrap:wrap;justify-content:center;row-gap:2px;padding:8px 12px}
+        .now-date{font-size:17px;white-space:normal;text-align:center;text-wrap:balance}
+        .now-time{font-size:17px;order:2;text-align:center}
+        .nowplaque .live-dot{order:2}
+      }
+      /* (7b) DAY MENU (§14) — blocks scroll inside the inner stage and
+         clear the pinned nav; nothing hides behind frame or nav. */
+      #screen-day .smart-block{overflow-y:auto!important;padding-bottom:120px!important}
 </style>
   </head>
   <body>
@@ -3413,7 +3525,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         "use strict";
 
         /* The day colors — the law of the week */
-        var DAY_COLORS = ["#a06bff", "#ff9a5a", "#ffbf3d", "#3fb8ff", "#2fe89e", "#ff5e6c", "#3f51b5"];
+        var DAY_COLORS = ["#8e24aa", "#c2410c", "#d4a017", "#0f52ba", "#07925f", "#c62828", "#3f51b5"];
         /* DAY COLOURS + MEANINGS (live dictation 2026-11-18 — Shawn's newer
            word: Sun purple #a06bff · Mon orange #ff9a5a · Tue gold #ffbf3d ·
            Wed Kanye blue #3fb8ff · Thu green #2fe89e · Fri red #ff5e6c · Sat
@@ -4042,7 +4154,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
           var first = new Date(viewY, viewM, 1);
           var startDay = first.getDay();
           var start = new Date(viewY, viewM, 1 - startDay);
-          var html = "";
+          var cells = []; var lastReal = -1;
           for (var i = 0; i < 42; i++) {
             var d = new Date(start.getFullYear(), start.getMonth(), start.getDate() + i);
             var dow = d.getDay();
@@ -4062,7 +4174,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
             if (d.getMonth() !== viewM) {
               /* The other months are not shown at all — the cell stays
                  blank, no numbers bleeding into this month */
-              html += '<div class="cell blank" aria-hidden="true"></div>';
+              cells.push('<div class="cell blank" aria-hidden="true"></div>');
               continue;
             }
             /* Today is marked on the cell itself now (Amendment #3) —
@@ -4072,7 +4184,7 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
                names the date + live time */
             var label = WEEKDAYS[dow] + ", " + MONTHS[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear() +
                         (isToday(d) ? " — today" : "") + (na ? " — " + na + (na === 1 ? " appointment" : " appointments") : "");
-            html += '<button type="button" role="gridcell" class="cell' + (isToday(d) ? ' today' : '') + '" style="--dc:' + dc + '" data-y="' + d.getFullYear() +
+            cells.push('<button type="button" role="gridcell" class="cell' + (isToday(d) ? ' today' : '') + '" style="--dc:' + dc + '" data-y="' + d.getFullYear() +
                     '" data-m="' + d.getMonth() + '" data-d="' + d.getDate() + '" aria-label="' + label + '">' +
                     /* ROUND 1 (2026-11-26, Shawn's word): the day's FULL name
                        rides in the cell with its number — name above the
@@ -4080,9 +4192,14 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
                        dayDigitsHTML is untouched — the tiles stay verbatim. */
                     '<span class="cell-core"><span class="cell-dayname">' + WEEKDAYS[dow] + '</span>' +
                     dayDigitsHTML(d.getDate(), dc) + '</span>' +
-                    dots + jewelSVG() + "</button>";
+                    dots + jewelSVG() + "</button>"); lastReal = i;
           }
-          grid.innerHTML = html;
+          /* ROUND 3 — the grid renders only the rows the month needs:
+             trailing all-blank rows are dropped, never shown empty.
+             November 2026 needs 5 rows (Nov 1 is a Sunday, 30 days). */
+          var rows = Math.ceil((lastReal + 1) / 7);
+          grid.style.gridTemplateRows = "repeat(" + rows + ", 1fr)";
+          grid.innerHTML = cells.slice(0, rows * 7).join("");
         }
 
         function show(screen) {
