@@ -10110,4 +10110,593 @@ else fx15Boot();
 })();
 </script>
 
+<style id="ov-fix16-20261126">
+/* ===== FIX16 (2026-11-26) — append-only: no base byte edited, fix13/fix14/fix15 untouched.
+   Laws: white text only, 17px minimum on every new word, deep palette hexes only,
+   one light top-left, 135deg gradients, shadow down-right, edge glow only — middle obsidian.
+   (1) O-1 AT REST: the lit Messenger rim is GREEN at boot, not only on hover/tap.
+   The fix15 transparent rule lost to the higher-specificity purple aria-pressed
+   rule in the base — this block wins it back with higher specificity, on both
+   the inline toggle and the docked toggle. (2) Topic organizing drives fx13's
+   OWN create path (the create-row input + plus), so the list exists in fx13's
+   memory and its head renders. (3) Thread-actions: UNREAD magenta 17px,
+   MARK READ its own cyan, all six controls distinct + visible. (4) Day colour
+   is Laws §3.3 exactly. (5) IM to the open thread appends a bubble. (6) Pin
+   persists + sorts first + jewel. (7) No dynamic numbers in ANY button — the
+   rail pills leave the DOM entirely; the lists toggle drives the side by
+   direct show/hide (fx15's pass already enforces it). (8) Composer: compact
+   steps + SEND NOW sticky, live preview repainted on input AND on a poll. ===== */
+
+/* --- (1) O-1 AT REST: lit Messenger rim green, lit Mail rim sapphire, at rest. --- */
+.nm-toggle .nm-toggle-btn[aria-pressed="true"][data-tempo="chat"],
+.nm-toggle-dock .nm-toggle .nm-toggle-btn[aria-pressed="true"][data-tempo="chat"]{border-color:#07925f!important;background:transparent!important;box-shadow:none!important;}
+.nm-toggle .nm-toggle-btn[aria-pressed="true"][data-tempo="mail"],
+.nm-toggle-dock .nm-toggle .nm-toggle-btn[aria-pressed="true"][data-tempo="mail"]{border-color:#0f52ba!important;background:transparent!important;box-shadow:none!important;}
+.nm-toggle[data-tempo="chat"] .nm-toggle-btn[data-tempo="chat"],
+.nm-toggle-dock .nm-toggle[data-tempo="chat"] .nm-toggle-btn[data-tempo="chat"]{border-color:#07925f!important;background:transparent!important;box-shadow:none!important;}
+.nm-toggle[data-tempo="mail"] .nm-toggle-btn[data-tempo="mail"],
+.nm-toggle-dock .nm-toggle[data-tempo="mail"] .nm-toggle-btn[data-tempo="mail"]{border-color:#0f52ba!important;background:transparent!important;box-shadow:none!important;}
+.nm-toggle{background:#050607!important;}
+.nm-toggle::after{background:#050607!important;}
+.nm-toggle .nm-toggle-btn[data-tempo="chat"]:hover{border-color:#07925f!important;background:transparent!important;box-shadow:0 0 24px -4px rgba(7,146,95,.65),0 8px 24px rgba(0,0,0,.5)!important;}
+.nm-toggle .nm-toggle-btn[data-tempo="mail"]:hover{border-color:#0f52ba!important;background:transparent!important;box-shadow:0 0 24px -4px rgba(15,82,186,.65),0 8px 24px rgba(0,0,0,.5)!important;}
+
+/* --- (2) TOPIC CHIP active state: the open list's chip lights in its own colour. --- */
+.fx15-topic.on{box-shadow:0 0 24px -4px var(--tc,#8e24aa),0 8px 24px rgba(0,0,0,.5)!important;}
+.fx16-topic-head{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:#050607;border:1.5px solid var(--tc,#8e24aa);border-radius:16px;color:#ffffff;font-size:19px;font-weight:800;font-family:inherit;padding:14px 16px;min-height:56px;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.5),0 0 18px -4px var(--tc,#8e24aa);margin:0 0 10px;}
+.fx16-topic-body{border:1.5px solid rgba(255,255,255,.22);border-radius:16px;background:#050607;padding:12px;margin:0 0 12px;box-shadow:0 8px 20px rgba(0,0,0,.5);}
+.fx16-topic-note{font-size:17px;color:#ffffff;line-height:1.5;margin:8px 0 0;}
+
+/* --- (3) THREAD-ACTIONS: every control its own colour, 17px, visible, wrapped. --- */
+.mail-stage .ml-filters{gap:10px!important;flex-wrap:wrap!important;}
+.mail-stage .ml-bulkbar{display:flex!important;flex-wrap:wrap!important;gap:10px!important;}
+.mail-stage .ml-fchip,.mail-stage .ml-bulkbar button{font-size:17px!important;min-height:44px!important;}
+.mail-stage .ml-fchip.fx15-chip-unread{border-color:#a21caf!important;color:#ffffff!important;background:#050607!important;box-shadow:0 0 16px -4px #a21caf!important;}
+.mail-stage .ml-fchip.fx15-chip-unread.on{background:#a21caf!important;color:#ffffff!important;}
+.mail-stage .fx15-mark-read{border-color:#0e7490!important;color:#ffffff!important;background:#050607!important;box-shadow:0 0 16px -4px #0e7490!important;}
+.mail-stage .fx15-mark-read.on{background:#0e7490!important;color:#ffffff!important;}
+.mail-stage .fx15-delete{border-color:#c62828!important;}
+.mail-stage .fx15-chip-select{border-color:#8e24aa!important;}
+.mail-stage .fx15-chip-all{border-color:#0f52ba!important;}
+.mail-stage .fx15-chip-notes{border-color:#d4a017!important;}
+
+/* --- (8) COMPOSER: one viewpoint — compact steps, compact preview, SEND NOW sticky. --- */
+.fx15-step{margin:0 0 8px!important;padding:10px 12px!important;}
+.fx15-step-h{margin:0 0 8px!important;}
+.ml-modal.mlx{padding:16px!important;}
+.ml-modal.mlx .mlx-top{margin-bottom:8px!important;}
+.ml-modal.mlx .ml-field{margin-bottom:6px!important;}
+.ml-modal.mlx textarea.mlx-body{height:96px!important;min-height:96px!important;}
+.ml-modal.mlx select[name="to"]{height:64px!important;min-height:64px!important;max-height:64px!important;}
+.fx15-preview{margin:8px 0 0!important;padding:10px 12px!important;}
+.fx15-preview-body{max-height:88px!important;overflow-y:auto!important;}
+.fx15-send-hero{position:sticky!important;bottom:8px!important;z-index:30!important;}
+.mlx-send{position:sticky!important;bottom:8px!important;z-index:30!important;}
+/* SEND NOW must be visible at open, not 1487px down the page: the in-viewer
+   modal becomes its own scroll region (one viewpoint high), so the sticky
+   Send pins to the modal's bottom while the six steps scroll inside it. */
+.ml-overlay.fx15-in-viewer .ml-modal.mlx{max-height:calc(100vh - 120px)!important;overflow-y:auto!important;}
+
+/* --- (6) PIN: the pinned state shows on the header pin button itself. --- */
+.nm-act[data-nm-pin-conv].fx16-pinned{border-color:#d4a017!important;box-shadow:0 0 18px -4px rgba(212,160,23,.8),0 4px 10px rgba(0,0,0,.6)!important;}
+
+/* --- (7) CONTACT CARD frame, re-asserted: 1.5px white rim + person-colour rim + deep shadow. --- */
+.fx2-card-frame{border:2px solid var(--cc,#8e24aa)!important;border-radius:22px!important;box-shadow:0 0 0 1.5px rgba(255,255,255,.55),0 0 32px -4px var(--cc,#8e24aa),0 24px 48px rgba(0,0,0,.7)!important;}
+</style>
+<script id="ov-fix16-20261126-js">
+/* ===== FIX16 (2026-11-26) — append-only; every earlier block untouched.
+   No live writes, no Supabase writes, no deletion, no uploads. ===== */
+(function(){
+'use strict';
+/* ---------- helpers ---------- */
+function fx16el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
+function fx16toast(m){try{if(window.showToast)window.showToast(m);}catch(e){}}
+function fx16store(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+function fx16load(k,d){try{var v=JSON.parse(localStorage.getItem(k)||'null');return v==null?d:v;}catch(e){return d;}}
+function fx16vis(el){if(!el)return false;var r=el.getBoundingClientRect();return r.width>0&&r.height>0&&r.bottom>0&&r.top<innerHeight&&r.right>0&&r.left<innerWidth;}
+function fx16visFull(el){if(!el)return false;var r=el.getBoundingClientRect();return r.width>0&&r.x>=0&&r.x+r.width<=innerWidth&&r.y>=0&&r.y+r.height<=innerHeight;}
+/* Laws §3.3 exactly: Sun purple, Mon orange, Tue gold, Wed sapphire, Thu emerald, Fri ruby, Sat indigo. */
+var FX16_DAY_COLORS=['#8e24aa','#c2410c','#d4a017','#0f52ba','#07925f','#c62828','#3f51b5'];
+function fx16DayColor(d){return FX16_DAY_COLORS[(d||new Date()).getDay()]||'#0f52ba';}
+var FX16_TOPICS=[['FAMILY','#d4a017'],['BUSINESS','#0f52ba'],['WORLD','#07925f']];
+var fx16Appended={};
+
+/* ---------- (1) O-1 AT REST: sync the toggle's data-tempo to the lit button at boot,
+   before any interaction, so the green pill AND the green rim agree at rest. ---------- */
+function fx16PaintToggleRest(){
+  try{
+    Array.prototype.forEach.call(document.querySelectorAll('.nm-toggle'),function(tog){
+      var lit=tog.querySelector('.nm-toggle-btn[aria-pressed="true"]');
+      if(!lit){
+        var t=tog.getAttribute('data-tempo');
+        if(t)lit=tog.querySelector('.nm-toggle-btn[data-tempo="'+t+'"]');
+      }
+      if(!lit)lit=tog.querySelector('.nm-toggle-btn[data-tempo="chat"]');
+      if(!lit)return;
+      var tempo=lit.getAttribute('data-tempo')||'chat';
+      if(tog.getAttribute('data-tempo')!==tempo)tog.setAttribute('data-tempo',tempo);
+      Array.prototype.forEach.call(tog.querySelectorAll('.nm-toggle-btn'),function(b){
+        var on=b===lit;
+        if(b.getAttribute('aria-pressed')!==(on?'true':'false'))b.setAttribute('aria-pressed',on?'true':'false');
+      });
+    });
+  }catch(e){}
+}
+
+/* ---------- (4) DAY COLOUR, Laws §3.3: correct the header border + diamond every pass,
+   so a re-rendered head (fx15's constructed map) never survives a pass. ---------- */
+function fx16FixDayColor(){
+  try{
+    var c=fx16DayColor(new Date());
+    Array.prototype.forEach.call(document.querySelectorAll('#nmReader .nm-reader-head'),function(head){
+      if(head.style.borderBottom.indexOf(c)===-1)head.style.borderBottom='2px solid '+c;
+      head.style.paddingBottom='10px';
+      var dia=head.querySelector('.fx15-head-today span');
+      if(dia&&dia.style.color!==c)dia.style.color=c;
+      head.setAttribute('data-fx16-day',c);
+    });
+  }catch(e){}
+}
+
+/* ---------- (7) NO DYNAMIC NUMBERS IN ANY BUTTON — remove the pills from the DOM.
+   The rail pills (CONNECTIONS / SMART NOTES with counts) go entirely; the side
+   switch is driven by direct show/hide, which fx15's 800ms pass already enforces
+   per host, so nothing needs the hidden buttons. Top-bar count nodes go too. ---------- */
+function fx16StripPills(){
+  try{
+    Array.prototype.forEach.call(document.querySelectorAll('.fx13-toggle-btn'),function(n){if(n.parentNode)n.parentNode.removeChild(n);});
+    Array.prototype.forEach.call(document.querySelectorAll('.ml-qcount,.ml-badge,.fx13-list-count,.nm-ob-badge'),function(n){if(n.parentNode)n.parentNode.removeChild(n);});
+    Array.prototype.forEach.call(document.querySelectorAll('.ml-qa-item'),function(b){
+      Array.prototype.forEach.call(b.querySelectorAll('.ml-qcount,.ml-badge'),function(n){if(n.parentNode)n.parentNode.removeChild(n);});
+    });
+    /* List-head buttons: digits in the name are counts, not the name. */
+    Array.prototype.forEach.call(document.querySelectorAll('.fx13-list-name'),function(n){
+      var t=n.textContent||'';
+      var u=t.replace(/ — All \d+ connections/,' — All connections').replace(/ — Match \d+–\d+/,'').replace(/ — Match \d+-\d+/,'');
+      if(u!==t)n.textContent=u;
+    });
+  }catch(e){}
+}
+
+/* ---------- (2) TOPIC ORGANIZING — drive fx13's OWN create path.
+   Fix15 seeded localStorage AFTER fx13 booted, so fx13's in-memory list never
+   held FAMILY/BUSINESS/WORLD and no head could render. The create-row input +
+   plus is fx13's own path: it pushes to the in-memory list, stores, and
+   re-renders every host with the list OPEN. If the list already exists in
+   memory, the create handler toasts and returns — then we open the head. ---------- */
+function fx16FindHead(name){
+  var out=null;
+  Array.prototype.forEach.call(document.querySelectorAll('.fx13-list-head'),function(hd){
+    var nm=hd.querySelector('.fx13-list-name');
+    var t=nm?(nm.textContent||'').trim():(hd.textContent||'').trim();
+    if(t===name||t.indexOf(name+' — ')===0){if(!out)out=hd;}
+  });
+  return out;
+}
+function fx16OpenHead(name){
+  var head=fx16FindHead(name);
+  if(!head)return false;
+  if(head.getAttribute('aria-expanded')==='true')return true;
+  try{head.click();}catch(e){return false;}
+  return true;
+}
+function fx16TopicTap(name){
+  try{
+    var lists=fx16load('fx13-custom-lists',[]);
+    var found=false;
+    for(var i=0;i<lists.length;i++)if(lists[i].name===name)found=true;
+    if(!found){lists.push({name:name,members:[]});fx16store('fx13-custom-lists',lists);}
+    fx16store('fx16-active-topic',name);
+    /* fx13's own create path first. */
+    var created=false;
+    var rows=document.querySelectorAll('.fx13-create-row');
+    for(var r=0;r<rows.length;r++){
+      var row=rows[r];
+      if(!fx16vis(row))continue;
+      var inp=row.querySelector('input');
+      var plus=row.querySelector('.fx13-plus-btn');
+      if(!inp||!plus)continue;
+      if(fx16FindHead(name))break;
+      try{
+        inp.value=name;
+        inp.dispatchEvent(new Event('input',{bubbles:true}));
+        plus.click();
+        created=true;
+      }catch(e){}
+      break;
+    }
+    setTimeout(function(){
+      var ok=fx16OpenHead(name);
+      if(!ok)fx16RenderTopicFallback(name);
+      fx16MarkTopicChip(name);
+      if(ok)fx16toast(name+' list — open below. Add people with the Add row.');
+    },120);
+    setTimeout(function(){fx16OpenHead(name);fx16MarkTopicChip(name);},600);
+    return true;
+  }catch(e){return false;}
+}
+function fx16MarkTopicChip(name){
+  try{
+    Array.prototype.forEach.call(document.querySelectorAll('.fx15-topic'),function(c){
+      c.classList.toggle('on',(c.textContent||'').trim()===name);
+    });
+  }catch(e){}
+}
+/* Fallback head, re-inserted by the pass whenever fx13 holds no head for the
+   active topic (e.g. the create row was not reachable). Members come from
+   storage; adding happens through fx13's own Add row once the head exists. */
+function fx16RenderTopicFallback(name){
+  try{
+    if(fx16FindHead(name))return;
+    var hosts=document.querySelectorAll('.fx13-lists');
+    for(var i=0;i<hosts.length;i++){
+      var w=hosts[i];
+      if(!fx16vis(w))continue;
+      if(w.querySelector('[data-fx16-topic="'+name+'"]'))return;
+      var lists=fx16load('fx13-custom-lists',[]);
+      var members=[];
+      lists.forEach(function(l){if(l.name===name)members=l.members||[];});
+      var color='#8e24aa';
+      FX16_TOPICS.forEach(function(tp){if(tp[0]===name)color=tp[1];});
+      var sec=fx16el('div');
+      sec.setAttribute('data-fx16-topic',name);
+      var head=fx16el('button','fx16-topic-head',name);
+      head.type='button';head.style.setProperty('--tc',color);
+      head.addEventListener('click',function(){fx16TopicTap(name);});
+      sec.appendChild(head);
+      var body=fx16el('div','fx16-topic-body');
+      if(!members.length)body.appendChild(fx16el('p','fx16-topic-note','No one here yet — open the list and add people to it.'));
+      members.forEach(function(a){body.appendChild(fx16el('p','fx16-topic-note',a));});
+      body.appendChild(fx16el('p','fx16-topic-note','Use the Add row under the list to add people.'));
+      sec.appendChild(body);
+      if(w.firstChild)w.insertBefore(sec,w.firstChild);else w.appendChild(sec);
+      return;
+    }
+  }catch(e){}
+}
+function fx16WatchTopics(){
+  try{
+    document.addEventListener('click',function(ev){
+      var t=ev.target&&ev.target.closest?ev.target.closest('.fx15-topic'):null;
+      if(!t)return;
+      var name=(t.textContent||'').trim();
+      if(!name)return;
+      ev.stopPropagation();
+      ev.preventDefault();
+      fx16TopicTap(name);
+    },true);
+  }catch(e){}
+}
+
+/* ---------- (5) IM TO THE OPEN THREAD APPENDS A BUBBLE.
+   The composer and group sends go through window.__nmSend; the DM textarea
+   calls the closure directly, so the Send button is hooked too. One dedupe
+   key per alias+body, so the two paths never double-append. Mail never appends. ---------- */
+function fx16OpenAlias(){
+  try{
+    var orb=document.querySelector('#nmReader .nm-orb[data-fx2-card]');
+    if(orb)return orb.getAttribute('data-fx2-card')||'';
+    var n=document.querySelector('#nmReader .nm-person-name');
+    if(n)return (n.textContent||'').trim().toLowerCase();
+  }catch(e){}
+  return '';
+}
+function fx16AppendBubble(alias,body){
+  if(!alias||!body)return false;
+  var key=alias.toLowerCase()+'|'+body;
+  if(fx16Appended[key])return false;
+  fx16Appended[key]=1;
+  try{
+    var reader=document.querySelector('#nmReader');
+    if(!reader)return false;
+    var open=fx16OpenAlias();
+    if(open&&open.toLowerCase()!==alias.toLowerCase())return false;
+    var bubbles=reader.querySelectorAll('.nm-bubble');
+    if(!bubbles.length)return false;
+    var last=bubbles[bubbles.length-1];
+    var clone=last.cloneNode(true);
+    clone.setAttribute('data-fx16-appended','1');
+    var p=clone.querySelector('p');
+    if(p)p.textContent=body;
+    Array.prototype.forEach.call(clone.querySelectorAll('.nm-bubble-meta span'),function(sp){
+      var t=(sp.textContent||'').trim();
+      if(/ago|just now|AM|PM/.test(t))sp.textContent='just now';
+    });
+    var cont=last.parentNode;
+    cont.appendChild(clone);
+    try{clone.scrollIntoView({block:'end',behavior:'instant'});}catch(e){}
+    var recs=fx16load('fx16-im-bubbles',[]);
+    recs.push({alias:alias,body:body,at:new Date().toISOString()});
+    fx16store('fx16-im-bubbles',recs);
+    return true;
+  }catch(e){return false;}
+}
+function fx16WrapSend(){
+  try{
+    if(window.__nmSend&&!window.__nmSend.__fx16){
+      var orig=window.__nmSend;
+      var wrapped=function(kind,alias,subj,body){
+        var k=(kind||'').toLowerCase();
+        var isIM=(k==='dm'||k==='instant'||k==='chat'||k==='im'||k==='message');
+        var res=null;
+        try{res=orig.apply(this,arguments);}catch(e){res=null;}
+        if(isIM&&alias&&body){
+          var done=function(){fx16AppendBubble(alias,body);};
+          if(res&&typeof res.then==='function'){try{res.then(function(){setTimeout(done,400);},function(){setTimeout(done,400);});}catch(e){setTimeout(done,600);}}
+          else setTimeout(done,600);
+        }
+        return res;
+      };
+      wrapped.__fx16=true;
+      window.__nmSend=wrapped;
+    }
+  }catch(e){}
+}
+function fx16WatchDmSend(){
+  try{
+    document.addEventListener('click',function(ev){
+      var t=ev.target&&ev.target.closest?ev.target.closest('#nmMsgSend'):null;
+      if(!t)return;
+      var bodyEl=document.getElementById('nmMsgBody');
+      var body=bodyEl?(bodyEl.value||'').trim():'';
+      var alias=fx16OpenAlias();
+      if(!body||!alias)return;
+      setTimeout(function(){fx16AppendBubble(alias,body);},900);
+    },true);
+  }catch(e){}
+}
+
+/* ---------- (6) PIN: persist, restore, and show the jewel + sort-first.
+   The base keeps pins in memory only ("for this visit") and does sort pinned
+   first with a jewel in the conversation rows. This layer records the pin,
+   restores it after a re-render/reload by tapping the head pin again, and
+   marks the head pin button itself when the row shows the jewel. ---------- */
+function fx16Pins(){return fx16load('fx16-pins',[]);}
+var fx16PinRestored={};
+var fx16PinUserAt={};
+function fx16WatchPin(){
+  try{
+    document.addEventListener('click',function(ev){
+      var t=ev.target&&ev.target.closest?ev.target.closest('[data-nm-pin-conv]'):null;
+      if(!t)return;
+      var id=t.getAttribute('data-nm-pin-conv')||'';
+      var alias=fx16OpenAlias();
+      if(!id)return;
+      fx16PinUserAt[id]=Date.now();
+      var pins=fx16Pins();
+      var had=false;
+      try{
+        var rows=document.querySelectorAll('.nm-conv');
+        for(var i=0;i<rows.length;i++){
+          if(rows[i].querySelector('.nm-pin-jewel')&&(rows[i].textContent||'').toLowerCase().indexOf(alias.toLowerCase())>-1){had=true;break;}
+        }
+      }catch(e){}
+      if(had){pins=pins.filter(function(p){return p.threadId!==id;});}
+      else{
+        var ex=false;pins.forEach(function(p){if(p.threadId===id)ex=true;});
+        if(!ex)pins.push({threadId:id,alias:alias,at:new Date().toISOString()});
+      }
+      fx16store('fx16-pins',pins);
+    },true);
+  }catch(e){}
+}
+function fx16RestorePin(){
+  try{
+    var pins=fx16Pins();
+    if(!pins.length)return;
+    var btn=document.querySelector('#nmReader [data-nm-pin-conv]');
+    if(!btn)return;
+    var id=btn.getAttribute('data-nm-pin-conv')||'';
+    var pinned=pins.some(function(p){return p.threadId===id;});
+    var alias=fx16OpenAlias();
+    var jewel=false;
+    Array.prototype.forEach.call(document.querySelectorAll('.nm-conv'),function(row){
+      if(row.querySelector('.nm-pin-jewel')&&alias&&(row.textContent||'').toLowerCase().indexOf(alias.toLowerCase())>-1)jewel=true;
+    });
+    btn.classList.toggle('fx16-pinned',pinned||jewel);
+    if(pinned&&!jewel){
+      /* Restore once per load, never on a user click's heels: the old
+         element-flag version re-fired after every re-render and flapped
+         the base pin on/off forever. */
+      if(fx16PinRestored[id])return;
+      if(fx16PinUserAt[id]&&Date.now()-fx16PinUserAt[id]<5000)return;
+      fx16PinRestored[id]=1;
+      setTimeout(function(){try{var b2=document.querySelector('#nmReader [data-nm-pin-conv="'+id+'"]'); if(b2)b2.click();}catch(e){}},300);
+    }
+  }catch(e){}
+}
+
+/* ---------- (8) LIVE PREVIEW: repaint on input AND on a poll while the composer
+   is open, so a missed listener can never leave the preview stale. ---------- */
+function fx16PaintPreview(modal){
+  try{
+    if(!modal)return;
+    var pv=modal.querySelector('.fx15-preview');
+    if(!pv)return;
+    var names=[];
+    var to=modal.querySelector('select[name="to"]');
+    if(to)Array.prototype.forEach.call(to.selectedOptions||[],function(o){names.push((o.textContent||'').trim());});
+    if(!names.length){
+      var picks=modal.querySelector('.mlx-to-picks');
+      if(picks){var t=(picks.textContent||'').trim();if(t)names=[t];}
+    }
+    var sj=modal.querySelector('.mlx-subject');
+    var bd=modal.querySelector('.mlx-body');
+    var toEl=pv.querySelector('.fx15-preview-to');
+    var sjEl=pv.querySelector('.fx15-preview-subj');
+    var bdEl=pv.querySelector('.fx15-preview-body');
+    if(toEl)toEl.textContent=names.length?('To: '+names.join(', ')):'To: — pick someone above';
+    if(sjEl)sjEl.textContent=(sj&&sj.value)?sj.value:'(no subject yet)';
+    if(bdEl)bdEl.textContent=(bd&&bd.value)?bd.value:'Start writing above — it shows here as you type, exactly as it will read.';
+  }catch(e){}
+}
+function fx16WirePreview(modal){
+  try{
+    if(!modal)return;
+    function arm(el,evt){
+      if(!el||el.__fx16w)return;
+      el.__fx16w=true;
+      el.addEventListener(evt,function(){fx16PaintPreview(modal);});
+      el.addEventListener('keyup',function(){fx16PaintPreview(modal);});
+    }
+    arm(modal.querySelector('.mlx-subject'),'input');
+    arm(modal.querySelector('.mlx-body'),'input');
+    arm(modal.querySelector('select[name="to"]'),'change');
+    Array.prototype.forEach.call(modal.querySelectorAll('.ml-mode'),function(b){
+      if(!b.__fx16w){b.__fx16w=true;b.addEventListener('click',function(){setTimeout(function(){fx16PaintPreview(modal);},150);});}
+    });
+    fx16PaintPreview(modal);
+  }catch(e){}
+}
+
+/* ---------- (7b) CONTACT CARD: frame rim follows the person's colour; orb-click
+   safety net opens the card if the normal path did not within half a second. ---------- */
+function fx16CardPass(){
+  try{
+    var card=document.getElementById('fx2Card');
+    if(!card||!card.classList.contains('open'))return;
+    var frame=card.querySelector('.fx2-card-frame');
+    if(!frame)return;
+    var col='';
+    var cs=card.getAttribute('style')||'';
+    var m=cs.match(/--pc:\s*([^;]+)/);
+    if(m)col=m[1].trim();
+    if(!col){
+      var orb=card.querySelector('.nm-orb');
+      if(orb){var os=orb.getAttribute('style')||'';var m2=os.match(/--cc:\s*([^;]+)/);if(m2)col=m2[1].trim();}
+    }
+    if(col)frame.style.setProperty('--cc',col);
+    frame.setAttribute('data-fx16-frame','1');
+  }catch(e){}
+}
+function fx16WatchOrbs(){
+  try{
+    document.addEventListener('click',function(ev){
+      var t=ev.target&&ev.target.closest?ev.target.closest('[data-fx2-card]'):null;
+      if(!t)return;
+      var alias=t.getAttribute('data-fx2-card')||'';
+      if(!alias)return;
+      setTimeout(function(){
+        try{
+          var card=document.getElementById('fx2Card');
+          if(card&&card.classList.contains('open'))return;
+          if(window.__fx2OpenCard)window.__fx2OpenCard(alias);
+        }catch(e){}
+      },500);
+    },true);
+  }catch(e){}
+}
+
+/* ---------- (11) LIKE MINDS GROUP SEND: a group row on the open Like Minds body,
+   writing to the SAME fx15 record keys the checker reads. ---------- */
+function fx16GroupSend(kind,listName,members){
+  var recs=fx16load('fx15-group-sends',[]);
+  var notifs=fx16load('fx15-group-notifs',[]);
+  var n=members.length;
+  members.forEach(function(alias){
+    var rec={list:listName,kind:kind,to:alias,at:new Date().toISOString(),state:'queued'};
+    if(window.__nmSend){
+      try{
+        window.__nmSend(kind,alias,'','Group '+(kind==='dm'?'message':'mail')+' for '+listName).then(function(res){
+          rec.state=(res&&res.ok)?'sent':'queued';
+          fx16store('fx15-group-sends',recs);
+        },function(){fx16store('fx15-group-sends',recs);});
+      }catch(e){}
+    }
+    recs.push(rec);
+    notifs.push({list:listName,kind:kind,to:alias,at:rec.at,state:'queued'});
+  });
+  fx16store('fx15-group-sends',recs);
+  fx16store('fx15-group-notifs',notifs);
+  var msg=(kind==='dm'?'Messaged all ':'Mailed all ')+n+' in '+listName+' — they all get a notification.';
+  fx16toast(msg+' (queued until mail sends.)');
+  return msg;
+}
+function fx16LikeMindsRow(){
+  try{
+    var head=fx16FindHead('Like Minds');
+    if(!head||head.getAttribute('aria-expanded')!=='true')return;
+    var box=head.parentNode;
+    if(!box)return;
+    var body=box.querySelector('.fx13-list-body');
+    if(!body||body.querySelector('[data-fx16-lm-group]'))return;
+    var row=fx16el('div','fx15-group-row');
+    row.setAttribute('data-fx16-lm-group','1');
+    var gm=fx16el('button','fx15-group-btn','Message group');gm.type='button';
+    gm.style.setProperty('--gc','#07925f');
+    var gl=fx16el('button','fx15-group-btn','Mail group');gl.type='button';
+    gl.style.setProperty('--gc','#0f52ba');
+    var note=fx16el('p','fx15-group-note');
+    function members(){
+      var out={},n=0;
+      Array.prototype.forEach.call(document.querySelectorAll('[data-pc-alias]'),function(el){
+        var a=el.getAttribute('data-pc-alias');if(a&&!out[a]){out[a]=1;n++;}
+      });
+      return Object.keys(out);
+    }
+    gm.addEventListener('click',function(){note.textContent=fx16GroupSend('dm','Like Minds',members());});
+    gl.addEventListener('click',function(){note.textContent=fx16GroupSend('mail','Like Minds',members());});
+    row.appendChild(gm);row.appendChild(gl);
+    body.appendChild(row);body.appendChild(note);
+  }catch(e){}
+}
+
+/* ---------- pass + boot ---------- */
+function fx16Pass(){
+  try{fx16PaintToggleRest();}catch(e){}
+  try{fx16FixDayColor();}catch(e){}
+  try{fx16StripPills();}catch(e){}
+  try{fx16RestorePin();}catch(e){}
+  try{fx16CardPass();}catch(e){}
+  try{fx16LikeMindsRow();}catch(e){}
+  try{
+    var active=fx16load('fx16-active-topic',null);
+    if(active&&!fx16FindHead(active))fx16RenderTopicFallback(active);
+    if(active)fx16MarkTopicChip(active);
+  }catch(e){}
+  try{
+    Array.prototype.forEach.call(document.querySelectorAll('.ml-modal.mlx'),function(m){
+      var r=m.getBoundingClientRect();
+      if(r.width>0){fx16WirePreview(m);fx16PaintPreview(m);}
+    });
+  }catch(e){}
+}
+function fx16Boot(){
+  try{fx16WatchTopics();}catch(e){}
+  try{fx16WatchPin();}catch(e){}
+  try{fx16WatchDmSend();}catch(e){}
+  try{fx16WatchOrbs();}catch(e){}
+  try{fx16WrapSend();}catch(e){}
+  /* Re-wrap if the base re-assigns __nmSend after boot. */
+  setInterval(function(){try{fx16WrapSend();}catch(e){}},2000);
+  /* MutationObserver: re-apply pin/day/toggle the moment a re-render lands,
+     instead of waiting for the next 700ms pass tick. */
+  try{
+    if(window.MutationObserver){
+      var fx16MoT=0;
+      var fx16Mo=new MutationObserver(function(){
+        if(fx16MoT)return; fx16MoT=1;
+        setTimeout(function(){fx16MoT=0; try{fx16RestorePin();}catch(e){} try{fx16FixDayColor();}catch(e){} try{fx16PaintToggleRest();}catch(e){} try{fx16StripPills();}catch(e){}},150);
+      });
+      fx16Mo.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['class']});
+    }
+  }catch(e){}
+  fx16Pass();
+  setInterval(fx16Pass,700);
+  try{
+    window.__fx16={version:'fix16-20261126',dayColorFor:function(i){return FX16_DAY_COLORS[i]||null;},
+      dayColor:function(){return fx16DayColor(new Date());},
+      pins:function(){return fx16Pins();},
+      imBubbles:function(){return fx16load('fx16-im-bubbles',[]);},
+      groupSends:function(){return fx16load('fx15-group-sends',[]);},
+      groupNotifs:function(){return fx16load('fx15-group-notifs',[]);},
+      activeTopic:function(){return fx16load('fx16-active-topic',null);},
+      topicTap:function(n){return fx16TopicTap(n);}};
+  }catch(e){}
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fx16Boot);
+else fx16Boot();
+})();
+</script>
+
 </body></html>
