@@ -1771,6 +1771,60 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 #slideTextCenter .ib-layer-body .b-script{padding-right:56px!important}
 #slideTextCenter .ib-layer-body p{visibility:hidden}
 </style>
+<style id="reports-fix10-20261126">
+/* REPORTS FIX10 — 2026-11-27. Eye-walk defects only (fix9 checker 9.5/10, eye 7/10).
+   ADDITIVE ONLY: no base rule is removed or restyled by editing it — every fix
+   below is a new rule that wins by later position / higher specificity. */
+/* (1) FULL SCREEN — single title, filled board. The dialog prints the title twice
+   (fs-top .fs-title + .fs-head inside the body); the head copy goes. The body
+   centres its content vertically (safe center: never clips when content is tall)
+   and the teaser reads at headline scale in Marcellus, white, on obsidian. */
+#fsView .fs-head{display:none!important}
+#fsView .fs-top{margin-bottom:4px}
+#fsView .fs-title{font-family:Marcellus,serif!important;font-size:25px!important}
+#fsView .fs-body{display:flex!important;flex-direction:column!important;justify-content:safe center!important;padding:24px 6vw!important}
+#fsView .fs-para{font-family:Marcellus,serif!important;font-size:25px!important;line-height:1.5!important;color:#fff!important;max-width:1050px!important;width:100%!important;margin:0 auto 18px!important;text-align:center!important}
+#fsView .fs-para:last-child{margin-bottom:0!important}
+#fsView .fs-img{max-height:calc(100dvh - 180px)!important;margin:auto!important}
+#fsView .fs-vid{margin:auto!important;width:100%!important;max-width:1100px!important}
+/* (2) SCROLL CLEARANCE — the sticky daybar must never clip a section card's top
+   or its "Read the deep dive" pill. Anchor/programmatic scrolls stop clear of it. */
+html{scroll-padding-top:150px!important}
+#screen-slide,.screen,.rp-nine-board,.rp-trio{scroll-margin-top:150px!important}
+/* (3) FILL THE BOARDS — vertically centre board content so the text sits in the
+   middle of the board instead of floating in a quarter of it. The depth thirds
+   show one sentence at level 1; centring is what fills them elegantly. */
+#depthBody .ib-layer-body{justify-content:center!important}
+#depthBody .ib-layer-body .b-script{margin-bottom:10px!important}
+#slideTextCenter .ib-layer-body{justify-content:center!important}
+/* (5) NEXT — visible word under the depth N, Marcellus white 19px. */
+#depthView .rp10-next-label{font-family:Marcellus,serif;font-size:19px;color:#fff;letter-spacing:.18em;text-align:center}
+/* (6) BACK BUTTONS IN THE BOTTOM CORNERS — one each side, main page and overlay.
+   The centred .floatnav pair is untouched (gap 12, centred — proven). The corner
+   buttons ride the section / dialog corners in-flow (absolute, never fixed over
+   content while scrolling). */
+.screen{position:relative}
+#screen-cover .rp10-corner,#screen-slide .rp10-corner{position:absolute;bottom:12px;z-index:6;display:flex;align-items:center;gap:8px;font-family:Marcellus,serif;font-size:17px;color:#fff;background:#050607;border:2px solid var(--cb,#0f52ba);border-radius:999px;padding:10px 16px;cursor:pointer;box-shadow:0 10px 24px rgba(0,0,0,.55),0 0 18px -4px var(--cb,#0f52ba)}
+#screen-cover .rp10-corner:hover,#screen-slide .rp10-corner:hover{transform:translateY(-2px)}
+#screen-cover .rp10-corner:active,#screen-slide .rp10-corner:active{transform:scale(.97)}
+.rp10-corner--back{left:12px;--cb:#0f52ba}
+.rp10-corner--fwd{right:12px;--cb:#07925f}
+#depthView .innov-pop-card{position:relative}
+#depthView .rp10-corner{position:absolute;bottom:16px;z-index:6;display:flex;align-items:center;gap:8px;font-family:Marcellus,serif;font-size:17px;color:#fff;background:#050607;border:2px solid var(--cb,#0f52ba);border-radius:999px;padding:10px 16px;cursor:pointer;box-shadow:0 10px 24px rgba(0,0,0,.55),0 0 18px -4px var(--cb,#0f52ba)}
+#depthView .rp10-corner:hover{transform:translateY(-2px)}
+#depthView .rp10-corner:active{transform:scale(.97)}
+#depthView .rp10-corner--back{left:16px;--cb:#0f52ba}
+#depthView .rp10-corner--fwd{right:16px;--cb:#07925f}
+/* (2) FOOTER — the page ends on content, never on empty sunburst. Obsidian,
+   Marcellus white, one deep-gold rim. */
+#rpFooter{margin:48px auto 24px;max-width:1200px;background:#050607;border:2px solid #d4a017;border-radius:20px;padding:28px 24px 24px;text-align:center;box-shadow:0 14px 30px rgba(0,0,0,.56),0 0 26px -6px #d4a017}
+#rpFooter h2{font-family:Marcellus,serif;font-size:25px;color:#fff;margin:0 0 8px}
+#rpFooter p{font-family:Marcellus,serif;font-size:19px;color:#fff;margin:0 0 16px;line-height:1.5}
+#rpFooter .rp10-foot-days{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:0 0 16px}
+#rpFooter .rp10-foot-days button{font-family:Marcellus,serif;font-size:17px;color:#fff;background:#050607;border:2px solid var(--dc,#8e24aa);border-radius:999px;padding:10px 18px;cursor:pointer}
+#rpFooter .rp10-foot-days button:hover{transform:translateY(-2px)}
+#rpFooter .rp10-foot-top{font-family:Marcellus,serif;font-size:17px;color:#fff;background:#050607;border:2px solid #d4a017;border-radius:999px;padding:10px 18px;cursor:pointer}
+</style>
 </head>
 <body>
 <div class="royal-frame" aria-hidden="true"><div class="rf-et top"></div><div class="rf-es left"></div><div class="rf-es right"></div><div class="rf-rim"></div><div class="rf-corner tl"></div><div class="rf-corner tr"></div><div class="rf-corner bl"></div><div class="rf-corner br"></div><div class="rf-n top"></div></div>
@@ -4235,6 +4289,283 @@ current = 0; renderSlide(); show('cover');
       return r;
     };
   }
+})();
+</script>
+<script id="reports-fix10-js">
+/* REPORTS FIX10 — 2026-11-27. Eye-walk defects only. ADDITIVE ONLY: wraps and
+   overrides, no base function edited. Runs before </body>, after every base
+   and fix3–fix9 script, so each wrap composes on the current global. */
+(function(){
+/* (4) NOV 22 COVER — the filed centre text is a raw metadata dump ("Header —
+   Date: … Main tip at writing: e52f090c… (live ref read this run via …" — a hash,
+   truncated mid-sentence). The Nov 22 report HAS no section titled "In a
+   Nutshell"; its filed nutshell-equivalent is §9 "What is it saying, in the
+   simplest words?" (GROUPS[2].d[9]). Its first sentence, verbatim, is the
+   teaser now — filed prose, sentence boundary, no hash, no invented words.
+   The override is RUNTIME ONLY: the filed GROUPS bytes stay verbatim; the
+   depth view (which reads g.d, never g.a) is untouched. */
+var NOV22_TEASER = 'The team cleaned perfectly and thought in bursts: every waiting note got its number, a doubled number was fixed fairly, and a whole week of lessons was squeezed into twenty-seven notes in one morning \u2014 but no pull request was finished, the big pile of unthought notes grew even on the cleaning day because cleaning feeds it, and the work rate slipped back; so the plain lesson is that cleaning and filing are now strong, and the next strength to build is finishing \u2014 finishing the waiting code, finishing the judged work, and doing the deep thinking on a steady rhythm instead of in bursts.';
+try {
+  if (typeof GROUPS !== 'undefined' && GROUPS[2]) {
+    GROUPS[2].a = NOV22_TEASER;
+    if (typeof RUNTIME_TXT !== 'undefined' && RUNTIME_TXT['2-C'] !== undefined) RUNTIME_TXT['2-C'] = NOV22_TEASER;
+    if (typeof CONTINUED !== 'undefined') delete CONTINUED['2-C'];
+    if (typeof BEHIND !== 'undefined' && BEHIND[2]) BEHIND[2] = BEHIND[2].filter(function(L){ return L.cont !== 'C'; });
+  }
+} catch (e) {}
+/* (7b) DANGLING "1." — firstSentence("1. SN-4853 — ...") returns the bare
+   marker "1." (its regex stops at the first period). Any bare list marker is
+   now joined to the sentence that follows it, so a deep-dive centre slide
+   never shows a lone "1." again. Applies everywhere firstSentence is read
+   (centre thirds, near captions, deeper lines). */
+try {
+  if (typeof firstSentence === 'function') {
+    var __rp10FS = firstSentence;
+    firstSentence = function(t){
+      var r = __rp10FS(t);
+      if (/^\d+[.)]\s*$/.test(r)) {
+        var rest = String(t || '').trim().slice(r.length).trim();
+        var m2 = rest.match(/^[^.!?]+[.!?]/);
+        if (m2) return r + ' ' + m2[0];
+      }
+      return r;
+    };
+  }
+} catch (e) {}
+/* (3b) SECTION-7 DUPLICATE TUNNEL — depthThirdsFor gives a dtext layer the
+   same fallback picture on BOTH sides whenever the chapter has no depth
+   picture for those slots (sec >= DEPTH_IMGS length): left and right both
+   fall back to the front board image. The right side now takes a different
+   fitting image already in the file — the chapter's own second front image
+   (GROUPS[board].img2), else the next depth picture, else the next slide
+   image — never the same image twice side by side. */
+try {
+  if (typeof depthThirdsFor === 'function') {
+    var __rp10DTF = depthThirdsFor;
+    depthThirdsFor = function(boardIdx, L){
+      var t = __rp10DTF(boardIdx, L);
+      try {
+        if (t && t.length === 3 && t[0] && t[2] && t[0].kind === 'img' && t[2].kind === 'img' && t[0].src === t[2].src) {
+          var g = (typeof GROUPS !== 'undefined') ? GROUPS[boardIdx] : null;
+          var alt = null;
+          var ims = (typeof DEPTH_IMGS !== 'undefined' && DEPTH_IMGS[boardIdx]) ? DEPTH_IMGS[boardIdx] : [];
+          for (var k = 0; k < ims.length; k++) { if (ims[k] && ims[k] !== t[0].src) { alt = ims[k]; break; } }
+          if (!alt && g && typeof EMBED !== 'undefined' && EMBED.slides) {
+            var s2 = EMBED.slides[g.img2];
+            if (s2 && s2 !== t[0].src) alt = s2;
+            else if (EMBED.slides[(g.img + 1) % EMBED.slides.length] !== t[0].src) alt = EMBED.slides[(g.img + 1) % EMBED.slides.length];
+          }
+          if (alt) {
+            t[2] = { kind: 'img', src: alt, label: (g ? g.t : '') + ' \u00b7 second picture', near: t[2].near || '', sec: t[2].sec };
+          }
+        }
+      } catch (e2) {}
+      return t;
+    };
+  }
+} catch (e) {}
+/* (5) NEXT + ARROWRIGHT IN THE DEPTH VIEW — the advance control is an
+   unlabelled red N ("Go deeper"). A visible NEXT word rides under it, and
+   ArrowRight steps the presentation while the depth is open instead of
+   stepping the page behind it (capture phase + stopImmediatePropagation:
+   the base keydown handler on document never sees the event). */
+try {
+  var dn = document.getElementById('depthN');
+  if (dn && !document.querySelector('#depthView .rp10-next-label')) {
+    var nl = document.createElement('span');
+    nl.className = 'rp10-next-label';
+    nl.textContent = 'NEXT';
+    dn.parentNode.appendChild(nl);
+    dn.setAttribute('aria-label', 'Go deeper — NEXT');
+  }
+  document.addEventListener('keydown', function(e){
+    if (e.key !== 'ArrowRight') return;
+    var dv = document.getElementById('depthView');
+    if (dv && !dv.hidden) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      var n = document.getElementById('depthN');
+      if (n) n.click();
+    }
+  }, true);
+} catch (e) {}
+/* (6) BACK BUTTONS IN THE BOTTOM CORNERS — main page (both screens) and the
+   depth overlay, one each side. They click the proven controls (never a
+   re-implementation): corner Back mirrors the active screen's Back, corner
+   Forward mirrors its Forward; in the overlay they mirror depthBackTop /
+   depthN. The centred .floatnav pair is untouched. */
+function rp10WireCorner(btn, fn){ if (btn) btn.addEventListener('click', function(e){ e.preventDefault(); fn(); }); }
+try {
+  ['screen-cover', 'screen-slide'].forEach(function(id){
+    var sec = document.getElementById(id);
+    if (!sec || sec.querySelector('.rp10-corner')) return;
+    var back = document.createElement('button');
+    back.type = 'button'; back.className = 'rp10-corner rp10-corner--back';
+    back.setAttribute('aria-label', 'Back');
+    back.innerHTML = '\u2039 Back';
+    var fwd = document.createElement('button');
+    fwd.type = 'button'; fwd.className = 'rp10-corner rp10-corner--fwd';
+    fwd.setAttribute('aria-label', 'Forward');
+    fwd.innerHTML = 'Forward \u203a';
+    sec.appendChild(back); sec.appendChild(fwd);
+    rp10WireCorner(back, function(){
+      var cover = document.getElementById('screen-cover');
+      if (cover && cover.classList.contains('active')) { var b = document.getElementById('btnBackCover'); if (b) b.click(); }
+      else { var b2 = document.getElementById('btnBack'); if (b2) b2.click(); }
+    });
+    rp10WireCorner(fwd, function(){
+      var cover = document.getElementById('screen-cover');
+      if (cover && cover.classList.contains('active')) { var b = document.getElementById('btnForwardCover'); if (b) b.click(); }
+      else { var b2 = document.getElementById('btnForward'); if (b2) b2.click(); }
+    });
+  });
+  var dv = document.getElementById('depthView');
+  if (dv && dv.querySelector('.innov-pop-card') && !dv.querySelector('.rp10-corner')) {
+    var card = dv.querySelector('.innov-pop-card');
+    var dback = document.createElement('button');
+    dback.type = 'button'; dback.className = 'rp10-corner rp10-corner--back';
+    dback.setAttribute('aria-label', 'Back');
+    dback.innerHTML = '\u2039 Back';
+    var dnext = document.createElement('button');
+    dnext.type = 'button'; dnext.className = 'rp10-corner rp10-corner--fwd';
+    dnext.setAttribute('aria-label', 'Next — go deeper');
+    dnext.innerHTML = 'NEXT \u203a';
+    card.appendChild(dback); card.appendChild(dnext);
+    rp10WireCorner(dback, function(){ var b = document.getElementById('depthBackTop'); if (b) b.click(); });
+    rp10WireCorner(dnext, function(){ var n = document.getElementById('depthN'); if (n) n.click(); });
+  }
+} catch (e) {}
+/* (2) FOOTER — the page ends on content: Reports title, the week, the three
+   filed days (real ?day= navigation), and Back to the top. Appended at the end
+   of the body, after the last screen — HONEST NOTE: it was first tried inside
+   the slide panel, but the fixed-height panel is a flex column and the footer
+   stole its space, collapsing the showcase centre body to 52px (centre teaser
+   read "126", 3 chars, against the settled 126-char fit). Body-end cannot
+   touch the panel layout; the page scrolls to the footer and ends on content. */
+try {
+  if (!document.getElementById('rpFooter')) {
+    var ft = document.createElement('footer');
+    ft.id = 'rpFooter';
+    ft.innerHTML = '<h2>Reports \u2014 NayaNET</h2>'
+      + '<p>Daily Intelligence Reports \u00b7 November 22\u201328, 2026 \u00b7 the week\u2019s reports, filed and kept.</p>'
+      + '<div class="rp10-foot-days">'
+      + '<button type="button" data-day="2026-11-22" style="--dc:#8e24aa">Sunday \u00b7 Nov 22</button>'
+      + '<button type="button" data-day="2026-11-23" style="--dc:#c2410c">Monday \u00b7 Nov 23</button>'
+      + '<button type="button" data-day="2026-11-24" style="--dc:#d4a017">Tuesday \u00b7 Nov 24</button>'
+      + '</div>'
+      + '<button type="button" class="rp10-foot-top">Back to the top \u2191</button>';
+    document.body.appendChild(ft);
+    ft.querySelector('.rp10-foot-top').addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    ft.querySelectorAll('.rp10-foot-days button').forEach(function(b){
+      b.addEventListener('click', function(){
+        var d = b.getAttribute('data-day');
+        var url = new URL(window.location.href);
+        url.searchParams.set('day', d);
+        window.location.href = url.toString();
+      });
+    });
+  }
+} catch (e) {}
+/* (7a) EXCERPT FIT — a fitted board text that ends mid-sentence with "…"
+   is cut back to its last clean sentence boundary; the cut fragment is put
+   back at the head of that slot's continuation, so nothing is lost — the
+   rest still waits behind the N. SCOPE: only numbered-list section texts
+   (the walk's sections, e.g. "1. SN-4853 — ...") — the centre teaser
+   ("126 Smart Notes were filed today…", 65/126-char settled fit) is never
+   touched. The nine-board excerpts get the same sentence-boundary trim
+   (display-only; the deep dive reads g.d directly, so nothing is lost). */
+function rp10SentenceTrim(p){
+  var txt = p.textContent || '';
+  if (!txt) return null;
+  var cut = txt;
+  if (/…$/.test(cut)) cut = cut.slice(0, -1);
+  if (/[.!?]$/.test(cut)) return null; /* already ends cleanly */
+  var m = cut.match(/^(.*[.!?])[^.!?]*$/);
+  if (!m || !m[1] || m[1].length < 20) return null;
+  var frag = cut.slice(m[1].length).trim();
+  p.textContent = m[1];
+  return frag || null;
+}
+function rp10FitWalkBoard(){
+  return; /* FIX10v2 DISABLED: the loop popped sentences until only "1." was left — the board top sits below the panel bottom (measured 938 vs 767 at 1440), so no trim can make it fit; trimming only destroyed content. The sentence-boundary trim (rp10SentenceTrim) stays. */
+  try {
+    var board = document.querySelector('#rpNine .rp-nine-board');
+    var panel = document.querySelector('#screen-slide .panel-body');
+    if (!board || !panel) return;
+    if (!panel.getBoundingClientRect().height) return;
+    var p = board.querySelector('p');
+    if (!p) return;
+    var sents = (p.textContent || '').match(/[^.!?]+[.!?]/g);
+    if (!sents || sents.length < 2) return;
+    var guard = 0;
+    while (sents.length > 1 && guard++ < 40 && board.getBoundingClientRect().bottom > panel.getBoundingClientRect().bottom + 1) {
+      sents.pop();
+      p.textContent = sents.join(' ').replace(/s+/g, ' ').trim();
+    }
+  } catch (e) {}
+}
+try {
+  if (typeof fitPanels === 'function') {
+    var __rp10FP = fitPanels;
+    fitPanels = function(){
+      var r = __rp10FP.apply(this, arguments);
+      try {
+        var boards = document.querySelectorAll('#screen-slide .ib-layer-body p');
+        for (var i = 0; i < boards.length; i++) {
+          var p = boards[i];
+          var txt = p.textContent || '';
+          if (!/^d+[.)]s/.test(txt) || !/…$/.test(txt)) continue;
+          var frag = rp10SentenceTrim(p);
+          if (!frag) continue;
+          var layer = p.closest ? p.closest('.ib-layer') : null;
+          var slotEl = layer ? layer.querySelector('[data-slot]') : null;
+          var slot = slotEl ? slotEl.getAttribute('data-slot') : null;
+          if (slot && typeof current !== 'undefined') {
+            var key = current + '-' + slot;
+            if (typeof CONTINUED !== 'undefined' && CONTINUED[key] !== undefined) CONTINUED[key] = frag + ' ' + CONTINUED[key];
+            if (typeof BEHIND !== 'undefined') {
+              var arr = BEHIND[current] || (BEHIND[current] = []);
+              var found = false;
+              for (var j = 0; j < arr.length; j++) { if (arr[j].cont === slot) { arr[j].text = frag + ' ' + arr[j].text; found = true; break; } }
+              if (!found) arr.push({ kind: 'text', text: frag, cont: slot });
+            }
+          }
+        }
+        var nine = document.querySelectorAll('.rp-nine-board p');
+        for (var k = 0; k < nine.length; k++) rp10SentenceTrim(nine[k]); rp10FitWalkBoard();
+      } catch (e2) {}
+      return r;
+    };
+  }
+  if (typeof renderSlide === 'function') {
+    var __rp10RS = renderSlide;
+    renderSlide = function(){
+      var r = __rp10RS.apply(this, arguments);
+      try { var nine = document.querySelectorAll('.rp-nine-board p'); for (var k = 0; k < nine.length; k++) rp10SentenceTrim(nine[k]); rp10FitWalkBoard(); } catch (e2) {}
+      return r;
+    };
+  }
+} catch (e) {}
+/* (7c) OBSERVER — section steps rebuild #rpNine without renderSlide or
+   fitPanels (rpRenderSection, fix6 IIFE). Watch the rebuilds and re-apply the
+   sentence-boundary trim + panel-fit loop every time. */
+try {
+  var __rp10Nine = document.getElementById('rpNine');
+  if (__rp10Nine && typeof MutationObserver === 'function' && !__rp10Nine.__rp10Obs) {
+    __rp10Nine.__rp10Obs = true;
+    var __rp10Mo = new MutationObserver(function(){
+      try { var nine = document.querySelectorAll('.rp-nine-board p'); for (var k = 0; k < nine.length; k++) rp10SentenceTrim(nine[k]); } catch (e) {}
+      try { rp10FitWalkBoard(); } catch (e2) {}
+    });
+    __rp10Mo.observe(__rp10Nine, { childList: true });
+  }
+} catch (e) {}
+/* (4b) RE-RENDER once so the Nov 22 override lands on the next paint: the boot
+   render already ran with the old centre text, and the slide re-renders on
+   activation (fix3) — but if the slide is already active, re-fit now. */
+try {
+  if (typeof renderSlide === 'function' && document.querySelector('#screen-slide.active')) renderSlide();
+} catch (e) {}
 })();
 </script>
 </body>
