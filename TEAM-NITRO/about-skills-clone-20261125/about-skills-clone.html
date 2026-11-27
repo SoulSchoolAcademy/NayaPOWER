@@ -162,7 +162,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --bg:#000; --ink:#f2f4fa; --muted:#c3c9da; --dim:#8f97ad;
+    --bg:#000; --ink:#f2f4fa; --softwhite:#f2f4fa;
     --silver:#cfd3e0; --blue:#57b6ff; --gold:#f5c86b; --gold-bright:#ffe1a1;
     --violet:#8b5cf6; --cyan:#3ca8ff; --dc:#3fb8ff;
     --bw:64px;
@@ -208,7 +208,7 @@
   #slotLeft{justify-content:flex-start}
   #slotRight{justify-content:flex-end}
   .slot .medal{width:72px;height:72px;border-radius:50%;object-fit:cover;background:#000;border:2px solid rgba(235,238,248,.95);box-shadow:0 0 0 3px rgba(87,182,255,.22),0 0 22px rgba(87,182,255,.45),0 10px 22px rgba(0,0,0,.65);filter:brightness(1.05) saturate(1.08)}
-  .slot .cap{font-size:18px;letter-spacing:.3em;color:var(--dim);text-transform:uppercase;white-space:nowrap}
+  .slot .cap{font-size:18px;letter-spacing:.3em;color:var(--softwhite);text-transform:uppercase;white-space:nowrap}
   .slot .cap b{color:var(--silver);font-weight:600}
   .slot .orb3d{position:relative;width:80px;height:80px;flex:none;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 32% 26%,#454c66,#101018 58%,#050508);box-shadow:0 16px 26px rgba(0,0,0,.8),0 5px 10px rgba(0,0,0,.6),0 0 32px rgba(143,107,255,.55),0 0 16px rgba(245,200,107,.3),inset 0 2px 3px rgba(255,255,255,.55),inset 0 -7px 12px rgba(0,0,0,.75);animation:floaty 6s ease-in-out infinite}
   .slot .orb3d .medal.logo{width:86%;height:86%;border:none;box-shadow:0 0 14px rgba(143,107,255,.45)}
@@ -3298,7 +3298,7 @@ current = 0; renderSlide(); show('cover');
 .walk-frame.q-mode .walk-types,.walk-frame.pick-mode .walk-types,.walk-frame.deliv-mode .walk-types{display:none}
 .walk-frame.lang-q-mode .walk-steprow .walk-menu{display:none}
 .walk-panelenter{position:sticky;bottom:0;z-index:3;margin-top:auto;padding:10px 4px 2px;background:linear-gradient(180deg,rgba(5,6,7,0),#050607 35%)}
-.walk-excap{font-size:18px;line-height:1.5;color:#fff;text-align:left;margin:10px 2px 0;padding:10px 12px;border-radius:12px;background:linear-gradient(135deg,#1c1c24,#050607 60%,#1c1c24);border:1px solid rgba(142,36,170,.5);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 6px 16px rgba(0,0,0,.5);max-height:34%;overflow-y:auto}
+.walk-excap{font-size:18px;line-height:1.5;color:#fff;text-align:left;margin:10px 2px 0;padding:10px 12px;border-radius:12px;background:linear-gradient(135deg,#1c1c24,#050607 60%,#1c1c24);border:1px solid rgba(142,36,170,.5);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 6px 16px rgba(0,0,0,.5);flex:none;max-height:60%;overflow-y:auto}
 .walk-excap b{color:#e9c46a}
 .walk-linkrow .walk-menu{flex:0 0 46%;min-width:0}
 .walk-linkrow .walk-menu-btn{font-size:18px;gap:6px;padding:0 8px}
@@ -3308,7 +3308,8 @@ current = 0; renderSlide(); show('cover');
   #walkOverlay .walk-third:nth-child(3){grid-column:1/-1}
   #walkOverlay .walk-third{min-height:0}
   .walk-qimg{max-height:120px}
-  .walk-excap{max-height:60px}
+  .walk-excap{max-height:none}
+  .walk-qimg{max-height:96px}
   #walkAudio .pm-art-frame{display:none}
   #walkAudio .upnext{display:none}
   #walkAudio .orb-wrap{width:70px;height:70px}
@@ -3362,7 +3363,8 @@ current = 0; renderSlide(); show('cover');
      law — newer, his word — needs the space at phone width.)
      (d) tighten the phone deck gaps a little further (pm-main 8→4,
      pm-side 4→2, padding 6/8→4/6). */
-  #walkOverlay .walk-panelenter{flex-direction:row;justify-content:center;align-items:center}
+  #walkOverlay .walk-panelenter{flex-direction:row;justify-content:center;align-items:center;position:static;background:none;padding:8px 4px 2px;margin-top:auto}
+  #walkOverlay .walk-input{padding-bottom:4px}
   #walkOverlay .walk-input>.walk-note{margin:6px 0}
   #walkOverlay .walk-owed{display:none}
   #walkOverlay #walkAudio .pm-main{padding:4px 6px;gap:4px}
@@ -3370,7 +3372,11 @@ current = 0; renderSlide(); show('cover');
   /* FIX9-15b — hide the deck brand tag at phone width (status pill
      stays). Saves ~25px; the phone deck then fits its row with the
      play jewel painted. */
-  #walkOverlay #walkAudio .pm-top .np-tag{display:none}
+   #walkOverlay #walkAudio .pm-top .np-tag{display:none}
+   /* FIX10-8 — cert room at phone width (see note above): the doc gets
+      taller so its own layout is not squeezed into 82svh. */
+  #walkOverlay .walk-certwrap .walk-cert{height:min(92svh,780px)}
+  #walkOverlay .walk-frame.deliv-mode .walk-certwrap .walk-cert{height:780px}
 }
 .walk-linkrow .walk-menu-val{white-space:nowrap}
 .walk-linkrow .walk-soc-url{flex:1;min-width:0}
@@ -3380,7 +3386,8 @@ current = 0; renderSlide(); show('cover');
 .walk-picksum{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-content:flex-start;overflow-y:auto;min-height:0;max-height:100%;padding:6px}
 .walk-pickchip{display:inline-block;font-size:18px;line-height:1.3;color:#fff;padding:8px 14px;border-radius:999px;background:linear-gradient(135deg,#2a1a3a,#12081f 60%,#1a0f2e);border:1px solid rgba(142,36,170,.55);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 4px 12px rgba(0,0,0,.5);overflow-wrap:anywhere}
 .walk-cert{position:relative}
-.walk-cert-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;background:linear-gradient(135deg,#1c1c24,#050607 60%,#1c1c24)}
+.walk-cert-loading{position:absolute;inset:0;z-index:2;pointer-events:none;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;background:linear-gradient(135deg,#1c1c24,#050607 60%,#1c1c24)}
+ .walk-cert.cert-loaded .walk-cert-loading{display:none}
 .walk-cert-loading p{font-size:20px;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.8);margin:0}
 .walk-cert iframe{position:relative;z-index:1;background:transparent}
 .slide-boards img{background:linear-gradient(135deg,#2a1a3a,#12081f 60%,#1a0f2e)}
@@ -3391,7 +3398,10 @@ current = 0; renderSlide(); show('cover');
 .walk-third .walk-qimg{max-height:150px}
 .walk-audio .pm-art-frame{max-height:120px}
 #walkText{max-height:110px}
-.walk-excap{max-height:120px}
+/* FIX10-3b — a second phone block capped the caption at 120px and beat the
+   first block’s max-height:none (same specificity, later in the file), so
+   the 390 caption still cut at 118px. The caption grows to its full text. */
+.walk-excap{max-height:none}
 }
 .walk-video{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;border:2px solid #8e24aa;border-radius:14px;padding:12px;min-height:160px;background:linear-gradient(135deg,#16161d,#050607 50%,#16161d);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 -2px 6px rgba(0,0,0,.7),0 12px 30px rgba(0,0,0,.6),0 0 22px rgba(142,36,170,.35)}
 .walk-video p{font-size:18px;line-height:1.5;margin:0;color:#fff}
@@ -3400,6 +3410,7 @@ current = 0; renderSlide(); show('cover');
 .walk-input{flex:1;display:flex;flex-direction:column;gap:10px}
 .walk-input textarea{flex:1;min-height:120px;background:linear-gradient(135deg,#16161d,#050607 50%,#16161d);color:#fff;border:2px solid #0f52ba;border-radius:14px;padding:14px;font-size:18px;line-height:1.5;font-family:inherit;resize:vertical;box-shadow:inset 0 2px 8px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.12),0 8px 20px rgba(0,0,0,.5)}
 .walk-input textarea:focus{outline:none;box-shadow:inset 0 2px 8px rgba(0,0,0,.7),0 0 22px rgba(15,82,186,.7)}
+ #walkOverlay .walk-input textarea::placeholder,#walkOverlay .walk-input input::placeholder{color:#ffffff;opacity:1}
 .walk-input input[type=text],.walk-input input[type=url]{box-shadow:inset 0 2px 8px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.12),0 8px 20px rgba(0,0,0,.5)}
 .walk-input input[type=text]:focus,.walk-input input[type=url]:focus{outline:none;box-shadow:inset 0 2px 8px rgba(0,0,0,.7),0 0 22px rgba(212,160,23,.7)}
 .walk-input select{background:#050607;color:#fff;border:2px solid #d4a017;border-radius:999px;padding:12px 16px;font-size:18px}
@@ -3410,7 +3421,7 @@ current = 0; renderSlide(); show('cover');
 .walk-third .walk-note{font-size:18px;line-height:1.5;text-align:center;color:#fff}
 .walk-note{font-size:18px;line-height:1.5;color:#fff}
 .walk-cert{flex:1;border:2px solid #d4a017;border-radius:14px;overflow:hidden;min-height:0;background:linear-gradient(135deg,#1c1c24 0%,#050607 55%,#0a0a0d 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 -3px 8px rgba(0,0,0,.55),0 24px 60px rgba(0,0,0,.7),0 0 36px rgba(212,160,23,.35)}
-.walk-cert iframe{width:100%;height:100%;min-height:0;border:0;display:block;background:#050607}
+.walk-cert iframe{width:100%;height:100%;min-height:0;border:0;display:block;background:transparent}
 .walk-cert-link{font-size:18px;text-align:center;color:#fff}
 .walk-cert-link a{color:#d4a017}
 .walk-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:12px;flex:none}
@@ -3510,7 +3521,7 @@ current = 0; renderSlide(); show('cover');
 .walk-steprow{display:flex;align-items:center;gap:10px;justify-content:center;flex:none}
 .walk-steprow .walk-step{flex:1;margin:0}
 .walk-lang{background:#050607;color:#fff;border:2px solid #0f52ba;border-radius:999px;padding:10px 14px;font-size:18px;flex:none}
-.walk-third .walk-qimg{width:100%;flex:1;min-height:120px;object-fit:cover;border-radius:14px;border:2px solid #8e24aa;display:block}
+.walk-third .walk-qimg{width:100%;flex:1;min-height:120px;object-fit:cover;object-position:center top;border-radius:14px;border:2px solid #8e24aa;display:block}
 .walk-audio{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;border:2px solid #0f52ba;border-radius:14px;padding:12px;min-height:160px;position:relative;overflow:hidden;background:linear-gradient(135deg,#16161d,#050607 50%,#16161d);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 -2px 6px rgba(0,0,0,.7),0 12px 30px rgba(0,0,0,.6),0 0 22px rgba(15,82,186,.35)}
 .walk-audio .walk-orbit{position:absolute;border:2px solid rgba(142,36,170,.35);border-radius:50%;pointer-events:none}
 .walk-audio .walk-orbit.o1{width:150px;height:150px;animation:walkspin 90s linear infinite}
@@ -3623,6 +3634,25 @@ current = 0; renderSlide(); show('cover');
 #walkAudio .hero-play{width:168px;height:168px;flex:0 0 168px;font-size:54px}
 #walkAudio .upnext{max-height:132px}
 #walkAudio .pm-tools{flex-wrap:wrap}
+/* FIX10-1 — play-state blowout, diagnosed from measured geometry (2026-11-27):
+   pre-play .pm-side 375x420; 3s after a real play tap 1638x396, #dPlay at
+   x1268, controls off-screen. Cause: on play, walkPcRenderUpNext() fills
+   #upNext; .up-row/.up-jewel/.up-jewel img had NO CSS in the file, so the
+   episode thumbnail <img> inside .up-jewel rendered at its natural 1600px
+   width and inflated #upNext -> #upnextWrap -> .pm-side. Fix: the jewel is
+   a real 40px object, every deck row gets min-width:0, and the side panel
+   is caged so no child can ever blow it out again. */
+#walkAudio .pm-side{min-width:0;align-self:stretch}
+#walkAudio .pm-main{min-width:0}
+#walkAudio .upnext{flex:none;min-width:0;max-width:100%;overflow:hidden}
+#walkAudio .upnext #upNext{min-width:0}
+#walkAudio .pm-side>*{min-width:0}
+.up-row{display:flex;align-items:center;gap:10px;min-width:0}
+.up-jewel{flex:0 0 40px;width:40px;height:40px;border-radius:10px;overflow:hidden;background:#050607;border:1px solid rgba(255,255,255,.25);display:block}
+.up-jewel img{width:100%;height:100%;object-fit:cover;display:block}
+.up-row .t{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.up-row .src{flex:none}
+.up-row .up-play,.up-row .x{flex:none}
 
 /* FIX9 — high-level dropdown menus: sidebar-style rows, each its own colour, lighting on scroll/hover */
 .walk-menu{position:relative;width:100%}
@@ -3653,11 +3683,12 @@ current = 0; renderSlide(); show('cover');
 #walkAudio .upnext{max-height:56px}
 /* BUTTON LAW — icon in a circle, energy flowing around it (slow, 12s, ambient) */
 .walk-ibtn,.walk-btn,#walkAudio .hero-play,#walkAudio .hbtn,.walk-menu-btn,.walk-menu-ball,.walk-toplogo{position:relative}
-.walk-ibtn::after,#walkAudio .hero-play::after,#walkAudio .hbtn::after,.walk-btn::after,.walk-menu-btn::after,.walk-menu-ball::after,.walk-toplogo::after{content:"";position:absolute;inset:-4px;border-radius:inherit;pointer-events:none;background:conic-gradient(from 0deg,transparent 0 84%,rgba(212,160,23,.8) 92%,rgba(255,255,255,.9) 95%,transparent 100%);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2px));mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2px));animation:walkspin 12s linear infinite}
+/* FIX10-7 — the ring, redesigned (see note above the block). */
+.walk-btn::after,.walk-menu-btn::after{content:"";position:absolute;inset:-4px;border-radius:inherit;pointer-events:none;border:2px solid rgba(212,160,23,.55)}
+.walk-ibtn::after,#walkAudio .hero-play::after,#walkAudio .hbtn::after,.walk-menu-ball::after,.walk-toplogo::after{content:"";position:absolute;inset:-4px;border-radius:50%;pointer-events:none;padding:2px;background:conic-gradient(from var(--oa,0deg),transparent 0 78%,rgba(212,160,23,.9) 88%,#ffffff 92%,transparent 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;animation:orbit-spin 12s linear infinite}
 #walkAudio .hero-play::after{inset:-7px}
-.walk-menu-ball::after{inset:-5px;border-radius:50%}
-.walk-toplogo::after{inset:-5px;border-radius:50%}
-.walk-btn.go::after{background:conic-gradient(from 0deg,transparent 0 62%,rgba(7,146,95,.95) 82%,rgba(255,255,255,.95) 88%,transparent 100%)}
+.walk-menu-ball::after{inset:-5px}
+.walk-toplogo::after{inset:-5px}
 .walk-btn.go{display:inline-flex;align-items:center;justify-content:center;gap:10px}
 .walk-btn.go::before{content:"\2192";display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;flex:none;border-radius:50%;background:radial-gradient(circle at 34% 28%,rgba(255,255,255,.45),transparent 55%),#07925f;color:#fff;font-size:18px;font-weight:700;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 12px rgba(7,146,95,.9)}
 /* FIX8 — interest picker. Harvested .walk-chip verbatim (Q10 chain, Q14
@@ -3844,7 +3875,6 @@ current = 0; renderSlide(); show('cover');
   // the public Smart Link is minted from the ALIAS, never the name.
   var CERT_URL = 'https://portal-consolidated-20261125-staging.nayapower.workers.dev/identity.html?embed=1';
   function certURL(){ var nm = citizenAlias || citizenName || ''; return CERT_URL + (nm ? '&name=' + encodeURIComponent(nm) : ''); }
-  var CERT_FP = 'Fixed certificate · 315,409 B · sha 0c11fdb8… · 5 real jewels';
   var TYPE_LABEL = {personal:'Personal page', business:'Business page', world:'World page'};
   var ORDER = [-1, 100, 101, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 200, 201, 202, 102]; // FIX4: 27 + 28 are the two shared questions (intent, connect-with), after the locked 27. FIX8: 200/201/202 are the interest picker (categories / subcategories / favorites), after 28, before delivered (102). The 27-question order is LOCKED — 0–26 untouched, unrenumbered.
   // FIX8 — INTEREST PICKER DATA READER. The data lives in ONE block at the
@@ -4515,8 +4545,8 @@ wave(); // start the voice-canvas loop at load; guarded until the deck is cloned
     if (pos > 0) { pos--; idx = ORDER[pos]; sel = []; render(); }
   }
   function certHTML(){
-    return '<div class="walk-cert"><div class="walk-cert-loading"><p>Your certificate is loading…</p></div><iframe src="' + certURL() + '" title="Your R2 certificate"></iframe></div>'
-      + '<p class="walk-cert-link">' + CERT_FP + '<br><a href="' + certURL() + '" target="_blank" rel="noopener">Open the certificate</a></p>';
+    return '<div class="walk-cert"><div class="walk-cert-loading"><p>Your certificate is loading…</p></div><iframe src="' + certURL() + '" title="Your R2 certificate" onload="this.parentNode.classList.add(\'cert-loaded\')"></iframe></div>'
+      + '<p class="walk-cert-link"><a href="' + certURL() + '" target="_blank" rel="noopener">Open the certificate</a></p>';
   }
   function videoSlotHTML(){
     return '<button type="button" class="walk-play" disabled aria-label="Naya video — not yet filmed">▶</button>'
@@ -5055,7 +5085,7 @@ wave(); // start the voice-canvas loop at load; guarded until the deck is cloned
     b.onclick = function(){ setView(b.getAttribute('data-view')); };
   });
   document.getElementById('walkInfo').onclick = function(){
-    alert('Naya\u2019s walkthrough video — one standard 9:16 video with audio for every question.\n\nAsset owed: naya-walkthrough-video-9x16.mp4\nIt does not exist yet, so this frame shows the slot and names it — no stand-in video, no silent picture.\n\nThe certificate in this flow is the fixed certificate only:\n/identity.html — 315,409 B, sha 0c11fdb8…, 5 real jewels.\n\nTwo views: your first name is your private profile; your alias is your public profile — the public page shows only your alias, never your name, and your face stays private unless you choose otherwise.');
+    alert('Naya\u2019s walkthrough video — one standard 9:16 video with audio for every question.\n\nAsset owed: naya-walkthrough-video-9x16.mp4\nIt does not exist yet, so this frame shows the slot and names it — no stand-in video, no silent picture.\n\nThe certificate in this flow is the fixed certificate only.\n\nTwo views: your first name is your private profile; your alias is your public profile — the public page shows only your alias, never your name, and your face stays private unless you choose otherwise.');
   };
   ov.addEventListener('click', function(e){ if (e.target === ov) close(); });
   // FIX1 (D5): at phone width the two fixed pills shorten to compact labels
