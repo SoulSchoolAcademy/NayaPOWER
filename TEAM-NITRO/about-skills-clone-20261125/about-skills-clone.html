@@ -3428,6 +3428,19 @@ current = 0; renderSlide(); show('cover');
 .walk-frame.deliv-mode .walk-certwrap .walk-cert{height:750px}
 .walk-frame.deliv-mode #walkEdit{display:none}
 .walk-frame.deliv-mode #walkClose{display:none}
+/* FIX7 — O7: the 1440 caption sat behind the sticky Close pill on arrival
+   (link top hit-test was walkEnter at cert 700/750). No single cert height
+   cures it (660 clears the caption but slices the cert's alias line; 620
+   cuts the claim). Desktop only: the certwrap stops clipping so the frame
+   is the caption's scroll container, the cert lane is 700px (claim, alias
+   line and footer band whole at 1440), and the caption sticks in its own
+   clear band above the sticky actions bar (bottom:64px, 5px clear of
+   Close). Phone widths untouched — no spare room for a pinned band there. */
+@media(min-width:821px){
+.walk-frame.deliv-mode .walk-certwrap{overflow:visible}
+.walk-frame.deliv-mode .walk-certwrap .walk-cert{height:700px}
+.walk-frame.deliv-mode .walk-cert-link{position:sticky;bottom:64px;background:#050607;z-index:2;padding:4px 0}
+}
 .walk-certwrap .walk-cert iframe{height:100%}
 .walk-certnotes{flex:none;font-size:18px;line-height:1.5;text-align:center;color:#fff}
 .walk-delivwrap{flex:1 1 auto;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
