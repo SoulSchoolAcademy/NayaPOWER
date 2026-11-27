@@ -3034,7 +3034,8 @@ document.getElementById('sp-w-info').addEventListener('click', function(){
 document.getElementById('sp-w-tip-x').addEventListener('click', function(){ document.getElementById('sp-w-tip').hidden=true; });
 
 /* ═══ SMART PROJECTS v5 — the 14 questions, mini-block notes, project search, deep link ═══ */
-var SP_QUESTIONS=[{"n":1,"q":"WHO are we?"},{"n":2,"q":"WHAT are we building?"},{"n":3,"q":"WHY are we building it?"},{"n":4,"q":"WHAT does success mean?"},{"n":5,"q":"WHAT is true right now?"},{"n":6,"q":"WHAT has already been proven?"},{"n":7,"q":"WHAT is unknown?"},{"n":8,"q":"WHAT authority exists?"},{"n":9,"q":"WHAT happened previously?"},{"n":10,"q":"WHAT did we learn?"},{"n":11,"q":"WHAT should happen next?"},{"n":12,"q":"HOW do I prove it?"},{"n":13,"q":"WHERE do I record it?"},{"n":14,"q":"HOW does Team Naya continue?"}];
+var SP_QUESTIONS=[{"n":1,"q":"What is your project?"},{"n":2,"q":"What are you building or learning?"},{"n":3,"q":"Why are you building it or learning it?"},{"n":4,"q":"What does success mean to you?"},{"n":5,"q":"WHAT is true right now?"},{"n":6,"q":"WHAT has already been proven?"},{"n":7,"q":"WHAT is unknown?"},{"n":8,"q":"WHAT authority exists?"},{"n":9,"q":"WHAT happened previously?"},{"n":10,"q":"WHAT did we learn?"},{"n":11,"q":"WHAT should happen next?"},{"n":12,"q":"HOW do I prove it?"},{"n":13,"q":"WHERE do I record it?"},{"n":14,"q":"HOW does Team Naya continue?"}];
+/* PI-FIX9: Q1–Q4 in Shawn's words (voice call 2026-11-26 ~16:57–16:58 MST) — they replace the generic set's first four; Q5–Q14 stay SN-4710 until he walks them (fix10). Per-kind fitting rides fix10; SP_TEMPLATES untouched. */
 /* B2 — the 14 questions, verbatim from SN-4710 (Daily Project Intelligence Report 2026-11-23,
    TEAM-NITRO/DAILY-PROJECT-INTEL-REPORT-20261123.md, 'THE 14 QUESTIONS'); cross-checked against
    the live old PI page, which feeds the same filed report live from GitHub. Answers save as
@@ -3054,6 +3055,7 @@ function spRenderQuestions(){
     box.appendChild(el('span','sp-jewel','◆'));
     var main=el('div','pj-row-main');
     main.appendChild(el('div','pj-row-t', q.n+'. '+q.q));
+    main.appendChild(el('div','sp-q-sub','Answer in your words.')); /* PI-FIX9: his words, under the question, white — shown on question frames only (CSS). */
     if(ans){ var chip=el('div','sp-qchip'); chip.textContent='ANSWERED ✓'; chip.style.color='#2fe89e'; main.appendChild(chip); } /* PI-FIX7: the unanswered chip is gone — no chip at all until answered. */
     if(ans) main.appendChild(el('div','pj-row-s', ans));
     var ta=document.createElement('textarea'); ta.className='gr-input sp-qta'; ta.rows=2; ta.maxLength=4000;
@@ -3217,6 +3219,8 @@ var SP_HOME_NOTE_STATE='in-motion';
 var SP_HOME_VIEW_DRAFT=null; var SP_HOME_LIVE=[]; var SP_HOME_LIVE_STATES={}; var SP_HOME_LIVE_STATES_OK=false;
 function spHomeRead(key){ try{ var raw=localStorage.getItem(key); var v=raw?JSON.parse(raw):null; return v&&typeof v==='object'?v:{}; }catch(e){ return {}; } }
 function spHomeAnswers(){ return spHomeRead(SP_HOME_Q_KEY); }
+/* PI-FIX9 (c): home answers are scoped per kind — the key carries the picked kind, so a Book answer can never surface as a Business answer. No kind picked: the plain key (legacy, pre-kind answers). The hub flow needs no change: its rows carry project_id. */
+function spHomeQKey(n){ var k=spHomeKind(); return spQKey(n)+(k?':'+k:''); }
 function spSaveHomeAnswers(a){ try{ localStorage.setItem(SP_HOME_Q_KEY, JSON.stringify(a)); }catch(e){} }
 function spHomeNotes(){ try{ var raw=localStorage.getItem(SP_HOME_NOTES_KEY); var v=raw?JSON.parse(raw):null; return Array.isArray(v)?v:[]; }catch(e){ return []; } }
 function spSaveHomeNotes(list){ try{ localStorage.setItem(SP_HOME_NOTES_KEY, JSON.stringify(list)); }catch(e){} }
@@ -3224,16 +3228,17 @@ function spSetHomeQStatus(t){ var s=document.getElementById('sp-home-q-status');
 function spRenderHomeQuestions(){
   var wrap=document.getElementById('sp-home-questions'); if(!wrap) return;
   var saved=spHomeAnswers(); var answered=0;
-  SP_QUESTIONS.forEach(function(q){ if((saved[spQKey(q.n)]||'').trim()) answered++; });
+  SP_QUESTIONS.forEach(function(q){ if((saved[spHomeQKey(q.n)]||'').trim()) answered++; });
   var head=document.getElementById('sp-home-q-count');
   if(head){ head.textContent=answered+' of 14 answered — the rest are honestly unanswered, never filled in for you.'; head.style.display=answered>0?'':'none'; }
   wrap.innerHTML='';
   SP_QUESTIONS.forEach(function(q){
-    var key=spQKey(q.n); var ans=saved[key]||'';
+    var key=spHomeQKey(q.n); var ans=saved[key]||'';
     var box=el('div','sp-qblock');
     box.appendChild(el('span','sp-jewel','◆'));
     var main=el('div','pj-row-main');
     main.appendChild(el('div','pj-row-t', q.n+'. '+q.q));
+    main.appendChild(el('div','sp-q-sub','Answer in your words.')); /* PI-FIX9: his words, under the question, white — shown on question frames only (CSS). */
     if(ans){ var chip=el('div','sp-qchip'); chip.textContent='ANSWERED ✓'; chip.style.color='#2fe89e'; main.appendChild(chip); } /* PI-FIX7: the unanswered chip is gone — no chip at all until answered. */
     if(ans) main.appendChild(el('div','pj-row-s', ans));
     var ta=document.createElement('textarea'); ta.className='gr-input sp-qta'; ta.rows=2; ta.maxLength=4000;
@@ -3375,10 +3380,10 @@ function spFileHomeToProject(p){
   var chain=Promise.resolve();
   var answers=spHomeAnswers();
   SP_QUESTIONS.forEach(function(q){
-    var v=(answers[spQKey(q.n)]||'').trim(); if(!v) return;
+    var v=(answers[spHomeQKey(q.n)]||answers[spQKey(q.n)]||'').trim(); if(!v) return; /* PI-FIX9 (c): file the kind-scoped answer, else a legacy plain-key one — never drop an answer on create. */
     chain=chain.then(function(){
       return spPostIntelFor(p.id, 'q'+('0'+q.n).slice(-2), 'Q'+q.n+' — '+q.q, v, 10+q.n).then(function(){
-        var a=spHomeAnswers(); delete a[spQKey(q.n)]; spSaveHomeAnswers(a);
+        var a=spHomeAnswers(); delete a[spHomeQKey(q.n)]; delete a[spQKey(q.n)]; spSaveHomeAnswers(a);
       }).catch(function(){ return null; });
     });
   });
@@ -3502,6 +3507,9 @@ function spPickKind(kindId){
   var st=document.getElementById('sp-kind-status');
   var k=spKindById(kindId);
   if(st && k) st.textContent=k.title+' template — its questions are below. Tap USE THIS KIND to go to its questions.';
+  /* PI-FIX9 (b)+(c): the kind changed, so the home answers re-render under the new kind's keys (a Book answer never shows as a Business one); then the stage scrolls to the preview so USE THIS KIND is seen. The scroll is deferred past the deck's re-render (which resets the frame's scrollTop). */
+  spRenderHomeQuestions();
+  setTimeout(function(){ var pv=document.getElementById('sp-kind-preview'); if(pv) pv.scrollIntoView({block:'start'}); }, 150);
 }
 function spUseKind(kindId, quiet){
   var k=spKindById(kindId); if(!k) return;
@@ -4078,6 +4086,8 @@ function show(i){
   }
   var first=it.els[0]; if(first && first.scrollTo) first.scrollTop=0;
   window.scrollTo(0,0);
+  /* PI-FIX9 (picker heading, fix8 O-5 / eye-confirmed): the stage itself kept its scrollTop across frames — after scrolling to the preview (or anywhere), BACK to the kind frame left the heading scrolled half off the top of its card. A frame change always starts at the top: reset the stage too, not just the frame. */
+  var rootEl=projEl.hidden?homeEl:projEl; if(rootEl) rootEl.scrollTop=0;
 }
 var nav=document.createElement('nav');
 nav.id='sp-deck-nav'; nav.setAttribute('aria-label','Frame navigation');
@@ -4367,8 +4377,8 @@ body.sp-fix7-q #sp-fix7-progress{display:flex}
 body.sp-fix7-q #sp-q-count,body.sp-fix7-q #sp-home-q-count{display:none}
 .sp-deck-frame.sp-on[data-sp-fix7-q] .pj-row-t{font-size:25px;font-family:Marcellus,Georgia,serif;font-weight:400;line-height:1.35}
 body.sp-fix7-q #pj-home.sp-deck-on,body.sp-fix7-q #pj-project.sp-deck-on{display:flex;flex-direction:column}
-body.sp-fix7-q #pj-home.sp-deck-on,body.sp-fix7-q #pj-project.sp-deck-on{height:calc(100dvh - 343px)}
-@media (min-width:1024px){body.sp-fix7-q #pj-home.sp-deck-on,body.sp-fix7-q #pj-project.sp-deck-on{height:calc(100vh - 503px)}}
+body.sp-fix7-q #pj-home.sp-deck-on,body.sp-fix7-q #pj-project.sp-deck-on{height:calc(100dvh - 283px)} /* PI-FIX9: 343 minus the ~60px nav lane — the nav lives inside the stage on question frames, so the stage, not the lane, holds it. */
+@media (min-width:1024px){body.sp-fix7-q #pj-home.sp-deck-on,body.sp-fix7-q #pj-project.sp-deck-on{height:calc(100vh - 443px)}} /* PI-FIX9: 503 minus the ~60px nav lane, as mobile. */
 body.sp-fix7-q #pj-home.sp-deck-on>.sp-deck-frame.sp-on,body.sp-fix7-q #pj-project.sp-deck-on>.sp-deck-frame.sp-on{margin-top:auto;margin-bottom:auto;flex:none}
 /* PI-FIX8: reserves above are fix7's 305/444 plus the title band's height
    (38px @390, 59px @1440, calculated from the harvested rules and confirmed
@@ -4405,18 +4415,66 @@ function update(){
 if(window.MutationObserver){ new MutationObserver(update).observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['data-sp-fix7-q','class','style']}); }
 document.addEventListener('click', function(){ setTimeout(update,120); }, true);
 update();
+})();</script>
+<style id="sp-fix9-css">
+/* ═══ PI-FIX9 — Shawn's eye 2026-11-26 ~16:57 + ~16:58 MST + captain's eye walk ═══
+   The question frame, redesigned: the question sits at the top (no more margin-auto float — the
+   "card floats high / two islands" finding is superseded by the centered stack); "Answer in your
+   words." in white under it; the input centered on the page (the card is a centered 560px column,
+   mobile-style); SAVE ANSWER centered; BACK/NEXT sit just below the input — the deck nav moves
+   INSIDE the stage on question frames (fix9 JS below), directly under the card, instead of in its
+   own lane below the stage. Nothing else on the frame: the jewel and the template line stay hidden.
+   Short windows (a): at max-height:700px the stage reserves shrink to the measured chrome
+   (top ~155 + bar ~90 + nav lane ~64 @390; top ~272 + bar ~124 + nav ~64 @1440), so a 600px-tall
+   window shows a real stage (280px @390) instead of a 126px sliver. */
+body.sp-fix7-q #pj-home.sp-deck-on>.sp-deck-frame.sp-on,body.sp-fix7-q #pj-project.sp-deck-on>.sp-deck-frame.sp-on{margin-top:0;margin-bottom:0;flex:none;align-self:center;width:100%;max-width:560px;box-sizing:border-box}
+.sp-deck-frame.sp-on[data-sp-fix7-q] .pj-row-t{text-align:center}
+.sp-deck-frame.sp-on[data-sp-fix7-q] .sp-qblock>.sp-jewel{display:none}
+.sp-deck-frame.sp-on[data-sp-fix7-q] .pj-row-main{flex:1;min-width:0}
+.sp-q-sub{display:none}
+.sp-deck-frame.sp-on[data-sp-fix7-q] .sp-q-sub{display:block;text-align:center;font-size:17px;color:#fff;margin:8px 0 0;line-height:1.4}
+.sp-deck-frame.sp-on[data-sp-fix7-q] .sp-qchip{text-align:center}
+/* PI-FIX9: the saved answer shows twice on a question frame (plain text above the textarea, and again
+   inside the textarea — fix7 checker named it). On question frames the plain-text copy goes: the
+   textarea already shows the answer, the ANSWERED chip still marks it, and the card stays short
+   enough that BACK/NEXT sit below it and clear of the bar. The list view keeps both. */
+.sp-deck-frame.sp-on[data-sp-fix7-q] .pj-row-s{display:none}
+/* PI-FIX9 (1440 answered): the answered card (440px) + nav (64px) exceeds the 457px desktop stage — the nav lands 34px under the bar. The card carries dead space on question frames: the cover is empty (jewel + plate both hidden) and the paddings are full-size. Trim 41px: cover gone (17), card bottom padding 24→8 (16), body bottom padding 16→8 (8). Answered card ≈399, nav clears the bar by ~8px — the same clearance fix7 held at 390. */
+#pj-home.sp-deck-on>.sp-deck-frame.sp-on[data-sp-fix7-q],#pj-project.sp-deck-on>.sp-deck-frame.sp-on[data-sp-fix7-q]{padding-bottom:8px}
+.sp-deck-frame.sp-on[data-sp-fix7-q] .gr-board-cover{display:none}
+.sp-deck-frame.sp-on[data-sp-fix7-q] .gr-board-body{padding-bottom:8px}
+.sp-deck-frame.sp-on[data-sp-fix7-q] .sp-qblock .gr-btn{display:block;margin:10px auto 0}
+#pj-home.sp-deck-on>#sp-deck-nav,#pj-project.sp-deck-on>#sp-deck-nav{margin:16px auto 0;align-self:center;width:100%;max-width:560px;box-sizing:border-box}
+@media (max-height:700px){
+#pj-home.sp-deck-on,#pj-project.sp-deck-on{height:calc(100dvh - 320px)}
+@media (min-width:1024px){#pj-home.sp-deck-on,#pj-project.sp-deck-on{height:calc(100vh - 470px)}}
+body.sp-fix7-q #pj-home.sp-deck-on,body.sp-fix7-q #pj-project.sp-deck-on{height:calc(100dvh - 300px)}
+@media (min-width:1024px){body.sp-fix7-q #pj-home.sp-deck-on,body.sp-fix7-q #pj-project.sp-deck-on{height:calc(100vh - 460px)}}
+}
+</style>
+<script id="sp-fix9-js">
+/* PI-FIX9 — BACK/NEXT sit just below the input on question frames: the shared deck nav moves INSIDE
+   the stage (directly under the question card) while a question frame shows, and back to fix4's
+   lane (inside .gr-stage, directly after #pj-project) on every other frame — NEVER to the end
+   of <body>, which would drop it behind the fixed bottom bar. Change-only moves: the observer
+   cannot loop, because a move happens only when the parent actually differs. Runs after the fix7
+   toggle (registered later, reads body.sp-fix7-q after fix7's update set it). */
+(function(){
+'use strict';
+function $(id){ return document.getElementById(id); }
+function stageRoot(){ return $('pj-project').hidden ? $('pj-home') : $('pj-project'); }
+function placeNav(){
+  var nav=$('sp-deck-nav'); if(!nav) return;
+  var isQ=document.body.classList.contains('sp-fix7-q');
+  if(isQ){ var st=stageRoot(); if(nav.parentNode!==st) st.appendChild(nav); }
+  else { var pj=$('pj-project'); if(pj&&pj.parentNode){ if(nav.parentNode!==pj.parentNode||nav.previousSibling!==pj) pj.parentNode.insertBefore(nav, pj.nextSibling); } }
+}
+if(window.MutationObserver){ new MutationObserver(function(){ placeNav(); }).observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['class']}); }
+document.addEventListener('click', function(){ setTimeout(placeNav,150); }, true);
+placeNav();
 })();
 </script>
 <nav id="naya-notif-bar" class="notif-bar" data-static="1" aria-label="Notifications"><div class="notif-row"><a class="notif-seg" data-notif="plus" id="sp-hub-add" style="--nc:#8e24aa" href="#" aria-label="ADD — open" title="ADD"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ADD</span></a><a class="notif-seg" data-notif="mail" style="--nc:#0f52ba" href="https://nayanet.app/rooms/mail" target="_blank" rel="noopener" aria-label="MAIL — open (opens in new tab)" title="MAIL"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">MAIL</span></a><a class="notif-seg" data-notif="activity" style="--nc:#07925f" href="https://nayanet.app/hub/feed-activity" target="_blank" rel="noopener" aria-label="ACTIVITY — open (opens in new tab)" title="ACTIVITY"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ACTIVITY</span></a><a class="notif-seg" data-notif="spaces" style="--nc:#d4a017" href="https://nayanet.app/rooms/spaces" target="_blank" rel="noopener" aria-label="WORLDS — open (opens in new tab)" title="WORLDS"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">WORLDS</span></a><a class="notif-seg" data-notif="eco" id="sp-bb-eco" style="--nc:#c2410c" href="https://nayanet.app/hub" target="_blank" rel="noopener" aria-label="ECOSYSTEM — open (opens in new tab)" title="ECOSYSTEM"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">ECOSYSTEM</span></a><a class="notif-seg" data-notif="plusR" style="--nc:#c62828" href="https://nayanet.app/hub/connections" target="_blank" rel="noopener" aria-label="CONNECT — open (opens in new tab)" title="CONNECT"><span class="notif-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19.5c.7-3.4 2.9-5.2 5.5-5.2s4.8 1.8 5.5 5.2"/><circle cx="17" cy="9" r="2.7"/><path d="M16.2 14.6c2.5-.2 4.1 1.4 4.6 3.9"/></svg><span class="notif-count">0</span></span><span class="notif-lbl">CONNECT</span></a></div></nav>
-<script>
-/* PI-FIX6 — ECOSYSTEM on the harvested Hub bar opens PI's own NayaNET menu drawer (the old eco button's behaviour verbatim); the href is the Hub fallback if the drawer is absent. */
-(function(){ var e=document.getElementById('sp-bb-eco'); if(!e) return;
-  e.addEventListener('click', function(ev){
-    var rb=document.querySelector('.naya-corner-btn[aria-label="Open NayaNET menu"]');
-    if(rb){ ev.preventDefault(); rb.click(); return; }
-    document.body.setAttribute('data-naya-drawer','right'); document.body.classList.add('naya-drawer-open'); ev.preventDefault();
-  });
-})();
-</script>
+<!-- PI-FIX9 (d): the ECOSYSTEM hijack is gone — it opened the site menu drawer instead of navigating. The harvested bar's own href (https://nayanet.app/hub) is the link now. Whether /hub is the right ECOSYSTEM destination is the Hub bar's call (see maker report). -->
 </body>
 </html>
