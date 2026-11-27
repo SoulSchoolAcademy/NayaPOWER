@@ -3533,6 +3533,11 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         .grid, .weekrow{gap:4px!important}
       }
       .cell:not(.blank){background:linear-gradient(135deg,#101019 0%,#07070c 78%,#050508 100%)}
+      /* (3) DAY-VIEW TEXT SCAN (item 3) found ONE sub-17 word: the journal Dictate
+         button (#journalDictateBtn) renders at the browser default 13.33px — the file sets
+         font-family/color on button but never font-size, so it never inherits the 17px
+         body size. One targeted line: 17px, the §2.3 floor. Nothing else changes. */
+      #journalDictateBtn{font-size:17px!important}
       .cell .jewel{border-width:1.5px!important;box-shadow:0 0 12px color-mix(in srgb,var(--dc,#3fb8ff) 55%,transparent),3px 4px 7px rgba(0,0,0,.6),inset 0 1px 2px rgba(255,255,255,.35),inset 0 -3px 5px rgba(0,0,0,.7)!important}
 </style>
   </head>
