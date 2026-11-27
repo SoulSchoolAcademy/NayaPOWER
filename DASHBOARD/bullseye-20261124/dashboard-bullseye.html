@@ -5958,6 +5958,17 @@ body.os-bottom-hidden #os-b3-hide,body.os-bottom-off #os-b3-hide{bottom:12px;}
 <p class="os-guide-s"><b>Step 3</b> — Watch clicks and joins land here.</p></div>
 <a class="ph-connect os-guide-cta" href="#naya-stage-2">Claim your smart link</a>
 </div>
+<!-- FIX8C 2026-11-26 — POWER MEMORY BAR. Shawn, voice call 2026-11-26 ~21:14 MST: "a bar that shows how much power memory... how much they've actually used... make it transparent... That should be in the dashboard." The Smart Vault is smart memory. This board counts what the citizen has actually saved, from the page's own live data (window._dashD + window.NayaMedia) — used amount + transparent breakdown + growth. No system cap exists in the page's data, so no % of a total is shown; the note says so plainly. Photos and projects have no live source in this file, so they are not counted here. -->
+<div class="os-pm" id="os-power-memory" role="region" aria-label="Power Memory — how much of your Smart Vault you have used">
+  <div class="os-pm-top">
+    <span class="os-pm-jewel" aria-hidden="true">◆</span>
+    <h3 class="os-pm-h">Power Memory</h3>
+    <span class="os-pm-total"><span class="os-pm-num" id="os-pm-num">0</span><span class="os-pm-cap">SAVED</span></span>
+  </div>
+  <div class="os-pts-src" id="os-pm-bar" role="img" aria-label="Breakdown of your saved memory"></div>
+  <div class="os-pts-srcleg" id="os-pm-leg"></div>
+  <p class="os-pm-note" id="os-pm-note">Reading your Vault &mdash; live numbers land here. Nothing is invented.</p>
+</div>
 <button class="naya-stage-fwd" type="button" data-next="naya-stage-2">Next: Ambassador &amp; Smart Link &rarr;</button>
 </section>
 
@@ -12323,7 +12334,7 @@ window._dashIsDesktop=_dashIsDesktop; window._dashSyncPlus=_dashSyncPlus; window
       if (linksRes && !linksRes.error && linksRes.data) linksRes.data.forEach(function(r){ mnLinks[r.a_id] = { id: r.id, b_label: r.b_label }; });
       mountRecordRow(); bindCard(); render();
     }
-    return { _absorb: absorb, _render: render };
+    return { _absorb: absorb, _render: render, _counts: function(){ var v=0, d=0; mnNotes.forEach(function(m){ if(m.kind==='video') d++; else v++; }); return {voice:v, video:d, total:mnNotes.length}; } }; /* FIX8C: the Power Memory bar reads the live media count — voice/video notes in the Vault. No new query; the rows loadNayaNotes already fetched. */
   })();
 
   /* — Smart Link block (Growth): the owner's own nayanet.app/<name>.
@@ -33394,6 +33405,69 @@ button:active,a[href]:active,[data-derive]:active,.notif-seg:active,.os-sl-stat:
 .os-df-face{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid #d9a521;box-shadow:0 4px 14px rgba(0,0,0,.55);flex:0 0 auto} /* FIX8B (5): her face in the footer — a real photograph, gold-rimmed, one light top-left. */
 .os-df-brand{display:flex;align-items:center;gap:12px}
 </style>
+<style id="inner-frames-fix8c-20261125">
+/* FIX8C 2026-11-26 — POWER MEMORY BAR. Board anatomy harvested from .os-guide-strip; rim sapphire #0f52ba (information), never gold — the guide strip above is gold and two same colours never sit together (§3.2). */
+.os-pm{max-width:860px;margin:24px auto 8px;padding:24px;border:2px solid #0f52ba;border-radius:22px;background:linear-gradient(135deg,#1e1e26 0%,#050607 50%,#1e1e26 100%);box-shadow:0 8px 24px rgba(0,0,0,.5),0 0 24px rgba(15,82,186,.25);transition:transform .3s ease,box-shadow .3s ease;}
+.os-pm:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,.6),0 0 32px rgba(15,82,186,.45);}
+.os-pm:active{transform:scale(.97);transform-origin:center;transition:transform .1s ease;} /* FIX8C press: the press IS 0.1s (the law's press timing) — a transition:none pin left the board stuck at .97 for ~2.5s after release in the probe; .1s lands the .97 by +120ms and lets go cleanly. */
+.os-pm-top{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.os-pm-jewel{color:#0f52ba;font-size:25px;text-shadow:0 0 12px rgba(15,82,186,.8);}
+.os-pm-h{font-family:Marcellus,Georgia,serif;font-size:25px;color:#fff;margin:0;flex:1 1 auto;}
+.os-pm-total{display:flex;align-items:baseline;gap:8px;background:#050607;border:2px solid #0f52ba;border-radius:14px;padding:8px 16px;box-shadow:0 4px 14px rgba(0,0,0,.55);}
+.os-pm-num{font-size:34px;font-weight:800;color:#fff;line-height:1;font-variant-numeric:tabular-nums;}
+.os-pm-cap{font-size:17px;font-weight:700;letter-spacing:.12em;color:#fff;}
+.os-pm .os-pts-src{margin-top:16px;}
+.os-pm-note{font-size:17px;color:#fff;margin:12px 0 0;}
+.os-pm-note b{color:#d4a017;}
+@media (max-width:480px){.os-pm{padding:16px;margin:16px 8px 8px;}.os-pm-num{font-size:28px;}}
+</style>
+<script id="inner-frames-fix8c-20261125-js">
+/* FIX8C 2026-11-26 — POWER MEMORY BAR, live. Reads the page's own live data only:
+   window._dashD (loadDashboard, smart_notes) + window.NayaMedia._counts() (media_notes).
+   No new query, no invented number, no cap invented: with no system cap in the page's data
+   there is no % of a total — the board shows the used amount, the breakdown, and growth.
+   A 2s re-read moves the bar as the citizen saves; render is a no-op unless the counts moved. */
+(function(){
+  var KINDS=[
+    {key:"notes", label:"Smart Notes", c:"#8e24aa"},
+    {key:"posts", label:"Wall posts", c:"#0f52ba"},
+    {key:"saved", label:"Saved notes", c:"#07925f"},
+    {key:"voice", label:"Voice notes", c:"#c2410c"},
+    {key:"video", label:"Video notes", c:"#c62828"}
+  ]; /* spectrum order, never the same colour twice (§3.2) */
+  var lastSig="";
+  function counts(){
+    var d=window._dashD||null, out={notes:0,posts:0,saved:0,voice:0,video:0,week:0};
+    if(!d) return {landed:false, c:out};
+    out.notes=(d.noteRows||[]).length; out.posts=(d.posts||[]).length; out.saved=(d.saveRows||[]).length;
+    var weekAgo=Date.now()-7*864e5, wk=0;
+    function cntTimes(arr){ (arr||[]).forEach(function(t){ var tm=new Date(t).getTime(); if(isFinite(tm)&&tm>=weekAgo) wk++; }); }
+    cntTimes(d.noteTimes); cntTimes(d.postTimes); cntTimes(d.saveTimes);
+    out.week=wk;
+    try{ var mc=(window.NayaMedia&&window.NayaMedia._counts)?window.NayaMedia._counts():null; if(mc){ out.voice=mc.voice||0; out.video=mc.video||0; } }catch(e){}
+    return {landed:!!window._dashDataLanded, c:out};
+  }
+  function render(){
+    var num=document.getElementById("os-pm-num"), bar=document.getElementById("os-pm-bar"),
+        leg=document.getElementById("os-pm-leg"), note=document.getElementById("os-pm-note");
+    if(!num||!bar||!leg||!note) return;
+    var r=counts(), c=r.c, total=0;
+    KINDS.forEach(function(k){ total+=c[k.key]; });
+    var sig=[r.landed,total,c.notes,c.posts,c.saved,c.voice,c.video,c.week].join("|");
+    if(sig===lastSig) return; lastSig=sig;
+    num.textContent=String(total);
+    if(!r.landed){ note.textContent="Reading your Vault \u2014 live numbers land here. Nothing is invented."; bar.innerHTML=""; leg.innerHTML=""; bar.setAttribute("aria-label","Breakdown of your saved memory \u2014 reading your Vault"); return; }
+    if(!bar.children.length){ bar.innerHTML=KINDS.map(function(k){ return '<div class="os-pts-seg" style="--sc:'+k.c+'" title="'+k.label+'"></div>'; }).join(""); }
+    Array.prototype.forEach.call(bar.children, function(el,i){ var k=KINDS[i]; if(!k) return; el.style.width=(total?(c[k.key]/total*100).toFixed(1):"0")+"%"; el.setAttribute("title", k.label+": "+c[k.key]); });
+    leg.innerHTML=KINDS.map(function(k){ return '<span><i style="--sc:'+k.c+'"></i>'+k.label+' <b>'+c[k.key]+'</b></span>'; }).join("");
+    bar.setAttribute("aria-label","Breakdown of your saved memory: "+KINDS.map(function(k){ return k.label+" "+c[k.key]; }).join(", ")+". Total "+total+".");
+    if(total===0){ note.textContent="Your Vault is empty \u2014 save your first note and it lands here."; }
+    else { note.innerHTML="<b>+"+c.week+" this week.</b> No cap set \u2014 your Vault grows as you save."; }
+  }
+  window._osPowerMemoryRender=render; /* FIX8C: the checker + the eye can re-render on demand. */
+  render(); setInterval(render, 2000);
+})();
+</script>
 <script id="inner-frames-fix8b-20261125-js">
 /* FIX8B 2026-11-26 — follow-up to fix8. Additive only; nothing else touched. */
 (function(){
