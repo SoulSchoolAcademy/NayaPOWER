@@ -16381,7 +16381,126 @@ window.uhR23Overlay = function(title, html){
     tryOpen();
     if (done || tries > 32) clearInterval(iv);
   }, 250);
-  if (document.readyState === 'complete') { tryOpen(); }
+  
+  /* ═══ HUB R24 — D4: hamburger order + separate sides (Shawn's eye 2026-11-27) ═══
+     The menu read Open sidebar / Neither / Open people rail (3 items). His order:
+     1. Open people rail (top)  2. Left sidebar  3. Right sidebar  4. Neither.
+     The page has ONE right rail (.rail.right: worlds panel + people list) and ONE
+     messenger sheet (.hub-msg-panel, built lazily, body.msg-open). "Open people
+     rail" opens the rail and lands on the people list; "Right sidebar" opens the
+     same rail at its top (worlds). Left opens left, right opens right, never both
+     rails at once, and the DM sheet never shares the right side with the rail. */
+  (function uhR24D4(){
+    var done = false;
+    function reorderMenu(){
+      if (done) return;
+      var menu = document.getElementById('hubMenuChoices');
+      if (!menu) return;
+      var items = menu.querySelectorAll('[data-hub-menu]');
+      if (items.length < 3) return;
+      var byVal = {};
+      items.forEach(function(it){ byVal[it.getAttribute('data-hub-menu')] = it; });
+      var people = byVal['people'], sidebar = byVal['sidebar'], neither = byVal['neither'];
+      if (!people || !sidebar || !neither) return;
+      done = true;
+      var lab = sidebar.querySelector('.hub-menu-label');
+      if (lab) lab.textContent = 'Left sidebar';
+      /* Fourth item: clone the people item's look, but WITHOUT data-hub-menu —
+         the native binder (lazy, on first hamburger click) attaches its
+         fallthrough (open LEFT drawer) to every [data-hub-menu] node, so the
+         clone must not carry that attribute. It carries its own handler. */
+      var right = people.cloneNode(true);
+      right.removeAttribute('data-hub-menu');
+      right.setAttribute('data-hub-menu-r24', 'rightbar');
+      right.style.setProperty('--mc', '#0e7490');
+      var rlab = right.querySelector('.hub-menu-label');
+      if (rlab) rlab.textContent = 'Right sidebar';
+      right.addEventListener('click', function(){
+        menu.hidden = true;
+        try {
+          var a = window.NayaChassis || {};
+          if (a.closeDrawer) a.closeDrawer();
+          if (a.closeMsgPanel) a.closeMsgPanel();
+          window._nayaMenuState = 'rightbar';
+          if (a.openRightRail) a.openRightRail();
+        } catch (e) {}
+      });
+      menu.appendChild(people);
+      menu.appendChild(sidebar);
+      menu.appendChild(right);
+      menu.appendChild(neither);
+      /* "Open people rail" lands on the people list: after the native opener
+         runs, scroll the rail to "Connect with Like Minds". */
+      people.addEventListener('click', function(){
+        setTimeout(function(){
+          try {
+            var rail = document.querySelector('.rail.right');
+            if (!rail) return;
+            var head = null;
+            var els = rail.querySelectorAll('*');
+            for (var k = 0; k < els.length; k++) {
+              var el = els[k];
+              if (el.children.length === 0 && /Connect with Like Minds/.test(el.textContent || '')) { head = el; break; }
+            }
+            if (head) { var r = rail.getBoundingClientRect(); var hr = head.getBoundingClientRect(); rail.scrollTop += (hr.top - r.top) - 12; }
+          } catch (e) {}
+        }, 250);
+      });
+      var btn = document.querySelector('[data-hub-menu-btn]');
+      if (btn) {
+        btn.setAttribute('aria-label', 'Menu — people rail, left sidebar, right sidebar, or neither');
+        btn.setAttribute('title', 'Menu — people rail, left sidebar, right sidebar, or neither');
+      }
+    }
+    var mtries = 0;
+    var miv = setInterval(function(){
+      mtries++;
+      reorderMenu();
+      if (done || mtries > 32) clearInterval(miv);
+    }, 250);
+    if (document.readyState === 'complete' || document.readyState === 'interactive') { reorderMenu(); }
+    else { document.addEventListener('DOMContentLoaded', reorderMenu); }
+    /* DM sheet vs right rail — never merged: one right-side sheet at a time.
+       The native menu paths already close the other side; the non-menu paths
+       (a DM tap while the rail stands open, the ECO plus while a DM is open)
+       do not — openMsgPanel never calls closeRightRail. A body-class observer
+       closes the side that was not just opened. Closes are idempotent, so no
+       loop: each close only removes its own class. */
+    var prevMsg = document.body.classList.contains('msg-open');
+    var prevRail = document.body.classList.contains('rail-right-open');
+    var uhR24UnmergeBusy = false;
+    function uhR24CloseRail(){
+      try { var a = window.NayaChassis || {}; if (a.closeRightRail) { a.closeRightRail(); return; } } catch (e) {}
+      var sh = document.querySelector('.shell');
+      if (sh) sh.classList.remove('rail-right-open');
+      document.body.classList.remove('rail-right-open');
+    }
+    function uhR24CloseMsg(){
+      try { var a = window.NayaChassis || {}; if (a.closeMsgPanel) { a.closeMsgPanel(); return; } } catch (e) {}
+      document.body.classList.remove('msg-open');
+    }
+    if (window.MutationObserver) {
+      var mo = new MutationObserver(function(){
+        if (uhR24UnmergeBusy) return;
+        var msg = document.body.classList.contains('msg-open');
+        var rail = document.body.classList.contains('rail-right-open');
+        var msgAdded = msg && !prevMsg;
+        var railAdded = rail && !prevRail;
+        prevMsg = msg; prevRail = rail;
+        if (!msgAdded && !railAdded) return;
+        uhR24UnmergeBusy = true;
+        try {
+          if (msgAdded) uhR24CloseRail();
+          if (railAdded) uhR24CloseMsg();
+        } catch (e) {}
+        uhR24UnmergeBusy = false;
+        prevMsg = document.body.classList.contains('msg-open');
+        prevRail = document.body.classList.contains('rail-right-open');
+      });
+      mo.observe(document.body, {attributes: true, attributeFilter: ['class']});
+    }
+  })();
+if (document.readyState === 'complete') { tryOpen(); }
   else { window.addEventListener('load', tryOpen); }
 })();
 </script>
@@ -16693,6 +16812,25 @@ main.main{padding-bottom:24px!important;}
    the head. Nothing moves, nothing else changes — the pill, avatar, intro
    board and cover all stay exactly where they were. */
 #uhTop .ph-head{overflow:visible!important;}
+/* ═══ HUB R24 — D3: Collective hover goes full gold (Shawn's eye 2026-11-27) ═══
+   PROVEN on the v2 staged page: there is NO separate hover fill — hovering
+   Collective changes NOTHING (rest and hover backgrounds identical). The fill
+   IS the active state (uh-r23 "LIT LENS": .lens-tab.active fills in its own
+   colour). On his phone the tab he touches is the active one, full gold. His
+   rule: it must NOT fill — only the gold around the edge, the middle stays as
+   it was (dark, like the other tabs). FIX: the Collective active tab keeps its
+   gold border + gold glow but its middle goes back to the dark #050607 the
+   inactive tabs have. Personal/Activity active fills are NOT in this scope and
+   are left exactly as they were. */
+/* ═══ HUB R24 — D5: calendar double "open full screen" (Shawn's eye 2026-11-27) ═══
+   #osCalDlg is already full viewport (370x844 at 390, 1420x900 at 1440), but its
+   header still carries <a class="os-cal-full"> "Open full-screen" (parent
+   dialog chrome, NOT the iframe). A full-screen calendar needs no such button:
+   hide it. The load-failure fallback (.os-cal-fallback, hidden unless the
+   calendar fails to load) is left alone — it is a recovery path, not a double. */
+.lens-tab.lens-collective.active,
+.lens-tab.lens-collective.active:hover{background:#050607!important;background-image:none!important;border-color:#d4a017!important;color:#fff!important;box-shadow:inset 0 -6px 14px rgba(0,0,0,.65),0 0 36px rgba(212,160,23,.75),0 14px 36px rgba(0,0,0,.65)!important;}
+#osCalDlg .os-cal-full{display:none!important;}
 </style>
 <style id="hub-followup14-20261119">
 /* ——— FOLLOW-UP 14 20261119 — search only (Shawn 19:01 MST: "All you need is a
