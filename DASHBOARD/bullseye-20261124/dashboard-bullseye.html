@@ -15504,7 +15504,7 @@ init();
       var a=e.target&&e.target.closest?e.target.closest('a[href^="#"]'):null;
       if (!a) return;
       var t=document.getElementById(a.getAttribute('href').slice(1));
-      if (t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'center'}); }
+      if (t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:(t.classList && t.classList.contains('naya-stage')) ? 'start' : 'center'}); } /* FIX8E E2: a stage is taller than the viewport, so block:'center' lands its heading above the fold (390: stage-2 top -297). Stages land block:'start' on their heading (scroll-margin-top:76px); every other cross-link keeps 'center'. */
     });
   }
   function renderHeat(d){
@@ -33494,7 +33494,7 @@ button:active,a[href]:active,[data-derive]:active,.notif-seg:active,.os-sl-stat:
    NO right: here — the script pins left, and a right: !important would over-constrain the fixed
    pill (left + right both set) and collapse its width to padding+border (48px, showing only Sig —
    caught by the final probe 2026-11-27 05:09Z). */
-#naya-auth-btn-top{position:fixed !important;top:104px !important;z-index:60 !important;white-space:nowrap !important;}
+#naya-auth-btn-top{position:fixed !important;z-index:60 !important;white-space:nowrap !important;top:140px;} /* FIX8E E3: NO !important on top — positionPill() pins the inline top to the gear (64 desktop / 140 phone); an !important here froze the pill at 104 while the gear sits at 140 on phones, covering "Your Smart Score". Same lesson as fix8d's right: — never fight the inline pin with !important. */
 /* FIX8D D1 — THE DESIGNED SIGN-IN. Obsidian board, deep-gold rim, Marcellus headline, white 17px+
    text only, inputs with real depth, one light top-left (135deg), real shadow down-right. No
    prompt(), no confirm(), no alert() anywhere in this flow. Pop-ups beautiful or they do not ship. */
@@ -33634,7 +33634,8 @@ button:active,a[href]:active,[data-derive]:active,.notif-seg:active,.os-sl-stat:
     var g = gear.getBoundingClientRect();
     if (!g.width) return;
     b.style.position = "fixed";
-    b.style.top = Math.round(g.top) + "px";
+    var dock = window.innerWidth >= 701 ? 64 : 140; /* FIX8E E3: the scroll-0 dock = the gear's own top (64 desktop, 140 phone). */
+    b.style.top = Math.max(dock, Math.round(g.top)) + "px"; /* FIX8E E3: clamped — when scrolled the absolute gear rides up (g.top < dock, or the gear hides on phones) and the fixed pill must stay docked, not follow it off the top. */
     b.style.left = Math.max(8, Math.round(g.left - b.offsetWidth - 12)) + "px";
     b.style.right = "auto";
     b.style.zIndex = "60";
@@ -33685,6 +33686,35 @@ button:active,a[href]:active,[data-derive]:active,.notif-seg:active,.os-sl-stat:
   window.addEventListener("scroll", function(){ fitLeftRail(); positionB3(); }, { passive: true });
 })();
 </script>
+<style id="inner-frames-fix8e-20261125">
+/* FIX8E 2026-11-27 — E1: the Power Memory Bar press. The plain `.os-pm:active` rule
+   (0,2,0, later than `:hover`) does NOT win the computed transform while hovered at
+   1440 — the press holds the hover lift matrix(1,0,0,1,0,-2) through a 600ms hold.
+   This combined rule (0,3,0) beats `:hover` by specificity, not by order. Its press
+   is INSTANT (transition:none): a .1s transition's start is delayed 300-600ms+ at
+   1440 in this VM (main-thread contention), so the 150/300ms samples still read the
+   old value — measured on the first build (press .97 only by 600ms, and not in every
+   run). With transition:none the press reads .97 at 150/300/600ms in two trials and
+   releases cleanly to the hover lift by +700ms (the fix8c "stuck 2.5s" does not
+   reproduce here). The plain `:active` rule stays for non-hover presses. */
+.os-pm:hover:active{transform:scale(.97);transform-origin:center;transition:none;}
+/* FIX8E E3 — the Sign-in pill dock. The pill CSS must NEVER set `top:` with
+   `!important`: an !important beats positionPill()'s inline pin, so the pill froze
+   at 104 while the gear sits at 140 on phones — on top of "Your Smart Score". The
+   fallback top below is the gear's own top per width (140 phone, 64 desktop); the
+   inline pin governs once JS runs. See (2) for the fix8d line this replaces. */
+@media (min-width:701px){#naya-auth-btn-top{top:64px;}}
+/* FIX8E E3 — the gear rides UP at desktop, 104 -> 64 (its original hero position,
+   y68 per HERO FIX 2026-11-09). Pill 64-112, right-rail head top 120: 8px clear.
+   Gear x untouched (right:64), so the 12px pill-to-gear gap is untouched. Later in
+   the file than every competing #page-settings top rule, same specificity, so it wins. */
+@media (min-width:701px){#page-settings{top:64px !important;}}
+/* FIX8E E3 — the settings panel keeps its gear-bottom+12 pairing at desktop: gear
+   bottom is now 104, so the panel sits at 116. (Its live anchor sets inline top,
+   which the followup15 `top:156px !important` beats — the anchor is dead, so CSS
+   carries the pairing. Phones untouched: 192.) */
+@media (min-width:701px){#settings-panel{top:116px !important;}}
+</style>
 <script id="inner-frames-fix8b-20261125-js">
 /* FIX8B 2026-11-26 — follow-up to fix8. Additive only; nothing else touched. */
 (function(){
