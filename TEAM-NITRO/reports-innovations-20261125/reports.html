@@ -1664,6 +1664,57 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
   #screen-slide #slideTextCenter .ib-n{margin-top:0!important}
 }
 </style>
+<style id="reports-fix6-20261126">
+/* REPORTS FIX6 — 2026-11-26. Shawn's eye, voice call 2026-11-26 ~17:21-17:23 MST,
+   on the fix5 week bar (Nov 22-28) + three-board deck. Four items only; the
+   fix5 deck geometry, clip cure and fitted heights are untouched by this block.
+   NOTE FOR THE CHECKER: dropping the week header + the sub line frees height
+   above the deck, so the flex-fitted deck re-fits TALLER by that amount — the
+   fix5 heights (390 82/165/82; 1440 324/244/324, 433/353/433; week bar 215/216)
+   are the fix5 measurements, NOT fix6 constants. What must hold at the new
+   heights is the fix5 CURE: side images show, middle N inside its board, no
+   clip. Re-measure the deck and prove the cure at the new heights. */
+/* (1) WEEK BAR — day + number on ONE line, numbers aligned. The header line is
+   out and the sub line is out. Each card is a grid: the day name right-aligned
+   in the free column, the date a fixed 28px digit tile in its own column, so
+   every number tile sits at the same x in every card. Cards 168px -> 148px.
+   The whole row is centred on the page (safe centre: centres when it fits,
+   falls back to the scrolling start when it overflows at phone width). */
+.rp-week-head{display:none!important}
+.rp-day-sub{display:none!important}
+#rpWeekRow{justify-content:safe center!important;gap:10px!important}
+.rp-day{flex:0 0 148px!important;padding:12px 8px!important;display:grid!important;grid-template-columns:1fr auto!important;align-items:center!important}
+.rp-day-name{grid-column:1!important;text-align:right!important;font-size:17px!important;letter-spacing:.02em!important}
+.rp-day-date{grid-column:2!important;width:28px!important;height:28px!important;display:grid!important;place-items:center!important;margin:0 0 0 6px!important;font-size:17px!important;border:2px solid var(--dc)!important;border-radius:9px!important;background:radial-gradient(circle at 35% 30%,#3d3d4e,#050607 75%)!important;box-shadow:0 4px 10px rgba(0,0,0,.6),0 0 12px -2px var(--dc)!important}
+.rp-day-pill{grid-column:1/-1!important;justify-self:center!important;margin:10px 0 0!important}
+/* The cards are intelligent blocks: the WHOLE card lights up and moves on
+   hover (laws section 1 and section 6), and READ lights up and comes alive
+   on the press (physical press response, section 4: scale 0.97, pill fills
+   in the day colour). */
+.rp-day:hover{transform:translateY(-4px)!important;box-shadow:0 18px 34px rgba(0,0,0,.6),0 0 36px -2px var(--dc)!important}
+.rp-day:hover .rp-day-date{box-shadow:0 4px 10px rgba(0,0,0,.6),0 0 20px 0 var(--dc)!important}
+.rp-day:active{transform:translateY(-1px) scale(.97)!important;box-shadow:0 10px 24px rgba(0,0,0,.55),0 0 30px 2px var(--dc)!important}
+.rp-day:active .rp-day-pill{background:var(--dc)!important;box-shadow:0 0 20px 0 var(--dc)!important}
+.rp-day:focus-visible{outline:2px solid #fff!important;outline-offset:2px!important}
+.rp-day--await:hover{transform:none!important;box-shadow:0 10px 24px rgba(0,0,0,.55),0 0 18px -4px var(--dc)!important}
+/* (2) THE HAMBURGER GOES — the top-corner three-line button and its drawer
+   are out of the page (the script removes them from the DOM; this hides them
+   even before it runs). Back navigation sits in the BOTTOM corners, one on
+   each side: the slide floatnav spreads Back left / Forward right. */
+#rpMenuBtn,#rpDrawer{display:none!important}
+#screen-slide .floatnav{justify-content:space-between!important;padding:10px 8px!important}
+/* The cover top row no longer clears a hamburger that is gone: its 68px left
+   pad (fix2, sized to clear the 52px button at 12,12) goes back to 12px. */
+@media(max-width:640px){#screen-cover .pm-top{padding-left:12px!important}}
+/* (3)(4) REPORT FRONT — one section at a time. The step line names the section
+   and its place in the day; a day section with nothing filed shows the honest
+   hole (same words as the note viewer), never invented text. */
+.rp-sec-step{font-family:Marcellus,serif;font-size:19px;font-weight:700;letter-spacing:.14em;color:var(--dayc,#8e24aa);text-align:center;margin:16px 0 12px}
+.rp-sec-hole{display:block;background:linear-gradient(135deg,#17171f,#050607);border:2px solid var(--dayc,#8e24aa);border-radius:20px;padding:24px 20px;margin:0 0 16px;text-align:center;box-shadow:0 14px 30px rgba(0,0,0,.56),0 0 26px -6px var(--dayc,#8e24aa)}
+.rp-sec-hole .rp-nine-num{width:48px;height:48px;margin:0 auto 12px;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#3d3d4e,#050607 75%);border:2px solid var(--dayc,#8e24aa);border-radius:14px;box-shadow:0 6px 16px rgba(0,0,0,.6),0 0 14px -2px var(--dayc,#8e24aa);font-size:25px;font-weight:700;color:#fff}
+.rp-sec-hole h3{font-family:Marcellus,serif;font-size:20px;line-height:1.35;color:#fff;text-align:center;margin:0 0 10px}
+.rp-sec-hole p{font-size:19px;line-height:1.6;color:#fff;text-align:center;margin:0 0 12px}
+</style>
 </head>
 <body>
 <div class="royal-frame" aria-hidden="true"><div class="rf-et top"></div><div class="rf-es left"></div><div class="rf-es right"></div><div class="rf-rim"></div><div class="rf-corner tl"></div><div class="rf-corner tr"></div><div class="rf-corner bl"></div><div class="rf-corner br"></div><div class="rf-n top"></div></div>
@@ -3639,6 +3690,136 @@ current = 0; renderSlide(); show('cover');
       }
     };
   }
+})();
+</script>
+<script id="reports-fix6-js">
+/* REPORTS FIX6 — 2026-11-26. (3) The day's report IS a smart note: its front
+   shows ONLY its In a Nutshell, and tapping in opens the deeper sections.
+   (4) CORRECTED RULE (Shawn, voice call 2026-11-26 ~17:25 MST, supersedes the
+   NEXT wording in the fix6 brief): NEXT / BACK step through the day's
+   smart-note sections one at a time — In a Nutshell, Child, Grandma,
+   What It Means, Why It Matters, How It Connects, How to Apply, What's In
+   It For You. Clicking in (READ / the board) also goes into the full note.
+   DAY-CHANGE = that day's nutshell: changing days never carries a deep
+   section across — every day starts at its nutshell. */
+(function(){
+  var RP_SECTIONS = [
+    { label: 'In a Nutshell', re: /^In a Nutshell/i },
+    { label: 'Child', re: /^Child$/i },
+    { label: 'Grandma', re: /^Grandma$/i },
+    { label: 'What It Means', re: /^What It Means/i },
+    { label: 'Why It Matters', re: /^Why It Matters/i },
+    { label: 'How It Connects', re: /^How It Connects/i },
+    { label: 'How to Apply', re: /^How to Apply/i },
+    { label: "What's In It For You", re: /^What'?s In It For You/i }
+  ];
+  var RP_SECTION = 0;
+  function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  /* The filed d-index of canonical section k for this day, or -1 when the day
+     did not file that section. Nothing is invented: a miss is a hole. */
+  function rpSecIndex(boardIdx, k){
+    var g = (typeof GROUPS !== 'undefined') ? GROUPS[boardIdx] : null;
+    if (!g || !g.d) return -1;
+    for (var i = 0; i < g.d.length; i++) {
+      if (RP_SECTIONS[k].re.test(String(g.d[i][0] || ''))) return i;
+    }
+    return -1;
+  }
+  /* Depth layers interleave one image slot after each of the first text
+     sections, so the deep dive for section k lives at layer k + min(k, image
+     count) — the same formula fix2's layerFor uses (copied here because
+     layerFor lives inside fix2's IIFE). */
+  function rpLayer(boardIdx, k){
+    var n = 0;
+    try { var im = (typeof DEPTH_IMGS !== 'undefined' && DEPTH_IMGS[boardIdx]) ? DEPTH_IMGS[boardIdx].length : 0; n = Math.min(k, im); } catch (e) {}
+    return k + n;
+  }
+  /* The front: ONE section board — the day's current section, nothing else.
+     A filed section is a real board (the existing nine-board tap handler
+     opens its deep dive from data-layer); an unfiled section is an honest
+     hole board with no deep dive behind it. */
+  function rpRenderSection(){
+    var host = document.getElementById('rpNine'); if (!host) return;
+    var ss = document.getElementById('screen-slide');
+    if (ss && !ss.classList.contains('active')) { host.innerHTML = ''; return; }
+    var g = (typeof GROUPS !== 'undefined') ? GROUPS[current] : null;
+    if (!g) { host.innerHTML = ''; return; }
+    var meta = (typeof REPORTS_META !== 'undefined') ? REPORTS_META[current] : null;
+    var label = (meta && meta.date) ? ' &mdash; ' + meta.date : '';
+    var k = RP_SECTION, sec = RP_SECTIONS[k], di = rpSecIndex(current, k);
+    var h = '<div class="rp-nine-head">The day&rsquo;s report' + esc(label) + '</div>'
+      + '<div class="rp-nine-sub">One section at a time &mdash; tap NEXT to walk the day, or tap the board to open its deep dive.</div>'
+      + '<div class="rp-sec-step" aria-live="polite">' + (k + 1) + ' of ' + RP_SECTIONS.length + ' &mdash; ' + esc(sec.label) + '</div>';
+    if (di < 0) {
+      h += '<article class="rp-sec-hole" aria-label="Section ' + (k + 1) + ' of 8: ' + esc(sec.label) + ' — not filed in this note">'
+        + '<div class="rp-nine-num">' + (k + 1) + '</div>'
+        + '<h3>' + esc(sec.label) + '</h3>'
+        + '<p>Not filed in this note &mdash; nothing invented to fill it.</p></article>';
+    } else {
+      h += '<article class="rp-nine-board" role="button" tabindex="0" data-layer="' + rpLayer(current, di) + '" aria-label="Section ' + (k + 1) + ' of 8: ' + esc(sec.label) + ' &mdash; open its deep dive">'
+        + '<div class="rp-nine-num">' + (k + 1) + '</div>'
+        + '<h3>' + esc(sec.label) + '</h3>'
+        + '<p>' + esc(g.d[di][1] || '') + '</p>'
+        + '<span class="rp-nine-cta">Read the deep dive &rarr;</span></article>';
+    }
+    host.innerHTML = h;
+  }
+  /* Every slide render is a day render: it starts at that day's nutshell.
+     Section steps never call renderSlide, so they never reset. This one wrap
+     covers every day-change path (week bar, drawer/dropdown/?day= goSlide,
+     cover Forward, depth next-board, end back) because they all render. */
+  if (typeof renderSlide === 'function') {
+    var __rp6RS = renderSlide;
+    renderSlide = function(){ RP_SECTION = 0; __rp6RS(); rpRenderSection(); };
+  }
+  /* NEXT / BACK step SECTIONS within the day. Past the last section, Forward
+     goes to the NEXT day's nutshell (or the end board after the last day);
+     before the nutshell, Back goes to the PREVIOUS day's nutshell (or the
+     cover before the first day) — never a deep section carried across. */
+  function rpGoSection(dir){
+    /* The end board owns the arrows first, exactly as the frame did:
+       Forward from the end begins again; Back from the end returns to
+       the last day's nutshell. */
+    if (typeof END_MODE !== 'undefined' && END_MODE) {
+      if (dir > 0) { if (typeof beginAgain === 'function') beginAgain(); }
+      else { END_MODE = false; current = TOTAL - 1; renderSlide(); }
+      return;
+    }
+    var n = RP_SECTION + dir;
+    if (n >= 0 && n < RP_SECTIONS.length) {
+      RP_SECTION = n; rpRenderSection();
+      var pb = document.querySelector('#screen-slide .panel-body');
+      if (pb) pb.scrollTop = 0;
+      return;
+    }
+    if (n >= RP_SECTIONS.length) {
+      if (current < TOTAL - 1) { current++; renderSlide(); }
+      else if (typeof showEnd === 'function') { showEnd(); }
+      return;
+    }
+    if (current > 0) { current--; renderSlide(); }
+    else if (typeof show === 'function') { show('cover'); }
+  }
+  /* The floatnav buttons already carry the frame's listeners (day stepping),
+     which cannot be unregistered — so the buttons are replaced by clones
+     (same id, class, label and icon, no listeners) and the clones step
+     sections. Keyboard arrows click the buttons by id, so they follow. */
+  function rpSwapBtn(id, dir){
+    var b = document.getElementById(id); if (!b || !b.parentNode) return;
+    var c = b.cloneNode(true);
+    b.parentNode.replaceChild(c, b);
+    c.addEventListener('click', function(){ rpGoSection(dir); });
+  }
+  rpSwapBtn('btnForward', 1);
+  rpSwapBtn('btnBack', -1);
+  /* (2) The hamburger goes out: button + drawer leave the DOM. The drawer
+     held the day dropdown and the out-links; day jumping beyond this week
+     still rides the calendar ?day= intake (goSlide is untouched), and the
+     week bar + NEXT/BACK cover this week's days. If a real sidebar is
+     wanted, that is a round Shawn names — nothing is invented here. */
+  var __mb = document.getElementById('rpMenuBtn'); if (__mb) __mb.remove();
+  var __dr = document.getElementById('rpDrawer'); if (__dr) __dr.remove();
+  rpRenderSection();
 })();
 </script>
 </body>
