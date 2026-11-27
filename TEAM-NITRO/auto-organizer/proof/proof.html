@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Auto Organizer — Live Proof</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #0a0a12; color: #f2ede6; font-family: Georgia, 'Times New Roman', serif; padding: 28px 18px 60px; }
+  .wrap { max-width: 860px; margin: 0 auto; }
+  h1 { font-size: 28px; margin: 0 0 4px; color: #ffd700; letter-spacing: .5px; }
+  .sub { color: #b9b2a6; font-size: 15px; margin: 0 0 22px; }
+  h2 { font-size: 19px; color: #c9a7ff; margin: 26px 0 10px; border-top: 1px solid #2a2a3a; padding-top: 18px; }
+  p { font-size: 15px; line-height: 1.55; color: #ddd6c9; }
+  .card { background: #14141f; border: 1px solid #33334a; border-radius: 14px; padding: 14px 16px; margin: 10px 0; box-shadow: 0 6px 22px rgba(0,0,0,.5); }
+  .card b { color: #ffd700; }
+  .pill { display: inline-block; background: #2b1d4d; color: #e6d9ff; border: 1px solid #7b5cff; border-radius: 999px; padding: 2px 10px; font-size: 13px; margin: 2px 4px 2px 0; }
+  .pill.green { background: #0d2b1a; color: #b7f5cd; border-color: #2fe89e; }
+  .pill.gold { background: #2b2200; color: #ffe9a3; border-color: #ffd700; }
+  .muted { color: #9a937f; font-size: 13px; }
+  .ok { color: #2fe89e; font-weight: bold; }
+  .warn { color: #ffb347; font-weight: bold; }
+  label { display: block; font-size: 14px; color: #c9a7ff; margin: 12px 0 5px; }
+  select, textarea, input[type=text] { width: 100%; background: #0d0d16; color: #f2ede6; border: 1px solid #44445e; border-radius: 10px; padding: 10px 12px; font-size: 15px; font-family: inherit; }
+  textarea { min-height: 88px; resize: vertical; }
+  button { background: linear-gradient(180deg, #7b5cff, #4a2fb5); color: #fff; border: 1px solid #a78bff; border-radius: 999px; padding: 11px 22px; font-size: 15px; cursor: pointer; margin-top: 12px; box-shadow: 0 4px 14px rgba(123,92,255,.4); }
+  button:active { transform: scale(.97); }
+  button.secondary { background: #1c1c2a; border-color: #55556e; box-shadow: none; margin-left: 8px; }
+  .result { background: #0d0d16; border: 1px solid #2fe89e; border-radius: 12px; padding: 12px 14px; margin-top: 12px; font-size: 15px; line-height: 1.6; }
+  .result.home { border-color: #ffb347; }
+  pre { background: #0d0d16; border: 1px solid #33334a; border-radius: 10px; padding: 12px; overflow-x: auto; font-size: 12.5px; line-height: 1.5; color: #c9d1d9; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .row > div { flex: 1 1 200px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>The Auto Organizer — Live Proof</h1>
+  <p class="sub">The algorithm that reads a new item and puts it with its natural group, by simple library logic, automatically, by default. Version <span id="ver">—</span> · <span id="stamp">—</span></p>
+
+  <h2>The simple logic, in plain words</h2>
+  <p>Every new thing — smart note, post, contact, list, or your own note — is a book arriving at the library. The Organizer reads its cover and its first page, looks at the words on the shelves, and puts the book on the shelf where the most words match. A long phrase scores 3, a phrase scores 2, a single word scores 1. <b>A placement needs real evidence: score 3 or more, or one real phrase.</b> Below that, the book goes home with the best shelf written on it as a <i>suggestion</i> — the system suggests, it does not fake. You can always move a book to another shelf, and the move always wins — and the Organizer remembers which words taught it, so the next similar book goes to the right shelf the first time. Then it hands the placed book to Smart Match, which pairs it with the right people.</p>
+
+  <h2>1 · A new smart note, placed</h2>
+  <div class="card" id="live1">Running…</div>
+
+  <h2>2 · A post, placed</h2>
+  <div class="card" id="live2">Running…</div>
+
+  <h2>3 · A contact, placed</h2>
+  <div class="card" id="live3">Running…</div>
+
+  <h2>4 · You move it — the move always wins, and teaches</h2>
+  <div class="card" id="live4">Running…</div>
+
+  <h2>5 · The next similar post lands right the first time</h2>
+  <div class="card" id="live5">Running…</div>
+
+  <h2>Try it yourself</h2>
+  <p>Type anything — a note, a post, a person — and watch where the Organizer puts it, and why.</p>
+  <div class="row">
+    <div>
+      <label for="kind">What is it?</label>
+      <select id="kind">
+        <option value="note">Smart note</option>
+        <option value="post">Post</option>
+        <option value="contact">Contact</option>
+        <option value="list">List</option>
+      </select>
+    </div>
+    <div>
+      <label for="title">Title / name</label>
+      <input type="text" id="title" value="Sunday sourdough">
+    </div>
+  </div>
+  <label for="body">Text (the cover and first page)</label>
+  <textarea id="body">Made sourdough on Sunday morning. The starter finally worked, the crust cracked just right, and we ate the whole loaf with soup. Baking bread at home is the best kind of slow morning.</textarea>
+  <button id="go">Organize it</button>
+  <button class="secondary" id="moveBtn">Move it to Travel &amp; Exploration</button>
+  <div class="result" id="yours" style="display:none"></div>
+
+  <h2>The shelves</h2>
+  <p class="muted">6 major categories · 25 subcategories — settled 2026-11-26. Topics level ready, list not invented (his call).</p>
+  <div id="shelves"></div>
+
+  <h2>The match handoff</h2>
+  <p>What Smart Match receives for a placed item — the category, the keywords, the reasons. The Organizer never computes a match percentage; Match owns that, through the privacy gate.</p>
+  <pre id="handoff">—</pre>
+
+  <h2>Proof on real data</h2>
+  <p>Node proof, 2026-11-26, read-only Supabase, first 200 rows of <code>hub_smart_notes</code>: <b>200 General, 0 placements, 27 suggestions</b> — the corpus is internal system notes, and nothing in them belongs in an interest category, so the engine no longer pretends otherwise. Hand-check of the 27 (before the threshold) found 1 correct and 26 wrong — a single generic word is not evidence. Full results: <code>proof/PROOF-RESULTS.md</code>. Spec: <code>THE-AUTO-ORGANIZER-ALGORITHM.md</code>.</p>
+</div>
+
+<script>
+/* Inlined copy of ../auto-organizer.js v1.0.0-20261126 (evidence-threshold build).
+   If the engine changes, re-inline from ../auto-organizer.js and re-verify the five cards. */
+/* ============================================================================
+   THE AUTO ORGANIZER — the automatic categorization engine
+   ============================================================================
+   Shawn's order, voice call 2026-11-26 ~21:35-21:43 MST ("Okay, so let's
+   get her done"): "write an algorithm that using like just simple logic
+   even categorization even as simple as a library, you should be able to
+   auto organize these feeds... it just knows how to categorize it because
+   it looks oh this goes with this, let's put those together."
+   "Everything the whole system just auto organizes with intelligence and
+   you can choose to always change those categories or move one thing from
+   another... Like by default."
+   "Auto organizer is sort of auto match... one's doing organizing, one's
+   doing matching... they work together... in sync with the Smart Vault or
+   the Nanonode."
+
+   HARVESTED, NOT INVENTED (copy don't create):
+   - Scoring is intelClusterOf, byte-for-byte the same logic, from the Hub
+     (hub-unified-20261124/r20/hub-live-R12-BASE.html, smartTabStrip area)
+     and its server twin (team-nitro/public-blog-seo-20261112/
+     hub-worker-intel-today.js:451): a note scores each cluster by keyword
+     hits in its topics + title + opening text; most hits wins; no hits
+     lands in the home cluster. Weights: phrase longer than 12 chars = 3,
+     phrase with a space = 2, single word = 1.
+   - ONE HARDENING over the harvested pattern: keywords match on word
+     boundaries, not raw substrings. The harvested indexOf would let the
+     2-letter key "ai" match "said", "again", "training", and "tv" match
+     "active". Same weights, same scoring — safer matching. Documented here
+     so the next seat does not "fix" it back to indexOf.
+   - Override storage follows the harvested human-tabs pattern
+     (localStorage key nayanet.feed.smartTabs.v1): device-local JSON,
+     in-memory fallback when storage is unavailable (Node, private mode).
+   - The move UI follows the harvested category picker
+     (openCategoryPicker): a .tab-menu panel of .mi items, outside click /
+     Escape dismisses, picking files the entry under that category.
+
+   WHAT IT DOES, IN PLAIN WORDS (the library):
+   Every new thing — smart note, post, contact, list, or the citizen's
+   own note — is a book arriving at the library. The Organizer reads its
+   cover and its first page (title + opening words), looks at the words on
+   the shelves (the taxonomy below), and puts the book on the shelf where
+   the most words match. The shelf labels the citizen already picked win
+   ties. If the citizen moves a book to another shelf, the move always
+   wins — and the Organizer remembers which words taught it, so the next
+   similar book goes to the right shelf the first time. If no words match
+   at all, the book goes home (the citizen's first picked interest, or
+   General) with a note saying so, so the citizen can place it.
+
+   STRUCTURE: categories -> subcategories -> topics (the Q14 restructure).
+   The 6 major categories and 25 subcategories are SETTLED (his list, web
+   2026-11-26 ~18:49 MST; MEMORY.md "INTEREST CATEGORIES — FULL
+   STRUCTURED LIST"). Keyword lists are built ONLY from his two word
+   lists: that structured list and the first-10 list (chat 2026-11-26
+   ~18:44 MST) — label words + description words + their plurals. Two
+   words were deliberately LEFT OUT with reasons, in the spec.
+   The TOPICS level is NOT settled: TOPICS starts empty; setTopics(list)
+   loads it the moment he gives the list. Nothing about topics is invented.
+   Until then every placement carries topic: null, topicReady: true.
+
+   WHERE IT LIVES: this file is the engine. The Hub's Smart Tabs are its
+   face: at note-load time the feed calls organize(item, ctx) and stores
+   the result on the note as note.organizer = {category, subcategory,
+   topic, confidence, reasons, source}. The tab strip then shows the
+   item under its category tab. Placement is COMPUTED ON READ, not stored
+   in the database — hub_smart_notes has no category column, and no
+   schema change is needed or made. The only stored piece is the citizen's
+   override (device-local, like human tabs).
+   ========================================================================== */
+(function (root, factory) {
+  if (typeof module !== 'undefined' && module.exports) module.exports = factory();
+  else root.AutoOrganizer = factory();
+})(typeof self !== 'undefined' ? self : this, function () {
+  'use strict';
+
+  /* --- THE TAXONOMY (settled; his list, 2026-11-26 ~18:49 MST) ------------
+     6 majors, 25 subcategories. Keyword lists: label words + description
+     words + plurals, from his structured list and his first-10 list
+     (2026-11-26 ~18:44 MST). Shared words (journaling, writing, film,
+     gardening, camping...) are listed in EVERY subcategory whose
+     description contains them — each subcategory scores independently,
+     exactly like the harvested clusters. Ties break by taxonomy order,
+     then citizen picks, then learned rules. */
+  var TAXONOMY = [
+    { id: 'entertainment-media', label: 'Entertainment & Media', subs: [
+      { id: 'music', label: 'Music', keys: ['music', 'listening', 'concert', 'concerts', 'playing instruments', 'singing', 'dance', 'dancing'] },
+      { id: 'movies-television', label: 'Movies & Television', keys: ['movies', 'movie', 'television', 'streaming', 'series', 'films', 'film', 'pop culture', 'franchise', 'franchises', 'entertainment'] },
+      { id: 'gaming', label: 'Gaming', keys: ['gaming', 'video games', 'video game', 'tabletop board games', 'board games', 'board game', 'role-playing games', 'role-playing game', 'console', 'online competitive', 'competitive'] },
+      { id: 'reading-literature', label: 'Reading & Literature', keys: ['reading', 'literature', 'fiction', 'non-fiction', 'nonfiction', 'audiobooks', 'audiobook', 'book clubs', 'book club', 'journaling', 'journal', 'creative writing', 'writing', 'book', 'books'] },
+      { id: 'podcasts-audio', label: 'Podcasts & Audio', keys: ['podcasts', 'podcast', 'audio', 'true crime', 'comedy', 'educational', 'conversational'] }
+    ]},
+    { id: 'food-drink', label: 'Food & Drink', subs: [
+      { id: 'cooking-baking', label: 'Cooking & Baking', keys: ['cooking', 'baking', 'home cooking', 'recipe', 'recipes', 'recipe swaps', 'culinary', 'culinary exploration', 'food'] },
+      { id: 'dining-out', label: 'Dining Out & Food Culture', keys: ['dining out', 'dining', 'restaurants', 'restaurant', 'street food', 'local cafes', 'cafe', 'cafes', 'food culture'] },
+      { id: 'coffee-tea', label: 'Coffee, Tea & Craft Beverages', keys: ['coffee', 'tea', 'craft beverages', 'craft beverage', 'specialty coffee', 'mixology', 'wine tasting', 'wine', 'craft beer', 'beer', 'beverages', 'beverage'] }
+    ]},
+    { id: 'health-fitness-sports', label: 'Health, Fitness & Sports', subs: [
+      { id: 'fitness-working-out', label: 'Fitness & Working Out', keys: ['fitness', 'working out', 'workout', 'workouts', 'strength', 'yoga', 'pilates', 'home workouts', 'swimming'] },
+      { id: 'spectator-sports', label: 'Spectator Sports', keys: ['spectator sports', 'pro leagues', 'league', 'leagues', 'live matches', 'live match', 'fantasy sports', 'fantasy', 'sports'] },
+      { id: 'recreational-team-sports', label: 'Recreational & Team Sports', keys: ['recreational team sports', 'team sports', 'pickleball', 'soccer', 'basketball', 'tennis', 'golf', 'recreational'] },
+      { id: 'mental-health-mindfulness', label: 'Mental Health & Mindfulness', keys: ['mental health', 'mindfulness', 'meditation', 'journaling', 'journal', 'self-improvement', 'self improvement'] }
+    ]},
+    { id: 'outdoors-travel', label: 'Outdoors & Travel', subs: [
+      { id: 'travel-exploration', label: 'Travel & Exploration', keys: ['travel', 'exploration', 'vacationing', 'vacation', 'road trips', 'road trip', 'cultural tourism', 'tourism', 'local trips', 'international travel', 'cultural festivals', 'festival', 'festivals', 'sightseeing', 'trip', 'trips'] },
+      { id: 'hiking-nature', label: 'Hiking & Nature', keys: ['hiking', 'hike', 'nature', 'trail walking', 'trail', 'trails', 'camping', 'birding', 'birdwatching', 'parks', 'park', 'fishing', 'outdoors', 'outdoor'] },
+      { id: 'gardening-houseplants', label: 'Gardening & Houseplants', keys: ['gardening', 'garden', 'houseplants', 'houseplant', 'indoor plants', 'indoor plant', 'backyard vegetables', 'vegetables', 'flower beds', 'flower bed'] },
+      { id: 'pets-animals', label: 'Pets & Animals', keys: ['pets', 'pet', 'animals', 'animal', 'dogs', 'dog', 'cats', 'cat', 'exotic pets', 'caring for pets'] }
+    ]},
+    { id: 'arts-crafts-making', label: 'Arts, Crafts & Making', subs: [
+      { id: 'visual-arts', label: 'Visual Arts', keys: ['visual arts', 'drawing', 'painting', 'digital illustration', 'illustration', 'sculpture'] },
+      { id: 'photography-videography', label: 'Photography & Videography', keys: ['photography', 'photograph', 'videography', 'video', 'street photography', 'content creation', 'filmmaking', 'film'] },
+      { id: 'fiber-textile-arts', label: 'Fiber & Textile Arts', keys: ['fiber', 'textile arts', 'textile', 'crocheting', 'crochet', 'knitting', 'knit', 'sewing', 'sew', 'embroidery'] },
+      { id: 'writing-storytelling', label: 'Writing & Storytelling', keys: ['writing', 'storytelling', 'story', 'stories', 'creative writing', 'poetry', 'poem', 'poems', 'blogging', 'blog', 'journaling', 'journal'] },
+      { id: 'diy-woodworking', label: 'DIY & Woodworking', keys: ['diy', 'do it yourself', 'woodworking', 'wood', 'home improvement', 'furniture building', 'furniture', 'pottery', 'candle making', 'candles', 'crafts', 'craft'] }
+    ]},
+    { id: 'lifestyle-tech-knowledge', label: 'Lifestyle, Tech & Knowledge', subs: [
+      { id: 'fashion-personal-style', label: 'Fashion & Personal Style', keys: ['fashion', 'personal style', 'style', 'thrifting', 'thrift', 'streetwear', 'skincare', 'skin care', 'makeup'] },
+      { id: 'home-decor', label: 'Home Decor & Interior Design', keys: ['home decor', 'decor', 'interior design', 'organizing', 'decorating', 'curating living spaces', 'living spaces', 'curating'] },
+      { id: 'technology-gadgets', label: 'Technology & Gadgets', keys: ['technology', 'gadgets', 'gadget', 'consumer tech', 'tech', 'ai tools', 'pc building', 'smart home'] },
+      { id: 'history-science-learning', label: 'History, Science & Learning', keys: ['history', 'science', 'language learning', 'astronomy', 'genealogy', 'trivia'] }
+    ]}
+  ];
+
+  /* Topics level — NOT settled, NOT invented. Starts empty; setTopics(list)
+     loads it the moment he gives the list. Each topic names its
+     subcategory id; validation rejects any topic that does not. */
+  var TOPICS = [];
+  var TOPIC_BY_ID = {};
+
+  var OVERRIDE_KEY = 'nayanet.organizer.overrides.v1';
+  var RULE_KEY = 'nayanet.organizer.learned-rules.v1';
+  var MAX_RULES = 50;
+
+  /* --- stores (localStorage when available, memory fallback) --- */
+  function makeStore(key) {
+    var mem = null;
+    function read() {
+      try {
+        var raw = (typeof localStorage !== 'undefined') ? localStorage.getItem(key) : null;
+        if (raw) return JSON.parse(raw);
+      } catch (e) {}
+      return mem;
+    }
+    function write(v) {
+      mem = v;
+      try { if (typeof localStorage !== 'undefined') localStorage.setItem(key, JSON.stringify(v)); } catch (e) {}
+    }
+    return { read: read, write: write };
+  }
+  var overrideStore = makeStore(OVERRIDE_KEY);
+  var ruleStore = makeStore(RULE_KEY);
+
+  function readOverrides() { var o = overrideStore.read(); return (o && typeof o === 'object') ? o : {}; }
+  function readRules() { var r = ruleStore.read(); return Array.isArray(r) ? r : []; }
+
+  /* --- matching (harvested weights; word-boundary hardening, see header) --- */
+  function escRe(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+  function wordHit(hay, key) {
+    var re = new RegExp('\\b' + escRe(key) + '\\b', 'i');
+    return re.test(hay);
+  }
+  function keyWeight(k) {
+    if (k.length > 12) return 3;           /* long phrase, harvested */
+    if (k.indexOf(' ') !== -1) return 2;   /* phrase, harvested */
+    return 1;                              /* single word, harvested */
+  }
+
+  /* --- haystack per item type: cover + first page, nothing else --- */
+  function haystackFor(item) {
+    var parts = [];
+    function add(v) { if (v !== undefined && v !== null && v !== '') parts.push(String(v)); }
+    function addList(a) { if (Array.isArray(a)) a.forEach(add); }
+    var t = item.type || 'note';
+    addList(item.topics);
+    if (t === 'contact') {
+      add(item.name); add(item.alias); add(item.about);
+      addList(item.interests); addList(item.sharedInterests);
+    } else if (t === 'list') {
+      add(item.name); add(item.title);
+      addList(item.items);
+    } else if (t === 'post') {
+      add(item.title); add(item.body ? String(item.body).slice(0, 1200) : '');
+    } else { /* note, own note, default */
+      add(item.title); add(item.nutshell); add(item.subtitle);
+      add(item.body ? String(item.body).slice(0, 1200) : '');
+      add(item.human_note ? String(item.human_note).slice(0, 600) : '');
+    }
+    return parts.join(' ');
+  }
+
+  function findSub(id) {
+    for (var i = 0; i < TAXONOMY.length; i++) {
+      var subs = TAXONOMY[i].subs;
+      for (var j = 0; j < subs.length; j++) {
+        if (subs[j].id === id) return { major: TAXONOMY[i], sub: subs[j] };
+      }
+    }
+    return null;
+  }
+  function findMajor(id) {
+    for (var i = 0; i < TAXONOMY.length; i++) if (TAXONOMY[i].id === id) return TAXONOMY[i];
+    return null;
+  }
+
+  /* Score every subcategory. Returns [{major, sub, score, hits[]}] in
+     taxonomy order — order IS the tie-break, deterministic, like the
+     harvested clusters' priority order. */
+  function scoreAll(item, hay, ctx) {
+    var picks = (ctx && ctx.picks) || [];
+    var rules = readRules();
+    var out = [];
+    TAXONOMY.forEach(function (major) {
+      major.subs.forEach(function (sub) {
+        var score = 0, hits = [];
+        sub.keys.forEach(function (k) {
+          if (wordHit(hay, k)) { score += keyWeight(k); hits.push(k); }
+        });
+        /* Explicit topic naming this subcategory: a direct hit. */
+        if (Array.isArray(item.topics)) {
+          item.topics.forEach(function (tp) {
+            var low = String(tp).toLowerCase();
+            if (low === sub.label.toLowerCase() || low === sub.id) { score += 10; hits.push('topic:' + sub.label); }
+          });
+        }
+        /* Citizen's declared picks win ties: +2 to a picked subcategory. */
+        if (picks.indexOf(sub.label) !== -1 || picks.indexOf(sub.id) !== -1) {
+          if (score > 0) { score += 2; hits.push('pick:' + sub.label); }
+        }
+        /* Learned rules: words a past move taught us, +2 each. */
+        rules.forEach(function (r) {
+          if (r.subcategory === sub.id) {
+            r.keywords.forEach(function (k) { if (wordHit(hay, k)) { score += 2; hits.push('learned:' + k); } });
+          }
+        });
+        out.push({ major: major, sub: sub, score: score, hits: hits });
+      });
+    });
+    return out;
+  }
+
+  function confidenceFor(score) {
+    if (score >= 6) return 'high';
+    if (score >= 3) return 'medium';
+    if (score >= 1) return 'low';
+    return 'none';
+  }
+
+  /* --- the Organizer: place one item --- */
+  function organize(item, ctx) {
+    item = item || {};
+    ctx = ctx || {};
+    var id = item.id || item.ib_id || item.title || 'unknown';
+    /* 1. The citizen's override ALWAYS wins. */
+    var ov = readOverrides()[id];
+    if (ov) {
+      var placed = findSub(ov.subcategory);
+      if (placed) {
+        /* Override = the citizen said so: full certainty, not "none". */
+        return finish(item, placed.major, placed.sub, 10, 'override',
+          ['you placed this under ' + placed.sub.label], ctx);
+      }
+    }
+    var hay = haystackFor(item);
+    /* 2. An explicit major in the item's topics narrows the shelf first. */
+    var narrowed = null;
+    if (Array.isArray(item.topics)) {
+      item.topics.forEach(function (tp) {
+        var low = String(tp).toLowerCase();
+        TAXONOMY.forEach(function (m) {
+          if (low === m.label.toLowerCase() || low === m.id) narrowed = m;
+        });
+      });
+    }
+    var scored = scoreAll(item, hay, ctx);
+    if (narrowed) scored = scored.filter(function (s) { return s.major.id === narrowed.id; });
+    var best = null;
+    scored.forEach(function (s) { if (!best || s.score > best.score) best = s; });
+    /* EVIDENCE THRESHOLD (measured, proof run 2, 2026-11-26 21:53 MST):
+       a single generic word is NOT evidence — hand-checking 27 score-1
+       placements on real notes found 26 wrong (metaphor or passing
+       mention: "reading" the response, "story" as metaphor, "travel" in
+       passing). A placement needs REAL evidence: total score >= 3, or
+       one real phrase hit (weight >= 2). Otherwise the item goes home
+       with the best subcategory recorded as a SUGGESTION the citizen can
+       confirm or move — the system suggests, it does not fake. */
+    var hasPhrase = false;
+    if (best) {
+      best.hits.forEach(function (h) {
+        var k = h.replace(/^(topic|pick|learned):/, '');
+        if (keyWeight(k) >= 2) hasPhrase = true;
+      });
+    }
+    if (!best || (best.score < 3 && !hasPhrase)) {
+      return homePlacement(item, narrowed, ctx, best);
+    }
+    return finish(item, best.major, best.sub, best.score, best.hits.some(function (h) { return h.indexOf('topic:') === 0; }) ? 'explicit' : (best.hits.some(function (h) { return h.indexOf('learned:') === 0; }) ? 'learned' : 'keywords'),
+      best.hits.slice(0, 4), ctx);
+  }
+
+  /* Home placement: an explicitly named major is home; else the citizen's
+     first pick's major; else General. The best-scoring subcategory (if
+     any) is recorded as a SUGGESTION — the system suggests, the citizen
+     confirms or moves. Nothing is faked into a subcategory without
+     evidence. */
+  function homePlacement(item, narrowed, ctx, best) {
+    var id = item.id || item.ib_id || item.title || 'unknown';
+    var homeMajor = narrowed || null;
+    var picks = (ctx && ctx.picks) || [];
+    if (!homeMajor && picks.length) {
+      var first = findSub(picks[0]) || null;
+      if (first) homeMajor = first.major;
+      else TAXONOMY.forEach(function (m) { if (!homeMajor && (m.label === picks[0] || m.id === picks[0])) homeMajor = m; });
+    }
+    var suggestion = null;
+    if (best && best.score > 0) {
+      suggestion = { category: best.major.label, categoryId: best.major.id,
+        subcategory: best.sub.label, subcategoryId: best.sub.id,
+        score: best.score, reasons: best.hits.slice(0, 4) };
+    }
+    return {
+      itemId: id, type: item.type || 'note',
+      category: homeMajor ? homeMajor.label : 'General',
+      categoryId: homeMajor ? homeMajor.id : 'general',
+      subcategory: null, subcategoryId: null,
+      topic: null, topicReady: true,
+      score: 0, confidence: 'none', source: 'home',
+      reasons: [best && best.score > 0
+        ? 'too little evidence to file — best guess was ' + best.sub.label + ' (' + best.score + '), confirm it or move it'
+        : 'no keyword hit — placed at home, move it if you like'],
+      suggestion: suggestion,
+      matchInput: null
+    };
+  }
+
+  function finish(item, major, sub, score, source, reasons, ctx) {
+    var id = item.id || item.ib_id || item.title || 'unknown';
+    var p = {
+      itemId: id, type: item.type || 'note',
+      category: major.label, categoryId: major.id,
+      subcategory: sub.label, subcategoryId: sub.id,
+      topic: null, topicReady: true,
+      score: score, confidence: confidenceFor(score), source: source,
+      reasons: reasons,
+      matchInput: null
+    };
+    p.matchInput = matchInput(p, item, ctx);
+    return p;
+  }
+
+  /* --- the handoff to Smart Match: the placed item + its reasons.
+     The Organizer does NOT compute match percentages — Match owns that,
+     through the privacy gate, with reasons attached. This object is the
+     exact input Match receives. --- */
+  function matchInput(placement, item, ctx) {
+    if (!placement || !placement.subcategoryId) return null;
+    var keywords = (placement.reasons || []).filter(function (r) {
+      return r.indexOf('topic:') !== 0 && r.indexOf('pick:') !== 0 && r.indexOf('you placed') !== 0;
+    }).map(function (r) { return r.replace(/^learned:/, ''); });
+    if (!keywords.length) {
+      /* Override placement: the reasons are the citizen's words, not
+         keywords — fall back to the item's own top scored keywords so
+         Match still receives what the item is about. */
+      var hay = haystackFor(item);
+      var scored = scoreAll(item, hay, ctx || {});
+      var top = null;
+      scored.forEach(function (s) { if (s.subcategoryId === undefined && s.sub && s.sub.id === placement.subcategoryId) top = s; });
+      scored.forEach(function (s) { if (!top || s.score > top.score) top = s; });
+      if (top) {
+        keywords = top.hits.filter(function (h) { return h.indexOf(':') === -1; }).slice(0, 4);
+      }
+    }
+    return {
+      itemId: placement.itemId,
+      type: placement.type,
+      category: placement.category,
+      categoryId: placement.categoryId,
+      subcategory: placement.subcategory,
+      subcategoryId: placement.subcategoryId,
+      keywords: keywords,
+      owner: (ctx && ctx.owner) || item.owner || item.author || null,
+      reasons: placement.reasons.slice()
+    };
+  }
+
+  /* --- the citizen's move: override always wins, and teaches ---
+     moveItem places the item under the chosen subcategory, records the
+     override, and learns: the item's top 2 matched keywords (by weight)
+     gain +2 toward the new subcategory for future items. A later move of
+     the same item retracts its old rule. Rules cap at 50, oldest first. */
+  function moveItem(item, categoryId, subcategoryId) {
+    var found = findSub(subcategoryId);
+    if (!found || found.major.id !== categoryId) return null;
+    var id = item.id || item.ib_id || item.title || 'unknown';
+    var hay = haystackFor(item);
+    var scored = scoreAll(item, hay, {});
+    var top = null;
+    scored.forEach(function (s) { if (!top || s.score > top.score) top = s; });
+    var teachKeys = [];
+    if (top && top.hits.length) {
+      teachKeys = top.hits
+        .filter(function (h) { return h.indexOf(':') === -1; })
+        .sort(function (a, b) { return keyWeight(b) - keyWeight(a); })
+        .slice(0, 2);
+    }
+    var ovs = readOverrides();
+    ovs[id] = { category: categoryId, subcategory: subcategoryId, at: new Date().toISOString() };
+    overrideStore.write(ovs);
+    var rules = readRules().filter(function (r) { return r.taughtBy !== id; });
+    if (teachKeys.length) {
+      rules.push({ subcategory: subcategoryId, keywords: teachKeys, taughtBy: id, at: new Date().toISOString() });
+      while (rules.length > MAX_RULES) rules.shift();
+    }
+    ruleStore.write(rules);
+    return organize(item, {});
+  }
+
+  function clearOverride(itemId) {
+    var ovs = readOverrides();
+    delete ovs[itemId];
+    overrideStore.write(ovs);
+    var rules = readRules().filter(function (r) { return r.taughtBy !== itemId; });
+    ruleStore.write(rules);
+  }
+
+  /* --- topics level: ready, empty until he gives the list --- */
+  function setTopics(list) {
+    if (!Array.isArray(list)) return { ok: false, error: 'topics must be an array' };
+    for (var i = 0; i < list.length; i++) {
+      var t = list[i];
+      if (!t || !t.id || !t.label || !t.subcategory || !findSub(t.subcategory)) {
+        return { ok: false, error: 'topic ' + (t && t.id) + ' does not name a real subcategory' };
+      }
+    }
+    TOPICS = list.slice();
+    TOPIC_BY_ID = {};
+    TOPICS.forEach(function (t) { TOPIC_BY_ID[t.id] = t; });
+    return { ok: true, count: TOPICS.length };
+  }
+
+  function organizeAll(items, ctx) {
+    var out = (items || []).map(function (it) { return organize(it, ctx); });
+    var dist = {};
+    out.forEach(function (p) {
+      var k = p.subcategoryId || 'general';
+      dist[k] = (dist[k] || 0) + 1;
+    });
+    return { placements: out, distribution: dist, total: out.length };
+  }
+
+  return {
+    TAXONOMY: TAXONOMY,
+    organize: organize,
+    organizeAll: organizeAll,
+    moveItem: moveItem,
+    clearOverride: clearOverride,
+    matchInput: matchInput,
+    setTopics: setTopics,
+    topics: function () { return TOPICS.slice(); },
+    learnedRules: readRules,
+    overrides: readOverrides,
+    haystackFor: haystackFor,
+    VERSION: '1.0.0-20261126'
+  };
+});
+
+</script>
+<script>
+(function () {
+  var AO = window.AutoOrganizer;
+  if (!AO) { document.body.innerHTML = '<p style="color:#ff8080;padding:30px">Auto Organizer failed to load.</p>'; return; }
+  document.getElementById('ver').textContent = AO.VERSION || '1.0.0';
+  document.getElementById('stamp').textContent = new Date().toLocaleString();
+  /* Clean demo every load: yesterday's moves must not change today's proof. */
+  ['live-note-1', 'live-post-1', 'live-post-2', 'live-contact-1'].forEach(function (id) { AO.clearOverride(id); });
+
+  function stamp() { return new Date().toLocaleTimeString(); }
+  function pills(p) {
+    var h = '';
+    (p.reasons || []).forEach(function (r) { h += '<span class="pill">' + esc(r) + '</span>'; });
+    return h;
+  }
+  function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function card(p, extra) {
+    var placed = !!p.subcategory;
+    var h = '<b>' + esc(p.category) + (placed ? ' / ' + esc(p.subcategory) : ' — home') + '</b>'
+      + ' &nbsp; <span class="' + (placed ? 'ok' : 'warn') + '">' + (placed ? 'PLACED' : 'HOME') + '</span>'
+      + ' &nbsp; score ' + p.score + ' · ' + p.confidence + ' · ' + esc(p.source)
+      + '<br><span class="muted">' + esc(p.reasons.join(' — ')) + '</span><br>' + pills(p);
+    if (p.suggestion) h += '<br><span class="muted">Suggestion: ' + esc(p.suggestion.category) + ' / ' + esc(p.suggestion.subcategory) + ' (score ' + p.suggestion.score + ') — confirm it or move it.</span>';
+    if (extra) h += '<br>' + extra;
+    return h;
+  }
+
+  var note = { id: 'live-note-1', type: 'note', title: 'Sourdough on Sunday — what the slow rise taught me',
+    nutshell: 'Home cooking, baking bread from a starter I keep on the counter. The kitchen smells like a bakery by noon.',
+    body: 'The recipe is simple: flour, water, salt, time. Baking teaches patience the way nothing else does — you cannot rush a rise, you can only keep the starter alive and wait. Home cooking at its best.' };
+  var post = { id: 'live-post-1', type: 'post', title: 'Sunrise on the Elk Trail — five quiet miles before the town woke up',
+    body: 'Trail walking at dawn, birding along the ridge, the park empty except for us. Hiking the long way home.' };
+  var contact = { id: 'live-contact-1', type: 'contact', name: 'Mara Ellison',
+    about: 'Plays violin in a community orchestra, never misses a concert, teaches piano on Saturdays.',
+    interests: ['concerts', 'playing instruments'] };
+
+  var t0 = stamp();
+  var p1 = AO.organize(note);
+  document.getElementById('live1').innerHTML = card(p1) + '<br><span class="muted">Placed at ' + t0 + ' — "Sourdough on Sunday" · a new smart note.</span>';
+  var p2 = AO.organize(post);
+  document.getElementById('live2').innerHTML = card(p2) + '<br><span class="muted">Placed at ' + stamp() + ' — "Sunrise on the Elk Trail" · a post.</span>';
+  var p3 = AO.organize(contact);
+  document.getElementById('live3').innerHTML = card(p3) + '<br><span class="muted">Placed at ' + stamp() + ' — Mara Ellison · a contact.</span>';
+
+  var moved = AO.moveItem(post, 'outdoors-travel', 'travel-exploration');
+  var p2b = AO.organize(post);
+  document.getElementById('live4').innerHTML = card(p2b, '<span class="muted">You moved "Sunrise on the Elk Trail" to Travel &amp; Exploration at ' + stamp() + '. The override wins (score 10, high). Learned rule taught: <b>travel-exploration</b> ← trail walking, hiking.</span>');
+  var post2 = { id: 'live-post-2', type: 'post', title: 'Morning trail walking on the ridge, then a road trip home',
+    body: 'Trail walking before breakfast, then a road trip back down the valley.' };
+  var p5 = AO.organize(post2);
+  document.getElementById('live5').innerHTML = card(p5, '<span class="muted">Placed at ' + stamp() + '. Without the rule, Hiking would win 4–3. The move taught it.</span>');
+
+  document.getElementById('handoff').textContent = JSON.stringify(p1.matchInput, null, 2);
+
+  var sh = '';
+  AO.TAXONOMY.forEach(function (m) {
+    sh += '<div class="card"><b>' + esc(m.label) + '</b><br>';
+    m.subs.forEach(function (s) { sh += '<span class="pill">' + esc(s.label) + '</span>'; });
+    sh += '</div>';
+  });
+  document.getElementById('shelves').innerHTML = sh;
+
+  var lastPlacement = null;
+  document.getElementById('go').addEventListener('click', function () {
+    var kind = document.getElementById('kind').value;
+    var item = { id: 'yours-' + Date.now(), type: kind, title: document.getElementById('title').value,
+      body: document.getElementById('body').value, nutshell: document.getElementById('body').value.slice(0, 200) };
+    if (kind === 'contact') { item.name = item.title; item.about = item.body; }
+    lastPlacement = AO.organize(item);
+    var el = document.getElementById('yours');
+    el.style.display = 'block';
+    el.className = 'result' + (lastPlacement.subcategory ? '' : ' home');
+    el.innerHTML = card(lastPlacement) + '<br><span class="muted">Organized at ' + stamp() + '.</span>';
+    document.getElementById('handoff').textContent = JSON.stringify(lastPlacement.matchInput, null, 2);
+  });
+  document.getElementById('moveBtn').addEventListener('click', function () {
+    if (!lastPlacement) { alert('Organize it first.'); return; }
+    AO.moveItem({ id: lastPlacement.itemId }, 'outdoors-travel', 'travel-exploration');
+    var item = { id: lastPlacement.itemId, type: lastPlacement.type, title: document.getElementById('title').value,
+      body: document.getElementById('body').value, nutshell: document.getElementById('body').value.slice(0, 200) };
+    lastPlacement = AO.organize(item);
+    var el = document.getElementById('yours');
+    el.className = 'result';
+    el.innerHTML = card(lastPlacement) + '<br><span class="muted">You moved it — the override wins. Try organizing a similar one next: it will land in Travel &amp; Exploration on its own.</span>';
+  });
+})();
+</script>
+</body>
+</html>
