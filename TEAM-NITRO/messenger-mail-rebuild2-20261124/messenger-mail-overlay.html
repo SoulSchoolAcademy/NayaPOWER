@@ -12729,4 +12729,358 @@ else fx18Boot();
 })();
 </script>
 
+
+<style id="ov-fix19-20261127">
+/* ===== FIX19 (2026-11-27, try 2 of the fix18 line) — append-only: no base
+   byte edited, fix13–fix18 untouched. The six carried items + the checker's #10.
+   Laws: white text only, 17px minimum on every new word, deep palette hexes
+   only, one light top-left, 135deg gradients, shadow down-right, edge glow
+   only — middle obsidian. NOTHING else is touched.
+   (1) Group delivery: the list option + its members, injected into the To
+   select (see script). The list pick reads as the group address.
+   (2) Composer as the viewer: the whole overlay moves into the viewer
+   (.ml-read / #nmReader) and the modal carries fx19-inviewer; closeCompose
+   still removes the overlay, so X / Escape / SEND NOW all close it.
+   (3) Glyph sizes: 28px on .pc-act-btn as well as .fx15-act — one size.
+   (4) Sent mail in card history: the card's FULL HISTORY gains real MAIL
+   lines from the sent-mail record (see script).
+   (5) Collapsed-reload state: observed + logged, never claimed by code.
+   (6) 13->1 dedupe: the group send makes 13 rows; the fx17 dedupe keeps 1.
+   PLUS: cluster spacing; the bubble's inner board rim softened to a faint
+   hairline so the cloud reads soft at 390. */
+.mail-stage .pc-act-btn,.pc-act-btn{font-size:28px!important;}
+.mail-stage .pc-card .pc-act-btn,.pc-card .pc-act-btn{font-size:28px!important;}
+#nmReader .nm-bubble p{border:1px solid rgba(255,255,255,.18)!important;box-shadow:0 6px 16px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.12)!important;}
+.mail-stage .ml-filters{display:flex!important;gap:10px!important;flex-wrap:wrap!important;}
+.mail-stage .ml-bulkbar{display:flex!important;gap:10px!important;flex-wrap:wrap!important;align-items:center!important;}
+.mail-stage .ml-bulkbar button{padding:8px 16px!important;border-radius:999px!important;margin:0!important;}
+.mail-stage .mlx-to-pick[data-fx19-list]{border-color:#0f52ba!important;box-shadow:0 0 16px -4px #0f52ba!important;font-weight:800!important;}
+.mail-stage .mlx-to-pick[data-fx19-member]{border-color:#07925f!important;}
+</style>
+<script>
+(function(){
+'use strict';
+/* ---------- fix19 helpers ---------- */
+function fx19load(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch(e){return d;}}
+function fx19store(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+function fx19el(t,c,txt){var e=document.createElement(t);if(c)e.className=c;if(txt!=null)e.textContent=txt;return e;}
+function fx19vis(el){if(!el)return false;var r=el.getBoundingClientRect();return r.width>0&&r.height>0;}
+/* The 13 members of the open list, read from the page itself — the same
+   [data-pc-alias] census fx16 uses. Names come from the member rows. */
+function fx19Members(){
+  var out={},order=[];
+  Array.prototype.forEach.call(document.querySelectorAll('[data-pc-alias]'),function(el){
+    var a=el.getAttribute('data-pc-alias');if(!a||out[a])return;
+    var label=a;
+    try{
+      var row=el.closest?el.closest('.fx13-member'):null;
+      var nm=row?row.querySelector('.fx13-member-name'):null;
+      if(nm&&(nm.textContent||'').trim())label=(nm.textContent||'').trim();
+    }catch(e){}
+    out[a]=1;order.push({alias:a,label:label});
+  });
+  return order;
+}
+function fx19Slug(s){return String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')||'list';}
+function fx19ShortList(list){
+  var s=String(list||'');
+  var ix=s.indexOf(' — ');
+  return ix>-1?s.slice(0,ix):s;
+}
+/* ---------- (1) GROUP DELIVERY — the list itself as a recipient ----------
+   When the group composer opens (fx17-pending-group set by the "Mail group" /
+   "Message group" tap), the To select gains the LIST option plus one option
+   per member. The list option is the address the citizen sees; the member
+   options are the expansion the base send turns into 13 real targets.
+   fx17's own 700ms matcher selects the list option by name and deselects the
+   members — so a 1500ms repair re-selects them once. After that the citizen's
+   own picks are theirs: the pass never re-selects again for this modal. */
+function fx19AddressGroup(modal,pending){
+  try{
+    var sel=modal.querySelector('select[name="to"]');
+    if(!sel)return false;
+    var members=fx19Members();
+    var n=members.length;
+    if(!n)return false;
+    var slug=fx19Slug(pending.list);
+    var listVal='clist:fx19-'+slug;
+    var listLabel=String(pending.list)+' ('+n+' contacts)';
+    var hasList=false;
+    Array.prototype.forEach.call(sel.options,function(o){if(o.value===listVal)hasList=true;});
+    if(!hasList){
+      var lo=document.createElement('option');
+      lo.value=listVal;lo.textContent=listLabel;
+      sel.appendChild(lo);
+    }
+    members.forEach(function(m){
+      var v='person:'+m.alias,found=false;
+      Array.prototype.forEach.call(sel.options,function(o){if(o.value===v)found=true;});
+      if(!found){
+        var o=document.createElement('option');
+        o.value=v;o.textContent=m.label;
+        sel.appendChild(o);
+      }
+    });
+    /* The pick-buttons row (.mlx-to-picks) is built once at open from the
+       options then — so rebuild it from the new option set, marking the list
+       pick and the member picks so they read as the group address. */
+    try{
+      var picks=modal.querySelector('.mlx-to-picks');
+      if(picks&&!picks.getAttribute('data-fx19-picks')){
+        picks.setAttribute('data-fx19-picks','1');
+        Array.prototype.forEach.call(sel.options,function(o){
+          var exists=false;
+          Array.prototype.forEach.call(picks.children,function(b){if(b.getAttribute('data-to-val')===o.value)exists=true;});
+          if(exists)return;
+          var b=fx19el('button','mlx-to-pick',o.textContent);
+          b.type='button';b.setAttribute('data-to-val',o.value);
+          b.setAttribute('aria-pressed',o.selected?'true':'false');
+          if(o.value===listVal)b.setAttribute('data-fx19-list','1');
+          else if(o.value.indexOf('person:')===0&&fx19Members().some(function(mm){return mm.alias===o.value.slice(7);}))b.setAttribute('data-fx19-member','1');
+          b.addEventListener('click',function(ev){ev.preventDefault();o.selected=!o.selected;sel.dispatchEvent(new Event('change',{bubbles:true}));b.setAttribute('aria-pressed',o.selected?'true':'false');});
+          picks.appendChild(b);
+        });
+      }
+    }catch(e){}
+    function selectAll(){
+      Array.prototype.forEach.call(sel.options,function(o){
+        if(o.value===listVal)o.selected=true;
+        else if(o.value.indexOf('person:')===0&&members.some(function(mm){return mm.alias===o.value.slice(7);}))o.selected=true;
+      });
+      sel.dispatchEvent(new Event('change',{bubbles:true}));
+    }
+    selectAll();
+    /* Repair once, after fx17's 700ms matcher: if the list is still picked,
+       the members are picked with it. */
+    if(!modal.getAttribute('data-fx19-repair')){
+      modal.setAttribute('data-fx19-repair','1');
+      setTimeout(function(){
+        try{
+          var lo2=null;
+          Array.prototype.forEach.call(sel.options,function(o){if(o.value===listVal&&o.selected)lo2=o;});
+          if(lo2)selectAll();
+        }catch(e){}
+      },1500);
+    }
+    return true;
+  }catch(e){return false;}
+}
+/* Record the group send once it lands: the audit trail the checker reads. */
+function fx19WatchGroupSend(){
+  try{
+    document.addEventListener('click',function(ev){
+      var send=ev.target&&ev.target.closest?ev.target.closest('.mlx-send'):null;
+      var close=ev.target&&ev.target.closest?ev.target.closest('.mlx-x, .mlx-cancel'):null;
+      var pending=fx19load('fx17-pending-group',null);
+      if(send&&pending){
+        var modal=send.closest?send.closest('.ml-modal.mlx'):null;
+        var subj=modal?(modal.querySelector('.mlx-subject')||{}).value||'':'';
+        var sel=modal?modal.querySelector('select[name="to"]'):null;
+        var recips=[];
+        if(sel)Array.prototype.forEach.call(sel.options,function(o){if(o.selected&&o.value.indexOf('person:')===0)recips.push(o.value.slice(7));});
+        var at=new Date().toISOString();
+        setTimeout(function(){
+          try{
+            var sent=fx19load('fx17-sent-mail',[]).filter(function(r){return r&&r.subject===subj;});
+            var all=fx19load('fx19-group-sends',[]);
+            all.push({list:pending.list,mail:pending.mail,subject:subj,recipients:recips,recipientsN:recips.length,sentN:sent.length,at:at});
+            fx19store('fx19-group-sends',all.slice(-20));
+            fx19store('fx17-pending-group',null);
+          }catch(e){}
+        },2500);
+      }else if(close&&pending){
+        setTimeout(function(){try{fx19store('fx17-pending-group',null);}catch(e){}},500);
+      }
+    },true);
+    document.addEventListener('keydown',function(ev){
+      if(ev.key==='Escape'&&fx19load('fx17-pending-group',null)){
+        setTimeout(function(){try{fx19store('fx17-pending-group',null);}catch(e){}},500);
+      }
+    },true);
+  }catch(e){}
+}
+/* ---------- (2) COMPOSER AS THE VIEWER ITSELF ----------
+   Move the WHOLE overlay into the viewer (.ml-read when it shows, else
+   #nmReader) and mark the modal fx19-inviewer. The base close path removes
+   the overlay node, so X / Escape / SEND NOW close it from wherever it
+   lives — the fx17 revert moved the MODAL out of the overlay instead, which
+   is why its close broke; this never does that. */
+function fx19PlaceComposer(){
+  try{
+    Array.prototype.forEach.call(document.querySelectorAll('.ml-modal.mlx'),function(m){
+      if(!fx19vis(m))return;
+      var ov=m.closest?m.closest('.ml-overlay'):null;
+      if(!ov)return;
+      var mailView=document.querySelector('.mail-stage .ml-read');
+      var chatView=document.querySelector('#nmReader');
+      var viewer=fx19vis(mailView)?mailView:(fx19vis(chatView)?chatView:null);
+      if(!viewer)return;
+      if(ov.parentElement!==viewer){viewer.appendChild(ov);}
+      if(!ov.classList.contains('fx15-in-viewer'))ov.classList.add('fx15-in-viewer');
+      m.classList.add('fx19-inviewer');
+    });
+  }catch(e){}
+}
+function fx19ComposerState(){
+  try{
+    var m=null;
+    Array.prototype.forEach.call(document.querySelectorAll('.ml-modal.mlx'),function(x){if(!m&&fx19vis(x))m=x;});
+    if(!m)return {open:false};
+    var ov=m.closest?m.closest('.ml-overlay'):null;
+    var r=m.getBoundingClientRect();
+    return {open:true,inViewer:m.classList.contains('fx19-inviewer')&&!!m.closest('#nmReader, .ml-read'),
+      viewer:!!m.closest('#nmReader')?'nmReader':(!!m.closest('.ml-read')?'ml-read':'none'),
+      parent:ov&&ov.parentElement?ov.parentElement.tagName+'.'+String(ov.parentElement.className||'').slice(0,40):null,
+      overlayCls:ov?String(ov.className):null,pos:getComputedStyle(m).position,
+      rect:[Math.round(r.left),Math.round(r.top),Math.round(r.width),Math.round(r.height)],
+      preview:!!m.querySelector('.fx15-preview')};
+  }catch(e){return {open:'ERR'};}
+}
+/* ---------- (4) SENT MAIL IN CARD HISTORY ----------
+   The base history reads .ml-thread rows from the DOM — but the SENT folder
+   is not rendered while the citizen is in Messenger, so a mail sent a moment
+   ago reads as "No letters". The sent-mail record (fx17-sent-mail) is the
+   truth: when the card is open, append its MAIL lines for this alias, in the
+   same words the base uses, ungarbled by construction. */
+function fx19NormLine(t){
+  return String(t||'').replace(/S{2,}/g,'S').replace(/([a-z0-9])([A-Z])/g,'$1 $2')
+    .replace(/ago\s+Welcome/g,'ago — Welcome').replace(/\s+/g,' ').trim();
+}
+function fx19CardPass(){
+  try{
+    var card=document.getElementById('fx2Card');
+    if(!card||!card.classList.contains('open'))return;
+    var alias=card.getAttribute('data-fx15-card');
+    if(!alias)return;
+    var nameEl=card.querySelector('.fx2-card-name');
+    var name=nameEl?(nameEl.textContent||'').trim():alias;
+    var sent=fx19load('fx17-sent-mail',[]).filter(function(r){
+      return r&&r.to&&String(r.to).toLowerCase()===String(alias).toLowerCase();
+    });
+    if(!sent.length)return;
+    var sig=alias+'|'+sent.length+'|'+(sent[sent.length-1]||{}).subject;
+    if(card.getAttribute('data-fx19-card')===sig)return;
+    var hist=null;
+    Array.prototype.forEach.call(card.querySelectorAll('.fx15-card-sec'),function(sec){
+      var t=sec.querySelector('.fx15-card-sec-t');
+      if(t&&(t.textContent||'').indexOf('FULL HISTORY')===0)hist=sec;
+    });
+    if(!hist)return;
+    card.setAttribute('data-fx19-card',sig);
+    var shown={};
+    Array.prototype.forEach.call(hist.querySelectorAll('p'),function(p){
+      var t=(p.textContent||'');
+      if(t.indexOf('MAIL · ')===0)shown[t.slice(7).split(' — ')[0]]=1;
+    });
+    var noneLine=null;
+    Array.prototype.forEach.call(hist.querySelectorAll('p'),function(p){
+      if((p.textContent||'').indexOf('No letters with')===0)noneLine=p;
+    });
+    var fresh=sent.filter(function(r){return !shown[r.subject];}).slice(-6);
+    if(!fresh.length)return;
+    if(noneLine){
+      noneLine.textContent='Letters with '+name+':';
+    }else{
+      var head=fx19el('p','fx16-star-line','Letters with '+name+':');
+      hist.appendChild(head);
+    }
+    fresh.forEach(function(r){
+      var d='';
+      try{var dt=new Date(r.at);d=dt.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'});}catch(e){}
+      var line=fx19NormLine('MAIL · '+r.subject+(d?' — '+d:''));
+      hist.appendChild(fx19el('p','fx15-card-why',line));
+    });
+    /* The "letters together" tile must not still say 0 beside real letters. */
+    try{
+      var tiles=card.querySelectorAll('.fx16-star-tile');
+      Array.prototype.forEach.call(tiles,function(tl){
+        var lab=tl.querySelector('span');
+        if(lab&&(lab.textContent||'').trim()==='letters together'){
+          var b=tl.querySelector('b');
+          if(b){var cur=parseInt((b.textContent||'').replace(/[^0-9]/g,''),10)||0;if(sent.length>cur)b.textContent=String(sent.length);}
+        }
+      });
+    }catch(e){}
+  }catch(e){}
+}
+/* ---------- (5) COLLAPSED-RELOAD STATE — observed, logged, never claimed --
+   On every load, record whether the reader actually rendered. Collapsed :=
+   no bubbles AND no composer AND at least two visible "+" buttons on black.
+   The prove script reloads three times per width and reads this log. */
+function fx19CollapseWatch(){
+  try{
+    setTimeout(function(){
+      try{
+        var bubbles=document.querySelectorAll('#nmReader .nm-bubble').length;
+        var comp=!!document.querySelector('#nmReader .nm-composer');
+        var plus=0;
+        Array.prototype.forEach.call(document.querySelectorAll('.naya-corner-btn, .fx13-plus-btn'),function(b){
+          var r=b.getBoundingClientRect();if(r.width>0)plus++;
+        });
+        var reader=!!document.getElementById('nmReader');
+        var log=fx19load('fx19-collapse-log',[]);
+        log.push({at:new Date().toISOString(),w:window.innerWidth,bubbles:bubbles,composer:comp,plus:plus,reader:reader,
+          collapsed:reader&&bubbles===0&&!comp&&plus>=2});
+        fx19store('fx19-collapse-log',log.slice(-30));
+      }catch(e){}
+    },5000);
+  }catch(e){}
+}
+/* ---------- (6) 13->1 dedupe — the read-out the checker uses ---------- */
+function fx19GroupThreadRows(subject){
+  try{
+    var vis=0,hidden=0,sentTag=false;
+    Array.prototype.forEach.call(document.querySelectorAll('.ml-thread'),function(row){
+      var sj=row.querySelector('.ml-thread-subj');
+      if(!sj||(sj.textContent||'').trim()!==String(subject||'').trim())return;
+      if(row.style.display==='none'||row.getAttribute('data-fx17-dupe')==='1')hidden++;
+      else{vis++;if(row.querySelector('.fx17-sent-tag'))sentTag=true;}
+    });
+    return {visible:vis,hiddenDupes:hidden,sentTag:sentTag};
+  }catch(e){return {visible:'ERR'};}
+}
+/* ---------- pass + boot ---------- */
+function fx19Pass(){
+  try{fx19PlaceComposer();}catch(e){}
+  try{
+    var pending=fx19load('fx17-pending-group',null);
+    if(pending){
+      Array.prototype.forEach.call(document.querySelectorAll('.ml-modal.mlx'),function(m){
+        if(!fx19vis(m))return;
+        if(m.getAttribute('data-fx19-addr')===String(pending.at))return;
+        if(fx19AddressGroup(m,pending))m.setAttribute('data-fx19-addr',String(pending.at));
+      });
+    }
+  }catch(e){}
+  try{fx19CardPass();}catch(e){}
+}
+function fx19Boot(){
+  try{fx19WatchGroupSend();}catch(e){}
+  try{fx19CollapseWatch();}catch(e){}
+  fx19Pass();
+  setInterval(fx19Pass,500);
+  try{
+    window.__fx19={version:'fix19-20261127',
+      composerState:function(){return fx19ComposerState();},
+      members:function(){return fx19Members();},
+      groupSends:function(){return fx19load('fx19-group-sends',[]);},
+      sentMail:function(){return fx19load('fx17-sent-mail',[]);},
+      groupThreadRows:function(s){return fx19GroupThreadRows(s);},
+      collapseLog:function(){return fx19load('fx19-collapse-log',[]);},
+      glyphSizes:function(){
+        function sizes(sel){var out={n:0,px:{}};Array.prototype.forEach.call(document.querySelectorAll(sel),function(el){var r=el.getBoundingClientRect();if(r.width===0)return;var fs=getComputedStyle(el).fontSize;out.n++;out.px[fs]=(out.px[fs]||0)+1;});return out;}
+        return {pcAct:sizes('.pc-act-btn'),fx15Act:sizes('.fx15-act')};
+      },
+      cluster:function(){
+        function info(el){if(!el)return null;var cs=getComputedStyle(el);return {text:(el.textContent||'').trim(),fs:cs.fontSize,color:cs.color,border:cs.borderColor,bg:cs.backgroundColor};}
+        return {chips:Array.prototype.map.call(document.querySelectorAll('.ml-fchip'),info),
+          bulk:Array.prototype.map.call(document.querySelectorAll('.ml-bulkbar button'),info)};
+      }};
+  }catch(e){}
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fx19Boot);
+else fx19Boot();
+})();
+</script>
+
 </body></html>
