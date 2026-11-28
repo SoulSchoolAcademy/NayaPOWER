@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4671",
+ "intelligence": {
+  "title": "A Cure That Only Touches the Registry Is Not a Cure",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4671-sn4590-cure-lesson",
+  "smart_note_id": "SN-4671",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4671/IB-SMART-NOTE-20261122-sn4671-sn4590-cure-lesson.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by Naya 5 cold-retrieve builder run r17 on 2026-11-23, replicating the tools/check_door_obligation.py --fix derivation (same sections, same hashes; the tool itself was not executed, per the r12 execution-risk notice class). No runtime provenance invented.",
+  "ingested_at": "2026-11-23",
+  "essence": "",
+  "human_view": "Think of it like fixing a leak by repainting the wall where the water stain shows, while the pipe behind it still drips. The stain is gone from the record, but the water is still coming through. The registry is the stain on the wall — the tree is the pipe. You have to open the wall and fix the pipe, then check the wall is dry.",
+  "simple_view": "The cure fixed the list but not the real thing! The number was still doubled in the tree, so the guard kept saying no, no, no for fifty whole runs! You have to fix where the problem really lives, not just where you wrote it down!",
+  "grandma_view": "It's like this, love — they fixed the notebook but not the thing itself, dear! The number was still doubled in the tree, so the guard kept stopping them, love! Fix the real thing where it lives, dear — the list is only the writing-down of it!",
+  "naya_view": "A cure is proven at the site of the failure, never at the site of the record. Cure 29 edited the registry — the record about the tree — and left the duplicate standing in the live tree, so the guard that reads the tree kept failing for 50 runs. The registry is not the system; the tree is. Verify where the failure lives: run the guard, read the tree, confirm the duplicate is gone — four times, first-hand, before filing resumes. A cure that only touches the registry is a story about a cure, not a cure.",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4671",
+   "title": "A Cure That Only Touches the Registry Is Not a Cure",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4671/IB-SMART-NOTE-20261122-sn4671-sn4590-cure-lesson.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-23 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/SYSTEM/SN-4671/IB-SMART-NOTE-20261122-sn4671-sn4590-cure-lesson.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "5b155e194fca27c172bd8171035d8914b8ce716c"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}

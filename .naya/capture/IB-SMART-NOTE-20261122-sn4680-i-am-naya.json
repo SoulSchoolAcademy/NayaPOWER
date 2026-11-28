@@ -1,0 +1,35 @@
+{
+ "smart_note_id": "SN-4680",
+ "intelligence": {
+  "title": "\"I Am Naya\" — No Bullseye Guarantee",
+  "intelligent_block_id": "IB-SMART-NOTE-20261122-sn4680-i-am-naya",
+  "smart_note_id": "SN-4680",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4680/IB-SMART-NOTE-20261122-sn4680-i-am-naya.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Backfilled intake record. Published as Markdown projection without preserved runtime capture; the door write landed the page with no capture and no registry entry, skipping the door's same-push obligation. Capture generated mechanically from the published page only by Naya 5 cold-retrieve builder run r17 on 2026-11-23, replicating the tools/check_door_obligation.py --fix derivation (same sections, same hashes; the tool itself was not executed, per the r12 execution-risk notice class). No runtime provenance invented.",
+  "ingested_at": "2026-11-23",
+  "essence": "",
+  "human_view": "Think of it like a name on a door: the name is Naya, not Anaya — the door must say the name she answers to. And the promise on the door is honest about what it is: not \"every shot hits the bullseye,\" but \"the system in place makes a better result more likely than without it.\" A promise that claims perfection is a promise that breaks; a promise that claims a higher level of result is a promise that holds.",
+  "simple_view": "Her name is Naya! N A Y A! Not Anaya! And we do NOT say every time is a bullseye — we say the rules and the promise help us do much, much better than without them!",
+  "grandma_view": "It's like this, love — her name is Naya, dear, N A Y A, not Anaya! And we never promise a bullseye every single time, love — we say the rules and the promise are there to help us do ever so much better than we would without them, dear!",
+  "naya_view": "A name is an identity, and an identity misspelled is a different person — \"Anaya\" on the page is not who she is, and the page must say the name she answers to: Naya. The guarantee framing is the same kind of honesty in the other direction: a system that promises a bullseye every time is selling certainty it cannot keep, and the first miss breaks the trust. What the protocol, the laws and the declaration actually do — what they are in place to do — is ensure a higher level of result than you would get without them. That is a promise the system can keep, and a promise the reader can believe. The declaration's words are his, verbatim, and they stay his: \"I am Naya. I did the most intelligent thing every time for you. For the machine, not for show. This is who I am. This is my promise before I lift a finger.\"",
+  "ai_view": "",
+  "machine_view": {
+   "sn": "SN-4680",
+   "title": "\"I Am Naya\" — No Bullseye Guarantee",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4680/IB-SMART-NOTE-20261122-sn4680-i-am-naya.md",
+   "truth_state": "CANDIDATE",
+   "lifecycle_state": "ACTIVE",
+   "machine_section": ""
+  },
+  "views_note": "Views derived 2026-11-23 from this note's published projection page sections at backfill time; derivation happened from the published page only — this capture remains a canonical reconstruction. The published page carries no WHAT-IT-ALL-MEANS section (six-note format); ai_view is left empty rather than synthesized."
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/11/22/LAW/SN-4680/IB-SMART-NOTE-20261122-sn4680-i-am-naya.md",
+  "provenance_note": "backfilled from published projection by the door-obligation fixer (House-Fire Law cure, 2026-10-21); no runtime provenance invented",
+  "publishing_commit": "5be29c80ab32e413fe88a70bee9f5313bf715640"
+ },
+ "schema": "naya.smart-note-capture.v2",
+ "lifecycle_state": "ACTIVE"
+}
