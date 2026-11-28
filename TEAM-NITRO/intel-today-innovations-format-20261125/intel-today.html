@@ -1552,19 +1552,19 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 .intel-dayname{font-size:17px;line-height:1.1;color:#fff;letter-spacing:.02em}
 .intel-daynum{display:flex;gap:2px;justify-content:center}
 .intel-daynum .dt{min-width:17px;height:22px;padding:0 2px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#17171f,#050607 70%);border:1.5px solid var(--dtc,#fff);border-radius:5px;color:#fff;font-size:17px;line-height:1;font-weight:700;box-shadow:0 2px 6px rgba(0,0,0,.5)}
-/* FIX9 D2c — the N that walks the block: a round obsidian jewel, red rim, gold N. It sits in the viewer controls and steps IN through the eight sections, same as GO DEEPER. */
-.intel-nwalk{width:48px !important;height:48px !important;min-height:48px !important;border-radius:50% !important;padding:0 !important;font-family:Marcellus,serif !important;font-size:25px !important;font-weight:700 !important;color:#ffd75e !important;border:2px solid #c62828 !important;box-shadow:0 6px 16px rgba(0,0,0,.6),0 0 18px rgba(198,40,40,.55) !important;flex:none}
+/* FIX10 AMENDMENT — THE N IN THE MIDDLE OF THE BOARD (Shawn, voice call 2026-11-27 ~19:47 MST): the locked Settings N — black marble centre, brushed aluminum ring, purple arc/flow around the edge, on the graphite board; middle glow toned down a tad; one more layer behind it, the iconic logo frame, so it reads as real jewelry. Harvested, not invented: the brushed-aluminum conic ring is this file's own .orb-wrap.jewel::before gradient verbatim; the obsidian ball (radial top-left light, white rim, purple glow) is the settings file's .pc-hub-orb verbatim; the purple flow arc spins on this file's own fix9orbit. One N only — it is moved into the section board on every render and is disabled on the last section, where there is nowhere further in. */
+.intel-nwalk{position:relative;box-sizing:border-box !important;overflow:visible !important;width:96px !important;height:96px !important;min-height:96px !important;border-radius:50% !important;padding:0 !important;font-family:Marcellus,serif !important;font-size:44px !important;font-weight:700 !important;color:#ffd75e !important;border:7px solid transparent !important;background:radial-gradient(circle at 32% 28%,#3a3a48 0%,#0a0a0f 70%) padding-box,conic-gradient(from 210deg,#f4f4f8,#7c7f8a 22%,#ffffff 40%,#55565e 58%,#d9d9e0 76%,#f4f4f8) border-box !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -4px 8px rgba(0,0,0,.6),0 0 16px -2px #8e24aa,0 10px 24px rgba(0,0,0,.6) !important;flex:none;cursor:pointer}
+.intel-nwalk::before{content:"";position:absolute;inset:-14px;border-radius:50%;border:2px solid rgba(255,255,255,.55);box-shadow:0 0 18px rgba(255,255,255,.35),inset 0 0 18px rgba(255,255,255,.18);pointer-events:none}
+.intel-nwalk::after{content:"";position:absolute;inset:-14px;border-radius:50%;border:2px solid transparent;border-top-color:#a855f7;border-right-color:#8e24aa;opacity:1;box-shadow:none;animation:fix9orbit 90s linear infinite;pointer-events:none}
+#intelViewer .intel-nwalk:active{transform:scale(.93) !important}
+.intel-sec .intel-nwalk{align-self:center;margin:16px 0 4px}
 /* FIX9 D7 — showcase buttons sit above every overlay in the slide boards. */
-/* FIX9b D2b — the closed picker shows the full title, not a clipped one. */
-#intelNoteSelect{max-width:280px !important}
 #screen-slide .fs-btn{position:relative;z-index:6}
 #screen-slide .ib-n{position:relative;z-index:6}
 
 .intel-viewtop{width:100%;max-width:720px;margin:0 auto 12px;flex:0 0 auto;align-self:center}
 .intel-viewtop .intel-daybar{margin-bottom:10px}
-.intel-selectrow{display:flex;justify-content:flex-end;align-items:center;gap:8px}
-.intel-selectrow label{font-size:18px;color:#fff}
-#intelNoteSelect{max-width:230px;height:44px;font-size:18px;color:#fff;background:#0a0a10;border:2px solid var(--sc,#8e24aa);border-radius:12px;padding:0 10px}
+/* FIX10 AMENDMENT — no picker anywhere (Shawn, voice call 2026-11-27 ~19:49 MST): the selectrow and the select are gone; the arrows move between the day's notes. */
 .intel-sec{aspect-ratio:16/9;display:flex;flex-direction:column;min-height:0}
 .intel-sec h3{flex:0 0 auto}
 .intel-sec p{flex:1 1 auto;min-height:0;overflow-y:auto}
@@ -1596,7 +1596,8 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
    styling, order, ids, handlers, board geometry, 16:9 at desktop, the content-
    sized phone board, the 18px floor, both axes and the data are untouched. */
 #intelViewer{--sc:#8e24aa}
-.intel-controls{background:linear-gradient(135deg,#17171f,#050607 70%);border:2px solid var(--sc,#8e24aa);border-radius:18px;box-shadow:0 14px 30px rgba(0,0,0,.65),0 0 24px -6px var(--sc,#8e24aa);padding:10px 12px;margin:0 0 8px}
+/* FIX10 AMENDMENT — ONE board in the viewer: the controls row is no longer a second panel (no background, border, or shadow of its own) — the section board is the one beautiful board; the controls sit plain beneath it. */
+.intel-controls{padding:10px 12px;margin:0 0 8px}
 .intel-controls .naya-btn{padding:0 14px;white-space:nowrap}
 .intel-controls .intel-close{margin:0}
 @media(max-width:900px){
@@ -1605,7 +1606,6 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
    by the maker probe), so the board overflowed the phone. Content-sized here:
    the board grows to fit its section whole at 18px; exact 16:9 holds at desktop. */
 .intel-sec{aspect-ratio:auto;min-height:250px}
-#intelNoteSelect{max-width:200px}
 }
 </style>
 </head>
@@ -3453,7 +3453,6 @@ current = 0; renderSlide(); show('cover');
 <div id="intelViewer" hidden role="dialog" aria-modal="true" aria-labelledby="intelViewerTitle">
   <div class="intel-viewtop">
     <nav class="intel-daybar" id="intelViewerDays" aria-label="Intel days"></nav>
-    <div class="intel-selectrow"><label for="intelNoteSelect">Note</label><select id="intelNoteSelect" aria-label="Choose a smart note for this day"></select></div>
   </div>
   <div class="intel-matrix">
     <h2 id="intelViewerTitle"></h2>
@@ -3463,13 +3462,12 @@ current = 0; renderSlide(); show('cover');
       <button class="naya-btn" id="intelSave" type="button" aria-pressed="false">SAVE</button>
     </div>
     <div class="intel-controls">
-      <button class="naya-btn" id="intelBack" type="button">← BACK</button>
-      <button class="naya-btn intel-nwalk" id="intelNWalk" type="button" aria-label="Go deeper with the N">N</button>
+      <button class="naya-btn" id="intelBack" type="button">← PREV NOTE</button>
       <button class="naya-btn" id="intelDeeper" type="button">GO DEEPER ▾</button>
       <button class="naya-btn" id="intelNext" type="button">NEXT NOTE →</button>
       <button class="naya-btn intel-close" id="intelClose" type="button">Close</button>
     </div>
-    <div id="intelViewerBody"></div>
+    <div id="intelViewerBody"><button class="naya-btn intel-nwalk" id="intelNWalk" type="button" aria-label="Go deeper with the N — tap to go in">N</button></div>
     <div class="intel-progress" id="intelProgress"></div>
     <p class="intel-endhint" id="intelEndHint" hidden>That’s the whole note — tap NEXT NOTE for the next one.</p>
   </div>
@@ -3506,14 +3504,22 @@ function updateChrome(){
   shareBtn.setAttribute('aria-label','Share: '+(currentNote.title||''));
 }
 /* FIX2 — the viewer is ONE Hub board, 16:9, one section at a time, going IN.
-   Two axes, both obvious: GO DEEPER walks this note's 8 sections in order
-   (In a nutshell -> For a child -> For a grandma -> What it
-   means -> Why it matters -> How it connects -> How to apply -> What's in it
-   for you); NEXT NOTE goes ACROSS to the next note of the day and ALWAYS
-   lands on its In a nutshell. BACK walks back along the path you came in on
-   (history stack); at the root it closes the viewer. The dropdown top-right
-   lists the day's notes; picking one opens it at In a nutshell. */
+   Two axes, both obvious: the N (in the middle of the board) and GO DEEPER
+   walk this note's 8 sections in order (In a nutshell -> For a child ->
+   For a grandma -> What it means -> Why it matters -> How it connects ->
+   How to apply -> What's in it for you); the ARROWS go ACROSS — NEXT NOTE
+   to the next note of the day, PREV NOTE to the previous one — and ALWAYS
+   land on the next note's In a nutshell.
+   FIX10 AMENDMENT (Shawn, voice call 2026-11-27 ~19:47 + ~19:49 MST):
+   Intel Today is exactly the same format as Reports — ONE beautiful board
+   inside, In a nutshell on it, the N in the middle of that board, the N the
+   way IN through all eight sections. NO drop-down picker anywhere: the old
+   big middle picker is gone and no corner/bottom-bar drop-down replaces it —
+   the arrows step between the day's notes, the N goes in. Simpler is better. */
 var vSec=0, vHistory=[], vEmptyDay=null;
+/* FIX10 AMENDMENT — the single #intelNWalk button lives in the middle of the section board (see intelRenderSection). innerHTML replaces the board's children, so the button is captured once here and re-appended on every render; an empty-day render must never lose it. */
+var nwalkEl=null;
+function intelBoardN(){if(!nwalkEl)nwalkEl=document.getElementById('intelNWalk');return nwalkEl;}
 /* FIX9 D2c — THE WALK (Shawn's order, voice call 2026-11-27 ~19:01 MST): In a nutshell -> For a child -> For a grandma -> What it means -> Why it matters -> How it connects -> How to apply -> What's in it for you. "What it's not" is NOT in this walk. vSec indexes vWalk (positions in m.sections), never the raw sections. */
 var WALK_LABELS=["In a nutshell","For a child","For a grandma","What it means","Why it matters","How it connects","How to apply","What\u2019s in it for you"];
 function intelWalkIdx(m){var out=[];var seen={};function norm(x){return String(x||"").toLowerCase().replace(/\u2019/g,"'");}for(var k=0;k<WALK_LABELS.length;k++){for(var i=0;i<m.sections.length;i++){if(norm(m.sections[i].label)===norm(WALK_LABELS[k])&&!seen[i]){out.push(i);seen[i]=1;break;}}}if(!out.length){for(var j=0;j<m.sections.length;j++)out.push(j);}return out;}
@@ -3521,7 +3527,7 @@ var vWalk=[];
 function intelDayColor(date){var days=window.__INTEL_DAYS__||[];for(var i=0;i<days.length;i++){if(days[i].date===date)return days[i].color;}var __wc=['#8e24aa','#c2410c','#d4a017','#0f52ba','#07925f','#c62828','#3f51b5'];var __p=String(date||'').split('-');if(__p.length===3){var __dt=new Date(Date.UTC(+__p[0],+__p[1]-1,+__p[2]));if(!isNaN(__dt))return __wc[__dt.getUTCDay()];}return '#8e24aa';}
 function intelDayOf(sn){var g=(window.__INTEL_GROUPS__||[]).filter(function(x){return x.sn===sn;})[0];return g?g.day:'';}
 function intelNotesOfDay(date){var days=window.__INTEL_DAYS__||[];var d=null;for(var i=0;i<days.length;i++){if(days[i].date===date)d=days[i];}if(!d)return[];return (window.__INTEL_SNAPSHOT__||[]).filter(function(n){return n.skillCat===d.cat;}).sort(function(a,b){return a.sn-b.sn;});}
-function intelFillSelect(date){var sel=document.getElementById('intelNoteSelect');if(!sel)return;var notes=intelNotesOfDay(date);sel.innerHTML='';notes.forEach(function(n){var o=document.createElement('option');o.value=String(n.sn);o.textContent=n.title||('Note '+n.sn);sel.appendChild(o);});sel.value=String(currentSn);var row=sel.closest?sel.closest('.intel-selectrow'):null;if(row)row.style.display=notes.length>1?'':'none';} /* FIX9 D2b: the picker shows the note BY TITLE — full title, no SN code, no truncation. A day with one note shows no picker at all. A day with no notes also hides the row. */
+/* FIX10 AMENDMENT — the fill-select helper is gone with the picker: there is no drop-down anywhere, so there is nothing to fill. The arrows move between the day's notes (see the BACK / NEXT handlers). */
 function intelDayBarSync(){
   var active='';
   if(typeof vEmptyDay!=='undefined'&&vEmptyDay)active=vEmptyDay;
@@ -3546,7 +3552,10 @@ function intelRenderSection(push){
   currentNote={id:snap.id||(currentSn?'IB-SMART-NOTE-'+currentSn:''),title:m.title,sn:currentSn};
   vTitle.textContent=m.title;
   vDay.textContent=(m.cat||'')+(day?' · '+day:'')+' · SN-'+currentSn;
+  var nw=intelBoardN(); /* FIX10 AMENDMENT: capture the N BEFORE innerHTML detaches it. */
   vBody.innerHTML='<section class="intel-sec" style="--sc:'+color+'"><h3>'+esc(sec.label)+'</h3><p'+(sec.src==='missing'?' class="intel-missing"':'')+'>'+esc(sec.text||'')+'</p></section>';
+  var secEl=vBody.querySelector('.intel-sec');
+  if(nw&&secEl){secEl.appendChild(nw);nw.hidden=false;nw.disabled=vSec>=vWalk.length-1;} /* FIX10 AMENDMENT: THE N IN THE MIDDLE of the one board — the way IN. Disabled on the last section, where there is nowhere further in. */
   var notes=intelNotesOfDay(day);
   var ni=-1;for(var i=0;i<notes.length;i++){if(notes[i].sn===currentSn)ni=i;}
   var prog=document.getElementById('intelProgress');
@@ -3561,9 +3570,15 @@ function intelRenderSection(push){
     else{next.disabled=true;next.textContent='NEXT NOTE →';}
   }
   var hint=document.getElementById('intelEndHint');
-  if(hint){hint.hidden=vSec<vWalk.length-1;if(vSec>=vWalk.length-1){var __nx=document.getElementById('intelNext');if(__nx&&__nx.disabled)hint.textContent='That\u2019s the whole note \u2014 tap BACK to return.';else if(__nx&&__nx.textContent.indexOf('DAY')>=0)hint.textContent='That\u2019s the whole note \u2014 tap NEXT DAY for the next day.';else hint.textContent='That\u2019s the whole note \u2014 tap NEXT NOTE for the next one.';}}
-  var sel=document.getElementById('intelNoteSelect');
-  if(sel){intelFillSelect(day);sel.value=String(currentSn);}
+  if(hint){hint.hidden=vSec<vWalk.length-1;if(vSec>=vWalk.length-1){var __nx=document.getElementById('intelNext');if(__nx&&__nx.disabled)hint.textContent='That\u2019s the whole note \u2014 tap PREV NOTE for the previous one.';else if(__nx&&__nx.textContent.indexOf('DAY')>=0)hint.textContent='That\u2019s the whole note \u2014 tap NEXT DAY for the next day.';else hint.textContent='That\u2019s the whole note \u2014 tap NEXT NOTE for the next one.';}}
+  var backBtn=document.getElementById('intelBack'); /* FIX10 AMENDMENT: the arrows step between notes — BACK is PREV NOTE (PREV DAY when it crosses to the previous day's last note), disabled when there is no earlier note anywhere. */
+  if(backBtn){
+    var hasPrev=false, prevDay=false;
+    if(ni>0){hasPrev=true;}
+    else{var dys=window.__INTEL_DAYS__||[];for(var k=0;k<dys.length;k++){if(dys[k].date===day){for(var m=k-1;m>=0;m--){if(intelNotesOfDay(dys[m].date).length){hasPrev=true;prevDay=true;break;}}break;}}}
+    backBtn.disabled=!hasPrev;
+    backBtn.textContent=prevDay?'← PREV DAY':'← PREV NOTE';
+  }
   intelDayBarSync();
   updateChrome();
   viewer.hidden=false;intelDayBarSync();
@@ -3593,10 +3608,11 @@ function intelShowEmptyDay(date){
   viewer.style.setProperty('--sc',color);
   vTitle.textContent=label;
   vDay.textContent=date;
+  intelBoardN(); /* FIX10 AMENDMENT: capture the N before innerHTML detaches it — the empty board shows no N, but the reference must survive for the next real note. */
   vBody.innerHTML='<section class="intel-sec" style="--sc:'+color+'"><p>Nothing yet for this day \u2014 check back soon</p></section>';
   var prog=document.getElementById('intelProgress');
   if(prog)prog.textContent=label;
-  /* FIX10 D1a: a day with no notes shows ONE board that says only that — nothing to share or save for another note, so the actions row hides and the stale labels are cleared (updateChrome early-returns with no current note, so the previous note's labels would otherwise stand). The picker row is already hidden by intelFillSelect (0 notes). */
+  /* FIX10 D1a: a day with no notes shows ONE board that says only that — nothing to share or save for another note, so the actions row hides and the stale labels are cleared (updateChrome early-returns with no current note, so the previous note's labels would otherwise stand). There is no picker anywhere (FIX10 AMENDMENT), so there is no picker row to hide. */
   var ar=document.querySelector('.intel-actions');if(ar)ar.style.display='none';
   shareBtn.setAttribute('aria-label','Share this note');
   saveBtn.textContent='SAVE';saveBtn.setAttribute('aria-pressed','false');saveBtn.setAttribute('aria-label','Save to your Smart List');
@@ -3604,9 +3620,10 @@ function intelShowEmptyDay(date){
   if(deeper)deeper.disabled=true;
   var next=document.getElementById('intelNext');
   if(next){next.disabled=true;next.textContent='NEXT NOTE \u2192';}
+  var back0=document.getElementById('intelBack');
+  if(back0){back0.disabled=true;back0.textContent='← PREV NOTE';} /* FIX10 AMENDMENT: an empty day has no notes — both arrows disabled. */
   var hint=document.getElementById('intelEndHint');
   if(hint)hint.hidden=true;
-  intelFillSelect(date);
   intelDayBarSync();updateChrome();
   viewer.hidden=false;intelDayBarSync();
   document.body.style.overflow='hidden';
@@ -3708,13 +3725,17 @@ document.addEventListener('click',function(e){
     var b=e.target.closest?e.target.closest('.intel-daybtn'):null;
     if(b)intelGoDay(b.getAttribute('data-date'));
   });
+  /* FIX10 AMENDMENT (Shawn, voice call 2026-11-27 ~19:49 MST — SIMPLIFICATION): the arrows go back and forth through the day's smart notes, viewing the In a nutshells one by one. BACK is the previous note of the day at its In a nutshell; at the first note of a day it steps to the previous day's last note. The N is the only way IN — BACK never walks sections, and closing the viewer is the Close button's job. */
   var back=document.getElementById('intelBack');
   if(back)back.addEventListener('click',function(){
-    if(vHistory.length>1){
-      vHistory.pop();
-      var prev=vHistory[vHistory.length-1];
-      currentSn=prev.sn;vSec=prev.sec;intelRenderSection(false);
-    }else{closeViewer();}
+    var day=intelDayOf(currentSn);
+    var notes=intelNotesOfDay(day);
+    var ni=-1;for(var i=0;i<notes.length;i++){if(notes[i].sn===currentSn)ni=i;}
+    if(ni>0){intelGoNote(notes[ni-1].sn,true);return;}
+    var days=window.__INTEL_DAYS__||[];
+    for(var j=days.length-1;j>0;j--){
+      if(days[j].date===day){var prv=intelNotesOfDay(days[j-1].date);if(prv.length){intelGoNote(prv[prv.length-1].sn,true);}return;}
+    }
   });
   var deeper=document.getElementById('intelDeeper');
   if(deeper)deeper.addEventListener('click',function(){
@@ -3736,11 +3757,6 @@ document.addEventListener('click',function(e){
     for(var j=0;j<days.length-1;j++){
       if(days[j].date===day){var nxt=intelNotesOfDay(days[j+1].date);if(nxt.length){intelGoNote(nxt[0].sn,true);}return;}
     }
-  });
-  var sel=document.getElementById('intelNoteSelect');
-  if(sel)sel.addEventListener('change',function(){
-    var sn=parseInt(sel.value,10);
-    if(sn)intelGoNote(sn,true);
   });
   if(typeof show==='function'&&!window.__intelShowWrapped){
     var __intelShow=show;
