@@ -77,7 +77,7 @@
      home. The board-10 image (v1 PLACEHOLDER) should show the phone,
      the page, the tap, per this order, when its literal set is made.
      Chapter-2 depth set PLACED (two-one-two + doorway alternate);
-     chapter-3 depth set PLACED (v2, awaiting his eye; v1 rejected).
+     chapter-3 depth set PLACED (v2, for his eye; v1 rejected).
      Chapter-7 depth set PLACED (ch7/8 fold-in 2026-11-23, post-process
      on the built file — build-reorder.js was lost to the EPERM flake,
      see round report: C the-choice, D the-week, note-detail phone;
@@ -1534,7 +1534,7 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 #screen-slide .ib-n:active{transform:scale(.97)}
 /* FIX7 item 4 — fill the boards, never shrink the frame: bigger, better-set type, generous gaps, a jewel divider under each board title, content centred in the board. */
 @media(min-width:901px){#screen-slide .slide-boards .ib-layer-body{justify-content:center;gap:20px;padding:28px 30px 88px}#screen-slide .slide-boards .ib-layer-body .b-script{font-size:clamp(30px,3.2vw,40px)}#screen-slide .slide-boards .ib-layer-body p{font-size:clamp(22px,2.2vw,28px);line-height:1.5}#screen-slide .slide-boards .ib-layer-body .b-script::after{content:"\25C6";display:block;font-size:17px;color:#fff;margin:6px 0 0;text-align:center}}
-/* FIX8 — end-board keeper (checker fix7 §10): the fix7 item-4 fill (gap 20px + 28px body) pushed the end board's content ~100px down, so BACK TO LOGIN sat 34px below the board edge, clipped by .ib-layer overflow:hidden and covered by DIV.pm-main — a real tap did nothing. The fill stays on the slide boards; the end board alone gets its fix6 geometry back: no flex gap (children carry their own margins: .end-actions 16px, .end-chapters-btn 8px, p 10/16px), body back to the pre-fix7 slide-board size, title + diamond divider kept. */
+/* FIX8 — end-board keeper (checker fix7 §10): the fix7 item-4 fill (gap 20px + 28px body) pushed the end board's content ~100px down, so the end button sat 34px below the board edge, clipped by .ib-layer overflow:hidden and covered by DIV.pm-main — a real tap did nothing. The fill stays on the slide boards; the end board alone gets its fix6 geometry back: no flex gap (children carry their own margins: .end-actions 16px, .end-chapters-btn 8px, p 10/16px), body back to the pre-fix7 slide-board size, title + diamond divider kept. */
 @media(min-width:901px){#slideMain.end-mode #slideBoardsB .ib-layer-body{gap:0}#slideMain.end-mode #slideBoardsB .ib-layer-body p{font-size:clamp(18px,1.35vw,21px);line-height:1.45}}
 /* FIX8b — A-board title slice (checker fix7 §7, now PROVEN a fix7 regression by the identical probe on fix6 bytes: fix6 title offsetTop +65 whole, fix7 offsetTop -17 sliced 15px): the fix7 item-4 fill (40px title + diamond divider + 28px body + gap 20px + 56/88px padding) makes the A board's content ~660px in a 566px body, so justify-content:center clips the title above the board rim. The fill stays; the A/B slide boards alone get their padding back (28/28) and no flex gap — ~148px recovered, longest board fits whole. Tall viewports only, so the ROUND 6 short-laptop rules stand; end board excluded (own fix2 geometry). */
 @media(min-width:901px) and (min-height:801px){#slideMain:not(.end-mode) #slideBoardsA .ib-layer:not(.ib-img) .ib-layer-body,#slideMain:not(.end-mode) #slideBoardsB .ib-layer:not(.ib-img) .ib-layer-body{padding-top:28px;padding-bottom:28px;gap:0}}
@@ -1542,7 +1542,7 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 @media(max-width:900px){#screen-slide .panel-body{overflow-y:auto}}
 @media(max-width:640px){.intel-daybar{gap:6px;overflow-x:auto;scrollbar-width:none}.intel-daybar::-webkit-scrollbar{display:none}.daybar{padding:10px 8px 11px}.intel-daybtn{flex:0 0 auto;min-width:92px;padding:6px 2px}.intel-daybtn .dl{font-size:17px;letter-spacing:-.02em}.intel-daybtn .st{display:block}#intelViewer{padding:16px 8px}#screen-slide .slide-boards .ib-layer-body{padding:16px 18px 76px}}
 /* FIX9 D1+D3+D7 — THE DAY BUTTON, ONE SHARED COMPONENT (same markup/CSS the calendar and Daily Reports take verbatim: .intel-daybtn > .dl > .intel-dayicon + .intel-dayname + .intel-daynum > .dt).
-   No status line anywhere (no VIEW, no AWAITING REPORT — the date button itself opens the day). The date number is the Dashboard/calendar digit tile: obsidian tile, rim in the DIGIT's own colour (§4 law: 0 white, 1 ruby, 2 orange, 3 gold, 4 emerald, 5 cyan, 6 indigo, 7 purple, 8 violet, 9 magenta), white digit. The rim is the WEEKDAY's own colour (§3.3: Sun purple, Mon orange, Tue gold, Wed sapphire, Thu emerald, Fri ruby, Sat indigo — Sat indigo is unmistakably not Wed sapphire, and each day also carries its own jewel glyph). The jewel: a real object — obsidian disc, own-colour rim, white glyph, one slow orbit ring (90s, alternating direction by position). At phone width the strip does NOT scroll: all seven fit, today centred by construction. */
+   No status line anywhere (no VIEW — the date button itself opens the day). The date number is the Dashboard/calendar digit tile: obsidian tile, rim in the DIGIT's own colour (§4 law: 0 white, 1 ruby, 2 orange, 3 gold, 4 emerald, 5 cyan, 6 indigo, 7 purple, 8 violet, 9 magenta), white digit. The rim is the WEEKDAY's own colour (§3.3: Sun purple, Mon orange, Tue gold, Wed sapphire, Thu emerald, Fri ruby, Sat indigo — Sat indigo is unmistakably not Wed sapphire, and each day also carries its own jewel glyph). The jewel: a real object — obsidian disc, own-colour rim, white glyph, one slow orbit ring (90s, alternating direction by position). At phone width the strip does NOT scroll: all seven fit, today centred by construction. */
 @media(max-width:640px){.intel-daybar{gap:6px;overflow-x:visible}.intel-daybtn{flex:1 1 0;min-width:0;padding:6px 1px}.intel-daybtn .dl{font-size:17px;letter-spacing:-.02em}}
 .intel-daybtn .st{display:none !important}
 .intel-daybtn .dl{display:flex;flex-direction:column;align-items:center;gap:3px}
@@ -2110,7 +2110,7 @@ function endImgBoard(src, alt){
   return '<div class="ib-layer ib-img' + ballCls + '"><div class="ib-layer-body">'
     + '<button class="fs-btn" type="button" aria-label="View full screen"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>'
     + '<img class="ib-img-el" src="' + src + '" alt="' + alt + '" />'
-    + '<button type="button" class="ib-n ib-n--small" data-end="begin" aria-label="Back to login — nayanet.app"><img src="' + EMBED.ball + '" alt="The red N" /></button>'
+    + '<button type="button" class="ib-n ib-n--small" data-end="begin" aria-label="Back to the beginning"><img src="' + EMBED.ball + '" alt="The red N" /></button>'
     + '</div></div>';
 }
 function renderEnd(){
@@ -2121,15 +2121,14 @@ function renderEnd(){
   document.getElementById('slideBg').style.backgroundImage = 'none';
   document.getElementById('slideBoardsA').innerHTML = endImgBoard(EMBED.slides[12], 'The red N on its pedestal');
   var __fix9parts = END_TEXT.split(' — '); /* FIX9: the ten titles split from END_TEXT itself — one source of truth, never a retyped copy */
-  document.getElementById('slideBoardsB').innerHTML = '<div class="ib-layer"><div class="ib-layer-body">' + '<button class="fs-btn" type="button" aria-label="View full screen"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>' + '<div class="b-script">What comes next</div><p>' + __fix9parts[0] + ' — <span class="end-chapters" id="endChaptersList">' + __fix9parts[1] + '</span></p><button class="naya-btn end-chapters-btn" id="endChapters" type="button" aria-expanded="false" aria-controls="endChaptersList">Days ▾</button><div class="end-actions"><button class="naya-btn" id="endLogin" type="button">Back to login</button></div></div></div>'; /* FIX8: the end text panel moves to B — the ball takes the middle (see R5) */
+  document.getElementById('slideBoardsB').innerHTML = '<div class="ib-layer"><div class="ib-layer-body">' + '<button class="fs-btn" type="button" aria-label="View full screen"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>' + '<div class="b-script">What comes next</div><p>' + __fix9parts[0] + ' — <span class="end-chapters" id="endChaptersList">' + __fix9parts[1] + '</span></p><button class="naya-btn end-chapters-btn" id="endChapters" type="button" aria-expanded="false" aria-controls="endChaptersList">Days ▾</button></div></div>'; /* FIX8: the end text panel moves to B — the ball takes the middle (see R5) */
   document.getElementById('slideMain').classList.add('end-mode'); /* FIX8: end-board phone layout — scroll, one board at a time */
   document.getElementById('screen-slide').classList.add('end-mode');
   var __fix8sw = document.querySelector('.slide-frame > .swap-btn[data-slot="C"]'); if (__fix8sw) __fix8sw.style.display = 'none'; /* FIX8: the centre ball is not a swappable slide slot */
   var __fix8ad = document.querySelector('.slide-frame > .add-btn[data-slot="C"]'); if (__fix8ad) __fix8ad.style.display = 'none';
   document.getElementById('slideTextCenter').innerHTML = endImgBoard(EMBED.ball, 'The red N'); /* FIX8: the ball takes the middle slot — ball first, text below */
   document.getElementById('slideTextCenter').hidden = false;
-  document.getElementById('endLogin').addEventListener('click', beginAgain); /* INTEL TODAY: single end button goes to the login */
-  /* INTEL TODAY: endBack removed — the end has one button, Back to login */
+  /* FIX10 D5: no exit button on the end board — the walk ends here, inside the page. */
   document.getElementById('endChapters').addEventListener('click', toggleEndChapters); /* FIX9 */
   var __fix9sm = document.getElementById('slideMain'); __fix9sm.classList.remove('end-chapters-open'); __fix9sm.classList.remove('end-chapters-closed'); syncEndChapters(); /* FIX9: default state — collapsed at phone, expanded at desktop (CSS); the toggle only ever adds one class */
 }
@@ -2150,8 +2149,8 @@ function toggleEndChapters(){ /* FIX9: one tap flips the one class for this widt
   else sm.classList.toggle('end-chapters-open');
   syncEndChapters();
 }
-function showEnd(){ if(window.__intelCloseViewer)window.__intelCloseViewer(); /* FIX6 D2: the viewer overlay (z-index 9999) sat over the end board, so a real tap hit the overlay, not BACK TO LOGIN */ var __sl=document.getElementById('screen-slide'); if(__sl){__sl.classList.remove('intel-nut1');__sl.classList.remove('intel-strip');} /* FIX6 D2b: the nut phone layout hides #slideBoardsB (display:none) — the end board's B panel holds BACK TO LOGIN, so a nut slide's layout class must not survive onto the end board (proven 0x0 on fix5 AND fix6 bytes when the end is reached from a nut slide) */ renderEnd(); show('slide'); }
-function beginAgain(){ location.href = 'https://nayanet.app'; } /* INTEL TODAY: the end goes back to the LOGIN (portal) — Shawn's eye, 2026-11-25 */
+function showEnd(){ if(window.__intelCloseViewer)window.__intelCloseViewer(); /* FIX6 D2: the viewer overlay (z-index 9999) sat over the end board, so a real tap hit the overlay, not the end board */ var __sl=document.getElementById('screen-slide'); if(__sl){__sl.classList.remove('intel-nut1');__sl.classList.remove('intel-strip');} /* FIX6 D2b: the nut phone layout hides #slideBoardsB (display:none) — the end board's B panel holds the Days control, so a nut slide's layout class must not survive onto the end board (proven 0x0 on fix5 AND fix6 bytes when the end is reached from a nut slide) */ renderEnd(); show('slide'); }
+function beginAgain(){ if(typeof END_MODE!=='undefined')END_MODE=false; if(typeof current!=='undefined')current=0; show('cover'); } /* FIX10 D5: begin again INSIDE the page — back to the cover. No exit to the live site anywhere in this walk. */
 /* Touch light on the text boards (both sides of the image) */
 document.querySelectorAll('.slide-boards').forEach(function(el){
   var boardLight = function(e){
@@ -2380,7 +2379,7 @@ var LIB_LABELS = ['Naya Door — tunnel', 'Smart Tap — board floats forward', 
    board 1 slot (a) — placed in both places on his word. The no-reuse
    rule is overridden here by explicit approval, never silently; no OTHER
    board reuses its front image in depth. D (tap-the-ball) is depth-only.
-   CHAPTER 3 (Smart Tap) SET — PLACED as v2, awaiting his eye: [v2-1
+   CHAPTER 3 (Smart Tap) SET — PLACED as v2, for his eye: [v2-1
    board-floats-forward · v2-2 whole-board-alive · v2-3 board-steps-in ·
    v2-4 hands-hold-board], one per alternating slot after sections 1–4.
    The v1 set is REJECTED — never placed. CHAPTERS 1, 4, 6 — FILLED (completion round, 2026-11-23): ch1 depth
@@ -3516,7 +3515,7 @@ function updateChrome(){
    lands on its In a nutshell. BACK walks back along the path you came in on
    (history stack); at the root it closes the viewer. The dropdown top-right
    lists the day's notes; picking one opens it at In a nutshell. */
-var vSec=0, vHistory=[], vAwaiting=null;
+var vSec=0, vHistory=[], vEmptyDay=null;
 /* FIX9 D2c — THE WALK (Shawn's order, voice call 2026-11-27 ~19:01 MST): In a nutshell -> For a child -> For a grandma -> What it means -> Why it matters -> How it connects -> How to apply -> What's in it for you. "What it's not" is NOT in this walk. vSec indexes vWalk (positions in m.sections), never the raw sections. */
 var WALK_LABELS=["In a nutshell","For a child","For a grandma","What it means","Why it matters","How it connects","How to apply","What\u2019s in it for you"];
 function intelWalkIdx(m){var out=[];var seen={};function norm(x){return String(x||"").toLowerCase().replace(/\u2019/g,"'");}for(var k=0;k<WALK_LABELS.length;k++){for(var i=0;i<m.sections.length;i++){if(norm(m.sections[i].label)===norm(WALK_LABELS[k])&&!seen[i]){out.push(i);seen[i]=1;break;}}}if(!out.length){for(var j=0;j<m.sections.length;j++)out.push(j);}return out;}
@@ -3524,10 +3523,10 @@ var vWalk=[];
 function intelDayColor(date){var days=window.__INTEL_DAYS__||[];for(var i=0;i<days.length;i++){if(days[i].date===date)return days[i].color;}var __wc=['#8e24aa','#c2410c','#d4a017','#0f52ba','#07925f','#c62828','#3f51b5'];var __p=String(date||'').split('-');if(__p.length===3){var __dt=new Date(Date.UTC(+__p[0],+__p[1]-1,+__p[2]));if(!isNaN(__dt))return __wc[__dt.getUTCDay()];}return '#8e24aa';}
 function intelDayOf(sn){var g=(window.__INTEL_GROUPS__||[]).filter(function(x){return x.sn===sn;})[0];return g?g.day:'';}
 function intelNotesOfDay(date){var days=window.__INTEL_DAYS__||[];var d=null;for(var i=0;i<days.length;i++){if(days[i].date===date)d=days[i];}if(!d)return[];return (window.__INTEL_SNAPSHOT__||[]).filter(function(n){return n.skillCat===d.cat;}).sort(function(a,b){return a.sn-b.sn;});}
-function intelFillSelect(date){var sel=document.getElementById('intelNoteSelect');if(!sel)return;var notes=intelNotesOfDay(date);sel.innerHTML='';notes.forEach(function(n){var o=document.createElement('option');o.value=String(n.sn);o.textContent=n.title||('Note '+n.sn);sel.appendChild(o);});sel.value=String(currentSn);var row=sel.closest?sel.closest('.intel-selectrow'):null;if(row)row.style.display=notes.length>1?'':'none';} /* FIX9 D2b: the picker shows the note BY TITLE — full title, no SN code, no truncation. A day with one note shows no picker at all. A day with no notes (awaiting) also hides the row. */
+function intelFillSelect(date){var sel=document.getElementById('intelNoteSelect');if(!sel)return;var notes=intelNotesOfDay(date);sel.innerHTML='';notes.forEach(function(n){var o=document.createElement('option');o.value=String(n.sn);o.textContent=n.title||('Note '+n.sn);sel.appendChild(o);});sel.value=String(currentSn);var row=sel.closest?sel.closest('.intel-selectrow'):null;if(row)row.style.display=notes.length>1?'':'none';} /* FIX9 D2b: the picker shows the note BY TITLE — full title, no SN code, no truncation. A day with one note shows no picker at all. A day with no notes also hides the row. */
 function intelDayBarSync(){
   var active='';
-  if(typeof vAwaiting!=='undefined'&&vAwaiting)active=vAwaiting;
+  if(typeof vEmptyDay!=='undefined'&&vEmptyDay)active=vEmptyDay;
   else if(viewer&&!viewer.hidden&&currentSn)active=intelDayOf(currentSn);
   else if(typeof END_MODE!=='undefined'&&END_MODE)active='2026-11-30';
   else if(typeof GROUPS!=='undefined'&&typeof current!=='undefined'&&GROUPS[current])active=GROUPS[current].day||'';
@@ -3536,12 +3535,12 @@ function intelDayBarSync(){
 }
 function intelCentreStrip(){var bars=document.querySelectorAll('.intel-daybar');for(var i=0;i<bars.length;i++){var h=bars[i];if(!h.clientWidth)continue;var a=h.querySelector('.intel-daybtn.active')||h.querySelector('.intel-daybtn.is-today');if(!a)continue;if(h.scrollWidth>h.clientWidth)h.scrollLeft=a.offsetLeft+a.offsetWidth/2-h.clientWidth/2;}}
 function intelRenderSection(push){
-  vAwaiting=null;
+  vEmptyDay=null;
   var m=MATRIX[currentSn];if(!m)return;
   vWalk=intelWalkIdx(m);
   if(vSec<0)vSec=0;if(vSec>vWalk.length-1)vSec=vWalk.length-1;
   var sec=m.sections[vWalk[vSec]];
-  var ar0=document.querySelector('.intel-actions');if(ar0)ar0.style.display=''; /* FIX9 D6: a real note always shows its own SHARE/SAVE — an awaiting view hides the row, this puts it back. */
+  var ar0=document.querySelector('.intel-actions');if(ar0)ar0.style.display=''; /* FIX9 D6: a real note always shows its own SHARE/SAVE — an empty-day view hides the row, this puts it back. */
   var day=intelDayOf(currentSn);
   var color=intelDayColor(day);
   viewer.style.setProperty('--sc',color); /* FIX3: sticky control bars rim in the note's day colour */
@@ -3583,10 +3582,10 @@ function intelGoDay(date){
      NEXT goes ACROSS from there; GO DEEPER goes IN through the sections. */
   var notes=intelNotesOfDay(date);
   if(notes.length){intelGoNote(notes[0].sn,true);return;}
-  intelShowAwaiting(date);
+  intelShowEmptyDay(date);
 }
-function intelShowAwaiting(date){
-  vAwaiting=date;currentSn=null;currentNote=null;vSec=0;
+function intelShowEmptyDay(date){
+  vEmptyDay=date;currentSn=null;currentNote=null;vSec=0;
   var p=String(date||'').split('-');
   var dt=new Date(Date.UTC(+p[0],+p[1]-1,+p[2]));
   var wdF=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][dt.getUTCDay()];
@@ -3595,11 +3594,11 @@ function intelShowAwaiting(date){
   var color=intelDayColor(date);
   viewer.style.setProperty('--sc',color);
   vTitle.textContent=label;
-  vDay.textContent=date+' \u00b7 Awaiting report';
-  vBody.innerHTML='<section class="intel-sec" style="--sc:'+color+'"><h3>AWAITING REPORT</h3><p>No report yet for '+label+' \u2014 the day\u2019s notes are not filed yet. Check back soon.</p></section>';
+  vDay.textContent=date;
+  vBody.innerHTML='<section class="intel-sec" style="--sc:'+color+'"><p>Nothing yet for this day \u2014 check back soon</p></section>';
   var prog=document.getElementById('intelProgress');
-  if(prog)prog.textContent='Awaiting report \u00b7 '+label;
-  /* FIX9 D6: a day with no report shows NOTHING to share or save for another note — the actions row hides, and the stale labels are cleared (updateChrome early-returns with no current note, so the previous note's labels would otherwise stand). The picker row is already hidden by intelFillSelect (0 notes). */
+  if(prog)prog.textContent=label;
+  /* FIX10 D1a: a day with no notes shows ONE board that says only that — nothing to share or save for another note, so the actions row hides and the stale labels are cleared (updateChrome early-returns with no current note, so the previous note's labels would otherwise stand). The picker row is already hidden by intelFillSelect (0 notes). */
   var ar=document.querySelector('.intel-actions');if(ar)ar.style.display='none';
   shareBtn.setAttribute('aria-label','Share this note');
   saveBtn.textContent='SAVE';saveBtn.setAttribute('aria-pressed','false');saveBtn.setAttribute('aria-label','Save to your Smart List');
@@ -3622,7 +3621,7 @@ function openViewer(sn,keepHist){
   if(!keepHist)vHistory=[];
   intelRenderSection(true);
 }
-function closeViewer(){vAwaiting=null;viewer.hidden=true;document.body.style.overflow='';}
+function closeViewer(){vEmptyDay=null;viewer.hidden=true;document.body.style.overflow='';}
 window.__intelCloseViewer=closeViewer; /* FIX6 D2: showEnd() closes the viewer */
 window.__intelOpenViewer=openViewer;
 window.__intelFirstNoteOfDay=function(date){var ns=intelNotesOfDay(date);return ns.length?ns[0].sn:0;}; /* FIX9 D4: the cover N asks the viewer for the cover day's first note. */
@@ -3649,11 +3648,11 @@ saveBtn.addEventListener('click',function(){
   if(at>=0)smartList.splice(at,1);else smartList.push(currentNote.id);
   persistSmartList();updateChrome();
 });
-/* FIX7: the red N is the way in. The old handler did nothing on covers (sn 0) and skipped the end N (data-end) — both dead. Now: note -> that note; cover -> the day's first note; end N -> login, as its own label promises. */
+/* FIX7: the red N is the way in. The old handler did nothing on covers (sn 0) and skipped the end N (data-end) — both dead. Now: note -> that note; cover -> the day's first note; end N -> back to the beginning, inside the page. */
 document.addEventListener('click',function(e){
   var n=e.target.closest?e.target.closest('button.ib-n'):null;
   if(!n||n.id==='depthN')return;
-  if(n.hasAttribute('data-end')){e.preventDefault();e.stopPropagation();location.href='https://nayanet.app';return;}
+  if(n.hasAttribute('data-end')){e.preventDefault();e.stopPropagation();beginAgain();return;}
   var g=(typeof GROUPS!=='undefined')?GROUPS[current]:null;
   if(!g)return;
   e.preventDefault();e.stopPropagation();
@@ -3687,7 +3686,7 @@ document.addEventListener('click',function(e){
       b.type='button';b.className='intel-daybtn';b.setAttribute('data-date',iso);
       b.style.setProperty('--dc',WC[dt.getDay()]);
       var __digits=String(dt.getDate()).split('').map(function(ch){return '<span class="dt" style="--dtc:'+DIGIT_COLORS[ch]+'">'+ch+'</span>';}).join('');
-      b.innerHTML='<span class="dl"><span class="intel-dayicon">'+DAY_ICONS[dt.getDay()]+'</span><span class="intel-dayname">'+WD[dt.getDay()]+'</span><span class="intel-daynum">'+__digits+'</span></span>'; /* FIX9 D1: no VIEW, no AWAITING REPORT — the date button itself opens the day. The number is the digit-tile component; the day is its own jewel icon. */
+      b.innerHTML='<span class="dl"><span class="intel-dayicon">'+DAY_ICONS[dt.getDay()]+'</span><span class="intel-dayname">'+WD[dt.getDay()]+'</span><span class="intel-daynum">'+__digits+'</span></span>'; /* FIX9 D1: no VIEW — the date button itself opens the day. The number is the digit-tile component; the day is its own jewel icon. */
       b.setAttribute('aria-label',WDF[dt.getDay()]+' '+MONTHS[dt.getMonth()]+' '+dt.getDate()+' '+dt.getFullYear());
       if(off===0)b.classList.add('is-today');
       host.appendChild(b);
@@ -3920,11 +3919,6 @@ if(typeof fitPanels==='function'){
   var __intelFitPanels=fitPanels;
   fitPanels=function(){__intelFitPanels();intelNutshellFix();};
 }
-/* End login button (rendered by renderEnd). */
-document.addEventListener('click',function(e){
-  var b=e.target.closest?e.target.closest('#endLogin'):null;
-  if(b)location.href='https://nayanet.app';
-});
 /* ?day= opens that day's cover — the calendar receiving end. Full YYYY-MM-DD, MM-DD, or a bare day-of-month (e.g. ?day=25) — short codes resolve to the matching day in the loaded range. */
 function intelDayParam(){
   var q='';try{q=new URLSearchParams(location.search).get('day')||'';}catch(e){}
