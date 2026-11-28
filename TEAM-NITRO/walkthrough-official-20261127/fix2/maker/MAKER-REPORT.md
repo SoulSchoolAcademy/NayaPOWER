@@ -6,7 +6,7 @@
 **Branch:** `walkthrough-official-20261127`
 **Parent head (fix1):** `4fc628cac5cfa4861b3d543bace1a578b29adf15`
 **Commit 1 (files):** `bbc31afb707647efeaf66f635eec4fe3ab1f2d49`
-**Commit 2 (this report):** filed after commit 1; sha recorded in the lane file after filing — see the branch log, not this line.
+**Commit 2 (this report):** `fbceacfa4dd46c8805f57c94405368aa9775357a`
 **Deployed:** 2026-11-28 ~03:40 UTC, deployment `9da60c33e978454693402594ed1dc2f5` (HTTP 200).
 
 ## Sizes + shas (staged bytes == local bytes, verified by curl + cmp)
