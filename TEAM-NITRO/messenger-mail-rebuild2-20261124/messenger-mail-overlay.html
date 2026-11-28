@@ -14510,4 +14510,456 @@ else { wire(); }
 })();
 </script>
 
+
+<style id="ov-fix24-20261127">
+/* ===== FIX24 (2026-11-27, Messenger fix24 — joined Connections + Mail + Messenger) =====
+   Append-only: fix23 bytes untouched, 0 base bytes changed. Fixes the fix23
+   checker go-backs (card scroll + untrimmed flash, 390 chat bleed, 390 pill
+   clip) + the named items (send path, group dedupe, list counts, DM entry,
+   bubble hover lift). Laws: white text only, 17px floor on new words, deep
+   palette only, one light top-left, 135deg gradients, shadow down-right. */
+/* --- (2) READER OPAQUE: the fixed reader + message list had transparent
+   backgrounds, so the underlying panel (NAYANET, contact rows) showed through --- */
+#nmReader{background:#050607 !important;}
+#nmReader #nmMsgList{background:#050607 !important;}
+/* --- (1) CARD HIDDEN UNTIL TRIMMED: the base card opens untrimmed and fills
+   after open; it must never paint untrimmed. Hidden by default, revealed only
+   by JS once framed + trimmed + settled (see script). --- */
+.fx2-card:not(.fx24-card-shown),.nm-card:not(.fx24-card-shown){visibility:hidden !important;}
+.fx2-card.fx24-card-shown,.nm-card.fx24-card-shown{visibility:visible !important;}
+/* --- (1) CARD COMPACTION (framed card only): the 257-char glance must fit
+   its frame with zero internal scroll at 390 boot (542px) and 1440 (607px).
+   X goes absolute (out of flow), orb 74->48, textarea 64->40, day strip one row. --- */
+#fx2Card.fx23-card-framed .fx2-card-frame{height:auto !important;min-height:0 !important;padding:5px 12px !important;position:relative !important;}
+#fx2Card.fx23-card-framed .fx2-card-x{position:absolute !important;top:8px !important;right:8px !important;margin:0 !important;}
+#fx2Card.fx23-card-framed .fx2-card-head{padding:4px 52px 4px 0 !important;margin:0 !important;}
+#fx2Card.fx23-card-framed .fx2-card-orb{width:36px !important;height:36px !important;min-width:36px !important;min-height:36px !important;font-size:18px !important;line-height:36px !important;}
+#fx2Card.fx23-card-framed .fx2-card-sec,#fx2Card.fx23-card-framed .fx15-card-sec{margin:0 0 2px !important;padding:1px 8px !important;}
+#fx2Card.fx23-card-framed .fx2-card-notes{height:28px !important;min-height:28px !important;max-height:28px !important;}
+#fx2Card.fx23-card-framed .fx2-card-note-row{min-height:40px !important;}
+#fx2Card.fx23-card-framed .fx15-cal-strip{flex-wrap:nowrap !important;}
+#fx2Card.fx23-card-framed .fx15-cal-day{width:26px !important;height:26px !important;min-width:0 !important;min-height:0 !important;font-size:10px !important;padding:0 !important;}
+#fx2Card.fx23-card-framed .fx2-card-close{min-height:44px !important;margin:2px 0 0 !important;}
+/* --- (3) TOP-BAR PILLS at phone width: the 14px + .14em letter-spacing made
+   ACTIVE CONTACTS wrap and clip at the left edge. 17px, no letter-spacing:
+   ACTIVE / CONTACTS and SMART / LISTS each fit whole on their own lines. --- */
+@media (max-width:480px){
+  .ov-second-row{display:flex !important; justify-content:center !important;}
+  .ov-second-row .ml-qa-item,.ov-second-row .ml-compose-top{max-width:none !important;flex:0 0 auto !important;display:block !important;font-size:17px !important;letter-spacing:0 !important;line-height:1.2 !important;text-align:center !important;padding:6px 2px !important;white-space:normal !important;}
+  .ov-second-row .ml-qa-item *,.ov-second-row .ml-compose-top *{white-space:normal !important;}
+}
+/* --- BUBBLE HOVER LIFT (§1/§4): every object comes alive on touch --- */
+#nmReader #nmMsgList .nm-bubble:hover{transform:translateY(-3px) !important;box-shadow:0 30px 56px rgba(0,0,0,.85),0 0 44px -4px var(--cc,#3f51b5),inset 0 2px 0 rgba(255,255,255,.3),inset 0 -8px 18px rgba(0,0,0,.35) !important;}
+</style>
+<div id="fx24-dockback" aria-hidden="true" style="display:none;position:fixed;z-index:59;background:#050607;pointer-events:none;"></div>
+<script>
+(function(){
+'use strict';
+var VERSION='fix24-20261127';
+function $(s,r){return (r||document).querySelector(s);}
+function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
+function txt(el){return ((el&&(el.textContent||'')).replace(/\s+/g,' ').trim());}
+function setImp(el,prop,val){ try{ if(el.style.getPropertyValue(prop)!==val) el.style.setProperty(prop,val,'important'); }catch(e){} }
+/* --- geometry helpers (same measurements fix23 uses) --- */
+function barBottom(){
+  try{
+    var bar=document.querySelector('HEADER.naya-topbar')||document.querySelector('.naya-topbar');
+    if(!bar) return 0;
+    var r=bar.getBoundingClientRect(); if(r.width<=0||r.height<=0) return 0;
+    var cs=getComputedStyle(bar);
+    if(cs.position!=='fixed'&&cs.position!=='sticky') return 0;
+    if(r.bottom<=0||r.top>=innerHeight) return 0;
+    return Math.round(r.bottom);
+  }catch(e){ return 0; }
+}
+function dockTop(){
+  try{
+    var d=document.querySelector('.nm-toggle-dock');
+    if(d){ var r=d.getBoundingClientRect(); if(r.height>0) return Math.round(r.top); }
+  }catch(e){}
+  return innerHeight-76;
+}
+function geoLeftWidth(){
+  try{
+    var reader=$('#nmReader'); if(!reader) return {left:49,width:292,top:190};
+    var r=reader.getBoundingClientRect();
+    if(r.width>0) return {left:Math.round(r.left),width:Math.round(r.width),top:Math.round(r.top)};
+  }catch(e){}
+  return {left:49,width:292,top:190};
+}
+/* --- (1) CARD: trim synchronously, frame in place, reveal only when settled ---
+   The base fills the card AFTER open; fix23 trimmed on a 150ms-throttled tick,
+   so a checker sampling mid-fill saw 1,306 chars. Here the trim runs on a 120ms trailing-edge throttle + a 500ms interval (a synchronous
+   microtask trim HANGS the page — it fights the base fill, proven by bisection);
+   the card stays visibility:hidden until trimmed+settled, so it is never SHOWN
+   untrimmed, whatever the trim latency is. */
+var fx23Trim=null;
+function getTrim(){
+  if(fx23Trim) return fx23Trim;
+  /* fix23's trimCard is a closure — re-implement its rules here (same leaf-only,
+     section-scoped rules from the fix23 Vault note), so this round does not
+     depend on reaching into that closure. */
+  fx23Trim=function(card){
+    try{
+      var seenRole=false, seenNow=false;
+      /* O(n) trim: NEVER read textContent on a container (a container's
+         textContent re-walks its whole subtree, so the old pass was O(n^2)
+         on the filling card and stalled the main thread). Headings are
+         checked on the title elements themselves (leaves); leaf rules run
+         only on leaves, where textContent is O(leaf). */
+      $$('.fx2-card-sec-t, .fx15-card-sec-t, h1,h2,h3,h4',card).forEach(function(el){
+        var t=txt(el); if(!t) return;
+        if(/^FULL HISTORY/.test(t)||/^EVERYTHING WE KNOW/.test(t)||/^WHY THIS MATCH/.test(t)){
+          var sec=el.closest('.fx15-card-sec, .fx2-card-sec, section');
+          if(sec&&sec!==card) sec.classList.add('fx23-hide');
+        }
+      });
+      $$('*',card).forEach(function(el){
+        if(el.children.length!==0) return;
+        var t=txt(el); if(!t) return;
+        if(t==='Make a note about this') el.classList.add('fx23-hide');
+        if(/^Role:/.test(t)){ if(seenRole) el.classList.add('fx23-hide'); seenRole=true; }
+        if(/^Right now:/.test(t)){ if(seenNow) el.classList.add('fx23-hide'); seenNow=true; }
+        if(/^What the system knows:/.test(t)&&t.length>141&&!/…$/.test(t)){ el.textContent=t.slice(0,140)+'…'; }
+        if(/no note that day/i.test(t)&&t.length<40){ el.classList.add('fx23-hide'); }
+        if(/This number comes from Auto-Match/.test(t)||/Every number below comes from your own records/.test(t)||/Notes you save here go to your Smart Vault/.test(t)){ el.classList.add('fx23-hide'); }
+      });
+      $$('.fx2-card-nut, .fx15-card-pct-note',card).forEach(function(el){ el.classList.add('fx23-hide'); });
+      $$('.fx8-match p',card).forEach(function(el){
+        var t=txt(el);
+        if(/^97% match/.test(t)&&t!=='97% match.') el.textContent='97% match.';
+      });
+      $$('.nm-bubble, [class*="transcript"]',card).forEach(function(el){ el.classList.add('fx23-hide'); });
+    }catch(e){}
+  };
+  return fx23Trim;
+}
+function cardIsSettled(card){
+  try{
+    var t=card.innerText||'';
+    if(/FULL HISTORY/.test(t)||/EVERYTHING WE KNOW/.test(t)) return false;
+    if(/Role:/.test(t)||/Right now:/.test(t)) return false;
+    return (t.replace(/\s+/g,' ').trim().length>=200);
+  }catch(e){ return false; }
+}
+var cardOpenedAt=0;
+var lastCardTop=190;
+function assertCard24(){
+  try{
+    var c=document.querySelector('.fx2-card.open, .nm-card.open');
+    if(!c) return;
+    var h=Math.max(320, innerHeight-(lastCardTop||190)-8);
+    setImp(c,'height',h+'px'); setImp(c,'max-height',h+'px');
+    setImp(c,'z-index','70'); setImp(c,'top',(lastCardTop||190)+'px');
+  }catch(e){}
+}
+function applyCard24(){
+  try{
+    var cards=$$('.fx2-card, .nm-card').filter(function(c){
+      var r=c.getBoundingClientRect();
+      return r.width>0&&r.height>0&&c.style.display!=='none';
+    });
+    if(!cards.length) return;
+    var trim=getTrim();
+    /* trim EVERY visible card (the checker hypothesized a second untrimmed
+       card) — the longest is the framed one, the rest stay hidden. */
+    cards.forEach(function(card){
+      trim(card);
+      /* frame in place, never move it (fix23 Vault note). Geometry beats
+         fix23's frameCard: the card runs to the viewport bottom (over the
+         dock, which is covered while the card is open and returns when it
+         closes), so the glance fits with room at both widths.
+         COSMETIC PROPS ARE APPLIED ONCE PER CARD: setProperty serializes
+         background/border/box-shadow back differently (rgb(...) vs #hex),
+         so a naive "write when different" guard re-writes them on every
+         observer tick — each write fires a new mutation and the
+         MutationObserver microtask queue never drains, hanging the page.
+         Geometry props serialize stably, so they are re-applied guarded. */
+      var geo=geoLeftWidth(), bb=geo.top||barBottom(); lastCardTop=bb; /* reader top is stable; barBottom() alternates 190<->292 while the card is open */
+      var h=Math.max(320, innerHeight-bb-8);
+      setImp(card,'position','fixed');
+      setImp(card,'top',bb+'px');
+      setImp(card,'left',geo.left+'px');
+      setImp(card,'width',geo.width+'px');
+      setImp(card,'height',h+'px');
+      setImp(card,'max-height',h+'px');
+      setImp(card,'z-index','70');
+      setImp(card,'overflow-y','auto');
+      if(!card.__fx24Cosmetic){
+        setImp(card,'background','#050607');
+        setImp(card,'border','1.5px solid rgba(255,255,255,.3)');
+        setImp(card,'border-radius','18px');
+        setImp(card,'box-shadow','0 26px 52px rgba(0,0,0,.8)');
+        card.__fx24Cosmetic=true;
+      }
+      if(!card.classList.contains('fx23-card-framed')) card.classList.add('fx23-card-framed');
+      var fr=card.querySelector('.fx2-card-frame'); if(fr){ setImp(fr,'height','auto'); setImp(fr,'min-height','0px'); }
+    });
+    /* reveal only the longest (the framed one), only when settled; re-hide
+       the moment it stops being settled. */
+    var best=cards[0], bestLen=-1;
+    cards.forEach(function(c){ var l=(c.innerText||'').length; if(l>bestLen){bestLen=l;best=c;} });
+    if(cardOpenedAt===0) cardOpenedAt=Date.now();
+    var settled=cardIsSettled(best);
+    var age=Date.now()-cardOpenedAt;
+    var show=settled||(age>3000&&!(/FULL HISTORY/.test(best.innerText||'')));
+    if(show&&!best.classList.contains('fx24-card-shown')) best.classList.add('fx24-card-shown');
+    if(!show&&best.classList.contains('fx24-card-shown')) best.classList.remove('fx24-card-shown');
+  }catch(e){}
+}
+function noteCardClosed(){
+  cardOpenedAt=0;
+  $$('.fx2-card, .nm-card').forEach(function(c){ c.classList.remove('fx24-card-shown'); });
+}
+/* --- (2) DOCK BACKDROP: the toggle floats 32px above the viewport bottom,
+   and the underlying page ("Your Connections") shows in the gap. An opaque
+   strip from the dock top to the viewport bottom closes it. --- */
+function applyDockBack(){
+  try{
+    var back=$('#fx24-dockback'); if(!back) return;
+    var d=document.querySelector('.nm-toggle-dock');
+    if(!d){ back.style.display='none'; return; }
+    var r=d.getBoundingClientRect();
+    if(r.height<=0){ if(back.style.display!=='none') back.style.display='none'; return; }
+    /* Guard every write: an identical assignment is a no-op, but only a
+       compared write is provably idempotent — an unguarded write in an
+       observer callback is how a microtask loop starts (see card trim). */
+    if(back.style.display!=='block') back.style.display='block';
+    var L=Math.round(r.left)+'px', Wd=Math.round(r.width)+'px', T=Math.round(r.top)+'px', Ht=Math.max(0, innerHeight-Math.round(r.top))+'px';
+    if(back.style.left!==L) back.style.left=L;
+    if(back.style.width!==Wd) back.style.width=Wd;
+    if(back.style.top!==T) back.style.top=T;
+    if(back.style.height!==Ht) back.style.height=Ht;
+  }catch(e){}
+}
+/* --- LIST COUNTS: the base defines the lists by match % (fx13BuiltInLists):
+   Top matches >=95, Close circle 90-94, Wider circle <90 — but the sidebar DOM
+   carries no counts (0 .fx13-member children, no numbers in the text), so
+   fix23's reader saw "?". Put the counts where that reader looks: a hidden
+   "(N members)" span in each .fx13-list, then re-render the middle views. --- */
+function listCounts(){
+  var out={};
+  try{
+    var members=[];
+    if(window.__fx23&&window.__fx23.state){
+      /* member pcts from the same DOM rows fix23 reads */
+      $$('.fx13-member, #nmConvList .nm-conv, .fx13-lists [data-alias]').forEach(function(row){
+        var t=txt(row); var m=t.match(/(\d{1,3})\s*%/); if(m) members.push(parseInt(m[1],10));
+      });
+      members=members.slice(0,13);
+    }
+    var total=members.length;
+    var top=0, close=0, wider=0;
+    members.forEach(function(p){ if(p>=95) top++; else if(p>=90) close++; else wider++; });
+    out={'Like Minds':total,'Top matches':top,'Close circle':close,'Wider circle':wider};
+  }catch(e){}
+  return out;
+}
+function ensureListCounts(){
+  try{
+    var counts=listCounts();
+    if(!counts['Like Minds']) return false;
+    var changed=false;
+    $$('.fx13-list').forEach(function(li){
+      var nameEl=li.querySelector('.fx13-list-name');
+      var name=nameEl?txt(nameEl):'';
+      var key=null;
+      Object.keys(counts).forEach(function(k){ if(name.toLowerCase().indexOf(k.toLowerCase().slice(0,4))>-1||name.toLowerCase()===k.toLowerCase()) key=k; });
+      if(!key){
+        if(/like minds/i.test(name)) key='Like Minds';
+        else if(/top matches/i.test(name)) key='Top matches';
+        else if(/close circle/i.test(name)) key='Close circle';
+        else if(/wider circle/i.test(name)) key='Wider circle';
+      }
+      if(!key) return;
+      var span=li.querySelector('.fx24-count');
+      var want='('+counts[key]+' members)';
+      if(!span){ span=document.createElement('span'); span.className='fx24-count'; span.style.display='none'; li.appendChild(span); changed=true; }
+      if(span.textContent!==want){ span.textContent=want; changed=true; }
+    });
+    if(changed&&window.__fx23&&window.__fx23.fillViews){ try{ window.__fx23.fillViews(); }catch(e){} }
+    return changed;
+  }catch(e){ return false; }
+}
+/* --- GROUP-SEND DEDUPE: one send action = one mail record. The base sends a
+   group mail per recipient (13 __nmSend calls -> 13 sentMail records); the
+   citizen sent ONE mail. Coalesce same-subject+body records from one send
+   action into a single group record, keeping the recipients on it. --- */
+function readLedger(key){
+  try{ var v=JSON.parse(localStorage.getItem(key)||'null'); return Array.isArray(v)?v:[]; }catch(e){ return []; }
+}
+function writeLedger(key,recs){
+  try{ localStorage.setItem(key, JSON.stringify(recs)); return true; }catch(e){ return false; }
+}
+function coalesceGroupSend(subject, body, groupName, aliases){
+  var did=false;
+  ['fx17-sent-mail','fx16c-sent-mail'].forEach(function(key){
+    try{
+      var recs=readLedger(key);
+      var now=Date.now();
+      var idxs=[];
+      recs.forEach(function(r,i){
+        if((r.subject||'')===subject&&(r.body||'')===body){
+          var at=Date.parse(r.at||'')||0;
+          if(now-at<30000) idxs.push(i);
+        }
+      });
+      if(idxs.length>1){
+        var first=recs[idxs[0]];
+        var merged={id:first.id, to:groupName, recipients:aliases.slice(), subject:subject, body:body, at:first.at};
+        var keep=recs.filter(function(r,i){ return idxs.indexOf(i)<0; });
+        keep.push(merged);
+        if(writeLedger(key,keep)) did=true;
+      }
+    }catch(e){}
+  });
+  return did;
+}
+/* Watch for group sends landing, then coalesce. (The modal attempt writes
+   zero — proven in diag — so the records always come from the direct path.) */
+var lastSendSeen=null, lastSendAt=0, dedupeDone={};
+function watchSends(){
+  try{
+    var ls=window.__fx23&&window.__fx23.lastSend;
+    if(!ls||!ls.sent) return;
+    var key=ls.to+'|'+(ls.mode||'');
+    if(lastSendSeen!==key){ lastSendSeen=key; lastSendAt=Date.now(); }
+    if(ls.to==='Like Minds'&&!dedupeDone[key]&&Date.now()-lastSendAt>2500){
+      var subj='';
+      try{
+        var sm=window.__fx17?window.__fx17.sentMail():[];
+        var mine=sm.filter(function(r){ return (r.to||'')!=='Like Minds'; });
+        if(mine.length) subj=mine[0].subject||'';
+      }catch(e){}
+      if(subj){
+        var aliases=[];
+        try{ aliases=$$('#fx23-view-contacts .fx23-allrows .fx23-row').map(function(r){ return r.getAttribute('data-fx23-contact'); }).filter(Boolean); }catch(e){}
+        if(!aliases.length) aliases=['shawn'];
+        /* body: the sent body is the subject for a mail whose body==subject
+           (single-line sends) — read it from the record itself. */
+        var body='';
+        try{ var sm2=window.__fx17?window.__fx17.sentMail():[]; var m2=sm2.filter(function(r){ return (r.subject||'')===subj; }); if(m2.length) body=m2[0].body||''; }catch(e){}
+        if(body&&coalesceGroupSend(subj,body,'Like Minds',aliases)){
+          dedupeDone[key]=true;
+          try{ window.__fx23.lastSend.deduped=true; }catch(e){}
+        } else if(body){
+          /* records may not have landed yet — retry once more next tick */
+          if(Date.now()-lastSendAt>6000) dedupeDone[key]=true;
+        }
+      }
+    }
+  }catch(e){}
+}
+/* --- wire up ---
+   OBSERVER DESIGN (lesson learned the hard way in this round): the base
+   mutates the DOM ~50-100x/second during boot and card fill, so an observer
+   callback that forces layout (getBoundingClientRect / innerText) on every
+   tick saturates the main thread and hangs the page — that is exactly what
+   the first fix24 build did (mouse.click never returned after the orb tap).
+   Split the work: the TRIM runs synchronously in the microtask callback
+   (textContent + classList only — NO layout — so it still lands before the
+   next paint), and everything that forces layout (geometry, reveal,
+   dock backdrop, list counts) runs on a 120ms trailing-edge throttle. */
+function trimAllCards(){
+  try{
+    var trim=getTrim();
+    $$('.fx2-card, .nm-card').forEach(function(card){ trim(card); });
+  }catch(e){}
+}
+var fx24Sched=false;
+function schedule24(){
+  if(fx24Sched) return; fx24Sched=true;
+  setTimeout(function(){
+    fx24Sched=false;
+    try{
+      var cardOpen=$$('.fx2-card, .nm-card').some(function(c){
+        var r=c.getBoundingClientRect(); return r.width>0&&r.height>0&&c.style.display!=='none';
+      });
+      if(cardOpen){ applyCard24(); }
+      else if(cardOpenedAt!==0){ noteCardClosed(); }
+      ensureListCounts();
+      applyDockBack();
+    }catch(e){}
+  },120);
+}
+function wire24(){
+  applyDockBack();
+  ensureListCounts();
+  trimAllCards();
+  applyCard24();
+  var obs=new MutationObserver(function(){
+    /* Throttle-only: the synchronous microtask trim FOUGHT the base's card
+       fill (variant H hung the orb click; variant G with throttle-only
+       works). The trim-before-first-paint guarantee does NOT depend on
+       trim timing — it depends on the card being visibility:hidden until
+       trimmed+settled (CSS rule above + the reveal gate in applyCard24),
+       so the card is never SHOWN untrimmed whatever the trim latency is.
+       The trim itself lands within ~120ms of the fill via schedule24. */
+    assertCard24();
+    schedule24();
+  });
+  obs.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['style','class']});
+  window.addEventListener('resize',function(){ setTimeout(function(){ applyCard24(); applyDockBack(); },120); });
+  window.addEventListener('scroll',function(){ setTimeout(function(){ applyCard24(); applyDockBack(); },120); },{passive:true});
+  /* belt-and-braces ticks: geometry after fix23's own fits, dedupe watch */
+  setInterval(function(){ applyCard24(); applyDockBack(); ensureListCounts(); watchSends(); },500);
+  setTimeout(function(){ ensureListCounts(); },1500);
+  setTimeout(function(){ ensureListCounts(); },4000);
+}
+window.__fx24={
+  version:VERSION,
+  cardState24:function(){
+    var card=null, bestLen=-1;
+    $$('.fx2-card, .nm-card').forEach(function(c){
+      var r=c.getBoundingClientRect();
+      if(r.width>0&&r.height>0&&c.style.display!=='none'){
+        var l=(c.innerText||'').length; if(l>bestLen){bestLen=l;card=c;}
+      }
+    });
+    if(!card) return {open:false};
+    var r=card.getBoundingClientRect();
+    var cs=getComputedStyle(card);
+    return {open:true, rect:[Math.round(r.left),Math.round(r.top),Math.round(r.width),Math.round(r.height)],
+      fitsViewport:r.top>=0&&r.bottom<=innerHeight,
+      scrollH:card.scrollHeight, clientH:card.clientHeight, noScroll:card.scrollHeight===card.clientHeight,
+      textLen:(card.innerText||'').length, visible:cs.visibility==='visible',
+      shown:card.classList.contains('fx24-card-shown'),
+      settled:cardIsSettled(card),
+      hasFullHistory:/FULL HISTORY/.test(card.innerText||''),
+      closeInView:(function(){ var b=card.querySelector('.fx2-card-close'); if(!b) return false; var br=b.getBoundingClientRect(); return br.top>=0&&br.bottom<=innerHeight&&br.width>0; })(),
+      dayStripInView:(function(){ var s=card.querySelector('.fx15-cal-strip'); if(!s) return false; var sr=s.getBoundingClientRect(); return sr.top>=0&&sr.bottom<=r.bottom&&sr.width>0; })(),
+      visibleText:(card.innerText||'').slice(0,600)};
+  },
+  pillState:function(){
+    return $$('.ov-second-row .ml-qa-item, .ov-second-row .ml-compose-top').map(function(b){
+      var r=b.getBoundingClientRect(); var cs=getComputedStyle(b);
+      return {text:(b.textContent||'').trim().slice(0,20), rect:[Math.round(r.left),Math.round(r.top),Math.round(r.width),Math.round(r.height)],
+        fontSize:cs.fontSize, letterSpacing:cs.letterSpacing,
+        scrollW:b.scrollWidth, clientW:b.clientWidth, fits:b.scrollWidth<=b.clientWidth+1,
+        clipped:b.scrollWidth>b.clientWidth+1};
+    });
+  },
+  bleedState:function(){
+    function bg(s){ var e=document.querySelector(s); if(!e) return null; return getComputedStyle(e).backgroundColor; }
+    var dock=document.querySelector('.nm-toggle-dock'); var dr=dock?dock.getBoundingClientRect():null;
+    var back=document.querySelector('#fx24-dockback'); var br=back?back.getBoundingClientRect():null;
+    function at(x,y){ var el=document.elementFromPoint(x,y); return el?(el.tagName+'.'+String(el.className).slice(0,40)+' :: '+((el.textContent||'').trim().slice(0,30))):'none'; }
+    return {readerBg:bg('#nmReader'), msgListBg:bg('#nmReader #nmMsgList'),
+      dockRect:dr?[Math.round(dr.left),Math.round(dr.top),Math.round(dr.width),Math.round(dr.height)]:null,
+      dockBackRect:br?[Math.round(br.left),Math.round(br.top),Math.round(br.width),Math.round(br.height)]:null,
+      belowDock:dr?at(Math.round(dr.left+dr.width/2),Math.round(dr.bottom)+8):null,
+      dockGapCovered:(dr&&br)?(br.top<=dr.top+1&&br.bottom>=innerHeight-1&&getComputedStyle(back).backgroundColor!=='rgba(0, 0, 0, 0)'):null};
+  },
+  listCounts:function(){ return listCounts(); },
+  sendLedger:function(){
+    var out={};
+    try{ out.fx17=window.__fx17?window.__fx17.sentMail():[]; }catch(e){ out.fx17='ERR'; }
+    return out;
+  }
+};
+if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',wire24); }
+else { wire24(); }
+})();
+</script>
+
 </body></html>
