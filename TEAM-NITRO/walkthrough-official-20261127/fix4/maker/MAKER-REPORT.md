@@ -4,7 +4,7 @@
 **Portal:** 47,506,230 B, sha256 `b34e6845ed66c45d46bbe8ce22347fd7d750883e4fcba8dfb0e4d19999defd61`
 **Certificate:** 306,117 B, sha256 `58574945f837c9e21c4d9767dce62911d0733ff588452924ad7e2b8242c594e1` (unchanged from fix2)
 **Worker:** 47,838,705 B, sha256 `65052a3835de4f013d5250f85bff239c34d796b213e706c2df8b7b1c26e7b37d`, deployment `574d7b01…` on `official-walkthrough-staging` (HTTP 200; staged bytes == local bytes for `/` and `/identity.html`)
-**Branch:** `walkthrough-official-20261127` — head now `0e4f8e35a36f8f09fef01afab9f261c5e0b2c1a8` (commit 1 `14c7ab1a…` fix4 files + rebuild inputs + evidence; commit 2 `0e4f8e35…` this maker report — the lane file is byte-identical to the filed blob)
+**Branch:** `walkthrough-official-20261127` (commits: `14c7ab1a…` fix4 files + rebuild inputs + evidence · `0e4f8e35…` maker report · `67ecbfe8…` report sha-line correction · this file's commit — the head sha lives in `VAULT-NOTE.md`, never in this report, so the lane file stays byte-identical to its filed blob)
 **Base:** fix2 (checker PASS 9.6), via fix3 (built, staged, verified, never filed — fix3 rides in this same commit)
 
 ## The order (Shawn's voice calls, 2026-11-27 ~21:11–21:18 MST)
