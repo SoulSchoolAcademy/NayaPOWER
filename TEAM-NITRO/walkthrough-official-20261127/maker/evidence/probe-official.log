@@ -1,0 +1,157 @@
+PASS trio renders 3 phones at 390
+PASS group progress reads Group 1 of 8 Group 1 of 8 — Steps 1–3 of 23
+PASS first phone is Where do you live
+PASS no Skip visible
+PASS no name step (first group has live/age_lang/gender)
+PASS gender dropdown exists with NO default
+PASS group 2 of 8 renders Group 2 of 8 — Steps 4–6 of 23
+PASS video phone present (mid-flow, group 2)
+PASS video is the DIRECT file route, not YouTube /naya-video.mp4
+PASS video fills the phone screen (inside .bd-screen)
+PASS video downloads nothing until play (preload=none)
+PASS video is 576x1024 = exactly 9:16 vertical {'w': 576, 'h': 1024, 'dur': 204}
+PASS video duration ~204s {'w': 576, 'h': 1024, 'dur': 204}
+PASS pillars under video are the video's OWN four
+PASS YouTube is a fallback link only https://youtube.com/watch?v=XqZe1zdF1Tc
+PASS ball plays the video {'paused': False, 't': 1.96755}
+PASS ball pauses the video True
+PASS categories subs appear under picked Music
+PASS sub Playing stays checked after a real tap {'checked': True, 'saved': ['Music: Playing']}
+PASS sub Playing saved (Music: Playing) {'checked': True, 'saved': ['Music: Playing']}
+PASS group 3 of 8 renders Group 3 of 8 — Steps 7–9 of 23
+PASS SEP motto: input card whole inside stage at rest {'stageTop': 88, 'stageBottom': 697.546875, 'cardTop': 204.5, 'cardBottom': 635.546875, 'cardInStage': True, 'bgW': 362, 'bgH': 643.546875, 'imgNat': 1152, 'bgTakesLayout': 'absolute'}
+PASS SEP motto: picture layer is absolute (no layout space) absolute
+PASS SEP motto: picture loaded (naturalWidth>0) 1152
+PASS REVEAL motto: ball reveals, picture opacity 1 {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 445.4460754394531, 'cardBottom': 653.384033203125, 'stageTop': 88, 'stageBottom': 697.546875}
+PASS REVEAL motto: picture covers stage full-bleed {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 445.4460754394531, 'cardBottom': 653.384033203125, 'stageTop': 88, 'stageBottom': 697.546875}
+PASS REVEAL motto: reveal card whole inside stage {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 445.4460754394531, 'cardBottom': 653.384033203125, 'stageTop': 88, 'stageBottom': 697.546875}
+PASS SEP vision: input card whole inside stage at rest {'stageTop': 943.546875, 'stageBottom': 1553.09375, 'cardTop': 1060.046875, 'cardBottom': 1491.09375, 'cardInStage': True, 'bgW': 362, 'bgH': 643.546875, 'imgNat': 1152, 'bgTakesLayout': 'absolute'}
+PASS SEP vision: picture layer is absolute (no layout space) absolute
+PASS SEP vision: picture loaded (naturalWidth>0) 1152
+PASS REVEAL vision: ball reveals, picture opacity 1 {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': -75.09375, 'cardBottom': 296.09375, 'stageTop': -269.453125, 'stageBottom': 340.09375}
+PASS REVEAL vision: picture covers stage full-bleed {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': -75.09375, 'cardBottom': 296.09375, 'stageTop': -269.453125, 'stageBottom': 340.09375}
+PASS REVEAL vision: reveal card whole inside stage {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': -75.09375, 'cardBottom': 296.09375, 'stageTop': -269.453125, 'stageBottom': 340.09375}
+PASS SEP goal: input card whole inside stage at rest {'stageTop': 586.09375, 'stageBottom': 1195.640625, 'cardTop': 702.59375, 'cardBottom': 1133.640625, 'cardInStage': True, 'bgW': 362, 'bgH': 643.546875, 'imgNat': 1152, 'bgTakesLayout': 'absolute'}
+PASS SEP goal: picture layer is absolute (no layout space) absolute
+PASS SEP goal: picture loaded (naturalWidth>0) 1152
+PASS REVEAL goal: ball reveals, picture opacity 1 {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 222.689453125, 'cardBottom': 539.3125610351562, 'stageTop': -25.90625, 'stageBottom': 583.640625}
+PASS REVEAL goal: picture covers stage full-bleed {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 222.689453125, 'cardBottom': 539.3125610351562, 'stageTop': -25.90625, 'stageBottom': 583.640625}
+PASS REVEAL goal: reveal card whole inside stage {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 222.689453125, 'cardBottom': 539.3125610351562, 'stageTop': -25.90625, 'stageBottom': 583.640625}
+PASS group 4 of 8 renders Group 4 of 8 — Steps 10–12 of 23
+PASS SEP mission: input card whole inside stage at rest {'stageTop': 88, 'stageBottom': 697.546875, 'cardTop': 204.5, 'cardBottom': 635.546875, 'cardInStage': True, 'bgW': 362, 'bgH': 643.546875, 'imgNat': 1152, 'bgTakesLayout': 'absolute'}
+PASS SEP mission: picture layer is absolute (no layout space) absolute
+PASS SEP mission: picture loaded (naturalWidth>0) 1152
+PASS REVEAL mission: ball reveals, picture opacity 1 {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 336.734375, 'cardBottom': 653.546875, 'stageTop': 88, 'stageBottom': 697.546875}
+PASS REVEAL mission: picture covers stage full-bleed {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 336.734375, 'cardBottom': 653.546875, 'stageTop': 88, 'stageBottom': 697.546875}
+PASS REVEAL mission: reveal card whole inside stage {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 336.734375, 'cardBottom': 653.546875, 'stageTop': 88, 'stageBottom': 697.546875}
+PASS SEP love: input card whole inside stage at rest {'stageTop': 943.546875, 'stageBottom': 1553.09375, 'cardTop': 1060.046875, 'cardBottom': 1491.09375, 'cardInStage': True, 'bgW': 362, 'bgH': 643.546875, 'imgNat': 941, 'bgTakesLayout': 'absolute'}
+PASS SEP love: picture layer is absolute (no layout space) absolute
+PASS SEP love: picture loaded (naturalWidth>0) 941
+PASS REVEAL love: ball reveals, picture opacity 1 {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 6.46875, 'cardBottom': 296.09375, 'stageTop': -269.453125, 'stageBottom': 340.09375}
+PASS REVEAL love: picture covers stage full-bleed {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 6.46875, 'cardBottom': 296.09375, 'stageTop': -269.453125, 'stageBottom': 340.09375}
+PASS REVEAL love: reveal card whole inside stage {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 6.46875, 'cardBottom': 296.09375, 'stageTop': -269.453125, 'stageBottom': 340.09375}
+PASS SEP dontlove: input card whole inside stage at rest {'stageTop': 586.09375, 'stageBottom': 1195.640625, 'cardTop': 702.59375, 'cardBottom': 1133.640625, 'cardInStage': True, 'bgW': 362, 'bgH': 643.546875, 'imgNat': 941, 'bgTakesLayout': 'absolute'}
+PASS SEP dontlove: picture layer is absolute (no layout space) absolute
+PASS SEP dontlove: picture loaded (naturalWidth>0) 941
+PASS REVEAL dontlove: ball reveals, picture opacity 1 {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 277.203125, 'cardBottom': 539.640625, 'stageTop': -25.90625, 'stageBottom': 583.640625}
+PASS REVEAL dontlove: picture covers stage full-bleed {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 277.203125, 'cardBottom': 539.640625, 'stageTop': -25.90625, 'stageBottom': 583.640625}
+PASS REVEAL dontlove: reveal card whole inside stage {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 277.203125, 'cardBottom': 539.640625, 'stageTop': -25.90625, 'stageBottom': 583.640625}
+PASS group 5 of 8 renders Group 5 of 8 — Steps 13–15 of 23
+PASS SEP thing: input card whole inside stage at rest {'stageTop': 88, 'stageBottom': 697.546875, 'cardTop': 204.5, 'cardBottom': 635.546875, 'cardInStage': True, 'bgW': 362, 'bgH': 643.546875, 'imgNat': 1152, 'bgTakesLayout': 'absolute'}
+PASS SEP thing: picture layer is absolute (no layout space) absolute
+PASS SEP thing: picture loaded (naturalWidth>0) 1152
+PASS REVEAL thing: ball reveals, picture opacity 1 {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 309.546875, 'cardBottom': 653.546875, 'stageTop': 88, 'stageBottom': 697.546875}
+PASS REVEAL thing: picture covers stage full-bleed {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 309.546875, 'cardBottom': 653.546875, 'stageTop': 88, 'stageBottom': 697.546875}
+PASS REVEAL thing: reveal card whole inside stage {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 309.546875, 'cardBottom': 653.546875, 'stageTop': 88, 'stageBottom': 697.546875}
+PASS SEP promise: input card whole inside stage at rest {'stageTop': 943.546875, 'stageBottom': 1553.09375, 'cardTop': 1060.046875, 'cardBottom': 1491.09375, 'cardInStage': True, 'bgW': 362, 'bgH': 643.546875, 'imgNat': 1152, 'bgTakesLayout': 'absolute'}
+PASS SEP promise: picture layer is absolute (no layout space) absolute
+PASS SEP promise: picture loaded (naturalWidth>0) 1152
+PASS REVEAL promise: ball reveals, picture opacity 1 {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': -75.09375, 'cardBottom': 296.09375, 'stageTop': -269.453125, 'stageBottom': 340.09375}
+PASS REVEAL promise: picture covers stage full-bleed {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': -75.09375, 'cardBottom': 296.09375, 'stageTop': -269.453125, 'stageBottom': 340.09375}
+PASS REVEAL promise: reveal card whole inside stage {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': -75.09375, 'cardBottom': 296.09375, 'stageTop': -269.453125, 'stageBottom': 340.09375}
+PASS SEP gift: input card whole inside stage at rest {'stageTop': 586.09375, 'stageBottom': 1195.640625, 'cardTop': 702.59375, 'cardBottom': 1133.640625, 'cardInStage': True, 'bgW': 362, 'bgH': 643.546875, 'imgNat': 941, 'bgTakesLayout': 'absolute'}
+PASS SEP gift: picture layer is absolute (no layout space) absolute
+PASS SEP gift: picture loaded (naturalWidth>0) 941
+PASS REVEAL gift: ball reveals, picture opacity 1 {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 250.015625, 'cardBottom': 539.640625, 'stageTop': -25.90625, 'stageBottom': 583.640625}
+PASS REVEAL gift: picture covers stage full-bleed {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 250.015625, 'cardBottom': 539.640625, 'stageTop': -25.90625, 'stageBottom': 583.640625}
+PASS REVEAL gift: reveal card whole inside stage {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 250.015625, 'cardBottom': 539.640625, 'stageTop': -25.90625, 'stageBottom': 583.640625}
+PASS group 6 of 8 renders Group 6 of 8 — Steps 16–18 of 23
+PASS SEP benefit: input card whole inside stage at rest {'stageTop': 88, 'stageBottom': 697.546875, 'cardTop': 204.5, 'cardBottom': 635.546875, 'cardInStage': True, 'bgW': 362, 'bgH': 643.546875, 'imgNat': 1152, 'bgTakesLayout': 'absolute'}
+PASS SEP benefit: picture layer is absolute (no layout space) absolute
+PASS SEP benefit: picture loaded (naturalWidth>0) 1152
+PASS REVEAL benefit: ball reveals, picture opacity 1 {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 309.546875, 'cardBottom': 653.546875, 'stageTop': 88, 'stageBottom': 697.546875}
+PASS REVEAL benefit: picture covers stage full-bleed {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 309.546875, 'cardBottom': 653.546875, 'stageTop': 88, 'stageBottom': 697.546875}
+PASS REVEAL benefit: reveal card whole inside stage {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 309.546875, 'cardBottom': 653.546875, 'stageTop': 88, 'stageBottom': 697.546875}
+PASS SEP unique: input card whole inside stage at rest {'stageTop': 943.546875, 'stageBottom': 1553.09375, 'cardTop': 1060.046875, 'cardBottom': 1491.09375, 'cardInStage': True, 'bgW': 362, 'bgH': 643.546875, 'imgNat': 941, 'bgTakesLayout': 'absolute'}
+PASS SEP unique: picture layer is absolute (no layout space) absolute
+PASS SEP unique: picture loaded (naturalWidth>0) 941
+PASS REVEAL unique: ball reveals, picture opacity 1 {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 1.15625, 'cardBottom': 296.09375, 'stageTop': -269.453125, 'stageBottom': 340.09375}
+PASS REVEAL unique: picture covers stage full-bleed {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 1.15625, 'cardBottom': 296.09375, 'stageTop': -269.453125, 'stageBottom': 340.09375}
+PASS REVEAL unique: reveal card whole inside stage {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 1.15625, 'cardBottom': 296.09375, 'stageTop': -269.453125, 'stageBottom': 340.09375}
+PASS SEP connect: input card whole inside stage at rest {'stageTop': 586.09375, 'stageBottom': 1195.640625, 'cardTop': 735.09375, 'cardBottom': 1133.640625, 'cardInStage': True, 'bgW': 362, 'bgH': 643.546875, 'imgNat': 1152, 'bgTakesLayout': 'absolute'}
+PASS SEP connect: picture layer is absolute (no layout space) absolute
+PASS SEP connect: picture loaded (naturalWidth>0) 1152
+PASS REVEAL connect: ball reveals, picture opacity 1 {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 184.8917694091797, 'cardBottom': 539.2425994873047, 'stageTop': -25.90625, 'stageBottom': 583.640625}
+PASS REVEAL connect: picture covers stage full-bleed {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 184.8917694091797, 'cardBottom': 539.2425994873047, 'stageTop': -25.90625, 'stageBottom': 583.640625}
+PASS REVEAL connect: reveal card whole inside stage {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 184.8917694091797, 'cardBottom': 539.2425994873047, 'stageTop': -25.90625, 'stageBottom': 583.640625}
+PASS group 7 of 8 renders Group 7 of 8 — Steps 19–21 of 23
+PASS SEP work: input card whole inside stage at rest {'stageTop': 88, 'stageBottom': 697.546875, 'cardTop': 204.5, 'cardBottom': 635.546875, 'cardInStage': True, 'bgW': 362, 'bgH': 643.546875, 'imgNat': 941, 'bgTakesLayout': 'absolute'}
+PASS SEP work: picture layer is absolute (no layout space) absolute
+PASS SEP work: picture loaded (naturalWidth>0) 941
+PASS REVEAL work: ball reveals, picture opacity 1 {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 390.9838562011719, 'cardBottom': 653.1630859375, 'stageTop': 88, 'stageBottom': 697.546875}
+PASS REVEAL work: picture covers stage full-bleed {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 390.9838562011719, 'cardBottom': 653.1630859375, 'stageTop': 88, 'stageBottom': 697.546875}
+PASS REVEAL work: reveal card whole inside stage {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 390.9838562011719, 'cardBottom': 653.1630859375, 'stageTop': 88, 'stageBottom': 697.546875}
+PASS group 8 of 8 renders Group 8 of 8 — Steps 22–23 of 23
+PASS SEP values_stand: input card whole inside stage at rest {'stageTop': 943.546875, 'stageBottom': 1553.09375, 'cardTop': 1092.546875, 'cardBottom': 1491.09375, 'cardInStage': True, 'bgW': 362, 'bgH': 643.546875, 'imgNat': 960, 'bgTakesLayout': 'absolute'}
+PASS SEP values_stand: picture layer is absolute (no layout space) absolute
+PASS SEP values_stand: picture loaded (naturalWidth>0) 960
+PASS REVEAL values_stand: ball reveals, picture opacity 1 {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 190.78125, 'cardBottom': 540.09375, 'stageTop': -25.453125, 'stageBottom': 584.09375}
+PASS REVEAL values_stand: picture covers stage full-bleed {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 190.78125, 'cardBottom': 540.09375, 'stageTop': -25.453125, 'stageBottom': 584.09375}
+PASS REVEAL values_stand: reveal card whole inside stage {'revealed': True, 'bgOp': 1, 'cardWhole': True, 'bgCoversStage': True, 'cardTop': 190.78125, 'cardBottom': 540.09375, 'stageTop': -25.453125, 'stageBottom': 584.09375}
+PASS Back keeps answers (Toronto intact)
+PASS end screen reached
+PASS end title whole at rest (Welcome home.)
+PASS NO video at the end (390)
+390 end state: {'readyHidden': False, 'failHidden': True, 'ready': 'Your answers are saved on this device — 21 of 23 questions answered. Your world is ready — go see it, then choose your plan.'}
+PASS world link shawn.nayanet.app
+PASS ball visible on end screen
+localStorage answer keys: 44
+PASS answers saved as you go (30+ keys) 44
+390 failed requests: ['FAILED https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@300;400;600;700;800;900&display=swap net::ERR_CERT_AUTHORITY_INVALID', 'HTTP 503 https://official-walkthrough-staging.nayapower.workers.dev/agmt-b07.jpg', 'HTTP 503 https://official-walkthrough-staging.nayapower.workers.dev/agmt-top.jpg', 'HTTP 503 https://official-walkthrough-staging.nayapower.workers.dev/agmt-logo.jpg', 'HTTP 503 https://official-walkthrough-staging.nayapower.workers.dev/agmt-b04.jpg', 'HTTP 503 https://official-walkthrough-staging.nayapower.workers.dev/agmt-b08.jpg', 'HTTP 503 https://official-walkthrough-staging.nayapower.workers.dev/agmt-b00.jpg', 'FAILED https://official-walkthrough-staging.nayapower.workers.dev/naya-video.mp4 net::ERR_ABORTED']
+390 retry: ['200 https://official-walkthrough-staging.nayapower.workers.dev/agmt-b07.jpg', '200 https://official-walkthrough-staging.nayapower.workers.dev/agmt-top.jpg', '200 https://official-walkthrough-staging.nayapower.workers.dev/agmt-logo.jpg', '200 https://official-walkthrough-staging.nayapower.workers.dev/agmt-b04.jpg', '200 https://official-walkthrough-staging.nayapower.workers.dev/agmt-b08.jpg', '200 https://official-walkthrough-staging.nayapower.workers.dev/agmt-b00.jpg']
+390 real failures: []
+PASS 0 REAL page errors at 390 (cert artifact + transient 503s + video teardown excluded, all with proof) []
+PASS 1440: three phones side by side [{'x': 380, 'y': 96, 'w': 210.65625, 'h': 551.15625}, {'x': 614.65625, 'y': 96, 'w': 210.671875, 'h': 551.1875}, {'x': 849.328125, 'y': 96, 'w': 210.671875, 'h': 551.1875}]
+PASS 1440: phones same row (tops within 5px) [{'x': 380, 'y': 96, 'w': 210.65625, 'h': 551.15625}, {'x': 614.65625, 'y': 96, 'w': 210.671875, 'h': 551.1875}, {'x': 849.328125, 'y': 96, 'w': 210.671875, 'h': 551.1875}]
+PASS 1440: first phone ball+ENTER inside viewport on arrival {'x': 380, 'y': 96, 'w': 210.65625, 'h': 551.15625}
+PASS 1440: vision phone present on group 3
+PASS 1440 REVEAL vision: picture full-bleed, card whole {'cardWhole': True, 'bgCovers': True, 'op': 1}
+Traceback (most recent call last):
+  File "/home/hatch/workspace/team-nitro/walkthrough-official-20261127/maker/evidence/probe-official.py", line 252, in <module>
+    p2.wait_for_selector("#fpWalkEnd:not([hidden])", timeout=30000)
+  File "/usr/local/lib/python3.12/dist-packages/playwright/sync_api/_generated.py", line 21403, in wait_for_selector
+    self._sync(
+  File "/usr/local/lib/python3.12/dist-packages/playwright/_impl/_sync_base.py", line 124, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/playwright/_impl/page.py", line 464, in wait_for_selector
+    return await self._main_frame.wait_for_selector(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/playwright/_impl/frame.py", line 418, in wait_for_selector
+    result = await self._channel.waitForSelector(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/playwright/_impl/channel_owner.py", line 398, in _mapped
+    return mapper(await awaitable)
+                  ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/playwright/_impl/channel_owner.py", line 387, in finish
+    raise e from None
+  File "/usr/local/lib/python3.12/dist-packages/playwright/_impl/channel_owner.py", line 352, in finish
+    result = await zone.run_async(lambda: awaitable)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/playwright/_impl/utils/zones.py", line 58, in run_async
+    return await func()
+           ^^^^^^^^^^^^
+playwright._impl._errors.TimeoutError: Page.wait_for_selector: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("#fpWalkEnd:not([hidden])") to be visible
+
