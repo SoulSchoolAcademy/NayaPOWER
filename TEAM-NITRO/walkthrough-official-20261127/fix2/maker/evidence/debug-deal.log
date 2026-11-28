@@ -1,0 +1,16 @@
+plain-load: {"view": "intro", "deck": 0, "letter": 0, "stageOn": false, "eye": "hidden-el", "letterAll": "hidden-el", "mirrorAll": "hidden-el", "nextBtn": "Begin the visual story \u25c6", "nextBtn2": "hidden", "letterShown": 1, "deckShown": 1}
+eye display on plain load: {'disp': 'flex', 'secDisp': 'none'}
+after enter(): {"view": "intro", "deck": 0, "letter": 0, "stageOn": true, "eye": "hidden-el", "letterAll": "hidden-el", "mirrorAll": "hidden-el", "nextBtn": "Begin the visual story \u25c6", "nextBtn2": "Read the agreement \u25c6", "letterShown": 1, "deckShown": 1}
+choiceDeck visible: 1 True
+after Begin (choiceDeck): {"view": "deck", "deck": 0, "letter": 0, "stageOn": true, "eye": "hidden-el", "letterAll": "hidden-el", "mirrorAll": "hidden-el", "nextBtn": "Keep reading \u25c6", "nextBtn2": "hidden", "letterShown": 1, "deckShown": 1}
+deck step 0 : {"view": "deck", "deck": 0, "letter": 0, "stageOn": true, "eye": "hidden-el", "letterAll": "hidden-el", "mirrorAll": "hidden-el", "nextBtn": "Keep reading \u25c6", "nextBtn2": "hidden", "letterShown": 1, "deckShown": 1}
+  showcase imgs on this beat: [{"vis": true, "src": "https://naya-proof-host.nayapower.workers.dev/?fil"}]
+  ZOOM after tap: {"hidden": false, "open": true, "rect": "{\"x\":0,\"y\":0,\"width\":390,\"height\":844,\"top\":0,\"right\":390,\"bottom\":844,\"left\":0}"}
+  zoom closed: True
+after deck walk: {"view": "deck", "deck": 0, "letter": 0, "stageOn": true, "eye": "hidden-el", "letterAll": "hidden-el", "mirrorAll": "hidden-el", "nextBtn": "Keep reading \u25c6", "nextBtn2": "hidden", "letterShown": 1, "deckShown": 1}
+letterPage via state API: {"view": "letterPage", "deck": 0, "letter": 0, "stageOn": true, "eye": "hidden-el", "letterAll": "hidden-el", "mirrorAll": "visible 201x22", "nextBtn": "Keep reading \u25c6", "nextBtn2": "hidden", "letterShown": 1, "deckShown": 1}
+mirror count/visible: 1 True
+dealPlain after mirror tap: {"hidden": false, "rect": {"x": 0, "y": 0, "w": 390, "h": 844}, "textHead": "THE COLLECTIVE AGREEMENT\nBetween NayaNET", "closeVis": true}
+plain closed on Esc: True
+pageerrors: []
+DEBUG DONE
