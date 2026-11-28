@@ -1541,6 +1541,27 @@ button.ib-n{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease
 /* FIX7 item 3 — narrow: the slide panel scrolls so the bottom nav is reachable, never half-clipped. */
 @media(max-width:900px){#screen-slide .panel-body{overflow-y:auto}}
 @media(max-width:640px){.intel-daybar{gap:6px;overflow-x:auto;scrollbar-width:none}.intel-daybar::-webkit-scrollbar{display:none}.daybar{padding:10px 8px 11px}.intel-daybtn{flex:0 0 auto;min-width:92px;padding:6px 2px}.intel-daybtn .dl{font-size:17px;letter-spacing:-.02em}.intel-daybtn .st{display:block}#intelViewer{padding:16px 8px}#screen-slide .slide-boards .ib-layer-body{padding:16px 18px 76px}}
+/* FIX9 D1+D3+D7 — THE DAY BUTTON, ONE SHARED COMPONENT (same markup/CSS the calendar and Daily Reports take verbatim: .intel-daybtn > .dl > .intel-dayicon + .intel-dayname + .intel-daynum > .dt).
+   No status line anywhere (no VIEW, no AWAITING REPORT — the date button itself opens the day). The date number is the Dashboard/calendar digit tile: obsidian tile, rim in the DIGIT's own colour (§4 law: 0 white, 1 ruby, 2 orange, 3 gold, 4 emerald, 5 cyan, 6 indigo, 7 purple, 8 violet, 9 magenta), white digit. The rim is the WEEKDAY's own colour (§3.3: Sun purple, Mon orange, Tue gold, Wed sapphire, Thu emerald, Fri ruby, Sat indigo — Sat indigo is unmistakably not Wed sapphire, and each day also carries its own jewel glyph). The jewel: a real object — obsidian disc, own-colour rim, white glyph, one slow orbit ring (90s, alternating direction by position). At phone width the strip does NOT scroll: all seven fit, today centred by construction. */
+@media(max-width:640px){.intel-daybar{gap:6px;overflow-x:visible}.intel-daybtn{flex:1 1 0;min-width:0;padding:6px 1px}.intel-daybtn .dl{font-size:17px;letter-spacing:-.02em}}
+.intel-daybtn .st{display:none !important}
+.intel-daybtn .dl{display:flex;flex-direction:column;align-items:center;gap:3px}
+.intel-dayicon{position:relative;width:26px;height:26px;flex:none;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#17171f,#050607 70%);border:1.5px solid var(--dc,#8e24aa);border-radius:50%;color:#fff;box-shadow:0 4px 10px rgba(0,0,0,.55),0 0 12px -2px var(--dc,#8e24aa)}
+.intel-dayicon svg{width:18px;height:18px;display:block}
+.intel-dayicon::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1.5px solid transparent;border-top-color:var(--dc,#8e24aa);border-right-color:var(--dc,#8e24aa);animation:fix9orbit 90s linear infinite}
+.intel-daybtn:nth-child(even) .intel-dayicon::after{animation-direction:reverse}
+@keyframes fix9orbit{to{transform:rotate(360deg)}}
+.intel-dayname{font-size:17px;line-height:1.1;color:#fff;letter-spacing:.02em}
+.intel-daynum{display:flex;gap:2px;justify-content:center}
+.intel-daynum .dt{min-width:17px;height:22px;padding:0 2px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#17171f,#050607 70%);border:1.5px solid var(--dtc,#fff);border-radius:5px;color:#fff;font-size:17px;line-height:1;font-weight:700;box-shadow:0 2px 6px rgba(0,0,0,.5)}
+/* FIX9 D2c — the N that walks the block: a round obsidian jewel, red rim, gold N. It sits in the viewer controls and steps IN through the eight sections, same as GO DEEPER. */
+.intel-nwalk{width:48px !important;height:48px !important;min-height:48px !important;border-radius:50% !important;padding:0 !important;font-family:Marcellus,serif !important;font-size:25px !important;font-weight:700 !important;color:#ffd75e !important;border:2px solid #c62828 !important;box-shadow:0 6px 16px rgba(0,0,0,.6),0 0 18px rgba(198,40,40,.55) !important;flex:none}
+/* FIX9 D7 — showcase buttons sit above every overlay in the slide boards. */
+/* FIX9b D2b — the closed picker shows the full title, not a clipped one. */
+#intelNoteSelect{max-width:280px}
+#screen-slide .fs-btn{position:relative;z-index:6}
+#screen-slide .ib-n{position:relative;z-index:6}
+
 .intel-viewtop{width:100%;max-width:720px;margin:0 auto 12px;flex:0 0 auto;align-self:center}
 .intel-viewtop .intel-daybar{margin-bottom:10px}
 .intel-selectrow{display:flex;justify-content:flex-end;align-items:center;gap:8px}
@@ -1948,6 +1969,8 @@ function slideSrc(boardIdx, slot){
    only what sits in each slot changes. Any slot can hold image, video
    or text (RUNTIME_* overrides); the swap control offers all three. */
 function renderSlide(){
+  /* FIX9 D4/D7: a cover group is not a slide — its three boards only repeat the cover title with clipped text (the empty-sunburst board the eye walked into). No path renders it: step to the day's first note slide. */
+  while(current<TOTAL-1&&GROUPS[current]&&GROUPS[current].kind==='cover'){current++;}
   if (typeof END_MODE !== 'undefined') END_MODE = false; /* FIX5E: a normal slide render leaves the end board */
   var __fix8sm = document.getElementById('slideMain'); if (__fix8sm) __fix8sm.classList.remove('end-mode'); if (__fix8sm) { __fix8sm.classList.remove('end-chapters-open'); __fix8sm.classList.remove('end-chapters-closed'); } /* FIX9: the chapters toggle state leaves with the end board */ var __fix8ss = document.getElementById('screen-slide'); if (__fix8ss) __fix8ss.classList.remove('end-mode'); /* FIX8: leaving the end board restores the squeezed-thirds phone layout */
   var g = GROUPS[current];
@@ -2033,6 +2056,8 @@ function renderSlide(){
   var frameAdd = document.querySelector('.slide-frame > .add-btn[data-slot="C"]');
   if (frameSwap) frameSwap.style.display = tc.hidden ? '' : 'none';
   if (frameAdd) frameAdd.style.display = tc.hidden ? '' : 'none';
+  var frameFs = document.querySelector('.slide-frame > .fs-btn');
+  if (frameFs) frameFs.style.display = tc.hidden ? '' : 'none'; /* FIX9 D7: the frame fullscreen button sat on top of the centre panel's own fullscreen button at the same spot — one button, not two stacked. */
   /* FIX2F (2026-11-24): fit SYNCHRONOUSLY first — the layout must be
      final before first paint, or the N moves under a tap when the delayed
      rAF truncates the text (ch10 N tap landed on layer 12). The rAF stays
@@ -2050,10 +2075,10 @@ function goToPortal(){ showEnd(); }
    (eye-verdict fix5: the cover is the landing, so there IS a cover
    behind level 1). Forward steps to the next slide — from the last
    slide, on to the end board, never out of the page. */
-document.getElementById('btnForwardCover').addEventListener('click', function(){ current = 0; renderSlide(); show('slide'); });
+document.getElementById('btnForwardCover').addEventListener('click', function(){ current = 0; renderSlide(); show('slide'); }); /* FIX9 D4: renderSlide skips the cover group, so Forward lands on the day's first note slide (The Five Gates on Nov 25), never the empty cover slide. */
 document.getElementById('btnBack').addEventListener('click', function(){
   if (typeof END_MODE !== 'undefined' && END_MODE){ END_MODE = false; current = TOTAL - 1; renderSlide(); return; } /* FIX5E: back from the end board returns to The template */
-  if (current > 0){ current--; renderSlide(); }
+  if (current > 0){ if(GROUPS[current-1]&&GROUPS[current-1].kind==='cover'){ show('cover'); } else { current--; renderSlide(); } }
   else { show('cover'); } /* FIX5A: back from Chapter 1 returns to the cover */
 });
 document.getElementById('btnForward').addEventListener('click', function(){
@@ -2796,6 +2821,9 @@ function openDepth(boardIdx){
    tapping forward. */
 document.getElementById('coverN').addEventListener('click', function(e){
   e.stopPropagation();
+  /* FIX9 D4: the cover N lands on the cover day's first note in the viewer — never the empty cover slide. On the November 25 cover that is SN-4747 The Five Gates, In a nutshell. */
+  var g=(typeof GROUPS!=='undefined')?GROUPS[current]:null;
+  if(g&&g.day&&window.__intelFirstNoteOfDay&&window.__intelOpenViewer){var sn=window.__intelFirstNoteOfDay(g.day);if(sn){window.__intelOpenViewer(sn);return;}}
   current = 0; renderSlide(); show('slide');
 });
 function depthSlotHTML(boardIdx, slotIdx){
@@ -3439,6 +3467,7 @@ current = 0; renderSlide(); show('cover');
     </div>
     <div class="intel-controls">
       <button class="naya-btn" id="intelBack" type="button">← BACK</button>
+      <button class="naya-btn intel-nwalk" id="intelNWalk" type="button" aria-label="Go deeper with the N">N</button>
       <button class="naya-btn" id="intelDeeper" type="button">GO DEEPER ▾</button>
       <button class="naya-btn" id="intelNext" type="button">NEXT NOTE →</button>
       <button class="naya-btn intel-close" id="intelClose" type="button">Close</button>
@@ -3446,7 +3475,6 @@ current = 0; renderSlide(); show('cover');
     <div id="intelViewerBody"></div>
     <div class="intel-progress" id="intelProgress"></div>
     <p class="intel-endhint" id="intelEndHint" hidden>That’s the whole note — tap NEXT NOTE for the next one.</p>
-    <button class="naya-btn intel-endlogin" id="intelEndLogin" type="button" hidden>Back to login</button>
   </div>
 </div>
 <script>
@@ -3481,18 +3509,22 @@ function updateChrome(){
   shareBtn.setAttribute('aria-label','Share: '+(currentNote.title||''));
 }
 /* FIX2 — the viewer is ONE Hub board, 16:9, one section at a time, going IN.
-   Two axes, both obvious: GO DEEPER walks this note's 9 sections in order
-   (In a nutshell -> What it's not -> For a child -> For a grandma -> What it
+   Two axes, both obvious: GO DEEPER walks this note's 8 sections in order
+   (In a nutshell -> For a child -> For a grandma -> What it
    means -> Why it matters -> How it connects -> How to apply -> What's in it
    for you); NEXT NOTE goes ACROSS to the next note of the day and ALWAYS
    lands on its In a nutshell. BACK walks back along the path you came in on
    (history stack); at the root it closes the viewer. The dropdown top-right
    lists the day's notes; picking one opens it at In a nutshell. */
 var vSec=0, vHistory=[], vAwaiting=null;
+/* FIX9 D2c — THE WALK (Shawn's order, voice call 2026-11-27 ~19:01 MST): In a nutshell -> For a child -> For a grandma -> What it means -> Why it matters -> How it connects -> How to apply -> What's in it for you. "What it's not" is NOT in this walk. vSec indexes vWalk (positions in m.sections), never the raw sections. */
+var WALK_LABELS=["In a nutshell","For a child","For a grandma","What it means","Why it matters","How it connects","How to apply","What\u2019s in it for you"];
+function intelWalkIdx(m){var out=[];var seen={};function norm(x){return String(x||"").toLowerCase().replace(/\u2019/g,"'");}for(var k=0;k<WALK_LABELS.length;k++){for(var i=0;i<m.sections.length;i++){if(norm(m.sections[i].label)===norm(WALK_LABELS[k])&&!seen[i]){out.push(i);seen[i]=1;break;}}}if(!out.length){for(var j=0;j<m.sections.length;j++)out.push(j);}return out;}
+var vWalk=[];
 function intelDayColor(date){var days=window.__INTEL_DAYS__||[];for(var i=0;i<days.length;i++){if(days[i].date===date)return days[i].color;}var __wc=['#8e24aa','#c2410c','#d4a017','#0f52ba','#07925f','#c62828','#3f51b5'];var __p=String(date||'').split('-');if(__p.length===3){var __dt=new Date(Date.UTC(+__p[0],+__p[1]-1,+__p[2]));if(!isNaN(__dt))return __wc[__dt.getUTCDay()];}return '#8e24aa';}
 function intelDayOf(sn){var g=(window.__INTEL_GROUPS__||[]).filter(function(x){return x.sn===sn;})[0];return g?g.day:'';}
 function intelNotesOfDay(date){var days=window.__INTEL_DAYS__||[];var d=null;for(var i=0;i<days.length;i++){if(days[i].date===date)d=days[i];}if(!d)return[];return (window.__INTEL_SNAPSHOT__||[]).filter(function(n){return n.skillCat===d.cat;}).sort(function(a,b){return a.sn-b.sn;});}
-function intelFillSelect(date){var sel=document.getElementById('intelNoteSelect');if(!sel)return;var notes=intelNotesOfDay(date);sel.innerHTML='';notes.forEach(function(n){var o=document.createElement('option');o.value=String(n.sn);o.textContent='SN-'+n.sn+' · '+(n.title||'').slice(0,26);sel.appendChild(o);});sel.value=String(currentSn);}
+function intelFillSelect(date){var sel=document.getElementById('intelNoteSelect');if(!sel)return;var notes=intelNotesOfDay(date);sel.innerHTML='';notes.forEach(function(n){var o=document.createElement('option');o.value=String(n.sn);o.textContent=n.title||('Note '+n.sn);sel.appendChild(o);});sel.value=String(currentSn);var row=sel.closest?sel.closest('.intel-selectrow'):null;if(row)row.style.display=notes.length>1?'':'none';} /* FIX9 D2b: the picker shows the note BY TITLE — full title, no SN code, no truncation. A day with one note shows no picker at all. A day with no notes (awaiting) also hides the row. */
 function intelDayBarSync(){
   var active='';
   if(typeof vAwaiting!=='undefined'&&vAwaiting)active=vAwaiting;
@@ -3506,8 +3538,10 @@ function intelCentreStrip(){var bars=document.querySelectorAll('.intel-daybar');
 function intelRenderSection(push){
   vAwaiting=null;
   var m=MATRIX[currentSn];if(!m)return;
-  if(vSec<0)vSec=0;if(vSec>m.sections.length-1)vSec=m.sections.length-1;
-  var sec=m.sections[vSec];
+  vWalk=intelWalkIdx(m);
+  if(vSec<0)vSec=0;if(vSec>vWalk.length-1)vSec=vWalk.length-1;
+  var sec=m.sections[vWalk[vSec]];
+  var ar0=document.querySelector('.intel-actions');if(ar0)ar0.style.display=''; /* FIX9 D6: a real note always shows its own SHARE/SAVE — an awaiting view hides the row, this puts it back. */
   var day=intelDayOf(currentSn);
   var color=intelDayColor(day);
   viewer.style.setProperty('--sc',color); /* FIX3: sticky control bars rim in the note's day colour */
@@ -3519,9 +3553,9 @@ function intelRenderSection(push){
   var notes=intelNotesOfDay(day);
   var ni=-1;for(var i=0;i<notes.length;i++){if(notes[i].sn===currentSn)ni=i;}
   var prog=document.getElementById('intelProgress');
-  if(prog)prog.textContent='Note '+(ni+1)+' of '+notes.length+' today · Section '+(vSec+1)+' of '+m.sections.length+' — '+sec.label;
+  if(prog)prog.textContent='Note '+(ni+1)+' of '+notes.length+' today · Section '+(vSec+1)+' of '+vWalk.length+' — '+sec.label;
   var deeper=document.getElementById('intelDeeper');
-  if(deeper)deeper.disabled=vSec>=m.sections.length-1;
+  if(deeper)deeper.disabled=vSec>=vWalk.length-1;
   var next=document.getElementById('intelNext');
   if(next){
     var lastDay='2026-11-30';
@@ -3530,11 +3564,9 @@ function intelRenderSection(push){
     else{next.disabled=true;next.textContent='NEXT NOTE →';}
   }
   var hint=document.getElementById('intelEndHint');
-  if(hint){hint.hidden=vSec<m.sections.length-1;if(vSec>=m.sections.length-1){var __nx=document.getElementById('intelNext');if(__nx&&__nx.disabled)hint.textContent='That\u2019s the whole note \u2014 tap Back to login below.';else if(__nx&&__nx.textContent.indexOf('DAY')>=0)hint.textContent='That\u2019s the whole note \u2014 tap NEXT DAY for the next day.';else hint.textContent='That\u2019s the whole note \u2014 tap NEXT NOTE for the next one.';}}
-  var __el=document.getElementById('intelEndLogin');
-  if(__el)__el.hidden=vSec<m.sections.length-1;
+  if(hint){hint.hidden=vSec<vWalk.length-1;if(vSec>=vWalk.length-1){var __nx=document.getElementById('intelNext');if(__nx&&__nx.disabled)hint.textContent='That\u2019s the whole note \u2014 tap BACK to return.';else if(__nx&&__nx.textContent.indexOf('DAY')>=0)hint.textContent='That\u2019s the whole note \u2014 tap NEXT DAY for the next day.';else hint.textContent='That\u2019s the whole note \u2014 tap NEXT NOTE for the next one.';}}
   var sel=document.getElementById('intelNoteSelect');
-  if(sel){if(sel.options.length!==notes.length)intelFillSelect(day);sel.value=String(currentSn);}
+  if(sel){intelFillSelect(day);sel.value=String(currentSn);}
   intelDayBarSync();
   updateChrome();
   viewer.hidden=false;intelDayBarSync();
@@ -3567,14 +3599,16 @@ function intelShowAwaiting(date){
   vBody.innerHTML='<section class="intel-sec" style="--sc:'+color+'"><h3>AWAITING REPORT</h3><p>No report yet for '+label+' \u2014 the day\u2019s notes are not filed yet. Check back soon.</p></section>';
   var prog=document.getElementById('intelProgress');
   if(prog)prog.textContent='Awaiting report \u00b7 '+label;
+  /* FIX9 D6: a day with no report shows NOTHING to share or save for another note — the actions row hides, and the stale labels are cleared (updateChrome early-returns with no current note, so the previous note's labels would otherwise stand). The picker row is already hidden by intelFillSelect (0 notes). */
+  var ar=document.querySelector('.intel-actions');if(ar)ar.style.display='none';
+  shareBtn.setAttribute('aria-label','Share this note');
+  saveBtn.textContent='SAVE';saveBtn.setAttribute('aria-pressed','false');saveBtn.setAttribute('aria-label','Save to your Smart List');
   var deeper=document.getElementById('intelDeeper');
   if(deeper)deeper.disabled=true;
   var next=document.getElementById('intelNext');
   if(next){next.disabled=true;next.textContent='NEXT NOTE \u2192';}
   var hint=document.getElementById('intelEndHint');
   if(hint)hint.hidden=true;
-  var el=document.getElementById('intelEndLogin');
-  if(el)el.hidden=true;
   intelFillSelect(date);
   intelDayBarSync();updateChrome();
   viewer.hidden=false;intelDayBarSync();
@@ -3591,6 +3625,7 @@ function openViewer(sn,keepHist){
 function closeViewer(){vAwaiting=null;viewer.hidden=true;document.body.style.overflow='';}
 window.__intelCloseViewer=closeViewer; /* FIX6 D2: showEnd() closes the viewer */
 window.__intelOpenViewer=openViewer;
+window.__intelFirstNoteOfDay=function(date){var ns=intelNotesOfDay(date);return ns.length?ns[0].sn:0;}; /* FIX9 D4: the cover N asks the viewer for the cover day's first note. */
 closeBtn.addEventListener('click',closeViewer);
 viewer.addEventListener('click',function(e){if(e.target===viewer)closeViewer();});
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!viewer.hidden)closeViewer();});
@@ -3632,13 +3667,15 @@ document.addEventListener('click',function(e){
 /* FIX2 wiring — day bars (slide view + viewer), fold defeat, two-axis controls. */
 (function(){
   var WD=['SUN','MON','TUE','WED','THU','FRI','SAT'];var WDF=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];var WC=['#8e24aa','#c2410c','#d4a017','#0f52ba','#07925f','#c62828','#3f51b5'];
+  /* FIX9 D3 — THE WEEKDAY ICON SET, one shared component (same markup/CSS in Intel Today, the calendar, and Daily Reports — take it verbatim, never a different icon per page). One jewel per day, flowing energy around it (the orbit ring in CSS), each its own glyph: Sun = sun, Mon = crescent moon, Tue = Mars arrow, Wed = messenger wings, Thu = hammer, Fri = heart, Sat = ringed planet. */
+  var DAY_ICONS=['<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></g></svg>','<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13.5A8.5 8.5 0 1 1 10.5 4 6.8 6.8 0 0 0 20 13.5Z" fill="currentColor"/></svg>','<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="15" r="5.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13.5 10.5 21 3M16 3h5v5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>','<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="14" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7.5 11.5 2 7v4l4 2M16.5 11.5 22 7v4l-4 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>','<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h18v6H3zM10.5 10h3v9a1.5 1.5 0 0 1-3 0z" fill="currentColor"/></svg>','<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C7 16.5 2.5 13 2.5 8.8 2.5 5.9 4.8 4 7.4 4c1.9 0 3.5 1 4.6 2.6C13.1 5 14.7 4 16.6 4c2.6 0 4.9 1.9 4.9 4.8 0 4.2-4.5 7.7-9.5 12.2Z" fill="currentColor"/></svg>','<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5.5" fill="currentColor"/><ellipse cx="12" cy="12" rx="10" ry="3.2" fill="none" stroke="currentColor" stroke-width="2" transform="rotate(-18 12 12)"/></svg>'];
+  var DIGIT_COLORS={'0':'#ffffff','1':'#c62828','2':'#c2410c','3':'#d4a017','4':'#07925f','5':'#0e7490','6':'#3f51b5','7':'#8e24aa','8':'#6d28d9','9':'#a21caf'}; /* FIX9 D1c — the digit-tile colours (§4 law: a digit's colour is its digit's colour). */
   function buildBar(host){
     if(!host)return;
     host.innerHTML='';
     /* FIX7: the strip is centred and rotating — seven cards, today in the
        centre, three days before and three after, computed from today's date
-       (never hard-coded), shifting by one every day. Day + number on one
-       line; VIEW where a report exists, AWAITING REPORT where not. */
+       (never hard-coded), shifting by one every day. Day jewel + letters + digit tiles; no status line — the button opens the day. */
     var now=new Date();
     var today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
     var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
@@ -3647,10 +3684,11 @@ document.addEventListener('click',function(e){
       var iso=dt.getFullYear()+'-'+('0'+(dt.getMonth()+1)).slice(-2)+'-'+('0'+dt.getDate()).slice(-2);
       var has=intelNotesOfDay(iso).length>0;
       var b=document.createElement('button');
-      b.type='button';b.className='intel-daybtn'+(has?'':' awaiting');b.setAttribute('data-date',iso);
+      b.type='button';b.className='intel-daybtn';b.setAttribute('data-date',iso);
       b.style.setProperty('--dc',WC[dt.getDay()]);
-      b.innerHTML='<span class="dl">'+WD[dt.getDay()]+' '+dt.getDate()+'</span><span class="st">'+(has?'VIEW':'AWAITING REPORT')+'</span>';
-      b.setAttribute('aria-label',WDF[dt.getDay()]+' '+MONTHS[dt.getMonth()]+' '+dt.getDate()+' '+dt.getFullYear()+' \u2014 '+(has?'report ready, view':'awaiting report'));
+      var __digits=String(dt.getDate()).split('').map(function(ch){return '<span class="dt" style="--dtc:'+DIGIT_COLORS[ch]+'">'+ch+'</span>';}).join('');
+      b.innerHTML='<span class="dl"><span class="intel-dayicon">'+DAY_ICONS[dt.getDay()]+'</span><span class="intel-dayname">'+WD[dt.getDay()]+'</span><span class="intel-daynum">'+__digits+'</span></span>'; /* FIX9 D1: no VIEW, no AWAITING REPORT — the date button itself opens the day. The number is the digit-tile component; the day is its own jewel icon. */
+      b.setAttribute('aria-label',WDF[dt.getDay()]+' '+MONTHS[dt.getMonth()]+' '+dt.getDate()+' '+dt.getFullYear());
       if(off===0)b.classList.add('is-today');
       host.appendChild(b);
     }
@@ -3684,7 +3722,12 @@ document.addEventListener('click',function(e){
   var deeper=document.getElementById('intelDeeper');
   if(deeper)deeper.addEventListener('click',function(){
     var m=MATRIX[currentSn];if(!m)return;
-    if(vSec<m.sections.length-1){vSec++;intelRenderSection(true);}
+    if(vSec<vWalk.length-1){vSec++;intelRenderSection(true);}
+  });
+  var nwalk=document.getElementById('intelNWalk'); /* FIX9 D2c: clicking with the N walks the whole block, going IN — the same step as GO DEEPER, in Shawn's order. */
+  if(nwalk)nwalk.addEventListener('click',function(){
+    var m=MATRIX[currentSn];if(!m)return;
+    if(vSec<vWalk.length-1){vSec++;intelRenderSection(true);}
   });
   var next=document.getElementById('intelNext');
   if(next)next.addEventListener('click',function(){
@@ -3708,6 +3751,17 @@ document.addEventListener('click',function(e){
     window.__intelShowWrapped=true;
   }
   intelDayBarSync();
+  /* FIX9 D2a — fresh load opens on TODAY with ONE block at the beginning: In a nutshell first. No ?day= means today: the viewer opens on today's first note at its nutshell, and the cover behind it is today's cover. A day with no report falls back to the nearest earlier day with notes. */
+  setTimeout(function(){
+    if(intelDayParam())return;
+    if(viewer&&!viewer.hidden)return;
+    var now=new Date();
+    var pick='';
+    for(var back=0;back<7;back++){var d2=new Date(now.getFullYear(),now.getMonth(),now.getDate()-back);var iso2=d2.getFullYear()+'-'+('0'+(d2.getMonth()+1)).slice(-2)+'-'+('0'+d2.getDate()).slice(-2);if(intelNotesOfDay(iso2).length){pick=iso2;break;}}
+    if(!pick)return;
+    if(typeof DAY_START!=='undefined'&&DAY_START[pick]!==undefined&&typeof renderSlide==='function'){try{current=DAY_START[pick];renderSlide();}catch(e){}}
+    var ns=intelNotesOfDay(pick);if(ns.length)openViewer(ns[0].sn);
+  },350);
 })();
 /* FIX1 D1: cover titles split date / category onto two lines (date on one
    line, category on the next) so no cover title can run under an icon. */
@@ -3868,7 +3922,7 @@ if(typeof fitPanels==='function'){
 }
 /* End login button (rendered by renderEnd). */
 document.addEventListener('click',function(e){
-  var b=e.target.closest?e.target.closest('#endLogin,#intelEndLogin'):null;
+  var b=e.target.closest?e.target.closest('#endLogin'):null;
   if(b)location.href='https://nayanet.app';
 });
 /* ?day= opens that day's cover — the calendar receiving end. Full YYYY-MM-DD, MM-DD, or a bare day-of-month (e.g. ?day=25) — short codes resolve to the matching day in the loaded range. */
