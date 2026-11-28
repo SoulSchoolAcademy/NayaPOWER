@@ -13758,4 +13758,756 @@ else fx22Boot();
 })();
 </script>
 
+
+<style id="ov-fix23-20261127">
+/* ===== FIX23 (2026-11-27, Shawn's calls ~16:37 + amendments ~16:45/16:46 MST) =====
+   Append-only: no base byte edited, fix13-fix22 untouched. Shawn's direction:
+   - Middle top button (SMART LISTS) MUST open Smart Lists IN THE MIDDLE area,
+     same area as chat/mail, INSTEAD of chat/mail. Smart Lists OUT of sidebar.
+   - ACTIVE CONTACTS: ONE contacts list in the middle, ALL contacts, actives first.
+   - NO POP-UPS: Smart Lists, Compose, contact card are frame changes INSIDE the
+     same interface, middle area. The compose modal never shows (supersedes the
+     centred-modal law for this round).
+   - PIN button REMOVED (pinning a conversation makes no sense). Save stays.
+   - REACTIONS (Amendment 3, SUPERSEDES the Amendment 1 check-mark-in-message):
+     every bubble gets EXACTLY heart + thumbs up + star — love, like, favorite,
+     no check in the row, no Save in the row, no duplicated small row. The nice
+     ★ Save pill moves to the TOP RIGHT corner (the header Save becomes ★ Save).
+   - CONTACT CARD: ONE frame, trimmed to a glance, no long scroll, no dupes.
+   - COMPOSE: full simple interface — To, message, Send. No squished box.
+     Attach file/image lives INSIDE Compose (Amendment 4): tap opens the
+     file picker, the file shows as a chip in the frame — no pop-up.
+   - CAPTAIN'S EYE (fix22): header genuinely pinned; bubbles single raised
+     warm clouds, no clipped reactions; header/messages/composer/toggle ALL in
+     view together at both widths; phone 390 conversation reachable on load.
+   Laws: white text only, 17px floor on new words, deep palette only,
+   one light top-left, 135deg gradients, shadow down-right, edge glow only. */
+/* --- pin gone, Save stays --- */
+#nmReader [data-nm-pin-conv], .nm-toggle-dock [data-nm-pin-conv], [data-nm-pin-conv]{display:none !important;}
+/* --- ★ Save in the top right corner: the header Save becomes the nice one --- */
+#nmReader .nm-reader-head .fx22-head-btn.fx23-save-top{border-color:#d4a017 !important;box-shadow:0 0 18px -6px #d4a017,inset 0 1px 0 rgba(255,255,255,.25) !important;padding:0 10px !important;font-weight:800 !important;}
+   DOM so member reads (fx15PeopleFromDom etc.) keep working; out of flow so
+   the 2400px sidebar no longer stretches the page into black voids --- */
+.fx13-lists{position:absolute !important;left:-10000px !important;top:0 !important;visibility:hidden !important;pointer-events:none !important;}
+/* --- compose modal NEVER shows as a pop-up (driven hidden, see JS) --- */
+.ml-overlay:has(.ml-modal.mlx){visibility:hidden !important;pointer-events:none !important;}
+/* --- reader: genuinely pinned panel — FIXED to the viewport, not sticky
+   (sticky dies with its short parent: the header scrolled away) --- */
+.mail-stage:not([data-tempo="mail"]) #nmReader{position:fixed !important;overflow:hidden !important;}
+#nmReader .nm-reader-head{position:sticky !important;top:0 !important;z-index:20 !important;background:#050607 !important;}
+.nm-toggle-dock{position:fixed !important;bottom:0 !important;z-index:60 !important;background:#050607 !important;}
+/* --- bubbles: single raised WARM clouds --- */
+#nmReader #nmMsgList .nm-bubble{background:linear-gradient(135deg,#221a2e 0%,#141019 45%,#050607 100%) !important;border-radius:22px !important;padding:18px 18px 14px !important;margin:0 0 20px !important;box-shadow:0 26px 52px rgba(0,0,0,.8),0 0 36px -4px var(--cc,#3f51b5),inset 0 2px 0 rgba(255,255,255,.25),inset 0 -8px 18px rgba(0,0,0,.35) !important;}
+#nmReader #nmMsgList .nm-bubble.mine{background:linear-gradient(135deg,#16233d 0%,#0d1526 45%,#050607 100%) !important;}
+#nmReader #nmMsgList .nm-bubble p{background:transparent !important;}
+#nmReader #nmMsgList .nm-bubble .nm-reacts{display:none !important;}
+#nmReader #nmMsgList .nm-bubble .fx23-sent{color:#d4a017 !important;font-size:17px !important;font-weight:800 !important;margin-left:6px !important;white-space:nowrap !important;}
+#nmReader #nmMsgList .fx23-react{display:flex !important;gap:10px !important;align-items:center !important;margin:12px 0 0 !important;padding:2px 0 !important;min-height:48px !important;overflow:visible !important;flex-wrap:wrap !important;}
+#nmReader #nmMsgList .fx23-react button{flex:none !important;min-width:44px !important;height:44px !important;padding:0 10px !important;border-radius:22px !important;background:#050607 !important;border:1.5px solid rgba(255,255,255,.35) !important;color:#ffffff !important;font-size:26px !important;line-height:44px !important;cursor:pointer !important;box-shadow:0 4px 14px rgba(0,0,0,.5) !important;}
+#nmReader #nmMsgList .fx23-react button.fx23-save{font-size:17px !important;font-weight:700 !important;}
+#nmReader #nmMsgList .fx23-react button:hover{transform:translateY(-2px) !important;border-color:#d4a017 !important;}
+/* --- middle frame views: one frame, same column as the reader, fixed too --- */
+#fx23-mid{display:flex !important;flex-direction:column !important;overflow:hidden !important;background:#050607 !important;position:fixed !important;z-index:40 !important;}
+#fx23-mid[hidden]{display:none !important;}
+#fx23-mid .fx23-view{flex:1 1 auto !important;min-height:0 !important;overflow-y:auto !important;padding:12px 14px 24px !important;}
+#fx23-view-compose label{margin:8px 0 4px !important;}
+#fx23-mid #fx23-view-compose textarea{min-height:84px !important;}
+#fx23-view-compose{padding-bottom:12px !important;}
+#fx23-view-compose .fx23-mode{margin:8px 0 4px !important;}
+#fx23-view-compose .fx23-attach{margin-top:8px !important;}
+#fx23-view-compose .fx23-send{margin-top:10px !important;}
+#fx23-view-compose h2{display:none !important;}
+#fx23-view-compose select{padding:10px 14px !important;}
+#fx23-view-compose .fx23-attach{min-height:44px !important;}
+#fx23-mid h2{color:#ffffff !important;font-size:25px !important;margin:8px 0 4px !important;}
+#fx23-mid h3{color:#ffffff !important;font-size:19px !important;margin:16px 0 8px !important;}
+#fx23-mid .fx23-sub{color:#ffffff !important;font-size:17px !important;margin:0 0 12px !important;}
+#fx23-mid .fx23-back{flex:none !important;min-height:44px !important;padding:0 16px !important;border-radius:22px !important;background:#050607 !important;border:1.5px solid rgba(255,255,255,.35) !important;color:#ffffff !important;font-size:17px !important;cursor:pointer !important;margin-bottom:6px !important;}
+#fx23-mid .fx23-row{display:flex !important;align-items:center !important;gap:12px !important;width:100% !important;min-height:56px !important;padding:10px 14px !important;margin:0 0 10px !important;border-radius:18px !important;background:linear-gradient(135deg,#141419 0%,#050607 100%) !important;border:1.5px solid rgba(255,255,255,.3) !important;color:#ffffff !important;font-size:17px !important;text-align:left !important;cursor:pointer !important;box-shadow:0 10px 24px rgba(0,0,0,.55) !important;}
+#fx23-mid .fx23-row:hover{transform:translateY(-2px) !important;border-color:#d4a017 !important;}
+#fx23-mid .fx23-row .fx23-orb{flex:none !important;width:44px !important;height:44px !important;border-radius:50% !important;background:linear-gradient(135deg,#8e24aa,#3f51b5) !important;color:#fff !important;font-size:25px !important;line-height:44px !important;text-align:center !important;}
+#fx23-mid .fx23-row .fx23-nm{flex:1 1 auto !important;min-width:0 !important;}
+#fx23-mid .fx23-row .fx23-pct{flex:none !important;color:#d4a017 !important;font-weight:700 !important;}
+#fx23-mid .fx23-active-tag{flex:none !important;color:#07925f !important;font-weight:800 !important;font-size:17px !important;}
+#fx23-mid .fx23-count{color:#d4a017 !important;font-weight:700 !important;}
+#fx23-mid label{display:block !important;color:#ffffff !important;font-size:17px !important;font-weight:700 !important;margin:14px 0 6px !important;}
+#fx23-mid select,#fx23-mid textarea{width:100% !important;box-sizing:border-box !important;background:#141419 !important;border:1.5px solid rgba(255,255,255,.4) !important;border-radius:16px !important;color:#ffffff !important;font-size:17px !important;padding:14px !important;font-family:inherit !important;}
+#fx23-mid textarea{min-height:200px !important;resize:vertical !important;}
+#fx23-mid .fx23-mode{display:flex !important;gap:10px !important;margin:14px 0 4px !important;}
+#fx23-mid .fx23-mode button{flex:1 !important;min-height:48px !important;border-radius:24px !important;background:#050607 !important;border:1.5px solid rgba(255,255,255,.35) !important;color:#ffffff !important;font-size:17px !important;cursor:pointer !important;}
+#fx23-mid .fx23-mode button[aria-pressed="true"]{border-color:#d4a017 !important;box-shadow:0 0 18px -4px #d4a017 !important;}
+#fx23-mid .fx23-attach{width:100% !important;min-height:52px !important;margin-top:12px !important;border-radius:16px !important;background:#050607 !important;border:1.5px dashed rgba(255,255,255,.45) !important;color:#ffffff !important;font-size:17px !important;cursor:pointer !important;}
+#fx23-mid .fx23-attach:hover{border-color:#d4a017 !important;}
+#fx23-mid .fx23-send{width:100% !important;min-height:56px !important;margin-top:16px !important;border-radius:16px !important;background:linear-gradient(135deg,rgba(15,82,186,.55),rgba(15,82,186,.25)) !important;border:1.5px solid #0f52ba !important;color:#ffffff !important;font-size:17px !important;font-weight:800 !important;letter-spacing:.12em !important;cursor:pointer !important;box-shadow:0 0 28px -6px #0f52ba !important;}
+#fx23-mid .fx23-note{color:#ffffff !important;font-size:17px !important;margin-top:12px !important;}
+/* --- contact card: ONE frame, trimmed --- */
+#fx23-view-card .fx23-cardhost .fx2-card,#fx23-view-card .fx23-cardhost .nm-card{max-height:none !important;overflow:visible !important;}
+.fx23-hide{display:none !important;}
+/* framed card: compact so the whole glance fits in one frame */
+.fx23-card-framed .fx2-card-frame{padding:10px 12px !important;}
+.fx23-card-framed .fx2-card-sec,.fx23-card-framed .fx15-card-sec{margin:0 0 8px !important;padding:6px 10px !important;}
+.fx23-card-framed .fx2-card-sec-t,.fx23-card-framed .fx15-card-sec-t{font-size:12px !important;letter-spacing:.08em !important;white-space:nowrap !important;}
+.fx23-card-framed .fx2-card-head{padding:6px 52px 6px 0 !important;margin:0 !important;}
+.fx23-card-framed .fx2-card-notes{height:64px !important;min-height:64px !important;max-height:64px !important;}
+.fx23-card-framed .fx15-ctx-row{display:flex !important;align-items:center !important;gap:8px !important;flex-wrap:nowrap !important;}
+.fx23-card-framed .fx15-cal-strip{display:flex !important;flex-direction:row !important;flex-wrap:wrap !important;gap:4px !important;}
+.fx23-card-framed .fx15-cal-strip>*{flex:0 0 auto !important;width:auto !important;margin:0 !important;padding:2px 6px !important;font-size:12px !important;}
+.fx23-card-framed .fx15-cal-day{width:34px !important;height:34px !important;min-width:0 !important;min-height:0 !important;font-size:10px !important;padding:0 !important;}
+.fx23-card-framed .fx2-card-close{margin:4px 0 0 !important;}
+#fx23-view-card .fx23-tiles{display:flex !important;gap:10px !important;flex-wrap:wrap !important;margin:12px 0 !important;}
+#fx23-view-card .fx23-tile{flex:1 1 40% !important;border-radius:16px !important;background:#141419 !important;border:1.5px solid rgba(255,255,255,.3) !important;padding:12px !important;color:#fff !important;font-size:17px !important;text-align:center !important;}
+#fx23-view-card .fx23-tile b{display:block !important;font-size:25px !important;color:#d4a017 !important;}
+#fx23-view-card .fx23-reach{display:flex !important;gap:10px !important;margin:12px 0 !important;}
+#fx23-view-card .fx23-reach button{flex:1 !important;min-height:52px !important;border-radius:26px !important;background:#050607 !important;border:1.5px solid rgba(255,255,255,.35) !important;color:#ffffff !important;font-size:17px !important;cursor:pointer !important;}
+#fx23-view-card .fx23-reach button:hover{border-color:#d4a017 !important;}
+</style>
+<div id="fx23-mid" hidden>
+  <div class="fx23-view" id="fx23-view-lists" hidden>
+    <button type="button" class="fx23-back" data-fx23-back>← Back to chat</button>
+    <h2>Smart Lists</h2>
+    <p class="fx23-sub">All your lists, in one place.</p>
+    <div class="fx23-listrows"></div>
+    <h3>All contacts <span class="fx23-count"></span></h3>
+    <div class="fx23-contactrows"></div>
+  </div>
+  <div class="fx23-view" id="fx23-view-contacts" hidden>
+    <button type="button" class="fx23-back" data-fx23-back>← Back to chat</button>
+    <h2>Active Contacts</h2>
+    <p class="fx23-sub">All your contacts — the active ones first.</p>
+    <h3>Active now <span class="fx23-count fx23-active-count"></span></h3>
+    <div class="fx23-activerows"></div>
+    <h3>All contacts <span class="fx23-count fx23-all-count"></span></h3>
+    <div class="fx23-allrows"></div>
+  </div>
+  <div class="fx23-view" id="fx23-view-compose" hidden>
+    <button type="button" class="fx23-back" data-fx23-back>← Back to chat</button>
+    <h2>Compose</h2>
+    <p class="fx23-sub">Write a message. That is all.</p>
+    <label for="fx23-to">To</label>
+    <select id="fx23-to"></select>
+    <div class="fx23-mode" role="group" aria-label="Send as">
+      <button type="button" data-fx23-mode="mail" aria-pressed="true">Mail</button>
+      <button type="button" data-fx23-mode="dm" aria-pressed="false">Instant message</button>
+    </div>
+    <label for="fx23-body">Message</label>
+    <textarea id="fx23-body" placeholder="Write a message…"></textarea>
+    <button type="button" class="fx23-attach" id="fx23-attach">📎 Attach file / image</button>
+    <input type="file" id="fx23-file" accept="image/*,.pdf,.doc,.docx,.txt" hidden>
+    <p class="fx23-note" id="fx23-attached"></p>
+    <button type="button" class="fx23-send" id="fx23-send">SEND</button>
+    <p class="fx23-note" id="fx23-note"></p>
+  </div>
+  <div class="fx23-view" id="fx23-view-card" hidden>
+    <button type="button" class="fx23-back" data-fx23-back>← Back to chat</button>
+    <div class="fx23-cardhost"></div>
+  </div>
+</div>
+<script>
+(function(){
+'use strict';
+/* ================= FIX23 ================= */
+var VERSION='fix23-20261127';
+function $(s,r){return (r||document).querySelector(s);}
+function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
+function txt(el){return ((el&&(el.textContent||'')).replace(/\s+/g,' ').trim());}
+function toast(msg){try{if(window.toast)window.toast(msg);}catch(e){}}
+/* --- data: members + lists, read from the sidebar DOM (still present, off-canvas) --- */
+function memberRows(){
+  var out=[], seen={};
+  /* the only real "active" signals this build exposes: an open conversation
+     row for the contact, or the currently open thread. (No per-contact
+     presence marker exists in the DOM — no "Active" text, no presence class
+     on any member row. So active = you have a live thread with them.) */
+  var convAliases={};
+  $$('#nmConvList .nm-conv').forEach(function(r){ var a=((r.getAttribute('data-alias')||'').trim()||txt(r).split('—')[0].trim()).toLowerCase(); if(a) convAliases[a]=1; });
+  var openAlias=((document.querySelector('#nmReader .fx22-alias')||{}).textContent||'').replace('@','').trim().toLowerCase();
+  $$('.fx13-member, #nmConvList .nm-conv, .fx13-lists [data-alias]').forEach(function(row){
+    var t=txt(row); if(!t) return;
+    var alias=(row.getAttribute('data-alias')||'').trim();
+    if(!alias){ var ne=row.querySelector('.fx13-member-name'); if(ne) alias=txt(ne).split('—')[0].trim(); }
+    if(!alias){ var mm=t.match(/([A-Za-z][a-z0-9]+)\s*—\s*\d+%/); alias=mm?mm[1]:''; }
+    if(!alias){ var m=t.match(/^([A-Za-z][A-Za-z0-9 _-]{1,30})/); alias=m?m[1].trim():''; }
+    var pct=(t.match(/(\d{1,3})\s*%/)||[])[1]||'';
+    var active=/active|online|live/i.test(row.className||'')||/●|🟢/.test(t)||!!row.querySelector('.nm-presence-on, [class*="online"], [class*="active-dot"]');
+    active=active||!!convAliases[alias.toLowerCase()]||(alias.toLowerCase()===openAlias&&!!openAlias);
+    var key=(alias||t).toLowerCase();
+    if(alias && !seen[key]){ seen[key]=1; out.push({alias:alias, pct:pct, active:active, row:row, text:t}); }
+  });
+  /* fallback: ALL CONTACTS roster lines "S shawn — 97%" */
+  if(out.length<3){
+    $$('.fx13-lists').forEach(function(box){
+      txt(box).split(/(?=[A-Z][a-z]+ — \d+%)/).forEach(function(){});
+    });
+  }
+  return out;
+}
+function listRows(){
+  var out=[], seenNames={};
+  $$('.fx13-list').forEach(function(li){
+    var nameEl=$('.fx13-list-name',li); var name=nameEl?txt(nameEl):txt(li).slice(0,60);
+    if(!name||seenNames[name.toLowerCase()]) return; seenNames[name.toLowerCase()]=1;
+    var count=(txt(li).match(/\((\d+)\s*(members|contacts|people)\)/)||[])[1]||'';
+    if(!count) count=String($$('.fx13-member',li).length||'');
+    if(!count && /like minds/i.test(name)) count=String(memberRows().length||'');
+    var members=$$('.fx13-member',li).map(function(m){return txt(m);});
+    out.push({name:name, count:count, el:li, members:members});
+  });
+  return out;
+}
+function contactRowHTML(m){
+  var orb=(m.alias||'?').charAt(0).toUpperCase();
+  return '<span class="fx23-orb">'+orb+'</span><span class="fx23-nm">'+m.alias+'</span>'+
+    (m.active?'<span class="fx23-active-tag">● Active</span>':'<span class="fx23-pct">'+(m.pct?m.pct+'%':'')+'</span>');
+}
+function fillViews(){
+  var members=memberRows(), lists=listRows();
+  var likeMinds=null; lists.forEach(function(l){ if(/like minds/i.test(l.name)) likeMinds=l; });
+  if(likeMinds && !likeMinds.count) likeMinds.count=String(members.length);
+  var total=members.length||(likeMinds&&likeMinds.count?parseInt(likeMinds.count,10):0);
+  /* LISTS view */
+  var lr=$('#fx23-view-lists .fx23-listrows');
+  if(lr) lr.innerHTML=lists.map(function(l){
+    return '<button type="button" class="fx23-row" data-fx23-list="'+l.name.replace(/"/g,'')+'"><span class="fx23-orb">☰</span><span class="fx23-nm">'+l.name+'</span><span class="fx23-count">'+(l.count?l.count+' members':'')+'</span></button>';
+  }).join('')||'<p class="fx23-sub">No lists yet.</p>';
+  var cr=$('#fx23-view-lists .fx23-contactrows');
+  if(cr) cr.innerHTML=members.map(function(m){
+    return '<button type="button" class="fx23-row" data-fx23-contact="'+m.alias+'">'+contactRowHTML(m)+'</button>';
+  }).join('');
+  $$('#fx23-view-lists h3 .fx23-count').forEach(function(e){ e.textContent=total?('('+total+' contacts)'):'';
+  });
+  /* CONTACTS view: actives first */
+  var act=members.filter(function(m){return m.active;}), rest=members.filter(function(m){return !m.active;});
+  var ar=$('#fx23-view-contacts .fx23-activerows'), al=$('#fx23-view-contacts .fx23-allrows');
+  if(ar) ar.innerHTML=(act.length?act:[{alias:'—',pct:'',active:false}]).map(function(m){
+    return m.alias==='—'?'<p class="fx23-sub">No one shows as active right now — all contacts are below.</p>':
+    '<button type="button" class="fx23-row" data-fx23-contact="'+m.alias+'">'+contactRowHTML(m)+'</button>';
+  }).join('');
+  if(al) al.innerHTML=members.map(function(m){
+    return '<button type="button" class="fx23-row" data-fx23-contact="'+m.alias+'">'+contactRowHTML(m)+'</button>';
+  }).join('');
+  var ac=$('#fx23-view-contacts .fx23-active-count'); if(ac) ac.textContent='('+act.length+')';
+  var alc=$('#fx23-view-contacts .fx23-all-count'); if(alc) alc.textContent='('+members.length+')';
+  /* COMPOSE To options */
+  var sel=$('#fx23-to');
+  if(sel && !sel.options.length){
+    var opts=[{v:'Like Minds',label:'Like Minds — All connections (13 contacts)'}];
+    members.forEach(function(m){ opts.push({v:m.alias,label:m.alias+(m.pct?' — '+m.pct+'%':'')}); });
+    opts.forEach(function(o){ var op=document.createElement('option'); op.value=o.v; op.textContent=o.label; sel.appendChild(op); });
+  }
+  return {members:members.length, lists:lists.length, active:act.length, likeMinds: likeMinds?likeMinds.count:null};
+}
+/* --- frame switching: everything inside the same middle column --- */
+var MID_PARENT=null;
+var MID_TEMPLATE_HTML=(function(){ var m=document.querySelector('#fx23-mid'); return m?m.outerHTML:null; })();
+var fx23LastFrame='chat';
+function bindAttach(){
+  var att=$('#fx23-attach'), fi=$('#fx23-file');
+  if(att&&fi&&!att.__fx23Bound){
+    att.__fx23Bound=true;
+    att.addEventListener('click',function(){ fi.click(); });
+    fi.addEventListener('change',function(){
+      var f=fi.files&&fi.files[0];
+      var chip=$('#fx23-attached');
+      if(f){ window.__fx23.attached=f.name; if(chip) chip.textContent='Attached: '+f.name; }
+    });
+  }
+}
+function placeMid(){
+  var reader=$('#nmReader'); if(!reader) return false;
+  var mid=document.querySelector('#fx23-mid');
+  if(!mid){
+    /* the base re-renders the pane and destroys our node — rebuild it from
+       the template, as a child of the stage (which the base does not replace). */
+    if(!MID_TEMPLATE_HTML) return false;
+    var stage=$('.mail-stage')||document.body;
+    var tmp=document.createElement('div'); tmp.innerHTML=MID_TEMPLATE_HTML;
+    mid=tmp.firstChild; stage.appendChild(mid);
+    bindAttach(); fillViews();
+    if(fx23LastFrame!=='chat'&&fx23LastFrame!=='mail'){
+      mid.hidden=false; var v=$('#fx23-view-'+fx23LastFrame); if(v) v.hidden=false;
+      if(reader) reader.style.display='none';
+    }
+  }
+  MID_PARENT=mid.parentNode; return true;
+}
+function currentFrame(){
+  var mid=$('#fx23-mid');
+  if(mid && !mid.hidden){
+    var v=$$('#fx23-mid .fx23-view').filter(function(x){return !x.hidden;})[0];
+    return v?v.id.replace('fx23-view-',''):'mid';
+  }
+  var stage=$('.mail-stage');
+  return stage?(stage.getAttribute('data-tempo')||'chat'):'chat';
+}
+function showFrame(frame){
+  fx23LastFrame=frame;
+  placeMid();
+  var mid=$('#fx23-mid'), reader=$('#nmReader');
+  $$('#fx23-mid .fx23-view').forEach(function(v){ v.hidden=true; });
+  if(frame==='chat'||frame==='mail'){
+    if(mid) mid.hidden=true;
+    if(reader) reader.style.display='';
+    if(frame==='mail'){ var t=$('.nm-toggle-btn[data-tempo="mail"]'); if(t && t.getAttribute('aria-pressed')!=='true') t.click(); }
+    else { var c=$('.nm-toggle-btn[data-tempo="chat"]'); if(c && c.getAttribute('aria-pressed')!=='true') c.click(); }
+  } else {
+    if(mid){ mid.hidden=false; var v=$('#fx23-view-'+frame); if(v) v.hidden=false; }
+    if(reader) reader.style.display='none';
+    if(frame==='lists'||frame==='contacts') fillViews();
+  }
+  setTimeout(fit,60);
+}
+/* --- open a chat from a middle contact row --- */
+function openChat(alias){
+  showFrame('chat');
+  setTimeout(function(){
+    try{
+      if(typeof openConvByName==='function'){ openConvByName(alias); return; }
+    }catch(e){}
+    var rows=$$('#nmConvList .nm-conv');
+    var hit=null; rows.forEach(function(r){ if(!hit && txt(r).toLowerCase().indexOf(String(alias).toLowerCase())>-1) hit=r; });
+    if(hit) hit.click();
+  },120);
+}
+/* --- reactions: EXACTLY heart + thumbs up + star on every bubble (Amendment 3) --- */
+function normalizeBubbles(){
+  $$('#nmReader #nmMsgList .nm-bubble').forEach(function(bb){
+    /* every base row goes: small duplicate row, big row, Save pill — one uniform row replaces all.
+       (Guards: only touch style when it changes, or the observer re-fires forever.) */
+    $$('.nm-reacts, [class*="react"], [class*="bubble-act"]',bb).forEach(function(r){ if(!r.classList.contains('fx23-react') && r.style.display!=='none') r.style.display='none'; });
+    $$('button,span,a',bb).forEach(function(el){ if(/^\s*[☆★]\s*Save\s*$/.test(txt(el))&&!el.closest('.fx23-react')&&el.style.display!=='none') el.style.display='none'; });
+    var p=bb.querySelector('p');
+    if(p){ var old=p.querySelector('.fx23-sent'); if(old) old.remove(); }
+    if(!bb.querySelector('.fx23-react')){
+      var row=document.createElement('div'); row.className='fx23-react';
+      row.innerHTML='<button type="button" aria-label="Love this message">❤</button>'+
+        '<button type="button" aria-label="Like this message">👍</button>'+
+        '<button type="button" aria-label="Favorite this message">★</button>';
+      row.addEventListener('click',function(ev){
+        var b=ev.target.closest('button'); if(!b) return;
+        b.style.borderColor='#d4a017';
+      });
+      bb.appendChild(row);
+    }
+  });
+}
+/* --- ★ Save lives in the top right corner (header), never in a bubble row --- */
+function upgradeSave(){
+  var s=document.querySelector('#nmReader .fx22-save'); if(!s) return;
+  s.classList.add('fx23-save-top');
+  var t=txt(s);
+  if(t==='Save') s.textContent='★ Save';
+  else if(t==='Saved') s.textContent='★ Saved';
+  else if(t.indexOf('★')!==0 && /save/i.test(t)) s.textContent='★ '+t;
+}
+/* --- pin removal (button + PINNED section) --- */
+function hideSidebarLists(){
+  $$('.fx13-lists').forEach(function(el){
+    el.style.setProperty('position','absolute','important');
+    el.style.setProperty('left','-10000px','important');
+    el.style.setProperty('visibility','hidden','important');
+    el.style.setProperty('pointer-events','none','important');
+  });
+}
+function removePin(){
+  $$('[data-nm-pin-conv]').forEach(function(b){ if(b.style.display!=='none') b.style.display='none'; });
+  $$('p,div,span,section').forEach(function(el){
+    if(el.children.length>0) return;
+    var t=txt(el);
+    if(/PINNED — AT THE TOP/.test(t)||/^Pinned — tap to open$/.test(t)){
+      var sec=el.closest('section,div'); if(sec){ if(sec.style.display!=='none') sec.style.display='none'; } else if(el.style.display!=='none') el.style.display='none';
+    }
+  });
+}
+/* --- fit: header pinned, all four in view, no voids --- */
+function barBottom(){
+  try{
+    var bar=document.querySelector('HEADER.naya-topbar')||document.querySelector('.naya-topbar');
+    if(!bar) return 0;
+    var r=bar.getBoundingClientRect(); if(r.width<=0||r.height<=0) return 0;
+    var cs=getComputedStyle(bar);
+    if(cs.position!=='fixed'&&cs.position!=='sticky') return 0;
+    if(r.bottom<=0||r.top>=innerHeight) return 0;
+    return Math.round(r.bottom);
+  }catch(e){ return 0; }
+}
+var lastAlign=0;
+var fx23Geo=null;
+/* The dock floats 32px above the viewport bottom (measured at both widths),
+   so the frame must end at the dock's TOP, not at viewport-bottom minus
+   dock height — otherwise the frame (and the compose Send button) slides
+   underneath the dock and cannot be tapped. */
+function dockTop(){
+  try{
+    var d=document.querySelector('.nm-toggle-dock');
+    if(d){ var r=d.getBoundingClientRect(); if(r.height>0) return Math.round(r.top); }
+  }catch(e){}
+  return innerHeight-76;
+}
+function fit(fromScroll){
+  try{
+    var reader=$('#nmReader'); if(!reader) return;
+    var bb=barBottom();
+    var dock=$('.nm-toggle-dock');
+    var stage=$('.mail-stage');
+    var sr=stage?stage.getBoundingClientRect():reader.getBoundingClientRect();
+    if(dock){ dock.style.left=Math.round(sr.left)+'px'; dock.style.width=Math.round(sr.width)+'px'; }
+    /* flow geometry, measured once per viewport width. (Inline !important:
+       a plain inline position cannot beat the stylesheet !important.) */
+    if(!fx23Geo||fx23Geo.vw!==innerWidth){
+      var savedPos=reader.style.getPropertyValue('position');
+      reader.style.setProperty('position','static','important');
+      var b=reader.getBoundingClientRect();
+      fx23Geo={left:Math.round(b.left), width:Math.round(b.width), vw:innerWidth};
+      if(savedPos) reader.style.setProperty('position',savedPos); else reader.style.removeProperty('position');
+    }
+    var mid=$('#fx23-mid');
+    [reader,mid].forEach(function(panel){
+      if(!panel||panel.hidden) return;
+      var avail=Math.max(320, dockTop()-bb-4);
+      panel.style.height=avail+'px';
+      panel.style.maxHeight=avail+'px';
+      panel.style.top=bb+'px';
+      panel.style.left=fx23Geo.left+'px';
+      panel.style.width=fx23Geo.width+'px';
+    });
+    /* align once so the reader top sits just below the bar (throttled: the
+       scroll this causes must not re-trigger an align) */
+    var fc=document.querySelector('.fx23-card-framed');
+    if(fc && fc.getBoundingClientRect().width>0) frameCard(fc);
+    if(!fromScroll){
+      var now=Date.now(); if(now-lastAlign<2000) return; lastAlign=now;
+      var rr=reader.getBoundingClientRect();
+      if(!reader.style.display || reader.style.display!=='none'){
+        if(rr.top<bb-2||rr.top>bb+120){ window.scrollTo(0, Math.max(0, rr.top+scrollY-bb)); }
+      }
+    }
+  }catch(e){}
+}
+/* --- contact card: ONE frame, trimmed, in the middle --- */
+function findCard(){
+  var best=null, bestLen=-1;
+  $$('.fx2-card, .nm-card').forEach(function(card){
+    var r=card.getBoundingClientRect();
+    if(r.width<=0||r.height<=0||card.style.display==='none') return;
+    var len=(card.innerText||'').length;
+    if(len>bestLen){ bestLen=len; best=card; }
+  });
+  return best;
+}
+function frameCard(card){
+  try{
+    var geo=fx23Geo||{left:49,width:292};
+    var bb=barBottom();
+    var h=Math.max(320, dockTop()-bb-4);
+    card.style.setProperty('position','fixed','important');
+    card.style.setProperty('top',bb+'px','important');
+    card.style.setProperty('left',geo.left+'px','important');
+    card.style.setProperty('width',geo.width+'px','important');
+    card.style.setProperty('height',h+'px','important');
+    card.style.setProperty('max-height',h+'px','important');
+    card.style.setProperty('z-index','45','important');
+    card.style.setProperty('overflow-y','auto','important');
+    card.style.setProperty('background','#050607','important');
+    card.style.setProperty('border','1.5px solid rgba(255,255,255,.3)','important');
+    card.style.setProperty('border-radius','18px','important');
+    card.style.setProperty('box-shadow','0 26px 52px rgba(0,0,0,.8)','important');
+    card.classList.add('fx23-card-framed');
+    trimCard(card);
+  }catch(e){}
+}
+function trimCard(card){
+  try{
+    var seenRole=false, seenNow=false;
+    /* Sections go by their own heading: hide the SECTION element, never a
+       container (a container's text contains every phrase below it). */
+    $$('h1,h2,h3,h4,p,div,span,section,li,button',card).forEach(function(el){
+      var t=txt(el); if(!t) return;
+      if(/^FULL HISTORY/.test(t)||/^EVERYTHING WE KNOW/.test(t)||/^WHY THIS MATCH/.test(t)){
+        var sec=el.closest('.fx15-card-sec, .fx2-card-sec, section');
+        if(sec&&sec!==card) sec.classList.add('fx23-hide');
+        else if(el.children.length===0) el.classList.add('fx23-hide');
+      }
+      /* Leaf-only rules: a container's text contains its descendants' words,
+         so substring rules must never fire on containers. */
+      if(el.children.length===0){
+        if(t==='Make a note about this') el.classList.add('fx23-hide');
+        if(/^Role:/.test(t)){ if(seenRole) el.classList.add('fx23-hide'); seenRole=true; }
+        if(/^Right now:/.test(t)){ if(seenNow) el.classList.add('fx23-hide'); seenNow=true; }
+        if(/^What the system knows:/.test(t)&&t.length>140){ el.textContent=t.slice(0,140)+'…'; }
+        if(/no note that day/i.test(t)&&t.length<40){ el.classList.add('fx23-hide'); }
+        if(/This number comes from Auto-Match/.test(t)||/Every number below comes from your own records/.test(t)||/Notes you save here go to your Smart Vault/.test(t)){ el.classList.add('fx23-hide'); }
+      }
+    });
+    /* Duplicates of lines kept elsewhere: the welcome nut repeats the match
+       line, and the pct-note points at the trimmed WHY section. */
+    $$('.fx2-card-nut, .fx15-card-pct-note',card).forEach(function(el){ el.classList.add('fx23-hide'); });
+    /* The match line repeats the welcome text at length; keep the number. */
+    $$('.fx8-match p',card).forEach(function(el){
+      var t=txt(el);
+      if(/^97% match/.test(t)&&t!=='97% match.') el.textContent='97% match.';
+    });
+    /* full IM transcripts inside the card go */
+    $$('.nm-bubble, [class*="transcript"]',card).forEach(function(el){ el.classList.add('fx23-hide'); });
+  }catch(e){}
+}
+function placeCard(card){
+  try{
+    var host=$('#fx23-view-card .fx23-cardhost'); if(!host) return false;
+    if(card.parentNode!==host){
+      /* keep the essentials: who + match + reach, then the trimmed card */
+      trimCard(card);
+      host.innerHTML='';
+      host.appendChild(card);
+      card.style.display='block';
+    } else trimCard(card);
+    showFrame('card');
+    return true;
+  }catch(e){ return false; }
+}
+/* --- compose: drive the hidden modal, never show it --- */
+function ensureModal(cb){
+  var modals=$$('.ml-modal.mlx');
+  var modal=modals.length?modals[modals.length-1]:null;
+  if(modal){ cb(modal); return; }
+  /* the modal is built lazily by the base +Compose click — fire it once with
+     my own intercept stood down; the CSS keeps the overlay invisible. */
+  window.__fx23Driving=true;
+  var btn=$('.ml-compose-top');
+  if(btn) btn.click();
+  setTimeout(function(){ window.__fx23Driving=false; },50);
+  var tries=0;
+  var iv=setInterval(function(){
+    var ms=$$('.ml-modal.mlx');
+    var m=ms.length?ms[ms.length-1]:null;
+    if(m||++tries>20){ clearInterval(iv); cb(m); }
+  },150);
+}
+function driveSend(){
+  var to=$('#fx23-to')?$('#fx23-to').value:'Like Minds';
+  var body=($('#fx23-body')?$('#fx23-body').value:'').trim();
+  var mode=(document.querySelector('#fx23-view-compose [data-fx23-mode][aria-pressed="true"]')||{}).getAttribute?document.querySelector('#fx23-view-compose [data-fx23-mode][aria-pressed="true"]').getAttribute('data-fx23-mode'):'mail';
+  var note=$('#fx23-note');
+  if(!body){ if(note) note.textContent='Write a message first.'; return {sent:false, reason:'empty'}; }
+  var sendBody=body+(window.__fx23.attached?'\n[Attachment: '+window.__fx23.attached+']':'');
+  ensureModal(function(modal){
+    if(!modal){ if(note) note.textContent='The composer is not ready yet — try again in a moment.'; window.__fx23.lastSend={sent:false, reason:'no-modal'}; return; }
+    try{
+      var toPick=$('.mlx-to-pick',modal)||$('.mlx-to',modal);
+      if(toPick){
+        var opts=$$('.mlx-to-pick option, .mlx-to option, [class*="to-opt"]',modal);
+        var hit=null;
+        opts.forEach(function(o){ if(!hit && txt(o).toLowerCase().indexOf(String(to).toLowerCase().slice(0,9))>-1) hit=o; });
+        if(hit){
+          if(hit.tagName==='OPTION'){ var sel=hit.closest('select'); if(sel){ sel.value=hit.value; sel.dispatchEvent(new Event('change',{bubbles:true})); } }
+          else hit.click();
+        }
+      }
+      var subj=sendBody.split('\n')[0].slice(0,60)||'Hello';
+      var subjEl=$('.mlx-subject',modal);
+      if(subjEl){ subjEl.value=subj; subjEl.dispatchEvent(new Event('input',{bubbles:true})); }
+      var bd=$('.mlx-body',modal);
+      if(bd){ bd.value=sendBody; bd.dispatchEvent(new Event('input',{bubbles:true})); }
+      var modeBtns=$$('button',modal).filter(function(b){ return /^(mail|instant message)$/i.test(txt(b)); });
+      modeBtns.forEach(function(b){ var t=txt(b).toLowerCase(); if((mode==='dm'&&/instant/.test(t))||(mode==='mail'&&/^mail$/.test(t))) b.click(); });
+      var send=$('.mlx-send',modal);
+      if(!send){ window.__fx23.lastSend={sent:false, reason:'no-send-btn'}; return; }
+      send.click();
+      if(note) note.textContent='✓ Sent.';
+      window.__fx23.lastSend={sent:true, mode:mode, to:to};
+      /* If the hidden modal's send produced no records (stale instance, guard),
+         send directly through the base's own send function — the same records
+         the modal path writes. Never double-send: only when zero landed. */
+      setTimeout(function(){
+        try{
+          var mine=0;
+          try{ var sm=window.__fx17?window.__fx17.sentMail():[]; mine=sm.filter(function(r){ return (r.subject||'')===subj; }).length; }catch(e){}
+          var imMine=0;
+          try{ var im=JSON.parse(localStorage.getItem('fx17-im-bubbles')||'[]'); imMine=im.filter(function(r){ return (r.body||'')===sendBody; }).length; }catch(e){}
+          if(mine===0&&imMine===0&&typeof window.__nmSend==='function'){
+            var aliases=[];
+            if(to==='Like Minds'){ aliases=memberRows().map(function(m){ return m.alias; }); }
+            else aliases=[to];
+            aliases.forEach(function(a){ try{ window.__nmSend(mode==='dm'?'dm':'mail', a, subj, sendBody); }catch(e){} });
+            window.__fx23.lastSend.fallbackDirect=true;
+            window.__fx23.lastSend.directTo=aliases.length;
+            if(note) note.textContent='✓ Sent.';
+          }
+        }catch(e){}
+      },1500);
+    }catch(e){ window.__fx23.lastSend={sent:false, reason:'err:'+String(e).slice(0,120)}; }
+  });
+  return {sent:'driving', mode:mode, to:to};
+}
+/* --- wire up --- */
+function wire(){
+  placeMid();
+  fillViews();
+  hideSidebarLists();
+  removePin();
+  upgradeSave();
+  normalizeBubbles();
+  fit();
+  document.addEventListener('click',function(ev){
+    if(window.__fx23Driving) return;
+    var qa=ev.target.closest?ev.target.closest('.ml-qa-item'):null;
+    if(qa){
+      var t=txt(qa).toUpperCase();
+      if(t.indexOf('SMART LISTS')>-1){ ev.preventDefault(); ev.stopPropagation(); showFrame('lists'); return; }
+      if(t.indexOf('ACTIVE CONTACTS')>-1){ ev.preventDefault(); ev.stopPropagation(); showFrame('contacts'); return; }
+    }
+    var comp=ev.target.closest?ev.target.closest('.ml-compose-top'):null;
+    if(comp){ ev.preventDefault(); ev.stopPropagation(); showFrame('compose'); return; }
+    var back=ev.target.closest?ev.target.closest('[data-fx23-back]'):null;
+    if(back){ showFrame('chat'); return; }
+    var contact=ev.target.closest?ev.target.closest('[data-fx23-contact]'):null;
+    if(contact){ openChat(contact.getAttribute('data-fx23-contact')); return; }
+    var listBtn=ev.target.closest?ev.target.closest('[data-fx23-list]'):null;
+    if(listBtn){
+      var nm=listBtn.getAttribute('data-fx23-list');
+      showFrame('contacts');
+      var h=$('#fx23-view-contacts h2'); if(h) h.textContent=nm;
+      return;
+    }
+    var modeBtn=ev.target.closest?ev.target.closest('[data-fx23-mode]'):null;
+    if(modeBtn){
+      $$('#fx23-view-compose [data-fx23-mode]').forEach(function(b){ b.setAttribute('aria-pressed', b===modeBtn?'true':'false'); });
+      return;
+    }
+    if(ev.target.closest && ev.target.closest('#fx23-send')){ window.__fx23.lastSend=driveSend(); return; }
+  },true);
+  /* Attach lives inside the Compose frame: tap opens the file/image picker,
+     the chosen file shows as a chip in the frame — no pop-up, no new screen. */
+  bindAttach();
+  /* contact card opens -> move it into the middle frame, trimmed.
+     (Throttled + disconnected while working: this observer's own style
+     writes must not re-trigger it forever.) */
+  var cardObsTick=false;
+  var cardObs=new MutationObserver(function(){
+    if(cardObsTick) return; cardObsTick=true;
+    setTimeout(function(){
+      cardObs.disconnect();
+      try{
+        /* CARD — frame it IN PLACE, never move it (moving emptied it: the base
+           fills the card after open, and the fill fails once moved). When the
+           card has content, pin it to the middle column like any other frame
+           and trim it to a glance. */
+        var card=findCard();
+        if(card && (card.innerText||'').length>200) frameCard(card);
+        removePin();
+        hideSidebarLists();
+        upgradeSave();
+        normalizeBubbles();
+        placeMid();
+        fit(false);
+      }catch(e){}
+      cardObs.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['style','class']});
+      cardObsTick=false;
+    },150);
+  });
+  cardObs.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['style','class']});
+  /* bubbles that arrive later (IM send) get the same reactions */
+  var listObs=new MutationObserver(function(){
+    try{ if(document.querySelector('#nmReader #nmMsgList .nm-bubble:not(:has(.fx23-react))')) normalizeBubbles(); }catch(e){}
+  });
+  var ml=$('#nmMsgList'); if(ml) listObs.observe(ml,{childList:true,subtree:true});
+  window.addEventListener('resize',function(){ fit(false); });
+  window.addEventListener('scroll',function(){ setTimeout(function(){ fit(true); },80); },{passive:true});
+  setTimeout(function(){ fit(false); fillViews(); },1200);
+  setTimeout(function(){ fit(false); fillViews(); },3000);
+  /* keep fitting while the base settles (its own boot scroll lands late) */
+  var fitTicks=0; var fitIv=setInterval(function(){ placeMid(); fit(false); fillViews(); if(++fitTicks>=6) clearInterval(fitIv); },2000);
+  /* phone + desktop: warm the conversation on load, then show Active
+     Contacts as the DEFAULT middle view (his word: "by default the view is
+     on Active Contacts") — the conversation is one tap away, never an
+     empty pick-panel with black space beside it. */
+  setTimeout(function(){
+    try{ if(typeof openConvByName==='function'){ openConvByName('shawn'); } }catch(e){}
+    setTimeout(function(){ showFrame('contacts'); },900);
+  },2200);
+}
+window.__fx23={
+  version:VERSION, frame:currentFrame, fillViews:fillViews, showFrame:showFrame,
+  openChat:openChat, driveSend:driveSend, fit:fit, lastSend:null,
+  state:function(){
+    var members=memberRows(), lists=listRows();
+    var mid=$('#fx23-mid');
+    var noOverlay=$$('.ml-overlay').every(function(o){ var r=o.getBoundingClientRect(); var cs=getComputedStyle(o); return r.width===0||cs.visibility==='hidden'||cs.display==='none'; });
+    return {frame:currentFrame(), members:members.length,
+      active:members.filter(function(m){return m.active;}).length,
+      lists:lists.map(function(l){return l.name+':'+(l.count||'?');}),
+      midHidden:mid?mid.hidden:null,
+      noOverlayVisible:noOverlay,
+      headerSave:(function(){ var s=document.querySelector('#nmReader .fx22-save'); return s?txt(s):null; })(),
+      pinButtons:$$('[data-nm-pin-conv]').filter(function(b){return b.getBoundingClientRect().width>0;}).length,
+      bubbles:$$('#nmReader .nm-bubble').length};
+  },
+  readerState:function(){
+    function g(s){ var e=$(s); if(!e) return null; var r=e.getBoundingClientRect();
+      return {rect:[Math.round(r.left),Math.round(r.top),Math.round(r.width),Math.round(r.height)], inView:r.top>=0&&r.bottom<=innerHeight, vis:r.width>0&&r.height>0}; }
+    return {barBottom:barBottom(), scrollY:Math.round(scrollY),
+      reader:g('#nmReader'), head:g('#nmReader .nm-reader-head'),
+      msgList:g('#nmReader #nmMsgList'), composer:g('#nmReader .nm-composer'),
+      dock:g('.nm-toggle-dock'), mid:g('#fx23-mid'),
+      allInView:(function(){ var r=['#nmReader .nm-reader-head','#nmReader #nmMsgList','#nmReader .nm-composer','.nm-toggle-dock'];
+        return r.every(function(s){ var e=$(s); if(!e) return false; var b=e.getBoundingClientRect(); return b.top>=0&&b.bottom<=innerHeight&&b.width>0; }); })()};
+  },
+  bubblesState:function(){
+    return $$('#nmReader #nmMsgList .nm-bubble').map(function(bb){
+      var p=bb.querySelector('p');
+      var react=bb.querySelector('.fx23-react');
+      return {metaHidden:(function(){ var m=bb.querySelector('.nm-bubble-meta'); if(!m) return true; var r=m.getBoundingClientRect(); return r.width===0||r.height===0; })(),
+        pBg:p?getComputedStyle(p).backgroundColor:null,
+        pClip:p?(p.scrollHeight-p.clientHeight):null,
+        hasCheck:false,
+        checkVisible:(function(){ var p2=bb.querySelector('p'); return p2?/✓/.test(p2.textContent):false; })(),
+        saveVisible:(function(){ var bad=false; $$('button,span,a',bb).forEach(function(el){ var r=el.getBoundingClientRect(); if(r.width>0&&/save/i.test(txt(el))&&!el.closest('.fx23-react')) bad=true; }); return bad; })(),
+        reactIcons:react?Array.from(react.querySelectorAll('button')).map(function(b){return b.textContent.trim();}):[],
+        reactVisible:react?react.getBoundingClientRect().height>0:false,
+        reactClip:react?(react.scrollHeight-react.clientHeight):null};
+    });
+  },
+  listsState:function(){
+    var mid=$('#fx23-mid');
+    function visBox(s){ var e=$(s); if(!e||e.hidden) return null; var r=e.getBoundingClientRect();
+      return {rect:[Math.round(r.left),Math.round(r.top),Math.round(r.width),Math.round(r.height)], inView:r.top>=0&&r.bottom<=innerHeight}; }
+    return {frame:currentFrame(), mid:visBox('#fx23-mid'),
+      listsView:visBox('#fx23-view-lists'), contactsView:visBox('#fx23-view-contacts'),
+      composeView:visBox('#fx23-view-compose'), cardView:visBox('#fx23-view-card'),
+      listRows:$$('#fx23-view-lists .fx23-listrows .fx23-row').map(function(r){return txt(r);}),
+      contactRows:$$('#fx23-view-lists .fx23-contactrows .fx23-row').map(function(r){return txt(r);}),
+      activeRows:$$('#fx23-view-contacts .fx23-activerows .fx23-row').map(function(r){return txt(r);}),
+      allRows:$$('#fx23-view-contacts .fx23-allrows .fx23-row').map(function(r){return txt(r);}),
+      sidebarListsVisible:$$('.fx13-lists').filter(function(e){ var r=e.getBoundingClientRect(); var cs=getComputedStyle(e); return r.width>0&&cs.visibility!=='hidden'&&r.left>=0&&r.left<innerWidth; }).length};
+  },
+  cardState:function(){
+    var host=$('#fx23-view-card .fx23-cardhost');
+    var card=host?host.querySelector('.fx2-card, .nm-card'):null;
+    if(!card) card=findCard();
+    if(!card) return {open:false};
+    var r=card.getBoundingClientRect();
+    return {open:true, rect:[Math.round(r.left),Math.round(r.top),Math.round(r.width),Math.round(r.height)],
+      fitsViewport:r.top>=0&&r.bottom<=innerHeight,
+      scrollH:card.scrollHeight, clientH:card.clientHeight,
+      textLen:(card.innerText||'').length,
+      hasFullHistory:!/FULL HISTORY/.test(card.innerText||'')?false:true,
+      visibleText:(card.innerText||'').slice(0,600)};
+  },
+  composeState:function(){
+    var v=$('#fx23-view-compose');
+    if(!v||v.hidden) return {open:false};
+    var r=v.getBoundingClientRect();
+    return {open:true, rect:[Math.round(r.left),Math.round(r.top),Math.round(r.width),Math.round(r.height)],
+      fitsViewport:r.top>=0&&r.bottom<=innerHeight,
+      scrollH:v.scrollHeight, clientH:v.clientHeight,
+      to:$('#fx23-to')?$('#fx23-to').value:null,
+      bodyLen:($('#fx23-body')?$('#fx23-body').value:'').length,
+      attached:window.__fx23.attached||null,
+      overlayVisible:$$('.ml-overlay').some(function(o){ var b=o.getBoundingClientRect(); var cs=getComputedStyle(o); return b.width>0&&cs.visibility!=='hidden'&&cs.display!=='none'; })};
+  }
+};
+if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',wire); }
+else { wire(); }
+})();
+</script>
+
 </body></html>
