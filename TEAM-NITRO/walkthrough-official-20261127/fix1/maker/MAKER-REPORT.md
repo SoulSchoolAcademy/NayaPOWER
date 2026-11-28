@@ -19,7 +19,7 @@ frame, and every walk step carries the slide header.
 |---|---|
 | Staged link | https://official-walkthrough-staging.nayapower.workers.dev/ |
 | Portal | **47,431,829 B, sha256 `eb6a2f7e7ff635404efdc57d6816ed6d9e233dc81fcdd443444d92da0968eb68`** — staged curl == local, byte-identical |
-| Certificate | **317,666 B, sha256 `86536d53a28367e542f0b225857066391ce535f5e13b17a5a81129fe637b17ae`** — staged curl == local, byte-identical |
+| Certificate | **318,176 B, sha256 `86536d53a28367e542f0b225857066391ce535f5e13b17a5a81129fe637b17ae`** — staged curl == local, byte-identical |
 | Worker | `worker-consolidated.js` 47,776,425 B, sha256 `c9560a0e326ebd1126ae31d4af694bd3d4853c2a46ba4ec433a9d205439310c6`; worker `official-walkthrough-staging`, PUT HTTP 200, subdomain already enabled |
 | Video route | `GET /naya-video.mp4` → 200, 7,368,202 B, sha `c86da39e…` — unchanged, from KV, NOT re-uploaded |
 | Emblem / Naya routes | `GET /naya-emblem-cut.png` → 200, 2,592,251 B · `GET /agmt-b06.png` → 200, 2,054,581 B |
@@ -224,7 +224,7 @@ destination buttons whole including Space →, header on the end phone).
   by sha256 before editing).
 - Deploy: `cf-worker.py put-script … official-walkthrough-staging …
   --meta worker-meta.json` → HTTP 200; curl read-back: `/` 200
-  47,431,829 B sha `eb6a2f7e…` ✓ · `/identity.html` 200 317,666 B sha
+  47,431,829 B sha `eb6a2f7e…` ✓ · `/identity.html` 200 318,176 B sha
   `86536d53…` ✓ · `/naya-video.mp4` 200 7,368,202 B sha `c86da39e…` ✓ ·
   `/naya-emblem-cut.png` 200 ✓ · `/agmt-b06.png` 200 ✓.
 - Commit: branch `walkthrough-official-20261127`, commit 1
