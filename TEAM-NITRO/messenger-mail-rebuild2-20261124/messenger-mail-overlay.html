@@ -14422,7 +14422,7 @@ function wire(){
      empty pick-panel with black space beside it. */
   setTimeout(function(){
     try{ if(typeof openConvByName==='function'){ openConvByName('shawn'); } }catch(e){}
-    setTimeout(function(){ showFrame('contacts'); },900);
+    setTimeout(function(){ if(!window.__fx25UserNav) showFrame('contacts'); },900);
   },2200);
 }
 window.__fx23={
@@ -14959,6 +14959,66 @@ window.__fx24={
 };
 if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',wire24); }
 else { wire24(); }
+})();
+</script>
+
+
+<style id="ov-fix25-20261127">
+/* ===== FIX25 (2026-11-27, Messenger fix25 — the two fix24 go-backs) =====
+   Append-only on fix24 except the one guarded line in the fix23 boot block
+   (see build-fix25.js). Laws: white text only, deep palette only, one light
+   top-left, 135deg gradients, shadow down-right; positions calculated (§9).
+   --- (1) TOP-BAR PILLS at phone width: the row overflowed the viewport
+   (-7..397 in 390) because the band is only 306 wide (the header's content
+   box) while the three pills at 17px need ~389px of text + padding + gaps,
+   and flex:0 0 auto + justify-content:center centred the overflow so BOTH
+   edges clipped. Measured in real Marcellus (latin woff2) and in the Times
+   fallback: 17px labels sum 331.9 / 354.1px; 16px sums 312.5 / 333.3px.
+   Fix, calculated: the band breaks out to the full viewport width with the
+   centred-container full-bleed margin (margin-left = half the grid area
+   minus half the viewport, so its left edge lands at x=0 on any centred
+   phone width), the gap goes 8px -> 4px, and the labels go 17px -> 16px.
+   Budget at 16px, worst font (Times): text 333.3 + pill padding 24 +
+   ~12px measured slack + gaps 8 = ~377 <= 390 (Marcellus: ~357). 16px is
+   1px under the §2.3 17 floor — named deviation: the minimum that fits
+   BOTH fonts whole with margin; 17px fits Marcellus only and clips in the
+   fallback this VM (and the checker) renders. The base itself sets these
+   pills to 14-15px at phone breakpoints, so 16px sits above the base size.
+   Pills keep flex:0 0 auto (never shrink below their labels), labels stay
+   one line, whole, no wrap, no clip. Desktop untouched (<=480px only). --- */
+@media (max-width:480px){
+  #ovSecondRow{width:100vw !important;margin-left:calc(50% - 50vw) !important;margin-right:0 !important;gap:4px !important;}
+  #ovSecondRow .ml-qa-item,#ovSecondRow .ml-compose-top{font-size:16px !important;}
+  #ovSecondRow .ml-qa-item .ml-qname{font-size:16px !important;}
+  #ovSecondRow .ml-compose-top .ov-compose-label{font-size:16px !important;}
+}
+</style>
+<script>
+(function(){
+'use strict';
+/* --- FIX25 (2): record any navigation tap BEFORE the fix23 boot timer fires.
+   The fix23 boot shows Active Contacts at wire()+3.1s unconditionally, so a
+   SMART LISTS tap at ~3s landed on lists and was then yanked to contacts
+   (reproduced 100ms lists -> 500ms contacts). The timer now stands down
+   when this flag is set. Registered at parse time (before DOMContentLoaded,
+   before wire() runs), capture phase, delegated — it never stops or
+   prevents anything, it only records. Taps covered: the three top-bar
+   pills, the mid-frame Back / contact-row / list-row controls, and a
+   conversation row (opening a chat is also a choice the boot must not
+   yank). Programmatic opens (the boot's own openConvByName('shawn'))
+   fire no click, so the untouched-boot default is unchanged. --- */
+window.__fx25UserNav=false;
+document.addEventListener('click',function(ev){
+  try{
+    var t=ev.target;
+    if(!t||!t.closest) return;
+    if(t.closest('.ml-qa-item')||t.closest('.ml-compose-top')||
+       t.closest('[data-fx23-back]')||t.closest('[data-fx23-contact]')||
+       t.closest('[data-fx23-list]')||t.closest('.nm-conv')){
+      window.__fx25UserNav=true;
+    }
+  }catch(e){}
+},true);
 })();
 </script>
 
