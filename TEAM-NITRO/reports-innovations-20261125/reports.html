@@ -1874,6 +1874,57 @@ html{scroll-padding-top:150px!important}
 .rp11-strip-day--active{box-shadow:inset 0 0 0 1px rgba(255,255,255,.55),0 10px 24px rgba(0,0,0,.55)}
 .rp11-strip-day--today.rp11-strip-day--active{box-shadow:inset 0 0 0 1px rgba(255,255,255,.55),0 0 26px -4px var(--dc,#c62828),0 14px 30px rgba(0,0,0,.56)}
 </style>
+<style id="reports-fix12-20261127">
+/* REPORTS FIX12 — 2026-11-27. Shawn's live-eye defect (voice call ~19:43 MST): TODAY cannot be clicked — tapping today went back to Tuesday 24th. Plus his design amendment (~19:45 MST): one report per day; inside, ONE board with the N in the middle that walks IN through the eight sections. */
+/* (A) THE SHARED DAY COMPONENT — DAY_ICONS jewel + digit tiles, harvested verbatim from Intel Today fix9 (same markup/CSS the calendar and Daily Reports take: .intel-daybtn > .dl > .intel-dayicon + .intel-dayname + .intel-daynum > .dt; digit colours §4, weekday colours §3.3). The strip reuses the component exactly as Intel built it (jewel over name over digit tiles) so all seven fit at 390 with no cut-off; the week bar, whose cards are 168px wide, lays the same pieces out on ONE line — day + number on the same line. */
+.intel-daybtn .dl{display:flex;flex-direction:column;align-items:center;gap:3px}
+.intel-daybtn .st{display:none !important}
+.intel-dayicon{position:relative;width:26px;height:26px;flex:none;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#17171f,#050607 70%);border:1.5px solid var(--dc,#8e24aa);border-radius:50%;color:#fff;box-shadow:0 4px 10px rgba(0,0,0,.55),0 0 12px -2px var(--dc,#8e24aa)}
+.intel-dayicon svg{width:18px;height:18px;display:block}
+.intel-dayicon::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1.5px solid transparent;border-top-color:var(--dc,#8e24aa);border-right-color:var(--dc,#8e24aa);animation:fix9orbit 90s linear infinite}
+.intel-daybtn:nth-child(even) .intel-dayicon::after{animation-direction:reverse}
+@keyframes fix9orbit{to{transform:rotate(360deg)}}
+.intel-dayname{font-size:17px;line-height:1.1;color:#fff;letter-spacing:.02em}
+.intel-daynum{display:flex;gap:2px;justify-content:center}
+.intel-daynum .dt{min-width:17px;height:22px;padding:0 2px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#17171f,#050607 70%);border:1.5px solid var(--dtc,#fff);border-radius:5px;color:#fff;font-size:17px;line-height:1;font-weight:700;box-shadow:0 2px 6px rgba(0,0,0,.5)}
+/* (B) THE DAY STRIP, rebuilt — seven day buttons, today in the centre, no pill, no status line: the date itself opens the day. Same seat as fix11 (body level, above the footer) so the slide fit is untouched. */
+#rpDayStrip12{display:flex;gap:8px;justify-content:center;width:100%;max-width:1100px;margin:0 auto;padding:16px 12px 8px}
+.rp12-daybtn{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;gap:4px;background:linear-gradient(135deg,#17171f,#050607);border:2px solid var(--dc,#8e24aa);border-radius:18px;padding:12px 4px;cursor:pointer;color:#fff;font-family:Marcellus,serif;box-shadow:0 10px 24px rgba(0,0,0,.55),0 0 18px -4px var(--dc);transition:transform .3s ease,box-shadow .3s ease}
+.rp12-daybtn:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(0,0,0,.6),0 0 28px -2px var(--dc)}
+.rp12-daybtn:active{transform:scale(.97)}
+.rp12-daybtn--today{border-width:3px}
+.rp12-daybtn--active{box-shadow:0 10px 24px rgba(0,0,0,.55),0 0 30px 2px var(--dc)}
+.rp12-today{display:block;font-size:17px;font-weight:700;letter-spacing:.14em;color:#fff}
+@media(max-width:640px){#rpDayStrip12{gap:6px;padding:12px 8px 6px}.rp12-daybtn{padding:10px 2px}}
+/* (C) WEEK BAR — one line per date (jewel + day + digit tiles); awaiting cards are real buttons now, never dimmed, never disabled. */
+#rpWeekRow .rp-day--await{opacity:1!important;cursor:pointer!important}
+#rpWeekRow .rp-day--await:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(0,0,0,.6),0 0 28px -2px var(--dc)}
+.rp12-dl{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:6px}
+.rp12-dname{font-family:Marcellus,serif;font-size:17px;line-height:1.1;color:#fff;letter-spacing:.02em}
+/* (D) THE ONE BOARD + THE N IN THE MIDDLE — the walk shows ONE beautiful board per section (never a stack); the N is the way in. The N is the locked Settings N in miniature: black marble centre, brushed-aluminum ring, purple arc flowing around the edge (90s orbit), the file's own N ball inside. */
+#rpNine .rp-nine-board,#rpNine .rp-sec-hole{padding:28px 22px}
+.rp12-nwrap{display:flex;flex-direction:column;align-items:center;gap:8px;padding:18px 0 6px}
+.rp12-n{position:relative;width:88px;height:88px;flex:none;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#3d3d4e,#050607 75%);border:2px solid #c9c9d2;border-radius:50%;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.65),0 0 24px -2px #8e24aa;transition:transform .3s ease,box-shadow .3s ease;padding:0}
+.rp12-n:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.7),0 0 34px -2px #8e24aa}
+.rp12-n:active{transform:scale(.97)}
+.rp12-n img{width:86%;height:86%;border-radius:50%;display:block;object-fit:cover}
+.rp12-n::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid transparent;border-top-color:#8e24aa;border-right-color:#8e24aa;animation:fix9orbit 90s linear infinite}
+.rp12-nhint{font-size:17px;color:#fff}
+/* (E) NOTE PICKER — a drop-down by title, only when the day has more than one smart note. */
+#rp12PickerWrap{margin:24px 0 0;text-align:center}
+#rp12PickerWrap label{display:block;font-family:Marcellus,serif;font-size:19px;color:#fff;margin-bottom:8px}
+#rp12NotePicker{max-width:280px;width:92%;height:48px;font-size:19px;font-family:Marcellus,serif;color:#fff;background:#0a0a10;border:2px solid var(--dayc,#8e24aa);border-radius:12px;padding:0 10px}
+#rp12PickerWrap[hidden]{display:none!important}
+/* (F) THE DAY VIEW — a day with no filed report opens HERE, in this page, never away. No status label, just the date and the honest word. */
+#rp12DayView{position:fixed;inset:0;z-index:90;background:rgba(5,6,7,.94);display:grid;place-items:center;padding:16px}
+#rp12DayView[hidden]{display:none!important}
+.rp12-dayboard{width:min(560px,94vw);max-height:92vh;overflow-y:auto;background:linear-gradient(135deg,#17171f,#050607);border:2px solid var(--dc,#c62828);border-radius:22px;padding:32px 24px;text-align:center;box-shadow:0 18px 40px rgba(0,0,0,.65),0 0 32px -6px var(--dc,#c62828)}
+.rp12-dayboard .rp12-dateline{font-family:Marcellus,serif;font-size:19px;color:#fff;margin:12px 0 16px}
+.rp12-dayboard p{font-size:19px;line-height:1.6;color:#fff;margin:0 0 12px}
+.rp12-daybtn2{display:inline-block;margin-top:12px;font-family:Marcellus,serif;font-size:19px;color:#fff;border:2px solid var(--dc,#c62828);border-radius:999px;padding:10px 22px;background:#050607;cursor:pointer;box-shadow:0 0 16px -2px var(--dc,#c62828)}
+/* (G) No login exit at the end of the walk — belt and braces with the JS removal below. */
+#endBegin,.ib-n[data-end="begin"]{display:none!important}
+</style>
 </head>
 <body>
 <div class="royal-frame" aria-hidden="true"><div class="rf-et top"></div><div class="rf-es left"></div><div class="rf-es right"></div><div class="rf-rim"></div><div class="rf-corner tl"></div><div class="rf-corner tr"></div><div class="rf-corner bl"></div><div class="rf-corner br"></div><div class="rf-n top"></div></div>
@@ -1898,10 +1949,10 @@ html{scroll-padding-top:150px!important}
             <div class="pm-top"><span class="np-tag">DAILY INTELLIGENCE REPORTS</span><span class="deck-status" id="deckStatus">NAYA PRESENTS</span></div>
             <div class="pm-main cover-thirds">
               <figure class="pm-cover-img" aria-label="Daily Intelligence Reports — the cover">
-                <img class="pm-cover-photo" id="coverImgL" alt="Daily Intelligence Reports — sixty reports, one story" />
+                <img class="pm-cover-photo" id="coverImgL" alt="Daily Intelligence Report — one report for one day, one story" />
               </figure>
               <div class="pm-cover-text">
-                <p class="cover-saying">&ldquo;Sixty reports. One story. Built for you.&rdquo;</p>
+                <p class="cover-saying">&ldquo;One report. One day. One story. Built for you.&rdquo;</p>
                 <div class="pm-cap"><div class="station">DAILY INTELLIGENCE REPORTS</div></div>
                 <img class="cover-n" id="coverN" alt="The red N — tap to go to the next board" />
               </div>
@@ -4769,6 +4820,316 @@ try {
     renderSlide = function(){ var r = __rp11RS.apply(this, arguments); try { rp11MarkStripActive(); } catch (e) {} return r; };
   }
 } catch (e) {}
+})();
+</script>
+<script id="reports-fix12-js">
+/* REPORTS FIX12 — 2026-11-27.
+   (1) THE DEFECT (Shawn, voice call ~19:43 MST): on Reports, TODAY cannot be clicked — tapping today went back to Tuesday 24th. Root cause, proven in the fix11 bytes: the fix11 strip sent every no-report day AWAY (window.location.href = nayanet.app/calendar?day=…), and the live host lands that on /personal?day=… whose latest day with content is Tuesday 24th — so a tap on today read as Tuesday. The fix is at the source: NO day tap ever navigates away again. A day with a report jumps to its report in this page; a day with no report opens that day HERE, in the in-page day view. Tapping any date opens THAT date.
+   (2) No "AWAITING REPORT" / "waiting report" label on any day, no VIEW/READ button or label on any day control — the date itself opens the day. The week-bar READ and AWAITING REPORT pills are removed from the DOM; the counts rows stop saying "awaiting" ("0 awaiting" -> "all filed", "1 awaiting" -> "not filed yet").
+   (3) Dates use the shared digit-tile component (DAY_ICONS + digit tiles, harvested verbatim from Intel Today fix9 — see the harvest note in the maker report), one component everywhere dates appear.
+   (4) Today view, simple: the walk is ONE board at the beginning, In a nutshell first (fix6, kept); the note picker is a drop-down BY TITLE, only when the day has more than one smart note; one note or none, no picker.
+   (5) The N walks IN through the eight sections in his order (no "What It's Not" in the walk — RP_SECTIONS never had it).
+   (6) Day icons: the one official set (DAY_ICONS), the same as Intel Today and the calendar; all seven fit on mobile.
+   (7) No login exit at the end of the walk: both end-board "Back to login" buttons are removed from the DOM whenever the end board renders.
+   AMENDMENT (Shawn, ~19:45 MST): the count is one report per day (cover copy fixed by a minimal edit in the build script); inside, ONE board, not three; the N sits in the middle of that board and walks IN, one beautiful board per section. */
+(function(){
+var DAY_ICONS=['<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></g></svg>','<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13.5A8.5 8.5 0 1 1 10.5 4 6.8 6.8 0 0 0 20 13.5Z" fill="currentColor"/></svg>','<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="15" r="5.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13.5 10.5 21 3M16 3h5v5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>','<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="14" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7.5 11.5 2 7v4l4 2M16.5 11.5 22 7v4l-4 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>','<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h18v6H3zM10.5 10h3v9a1.5 1.5 0 0 1-3 0z" fill="currentColor"/></svg>','<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C7 16.5 2.5 13 2.5 8.8 2.5 5.9 4.8 4 7.4 4c1.9 0 3.5 1 4.6 2.6C13.1 5 14.7 4 16.6 4c2.6 0 4.9 1.9 4.9 4.8 0 4.2-4.5 7.7-9.5 12.2Z" fill="currentColor"/></svg>','<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5.5" fill="currentColor"/><ellipse cx="12" cy="12" rx="10" ry="3.2" fill="none" stroke="currentColor" stroke-width="2" transform="rotate(-18 12 12)"/></svg>'];
+var DIGIT_COLORS={'0':'#ffffff','1':'#c62828','2':'#c2410c','3':'#d4a017','4':'#07925f','5':'#0e7490','6':'#3f51b5','7':'#8e24aa','8':'#6d28d9','9':'#a21caf'};
+var RP12_DAYC=['#8e24aa','#c2410c','#d4a017','#0f52ba','#07925f','#c62828','#3f51b5'];
+var RP12_DAYNAMES=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+var RP12_SECTIONS=['In a Nutshell','Child','Grandma','What It Means','Why It Matters','How It Connects','How to Apply',"What's In It For You"];
+var MONTHS12=['January','February','March','April','May','June','July','August','September','October','November','December'];
+var WD3=['SUN','MON','TUE','WED','THU','FRI','SAT'];
+function rp12Digits(n){ return String(n).split('').map(function(ch){ return '<span class="dt" style="--dtc:'+DIGIT_COLORS[ch]+'">'+ch+'</span>'; }).join(''); }
+function rp12Iso(dt){ return dt.getFullYear()+'-'+String(dt.getMonth()+1).padStart(2,'0')+'-'+String(dt.getDate()).padStart(2,'0'); }
+/* (AMENDMENT 1) The end board counts the archive as a pile ("59 daily reports") — one report per day, never a pile. */
+try{ END_TEXT='You have read the reports. — One report for each day, September 27 to November 24, 2026 · Week 40'; }catch(e){}
+/* (7) No login exit at the end of the walk — both end-board login buttons leave the DOM whenever the end board renders. */
+if(typeof renderEnd==='function'){
+  var __rp12RE=renderEnd;
+  renderEnd=function(){
+    var r=__rp12RE.apply(this,arguments);
+    try{
+      var b=document.getElementById('endBegin'); if(b&&b.parentNode)b.parentNode.removeChild(b);
+      var bs=document.querySelectorAll('.ib-n[data-end="begin"]');
+      for(var i=0;i<bs.length;i++){ if(bs[i].parentNode)bs[i].parentNode.removeChild(bs[i]); }
+    }catch(e){}
+    return r;
+  };
+}
+/* THE DAY VIEW — a day with no filed report opens HERE, in this page. */
+var RP12_DV=null;
+function rp12EnsureDayView(){
+  if(RP12_DV)return RP12_DV;
+  var dv=document.createElement('div');
+  dv.id='rp12DayView'; dv.hidden=true;
+  dv.setAttribute('role','dialog'); dv.setAttribute('aria-label','This day');
+  dv.innerHTML='<div class="rp12-dayboard" id="rp12DayBoard"></div>';
+  document.body.appendChild(dv);
+  dv.addEventListener('click',function(e){
+    if(e.target===dv)rp12CloseDay();
+    var c=e.target.closest?e.target.closest('[data-rp12-close]'):null;
+    if(c)rp12CloseDay();
+  });
+  RP12_DV=dv; return dv;
+}
+function rp12CloseDay(){ var dv=document.getElementById('rp12DayView'); if(dv)dv.hidden=true; }
+function rp12OpenDay(iso){
+  try{
+    if(typeof REPORTS_META!=='undefined'){
+      for(var i=0;i<REPORTS_META.length;i++){
+        if(REPORTS_META[i].date===iso){
+          rp12CloseDay();
+          try{ if(typeof closeDepth==='function')closeDepth(); }catch(e){}
+          current=i;
+          if(typeof END_MODE!=='undefined')END_MODE=false;
+          renderSlide(); show('slide');
+          return true;
+        }
+      }
+    }
+    var dv=rp12EnsureDayView();
+    var board=document.getElementById('rp12DayBoard');
+    var dt=new Date(iso+'T12:00:00Z');
+    var wd=dt.getUTCDay(); var dc=RP12_DAYC[wd];
+    dv.style.setProperty('--dc',dc);
+    board.style.setProperty('--dc',dc);
+    board.innerHTML='<span class="rp12-dl"><span class="intel-dayicon" style="--dc:'+dc+'">'+DAY_ICONS[wd]+'</span><span class="rp12-dname">'+RP12_DAYNAMES[wd]+'</span><span class="intel-daynum">'+rp12Digits(dt.getUTCDate())+'</span></span>'
+      +'<p class="rp12-dateline">'+RP12_DAYNAMES[wd]+', '+MONTHS12[dt.getUTCMonth()]+' '+dt.getUTCDate()+', '+dt.getUTCFullYear()+'</p>'
+      +'<p>No report filed for '+RP12_DAYNAMES[wd]+', '+MONTHS12[dt.getUTCMonth()]+' '+dt.getUTCDate()+' yet.</p>'
+      +'<p>The day’s notes are not filed yet — check back soon. One report, one day — tap another day to open it.</p>'
+      +'<button type="button" class="rp12-daybtn2" data-rp12-close>Pick another day</button>';
+    dv.hidden=false;
+    return true;
+  }catch(e){ return false; }
+}
+document.addEventListener('keydown',function(e){ if(e.key==='Escape')rp12CloseDay(); });
+/* (2)+(3) WEEK BAR — pills out, waiting words out, dates on one line with the shared jewel + digit tiles, every date a live button. */
+function rp12FixWeekBar(){
+  try{
+    var cards=document.querySelectorAll('#rpWeekRow .rp-day');
+    for(var i=0;i<cards.length;i++){
+      var c=cards[i];
+      var d=c.getAttribute('data-date')||'';
+      var wd=/^\d{4}-\d{2}-\d{2}$/.test(d)?new Date(d+'T12:00:00Z').getUTCDay():0;
+      var dc=(typeof RP12_DAYC!=='undefined')?RP12_DAYC[wd]:'#8e24aa';
+      c.style.setProperty('--dc',dc);
+      c.removeAttribute('disabled');
+      c.classList.remove('rp-day--await');
+      var pill=c.querySelector('.rp-day-pill'); if(pill&&pill.parentNode)pill.parentNode.removeChild(pill);
+      var counts=c.querySelector('.rp-day-counts');
+      if(counts){
+        var spans=counts.querySelectorAll('span');
+        for(var k=0;k<spans.length;k++){
+          var tx=spans[k].textContent||'';
+          if(tx.indexOf('awaiting')>=0){ spans[k].textContent=(tx.indexOf('1 awaiting')>=0)?'not filed yet':'all filed'; }
+        }
+        counts.setAttribute('aria-label',(counts.textContent||'').replace(/\s+/g,' ').trim());
+      }
+      var nameEl=c.querySelector('.rp-day-name'), dateEl=c.querySelector('.rp-day-date');
+      var num=d?parseInt(d.slice(8,10),10):0;
+      var row=document.createElement('span'); row.className='rp12-dl';
+      row.innerHTML='<span class="intel-dayicon" style="--dc:'+dc+'">'+DAY_ICONS[wd]+'</span><span class="rp12-dname">'+RP12_DAYNAMES[wd]+'</span><span class="intel-daynum">'+rp12Digits(num)+'</span>';
+      if(nameEl&&nameEl.parentNode)nameEl.parentNode.replaceChild(row,nameEl);
+      if(dateEl&&dateEl.parentNode)dateEl.parentNode.removeChild(dateEl);
+      var has=c.getAttribute('data-slide');
+      c.setAttribute('aria-label',RP12_DAYNAMES[wd]+', '+d+(has?' — open this day’s report':' — open this day'));
+    }
+    var rowEl=document.getElementById('rpWeekRow');
+    if(rowEl&&!rowEl.__rp12){
+      rowEl.__rp12=true;
+      rowEl.addEventListener('click',function(e){
+        var b=e.target.closest?e.target.closest('.rp-day'):null;
+        if(!b)return;
+        var s=b.getAttribute('data-slide');
+        if(s!==null&&s!=='')return;
+        var d=b.getAttribute('data-date');
+        if(d)rp12OpenDay(d);
+      });
+    }
+  }catch(e){}
+}
+/* (1)+(3)+(6) THE DAY STRIP, rebuilt — the shared component, today in the centre, no pill, no status line; every tap stays in this page. */
+var RP12_MAP={};
+function rp12MarkStripActive(){
+  try{
+    var meta=(typeof REPORTS_META!=='undefined')?REPORTS_META[current]:null;
+    var date=meta?meta.date:null;
+    var strip=document.getElementById('rpDayStrip12');
+    if(!strip)return;
+    var cs=strip.querySelectorAll('.rp12-daybtn');
+    for(var i=0;i<cs.length;i++)cs[i].classList.toggle('rp12-daybtn--active',!!date&&cs[i].getAttribute('data-date')===date);
+  }catch(e){}
+}
+function rp12BuildStrip(){
+  try{
+    var old=document.getElementById('rpDayStrip'); if(old&&old.parentNode)old.parentNode.removeChild(old);
+    if(document.getElementById('rpDayStrip12'))return;
+    var weekRow=document.getElementById('rpWeekRow');
+    var foot=document.getElementById('rpFooter');
+    if(!weekRow)return;
+    var cards=weekRow.querySelectorAll('.rp-day');
+    for(var i=0;i<cards.length;i++){
+      var d=cards[i].getAttribute('data-date');
+      var s=cards[i].getAttribute('data-slide');
+      if(d)RP12_MAP[d]={slide:(s===null||s==='')?null:parseInt(s,10),has:!(s===null||s==='')};
+    }
+    var today=new Date(); today.setHours(0,0,0,0);
+    var strip=document.createElement('div');
+    strip.id='rpDayStrip12';
+    strip.setAttribute('aria-label','Days around today — pick a day');
+    for(var off=-3;off<=3;off++){
+      var dt=new Date(today.getTime()+off*86400000);
+      var iso=rp12Iso(dt); var wd=dt.getDay();
+      var info=RP12_MAP[iso];
+      var has=!!(info&&info.has&&info.slide!==null);
+      var b=document.createElement('button');
+      b.type='button';
+      b.className='intel-daybtn rp12-daybtn'+(off===0?' rp12-daybtn--today':'');
+      b.style.setProperty('--dc',RP12_DAYC[wd]);
+      b.setAttribute('data-date',iso);
+      if(has)b.setAttribute('data-slide',String(info.slide));
+      b.setAttribute('aria-label',RP12_DAYNAMES[wd]+', '+MONTHS12[dt.getMonth()]+' '+dt.getDate()+', '+dt.getFullYear()+(has?' — open this day’s report':' — open this day'));
+      b.innerHTML='<span class="dl"><span class="intel-dayicon">'+DAY_ICONS[wd]+'</span><span class="intel-dayname">'+WD3[wd]+'</span><span class="intel-daynum">'+rp12Digits(dt.getDate())+'</span></span>'+(off===0?'<span class="rp12-today">TODAY</span>':'');
+      (function(btn,_iso,_has,_slide){
+        btn.addEventListener('click',function(){
+          if(_has){
+            try{ if(typeof closeDepth==='function')closeDepth(); }catch(e){}
+            current=_slide;
+            if(typeof END_MODE!=='undefined')END_MODE=false;
+            renderSlide(); show('slide');
+          }else{
+            rp12OpenDay(_iso);
+          }
+        });
+      })(b,iso,has,info?info.slide:null);
+      strip.appendChild(b);
+    }
+    if(foot&&foot.parentNode)foot.parentNode.insertBefore(strip,foot);
+    else document.body.appendChild(strip);
+    var t=strip.querySelector('.rp12-daybtn--today');
+    if(t&&t.scrollIntoView)t.scrollIntoView({behavior:'auto',inline:'center',block:'nearest'});
+    rp12MarkStripActive();
+  }catch(e){}
+}
+/* (4) NOTE PICKER — a drop-down by title, only when the day has more than one smart note. Notes show by title, never by SN code. */
+function rp12NotesForCurrent(){
+  try{
+    var meta=(typeof REPORTS_META!=='undefined')?REPORTS_META[current]:null;
+    if(!meta||!meta.date)return [];
+    if(meta.date==='2026-11-24'&&typeof REPORT_NOTES_20261124!=='undefined')return REPORT_NOTES_20261124;
+    return [];
+  }catch(e){ return []; }
+}
+function rp12RefreshPicker(){
+  try{
+    var wrap=document.getElementById('rp12PickerWrap');
+    var sel=document.getElementById('rp12NotePicker');
+    if(!wrap||!sel)return;
+    var notes=rp12NotesForCurrent();
+    if(notes.length>1){
+      var cur=sel.value;
+      sel.innerHTML='';
+      for(var i=0;i<notes.length;i++){
+        var o=document.createElement('option');
+        o.value=String(notes[i].sn);
+        o.textContent=notes[i].title;
+        sel.appendChild(o);
+      }
+      if(cur)sel.value=cur;
+      wrap.hidden=false;
+    }else{
+      wrap.hidden=true;
+    }
+  }catch(e){}
+}
+try{
+  var __rp12Nine0=document.getElementById('rpNine');
+  if(__rp12Nine0&&__rp12Nine0.parentNode&&!document.getElementById('rp12PickerWrap')){
+    var __rp12Wrap=document.createElement('div');
+    __rp12Wrap.id='rp12PickerWrap'; __rp12Wrap.hidden=true;
+    __rp12Wrap.innerHTML='<label for="rp12NotePicker">The notes inside this day</label><select id="rp12NotePicker" aria-label="Pick a note by title"></select>';
+    __rp12Nine0.parentNode.insertBefore(__rp12Wrap,__rp12Nine0);
+    document.getElementById('rp12NotePicker').addEventListener('change',function(){
+      var sn=parseInt(this.value,10);
+      if(sn&&typeof window.openNoteViewer==='function')window.openNoteViewer(sn);
+    });
+  }
+}catch(e){}
+if(typeof window.openNoteViewer==='function'){
+  var __rp12ONV=window.openNoteViewer;
+  window.openNoteViewer=function(sn){
+    var r=__rp12ONV.apply(this,arguments);
+    try{
+      var T=document.getElementById('fsTitle');
+      if(T&&typeof REPORT_NOTES_20261124!=='undefined'){
+        for(var i=0;i<REPORT_NOTES_20261124.length;i++){
+          if(REPORT_NOTES_20261124[i].sn===sn){ T.textContent=REPORT_NOTES_20261124[i].title; break; }
+        }
+      }
+    }catch(e){}
+    return r;
+  };
+}
+/* (5)+(AMENDMENT 2/3) THE N IN THE MIDDLE OF THE ONE BOARD — one board per section, the N walks IN through the eight sections in order. */
+function rp12CurrentStep(){
+  try{
+    var el=document.querySelector('#rpNine .rp-sec-step');
+    if(!el)return 1;
+    var m=(el.textContent||'').match(/^\s*(\d+)\s+of\s+/);
+    return m?parseInt(m[1],10):1;
+  }catch(e){ return 1; }
+}
+function rp12AddN(){
+  try{
+    var board=document.querySelector('#rpNine .rp-nine-board')||document.querySelector('#rpNine .rp-sec-hole');
+    if(!board||board.querySelector('.rp12-n'))return;
+    var h3=board.querySelector('h3');
+    var p=board.querySelector('p');
+    if(!h3||!p)return;
+    var step=rp12CurrentStep();
+    var next=(step>=1&&step<RP12_SECTIONS.length)?RP12_SECTIONS[step]:'the next day';
+    var wrap=document.createElement('div');
+    wrap.className='rp12-nwrap';
+    var ball=(typeof EMBED!=='undefined'&&EMBED.ball)?EMBED.ball:'';
+    wrap.innerHTML='<button type="button" class="rp12-n" aria-label="Go in — next: '+next+'"><img src="'+ball+'" alt="N — go in"></button><span class="rp12-nhint">Tap the N to go in</span>';
+    var btn=wrap.querySelector('.rp12-n');
+    btn.addEventListener('click',function(e){
+      e.preventDefault(); e.stopPropagation();
+      var f=document.getElementById('btnForward');
+      if(f)f.click();
+    });
+    btn.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){ e.stopPropagation(); }
+    });
+    board.insertBefore(wrap,p);
+  }catch(e){}
+}
+try{
+  var __rp12Nine=document.getElementById('rpNine');
+  if(__rp12Nine&&typeof MutationObserver==='function'&&!__rp12Nine.__rp12Obs){
+    __rp12Nine.__rp12Obs=true;
+    var __rp12Mo=new MutationObserver(function(){ try{ rp12AddN(); }catch(e){} });
+    __rp12Mo.observe(__rp12Nine,{childList:true});
+  }
+  rp12AddN();
+}catch(e){}
+/* Keep the picker and the strip's active card in step with the day, on every render. */
+if(typeof renderSlide==='function'){
+  var __rp12RS=renderSlide;
+  renderSlide=function(){ var r=__rp12RS.apply(this,arguments); try{ rp12RefreshPicker(); }catch(e){} try{ rp12MarkStripActive(); }catch(e){} return r; };
+}
+/* Boot: fix the week bar, build the strip, refresh the picker. ?day= for a day with no report opens that day here (never away). */
+try{ rp12FixWeekBar(); }catch(e){}
+try{ rp12BuildStrip(); }catch(e){}
+try{ rp12RefreshPicker(); }catch(e){}
+try{ rp12AddN(); }catch(e){}
+setTimeout(function(){
+  try{
+    var m=(location.search||'').match(/[?&]day=(\d{4}-\d{2}-\d{2})/)||(location.hash||'').match(/day=(\d{4}-\d{2}-\d{2})/);
+    if(m)rp12OpenDay(m[1]);
+  }catch(e){}
+},250);
 })();
 </script>
 </body>
