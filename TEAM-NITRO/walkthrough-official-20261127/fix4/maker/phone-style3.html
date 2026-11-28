@@ -1,0 +1,236 @@
+<style>
+/* BLACK DIAMOND PHONE 2026-11-27 — v4: ONE PHONE PER SCREEN, THE SETTINGS
+   PHONE CLONED VERBATIM (Shawn's order, voice call 2026-11-27 ~21:11-21:18
+   MST: "take the whole concept from the Settings page and just use it").
+   No trio, no group header, no ENTER ENTER ENTER. One phone, one screen:
+   put in, tap the ball, next. The frame below IS Settings fix13, value for
+   value — harvested from
+   https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO%2Fofficial-template-20261123%2Fbusiness-finish-20261123%2Fsettings-2%2Fbusiness-settings2.html&ref=settings-fix13-20261127
+   (sha 5d06172f...), never redesigned:
+   - .bd-phone = Settings .stage (FIX7.1): width min(430px,100vw-48px),
+     height min(852px,100dvh-52px), aspect-ratio 393/852, margin 40px auto
+     12px, radius 58px, shadow 0 40px 90px + 0 12px 32px; ::before is the
+     Dynamic Island (104x22, camera dot at 86%), ::after the home bar
+     (120x5 white .85). Phone width: margin 0, 100vw x 100dvh, aspect auto.
+   - .bd-inner = Settings .inner: chrome border via padding-box/border-box
+     linear-gradient(135deg,#f4f6f9 0%,#c7ccd6 16%,#787d88 34%,#eef1f5 52%,
+     #969ca7 70%,#dfe3ea 86%,#6d727c 100%), border-width 11px, top 28px,
+     bottom 20px, radius 48px; ::before right power (3x88, top 170px),
+     ::after left volume (3x56, top 150px, second button 72px below).
+   - .bd-foot = Settings .sr-q-foot graphite board: repeating 45deg/-45deg
+     weave + linear-gradient(135deg,#3a3a3a,#0a0a0a 40%,#2c2c2c), radius
+     20px, inset top light + inset bottom shade.
+   - .bd-ball = Settings .sr-q-n + .sr-gem: brushed aluminum conic ring
+     (from 210deg,#fdfdfd,#9a9a9a,#e8e8e8,#5a5a5a,#d5d5d5,#8a8a8a,#fdfdfd),
+     black marble centre (radial at 32% 26%, #55555f/#232329/#0b0b11/
+     #050607), the REAL marble-sphere image as the spin layer
+     (var(--ball), harvested webp, 512x512, sha d5890238...), white
+     Marcellus N 62px, gloss ellipse, ENTER label 17px .34em, 48px arrows
+     (.sr-q-arrow verbatim). Inside light stays, slowed (spin 24s, orbit
+     180s, arc 240s counter-rotating, edge energy eased).
+   - The diamond in the middle is the real faceted mini-diamond SVG on the
+     orbit and on the end jewel divider (the ball's own centre is the real
+     marble image now — the Settings N — which supersedes the SVG facets).
+   Laws: one light top-left 135deg, shadows down-right, inside board black
+   #050607, no glow inside, text Marcellus white 25/19/17, no gray text,
+   deep palette only, press = scale .97, alive on hover/touch. No gold
+   light-ups: unhighlighted white, highlighted purple. Inputs OBSIDIAN
+   BLACK with depth (fix3); a chosen input HIGHLIGHTS and lifts in royal
+   purple (.bd-chosen) and LIGHTS UP AROUND THE EDGE when selected, as you
+   scroll down. Cascade fields hide until their parent is chosen.
+   PICTURE / ANSWER SEPARATION LAW: .bd-bgpic is an absolute full-bleed
+   layer BEHIND the input inside .bd-stage — it never takes layout space.
+   Ball tap 1 flashes the picture where the step has one; ball tap 2 (or
+   the next arrow) moves to the next input. Steps with no picture advance
+   on the first tap. Video: the ball plays/pauses; arrows advance. */
+#fpWalk{max-width:480px;padding:0 0 16px;margin:0 auto}
+/* FIX4 — THE PHONE, Settings .stage verbatim. Alive on touch: the whole
+   phone lifts on hover and presses in on tap, like a real thing. */
+.bd-phone{position:relative;display:flex;flex-direction:column;width:min(430px,calc(100vw - 48px));height:min(852px,calc(100dvh - 52px));aspect-ratio:393/852;margin:40px auto 12px;border-radius:58px;box-shadow:0 40px 90px rgba(0,0,0,.85),0 12px 32px rgba(0,0,0,.6);transition:transform .3s ease,box-shadow .3s ease}
+.bd-phone:hover{transform:translateY(-4px);box-shadow:0 48px 100px rgba(0,0,0,.85),0 16px 36px rgba(0,0,0,.6),0 0 40px rgba(142,36,170,.25)}
+.bd-phone:active{transform:scale(.985)}
+.bd-phone::before{content:"";position:absolute;left:50%;transform:translateX(-50%);top:5px;width:104px;height:22px;border-radius:999px;z-index:60;pointer-events:none;background:radial-gradient(circle at 86% 50%,#16263f 0 4px,#050607 5px),#000;box-shadow:inset 0 0 0 1px rgba(255,255,255,.09),0 2px 6px rgba(0,0,0,.6)}
+.bd-phone::after{content:"";position:absolute;left:50%;transform:translateX(-50%);bottom:8px;width:120px;height:5px;border-radius:999px;z-index:60;pointer-events:none;background:rgba(255,255,255,.85);box-shadow:0 1px 3px rgba(0,0,0,.6)}
+/* FIX4 — THE SCREEN, Settings .inner verbatim: the chrome border IS the
+   bezel (padding-box/border-box), side buttons as pseudo-elements. */
+.bd-inner{position:relative;flex:1;min-height:0;min-width:0;display:flex;flex-direction:column;border:3px solid transparent;border-width:11px;border-top-width:28px;border-bottom-width:20px;border-radius:48px;background:linear-gradient(#050607,#050607) padding-box,linear-gradient(135deg,#f4f6f9 0%,#c7ccd6 16%,#787d88 34%,#eef1f5 52%,#969ca7 70%,#dfe3ea 86%,#6d727c 100%) border-box;overflow:hidden}
+.bd-inner::before{content:"";position:absolute;right:1px;top:170px;width:3px;height:88px;border-radius:3px;z-index:5;pointer-events:none;background:linear-gradient(135deg,#f4f6f9,#787d88 50%,#dfe3ea);box-shadow:0 2px 8px rgba(0,0,0,.7),0 0 6px rgba(255,255,255,.35)}
+.bd-inner::after{content:"";position:absolute;left:1px;top:150px;width:3px;height:56px;border-radius:3px;z-index:5;pointer-events:none;background:linear-gradient(135deg,#f4f6f9,#787d88 50%,#dfe3ea);box-shadow:0 72px 0 0 #c7ccd6,0 2px 8px rgba(0,0,0,.7)}
+.bd-bgpic{position:absolute;inset:0;z-index:0;opacity:0;transition:opacity .45s ease;pointer-events:none}
+.bd-bgpic img{display:block;width:100%;height:100%;object-fit:cover}
+.bd-phone.bd-revealed .bd-bgpic,.bd-phone.bd-peeking .bd-bgpic{opacity:1}
+.bd-statusbar{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:14px 20px 6px;color:#fff;font-size:17px}
+/* FIX1 D5 — slide header, on every walk step: his emblem top-left, Naya's
+   picture top-right, question centred below. Harvested, never invented:
+   /naya-emblem-cut.png and /agmt-b06.png, the same two images the portal
+   already serves. A slim row inside the screen: it costs the stage 40px
+   (the card scrolls), never the frame. */
+.bd-walkhead{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:8px 20px 0}
+.bd-walkhead-logo{width:32px;height:32px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,.65))}
+.bd-walkhead-naya{width:32px;height:32px;object-fit:cover;border-radius:50%;border:1.5px solid #8e24aa;box-shadow:0 0 12px rgba(142,36,170,.5)}
+/* FIX1 D5 — the end phone's content was already exactly filling its
+   screen, so its header runs slimmer (28px, tighter padding). */
+.bd-endphone .bd-walkhead{padding:4px 20px 0}
+.bd-endphone .bd-walkhead-logo,.bd-endphone .bd-walkhead-naya{width:28px;height:28px}
+.bd-endphone .fp-walk-endtitle{margin:0 0 6px}
+.bd-endphone .fp-walk-endline{margin-bottom:6px}
+.bd-clock{font-weight:800;color:#fff}
+.bd-status-right{display:flex;align-items:center;gap:8px}
+.bd-bars{display:inline-flex;align-items:flex-end;gap:2px;height:18px}
+.bd-bars i{width:3px;background:#fff;border-radius:1px}
+.bd-bars i:nth-child(1){height:6px}.bd-bars i:nth-child(2){height:10px}.bd-bars i:nth-child(3){height:14px}.bd-bars i:nth-child(4){height:18px}
+.bd-5g{font-weight:800;color:#fff}
+.bd-wifi{flex:0 0 auto}
+.bd-batt{display:inline-block;width:26px;height:13px;border:1.5px solid #fff;border-radius:4px;padding:1px;box-sizing:border-box}
+.bd-batt i{display:block;height:100%;width:87%;background:#fff;border-radius:2px}
+.bd-batt-num{font-weight:800;color:#fff}
+.bd-stage{position:relative;z-index:1;flex:1;min-height:0;overflow:hidden;padding:8px 20px 12px;display:flex;flex-direction:column}
+.bd-kicker{font-size:17px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#fff;margin:8px 0 10px;text-align:center}
+.fp-walk-q{font-family:Marcellus,Georgia,serif;font-size:25px;line-height:1.3;color:#fff;margin:0 0 8px;text-align:center}
+.fp-walk-progress{font-size:17px;color:#fff;margin:0 0 12px;text-align:center}
+.bd-input{flex:1;min-height:0;display:flex;flex-direction:column;text-align:center;transition:opacity .35s ease}
+.bd-phone.bd-peeking .bd-input{opacity:.08}
+.bd-phone.bd-revealed .bd-input{display:none}
+/* FIX3 — OBSIDIAN BLACK inputs (Shawn 2026-11-27 ~21:11 MST). The card is
+   an obsidian slab: layered depth, real shadow down-right, purple rim.
+   Labels white; placeholder jewel-light purple (never gray). Every
+   input/select is itself a raised obsidian object. Alive: the card lifts
+   and lights whole on hover, presses in on touch. */
+.bd-card{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;background:linear-gradient(135deg,#0d0d13,#050607 55%);border-radius:22px;padding:18px;box-shadow:0 18px 36px rgba(0,0,0,.75),0 0 0 1.5px rgba(142,36,170,.55),0 0 28px rgba(142,36,170,.22),inset 0 1px 0 rgba(255,255,255,.14);text-align:left;transition:transform .3s ease,box-shadow .3s ease}
+.bd-card:hover{transform:translateY(-2px);box-shadow:0 22px 40px rgba(0,0,0,.75),0 0 0 1.5px rgba(142,36,170,.8),0 0 36px rgba(142,36,170,.35),inset 0 1px 0 rgba(255,255,255,.14)}
+.bd-card:active{transform:scale(.99)}
+.bd-card .fp-walk-answer{flex:1;min-height:110px;width:100%;box-sizing:border-box;border-radius:14px;padding:14px 16px;background:#050607;color:#fff;border:1.5px solid rgba(255,255,255,.35);font-family:Marcellus,Georgia,serif;font-size:19px;line-height:1.5;resize:none;box-shadow:inset 0 2px 6px rgba(0,0,0,.8),0 4px 10px rgba(0,0,0,.5)}
+.bd-card .fp-walk-answer::placeholder{color:#d8b4fe}
+.bd-card .fp-walk-answer:focus{outline:none;border-color:#8e24aa;box-shadow:inset 0 2px 6px rgba(0,0,0,.8),0 0 0 2px #8e24aa,0 0 24px rgba(142,36,170,.6)}
+#bdFields[hidden],.bd-pic[hidden]{display:none!important}
+.bd-fields{display:flex;flex-direction:column;gap:14px}
+.bd-field{display:flex;flex-direction:column;gap:6px}
+.bd-field>label{font-size:17px;font-weight:800;letter-spacing:.06em;color:#fff}
+.bd-field input[type=text],.bd-field select{width:100%;box-sizing:border-box;border-radius:14px;padding:12px 14px;background:#050607;color:#fff;border:1.5px solid rgba(255,255,255,.35);font-family:Marcellus,Georgia,serif;font-size:19px;line-height:1.4;box-shadow:inset 0 2px 6px rgba(0,0,0,.8),0 4px 10px rgba(0,0,0,.5);transition:transform .2s ease,box-shadow .3s ease,border-color .3s ease}
+.bd-field input[type=text]::placeholder{color:#d8b4fe}
+.bd-field input[type=text]:focus,.bd-field select:focus{outline:none;border-color:#8e24aa;box-shadow:inset 0 2px 6px rgba(0,0,0,.8),0 0 0 2px #8e24aa,0 0 24px rgba(142,36,170,.6)}
+.bd-field select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,#8e24aa 50%),linear-gradient(135deg,#8e24aa 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 15px) 50%;background-size:5px 5px;background-repeat:no-repeat}
+.bd-field select option{background:#050607;color:#fff}
+.bd-field-box{border:1.5px solid rgba(255,255,255,.25);border-radius:14px;padding:12px 14px;background:#0a0a0f;box-shadow:inset 0 2px 6px rgba(0,0,0,.7),0 4px 10px rgba(0,0,0,.45)}
+.bd-field-box>.bd-field>label{margin-bottom:2px}
+.bd-check{position:relative}
+.bd-check input{position:absolute;opacity:0;pointer-events:none}
+.bd-check span{display:inline-block;padding:10px 16px;border-radius:999px;background:#050607;color:#fff;border:1.5px solid rgba(255,255,255,.4);font-size:17px;font-family:Marcellus,Georgia,serif;cursor:pointer;transition:transform .1s,background .2s ease,color .2s ease,border-color .2s ease;box-shadow:0 4px 10px rgba(0,0,0,.5)}
+.bd-check span:hover{transform:translateY(-2px)}
+.bd-check span:active{transform:scale(.97)}
+.bd-check input:checked+span{background:#8e24aa;color:#fff;border-color:#8e24aa;box-shadow:0 0 16px rgba(142,36,170,.5)}
+.bd-check input:focus-visible+span{outline:2px solid #8e24aa;outline-offset:2px}
+.bd-subs{margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.18)}
+.bd-subs-label{font-size:17px;font-weight:800;color:#fff;margin:0 0 8px}
+/* FIX3/FIX4 — SELECTION HIGHLIGHT + CASCADE + EDGE LIGHT-UP. A chosen
+   field LIFTS in royal purple (purple first) and LIGHTS UP AROUND THE
+   EDGE — a bright purple rim + glow that breathes slowly, so each input
+   you select, as you scroll down, lights up around its edge. A cascade
+   field stays hidden until its parent is chosen. */
+.bd-field.bd-cascade-hidden{display:none}
+.bd-field.bd-chosen>label{color:#d8b4fe}
+.bd-field.bd-chosen input[type=text],.bd-field.bd-chosen select{border-color:#8e24aa;box-shadow:inset 0 2px 6px rgba(0,0,0,.8),0 0 0 2px #8e24aa,0 10px 22px rgba(0,0,0,.65),0 0 26px rgba(142,36,170,.6);transform:translateY(-2px);animation:bdEdgeGlow 3s ease-in-out infinite}
+@keyframes bdEdgeGlow{0%,100%{box-shadow:inset 0 2px 6px rgba(0,0,0,.8),0 0 0 2px #8e24aa,0 10px 22px rgba(0,0,0,.65),0 0 22px rgba(142,36,170,.5)}50%{box-shadow:inset 0 2px 6px rgba(0,0,0,.8),0 0 0 2px #c084fc,0 10px 22px rgba(0,0,0,.65),0 0 34px rgba(142,36,170,.75)}}
+.fp-walk-hint{font-size:17px;color:#fff;margin:14px 0 0;text-align:center}
+.bd-phone.bd-has-video .bd-bgpic{opacity:1}
+.bd-bgvid video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
+.bd-video-spacer{flex:1;min-height:0}
+.bd-video-pillars{font-family:Marcellus,Georgia,serif;font-size:17px;line-height:1.6;color:#fff;margin:0;text-shadow:0 2px 8px rgba(0,0,0,.9)}
+.bd-video-fallback{font-size:17px;margin:8px 0 0;text-align:center}
+.bd-video-fallback a{color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.9)}
+.bd-has-video .bd-kicker,.bd-has-video .fp-walk-q,.bd-has-video .fp-walk-progress,.bd-has-video .fp-walk-hint{text-shadow:0 2px 8px rgba(0,0,0,.9)}
+.bd-reveal{position:absolute;inset:0;z-index:3;display:none;flex-direction:column;justify-content:flex-end;padding:12px 16px 14px;pointer-events:none}
+.bd-phone.bd-revealed .bd-reveal{display:flex}
+.bd-reveal-card{pointer-events:auto;max-height:64%;overflow-y:auto;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(135deg,#ffffff,#f6f4f9);border-radius:22px;padding:20px 18px;box-shadow:0 16px 32px rgba(0,0,0,.6),0 0 0 1.5px rgba(255,255,255,.6);text-align:center}
+.bd-reveal.bd-anim .bd-reveal-card{animation:bdUnfold .6s ease both}
+@keyframes bdUnfold{from{transform:perspective(900px) rotateX(-68deg) scale(.92);opacity:0}to{transform:perspective(900px) rotateX(0) scale(1);opacity:1}}
+.bd-reveal-kicker{font-size:17px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#8e24aa;margin:0 0 10px}
+.bd-reveal-q{font-family:Marcellus,Georgia,serif;font-size:25px;line-height:1.3;color:#050607;margin:0 0 12px}
+.bd-reveal-a{font-family:Marcellus,Georgia,serif;font-size:19px;line-height:1.5;color:#050607;margin:0 0 12px;overflow-wrap:break-word;white-space:pre-line}
+.bd-reveal-ex{font-size:17px;line-height:1.6;color:#050607;margin:0;text-align:left}
+.bd-reveal-note{font-size:17px;color:#fff;margin:10px 0 0;text-align:center;text-shadow:0 2px 6px rgba(0,0,0,.9)}
+#fpWalkSkip.fp-walk-skip{display:none!important}
+/* FIX4 — THE FOOT, Settings .sr-q-foot graphite board verbatim, inside the
+   screen at the bottom: series label, the ball, ENTER, arrows. The ball
+   is always in reach — it flashes the picture, then moves you on. */
+.bd-foot{position:relative;z-index:2;flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:6px;margin:0 12px 12px;background-color:#0a0a0a;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.07) 0 2px,transparent 2px 8px),repeating-linear-gradient(-45deg,rgba(255,255,255,.05) 0 2px,transparent 2px 8px),linear-gradient(135deg,#3a3a3a,#0a0a0a 40%,#2c2c2c);border-radius:20px;padding:12px 12px 10px;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 -8px 16px rgba(0,0,0,.7)}
+.bd-chin-label{font-size:17px;font-weight:800;letter-spacing:.18em;white-space:nowrap;color:#fff}
+.bd-foot-arrows{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:280px}
+.bd-arrow{flex:0 0 auto;width:48px;height:48px;min-width:0;padding:0;border-radius:50%;background:#050607;border:1.5px solid rgba(255,255,255,.65);color:#fff;font-size:28px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.6);transition:transform .1s,box-shadow .3s ease,border-color .3s ease}
+.bd-arrow:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(0,0,0,.6),0 0 22px rgba(142,36,170,.55);border-color:#8e24aa}
+.bd-arrow:active{transform:scale(.97)}
+/* FIX4 — THE BALL, Settings .sr-q-n + .sr-gem verbatim: brushed aluminum
+   ring, black marble centre, the REAL marble-sphere image spinning slow
+   (var(--ball), 24s), white Marcellus N, gloss. The purple arc flowing
+   around the edge is the second ring (::before, 240s counter-rotating)
+   and the orbit ring with the real mini-diamond jewel — edge energy eased
+   a little, inside light kept and slowed, never killed. */
+.bd-ball{flex:0 0 auto;width:132px;height:132px;min-width:0;max-width:none;padding:6px;border:none;border-radius:50%;background:conic-gradient(from 210deg,#fdfdfd,#9a9a9a,#e8e8e8,#5a5a5a,#d5d5d5,#8a8a8a,#fdfdfd);box-shadow:0 14px 28px rgba(0,0,0,.75),0 0 26px rgba(142,36,170,.5),inset 0 2px 4px rgba(255,255,255,.9);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;position:relative;transition:transform .1s,box-shadow .3s ease;animation:bdFloaty 5.5s ease-in-out infinite}
+@keyframes bdFloaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.bd-ball::before{content:"";position:absolute;inset:-11px;border-radius:50%;padding:1.5px;background:conic-gradient(from 0deg,transparent 0deg,rgba(142,36,170,.85) 40deg,transparent 90deg,transparent 180deg,rgba(142,36,170,.4) 220deg,transparent 270deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;animation:bdOrbit2 240s linear infinite reverse;pointer-events:none}
+@keyframes bdOrbit2{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.bd-ball:hover{transform:translateY(-2px);box-shadow:0 18px 32px rgba(0,0,0,.75),0 0 36px rgba(142,36,170,.65),inset 0 2px 4px rgba(255,255,255,.9)}
+.bd-ball:active{transform:scale(.97)}
+.bd-orbit{position:absolute;inset:-5px;border-radius:50%;border:1.5px solid rgba(142,36,170,.38);animation:bdOrbit 180s linear infinite;pointer-events:none}
+.bd-orbit-jewel{position:absolute;top:-7px;left:50%;margin-left:-7px;width:14px;height:14px;filter:drop-shadow(0 0 6px rgba(142,36,170,.9))}
+.bd-orbit-jewel svg{display:block;width:14px;height:14px}
+@keyframes bdOrbit{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.bd-ball-jewel{width:120px;height:120px;border-radius:50%;position:relative;overflow:hidden;display:block;background:radial-gradient(circle at 32% 26%,#55555f 0%,#232329 30%,#0b0b11 58%,#050607 100%);box-shadow:0 0 0 2px rgba(255,255,255,.25),0 14px 28px rgba(0,0,0,.7)}
+.bd-ball-spin{position:absolute;inset:-25%;border-radius:50%;background-color:#050607;background-image:var(--ball);background-size:cover;background-position:center;background-repeat:no-repeat;animation:bdGemSpin 24s linear infinite}
+@keyframes bdGemSpin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.bd-ball-jewel::after{content:"";position:absolute;z-index:3;top:11%;left:15%;width:36%;height:22%;border-radius:50%;pointer-events:none;transform:rotate(-24deg);background:radial-gradient(ellipse at center,rgba(255,255,255,.6),rgba(255,255,255,0) 68%)}
+.bd-ball-n{font-family:Marcellus,Georgia,serif;font-weight:700;font-size:62px;line-height:1;color:#fff;position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;text-shadow:0 2px 0 rgba(255,255,255,.28),0 5px 12px rgba(0,0,0,.85);cursor:pointer}
+.bd-ball.bd-spun .bd-ball-jewel{animation:bdSpin .6s ease}
+@keyframes bdSpin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.bd-enter-label{font-size:17px;font-weight:700;letter-spacing:.34em;color:#fff;text-transform:uppercase}
+/* FIX3 — ENDS OVERHAUL (carried into fix4). The end phone is a real
+   object now: faint purple vignette, title with depth, a real faceted
+   diamond jewel dividing title from lines; every end button a RAISED
+   obsidian button — none flat — each in its own deep colour as rim + glow
+   in spectrum order (World purple, Hub emerald, Choose plan sapphire,
+   Dashboard gold, Business burnt orange, Space ruby), layered shadows,
+   slow energy pulse in its own colour, lift on hover, press-in .97.
+   Obsidian fill throughout — no green buttons. Grid order follows the
+   named end sequence: answers -> Hub -> pricing. */
+.bd-endphone{max-width:430px;margin:0 auto}
+.bd-stage-end{overflow-y:auto;background:radial-gradient(ellipse at 50% 0%,rgba(142,36,170,.16),transparent 62%)}
+#fpWalkEnd{flex:1;display:flex;flex-direction:column;text-align:center}
+#fpWalkEnd[hidden]{display:none!important}
+.fp-walk-endtitle{font-family:Marcellus,Georgia,serif;font-size:25px;color:#fff;margin:4px 0 8px;text-shadow:0 2px 6px rgba(0,0,0,.8),0 0 18px rgba(142,36,170,.45)}
+.fp-walk-endjewel{display:flex;justify-content:center;margin:0 0 8px}
+.fp-walk-endjewel svg{display:block;width:26px;height:26px;filter:drop-shadow(0 0 8px rgba(142,36,170,.8))}
+.fp-walk-endline{font-size:17px;color:#fff;margin:0 0 8px;text-shadow:0 2px 6px rgba(0,0,0,.7)}
+.fp-walk-linkrow{font-size:17px;color:#fff;margin:0 0 8px}
+.fp-walk-link{color:#fff}
+.fp-walk-copy{font-family:Marcellus,Georgia,serif;font-size:17px;color:#fff;background:#050607;border:1.5px solid rgba(142,36,170,.85);border-radius:999px;padding:8px 16px;cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,.6),0 0 14px rgba(142,36,170,.35),inset 0 1.5px 0 rgba(255,255,255,.25);transition:transform .1s,box-shadow .3s ease}
+.fp-walk-copy:hover{transform:translateY(-2px);box-shadow:0 12px 22px rgba(0,0,0,.6),0 0 22px rgba(142,36,170,.55),inset 0 1.5px 0 rgba(255,255,255,.25)}
+.fp-walk-copy:active{transform:scale(.97)}
+.fp-walk-endgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.fp-walk-endgrid .fp-walk-endgrid-wide{grid-column:1/-1}
+.fp-walk-endgrid .fp-walk-enter,.fp-walk-endgrid .fp-walk-navbtn{font-family:Marcellus,Georgia,serif;font-size:17px;line-height:1.4;color:#fff;background:#050607;border:1.5px solid var(--ec,rgba(255,255,255,.65));border-radius:999px;padding:10px 8px;cursor:pointer;min-width:0;width:100%;white-space:normal;overflow-wrap:break-word;box-shadow:0 10px 22px rgba(0,0,0,.65),0 0 14px var(--eg,rgba(142,36,170,.35)),inset 0 1.5px 0 rgba(255,255,255,.25),inset 0 -6px 12px rgba(0,0,0,.6);animation:bdEndPulse 8s ease-in-out infinite;transition:transform .1s,box-shadow .3s ease}
+@keyframes bdEndPulse{0%,100%{box-shadow:0 10px 22px rgba(0,0,0,.65),0 0 12px var(--eg,rgba(142,36,170,.35)),inset 0 1.5px 0 rgba(255,255,255,.25),inset 0 -6px 12px rgba(0,0,0,.6)}50%{box-shadow:0 10px 22px rgba(0,0,0,.65),0 0 26px var(--eg,rgba(142,36,170,.55)),inset 0 1.5px 0 rgba(255,255,255,.25),inset 0 -6px 12px rgba(0,0,0,.6)}}
+#fpWalkWorld{--ec:#8e24aa;--eg:rgba(142,36,170,.5);background:radial-gradient(circle at 50% 0%,#3d1050,#05060a)}
+#fpWalkHub{--ec:#07925f;--eg:rgba(7,146,95,.5)}
+#fpWalkPricing{--ec:#0f52ba;--eg:rgba(15,82,186,.5)}
+#fpWalkDash{--ec:#d4a017;--eg:rgba(212,160,23,.5)}
+#fpWalkBiz{--ec:#c2410c;--eg:rgba(194,65,12,.5)}
+#fpWalkSpace{--ec:#c62828;--eg:rgba(198,40,40,.5)}
+#fpWalkRetry{--ec:#8e24aa;--eg:rgba(142,36,170,.5)}
+.fp-walk-endgrid .fp-walk-enter:hover,.fp-walk-endgrid .fp-walk-navbtn:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(0,0,0,.65),0 0 28px var(--eg,rgba(142,36,170,.55)),inset 0 1.5px 0 rgba(255,255,255,.25),inset 0 -6px 12px rgba(0,0,0,.6)}
+.fp-walk-endgrid .fp-walk-enter:active,.fp-walk-endgrid .fp-walk-navbtn:active{transform:scale(.97)}
+#fpWalkEnd .fp-walk-enter[hidden]{display:none!important}
+@media (max-width:860px){
+  .bd-phone{margin:0;width:100vw;height:100dvh;height:100svh;aspect-ratio:auto;border-radius:0}
+  .bd-phone::before{top:4px}
+  .bd-phone::after{bottom:6px}
+  .bd-inner{border-width:3px;border-top-width:30px;border-bottom-width:20px;border-radius:30px}
+  .bd-ball{width:124px;height:124px}
+  .bd-ball-jewel{width:112px;height:112px}
+  .bd-ball-n{font-size:58px}
+}
+@media (max-width:640px){
+  #fpWalk{padding:0}
+  .bd-stage{padding:6px 16px 8px}
+  .bd-foot{margin:0 8px 8px;padding:8px 8px 8px}
+}
+</style>
