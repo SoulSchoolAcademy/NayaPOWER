@@ -1,0 +1,165 @@
+<script>
+/* BLACK DIAMOND PHONE v3 2026-11-27 — trio phone chrome logic, no walk state.
+   Runs BEFORE the harvested walk script. The walk engine (engine3.js) calls
+   window.bdPhone.buildPhone(step, n, total) once per step in the current
+   group, .reveal(phone, q, answer, def) on a ball tap, and .showEnd() on
+   finish. Clock ticks live on every phone; battery reads navigator.getBattery
+   when the browser offers it, else the reference 87%.
+   Copy-my-answers reads the same localStorage key the walk saves
+   (naya_welcome_right_v1) — in-page state, copy-out on the review screen.
+   No server save is faked: the walk's own complete() POST to the
+   walkthrough-15 staging worker is untouched.
+   The video iPhone (step.video) plays the DIRECT FILE
+   workspace/user/media_library/video/c8/c86da39ed1360b79f5109f2c0706f8345059259b2574753b39cdf89af95d037c.mp4
+   (ffprobe-verified 576x1024 = exactly 9:16 vertical, h264, 30fps, 204.3s,
+   7.37 MB), served by the staging worker at /naya-video.mp4 from the
+   WELCOME_ASSETS KV (key naya-welcome-video) — NOT embedded in the page:
+   embedding its base64 tipped the worker over the edge (503 error 1102
+   on /, identity still 200 — the 57 MB module cannot serve its portal).
+   It fills the phone's own 9:16 screen above the ball, natively — no
+   rotation, no crop. The YouTube link (youtube.com/watch?v=XqZe1zdF1Tc)
+   is a fallback link only, never the source. The ball toggles play/pause;
+   tapping the video does too. ONE spot only: mid-flow, after industry +
+   subcategories, before motto. No video at the end. (Shawn's rule, voice
+   call 2026-11-27 ~14:12 MST: "If it's not formatted right you have to
+   use the direct file right?" — yes.) The pillars under the video are the
+   video's OWN four — Smart Vault, Auto Organizer, Smart Match, Collective
+   Intelligence — not the YouTube description's different list.
+   Pictures: window.BD_PICS maps pic keys to data URIs, harvested verbatim
+   from workspace/user/media_library/image/ (injected by build-v3.mjs):
+   vault=1_THE_VAULT, current=2_HOW_WE_SNYC, nano=3_NANOVERSE,
+   works=4_HOW_IT_WORKS, smartvault=5_SMART_VAULT, match=6_AUTO_MATCH,
+   org=7_AUTO_ORGINIZED, pillars=the five glowing crystal pillars (v2, all
+   byte-identical to checker2's table); motto=hands holding a glowing
+   crystal heart, love=grandmother + granddaughter with a crystal,
+   dontlove=broken black heart with purple light, unique=girl painting her
+   crystal world, gift=Naya sculpting a crystal angel, work=Naya designing
+   on a glowing screen. The picture is a full-bleed 9:16 layer BEHIND the
+   input (position absolute, never layout space) — the separation law. */
+window.BD_PICS = /*__BD_PICS__*/;
+(function(){
+  function $(id){ return document.getElementById(id); }
+  function tick(){
+    var d = new Date();
+    var h = d.getHours() % 12 || 12;
+    var m = ('0' + d.getMinutes()).slice(-2);
+    document.querySelectorAll('.bd-clock').forEach(function(c){ c.textContent = h + ':' + m; });
+  }
+  tick();
+  setInterval(tick, 15000);
+  if (navigator.getBattery) {
+    navigator.getBattery().then(function(b){
+      function u(){
+        document.querySelectorAll('.bd-batt-num').forEach(function(n){ n.textContent = Math.round(b.level * 100); });
+        document.querySelectorAll('.bd-batt-fill').forEach(function(f){ f.style.width = Math.round(b.level * 100) + '%'; });
+      }
+      u();
+      b.addEventListener('levelchange', u);
+    }).catch(function(){});
+  }
+  function facetsSVG(uid){
+    return '<svg class="bd-facets" viewBox="0 0 100 100" aria-hidden="true"><defs><clipPath id="bdFacetClip' + uid + '"><circle cx="50" cy="50" r="49"/></clipPath><radialGradient id="bdFacetBase' + uid + '" cx="38%" cy="30%" r="75%"><stop offset="0%" stop-color="#e9d5ff"/><stop offset="18%" stop-color="#a855f7"/><stop offset="45%" stop-color="#8e24aa"/><stop offset="70%" stop-color="#4c1d95"/><stop offset="100%" stop-color="#1e0a2e"/></radialGradient></defs><g clip-path="url(#bdFacetClip' + uid + ')"><rect x="0" y="0" width="100" height="100" fill="url(#bdFacetBase' + uid + ')"/><g stroke="rgba(255,255,255,.38)" stroke-width=".7"><polygon points="50,24 68,33 78,50 68,67 50,76 32,67 22,50 32,33" fill="#c084fc"/><polygon points="50,0 68,33 32,33" fill="#e9d5ff"/><polygon points="68,33 86,15 78,50" fill="#a855f7"/><polygon points="78,50 86,15 100,50" fill="#6d28d9"/><polygon points="78,50 100,50 86,85" fill="#4c1d95"/><polygon points="68,67 78,50 86,85" fill="#7e22ce"/><polygon points="50,76 68,67 86,85" fill="#a855f7"/><polygon points="50,76 86,85 50,100" fill="#2e1065"/><polygon points="50,76 50,100 14,85" fill="#4c1d95"/><polygon points="32,67 50,76 14,85" fill="#8e24aa"/><polygon points="22,50 32,67 14,85" fill="#6d28d9"/><polygon points="22,50 14,85 0,50" fill="#3b0764"/><polygon points="22,50 0,50 14,15" fill="#7e22ce"/><polygon points="32,33 22,50 14,15" fill="#a855f7"/><polygon points="32,33 14,15 50,0" fill="#d8b4fe"/><polygon points="68,33 50,0 86,15" fill="#c084fc"/><polygon points="50,24 68,33 50,50 32,33" fill="#f3e8ff" opacity=".85"/></g><ellipse cx="34" cy="26" rx="20" ry="11" fill="rgba(255,255,255,.5)" transform="rotate(-18 34 26)"/></g></svg>';
+  }
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function buildPhone(step, n, total){
+    var uid = 'P' + n;
+    var d = document.createElement('div');
+    d.className = 'bd-phone';
+    d.setAttribute('data-step', String(n));
+    d.setAttribute('data-key', step.key);
+    var picSrc = (step.pic && window.BD_PICS && window.BD_PICS[step.pic]) ? window.BD_PICS[step.pic] : '';
+    var bg;
+    if (step.video) {
+      /* The video IS the full-bleed layer: 9:16 native, fills the screen. */
+      d.classList.add('bd-has-video');
+      bg = '<div class="bd-bgpic bd-bgvid"><video src="/naya-video.mp4" playsinline preload="none"></video></div>';
+    } else {
+      bg = picSrc ? '<div class="bd-bgpic"><img alt="" src="' + picSrc + '"></div>' : '<div class="bd-bgpic"></div>';
+    }
+    var body;
+    if (step.video) {
+      var vid = step.vid || 'XqZe1zdF1Tc';
+      body = '<div class="bd-video-spacer"></div><p class="bd-video-pillars">Smart Vault &middot; Auto Organizer &middot; Smart Match &middot; Collective Intelligence</p>';
+    } else {
+      body = '<div class="bd-card"><textarea class="fp-walk-answer bd-answer" rows="4"></textarea><div class="bd-fields" hidden></div></div>';
+    }
+    d.innerHTML = '<div class="bd-frame"><div class="bd-bezel"><div class="bd-screen">' + bg +
+      '<div class="bd-statusbar"><span class="bd-clock">9:41</span><span class="bd-status-right"><span class="bd-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="bd-5g">5G</span><svg class="bd-wifi" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="#fff" d="M12 18.5c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5zm0-4.2c1.9 0 3.6.8 4.9 2l-1.5 1.6c-.9-.9-2.1-1.4-3.4-1.4s-2.5.5-3.4 1.4L7.1 16.3c1.3-1.2 3-2 4.9-2zm0-4.3c3 0 5.8 1.2 7.8 3.2l-1.5 1.6c-1.6-1.6-3.8-2.6-6.3-2.6s-4.7 1-6.3 2.6L4.2 13.2C6.2 11.2 9 10 12 10z"/></svg><span class="bd-batt" aria-hidden="true"><i class="bd-batt-fill"></i></span><span class="bd-batt-num">87</span></span></div>' +
+      '<div class="bd-walkhead"><img class="bd-walkhead-logo" src="/naya-emblem-cut.png" alt="NayaNET emblem"><img class="bd-walkhead-naya" src="/agmt-b06.png" alt="Naya"></div>' +
+      '<div class="bd-stage"><div class="bd-input"><p class="bd-kicker">Your walkthrough</p><h1 class="fp-walk-q">\u201C' + esc(step.q) + '\u201D</h1><p class="fp-walk-progress">' + n + ' of ' + total + '</p>' + body + '<p class="fp-walk-hint">' + (step.video ? 'Tap the ball to play &mdash; Naya, in her own words.' : 'Type your answer &mdash; it saves as you go. Tap the ball to reveal it.') + '</p>' + (step.video ? '<p class="bd-video-fallback"><a href="https://youtube.com/watch?v=' + vid + '" target="_blank" rel="noopener">Watch on YouTube &rarr;</a></p>' : '') + '</div>' +
+      '<div class="bd-reveal"><div class="bd-reveal-card"><p class="bd-reveal-kicker">Your answer</p><h2 class="bd-reveal-q"></h2><p class="bd-reveal-a"></p><p class="bd-reveal-ex"></p></div><p class="bd-reveal-note">Tap the ball to go back to your answer.</p></div></div>' +
+      '</div><div class="bd-chin"><div class="bd-chin-label">BLACK DIAMOND SERIES</div><button class="fp-walk-enter bd-ball" type="button" aria-label="Enter — reveal your answer"><span class="bd-orbit" aria-hidden="true"><span class="bd-orbit-jewel">&#9670;</span></span><span class="bd-ball-jewel">' + facetsSVG(uid) + '<span class="bd-ball-n">N</span></span></button><div class="bd-enter-label">ENTER</div></div>' +
+      '</div></div>';
+    var ball = d.querySelector('.bd-ball');
+    var nEl = d.querySelector('.bd-ball-n');
+    /* Tap the N peeks the picture (hold to peek); tap the ball reveals it. */
+    if (nEl) {
+      nEl.addEventListener('pointerdown', function(e){ e.stopPropagation(); d.classList.add('bd-peeking'); });
+      ['pointerup','pointerleave','pointercancel'].forEach(function(ev){ nEl.addEventListener(ev, function(){ d.classList.remove('bd-peeking'); }); });
+    }
+    if (ball) ball.addEventListener('click', function(){
+      d.classList.remove('bd-peeking');
+      if (step.video) {
+        /* The ball is the play button on the video phone. */
+        var v = d.querySelector('video');
+        if (v) { if (v.paused) { v.play().catch(function(){}); } else { v.pause(); } }
+      }
+      if (window.bdPhone && window.bdPhone.onBall) window.bdPhone.onBall(d, step, n);
+      ball.classList.remove('bd-spun'); void ball.offsetWidth; ball.classList.add('bd-spun');
+    });
+    if (step.video) {
+      var vidEl = d.querySelector('video');
+      if (vidEl) vidEl.addEventListener('click', function(){
+        if (vidEl.paused) { vidEl.play().catch(function(){}); } else { vidEl.pause(); }
+      });
+    }
+    return d;
+  }
+  function reveal(phone, q, answer, def){
+    if (!phone) return;
+    var qEl = phone.querySelector('.bd-reveal-q'), aEl = phone.querySelector('.bd-reveal-a'), exEl = phone.querySelector('.bd-reveal-ex');
+    if (qEl) qEl.textContent = '\u201C' + q + '\u201D';
+    if (aEl) aEl.textContent = answer || '';
+    if (exEl) {
+      exEl.textContent = '';
+      if (def) {
+        var s = document.createElement('strong');
+        s.textContent = 'Our example: ';
+        exEl.appendChild(s);
+        exEl.appendChild(document.createTextNode(def));
+        exEl.hidden = false;
+      } else { exEl.hidden = true; }
+    }
+    phone.classList.add('bd-revealed');
+    var r = phone.querySelector('.bd-reveal');
+    if (r) { r.classList.remove('bd-anim'); void r.offsetWidth; r.classList.add('bd-anim'); }
+  }
+  function unreveal(phone){ if (phone) phone.classList.remove('bd-revealed'); }
+  function showEnd(){
+    /* The video never plays on behind the end screen: pause it first. */
+    document.querySelectorAll('#bdTrio video').forEach(function(v){ try { v.pause(); v.removeAttribute('src'); v.load(); } catch(e){} });
+    var w = $('bdTrioWrap'); if (w) w.hidden = true;
+    var e = $('bdEndPhone'); if (e) e.hidden = false;
+    /* The ball stays on the end screen — the chin is never hollow. */
+  }
+  window.bdPhone = { buildPhone: buildPhone, reveal: reveal, unreveal: unreveal, showEnd: showEnd, tick: tick, onBall: null };
+  var endBall = $('fpWalkEnter');
+  if (endBall) endBall.addEventListener('click', function(){
+    endBall.classList.remove('bd-spun'); void endBall.offsetWidth; endBall.classList.add('bd-spun');
+  });
+  var copyAll = $('fpWalkCopyAll');
+  if (copyAll) copyAll.addEventListener('click', function(){
+    var txt = '';
+    try {
+      var S = JSON.parse(localStorage.getItem('naya_welcome_right_v1') || 'null');
+      if (S && S.answers) txt = Object.keys(S.answers).map(function(k){
+        var v = S.answers[k];
+        return k + ': ' + (Array.isArray(v) ? v.join(', ') : v);
+      }).join('\n');
+    } catch(e){}
+    function done(){ var t = copyAll.textContent; copyAll.textContent = 'Copied'; setTimeout(function(){ copyAll.textContent = t; }, 1200); }
+    if (navigator.clipboard && navigator.clipboard.writeText && txt) { navigator.clipboard.writeText(txt).then(done, done); }
+    else { done(); }
+  });
+})();
+</script>

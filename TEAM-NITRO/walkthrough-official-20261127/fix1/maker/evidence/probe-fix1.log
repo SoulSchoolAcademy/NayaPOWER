@@ -1,0 +1,35 @@
+FIX1 probe run 2026-11-28 ~03:00 UTC (probe-fix1.py, Playwright Chromium via
+localhost forwarder, ignore_https_errors for the egress proxy MITM cert).
+Staged: https://official-walkthrough-staging.nayapower.workers.dev/
+Portal eb6a2f7e... / cert 86536d53... (post end-trim rebuild + redeploy).
+
+PASS cert: landed on /identity.html same host
+PASS D1: veil stays hidden after 10s+ on cert
+PASS D1: ENTER tappable (top element is ENTER, not veil)
+certDatetime: {"hidden": false, "text": "TUESDAY20OCT2026 · 03:00:11", "wdColor": "rgb(212, 160, 23)"}
+PASS D3: digit tiles VISIBLE in already-claimed state
+PASS D3: weekday word shown in its §3.3 colour (certified Tue 20 Oct 2026 = gold)
+PASS D3: tiles tick (time changes in ~2s)
+hubNote: {"leftGap": 24, "rightGap": 24, "text": "That alias is already claimed on another device. Pick a diff"}
+PASS D4: already-claimed note has margins clear of frame (>=16px each side)
+PASS D3: tiles visible on silent restore reload (no new claim)
+PASS D3: 'This is me' offered on taken state
+PASS walk loads after This-is-me
+PASS group 1..8 of 8: no clipping at 390
+PASS D5: header (emblem + Naya) on every phone, groups 1..8 (390)
+PASS keeper: video ball plays (390) / pauses (390)
+PASS keeper: vision picture reveals on ball tap (390)
+PASS keeper: end screen whole at 390
+PASS D5: header on end phone too (390)
+PASS keeper: answers saved (30+ keys) | 44
+390 pageerrors: [] / console errors: 4x 503 (agmt-*.jpg, transient — direct curl 200)
+  + 2x 409 (honest Supabase already-claimed for alias shawn)
+PASS 0 UNEXPLAINED errors at 390 (503-agmt retried 200 + honest 409 only)
+1440 widths: {"phones": [360, 360, 360], "fpWalkW": 1160, "fpWalkX": 140}
+PASS D2: trio phones widened (~360, not 211)
+PASS D2: no clipping at 1440 group 1 (header, question, chin)
+PASS D5: header on every phone at 1440
+PASS D2: no clipping at 1440 groups 2..8
+PASS keeper: end screen whole at 1440, no video at end
+1440 pageerrors: []
+FAILS: NONE
