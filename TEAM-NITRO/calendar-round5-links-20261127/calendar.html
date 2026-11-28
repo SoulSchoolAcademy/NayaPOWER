@@ -2274,10 +2274,13 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
 .stat-label{font-size:17px;font-weight:700;color:#fff;text-align:center}
 /* (11) REPORTS OVERLAY — Back to month, bottom-right. */
 .door-backmonth{display:block;width:max-content;margin:16px 0 8px auto}
-/* CALENDAR ROUND 5 — LINKS (Shawn, 2026-11-27): the door's full-page exit —
-   a real link, one tap out to that day's Intel Today / Daily Reports page. */
-.door-exit{display:flex;align-items:center;justify-content:center;text-align:center;text-decoration:none;font-size:var(--type-small);font-weight:700;margin:0 0 12px}
+/* CALENDAR ROUND 5 FOLLOW-ON — FRAME (Shawn, 2026-11-27 15:47): the
+   door's exit pill is gone — it doubled the third frame's buttons, and
+   the frame wins. The door-head stays: it names the room. */
 .door-head{margin:0 0 12px;font-size:var(--type-small);font-weight:600;color:#fff;line-height:1.55;text-align:center}
+/* The frame's buttons are real links in the day's own row language
+   (.cat-row) — an anchor needs the underline off and white text. */
+.frame-link{text-decoration:none;color:#fff}
 /* (14) BACK TO MONTH — the chevron is the back arrow itself; no icon beside it. */
 .daybar>.backbtn.eye .btw-chev{font-size:26px;font-weight:700;color:#fff;line-height:1}
 /* (13) NAV THAT NEVER RIDES — on a scrolling slide the nav sticks to the
@@ -5005,8 +5008,37 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
              below.) The summary/record slide's slot was NOT named — it
              is not guessed: it keeps its place directly after
              Appointments, where it stands today. */
+          /* CALENDAR ROUND 5 FOLLOW-ON — THE THIRD FRAME (Shawn,
+             2026-11-27 15:47): the day's third frame — after Wisdom
+             and Notifications, before Journal — built with the same
+             catSection as its neighbours, so it is a frame in the same
+             language, not a new invention. Two buttons in it: Intel
+             Today and Daily Reports. A tap opens the Innovations-format
+             viewer on the day being viewed (&day=<sel>, day-synced —
+             the frame is rebuilt every render, so the day step rebuilds
+             the links). The viewer itself — one full page of text at a
+             time, Nutshell → Child → Grandma → What It Means → Why It
+             Matters → How It Connects → How to Apply → What's In It
+             For You, going IN not down — is the Intel Today (fix8) /
+             Reports (fix11) page the buttons open; the calendar does
+             not re-build it here. No glimpse on the rows: at 390 the
+             72px chip + 19px label leave ~11px for one (measured —
+             the summary rows crush the same way in the live base, a
+             pre-existing defect carried separately); the essence line
+             above the rows says it instead. */
+          var frameInner = '<div class="sum-list">' +
+            '<a class="cat-row sum-row frame-link" style="--c:#3f51b5" href="' + INTEL_TODAY_URL + '&day=' + k + '" target="_blank" rel="noopener">' +
+              '<span class="chip sum-chip">' + ICONS["spark"] + '</span>' +
+              '<span class="lr-l">Intel Today</span>' +
+              '<span class="lr-chev" aria-hidden="true">\u203a</span></a>' +
+            '<a class="cat-row sum-row frame-link" style="--c:#0e7490" href="' + REPORTS_URL + '&day=' + k + '" target="_blank" rel="noopener">' +
+              '<span class="chip sum-chip">' + ICONS["landmark"] + '</span>' +
+              '<span class="lr-l">Daily Reports</span>' +
+              '<span class="lr-chev" aria-hidden="true">\u203a</span></a>' +
+            '</div>';
           wrap.innerHTML =
             catSection(CATS[0], notifCards + dayNav(dc, false), null, "Tap a world — see its notifications.", "", dc, "diamond", null, "notif-slide allow-scroll") +
+            catSection(CATS[2], frameInner + dayNav("#3f51b5", false), "record", "The day\u2019s intelligence and the day\u2019s report \u2014 open the viewer on this day.", "Intel Today · Daily Reports", "#3f51b5", "diamond", null, "allow-scroll") +
             catSection(CATS[2], journalInner + dayNav("#07925f", false), "record", "Your day, in your words — kept for this day.", "Journal", "#07925f", "orb") +
             catSection(CATS[0], notifRowsA + dayNav(dc, false), null, "Six worlds, one day — tap one to see its day.", "Your Worlds", dc, "orb", "worlds", "worlds-slide") +
             catSection(CATS[0], notifRowsB + dayNav(dc, false), null, "Local, Province and Global — your news hub, each scope its own door.", "News Hub", dc, "hex", null, "news-slide") +
@@ -5176,13 +5208,16 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
         }
         function leaveMeetRoom() { stopMeet(); var door = doorById("appointments"); if (door) openDoor(door); }
 
-        /* CALENDAR ROUND 5 — LINKS (Shawn, 2026-11-27): the doors' full-page
-           exits. Staged builds for now — re-point ONE line each to fix8 /
-           fix11 when those land (parallel rounds; do not wait on them).
-           Both URLs verified HTTP 200 before filing (Intel fix7
-           40,198,186 B; Reports fix10 lowercase 39,558,827 B). */
-        var INTEL_TODAY_URL = "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO%2Fintel-today-innovations-format-20261125%2Fintel-today.html&ref=intel-today-innovations-format-20261125-fix7&cb=42f547ee6da54f783051d73eb4c3ffad5c376cb5";
-        var REPORTS_URL = "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO%2Freports-innovations-20261125%2Freports.html&ref=reports-innovations-20261125-fix10&cb=24a9899a2886c160bc0683e1e778bf7e83dfa137";
+        /* CALENDAR ROUND 5 FOLLOW-ON — FRAME (Shawn, 2026-11-27):
+           the finished viewer pages. Intel Today fix8 (fix7 base;
+           fix5 was the reference he showed us — verified HTTP 200,
+           40,188,704 B, sha b724a90b… — and fix8 is its finished
+           successor, staged + verified below). Reports fix11
+           (lowercase form; the capital-R form returns the identical
+           bytes). Both verified HTTP 200 before filing; the re-point
+           is CLOSED, not carried — the finished pages are staged now. */
+        var INTEL_TODAY_URL = "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO%2Fintel-today-innovations-format-20261125%2Fintel-today.html&ref=intel-today-innovations-format-20261125-fix8&cb=8ece938f7369c408ec0f07973a0d4bec80c804f6";
+        var REPORTS_URL = "https://naya-proof-host.nayapower.workers.dev/?file=TEAM-NITRO%2Freports-innovations-20261125%2Freports.html&ref=reports-innovations-20261125-fix11&cb=eff749224716bc83fa814945440770b6fb5722f3";
 
         function openDoor(door, newsScope) {
           stopMeet();
@@ -5307,23 +5342,15 @@ html::-webkit-scrollbar-thumb{background:var(--dc,#3fb8ff);border-radius:999px;b
               });
             });
           } else if (door.id === "daily" || door.id === "reports") {
-            /* CALENDAR ROUND 5 — LINKS: the two record doors were
-               byte-identical rooms with no way out to the real pages —
-               the names were in the calendar, the links were not. Each
-               door now carries its own head and its own full-page exit:
-               one tap on the exit lands on that day's Intel Today /
-               Daily Reports page. The stats board + intel lines stay:
-               they are the day's own counted report, built only from
-               what is really recorded for the day being viewed (sel);
-               the exit carries &day=<sel> so the full page opens on
-               the same day. The "Your Stats" button rides this same
-               Reports door, so its path gains the exit too. */
+            /* CALENDAR ROUND 5 FOLLOW-ON — FRAME (Shawn, 2026-11-27
+               15:47): the viewer lives in the third frame of the day
+               now — the frame's buttons are the way in. The door keeps
+               the day's own room (its head, the counted stats, the
+               intel lines); the door's exit pill is gone — it doubled
+               the frame's buttons, and the frame wins. */
             var isDaily = door.id === "daily";
-            var exitHref = (isDaily ? INTEL_TODAY_URL : REPORTS_URL) + "&day=" + k;
-            var exitLabel = isDaily ? "Open Intel Today \u2192" : "Open Daily Reports \u2192";
             var exitNote = isDaily ? "Intel Today \u2014 the day\u2019s intelligence, counted from what is really here." : "Your Reports \u2014 the day\u2019s report: appointments, notes, journal and lists, counted.";
-            body.innerHTML = '<a class="pill door-exit" style="--dc:' + door.color + '" href="' + exitHref + '" target="_blank" rel="noopener">' + exitLabel + '</a>' +
-              '<p class="door-head">' + exitNote + '</p>' +
+            body.innerHTML = '<p class="door-head">' + exitNote + '</p>' +
               statsBoardHTML() + '<div class="panel">' + intelHTML() + "</div>";
           } else if (door.id === "smartnotes") {
             var ns = mergedNotesFor(k);
